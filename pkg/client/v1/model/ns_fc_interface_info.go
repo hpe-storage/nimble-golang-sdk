@@ -3,23 +3,55 @@
  */
 
 package model
-//package nimblestorage/v1/NsFcInterfaceInfo
 
 
-// NsFcInterfaceInfo :
+
+// NsFcInterfaceInfo - Fibre Channel interface information.
+// Export NsFcInterfaceInfoFields for advance operations like search filter etc.
+var NsFcInterfaceInfoFields *NsFcInterfaceInfo
+
+func init(){
+	Namefield:= "name"
+	Wwnnfield:= "wwnn"
+	Wwpnfield:= "wwpn"
+	BusLocationfield:= "bus_location"
+		
+	NsFcInterfaceInfoFields= &NsFcInterfaceInfo{
+		Name: &Namefield,
+		Wwnn: &Wwnnfield,
+		Wwpn: &Wwpnfield,
+		BusLocation: &BusLocationfield,
+		
+	}
+}
+
 type NsFcInterfaceInfo struct {
-   // Name
-   Name string `json:"name,omitempty"`
-   // Wwnn
-   Wwnn string `json:"wwnn,omitempty"`
-   // Wwpn
-   Wwpn string `json:"wwpn,omitempty"`
-   // Online
-   Online bool `json:"online,omitempty"`
-   // BusLocation
-   BusLocation string `json:"bus_location,omitempty"`
-   // Slot
-   Slot float64 `json:"slot,omitempty"`
-   // Port
-   Port float64 `json:"port,omitempty"`
+   
+    // Name of Fibre Channel interface.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // WWNN (World Wide Node Name) for this Fibre Channel interface.
+    
+ 	Wwnn *string `json:"wwnn,omitempty"`
+   
+    // WWPN (World Wide Port Name)for this Fibre Channel interface.
+    
+ 	Wwpn *string `json:"wwpn,omitempty"`
+   
+    // Identify whether the Fibre Channel interface is online.
+    
+ 	Online *bool `json:"online,omitempty"`
+   
+    // PCI bus location of the HBA.
+    
+ 	BusLocation *string `json:"bus_location,omitempty"`
+   
+    // Information about the Fibre Channel slot.
+    
+   	Slot *int64 `json:"slot,omitempty"`
+   
+    // Information about the Fibre Channel port on which the interface is hosted.
+    
+   	Port *int64 `json:"port,omitempty"`
 }

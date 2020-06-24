@@ -3,11 +3,23 @@
  */
 
 package model
-//package nimblestorage/v1/NsShelfIdentifyStatusReturn
 
 
-// NsShelfIdentifyStatusReturn :
-type NsShelfIdentifyStatusReturn struct {
-   // Enabled
-   Enabled bool `json:"enabled,omitempty"`
+
+// NsShelfIDentifyStatusReturn - Status of the shelf identifier.
+// Export NsShelfIDentifyStatusReturnFields for advance operations like search filter etc.
+var NsShelfIDentifyStatusReturnFields *NsShelfIDentifyStatusReturn
+
+func init(){
+		
+	NsShelfIDentifyStatusReturnFields= &NsShelfIDentifyStatusReturn{
+		
+	}
+}
+
+type NsShelfIDentifyStatusReturn struct {
+   
+    // Shelf identifier is enabled.
+    
+ 	Enabled *bool `json:"enabled,omitempty"`
 }

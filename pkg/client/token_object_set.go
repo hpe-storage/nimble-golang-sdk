@@ -1,5 +1,3 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
-
 package client
 
 import (
@@ -10,49 +8,61 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
+/**
+ * Manage user&#39;s session information.
+ *
+ */
 const (
-	tokenPath = "tokens"
+    tokenPath = "tokens"
 )
 
-// TokenObjectSet provides a wrapper to manage tokens from the client
+/**
+ * TokenObjectSet
+*/
 type TokenObjectSet struct {
-	Client *GroupMgmtClient
+    Client *GroupMgmtClient
 }
 
-// CreateObject creates a new token
+// CreateObject creates a new Token object
 func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Token, error) {
 	response, err := objectSet.Client.Post(tokenPath, payload)
 	return response.(*model.Token), err
 }
 
-// GetObject returns a token with the given ID
-func (objectSet *TokenObjectSet) GetObject(id string) (*model.Token, error) {
-	response, err := objectSet.Client.Get(tokenPath, id, &model.Token{})
-	if response == nil {
-		return nil, nil
-	}
+// UpdateObject Modify existing Token object
+func (objectSet *TokenObjectSet) UpdateObject(id string, payload *model.Token) (*model.Token, error) {
+	response, err := objectSet.Client.Put(tokenPath, id, payload)
 	return response.(*model.Token), err
 }
 
-// DeleteObject deletes the token with the specified ID
+// DeleteObject deletes the Token object with the specified ID
 func (objectSet *TokenObjectSet) DeleteObject(id string) error {
 	return objectSet.Client.Delete(tokenPath, id)
 }
 
-// GetObjectList returns the list of token objects
-func (objectSet *TokenObjectSet) GetObjectList() ([]*model.Token, error) {
-	response, err := objectSet.Client.List(tokenPath)
-	return buildTokens(response), err
+// GetObject returns a Token object with the given ID
+func (objectSet *TokenObjectSet) GetObject(id string) (*model.Token, error) {
+	response, err := objectSet.Client.Get(tokenPath, id, model.Token{})
+	if response == nil {
+		return nil, err
+	}
+	return response.(*model.Token), err
 }
 
-// GetObjectListFromParams returns the list of token objects using the given params query info
+// GetObjectList returns the list of Token objects
+func (objectSet *TokenObjectSet) GetObjectList() ([]*model.Token, error) {
+	response, err := objectSet.Client.List(tokenPath)
+	return buildTokenObjectSet(response), err
+}
+
+// GetObjectListFromParams returns the list of Token objects using the given params query info
 func (objectSet *TokenObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Token, error) {
 	response, err := objectSet.Client.ListFromParams(tokenPath, params)
-	return buildTokens(response), err
+	return buildTokenObjectSet(response), err
 }
 
 // generated function to build the appropriate response types
-func buildTokens(response interface{}) []*model.Token {
+func buildTokenObjectSet(response interface{}) ([]*model.Token) {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Token, values.Len())
 

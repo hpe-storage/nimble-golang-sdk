@@ -24,7 +24,9 @@ func NewGroupService(ip string, username string, password string) (gs *GroupServ
 
 	return &GroupService{ip: ip, client: client}, nil
 }
-
+func(gs *GroupService) EnableDebug(){
+	gs.client.EnableDebug()
+}
 func (gs *GroupService) GetAccessControlRecordService() (vs *AccessControlRecordService) {
 	if gs.accessControlRecordService == nil {
 		gs.accessControlRecordService = NewAccessControlRecordService(gs)

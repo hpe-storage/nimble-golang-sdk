@@ -3,11 +3,25 @@
  */
 
 package model
-//package nimblestorage/v1/NsEulaReturn
 
 
-// NsEulaReturn :
+
+// NsEulaReturn - Return end-user license information.
+// Export NsEulaReturnFields for advance operations like search filter etc.
+var NsEulaReturnFields *NsEulaReturn
+
+func init(){
+	Eulafield:= "eula"
+		
+	NsEulaReturnFields= &NsEulaReturn{
+		Eula: &Eulafield,
+		
+	}
+}
+
 type NsEulaReturn struct {
-   // Eula
-   Eula string `json:"eula,omitempty"`
+   
+    // License information.
+    
+ 	Eula *string `json:"eula,omitempty"`
 }

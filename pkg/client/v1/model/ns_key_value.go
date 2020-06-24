@@ -3,13 +3,31 @@
  */
 
 package model
-//package nimblestorage/v1/NsKeyValue
 
 
-// NsKeyValue :
+
+// NsKeyValue - Key-value pair.
+// Export NsKeyValueFields for advance operations like search filter etc.
+var NsKeyValueFields *NsKeyValue
+
+func init(){
+	Keyfield:= "key"
+	Valuefield:= "value"
+		
+	NsKeyValueFields= &NsKeyValue{
+		Key: &Keyfield,
+		Value: &Valuefield,
+		
+	}
+}
+
 type NsKeyValue struct {
-   // Key
-   Key string `json:"key,omitempty"`
-   // Value
-   Value string `json:"value,omitempty"`
+   
+    // Identifier of key-value pair.
+    
+ 	Key *string `json:"key,omitempty"`
+   
+    // Value of key-value pair.
+    
+ 	Value *string `json:"value,omitempty"`
 }

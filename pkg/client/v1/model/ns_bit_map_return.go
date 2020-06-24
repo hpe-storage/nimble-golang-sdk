@@ -3,11 +3,25 @@
  */
 
 package model
-//package nimblestorage/v1/NsBitMapReturn
 
 
-// NsBitMapReturn :
+
+// NsBitMapReturn - Return bitmap under certain request.
+// Export NsBitMapReturnFields for advance operations like search filter etc.
+var NsBitMapReturnFields *NsBitMapReturn
+
+func init(){
+	Bitmapfield:= "bitmap"
+		
+	NsBitMapReturnFields= &NsBitMapReturn{
+		Bitmap: &Bitmapfield,
+		
+	}
+}
+
 type NsBitMapReturn struct {
-   // Bitmap
-   Bitmap string `json:"bitmap,omitempty"`
+   
+    // Returned bitmap.
+    
+ 	Bitmap *string `json:"bitmap,omitempty"`
 }

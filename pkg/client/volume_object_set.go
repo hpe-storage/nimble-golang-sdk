@@ -1,5 +1,3 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
-
 package client
 
 import (
@@ -10,32 +8,39 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
+/**
+ * Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
+ *
+ */
 const (
-	volumePath = "volumes"
+    volumePath = "volumes"
 )
 
-// VolumeObjectSet provides a wrapper to manage volumes from the client
+/**
+ * VolumeObjectSet
+*/
 type VolumeObjectSet struct {
-	Client *GroupMgmtClient
+    Client *GroupMgmtClient
 }
 
-// CreateObject creates a new volume
+// CreateObject creates a new Volume object
 func (objectSet *VolumeObjectSet) CreateObject(payload *model.Volume) (*model.Volume, error) {
 	response, err := objectSet.Client.Post(volumePath, payload)
 	return response.(*model.Volume), err
 }
 
+// UpdateObject Modify existing Volume object
 func (objectSet *VolumeObjectSet) UpdateObject(id string, payload *model.Volume) (*model.Volume, error) {
 	response, err := objectSet.Client.Put(volumePath, id, payload)
 	return response.(*model.Volume), err
 }
 
-// DeleteObject deletes the volume with the specified ID
+// DeleteObject deletes the Volume object with the specified ID
 func (objectSet *VolumeObjectSet) DeleteObject(id string) error {
 	return objectSet.Client.Delete(volumePath, id)
 }
 
-// GetObject returns a volume with the given ID
+// GetObject returns a Volume object with the given ID
 func (objectSet *VolumeObjectSet) GetObject(id string) (*model.Volume, error) {
 	response, err := objectSet.Client.Get(volumePath, id, model.Volume{})
 	if response == nil {
@@ -44,20 +49,20 @@ func (objectSet *VolumeObjectSet) GetObject(id string) (*model.Volume, error) {
 	return response.(*model.Volume), err
 }
 
-// GetObjectList returns the list of volume objects
+// GetObjectList returns the list of Volume objects
 func (objectSet *VolumeObjectSet) GetObjectList() ([]*model.Volume, error) {
 	response, err := objectSet.Client.List(volumePath)
-	return buildVolumes(response), err
+	return buildVolumeObjectSet(response), err
 }
 
-// GetObjectListFromParams returns the list of volume objects using the given params query info
+// GetObjectListFromParams returns the list of Volume objects using the given params query info
 func (objectSet *VolumeObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Volume, error) {
 	response, err := objectSet.Client.ListFromParams(volumePath, params)
-	return buildVolumes(response), err
+	return buildVolumeObjectSet(response), err
 }
 
 // generated function to build the appropriate response types
-func buildVolumes(response interface{}) []*model.Volume {
+func buildVolumeObjectSet(response interface{}) ([]*model.Volume) {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Volume, values.Len())
 

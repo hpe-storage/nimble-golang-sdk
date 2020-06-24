@@ -3,9 +3,23 @@
  */
 
 package model
-//package nimblestorage/v1/NsVolumeListReturn
 
 
-// NsVolumeListReturn :
+
+// NsVolumeListReturn - Object containing a list of volume names and IDs.
+// Export NsVolumeListReturnFields for advance operations like search filter etc.
+var NsVolumeListReturnFields *NsVolumeListReturn
+
+func init(){
+		
+	NsVolumeListReturnFields= &NsVolumeListReturn{
+		
+	}
+}
+
 type NsVolumeListReturn struct {
+   
+    // A list of volume names and IDs.
+    
+   	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 }

@@ -3,31 +3,75 @@
  */
 
 package model
-//package nimblestorage/v1/NsArrayDetail
 
 
-// NsArrayDetail :
+
+// NsArrayDetail - Detailed array information.
+// Export NsArrayDetailFields for advance operations like search filter etc.
+var NsArrayDetailFields *NsArrayDetail
+
+func init(){
+	IDfield:= "id"
+	ArrayIDfield:= "array_id"
+	Namefield:= "name"
+	ArrayNamefield:= "array_name"
+		
+	NsArrayDetailFields= &NsArrayDetail{
+		ID: &IDfield,
+		ArrayID: &ArrayIDfield,
+		Name: &Namefield,
+		ArrayName: &ArrayNamefield,
+		
+	}
+}
+
 type NsArrayDetail struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // ArrayID
-   ArrayID string `json:"array_id,omitempty"`
-   // Name
-   Name string `json:"name,omitempty"`
-   // ArrayName
-   ArrayName string `json:"array_name,omitempty"`
-   // EvacTime
-   EvacTime float64 `json:"evac_time,omitempty"`
-   // EvacUsage
-   EvacUsage float64 `json:"evac_usage,omitempty"`
-   // UsableCapacity
-   UsableCapacity float64 `json:"usable_capacity,omitempty"`
-   // Usage
-   Usage float64 `json:"usage,omitempty"`
-   // VolUsageCompressedBytes
-   VolUsageCompressedBytes float64 `json:"vol_usage_compressed_bytes,omitempty"`
-   // SnapUsageCompressedBytes
-   SnapUsageCompressedBytes float64 `json:"snap_usage_compressed_bytes,omitempty"`
-   // UsageValID
-   UsageValID bool `json:"usage_valid,omitempty"`
+   
+    // Array API ID.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Array API ID.
+    
+ 	ArrayID *string `json:"array_id,omitempty"`
+   
+    // Unique name of array.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // Unique name of array.
+    
+ 	ArrayName *string `json:"array_name,omitempty"`
+   
+    // Start time of array evacuation.
+    
+   	EvacTime *int64 `json:"evac_time,omitempty"`
+   
+    // Initial data in the array.
+    
+   	EvacUsage *int64 `json:"evac_usage,omitempty"`
+   
+    // Usable capacity of the array.
+    
+   	UsableCapacity *int64 `json:"usable_capacity,omitempty"`
+   
+    // Usage of the array.
+    
+   	Usage *int64 `json:"usage,omitempty"`
+   
+    // Usage of volumes in the array.
+    
+   	VolUsageCompressedBytes *int64 `json:"vol_usage_compressed_bytes,omitempty"`
+   
+    // Usage of snapshots in the array.
+    
+   	SnapUsageCompressedBytes *int64 `json:"snap_usage_compressed_bytes,omitempty"`
+   
+    // Indicate whether usage of the array is valid.
+    
+ 	UsageValID *bool `json:"usage_valid,omitempty"`
+   
+    // Migrate status of array.
+    
+   	Migrate *NsPoolMigrate `json:"migrate,omitempty"`
 }

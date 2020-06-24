@@ -3,15 +3,35 @@
  */
 
 package model
-//package nimblestorage/v1/NsVolumeBulkUpdateAttr
 
 
-// NsVolumeBulkUpdateAttr :
+
+// NsVolumeBulkUpdateAttr - Volume object used in bulk update.
+// Export NsVolumeBulkUpdateAttrFields for advance operations like search filter etc.
+var NsVolumeBulkUpdateAttrFields *NsVolumeBulkUpdateAttr
+
+func init(){
+	IDfield:= "id"
+	FolderIDfield:= "folder_id"
+		
+	NsVolumeBulkUpdateAttrFields= &NsVolumeBulkUpdateAttr{
+		ID: &IDfield,
+		FolderID: &FolderIDfield,
+		
+	}
+}
+
 type NsVolumeBulkUpdateAttr struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // FolderID
-   FolderID string `json:"folder_id,omitempty"`
-   // Online
-   Online bool `json:"online,omitempty"`
+   
+    // ID of volume.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // ID of folder.
+    
+ 	FolderID *string `json:"folder_id,omitempty"`
+   
+    // Online state of the volume.
+    
+ 	Online *bool `json:"online,omitempty"`
 }

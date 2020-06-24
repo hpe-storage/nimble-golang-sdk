@@ -3,23 +3,63 @@
  */
 
 package model
-//package nimblestorage/v1/Role
 
 
-// Role :
+
+// Role - Retrieve roles and privileges for role-based access control.
+// Export RoleFields for advance operations like search filter etc.
+var RoleFields *Role
+
+func init(){
+	IDfield:= "id"
+	Namefield:= "name"
+	FullNamefield:= "full_name"
+	Descriptionfield:= "description"
+		
+	RoleFields= &Role{
+		ID: &IDfield,
+		Name: &Namefield,
+		FullName: &FullNamefield,
+		Description: &Descriptionfield,
+		
+	}
+}
+
 type Role struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // Name
-   Name string `json:"name,omitempty"`
-   // FullName
-   FullName string `json:"full_name,omitempty"`
-   // Description
-   Description string `json:"description,omitempty"`
-   // CreationTime
-   CreationTime float64 `json:"creation_time,omitempty"`
-   // LastModified
-   LastModified float64 `json:"last_modified,omitempty"`
-   // HIDden
-   HIDden bool `json:"hidden,omitempty"`
+   
+    // Identifier for role.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Name of role.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // Full name of role.
+    
+ 	FullName *string `json:"full_name,omitempty"`
+   
+    // Description of role.
+    
+ 	Description *string `json:"description,omitempty"`
+   
+    // List of privileges for this role.
+    
+   	PrivilegeList []*NsPrivilege `json:"privilege_list,omitempty"`
+   
+    // List of extended privileges for this role.
+    
+   	ExtendedPrivilegeList []*NsExtendedPrivilege `json:"extended_privilege_list,omitempty"`
+   
+    // Time when this role was created.
+    
+   	CreationTime *int64 `json:"creation_time,omitempty"`
+   
+    // Time when this role was last modified.
+    
+   	LastModified *int64 `json:"last_modified,omitempty"`
+   
+    // Indicate whether the role is hidden.
+    
+ 	HIDden *bool `json:"hidden,omitempty"`
 }

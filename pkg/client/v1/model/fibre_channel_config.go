@@ -3,13 +3,35 @@
  */
 
 package model
-//package nimblestorage/v1/FibreChannelConfig
 
 
-// FibreChannelConfig :
+
+// FibreChannelConfig - Manage group wide Fibre Channel configuration.
+// Export FibreChannelConfigFields for advance operations like search filter etc.
+var FibreChannelConfigFields *FibreChannelConfig
+
+func init(){
+	IDfield:= "id"
+	GroupLeaderArrayfield:= "group_leader_array"
+		
+	FibreChannelConfigFields= &FibreChannelConfig{
+		ID: &IDfield,
+		GroupLeaderArray: &GroupLeaderArrayfield,
+		
+	}
+}
+
 type FibreChannelConfig struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // GroupLeaderArray
-   GroupLeaderArray string `json:"group_leader_array,omitempty"`
+   
+    // Identifier for Fibre Channel configuration.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // List of array Fibre Channel configs.
+    
+   	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
+   
+    // Name of the group leader array.
+    
+ 	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
 }

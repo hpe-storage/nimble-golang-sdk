@@ -3,17 +3,43 @@
  */
 
 package model
-//package nimblestorage/v1/NsSnapshotFromVolumes
 
 
-// NsSnapshotFromVolumes :
+
+// NsSnapshotFromVolumes - Snapshot as presented in volumes object set.
+// Export NsSnapshotFromVolumesFields for advance operations like search filter etc.
+var NsSnapshotFromVolumesFields *NsSnapshotFromVolumes
+
+func init(){
+	IDfield:= "id"
+	SnapIDfield:= "snap_id"
+	Namefield:= "name"
+	SnapNamefield:= "snap_name"
+		
+	NsSnapshotFromVolumesFields= &NsSnapshotFromVolumes{
+		ID: &IDfield,
+		SnapID: &SnapIDfield,
+		Name: &Namefield,
+		SnapName: &SnapNamefield,
+		
+	}
+}
+
 type NsSnapshotFromVolumes struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // SnapID
-   SnapID string `json:"snap_id,omitempty"`
-   // Name
-   Name string `json:"name,omitempty"`
-   // SnapName
-   SnapName string `json:"snap_name,omitempty"`
+   
+    // Snapshot id.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Snapshot id.
+    
+ 	SnapID *string `json:"snap_id,omitempty"`
+   
+    // Snapshot name.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // Snapshot name.
+    
+ 	SnapName *string `json:"snap_name,omitempty"`
 }

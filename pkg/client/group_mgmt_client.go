@@ -75,13 +75,14 @@ func (client *GroupMgmtClient) EnableDebug() {
 
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
 	// Construct Payload
+	appName := "Go client"
 	token := &model.Token{
-		Username: username,
-		Password: password,
-		AppName:  "Go client",
+		Username: &username,
+		Password: &password,
+		AppName:  &appName,
 	}
 	token, err := client.GetTokenObjectSet().CreateObject(token)
-	return token.SessionToken, err
+	return *token.SessionToken, err
 }
 
 // Post :
@@ -99,7 +100,6 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}) (interface
 	if err != nil {
 		return nil, err
 	}
-
 	return unwrap(response.Body(), payload)
 }
 
@@ -251,7 +251,6 @@ func (client *GroupMgmtClient) listPost(
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("response = ", response)
 
 	// TODO: add some logging
 

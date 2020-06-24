@@ -3,9 +3,23 @@
  */
 
 package model
-//package nimblestorage/v1/NsTimezonesReturn
 
 
-// NsTimezonesReturn :
+
+// NsTimezonesReturn - Group timezone list attribute.
+// Export NsTimezonesReturnFields for advance operations like search filter etc.
+var NsTimezonesReturnFields *NsTimezonesReturn
+
+func init(){
+		
+	NsTimezonesReturnFields= &NsTimezonesReturn{
+		
+	}
+}
+
 type NsTimezonesReturn struct {
+   
+    // Group timezone list.
+    
+	Timezones []*string `json:"timezones,omitempty"`
 }

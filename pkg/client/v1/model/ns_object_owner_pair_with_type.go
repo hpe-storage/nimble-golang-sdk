@@ -3,9 +3,27 @@
  */
 
 package model
-//package nimblestorage/v1/NsObjectOwnerPairWithType
 
 
-// NsObjectOwnerPairWithType :
+
+// NsObjectOwnerPairWithType - List of objects of a given type along with their owners.
+// Export NsObjectOwnerPairWithTypeFields for advance operations like search filter etc.
+var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithType
+
+func init(){
+		
+	NsObjectOwnerPairWithTypeFields= &NsObjectOwnerPairWithType{
+		
+	}
+}
+
 type NsObjectOwnerPairWithType struct {
+   
+    // Type of the object.
+    
+   	ObjType *NsObjectType `json:"obj_type,omitempty"`
+   
+    // List of object names and owners.
+    
+   	ObjOwnerPairList []*NsObjectOwnerPair `json:"obj_owner_pair_list,omitempty"`
 }

@@ -19,7 +19,7 @@ type VolumeServiceTestSuite struct {
 }
 
 func (suite *VolumeServiceTestSuite) SetupTest() {
-	groupService, err := NewGroupService("10.234.48.245", "admin", "admin")
+	groupService, err := NewGroupService("10.18.174.8", "admin", "admin")
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
@@ -42,16 +42,29 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *model.Volume {
+
 	perfPolicy, _ := suite.performancePolicyService.GetPerformancePolicyByName("default")
+	// Initialize volume attributes
+	var sizeField int64 = 5120
+	descriptionField := "This volume was created as part of a unit test"
+	var limitIopsField int64 = 256
+	var limitMbpsField int64 = 1
+
+	// Enum check
+	var agentType model.NsAgentType
+	agentType = model.NSAGENTTYPE_NONE
+
 	newVolume := &model.Volume{
-		Size:              5120,
-		Description:       "This volume was created as part of a unit test",
+		Size:              &sizeField,
+		Description:       &descriptionField,
 		PerfpolicyID:      perfPolicy.ID,
-		ThinlyProvisioned: true,
+		ThinlyProvisioned: util.NewBool(true),
 		Online:            util.NewBool(true),
-		LimitIops:         256,
-		LimitMbps:         1,
-		MultiInitiator:    true,
+		LimitIops:         &limitIopsField,
+		LimitMbps:         &limitMbpsField,
+		MultiInitiator:    util.NewBool(true),
+		AgentType:		   &agentType,
+
 	}
 	return newVolume
 }
@@ -60,7 +73,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *model.Volu
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()
-		volume.Name = volumeName
+		volume.Name = &volumeName
 		volume, _ = suite.volumeService.CreateVolume(volume)
 	}
 	return volume
@@ -69,7 +82,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *model.Volu
 func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume != nil {
-		suite.volumeService.DestroyVolume(volume.ID)
+		suite.volumeService.DestroyVolume(*volume.ID)
 		volume, _ = suite.volumeService.GetVolumeByName(volumeName)
 	}
 
@@ -81,7 +94,7 @@ func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 func (suite *VolumeServiceTestSuite) TestVolumeService() {
 	assert.NotNil(suite.T(), suite.volumeService)
 
-	volumes, err := suite.volumeService.GetVolumesWithFields([]string{model.VolumeFields.Name})
+	volumes, err := suite.volumeService.GetVolumesWithFields([]string{*model.VolumeFields.Name})
 	if err != nil {
 		suite.T().Errorf("TestVolumeService(): Unable to get volumes, err: %v", err.Error())
 		return
