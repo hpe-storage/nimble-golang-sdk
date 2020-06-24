@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsEncryptionSettings - Group encryption settings.
@@ -18,28 +15,16 @@ func init(){
 }
 
 type NsEncryptionSettings struct {
-   
-    // Is the master key set (output only).
-    
+	// MasterKeySet - Is the master key set (output only).
  	MasterKeySet *bool `json:"master_key_set,omitempty"`
-   
-    // Mode of encryption.
-    
+	// Mode - Mode of encryption.
    	Mode *NsEncryptionMode `json:"mode,omitempty"`
-   
-    // Encryption scope.
-    
+	// Scope - Encryption scope.
    	Scope *NsEncryptionScope `json:"scope,omitempty"`
-   
-    // Type of encryption cipher used.
-    
+	// Cipher - Type of encryption cipher used.
    	Cipher *NsEncryptionCipher `json:"cipher,omitempty"`
-   
-    // Is encryption active (output only).
-    
+	// EncryptionActive - Is encryption active (output only).
  	EncryptionActive *bool `json:"encryption_active,omitempty"`
-   
-    // Is the master key on local or external key manager (output only).
-    
+	// EncryptionKeyManager - Is the master key on local or external key manager (output only).
    	EncryptionKeyManager *NsEncryptionKeyManager `json:"encryption_key_manager,omitempty"`
 }

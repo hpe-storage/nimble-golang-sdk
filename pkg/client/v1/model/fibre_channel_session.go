@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // FibreChannelSession - Fibre Channel session is created when Fibre Channel initiator connects to this group.
@@ -14,22 +11,16 @@ func init(){
 	IDfield:= "id"
 		
 	FibreChannelSessionFields= &FibreChannelSession{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type FibreChannelSession struct {
-   
-    // Unique identifier of the Fibre Channel session.
-    
+	// ID - Unique identifier of the Fibre Channel session.
  	ID *string `json:"id,omitempty"`
-   
-    // Information about the Fibre Channel initiator.
-    
+	// InitiatorInfo - Information about the Fibre Channel initiator.
 	InitiatorInfo *NsFcSessionInitiator `json:"initiator_info,omitempty"`
-   
-    // Information about the Fibre Channel target.
-    
+	// TargetInfo - Information about the Fibre Channel target.
 	TargetInfo *NsFcSessionTarget `json:"target_info,omitempty"`
 }

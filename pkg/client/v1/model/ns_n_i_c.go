@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsNIC - Network interface controller.
@@ -16,28 +13,20 @@ func init(){
 	DataIpfield:= "data_ip"
 		
 	NsNICFields= &NsNIC{
-		Name: &Namefield,
-		SubnetLabel: &SubnetLabelfield,
-		DataIp: &DataIpfield,
+	Name: &Namefield,
+	SubnetLabel: &SubnetLabelfield,
+	DataIp: &DataIpfield,
 		
 	}
 }
 
 type NsNIC struct {
-   
-    // Name of NIC.
-    
+	// Name - Name of NIC.
  	Name *string `json:"name,omitempty"`
-   
-    // Subnet label for this NIC.
-    
+	// SubnetLabel - Subnet label for this NIC.
  	SubnetLabel *string `json:"subnet_label,omitempty"`
-   
-    // Data IP address.
-    
+	// DataIp - Data IP address.
  	DataIp *string `json:"data_ip,omitempty"`
-   
-    // Identify whether the NIC is tagged.
-    
+	// Tagged - Identify whether the NIC is tagged.
  	Tagged *bool `json:"tagged,omitempty"`
 }

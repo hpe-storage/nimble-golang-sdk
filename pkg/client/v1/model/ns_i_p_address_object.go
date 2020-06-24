@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsIPAddressObject - Object wrapper of IP Address.
@@ -14,14 +11,12 @@ func init(){
 	IpAddrfield:= "ip_addr"
 		
 	NsIPAddressObjectFields= &NsIPAddressObject{
-		IpAddr: &IpAddrfield,
+	IpAddr: &IpAddrfield,
 		
 	}
 }
 
 type NsIPAddressObject struct {
-   
-    // An IP Address.
-    
+	// IpAddr - An IP Address.
  	IpAddr *string `json:"ip_addr,omitempty"`
 }

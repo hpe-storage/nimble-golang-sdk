@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapVol - Select fields containing volume info.
@@ -11,57 +8,39 @@ package model
 var NsSnapVolFields *NsSnapVol
 
 func init(){
-	VolIDfield:= "vol_id"
+	VolIdfield:= "vol_id"
 	SnapNamefield:= "snap_name"
 	SnapDescriptionfield:= "snap_description"
 	Cookiefield:= "cookie"
-	AppUuIDfield:= "app_uuid"
+	AppUuidfield:= "app_uuid"
 		
 	NsSnapVolFields= &NsSnapVol{
-		VolID: &VolIDfield,
-		SnapName: &SnapNamefield,
-		SnapDescription: &SnapDescriptionfield,
-		Cookie: &Cookiefield,
-		AppUuID: &AppUuIDfield,
+	VolId: &VolIdfield,
+	SnapName: &SnapNamefield,
+	SnapDescription: &SnapDescriptionfield,
+	Cookie: &Cookiefield,
+	AppUuid: &AppUuidfield,
 		
 	}
 }
 
 type NsSnapVol struct {
-   
-    // ID of volume.
-    
- 	VolID *string `json:"vol_id,omitempty"`
-   
-    // Snapshot name.
-    
+	// VolId - ID of volume.
+ 	VolId *string `json:"vol_id,omitempty"`
+	// SnapName - Snapshot name.
  	SnapName *string `json:"snap_name,omitempty"`
-   
-    // Snapshot description.
-    
+	// SnapDescription - Snapshot description.
  	SnapDescription *string `json:"snap_description,omitempty"`
-   
-    // A cookie.
-    
+	// Cookie - A cookie.
  	Cookie *string `json:"cookie,omitempty"`
-   
-    // Snapshot is online.
-    
+	// Online - Snapshot is online.
  	Online *bool `json:"online,omitempty"`
-   
-    // Snapshot is writable.
-    
+	// Writable - Snapshot is writable.
  	Writable *bool `json:"writable,omitempty"`
-   
-    // Application identifier of snapshots.
-    
- 	AppUuID *string `json:"app_uuid,omitempty"`
-   
-    // External management agent type.
-    
+	// AppUuid - Application identifier of snapshots.
+ 	AppUuid *string `json:"app_uuid,omitempty"`
+	// AgentType - External management agent type.
    	AgentType *NsAgentType `json:"agent_type,omitempty"`
-   
-    // Key-value pairs that augment a snapshot's attributes.
-    
+	// Metadata - Key-value pairs that augment a snapshot's attributes.
    	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }

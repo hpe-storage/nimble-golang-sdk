@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsISCSIIQN - ISCSI IQN.
@@ -14,14 +11,12 @@ func init(){
 	Namefield:= "name"
 		
 	NsISCSIIQNFields= &NsISCSIIQN{
-		Name: &Namefield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsISCSIIQN struct {
-   
-    // IQN name of the iSCSI initiator.
-    
+	// Name - IQN name of the iSCSI initiator.
  	Name *string `json:"name,omitempty"`
 }

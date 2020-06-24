@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsPerfPolicySummary - Select fields containing performance policy.
@@ -14,14 +11,12 @@ func init(){
 	Namefield:= "name"
 		
 	NsPerfPolicySummaryFields= &NsPerfPolicySummary{
-		Name: &Namefield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsPerfPolicySummary struct {
-   
-    // Name of performance policy.
-    
+	// Name - Name of performance policy.
  	Name *string `json:"name,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsAlarmAck - Arguments acknowledge alarm.
@@ -14,22 +11,16 @@ func init(){
 	IDfield:= "id"
 		
 	NsAlarmAckFields= &NsAlarmAck{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type NsAlarmAck struct {
-   
-    // ID of the alarm.
-    
+	// ID - ID of the alarm.
  	ID *string `json:"id,omitempty"`
-   
-    // Notification frequency unit.
-    
+	// RemindEvery - Notification frequency unit.
    	RemindEvery *int64 `json:"remind_every,omitempty"`
-   
-    // Period unit.
-    
+	// RemindEveryUnit - Period unit.
    	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }

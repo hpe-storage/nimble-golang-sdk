@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsLunReturn - Return LU number.
@@ -18,12 +15,8 @@ func init(){
 }
 
 type NsLunReturn struct {
-   
-    // LU number in hexadecimal.
-    
+	// Lun - LU number in hexadecimal.
    	Lun *int64 `json:"lun,omitempty"`
-   
-    // LU number in decimal.
-    
+	// LuNumber - LU number in decimal.
    	LuNumber *int64 `json:"lu_number,omitempty"`
 }

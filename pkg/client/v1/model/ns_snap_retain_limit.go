@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapRetainLimit - Limit for scheduled snapshot retainment params.
@@ -18,16 +15,10 @@ func init(){
 }
 
 type NsSnapRetainLimit struct {
-   
-    // Type of the object.
-    
+	// ObjType - Type of the object.
    	ObjType *NsObjectType `json:"obj_type,omitempty"`
-   
-    // Limit of the objects.
-    
+	// RetainLimit - Limit of the objects.
    	RetainLimit *int64 `json:"retain_limit,omitempty"`
-   
-    // Number of objects after group merge.
-    
+	// RetainNum - Number of objects after group merge.
    	RetainNum *int64 `json:"retain_num,omitempty"`
 }

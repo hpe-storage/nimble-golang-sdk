@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsUserLockStatus - User account lock status.
@@ -14,18 +11,14 @@ func init(){
 	IDfield:= "id"
 		
 	NsUserLockStatusFields= &NsUserLockStatus{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type NsUserLockStatus struct {
-   
-    // Unique Object ID.
-    
+	// ID - Unique Object ID.
  	ID *string `json:"id,omitempty"`
-   
-    // User was locked due to failed logins.
-    
+	// AuthLock - User was locked due to failed logins.
  	AuthLock *bool `json:"auth_lock,omitempty"`
 }

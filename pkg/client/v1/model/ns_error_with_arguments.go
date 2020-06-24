@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsErrorWithArguments - Non-negative integer in range [0,9000].
@@ -15,23 +12,17 @@ func init(){
 	Textfield:= "text"
 		
 	NsErrorWithArgumentsFields= &NsErrorWithArguments{
-		Code: &Codefield,
-		Text: &Textfield,
+	Code: &Codefield,
+	Text: &Textfield,
 		
 	}
 }
 
 type NsErrorWithArguments struct {
-   
-    // Error code.
-    
+	// Code - Error code.
  	Code *string `json:"code,omitempty"`
-   
-    // Severity of the error.
-    
+	// Severity - Severity of the error.
    	Severity *NsApiSeverityLevel `json:"severity,omitempty"`
-   
-    // Full error message with argument populated.
-    
+	// Text - Full error message with argument populated.
  	Text *string `json:"text,omitempty"`
 }

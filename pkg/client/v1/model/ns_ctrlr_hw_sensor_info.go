@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsCtrlrHwSensorInfo - Information on a controller hardware sensor.
@@ -16,36 +13,24 @@ func init(){
 	Locationfield:= "location"
 		
 	NsCtrlrHwSensorInfoFields= &NsCtrlrHwSensorInfo{
-		Name: &Namefield,
-		DisplayName: &DisplayNamefield,
-		Location: &Locationfield,
+	Name: &Namefield,
+	DisplayName: &DisplayNamefield,
+	Location: &Locationfield,
 		
 	}
 }
 
 type NsCtrlrHwSensorInfo struct {
-   
-    // A uniquely identifying name.
-    
+	// Name - A uniquely identifying name.
  	Name *string `json:"name,omitempty"`
-   
-    // A human readable name for the sensor.
-    
+	// DisplayName - A human readable name for the sensor.
  	DisplayName *string `json:"display_name,omitempty"`
-   
-    // The location of this sensor.
-    
+	// Location - The location of this sensor.
  	Location *string `json:"location,omitempty"`
-   
-    // The controller owning this sensor.
-    
-   	CtrlrOwner *NsControllerID `json:"ctrlr_owner,omitempty"`
-   
-    // The current state of this sensor.
-    
+	// CtrlrOwner - The controller owning this sensor.
+   	CtrlrOwner *NsControllerId `json:"ctrlr_owner,omitempty"`
+	// State - The current state of this sensor.
    	State *NsSensorState `json:"state,omitempty"`
-   
-    // A sensor type specific reading (RPM for fans, degrees celcius for temperature).
-    
+	// CurrentReading - A sensor type specific reading (RPM for fans, degrees celcius for temperature).
   	CurrentReading  *int64 `json:"current_reading,omitempty"`
 }

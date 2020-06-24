@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSyncReplVolStatus - The sync replication status of a volume in volume collection.
@@ -18,16 +15,10 @@ func init(){
 }
 
 type NsSyncReplVolStatus struct {
-   
-    // Sync replication active status.
-    
+	// ResyncActive - Sync replication active status.
  	ResyncActive *bool `json:"resync_active,omitempty"`
-   
-    // Transferred bytes.
-    
+	// ResyncBytesDone - Transferred bytes.
    	ResyncBytesDone *int64 `json:"resync_bytes_done,omitempty"`
-   
-    // Total number of bytes to be transferred.
-    
+	// ResyncBytesTotal - Total number of bytes to be transferred.
    	ResyncBytesTotal *int64 `json:"resync_bytes_total,omitempty"`
 }

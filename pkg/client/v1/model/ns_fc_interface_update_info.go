@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFcInterfaceUpdateInfo - Fibre Channel interface information to update.
@@ -14,18 +11,14 @@ func init(){
 	IDfield:= "id"
 		
 	NsFcInterfaceUpdateInfoFields= &NsFcInterfaceUpdateInfo{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type NsFcInterfaceUpdateInfo struct {
-   
-    // ID of Fibre Channel interface.
-    
+	// ID - ID of Fibre Channel interface.
  	ID *string `json:"id,omitempty"`
-   
-    // Identify whether the Fibre Channel interface is online.
-    
+	// Online - Identify whether the Fibre Channel interface is online.
  	Online *bool `json:"online,omitempty"`
 }

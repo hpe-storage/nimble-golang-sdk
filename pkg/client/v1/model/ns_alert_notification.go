@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsAlertNotification - Represents an Alert notification message.
@@ -14,42 +11,26 @@ func init(){
 	Activityfield:= "activity"
 		
 	NsAlertNotificationFields= &NsAlertNotification{
-		Activity: &Activityfield,
+	Activity: &Activityfield,
 		
 	}
 }
 
 type NsAlertNotification struct {
-   
-    // Notification Sequence Number.
-    
+	// SequenceNumber - Notification Sequence Number.
    	SequenceNumber *int64 `json:"sequence_number,omitempty"`
-   
-    // Represents the type of the notification.
-    
+	// NotificationType - Represents the type of the notification.
    	NotificationType *NsNotificationType `json:"notification_type,omitempty"`
-   
-    // Represents the alert message details of the notification.
-    
+	// Activity - Represents the alert message details of the notification.
  	Activity *string `json:"activity,omitempty"`
-   
-    // The kind of events or alerts that the notification subscriber is interested in.
-    
+	// EventTarget - The kind of events or alerts that the notification subscriber is interested in.
    	EventTarget *NsEventTargetTypeOrAll `json:"event_target,omitempty"`
-   
-    // The category of the events or alerts that the notification subscriber is interested in.
-    
+	// Category - The category of the events or alerts that the notification subscriber is interested in.
    	Category *NsEventCategory `json:"category,omitempty"`
-   
-    // The severity of events that the notification subscriber is interested in.
-    
+	// Severity - The severity of events that the notification subscriber is interested in.
    	Severity *NsSeverityLevel `json:"severity,omitempty"`
-   
-    // Identifier for type of alert.
-    
+	// AlertType - Identifier for type of alert.
    	AlertType *int64 `json:"alert_type,omitempty"`
-   
-    // The timestamp when the activity happened in seconds since last epoch.
-    
+	// Timestamp - The timestamp when the activity happened in seconds since last epoch.
    	Timestamp *int64 `json:"timestamp,omitempty"`
 }

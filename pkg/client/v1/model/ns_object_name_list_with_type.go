@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsObjectNameListWithType - List of objects of a given type.
@@ -18,12 +15,8 @@ func init(){
 }
 
 type NsObjectNameListWithType struct {
-   
-    // Type of the object.
-    
+	// ObjType - Type of the object.
    	ObjType *NsObjectType `json:"obj_type,omitempty"`
-   
-    // List of object names.
-    
+	// ObjNameList - List of object names.
 	ObjNameList []*string `json:"obj_name_list,omitempty"`
 }

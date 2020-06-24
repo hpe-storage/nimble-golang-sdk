@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsAlarmCount - List of alarm count for each category.
@@ -18,16 +15,10 @@ func init(){
 }
 
 type NsAlarmCount struct {
-   
-    // Alert category.
-    
+	// Category - Alert category.
    	Category *NsEventCategory `json:"category,omitempty"`
-   
-    // Critical alarm count of a particular category.
-    
+	// Critical - Critical alarm count of a particular category.
    	Critical *int64 `json:"critical,omitempty"`
-   
-    // Warning alarm count of a particular category.
-    
+	// Warning - Warning alarm count of a particular category.
    	Warning *int64 `json:"warning,omitempty"`
 }

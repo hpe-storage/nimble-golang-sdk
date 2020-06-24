@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsVolumeBulkUpdateAttr - Volume object used in bulk update.
@@ -12,26 +9,20 @@ var NsVolumeBulkUpdateAttrFields *NsVolumeBulkUpdateAttr
 
 func init(){
 	IDfield:= "id"
-	FolderIDfield:= "folder_id"
+	FolderIdfield:= "folder_id"
 		
 	NsVolumeBulkUpdateAttrFields= &NsVolumeBulkUpdateAttr{
-		ID: &IDfield,
-		FolderID: &FolderIDfield,
+	ID: &IDfield,
+	FolderId: &FolderIdfield,
 		
 	}
 }
 
 type NsVolumeBulkUpdateAttr struct {
-   
-    // ID of volume.
-    
+	// ID - ID of volume.
  	ID *string `json:"id,omitempty"`
-   
-    // ID of folder.
-    
- 	FolderID *string `json:"folder_id,omitempty"`
-   
-    // Online state of the volume.
-    
+	// FolderId - ID of folder.
+ 	FolderId *string `json:"folder_id,omitempty"`
+	// Online - Online state of the volume.
  	Online *bool `json:"online,omitempty"`
 }

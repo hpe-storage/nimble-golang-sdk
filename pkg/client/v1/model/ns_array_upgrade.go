@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsArrayUpgrade - Array upgrade attributes.
@@ -18,20 +15,12 @@ func init(){
 }
 
 type NsArrayUpgrade struct {
-   
-    // Array upgrade type.
-    
+	// Type - Array upgrade type.
    	Type *NsArrayUpgradeType `json:"type,omitempty"`
-   
-    // Array upgrade state.
-    
+	// State - Array upgrade state.
    	State *NsArrayUpgradeState `json:"state,omitempty"`
-   
-    // Array upgrade stage.
-    
+	// Stage - Array upgrade stage.
    	Stage *NsArrayUpgradeStage `json:"stage,omitempty"`
-   
-    // List of error or info messages.
-    
+	// Messages - List of error or info messages.
    	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }

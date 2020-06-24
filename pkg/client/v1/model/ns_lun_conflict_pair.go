@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsLunConflictPair - LUN number conflict.
@@ -22,62 +19,40 @@ func init(){
 	SrcSnapNamefield:= "src_snap_name"
 		
 	NsLunConflictPairFields= &NsLunConflictPair{
-		InitiatorWwpn: &InitiatorWwpnfield,
-		InitiatorAlias: &InitiatorAliasfield,
-		DstIgrpName: &DstIgrpNamefield,
-		DstVolName: &DstVolNamefield,
-		DstSnapName: &DstSnapNamefield,
-		DstPeName: &DstPeNamefield,
-		SrcIgrpName: &SrcIgrpNamefield,
-		SrcVolName: &SrcVolNamefield,
-		SrcSnapName: &SrcSnapNamefield,
+	InitiatorWwpn: &InitiatorWwpnfield,
+	InitiatorAlias: &InitiatorAliasfield,
+	DstIgrpName: &DstIgrpNamefield,
+	DstVolName: &DstVolNamefield,
+	DstSnapName: &DstSnapNamefield,
+	DstPeName: &DstPeNamefield,
+	SrcIgrpName: &SrcIgrpNamefield,
+	SrcVolName: &SrcVolNamefield,
+	SrcSnapName: &SrcSnapNamefield,
 		
 	}
 }
 
 type NsLunConflictPair struct {
-   
-    // WWPN/IQN of the common initiator.
-    
+	// InitiatorWwpn - WWPN/IQN of the common initiator.
  	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
-   
-    // Alias of the common initiator (if exists).
-    
+	// InitiatorAlias - Alias of the common initiator (if exists).
  	InitiatorAlias *string `json:"initiator_alias,omitempty"`
-   
-    // Name of the initiator group on the destination group.
-    
+	// DstIgrpName - Name of the initiator group on the destination group.
  	DstIgrpName *string `json:"dst_igrp_name,omitempty"`
-   
-    // Name of the volume on the destination group.
-    
+	// DstVolName - Name of the volume on the destination group.
  	DstVolName *string `json:"dst_vol_name,omitempty"`
-   
-    // Name of the snapshot on the destination group (if applicable).
-    
+	// DstSnapName - Name of the snapshot on the destination group (if applicable).
  	DstSnapName *string `json:"dst_snap_name,omitempty"`
-   
-    // Name of the protocol endpoint on the destination group (if applicable).
-    
+	// DstPeName - Name of the protocol endpoint on the destination group (if applicable).
  	DstPeName *string `json:"dst_pe_name,omitempty"`
-   
-    // LUN number on the destination group.
-    
+	// DstLun - LUN number on the destination group.
    	DstLun *int64 `json:"dst_lun,omitempty"`
-   
-    // Name of the initiator group on the source group.
-    
+	// SrcIgrpName - Name of the initiator group on the source group.
  	SrcIgrpName *string `json:"src_igrp_name,omitempty"`
-   
-    // Name of the volume on the source group.
-    
+	// SrcVolName - Name of the volume on the source group.
  	SrcVolName *string `json:"src_vol_name,omitempty"`
-   
-    // Name of the snapshot on the source group (if applicable).
-    
+	// SrcSnapName - Name of the snapshot on the source group (if applicable).
  	SrcSnapName *string `json:"src_snap_name,omitempty"`
-   
-    // LUN number on the source group.
-    
+	// SrcLun - LUN number on the source group.
    	SrcLun *int64 `json:"src_lun,omitempty"`
 }

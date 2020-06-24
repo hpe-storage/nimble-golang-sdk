@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsReplPairListWithObjectType - Replicated objects of the specified type.
@@ -18,12 +15,8 @@ func init(){
 }
 
 type NsReplPairListWithObjectType struct {
-   
-    // Type of the replicated object.
-    
+	// ObjType - Type of the replicated object.
    	ObjType *NsObjectType `json:"obj_type,omitempty"`
-   
-    // List of replicated objects of this type.
-    
+	// ReplList - List of replicated objects of this type.
    	ReplList []*NsReplPair `json:"repl_list,omitempty"`
 }

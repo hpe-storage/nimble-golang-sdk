@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsExtendedPrivilege - Extended privilege info.
@@ -15,23 +12,17 @@ func init(){
 	Operationfield:= "operation"
 		
 	NsExtendedPrivilegeFields= &NsExtendedPrivilege{
-		ObjectType: &ObjectTypefield,
-		Operation: &Operationfield,
+	ObjectType: &ObjectTypefield,
+	Operation: &Operationfield,
 		
 	}
 }
 
 type NsExtendedPrivilege struct {
-   
-    // Object type name associated with this privilege.
-    
+	// ObjectType - Object type name associated with this privilege.
  	ObjectType *string `json:"object_type,omitempty"`
-   
-    // Operation associated with the above object for this privilege.
-    
+	// Operation - Operation associated with the above object for this privilege.
  	Operation *string `json:"operation,omitempty"`
-   
-    // Indicate whether the above operation is allowed for this privilege.
-    
+	// Allow - Indicate whether the above operation is allowed for this privilege.
  	Allow *bool `json:"allow,omitempty"`
 }

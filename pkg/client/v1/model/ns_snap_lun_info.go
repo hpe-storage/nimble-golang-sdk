@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapLunInfo - Snapshot LUN information as presented in the access_control_records object set. This information is only available for Fibre Channel.
@@ -15,23 +12,17 @@ func init(){
 	Namefield:= "name"
 		
 	NsSnapLunInfoFields= &NsSnapLunInfo{
-		ID: &IDfield,
-		Name: &Namefield,
+	ID: &IDfield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsSnapLunInfo struct {
-   
-    // Snapshot ID.
-    
+	// ID - Snapshot ID.
  	ID *string `json:"id,omitempty"`
-   
-    // Snapshot name.
-    
+	// Name - Snapshot name.
  	Name *string `json:"name,omitempty"`
-   
-    // Snapshot LUN.
-    
+	// Lun - Snapshot LUN.
    	Lun *int64 `json:"lun,omitempty"`
 }

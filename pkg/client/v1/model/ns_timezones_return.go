@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsTimezonesReturn - Group timezone list attribute.
@@ -18,8 +15,6 @@ func init(){
 }
 
 type NsTimezonesReturn struct {
-   
-    // Group timezone list.
-    
+	// Timezones - Group timezone list.
 	Timezones []*string `json:"timezones,omitempty"`
 }

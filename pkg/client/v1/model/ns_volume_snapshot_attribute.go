@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsVolumeSnapshotAttribute - Snapshot attributes that could be specified for individual snapshots during snapshot collection creation.
@@ -11,27 +8,21 @@ package model
 var NsVolumeSnapshotAttributeFields *NsVolumeSnapshotAttribute
 
 func init(){
-	VolIDfield:= "vol_id"
-	AppUuIDfield:= "app_uuid"
+	VolIdfield:= "vol_id"
+	AppUuidfield:= "app_uuid"
 		
 	NsVolumeSnapshotAttributeFields= &NsVolumeSnapshotAttribute{
-		VolID: &VolIDfield,
-		AppUuID: &AppUuIDfield,
+	VolId: &VolIdfield,
+	AppUuid: &AppUuidfield,
 		
 	}
 }
 
 type NsVolumeSnapshotAttribute struct {
-   
-    // ID of the volume on which snapshot will be created.
-    
- 	VolID *string `json:"vol_id,omitempty"`
-   
-    // Key-value pairs that augment a snapshot's attributes.
-    
+	// VolId - ID of the volume on which snapshot will be created.
+ 	VolId *string `json:"vol_id,omitempty"`
+	// Metadata - Key-value pairs that augment a snapshot's attributes.
    	Metadata []*NsKeyValue `json:"metadata,omitempty"`
-   
-    // Application identifier of snapshot.
-    
- 	AppUuID *string `json:"app_uuid,omitempty"`
+	// AppUuid - Application identifier of snapshot.
+ 	AppUuid *string `json:"app_uuid,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFcTdzPort - Fibre Channel Target port.
@@ -15,19 +12,15 @@ func init(){
 	FcNamefield:= "fc_name"
 		
 	NsFcTdzPortFields= &NsFcTdzPort{
-		ArrayName: &ArrayNamefield,
-		FcName: &FcNamefield,
+	ArrayName: &ArrayNamefield,
+	FcName: &FcNamefield,
 		
 	}
 }
 
 type NsFcTdzPort struct {
-   
-    // Unique name of the array.
-    
+	// ArrayName - Unique name of the array.
  	ArrayName *string `json:"array_name,omitempty"`
-   
-    // Target port interface name.
-    
+	// FcName - Target port interface name.
  	FcName *string `json:"fc_name,omitempty"`
 }

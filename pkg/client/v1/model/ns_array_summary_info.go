@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
@@ -17,45 +14,29 @@ func init(){
 	Modelfield:= "model"
 		
 	NsArraySummaryInfoFields= &NsArraySummaryInfo{
-		Name: &Namefield,
-		Version: &Versionfield,
-		Serial: &Serialfield,
-		Model: &Modelfield,
+	Name: &Namefield,
+	Version: &Versionfield,
+	Serial: &Serialfield,
+	Model: &Modelfield,
 		
 	}
 }
 
 type NsArraySummaryInfo struct {
-   
-    // Unique name of array.
-    
+	// Name - Unique name of array.
  	Name *string `json:"name,omitempty"`
-   
-    // Version of array.
-    
+	// Version - Version of array.
  	Version *string `json:"version,omitempty"`
-   
-    // Array serial number.
-    
+	// Serial - Array serial number.
  	Serial *string `json:"serial,omitempty"`
-   
-    // Array hardware model.
-    
+	// Model - Array hardware model.
  	Model *string `json:"model,omitempty"`
-   
-    // Zero Conf IP of array, including Nic, local and remote IP addresses.
-    
+	// ZconfIpaddrs - Zero Conf IP of array, including Nic, local and remote IP addresses.
    	ZconfIpaddrs []*NsZeroConfIPAddr `json:"zconf_ipaddrs,omitempty"`
-   
-    // Status of array.
-    
+	// Status - Status of array.
    	Status *NsArrayStatus `json:"status,omitempty"`
-   
-    // Count of Fibre Channel ports per controller.
-    
+	// CountOfFcPorts - Count of Fibre Channel ports per controller.
    	CountOfFcPorts *int64 `json:"count_of_fc_ports,omitempty"`
-   
-    // Whether it is an all-flash array.
-    
+	// AllFlash - Whether it is an all-flash array.
  	AllFlash *bool `json:"all_flash,omitempty"`
 }

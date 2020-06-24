@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsShelfCtrlrAttrSet - A shelf logical controller attributes.
@@ -17,37 +14,25 @@ func init(){
 	DiskTypesfield:= "disk_types"
 		
 	NsShelfCtrlrAttrSetFields= &NsShelfCtrlrAttrSet{
-		SessionSerial: &SessionSerialfield,
-		CachedSerial: &CachedSerialfield,
-		DiskSerials: &DiskSerialsfield,
-		DiskTypes: &DiskTypesfield,
+	SessionSerial: &SessionSerialfield,
+	CachedSerial: &CachedSerialfield,
+	DiskSerials: &DiskSerialsfield,
+	DiskTypes: &DiskTypesfield,
 		
 	}
 }
 
 type NsShelfCtrlrAttrSet struct {
-   
-    // Session serial.
-    
+	// SessionSerial - Session serial.
  	SessionSerial *string `json:"session_serial,omitempty"`
-   
-    // Cached serial.
-    
+	// CachedSerial - Cached serial.
  	CachedSerial *string `json:"cached_serial,omitempty"`
-   
-    // The hardware state for this logical controller.
-    
+	// HwState - The hardware state for this logical controller.
    	HwState *NsShelfHwState `json:"hw_state,omitempty"`
-   
-    // The software type of this logical controller.
-    
+	// SwType - The software type of this logical controller.
    	SwType *NsShelfSwType `json:"sw_type,omitempty"`
-   
-    // Comma separated list of disk serials connected to this logical controller.
-    
+	// DiskSerials - Comma separated list of disk serials connected to this logical controller.
  	DiskSerials *string `json:"disk_serials,omitempty"`
-   
-    // Comma separated list of disk types (H for HDD, S for SSD).
-    
+	// DiskTypes - Comma separated list of disk types (H for HDD, S for SSD).
  	DiskTypes *string `json:"disk_types,omitempty"`
 }

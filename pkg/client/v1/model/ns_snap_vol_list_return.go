@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapVolListReturn - Object returned after creating snapshot collection.
@@ -18,8 +15,6 @@ func init(){
 }
 
 type NsSnapVolListReturn struct {
-   
-    // A list of snapshot ids.
-    
-   	SnapIDs []*NsObjectIDKV `json:"snap_ids,omitempty"`
+	// SnapIds - A list of snapshot ids.
+   	SnapIds []*NsObjectIDKV `json:"snap_ids,omitempty"`
 }

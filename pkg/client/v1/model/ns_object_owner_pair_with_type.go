@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsObjectOwnerPairWithType - List of objects of a given type along with their owners.
@@ -18,12 +15,8 @@ func init(){
 }
 
 type NsObjectOwnerPairWithType struct {
-   
-    // Type of the object.
-    
+	// ObjType - Type of the object.
    	ObjType *NsObjectType `json:"obj_type,omitempty"`
-   
-    // List of object names and owners.
-    
+	// ObjOwnerPairList - List of object names and owners.
    	ObjOwnerPairList []*NsObjectOwnerPair `json:"obj_owner_pair_list,omitempty"`
 }

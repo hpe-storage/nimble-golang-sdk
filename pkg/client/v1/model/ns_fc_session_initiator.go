@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
@@ -18,52 +15,36 @@ func init(){
 	InitiatorSwitchPortfield:= "initiator_switch_port"
 	InitiatorSymbolicPortnamefield:= "initiator_symbolic_portname"
 	InitiatorSymbolicNodenamefield:= "initiator_symbolic_nodename"
-	InitiatorFcIDfield:= "initiator_fcid"
+	InitiatorFcidfield:= "initiator_fcid"
 		
 	NsFcSessionInitiatorFields= &NsFcSessionInitiator{
-		InitiatorAlias: &InitiatorAliasfield,
-		InitiatorWwpn: &InitiatorWwpnfield,
-		InitiatorWwnn: &InitiatorWwnnfield,
-		InitiatorSwitchName: &InitiatorSwitchNamefield,
-		InitiatorSwitchPort: &InitiatorSwitchPortfield,
-		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-		InitiatorFcID: &InitiatorFcIDfield,
+	InitiatorAlias: &InitiatorAliasfield,
+	InitiatorWwpn: &InitiatorWwpnfield,
+	InitiatorWwnn: &InitiatorWwnnfield,
+	InitiatorSwitchName: &InitiatorSwitchNamefield,
+	InitiatorSwitchPort: &InitiatorSwitchPortfield,
+	InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
+	InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
+	InitiatorFcid: &InitiatorFcidfield,
 		
 	}
 }
 
 type NsFcSessionInitiator struct {
-   
-    // Alias of the Fibre Channel initiator.
-    
+	// InitiatorAlias - Alias of the Fibre Channel initiator.
  	InitiatorAlias *string `json:"initiator_alias,omitempty"`
-   
-    // WWPN (World Wide Port Name) of the Fibre Channel initiator.
-    
+	// InitiatorWwpn - WWPN (World Wide Port Name) of the Fibre Channel initiator.
  	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
-   
-    // WWNN (World Wide Node Name) of the Fibre Channel initiator.
-    
+	// InitiatorWwnn - WWNN (World Wide Node Name) of the Fibre Channel initiator.
  	InitiatorWwnn *string `json:"initiator_wwnn,omitempty"`
-   
-    // Name of the switch used by the Fibre Channel initiator.
-    
+	// InitiatorSwitchName - Name of the switch used by the Fibre Channel initiator.
  	InitiatorSwitchName *string `json:"initiator_switch_name,omitempty"`
-   
-    // Port on the switch used by the Fibre Channel initiator.
-    
+	// InitiatorSwitchPort - Port on the switch used by the Fibre Channel initiator.
  	InitiatorSwitchPort *string `json:"initiator_switch_port,omitempty"`
-   
-    // Symbolic port name associated with the Fibre Channel initiator.
-    
+	// InitiatorSymbolicPortname - Symbolic port name associated with the Fibre Channel initiator.
  	InitiatorSymbolicPortname *string `json:"initiator_symbolic_portname,omitempty"`
-   
-    // Symbolic node name associated with the Fibre Channel initiator.
-    
+	// InitiatorSymbolicNodename - Symbolic node name associated with the Fibre Channel initiator.
  	InitiatorSymbolicNodename *string `json:"initiator_symbolic_nodename,omitempty"`
-   
-    // FCID assigned to the Fibre Channel initiator.
-    
- 	InitiatorFcID *string `json:"initiator_fcid,omitempty"`
+	// InitiatorFcid - FCID assigned to the Fibre Channel initiator.
+ 	InitiatorFcid *string `json:"initiator_fcid,omitempty"`
 }

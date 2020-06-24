@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsVolumeCollectionSummary - Select fields of volume collection info.
@@ -15,19 +12,15 @@ func init(){
 	Namefield:= "name"
 		
 	NsVolumeCollectionSummaryFields= &NsVolumeCollectionSummary{
-		ID: &IDfield,
-		Name: &Namefield,
+	ID: &IDfield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsVolumeCollectionSummary struct {
-   
-    // Identifier of volume collection.
-    
+	// ID - Identifier of volume collection.
  	ID *string `json:"id,omitempty"`
-   
-    // Name of volume collection.
-    
+	// Name - Name of volume collection.
  	Name *string `json:"name,omitempty"`
 }

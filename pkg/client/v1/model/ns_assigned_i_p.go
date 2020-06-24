@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsAssignedIP - IP address assignment details to network interface.
@@ -14,18 +11,14 @@ func init(){
 	Ipfield:= "ip"
 		
 	NsAssignedIPFields= &NsAssignedIP{
-		Ip: &Ipfield,
+	Ip: &Ipfield,
 		
 	}
 }
 
 type NsAssignedIP struct {
-   
-    // VLAN id of network interface.
-    
-   	VlanID *int64 `json:"vlan_id,omitempty"`
-   
-    // Assigned IP address to network interface.
-    
+	// VlanId - VLAN id of network interface.
+   	VlanId *int64 `json:"vlan_id,omitempty"`
+	// Ip - Assigned IP address to network interface.
  	Ip *string `json:"ip,omitempty"`
 }

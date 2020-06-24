@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSensorRate - Rate stats for a sensor.
@@ -14,18 +11,14 @@ func init(){
 	Namefield:= "name"
 		
 	NsSensorRateFields= &NsSensorRate{
-		Name: &Namefield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsSensorRate struct {
-   
-    // Sensor name.
-    
+	// Name - Sensor name.
  	Name *string `json:"name,omitempty"`
-   
-    // Sensor value.
-    
+	// Rate - Sensor value.
   	Rate *float32 `json:"rate,omitempty"`
 }

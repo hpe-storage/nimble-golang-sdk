@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsArraySoftwareUpdateError - Software update error for specific controller.
@@ -14,14 +11,12 @@ func init(){
 	Errorfield:= "error"
 		
 	NsArraySoftwareUpdateErrorFields= &NsArraySoftwareUpdateError{
-		Error: &Errorfield,
+	Error: &Errorfield,
 		
 	}
 }
 
 type NsArraySoftwareUpdateError struct {
-   
-    // Error code from software update.
-    
+	// Error - Error code from software update.
  	Error *string `json:"error,omitempty"`
 }

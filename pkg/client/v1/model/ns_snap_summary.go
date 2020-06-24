@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapSummary - Select fields containing snapshot information.
@@ -11,27 +8,21 @@ package model
 var NsSnapSummaryFields *NsSnapSummary
 
 func init(){
-	SnapIDfield:= "snap_id"
+	SnapIdfield:= "snap_id"
 	SnapNamefield:= "snap_name"
 		
 	NsSnapSummaryFields= &NsSnapSummary{
-		SnapID: &SnapIDfield,
-		SnapName: &SnapNamefield,
+	SnapId: &SnapIdfield,
+	SnapName: &SnapNamefield,
 		
 	}
 }
 
 type NsSnapSummary struct {
-   
-    // ID of snapshot.
-    
- 	SnapID *string `json:"snap_id,omitempty"`
-   
-    // Name of snapshot.
-    
+	// SnapId - ID of snapshot.
+ 	SnapId *string `json:"snap_id,omitempty"`
+	// SnapName - Name of snapshot.
  	SnapName *string `json:"snap_name,omitempty"`
-   
-    // Creation time of snapshot.
-    
+	// SnapCreationTime - Creation time of snapshot.
    	SnapCreationTime *int64 `json:"snap_creation_time,omitempty"`
 }
