@@ -3,13 +3,31 @@
  */
 
 package model
-//package nimblestorage/v1/NsPoolSummary
 
 
-// NsPoolSummary :
+
+// NsPoolSummary - Object containing pool ID and name.
+// Export NsPoolSummaryFields for advance operations like search filter etc.
+var NsPoolSummaryFields *NsPoolSummary
+
+func init(){
+	IDfield:= "id"
+	Namefield:= "name"
+		
+	NsPoolSummaryFields= &NsPoolSummary{
+		ID: &IDfield,
+		Name: &Namefield,
+		
+	}
+}
+
 type NsPoolSummary struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // Name
-   Name string `json:"name,omitempty"`
+   
+    // ID of pool.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Name of pool.
+    
+ 	Name *string `json:"name,omitempty"`
 }

@@ -3,13 +3,27 @@
  */
 
 package model
-//package nimblestorage/v1/NsLunReturn
 
 
-// NsLunReturn :
+
+// NsLunReturn - Return LU number.
+// Export NsLunReturnFields for advance operations like search filter etc.
+var NsLunReturnFields *NsLunReturn
+
+func init(){
+		
+	NsLunReturnFields= &NsLunReturn{
+		
+	}
+}
+
 type NsLunReturn struct {
-   // Lun
-   Lun float64 `json:"lun,omitempty"`
-   // LuNumber
-   LuNumber float64 `json:"lu_number,omitempty"`
+   
+    // LU number in hexadecimal.
+    
+   	Lun *int64 `json:"lun,omitempty"`
+   
+    // LU number in decimal.
+    
+   	LuNumber *int64 `json:"lu_number,omitempty"`
 }

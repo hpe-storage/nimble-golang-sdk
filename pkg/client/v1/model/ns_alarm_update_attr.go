@@ -3,13 +3,33 @@
  */
 
 package model
-//package nimblestorage/v1/NsAlarmUpdateAttr
 
 
-// NsAlarmUpdateAttr :
+
+// NsAlarmUpdateAttr - Alarm object used for updating alarms.
+// Export NsAlarmUpdateAttrFields for advance operations like search filter etc.
+var NsAlarmUpdateAttrFields *NsAlarmUpdateAttr
+
+func init(){
+	IDfield:= "id"
+		
+	NsAlarmUpdateAttrFields= &NsAlarmUpdateAttr{
+		ID: &IDfield,
+		
+	}
+}
+
 type NsAlarmUpdateAttr struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // RemindEvery
-   RemindEvery float64 `json:"remind_every,omitempty"`
+   
+    // Identifier for the alarm.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Frequency of notification.
+    
+   	RemindEvery *int64 `json:"remind_every,omitempty"`
+   
+    // Timeunit over which to send the number of notification specified in 'remind every'.
+    
+   	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }

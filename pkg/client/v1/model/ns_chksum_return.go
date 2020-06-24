@@ -3,11 +3,25 @@
  */
 
 package model
-//package nimblestorage/v1/NsChksumReturn
 
 
-// NsChksumReturn :
+
+// NsChksumReturn - Return computed checksum.
+// Export NsChksumReturnFields for advance operations like search filter etc.
+var NsChksumReturnFields *NsChksumReturn
+
+func init(){
+	Cksumfield:= "cksum"
+		
+	NsChksumReturnFields= &NsChksumReturn{
+		Cksum: &Cksumfield,
+		
+	}
+}
+
 type NsChksumReturn struct {
-   // Cksum
-   Cksum string `json:"cksum,omitempty"`
+   
+    // Computed checksum.
+    
+ 	Cksum *string `json:"cksum,omitempty"`
 }

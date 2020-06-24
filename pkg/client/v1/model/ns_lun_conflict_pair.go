@@ -3,31 +3,81 @@
  */
 
 package model
-//package nimblestorage/v1/NsLunConflictPair
 
 
-// NsLunConflictPair :
+
+// NsLunConflictPair - LUN number conflict.
+// Export NsLunConflictPairFields for advance operations like search filter etc.
+var NsLunConflictPairFields *NsLunConflictPair
+
+func init(){
+	InitiatorWwpnfield:= "initiator_wwpn"
+	InitiatorAliasfield:= "initiator_alias"
+	DstIgrpNamefield:= "dst_igrp_name"
+	DstVolNamefield:= "dst_vol_name"
+	DstSnapNamefield:= "dst_snap_name"
+	DstPeNamefield:= "dst_pe_name"
+	SrcIgrpNamefield:= "src_igrp_name"
+	SrcVolNamefield:= "src_vol_name"
+	SrcSnapNamefield:= "src_snap_name"
+		
+	NsLunConflictPairFields= &NsLunConflictPair{
+		InitiatorWwpn: &InitiatorWwpnfield,
+		InitiatorAlias: &InitiatorAliasfield,
+		DstIgrpName: &DstIgrpNamefield,
+		DstVolName: &DstVolNamefield,
+		DstSnapName: &DstSnapNamefield,
+		DstPeName: &DstPeNamefield,
+		SrcIgrpName: &SrcIgrpNamefield,
+		SrcVolName: &SrcVolNamefield,
+		SrcSnapName: &SrcSnapNamefield,
+		
+	}
+}
+
 type NsLunConflictPair struct {
-   // InitiatorWwpn
-   InitiatorWwpn string `json:"initiator_wwpn,omitempty"`
-   // InitiatorAlias
-   InitiatorAlias string `json:"initiator_alias,omitempty"`
-   // DstIgrpName
-   DstIgrpName string `json:"dst_igrp_name,omitempty"`
-   // DstVolName
-   DstVolName string `json:"dst_vol_name,omitempty"`
-   // DstSnapName
-   DstSnapName string `json:"dst_snap_name,omitempty"`
-   // DstPeName
-   DstPeName string `json:"dst_pe_name,omitempty"`
-   // DstLun
-   DstLun float64 `json:"dst_lun,omitempty"`
-   // SrcIgrpName
-   SrcIgrpName string `json:"src_igrp_name,omitempty"`
-   // SrcVolName
-   SrcVolName string `json:"src_vol_name,omitempty"`
-   // SrcSnapName
-   SrcSnapName string `json:"src_snap_name,omitempty"`
-   // SrcLun
-   SrcLun float64 `json:"src_lun,omitempty"`
+   
+    // WWPN/IQN of the common initiator.
+    
+ 	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
+   
+    // Alias of the common initiator (if exists).
+    
+ 	InitiatorAlias *string `json:"initiator_alias,omitempty"`
+   
+    // Name of the initiator group on the destination group.
+    
+ 	DstIgrpName *string `json:"dst_igrp_name,omitempty"`
+   
+    // Name of the volume on the destination group.
+    
+ 	DstVolName *string `json:"dst_vol_name,omitempty"`
+   
+    // Name of the snapshot on the destination group (if applicable).
+    
+ 	DstSnapName *string `json:"dst_snap_name,omitempty"`
+   
+    // Name of the protocol endpoint on the destination group (if applicable).
+    
+ 	DstPeName *string `json:"dst_pe_name,omitempty"`
+   
+    // LUN number on the destination group.
+    
+   	DstLun *int64 `json:"dst_lun,omitempty"`
+   
+    // Name of the initiator group on the source group.
+    
+ 	SrcIgrpName *string `json:"src_igrp_name,omitempty"`
+   
+    // Name of the volume on the source group.
+    
+ 	SrcVolName *string `json:"src_vol_name,omitempty"`
+   
+    // Name of the snapshot on the source group (if applicable).
+    
+ 	SrcSnapName *string `json:"src_snap_name,omitempty"`
+   
+    // LUN number on the source group.
+    
+   	SrcLun *int64 `json:"src_lun,omitempty"`
 }

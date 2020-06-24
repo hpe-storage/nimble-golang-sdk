@@ -3,13 +3,33 @@
  */
 
 package model
-//package nimblestorage/v1/NsAlarmAck
 
 
-// NsAlarmAck :
+
+// NsAlarmAck - Arguments acknowledge alarm.
+// Export NsAlarmAckFields for advance operations like search filter etc.
+var NsAlarmAckFields *NsAlarmAck
+
+func init(){
+	IDfield:= "id"
+		
+	NsAlarmAckFields= &NsAlarmAck{
+		ID: &IDfield,
+		
+	}
+}
+
 type NsAlarmAck struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // RemindEvery
-   RemindEvery float64 `json:"remind_every,omitempty"`
+   
+    // ID of the alarm.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Notification frequency unit.
+    
+   	RemindEvery *int64 `json:"remind_every,omitempty"`
+   
+    // Period unit.
+    
+   	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }

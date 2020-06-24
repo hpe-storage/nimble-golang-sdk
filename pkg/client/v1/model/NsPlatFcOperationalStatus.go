@@ -1,0 +1,24 @@
+/**
+ * Copyright 2017 Hewlett Packard Enterprise Development LP
+ */
+
+package model
+
+
+/**
+ * <p>Golang package for NsPlatFcOperationalStatus.</p>
+ */
+
+type NsPlatFcOperationalStatus string 
+
+const (
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_ADMIN_OFFLINE NsPlatFcOperationalStatus = "plat_fc_operational_status_admin_offline"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_DIRECT NsPlatFcOperationalStatus = "plat_fc_operational_status_direct"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_INITIALIZING NsPlatFcOperationalStatus = "plat_fc_operational_status_initializing"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_CONFIGURED NsPlatFcOperationalStatus = "plat_fc_operational_status_configured"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_FAULT NsPlatFcOperationalStatus = "plat_fc_operational_status_fault"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_OPERATIONAL NsPlatFcOperationalStatus = "plat_fc_operational_status_operational"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_UNKNOWN NsPlatFcOperationalStatus = "plat_fc_operational_status_unknown"
+	NSPLATFCOPERATIONALSTATUS_PLAT_FC_OPERATIONAL_STATUS_UNCONFIGURED NsPlatFcOperationalStatus = "plat_fc_operational_status_unconfigured"
+
+) 

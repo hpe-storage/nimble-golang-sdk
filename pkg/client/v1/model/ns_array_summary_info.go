@@ -3,21 +3,59 @@
  */
 
 package model
-//package nimblestorage/v1/NsArraySummaryInfo
 
 
-// NsArraySummaryInfo :
+
+// NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
+// Export NsArraySummaryInfoFields for advance operations like search filter etc.
+var NsArraySummaryInfoFields *NsArraySummaryInfo
+
+func init(){
+	Namefield:= "name"
+	Versionfield:= "version"
+	Serialfield:= "serial"
+	Modelfield:= "model"
+		
+	NsArraySummaryInfoFields= &NsArraySummaryInfo{
+		Name: &Namefield,
+		Version: &Versionfield,
+		Serial: &Serialfield,
+		Model: &Modelfield,
+		
+	}
+}
+
 type NsArraySummaryInfo struct {
-   // Name
-   Name string `json:"name,omitempty"`
-   // Version
-   Version string `json:"version,omitempty"`
-   // Serial
-   Serial string `json:"serial,omitempty"`
-   // Model
-   Model string `json:"model,omitempty"`
-   // CountOfFcPorts
-   CountOfFcPorts float64 `json:"count_of_fc_ports,omitempty"`
-   // AllFlash
-   AllFlash bool `json:"all_flash,omitempty"`
+   
+    // Unique name of array.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // Version of array.
+    
+ 	Version *string `json:"version,omitempty"`
+   
+    // Array serial number.
+    
+ 	Serial *string `json:"serial,omitempty"`
+   
+    // Array hardware model.
+    
+ 	Model *string `json:"model,omitempty"`
+   
+    // Zero Conf IP of array, including Nic, local and remote IP addresses.
+    
+   	ZconfIpaddrs []*NsZeroConfIPAddr `json:"zconf_ipaddrs,omitempty"`
+   
+    // Status of array.
+    
+   	Status *NsArrayStatus `json:"status,omitempty"`
+   
+    // Count of Fibre Channel ports per controller.
+    
+   	CountOfFcPorts *int64 `json:"count_of_fc_ports,omitempty"`
+   
+    // Whether it is an all-flash array.
+    
+ 	AllFlash *bool `json:"all_flash,omitempty"`
 }

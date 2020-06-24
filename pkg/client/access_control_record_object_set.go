@@ -1,5 +1,3 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
-
 package client
 
 import (
@@ -11,25 +9,38 @@ import (
 )
 
 /**
- * Manage access control records for access control records.
+ * Manage access control records for volumes.
  *
  */
 const (
-	accessControlRecordPath = "access_control_records"
+    accessControlRecordPath = "access_control_records"
 )
 
-// AccessControlRecordObjectSet provides a wrapper to manage access control records from the client
+/**
+ * AccessControlRecordObjectSet
+*/
 type AccessControlRecordObjectSet struct {
-	Client *GroupMgmtClient
+    Client *GroupMgmtClient
 }
 
-// CreateObject creates a new access control record
+// CreateObject creates a new AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
 	response, err := objectSet.Client.Post(accessControlRecordPath, payload)
 	return response.(*model.AccessControlRecord), err
 }
 
-// GetObject returns an access control record with the given ID
+// UpdateObject Modify existing AccessControlRecord object
+func (objectSet *AccessControlRecordObjectSet) UpdateObject(id string, payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
+	response, err := objectSet.Client.Put(accessControlRecordPath, id, payload)
+	return response.(*model.AccessControlRecord), err
+}
+
+// DeleteObject deletes the AccessControlRecord object with the specified ID
+func (objectSet *AccessControlRecordObjectSet) DeleteObject(id string) error {
+	return objectSet.Client.Delete(accessControlRecordPath, id)
+}
+
+// GetObject returns a AccessControlRecord object with the given ID
 func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*model.AccessControlRecord, error) {
 	response, err := objectSet.Client.Get(accessControlRecordPath, id, model.AccessControlRecord{})
 	if response == nil {
@@ -38,25 +49,20 @@ func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*model.Acce
 	return response.(*model.AccessControlRecord), err
 }
 
-// DeleteObject deletes the access control record with the specified ID
-func (objectSet *AccessControlRecordObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(accessControlRecordPath, id)
-}
-
-// GetObjectList returns the list of access control record objects
+// GetObjectList returns the list of AccessControlRecord objects
 func (objectSet *AccessControlRecordObjectSet) GetObjectList() ([]*model.AccessControlRecord, error) {
 	response, err := objectSet.Client.List(accessControlRecordPath)
-	return buildAccessControlRecords(response), err
+	return buildAccessControlRecordObjectSet(response), err
 }
 
-// GetObjectListFromParams returns the list of access control records objects using the given params query info
+// GetObjectListFromParams returns the list of AccessControlRecord objects using the given params query info
 func (objectSet *AccessControlRecordObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.AccessControlRecord, error) {
-	response, err := objectSet.Client.ListFromParams(volumePath, params)
-	return buildAccessControlRecords(response), err
+	response, err := objectSet.Client.ListFromParams(accessControlRecordPath, params)
+	return buildAccessControlRecordObjectSet(response), err
 }
 
 // generated function to build the appropriate response types
-func buildAccessControlRecords(response interface{}) []*model.AccessControlRecord {
+func buildAccessControlRecordObjectSet(response interface{}) ([]*model.AccessControlRecord) {
 	values := reflect.ValueOf(response)
 	results := make([]*model.AccessControlRecord, values.Len())
 

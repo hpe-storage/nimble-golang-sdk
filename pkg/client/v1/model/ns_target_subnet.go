@@ -3,13 +3,31 @@
  */
 
 package model
-//package nimblestorage/v1/NsTargetSubnet
 
 
-// NsTargetSubnet :
+
+// NsTargetSubnet - List of subnet labels.
+// Export NsTargetSubnetFields for advance operations like search filter etc.
+var NsTargetSubnetFields *NsTargetSubnet
+
+func init(){
+	IDfield:= "id"
+	Labelfield:= "label"
+		
+	NsTargetSubnetFields= &NsTargetSubnet{
+		ID: &IDfield,
+		Label: &Labelfield,
+		
+	}
+}
+
 type NsTargetSubnet struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // Label
-   Label string `json:"label,omitempty"`
+   
+    // Subnet ID.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Subnet label.
+    
+ 	Label *string `json:"label,omitempty"`
 }

@@ -3,25 +3,67 @@
  */
 
 package model
-//package nimblestorage/v1/NsFcSessionInitiator
 
 
-// NsFcSessionInitiator :
+
+// NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
+// Export NsFcSessionInitiatorFields for advance operations like search filter etc.
+var NsFcSessionInitiatorFields *NsFcSessionInitiator
+
+func init(){
+	InitiatorAliasfield:= "initiator_alias"
+	InitiatorWwpnfield:= "initiator_wwpn"
+	InitiatorWwnnfield:= "initiator_wwnn"
+	InitiatorSwitchNamefield:= "initiator_switch_name"
+	InitiatorSwitchPortfield:= "initiator_switch_port"
+	InitiatorSymbolicPortnamefield:= "initiator_symbolic_portname"
+	InitiatorSymbolicNodenamefield:= "initiator_symbolic_nodename"
+	InitiatorFcIDfield:= "initiator_fcid"
+		
+	NsFcSessionInitiatorFields= &NsFcSessionInitiator{
+		InitiatorAlias: &InitiatorAliasfield,
+		InitiatorWwpn: &InitiatorWwpnfield,
+		InitiatorWwnn: &InitiatorWwnnfield,
+		InitiatorSwitchName: &InitiatorSwitchNamefield,
+		InitiatorSwitchPort: &InitiatorSwitchPortfield,
+		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
+		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
+		InitiatorFcID: &InitiatorFcIDfield,
+		
+	}
+}
+
 type NsFcSessionInitiator struct {
-   // InitiatorAlias
-   InitiatorAlias string `json:"initiator_alias,omitempty"`
-   // InitiatorWwpn
-   InitiatorWwpn string `json:"initiator_wwpn,omitempty"`
-   // InitiatorWwnn
-   InitiatorWwnn string `json:"initiator_wwnn,omitempty"`
-   // InitiatorSwitchName
-   InitiatorSwitchName string `json:"initiator_switch_name,omitempty"`
-   // InitiatorSwitchPort
-   InitiatorSwitchPort string `json:"initiator_switch_port,omitempty"`
-   // InitiatorSymbolicPortname
-   InitiatorSymbolicPortname string `json:"initiator_symbolic_portname,omitempty"`
-   // InitiatorSymbolicNodename
-   InitiatorSymbolicNodename string `json:"initiator_symbolic_nodename,omitempty"`
-   // InitiatorFcID
-   InitiatorFcID string `json:"initiator_fcid,omitempty"`
+   
+    // Alias of the Fibre Channel initiator.
+    
+ 	InitiatorAlias *string `json:"initiator_alias,omitempty"`
+   
+    // WWPN (World Wide Port Name) of the Fibre Channel initiator.
+    
+ 	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
+   
+    // WWNN (World Wide Node Name) of the Fibre Channel initiator.
+    
+ 	InitiatorWwnn *string `json:"initiator_wwnn,omitempty"`
+   
+    // Name of the switch used by the Fibre Channel initiator.
+    
+ 	InitiatorSwitchName *string `json:"initiator_switch_name,omitempty"`
+   
+    // Port on the switch used by the Fibre Channel initiator.
+    
+ 	InitiatorSwitchPort *string `json:"initiator_switch_port,omitempty"`
+   
+    // Symbolic port name associated with the Fibre Channel initiator.
+    
+ 	InitiatorSymbolicPortname *string `json:"initiator_symbolic_portname,omitempty"`
+   
+    // Symbolic node name associated with the Fibre Channel initiator.
+    
+ 	InitiatorSymbolicNodename *string `json:"initiator_symbolic_nodename,omitempty"`
+   
+    // FCID assigned to the Fibre Channel initiator.
+    
+ 	InitiatorFcID *string `json:"initiator_fcid,omitempty"`
 }

@@ -3,27 +3,55 @@
  */
 
 package model
-//package nimblestorage/v1/NsAverageStats
 
 
-// NsAverageStats :
+
+// NsAverageStats - Average statistics.
+// Export NsAverageStatsFields for advance operations like search filter etc.
+var NsAverageStatsFields *NsAverageStats
+
+func init(){
+		
+	NsAverageStatsFields= &NsAverageStats{
+		
+	}
+}
+
 type NsAverageStats struct {
-   // ReadIops
-   ReadIops float64 `json:"read_iops,omitempty"`
-   // ReadThroughput
-   ReadThroughput float64 `json:"read_throughput,omitempty"`
-   // ReadLatency
-   ReadLatency float64 `json:"read_latency,omitempty"`
-   // WriteIops
-   WriteIops float64 `json:"write_iops,omitempty"`
-   // WriteThroughput
-   WriteThroughput float64 `json:"write_throughput,omitempty"`
-   // WriteLatency
-   WriteLatency float64 `json:"write_latency,omitempty"`
-   // CombinedIops
-   CombinedIops float64 `json:"combined_iops,omitempty"`
-   // CombinedThroughput
-   CombinedThroughput float64 `json:"combined_throughput,omitempty"`
-   // CombinedLatency
-   CombinedLatency float64 `json:"combined_latency,omitempty"`
+   
+    // Average read iops.
+    
+   	ReadIops *int64 `json:"read_iops,omitempty"`
+   
+    // Average read throughput.
+    
+   	ReadThroughput *int64 `json:"read_throughput,omitempty"`
+   
+    // Average read latency.
+    
+   	ReadLatency *int64 `json:"read_latency,omitempty"`
+   
+    // Average write iops.
+    
+   	WriteIops *int64 `json:"write_iops,omitempty"`
+   
+    // Average write throughput.
+    
+   	WriteThroughput *int64 `json:"write_throughput,omitempty"`
+   
+    // Average write latency.
+    
+   	WriteLatency *int64 `json:"write_latency,omitempty"`
+   
+    // Average combined iops.
+    
+   	CombinedIops *int64 `json:"combined_iops,omitempty"`
+   
+    // Average combined throughput.
+    
+   	CombinedThroughput *int64 `json:"combined_throughput,omitempty"`
+   
+    // Average combined latency.
+    
+   	CombinedLatency *int64 `json:"combined_latency,omitempty"`
 }

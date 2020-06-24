@@ -3,11 +3,25 @@
  */
 
 package model
-//package nimblestorage/v1/NsPerfPolicySummary
 
 
-// NsPerfPolicySummary :
+
+// NsPerfPolicySummary - Select fields containing performance policy.
+// Export NsPerfPolicySummaryFields for advance operations like search filter etc.
+var NsPerfPolicySummaryFields *NsPerfPolicySummary
+
+func init(){
+	Namefield:= "name"
+		
+	NsPerfPolicySummaryFields= &NsPerfPolicySummary{
+		Name: &Namefield,
+		
+	}
+}
+
 type NsPerfPolicySummary struct {
-   // Name
-   Name string `json:"name,omitempty"`
+   
+    // Name of performance policy.
+    
+ 	Name *string `json:"name,omitempty"`
 }

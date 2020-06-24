@@ -22,7 +22,7 @@ func NewPerformancePolicyService(gs *GroupService) (vs *PerformancePolicyService
 func (vs *PerformancePolicyService) GetPerformancePolicyByName(name string) (*model.PerformancePolicy, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: &model.PerformancePolicyFields.Name,
+			FieldName: model.PerformancePolicyFields.Name,
 			Operator:  util.EQUALS.String(),
 			Value:     name,
 		},

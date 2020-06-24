@@ -3,23 +3,65 @@
  */
 
 package model
-//package nimblestorage/v1/NsSnapVol
 
 
-// NsSnapVol :
+
+// NsSnapVol - Select fields containing volume info.
+// Export NsSnapVolFields for advance operations like search filter etc.
+var NsSnapVolFields *NsSnapVol
+
+func init(){
+	VolIDfield:= "vol_id"
+	SnapNamefield:= "snap_name"
+	SnapDescriptionfield:= "snap_description"
+	Cookiefield:= "cookie"
+	AppUuIDfield:= "app_uuid"
+		
+	NsSnapVolFields= &NsSnapVol{
+		VolID: &VolIDfield,
+		SnapName: &SnapNamefield,
+		SnapDescription: &SnapDescriptionfield,
+		Cookie: &Cookiefield,
+		AppUuID: &AppUuIDfield,
+		
+	}
+}
+
 type NsSnapVol struct {
-   // VolID
-   VolID string `json:"vol_id,omitempty"`
-   // SnapName
-   SnapName string `json:"snap_name,omitempty"`
-   // SnapDescription
-   SnapDescription string `json:"snap_description,omitempty"`
-   // Cookie
-   Cookie string `json:"cookie,omitempty"`
-   // Online
-   Online bool `json:"online,omitempty"`
-   // Writable
-   Writable bool `json:"writable,omitempty"`
-   // AppUuID
-   AppUuID string `json:"app_uuid,omitempty"`
+   
+    // ID of volume.
+    
+ 	VolID *string `json:"vol_id,omitempty"`
+   
+    // Snapshot name.
+    
+ 	SnapName *string `json:"snap_name,omitempty"`
+   
+    // Snapshot description.
+    
+ 	SnapDescription *string `json:"snap_description,omitempty"`
+   
+    // A cookie.
+    
+ 	Cookie *string `json:"cookie,omitempty"`
+   
+    // Snapshot is online.
+    
+ 	Online *bool `json:"online,omitempty"`
+   
+    // Snapshot is writable.
+    
+ 	Writable *bool `json:"writable,omitempty"`
+   
+    // Application identifier of snapshots.
+    
+ 	AppUuID *string `json:"app_uuid,omitempty"`
+   
+    // External management agent type.
+    
+   	AgentType *NsAgentType `json:"agent_type,omitempty"`
+   
+    // Key-value pairs that augment a snapshot's attributes.
+    
+   	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }

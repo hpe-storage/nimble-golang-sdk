@@ -3,15 +3,35 @@
  */
 
 package model
-//package nimblestorage/v1/NsSnapcollSummary
 
 
-// NsSnapcollSummary :
+
+// NsSnapcollSummary - Select fields containing snapshot collection information.
+// Export NsSnapcollSummaryFields for advance operations like search filter etc.
+var NsSnapcollSummaryFields *NsSnapcollSummary
+
+func init(){
+	SnapcollIDfield:= "snapcoll_id"
+	SnapcollNamefield:= "snapcoll_name"
+		
+	NsSnapcollSummaryFields= &NsSnapcollSummary{
+		SnapcollID: &SnapcollIDfield,
+		SnapcollName: &SnapcollNamefield,
+		
+	}
+}
+
 type NsSnapcollSummary struct {
-   // SnapcollID
-   SnapcollID string `json:"snapcoll_id,omitempty"`
-   // SnapcollName
-   SnapcollName string `json:"snapcoll_name,omitempty"`
-   // SnapcollCreationTime
-   SnapcollCreationTime float64 `json:"snapcoll_creation_time,omitempty"`
+   
+    // ID of snapshot collection.
+    
+ 	SnapcollID *string `json:"snapcoll_id,omitempty"`
+   
+    // Name of snapshot collection.
+    
+ 	SnapcollName *string `json:"snapcoll_name,omitempty"`
+   
+    // Creation time of snapshot collection.
+    
+   	SnapcollCreationTime *int64 `json:"snapcoll_creation_time,omitempty"`
 }

@@ -3,9 +3,27 @@
  */
 
 package model
-//package nimblestorage/v1/NsReplPairListWithObjectType
 
 
-// NsReplPairListWithObjectType :
+
+// NsReplPairListWithObjectType - Replicated objects of the specified type.
+// Export NsReplPairListWithObjectTypeFields for advance operations like search filter etc.
+var NsReplPairListWithObjectTypeFields *NsReplPairListWithObjectType
+
+func init(){
+		
+	NsReplPairListWithObjectTypeFields= &NsReplPairListWithObjectType{
+		
+	}
+}
+
 type NsReplPairListWithObjectType struct {
+   
+    // Type of the replicated object.
+    
+   	ObjType *NsObjectType `json:"obj_type,omitempty"`
+   
+    // List of replicated objects of this type.
+    
+   	ReplList []*NsReplPair `json:"repl_list,omitempty"`
 }

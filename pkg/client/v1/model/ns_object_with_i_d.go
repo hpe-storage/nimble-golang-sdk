@@ -3,11 +3,25 @@
  */
 
 package model
-//package nimblestorage/v1/NsObjectWithID
 
 
-// NsObjectWithID :
+
+// NsObjectWithID - An object with an ID.
+// Export NsObjectWithIDFields for advance operations like search filter etc.
+var NsObjectWithIDFields *NsObjectWithID
+
+func init(){
+	IDfield:= "id"
+		
+	NsObjectWithIDFields= &NsObjectWithID{
+		ID: &IDfield,
+		
+	}
+}
+
 type NsObjectWithID struct {
-   // ID
-   ID string `json:"id,omitempty"`
+   
+    // ID of object.
+    
+ 	ID *string `json:"id,omitempty"`
 }

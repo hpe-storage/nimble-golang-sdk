@@ -3,15 +3,35 @@
  */
 
 package model
-//package nimblestorage/v1/NsSnapLunInfo
 
 
-// NsSnapLunInfo :
+
+// NsSnapLunInfo - Snapshot LUN information as presented in the access_control_records object set. This information is only available for Fibre Channel.
+// Export NsSnapLunInfoFields for advance operations like search filter etc.
+var NsSnapLunInfoFields *NsSnapLunInfo
+
+func init(){
+	IDfield:= "id"
+	Namefield:= "name"
+		
+	NsSnapLunInfoFields= &NsSnapLunInfo{
+		ID: &IDfield,
+		Name: &Namefield,
+		
+	}
+}
+
 type NsSnapLunInfo struct {
-   // ID
-   ID string `json:"id,omitempty"`
-   // Name
-   Name string `json:"name,omitempty"`
-   // Lun
-   Lun float64 `json:"lun,omitempty"`
+   
+    // Snapshot ID.
+    
+ 	ID *string `json:"id,omitempty"`
+   
+    // Snapshot name.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // Snapshot LUN.
+    
+   	Lun *int64 `json:"lun,omitempty"`
 }

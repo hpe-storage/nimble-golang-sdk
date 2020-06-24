@@ -3,11 +3,25 @@
  */
 
 package model
-//package nimblestorage/v1/NsArraySoftwareUpdateError
 
 
-// NsArraySoftwareUpdateError :
+
+// NsArraySoftwareUpdateError - Software update error for specific controller.
+// Export NsArraySoftwareUpdateErrorFields for advance operations like search filter etc.
+var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateError
+
+func init(){
+	Errorfield:= "error"
+		
+	NsArraySoftwareUpdateErrorFields= &NsArraySoftwareUpdateError{
+		Error: &Errorfield,
+		
+	}
+}
+
 type NsArraySoftwareUpdateError struct {
-   // Error
-   Error string `json:"error,omitempty"`
+   
+    // Error code from software update.
+    
+ 	Error *string `json:"error,omitempty"`
 }

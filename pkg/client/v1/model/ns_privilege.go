@@ -3,11 +3,29 @@
  */
 
 package model
-//package nimblestorage/v1/NsPrivilege
 
 
-// NsPrivilege :
+
+// NsPrivilege - Privilege info.
+// Export NsPrivilegeFields for advance operations like search filter etc.
+var NsPrivilegeFields *NsPrivilege
+
+func init(){
+	ObjectTypefield:= "object_type"
+		
+	NsPrivilegeFields= &NsPrivilege{
+		ObjectType: &ObjectTypefield,
+		
+	}
+}
+
 type NsPrivilege struct {
-   // ObjectType
-   ObjectType string `json:"object_type,omitempty"`
+   
+    // Object type name associated with this privilege.
+    
+ 	ObjectType *string `json:"object_type,omitempty"`
+   
+    // List of operations associated with the above object for this privilege.
+    
+	Operations []*string `json:"operations,omitempty"`
 }

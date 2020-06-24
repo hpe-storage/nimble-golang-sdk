@@ -3,15 +3,31 @@
  */
 
 package model
-//package nimblestorage/v1/NsSyncReplVolStatus
 
 
-// NsSyncReplVolStatus :
+
+// NsSyncReplVolStatus - The sync replication status of a volume in volume collection.
+// Export NsSyncReplVolStatusFields for advance operations like search filter etc.
+var NsSyncReplVolStatusFields *NsSyncReplVolStatus
+
+func init(){
+		
+	NsSyncReplVolStatusFields= &NsSyncReplVolStatus{
+		
+	}
+}
+
 type NsSyncReplVolStatus struct {
-   // ResyncActive
-   ResyncActive bool `json:"resync_active,omitempty"`
-   // ResyncBytesDone
-   ResyncBytesDone float64 `json:"resync_bytes_done,omitempty"`
-   // ResyncBytesTotal
-   ResyncBytesTotal float64 `json:"resync_bytes_total,omitempty"`
+   
+    // Sync replication active status.
+    
+ 	ResyncActive *bool `json:"resync_active,omitempty"`
+   
+    // Transferred bytes.
+    
+   	ResyncBytesDone *int64 `json:"resync_bytes_done,omitempty"`
+   
+    // Total number of bytes to be transferred.
+    
+   	ResyncBytesTotal *int64 `json:"resync_bytes_total,omitempty"`
 }

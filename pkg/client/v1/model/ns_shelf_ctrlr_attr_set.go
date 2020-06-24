@@ -3,17 +3,51 @@
  */
 
 package model
-//package nimblestorage/v1/NsShelfCtrlrAttrSet
 
 
-// NsShelfCtrlrAttrSet :
+
+// NsShelfCtrlrAttrSet - A shelf logical controller attributes.
+// Export NsShelfCtrlrAttrSetFields for advance operations like search filter etc.
+var NsShelfCtrlrAttrSetFields *NsShelfCtrlrAttrSet
+
+func init(){
+	SessionSerialfield:= "session_serial"
+	CachedSerialfield:= "cached_serial"
+	DiskSerialsfield:= "disk_serials"
+	DiskTypesfield:= "disk_types"
+		
+	NsShelfCtrlrAttrSetFields= &NsShelfCtrlrAttrSet{
+		SessionSerial: &SessionSerialfield,
+		CachedSerial: &CachedSerialfield,
+		DiskSerials: &DiskSerialsfield,
+		DiskTypes: &DiskTypesfield,
+		
+	}
+}
+
 type NsShelfCtrlrAttrSet struct {
-   // SessionSerial
-   SessionSerial string `json:"session_serial,omitempty"`
-   // CachedSerial
-   CachedSerial string `json:"cached_serial,omitempty"`
-   // DiskSerials
-   DiskSerials string `json:"disk_serials,omitempty"`
-   // DiskTypes
-   DiskTypes string `json:"disk_types,omitempty"`
+   
+    // Session serial.
+    
+ 	SessionSerial *string `json:"session_serial,omitempty"`
+   
+    // Cached serial.
+    
+ 	CachedSerial *string `json:"cached_serial,omitempty"`
+   
+    // The hardware state for this logical controller.
+    
+   	HwState *NsShelfHwState `json:"hw_state,omitempty"`
+   
+    // The software type of this logical controller.
+    
+   	SwType *NsShelfSwType `json:"sw_type,omitempty"`
+   
+    // Comma separated list of disk serials connected to this logical controller.
+    
+ 	DiskSerials *string `json:"disk_serials,omitempty"`
+   
+    // Comma separated list of disk types (H for HDD, S for SSD).
+    
+ 	DiskTypes *string `json:"disk_types,omitempty"`
 }

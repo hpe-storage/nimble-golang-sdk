@@ -3,13 +3,31 @@
  */
 
 package model
-//package nimblestorage/v1/NsSnapRetainLimit
 
 
-// NsSnapRetainLimit :
+
+// NsSnapRetainLimit - Limit for scheduled snapshot retainment params.
+// Export NsSnapRetainLimitFields for advance operations like search filter etc.
+var NsSnapRetainLimitFields *NsSnapRetainLimit
+
+func init(){
+		
+	NsSnapRetainLimitFields= &NsSnapRetainLimit{
+		
+	}
+}
+
 type NsSnapRetainLimit struct {
-   // RetainLimit
-   RetainLimit float64 `json:"retain_limit,omitempty"`
-   // RetainNum
-   RetainNum float64 `json:"retain_num,omitempty"`
+   
+    // Type of the object.
+    
+   	ObjType *NsObjectType `json:"obj_type,omitempty"`
+   
+    // Limit of the objects.
+    
+   	RetainLimit *int64 `json:"retain_limit,omitempty"`
+   
+    // Number of objects after group merge.
+    
+   	RetainNum *int64 `json:"retain_num,omitempty"`
 }

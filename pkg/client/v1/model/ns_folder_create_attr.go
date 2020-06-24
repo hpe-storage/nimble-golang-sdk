@@ -3,13 +3,31 @@
  */
 
 package model
-//package nimblestorage/v1/NsFolderCreateAttr
 
 
-// NsFolderCreateAttr :
+
+// NsFolderCreateAttr - Attributes for folder creation.
+// Export NsFolderCreateAttrFields for advance operations like search filter etc.
+var NsFolderCreateAttrFields *NsFolderCreateAttr
+
+func init(){
+	Namefield:= "name"
+	PoolIDfield:= "pool_id"
+		
+	NsFolderCreateAttrFields= &NsFolderCreateAttr{
+		Name: &Namefield,
+		PoolID: &PoolIDfield,
+		
+	}
+}
+
 type NsFolderCreateAttr struct {
-   // Name
-   Name string `json:"name,omitempty"`
-   // PoolID
-   PoolID string `json:"pool_id,omitempty"`
+   
+    // Name of folder.
+    
+ 	Name *string `json:"name,omitempty"`
+   
+    // ID of pool to create the folder in.
+    
+ 	PoolID *string `json:"pool_id,omitempty"`
 }
