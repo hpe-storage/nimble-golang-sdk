@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsShelfSensor - A shelf sensor data.
@@ -16,40 +13,26 @@ func init(){
 	Locationfield:= "location"
 		
 	NsShelfSensorFields= &NsShelfSensor{
-		Name: &Namefield,
-		DisplayName: &DisplayNamefield,
-		Location: &Locationfield,
+	Name: &Namefield,
+	DisplayName: &DisplayNamefield,
+	Location: &Locationfield,
 		
 	}
 }
 
 type NsShelfSensor struct {
-   
-    // Type of the sensor.
-    
+	// Type - Type of the sensor.
    	Type *NsShelfSensorType `json:"type,omitempty"`
-   
-    // Internal name of the sensor.
-    
+	// Name - Internal name of the sensor.
  	Name *string `json:"name,omitempty"`
-   
-    // Name for display purpose.
-    
+	// DisplayName - Name for display purpose.
  	DisplayName *string `json:"display_name,omitempty"`
-   
-    // Location of the sensor.
-    
+	// Location - Location of the sensor.
  	Location *string `json:"location,omitempty"`
-   
-    // Which controller this sensor applies to.
-    
-   	CID *NsShelfCtrlrSIDe `json:"cid,omitempty"`
-   
-    // Value of the sensor reading.
-    
+	// Cid - Which controller this sensor applies to.
+   	Cid *NsShelfCtrlrSide `json:"cid,omitempty"`
+	// Value - Value of the sensor reading.
    	Value *int64 `json:"value,omitempty"`
-   
-    // Sensor status.
-    
+	// Status - Sensor status.
    	Status *NsShelfSensorState `json:"status,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsWitnessTestResponse - Results of witness connection test.
@@ -16,28 +13,20 @@ func init(){
 	WitnessConnectivityMessagefield:= "witness_connectivity_message"
 		
 	NsWitnessTestResponseFields= &NsWitnessTestResponse{
-		ArrayName: &ArrayNamefield,
-		WitnessConnectivityState: &WitnessConnectivityStatefield,
-		WitnessConnectivityMessage: &WitnessConnectivityMessagefield,
+	ArrayName: &ArrayNamefield,
+	WitnessConnectivityState: &WitnessConnectivityStatefield,
+	WitnessConnectivityMessage: &WitnessConnectivityMessagefield,
 		
 	}
 }
 
 type NsWitnessTestResponse struct {
-   
-    // Name of an array.
-    
+	// ArrayName - Name of an array.
  	ArrayName *string `json:"array_name,omitempty"`
-   
-    // Role of an array in the group.
-    
+	// Role - Role of an array in the group.
    	Role *NsArrayRole `json:"role,omitempty"`
-   
-    // Reachability status of the witness.
-    
+	// WitnessConnectivityState - Reachability status of the witness.
  	WitnessConnectivityState *string `json:"witness_connectivity_state,omitempty"`
-   
-    // Reachability message of the witness.
-    
+	// WitnessConnectivityMessage - Reachability message of the witness.
  	WitnessConnectivityMessage *string `json:"witness_connectivity_message,omitempty"`
 }

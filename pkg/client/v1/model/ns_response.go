@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsResponse - May contain anything that any REST API response can contain.
@@ -18,12 +15,8 @@ func init(){
 }
 
 type NsResponse struct {
-   
-    // Response data.
-    
+	// Data - Response data.
 	Data *NsObject `json:"data,omitempty"`
-   
-    // A list of error messages.
-    
+	// Messages - A list of error messages.
    	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }

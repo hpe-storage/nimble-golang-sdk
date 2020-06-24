@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsVolAndSnapName - Snapshot name and the belonging volume name.
@@ -15,19 +12,15 @@ func init(){
 	SnapNamefield:= "snap_name"
 		
 	NsVolAndSnapNameFields= &NsVolAndSnapName{
-		VolName: &VolNamefield,
-		SnapName: &SnapNamefield,
+	VolName: &VolNamefield,
+	SnapName: &SnapNamefield,
 		
 	}
 }
 
 type NsVolAndSnapName struct {
-   
-    // The name of the volume that the snapshot belongs to.
-    
+	// VolName - The name of the volume that the snapshot belongs to.
  	VolName *string `json:"vol_name,omitempty"`
-   
-    // Snapshot name.
-    
+	// SnapName - Snapshot name.
  	SnapName *string `json:"snap_name,omitempty"`
 }

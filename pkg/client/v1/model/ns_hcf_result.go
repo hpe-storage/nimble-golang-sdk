@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsHcfResult - Results from health check of a single element.
@@ -14,22 +11,16 @@ func init(){
 	ElementNamefield:= "element_name"
 		
 	NsHcfResultFields= &NsHcfResult{
-		ElementName: &ElementNamefield,
+	ElementName: &ElementNamefield,
 		
 	}
 }
 
 type NsHcfResult struct {
-   
-    // Name of the element.
-    
+	// ElementName - Name of the element.
  	ElementName *string `json:"element_name,omitempty"`
-   
-    // List of health check errors for this element.
-    
+	// ErrorList - List of health check errors for this element.
 	ErrorList []*string `json:"error_list,omitempty"`
-   
-    // A list of error messages.
-    
+	// Messages - A list of error messages.
    	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }

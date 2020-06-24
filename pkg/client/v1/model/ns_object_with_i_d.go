@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsObjectWithID - An object with an ID.
@@ -14,14 +11,12 @@ func init(){
 	IDfield:= "id"
 		
 	NsObjectWithIDFields= &NsObjectWithID{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type NsObjectWithID struct {
-   
-    // ID of object.
-    
+	// ID - ID of object.
  	ID *string `json:"id,omitempty"`
 }

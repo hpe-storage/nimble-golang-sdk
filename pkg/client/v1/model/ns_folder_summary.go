@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFolderSummary - Select fields containing folder info.
@@ -15,19 +12,15 @@ func init(){
 	Fqnfield:= "fqn"
 		
 	NsFolderSummaryFields= &NsFolderSummary{
-		ID: &IDfield,
-		Fqn: &Fqnfield,
+	ID: &IDfield,
+	Fqn: &Fqnfield,
 		
 	}
 }
 
 type NsFolderSummary struct {
-   
-    // ID of folder.
-    
+	// ID - ID of folder.
  	ID *string `json:"id,omitempty"`
-   
-    // Fully qualified name of folder.
-    
+	// Fqn - Fully qualified name of folder.
  	Fqn *string `json:"fqn,omitempty"`
 }

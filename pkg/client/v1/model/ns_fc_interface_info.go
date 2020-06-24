@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFcInterfaceInfo - Fibre Channel interface information.
@@ -17,41 +14,27 @@ func init(){
 	BusLocationfield:= "bus_location"
 		
 	NsFcInterfaceInfoFields= &NsFcInterfaceInfo{
-		Name: &Namefield,
-		Wwnn: &Wwnnfield,
-		Wwpn: &Wwpnfield,
-		BusLocation: &BusLocationfield,
+	Name: &Namefield,
+	Wwnn: &Wwnnfield,
+	Wwpn: &Wwpnfield,
+	BusLocation: &BusLocationfield,
 		
 	}
 }
 
 type NsFcInterfaceInfo struct {
-   
-    // Name of Fibre Channel interface.
-    
+	// Name - Name of Fibre Channel interface.
  	Name *string `json:"name,omitempty"`
-   
-    // WWNN (World Wide Node Name) for this Fibre Channel interface.
-    
+	// Wwnn - WWNN (World Wide Node Name) for this Fibre Channel interface.
  	Wwnn *string `json:"wwnn,omitempty"`
-   
-    // WWPN (World Wide Port Name)for this Fibre Channel interface.
-    
+	// Wwpn - WWPN (World Wide Port Name)for this Fibre Channel interface.
  	Wwpn *string `json:"wwpn,omitempty"`
-   
-    // Identify whether the Fibre Channel interface is online.
-    
+	// Online - Identify whether the Fibre Channel interface is online.
  	Online *bool `json:"online,omitempty"`
-   
-    // PCI bus location of the HBA.
-    
+	// BusLocation - PCI bus location of the HBA.
  	BusLocation *string `json:"bus_location,omitempty"`
-   
-    // Information about the Fibre Channel slot.
-    
+	// Slot - Information about the Fibre Channel slot.
    	Slot *int64 `json:"slot,omitempty"`
-   
-    // Information about the Fibre Channel port on which the interface is hosted.
-    
+	// Port - Information about the Fibre Channel port on which the interface is hosted.
    	Port *int64 `json:"port,omitempty"`
 }

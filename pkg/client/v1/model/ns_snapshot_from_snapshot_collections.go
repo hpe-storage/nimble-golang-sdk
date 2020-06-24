@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
@@ -12,74 +9,52 @@ var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollections
 
 func init(){
 	IDfield:= "id"
-	SnapcollIDfield:= "snapcoll_id"
+	SnapcollIdfield:= "snapcoll_id"
 	Namefield:= "name"
 	SnapcollNamefield:= "snapcoll_name"
-	VolIDfield:= "vol_id"
+	VolIdfield:= "vol_id"
 	VolNamefield:= "vol_name"
-	SnapIDfield:= "snap_id"
+	SnapIdfield:= "snap_id"
 	SnapNamefield:= "snap_name"
-	ScheduleIDfield:= "schedule_id"
+	ScheduleIdfield:= "schedule_id"
 	ScheduleNamefield:= "schedule_name"
 		
 	NsSnapshotFromSnapshotCollectionsFields= &NsSnapshotFromSnapshotCollections{
-		ID: &IDfield,
-		SnapcollID: &SnapcollIDfield,
-		Name: &Namefield,
-		SnapcollName: &SnapcollNamefield,
-		VolID: &VolIDfield,
-		VolName: &VolNamefield,
-		SnapID: &SnapIDfield,
-		SnapName: &SnapNamefield,
-		ScheduleID: &ScheduleIDfield,
-		ScheduleName: &ScheduleNamefield,
+	ID: &IDfield,
+	SnapcollId: &SnapcollIdfield,
+	Name: &Namefield,
+	SnapcollName: &SnapcollNamefield,
+	VolId: &VolIdfield,
+	VolName: &VolNamefield,
+	SnapId: &SnapIdfield,
+	SnapName: &SnapNamefield,
+	ScheduleId: &ScheduleIdfield,
+	ScheduleName: &ScheduleNamefield,
 		
 	}
 }
 
 type NsSnapshotFromSnapshotCollections struct {
-   
-    // Snapshot ID.
-    
+	// ID - Snapshot ID.
  	ID *string `json:"id,omitempty"`
-   
-    // ID of the snapshot collection which owns this snapshot.
-    
- 	SnapcollID *string `json:"snapcoll_id,omitempty"`
-   
-    // Snapshot name.
-    
+	// SnapcollId - ID of the snapshot collection which owns this snapshot.
+ 	SnapcollId *string `json:"snapcoll_id,omitempty"`
+	// Name - Snapshot name.
  	Name *string `json:"name,omitempty"`
-   
-    // Name of the snapshot collection which owns this snapshot.
-    
+	// SnapcollName - Name of the snapshot collection which owns this snapshot.
  	SnapcollName *string `json:"snapcoll_name,omitempty"`
-   
-    // ID of the volume that is parent to this snapshot.
-    
- 	VolID *string `json:"vol_id,omitempty"`
-   
-    // Name of the volume that is parent to this snapshot.
-    
+	// VolId - ID of the volume that is parent to this snapshot.
+ 	VolId *string `json:"vol_id,omitempty"`
+	// VolName - Name of the volume that is parent to this snapshot.
  	VolName *string `json:"vol_name,omitempty"`
-   
-    // Snapshot ID.
-    
- 	SnapID *string `json:"snap_id,omitempty"`
-   
-    // Snapshot name.
-    
+	// SnapId - Snapshot ID.
+ 	SnapId *string `json:"snap_id,omitempty"`
+	// SnapName - Snapshot name.
  	SnapName *string `json:"snap_name,omitempty"`
-   
-    // ID of protection schedule.
-    
- 	ScheduleID *string `json:"schedule_id,omitempty"`
-   
-    // Name of protection schedule.
-    
+	// ScheduleId - ID of protection schedule.
+ 	ScheduleId *string `json:"schedule_id,omitempty"`
+	// ScheduleName - Name of protection schedule.
  	ScheduleName *string `json:"schedule_name,omitempty"`
-   
-    // Unix timestamp indicating that the snapshot is considered expired by Snapshot Time-to-live(TTL). A value of 0 indicates that snapshot never expires.
-    
+	// ExpiryTime - Unix timestamp indicating that the snapshot is considered expired by Snapshot Time-to-live(TTL). A value of 0 indicates that snapshot never expires.
    	ExpiryTime *int64 `json:"expiry_time,omitempty"`
 }

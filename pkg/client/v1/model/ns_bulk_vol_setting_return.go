@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsBulkVolSettingReturn - Return codes for setting an attribute to a list of items.
@@ -18,8 +15,6 @@ func init(){
 }
 
 type NsBulkVolSettingReturn struct {
-   
-    // Error codes for every element in a list of items.
-    
+	// ErrorCodes - Error codes for every element in a list of items.
 	ErrorCodes []*string `json:"error_codes,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsHostType - Host type attribute.
@@ -16,32 +13,22 @@ func init(){
 	DestinationHostTypefield:= "destination_host_type"
 		
 	NsHostTypeFields= &NsHostType{
-		InitiatorName: &InitiatorNamefield,
-		SourceHostType: &SourceHostTypefield,
-		DestinationHostType: &DestinationHostTypefield,
+	InitiatorName: &InitiatorNamefield,
+	SourceHostType: &SourceHostTypefield,
+	DestinationHostType: &DestinationHostTypefield,
 		
 	}
 }
 
 type NsHostType struct {
-   
-    // The initiator for which the conflict exists.
-    
+	// InitiatorName - The initiator for which the conflict exists.
  	InitiatorName *string `json:"initiator_name,omitempty"`
-   
-    // Source initiator group.
-    
+	// SourceInitiatorGroup - Source initiator group.
 	SourceInitiatorGroup []*string `json:"source_initiator_group,omitempty"`
-   
-    // Source host type.
-    
+	// SourceHostType - Source host type.
  	SourceHostType *string `json:"source_host_type,omitempty"`
-   
-    // Destination initiator group.
-    
+	// DestinationInitiatorGroup - Destination initiator group.
 	DestinationInitiatorGroup []*string `json:"destination_initiator_group,omitempty"`
-   
-    // Destination Host type.
-    
+	// DestinationHostType - Destination Host type.
  	DestinationHostType *string `json:"destination_host_type,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsVolumeSummary - Select fields containing volume info.
@@ -12,34 +9,26 @@ var NsVolumeSummaryFields *NsVolumeSummary
 
 func init(){
 	IDfield:= "id"
-	VolIDfield:= "vol_id"
+	VolIdfield:= "vol_id"
 	Namefield:= "name"
 	VolNamefield:= "vol_name"
 		
 	NsVolumeSummaryFields= &NsVolumeSummary{
-		ID: &IDfield,
-		VolID: &VolIDfield,
-		Name: &Namefield,
-		VolName: &VolNamefield,
+	ID: &IDfield,
+	VolId: &VolIdfield,
+	Name: &Namefield,
+	VolName: &VolNamefield,
 		
 	}
 }
 
 type NsVolumeSummary struct {
-   
-    // ID of volume.
-    
+	// ID - ID of volume.
  	ID *string `json:"id,omitempty"`
-   
-    // ID of volume.
-    
- 	VolID *string `json:"vol_id,omitempty"`
-   
-    // Name of volume.
-    
+	// VolId - ID of volume.
+ 	VolId *string `json:"vol_id,omitempty"`
+	// Name - Name of volume.
  	Name *string `json:"name,omitempty"`
-   
-    // Name of volume.
-    
+	// VolName - Name of volume.
  	VolName *string `json:"vol_name,omitempty"`
 }

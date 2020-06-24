@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsKeyValue - Key-value pair.
@@ -15,19 +12,15 @@ func init(){
 	Valuefield:= "value"
 		
 	NsKeyValueFields= &NsKeyValue{
-		Key: &Keyfield,
-		Value: &Valuefield,
+	Key: &Keyfield,
+	Value: &Valuefield,
 		
 	}
 }
 
 type NsKeyValue struct {
-   
-    // Identifier of key-value pair.
-    
+	// Key - Identifier of key-value pair.
  	Key *string `json:"key,omitempty"`
-   
-    // Value of key-value pair.
-    
+	// Value - Value of key-value pair.
  	Value *string `json:"value,omitempty"`
 }

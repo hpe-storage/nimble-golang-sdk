@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsDiscoveredGroupListReturn - Detailed discovered group information.
@@ -18,8 +15,6 @@ func init(){
 }
 
 type NsDiscoveredGroupListReturn struct {
-   
-    // List of discovered group details.
-    
+	// DiscoveredGroupList - List of discovered group details.
    	DiscoveredGroupList []*NsDiscoveredGroupInfo `json:"discovered_group_list,omitempty"`
 }

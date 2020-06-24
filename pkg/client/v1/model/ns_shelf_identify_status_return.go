@@ -1,25 +1,20 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
 
 
-
-// NsShelfIDentifyStatusReturn - Status of the shelf identifier.
-// Export NsShelfIDentifyStatusReturnFields for advance operations like search filter etc.
-var NsShelfIDentifyStatusReturnFields *NsShelfIDentifyStatusReturn
+// NsShelfIdentifyStatusReturn - Status of the shelf identifier.
+// Export NsShelfIdentifyStatusReturnFields for advance operations like search filter etc.
+var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturn
 
 func init(){
 		
-	NsShelfIDentifyStatusReturnFields= &NsShelfIDentifyStatusReturn{
+	NsShelfIdentifyStatusReturnFields= &NsShelfIdentifyStatusReturn{
 		
 	}
 }
 
-type NsShelfIDentifyStatusReturn struct {
-   
-    // Shelf identifier is enabled.
-    
+type NsShelfIdentifyStatusReturn struct {
+	// Enabled - Shelf identifier is enabled.
  	Enabled *bool `json:"enabled,omitempty"`
 }

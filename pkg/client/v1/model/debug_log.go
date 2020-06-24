@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // DebugLog - Method to help log events from outside of storage array to provide context for troubleshooting host-side or array-side issues.
@@ -15,23 +12,17 @@ func init(){
 	Messagefield:= "message"
 		
 	DebugLogFields= &DebugLog{
-		Tag: &Tagfield,
-		Message: &Messagefield,
+	Tag: &Tagfield,
+	Message: &Messagefield,
 		
 	}
 }
 
 type DebugLog struct {
-   
-    // Log level.
-    
+	// Level - Log level.
    	Level *NsTraceLevel `json:"level,omitempty"`
-   
-    // Specifies the context of the message.
-    
+	// Tag - Specifies the context of the message.
  	Tag *string `json:"tag,omitempty"`
-   
-    // The message to log.
-    
+	// Message - The message to log.
  	Message *string `json:"message,omitempty"`
 }

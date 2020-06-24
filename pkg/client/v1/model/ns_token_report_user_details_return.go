@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsTokenReportUserDetailsReturn - Return values of token reporting user details.
@@ -12,50 +9,34 @@ var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturn
 
 func init(){
 	UserNamefield:= "user_name"
-	PrimaryGroupIDfield:= "primary_group_id"
+	PrimaryGroupIdfield:= "primary_group_id"
 	PrimaryGroupNamefield:= "primary_group_name"
-	UserIDfield:= "user_id"
+	UserIdfield:= "user_id"
 		
 	NsTokenReportUserDetailsReturnFields= &NsTokenReportUserDetailsReturn{
-		UserName: &UserNamefield,
-		PrimaryGroupID: &PrimaryGroupIDfield,
-		PrimaryGroupName: &PrimaryGroupNamefield,
-		UserID: &UserIDfield,
+	UserName: &UserNamefield,
+	PrimaryGroupId: &PrimaryGroupIdfield,
+	PrimaryGroupName: &PrimaryGroupNamefield,
+	UserId: &UserIdfield,
 		
 	}
 }
 
 type NsTokenReportUserDetailsReturn struct {
-   
-    // User name for the session.
-    
+	// UserName - User name for the session.
  	UserName *string `json:"user_name,omitempty"`
-   
-    // The ID of the primary Active Directory user group the user belongs to. RBAC is granted based on this group.
-    
- 	PrimaryGroupID *string `json:"primary_group_id,omitempty"`
-   
-    // The primary Active Directory user group the user belongs to. RBAC is granted based on this group.
-    
+	// PrimaryGroupId - The ID of the primary Active Directory user group the user belongs to. RBAC is granted based on this group.
+ 	PrimaryGroupId *string `json:"primary_group_id,omitempty"`
+	// PrimaryGroupName - The primary Active Directory user group the user belongs to. RBAC is granted based on this group.
  	PrimaryGroupName *string `json:"primary_group_name,omitempty"`
-   
-    // The number of Active Directory user groups the user belongs to.
-    
+	// GroupCount - The number of Active Directory user groups the user belongs to.
    	GroupCount *int64 `json:"group_count,omitempty"`
-   
-    // Role of the user.
-    
+	// Role - Role of the user.
    	Role *NsUserRoles `json:"role,omitempty"`
-   
-    // The amount of time that the user session is inactive before timing out.
-    
+	// InactivityTimeout - The amount of time that the user session is inactive before timing out.
    	InactivityTimeout *int64 `json:"inactivity_timeout,omitempty"`
-   
-    // Global ID of the user.
-    
- 	UserID *string `json:"user_id,omitempty"`
-   
-    // The list of Active Directory groups the user belongs to.
-    
+	// UserId - Global ID of the user.
+ 	UserId *string `json:"user_id,omitempty"`
+	// Groups - The list of Active Directory groups the user belongs to.
 	Groups []*string `json:"groups,omitempty"`
 }

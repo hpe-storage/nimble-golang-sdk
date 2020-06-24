@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsPoolSummary - Object containing pool ID and name.
@@ -15,19 +12,15 @@ func init(){
 	Namefield:= "name"
 		
 	NsPoolSummaryFields= &NsPoolSummary{
-		ID: &IDfield,
-		Name: &Namefield,
+	ID: &IDfield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsPoolSummary struct {
-   
-    // ID of pool.
-    
+	// ID - ID of pool.
  	ID *string `json:"id,omitempty"`
-   
-    // Name of pool.
-    
+	// Name - Name of pool.
  	Name *string `json:"name,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // FibreChannelInitiatorAlias - This API provides the alias information for Fibre Channel initiators.
@@ -16,28 +13,20 @@ func init(){
 	Wwpnfield:= "wwpn"
 		
 	FibreChannelInitiatorAliasFields= &FibreChannelInitiatorAlias{
-		ID: &IDfield,
-		Alias: &Aliasfield,
-		Wwpn: &Wwpnfield,
+	ID: &IDfield,
+	Alias: &Aliasfield,
+	Wwpn: &Wwpnfield,
 		
 	}
 }
 
 type FibreChannelInitiatorAlias struct {
-   
-    // Unique identifier for the Fibre Channel initiator alias.
-    
+	// ID - Unique identifier for the Fibre Channel initiator alias.
  	ID *string `json:"id,omitempty"`
-   
-    // Alias of the Fibre Channel initiator.
-    
+	// Alias - Alias of the Fibre Channel initiator.
  	Alias *string `json:"alias,omitempty"`
-   
-    // WWPN (World Wide Port Name) of the Fibre Channel initiator.
-    
+	// Wwpn - WWPN (World Wide Port Name) of the Fibre Channel initiator.
  	Wwpn *string `json:"wwpn,omitempty"`
-   
-    // Source of the Fibre Channel initiator alias.
-    
+	// Source - Source of the Fibre Channel initiator alias.
    	Source *SmFcInitiatorAliasSource `json:"source,omitempty"`
 }

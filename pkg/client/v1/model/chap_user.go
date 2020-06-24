@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
@@ -19,59 +16,37 @@ func init(){
 	Passwordfield:= "password"
 		
 	ChapUserFields= &ChapUser{
-		ID: &IDfield,
-		Name: &Namefield,
-		FullName: &FullNamefield,
-		SearchName: &SearchNamefield,
-		Description: &Descriptionfield,
-		Password: &Passwordfield,
+	ID: &IDfield,
+	Name: &Namefield,
+	FullName: &FullNamefield,
+	SearchName: &SearchNamefield,
+	Description: &Descriptionfield,
+	Password: &Passwordfield,
 		
 	}
 }
 
 type ChapUser struct {
-   
-    // Identifier for the CHAP user.
-    
+	// ID - Identifier for the CHAP user.
  	ID *string `json:"id,omitempty"`
-   
-    // Name of CHAP user.
-    
+	// Name - Name of CHAP user.
  	Name *string `json:"name,omitempty"`
-   
-    // CHAP user's fully qualified name.
-    
+	// FullName - CHAP user's fully qualified name.
  	FullName *string `json:"full_name,omitempty"`
-   
-    // CHAP user name used for object search.
-    
+	// SearchName - CHAP user name used for object search.
  	SearchName *string `json:"search_name,omitempty"`
-   
-    // Text description of CHAP user.
-    
+	// Description - Text description of CHAP user.
  	Description *string `json:"description,omitempty"`
-   
-    // CHAP secret.The CHAP secret should be between 12-16 characters and cannot contain spaces or most punctuation.
-    
+	// Password - CHAP secret.The CHAP secret should be between 12-16 characters and cannot contain spaces or most punctuation.
  	Password *string `json:"password,omitempty"`
-   
-    // List of iSCSI initiators. To be configured with this CHAP user for iSCSI Group Target CHAP authentication. This attribute cannot be modified at the same time with other attributes. If any specified initiator is already associated with another CHAP user, it will be replaced by this CHAP user for future CHAP authentication.
-    
+	// InitiatorIqns - List of iSCSI initiators. To be configured with this CHAP user for iSCSI Group Target CHAP authentication. This attribute cannot be modified at the same time with other attributes. If any specified initiator is already associated with another CHAP user, it will be replaced by this CHAP user for future CHAP authentication.
    	InitiatorIqns []*NsISCSIIQN `json:"initiator_iqns,omitempty"`
-   
-    // Time when this CHAP user was created.
-    
+	// CreationTime - Time when this CHAP user was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
-   
-    // Time when this CHAP user was last modified.
-    
+	// LastModified - Time when this CHAP user was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
-   
-    // List of volumes associated with this CHAP user.
-    
+	// VolList - List of volumes associated with this CHAP user.
    	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
-   
-    // Count of volumes associated with this CHAP user.
-    
+	// VolCount - Count of volumes associated with this CHAP user.
    	VolCount *int64 `json:"vol_count,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsVssResp - Response from VSS app server.
@@ -15,19 +12,15 @@ func init(){
 	VssErrorMessagefield:= "vss_error_message"
 		
 	NsVssRespFields= &NsVssResp{
-		VssError: &VssErrorfield,
-		VssErrorMessage: &VssErrorMessagefield,
+	VssError: &VssErrorfield,
+	VssErrorMessage: &VssErrorMessagefield,
 		
 	}
 }
 
 type NsVssResp struct {
-   
-    // Error code from VSS app server.
-    
+	// VssError - Error code from VSS app server.
  	VssError *string `json:"vss_error,omitempty"`
-   
-    // Detailed error message from VSS app server.
-    
+	// VssErrorMessage - Detailed error message from VSS app server.
  	VssErrorMessage *string `json:"vss_error_message,omitempty"`
 }

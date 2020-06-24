@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsObjectCount - Number of objects of a type in a given scope.
@@ -14,26 +11,18 @@ func init(){
 	ScopeNamefield:= "scope_name"
 		
 	NsObjectCountFields= &NsObjectCount{
-		ScopeName: &ScopeNamefield,
+	ScopeName: &ScopeNamefield,
 		
 	}
 }
 
 type NsObjectCount struct {
-   
-    // Name of the scope.
-    
+	// ScopeName - Name of the scope.
  	ScopeName *string `json:"scope_name,omitempty"`
-   
-    // Number of objects.
-    
+	// ObjectCount - Number of objects.
    	ObjectCount *int64 `json:"object_count,omitempty"`
-   
-    // Override max object limit for this scope.
-    
-   	MaxLimitOverrIDe *int64 `json:"max_limit_override,omitempty"`
-   
-    // Override warning threshold for this scope.
-    
-   	WarningThresholdOverrIDe *int64 `json:"warning_threshold_override,omitempty"`
+	// MaxLimitOverride - Override max object limit for this scope.
+   	MaxLimitOverride *int64 `json:"max_limit_override,omitempty"`
+	// WarningThresholdOverride - Override warning threshold for this scope.
+   	WarningThresholdOverride *int64 `json:"warning_threshold_override,omitempty"`
 }

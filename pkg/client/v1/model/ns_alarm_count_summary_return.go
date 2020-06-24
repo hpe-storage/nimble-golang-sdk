@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsAlarmCountSummaryReturn - List of alarm count for each category.
@@ -18,8 +15,6 @@ func init(){
 }
 
 type NsAlarmCountSummaryReturn struct {
-   
-    // List of alarm count for each category.
-    
+	// AlarmSummary - List of alarm count for each category.
    	AlarmSummary []*NsAlarmCount `json:"alarm_summary,omitempty"`
 }

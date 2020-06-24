@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsChksumReturn - Return computed checksum.
@@ -14,14 +11,12 @@ func init(){
 	Cksumfield:= "cksum"
 		
 	NsChksumReturnFields= &NsChksumReturn{
-		Cksum: &Cksumfield,
+	Cksum: &Cksumfield,
 		
 	}
 }
 
 type NsChksumReturn struct {
-   
-    // Computed checksum.
-    
+	// Cksum - Computed checksum.
  	Cksum *string `json:"cksum,omitempty"`
 }

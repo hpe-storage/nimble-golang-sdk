@@ -57,7 +57,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *model.Volume {
 	newVolume := &model.Volume{
 		Size:              &sizeField,
 		Description:       &descriptionField,
-		PerfpolicyID:      perfPolicy.ID,
+		PerfpolicyId:      perfPolicy.ID,
 		ThinlyProvisioned: util.NewBool(true),
 		Online:            util.NewBool(true),
 		LimitIops:         &limitIopsField,

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // Support - View and alter support-based parameters.
@@ -14,26 +11,18 @@ func init(){
 	IDfield:= "id"
 		
 	SupportFields= &Support{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type Support struct {
-   
-    // Object identifier for the group.
-    
+	// ID - Object identifier for the group.
  	ID *string `json:"id,omitempty"`
-   
-    // Mode for support password.
-    
+	// PasswordMode - Mode for support password.
    	PasswordMode *NsSupportPasswordMode `json:"password_mode,omitempty"`
-   
-    // Count of arrays for support password.
-    
+	// ArrayCount - Count of arrays for support password.
    	ArrayCount *int64 `json:"array_count,omitempty"`
-   
-    // Details of support passwords for arrays.
-    
+	// ArrayList - Details of support passwords for arrays.
    	ArrayList []*NsSupportPasswordArray `json:"array_list,omitempty"`
 }

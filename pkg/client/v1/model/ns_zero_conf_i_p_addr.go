@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsZeroConfIPAddr - Zero Conf of array.
@@ -16,24 +13,18 @@ func init(){
 	RemoteIpaddrfield:= "remote_ipaddr"
 		
 	NsZeroConfIPAddrFields= &NsZeroConfIPAddr{
-		Nic: &Nicfield,
-		LocalIpaddr: &LocalIpaddrfield,
-		RemoteIpaddr: &RemoteIpaddrfield,
+	Nic: &Nicfield,
+	LocalIpaddr: &LocalIpaddrfield,
+	RemoteIpaddr: &RemoteIpaddrfield,
 		
 	}
 }
 
 type NsZeroConfIPAddr struct {
-   
-    // Nic of array.
-    
+	// Nic - Nic of array.
  	Nic *string `json:"nic,omitempty"`
-   
-    // Local IP address of array.
-    
+	// LocalIpaddr - Local IP address of array.
  	LocalIpaddr *string `json:"local_ipaddr,omitempty"`
-   
-    // Remote IP address of array.
-    
+	// RemoteIpaddr - Remote IP address of array.
  	RemoteIpaddr *string `json:"remote_ipaddr,omitempty"`
 }

@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsRequest - May contain anything that any REST API request can contain.
@@ -14,22 +11,16 @@ func init(){
 	Pathfield:= "path"
 		
 	NsRequestFields= &NsRequest{
-		Path: &Pathfield,
+	Path: &Pathfield,
 		
 	}
 }
 
 type NsRequest struct {
-   
-    // Request data.
-    
+	// Data - Request data.
 	Data *NsObject `json:"data,omitempty"`
-   
-    // HTTP method.
-    
+	// Method - HTTP method.
    	Method *int64 `json:"method,omitempty"`
-   
-    // Path which identifies the target resource.
-    
+	// Path - Path which identifies the target resource.
  	Path *string `json:"path,omitempty"`
 }

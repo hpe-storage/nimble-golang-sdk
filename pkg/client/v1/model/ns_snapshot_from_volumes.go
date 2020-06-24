@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSnapshotFromVolumes - Snapshot as presented in volumes object set.
@@ -12,34 +9,26 @@ var NsSnapshotFromVolumesFields *NsSnapshotFromVolumes
 
 func init(){
 	IDfield:= "id"
-	SnapIDfield:= "snap_id"
+	SnapIdfield:= "snap_id"
 	Namefield:= "name"
 	SnapNamefield:= "snap_name"
 		
 	NsSnapshotFromVolumesFields= &NsSnapshotFromVolumes{
-		ID: &IDfield,
-		SnapID: &SnapIDfield,
-		Name: &Namefield,
-		SnapName: &SnapNamefield,
+	ID: &IDfield,
+	SnapId: &SnapIdfield,
+	Name: &Namefield,
+	SnapName: &SnapNamefield,
 		
 	}
 }
 
 type NsSnapshotFromVolumes struct {
-   
-    // Snapshot id.
-    
+	// ID - Snapshot id.
  	ID *string `json:"id,omitempty"`
-   
-    // Snapshot id.
-    
- 	SnapID *string `json:"snap_id,omitempty"`
-   
-    // Snapshot name.
-    
+	// SnapId - Snapshot id.
+ 	SnapId *string `json:"snap_id,omitempty"`
+	// Name - Snapshot name.
  	Name *string `json:"name,omitempty"`
-   
-    // Snapshot name.
-    
+	// SnapName - Snapshot name.
  	SnapName *string `json:"snap_name,omitempty"`
 }

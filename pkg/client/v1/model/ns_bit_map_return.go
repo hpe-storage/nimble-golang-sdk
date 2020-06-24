@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsBitMapReturn - Return bitmap under certain request.
@@ -14,14 +11,12 @@ func init(){
 	Bitmapfield:= "bitmap"
 		
 	NsBitMapReturnFields= &NsBitMapReturn{
-		Bitmap: &Bitmapfield,
+	Bitmap: &Bitmapfield,
 		
 	}
 }
 
 type NsBitMapReturn struct {
-   
-    // Returned bitmap.
-    
+	// Bitmap - Returned bitmap.
  	Bitmap *string `json:"bitmap,omitempty"`
 }

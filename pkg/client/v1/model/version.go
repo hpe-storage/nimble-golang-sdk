@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // Version - Show the API version.
@@ -15,19 +12,15 @@ func init(){
 	SoftwareVersionfield:= "software_version"
 		
 	VersionFields= &Version{
-		Name: &Namefield,
-		SoftwareVersion: &SoftwareVersionfield,
+	Name: &Namefield,
+	SoftwareVersion: &SoftwareVersionfield,
 		
 	}
 }
 
 type Version struct {
-   
-    // API version number.
-    
+	// Name - API version number.
  	Name *string `json:"name,omitempty"`
-   
-    // Software version of the group.
-    
+	// SoftwareVersion - Software version of the group.
  	SoftwareVersion *string `json:"software_version,omitempty"`
 }

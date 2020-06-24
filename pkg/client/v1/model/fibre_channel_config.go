@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // FibreChannelConfig - Manage group wide Fibre Channel configuration.
@@ -15,23 +12,17 @@ func init(){
 	GroupLeaderArrayfield:= "group_leader_array"
 		
 	FibreChannelConfigFields= &FibreChannelConfig{
-		ID: &IDfield,
-		GroupLeaderArray: &GroupLeaderArrayfield,
+	ID: &IDfield,
+	GroupLeaderArray: &GroupLeaderArrayfield,
 		
 	}
 }
 
 type FibreChannelConfig struct {
-   
-    // Identifier for Fibre Channel configuration.
-    
+	// ID - Identifier for Fibre Channel configuration.
  	ID *string `json:"id,omitempty"`
-   
-    // List of array Fibre Channel configs.
-    
+	// ArrayList - List of array Fibre Channel configs.
    	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
-   
-    // Name of the group leader array.
-    
+	// GroupLeaderArray - Name of the group leader array.
  	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
 }

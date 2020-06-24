@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsAlarmUpdateAttr - Alarm object used for updating alarms.
@@ -14,22 +11,16 @@ func init(){
 	IDfield:= "id"
 		
 	NsAlarmUpdateAttrFields= &NsAlarmUpdateAttr{
-		ID: &IDfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type NsAlarmUpdateAttr struct {
-   
-    // Identifier for the alarm.
-    
+	// ID - Identifier for the alarm.
  	ID *string `json:"id,omitempty"`
-   
-    // Frequency of notification.
-    
+	// RemindEvery - Frequency of notification.
    	RemindEvery *int64 `json:"remind_every,omitempty"`
-   
-    // Timeunit over which to send the number of notification specified in 'remind every'.
-    
+	// RemindEveryUnit - Timeunit over which to send the number of notification specified in 'remind every'.
    	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }

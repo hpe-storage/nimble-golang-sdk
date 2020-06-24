@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsCtrlrFcConfig - Controller Fibre Channel configuration.
@@ -18,12 +15,8 @@ func init(){
 }
 
 type NsCtrlrFcConfig struct {
-   
-    // List of Fibre Channel ports.
-    
+	// FcPortList - List of Fibre Channel ports.
    	FcPortList []*NsFcPortInfo `json:"fc_port_list,omitempty"`
-   
-    // List of Fibre Channel interfaces.
-    
+	// FcInterfaceList - List of Fibre Channel interfaces.
    	FcInterfaceList []*NsFcInterfaceInfo `json:"fc_interface_list,omitempty"`
 }

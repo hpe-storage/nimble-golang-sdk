@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFibreChannelInterfaceFullName - Fully qualified name information for a Fibre Channel interface (array/controller/interface).
@@ -16,24 +13,18 @@ func init(){
 	IntfNamefield:= "intf_name"
 		
 	NsFibreChannelInterfaceFullNameFields= &NsFibreChannelInterfaceFullName{
-		ArrayName: &ArrayNamefield,
-		CtrlrName: &CtrlrNamefield,
-		IntfName: &IntfNamefield,
+	ArrayName: &ArrayNamefield,
+	CtrlrName: &CtrlrNamefield,
+	IntfName: &IntfNamefield,
 		
 	}
 }
 
 type NsFibreChannelInterfaceFullName struct {
-   
-    // Array name.
-    
+	// ArrayName - Array name.
  	ArrayName *string `json:"array_name,omitempty"`
-   
-    // Controller name.
-    
+	// CtrlrName - Controller name.
  	CtrlrName *string `json:"ctrlr_name,omitempty"`
-   
-    // Fibre Channel interface name.
-    
+	// IntfName - Fibre Channel interface name.
  	IntfName *string `json:"intf_name,omitempty"`
 }

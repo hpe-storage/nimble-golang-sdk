@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // MasterKey - Manage the master key. Data encryption keys for volumes are encrypted by using a master key that must be initialized before encrypted volumes can be created. The master key in turn is protected by a passphrase that is set when the master key is created. The passphrase may have to be entered to enable the master key when it is not available, for example, after an array reboot.
@@ -17,37 +14,25 @@ func init(){
 	NewPassphrasefield:= "new_passphrase"
 		
 	MasterKeyFields= &MasterKey{
-		ID: &IDfield,
-		Name: &Namefield,
-		Passphrase: &Passphrasefield,
-		NewPassphrase: &NewPassphrasefield,
+	ID: &IDfield,
+	Name: &Namefield,
+	Passphrase: &Passphrasefield,
+	NewPassphrase: &NewPassphrasefield,
 		
 	}
 }
 
 type MasterKey struct {
-   
-    // Identifier of the master key.
-    
+	// ID - Identifier of the master key.
  	ID *string `json:"id,omitempty"`
-   
-    // Name of the master key. The only allowed value is "default".
-    
+	// Name - Name of the master key. The only allowed value is "default".
  	Name *string `json:"name,omitempty"`
-   
-    // Passphrase used to protect the master key, required during creation, enabling/disabling the key and change the passphrase to a new value.
-    
+	// Passphrase - Passphrase used to protect the master key, required during creation, enabling/disabling the key and change the passphrase to a new value.
  	Passphrase *string `json:"passphrase,omitempty"`
-   
-    // When changing the passphrase, this attribute specifies the new value of the passphrase.
-    
+	// NewPassphrase - When changing the passphrase, this attribute specifies the new value of the passphrase.
  	NewPassphrase *string `json:"new_passphrase,omitempty"`
-   
-    // Whether the master key is active or not.
-    
+	// Active - Whether the master key is active or not.
  	Active *bool `json:"active,omitempty"`
-   
-    // Default minimum age (in hours) of inactive encryption keys to be purged. '0' indicates to purge keys immediately.
-    
+	// PurgeAge - Default minimum age (in hours) of inactive encryption keys to be purged. '0' indicates to purge keys immediately.
   	PurgeAge  *int64 `json:"purge_age,omitempty"`
 }

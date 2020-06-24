@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsArrayNet - Array network config.
@@ -16,32 +13,22 @@ func init(){
 	CtrlrBSupportIpfield:= "ctrlr_b_support_ip"
 		
 	NsArrayNetFields= &NsArrayNet{
-		Name: &Namefield,
-		CtrlrASupportIp: &CtrlrASupportIpfield,
-		CtrlrBSupportIp: &CtrlrBSupportIpfield,
+	Name: &Namefield,
+	CtrlrASupportIp: &CtrlrASupportIpfield,
+	CtrlrBSupportIp: &CtrlrBSupportIpfield,
 		
 	}
 }
 
 type NsArrayNet struct {
-   
-    // Name of the array.
-    
+	// Name - Name of the array.
  	Name *string `json:"name,omitempty"`
-   
-    // GID of member. This field cannot be updated.
-    
-   	MemberGID *int64 `json:"member_gid,omitempty"`
-   
-    // IP address of controller A.
-    
+	// MemberGid - GID of member. This field cannot be updated.
+   	MemberGid *int64 `json:"member_gid,omitempty"`
+	// CtrlrASupportIp - IP address of controller A.
  	CtrlrASupportIp *string `json:"ctrlr_a_support_ip,omitempty"`
-   
-    // IP address of controller B.
-    
+	// CtrlrBSupportIp - IP address of controller B.
  	CtrlrBSupportIp *string `json:"ctrlr_b_support_ip,omitempty"`
-   
-    // List of NICs.
-    
+	// NicList - List of NICs.
    	NicList []*NsNIC `json:"nic_list,omitempty"`
 }

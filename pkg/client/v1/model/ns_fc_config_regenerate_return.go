@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFcConfigRegenerateReturn - Return values of Fibre channel config regeneration.
@@ -15,23 +12,17 @@ func init(){
 	IDfield:= "id"
 		
 	NsFcConfigRegenerateReturnFields= &NsFcConfigRegenerateReturn{
-		GroupLeaderArray: &GroupLeaderArrayfield,
-		ID: &IDfield,
+	GroupLeaderArray: &GroupLeaderArrayfield,
+	ID: &IDfield,
 		
 	}
 }
 
 type NsFcConfigRegenerateReturn struct {
-   
-    // List of array Fibre Channel configs.
-    
+	// ArrayList - List of array Fibre Channel configs.
    	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
-   
-    // Name of the group leader array.
-    
+	// GroupLeaderArray - Name of the group leader array.
  	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
-   
-    // Identifier for Fibre Channel configuration.
-    
+	// ID - Identifier for Fibre Channel configuration.
  	ID *string `json:"id,omitempty"`
 }

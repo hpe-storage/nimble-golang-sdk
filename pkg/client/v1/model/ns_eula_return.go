@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsEulaReturn - Return end-user license information.
@@ -14,14 +11,12 @@ func init(){
 	Eulafield:= "eula"
 		
 	NsEulaReturnFields= &NsEulaReturn{
-		Eula: &Eulafield,
+	Eula: &Eulafield,
 		
 	}
 }
 
 type NsEulaReturn struct {
-   
-    // License information.
-    
+	// Eula - License information.
  	Eula *string `json:"eula,omitempty"`
 }

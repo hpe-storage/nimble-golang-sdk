@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsSshKey - SSH key.
@@ -16,24 +13,18 @@ func init(){
 	Keyfield:= "key"
 		
 	NsSshKeyFields= &NsSshKey{
-		KeyName: &KeyNamefield,
-		KeyType: &KeyTypefield,
-		Key: &Keyfield,
+	KeyName: &KeyNamefield,
+	KeyType: &KeyTypefield,
+	Key: &Keyfield,
 		
 	}
 }
 
 type NsSshKey struct {
-   
-    // The user that owns the key.
-    
+	// KeyName - The user that owns the key.
  	KeyName *string `json:"key_name,omitempty"`
-   
-    // The key type.
-    
+	// KeyType - The key type.
  	KeyType *string `json:"key_type,omitempty"`
-   
-    // The key.
-    
+	// Key - The key.
  	Key *string `json:"key,omitempty"`
 }

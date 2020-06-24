@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsPinnedVolumeInfo - Select fields containing pinned volume info.
@@ -15,23 +12,17 @@ func init(){
 	Namefield:= "name"
 		
 	NsPinnedVolumeInfoFields= &NsPinnedVolumeInfo{
-		ID: &IDfield,
-		Name: &Namefield,
+	ID: &IDfield,
+	Name: &Namefield,
 		
 	}
 }
 
 type NsPinnedVolumeInfo struct {
-   
-    // ID of volume.
-    
+	// ID - ID of volume.
  	ID *string `json:"id,omitempty"`
-   
-    // Name of volume.
-    
+	// Name - Name of volume.
  	Name *string `json:"name,omitempty"`
-   
-    // Total pinned cache size of the volume in bytes.
-    
+	// SizePinnedCacheBytes - Total pinned cache size of the volume in bytes.
    	SizePinnedCacheBytes *int64 `json:"size_pinned_cache_bytes,omitempty"`
 }

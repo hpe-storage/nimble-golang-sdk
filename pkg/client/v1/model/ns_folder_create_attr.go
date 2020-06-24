@@ -1,9 +1,6 @@
-/**
- * Copyright 2017 Hewlett Packard Enterprise Development LP
- */
+// Copyright 2020 Hewlett Packard Enterprise Development LP
 
 package model
-
 
 
 // NsFolderCreateAttr - Attributes for folder creation.
@@ -12,22 +9,18 @@ var NsFolderCreateAttrFields *NsFolderCreateAttr
 
 func init(){
 	Namefield:= "name"
-	PoolIDfield:= "pool_id"
+	PoolIdfield:= "pool_id"
 		
 	NsFolderCreateAttrFields= &NsFolderCreateAttr{
-		Name: &Namefield,
-		PoolID: &PoolIDfield,
+	Name: &Namefield,
+	PoolId: &PoolIdfield,
 		
 	}
 }
 
 type NsFolderCreateAttr struct {
-   
-    // Name of folder.
-    
+	// Name - Name of folder.
  	Name *string `json:"name,omitempty"`
-   
-    // ID of pool to create the folder in.
-    
- 	PoolID *string `json:"pool_id,omitempty"`
+	// PoolId - ID of pool to create the folder in.
+ 	PoolId *string `json:"pool_id,omitempty"`
 }
