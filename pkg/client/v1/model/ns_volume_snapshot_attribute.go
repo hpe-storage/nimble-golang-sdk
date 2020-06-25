@@ -12,9 +12,8 @@ func init(){
 	AppUuidfield:= "app_uuid"
 		
 	NsVolumeSnapshotAttributeFields= &NsVolumeSnapshotAttribute{
-	VolId: &VolIdfield,
-	AppUuid: &AppUuidfield,
-		
+		VolId:   &VolIdfield,
+		AppUuid: &AppUuidfield,
 	}
 }
 

@@ -12,9 +12,8 @@ func init(){
 	FolderIdfield:= "folder_id"
 		
 	NsVolumeBulkUpdateAttrFields= &NsVolumeBulkUpdateAttr{
-	ID: &IDfield,
-	FolderId: &FolderIdfield,
-		
+		ID:       &IDfield,
+		FolderId: &FolderIdfield,
 	}
 }
 
@@ -24,5 +23,5 @@ type NsVolumeBulkUpdateAttr struct {
 	// FolderId - ID of folder.
  	FolderId *string `json:"folder_id,omitempty"`
 	// Online - Online state of the volume.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 }

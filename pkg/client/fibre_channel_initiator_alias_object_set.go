@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * This API provides the alias information for Fibre Channel initiators.
- *
- */
+
+// This API provides the alias information for Fibre Channel initiators.
 const (
     fibreChannelInitiatorAliasPath = "fibre_channel_initiator_aliases"
 )
 
-/**
- * FibreChannelInitiatorAliasObjectSet
-*/
+
+// FibreChannelInitiatorAliasObjectSet
 type FibreChannelInitiatorAliasObjectSet struct {
     Client *GroupMgmtClient
 }

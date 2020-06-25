@@ -14,11 +14,10 @@ func init(){
 	BusLocationfield:= "bus_location"
 		
 	NsFcInterfaceInfoFields= &NsFcInterfaceInfo{
-	Name: &Namefield,
-	Wwnn: &Wwnnfield,
-	Wwpn: &Wwpnfield,
-	BusLocation: &BusLocationfield,
-		
+		Name:        &Namefield,
+		Wwnn:        &Wwnnfield,
+		Wwpn:        &Wwpnfield,
+		BusLocation: &BusLocationfield,
 	}
 }
 
@@ -30,7 +29,7 @@ type NsFcInterfaceInfo struct {
 	// Wwpn - WWPN (World Wide Port Name)for this Fibre Channel interface.
  	Wwpn *string `json:"wwpn,omitempty"`
 	// Online - Identify whether the Fibre Channel interface is online.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 	// BusLocation - PCI bus location of the HBA.
  	BusLocation *string `json:"bus_location,omitempty"`
 	// Slot - Information about the Fibre Channel slot.

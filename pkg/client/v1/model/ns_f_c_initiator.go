@@ -14,11 +14,10 @@ func init(){
 	Aliasfield:= "alias"
 		
 	NsFCInitiatorFields= &NsFCInitiator{
-	ID: &IDfield,
-	InitiatorId: &InitiatorIdfield,
-	Wwpn: &Wwpnfield,
-	Alias: &Aliasfield,
-		
+		ID:          &IDfield,
+		InitiatorId: &InitiatorIdfield,
+		Wwpn:        &Wwpnfield,
+		Alias:       &Aliasfield,
 	}
 }
 

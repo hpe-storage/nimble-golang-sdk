@@ -40,37 +40,36 @@ func init(){
 	PreFilterfield:= "pre_filter"
 		
 	VolumeFields= &Volume{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	PerfpolicyName: &PerfpolicyNamefield,
-	PerfpolicyId: &PerfpolicyIdfield,
-	OwnedByGroup: &OwnedByGroupfield,
-	OwnedByGroupId: &OwnedByGroupIdfield,
-	PoolName: &PoolNamefield,
-	PoolId: &PoolIdfield,
-	SerialNumber: &SerialNumberfield,
-	SecondarySerialNumber: &SecondarySerialNumberfield,
-	TargetName: &TargetNamefield,
-	ParentVolName: &ParentVolNamefield,
-	ParentVolId: &ParentVolIdfield,
-	BaseSnapName: &BaseSnapNamefield,
-	BaseSnapId: &BaseSnapIdfield,
-	VolcollName: &VolcollNamefield,
-	VolcollId: &VolcollIdfield,
-	DestPoolName: &DestPoolNamefield,
-	DestPoolId: &DestPoolIdfield,
-	AppUuid: &AppUuidfield,
-	FolderId: &FolderIdfield,
-	FolderName: &FolderNamefield,
-	VpdT10: &VpdT10field,
-	VpdIeee0: &VpdIeee0field,
-	VpdIeee1: &VpdIeee1field,
-	AppCategory: &AppCategoryfield,
-	PreFilter: &PreFilterfield,
-		
+		ID:                           &IDfield,
+		Name:                         &Namefield,
+		FullName:                     &FullNamefield,
+		SearchName:                   &SearchNamefield,
+		Description:                  &Descriptionfield,
+		PerfpolicyName:               &PerfpolicyNamefield,
+		PerfpolicyId:                 &PerfpolicyIdfield,
+		OwnedByGroup:                 &OwnedByGroupfield,
+		OwnedByGroupId:               &OwnedByGroupIdfield,
+		PoolName:                     &PoolNamefield,
+		PoolId:                       &PoolIdfield,
+		SerialNumber:                 &SerialNumberfield,
+		SecondarySerialNumber:        &SecondarySerialNumberfield,
+		TargetName:                   &TargetNamefield,
+		ParentVolName:                &ParentVolNamefield,
+		ParentVolId:                  &ParentVolIdfield,
+		BaseSnapName:                 &BaseSnapNamefield,
+		BaseSnapId:                   &BaseSnapIdfield,
+		VolcollName:                  &VolcollNamefield,
+		VolcollId:                    &VolcollIdfield,
+		DestPoolName:                 &DestPoolNamefield,
+		DestPoolId:                   &DestPoolIdfield,
+		AppUuid:                      &AppUuidfield,
+		FolderId:                     &FolderIdfield,
+		FolderName:                   &FolderNamefield,
+		VpdT10:                       &VpdT10field,
+		VpdIeee0:                     &VpdIeee0field,
+		VpdIeee1:                     &VpdIeee1field,
+		AppCategory:                  &AppCategoryfield,
+		PreFilter:                    &PreFilterfield,
 	}
 }
 
@@ -110,13 +109,13 @@ type Volume struct {
 	// ProjectedNumSnaps - Deprecated. Projected number of snapshots (including scheduled and manual) for this volume.
    	ProjectedNumSnaps *int64 `json:"projected_num_snaps,omitempty"`
 	// Online - Online state of volume, available for host initiators to establish connections.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 	// OwnedByGroup - Name of group that currently owns the volume.
  	OwnedByGroup *string `json:"owned_by_group,omitempty"`
 	// OwnedByGroupId - ID of group that currently owns the volume.
  	OwnedByGroupId *string `json:"owned_by_group_id,omitempty"`
 	// MultiInitiator - For iSCSI Volume Target, this flag indicates whether the volume and its snapshots can be accessed from multiple initiators at the same time. The default is false. For iSCSI Group Target or FC access protocol, the attribute cannot be modified and always reads as false.
- 	MultiInitiator *bool `json:"multi_initiator,omitempty"`
+    MultiInitiator *bool `json:"multi_initiator,omitempty"`
 	// IscsiTargetScope - This indicates whether volume is exported under iSCSI Group Target or iSCSI Volume Target. This attribute is only meaningful to iSCSI system. On FC system, all volumes are exported under the FC Group Target. In create operation, the volume's target type will be set by this attribute. If not specified, it will be set as the group-setting. In clone operation, the clone's target type will inherit from the parent' setting.
    	IscsiTargetScope *NsTargetScope `json:"iscsi_target_scope,omitempty"`
 	// PoolName - Name of the pool where the volume resides. Volume data will be distributed across arrays over which specified pool is defined. If pool option is not specified, volume is assigned to the default pool.
@@ -124,7 +123,7 @@ type Volume struct {
 	// PoolId - Identifier associated with the pool in the storage pool table.
  	PoolId *string `json:"pool_id,omitempty"`
 	// ReadOnly - Volume is read-only.
- 	ReadOnly *bool `json:"read_only,omitempty"`
+    ReadOnly *bool `json:"read_only,omitempty"`
 	// SerialNumber - Identifier associated with the volume for the SCSI protocol.
  	SerialNumber *string `json:"serial_number,omitempty"`
 	// SecondarySerialNumber - Secondary identifier associated with the volume for the SCSI protocol.
@@ -136,7 +135,7 @@ type Volume struct {
 	// OfflineReason - Volume offline reason.
    	OfflineReason *NsOfflineReason `json:"offline_reason,omitempty"`
 	// Clone - Whether this volume is a clone. Use this attribute in combination with name and base_snap_id to create a clone by setting clone = true.
- 	Clone *bool `json:"clone,omitempty"`
+    Clone *bool `json:"clone,omitempty"`
 	// ParentVolName - Name of parent volume.
  	ParentVolName *string `json:"parent_vol_name,omitempty"`
 	// ParentVolId - Parent volume ID.
@@ -154,7 +153,7 @@ type Volume struct {
 	// AgentType - External management agent type.
    	AgentType *NsAgentType `json:"agent_type,omitempty"`
 	// Force - Forcibly offline, reduce size or change read-only status a volume.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 	// CreationTime - Time when this volume was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this volume was last modified.
@@ -172,7 +171,7 @@ type Volume struct {
 	// MoveStartTime - The Start time when this volume was moved.
    	MoveStartTime *int64 `json:"move_start_time,omitempty"`
 	// MoveAborting - This indicates whether the move of the volume is aborting or not.
- 	MoveAborting *bool `json:"move_aborting,omitempty"`
+    MoveAborting *bool `json:"move_aborting,omitempty"`
 	// MoveBytesMigrated - The bytes of volume which have been moved.
    	MoveBytesMigrated *int64 `json:"move_bytes_migrated,omitempty"`
 	// MoveBytesRemaining - The bytes of volume which have not been moved.
@@ -180,7 +179,7 @@ type Volume struct {
 	// MoveEstComplTime - The estimated time of completion of a move.
    	MoveEstComplTime *int64 `json:"move_est_compl_time,omitempty"`
 	// UsageValid - This indicates whether usage information of volume and snapshots are valid or not.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// SpaceUsageLevel - Indicates space usage level based on warning level.
    	SpaceUsageLevel *NsSpaceUsageLevel `json:"space_usage_level,omitempty"`
 	// TotalUsageBytes - Sum of volume mapped usage and uncompressed backup data(including pending deletes) in bytes of this volume.
@@ -198,17 +197,17 @@ type Volume struct {
 	// SnapUsagePopulatedBytes - Sum of backup data in bytes stored in snapshots of this volume without accounting for the sharing of data between snapshots.
    	SnapUsagePopulatedBytes *int64 `json:"snap_usage_populated_bytes,omitempty"`
 	// CachePinned - If set to true, all the contents of this volume are kept in flash cache. This provides for consistent performance guarantees for all types of workloads. The amount of flash needed to pin the volume is equal to the limit for the volume.
- 	CachePinned *bool `json:"cache_pinned,omitempty"`
+    CachePinned *bool `json:"cache_pinned,omitempty"`
 	// PinnedCacheSize - The amount of flash pinned on the volume.
    	PinnedCacheSize *int64 `json:"pinned_cache_size,omitempty"`
 	// CacheNeededForPin - The amount of flash needed to pin the volume.
    	CacheNeededForPin *int64 `json:"cache_needed_for_pin,omitempty"`
 	// UpstreamCachePinned - This indicates whether the upstream volume is cache pinned or not.
- 	UpstreamCachePinned *bool `json:"upstream_cache_pinned,omitempty"`
+    UpstreamCachePinned *bool `json:"upstream_cache_pinned,omitempty"`
 	// CachePolicy - Cache policy applied to the volume.
    	CachePolicy *NsCachePolicy `json:"cache_policy,omitempty"`
 	// ThinlyProvisioned - Set volume's provisioning level to thin.  Also advertises volume as thinly provisioned to initiators supporting thin provisioning. For such volumes, soft limit notification is set to initiators when the volume space usage crosses its volume_warn_level. Default is yes. The volume's space is provisioned immediately, but for advertising status, this change takes effect only for new connections to the volume. Initiators must disconnect and reconnect for the new setting to be take effect at the initiator level consistently.
- 	ThinlyProvisioned *bool `json:"thinly_provisioned,omitempty"`
+    ThinlyProvisioned *bool `json:"thinly_provisioned,omitempty"`
 	// VolState - Status of the volume.
    	VolState *NsVolStatus `json:"vol_state,omitempty"`
 	// OnlineSnaps - The list of online snapshots of this volume.
@@ -222,7 +221,7 @@ type Volume struct {
 	// AccessControlRecords - List of access control records that apply to this volume.
    	AccessControlRecords []*NsAccessControlRecord `json:"access_control_records,omitempty"`
 	// InheritAcl - In a volume clone operation, if both the parent and the clone have no external management agent (their agent_type property is "none"), then inherit_acl controls whether the clone will inherit a copy of the parent's access control list. If either the parent or the clone have an external management agent, then the clone will not inherit the parent's access control list.
- 	InheritAcl *bool `json:"inherit_acl,omitempty"`
+    InheritAcl *bool `json:"inherit_acl,omitempty"`
 	// EncryptionCipher - The encryption cipher of the volume.
    	EncryptionCipher *NsEncryptionCipher `json:"encryption_cipher,omitempty"`
 	// AppUuid - Application identifier of volume.
@@ -238,11 +237,11 @@ type Volume struct {
 	// FcSessions - List of Fibre Channel sessions connected to this volume.
    	FcSessions []*NsFCSession `json:"fc_sessions,omitempty"`
 	// CachingEnabled - Indicate caching the volume is enabled.
- 	CachingEnabled *bool `json:"caching_enabled,omitempty"`
+    CachingEnabled *bool `json:"caching_enabled,omitempty"`
 	// PreviouslyDeduped - Indicate whether dedupe has ever been enabled on this volume.
- 	PreviouslyDeduped *bool `json:"previously_deduped,omitempty"`
+    PreviouslyDeduped *bool `json:"previously_deduped,omitempty"`
 	// DedupeEnabled - Indicate whether dedupe is enabled.
- 	DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
+    DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
 	// VpdT10 - The volume's T10 Vendor ID-based identifier.
  	VpdT10 *string `json:"vpd_t10,omitempty"`
 	// VpdIeee0 - The first 64 bits of the volume's EUI-64 identifier, encoded as a hexadecimal string.
@@ -256,9 +255,9 @@ type Volume struct {
 	// LimitMbps - Throughput limit for this volume in MB/s. If limit_mbps is not specified when a volume is created, or if limit_mbps is set to -1, then the volume has no MBPS limit. MBPS limit should be in range [1, 4294967294] or -1 for unlimited. If both limit_iops and limit_mbps are specified, limit_mbps must not be hit before limit_iops. In other words, IOPS and MBPS limits should honor limit_iops <= ((limit_mbps MB/s * 2^20 B/MB) / block_size B).
   	LimitMbps  *int64 `json:"limit_mbps,omitempty"`
 	// NeedsContentRepl - Indicates whether the volume needs content based replication.
- 	NeedsContentRepl *bool `json:"needs_content_repl,omitempty"`
+    NeedsContentRepl *bool `json:"needs_content_repl,omitempty"`
 	// ContentReplErrorsFound - Indicates whether the last content based replication had errors.
- 	ContentReplErrorsFound *bool `json:"content_repl_errors_found,omitempty"`
+    ContentReplErrorsFound *bool `json:"content_repl_errors_found,omitempty"`
 	// LastContentSnapBrCgUid - The branch cg uid of the content based snapshot that was last replicated.
    	LastContentSnapBrCgUid *int64 `json:"last_content_snap_br_cg_uid,omitempty"`
 	// LastContentSnapBrGid - The branch gid of the content based snapshot that was last replicated.

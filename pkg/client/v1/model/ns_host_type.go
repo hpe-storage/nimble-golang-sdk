@@ -13,10 +13,9 @@ func init(){
 	DestinationHostTypefield:= "destination_host_type"
 		
 	NsHostTypeFields= &NsHostType{
-	InitiatorName: &InitiatorNamefield,
-	SourceHostType: &SourceHostTypefield,
-	DestinationHostType: &DestinationHostTypefield,
-		
+		InitiatorName:              &InitiatorNamefield,
+		SourceHostType:             &SourceHostTypefield,
+		DestinationHostType:        &DestinationHostTypefield,
 	}
 }
 

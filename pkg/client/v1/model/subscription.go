@@ -13,10 +13,9 @@ func init(){
 	ObjectIdfield:= "object_id"
 		
 	SubscriptionFields= &Subscription{
-	ID: &IDfield,
-	SubscriberId: &SubscriberIdfield,
-	ObjectId: &ObjectIdfield,
-		
+		ID:               &IDfield,
+		SubscriberId:     &SubscriberIdfield,
+		ObjectId:         &ObjectIdfield,
 	}
 }
 

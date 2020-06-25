@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	NsUserLockStatusFields= &NsUserLockStatus{
-	ID: &IDfield,
-		
+		ID:       &IDfield,
 	}
 }
 
@@ -20,5 +19,5 @@ type NsUserLockStatus struct {
 	// ID - Unique Object ID.
  	ID *string `json:"id,omitempty"`
 	// AuthLock - User was locked due to failed logins.
- 	AuthLock *bool `json:"auth_lock,omitempty"`
+    AuthLock *bool `json:"auth_lock,omitempty"`
 }

@@ -12,9 +12,8 @@ func init(){
 	Blobfield:= "blob"
 		
 	NsSupportPasswordObjectFields= &NsSupportPasswordObject{
-	Username: &Usernamefield,
-	Blob: &Blobfield,
-		
+		Username:&Usernamefield,
+		Blob:    &Blobfield,
 	}
 }
 

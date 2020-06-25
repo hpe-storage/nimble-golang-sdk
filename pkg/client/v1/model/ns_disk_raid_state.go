@@ -1,11 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 package model
 
-
-/**
- * <p>Golang package for NsDiskRaidState Enum.</p>
- */
-
+// Golang package for NsDiskRaidState Enum.
+ 
 type NsDiskRaidState string 
 
 const (

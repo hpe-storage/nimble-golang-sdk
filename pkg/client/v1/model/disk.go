@@ -22,19 +22,18 @@ func init(){
 	ArrayIdfield:= "array_id"
 		
 	DiskFields= &Disk{
-	ID: &IDfield,
-	Serial: &Serialfield,
-	Path: &Pathfield,
-	ShelfSerial: &ShelfSerialfield,
-	ShelfLocation: &ShelfLocationfield,
-	ShelfId: &ShelfIdfield,
-	Model: &Modelfield,
-	Vendor: &Vendorfield,
-	FirmwareVersion: &FirmwareVersionfield,
-	DiskInternalStat1: &DiskInternalStat1field,
-	ArrayName: &ArrayNamefield,
-	ArrayId: &ArrayIdfield,
-		
+		ID:                       &IDfield,
+		Serial:                   &Serialfield,
+		Path:                     &Pathfield,
+		ShelfSerial:              &ShelfSerialfield,
+		ShelfLocation:            &ShelfLocationfield,
+		ShelfId:                  &ShelfIdfield,
+		Model:                    &Modelfield,
+		Vendor:                   &Vendorfield,
+		FirmwareVersion:          &FirmwareVersionfield,
+		DiskInternalStat1:        &DiskInternalStat1field,
+		ArrayName:                &ArrayNamefield,
+		ArrayId:                  &ArrayIdfield,
 	}
 }
 
@@ -42,7 +41,7 @@ type Disk struct {
 	// ID - ID of disk.
  	ID *string `json:"id,omitempty"`
 	// IsDfc - Is disk part of dual flash carrier.
- 	IsDfc *bool `json:"is_dfc,omitempty"`
+    IsDfc *bool `json:"is_dfc,omitempty"`
 	// Serial - Disk serial number(N/A if empty).
  	Serial *string `json:"serial,omitempty"`
 	// Path - Disk SCSI device path.
@@ -96,11 +95,11 @@ type Disk struct {
 	// DiskOp - The intended operation to be performed on the specified disk.
    	DiskOp *NsDiskOp `json:"disk_op,omitempty"`
 	// Force - Forcibly add a disk.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 	// ArrayName - Name of array the disk belongs to.
  	ArrayName *string `json:"array_name,omitempty"`
 	// ArrayId - ID of array the disk belongs to.
  	ArrayId *string `json:"array_id,omitempty"`
 	// PartialResponseOk - Indicate that it is okay to provide partially available response.
- 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
+    PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 }

@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Provides the list of application categories that are available, to classify volumes depending on the applications that use them.
- *
- */
+
+// Provides the list of application categories that are available, to classify volumes depending on the applications that use them.
 const (
     applicationCategoryPath = "application_categories"
 )
 
-/**
- * ApplicationCategoryObjectSet
-*/
+
+// ApplicationCategoryObjectSet
 type ApplicationCategoryObjectSet struct {
     Client *GroupMgmtClient
 }

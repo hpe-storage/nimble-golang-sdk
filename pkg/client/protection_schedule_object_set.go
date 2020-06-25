@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage protection schedules used in protection templates.
- *
- */
+
+// Manage protection schedules used in protection templates.
 const (
     protectionSchedulePath = "protection_schedules"
 )
 
-/**
- * ProtectionScheduleObjectSet
-*/
+
+// ProtectionScheduleObjectSet
 type ProtectionScheduleObjectSet struct {
     Client *GroupMgmtClient
 }

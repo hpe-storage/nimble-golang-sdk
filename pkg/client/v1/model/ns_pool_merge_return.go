@@ -15,12 +15,11 @@ func init(){
 	SearchNamefield:= "search_name"
 		
 	NsPoolMergeReturnFields= &NsPoolMergeReturn{
-	Description: &Descriptionfield,
-	FullName: &FullNamefield,
-	ID: &IDfield,
-	Name: &Namefield,
-	SearchName: &SearchNamefield,
-		
+		Description:                  &Descriptionfield,
+		FullName:                     &FullNamefield,
+		ID:                           &IDfield,
+		Name:                         &Namefield,
+		SearchName:                   &SearchNamefield,
 	}
 }
 
@@ -34,7 +33,7 @@ type NsPoolMergeReturn struct {
 	// UnassignedArrayList - List of arrays being unassigned from the pool.
    	UnassignedArrayList []*NsArraySummary `json:"unassigned_array_list,omitempty"`
 	// AllFlash - Indicate whether the pool is an all_flash pool.
- 	AllFlash *bool `json:"all_flash,omitempty"`
+    AllFlash *bool `json:"all_flash,omitempty"`
 	// CacheCapacity - Total usable cache capacity of the pool in bytes.
    	CacheCapacity *int64 `json:"cache_capacity,omitempty"`
 	// Capacity - Total storage space of the pool in bytes.
@@ -58,7 +57,7 @@ type NsPoolMergeReturn struct {
 	// ID - Identifier for the pool.
  	ID *string `json:"id,omitempty"`
 	// DedupeEnabled - Indicate whether the pool is a dedupe enabled pool.
- 	DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
+    DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
 	// LastModified - Time when this pool was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
 	// Name - Name of pool.
@@ -88,7 +87,7 @@ type NsPoolMergeReturn struct {
 	// Usage - Used space of the pool in bytes.
    	Usage *int64 `json:"usage,omitempty"`
 	// UsageValid - Indicate whether the usage of pool is valid.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// VolCompressionRatio - Compression ratio of volumes in the pool.
   	VolCompressionRatio *float32 `json:"vol_compression_ratio,omitempty"`
 	// VolCount - Number of volumes assigned to the pool.

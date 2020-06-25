@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Controller is a redundant collection of hardware capable of running the array software.
- *
- */
+
+// Controller is a redundant collection of hardware capable of running the array software.
 const (
     controllerPath = "controllers"
 )
 
-/**
- * ControllerObjectSet
-*/
+
+// ControllerObjectSet
 type ControllerObjectSet struct {
     Client *GroupMgmtClient
 }

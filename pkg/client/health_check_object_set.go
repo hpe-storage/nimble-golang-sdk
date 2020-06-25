@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * View the health of the group of arrays.
- *
- */
+
+// View the health of the group of arrays.
 const (
     healthCheckPath = "health_checks"
 )
 
-/**
- * HealthCheckObjectSet
-*/
+
+// HealthCheckObjectSet
 type HealthCheckObjectSet struct {
     Client *GroupMgmtClient
 }

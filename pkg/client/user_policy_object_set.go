@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manages the password policies configured for the group.
- *
- */
+
+// Manages the password policies configured for the group.
 const (
     userPolicyPath = "user_policies"
 )
 
-/**
- * UserPolicyObjectSet
-*/
+
+// UserPolicyObjectSet
 type UserPolicyObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -10,7 +10,6 @@ var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithType
 func init(){
 		
 	NsObjectOwnerPairWithTypeFields= &NsObjectOwnerPairWithType{
-		
 	}
 }
 

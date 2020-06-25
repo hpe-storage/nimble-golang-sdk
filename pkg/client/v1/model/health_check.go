@@ -13,10 +13,9 @@ func init(){
 	CtrlrIdfield:= "ctrlr_id"
 		
 	HealthCheckFields= &HealthCheck{
-	ID: &IDfield,
-	ArrayId: &ArrayIdfield,
-	CtrlrId: &CtrlrIdfield,
-		
+		ID:            &IDfield,
+		ArrayId:       &ArrayIdfield,
+		CtrlrId:       &CtrlrIdfield,
 	}
 }
 
@@ -28,7 +27,7 @@ type HealthCheck struct {
 	// Context - Context for aggregating health check results.
    	Context *NsHcfContext `json:"context,omitempty"`
 	// OnDemand - Flag to indicate running the health checks and then report results.
- 	OnDemand *bool `json:"on_demand,omitempty"`
+    OnDemand *bool `json:"on_demand,omitempty"`
 	// ArrayId - Identifier of the array to which this result belongs.
  	ArrayId *string `json:"array_id,omitempty"`
 	// CtrlrId - Identifier of the controller to which this result belongs.

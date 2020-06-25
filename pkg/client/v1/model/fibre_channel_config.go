@@ -12,9 +12,8 @@ func init(){
 	GroupLeaderArrayfield:= "group_leader_array"
 		
 	FibreChannelConfigFields= &FibreChannelConfig{
-	ID: &IDfield,
-	GroupLeaderArray: &GroupLeaderArrayfield,
-		
+		ID:                &IDfield,
+		GroupLeaderArray:  &GroupLeaderArrayfield,
 	}
 }
 

@@ -18,15 +18,14 @@ func init(){
 	Vendorfield:= "vendor"
 		
 	KeyManagerFields= &KeyManager{
-	ID: &IDfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	Hostname: &Hostnamefield,
-	Username: &Usernamefield,
-	Password: &Passwordfield,
-	Status: &Statusfield,
-	Vendor: &Vendorfield,
-		
+		ID:         &IDfield,
+		Name:       &Namefield,
+		Description:&Descriptionfield,
+		Hostname:   &Hostnamefield,
+		Username:   &Usernamefield,
+		Password:   &Passwordfield,
+		Status:     &Statusfield,
+		Vendor:     &Vendorfield,
 	}
 }
 
@@ -48,7 +47,7 @@ type KeyManager struct {
 	// Password - External Key Manager user password. String up to 255 printable characters.
  	Password *string `json:"password,omitempty"`
 	// Active - Whether the given key manager is active or not.
- 	Active *bool `json:"active,omitempty"`
+    Active *bool `json:"active,omitempty"`
 	// Status - Connection status of a given external key manager.
  	Status *string `json:"status,omitempty"`
 	// Vendor - KMIP vendor name.

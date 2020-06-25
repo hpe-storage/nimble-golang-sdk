@@ -11,8 +11,7 @@ func init(){
 	Errorfield:= "error"
 		
 	NsSoftwareUpdateReturnFields= &NsSoftwareUpdateReturn{
-	Error: &Errorfield,
-		
+		Error:              &Errorfield,
 	}
 }
 

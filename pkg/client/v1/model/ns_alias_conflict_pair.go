@@ -13,10 +13,9 @@ func init(){
 	SrcAliasNamefield:= "src_alias_name"
 		
 	NsAliasConflictPairFields= &NsAliasConflictPair{
-	InitiatorWwpn: &InitiatorWwpnfield,
-	DstAliasName: &DstAliasNamefield,
-	SrcAliasName: &SrcAliasNamefield,
-		
+		InitiatorWwpn: &InitiatorWwpnfield,
+		DstAliasName:  &DstAliasNamefield,
+		SrcAliasName:  &SrcAliasNamefield,
 	}
 }
 

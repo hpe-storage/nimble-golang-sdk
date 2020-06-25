@@ -11,8 +11,7 @@ func init(){
 	Activityfield:= "activity"
 		
 	NsAlertNotificationFields= &NsAlertNotification{
-	Activity: &Activityfield,
-		
+		Activity:         &Activityfield,
 	}
 }
 

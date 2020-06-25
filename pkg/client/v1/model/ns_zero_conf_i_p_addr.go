@@ -13,10 +13,9 @@ func init(){
 	RemoteIpaddrfield:= "remote_ipaddr"
 		
 	NsZeroConfIPAddrFields= &NsZeroConfIPAddr{
-	Nic: &Nicfield,
-	LocalIpaddr: &LocalIpaddrfield,
-	RemoteIpaddr: &RemoteIpaddrfield,
-		
+		Nic:          &Nicfield,
+		LocalIpaddr:  &LocalIpaddrfield,
+		RemoteIpaddr: &RemoteIpaddrfield,
 	}
 }
 

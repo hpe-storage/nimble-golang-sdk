@@ -18,15 +18,14 @@ func init(){
 	VolIdfield:= "vol_id"
 		
 	StatFields= &Stat{
-	Scope: &Scopefield,
-	DomainId: &DomainIdfield,
-	SetId: &SetIdfield,
-	VolIds: &VolIdsfield,
-	Sensors: &Sensorsfield,
-	PoolId: &PoolIdfield,
-	ArrayName: &ArrayNamefield,
-	VolId: &VolIdfield,
-		
+		Scope:                 &Scopefield,
+		DomainId:              &DomainIdfield,
+		SetId:                 &SetIdfield,
+		VolIds:                &VolIdsfield,
+		Sensors:               &Sensorsfield,
+		PoolId:                &PoolIdfield,
+		ArrayName:             &ArrayNamefield,
+		VolId:                 &VolIdfield,
 	}
 }
 
@@ -48,7 +47,7 @@ type Stat struct {
 	// Interval - Retrieve stats with this time interval between values.  Typical use is 1, 60, or 3600 for per-second, per-minute, and per-hour stats.  Optional.  Defaults to 1 if not supplied.
    	Interval *int64 `json:"interval,omitempty"`
 	// Cumulative - Retrieve stat sensor cumulative data.
- 	Cumulative *bool `json:"cumulative,omitempty"`
+    Cumulative *bool `json:"cumulative,omitempty"`
 	// PoolId - Stats summed for pool specified by this ID.  Optional input attribute.  Defaults to whole group if pool_id is not supplied.
  	PoolId *string `json:"pool_id,omitempty"`
 	// ArrayName - Retrieve stats from this array only.  Optional parameter.

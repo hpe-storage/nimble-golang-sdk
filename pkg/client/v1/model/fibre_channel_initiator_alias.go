@@ -13,10 +13,9 @@ func init(){
 	Wwpnfield:= "wwpn"
 		
 	FibreChannelInitiatorAliasFields= &FibreChannelInitiatorAlias{
-	ID: &IDfield,
-	Alias: &Aliasfield,
-	Wwpn: &Wwpnfield,
-		
+		ID:    &IDfield,
+		Alias: &Aliasfield,
+		Wwpn:  &Wwpnfield,
 	}
 }
 

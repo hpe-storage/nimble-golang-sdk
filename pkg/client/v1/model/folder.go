@@ -26,23 +26,22 @@ func init(){
 	TenantIdfield:= "tenant_id"
 		
 	FolderFields= &Folder{
-	ID: &IDfield,
-	Name: &Namefield,
-	Fqn: &Fqnfield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	PoolName: &PoolNamefield,
-	PoolId: &PoolIdfield,
-	InheritedVolPerfpolId: &InheritedVolPerfpolIdfield,
-	InheritedVolPerfpolName: &InheritedVolPerfpolNamefield,
-	AppUuid: &AppUuidfield,
-	AppserverId: &AppserverIdfield,
-	AppserverName: &AppserverNamefield,
-	FolsetId: &FolsetIdfield,
-	FolsetName: &FolsetNamefield,
-	TenantId: &TenantIdfield,
-		
+		ID:                           &IDfield,
+		Name:                         &Namefield,
+		Fqn:                          &Fqnfield,
+		FullName:                     &FullNamefield,
+		SearchName:                   &SearchNamefield,
+		Description:                  &Descriptionfield,
+		PoolName:                     &PoolNamefield,
+		PoolId:                       &PoolIdfield,
+		InheritedVolPerfpolId:        &InheritedVolPerfpolIdfield,
+		InheritedVolPerfpolName:      &InheritedVolPerfpolNamefield,
+		AppUuid:                      &AppUuidfield,
+		AppserverId:                  &AppserverIdfield,
+		AppserverName:                &AppserverNamefield,
+		FolsetId:                     &FolsetIdfield,
+		FolsetName:                   &FolsetNamefield,
+		TenantId:                     &TenantIdfield,
 	}
 }
 
@@ -64,7 +63,7 @@ type Folder struct {
 	// PoolId - ID of the pool where the folder resides.
  	PoolId *string `json:"pool_id,omitempty"`
 	// LimitBytesSpecified - Indicates whether the folder has a limit.
- 	LimitBytesSpecified *bool `json:"limit_bytes_specified,omitempty"`
+    LimitBytesSpecified *bool `json:"limit_bytes_specified,omitempty"`
 	// LimitBytes - Folder limit size in bytes. By default, a folder (except SMIS and VVol types) does not have a limit. If limit_bytes is not specified when a folder is created, or if limit_bytes is set to the largest possible 64-bit signed integer (9223372036854775807), then the folder has no limit. Otherwise, a limit smaller than the capacity of the pool can be set. On output, if the folder has a limit, the limit_bytes_specified attribute will be true and limit_bytes will be the limit. If the folder does not have a limit, the limit_bytes_specified attribute will be false and limit_bytes will be interpreted based on the value of the usage_valid attribute. If the usage_valid attribute is true, limits_byte will be the capacity of the pool. Otherwise, limits_bytes is not meaningful and can be null. SMIS and VVol folders require a size limit. This attribute is superseded by limit_size_bytes.
    	LimitBytes *int64 `json:"limit_bytes,omitempty"`
 	// LimitSizeBytes - Folder size limit in bytes. If limit_size_bytes is not specified when a folder is created, or if limit_size_bytes is set to -1, then the folder has no limit. Otherwise, a limit smaller than the capacity of the pool can be set. Folders with an agent_type of 'smis' or 'vvol' must have a size limit.
@@ -84,7 +83,7 @@ type Folder struct {
 	// VolumeMappedBytes - Sum of mapped usage of volumes in the folder.
    	VolumeMappedBytes *int64 `json:"volume_mapped_bytes,omitempty"`
 	// UsageValid - Indicate whether the space usage attributes of folder are valid.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// AgentType - External management agent type.
    	AgentType *NsFolderAgentType `json:"agent_type,omitempty"`
 	// InheritedVolPerfpolId - Identifier of the default performance policy for a newly created volume.

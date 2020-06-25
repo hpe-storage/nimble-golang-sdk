@@ -15,12 +15,11 @@ func init(){
 	DiscoveryIpfield:= "discovery_ip"
 		
 	NsDiscoveredGroupInfoFields= &NsDiscoveredGroupInfo{
-	ID: &IDfield,
-	Name: &Namefield,
-	VersionCurrent: &VersionCurrentfield,
-	ManagementIp: &ManagementIpfield,
-	DiscoveryIp: &DiscoveryIpfield,
-		
+		ID:               &IDfield,
+		Name:             &Namefield,
+		VersionCurrent:   &VersionCurrentfield,
+		ManagementIp:     &ManagementIpfield,
+		DiscoveryIp:      &DiscoveryIpfield,
 	}
 }
 
@@ -38,9 +37,9 @@ type NsDiscoveredGroupInfo struct {
 	// DiscoveryIp - The discovery IP address of the group.
  	DiscoveryIp *string `json:"discovery_ip,omitempty"`
 	// IscsiEnabled - Whether iscsi is enabled on the group.
- 	IscsiEnabled *bool `json:"iscsi_enabled,omitempty"`
+    IscsiEnabled *bool `json:"iscsi_enabled,omitempty"`
 	// FcEnabled - Whether fibre channel is enabled on the group.
- 	FcEnabled *bool `json:"fc_enabled,omitempty"`
+    FcEnabled *bool `json:"fc_enabled,omitempty"`
 	// ArrayMemberList - Members of this group.
    	ArrayMemberList []*NsArraySummaryInfo `json:"array_member_list,omitempty"`
 }

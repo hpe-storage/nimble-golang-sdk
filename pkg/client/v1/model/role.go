@@ -14,11 +14,10 @@ func init(){
 	Descriptionfield:= "description"
 		
 	RoleFields= &Role{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	Description: &Descriptionfield,
-		
+		ID:                     &IDfield,
+		Name:                   &Namefield,
+		FullName:               &FullNamefield,
+		Description:            &Descriptionfield,
 	}
 }
 
@@ -40,5 +39,5 @@ type Role struct {
 	// LastModified - Time when this role was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
 	// Hidden - Indicate whether the role is hidden.
- 	Hidden *bool `json:"hidden,omitempty"`
+    Hidden *bool `json:"hidden,omitempty"`
 }

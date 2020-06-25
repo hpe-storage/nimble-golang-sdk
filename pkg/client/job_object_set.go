@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Jobs are operations in progress in the system.
- *
- */
+
+// Jobs are operations in progress in the system.
 const (
     jobPath = "jobs"
 )
 
-/**
- * JobObjectSet
-*/
+
+// JobObjectSet
 type JobObjectSet struct {
     Client *GroupMgmtClient
 }

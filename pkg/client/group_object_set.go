@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Group is a collection of arrays operating together organized into storage pools.
- *
- */
+
+// Group is a collection of arrays operating together organized into storage pools.
 const (
     groupPath = "groups"
 )
 
-/**
- * GroupObjectSet
-*/
+
+// GroupObjectSet
 type GroupObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -12,9 +12,8 @@ func init(){
 	BusLocationfield:= "bus_location"
 		
 	NsFcPortInfoFields= &NsFcPortInfo{
-	Name: &Namefield,
-	BusLocation: &BusLocationfield,
-		
+		Name:        &Namefield,
+		BusLocation: &BusLocationfield,
 	}
 }
 

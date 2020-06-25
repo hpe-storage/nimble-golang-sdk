@@ -10,7 +10,6 @@ var NsFcLinkInfoFields *NsFcLinkInfo
 func init(){
 		
 	NsFcLinkInfoFields= &NsFcLinkInfo{
-		
 	}
 }
 

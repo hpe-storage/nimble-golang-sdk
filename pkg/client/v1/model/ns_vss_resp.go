@@ -12,9 +12,8 @@ func init(){
 	VssErrorMessagefield:= "vss_error_message"
 		
 	NsVssRespFields= &NsVssResp{
-	VssError: &VssErrorfield,
-	VssErrorMessage: &VssErrorMessagefield,
-		
+		VssError:         &VssErrorfield,
+		VssErrorMessage:  &VssErrorMessagefield,
 	}
 }
 

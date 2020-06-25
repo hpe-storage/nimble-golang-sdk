@@ -13,10 +13,9 @@ func init(){
 	Locationfield:= "location"
 		
 	NsShelfSensorFields= &NsShelfSensor{
-	Name: &Namefield,
-	DisplayName: &DisplayNamefield,
-	Location: &Locationfield,
-		
+		Name:        &Namefield,
+		DisplayName: &DisplayNamefield,
+		Location:    &Locationfield,
 	}
 }
 

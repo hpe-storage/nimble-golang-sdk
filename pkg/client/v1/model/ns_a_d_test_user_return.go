@@ -13,10 +13,9 @@ func init(){
 	PrimaryGroupIdfield:= "primary_group_id"
 		
 	NsADTestUserReturnFields= &NsADTestUserReturn{
-	Username: &Usernamefield,
-	PrimaryGroupName: &PrimaryGroupNamefield,
-	PrimaryGroupId: &PrimaryGroupIdfield,
-		
+		Username:          &Usernamefield,
+		PrimaryGroupName:  &PrimaryGroupNamefield,
+		PrimaryGroupId:    &PrimaryGroupIdfield,
 	}
 }
 

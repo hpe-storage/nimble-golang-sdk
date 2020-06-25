@@ -10,7 +10,6 @@ var NsTimezonesReturnFields *NsTimezonesReturn
 func init(){
 		
 	NsTimezonesReturnFields= &NsTimezonesReturn{
-		
 	}
 }
 

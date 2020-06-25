@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
- *
- */
+
+// Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
 const (
     protocolEndpointPath = "protocol_endpoints"
 )
 
-/**
- * ProtocolEndpointObjectSet
-*/
+
+// ProtocolEndpointObjectSet
 type ProtocolEndpointObjectSet struct {
     Client *GroupMgmtClient
 }

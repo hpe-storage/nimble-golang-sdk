@@ -17,14 +17,13 @@ func init(){
 	TargetNamefield:= "target_name"
 		
 	ProtocolEndpointFields= &ProtocolEndpoint{
-	ID: &IDfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	PoolName: &PoolNamefield,
-	PoolId: &PoolIdfield,
-	SerialNumber: &SerialNumberfield,
-	TargetName: &TargetNamefield,
-		
+		ID:                    &IDfield,
+		Name:                  &Namefield,
+		Description:           &Descriptionfield,
+		PoolName:              &PoolNamefield,
+		PoolId:                &PoolIdfield,
+		SerialNumber:          &SerialNumberfield,
+		TargetName:            &TargetNamefield,
 	}
 }
 
@@ -46,7 +45,7 @@ type ProtocolEndpoint struct {
 	// TargetName - The iSCSI Qualified Name (IQN) or the Fibre Channel World Wide Node Name (WWNN) of the target protocol endpoint.
  	TargetName *string `json:"target_name,omitempty"`
 	// GroupSpecificIds - External UID is used to compute the serial number and IQN which never change even if the running group changes (e.g. after group merge). Group-specific IDs determine whether external UID is used for computing serial number and IQN.
- 	GroupSpecificIds *bool `json:"group_specific_ids,omitempty"`
+    GroupSpecificIds *bool `json:"group_specific_ids,omitempty"`
 	// CreationTime - Time when this protocol endpoint was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this protocol endpoint was last modified.

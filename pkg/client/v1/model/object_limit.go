@@ -13,10 +13,9 @@ func init(){
 	ScopeTypeNamefield:= "scope_type_name"
 		
 	ObjectLimitFields= &ObjectLimit{
-	ID: &IDfield,
-	ObjectTypeName: &ObjectTypeNamefield,
-	ScopeTypeName: &ScopeTypeNamefield,
-		
+		ID:               &IDfield,
+		ObjectTypeName:   &ObjectTypeNamefield,
+		ScopeTypeName:    &ScopeTypeNamefield,
 	}
 }
 

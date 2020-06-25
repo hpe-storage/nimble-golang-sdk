@@ -12,9 +12,8 @@ func init(){
 	Fqnfield:= "fqn"
 		
 	NsFolderSummaryFields= &NsFolderSummary{
-	ID: &IDfield,
-	Fqn: &Fqnfield,
-		
+		ID: &IDfield,
+		Fqn:&Fqnfield,
 	}
 }
 

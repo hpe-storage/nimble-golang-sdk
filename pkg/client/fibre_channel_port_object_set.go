@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
- *
- */
+
+// Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
 const (
     fibreChannelPortPath = "fibre_channel_ports"
 )
 
-/**
- * FibreChannelPortObjectSet
-*/
+
+// FibreChannelPortObjectSet
 type FibreChannelPortObjectSet struct {
     Client *GroupMgmtClient
 }

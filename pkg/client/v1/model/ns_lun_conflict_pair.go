@@ -19,16 +19,15 @@ func init(){
 	SrcSnapNamefield:= "src_snap_name"
 		
 	NsLunConflictPairFields= &NsLunConflictPair{
-	InitiatorWwpn: &InitiatorWwpnfield,
-	InitiatorAlias: &InitiatorAliasfield,
-	DstIgrpName: &DstIgrpNamefield,
-	DstVolName: &DstVolNamefield,
-	DstSnapName: &DstSnapNamefield,
-	DstPeName: &DstPeNamefield,
-	SrcIgrpName: &SrcIgrpNamefield,
-	SrcVolName: &SrcVolNamefield,
-	SrcSnapName: &SrcSnapNamefield,
-		
+		InitiatorWwpn:  &InitiatorWwpnfield,
+		InitiatorAlias: &InitiatorAliasfield,
+		DstIgrpName:    &DstIgrpNamefield,
+		DstVolName:     &DstVolNamefield,
+		DstSnapName:    &DstSnapNamefield,
+		DstPeName:      &DstPeNamefield,
+		SrcIgrpName:    &SrcIgrpNamefield,
+		SrcVolName:     &SrcVolNamefield,
+		SrcSnapName:    &SrcSnapNamefield,
 	}
 }
 

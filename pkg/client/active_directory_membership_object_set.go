@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manages the storage array&#39;s membership with the Active Directory.
- *
- */
+
+// Manages the storage array&#39;s membership with the Active Directory.
 const (
     activeDirectoryMembershipPath = "active_directory_memberships"
 )
 
-/**
- * ActiveDirectoryMembershipObjectSet
-*/
+
+// ActiveDirectoryMembershipObjectSet
 type ActiveDirectoryMembershipObjectSet struct {
     Client *GroupMgmtClient
 }

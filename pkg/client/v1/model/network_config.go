@@ -14,11 +14,10 @@ func init(){
 	GroupLeaderArrayfield:= "group_leader_array"
 		
 	NetworkConfigFields= &NetworkConfig{
-	ID: &IDfield,
-	MgmtIp: &MgmtIpfield,
-	SecondaryMgmtIp: &SecondaryMgmtIpfield,
-	GroupLeaderArray: &GroupLeaderArrayfield,
-		
+		ID:                               &IDfield,
+		MgmtIp:                           &MgmtIpfield,
+		SecondaryMgmtIp:                  &SecondaryMgmtIpfield,
+		GroupLeaderArray:                 &GroupLeaderArrayfield,
 	}
 }
 
@@ -34,9 +33,9 @@ type NetworkConfig struct {
 	// Role - Role of network configuration.
    	Role *NsNetConfigRole `json:"role,omitempty"`
 	// IscsiAutomaticConnectionMethod - Whether automatic connection method is enabled. Enabling this means means redirecting connections from the specified iSCSI discovery IP address to the best data IP address based on connection counts.
- 	IscsiAutomaticConnectionMethod *bool `json:"iscsi_automatic_connection_method,omitempty"`
+    IscsiAutomaticConnectionMethod *bool `json:"iscsi_automatic_connection_method,omitempty"`
 	// IscsiConnectionRebalancing - Whether rebalancing is enabled. Enabling this means rebalancing iSCSI connections by periodically breaking existing connections that are out-of-balance, allowing the host to reconnect to a more appropriate data IP address.
- 	IscsiConnectionRebalancing *bool `json:"iscsi_connection_rebalancing,omitempty"`
+    IscsiConnectionRebalancing *bool `json:"iscsi_connection_rebalancing,omitempty"`
 	// RouteList - List of static routes.
    	RouteList []*NsRoute `json:"route_list,omitempty"`
 	// SubnetList - List of subnet configs.

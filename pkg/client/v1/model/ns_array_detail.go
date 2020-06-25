@@ -14,11 +14,10 @@ func init(){
 	ArrayNamefield:= "array_name"
 		
 	NsArrayDetailFields= &NsArrayDetail{
-	ID: &IDfield,
-	ArrayId: &ArrayIdfield,
-	Name: &Namefield,
-	ArrayName: &ArrayNamefield,
-		
+		ID:                         &IDfield,
+		ArrayId:                    &ArrayIdfield,
+		Name:                       &Namefield,
+		ArrayName:                  &ArrayNamefield,
 	}
 }
 
@@ -44,7 +43,7 @@ type NsArrayDetail struct {
 	// SnapUsageCompressedBytes - Usage of snapshots in the array.
    	SnapUsageCompressedBytes *int64 `json:"snap_usage_compressed_bytes,omitempty"`
 	// UsageValid - Indicate whether usage of the array is valid.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// Migrate - Migrate status of array.
    	Migrate *NsPoolMigrate `json:"migrate,omitempty"`
 }

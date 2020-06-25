@@ -16,13 +16,12 @@ func init(){
 	Passwordfield:= "password"
 		
 	ApplicationServerFields= &ApplicationServer{
-	ID: &IDfield,
-	Name: &Namefield,
-	Hostname: &Hostnamefield,
-	Username: &Usernamefield,
-	Description: &Descriptionfield,
-	Password: &Passwordfield,
-		
+		ID:           &IDfield,
+		Name:         &Namefield,
+		Hostname:     &Hostnamefield,
+		Username:     &Usernamefield,
+		Description:  &Descriptionfield,
+		Password:     &Passwordfield,
 	}
 }
 

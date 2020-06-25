@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * List the maximum limits and warning thresholds for number of objects in the storage group.
- *
- */
+
+// List the maximum limits and warning thresholds for number of objects in the storage group.
 const (
     objectLimitPath = "object_limits"
 )
 
-/**
- * ObjectLimitObjectSet
-*/
+
+// ObjectLimitObjectSet
 type ObjectLimitObjectSet struct {
     Client *GroupMgmtClient
 }

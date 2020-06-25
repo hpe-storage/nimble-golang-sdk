@@ -18,15 +18,14 @@ func init(){
 	DownstreamPartnerNamefield:= "downstream_partner_name"
 		
 	NsScheduleFields= &NsSchedule{
-	ID: &IDfield,
-	ScheduleId: &ScheduleIdfield,
-	Name: &Namefield,
-	ScheduleName: &ScheduleNamefield,
-	Days: &Daysfield,
-	DownstreamPartner: &DownstreamPartnerfield,
-	DownstreamPartnerId: &DownstreamPartnerIdfield,
-	DownstreamPartnerName: &DownstreamPartnerNamefield,
-		
+		ID:                       &IDfield,
+		ScheduleId:               &ScheduleIdfield,
+		Name:                     &Namefield,
+		ScheduleName:             &ScheduleNamefield,
+		Days:                     &Daysfield,
+		DownstreamPartner:        &DownstreamPartnerfield,
+		DownstreamPartnerId:      &DownstreamPartnerIdfield,
+		DownstreamPartnerName:    &DownstreamPartnerNamefield,
 	}
 }
 
@@ -64,13 +63,13 @@ type NsSchedule struct {
 	// ReplAlertThres - Replication alert threshold.
    	ReplAlertThres *int64 `json:"repl_alert_thres,omitempty"`
 	// SnapVerify - Run verification tool on snapshot created by this schedule.
- 	SnapVerify *bool `json:"snap_verify,omitempty"`
+    SnapVerify *bool `json:"snap_verify,omitempty"`
 	// SkipDbConsistencyCheck - Skip consistency check for database files on snapshots created by this schedule.
- 	SkipDbConsistencyCheck *bool `json:"skip_db_consistency_check,omitempty"`
+    SkipDbConsistencyCheck *bool `json:"skip_db_consistency_check,omitempty"`
 	// DisableAppsync - Disables application synchronized snapshots and creates crash consistent snapshots instead.
- 	DisableAppsync *bool `json:"disable_appsync,omitempty"`
+    DisableAppsync *bool `json:"disable_appsync,omitempty"`
 	// ScheduleType - Schedule type: regular or external_trigger.
    	ScheduleType *NsScheduleType `json:"schedule_type,omitempty"`
 	// Active - A schedule is active only if it is owned by the same owner as the volume collection. Only active schedules of a volume collection participate in the creation of snapshots and replication.
- 	Active *bool `json:"active,omitempty"`
+    Active *bool `json:"active,omitempty"`
 }

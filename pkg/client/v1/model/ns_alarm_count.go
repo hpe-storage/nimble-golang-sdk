@@ -10,7 +10,6 @@ var NsAlarmCountFields *NsAlarmCount
 func init(){
 		
 	NsAlarmCountFields= &NsAlarmCount{
-		
 	}
 }
 

@@ -15,12 +15,11 @@ func init(){
 	ValidationErrorMsgfield:= "validation_error_msg"
 		
 	NsGroupMergeReturnFields= &NsGroupMergeReturn{
-	SrcSid: &SrcSidfield,
-	SrcGroupName: &SrcGroupNamefield,
-	DstGroupName: &DstGroupNamefield,
-	DstGroupSwversion: &DstGroupSwversionfield,
-	ValidationErrorMsg: &ValidationErrorMsgfield,
-		
+		SrcSid:                       &SrcSidfield,
+		SrcGroupName:                 &SrcGroupNamefield,
+		DstGroupName:                 &DstGroupNamefield,
+		DstGroupSwversion:            &DstGroupSwversionfield,
+		ValidationErrorMsg:           &ValidationErrorMsgfield,
 	}
 }
 

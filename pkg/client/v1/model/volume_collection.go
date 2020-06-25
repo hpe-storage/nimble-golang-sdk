@@ -28,25 +28,24 @@ func init(){
 	HandoverReplicationPartnerfield:= "handover_replication_partner"
 		
 	VolumeCollectionFields= &VolumeCollection{
-	ID: &IDfield,
-	ProttmplId: &ProttmplIdfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	PolOwnerName: &PolOwnerNamefield,
-	AppServer: &AppServerfield,
-	AppClusterName: &AppClusterNamefield,
-	AppServiceName: &AppServiceNamefield,
-	VcenterHostname: &VcenterHostnamefield,
-	VcenterUsername: &VcenterUsernamefield,
-	VcenterPassword: &VcenterPasswordfield,
-	AgentHostname: &AgentHostnamefield,
-	AgentUsername: &AgentUsernamefield,
-	AgentPassword: &AgentPasswordfield,
-	ReplicationPartner: &ReplicationPartnerfield,
-	HandoverReplicationPartner: &HandoverReplicationPartnerfield,
-		
+		ID:                           &IDfield,
+		ProttmplId:                   &ProttmplIdfield,
+		Name:                         &Namefield,
+		FullName:                     &FullNamefield,
+		SearchName:                   &SearchNamefield,
+		Description:                  &Descriptionfield,
+		PolOwnerName:                 &PolOwnerNamefield,
+		AppServer:                    &AppServerfield,
+		AppClusterName:               &AppClusterNamefield,
+		AppServiceName:               &AppServiceNamefield,
+		VcenterHostname:              &VcenterHostnamefield,
+		VcenterUsername:              &VcenterUsernamefield,
+		VcenterPassword:              &VcenterPasswordfield,
+		AgentHostname:                &AgentHostnamefield,
+		AgentUsername:                &AgentUsernamefield,
+		AgentPassword:                &AgentPasswordfield,
+		ReplicationPartner:           &ReplicationPartnerfield,
+		HandoverReplicationPartner:   &HandoverReplicationPartnerfield,
 	}
 }
 
@@ -126,13 +125,13 @@ type VolumeCollection struct {
 	// LagTime - Replication lag time for volume collection.
    	LagTime *int64 `json:"lag_time,omitempty"`
 	// IsStandaloneVolcoll - Indicates whether this is a standalone volume collection.
- 	IsStandaloneVolcoll *bool `json:"is_standalone_volcoll,omitempty"`
+    IsStandaloneVolcoll *bool `json:"is_standalone_volcoll,omitempty"`
 	// TotalReplBytes - Total size of volumes to be replicated for this volume collection.
    	TotalReplBytes *int64 `json:"total_repl_bytes,omitempty"`
 	// ReplBytesTransferred - Total size of volumes replicated for this volume collection.
    	ReplBytesTransferred *int64 `json:"repl_bytes_transferred,omitempty"`
 	// IsHandingOver - Indicates whether a handover operation is in progress on this volume collection.
- 	IsHandingOver *bool `json:"is_handing_over,omitempty"`
+    IsHandingOver *bool `json:"is_handing_over,omitempty"`
 	// HandoverReplicationPartner - Replication partner to which ownership is being transferred as part of handover operation.
  	HandoverReplicationPartner *string `json:"handover_replication_partner,omitempty"`
 	// Metadata - Key-value pairs that augment a volume collection's attributes.

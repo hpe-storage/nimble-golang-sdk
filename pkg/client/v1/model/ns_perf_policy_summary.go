@@ -11,8 +11,7 @@ func init(){
 	Namefield:= "name"
 		
 	NsPerfPolicySummaryFields= &NsPerfPolicySummary{
-	Name: &Namefield,
-		
+		Name:&Namefield,
 	}
 }
 

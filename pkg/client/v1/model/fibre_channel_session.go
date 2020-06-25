@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	FibreChannelSessionFields= &FibreChannelSession{
-	ID: &IDfield,
-		
+		ID:            &IDfield,
 	}
 }
 

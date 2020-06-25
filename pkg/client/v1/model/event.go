@@ -18,15 +18,14 @@ func init(){
 	TenantIdfield:= "tenant_id"
 		
 	EventFields= &Event{
-	ID: &IDfield,
-	Name: &Namefield,
-	Scope: &Scopefield,
-	Target: &Targetfield,
-	Summary: &Summaryfield,
-	Activity: &Activityfield,
-	AlarmId: &AlarmIdfield,
-	TenantId: &TenantIdfield,
-		
+		ID:         &IDfield,
+		Name:       &Namefield,
+		Scope:      &Scopefield,
+		Target:     &Targetfield,
+		Summary:    &Summaryfield,
+		Activity:   &Activityfield,
+		AlarmId:    &AlarmIdfield,
+		TenantId:   &TenantIdfield,
 	}
 }
 

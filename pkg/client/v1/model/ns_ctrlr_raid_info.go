@@ -11,8 +11,7 @@ func init(){
 	RaidTypefield:= "raid_type"
 		
 	NsCtrlrRaidInfoFields= &NsCtrlrRaidInfo{
-	RaidType: &RaidTypefield,
-		
+		RaidType:    &RaidTypefield,
 	}
 }
 
@@ -26,5 +25,5 @@ type NsCtrlrRaidInfo struct {
 	// CurCopies - Current number of copies.
    	CurCopies *int64 `json:"cur_copies,omitempty"`
 	// IsResyncing - Is this raid array resynchronizing.
- 	IsResyncing *bool `json:"is_resyncing,omitempty"`
+    IsResyncing *bool `json:"is_resyncing,omitempty"`
 }

@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * A space domain is created for each application category and block size for each each pool.
- *
- */
+
+// A space domain is created for each application category and block size for each each pool.
 const (
     spaceDomainPath = "space_domains"
 )
 
-/**
- * SpaceDomainObjectSet
-*/
+
+// SpaceDomainObjectSet
 type SpaceDomainObjectSet struct {
     Client *GroupMgmtClient
 }

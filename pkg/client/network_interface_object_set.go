@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage per array network interface configuration.
- *
- */
+
+// Manage per array network interface configuration.
 const (
     networkInterfacePath = "network_interfaces"
 )
 
-/**
- * NetworkInterfaceObjectSet
-*/
+
+// NetworkInterfaceObjectSet
 type NetworkInterfaceObjectSet struct {
     Client *GroupMgmtClient
 }

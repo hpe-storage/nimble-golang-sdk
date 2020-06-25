@@ -12,9 +12,8 @@ func init(){
 	SnapNamefield:= "snap_name"
 		
 	NsVolAndSnapNameFields= &NsVolAndSnapName{
-	VolName: &VolNamefield,
-	SnapName: &SnapNamefield,
-		
+		VolName:  &VolNamefield,
+		SnapName: &SnapNamefield,
 	}
 }
 

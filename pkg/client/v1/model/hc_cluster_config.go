@@ -16,13 +16,12 @@ func init(){
 	Passwordfield:= "password"
 		
 	HcClusterConfigFields= &HcClusterConfig{
-	ID: &IDfield,
-	UniqueId: &UniqueIdfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	Username: &Usernamefield,
-	Password: &Passwordfield,
-		
+		ID:           &IDfield,
+		UniqueId:     &UniqueIdfield,
+		Name:         &Namefield,
+		Description:  &Descriptionfield,
+		Username:     &Usernamefield,
+		Password:     &Passwordfield,
 	}
 }
 

@@ -17,14 +17,13 @@ func init(){
 	DomainNamefield:= "domain_name"
 		
 	UserGroupFields= &UserGroup{
-	ID: &IDfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	RoleId: &RoleIdfield,
-	ExternalId: &ExternalIdfield,
-	DomainId: &DomainIdfield,
-	DomainName: &DomainNamefield,
-		
+		ID:                &IDfield,
+		Name:              &Namefield,
+		Description:       &Descriptionfield,
+		RoleId:            &RoleIdfield,
+		ExternalId:        &ExternalIdfield,
+		DomainId:          &DomainIdfield,
+		DomainName:        &DomainNamefield,
 	}
 }
 
@@ -46,7 +45,7 @@ type UserGroup struct {
 	// LastModified - Time when this user was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
 	// Disabled - User is currently disabled.
- 	Disabled *bool `json:"disabled,omitempty"`
+    Disabled *bool `json:"disabled,omitempty"`
 	// ExternalId - External ID of the user group. In Active Directory, it is the group's SID (Security Identifier).
  	ExternalId *string `json:"external_id,omitempty"`
 	// DomainId - Identifier of the domain this user group belongs to.

@@ -13,10 +13,9 @@ func init(){
 	DownstreamPartnerNamefield:= "downstream_partner_name"
 		
 	NsReplicatedSnapcollSummaryFields= &NsReplicatedSnapcollSummary{
-	SnapcollId: &SnapcollIdfield,
-	SnapcollName: &SnapcollNamefield,
-	DownstreamPartnerName: &DownstreamPartnerNamefield,
-		
+		SnapcollId:             &SnapcollIdfield,
+		SnapcollName:           &SnapcollNamefield,
+		DownstreamPartnerName:  &DownstreamPartnerNamefield,
 	}
 }
 

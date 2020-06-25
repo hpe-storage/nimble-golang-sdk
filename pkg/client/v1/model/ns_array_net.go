@@ -13,10 +13,9 @@ func init(){
 	CtrlrBSupportIpfield:= "ctrlr_b_support_ip"
 		
 	NsArrayNetFields= &NsArrayNet{
-	Name: &Namefield,
-	CtrlrASupportIp: &CtrlrASupportIpfield,
-	CtrlrBSupportIp: &CtrlrBSupportIpfield,
-		
+		Name:              &Namefield,
+		CtrlrASupportIp:   &CtrlrASupportIpfield,
+		CtrlrBSupportIp:   &CtrlrBSupportIpfield,
 	}
 }
 

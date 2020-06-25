@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
- *
- */
+
+// Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
 const (
     networkConfigPath = "network_configs"
 )
 
-/**
- * NetworkConfigObjectSet
-*/
+
+// NetworkConfigObjectSet
 type NetworkConfigObjectSet struct {
     Client *GroupMgmtClient
 }

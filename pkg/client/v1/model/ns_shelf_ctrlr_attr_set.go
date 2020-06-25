@@ -14,11 +14,10 @@ func init(){
 	DiskTypesfield:= "disk_types"
 		
 	NsShelfCtrlrAttrSetFields= &NsShelfCtrlrAttrSet{
-	SessionSerial: &SessionSerialfield,
-	CachedSerial: &CachedSerialfield,
-	DiskSerials: &DiskSerialsfield,
-	DiskTypes: &DiskTypesfield,
-		
+		SessionSerial: &SessionSerialfield,
+		CachedSerial:  &CachedSerialfield,
+		DiskSerials:   &DiskSerialsfield,
+		DiskTypes:     &DiskTypesfield,
 	}
 }
 

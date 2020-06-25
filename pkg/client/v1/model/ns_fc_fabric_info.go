@@ -16,13 +16,12 @@ func init(){
 	FcIdfield:= "fc_id"
 		
 	NsFcFabricInfoFields= &NsFcFabricInfo{
-	FabricSwitchName: &FabricSwitchNamefield,
-	FabricSwitchPort: &FabricSwitchPortfield,
-	FabricSwitchWwnn: &FabricSwitchWwnnfield,
-	FabricSwitchWwpn: &FabricSwitchWwpnfield,
-	FabricWwn: &FabricWwnfield,
-	FcId: &FcIdfield,
-		
+		FabricSwitchName:  &FabricSwitchNamefield,
+		FabricSwitchPort:  &FabricSwitchPortfield,
+		FabricSwitchWwnn:  &FabricSwitchWwnnfield,
+		FabricSwitchWwpn:  &FabricSwitchWwpnfield,
+		FabricWwn:         &FabricWwnfield,
+		FcId:              &FcIdfield,
 	}
 }
 
@@ -40,5 +39,5 @@ type NsFcFabricInfo struct {
 	// FcId - FCID assigned to the Fabric Channel fabric port.
  	FcId *string `json:"fc_id,omitempty"`
 	// LoggedIn - Login information for interface. True if interface has logged in to the Fibre Channel fabric, else false.
- 	LoggedIn *bool `json:"logged_in,omitempty"`
+    LoggedIn *bool `json:"logged_in,omitempty"`
 }

@@ -14,11 +14,10 @@ func init(){
 	PoolNamefield:= "pool_name"
 		
 	NsVolumePoolInfoFields= &NsVolumePoolInfo{
-	VolId: &VolIdfield,
-	VolName: &VolNamefield,
-	PoolId: &PoolIdfield,
-	PoolName: &PoolNamefield,
-		
+		VolId:    &VolIdfield,
+		VolName:  &VolNamefield,
+		PoolId:   &PoolIdfield,
+		PoolName: &PoolNamefield,
 	}
 }
 

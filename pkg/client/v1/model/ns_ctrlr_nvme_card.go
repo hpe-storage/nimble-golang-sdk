@@ -11,8 +11,7 @@ func init(){
 	SerialNumberfield:= "serial_number"
 		
 	NsCtrlrNvmeCardFields= &NsCtrlrNvmeCard{
-	SerialNumber: &SerialNumberfield,
-		
+		SerialNumber: &SerialNumberfield,
 	}
 }
 

@@ -20,17 +20,16 @@ func init(){
 	ScheduleNamefield:= "schedule_name"
 		
 	NsSnapshotFromSnapshotCollectionsFields= &NsSnapshotFromSnapshotCollections{
-	ID: &IDfield,
-	SnapcollId: &SnapcollIdfield,
-	Name: &Namefield,
-	SnapcollName: &SnapcollNamefield,
-	VolId: &VolIdfield,
-	VolName: &VolNamefield,
-	SnapId: &SnapIdfield,
-	SnapName: &SnapNamefield,
-	ScheduleId: &ScheduleIdfield,
-	ScheduleName: &ScheduleNamefield,
-		
+		ID:           &IDfield,
+		SnapcollId:   &SnapcollIdfield,
+		Name:         &Namefield,
+		SnapcollName: &SnapcollNamefield,
+		VolId:        &VolIdfield,
+		VolName:      &VolNamefield,
+		SnapId:       &SnapIdfield,
+		SnapName:     &SnapNamefield,
+		ScheduleId:   &ScheduleIdfield,
+		ScheduleName: &ScheduleNamefield,
 	}
 }
 

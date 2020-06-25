@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	NsObjectFields= &NsObject{
-	ID: &IDfield,
-		
+		ID:&IDfield,
 	}
 }
 

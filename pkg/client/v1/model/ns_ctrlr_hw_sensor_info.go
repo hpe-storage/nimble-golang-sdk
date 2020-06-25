@@ -13,10 +13,9 @@ func init(){
 	Locationfield:= "location"
 		
 	NsCtrlrHwSensorInfoFields= &NsCtrlrHwSensorInfo{
-	Name: &Namefield,
-	DisplayName: &DisplayNamefield,
-	Location: &Locationfield,
-		
+		Name:           &Namefield,
+		DisplayName:    &DisplayNamefield,
+		Location:       &Locationfield,
 	}
 }
 

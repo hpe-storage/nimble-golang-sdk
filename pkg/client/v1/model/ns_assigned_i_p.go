@@ -11,8 +11,7 @@ func init(){
 	Ipfield:= "ip"
 		
 	NsAssignedIPFields= &NsAssignedIP{
-	Ip: &Ipfield,
-		
+		Ip:     &Ipfield,
 	}
 }
 

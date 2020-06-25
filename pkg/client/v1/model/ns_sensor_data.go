@@ -11,8 +11,7 @@ func init(){
 	Sensorfield:= "sensor"
 		
 	NsSensorDataFields= &NsSensorData{
-	Sensor: &Sensorfield,
-		
+		Sensor: &Sensorfield,
 	}
 }
 

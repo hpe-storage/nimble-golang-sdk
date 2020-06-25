@@ -10,7 +10,6 @@ var NsBulkVolSettingReturnFields *NsBulkVolSettingReturn
 func init(){
 		
 	NsBulkVolSettingReturnFields= &NsBulkVolSettingReturn{
-		
 	}
 }
 

@@ -13,10 +13,9 @@ func init(){
 	IntfNamefield:= "intf_name"
 		
 	NsFibreChannelInterfaceFullNameFields= &NsFibreChannelInterfaceFullName{
-	ArrayName: &ArrayNamefield,
-	CtrlrName: &CtrlrNamefield,
-	IntfName: &IntfNamefield,
-		
+		ArrayName: &ArrayNamefield,
+		CtrlrName: &CtrlrNamefield,
+		IntfName:  &IntfNamefield,
 	}
 }
 

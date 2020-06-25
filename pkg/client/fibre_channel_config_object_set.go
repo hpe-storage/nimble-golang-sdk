@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage group wide Fibre Channel configuration.
- *
- */
+
+// Manage group wide Fibre Channel configuration.
 const (
     fibreChannelConfigPath = "fibre_channel_configs"
 )
 
-/**
- * FibreChannelConfigObjectSet
-*/
+
+// FibreChannelConfigObjectSet
 type FibreChannelConfigObjectSet struct {
     Client *GroupMgmtClient
 }

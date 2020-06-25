@@ -12,9 +12,8 @@ func init(){
 	FcNamefield:= "fc_name"
 		
 	NsFcTdzPortFields= &NsFcTdzPort{
-	ArrayName: &ArrayNamefield,
-	FcName: &FcNamefield,
-		
+		ArrayName: &ArrayNamefield,
+		FcName:    &FcNamefield,
 	}
 }
 

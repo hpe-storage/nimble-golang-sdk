@@ -10,7 +10,6 @@ var NsAverageStatsFields *NsAverageStats
 func init(){
 		
 	NsAverageStatsFields= &NsAverageStats{
-		
 	}
 }
 

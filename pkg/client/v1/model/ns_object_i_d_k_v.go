@@ -12,9 +12,8 @@ func init(){
 	IDfield:= "id"
 		
 	NsObjectIDKVFields= &NsObjectIDKV{
-	Key: &Keyfield,
-	ID: &IDfield,
-		
+		Key:&Keyfield,
+		ID: &IDfield,
 	}
 }
 

@@ -19,16 +19,15 @@ func init(){
 	Wwpnfield:= "wwpn"
 		
 	InitiatorFields= &Initiator{
-	ID: &IDfield,
-	InitiatorGroupId: &InitiatorGroupIdfield,
-	InitiatorGroupName: &InitiatorGroupNamefield,
-	Label: &Labelfield,
-	Iqn: &Iqnfield,
-	IpAddress: &IpAddressfield,
-	Alias: &Aliasfield,
-	ChapuserId: &ChapuserIdfield,
-	Wwpn: &Wwpnfield,
-		
+		ID:                     &IDfield,
+		InitiatorGroupId:       &InitiatorGroupIdfield,
+		InitiatorGroupName:     &InitiatorGroupNamefield,
+		Label:                  &Labelfield,
+		Iqn:                    &Iqnfield,
+		IpAddress:              &IpAddressfield,
+		Alias:                  &Aliasfield,
+		ChapuserId:             &ChapuserIdfield,
+		Wwpn:                   &Wwpnfield,
 	}
 }
 
@@ -53,12 +52,10 @@ type Initiator struct {
  	ChapuserId *string `json:"chapuser_id,omitempty"`
 	// Wwpn - WWPN (World Wide Port Name) of the Fibre Channel initiator. WWPN is required when creating a Fibre Channel initiator. Each initiator WWPN can have an associated alias specified using the 'alias' attribute. You can choose not to enter the alias for an initiator if you prefer not to assign an initiator alias.
  	Wwpn *string `json:"wwpn,omitempty"`
-	// VpOverride - Flag to allow modifying VP created initiator groups. When set to true, user can add this initiator to a VP created initiator group.
- 	VpOverride *bool `json:"vp_override,omitempty"`
 	// CreationTime - Time when this initiator group was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this initiator group was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
 	// OverrideExistingAlias - Forcibly add Fibre Channel initiator to initiator group by updating or removing conflicting Fibre Channel initiator aliases.
- 	OverrideExistingAlias *bool `json:"override_existing_alias,omitempty"`
+    OverrideExistingAlias *bool `json:"override_existing_alias,omitempty"`
 }

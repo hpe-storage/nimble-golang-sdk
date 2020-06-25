@@ -11,8 +11,7 @@ func init(){
 	Namefield:= "name"
 		
 	NsSensorCumulativeDataFields= &NsSensorCumulativeData{
-	Name: &Namefield,
-		
+		Name:        &Namefield,
 	}
 }
 
@@ -24,9 +23,9 @@ type NsSensorCumulativeData struct {
 	// Msec - Creation time of stat sensor in millisecs.
    	Msec *int64 `json:"msec,omitempty"`
 	// PrevUnavail - Previous stat value is not valid.
- 	PrevUnavail *bool `json:"prev_unavail,omitempty"`
+    PrevUnavail *bool `json:"prev_unavail,omitempty"`
 	// CurrUnavail - Current stat value is not valid.
- 	CurrUnavail *bool `json:"curr_unavail,omitempty"`
+    CurrUnavail *bool `json:"curr_unavail,omitempty"`
 	// Curr - Current stat value.
    	Curr *int64 `json:"curr,omitempty"`
 	// Prev - Previous stat value from last sample period.

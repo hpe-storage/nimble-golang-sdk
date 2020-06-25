@@ -10,7 +10,6 @@ var NsDiskSetAttrFields *NsDiskSetAttr
 func init(){
 		
 	NsDiskSetAttrFields= &NsDiskSetAttr{
-		
 	}
 }
 
@@ -20,9 +19,9 @@ type NsDiskSetAttr struct {
 	// SwState - Software state.
    	SwState *NsShelfSwState `json:"sw_state,omitempty"`
 	// IsFlashShelf - Is this a all-flash-shelf.
- 	IsFlashShelf *bool `json:"is_flash_shelf,omitempty"`
+    IsFlashShelf *bool `json:"is_flash_shelf,omitempty"`
 	// IsCapacityValid - Is the capacity fields in this data struct valid.
- 	IsCapacityValid *bool `json:"is_capacity_valid,omitempty"`
+    IsCapacityValid *bool `json:"is_capacity_valid,omitempty"`
 	// UsableCapacity - Estimated usable capacity for this shelf.
    	UsableCapacity *int64 `json:"usable_capacity,omitempty"`
 	// RawCapacity - Hdd raw capacity for this shelf.

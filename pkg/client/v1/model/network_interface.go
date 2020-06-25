@@ -17,14 +17,13 @@ func init(){
 	Macfield:= "mac"
 		
 	NetworkInterfaceFields= &NetworkInterface{
-	ID: &IDfield,
-	ArrayNameOrSerial: &ArrayNameOrSerialfield,
-	ArrayId: &ArrayIdfield,
-	ControllerName: &ControllerNamefield,
-	ControllerId: &ControllerIdfield,
-	Name: &Namefield,
-	Mac: &Macfield,
-		
+		ID:                  &IDfield,
+		ArrayNameOrSerial:   &ArrayNameOrSerialfield,
+		ArrayId:             &ArrayIdfield,
+		ControllerName:      &ControllerNamefield,
+		ControllerId:        &ControllerIdfield,
+		Name:                &Namefield,
+		Mac:                 &Macfield,
 	}
 }
 
@@ -34,7 +33,7 @@ type NetworkInterface struct {
 	// ArrayNameOrSerial - Name or serial of the array where the interface is hosted.
  	ArrayNameOrSerial *string `json:"array_name_or_serial,omitempty"`
 	// PartialResponseOk - Indicate that it is ok to provide partially available response.
- 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
+    PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 	// ArrayId - Identifier for the array.
  	ArrayId *string `json:"array_id,omitempty"`
 	// ControllerName - Name (A or B) of the controller where the interface is hosted.
@@ -46,7 +45,7 @@ type NetworkInterface struct {
 	// Mac - MAC address of the interface.
  	Mac *string `json:"mac,omitempty"`
 	// IsPresent - Whether this interface is present on this controller.
- 	IsPresent *bool `json:"is_present,omitempty"`
+    IsPresent *bool `json:"is_present,omitempty"`
 	// LinkSpeed - Speed of the link.
    	LinkSpeed *NsPlatLinkSpeed `json:"link_speed,omitempty"`
 	// LinkStatus - Status of the link.

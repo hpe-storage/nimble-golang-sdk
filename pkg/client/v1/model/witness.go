@@ -14,11 +14,10 @@ func init(){
 	Hostfield:= "host"
 		
 	WitnessFields= &Witness{
-	ID: &IDfield,
-	Username: &Usernamefield,
-	Password: &Passwordfield,
-	Host: &Hostfield,
-		
+		ID:                      &IDfield,
+		Username:                &Usernamefield,
+		Password:                &Passwordfield,
+		Host:                    &Hostfield,
 	}
 }
 
@@ -34,7 +33,7 @@ type Witness struct {
 	// Port - Port of witness.
    	Port *int64 `json:"port,omitempty"`
 	// SecureMode - To verify the witness host against CA cert and to apply possible security modes.
- 	SecureMode *bool `json:"secure_mode,omitempty"`
+    SecureMode *bool `json:"secure_mode,omitempty"`
 	// AutoSwitchoverMessages - List of validation messages for automatic switchover of Group Management. This will be empty when there are no conflicts found.
    	AutoSwitchoverMessages []*NsErrorWithArguments `json:"auto_switchover_messages,omitempty"`
 }

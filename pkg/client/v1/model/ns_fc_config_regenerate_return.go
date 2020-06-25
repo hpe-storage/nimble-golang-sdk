@@ -12,9 +12,8 @@ func init(){
 	IDfield:= "id"
 		
 	NsFcConfigRegenerateReturnFields= &NsFcConfigRegenerateReturn{
-	GroupLeaderArray: &GroupLeaderArrayfield,
-	ID: &IDfield,
-		
+		GroupLeaderArray:  &GroupLeaderArrayfield,
+		ID:                &IDfield,
 	}
 }
 

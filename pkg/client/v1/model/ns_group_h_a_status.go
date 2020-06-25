@@ -1,11 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 package model
 
-
-/**
- * <p>Golang package for NsGroupHAStatus Enum.</p>
- */
-
+// Golang package for NsGroupHAStatus Enum.
+ 
 type NsGroupHAStatus string 
 
 const (

@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
- *
- */
+
+// Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
 const (
     folderSetPath = "folder_sets"
 )
 
-/**
- * FolderSetObjectSet
-*/
+
+// FolderSetObjectSet
 type FolderSetObjectSet struct {
     Client *GroupMgmtClient
 }

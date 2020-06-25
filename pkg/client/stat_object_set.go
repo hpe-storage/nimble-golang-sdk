@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Access generic stats interface via REST for internal testing.
- *
- */
+
+// Access generic stats interface via REST for internal testing.
 const (
     statPath = "stats"
 )
 
-/**
- * StatObjectSet
-*/
+
+// StatObjectSet
 type StatObjectSet struct {
     Client *GroupMgmtClient
 }

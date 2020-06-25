@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsPinnedVolumeInfoFields= &NsPinnedVolumeInfo{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:                     &IDfield,
+		Name:                   &Namefield,
 	}
 }
 

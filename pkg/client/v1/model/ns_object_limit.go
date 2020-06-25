@@ -10,7 +10,6 @@ var NsObjectLimitFields *NsObjectLimit
 func init(){
 		
 	NsObjectLimitFields= &NsObjectLimit{
-		
 	}
 }
 

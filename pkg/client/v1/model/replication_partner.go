@@ -31,28 +31,27 @@ func init(){
 	SubnetNetmaskfield:= "subnet_netmask"
 		
 	ReplicationPartnerFields= &ReplicationPartner{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	Alias: &Aliasfield,
-	Secret: &Secretfield,
-	Hostname: &Hostnamefield,
-	ProxyHostname: &ProxyHostnamefield,
-	ProxyUser: &ProxyUserfield,
-	ReplHostname: &ReplHostnamefield,
-	LastKeepaliveError: &LastKeepaliveErrorfield,
-	LastSyncError: &LastSyncErrorfield,
-	ArraySerial: &ArraySerialfield,
-	PoolId: &PoolIdfield,
-	PoolName: &PoolNamefield,
-	FolderId: &FolderIdfield,
-	FolderName: &FolderNamefield,
-	SubnetLabel: &SubnetLabelfield,
-	SubnetNetwork: &SubnetNetworkfield,
-	SubnetNetmask: &SubnetNetmaskfield,
-		
+		ID:                              &IDfield,
+		Name:                            &Namefield,
+		FullName:                        &FullNamefield,
+		SearchName:                      &SearchNamefield,
+		Description:                     &Descriptionfield,
+		Alias:                           &Aliasfield,
+		Secret:                          &Secretfield,
+		Hostname:                        &Hostnamefield,
+		ProxyHostname:                   &ProxyHostnamefield,
+		ProxyUser:                       &ProxyUserfield,
+		ReplHostname:                    &ReplHostnamefield,
+		LastKeepaliveError:              &LastKeepaliveErrorfield,
+		LastSyncError:                   &LastSyncErrorfield,
+		ArraySerial:                     &ArraySerialfield,
+		PoolId:                          &PoolIdfield,
+		PoolName:                        &PoolNamefield,
+		FolderId:                        &FolderIdfield,
+		FolderName:                      &FolderNamefield,
+		SubnetLabel:                     &SubnetLabelfield,
+		SubnetNetwork:                   &SubnetNetworkfield,
+		SubnetNetmask:                   &SubnetNetmaskfield,
 	}
 }
 
@@ -92,7 +91,7 @@ type ReplicationPartner struct {
 	// DataPort - Port number of partner data interface.
   	DataPort  *int64 `json:"data_port,omitempty"`
 	// IsAlive - Whether the partner is available, and responding to pings.
- 	IsAlive *bool `json:"is_alive,omitempty"`
+    IsAlive *bool `json:"is_alive,omitempty"`
 	// PartnerGroupUid - Replication partner group uid.
    	PartnerGroupUid *int64 `json:"partner_group_uid,omitempty"`
 	// LastKeepaliveError - Most recent error while attempting to ping the partner.
@@ -114,11 +113,11 @@ type ReplicationPartner struct {
 	// FolderName - The Folder name within the pool where volumes replicated from this partner will be created.
  	FolderName *string `json:"folder_name,omitempty"`
 	// MatchFolder - Indicates whether to match the upstream volume's folder on the downstream.
- 	MatchFolder *bool `json:"match_folder,omitempty"`
+    MatchFolder *bool `json:"match_folder,omitempty"`
 	// Paused - Indicates whether replication traffic from/to this partner has been halted.
- 	Paused *bool `json:"paused,omitempty"`
+    Paused *bool `json:"paused,omitempty"`
 	// UniqueName - Indicates whether this partner actively mangles object names to avoid name conflicts during replication.
- 	UniqueName *bool `json:"unique_name,omitempty"`
+    UniqueName *bool `json:"unique_name,omitempty"`
 	// SubnetLabel - Label of the subnet used to replicate to this partner.
  	SubnetLabel *string `json:"subnet_label,omitempty"`
 	// SubnetType - Type of the subnet used to replicate to this partner.

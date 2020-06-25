@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
- *
- */
+
+// Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
 const (
     volumeCollectionPath = "volume_collections"
 )
 
-/**
- * VolumeCollectionObjectSet
-*/
+
+// VolumeCollectionObjectSet
 type VolumeCollectionObjectSet struct {
     Client *GroupMgmtClient
 }

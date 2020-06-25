@@ -14,11 +14,10 @@ func init(){
 	VolNamefield:= "vol_name"
 		
 	NsVolumeSummaryFields= &NsVolumeSummary{
-	ID: &IDfield,
-	VolId: &VolIdfield,
-	Name: &Namefield,
-	VolName: &VolNamefield,
-		
+		ID:      &IDfield,
+		VolId:   &VolIdfield,
+		Name:    &Namefield,
+		VolName: &VolNamefield,
 	}
 }
 

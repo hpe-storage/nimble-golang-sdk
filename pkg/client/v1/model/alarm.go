@@ -19,16 +19,15 @@ func init(){
 	Activityfield:= "activity"
 		
 	AlarmFields= &Alarm{
-	ID: &IDfield,
-	Array: &Arrayfield,
-	CurrOnsetEventId: &CurrOnsetEventIdfield,
-	ObjectId: &ObjectIdfield,
-	ObjectName: &ObjectNamefield,
-	UserId: &UserIdfield,
-	UserName: &UserNamefield,
-	UserFullName: &UserFullNamefield,
-	Activity: &Activityfield,
-		
+		ID:                    &IDfield,
+		Array:                 &Arrayfield,
+		CurrOnsetEventId:      &CurrOnsetEventIdfield,
+		ObjectId:              &ObjectIdfield,
+		ObjectName:            &ObjectNamefield,
+		UserId:                &UserIdfield,
+		UserName:              &UserNamefield,
+		UserFullName:          &UserFullNamefield,
+		Activity:              &Activityfield,
 	}
 }
 

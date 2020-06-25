@@ -12,9 +12,8 @@ func init(){
 	Labelfield:= "label"
 		
 	NsTargetSubnetFields= &NsTargetSubnet{
-	ID: &IDfield,
-	Label: &Labelfield,
-		
+		ID:   &IDfield,
+		Label:&Labelfield,
 	}
 }
 

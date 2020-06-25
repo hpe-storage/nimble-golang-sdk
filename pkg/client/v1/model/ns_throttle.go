@@ -15,12 +15,11 @@ func init(){
 	Daysfield:= "days"
 		
 	NsThrottleFields= &NsThrottle{
-	ID: &IDfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	ThrPartnerId: &ThrPartnerIdfield,
-	Days: &Daysfield,
-		
+		ID:                      &IDfield,
+		Name:                    &Namefield,
+		Description:             &Descriptionfield,
+		ThrPartnerId:            &ThrPartnerIdfield,
+		Days:                    &Daysfield,
 	}
 }
 

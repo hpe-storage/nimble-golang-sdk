@@ -10,11 +10,10 @@ var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturn
 func init(){
 		
 	NsShelfIdentifyStatusReturnFields= &NsShelfIdentifyStatusReturn{
-		
 	}
 }
 
 type NsShelfIdentifyStatusReturn struct {
 	// Enabled - Shelf identifier is enabled.
- 	Enabled *bool `json:"enabled,omitempty"`
+    Enabled *bool `json:"enabled,omitempty"`
 }

@@ -19,16 +19,15 @@ func init(){
 	Passwordfield:= "password"
 		
 	ActiveDirectoryMembershipFields= &ActiveDirectoryMembership{
-	ID: &IDfield,
-	Description: &Descriptionfield,
-	Name: &Namefield,
-	Netbios: &Netbiosfield,
-	ServerList: &ServerListfield,
-	ComputerName: &ComputerNamefield,
-	OrganizationalUnit: &OrganizationalUnitfield,
-	User: &Userfield,
-	Password: &Passwordfield,
-		
+		ID:                 &IDfield,
+		Description:        &Descriptionfield,
+		Name:               &Namefield,
+		Netbios:            &Netbiosfield,
+		ServerList:         &ServerListfield,
+		ComputerName:       &ComputerNamefield,
+		OrganizationalUnit: &OrganizationalUnitfield,
+		User:               &Userfield,
+		Password:           &Passwordfield,
 	}
 }
 
@@ -52,5 +51,5 @@ type ActiveDirectoryMembership struct {
 	// Password - Password for the Active Directory user.
  	Password *string `json:"password,omitempty"`
 	// Enabled - Active Directory authentication is currently enabled.
- 	Enabled *bool `json:"enabled,omitempty"`
+    Enabled *bool `json:"enabled,omitempty"`
 }

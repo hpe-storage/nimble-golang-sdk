@@ -10,7 +10,6 @@ var NsArgMapFields *NsArgMap
 func init(){
 		
 	NsArgMapFields= &NsArgMap{
-		
 	}
 }
 

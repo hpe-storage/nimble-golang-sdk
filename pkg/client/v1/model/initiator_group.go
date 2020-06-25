@@ -17,14 +17,13 @@ func init(){
 	AppUuidfield:= "app_uuid"
 		
 	InitiatorGroupFields= &InitiatorGroup{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	HostType: &HostTypefield,
-	AppUuid: &AppUuidfield,
-		
+		ID:              &IDfield,
+		Name:            &Namefield,
+		FullName:        &FullNamefield,
+		SearchName:      &SearchNamefield,
+		Description:     &Descriptionfield,
+		HostType:        &HostTypefield,
+		AppUuid:         &AppUuidfield,
 	}
 }
 
@@ -55,8 +54,6 @@ type InitiatorGroup struct {
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this initiator group was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
-	// VpOverride - Flag to allow modifying VP created initiator groups. When set to true, user can add this initiator to a VP created initiator group.
- 	VpOverride *bool `json:"vp_override,omitempty"`
 	// AppUuid - Application identifier of initiator group.
  	AppUuid *string `json:"app_uuid,omitempty"`
 	// VolumeCount - Number of volumes that are accessible by the initiator group.

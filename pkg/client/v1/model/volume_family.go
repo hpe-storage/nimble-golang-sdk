@@ -14,11 +14,10 @@ func init(){
 	RootVolNamefield:= "root_vol_name"
 		
 	VolumeFamilyFields= &VolumeFamily{
-	ID: &IDfield,
-	PoolId: &PoolIdfield,
-	PoolName: &PoolNamefield,
-	RootVolName: &RootVolNamefield,
-		
+		ID:                         &IDfield,
+		PoolId:                     &PoolIdfield,
+		PoolName:                   &PoolNamefield,
+		RootVolName:                &RootVolNamefield,
 	}
 }
 

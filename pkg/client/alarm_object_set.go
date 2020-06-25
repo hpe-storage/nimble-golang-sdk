@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * View alarms.
- *
- */
+
+// View alarms.
 const (
     alarmPath = "alarms"
 )
 
-/**
- * AlarmObjectSet
-*/
+
+// AlarmObjectSet
 type AlarmObjectSet struct {
     Client *GroupMgmtClient
 }

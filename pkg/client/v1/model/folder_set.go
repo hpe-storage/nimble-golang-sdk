@@ -18,15 +18,14 @@ func init(){
 	AppserverNamefield:= "appserver_name"
 		
 	FolderSetFields= &FolderSet{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	AppUuid: &AppUuidfield,
-	AppserverId: &AppserverIdfield,
-	AppserverName: &AppserverNamefield,
-		
+		ID:            &IDfield,
+		Name:          &Namefield,
+		FullName:      &FullNamefield,
+		SearchName:    &SearchNamefield,
+		Description:   &Descriptionfield,
+		AppUuid:       &AppUuidfield,
+		AppserverId:   &AppserverIdfield,
+		AppserverName: &AppserverNamefield,
 	}
 }
 

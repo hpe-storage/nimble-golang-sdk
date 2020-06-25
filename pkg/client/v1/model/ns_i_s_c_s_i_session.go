@@ -15,12 +15,11 @@ func init(){
 	TargetIpAddrfield:= "target_ip_addr"
 		
 	NsISCSISessionFields= &NsISCSISession{
-	ID: &IDfield,
-	SessionId: &SessionIdfield,
-	InitiatorName: &InitiatorNamefield,
-	InitiatorIpAddr: &InitiatorIpAddrfield,
-	TargetIpAddr: &TargetIpAddrfield,
-		
+		ID:                   &IDfield,
+		SessionId:            &SessionIdfield,
+		InitiatorName:        &InitiatorNamefield,
+		InitiatorIpAddr:      &InitiatorIpAddrfield,
+		TargetIpAddr:         &TargetIpAddrfield,
 	}
 }
 
@@ -40,7 +39,7 @@ type NsISCSISession struct {
 	// TargetIpAddr - Target IP address of the iSCSI initiator.
  	TargetIpAddr *string `json:"target_ip_addr,omitempty"`
 	// HeaderDigestEnabled - Indicate whether header digest is enabled.
- 	HeaderDigestEnabled *bool `json:"header_digest_enabled,omitempty"`
+    HeaderDigestEnabled *bool `json:"header_digest_enabled,omitempty"`
 	// DataDigestEnabled - Indicate whether data digest is enabled.
- 	DataDigestEnabled *bool `json:"data_digest_enabled,omitempty"`
+    DataDigestEnabled *bool `json:"data_digest_enabled,omitempty"`
 }

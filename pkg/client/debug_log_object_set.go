@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Method to help log events from outside of storage array to provide context for troubleshooting host-side or array-side issues.
- *
- */
+
+// Method to help log events from outside of storage array to provide context for troubleshooting host-side or array-side issues.
 const (
     debugLogPath = "debug_log"
 )
 
-/**
- * DebugLogObjectSet
-*/
+
+// DebugLogObjectSet
 type DebugLogObjectSet struct {
     Client *GroupMgmtClient
 }

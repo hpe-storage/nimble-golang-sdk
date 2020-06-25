@@ -14,11 +14,10 @@ func init(){
 	ArrayNamefield:= "array_name"
 		
 	NsArraySummaryFields= &NsArraySummary{
-	ID: &IDfield,
-	ArrayId: &ArrayIdfield,
-	Name: &Namefield,
-	ArrayName: &ArrayNamefield,
-		
+		ID:        &IDfield,
+		ArrayId:   &ArrayIdfield,
+		Name:      &Namefield,
+		ArrayName: &ArrayNamefield,
 	}
 }
 

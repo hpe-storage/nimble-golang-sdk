@@ -10,7 +10,6 @@ var NsSnapRetainLimitFields *NsSnapRetainLimit
 func init(){
 		
 	NsSnapRetainLimitFields= &NsSnapRetainLimit{
-		
 	}
 }
 

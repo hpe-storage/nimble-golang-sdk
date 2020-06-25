@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Configuration information for virtual appliance that provides highly available storage and compute.
- *
- */
+
+// Configuration information for virtual appliance that provides highly available storage and compute.
 const (
     hcClusterConfigPath = "hc_cluster_configs"
 )
 
-/**
- * HcClusterConfigObjectSet
-*/
+
+// HcClusterConfigObjectSet
 type HcClusterConfigObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -15,12 +15,11 @@ func init(){
 	AppUuidfield:= "app_uuid"
 		
 	NsSnapVolFields= &NsSnapVol{
-	VolId: &VolIdfield,
-	SnapName: &SnapNamefield,
-	SnapDescription: &SnapDescriptionfield,
-	Cookie: &Cookiefield,
-	AppUuid: &AppUuidfield,
-		
+		VolId:           &VolIdfield,
+		SnapName:        &SnapNamefield,
+		SnapDescription: &SnapDescriptionfield,
+		Cookie:          &Cookiefield,
+		AppUuid:         &AppUuidfield,
 	}
 }
 
@@ -34,9 +33,9 @@ type NsSnapVol struct {
 	// Cookie - A cookie.
  	Cookie *string `json:"cookie,omitempty"`
 	// Online - Snapshot is online.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 	// Writable - Snapshot is writable.
- 	Writable *bool `json:"writable,omitempty"`
+    Writable *bool `json:"writable,omitempty"`
 	// AppUuid - Application identifier of snapshots.
  	AppUuid *string `json:"app_uuid,omitempty"`
 	// AgentType - External management agent type.

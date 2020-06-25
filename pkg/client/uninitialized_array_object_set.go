@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Lists discovered arrays that are not members of any group and are in the same subnet.
- *
- */
+
+// Lists discovered arrays that are not members of any group and are in the same subnet.
 const (
     uninitializedArrayPath = "uninitialized_arrays"
 )
 
-/**
- * UninitializedArrayObjectSet
-*/
+
+// UninitializedArrayObjectSet
 type UninitializedArrayObjectSet struct {
     Client *GroupMgmtClient
 }

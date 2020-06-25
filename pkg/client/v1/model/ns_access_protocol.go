@@ -1,11 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 package model
 
-
-/**
- * <p>Golang package for NsAccessProtocol Enum.</p>
- */
-
+// Golang package for NsAccessProtocol Enum.
+ 
 type NsAccessProtocol string 
 
 const (

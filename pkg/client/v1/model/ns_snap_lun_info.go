@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsSnapLunInfoFields= &NsSnapLunInfo{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:  &IDfield,
+		Name:&Namefield,
 	}
 }
 

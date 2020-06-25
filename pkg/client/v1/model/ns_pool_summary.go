@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsPoolSummaryFields= &NsPoolSummary{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:  &IDfield,
+		Name:&Namefield,
 	}
 }
 

@@ -11,8 +11,7 @@ func init(){
 	Errorfield:= "error"
 		
 	NsArraySoftwareUpdateErrorFields= &NsArraySoftwareUpdateError{
-	Error: &Errorfield,
-		
+		Error:&Errorfield,
 	}
 }
 

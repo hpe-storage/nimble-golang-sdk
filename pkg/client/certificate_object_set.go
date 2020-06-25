@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage certificates used by SSL/TLS.
- *
- */
+
+// Manage certificates used by SSL/TLS.
 const (
     certificatePath = "certificates"
 )
 
-/**
- * CertificateObjectSet
-*/
+
+// CertificateObjectSet
 type CertificateObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Disks are used for storing user data.
- *
- */
+
+// Disks are used for storing user data.
 const (
     diskPath = "disks"
 )
 
-/**
- * DiskObjectSet
-*/
+
+// DiskObjectSet
 type DiskObjectSet struct {
     Client *GroupMgmtClient
 }

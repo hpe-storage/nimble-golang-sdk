@@ -11,8 +11,7 @@ func init(){
 	Cksumfield:= "cksum"
 		
 	NsChksumReturnFields= &NsChksumReturn{
-	Cksum: &Cksumfield,
-		
+		Cksum:&Cksumfield,
 	}
 }
 

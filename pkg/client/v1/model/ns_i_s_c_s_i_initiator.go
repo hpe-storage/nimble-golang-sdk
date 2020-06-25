@@ -15,12 +15,11 @@ func init(){
 	IpAddressfield:= "ip_address"
 		
 	NsISCSIInitiatorFields= &NsISCSIInitiator{
-	ID: &IDfield,
-	InitiatorId: &InitiatorIdfield,
-	Label: &Labelfield,
-	Iqn: &Iqnfield,
-	IpAddress: &IpAddressfield,
-		
+		ID:          &IDfield,
+		InitiatorId: &InitiatorIdfield,
+		Label:       &Labelfield,
+		Iqn:         &Iqnfield,
+		IpAddress:   &IpAddressfield,
 	}
 }
 
