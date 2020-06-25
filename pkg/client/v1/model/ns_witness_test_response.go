@@ -13,10 +13,9 @@ func init(){
 	WitnessConnectivityMessagefield:= "witness_connectivity_message"
 		
 	NsWitnessTestResponseFields= &NsWitnessTestResponse{
-	ArrayName: &ArrayNamefield,
-	WitnessConnectivityState: &WitnessConnectivityStatefield,
-	WitnessConnectivityMessage: &WitnessConnectivityMessagefield,
-		
+		ArrayName:                   &ArrayNamefield,
+		WitnessConnectivityState:    &WitnessConnectivityStatefield,
+		WitnessConnectivityMessage:  &WitnessConnectivityMessagefield,
 	}
 }
 

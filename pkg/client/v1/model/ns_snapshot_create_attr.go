@@ -13,10 +13,9 @@ func init(){
 	Descriptionfield:= "description"
 		
 	NsSnapshotCreateAttrFields= &NsSnapshotCreateAttr{
-	VolId: &VolIdfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-		
+		VolId:      &VolIdfield,
+		Name:       &Namefield,
+		Description:&Descriptionfield,
 	}
 }
 
@@ -28,9 +27,9 @@ type NsSnapshotCreateAttr struct {
 	// Description - Snapshot description.
  	Description *string `json:"description,omitempty"`
 	// Online - Snapshot is online.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 	// Writable - Snapshot is writable.
- 	Writable *bool `json:"writable,omitempty"`
+    Writable *bool `json:"writable,omitempty"`
 	// AgentType - External management agent type.
    	AgentType *NsAgentType `json:"agent_type,omitempty"`
 	// Metadata - Key-value pairs that augment a snapshot's attributes.

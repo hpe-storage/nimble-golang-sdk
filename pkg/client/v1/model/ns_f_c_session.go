@@ -23,20 +23,19 @@ func init(){
 	TargetWwpnfield:= "target_wwpn"
 		
 	NsFCSessionFields= &NsFCSession{
-	ID: &IDfield,
-	SessionId: &SessionIdfield,
-	InitiatorAlias: &InitiatorAliasfield,
-	InitiatorWwpn: &InitiatorWwpnfield,
-	InitiatorWwnn: &InitiatorWwnnfield,
-	InitiatorSwitchName: &InitiatorSwitchNamefield,
-	InitiatorSwitchPort: &InitiatorSwitchPortfield,
-	InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-	InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-	TargetPortArrayName: &TargetPortArrayNamefield,
-	TargetPortInterfaceName: &TargetPortInterfaceNamefield,
-	TargetWwnn: &TargetWwnnfield,
-	TargetWwpn: &TargetWwpnfield,
-		
+		ID:                         &IDfield,
+		SessionId:                  &SessionIdfield,
+		InitiatorAlias:             &InitiatorAliasfield,
+		InitiatorWwpn:              &InitiatorWwpnfield,
+		InitiatorWwnn:              &InitiatorWwnnfield,
+		InitiatorSwitchName:        &InitiatorSwitchNamefield,
+		InitiatorSwitchPort:        &InitiatorSwitchPortfield,
+		InitiatorSymbolicPortname:  &InitiatorSymbolicPortnamefield,
+		InitiatorSymbolicNodename:  &InitiatorSymbolicNodenamefield,
+		TargetPortArrayName:        &TargetPortArrayNamefield,
+		TargetPortInterfaceName:    &TargetPortInterfaceNamefield,
+		TargetWwnn:                 &TargetWwnnfield,
+		TargetWwpn:                 &TargetWwpnfield,
 	}
 }
 

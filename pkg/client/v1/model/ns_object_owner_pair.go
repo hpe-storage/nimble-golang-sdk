@@ -13,10 +13,9 @@ func init(){
 	DstOwnerfield:= "dst_owner"
 		
 	NsObjectOwnerPairFields= &NsObjectOwnerPair{
-	ObjName: &ObjNamefield,
-	SrcOwner: &SrcOwnerfield,
-	DstOwner: &DstOwnerfield,
-		
+		ObjName:  &ObjNamefield,
+		SrcOwner: &SrcOwnerfield,
+		DstOwner: &DstOwnerfield,
 	}
 }
 

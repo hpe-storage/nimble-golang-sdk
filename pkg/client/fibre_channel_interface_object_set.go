@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
- *
- */
+
+// Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
 const (
     fibreChannelInterfacePath = "fibre_channel_interfaces"
 )
 
-/**
- * FibreChannelInterfaceObjectSet
-*/
+
+// FibreChannelInterfaceObjectSet
 type FibreChannelInterfaceObjectSet struct {
     Client *GroupMgmtClient
 }

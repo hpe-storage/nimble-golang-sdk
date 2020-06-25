@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage user&#39;s session information.
- *
- */
+
+// Manage user&#39;s session information.
 const (
     tokenPath = "tokens"
 )
 
-/**
- * TokenObjectSet
-*/
+
+// TokenObjectSet
 type TokenObjectSet struct {
     Client *GroupMgmtClient
 }

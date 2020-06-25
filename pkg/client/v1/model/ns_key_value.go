@@ -12,9 +12,8 @@ func init(){
 	Valuefield:= "value"
 		
 	NsKeyValueFields= &NsKeyValue{
-	Key: &Keyfield,
-	Value: &Valuefield,
-		
+		Key:  &Keyfield,
+		Value:&Valuefield,
 	}
 }
 

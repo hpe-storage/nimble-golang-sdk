@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage pools. Pools are an aggregation of arrays.
- *
- */
+
+// Manage pools. Pools are an aggregation of arrays.
 const (
     poolPath = "pools"
 )
 
-/**
- * PoolObjectSet
-*/
+
+// PoolObjectSet
 type PoolObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -16,13 +16,12 @@ func init(){
 	AppCategoryfield:= "app_category"
 		
 	PerformancePolicyFields= &PerformancePolicy{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	AppCategory: &AppCategoryfield,
-		
+		ID:                   &IDfield,
+		Name:                 &Namefield,
+		FullName:             &FullNamefield,
+		SearchName:           &SearchNamefield,
+		Description:          &Descriptionfield,
+		AppCategory:          &AppCategoryfield,
 	}
 }
 
@@ -40,9 +39,9 @@ type PerformancePolicy struct {
 	// BlockSize - Block Size in bytes to be used by the volumes created with this specific performance policy. Supported block sizes are 4096 bytes (4 KB), 8192 bytes (8 KB), 16384 bytes(16 KB), and 32768 bytes (32 KB). Block size of a performance policy cannot be changed once the performance policy is created.
    	BlockSize *int64 `json:"block_size,omitempty"`
 	// Compress - Flag denoting if data in the associated volume should be compressed.
- 	Compress *bool `json:"compress,omitempty"`
+    Compress *bool `json:"compress,omitempty"`
 	// Cache - Flag denoting if data in the associated volume should be cached.
- 	Cache *bool `json:"cache,omitempty"`
+    Cache *bool `json:"cache,omitempty"`
 	// CachePolicy - Specifies how data of associated volume should be cached. Supports two policies, 'normal' and 'aggressive'. 'normal' policy caches data but skips in certain conditions such as sequential I/O. 'aggressive' policy will accelerate caching of all data belonging to this volume, regardless of sequentiality.
    	CachePolicy *NsCachePolicy `json:"cache_policy,omitempty"`
 	// SpacePolicy - Specifies the state of the volume upon space constraint violation such as volume limit violation or volumes above their volume reserve, if the pool free space is exhausted. Supports two policies, 'offline' and 'non_writable'.
@@ -50,11 +49,11 @@ type PerformancePolicy struct {
 	// AppCategory - Specifies the application category of the associated volume.
  	AppCategory *string `json:"app_category,omitempty"`
 	// DedupeEnabled - Specifies if dedupe is enabled for volumes created with this performance policy.
- 	DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
+    DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
 	// Deprecated - Specifies if this performance policy is deprecated.
- 	Deprecated *bool `json:"deprecated,omitempty"`
+    Deprecated *bool `json:"deprecated,omitempty"`
 	// Predefined - Specifies if this performance policy is predefined (read-only).
- 	Predefined *bool `json:"predefined,omitempty"`
+    Predefined *bool `json:"predefined,omitempty"`
 	// CreationTime - Time when the performance policy was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when the performance policy's configurations were last modified.

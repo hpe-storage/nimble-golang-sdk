@@ -13,10 +13,9 @@ func init(){
 	DataIpfield:= "data_ip"
 		
 	NsNICFields= &NsNIC{
-	Name: &Namefield,
-	SubnetLabel: &SubnetLabelfield,
-	DataIp: &DataIpfield,
-		
+		Name:        &Namefield,
+		SubnetLabel: &SubnetLabelfield,
+		DataIp:      &DataIpfield,
 	}
 }
 
@@ -28,5 +27,5 @@ type NsNIC struct {
 	// DataIp - Data IP address.
  	DataIp *string `json:"data_ip,omitempty"`
 	// Tagged - Identify whether the NIC is tagged.
- 	Tagged *bool `json:"tagged,omitempty"`
+    Tagged *bool `json:"tagged,omitempty"`
 }

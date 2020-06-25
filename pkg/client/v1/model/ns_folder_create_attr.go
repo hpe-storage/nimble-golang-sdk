@@ -12,9 +12,8 @@ func init(){
 	PoolIdfield:= "pool_id"
 		
 	NsFolderCreateAttrFields= &NsFolderCreateAttr{
-	Name: &Namefield,
-	PoolId: &PoolIdfield,
-		
+		Name:   &Namefield,
+		PoolId: &PoolIdfield,
 	}
 }
 

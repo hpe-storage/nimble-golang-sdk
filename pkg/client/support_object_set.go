@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * View and alter support-based parameters.
- *
- */
+
+// View and alter support-based parameters.
 const (
     supportPath = "support"
 )
 
-/**
- * SupportObjectSet
-*/
+
+// SupportObjectSet
 type SupportObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -12,9 +12,8 @@ func init(){
 	SoftwareVersionfield:= "software_version"
 		
 	VersionFields= &Version{
-	Name: &Namefield,
-	SoftwareVersion: &SoftwareVersionfield,
-		
+		Name:            &Namefield,
+		SoftwareVersion: &SoftwareVersionfield,
 	}
 }
 

@@ -19,16 +19,15 @@ func init(){
 	SupportNicfield:= "support_nic"
 		
 	ControllerFields= &Controller{
-	ID: &IDfield,
-	Name: &Namefield,
-	ArrayName: &ArrayNamefield,
-	ArrayId: &ArrayIdfield,
-	Serial: &Serialfield,
-	Hostname: &Hostnamefield,
-	SupportAddress: &SupportAddressfield,
-	SupportNetmask: &SupportNetmaskfield,
-	SupportNic: &SupportNicfield,
-		
+		ID:                 &IDfield,
+		Name:               &Namefield,
+		ArrayName:          &ArrayNamefield,
+		ArrayId:            &ArrayIdfield,
+		Serial:             &Serialfield,
+		Hostname:           &Hostnamefield,
+		SupportAddress:     &SupportAddressfield,
+		SupportNetmask:     &SupportNetmaskfield,
+		SupportNic:         &SupportNicfield,
 	}
 }
 
@@ -42,7 +41,7 @@ type Controller struct {
 	// ArrayId - Rest ID of the array containing this controller.
  	ArrayId *string `json:"array_id,omitempty"`
 	// PartialResponseOk - Indicate that it is ok to provide partially available response.
- 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
+    PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 	// Serial - Serial number for this controller.
  	Serial *string `json:"serial,omitempty"`
 	// Hostname - Host name for the controller.

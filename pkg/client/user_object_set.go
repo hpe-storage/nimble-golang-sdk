@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Represents users configured to manage the system.
- *
- */
+
+// Represents users configured to manage the system.
 const (
     userPath = "users"
 )
 
-/**
- * UserObjectSet
-*/
+
+// UserObjectSet
 type UserObjectSet struct {
     Client *GroupMgmtClient
 }

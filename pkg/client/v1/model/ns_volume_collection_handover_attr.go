@@ -12,9 +12,8 @@ func init(){
 	ReplicationPartnerIdfield:= "replication_partner_id"
 		
 	NsVolumeCollectionHandoverAttrFields= &NsVolumeCollectionHandoverAttr{
-	ID: &IDfield,
-	ReplicationPartnerId: &ReplicationPartnerIdfield,
-		
+		ID:                    &IDfield,
+		ReplicationPartnerId:  &ReplicationPartnerIdfield,
 	}
 }
 
@@ -24,5 +23,5 @@ type NsVolumeCollectionHandoverAttr struct {
 	// ReplicationPartnerId - ID of the new owner.
  	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
 	// NoReverse - Do not automatically reverse direction of replication. Using this argument will prevent the new owner from automatically replicating the volume collection to this node when the handover completes. The default behavior is to enable replication back to this node. Default: 'false'.
- 	NoReverse *bool `json:"no_reverse,omitempty"`
+    NoReverse *bool `json:"no_reverse,omitempty"`
 }

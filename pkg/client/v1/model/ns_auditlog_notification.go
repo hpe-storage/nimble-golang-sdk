@@ -13,10 +13,9 @@ func init(){
 	ObjectNamefield:= "object_name"
 		
 	NsAuditlogNotificationFields= &NsAuditlogNotification{
-	Activity: &Activityfield,
-	ObjectId: &ObjectIdfield,
-	ObjectName: &ObjectNamefield,
-		
+		Activity:         &Activityfield,
+		ObjectId:         &ObjectIdfield,
+		ObjectName:       &ObjectNamefield,
 	}
 }
 

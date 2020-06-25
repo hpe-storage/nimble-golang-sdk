@@ -11,8 +11,7 @@ func init(){
 	ObjectTypefield:= "object_type"
 		
 	NsPrivilegeFields= &NsPrivilege{
-	ObjectType: &ObjectTypefield,
-		
+		ObjectType: &ObjectTypefield,
 	}
 }
 

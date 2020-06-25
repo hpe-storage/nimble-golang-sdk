@@ -16,13 +16,12 @@ func init(){
 	ModelExtfield:= "model_ext"
 		
 	ShelfFields= &Shelf{
-	ID: &IDfield,
-	ArrayName: &ArrayNamefield,
-	ArrayId: &ArrayIdfield,
-	Serial: &Serialfield,
-	Model: &Modelfield,
-	ModelExt: &ModelExtfield,
-		
+		ID:                  &IDfield,
+		ArrayName:           &ArrayNamefield,
+		ArrayId:             &ArrayIdfield,
+		Serial:              &Serialfield,
+		Model:               &Modelfield,
+		ModelExt:            &ModelExtfield,
 	}
 }
 
@@ -34,7 +33,7 @@ type Shelf struct {
 	// ArrayId - ID of array the shelf belongs to.
  	ArrayId *string `json:"array_id,omitempty"`
 	// PartialResponseOk - Indicate that it is okay to provide partially available response.
- 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
+    PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 	// ChassisType - Chassis type.
    	ChassisType *NsChassisType `json:"chassis_type,omitempty"`
 	// Ctrlrs - List of ctrlr info.
@@ -56,15 +55,15 @@ type Shelf struct {
 	// DiskSets - Attributes for the disk sets in this shelf.
    	DiskSets []*NsDiskSetAttr `json:"disk_sets,omitempty"`
 	// Activated - Activated state for shelf or disk set means it is available to store date on. An activated shelf may not be deactivated.
- 	Activated *bool `json:"activated,omitempty"`
+    Activated *bool `json:"activated,omitempty"`
 	// Driveset - Driveset to activate.
    	Driveset *int64 `json:"driveset,omitempty"`
 	// Force - Forcibly activate shelf.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 	// AcceptForeign - Accept the removal of data on the shelf disks and activate foreign shelf.
- 	AcceptForeign *bool `json:"accept_foreign,omitempty"`
+    AcceptForeign *bool `json:"accept_foreign,omitempty"`
 	// AcceptDedupeImpact - Accept the reduction or elimination of deduplication capability on the system as a result of activating a shelf that does not meet the necessary deduplication requirements.
- 	AcceptDedupeImpact *bool `json:"accept_dedupe_impact,omitempty"`
+    AcceptDedupeImpact *bool `json:"accept_dedupe_impact,omitempty"`
 	// LastRequest - Indicates this is the last request in a series of shelf add requests.
- 	LastRequest *bool `json:"last_request,omitempty"`
+    LastRequest *bool `json:"last_request,omitempty"`
 }

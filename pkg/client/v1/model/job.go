@@ -16,13 +16,12 @@ func init(){
 	ParentJobIdfield:= "parent_job_id"
 		
 	JobFields= &Job{
-	CurrentPhaseDescription: &CurrentPhaseDescriptionfield,
-	Description: &Descriptionfield,
-	ID: &IDfield,
-	Name: &Namefield,
-	ObjectId: &ObjectIdfield,
-	ParentJobId: &ParentJobIdfield,
-		
+		CurrentPhaseDescription:  &CurrentPhaseDescriptionfield,
+		Description:              &Descriptionfield,
+		ID:                       &IDfield,
+		Name:                     &Namefield,
+		ObjectId:                 &ObjectIdfield,
+		ParentJobId:              &ParentJobIdfield,
 	}
 }
 

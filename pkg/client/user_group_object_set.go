@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Represents Active Directory groups configured to manage the system.
- *
- */
+
+// Represents Active Directory groups configured to manage the system.
 const (
     userGroupPath = "user_groups"
 )
 
-/**
- * UserGroupObjectSet
-*/
+
+// UserGroupObjectSet
 type UserGroupObjectSet struct {
     Client *GroupMgmtClient
 }

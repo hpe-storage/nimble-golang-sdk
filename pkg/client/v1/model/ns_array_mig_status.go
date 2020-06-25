@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsArrayMigStatusFields= &NsArrayMigStatus{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:               &IDfield,
+		Name:             &Namefield,
 	}
 }
 
@@ -24,7 +23,7 @@ type NsArrayMigStatus struct {
 	// Name - Name of the array.
  	Name *string `json:"name,omitempty"`
 	// IsDataSource - Indicates whether the array is data source or not.
- 	IsDataSource *bool `json:"is_data_source,omitempty"`
+    IsDataSource *bool `json:"is_data_source,omitempty"`
 	// SpaceUtilization - Space utilization as a percentage of array size.
    	SpaceUtilization *int64 `json:"space_utilization,omitempty"`
 }

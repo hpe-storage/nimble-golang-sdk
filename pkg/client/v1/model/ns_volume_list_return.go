@@ -10,7 +10,6 @@ var NsVolumeListReturnFields *NsVolumeListReturn
 func init(){
 		
 	NsVolumeListReturnFields= &NsVolumeListReturn{
-		
 	}
 }
 

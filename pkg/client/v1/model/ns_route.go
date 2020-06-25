@@ -13,10 +13,9 @@ func init(){
 	Gatewayfield:= "gateway"
 		
 	NsRouteFields= &NsRoute{
-	TgtNetwork: &TgtNetworkfield,
-	TgtNetmask: &TgtNetmaskfield,
-	Gateway: &Gatewayfield,
-		
+		TgtNetwork: &TgtNetworkfield,
+		TgtNetmask: &TgtNetmaskfield,
+		Gateway:    &Gatewayfield,
 	}
 }
 

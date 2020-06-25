@@ -11,8 +11,7 @@ func init(){
 	ElementNamefield:= "element_name"
 		
 	NsHcfResultFields= &NsHcfResult{
-	ElementName: &ElementNamefield,
-		
+		ElementName: &ElementNamefield,
 	}
 }
 

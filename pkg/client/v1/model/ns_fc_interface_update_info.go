@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	NsFcInterfaceUpdateInfoFields= &NsFcInterfaceUpdateInfo{
-	ID: &IDfield,
-		
+		ID:    &IDfield,
 	}
 }
 
@@ -20,5 +19,5 @@ type NsFcInterfaceUpdateInfo struct {
 	// ID - ID of Fibre Channel interface.
  	ID *string `json:"id,omitempty"`
 	// Online - Identify whether the Fibre Channel interface is online.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 }

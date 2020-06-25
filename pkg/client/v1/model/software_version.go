@@ -16,13 +16,12 @@ func init(){
 	ReleaseStatusfield:= "release_status"
 		
 	SoftwareVersionFields= &SoftwareVersion{
-	Version: &Versionfield,
-	Signature: &Signaturefield,
-	Name: &Namefield,
-	Status: &Statusfield,
-	BlacklistReason: &BlacklistReasonfield,
-	ReleaseStatus: &ReleaseStatusfield,
-		
+		Version:               &Versionfield,
+		Signature:             &Signaturefield,
+		Name:                  &Namefield,
+		Status:                &Statusfield,
+		BlacklistReason:       &BlacklistReasonfield,
+		ReleaseStatus:         &ReleaseStatusfield,
 	}
 }
 
@@ -44,9 +43,9 @@ type SoftwareVersion struct {
 	// ReleaseDate - Date when software version was released.
    	ReleaseDate *int64 `json:"release_date,omitempty"`
 	// IsManuallyDownloaded - Whether or not the version was downloaded manually.
- 	IsManuallyDownloaded *bool `json:"is_manually_downloaded,omitempty"`
+    IsManuallyDownloaded *bool `json:"is_manually_downloaded,omitempty"`
 	// ReleaseStatus - Release status of software version.
  	ReleaseStatus *string `json:"release_status,omitempty"`
 	// NoPartialResponse - Indicate that it is not ok to provide partially available response.
- 	NoPartialResponse *bool `json:"no_partial_response,omitempty"`
+    NoPartialResponse *bool `json:"no_partial_response,omitempty"`
 }

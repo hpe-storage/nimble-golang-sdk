@@ -11,8 +11,7 @@ func init(){
 	Namefield:= "name"
 		
 	NsISCSIIQNFields= &NsISCSIIQN{
-	Name: &Namefield,
-		
+		Name:&Namefield,
 	}
 }
 

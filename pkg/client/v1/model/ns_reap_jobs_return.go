@@ -10,7 +10,6 @@ var NsReapJobsReturnFields *NsReapJobsReturn
 func init(){
 		
 	NsReapJobsReturnFields= &NsReapJobsReturn{
-		
 	}
 }
 

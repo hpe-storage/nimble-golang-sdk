@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Key Manager stores encryption keys for the array volumes / dedupe domains.
- *
- */
+
+// Key Manager stores encryption keys for the array volumes / dedupe domains.
 const (
     keyManagerPath = "key_managers"
 )
 
-/**
- * KeyManagerObjectSet
-*/
+
+// KeyManagerObjectSet
 type KeyManagerObjectSet struct {
     Client *GroupMgmtClient
 }

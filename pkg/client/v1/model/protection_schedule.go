@@ -24,21 +24,20 @@ func init(){
 	SchedOwnerNamefield:= "sched_owner_name"
 		
 	ProtectionScheduleFields= &ProtectionSchedule{
-	ID: &IDfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	VolcollOrProttmplId: &VolcollOrProttmplIdfield,
-	Days: &Daysfield,
-	DownstreamPartner: &DownstreamPartnerfield,
-	DownstreamPartnerName: &DownstreamPartnerNamefield,
-	DownstreamPartnerId: &DownstreamPartnerIdfield,
-	UpstreamPartnerName: &UpstreamPartnerNamefield,
-	UpstreamPartnerId: &UpstreamPartnerIdfield,
-	LastReplicatedSnapcollName: &LastReplicatedSnapcollNamefield,
-	LastReplicatedSnapcollId: &LastReplicatedSnapcollIdfield,
-	SchedOwnerId: &SchedOwnerIdfield,
-	SchedOwnerName: &SchedOwnerNamefield,
-		
+		ID:                           &IDfield,
+		Name:                         &Namefield,
+		Description:                  &Descriptionfield,
+		VolcollOrProttmplId:          &VolcollOrProttmplIdfield,
+		Days:                         &Daysfield,
+		DownstreamPartner:            &DownstreamPartnerfield,
+		DownstreamPartnerName:        &DownstreamPartnerNamefield,
+		DownstreamPartnerId:          &DownstreamPartnerIdfield,
+		UpstreamPartnerName:          &UpstreamPartnerNamefield,
+		UpstreamPartnerId:            &UpstreamPartnerIdfield,
+		LastReplicatedSnapcollName:   &LastReplicatedSnapcollNamefield,
+		LastReplicatedSnapcollId:     &LastReplicatedSnapcollIdfield,
+		SchedOwnerId:                 &SchedOwnerIdfield,
+		SchedOwnerName:               &SchedOwnerNamefield,
 	}
 }
 
@@ -82,15 +81,15 @@ type ProtectionSchedule struct {
 	// ReplAlertThres - Replication alert threshold in seconds. If the replication of a snapshot takes more than this amount of time to complete an alert will be generated. Enter 0 to disable this alert.
    	ReplAlertThres *int64 `json:"repl_alert_thres,omitempty"`
 	// SnapVerify - Run verification tool on snapshot created by this schedule. This option can only be used with snapshot schedules of a protection template that has application synchronization. The tool used to verify snapshot depends on the type of application. For example, if application synchronization is VSS and the application ID is Exchange, eseutil tool is run on the snapshots. If verification fails, the logs are not truncated.
- 	SnapVerify *bool `json:"snap_verify,omitempty"`
+    SnapVerify *bool `json:"snap_verify,omitempty"`
 	// SkipDbConsistencyCheck - Skip consistency check for database files on snapshots created by this schedule. This option only applies to snapshot schedules of a protection template with application synchronization set to VSS, application ID set to MS Exchange 2010 or later w/DAG, this schedule's snap_verify option set to yes, and its disable_appsync option set to false. Skipping consistency checks is only recommended if each database in a DAG has multiple copies.
- 	SkipDbConsistencyCheck *bool `json:"skip_db_consistency_check,omitempty"`
+    SkipDbConsistencyCheck *bool `json:"skip_db_consistency_check,omitempty"`
 	// DisableAppsync - Disables application synchronized snapshots and creates crash consistent snapshots instead.
- 	DisableAppsync *bool `json:"disable_appsync,omitempty"`
+    DisableAppsync *bool `json:"disable_appsync,omitempty"`
 	// ScheduleType - Normal schedules have internal timers which drive snapshot creation. An externally driven schedule has no internal timers. All snapshot activity is driven by an external trigger. In other words, these schedules are used only for externally driven manual snapshots.
    	ScheduleType *NsScheduleType `json:"schedule_type,omitempty"`
 	// Active - A schedule is active only if it is owned by the same owner as the volume collection. Only active schedules of a volume collection participate in the creation of snapshots and replication.
- 	Active *bool `json:"active,omitempty"`
+    Active *bool `json:"active,omitempty"`
 	// CreationTime - Time when this protection schedule was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this protection schedule was last modified.
@@ -122,5 +121,5 @@ type ProtectionSchedule struct {
 	// SyncReplVolStatusList - A list of the replication status of volumes undergoing synchronous replication.
    	SyncReplVolStatusList []*NsSyncReplVolStatus `json:"sync_repl_vol_status_list,omitempty"`
 	// UseDownstreamForDr - Break synchronous replication for the specified volume collection and present downstream volumes to host(s). Downstream volumes in the volume collection will be set to online and presented to the host(s) using new serial and LUN numbers. No changes will be made to the upstream volumes, their serial and LUN numbers, and their online state. The existing ACLs on the upstream volumes will be copied to the downstream volumes. Use this in conjunction with an empty downstream_partner_id. This unconfigures synchronous replication when the partner is removed from the last replicating schedule in the specified volume collection and presents the downstream volumes to host(s). Host(s) will need to be configured to access the new volumes with the newly assigned serial and LUN numbers. Use this option to expose downstream volumes in a synchronously replicated volume collection to host(s) only when the upstream partner is confirmed to be down and there is no communication between partners. Do not execute this operation if a previous Group Management Service takeover has been performed on a different array. Do not perform a subsequent Group Management Service takeover on a different array as it will lead to irreconcilable conflicts. This limitation is cleared once the Group management service backup array has successfully synchronized after reconnection.
- 	UseDownstreamForDr *bool `json:"use_downstream_for_dr,omitempty"`
+    UseDownstreamForDr *bool `json:"use_downstream_for_dr,omitempty"`
 }

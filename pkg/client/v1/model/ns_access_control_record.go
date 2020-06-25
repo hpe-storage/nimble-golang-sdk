@@ -22,19 +22,18 @@ func init(){
 	SnapNamefield:= "snap_name"
 		
 	NsAccessControlRecordFields= &NsAccessControlRecord{
-	ID: &IDfield,
-	AclId: &AclIdfield,
-	InitiatorGroupId: &InitiatorGroupIdfield,
-	InitiatorGroupName: &InitiatorGroupNamefield,
-	ChapUserId: &ChapUserIdfield,
-	ChapUserName: &ChapUserNamefield,
-	PeId: &PeIdfield,
-	PeName: &PeNamefield,
-	VolId: &VolIdfield,
-	VolName: &VolNamefield,
-	SnapId: &SnapIdfield,
-	SnapName: &SnapNamefield,
-		
+		ID:                  &IDfield,
+		AclId:               &AclIdfield,
+		InitiatorGroupId:    &InitiatorGroupIdfield,
+		InitiatorGroupName:  &InitiatorGroupNamefield,
+		ChapUserId:          &ChapUserIdfield,
+		ChapUserName:        &ChapUserNamefield,
+		PeId:                &PeIdfield,
+		PeName:              &PeNamefield,
+		VolId:               &VolIdfield,
+		VolName:             &VolNamefield,
+		SnapId:              &SnapIdfield,
+		SnapName:            &SnapNamefield,
 	}
 }
 

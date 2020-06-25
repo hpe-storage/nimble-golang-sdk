@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsArrayUnassignMigStatusFields= &NsArrayUnassignMigStatus{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:                       &IDfield,
+		Name:                     &Namefield,
 	}
 }
 

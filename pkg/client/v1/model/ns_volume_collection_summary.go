@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsVolumeCollectionSummaryFields= &NsVolumeCollectionSummary{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:  &IDfield,
+		Name:&Namefield,
 	}
 }
 

@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * View audit log.
- *
- */
+
+// View audit log.
 const (
     auditLogPath = "audit_log"
 )
 
-/**
- * AuditLogObjectSet
-*/
+
+// AuditLogObjectSet
 type AuditLogObjectSet struct {
     Client *GroupMgmtClient
 }

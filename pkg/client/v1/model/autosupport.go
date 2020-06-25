@@ -13,10 +13,9 @@ func init(){
 	GroupNamefield:= "group_name"
 		
 	AutosupportFields= &Autosupport{
-	ID: &IDfield,
-	GroupId: &GroupIdfield,
-	GroupName: &GroupNamefield,
-		
+		ID:         &IDfield,
+		GroupId:    &GroupIdfield,
+		GroupName:  &GroupNamefield,
 	}
 }
 

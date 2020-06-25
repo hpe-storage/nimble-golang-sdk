@@ -12,9 +12,8 @@ func init(){
 	Operationfield:= "operation"
 		
 	NsExtendedPrivilegeFields= &NsExtendedPrivilege{
-	ObjectType: &ObjectTypefield,
-	Operation: &Operationfield,
-		
+		ObjectType: &ObjectTypefield,
+		Operation:  &Operationfield,
 	}
 }
 
@@ -24,5 +23,5 @@ type NsExtendedPrivilege struct {
 	// Operation - Operation associated with the above object for this privilege.
  	Operation *string `json:"operation,omitempty"`
 	// Allow - Indicate whether the above operation is allowed for this privilege.
- 	Allow *bool `json:"allow,omitempty"`
+    Allow *bool `json:"allow,omitempty"`
 }

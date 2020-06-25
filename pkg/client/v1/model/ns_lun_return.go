@@ -10,7 +10,6 @@ var NsLunReturnFields *NsLunReturn
 func init(){
 		
 	NsLunReturnFields= &NsLunReturn{
-		
 	}
 }
 

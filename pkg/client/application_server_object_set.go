@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
- *
- */
+
+// An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 const (
     applicationServerPath = "application_servers"
 )
 
-/**
- * ApplicationServerObjectSet
-*/
+
+// ApplicationServerObjectSet
 type ApplicationServerObjectSet struct {
     Client *GroupMgmtClient
 }

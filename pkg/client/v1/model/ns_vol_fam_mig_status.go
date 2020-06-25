@@ -16,13 +16,12 @@ func init(){
 	DestPoolNamefield:= "dest_pool_name"
 		
 	NsVolFamMigStatusFields= &NsVolFamMigStatus{
-	RootVolId: &RootVolIdfield,
-	RootVolName: &RootVolNamefield,
-	SourcePoolId: &SourcePoolIdfield,
-	SourcePoolName: &SourcePoolNamefield,
-	DestPoolId: &DestPoolIdfield,
-	DestPoolName: &DestPoolNamefield,
-		
+		RootVolId:           &RootVolIdfield,
+		RootVolName:         &RootVolNamefield,
+		SourcePoolId:        &SourcePoolIdfield,
+		SourcePoolName:      &SourcePoolNamefield,
+		DestPoolId:          &DestPoolIdfield,
+		DestPoolName:        &DestPoolNamefield,
 	}
 }
 

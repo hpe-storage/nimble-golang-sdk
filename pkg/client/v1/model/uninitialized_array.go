@@ -17,14 +17,13 @@ func init(){
 	IpAddressfield:= "ip_address"
 		
 	UninitializedArrayFields= &UninitializedArray{
-	ID: &IDfield,
-	Serial: &Serialfield,
-	ArrayName: &ArrayNamefield,
-	Model: &Modelfield,
-	ModelStr: &ModelStrfield,
-	Version: &Versionfield,
-	IpAddress: &IpAddressfield,
-		
+		ID:               &IDfield,
+		Serial:           &Serialfield,
+		ArrayName:        &ArrayNamefield,
+		Model:            &Modelfield,
+		ModelStr:         &ModelStrfield,
+		Version:          &Versionfield,
+		IpAddress:        &IpAddressfield,
 	}
 }
 
@@ -48,5 +47,5 @@ type UninitializedArray struct {
 	// CountOfFcPorts - Number of Fibre Channel ports of the uninitialized array.
    	CountOfFcPorts *int64 `json:"count_of_fc_ports,omitempty"`
 	// AllFlash - True if it is an All-Flash array, False otherwise.
- 	AllFlash *bool `json:"all_flash,omitempty"`
+    AllFlash *bool `json:"all_flash,omitempty"`
 }

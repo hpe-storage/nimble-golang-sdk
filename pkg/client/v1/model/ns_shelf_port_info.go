@@ -14,11 +14,10 @@ func init(){
 	RemoteSasPhyIdfield:= "remote_sas_phy_id"
 		
 	NsShelfPortInfoFields= &NsShelfPortInfo{
-	PortName: &PortNamefield,
-	PortErrors: &PortErrorsfield,
-	RemoteSasAddr: &RemoteSasAddrfield,
-	RemoteSasPhyId: &RemoteSasPhyIdfield,
-		
+		PortName:         &PortNamefield,
+		PortErrors:       &PortErrorsfield,
+		RemoteSasAddr:    &RemoteSasAddrfield,
+		RemoteSasPhyId:   &RemoteSasPhyIdfield,
 	}
 }
 

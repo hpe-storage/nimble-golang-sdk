@@ -13,10 +13,9 @@ func init(){
 	ConnMessagefield:= "conn_message"
 		
 	NsGenericRespFields= &NsGenericResp{
-	GenericError: &GenericErrorfield,
-	GenericErrorMessage: &GenericErrorMessagefield,
-	ConnMessage: &ConnMessagefield,
-		
+		GenericError:         &GenericErrorfield,
+		GenericErrorMessage:  &GenericErrorMessagefield,
+		ConnMessage:          &ConnMessagefield,
 	}
 }
 
@@ -26,7 +25,7 @@ type NsGenericResp struct {
 	// GenericErrorMessage - Detailed error message from generic app server.
  	GenericErrorMessage *string `json:"generic_error_message,omitempty"`
 	// ConnStatusOk - Is the connection status OK.
- 	ConnStatusOk *bool `json:"conn_status_ok,omitempty"`
+    ConnStatusOk *bool `json:"conn_status_ok,omitempty"`
 	// ConnMessage - Detailed connection message.
  	ConnMessage *string `json:"conn_message,omitempty"`
 }

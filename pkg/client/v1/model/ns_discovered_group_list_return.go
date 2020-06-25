@@ -10,7 +10,6 @@ var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturn
 func init(){
 		
 	NsDiscoveredGroupListReturnFields= &NsDiscoveredGroupListReturn{
-		
 	}
 }
 

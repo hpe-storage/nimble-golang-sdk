@@ -21,18 +21,17 @@ func init(){
 	BusLocationfield:= "bus_location"
 		
 	FibreChannelInterfaceFields= &FibreChannelInterface{
-	ID: &IDfield,
-	ArrayNameOrSerial: &ArrayNameOrSerialfield,
-	ControllerName: &ControllerNamefield,
-	FcPortId: &FcPortIdfield,
-	Name: &Namefield,
-	Wwnn: &Wwnnfield,
-	Wwpn: &Wwpnfield,
-	Peerzone: &Peerzonefield,
-	FirmwareVersion: &FirmwareVersionfield,
-	FcPortName: &FcPortNamefield,
-	BusLocation: &BusLocationfield,
-		
+		ID:                  &IDfield,
+		ArrayNameOrSerial:   &ArrayNameOrSerialfield,
+		ControllerName:      &ControllerNamefield,
+		FcPortId:            &FcPortIdfield,
+		Name:                &Namefield,
+		Wwnn:                &Wwnnfield,
+		Wwpn:                &Wwpnfield,
+		Peerzone:            &Peerzonefield,
+		FirmwareVersion:     &FirmwareVersionfield,
+		FcPortName:          &FcPortNamefield,
+		BusLocation:         &BusLocationfield,
 	}
 }
 
@@ -42,7 +41,7 @@ type FibreChannelInterface struct {
 	// ArrayNameOrSerial - Name or serial number of array where the interface is hosted.
  	ArrayNameOrSerial *string `json:"array_name_or_serial,omitempty"`
 	// PartialResponseOk - Indicate that it is ok to provide partially available response.
- 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
+    PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 	// ControllerName - Name (A or B) of the controller where the interface is hosted.
  	ControllerName *string `json:"controller_name,omitempty"`
 	// FcPortId - ID of the port with which the interface is associated.
@@ -56,7 +55,7 @@ type FibreChannelInterface struct {
 	// Peerzone - Active peer zone for this Fibre Channel interface.
  	Peerzone *string `json:"peerzone,omitempty"`
 	// Online - Identify whether the Fibre Channel interface is online.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 	// FirmwareVersion - Version of the Fibre Channel firmware.
  	FirmwareVersion *string `json:"firmware_version,omitempty"`
 	// LogicalPortNumber - Logical port number for the Fibre Channel port.

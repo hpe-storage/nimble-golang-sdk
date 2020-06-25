@@ -14,11 +14,10 @@ func init(){
 	SnapNamefield:= "snap_name"
 		
 	NsSnapshotFromVolumesFields= &NsSnapshotFromVolumes{
-	ID: &IDfield,
-	SnapId: &SnapIdfield,
-	Name: &Namefield,
-	SnapName: &SnapNamefield,
-		
+		ID:       &IDfield,
+		SnapId:   &SnapIdfield,
+		Name:     &Namefield,
+		SnapName: &SnapNamefield,
 	}
 }
 

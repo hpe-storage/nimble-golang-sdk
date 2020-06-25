@@ -11,8 +11,7 @@ func init(){
 	ScopeNamefield:= "scope_name"
 		
 	NsObjectCountFields= &NsObjectCount{
-	ScopeName: &ScopeNamefield,
-		
+		ScopeName:                 &ScopeNamefield,
 	}
 }
 

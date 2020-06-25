@@ -1,11 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 package model
 
-
-/**
- * <p>Golang package for NsUpdateState Enum.</p>
- */
-
+// Golang package for NsUpdateState Enum.
+ 
 type NsUpdateState string 
 
 const (

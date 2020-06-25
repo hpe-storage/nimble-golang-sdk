@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage access control records for volumes.
- *
- */
+
+// Manage access control records for volumes.
 const (
     accessControlRecordPath = "access_control_records"
 )
 
-/**
- * AccessControlRecordObjectSet
-*/
+
+// AccessControlRecordObjectSet
 type AccessControlRecordObjectSet struct {
     Client *GroupMgmtClient
 }

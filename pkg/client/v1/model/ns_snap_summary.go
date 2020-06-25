@@ -12,9 +12,8 @@ func init(){
 	SnapNamefield:= "snap_name"
 		
 	NsSnapSummaryFields= &NsSnapSummary{
-	SnapId: &SnapIdfield,
-	SnapName: &SnapNamefield,
-		
+		SnapId:            &SnapIdfield,
+		SnapName:          &SnapNamefield,
 	}
 }
 

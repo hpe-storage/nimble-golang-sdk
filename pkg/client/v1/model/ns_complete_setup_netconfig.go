@@ -15,12 +15,11 @@ func init(){
 	MgmtNetmaskfield:= "mgmt_netmask"
 		
 	NsCompleteSetupNetconfigFields= &NsCompleteSetupNetconfig{
-	DiscoveryIp: &DiscoveryIpfield,
-	DiscoveryNetmask: &DiscoveryNetmaskfield,
-	MgmtIp: &MgmtIpfield,
-	SecondaryMgmtIp: &SecondaryMgmtIpfield,
-	MgmtNetmask: &MgmtNetmaskfield,
-		
+		DiscoveryIp:                      &DiscoveryIpfield,
+		DiscoveryNetmask:                 &DiscoveryNetmaskfield,
+		MgmtIp:                           &MgmtIpfield,
+		SecondaryMgmtIp:                  &SecondaryMgmtIpfield,
+		MgmtNetmask:                      &MgmtNetmaskfield,
 	}
 }
 
@@ -38,9 +37,9 @@ type NsCompleteSetupNetconfig struct {
 	// MgmtNetmask - The netmask of the management IP address of the group.
  	MgmtNetmask *string `json:"mgmt_netmask,omitempty"`
 	// IscsiAutomaticConnectionMethod - Iscsi has atomatic connection method.
- 	IscsiAutomaticConnectionMethod *bool `json:"iscsi_automatic_connection_method,omitempty"`
+    IscsiAutomaticConnectionMethod *bool `json:"iscsi_automatic_connection_method,omitempty"`
 	// IscsiConnectionRebalancing - Iscsi connection rebalanced.
- 	IscsiConnectionRebalancing *bool `json:"iscsi_connection_rebalancing,omitempty"`
+    IscsiConnectionRebalancing *bool `json:"iscsi_connection_rebalancing,omitempty"`
 	// RouteList - Network route list.
    	RouteList []*NsRoute `json:"route_list,omitempty"`
 	// SubnetList - Subnet list.

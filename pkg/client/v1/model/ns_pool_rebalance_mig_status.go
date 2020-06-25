@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	NsPoolRebalanceMigStatusFields= &NsPoolRebalanceMigStatus{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:                         &IDfield,
+		Name:                       &Namefield,
 	}
 }
 

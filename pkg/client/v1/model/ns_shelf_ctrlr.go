@@ -12,9 +12,8 @@ func init(){
 	CachedSerialfield:= "cached_serial"
 		
 	NsShelfCtrlrFields= &NsShelfCtrlr{
-	ExpSasAddr: &ExpSasAddrfield,
-	CachedSerial: &CachedSerialfield,
-		
+		ExpSasAddr:           &ExpSasAddrfield,
+		CachedSerial:         &CachedSerialfield,
 	}
 }
 
@@ -30,7 +29,7 @@ type NsShelfCtrlr struct {
 	// CtrlrSensorLastRun - The time of last valid sensor reading, in epoch seconds.
    	CtrlrSensorLastRun *int64 `json:"ctrlr_sensor_last_run,omitempty"`
 	// HwMshipFailure - SES device hardware mastership failure.
- 	HwMshipFailure *bool `json:"hw_mship_failure,omitempty"`
+    HwMshipFailure *bool `json:"hw_mship_failure,omitempty"`
 	// HwMasterState - SES device hardware mastership state.
    	HwMasterState *NsShelfSesMasterHwState `json:"hw_master_state,omitempty"`
 	// SwMasterState - SES device software mastership state.
@@ -50,5 +49,5 @@ type NsShelfCtrlr struct {
 	// CtrlrAttrsetList - List of ctrlr attribute set for each logical controller.
    	CtrlrAttrsetList []*NsShelfCtrlrAttrSet `json:"ctrlr_attrset_list,omitempty"`
 	// IDentifyStatus - Status of chassis identifier.
- 	IDentifyStatus *bool `json:"identify_status,omitempty"`
+    IDentifyStatus *bool `json:"identify_status,omitempty"`
 }

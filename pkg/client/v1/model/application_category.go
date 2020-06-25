@@ -12,9 +12,8 @@ func init(){
 	Namefield:= "name"
 		
 	ApplicationCategoryFields= &ApplicationCategory{
-	ID: &IDfield,
-	Name: &Namefield,
-		
+		ID:            &IDfield,
+		Name:          &Namefield,
 	}
 }
 
@@ -24,7 +23,7 @@ type ApplicationCategory struct {
 	// Name - Name of application category.
  	Name *string `json:"name,omitempty"`
 	// DedupeEnabled - Specifies if dedupe is enabled for performance policies associated with this application category.
- 	DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
+    DedupeEnabled *bool `json:"dedupe_enabled,omitempty"`
 	// CreationTime - Time when this application category was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this application category was last modified.

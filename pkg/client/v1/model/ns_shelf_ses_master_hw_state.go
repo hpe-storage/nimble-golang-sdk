@@ -1,11 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 package model
 
-
-/**
- * <p>Golang package for NsShelfSesMasterHwState Enum.</p>
- */
-
+// Golang package for NsShelfSesMasterHwState Enum.
+ 
 type NsShelfSesMasterHwState string 
 
 const (

@@ -11,8 +11,7 @@ func init(){
 	IpAddrfield:= "ip_addr"
 		
 	NsIPAddressObjectFields= &NsIPAddressObject{
-	IpAddr: &IpAddrfield,
-		
+		IpAddr: &IpAddrfield,
 	}
 }
 

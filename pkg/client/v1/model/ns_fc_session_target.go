@@ -16,13 +16,12 @@ func init(){
 	TargetFcidfield:= "target_fcid"
 		
 	NsFcSessionTargetFields= &NsFcSessionTarget{
-	TargetPortArrayName: &TargetPortArrayNamefield,
-	TargetPortCtrlrName: &TargetPortCtrlrNamefield,
-	TargetPortInterfaceName: &TargetPortInterfaceNamefield,
-	TargetWwnn: &TargetWwnnfield,
-	TargetWwpn: &TargetWwpnfield,
-	TargetFcid: &TargetFcidfield,
-		
+		TargetPortArrayName:       &TargetPortArrayNamefield,
+		TargetPortCtrlrName:       &TargetPortCtrlrNamefield,
+		TargetPortInterfaceName:   &TargetPortInterfaceNamefield,
+		TargetWwnn:                &TargetWwnnfield,
+		TargetWwpn:                &TargetWwpnfield,
+		TargetFcid:                &TargetFcidfield,
 	}
 }
 

@@ -14,11 +14,10 @@ func init(){
 	NewPassphrasefield:= "new_passphrase"
 		
 	MasterKeyFields= &MasterKey{
-	ID: &IDfield,
-	Name: &Namefield,
-	Passphrase: &Passphrasefield,
-	NewPassphrase: &NewPassphrasefield,
-		
+		ID:            &IDfield,
+		Name:          &Namefield,
+		Passphrase:    &Passphrasefield,
+		NewPassphrase: &NewPassphrasefield,
 	}
 }
 
@@ -32,7 +31,7 @@ type MasterKey struct {
 	// NewPassphrase - When changing the passphrase, this attribute specifies the new value of the passphrase.
  	NewPassphrase *string `json:"new_passphrase,omitempty"`
 	// Active - Whether the master key is active or not.
- 	Active *bool `json:"active,omitempty"`
+    Active *bool `json:"active,omitempty"`
 	// PurgeAge - Default minimum age (in hours) of inactive encryption keys to be purged. '0' indicates to purge keys immediately.
   	PurgeAge  *int64 `json:"purge_age,omitempty"`
 }

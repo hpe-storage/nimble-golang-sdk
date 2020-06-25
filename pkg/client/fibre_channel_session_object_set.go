@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Fibre Channel session is created when Fibre Channel initiator connects to this group.
- *
- */
+
+// Fibre Channel session is created when Fibre Channel initiator connects to this group.
 const (
     fibreChannelSessionPath = "fibre_channel_sessions"
 )
 
-/**
- * FibreChannelSessionObjectSet
-*/
+
+// FibreChannelSessionObjectSet
 type FibreChannelSessionObjectSet struct {
     Client *GroupMgmtClient
 }

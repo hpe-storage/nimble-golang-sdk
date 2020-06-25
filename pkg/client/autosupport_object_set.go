@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Get status of autosupport.
- *
- */
+
+// Get status of autosupport.
 const (
     autosupportPath = "autosupport"
 )
 
-/**
- * AutosupportObjectSet
-*/
+
+// AutosupportObjectSet
 type AutosupportObjectSet struct {
     Client *GroupMgmtClient
 }

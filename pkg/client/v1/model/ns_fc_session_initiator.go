@@ -18,15 +18,14 @@ func init(){
 	InitiatorFcidfield:= "initiator_fcid"
 		
 	NsFcSessionInitiatorFields= &NsFcSessionInitiator{
-	InitiatorAlias: &InitiatorAliasfield,
-	InitiatorWwpn: &InitiatorWwpnfield,
-	InitiatorWwnn: &InitiatorWwnnfield,
-	InitiatorSwitchName: &InitiatorSwitchNamefield,
-	InitiatorSwitchPort: &InitiatorSwitchPortfield,
-	InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-	InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-	InitiatorFcid: &InitiatorFcidfield,
-		
+		InitiatorAlias:             &InitiatorAliasfield,
+		InitiatorWwpn:              &InitiatorWwpnfield,
+		InitiatorWwnn:              &InitiatorWwnnfield,
+		InitiatorSwitchName:        &InitiatorSwitchNamefield,
+		InitiatorSwitchPort:        &InitiatorSwitchPortfield,
+		InitiatorSymbolicPortname:  &InitiatorSymbolicPortnamefield,
+		InitiatorSymbolicNodename:  &InitiatorSymbolicNodenamefield,
+		InitiatorFcid:              &InitiatorFcidfield,
 	}
 }
 

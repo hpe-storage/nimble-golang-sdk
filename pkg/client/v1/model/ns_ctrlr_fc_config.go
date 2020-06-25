@@ -10,7 +10,6 @@ var NsCtrlrFcConfigFields *NsCtrlrFcConfig
 func init(){
 		
 	NsCtrlrFcConfigFields= &NsCtrlrFcConfig{
-		
 	}
 }
 

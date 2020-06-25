@@ -27,24 +27,23 @@ func init(){
 	VpdIeee1field:= "vpd_ieee1"
 		
 	SnapshotFields= &Snapshot{
-	ID: &IDfield,
-	Name: &Namefield,
-	Description: &Descriptionfield,
-	VolName: &VolNamefield,
-	PoolName: &PoolNamefield,
-	VolId: &VolIdfield,
-	SnapCollectionName: &SnapCollectionNamefield,
-	SnapCollectionId: &SnapCollectionIdfield,
-	OriginName: &OriginNamefield,
-	SerialNumber: &SerialNumberfield,
-	TargetName: &TargetNamefield,
-	ScheduleName: &ScheduleNamefield,
-	ScheduleId: &ScheduleIdfield,
-	AppUuid: &AppUuidfield,
-	VpdT10: &VpdT10field,
-	VpdIeee0: &VpdIeee0field,
-	VpdIeee1: &VpdIeee1field,
-		
+		ID:                         &IDfield,
+		Name:                       &Namefield,
+		Description:                &Descriptionfield,
+		VolName:                    &VolNamefield,
+		PoolName:                   &PoolNamefield,
+		VolId:                      &VolIdfield,
+		SnapCollectionName:         &SnapCollectionNamefield,
+		SnapCollectionId:           &SnapCollectionIdfield,
+		OriginName:                 &OriginNamefield,
+		SerialNumber:               &SerialNumberfield,
+		TargetName:                 &TargetNamefield,
+		ScheduleName:               &ScheduleNamefield,
+		ScheduleId:                 &ScheduleIdfield,
+		AppUuid:                    &AppUuidfield,
+		VpdT10:                     &VpdT10field,
+		VpdIeee0:                   &VpdIeee0field,
+		VpdIeee1:                   &VpdIeee1field,
 	}
 }
 
@@ -68,9 +67,9 @@ type Snapshot struct {
 	// SnapCollectionId - Identifier of snapshot collection.
  	SnapCollectionId *string `json:"snap_collection_id,omitempty"`
 	// Online - Online state for a snapshot means it could be mounted for data restore.
- 	Online *bool `json:"online,omitempty"`
+    Online *bool `json:"online,omitempty"`
 	// Writable - Allow snapshot to be writable. Mandatory and must be set to 'true' for VSS application synchronized snapshots.
- 	Writable *bool `json:"writable,omitempty"`
+    Writable *bool `json:"writable,omitempty"`
 	// OfflineReason - Snapshot offline reason - possible entries: one of 'user', 'recovery', 'replica', 'over_volume_limit', 'over_snapshot_limit', 'over_volume_reserve', 'nvram_loss_recovery', 'pool_free_space_exhausted' .
    	OfflineReason *NsOfflineReason `json:"offline_reason,omitempty"`
 	// ExpiryTime - Unix timestamp indicating that the snapshot is considered expired by Snapshot Time-to-live(TTL). A value of 0 indicates that snapshot never expires.
@@ -80,11 +79,11 @@ type Snapshot struct {
 	// OriginName - Origination group name.
  	OriginName *string `json:"origin_name,omitempty"`
 	// IsReplica - Snapshot is a replica from upstream replication partner.
- 	IsReplica *bool `json:"is_replica,omitempty"`
+    IsReplica *bool `json:"is_replica,omitempty"`
 	// IsUnmanaged - Indicates whether the snapshot is unmanaged. The snapshot will not be deleted automatically unless the unmanaged cleanup feature is enabled.
- 	IsUnmanaged *bool `json:"is_unmanaged,omitempty"`
+    IsUnmanaged *bool `json:"is_unmanaged,omitempty"`
 	// IsManuallyManaged - Is snapshot manually managed, i.e., snapshot is manually or third party created or created by system at the time of volume restore or resize.
- 	IsManuallyManaged *bool `json:"is_manually_managed,omitempty"`
+    IsManuallyManaged *bool `json:"is_manually_managed,omitempty"`
 	// ReplicationStatus - Replication status.
    	ReplicationStatus *NsSnapReplStatus `json:"replication_status,omitempty"`
 	// AccessControlRecords - List of access control records that apply to this snapshot.
@@ -106,7 +105,7 @@ type Snapshot struct {
 	// Metadata - Key-value pairs that augment a snapshot's attributes.
    	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 	// NewDataValid - Indicate the usage infomation is valid.
- 	NewDataValid *bool `json:"new_data_valid,omitempty"`
+    NewDataValid *bool `json:"new_data_valid,omitempty"`
 	// NewDataCompressedBytes - The bytes of compressed new data.
    	NewDataCompressedBytes *int64 `json:"new_data_compressed_bytes,omitempty"`
 	// NewDataUncompressedBytes - The bytes of uncompressed new data.
@@ -120,5 +119,5 @@ type Snapshot struct {
 	// VpdIeee1 - The last 64 bits of the snapshots's EUI-64 identifier, encoded as a hexadecimal string.
  	VpdIeee1 *string `json:"vpd_ieee1,omitempty"`
 	// Force - Forcibly delete the specified snapshot even if it is the last replicated collection. Doing so could lead to full re-seeding at the next replication.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 }

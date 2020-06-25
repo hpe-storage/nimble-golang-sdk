@@ -10,7 +10,6 @@ var NsObjectNameListWithTypeFields *NsObjectNameListWithType
 func init(){
 		
 	NsObjectNameListWithTypeFields= &NsObjectNameListWithType{
-		
 	}
 }
 

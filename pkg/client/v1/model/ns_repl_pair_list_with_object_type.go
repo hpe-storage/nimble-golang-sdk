@@ -10,7 +10,6 @@ var NsReplPairListWithObjectTypeFields *NsReplPairListWithObjectType
 func init(){
 		
 	NsReplPairListWithObjectTypeFields= &NsReplPairListWithObjectType{
-		
 	}
 }
 

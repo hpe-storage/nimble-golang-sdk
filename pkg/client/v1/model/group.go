@@ -45,42 +45,41 @@ func init(){
 	LoginBannerMessagefield:= "login_banner_message"
 		
 	GroupFields= &Group{
-	ID: &IDfield,
-	Name: &Namefield,
-	SmtpServer: &SmtpServerfield,
-	SmtpAuthUsername: &SmtpAuthUsernamefield,
-	SmtpAuthPassword: &SmtpAuthPasswordfield,
-	ProxyServer: &ProxyServerfield,
-	ProxyUsername: &ProxyUsernamefield,
-	ProxyPassword: &ProxyPasswordfield,
-	AlertToEmailAddrs: &AlertToEmailAddrsfield,
-	AlertFromEmailAddr: &AlertFromEmailAddrfield,
-	IsnsServer: &IsnsServerfield,
-	SnmpTrapHost: &SnmpTrapHostfield,
-	SnmpCommunity: &SnmpCommunityfield,
-	SnmpSysContact: &SnmpSysContactfield,
-	SnmpSysLocation: &SnmpSysLocationfield,
-	DomainName: &DomainNamefield,
-	NtpServer: &NtpServerfield,
-	Timezone: &Timezonefield,
-	SyslogdServer: &SyslogdServerfield,
-	TdzPrefix: &TdzPrefixfield,
-	GroupTargetName: &GroupTargetNamefield,
-	MergeGroupName: &MergeGroupNamefield,
-	LeaderArrayName: &LeaderArrayNamefield,
-	LeaderArraySerial: &LeaderArraySerialfield,
-	ManagementServiceBackupArrayName: &ManagementServiceBackupArrayNamefield,
-	VersionCurrent: &VersionCurrentfield,
-	VersionTarget: &VersionTargetfield,
-	VersionRollback: &VersionRollbackfield,
-	UpdateArrayNames: &UpdateArrayNamesfield,
-	UpdateProgressMsg: &UpdateProgressMsgfield,
-	UpdateErrorCode: &UpdateErrorCodefield,
-	UpdateDownloadErrorCode: &UpdateDownloadErrorCodefield,
-	ScsiVendorId: &ScsiVendorIdfield,
-	LastLogin: &LastLoginfield,
-	LoginBannerMessage: &LoginBannerMessagefield,
-		
+		ID:                                    &IDfield,
+		Name:                                  &Namefield,
+		SmtpServer:                            &SmtpServerfield,
+		SmtpAuthUsername:                      &SmtpAuthUsernamefield,
+		SmtpAuthPassword:                      &SmtpAuthPasswordfield,
+		ProxyServer:                           &ProxyServerfield,
+		ProxyUsername:                         &ProxyUsernamefield,
+		ProxyPassword:                         &ProxyPasswordfield,
+		AlertToEmailAddrs:                     &AlertToEmailAddrsfield,
+		AlertFromEmailAddr:                    &AlertFromEmailAddrfield,
+		IsnsServer:                            &IsnsServerfield,
+		SnmpTrapHost:                          &SnmpTrapHostfield,
+		SnmpCommunity:                         &SnmpCommunityfield,
+		SnmpSysContact:                        &SnmpSysContactfield,
+		SnmpSysLocation:                       &SnmpSysLocationfield,
+		DomainName:                            &DomainNamefield,
+		NtpServer:                             &NtpServerfield,
+		Timezone:                              &Timezonefield,
+		SyslogdServer:                         &SyslogdServerfield,
+		TdzPrefix:                             &TdzPrefixfield,
+		GroupTargetName:                       &GroupTargetNamefield,
+		MergeGroupName:                        &MergeGroupNamefield,
+		LeaderArrayName:                       &LeaderArrayNamefield,
+		LeaderArraySerial:                     &LeaderArraySerialfield,
+		ManagementServiceBackupArrayName:      &ManagementServiceBackupArrayNamefield,
+		VersionCurrent:                        &VersionCurrentfield,
+		VersionTarget:                         &VersionTargetfield,
+		VersionRollback:                       &VersionRollbackfield,
+		UpdateArrayNames:                      &UpdateArrayNamesfield,
+		UpdateProgressMsg:                     &UpdateProgressMsgfield,
+		UpdateErrorCode:                       &UpdateErrorCodefield,
+		UpdateDownloadErrorCode:               &UpdateDownloadErrorCodefield,
+		ScsiVendorId:                          &ScsiVendorIdfield,
+		LastLogin:                             &LastLoginfield,
+		LoginBannerMessage:                    &LoginBannerMessagefield,
 	}
 }
 
@@ -94,7 +93,7 @@ type Group struct {
 	// SmtpPort - Port number of SMTP Server.
    	SmtpPort *int64 `json:"smtp_port,omitempty"`
 	// SmtpAuthEnabled - Whether SMTP Server requires authentication.
- 	SmtpAuthEnabled *bool `json:"smtp_auth_enabled,omitempty"`
+    SmtpAuthEnabled *bool `json:"smtp_auth_enabled,omitempty"`
 	// SmtpAuthUsername - Username to authenticate with SMTP Server.
  	SmtpAuthUsername *string `json:"smtp_auth_username,omitempty"`
 	// SmtpAuthPassword - Password to authenticate with SMTP Server.
@@ -102,11 +101,11 @@ type Group struct {
 	// SmtpEncryptType - Level of encryption for SMTP. Requires use of SMTP Authentication if encryption is enabled.
    	SmtpEncryptType *NsSmtpEncryptType `json:"smtp_encrypt_type,omitempty"`
 	// AutosupportEnabled - Whether to send autosupport.
- 	AutosupportEnabled *bool `json:"autosupport_enabled,omitempty"`
+    AutosupportEnabled *bool `json:"autosupport_enabled,omitempty"`
 	// AllowAnalyticsGui - Specify whether to allow HPE Nimble Storage to use Google Analytics in the GUI.  HPE Nimble Storage uses Google Analytics to gather data related to GUI usage.  The data gathered is used to evaluate and improve the product.
- 	AllowAnalyticsGui *bool `json:"allow_analytics_gui,omitempty"`
+    AllowAnalyticsGui *bool `json:"allow_analytics_gui,omitempty"`
 	// AllowSupportTunnel - Whether to allow support tunnel.
- 	AllowSupportTunnel *bool `json:"allow_support_tunnel,omitempty"`
+    AllowSupportTunnel *bool `json:"allow_support_tunnel,omitempty"`
 	// ProxyServer - Hostname or IP Address of HTTP Proxy Server. Setting this attribute to an empty string will unset all proxy settings.
  	ProxyServer *string `json:"proxy_server,omitempty"`
 	// ProxyPort - Proxy Port of HTTP Proxy Server.
@@ -118,25 +117,25 @@ type Group struct {
 	// AlertToEmailAddrs - Comma-separated list of email addresss to receive emails.
  	AlertToEmailAddrs *string `json:"alert_to_email_addrs,omitempty"`
 	// SendAlertToSupport - Whether to send alert to Support.
- 	SendAlertToSupport *bool `json:"send_alert_to_support,omitempty"`
+    SendAlertToSupport *bool `json:"send_alert_to_support,omitempty"`
 	// AlertFromEmailAddr - From email address to use while sending emails.
  	AlertFromEmailAddr *string `json:"alert_from_email_addr,omitempty"`
 	// AlertMinLevel - Minimum level of alert to be notified.
    	AlertMinLevel *NsSeverityLevel `json:"alert_min_level,omitempty"`
 	// IsnsEnabled - Whether iSNS is enabled.
- 	IsnsEnabled *bool `json:"isns_enabled,omitempty"`
+    IsnsEnabled *bool `json:"isns_enabled,omitempty"`
 	// IsnsServer - Hostname or IP Address of iSNS Server.
  	IsnsServer *string `json:"isns_server,omitempty"`
 	// IsnsPort - Port number for iSNS Server.
    	IsnsPort *int64 `json:"isns_port,omitempty"`
 	// SnmpTrapEnabled - Whether to enable SNMP traps.
- 	SnmpTrapEnabled *bool `json:"snmp_trap_enabled,omitempty"`
+    SnmpTrapEnabled *bool `json:"snmp_trap_enabled,omitempty"`
 	// SnmpTrapHost - Hostname or IP Address to send SNMP traps.
  	SnmpTrapHost *string `json:"snmp_trap_host,omitempty"`
 	// SnmpTrapPort - Port number of SNMP trap host.
    	SnmpTrapPort *int64 `json:"snmp_trap_port,omitempty"`
 	// SnmpGetEnabled - Whether to accept SNMP get commands.
- 	SnmpGetEnabled *bool `json:"snmp_get_enabled,omitempty"`
+    SnmpGetEnabled *bool `json:"snmp_get_enabled,omitempty"`
 	// SnmpCommunity - Community string to be used with SNMP.
  	SnmpCommunity *string `json:"snmp_community,omitempty"`
 	// SnmpGetPort - Port number to which SNMP get requests should be sent.
@@ -156,27 +155,27 @@ type Group struct {
 	// UserInactivityTimeout - The amount of time in seconds that the user session is inactive before timing out.
    	UserInactivityTimeout *int64 `json:"user_inactivity_timeout,omitempty"`
 	// SyslogdEnabled - Is syslogd enabled on this system.
- 	SyslogdEnabled *bool `json:"syslogd_enabled,omitempty"`
+    SyslogdEnabled *bool `json:"syslogd_enabled,omitempty"`
 	// SyslogdServer - Hostname of the syslogd server.
  	SyslogdServer *string `json:"syslogd_server,omitempty"`
 	// SyslogdPort - Port number for syslogd server.
    	SyslogdPort *int64 `json:"syslogd_port,omitempty"`
 	// VvolEnabled - Are vvols enabled on this group.
- 	VvolEnabled *bool `json:"vvol_enabled,omitempty"`
+    VvolEnabled *bool `json:"vvol_enabled,omitempty"`
 	// IscsiEnabled - Whether iSCSI is enabled on this group.
- 	IscsiEnabled *bool `json:"iscsi_enabled,omitempty"`
+    IscsiEnabled *bool `json:"iscsi_enabled,omitempty"`
 	// FcEnabled - Whether FC is enabled on this group.
- 	FcEnabled *bool `json:"fc_enabled,omitempty"`
+    FcEnabled *bool `json:"fc_enabled,omitempty"`
 	// UniqueNameEnabled - Are new volume and volume collection names transformed on this group.
- 	UniqueNameEnabled *bool `json:"unique_name_enabled,omitempty"`
+    UniqueNameEnabled *bool `json:"unique_name_enabled,omitempty"`
 	// AccessProtocolList - Protocol used to access this group.
 	AccessProtocolList []*NsAccessProtocol `json:"access_protocol_list,omitempty"`
 	// GroupTargetEnabled - Is group_target enabled on this group.
- 	GroupTargetEnabled *bool `json:"group_target_enabled,omitempty"`
+    GroupTargetEnabled *bool `json:"group_target_enabled,omitempty"`
 	// DefaultIscsiTargetScope - Newly created volumes are exported under iSCSI Group Target or iSCSI Volume Target.
    	DefaultIscsiTargetScope *NsTargetScope `json:"default_iscsi_target_scope,omitempty"`
 	// TdzEnabled - Is Target Driven Zoning (TDZ) enabled on this group.
- 	TdzEnabled *bool `json:"tdz_enabled,omitempty"`
+    TdzEnabled *bool `json:"tdz_enabled,omitempty"`
 	// TdzPrefix - Target Driven Zoning (TDZ) prefix for peer zones created by TDZ.
  	TdzPrefix *string `json:"tdz_prefix,omitempty"`
 	// GroupTargetName - Iscsi target name for this group.
@@ -196,11 +195,11 @@ type Group struct {
 	// DefaultSnapLimitPercent - This attribute is deprecated. The array does not limit a volume's snapshot space usage. The attribute is ignored on input and returns -1 on output.
   	DefaultSnapLimitPercent  *int64 `json:"default_snap_limit_percent,omitempty"`
 	// AlarmsEnabled - Whether alarm feature is enabled.
- 	AlarmsEnabled *bool `json:"alarms_enabled,omitempty"`
+    AlarmsEnabled *bool `json:"alarms_enabled,omitempty"`
 	// VssValidationTimeout - The amount of time in seconds to validate Microsoft VSS application synchronization before timing out.
    	VssValidationTimeout *int64 `json:"vss_validation_timeout,omitempty"`
 	// AutoSwitchoverEnabled - Whether automatic switchover of Group management services feature is enabled.
- 	AutoSwitchoverEnabled *bool `json:"auto_switchover_enabled,omitempty"`
+    AutoSwitchoverEnabled *bool `json:"auto_switchover_enabled,omitempty"`
 	// AutoSwitchoverMessages - List of validation messages for automatic switchover of Group Management. This will be empty when there are no conflicts found.
    	AutoSwitchoverMessages []*NsErrorWithArguments `json:"auto_switchover_messages,omitempty"`
 	// MergeState - State of group merge.
@@ -208,15 +207,15 @@ type Group struct {
 	// MergeGroupName - Group that we're being merged with.
  	MergeGroupName *string `json:"merge_group_name,omitempty"`
 	// Tlsv1Enabled - Enable or disable TLSv1.0 and TLSv1.1.
- 	Tlsv1Enabled *bool `json:"tlsv1_enabled,omitempty"`
+    Tlsv1Enabled *bool `json:"tlsv1_enabled,omitempty"`
 	// CcModeEnabled - Enable or disable Common Criteria mode.
- 	CcModeEnabled *bool `json:"cc_mode_enabled,omitempty"`
+    CcModeEnabled *bool `json:"cc_mode_enabled,omitempty"`
 	// GroupSnapshotTtl - Snapshot Time-to-live(TTL) configured at group level for automatic deletion of unmanaged snapshots. Value 0 indicates unlimited TTL.
   	GroupSnapshotTtl  *int64 `json:"group_snapshot_ttl,omitempty"`
 	// AutocleanUnmanagedSnapshotsTtlUnit - Unit for unmanaged snapshot time to live.
    	AutocleanUnmanagedSnapshotsTtlUnit *int64 `json:"autoclean_unmanaged_snapshots_ttl_unit,omitempty"`
 	// AutocleanUnmanagedSnapshotsEnabled - Whether autoclean unmanaged snapshots feature is enabled.
- 	AutocleanUnmanagedSnapshotsEnabled *bool `json:"autoclean_unmanaged_snapshots_enabled,omitempty"`
+    AutocleanUnmanagedSnapshotsEnabled *bool `json:"autoclean_unmanaged_snapshots_enabled,omitempty"`
 	// LeaderArrayName - Name of the array where the group Management Service is running.
  	LeaderArrayName *string `json:"leader_array_name,omitempty"`
 	// LeaderArraySerial - Serial number of the array where the group Management Service is running.
@@ -288,9 +287,9 @@ type Group struct {
 	// UnusedReserveBytes - Reserved space that is not utilized.
    	UnusedReserveBytes *int64 `json:"unused_reserve_bytes,omitempty"`
 	// UsageValid - Indicates whether the usage of group is valid.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// SpaceInfoValid - Is space info for this group valid.
- 	SpaceInfoValid *bool `json:"space_info_valid,omitempty"`
+    SpaceInfoValid *bool `json:"space_info_valid,omitempty"`
 	// VersionCurrent - Version of software running on the group.
  	VersionCurrent *string `json:"version_current,omitempty"`
 	// VersionTarget - Desired software version for the group.
@@ -310,7 +309,7 @@ type Group struct {
 	// UpdateErrorCode - If the software update has failed, this indicates the error code corresponding to the failure.
  	UpdateErrorCode *string `json:"update_error_code,omitempty"`
 	// UpdateDownloading - Is software update package currently downloading.
- 	UpdateDownloading *bool `json:"update_downloading,omitempty"`
+    UpdateDownloading *bool `json:"update_downloading,omitempty"`
 	// UpdateDownloadErrorCode - If the software download has failed, this indicates the error code corresponding to the failure.
  	UpdateDownloadErrorCode *string `json:"update_download_error_code,omitempty"`
 	// UpdateDownloadStartTime - Start time of last update.
@@ -318,9 +317,9 @@ type Group struct {
 	// UpdateDownloadEndTime - End time of last update.
    	UpdateDownloadEndTime *int64 `json:"update_download_end_time,omitempty"`
 	// IscsiAutomaticConnectionMethod - Is iscsi reconnection automatic.
- 	IscsiAutomaticConnectionMethod *bool `json:"iscsi_automatic_connection_method,omitempty"`
+    IscsiAutomaticConnectionMethod *bool `json:"iscsi_automatic_connection_method,omitempty"`
 	// IscsiConnectionRebalancing - Does iscsi automatically rebalance connections.
- 	IscsiConnectionRebalancing *bool `json:"iscsi_connection_rebalancing,omitempty"`
+    IscsiConnectionRebalancing *bool `json:"iscsi_connection_rebalancing,omitempty"`
 	// ReplThrottledBandwidth - Current bandwidth throttle for replication, expressed either as megabits per second or as -1 to indicate that there is no throttle.
   	ReplThrottledBandwidth  *int64 `json:"repl_throttled_bandwidth,omitempty"`
 	// ReplThrottledBandwidthKbps - Current bandwidth throttle for replication, expressed either as kilobits per second or as -1 to indicate that there is no throttle.
@@ -348,9 +347,9 @@ type Group struct {
 	// LoginBannerMessage - The message for the login banner that is displayed during user login activity.
  	LoginBannerMessage *string `json:"login_banner_message,omitempty"`
 	// LoginBannerAfterAuth - Should the banner be displayed before the user credentials are prompted or after prompting the user credentials.
- 	LoginBannerAfterAuth *bool `json:"login_banner_after_auth,omitempty"`
+    LoginBannerAfterAuth *bool `json:"login_banner_after_auth,omitempty"`
 	// LoginBannerReset - This will reset the banner to the version of the installed NOS. When login_banner_after_auth is specified, login_banner_reset can not be set to true.
- 	LoginBannerReset *bool `json:"login_banner_reset,omitempty"`
+    LoginBannerReset *bool `json:"login_banner_reset,omitempty"`
 	// SnapRetnMeterHigh - Threshold for considering a volume as high retention.
    	SnapRetnMeterHigh *int64 `json:"snap_retn_meter_high,omitempty"`
 	// SnapRetnMeterVeryHigh - Threshold for considering a volume as very high retention.

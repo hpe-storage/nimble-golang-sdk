@@ -25,22 +25,21 @@ func init(){
 	SecondaryMgmtIpfield:= "secondary_mgmt_ip"
 		
 	ArrayFields= &Array{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	PoolName: &PoolNamefield,
-	PoolId: &PoolIdfield,
-	Model: &Modelfield,
-	Serial: &Serialfield,
-	Version: &Versionfield,
-	ExtendedModel: &ExtendedModelfield,
-	PoolDescription: &PoolDescriptionfield,
-	CtrlrASupportIp: &CtrlrASupportIpfield,
-	CtrlrBSupportIp: &CtrlrBSupportIpfield,
-	ModelSubType: &ModelSubTypefield,
-	SecondaryMgmtIp: &SecondaryMgmtIpfield,
-		
+		ID:                           &IDfield,
+		Name:                         &Namefield,
+		FullName:                     &FullNamefield,
+		SearchName:                   &SearchNamefield,
+		PoolName:                     &PoolNamefield,
+		PoolId:                       &PoolIdfield,
+		Model:                        &Modelfield,
+		Serial:                       &Serialfield,
+		Version:                      &Versionfield,
+		ExtendedModel:                &ExtendedModelfield,
+		PoolDescription:              &PoolDescriptionfield,
+		CtrlrASupportIp:              &CtrlrASupportIpfield,
+		CtrlrBSupportIp:              &CtrlrBSupportIpfield,
+		ModelSubType:                 &ModelSubTypefield,
+		SecondaryMgmtIp:              &SecondaryMgmtIpfield,
 	}
 }
 
@@ -50,7 +49,7 @@ type Array struct {
 	// Name - The user provided name of the array. It is also the array's hostname.
  	Name *string `json:"name,omitempty"`
 	// Force - Forcibly delete the specified array.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 	// FullName - The array's fully qualified name.
  	FullName *string `json:"full_name,omitempty"`
 	// SearchName - The array name used for object search.
@@ -72,13 +71,13 @@ type Array struct {
 	// Version - Software version of the array.
  	Version *string `json:"version,omitempty"`
 	// IsSfa - True if this array supports SFA; false otherwise.
- 	IsSfa *bool `json:"is_sfa,omitempty"`
+    IsSfa *bool `json:"is_sfa,omitempty"`
 	// CreationTime - Time when this array object was created.
    	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this array object was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
 	// UsageValid - Indicates whether the usage of array is valid.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// UsableCapacityBytes - The usable capacity of the array in bytes.
    	UsableCapacityBytes *int64 `json:"usable_capacity_bytes,omitempty"`
 	// UsableCacheCapacityBytes - The usable cache capacity of the array in bytes.
@@ -110,17 +109,17 @@ type Array struct {
 	// Usage - Used space of the array in bytes.
    	Usage *int64 `json:"usage,omitempty"`
 	// AllFlash - Whether it is an all-flash array.
- 	AllFlash *bool `json:"all_flash,omitempty"`
+    AllFlash *bool `json:"all_flash,omitempty"`
 	// DedupeCapacityBytes - The dedupe capacity of a hybrid array. Does not apply to all-flash arrays.
    	DedupeCapacityBytes *int64 `json:"dedupe_capacity_bytes,omitempty"`
 	// DedupeUsageBytes - The dedupe usage of a hybrid array. Does not apply to all-flash arrays.
    	DedupeUsageBytes *int64 `json:"dedupe_usage_bytes,omitempty"`
 	// IsFullyDedupeCapable - Is array fully capable to dedupe its usable capacity.
- 	IsFullyDedupeCapable *bool `json:"is_fully_dedupe_capable,omitempty"`
+    IsFullyDedupeCapable *bool `json:"is_fully_dedupe_capable,omitempty"`
 	// ExtendedModel - Extended model of the array.
  	ExtendedModel *string `json:"extended_model,omitempty"`
 	// IsSupportedHwConfig - Whether it is a supported hardware config.
- 	IsSupportedHwConfig *bool `json:"is_supported_hw_config,omitempty"`
+    IsSupportedHwConfig *bool `json:"is_supported_hw_config,omitempty"`
 	// GigNicPortCount - Count of 1G NIC Ports installed on the array.
    	GigNicPortCount *int64 `json:"gig_nic_port_count,omitempty"`
 	// TenGigSfpNicPortCount - Count of 10G SFP NIC Ports installed on the array.
@@ -134,11 +133,11 @@ type Array struct {
 	// Upgrade - The array upgrade data.
 	Upgrade *NsArrayUpgrade `json:"upgrade,omitempty"`
 	// CreatePool - Whether to create associated pool during array create.
- 	CreatePool *bool `json:"create_pool,omitempty"`
+    CreatePool *bool `json:"create_pool,omitempty"`
 	// PoolDescription - Text description of the pool to be created during array creation.
  	PoolDescription *string `json:"pool_description,omitempty"`
 	// AllowLowerLimits - A True setting will allow you to add an array with lower limits to a pool with higher limits.
- 	AllowLowerLimits *bool `json:"allow_lower_limits,omitempty"`
+    AllowLowerLimits *bool `json:"allow_lower_limits,omitempty"`
 	// CtrlrASupportIp - Controller A Support IP Address.
  	CtrlrASupportIp *string `json:"ctrlr_a_support_ip,omitempty"`
 	// CtrlrBSupportIp - Controller B Support IP Address.

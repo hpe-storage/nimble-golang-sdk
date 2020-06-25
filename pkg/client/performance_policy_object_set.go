@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume&#39;s performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\&quot;default\\&quot; performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
- *
- */
+
+// Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume&#39;s performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\&quot;default\\&quot; performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 const (
     performancePolicyPath = "performance_policies"
 )
 
-/**
- * PerformancePolicyObjectSet
-*/
+
+// PerformancePolicyObjectSet
 type PerformancePolicyObjectSet struct {
     Client *GroupMgmtClient
 }

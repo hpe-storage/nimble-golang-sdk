@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage witness host configuration.
- *
- */
+
+// Manage witness host configuration.
 const (
     witnessPath = "witnesses"
 )
 
-/**
- * WitnessObjectSet
-*/
+
+// WitnessObjectSet
 type WitnessObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -25,22 +25,21 @@ func init(){
 	Activityfield:= "activity"
 		
 	AuditLogFields= &AuditLog{
-	ID: &IDfield,
-	ObjectId: &ObjectIdfield,
-	ObjectName: &ObjectNamefield,
-	Scope: &Scopefield,
-	ErrorCode: &ErrorCodefield,
-	UserId: &UserIdfield,
-	UserName: &UserNamefield,
-	UserFullName: &UserFullNamefield,
-	SourceIp: &SourceIpfield,
-	ExtUserId: &ExtUserIdfield,
-	ExtUserGroupId: &ExtUserGroupIdfield,
-	ExtUserGroupName: &ExtUserGroupNamefield,
-	AppName: &AppNamefield,
-	AccessType: &AccessTypefield,
-	Activity: &Activityfield,
-		
+		ID:                 &IDfield,
+		ObjectId:           &ObjectIdfield,
+		ObjectName:         &ObjectNamefield,
+		Scope:              &Scopefield,
+		ErrorCode:          &ErrorCodefield,
+		UserId:             &UserIdfield,
+		UserName:           &UserNamefield,
+		UserFullName:       &UserFullNamefield,
+		SourceIp:           &SourceIpfield,
+		ExtUserId:          &ExtUserIdfield,
+		ExtUserGroupId:     &ExtUserGroupIdfield,
+		ExtUserGroupName:   &ExtUserGroupNamefield,
+		AppName:            &AppNamefield,
+		AccessType:         &AccessTypefield,
+		Activity:           &Activityfield,
 	}
 }
 

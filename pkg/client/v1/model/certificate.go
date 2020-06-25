@@ -17,14 +17,13 @@ func init(){
 	Passwordfield:= "password"
 		
 	CertificateFields= &Certificate{
-	ID: &IDfield,
-	Name: &Namefield,
-	Subject: &Subjectfield,
-	Dnslist: &Dnslistfield,
-	Iplist: &Iplistfield,
-	Input: &Inputfield,
-	Password: &Passwordfield,
-		
+		ID:          &IDfield,
+		Name:        &Namefield,
+		Subject:     &Subjectfield,
+		Dnslist:     &Dnslistfield,
+		Iplist:      &Iplistfield,
+		Input:       &Inputfield,
+		Password:    &Passwordfield,
 	}
 }
 
@@ -50,19 +49,19 @@ type Certificate struct {
 	// Password - Password used to protect PKCS-12 certificate bundle.
  	Password *string `json:"password,omitempty"`
 	// Https - For use command, Use specified type for HTTPS access.
- 	Https *bool `json:"https,omitempty"`
+    Https *bool `json:"https,omitempty"`
 	// Apis - For use command, use specified type for REST API access.
- 	Apis *bool `json:"apis,omitempty"`
+    Apis *bool `json:"apis,omitempty"`
 	// Force - Force regeneration or import when certificate already exists.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 	// Check - Check existing group certificate parameters against inputs.
- 	Check *bool `json:"check,omitempty"`
+    Check *bool `json:"check,omitempty"`
 	// Pkcs12 - Input is a PKCS-12 bundle if true.
- 	Pkcs12 *bool `json:"pkcs12,omitempty"`
+    Pkcs12 *bool `json:"pkcs12,omitempty"`
 	// Trusted - Certificate is an imported trusted certificate.
- 	Trusted *bool `json:"trusted,omitempty"`
+    Trusted *bool `json:"trusted,omitempty"`
 	// ReloadHttps - HTTPS certificate changed, so needs to be reloaded.
- 	ReloadHttps *bool `json:"reload_https,omitempty"`
+    ReloadHttps *bool `json:"reload_https,omitempty"`
 	// ReloadApis - API certificate changed, so needs to be reloaded.
- 	ReloadApis *bool `json:"reload_apis,omitempty"`
+    ReloadApis *bool `json:"reload_apis,omitempty"`
 }

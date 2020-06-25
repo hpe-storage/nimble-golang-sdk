@@ -12,9 +12,8 @@ func init(){
 	SnapcollNamefield:= "snapcoll_name"
 		
 	NsSnapcollSummaryFields= &NsSnapcollSummary{
-	SnapcollId: &SnapcollIdfield,
-	SnapcollName: &SnapcollNamefield,
-		
+		SnapcollId:            &SnapcollIdfield,
+		SnapcollName:          &SnapcollNamefield,
 	}
 }
 

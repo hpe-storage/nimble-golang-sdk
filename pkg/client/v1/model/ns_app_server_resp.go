@@ -11,8 +11,7 @@ func init(){
 	GeneralErrorfield:= "general_error"
 		
 	NsAppServerRespFields= &NsAppServerResp{
-	GeneralError: &GeneralErrorfield,
-		
+		GeneralError:    &GeneralErrorfield,
 	}
 }
 
@@ -22,7 +21,7 @@ type NsAppServerResp struct {
 	// AppSync - Type of app server.
    	AppSync *NsAppSyncType `json:"app_sync,omitempty"`
 	// HasAssocVols - Indicates if there are associated volumes.
- 	HasAssocVols *bool `json:"has_assoc_vols,omitempty"`
+    HasAssocVols *bool `json:"has_assoc_vols,omitempty"`
 	// VssResponse - Response from vss app server.
 	VssResponse *NsVssResp `json:"vss_response,omitempty"`
 	// VmwResponse - Response from vmware app server.

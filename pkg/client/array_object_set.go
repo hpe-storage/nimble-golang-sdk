@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
- *
- */
+
+// Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
 const (
     arrayPath = "arrays"
 )
 
-/**
- * ArrayObjectSet
-*/
+
+// ArrayObjectSet
 type ArrayObjectSet struct {
     Client *GroupMgmtClient
 }

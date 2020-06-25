@@ -15,12 +15,11 @@ func init(){
 	DiscoveryIpfield:= "discovery_ip"
 		
 	SubnetFields= &Subnet{
-	ID: &IDfield,
-	Name: &Namefield,
-	Network: &Networkfield,
-	Netmask: &Netmaskfield,
-	DiscoveryIp: &DiscoveryIpfield,
-		
+		ID:                  &IDfield,
+		Name:                &Namefield,
+		Network:             &Networkfield,
+		Netmask:             &Netmaskfield,
+		DiscoveryIp:         &DiscoveryIpfield,
 	}
 }
 
@@ -36,9 +35,9 @@ type Subnet struct {
 	// Type - Subnet type. Options include 'mgmt', 'data', and 'mgmt,data'.
    	Type *NsSubnetType `json:"type,omitempty"`
 	// AllowIscsi - Subnet type.
- 	AllowIscsi *bool `json:"allow_iscsi,omitempty"`
+    AllowIscsi *bool `json:"allow_iscsi,omitempty"`
 	// AllowGroup - Subnet type.
- 	AllowGroup *bool `json:"allow_group,omitempty"`
+    AllowGroup *bool `json:"allow_group,omitempty"`
 	// DiscoveryIp - Subnet network address.
  	DiscoveryIp *string `json:"discovery_ip,omitempty"`
 	// Mtu - MTU for specified subnet. Valid MTU's are in the 512-16000 range.
@@ -52,7 +51,7 @@ type Subnet struct {
 	// LastModified - Time when this subnet configuration was last modified.
    	LastModified *int64 `json:"last_modified,omitempty"`
 	// Failover - Failover setting of the subnet.
- 	Failover *bool `json:"failover,omitempty"`
+    Failover *bool `json:"failover,omitempty"`
 	// FailoverEnableTime - Failover for this subnet will be enabled again at the time specified by failover_enable_time.
    	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
 }

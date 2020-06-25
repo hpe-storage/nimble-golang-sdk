@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Disk shelf and head unit houses disks and controller.
- *
- */
+
+// Disk shelf and head unit houses disks and controller.
 const (
     shelfPath = "shelves"
 )
 
-/**
- * ShelfObjectSet
-*/
+
+// ShelfObjectSet
 type ShelfObjectSet struct {
     Client *GroupMgmtClient
 }

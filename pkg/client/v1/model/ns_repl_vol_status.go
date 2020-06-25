@@ -12,9 +12,8 @@ func init(){
 	SnapNamefield:= "snap_name"
 		
 	NsReplVolStatusFields= &NsReplVolStatus{
-	Name: &Namefield,
-	SnapName: &SnapNamefield,
-		
+		Name:            &Namefield,
+		SnapName:        &SnapNamefield,
 	}
 }
 

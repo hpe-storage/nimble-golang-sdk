@@ -12,9 +12,8 @@ func init(){
 	Typefield:= "type"
 		
 	SubscriberFields= &Subscriber{
-	ID: &IDfield,
-	Type: &Typefield,
-		
+		ID:                    &IDfield,
+		Type:                  &Typefield,
 	}
 }
 
@@ -28,9 +27,9 @@ type Subscriber struct {
 	// RenewResponseTimeout - The interval in seconds after the subscriber sends a renew message within which the subscriber expects to get a response.
    	RenewResponseTimeout *int64 `json:"renew_response_timeout,omitempty"`
 	// IsConnected - True if the subscriber has an active websocket connection.
- 	IsConnected *bool `json:"is_connected,omitempty"`
+    IsConnected *bool `json:"is_connected,omitempty"`
 	// NotificationCount - Number of notifications sent to subscriber.
    	NotificationCount *int64 `json:"notification_count,omitempty"`
 	// Force - Forcibly modify a connected subscriber.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 }

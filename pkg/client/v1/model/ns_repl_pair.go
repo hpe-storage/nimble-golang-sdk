@@ -12,9 +12,8 @@ func init(){
 	DstNamefield:= "dst_name"
 		
 	NsReplPairFields= &NsReplPair{
-	SrcName: &SrcNamefield,
-	DstName: &DstNamefield,
-		
+		SrcName: &SrcNamefield,
+		DstName: &DstNamefield,
 	}
 }
 

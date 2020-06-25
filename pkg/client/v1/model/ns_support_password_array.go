@@ -13,10 +13,9 @@ func init(){
 	Modelfield:= "model"
 		
 	NsSupportPasswordArrayFields= &NsSupportPasswordArray{
-	ArrayName: &ArrayNamefield,
-	ArraySn: &ArraySnfield,
-	Model: &Modelfield,
-		
+		ArrayName: &ArrayNamefield,
+		ArraySn:   &ArraySnfield,
+		Model:     &Modelfield,
 	}
 }
 

@@ -14,11 +14,10 @@ func init(){
 	UserIdfield:= "user_id"
 		
 	NsTokenReportUserDetailsReturnFields= &NsTokenReportUserDetailsReturn{
-	UserName: &UserNamefield,
-	PrimaryGroupId: &PrimaryGroupIdfield,
-	PrimaryGroupName: &PrimaryGroupNamefield,
-	UserId: &UserIdfield,
-		
+		UserName:          &UserNamefield,
+		PrimaryGroupId:    &PrimaryGroupIdfield,
+		PrimaryGroupName:  &PrimaryGroupNamefield,
+		UserId:            &UserIdfield,
 	}
 }
 

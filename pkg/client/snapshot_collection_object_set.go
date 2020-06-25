@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
- *
- */
+
+// Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
 const (
     snapshotCollectionPath = "snapshot_collections"
 )
 
-/**
- * SnapshotCollectionObjectSet
-*/
+
+// SnapshotCollectionObjectSet
 type SnapshotCollectionObjectSet struct {
     Client *GroupMgmtClient
 }

@@ -12,9 +12,8 @@ func init(){
 	ReplicationPartnerIdfield:= "replication_partner_id"
 		
 	NsVolumeCollectionDemoteAttrFields= &NsVolumeCollectionDemoteAttr{
-	ID: &IDfield,
-	ReplicationPartnerId: &ReplicationPartnerIdfield,
-		
+		ID:                    &IDfield,
+		ReplicationPartnerId:  &ReplicationPartnerIdfield,
 	}
 }
 

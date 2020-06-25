@@ -12,9 +12,8 @@ func init(){
 	Messagefield:= "message"
 		
 	DebugLogFields= &DebugLog{
-	Tag: &Tagfield,
-	Message: &Messagefield,
-		
+		Tag:    &Tagfield,
+		Message:&Messagefield,
 	}
 }
 

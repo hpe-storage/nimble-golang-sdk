@@ -15,12 +15,11 @@ func init(){
 	PemTextfield:= "pem_text"
 		
 	NsCertDataFields= &NsCertData{
-	Description: &Descriptionfield,
-	Subject: &Subjectfield,
-	Dnslist: &Dnslistfield,
-	Iplist: &Iplistfield,
-	PemText: &PemTextfield,
-		
+		Description:&Descriptionfield,
+		Subject:    &Subjectfield,
+		Dnslist:    &Dnslistfield,
+		Iplist:     &Iplistfield,
+		PemText:    &PemTextfield,
 	}
 }
 
@@ -34,7 +33,7 @@ type NsCertData struct {
 	// Iplist - Comma-separated list of IP addresses from the Subject Alternate Name.
  	Iplist *string `json:"iplist,omitempty"`
 	// Trusted - Certificate is an imported, trusted certificate.
- 	Trusted *bool `json:"trusted,omitempty"`
+    Trusted *bool `json:"trusted,omitempty"`
 	// PemText - PEM text of the actual certificate.
  	PemText *string `json:"pem_text,omitempty"`
 }

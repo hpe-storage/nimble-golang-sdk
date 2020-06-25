@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Folders are a way to group volumes, as well as a way to apply space constraints to them.
- *
- */
+
+// Folders are a way to group volumes, as well as a way to apply space constraints to them.
 const (
     folderPath = "folders"
 )
 
-/**
- * FolderObjectSet
-*/
+
+// FolderObjectSet
 type FolderObjectSet struct {
     Client *GroupMgmtClient
 }

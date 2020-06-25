@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	NsAlarmAckFields= &NsAlarmAck{
-	ID: &IDfield,
-		
+		ID:               &IDfield,
 	}
 }
 

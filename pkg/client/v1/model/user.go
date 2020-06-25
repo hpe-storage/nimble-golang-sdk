@@ -19,16 +19,15 @@ func init(){
 	EmailAddrfield:= "email_addr"
 		
 	UserFields= &User{
-	ID: &IDfield,
-	Name: &Namefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	RoleId: &RoleIdfield,
-	Password: &Passwordfield,
-	AuthPassword: &AuthPasswordfield,
-	FullName: &FullNamefield,
-	EmailAddr: &EmailAddrfield,
-		
+		ID:                &IDfield,
+		Name:              &Namefield,
+		SearchName:        &SearchNamefield,
+		Description:       &Descriptionfield,
+		RoleId:            &RoleIdfield,
+		Password:          &Passwordfield,
+		AuthPassword:      &AuthPasswordfield,
+		FullName:          &FullNamefield,
+		EmailAddr:         &EmailAddrfield,
 	}
 }
 
@@ -60,13 +59,13 @@ type User struct {
 	// EmailAddr - Email address of the user.
  	EmailAddr *string `json:"email_addr,omitempty"`
 	// Disabled - User is currently disabled.
- 	Disabled *bool `json:"disabled,omitempty"`
+    Disabled *bool `json:"disabled,omitempty"`
 	// AuthLock - User was locked due to failed logins.
- 	AuthLock *bool `json:"auth_lock,omitempty"`
+    AuthLock *bool `json:"auth_lock,omitempty"`
 	// LastLogin - Last login time.
    	LastLogin *int64 `json:"last_login,omitempty"`
 	// LastLogout - Last logout time.
    	LastLogout *int64 `json:"last_logout,omitempty"`
 	// LoggedIn - User is currently logged in.
- 	LoggedIn *bool `json:"logged_in,omitempty"`
+    LoggedIn *bool `json:"logged_in,omitempty"`
 }

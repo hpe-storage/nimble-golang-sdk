@@ -10,7 +10,6 @@ var NsResponseFields *NsResponse
 func init(){
 		
 	NsResponseFields= &NsResponse{
-		
 	}
 }
 

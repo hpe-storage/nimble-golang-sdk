@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
- *
- */
+
+// A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
 const (
     volumeFamilyPath = "volume_families"
 )
 
-/**
- * VolumeFamilyObjectSet
-*/
+
+// VolumeFamilyObjectSet
 type VolumeFamilyObjectSet struct {
     Client *GroupMgmtClient
 }

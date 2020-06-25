@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	SupportFields= &Support{
-	ID: &IDfield,
-		
+		ID:           &IDfield,
 	}
 }
 

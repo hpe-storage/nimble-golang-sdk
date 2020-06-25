@@ -10,7 +10,6 @@ var NsAlarmCountSummaryReturnFields *NsAlarmCountSummaryReturn
 func init(){
 		
 	NsAlarmCountSummaryReturnFields= &NsAlarmCountSummaryReturn{
-		
 	}
 }
 

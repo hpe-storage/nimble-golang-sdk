@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * View events.
- *
- */
+
+// View events.
 const (
     eventPath = "events"
 )
 
-/**
- * EventObjectSet
-*/
+
+// EventObjectSet
 type EventObjectSet struct {
     Client *GroupMgmtClient
 }

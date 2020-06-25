@@ -11,8 +11,7 @@ func init(){
 	Namefield:= "name"
 		
 	NsDiskSmartAttributeFields= &NsDiskSmartAttribute{
-	Name: &Namefield,
-		
+		Name:                   &Namefield,
 	}
 }
 

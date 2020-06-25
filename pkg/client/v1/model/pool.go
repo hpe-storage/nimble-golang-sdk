@@ -15,12 +15,11 @@ func init(){
 	Descriptionfield:= "description"
 		
 	PoolFields= &Pool{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-		
+		ID:                           &IDfield,
+		Name:                         &Namefield,
+		FullName:                     &FullNamefield,
+		SearchName:                   &SearchNamefield,
+		Description:                  &Descriptionfield,
 	}
 }
 
@@ -102,21 +101,21 @@ type Pool struct {
 	// FolderList - The list of fully qualified names of folders in the pool.
    	FolderList []*NsFolderSummary `json:"folder_list,omitempty"`
 	// Force - Forcibly delete the specified pool even if it contains deleted volumes whose space is being reclaimed. Forcibly remove an array from array_list via an update operation even if the array is not reachable. There should no volumes currently in the pool for the forced update operation to succeed.
- 	Force *bool `json:"force,omitempty"`
+    Force *bool `json:"force,omitempty"`
 	// UsageValid - Indicates whether the usage of pool is valid.
- 	UsageValid *bool `json:"usage_valid,omitempty"`
+    UsageValid *bool `json:"usage_valid,omitempty"`
 	// UncompressedVolUsageBytes - Uncompressed usage of volumes in the pool.
    	UncompressedVolUsageBytes *int64 `json:"uncompressed_vol_usage_bytes,omitempty"`
 	// UncompressedSnapUsageBytes - Uncompressed usage of snapshots in the pool.
    	UncompressedSnapUsageBytes *int64 `json:"uncompressed_snap_usage_bytes,omitempty"`
 	// AllFlash - Indicate whether the pool is an all_flash pool.
- 	AllFlash *bool `json:"all_flash,omitempty"`
+    AllFlash *bool `json:"all_flash,omitempty"`
 	// DedupeCapable - Indicates whether the pool is capable of hosting deduped volumes.
- 	DedupeCapable *bool `json:"dedupe_capable,omitempty"`
+    DedupeCapable *bool `json:"dedupe_capable,omitempty"`
 	// DedupeAllVolumesCapable - Indicates whether the pool can enable dedupe by default.
- 	DedupeAllVolumesCapable *bool `json:"dedupe_all_volumes_capable,omitempty"`
+    DedupeAllVolumesCapable *bool `json:"dedupe_all_volumes_capable,omitempty"`
 	// DedupeAllVolumes - Indicates if dedupe is enabled by default for new volumes on this pool.
- 	DedupeAllVolumes *bool `json:"dedupe_all_volumes,omitempty"`
+    DedupeAllVolumes *bool `json:"dedupe_all_volumes,omitempty"`
 	// IsDefault - Indicates if this is the default pool.
- 	IsDefault *bool `json:"is_default,omitempty"`
+    IsDefault *bool `json:"is_default,omitempty"`
 }

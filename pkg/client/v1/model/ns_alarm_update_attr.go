@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	NsAlarmUpdateAttrFields= &NsAlarmUpdateAttr{
-	ID: &IDfield,
-		
+		ID:               &IDfield,
 	}
 }
 

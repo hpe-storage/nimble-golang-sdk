@@ -11,8 +11,7 @@ func init(){
 	Namefield:= "name"
 		
 	NsSensorRateFields= &NsSensorRate{
-	Name: &Namefield,
-		
+		Name:&Namefield,
 	}
 }
 

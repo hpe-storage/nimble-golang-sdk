@@ -12,9 +12,8 @@ func init(){
 	Textfield:= "text"
 		
 	NsErrorWithArgumentsFields= &NsErrorWithArguments{
-	Code: &Codefield,
-	Text: &Textfield,
-		
+		Code:    &Codefield,
+		Text:    &Textfield,
 	}
 }
 

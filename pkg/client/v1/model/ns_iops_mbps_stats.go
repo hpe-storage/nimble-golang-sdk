@@ -10,7 +10,6 @@ var NsIopsMbpsStatsFields *NsIopsMbpsStats
 func init(){
 		
 	NsIopsMbpsStatsFields= &NsIopsMbpsStats{
-		
 	}
 }
 

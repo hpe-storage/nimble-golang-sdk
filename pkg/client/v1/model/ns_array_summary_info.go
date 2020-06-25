@@ -14,11 +14,10 @@ func init(){
 	Modelfield:= "model"
 		
 	NsArraySummaryInfoFields= &NsArraySummaryInfo{
-	Name: &Namefield,
-	Version: &Versionfield,
-	Serial: &Serialfield,
-	Model: &Modelfield,
-		
+		Name:             &Namefield,
+		Version:          &Versionfield,
+		Serial:           &Serialfield,
+		Model:            &Modelfield,
 	}
 }
 
@@ -38,5 +37,5 @@ type NsArraySummaryInfo struct {
 	// CountOfFcPorts - Count of Fibre Channel ports per controller.
    	CountOfFcPorts *int64 `json:"count_of_fc_ports,omitempty"`
 	// AllFlash - Whether it is an all-flash array.
- 	AllFlash *bool `json:"all_flash,omitempty"`
+    AllFlash *bool `json:"all_flash,omitempty"`
 }

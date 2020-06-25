@@ -14,11 +14,10 @@ func init(){
 	FullNamefield:= "full_name"
 		
 	NsVolumeSummaryWithAppCategoryFields= &NsVolumeSummaryWithAppCategory{
-	ID: &IDfield,
-	Name: &Namefield,
-	AppCategory: &AppCategoryfield,
-	FullName: &FullNamefield,
-		
+		ID:          &IDfield,
+		Name:        &Namefield,
+		AppCategory: &AppCategoryfield,
+		FullName:    &FullNamefield,
 	}
 }
 

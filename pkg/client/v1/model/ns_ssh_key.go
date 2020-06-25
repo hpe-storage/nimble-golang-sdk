@@ -13,10 +13,9 @@ func init(){
 	Keyfield:= "key"
 		
 	NsSshKeyFields= &NsSshKey{
-	KeyName: &KeyNamefield,
-	KeyType: &KeyTypefield,
-	Key: &Keyfield,
-		
+		KeyName: &KeyNamefield,
+		KeyType: &KeyTypefield,
+		Key:     &Keyfield,
 	}
 }
 

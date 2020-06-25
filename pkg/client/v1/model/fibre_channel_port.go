@@ -15,12 +15,11 @@ func init(){
 	BusLocationfield:= "bus_location"
 		
 	FibreChannelPortFields= &FibreChannelPort{
-	ID: &IDfield,
-	ArrayNameOrSerial: &ArrayNameOrSerialfield,
-	ControllerName: &ControllerNamefield,
-	FcPortName: &FcPortNamefield,
-	BusLocation: &BusLocationfield,
-		
+		ID:                  &IDfield,
+		ArrayNameOrSerial:   &ArrayNameOrSerialfield,
+		ControllerName:      &ControllerNamefield,
+		FcPortName:          &FcPortNamefield,
+		BusLocation:         &BusLocationfield,
 	}
 }
 

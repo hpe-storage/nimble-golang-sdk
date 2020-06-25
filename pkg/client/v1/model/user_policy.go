@@ -11,8 +11,7 @@ func init(){
 	IDfield:= "id"
 		
 	UserPolicyFields= &UserPolicy{
-	ID: &IDfield,
-		
+		ID:              &IDfield,
 	}
 }
 

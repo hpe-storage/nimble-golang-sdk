@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Show the API version.
- *
- */
+
+// Show the API version.
 const (
     versionPath = "versions"
 )
 
-/**
- * VersionObjectSet
-*/
+
+// VersionObjectSet
 type VersionObjectSet struct {
     Client *GroupMgmtClient
 }

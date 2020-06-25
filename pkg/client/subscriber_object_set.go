@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Subscribers are websocket based notification clients that can subscribe to interesting operations and events and recieve notifications whenever the subscribed to operations and events happen on the array.
- *
- */
+
+// Subscribers are websocket based notification clients that can subscribe to interesting operations and events and recieve notifications whenever the subscribed to operations and events happen on the array.
 const (
     subscriberPath = "subscribers"
 )
 
-/**
- * SubscriberObjectSet
-*/
+
+// SubscriberObjectSet
 type SubscriberObjectSet struct {
     Client *GroupMgmtClient
 }

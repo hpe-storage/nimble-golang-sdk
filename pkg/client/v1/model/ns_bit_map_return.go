@@ -11,8 +11,7 @@ func init(){
 	Bitmapfield:= "bitmap"
 		
 	NsBitMapReturnFields= &NsBitMapReturn{
-	Bitmap: &Bitmapfield,
-		
+		Bitmap:&Bitmapfield,
 	}
 }
 

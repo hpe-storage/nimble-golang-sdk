@@ -24,21 +24,20 @@ func init(){
 	AgentPasswordfield:= "agent_password"
 		
 	ProtectionTemplateFields= &ProtectionTemplate{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	AppServer: &AppServerfield,
-	AppClusterName: &AppClusterNamefield,
-	AppServiceName: &AppServiceNamefield,
-	VcenterHostname: &VcenterHostnamefield,
-	VcenterUsername: &VcenterUsernamefield,
-	VcenterPassword: &VcenterPasswordfield,
-	AgentHostname: &AgentHostnamefield,
-	AgentUsername: &AgentUsernamefield,
-	AgentPassword: &AgentPasswordfield,
-		
+		ID:              &IDfield,
+		Name:            &Namefield,
+		FullName:        &FullNamefield,
+		SearchName:      &SearchNamefield,
+		Description:     &Descriptionfield,
+		AppServer:       &AppServerfield,
+		AppClusterName:  &AppClusterNamefield,
+		AppServiceName:  &AppServiceNamefield,
+		VcenterHostname: &VcenterHostnamefield,
+		VcenterUsername: &VcenterUsernamefield,
+		VcenterPassword: &VcenterPasswordfield,
+		AgentHostname:   &AgentHostnamefield,
+		AgentUsername:   &AgentUsernamefield,
+		AgentPassword:   &AgentPasswordfield,
 	}
 }
 

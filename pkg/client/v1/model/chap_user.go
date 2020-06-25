@@ -16,13 +16,12 @@ func init(){
 	Passwordfield:= "password"
 		
 	ChapUserFields= &ChapUser{
-	ID: &IDfield,
-	Name: &Namefield,
-	FullName: &FullNamefield,
-	SearchName: &SearchNamefield,
-	Description: &Descriptionfield,
-	Password: &Passwordfield,
-		
+		ID:            &IDfield,
+		Name:          &Namefield,
+		FullName:      &FullNamefield,
+		SearchName:    &SearchNamefield,
+		Description:   &Descriptionfield,
+		Password:      &Passwordfield,
 	}
 }
 

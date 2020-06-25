@@ -11,8 +11,7 @@ func init(){
 	Eulafield:= "eula"
 		
 	NsEulaReturnFields= &NsEulaReturn{
-	Eula: &Eulafield,
-		
+		Eula:&Eulafield,
 	}
 }
 

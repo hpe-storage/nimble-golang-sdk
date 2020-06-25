@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
- *
- */
+
+// Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 const (
     initiatorGroupPath = "initiator_groups"
 )
 
-/**
- * InitiatorGroupObjectSet
-*/
+
+// InitiatorGroupObjectSet
 type InitiatorGroupObjectSet struct {
     Client *GroupMgmtClient
 }

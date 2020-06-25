@@ -18,15 +18,14 @@ func init(){
 	ServerUuidfield:= "server_uuid"
 		
 	TokenFields= &Token{
-	ID: &IDfield,
-	SessionToken: &SessionTokenfield,
-	Username: &Usernamefield,
-	Password: &Passwordfield,
-	AppName: &AppNamefield,
-	SdkName: &SdkNamefield,
-	SourceIp: &SourceIpfield,
-	ServerUuid: &ServerUuidfield,
-		
+		ID:           &IDfield,
+		SessionToken: &SessionTokenfield,
+		Username:     &Usernamefield,
+		Password:     &Passwordfield,
+		AppName:      &AppNamefield,
+		SdkName:      &SdkNamefield,
+		SourceIp:     &SourceIpfield,
+		ServerUuid:   &ServerUuidfield,
 	}
 }
 

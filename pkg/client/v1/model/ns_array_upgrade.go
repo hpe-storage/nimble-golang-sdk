@@ -10,7 +10,6 @@ var NsArrayUpgradeFields *NsArrayUpgrade
 func init(){
 		
 	NsArrayUpgradeFields= &NsArrayUpgrade{
-		
 	}
 }
 

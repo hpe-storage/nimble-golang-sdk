@@ -14,11 +14,10 @@ func init(){
 	ArrayIdfield:= "array_id"
 		
 	NsArrayFcConfigFields= &NsArrayFcConfig{
-	Name: &Namefield,
-	ArrayName: &ArrayNamefield,
-	ID: &IDfield,
-	ArrayId: &ArrayIdfield,
-		
+		Name:             &Namefield,
+		ArrayName:        &ArrayNamefield,
+		ID:               &IDfield,
+		ArrayId:          &ArrayIdfield,
 	}
 }
 

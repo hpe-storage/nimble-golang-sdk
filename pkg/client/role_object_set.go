@@ -10,17 +10,14 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-/**
- * Retrieve roles and privileges for role-based access control.
- *
- */
+
+// Retrieve roles and privileges for role-based access control.
 const (
     rolePath = "roles"
 )
 
-/**
- * RoleObjectSet
-*/
+
+// RoleObjectSet
 type RoleObjectSet struct {
     Client *GroupMgmtClient
 }

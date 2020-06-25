@@ -11,8 +11,7 @@ func init(){
 	Pathfield:= "path"
 		
 	NsRequestFields= &NsRequest{
-	Path: &Pathfield,
-		
+		Path:  &Pathfield,
 	}
 }
 

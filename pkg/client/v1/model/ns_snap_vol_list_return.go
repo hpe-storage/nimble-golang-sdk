@@ -10,7 +10,6 @@ var NsSnapVolListReturnFields *NsSnapVolListReturn
 func init(){
 		
 	NsSnapVolListReturnFields= &NsSnapVolListReturn{
-		
 	}
 }
 

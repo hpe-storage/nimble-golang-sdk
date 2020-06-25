@@ -15,12 +15,11 @@ func init(){
 	AppCategoryNamefield:= "app_category_name"
 		
 	SpaceDomainFields= &SpaceDomain{
-	ID: &IDfield,
-	PoolId: &PoolIdfield,
-	PoolName: &PoolNamefield,
-	AppCategoryId: &AppCategoryIdfield,
-	AppCategoryName: &AppCategoryNamefield,
-		
+		ID:                      &IDfield,
+		PoolId:                  &PoolIdfield,
+		PoolName:                &PoolNamefield,
+		AppCategoryId:           &AppCategoryIdfield,
+		AppCategoryName:         &AppCategoryNamefield,
 	}
 }
 
@@ -48,9 +47,9 @@ type SpaceDomain struct {
 	// BlockSize - Block size in bytes of volumes belonging to the space domain.
    	BlockSize *int64 `json:"block_size,omitempty"`
 	// Deduped - Volumes in space domain are deduplicated by default.
- 	Deduped *bool `json:"deduped,omitempty"`
+    Deduped *bool `json:"deduped,omitempty"`
 	// Encrypted - Volumes in space domain are encrypted.
- 	Encrypted *bool `json:"encrypted,omitempty"`
+    Encrypted *bool `json:"encrypted,omitempty"`
 	// Usage - Physical space usage of volumes in the space domain.
    	Usage *int64 `json:"usage,omitempty"`
 	// VolLogicalUsage - Logical usage of volumes in the space domain.
