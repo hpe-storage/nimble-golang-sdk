@@ -11,12 +11,12 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-// GroupService type 
+// GroupService type
 type GroupService struct {
 	objectSet *client.GroupObjectSet
 }
 
-// NewGroupService - method to initialize "GroupService" 
+// NewGroupService - method to initialize "GroupService"
 func NewGroupService(gs *NsGroupService) (*GroupService) {
 	objectSet := gs.client.GetGroupObjectSet()
 	return &GroupService{objectSet: objectSet}
@@ -27,7 +27,7 @@ func (svc *GroupService) GetGroups(params *util.GetParams) ([]*model.Group, erro
 	return svc.objectSet.GetObjectListFromParams(params)
 }
 
-// GetGroupsWithFields - method returns a array of pointers of type "Group" 
+// GetGroupsWithFields - method returns a array of pointers of type "Group"
 func (svc *GroupService) GetGroupsWithFields(fields []string) ([]*model.Group, error) {
 	params := &util.GetParams{}
 	params.WithFields(fields)
@@ -40,12 +40,12 @@ func (svc *GroupService) CreateGroup(obj *model.Group) (*model.Group, error) {
 	return svc.objectSet.CreateObject(obj)
 }
 
-// EditGroup - method modifies  the "Group" 
+// EditGroup - method modifies  the "Group"
 func (svc *GroupService) EditGroup(id string, obj *model.Group) (*model.Group, error) {
 	return svc.objectSet.UpdateObject(id, obj)
 }
 
-// onlyGroup - private method for more than one element check. 
+// onlyGroup - private method for more than one element check.
 func onlyGroup(objs []*model.Group) (*model.Group, error) {
 	if len(objs) == 0 {
 		return nil, nil
@@ -58,7 +58,7 @@ func onlyGroup(objs []*model.Group) (*model.Group, error) {
 	return objs[0], nil
 }
 
- 
+
 // GetGroupsByID - method returns associative a array of pointers of type "Group", filter by Id
 func (svc *GroupService) GetGroupsByID(pool *model.Pool, fields []string) (map[string]*model.Group, error) {
 	params := &util.GetParams{}
@@ -91,7 +91,7 @@ func (svc *GroupService) GetGroupById(id string) (*model.Group, error) {
 	return svc.objectSet.GetObject(id)
 }
 
-// GetGroupsByName - method returns a associative array of pointers of type "Group", filter by name 
+// GetGroupsByName - method returns a associative array of pointers of type "Group", filter by name
 func (svc *GroupService) GetGroupsByName(pool *model.Pool, fields []string) (map[string]*model.Group, error) {
 	params := &util.GetParams{}
 
@@ -118,7 +118,7 @@ func (svc *GroupService) GetGroupsByName(pool *model.Pool, fields []string) (map
 	return objMap, nil
 }
 
-// GetGroupByName - method returns a pointer "Group" 
+// GetGroupByName - method returns a pointer "Group"
 func (svc *GroupService) GetGroupByName(name string) (*model.Group, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
@@ -132,5 +132,5 @@ func (svc *GroupService) GetGroupByName(name string) (*model.Group, error) {
 		return nil, err
 	}
 	return onlyGroup(objs)
-}	
+}
 

@@ -12,12 +12,12 @@ import (
 	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
 )
 
-// VolumeService type 
+// VolumeService type
 type VolumeService struct {
 	objectSet *client.VolumeObjectSet
 }
 
-// NewVolumeService - method to initialize "VolumeService" 
+// NewVolumeService - method to initialize "VolumeService"
 func NewVolumeService(gs *NsGroupService) (*VolumeService) {
 	objectSet := gs.client.GetVolumeObjectSet()
 	return &VolumeService{objectSet: objectSet}
@@ -28,7 +28,7 @@ func (svc *VolumeService) GetVolumes(params *util.GetParams) ([]*model.Volume, e
 	return svc.objectSet.GetObjectListFromParams(params)
 }
 
-// GetVolumesWithFields - method returns a array of pointers of type "Volume" 
+// GetVolumesWithFields - method returns a array of pointers of type "Volume"
 func (svc *VolumeService) GetVolumesWithFields(fields []string) ([]*model.Volume, error) {
 	params := &util.GetParams{}
 	params.WithFields(fields)
@@ -41,12 +41,12 @@ func (svc *VolumeService) CreateVolume(obj *model.Volume) (*model.Volume, error)
 	return svc.objectSet.CreateObject(obj)
 }
 
-// EditVolume - method modifies  the "Volume" 
+// EditVolume - method modifies  the "Volume"
 func (svc *VolumeService) EditVolume(id string, obj *model.Volume) (*model.Volume, error) {
 	return svc.objectSet.UpdateObject(id, obj)
 }
 
-// onlyVolume - private method for more than one element check. 
+// onlyVolume - private method for more than one element check.
 func onlyVolume(objs []*model.Volume) (*model.Volume, error) {
 	if len(objs) == 0 {
 		return nil, nil
@@ -59,7 +59,7 @@ func onlyVolume(objs []*model.Volume) (*model.Volume, error) {
 	return objs[0], nil
 }
 
- 
+
 // GetVolumesByID - method returns associative a array of pointers of type "Volume", filter by Id
 func (svc *VolumeService) GetVolumesByID(pool *model.Pool, fields []string) (map[string]*model.Volume, error) {
 	params := &util.GetParams{}
@@ -92,7 +92,7 @@ func (svc *VolumeService) GetVolumeById(id string) (*model.Volume, error) {
 	return svc.objectSet.GetObject(id)
 }
 
-// GetVolumesByName - method returns a associative array of pointers of type "Volume", filter by name 
+// GetVolumesByName - method returns a associative array of pointers of type "Volume", filter by name
 func (svc *VolumeService) GetVolumesByName(pool *model.Pool, fields []string) (map[string]*model.Volume, error) {
 	params := &util.GetParams{}
 
@@ -119,7 +119,7 @@ func (svc *VolumeService) GetVolumesByName(pool *model.Pool, fields []string) (m
 	return objMap, nil
 }
 
-// GetVolumeByName - method returns a pointer "Volume" 
+// GetVolumeByName - method returns a pointer "Volume"
 func (svc *VolumeService) GetVolumeByName(name string) (*model.Volume, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
@@ -133,7 +133,7 @@ func (svc *VolumeService) GetVolumeByName(name string) (*model.Volume, error) {
 		return nil, err
 	}
 	return onlyVolume(objs)
-}	
+}
 // GetVolumeBySerialNumber method returns a pointer to "Volume"
 func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*model.Volume, error) {
 	params := &util.GetParams{
@@ -150,7 +150,7 @@ func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*model.V
 	return onlyVolume(objs)
 }
 
-//OnlineVolume - method makes the volume online 
+//OnlineVolume - method makes the volume online
 func (svc *VolumeService) OnlineVolume(id string, force bool) (*model.Volume, error) {
 	return svc.EditVolume(id, &model.Volume{
 		Online: util.NewBool(true),
@@ -158,7 +158,7 @@ func (svc *VolumeService) OnlineVolume(id string, force bool) (*model.Volume, er
 	})
 }
 
-// OfflineVolume - makes the volume offline 
+// OfflineVolume - makes the volume offline
 func (svc *VolumeService) OfflineVolume(id string, force bool) (*model.Volume, error) {
 	return svc.EditVolume(id, &model.Volume{
 		Online: util.NewBool(false),
