@@ -13,13 +13,13 @@ import (
 
 type VolumeServiceTestSuite struct {
 	suite.Suite
-	groupService             *GroupService
+	groupService             *NsGroupService
 	volumeService            *VolumeService
 	performancePolicyService *PerformancePolicyService
 }
 
 func (suite *VolumeServiceTestSuite) SetupTest() {
-	groupService, err := NewGroupService("10.18.174.8", "admin", "admin")
+	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admin")
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
