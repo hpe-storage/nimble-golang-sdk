@@ -16,7 +16,6 @@ const (
     userPolicyPath = "user_policies"
 )
 
-
 // UserPolicyObjectSet
 type UserPolicyObjectSet struct {
     Client *GroupMgmtClient

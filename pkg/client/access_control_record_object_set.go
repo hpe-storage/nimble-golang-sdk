@@ -16,7 +16,6 @@ const (
     accessControlRecordPath = "access_control_records"
 )
 
-
 // AccessControlRecordObjectSet
 type AccessControlRecordObjectSet struct {
     Client *GroupMgmtClient

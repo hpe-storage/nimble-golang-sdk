@@ -16,7 +16,6 @@ const (
     supportPath = "support"
 )
 
-
 // SupportObjectSet
 type SupportObjectSet struct {
     Client *GroupMgmtClient

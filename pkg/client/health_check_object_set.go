@@ -16,7 +16,6 @@ const (
     healthCheckPath = "health_checks"
 )
 
-
 // HealthCheckObjectSet
 type HealthCheckObjectSet struct {
     Client *GroupMgmtClient

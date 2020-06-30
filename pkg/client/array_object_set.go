@@ -16,7 +16,6 @@ const (
     arrayPath = "arrays"
 )
 
-
 // ArrayObjectSet
 type ArrayObjectSet struct {
     Client *GroupMgmtClient

@@ -16,7 +16,6 @@ const (
     userPath = "users"
 )
 
-
 // UserObjectSet
 type UserObjectSet struct {
     Client *GroupMgmtClient

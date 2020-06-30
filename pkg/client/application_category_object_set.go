@@ -16,7 +16,6 @@ const (
     applicationCategoryPath = "application_categories"
 )
 
-
 // ApplicationCategoryObjectSet
 type ApplicationCategoryObjectSet struct {
     Client *GroupMgmtClient

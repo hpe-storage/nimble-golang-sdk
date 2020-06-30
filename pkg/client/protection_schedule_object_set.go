@@ -16,7 +16,6 @@ const (
     protectionSchedulePath = "protection_schedules"
 )
 
-
 // ProtectionScheduleObjectSet
 type ProtectionScheduleObjectSet struct {
     Client *GroupMgmtClient

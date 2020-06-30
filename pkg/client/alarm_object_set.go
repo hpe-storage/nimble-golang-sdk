@@ -16,7 +16,6 @@ const (
     alarmPath = "alarms"
 )
 
-
 // AlarmObjectSet
 type AlarmObjectSet struct {
     Client *GroupMgmtClient

@@ -16,7 +16,6 @@ const (
     initiatorPath = "initiators"
 )
 
-
 // InitiatorObjectSet
 type InitiatorObjectSet struct {
     Client *GroupMgmtClient

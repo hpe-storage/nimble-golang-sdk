@@ -11,11 +11,11 @@ import (
 )
 
 
-// Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
+// Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets
+// let you create logical addressing for selective routing.
 const (
     subnetPath = "subnets"
 )
-
 
 // SubnetObjectSet
 type SubnetObjectSet struct {

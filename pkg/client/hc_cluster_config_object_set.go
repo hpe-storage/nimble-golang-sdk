@@ -16,7 +16,6 @@ const (
     hcClusterConfigPath = "hc_cluster_configs"
 )
 
-
 // HcClusterConfigObjectSet
 type HcClusterConfigObjectSet struct {
     Client *GroupMgmtClient

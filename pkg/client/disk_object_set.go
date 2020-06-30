@@ -16,7 +16,6 @@ const (
     diskPath = "disks"
 )
 
-
 // DiskObjectSet
 type DiskObjectSet struct {
     Client *GroupMgmtClient

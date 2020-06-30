@@ -16,7 +16,6 @@ const (
     protocolEndpointPath = "protocol_endpoints"
 )
 
-
 // ProtocolEndpointObjectSet
 type ProtocolEndpointObjectSet struct {
     Client *GroupMgmtClient

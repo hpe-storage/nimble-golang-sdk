@@ -16,7 +16,6 @@ const (
     shelfPath = "shelves"
 )
 
-
 // ShelfObjectSet
 type ShelfObjectSet struct {
     Client *GroupMgmtClient

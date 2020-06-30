@@ -16,7 +16,6 @@ const (
     versionPath = "versions"
 )
 
-
 // VersionObjectSet
 type VersionObjectSet struct {
     Client *GroupMgmtClient

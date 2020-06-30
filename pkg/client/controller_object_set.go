@@ -16,7 +16,6 @@ const (
     controllerPath = "controllers"
 )
 
-
 // ControllerObjectSet
 type ControllerObjectSet struct {
     Client *GroupMgmtClient

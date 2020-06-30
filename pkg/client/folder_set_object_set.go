@@ -16,7 +16,6 @@ const (
     folderSetPath = "folder_sets"
 )
 
-
 // FolderSetObjectSet
 type FolderSetObjectSet struct {
     Client *GroupMgmtClient

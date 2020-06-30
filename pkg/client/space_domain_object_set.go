@@ -16,7 +16,6 @@ const (
     spaceDomainPath = "space_domains"
 )
 
-
 // SpaceDomainObjectSet
 type SpaceDomainObjectSet struct {
     Client *GroupMgmtClient

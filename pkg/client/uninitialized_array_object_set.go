@@ -16,7 +16,6 @@ const (
     uninitializedArrayPath = "uninitialized_arrays"
 )
 
-
 // UninitializedArrayObjectSet
 type UninitializedArrayObjectSet struct {
     Client *GroupMgmtClient

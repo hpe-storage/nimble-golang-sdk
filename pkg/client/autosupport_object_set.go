@@ -16,7 +16,6 @@ const (
     autosupportPath = "autosupport"
 )
 
-
 // AutosupportObjectSet
 type AutosupportObjectSet struct {
     Client *GroupMgmtClient

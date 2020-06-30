@@ -75,7 +75,7 @@ func (client *GroupMgmtClient) EnableDebug() {
 
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
 	// Construct Payload
-	appName := "Go client"
+	appName := "Go sdkv1 client"
 	token := &model.Token{
 		Username: &username,
 		Password: &password,
