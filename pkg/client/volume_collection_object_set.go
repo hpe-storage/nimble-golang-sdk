@@ -11,11 +11,11 @@ import (
 )
 
 
-// Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
+// Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections
+// can be created from scratch or based on predefined protection templates.
 const (
     volumeCollectionPath = "volume_collections"
 )
-
 
 // VolumeCollectionObjectSet
 type VolumeCollectionObjectSet struct {

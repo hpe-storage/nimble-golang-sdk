@@ -16,7 +16,6 @@ const (
     eventPath = "events"
 )
 
-
 // EventObjectSet
 type EventObjectSet struct {
     Client *GroupMgmtClient

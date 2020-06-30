@@ -16,7 +16,6 @@ const (
     objectLimitPath = "object_limits"
 )
 
-
 // ObjectLimitObjectSet
 type ObjectLimitObjectSet struct {
     Client *GroupMgmtClient

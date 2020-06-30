@@ -16,7 +16,6 @@ const (
     networkInterfacePath = "network_interfaces"
 )
 
-
 // NetworkInterfaceObjectSet
 type NetworkInterfaceObjectSet struct {
     Client *GroupMgmtClient

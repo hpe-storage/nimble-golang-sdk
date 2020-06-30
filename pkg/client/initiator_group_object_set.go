@@ -11,11 +11,11 @@ import (
 )
 
 
-// Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
+// Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through
+// group membership.
 const (
     initiatorGroupPath = "initiator_groups"
 )
-
 
 // InitiatorGroupObjectSet
 type InitiatorGroupObjectSet struct {

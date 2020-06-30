@@ -16,7 +16,6 @@ const (
     witnessPath = "witnesses"
 )
 
-
 // WitnessObjectSet
 type WitnessObjectSet struct {
     Client *GroupMgmtClient

@@ -16,7 +16,6 @@ const (
     groupPath = "groups"
 )
 
-
 // GroupObjectSet
 type GroupObjectSet struct {
     Client *GroupMgmtClient

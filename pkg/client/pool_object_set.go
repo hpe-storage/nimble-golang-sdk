@@ -16,7 +16,6 @@ const (
     poolPath = "pools"
 )
 
-
 // PoolObjectSet
 type PoolObjectSet struct {
     Client *GroupMgmtClient

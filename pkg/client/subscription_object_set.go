@@ -11,11 +11,11 @@ import (
 )
 
 
-// Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
+// Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification
+// client.
 const (
     subscriptionPath = "subscriptions"
 )
-
 
 // SubscriptionObjectSet
 type SubscriptionObjectSet struct {

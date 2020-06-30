@@ -16,7 +16,6 @@ const (
     fibreChannelPortPath = "fibre_channel_ports"
 )
 
-
 // FibreChannelPortObjectSet
 type FibreChannelPortObjectSet struct {
     Client *GroupMgmtClient

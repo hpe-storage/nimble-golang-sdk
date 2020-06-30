@@ -16,7 +16,6 @@ const (
     networkConfigPath = "network_configs"
 )
 
-
 // NetworkConfigObjectSet
 type NetworkConfigObjectSet struct {
     Client *GroupMgmtClient

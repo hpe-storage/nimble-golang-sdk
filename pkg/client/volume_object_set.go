@@ -11,11 +11,11 @@ import (
 )
 
 
-// Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
+// Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on
+// storage allocation.
 const (
     volumePath = "volumes"
 )
-
 
 // VolumeObjectSet
 type VolumeObjectSet struct {

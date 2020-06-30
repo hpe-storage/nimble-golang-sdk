@@ -16,7 +16,6 @@ const (
     statPath = "stats"
 )
 
-
 // StatObjectSet
 type StatObjectSet struct {
     Client *GroupMgmtClient

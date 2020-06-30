@@ -16,7 +16,6 @@ const (
     fibreChannelSessionPath = "fibre_channel_sessions"
 )
 
-
 // FibreChannelSessionObjectSet
 type FibreChannelSessionObjectSet struct {
     Client *GroupMgmtClient

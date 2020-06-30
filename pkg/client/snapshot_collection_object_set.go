@@ -11,11 +11,11 @@ import (
 )
 
 
-// Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
+// Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the
+// collections were taken.
 const (
     snapshotCollectionPath = "snapshot_collections"
 )
-
 
 // SnapshotCollectionObjectSet
 type SnapshotCollectionObjectSet struct {

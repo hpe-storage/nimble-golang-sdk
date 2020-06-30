@@ -16,7 +16,6 @@ const (
     keyManagerPath = "key_managers"
 )
 
-
 // KeyManagerObjectSet
 type KeyManagerObjectSet struct {
     Client *GroupMgmtClient

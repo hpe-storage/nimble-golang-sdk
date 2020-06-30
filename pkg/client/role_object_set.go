@@ -16,7 +16,6 @@ const (
     rolePath = "roles"
 )
 
-
 // RoleObjectSet
 type RoleObjectSet struct {
     Client *GroupMgmtClient

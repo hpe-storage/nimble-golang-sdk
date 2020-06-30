@@ -16,7 +16,6 @@ const (
     debugLogPath = "debug_log"
 )
 
-
 // DebugLogObjectSet
 type DebugLogObjectSet struct {
     Client *GroupMgmtClient

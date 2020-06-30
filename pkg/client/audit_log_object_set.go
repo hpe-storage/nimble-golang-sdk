@@ -16,7 +16,6 @@ const (
     auditLogPath = "audit_log"
 )
 
-
 // AuditLogObjectSet
 type AuditLogObjectSet struct {
     Client *GroupMgmtClient

@@ -16,7 +16,6 @@ const (
     certificatePath = "certificates"
 )
 
-
 // CertificateObjectSet
 type CertificateObjectSet struct {
     Client *GroupMgmtClient

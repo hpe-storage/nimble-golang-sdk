@@ -16,7 +16,6 @@ const (
     softwareVersionPath = "software_versions"
 )
 
-
 // SoftwareVersionObjectSet
 type SoftwareVersionObjectSet struct {
     Client *GroupMgmtClient

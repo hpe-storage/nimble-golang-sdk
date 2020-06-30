@@ -16,7 +16,6 @@ const (
     fibreChannelInitiatorAliasPath = "fibre_channel_initiator_aliases"
 )
 
-
 // FibreChannelInitiatorAliasObjectSet
 type FibreChannelInitiatorAliasObjectSet struct {
     Client *GroupMgmtClient

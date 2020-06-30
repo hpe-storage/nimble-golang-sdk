@@ -11,11 +11,10 @@ import (
 )
 
 
-// Manage user&#39;s session information.
+// Manage user's session information.
 const (
     tokenPath = "tokens"
 )
-
 
 // TokenObjectSet
 type TokenObjectSet struct {

@@ -16,7 +16,6 @@ const (
     volumeFamilyPath = "volume_families"
 )
 
-
 // VolumeFamilyObjectSet
 type VolumeFamilyObjectSet struct {
     Client *GroupMgmtClient

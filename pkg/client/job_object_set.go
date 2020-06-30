@@ -16,7 +16,6 @@ const (
     jobPath = "jobs"
 )
 
-
 // JobObjectSet
 type JobObjectSet struct {
     Client *GroupMgmtClient

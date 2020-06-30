@@ -16,7 +16,6 @@ const (
     fibreChannelInterfacePath = "fibre_channel_interfaces"
 )
 
-
 // FibreChannelInterfaceObjectSet
 type FibreChannelInterfaceObjectSet struct {
     Client *GroupMgmtClient

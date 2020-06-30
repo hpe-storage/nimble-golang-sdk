@@ -11,11 +11,11 @@ import (
 )
 
 
-// Subscribers are websocket based notification clients that can subscribe to interesting operations and events and recieve notifications whenever the subscribed to operations and events happen on the array.
+// Subscribers are websocket based notification clients that can subscribe to interesting operations and events and recieve notifications whenever the subscribed to operations and
+// events happen on the array.
 const (
     subscriberPath = "subscribers"
 )
-
 
 // SubscriberObjectSet
 type SubscriberObjectSet struct {

@@ -16,7 +16,6 @@ const (
     applicationServerPath = "application_servers"
 )
 
-
 // ApplicationServerObjectSet
 type ApplicationServerObjectSet struct {
     Client *GroupMgmtClient

@@ -16,7 +16,6 @@ const (
     folderPath = "folders"
 )
 
-
 // FolderObjectSet
 type FolderObjectSet struct {
     Client *GroupMgmtClient
