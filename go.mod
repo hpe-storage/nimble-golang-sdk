@@ -1,4 +1,4 @@
-module github.hpe.com/nimble-dcs/golang-sdk
+module github.com/hpe-storage/nimble-golang-sdk
 
 go 1.13
 
