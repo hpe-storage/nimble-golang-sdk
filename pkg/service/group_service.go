@@ -2,55 +2,68 @@
 
 package service
 
+// Group Service - Group is a collection of arrays operating together organized into storage pools.
+
 import (
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
+// GroupService type 
 type GroupService struct {
-	ip     string
-	client *client.GroupMgmtClient
-
-	accessControlRecordService *AccessControlRecordService
-	performancePolicyService   *PerformancePolicyService
-	tokenService               *TokenService
-	volumeService              *VolumeService
+	objectSet *client.GroupObjectSet
 }
 
-func NewGroupService(ip string, username string, password string) (gs *GroupService, err error) {
-	client, err := client.NewClient(ip, username, password, "v1")
+// NewGroupService - method to initialize "GroupService" 
+func NewGroupService(gs *NsGroupService) (*GroupService) {
+	objectSet := gs.client.GetGroupObjectSet()
+	return &GroupService{objectSet: objectSet}
+}
+
+// GetGroups - method returns a array of pointers of type "Groups"
+func (svc *GroupService) GetGroups(params *util.GetParams) ([]*model.Group, error) {
+	return svc.objectSet.GetObjectListFromParams(params)
+}
+
+// CreateGroup - method creates a "Group"
+func (svc *GroupService) CreateGroup(obj *model.Group) (*model.Group, error) {
+	// TODO: validate parameters
+	return svc.objectSet.CreateObject(obj)
+}
+
+// UpdateGroup - method modifies  the "Group" 
+func (svc *GroupService) UpdateGroup(id string, obj *model.Group) (*model.Group, error) {
+	return svc.objectSet.UpdateObject(id, obj)
+}
+
+// GetGroupById - method returns a pointer to "Group"
+func (svc *GroupService) GetGroupById(id string) (*model.Group, error) {
+	return svc.objectSet.GetObject(id)
+}
+
+// GetGroupByName - method returns a pointer "Group" 
+func (svc *GroupService) GetGroupByName(name string) (*model.Group, error) {
+	params := &util.GetParams{
+		Filter: &util.SearchFilter{
+			FieldName: model.VolumeFields.Name,
+			Operator:  util.EQUALS.String(),
+			Value:     name,
+		},
+	}
+	objs, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
+	
+	if len(objs) == 0 {
+    	return nil, nil
+    }
+    
+	return objs[0],nil
+}	
 
-	return &GroupService{ip: ip, client: client}, nil
-}
-func(gs *GroupService) EnableDebug(){
-	gs.client.EnableDebug()
-}
-func (gs *GroupService) GetAccessControlRecordService() (vs *AccessControlRecordService) {
-	if gs.accessControlRecordService == nil {
-		gs.accessControlRecordService = NewAccessControlRecordService(gs)
-	}
-	return gs.accessControlRecordService
-}
-
-func (gs *GroupService) GetPerformancePolicyService() (vs *PerformancePolicyService) {
-	if gs.performancePolicyService == nil {
-		gs.performancePolicyService = NewPerformancePolicyService(gs)
-	}
-	return gs.performancePolicyService
-}
-
-func (gs *GroupService) GetTokenService() (vs *TokenService) {
-	if gs.tokenService == nil {
-		gs.tokenService = NewTokenService(gs)
-	}
-	return gs.tokenService
-}
-
-func (gs *GroupService) GetVolumeService() (vs *VolumeService) {
-	if gs.volumeService == nil {
-		gs.volumeService = NewVolumeService(gs)
-	}
-	return gs.volumeService
+// DeleteGroup - deletes the "Group"
+func (svc *GroupService) DeleteGroup(id string) error {
+	return svc.objectSet.DeleteObject(id)
 }

@@ -32,12 +32,6 @@ func (client *GroupMgmtClient) GetAlarmObjectSet() *AlarmObjectSet {
 		Client: client,
 	}
 }
-// SubscriptionObjectSet returns a reference to the Subscription object set
-func (client *GroupMgmtClient) GetSubscriptionObjectSet() *SubscriptionObjectSet {
-	return &SubscriptionObjectSet{
-		Client: client,
-	}
-}
 // VolumeObjectSet returns a reference to the Volume object set
 func (client *GroupMgmtClient) GetVolumeObjectSet() *VolumeObjectSet {
 	return &VolumeObjectSet{
@@ -47,12 +41,6 @@ func (client *GroupMgmtClient) GetVolumeObjectSet() *VolumeObjectSet {
 // ShelfObjectSet returns a reference to the Shelf object set
 func (client *GroupMgmtClient) GetShelfObjectSet() *ShelfObjectSet {
 	return &ShelfObjectSet{
-		Client: client,
-	}
-}
-// SupportObjectSet returns a reference to the Support object set
-func (client *GroupMgmtClient) GetSupportObjectSet() *SupportObjectSet {
-	return &SupportObjectSet{
 		Client: client,
 	}
 }
@@ -80,21 +68,9 @@ func (client *GroupMgmtClient) GetTokenObjectSet() *TokenObjectSet {
 		Client: client,
 	}
 }
-// RoleObjectSet returns a reference to the Role object set
-func (client *GroupMgmtClient) GetRoleObjectSet() *RoleObjectSet {
-	return &RoleObjectSet{
-		Client: client,
-	}
-}
 // FibreChannelInterfaceObjectSet returns a reference to the FibreChannelInterface object set
 func (client *GroupMgmtClient) GetFibreChannelInterfaceObjectSet() *FibreChannelInterfaceObjectSet {
 	return &FibreChannelInterfaceObjectSet{
-		Client: client,
-	}
-}
-// ObjectLimitObjectSet returns a reference to the ObjectLimit object set
-func (client *GroupMgmtClient) GetObjectLimitObjectSet() *ObjectLimitObjectSet {
-	return &ObjectLimitObjectSet{
 		Client: client,
 	}
 }
@@ -104,21 +80,9 @@ func (client *GroupMgmtClient) GetNetworkInterfaceObjectSet() *NetworkInterfaceO
 		Client: client,
 	}
 }
-// UninitializedArrayObjectSet returns a reference to the UninitializedArray object set
-func (client *GroupMgmtClient) GetUninitializedArrayObjectSet() *UninitializedArrayObjectSet {
-	return &UninitializedArrayObjectSet{
-		Client: client,
-	}
-}
 // ArrayObjectSet returns a reference to the Array object set
 func (client *GroupMgmtClient) GetArrayObjectSet() *ArrayObjectSet {
 	return &ArrayObjectSet{
-		Client: client,
-	}
-}
-// VolumeFamilyObjectSet returns a reference to the VolumeFamily object set
-func (client *GroupMgmtClient) GetVolumeFamilyObjectSet() *VolumeFamilyObjectSet {
-	return &VolumeFamilyObjectSet{
 		Client: client,
 	}
 }
@@ -143,12 +107,6 @@ func (client *GroupMgmtClient) GetPerformancePolicyObjectSet() *PerformancePolic
 // SpaceDomainObjectSet returns a reference to the SpaceDomain object set
 func (client *GroupMgmtClient) GetSpaceDomainObjectSet() *SpaceDomainObjectSet {
 	return &SpaceDomainObjectSet{
-		Client: client,
-	}
-}
-// HcClusterConfigObjectSet returns a reference to the HcClusterConfig object set
-func (client *GroupMgmtClient) GetHcClusterConfigObjectSet() *HcClusterConfigObjectSet {
-	return &HcClusterConfigObjectSet{
 		Client: client,
 	}
 }
@@ -182,18 +140,6 @@ func (client *GroupMgmtClient) GetApplicationServerObjectSet() *ApplicationServe
 		Client: client,
 	}
 }
-// FolderSetObjectSet returns a reference to the FolderSet object set
-func (client *GroupMgmtClient) GetFolderSetObjectSet() *FolderSetObjectSet {
-	return &FolderSetObjectSet{
-		Client: client,
-	}
-}
-// DebugLogObjectSet returns a reference to the DebugLog object set
-func (client *GroupMgmtClient) GetDebugLogObjectSet() *DebugLogObjectSet {
-	return &DebugLogObjectSet{
-		Client: client,
-	}
-}
 // UserPolicyObjectSet returns a reference to the UserPolicy object set
 func (client *GroupMgmtClient) GetUserPolicyObjectSet() *UserPolicyObjectSet {
 	return &UserPolicyObjectSet{
@@ -218,18 +164,6 @@ func (client *GroupMgmtClient) GetControllerObjectSet() *ControllerObjectSet {
 		Client: client,
 	}
 }
-// AutosupportObjectSet returns a reference to the Autosupport object set
-func (client *GroupMgmtClient) GetAutosupportObjectSet() *AutosupportObjectSet {
-	return &AutosupportObjectSet{
-		Client: client,
-	}
-}
-// CertificateObjectSet returns a reference to the Certificate object set
-func (client *GroupMgmtClient) GetCertificateObjectSet() *CertificateObjectSet {
-	return &CertificateObjectSet{
-		Client: client,
-	}
-}
 // FibreChannelSessionObjectSet returns a reference to the FibreChannelSession object set
 func (client *GroupMgmtClient) GetFibreChannelSessionObjectSet() *FibreChannelSessionObjectSet {
 	return &FibreChannelSessionObjectSet{
@@ -239,12 +173,6 @@ func (client *GroupMgmtClient) GetFibreChannelSessionObjectSet() *FibreChannelSe
 // UserObjectSet returns a reference to the User object set
 func (client *GroupMgmtClient) GetUserObjectSet() *UserObjectSet {
 	return &UserObjectSet{
-		Client: client,
-	}
-}
-// StatObjectSet returns a reference to the Stat object set
-func (client *GroupMgmtClient) GetStatObjectSet() *StatObjectSet {
-	return &StatObjectSet{
 		Client: client,
 	}
 }
@@ -314,12 +242,6 @@ func (client *GroupMgmtClient) GetVolumeCollectionObjectSet() *VolumeCollectionO
 		Client: client,
 	}
 }
-// SubscriberObjectSet returns a reference to the Subscriber object set
-func (client *GroupMgmtClient) GetSubscriberObjectSet() *SubscriberObjectSet {
-	return &SubscriberObjectSet{
-		Client: client,
-	}
-}
 // DiskObjectSet returns a reference to the Disk object set
 func (client *GroupMgmtClient) GetDiskObjectSet() *DiskObjectSet {
 	return &DiskObjectSet{
@@ -329,12 +251,6 @@ func (client *GroupMgmtClient) GetDiskObjectSet() *DiskObjectSet {
 // FibreChannelInitiatorAliasObjectSet returns a reference to the FibreChannelInitiatorAlias object set
 func (client *GroupMgmtClient) GetFibreChannelInitiatorAliasObjectSet() *FibreChannelInitiatorAliasObjectSet {
 	return &FibreChannelInitiatorAliasObjectSet{
-		Client: client,
-	}
-}
-// HealthCheckObjectSet returns a reference to the HealthCheck object set
-func (client *GroupMgmtClient) GetHealthCheckObjectSet() *HealthCheckObjectSet {
-	return &HealthCheckObjectSet{
 		Client: client,
 	}
 }
