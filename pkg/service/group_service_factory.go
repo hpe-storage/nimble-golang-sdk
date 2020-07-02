@@ -4,7 +4,8 @@ package service
 
 
 import (
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	
 )
 
 // NsGroupService type
@@ -18,42 +19,30 @@ type NsGroupService struct {
 	chapUserService            		*ChapUserService
 	masterKeyService           		*MasterKeyService
 	alarmService               		*AlarmService
-	subscriptionService        		*SubscriptionService
 	volumeService              		*VolumeService
 	shelfService               		*ShelfService
-	supportService             		*SupportService
 	keyManagerService          		*KeyManagerService
 	protectionTemplateService  		*ProtectionTemplateService
 	folderService              		*FolderService
 	tokenService               		*TokenService
-	roleService                		*RoleService
 	fibreChannelInterfaceService		*FibreChannelInterfaceService
-	objectLimitService         		*ObjectLimitService
 	networkInterfaceService    		*NetworkInterfaceService
-	uninitializedArrayService  		*UninitializedArrayService
 	arrayService               		*ArrayService
-	volumeFamilyService        		*VolumeFamilyService
 	fibreChannelConfigService  		*FibreChannelConfigService
 	initiatorService           		*InitiatorService
 	performancePolicyService   		*PerformancePolicyService
 	spaceDomainService         		*SpaceDomainService
-	hcClusterConfigService     		*HcClusterConfigService
 	snapshotCollectionService  		*SnapshotCollectionService
 	replicationPartnerService  		*ReplicationPartnerService
 	eventService               		*EventService
 	snapshotService            		*SnapshotService
 	applicationServerService   		*ApplicationServerService
-	folderSetService           		*FolderSetService
-	debugLogService            		*DebugLogService
 	userPolicyService          		*UserPolicyService
 	userGroupService           		*UserGroupService
 	subnetService              		*SubnetService
 	controllerService          		*ControllerService
-	autosupportService         		*AutosupportService
-	certificateService         		*CertificateService
 	fibreChannelSessionService 		*FibreChannelSessionService
 	userService                		*UserService
-	statService                		*StatService
 	protectionScheduleService  		*ProtectionScheduleService
 	initiatorGroupService      		*InitiatorGroupService
 	accessControlRecordService 		*AccessControlRecordService
@@ -65,10 +54,8 @@ type NsGroupService struct {
 	auditLogService            		*AuditLogService
 	poolService                		*PoolService
 	volumeCollectionService    		*VolumeCollectionService
-	subscriberService          		*SubscriberService
 	diskService                		*DiskService
 	fibreChannelInitiatorAliasService		*FibreChannelInitiatorAliasService
-	healthCheckService         		*HealthCheckService
 	groupService               		*GroupService
 	softwareVersionService     		*SoftwareVersionService
 	networkConfigService       		*NetworkConfigService
@@ -90,7 +77,6 @@ func (gs *NsGroupService) GetVersionService() (vs *VersionService) {
 	}
 	return gs.versionService
 }
-
 // GetApplicationCategoryService - returns service of a type *ApplicationCategoryService
 func (gs *NsGroupService) GetApplicationCategoryService() (vs *ApplicationCategoryService) {
 	if gs.applicationCategoryService == nil {
@@ -98,7 +84,6 @@ func (gs *NsGroupService) GetApplicationCategoryService() (vs *ApplicationCatego
 	}
 	return gs.applicationCategoryService
 }
-
 // GetChapUserService - returns service of a type *ChapUserService
 func (gs *NsGroupService) GetChapUserService() (vs *ChapUserService) {
 	if gs.chapUserService == nil {
@@ -106,7 +91,6 @@ func (gs *NsGroupService) GetChapUserService() (vs *ChapUserService) {
 	}
 	return gs.chapUserService
 }
-
 // GetMasterKeyService - returns service of a type *MasterKeyService
 func (gs *NsGroupService) GetMasterKeyService() (vs *MasterKeyService) {
 	if gs.masterKeyService == nil {
@@ -114,7 +98,6 @@ func (gs *NsGroupService) GetMasterKeyService() (vs *MasterKeyService) {
 	}
 	return gs.masterKeyService
 }
-
 // GetAlarmService - returns service of a type *AlarmService
 func (gs *NsGroupService) GetAlarmService() (vs *AlarmService) {
 	if gs.alarmService == nil {
@@ -122,15 +105,6 @@ func (gs *NsGroupService) GetAlarmService() (vs *AlarmService) {
 	}
 	return gs.alarmService
 }
-
-// GetSubscriptionService - returns service of a type *SubscriptionService
-func (gs *NsGroupService) GetSubscriptionService() (vs *SubscriptionService) {
-	if gs.subscriptionService == nil {
-		gs.subscriptionService = NewSubscriptionService(gs)
-	}
-	return gs.subscriptionService
-}
-
 // GetVolumeService - returns service of a type *VolumeService
 func (gs *NsGroupService) GetVolumeService() (vs *VolumeService) {
 	if gs.volumeService == nil {
@@ -138,7 +112,6 @@ func (gs *NsGroupService) GetVolumeService() (vs *VolumeService) {
 	}
 	return gs.volumeService
 }
-
 // GetShelfService - returns service of a type *ShelfService
 func (gs *NsGroupService) GetShelfService() (vs *ShelfService) {
 	if gs.shelfService == nil {
@@ -146,15 +119,6 @@ func (gs *NsGroupService) GetShelfService() (vs *ShelfService) {
 	}
 	return gs.shelfService
 }
-
-// GetSupportService - returns service of a type *SupportService
-func (gs *NsGroupService) GetSupportService() (vs *SupportService) {
-	if gs.supportService == nil {
-		gs.supportService = NewSupportService(gs)
-	}
-	return gs.supportService
-}
-
 // GetKeyManagerService - returns service of a type *KeyManagerService
 func (gs *NsGroupService) GetKeyManagerService() (vs *KeyManagerService) {
 	if gs.keyManagerService == nil {
@@ -162,7 +126,6 @@ func (gs *NsGroupService) GetKeyManagerService() (vs *KeyManagerService) {
 	}
 	return gs.keyManagerService
 }
-
 // GetProtectionTemplateService - returns service of a type *ProtectionTemplateService
 func (gs *NsGroupService) GetProtectionTemplateService() (vs *ProtectionTemplateService) {
 	if gs.protectionTemplateService == nil {
@@ -170,7 +133,6 @@ func (gs *NsGroupService) GetProtectionTemplateService() (vs *ProtectionTemplate
 	}
 	return gs.protectionTemplateService
 }
-
 // GetFolderService - returns service of a type *FolderService
 func (gs *NsGroupService) GetFolderService() (vs *FolderService) {
 	if gs.folderService == nil {
@@ -178,7 +140,6 @@ func (gs *NsGroupService) GetFolderService() (vs *FolderService) {
 	}
 	return gs.folderService
 }
-
 // GetTokenService - returns service of a type *TokenService
 func (gs *NsGroupService) GetTokenService() (vs *TokenService) {
 	if gs.tokenService == nil {
@@ -186,15 +147,6 @@ func (gs *NsGroupService) GetTokenService() (vs *TokenService) {
 	}
 	return gs.tokenService
 }
-
-// GetRoleService - returns service of a type *RoleService
-func (gs *NsGroupService) GetRoleService() (vs *RoleService) {
-	if gs.roleService == nil {
-		gs.roleService = NewRoleService(gs)
-	}
-	return gs.roleService
-}
-
 // GetFibreChannelInterfaceService - returns service of a type *FibreChannelInterfaceService
 func (gs *NsGroupService) GetFibreChannelInterfaceService() (vs *FibreChannelInterfaceService) {
 	if gs.fibreChannelInterfaceService == nil {
@@ -202,15 +154,6 @@ func (gs *NsGroupService) GetFibreChannelInterfaceService() (vs *FibreChannelInt
 	}
 	return gs.fibreChannelInterfaceService
 }
-
-// GetObjectLimitService - returns service of a type *ObjectLimitService
-func (gs *NsGroupService) GetObjectLimitService() (vs *ObjectLimitService) {
-	if gs.objectLimitService == nil {
-		gs.objectLimitService = NewObjectLimitService(gs)
-	}
-	return gs.objectLimitService
-}
-
 // GetNetworkInterfaceService - returns service of a type *NetworkInterfaceService
 func (gs *NsGroupService) GetNetworkInterfaceService() (vs *NetworkInterfaceService) {
 	if gs.networkInterfaceService == nil {
@@ -218,15 +161,6 @@ func (gs *NsGroupService) GetNetworkInterfaceService() (vs *NetworkInterfaceServ
 	}
 	return gs.networkInterfaceService
 }
-
-// GetUninitializedArrayService - returns service of a type *UninitializedArrayService
-func (gs *NsGroupService) GetUninitializedArrayService() (vs *UninitializedArrayService) {
-	if gs.uninitializedArrayService == nil {
-		gs.uninitializedArrayService = NewUninitializedArrayService(gs)
-	}
-	return gs.uninitializedArrayService
-}
-
 // GetArrayService - returns service of a type *ArrayService
 func (gs *NsGroupService) GetArrayService() (vs *ArrayService) {
 	if gs.arrayService == nil {
@@ -234,15 +168,6 @@ func (gs *NsGroupService) GetArrayService() (vs *ArrayService) {
 	}
 	return gs.arrayService
 }
-
-// GetVolumeFamilyService - returns service of a type *VolumeFamilyService
-func (gs *NsGroupService) GetVolumeFamilyService() (vs *VolumeFamilyService) {
-	if gs.volumeFamilyService == nil {
-		gs.volumeFamilyService = NewVolumeFamilyService(gs)
-	}
-	return gs.volumeFamilyService
-}
-
 // GetFibreChannelConfigService - returns service of a type *FibreChannelConfigService
 func (gs *NsGroupService) GetFibreChannelConfigService() (vs *FibreChannelConfigService) {
 	if gs.fibreChannelConfigService == nil {
@@ -250,7 +175,6 @@ func (gs *NsGroupService) GetFibreChannelConfigService() (vs *FibreChannelConfig
 	}
 	return gs.fibreChannelConfigService
 }
-
 // GetInitiatorService - returns service of a type *InitiatorService
 func (gs *NsGroupService) GetInitiatorService() (vs *InitiatorService) {
 	if gs.initiatorService == nil {
@@ -258,7 +182,6 @@ func (gs *NsGroupService) GetInitiatorService() (vs *InitiatorService) {
 	}
 	return gs.initiatorService
 }
-
 // GetPerformancePolicyService - returns service of a type *PerformancePolicyService
 func (gs *NsGroupService) GetPerformancePolicyService() (vs *PerformancePolicyService) {
 	if gs.performancePolicyService == nil {
@@ -266,7 +189,6 @@ func (gs *NsGroupService) GetPerformancePolicyService() (vs *PerformancePolicySe
 	}
 	return gs.performancePolicyService
 }
-
 // GetSpaceDomainService - returns service of a type *SpaceDomainService
 func (gs *NsGroupService) GetSpaceDomainService() (vs *SpaceDomainService) {
 	if gs.spaceDomainService == nil {
@@ -274,15 +196,6 @@ func (gs *NsGroupService) GetSpaceDomainService() (vs *SpaceDomainService) {
 	}
 	return gs.spaceDomainService
 }
-
-// GetHcClusterConfigService - returns service of a type *HcClusterConfigService
-func (gs *NsGroupService) GetHcClusterConfigService() (vs *HcClusterConfigService) {
-	if gs.hcClusterConfigService == nil {
-		gs.hcClusterConfigService = NewHcClusterConfigService(gs)
-	}
-	return gs.hcClusterConfigService
-}
-
 // GetSnapshotCollectionService - returns service of a type *SnapshotCollectionService
 func (gs *NsGroupService) GetSnapshotCollectionService() (vs *SnapshotCollectionService) {
 	if gs.snapshotCollectionService == nil {
@@ -290,7 +203,6 @@ func (gs *NsGroupService) GetSnapshotCollectionService() (vs *SnapshotCollection
 	}
 	return gs.snapshotCollectionService
 }
-
 // GetReplicationPartnerService - returns service of a type *ReplicationPartnerService
 func (gs *NsGroupService) GetReplicationPartnerService() (vs *ReplicationPartnerService) {
 	if gs.replicationPartnerService == nil {
@@ -298,7 +210,6 @@ func (gs *NsGroupService) GetReplicationPartnerService() (vs *ReplicationPartner
 	}
 	return gs.replicationPartnerService
 }
-
 // GetEventService - returns service of a type *EventService
 func (gs *NsGroupService) GetEventService() (vs *EventService) {
 	if gs.eventService == nil {
@@ -306,7 +217,6 @@ func (gs *NsGroupService) GetEventService() (vs *EventService) {
 	}
 	return gs.eventService
 }
-
 // GetSnapshotService - returns service of a type *SnapshotService
 func (gs *NsGroupService) GetSnapshotService() (vs *SnapshotService) {
 	if gs.snapshotService == nil {
@@ -314,7 +224,6 @@ func (gs *NsGroupService) GetSnapshotService() (vs *SnapshotService) {
 	}
 	return gs.snapshotService
 }
-
 // GetApplicationServerService - returns service of a type *ApplicationServerService
 func (gs *NsGroupService) GetApplicationServerService() (vs *ApplicationServerService) {
 	if gs.applicationServerService == nil {
@@ -322,23 +231,6 @@ func (gs *NsGroupService) GetApplicationServerService() (vs *ApplicationServerSe
 	}
 	return gs.applicationServerService
 }
-
-// GetFolderSetService - returns service of a type *FolderSetService
-func (gs *NsGroupService) GetFolderSetService() (vs *FolderSetService) {
-	if gs.folderSetService == nil {
-		gs.folderSetService = NewFolderSetService(gs)
-	}
-	return gs.folderSetService
-}
-
-// GetDebugLogService - returns service of a type *DebugLogService
-func (gs *NsGroupService) GetDebugLogService() (vs *DebugLogService) {
-	if gs.debugLogService == nil {
-		gs.debugLogService = NewDebugLogService(gs)
-	}
-	return gs.debugLogService
-}
-
 // GetUserPolicyService - returns service of a type *UserPolicyService
 func (gs *NsGroupService) GetUserPolicyService() (vs *UserPolicyService) {
 	if gs.userPolicyService == nil {
@@ -346,7 +238,6 @@ func (gs *NsGroupService) GetUserPolicyService() (vs *UserPolicyService) {
 	}
 	return gs.userPolicyService
 }
-
 // GetUserGroupService - returns service of a type *UserGroupService
 func (gs *NsGroupService) GetUserGroupService() (vs *UserGroupService) {
 	if gs.userGroupService == nil {
@@ -354,7 +245,6 @@ func (gs *NsGroupService) GetUserGroupService() (vs *UserGroupService) {
 	}
 	return gs.userGroupService
 }
-
 // GetSubnetService - returns service of a type *SubnetService
 func (gs *NsGroupService) GetSubnetService() (vs *SubnetService) {
 	if gs.subnetService == nil {
@@ -362,7 +252,6 @@ func (gs *NsGroupService) GetSubnetService() (vs *SubnetService) {
 	}
 	return gs.subnetService
 }
-
 // GetControllerService - returns service of a type *ControllerService
 func (gs *NsGroupService) GetControllerService() (vs *ControllerService) {
 	if gs.controllerService == nil {
@@ -370,23 +259,6 @@ func (gs *NsGroupService) GetControllerService() (vs *ControllerService) {
 	}
 	return gs.controllerService
 }
-
-// GetAutosupportService - returns service of a type *AutosupportService
-func (gs *NsGroupService) GetAutosupportService() (vs *AutosupportService) {
-	if gs.autosupportService == nil {
-		gs.autosupportService = NewAutosupportService(gs)
-	}
-	return gs.autosupportService
-}
-
-// GetCertificateService - returns service of a type *CertificateService
-func (gs *NsGroupService) GetCertificateService() (vs *CertificateService) {
-	if gs.certificateService == nil {
-		gs.certificateService = NewCertificateService(gs)
-	}
-	return gs.certificateService
-}
-
 // GetFibreChannelSessionService - returns service of a type *FibreChannelSessionService
 func (gs *NsGroupService) GetFibreChannelSessionService() (vs *FibreChannelSessionService) {
 	if gs.fibreChannelSessionService == nil {
@@ -394,7 +266,6 @@ func (gs *NsGroupService) GetFibreChannelSessionService() (vs *FibreChannelSessi
 	}
 	return gs.fibreChannelSessionService
 }
-
 // GetUserService - returns service of a type *UserService
 func (gs *NsGroupService) GetUserService() (vs *UserService) {
 	if gs.userService == nil {
@@ -402,15 +273,6 @@ func (gs *NsGroupService) GetUserService() (vs *UserService) {
 	}
 	return gs.userService
 }
-
-// GetStatService - returns service of a type *StatService
-func (gs *NsGroupService) GetStatService() (vs *StatService) {
-	if gs.statService == nil {
-		gs.statService = NewStatService(gs)
-	}
-	return gs.statService
-}
-
 // GetProtectionScheduleService - returns service of a type *ProtectionScheduleService
 func (gs *NsGroupService) GetProtectionScheduleService() (vs *ProtectionScheduleService) {
 	if gs.protectionScheduleService == nil {
@@ -418,7 +280,6 @@ func (gs *NsGroupService) GetProtectionScheduleService() (vs *ProtectionSchedule
 	}
 	return gs.protectionScheduleService
 }
-
 // GetInitiatorGroupService - returns service of a type *InitiatorGroupService
 func (gs *NsGroupService) GetInitiatorGroupService() (vs *InitiatorGroupService) {
 	if gs.initiatorGroupService == nil {
@@ -426,7 +287,6 @@ func (gs *NsGroupService) GetInitiatorGroupService() (vs *InitiatorGroupService)
 	}
 	return gs.initiatorGroupService
 }
-
 // GetAccessControlRecordService - returns service of a type *AccessControlRecordService
 func (gs *NsGroupService) GetAccessControlRecordService() (vs *AccessControlRecordService) {
 	if gs.accessControlRecordService == nil {
@@ -434,7 +294,6 @@ func (gs *NsGroupService) GetAccessControlRecordService() (vs *AccessControlReco
 	}
 	return gs.accessControlRecordService
 }
-
 // GetActiveDirectoryMembershipService - returns service of a type *ActiveDirectoryMembershipService
 func (gs *NsGroupService) GetActiveDirectoryMembershipService() (vs *ActiveDirectoryMembershipService) {
 	if gs.activeDirectoryMembershipService == nil {
@@ -442,7 +301,6 @@ func (gs *NsGroupService) GetActiveDirectoryMembershipService() (vs *ActiveDirec
 	}
 	return gs.activeDirectoryMembershipService
 }
-
 // GetFibreChannelPortService - returns service of a type *FibreChannelPortService
 func (gs *NsGroupService) GetFibreChannelPortService() (vs *FibreChannelPortService) {
 	if gs.fibreChannelPortService == nil {
@@ -450,7 +308,6 @@ func (gs *NsGroupService) GetFibreChannelPortService() (vs *FibreChannelPortServ
 	}
 	return gs.fibreChannelPortService
 }
-
 // GetProtocolEndpointService - returns service of a type *ProtocolEndpointService
 func (gs *NsGroupService) GetProtocolEndpointService() (vs *ProtocolEndpointService) {
 	if gs.protocolEndpointService == nil {
@@ -458,7 +315,6 @@ func (gs *NsGroupService) GetProtocolEndpointService() (vs *ProtocolEndpointServ
 	}
 	return gs.protocolEndpointService
 }
-
 // GetWitnessService - returns service of a type *WitnessService
 func (gs *NsGroupService) GetWitnessService() (vs *WitnessService) {
 	if gs.witnessService == nil {
@@ -466,7 +322,6 @@ func (gs *NsGroupService) GetWitnessService() (vs *WitnessService) {
 	}
 	return gs.witnessService
 }
-
 // GetJobService - returns service of a type *JobService
 func (gs *NsGroupService) GetJobService() (vs *JobService) {
 	if gs.jobService == nil {
@@ -474,7 +329,6 @@ func (gs *NsGroupService) GetJobService() (vs *JobService) {
 	}
 	return gs.jobService
 }
-
 // GetAuditLogService - returns service of a type *AuditLogService
 func (gs *NsGroupService) GetAuditLogService() (vs *AuditLogService) {
 	if gs.auditLogService == nil {
@@ -482,7 +336,6 @@ func (gs *NsGroupService) GetAuditLogService() (vs *AuditLogService) {
 	}
 	return gs.auditLogService
 }
-
 // GetPoolService - returns service of a type *PoolService
 func (gs *NsGroupService) GetPoolService() (vs *PoolService) {
 	if gs.poolService == nil {
@@ -490,7 +343,6 @@ func (gs *NsGroupService) GetPoolService() (vs *PoolService) {
 	}
 	return gs.poolService
 }
-
 // GetVolumeCollectionService - returns service of a type *VolumeCollectionService
 func (gs *NsGroupService) GetVolumeCollectionService() (vs *VolumeCollectionService) {
 	if gs.volumeCollectionService == nil {
@@ -498,15 +350,6 @@ func (gs *NsGroupService) GetVolumeCollectionService() (vs *VolumeCollectionServ
 	}
 	return gs.volumeCollectionService
 }
-
-// GetSubscriberService - returns service of a type *SubscriberService
-func (gs *NsGroupService) GetSubscriberService() (vs *SubscriberService) {
-	if gs.subscriberService == nil {
-		gs.subscriberService = NewSubscriberService(gs)
-	}
-	return gs.subscriberService
-}
-
 // GetDiskService - returns service of a type *DiskService
 func (gs *NsGroupService) GetDiskService() (vs *DiskService) {
 	if gs.diskService == nil {
@@ -514,7 +357,6 @@ func (gs *NsGroupService) GetDiskService() (vs *DiskService) {
 	}
 	return gs.diskService
 }
-
 // GetFibreChannelInitiatorAliasService - returns service of a type *FibreChannelInitiatorAliasService
 func (gs *NsGroupService) GetFibreChannelInitiatorAliasService() (vs *FibreChannelInitiatorAliasService) {
 	if gs.fibreChannelInitiatorAliasService == nil {
@@ -522,15 +364,6 @@ func (gs *NsGroupService) GetFibreChannelInitiatorAliasService() (vs *FibreChann
 	}
 	return gs.fibreChannelInitiatorAliasService
 }
-
-// GetHealthCheckService - returns service of a type *HealthCheckService
-func (gs *NsGroupService) GetHealthCheckService() (vs *HealthCheckService) {
-	if gs.healthCheckService == nil {
-		gs.healthCheckService = NewHealthCheckService(gs)
-	}
-	return gs.healthCheckService
-}
-
 // GetGroupService - returns service of a type *GroupService
 func (gs *NsGroupService) GetGroupService() (vs *GroupService) {
 	if gs.groupService == nil {
@@ -538,7 +371,6 @@ func (gs *NsGroupService) GetGroupService() (vs *GroupService) {
 	}
 	return gs.groupService
 }
-
 // GetSoftwareVersionService - returns service of a type *SoftwareVersionService
 func (gs *NsGroupService) GetSoftwareVersionService() (vs *SoftwareVersionService) {
 	if gs.softwareVersionService == nil {
@@ -546,7 +378,6 @@ func (gs *NsGroupService) GetSoftwareVersionService() (vs *SoftwareVersionServic
 	}
 	return gs.softwareVersionService
 }
-
 // GetNetworkConfigService - returns service of a type *NetworkConfigService
 func (gs *NsGroupService) GetNetworkConfigService() (vs *NetworkConfigService) {
 	if gs.networkConfigService == nil {
@@ -554,4 +385,3 @@ func (gs *NsGroupService) GetNetworkConfigService() (vs *NetworkConfigService) {
 	}
 	return gs.networkConfigService
 }
-

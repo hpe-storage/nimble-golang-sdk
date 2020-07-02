@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/go-resty/resty/v2"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client/v1/model"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
 const (

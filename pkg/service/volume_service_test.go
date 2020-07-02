@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client/v1/model"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
 type VolumeServiceTestSuite struct {
@@ -82,7 +82,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *model.Volu
 func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume != nil {
-		suite.volumeService.DestroyVolume(*volume.ID)
+		suite.volumeService.DeleteVolume(*volume.ID)
 		volume, _ = suite.volumeService.GetVolumeByName(volumeName)
 	}
 
@@ -91,16 +91,6 @@ func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	}
 }
 
-func (suite *VolumeServiceTestSuite) TestVolumeService() {
-	assert.NotNil(suite.T(), suite.volumeService)
-
-	volumes, err := suite.volumeService.GetVolumesWithFields([]string{*model.VolumeFields.Name})
-	if err != nil {
-		suite.T().Errorf("TestVolumeService(): Unable to get volumes, err: %v", err.Error())
-		return
-	}
-	assert.NotEmpty(suite.T(), volumes)
-}
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")

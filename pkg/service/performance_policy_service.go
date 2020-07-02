@@ -7,34 +7,27 @@ package service
 // compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 
 import (
-	"fmt"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client/v1/model"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// PerformancePolicyService type
+// PerformancePolicyService type 
 type PerformancePolicyService struct {
 	objectSet *client.PerformancePolicyObjectSet
 }
 
-// NewPerformancePolicyService - method to initialize "PerformancePolicyService"
+// NewPerformancePolicyService - method to initialize "PerformancePolicyService" 
 func NewPerformancePolicyService(gs *NsGroupService) (*PerformancePolicyService) {
 	objectSet := gs.client.GetPerformancePolicyObjectSet()
 	return &PerformancePolicyService{objectSet: objectSet}
 }
 
-// GetPerformancePolicys - method returns a array of pointers of type "PerformancePolicys"
-func (svc *PerformancePolicyService) GetPerformancePolicys(params *util.GetParams) ([]*model.PerformancePolicy, error) {
+// GetPerformancePolicies - method returns a array of pointers of type "PerformancePolicies"
+func (svc *PerformancePolicyService) GetPerformancePolicies(params *util.GetParams) ([]*model.PerformancePolicy, error) {
 	return svc.objectSet.GetObjectListFromParams(params)
 }
 
-// GetPerformancePolicysWithFields - method returns a array of pointers of type "PerformancePolicy"
-func (svc *PerformancePolicyService) GetPerformancePolicysWithFields(fields []string) ([]*model.PerformancePolicy, error) {
-	params := &util.GetParams{}
-	params.WithFields(fields)
-	return svc.objectSet.GetObjectListFromParams(params)
-}
 
 // CreatePerformancePolicy - method creates a "PerformancePolicy"
 func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
@@ -42,50 +35,9 @@ func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *model.Performa
 	return svc.objectSet.CreateObject(obj)
 }
 
-// EditPerformancePolicy - method modifies  the "PerformancePolicy"
-func (svc *PerformancePolicyService) EditPerformancePolicy(id string, obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
+// UpdatePerformancePolicy - method modifies  the "PerformancePolicy" 
+func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
 	return svc.objectSet.UpdateObject(id, obj)
-}
-
-// onlyPerformancePolicy - private method for more than one element check.
-func onlyPerformancePolicy(objs []*model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	if len(objs) == 0 {
-		return nil, nil
-	}
-
-	if len(objs) > 1 {
-		return nil, fmt.Errorf("More than one PerformancePolicy found with the given filter")
-	}
-
-	return objs[0], nil
-}
-
-
-// GetPerformancePolicysByID - method returns associative a array of pointers of type "PerformancePolicy", filter by Id
-func (svc *PerformancePolicyService) GetPerformancePolicysByID(pool *model.Pool, fields []string) (map[string]*model.PerformancePolicy, error) {
-	params := &util.GetParams{}
-
-	// make sure ID field is selected
-	if _, found := params.FindField("id"); !found {
-		fields = append(fields, "id")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetPerformancePolicys(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.PerformancePolicy)
-	for _, obj := range objs {
-		objMap[*obj.ID] = obj
-	}
-	return objMap, nil
 }
 
 // GetPerformancePolicyById - method returns a pointer to "PerformancePolicy"
@@ -93,34 +45,7 @@ func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*model
 	return svc.objectSet.GetObject(id)
 }
 
-// GetPerformancePolicysByName - method returns a associative array of pointers of type "PerformancePolicy", filter by name
-func (svc *PerformancePolicyService) GetPerformancePolicysByName(pool *model.Pool, fields []string) (map[string]*model.PerformancePolicy, error) {
-	params := &util.GetParams{}
-
-	// make sure ID and Name fields are always selected
-	if _, found := params.FindField("name"); !found {
-		fields = append(fields, "name")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetPerformancePolicys(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.PerformancePolicy)
-	for _, obj := range objs {
-		objMap[*obj.Name] = obj
-	}
-	return objMap, nil
-}
-
-// GetPerformancePolicyByName - method returns a pointer "PerformancePolicy"
+// GetPerformancePolicyByName - method returns a pointer "PerformancePolicy" 
 func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*model.PerformancePolicy, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
@@ -133,6 +58,15 @@ func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*m
 	if err != nil {
 		return nil, err
 	}
-	return onlyPerformancePolicy(objs)
-}
+	
+	if len(objs) == 0 {
+    	return nil, nil
+    }
+    
+	return objs[0],nil
+}	
 
+// DeletePerformancePolicy - deletes the "PerformancePolicy"
+func (svc *PerformancePolicyService) DeletePerformancePolicy(id string) error {
+	return svc.objectSet.DeleteObject(id)
+}

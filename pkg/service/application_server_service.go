@@ -5,10 +5,9 @@ package service
 // ApplicationServer Service - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 
 import (
-	"fmt"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client/v1/model"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
 // ApplicationServerService type 
@@ -27,95 +26,20 @@ func (svc *ApplicationServerService) GetApplicationServers(params *util.GetParam
 	return svc.objectSet.GetObjectListFromParams(params)
 }
 
-// GetApplicationServersWithFields - method returns a array of pointers of type "ApplicationServer" 
-func (svc *ApplicationServerService) GetApplicationServersWithFields(fields []string) ([]*model.ApplicationServer, error) {
-	params := &util.GetParams{}
-	params.WithFields(fields)
-	return svc.objectSet.GetObjectListFromParams(params)
-}
-
 // CreateApplicationServer - method creates a "ApplicationServer"
 func (svc *ApplicationServerService) CreateApplicationServer(obj *model.ApplicationServer) (*model.ApplicationServer, error) {
 	// TODO: validate parameters
 	return svc.objectSet.CreateObject(obj)
 }
 
-// EditApplicationServer - method modifies  the "ApplicationServer" 
-func (svc *ApplicationServerService) EditApplicationServer(id string, obj *model.ApplicationServer) (*model.ApplicationServer, error) {
+// UpdateApplicationServer - method modifies  the "ApplicationServer" 
+func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *model.ApplicationServer) (*model.ApplicationServer, error) {
 	return svc.objectSet.UpdateObject(id, obj)
-}
-
-// onlyApplicationServer - private method for more than one element check. 
-func onlyApplicationServer(objs []*model.ApplicationServer) (*model.ApplicationServer, error) {
-	if len(objs) == 0 {
-		return nil, nil
-	}
-
-	if len(objs) > 1 {
-		return nil, fmt.Errorf("More than one ApplicationServer found with the given filter")
-	}
-
-	return objs[0], nil
-}
-
- 
-// GetApplicationServersByID - method returns associative a array of pointers of type "ApplicationServer", filter by Id
-func (svc *ApplicationServerService) GetApplicationServersByID(pool *model.Pool, fields []string) (map[string]*model.ApplicationServer, error) {
-	params := &util.GetParams{}
-
-	// make sure ID field is selected
-	if _, found := params.FindField("id"); !found {
-		fields = append(fields, "id")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetApplicationServers(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.ApplicationServer)
-	for _, obj := range objs {
-		objMap[*obj.ID] = obj
-	}
-	return objMap, nil
 }
 
 // GetApplicationServerById - method returns a pointer to "ApplicationServer"
 func (svc *ApplicationServerService) GetApplicationServerById(id string) (*model.ApplicationServer, error) {
 	return svc.objectSet.GetObject(id)
-}
-
-// GetApplicationServersByName - method returns a associative array of pointers of type "ApplicationServer", filter by name 
-func (svc *ApplicationServerService) GetApplicationServersByName(pool *model.Pool, fields []string) (map[string]*model.ApplicationServer, error) {
-	params := &util.GetParams{}
-
-	// make sure ID and Name fields are always selected
-	if _, found := params.FindField("name"); !found {
-		fields = append(fields, "name")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetApplicationServers(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.ApplicationServer)
-	for _, obj := range objs {
-		objMap[*obj.Name] = obj
-	}
-	return objMap, nil
 }
 
 // GetApplicationServerByName - method returns a pointer "ApplicationServer" 
@@ -131,6 +55,15 @@ func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*m
 	if err != nil {
 		return nil, err
 	}
-	return onlyApplicationServer(objs)
+	
+	if len(objs) == 0 {
+    	return nil, nil
+    }
+    
+	return objs[0],nil
 }	
 
+// DeleteApplicationServer - deletes the "ApplicationServer"
+func (svc *ApplicationServerService) DeleteApplicationServer(id string) error {
+	return svc.objectSet.DeleteObject(id)
+}

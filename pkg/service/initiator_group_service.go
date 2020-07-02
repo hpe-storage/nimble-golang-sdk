@@ -6,10 +6,9 @@ package service
 // group membership.
 
 import (
-	"fmt"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client/v1/model"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
 // InitiatorGroupService type 
@@ -28,95 +27,20 @@ func (svc *InitiatorGroupService) GetInitiatorGroups(params *util.GetParams) ([]
 	return svc.objectSet.GetObjectListFromParams(params)
 }
 
-// GetInitiatorGroupsWithFields - method returns a array of pointers of type "InitiatorGroup" 
-func (svc *InitiatorGroupService) GetInitiatorGroupsWithFields(fields []string) ([]*model.InitiatorGroup, error) {
-	params := &util.GetParams{}
-	params.WithFields(fields)
-	return svc.objectSet.GetObjectListFromParams(params)
-}
-
 // CreateInitiatorGroup - method creates a "InitiatorGroup"
 func (svc *InitiatorGroupService) CreateInitiatorGroup(obj *model.InitiatorGroup) (*model.InitiatorGroup, error) {
 	// TODO: validate parameters
 	return svc.objectSet.CreateObject(obj)
 }
 
-// EditInitiatorGroup - method modifies  the "InitiatorGroup" 
-func (svc *InitiatorGroupService) EditInitiatorGroup(id string, obj *model.InitiatorGroup) (*model.InitiatorGroup, error) {
+// UpdateInitiatorGroup - method modifies  the "InitiatorGroup" 
+func (svc *InitiatorGroupService) UpdateInitiatorGroup(id string, obj *model.InitiatorGroup) (*model.InitiatorGroup, error) {
 	return svc.objectSet.UpdateObject(id, obj)
-}
-
-// onlyInitiatorGroup - private method for more than one element check. 
-func onlyInitiatorGroup(objs []*model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	if len(objs) == 0 {
-		return nil, nil
-	}
-
-	if len(objs) > 1 {
-		return nil, fmt.Errorf("More than one InitiatorGroup found with the given filter")
-	}
-
-	return objs[0], nil
-}
-
- 
-// GetInitiatorGroupsByID - method returns associative a array of pointers of type "InitiatorGroup", filter by Id
-func (svc *InitiatorGroupService) GetInitiatorGroupsByID(pool *model.Pool, fields []string) (map[string]*model.InitiatorGroup, error) {
-	params := &util.GetParams{}
-
-	// make sure ID field is selected
-	if _, found := params.FindField("id"); !found {
-		fields = append(fields, "id")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetInitiatorGroups(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.InitiatorGroup)
-	for _, obj := range objs {
-		objMap[*obj.ID] = obj
-	}
-	return objMap, nil
 }
 
 // GetInitiatorGroupById - method returns a pointer to "InitiatorGroup"
 func (svc *InitiatorGroupService) GetInitiatorGroupById(id string) (*model.InitiatorGroup, error) {
 	return svc.objectSet.GetObject(id)
-}
-
-// GetInitiatorGroupsByName - method returns a associative array of pointers of type "InitiatorGroup", filter by name 
-func (svc *InitiatorGroupService) GetInitiatorGroupsByName(pool *model.Pool, fields []string) (map[string]*model.InitiatorGroup, error) {
-	params := &util.GetParams{}
-
-	// make sure ID and Name fields are always selected
-	if _, found := params.FindField("name"); !found {
-		fields = append(fields, "name")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetInitiatorGroups(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.InitiatorGroup)
-	for _, obj := range objs {
-		objMap[*obj.Name] = obj
-	}
-	return objMap, nil
 }
 
 // GetInitiatorGroupByName - method returns a pointer "InitiatorGroup" 
@@ -132,6 +56,15 @@ func (svc *InitiatorGroupService) GetInitiatorGroupByName(name string) (*model.I
 	if err != nil {
 		return nil, err
 	}
-	return onlyInitiatorGroup(objs)
+	
+	if len(objs) == 0 {
+    	return nil, nil
+    }
+    
+	return objs[0],nil
 }	
 
+// DeleteInitiatorGroup - deletes the "InitiatorGroup"
+func (svc *InitiatorGroupService) DeleteInitiatorGroup(id string) error {
+	return svc.objectSet.DeleteObject(id)
+}

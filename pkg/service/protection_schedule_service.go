@@ -5,10 +5,9 @@ package service
 // ProtectionSchedule Service - Manage protection schedules used in protection templates.
 
 import (
-	"fmt"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/client/v1/model"
-	"github.hpe.com/nimble-dcs/golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
 // ProtectionScheduleService type 
@@ -27,95 +26,20 @@ func (svc *ProtectionScheduleService) GetProtectionSchedules(params *util.GetPar
 	return svc.objectSet.GetObjectListFromParams(params)
 }
 
-// GetProtectionSchedulesWithFields - method returns a array of pointers of type "ProtectionSchedule" 
-func (svc *ProtectionScheduleService) GetProtectionSchedulesWithFields(fields []string) ([]*model.ProtectionSchedule, error) {
-	params := &util.GetParams{}
-	params.WithFields(fields)
-	return svc.objectSet.GetObjectListFromParams(params)
-}
-
 // CreateProtectionSchedule - method creates a "ProtectionSchedule"
 func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
 	// TODO: validate parameters
 	return svc.objectSet.CreateObject(obj)
 }
 
-// EditProtectionSchedule - method modifies  the "ProtectionSchedule" 
-func (svc *ProtectionScheduleService) EditProtectionSchedule(id string, obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
+// UpdateProtectionSchedule - method modifies  the "ProtectionSchedule" 
+func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
 	return svc.objectSet.UpdateObject(id, obj)
-}
-
-// onlyProtectionSchedule - private method for more than one element check. 
-func onlyProtectionSchedule(objs []*model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	if len(objs) == 0 {
-		return nil, nil
-	}
-
-	if len(objs) > 1 {
-		return nil, fmt.Errorf("More than one ProtectionSchedule found with the given filter")
-	}
-
-	return objs[0], nil
-}
-
- 
-// GetProtectionSchedulesByID - method returns associative a array of pointers of type "ProtectionSchedule", filter by Id
-func (svc *ProtectionScheduleService) GetProtectionSchedulesByID(pool *model.Pool, fields []string) (map[string]*model.ProtectionSchedule, error) {
-	params := &util.GetParams{}
-
-	// make sure ID field is selected
-	if _, found := params.FindField("id"); !found {
-		fields = append(fields, "id")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetProtectionSchedules(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.ProtectionSchedule)
-	for _, obj := range objs {
-		objMap[*obj.ID] = obj
-	}
-	return objMap, nil
 }
 
 // GetProtectionScheduleById - method returns a pointer to "ProtectionSchedule"
 func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*model.ProtectionSchedule, error) {
 	return svc.objectSet.GetObject(id)
-}
-
-// GetProtectionSchedulesByName - method returns a associative array of pointers of type "ProtectionSchedule", filter by name 
-func (svc *ProtectionScheduleService) GetProtectionSchedulesByName(pool *model.Pool, fields []string) (map[string]*model.ProtectionSchedule, error) {
-	params := &util.GetParams{}
-
-	// make sure ID and Name fields are always selected
-	if _, found := params.FindField("name"); !found {
-		fields = append(fields, "name")
-	}
-	params.WithFields(fields)
-
-	// check if requested to filter by pool
-	if pool != nil {
-		filter := &util.SearchFilter{}
-		filter.Init("pool_id", util.EQUALS, *pool.ID, false)
-		params.WithSearchFilter(filter)
-	}
-	objs, err := svc.GetProtectionSchedules(params)
-	if err != nil {
-		return nil, err
-	}
-	objMap := make(map[string]*model.ProtectionSchedule)
-	for _, obj := range objs {
-		objMap[*obj.Name] = obj
-	}
-	return objMap, nil
 }
 
 // GetProtectionScheduleByName - method returns a pointer "ProtectionSchedule" 
@@ -131,6 +55,15 @@ func (svc *ProtectionScheduleService) GetProtectionScheduleByName(name string) (
 	if err != nil {
 		return nil, err
 	}
-	return onlyProtectionSchedule(objs)
+	
+	if len(objs) == 0 {
+    	return nil, nil
+    }
+    
+	return objs[0],nil
 }	
 
+// DeleteProtectionSchedule - deletes the "ProtectionSchedule"
+func (svc *ProtectionScheduleService) DeleteProtectionSchedule(id string) error {
+	return svc.objectSet.DeleteObject(id)
+}
