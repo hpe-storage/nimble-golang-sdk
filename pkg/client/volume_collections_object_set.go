@@ -24,40 +24,71 @@ type VolumeCollectionObjectSet struct {
 
 // CreateObject creates a new VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *model.VolumeCollection) (*model.VolumeCollection, error) {
-	response, err := objectSet.Client.Post(volumeCollectionPath, payload)
-	return response.(*model.VolumeCollection), err
+	volumeCollectionObjectSetResp, err := objectSet.Client.Post(volumeCollectionPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if volumeCollectionObjectSetResp == nil {
+		return nil,nil
+	}
+	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
 }
 
 // UpdateObject Modify existing VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *model.VolumeCollection) (*model.VolumeCollection, error) {
-	response, err := objectSet.Client.Put(volumeCollectionPath, id, payload)
-	return response.(*model.VolumeCollection), err
+	volumeCollectionObjectSetResp, err := objectSet.Client.Put(volumeCollectionPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if volumeCollectionObjectSetResp == nil {
+		return nil,nil
+	}
+	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
 }
 
 // DeleteObject deletes the VolumeCollection object with the specified ID
 func (objectSet *VolumeCollectionObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(volumeCollectionPath, id)
+	err := objectSet.Client.Delete(volumeCollectionPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a VolumeCollection object with the given ID
 func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*model.VolumeCollection, error) {
-	response, err := objectSet.Client.Get(volumeCollectionPath, id, model.VolumeCollection{})
-	if response == nil {
+	volumeCollectionObjectSetResp, err := objectSet.Client.Get(volumeCollectionPath, id, model.VolumeCollection{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.VolumeCollection), err
+	
+	// null check
+	if volumeCollectionObjectSetResp == nil {
+		return nil,nil
+	}
+	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
 }
 
 // GetObjectList returns the list of VolumeCollection objects
 func (objectSet *VolumeCollectionObjectSet) GetObjectList() ([]*model.VolumeCollection, error) {
-	response, err := objectSet.Client.List(volumeCollectionPath)
-	return buildVolumeCollectionObjectSet(response), err
+	volumeCollectionObjectSetResp, err := objectSet.Client.List(volumeCollectionPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildVolumeCollectionObjectSet(volumeCollectionObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of VolumeCollection objects using the given params query info
 func (objectSet *VolumeCollectionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.VolumeCollection, error) {
-	response, err := objectSet.Client.ListFromParams(volumeCollectionPath, params)
-	return buildVolumeCollectionObjectSet(response), err
+	volumeCollectionObjectSetResp, err := objectSet.Client.ListFromParams(volumeCollectionPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildVolumeCollectionObjectSet(volumeCollectionObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

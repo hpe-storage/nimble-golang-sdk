@@ -23,40 +23,71 @@ type ActiveDirectoryMembershipObjectSet struct {
 
 // CreateObject creates a new ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	response, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload)
-	return response.(*model.ActiveDirectoryMembership), err
+	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if activeDirectoryMembershipObjectSetResp == nil {
+		return nil,nil
+	}
+	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
 }
 
 // UpdateObject Modify existing ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	response, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload)
-	return response.(*model.ActiveDirectoryMembership), err
+	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if activeDirectoryMembershipObjectSetResp == nil {
+		return nil,nil
+	}
+	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
 }
 
 // DeleteObject deletes the ActiveDirectoryMembership object with the specified ID
 func (objectSet *ActiveDirectoryMembershipObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(activeDirectoryMembershipPath, id)
+	err := objectSet.Client.Delete(activeDirectoryMembershipPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a ActiveDirectoryMembership object with the given ID
 func (objectSet *ActiveDirectoryMembershipObjectSet) GetObject(id string) (*model.ActiveDirectoryMembership, error) {
-	response, err := objectSet.Client.Get(activeDirectoryMembershipPath, id, model.ActiveDirectoryMembership{})
-	if response == nil {
+	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Get(activeDirectoryMembershipPath, id, model.ActiveDirectoryMembership{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.ActiveDirectoryMembership), err
+	
+	// null check
+	if activeDirectoryMembershipObjectSetResp == nil {
+		return nil,nil
+	}
+	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
 }
 
 // GetObjectList returns the list of ActiveDirectoryMembership objects
 func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectList() ([]*model.ActiveDirectoryMembership, error) {
-	response, err := objectSet.Client.List(activeDirectoryMembershipPath)
-	return buildActiveDirectoryMembershipObjectSet(response), err
+	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.List(activeDirectoryMembershipPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildActiveDirectoryMembershipObjectSet(activeDirectoryMembershipObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of ActiveDirectoryMembership objects using the given params query info
 func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ActiveDirectoryMembership, error) {
-	response, err := objectSet.Client.ListFromParams(activeDirectoryMembershipPath, params)
-	return buildActiveDirectoryMembershipObjectSet(response), err
+	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.ListFromParams(activeDirectoryMembershipPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildActiveDirectoryMembershipObjectSet(activeDirectoryMembershipObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

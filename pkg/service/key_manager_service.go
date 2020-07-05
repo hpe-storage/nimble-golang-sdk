@@ -5,6 +5,7 @@ package service
 // KeyManager Service - Key Manager stores encryption keys for the array volumes / dedupe domains.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewKeyManagerService(gs *NsGroupService) (*KeyManagerService) {
 
 // GetKeyManagers - method returns a array of pointers of type "KeyManagers"
 func (svc *KeyManagerService) GetKeyManagers(params *util.GetParams) ([]*model.KeyManager, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	keyManagerResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return keyManagerResp,nil
 }
 
 // CreateKeyManager - method creates a "KeyManager"
 func (svc *KeyManagerService) CreateKeyManager(obj *model.KeyManager) (*model.KeyManager, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	keyManagerResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return keyManagerResp,nil
 }
 
 // UpdateKeyManager - method modifies  the "KeyManager" 
 func (svc *KeyManagerService) UpdateKeyManager(id string, obj *model.KeyManager) (*model.KeyManager, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	keyManagerResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return keyManagerResp,nil
 }
 
 // GetKeyManagerById - method returns a pointer to "KeyManager"
 func (svc *KeyManagerService) GetKeyManagerById(id string) (*model.KeyManager, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	keyManagerResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return keyManagerResp,nil
 }
 
 // GetKeyManagerByName - method returns a pointer "KeyManager" 
@@ -51,19 +83,26 @@ func (svc *KeyManagerService) GetKeyManagerByName(name string) (*model.KeyManage
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	keyManagerResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(keyManagerResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return keyManagerResp[0],nil
 }	
 
 // DeleteKeyManager - deletes the "KeyManager"
 func (svc *KeyManagerService) DeleteKeyManager(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -23,40 +23,71 @@ type EventObjectSet struct {
 
 // CreateObject creates a new Event object
 func (objectSet *EventObjectSet) CreateObject(payload *model.Event) (*model.Event, error) {
-	response, err := objectSet.Client.Post(eventPath, payload)
-	return response.(*model.Event), err
+	eventObjectSetResp, err := objectSet.Client.Post(eventPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if eventObjectSetResp == nil {
+		return nil,nil
+	}
+	return eventObjectSetResp.(*model.Event), err
 }
 
 // UpdateObject Modify existing Event object
 func (objectSet *EventObjectSet) UpdateObject(id string, payload *model.Event) (*model.Event, error) {
-	response, err := objectSet.Client.Put(eventPath, id, payload)
-	return response.(*model.Event), err
+	eventObjectSetResp, err := objectSet.Client.Put(eventPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if eventObjectSetResp == nil {
+		return nil,nil
+	}
+	return eventObjectSetResp.(*model.Event), err
 }
 
 // DeleteObject deletes the Event object with the specified ID
 func (objectSet *EventObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(eventPath, id)
+	err := objectSet.Client.Delete(eventPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Event object with the given ID
 func (objectSet *EventObjectSet) GetObject(id string) (*model.Event, error) {
-	response, err := objectSet.Client.Get(eventPath, id, model.Event{})
-	if response == nil {
+	eventObjectSetResp, err := objectSet.Client.Get(eventPath, id, model.Event{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Event), err
+	
+	// null check
+	if eventObjectSetResp == nil {
+		return nil,nil
+	}
+	return eventObjectSetResp.(*model.Event), err
 }
 
 // GetObjectList returns the list of Event objects
 func (objectSet *EventObjectSet) GetObjectList() ([]*model.Event, error) {
-	response, err := objectSet.Client.List(eventPath)
-	return buildEventObjectSet(response), err
+	eventObjectSetResp, err := objectSet.Client.List(eventPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildEventObjectSet(eventObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Event objects using the given params query info
 func (objectSet *EventObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Event, error) {
-	response, err := objectSet.Client.ListFromParams(eventPath, params)
-	return buildEventObjectSet(response), err
+	eventObjectSetResp, err := objectSet.Client.ListFromParams(eventPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildEventObjectSet(eventObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

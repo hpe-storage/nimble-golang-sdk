@@ -23,40 +23,71 @@ type VersionObjectSet struct {
 
 // CreateObject creates a new Version object
 func (objectSet *VersionObjectSet) CreateObject(payload *model.Version) (*model.Version, error) {
-	response, err := objectSet.Client.Post(versionPath, payload)
-	return response.(*model.Version), err
+	versionObjectSetResp, err := objectSet.Client.Post(versionPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if versionObjectSetResp == nil {
+		return nil,nil
+	}
+	return versionObjectSetResp.(*model.Version), err
 }
 
 // UpdateObject Modify existing Version object
 func (objectSet *VersionObjectSet) UpdateObject(id string, payload *model.Version) (*model.Version, error) {
-	response, err := objectSet.Client.Put(versionPath, id, payload)
-	return response.(*model.Version), err
+	versionObjectSetResp, err := objectSet.Client.Put(versionPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if versionObjectSetResp == nil {
+		return nil,nil
+	}
+	return versionObjectSetResp.(*model.Version), err
 }
 
 // DeleteObject deletes the Version object with the specified ID
 func (objectSet *VersionObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(versionPath, id)
+	err := objectSet.Client.Delete(versionPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Version object with the given ID
 func (objectSet *VersionObjectSet) GetObject(id string) (*model.Version, error) {
-	response, err := objectSet.Client.Get(versionPath, id, model.Version{})
-	if response == nil {
+	versionObjectSetResp, err := objectSet.Client.Get(versionPath, id, model.Version{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Version), err
+	
+	// null check
+	if versionObjectSetResp == nil {
+		return nil,nil
+	}
+	return versionObjectSetResp.(*model.Version), err
 }
 
 // GetObjectList returns the list of Version objects
 func (objectSet *VersionObjectSet) GetObjectList() ([]*model.Version, error) {
-	response, err := objectSet.Client.List(versionPath)
-	return buildVersionObjectSet(response), err
+	versionObjectSetResp, err := objectSet.Client.List(versionPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildVersionObjectSet(versionObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Version objects using the given params query info
 func (objectSet *VersionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Version, error) {
-	response, err := objectSet.Client.ListFromParams(versionPath, params)
-	return buildVersionObjectSet(response), err
+	versionObjectSetResp, err := objectSet.Client.ListFromParams(versionPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildVersionObjectSet(versionObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

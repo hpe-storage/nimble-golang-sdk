@@ -23,40 +23,71 @@ type FibreChannelInterfaceObjectSet struct {
 
 // CreateObject creates a new FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	response, err := objectSet.Client.Post(fibreChannelInterfacePath, payload)
-	return response.(*model.FibreChannelInterface), err
+	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Post(fibreChannelInterfacePath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if fibreChannelInterfaceObjectSetResp == nil {
+		return nil,nil
+	}
+	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
 }
 
 // UpdateObject Modify existing FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	response, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload)
-	return response.(*model.FibreChannelInterface), err
+	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if fibreChannelInterfaceObjectSetResp == nil {
+		return nil,nil
+	}
+	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
 }
 
 // DeleteObject deletes the FibreChannelInterface object with the specified ID
 func (objectSet *FibreChannelInterfaceObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(fibreChannelInterfacePath, id)
+	err := objectSet.Client.Delete(fibreChannelInterfacePath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a FibreChannelInterface object with the given ID
 func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*model.FibreChannelInterface, error) {
-	response, err := objectSet.Client.Get(fibreChannelInterfacePath, id, model.FibreChannelInterface{})
-	if response == nil {
+	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, model.FibreChannelInterface{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.FibreChannelInterface), err
+	
+	// null check
+	if fibreChannelInterfaceObjectSetResp == nil {
+		return nil,nil
+	}
+	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
 }
 
 // GetObjectList returns the list of FibreChannelInterface objects
 func (objectSet *FibreChannelInterfaceObjectSet) GetObjectList() ([]*model.FibreChannelInterface, error) {
-	response, err := objectSet.Client.List(fibreChannelInterfacePath)
-	return buildFibreChannelInterfaceObjectSet(response), err
+	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.List(fibreChannelInterfacePath)
+	if err != nil {
+		return nil, err
+	}
+	return buildFibreChannelInterfaceObjectSet(fibreChannelInterfaceObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of FibreChannelInterface objects using the given params query info
 func (objectSet *FibreChannelInterfaceObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.FibreChannelInterface, error) {
-	response, err := objectSet.Client.ListFromParams(fibreChannelInterfacePath, params)
-	return buildFibreChannelInterfaceObjectSet(response), err
+	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.ListFromParams(fibreChannelInterfacePath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildFibreChannelInterfaceObjectSet(fibreChannelInterfaceObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

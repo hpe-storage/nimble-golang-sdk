@@ -24,40 +24,71 @@ type VolumeObjectSet struct {
 
 // CreateObject creates a new Volume object
 func (objectSet *VolumeObjectSet) CreateObject(payload *model.Volume) (*model.Volume, error) {
-	response, err := objectSet.Client.Post(volumePath, payload)
-	return response.(*model.Volume), err
+	volumeObjectSetResp, err := objectSet.Client.Post(volumePath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if volumeObjectSetResp == nil {
+		return nil,nil
+	}
+	return volumeObjectSetResp.(*model.Volume), err
 }
 
 // UpdateObject Modify existing Volume object
 func (objectSet *VolumeObjectSet) UpdateObject(id string, payload *model.Volume) (*model.Volume, error) {
-	response, err := objectSet.Client.Put(volumePath, id, payload)
-	return response.(*model.Volume), err
+	volumeObjectSetResp, err := objectSet.Client.Put(volumePath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if volumeObjectSetResp == nil {
+		return nil,nil
+	}
+	return volumeObjectSetResp.(*model.Volume), err
 }
 
 // DeleteObject deletes the Volume object with the specified ID
 func (objectSet *VolumeObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(volumePath, id)
+	err := objectSet.Client.Delete(volumePath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Volume object with the given ID
 func (objectSet *VolumeObjectSet) GetObject(id string) (*model.Volume, error) {
-	response, err := objectSet.Client.Get(volumePath, id, model.Volume{})
-	if response == nil {
+	volumeObjectSetResp, err := objectSet.Client.Get(volumePath, id, model.Volume{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Volume), err
+	
+	// null check
+	if volumeObjectSetResp == nil {
+		return nil,nil
+	}
+	return volumeObjectSetResp.(*model.Volume), err
 }
 
 // GetObjectList returns the list of Volume objects
 func (objectSet *VolumeObjectSet) GetObjectList() ([]*model.Volume, error) {
-	response, err := objectSet.Client.List(volumePath)
-	return buildVolumeObjectSet(response), err
+	volumeObjectSetResp, err := objectSet.Client.List(volumePath)
+	if err != nil {
+		return nil, err
+	}
+	return buildVolumeObjectSet(volumeObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Volume objects using the given params query info
 func (objectSet *VolumeObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Volume, error) {
-	response, err := objectSet.Client.ListFromParams(volumePath, params)
-	return buildVolumeObjectSet(response), err
+	volumeObjectSetResp, err := objectSet.Client.ListFromParams(volumePath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildVolumeObjectSet(volumeObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

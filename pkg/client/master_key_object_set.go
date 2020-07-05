@@ -25,40 +25,71 @@ type MasterKeyObjectSet struct {
 
 // CreateObject creates a new MasterKey object
 func (objectSet *MasterKeyObjectSet) CreateObject(payload *model.MasterKey) (*model.MasterKey, error) {
-	response, err := objectSet.Client.Post(masterKeyPath, payload)
-	return response.(*model.MasterKey), err
+	masterKeyObjectSetResp, err := objectSet.Client.Post(masterKeyPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if masterKeyObjectSetResp == nil {
+		return nil,nil
+	}
+	return masterKeyObjectSetResp.(*model.MasterKey), err
 }
 
 // UpdateObject Modify existing MasterKey object
 func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *model.MasterKey) (*model.MasterKey, error) {
-	response, err := objectSet.Client.Put(masterKeyPath, id, payload)
-	return response.(*model.MasterKey), err
+	masterKeyObjectSetResp, err := objectSet.Client.Put(masterKeyPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if masterKeyObjectSetResp == nil {
+		return nil,nil
+	}
+	return masterKeyObjectSetResp.(*model.MasterKey), err
 }
 
 // DeleteObject deletes the MasterKey object with the specified ID
 func (objectSet *MasterKeyObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(masterKeyPath, id)
+	err := objectSet.Client.Delete(masterKeyPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a MasterKey object with the given ID
 func (objectSet *MasterKeyObjectSet) GetObject(id string) (*model.MasterKey, error) {
-	response, err := objectSet.Client.Get(masterKeyPath, id, model.MasterKey{})
-	if response == nil {
+	masterKeyObjectSetResp, err := objectSet.Client.Get(masterKeyPath, id, model.MasterKey{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.MasterKey), err
+	
+	// null check
+	if masterKeyObjectSetResp == nil {
+		return nil,nil
+	}
+	return masterKeyObjectSetResp.(*model.MasterKey), err
 }
 
 // GetObjectList returns the list of MasterKey objects
 func (objectSet *MasterKeyObjectSet) GetObjectList() ([]*model.MasterKey, error) {
-	response, err := objectSet.Client.List(masterKeyPath)
-	return buildMasterKeyObjectSet(response), err
+	masterKeyObjectSetResp, err := objectSet.Client.List(masterKeyPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildMasterKeyObjectSet(masterKeyObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of MasterKey objects using the given params query info
 func (objectSet *MasterKeyObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.MasterKey, error) {
-	response, err := objectSet.Client.ListFromParams(masterKeyPath, params)
-	return buildMasterKeyObjectSet(response), err
+	masterKeyObjectSetResp, err := objectSet.Client.ListFromParams(masterKeyPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildMasterKeyObjectSet(masterKeyObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

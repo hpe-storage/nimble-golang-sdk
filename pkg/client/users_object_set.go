@@ -23,40 +23,71 @@ type UserObjectSet struct {
 
 // CreateObject creates a new User object
 func (objectSet *UserObjectSet) CreateObject(payload *model.User) (*model.User, error) {
-	response, err := objectSet.Client.Post(userPath, payload)
-	return response.(*model.User), err
+	userObjectSetResp, err := objectSet.Client.Post(userPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if userObjectSetResp == nil {
+		return nil,nil
+	}
+	return userObjectSetResp.(*model.User), err
 }
 
 // UpdateObject Modify existing User object
 func (objectSet *UserObjectSet) UpdateObject(id string, payload *model.User) (*model.User, error) {
-	response, err := objectSet.Client.Put(userPath, id, payload)
-	return response.(*model.User), err
+	userObjectSetResp, err := objectSet.Client.Put(userPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if userObjectSetResp == nil {
+		return nil,nil
+	}
+	return userObjectSetResp.(*model.User), err
 }
 
 // DeleteObject deletes the User object with the specified ID
 func (objectSet *UserObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(userPath, id)
+	err := objectSet.Client.Delete(userPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a User object with the given ID
 func (objectSet *UserObjectSet) GetObject(id string) (*model.User, error) {
-	response, err := objectSet.Client.Get(userPath, id, model.User{})
-	if response == nil {
+	userObjectSetResp, err := objectSet.Client.Get(userPath, id, model.User{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.User), err
+	
+	// null check
+	if userObjectSetResp == nil {
+		return nil,nil
+	}
+	return userObjectSetResp.(*model.User), err
 }
 
 // GetObjectList returns the list of User objects
 func (objectSet *UserObjectSet) GetObjectList() ([]*model.User, error) {
-	response, err := objectSet.Client.List(userPath)
-	return buildUserObjectSet(response), err
+	userObjectSetResp, err := objectSet.Client.List(userPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildUserObjectSet(userObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of User objects using the given params query info
 func (objectSet *UserObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.User, error) {
-	response, err := objectSet.Client.ListFromParams(userPath, params)
-	return buildUserObjectSet(response), err
+	userObjectSetResp, err := objectSet.Client.ListFromParams(userPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildUserObjectSet(userObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

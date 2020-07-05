@@ -23,40 +23,71 @@ type DiskObjectSet struct {
 
 // CreateObject creates a new Disk object
 func (objectSet *DiskObjectSet) CreateObject(payload *model.Disk) (*model.Disk, error) {
-	response, err := objectSet.Client.Post(diskPath, payload)
-	return response.(*model.Disk), err
+	diskObjectSetResp, err := objectSet.Client.Post(diskPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if diskObjectSetResp == nil {
+		return nil,nil
+	}
+	return diskObjectSetResp.(*model.Disk), err
 }
 
 // UpdateObject Modify existing Disk object
 func (objectSet *DiskObjectSet) UpdateObject(id string, payload *model.Disk) (*model.Disk, error) {
-	response, err := objectSet.Client.Put(diskPath, id, payload)
-	return response.(*model.Disk), err
+	diskObjectSetResp, err := objectSet.Client.Put(diskPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if diskObjectSetResp == nil {
+		return nil,nil
+	}
+	return diskObjectSetResp.(*model.Disk), err
 }
 
 // DeleteObject deletes the Disk object with the specified ID
 func (objectSet *DiskObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(diskPath, id)
+	err := objectSet.Client.Delete(diskPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Disk object with the given ID
 func (objectSet *DiskObjectSet) GetObject(id string) (*model.Disk, error) {
-	response, err := objectSet.Client.Get(diskPath, id, model.Disk{})
-	if response == nil {
+	diskObjectSetResp, err := objectSet.Client.Get(diskPath, id, model.Disk{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Disk), err
+	
+	// null check
+	if diskObjectSetResp == nil {
+		return nil,nil
+	}
+	return diskObjectSetResp.(*model.Disk), err
 }
 
 // GetObjectList returns the list of Disk objects
 func (objectSet *DiskObjectSet) GetObjectList() ([]*model.Disk, error) {
-	response, err := objectSet.Client.List(diskPath)
-	return buildDiskObjectSet(response), err
+	diskObjectSetResp, err := objectSet.Client.List(diskPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildDiskObjectSet(diskObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Disk objects using the given params query info
 func (objectSet *DiskObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Disk, error) {
-	response, err := objectSet.Client.ListFromParams(diskPath, params)
-	return buildDiskObjectSet(response), err
+	diskObjectSetResp, err := objectSet.Client.ListFromParams(diskPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildDiskObjectSet(diskObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

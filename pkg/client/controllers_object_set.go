@@ -23,40 +23,71 @@ type ControllerObjectSet struct {
 
 // CreateObject creates a new Controller object
 func (objectSet *ControllerObjectSet) CreateObject(payload *model.Controller) (*model.Controller, error) {
-	response, err := objectSet.Client.Post(controllerPath, payload)
-	return response.(*model.Controller), err
+	controllerObjectSetResp, err := objectSet.Client.Post(controllerPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if controllerObjectSetResp == nil {
+		return nil,nil
+	}
+	return controllerObjectSetResp.(*model.Controller), err
 }
 
 // UpdateObject Modify existing Controller object
 func (objectSet *ControllerObjectSet) UpdateObject(id string, payload *model.Controller) (*model.Controller, error) {
-	response, err := objectSet.Client.Put(controllerPath, id, payload)
-	return response.(*model.Controller), err
+	controllerObjectSetResp, err := objectSet.Client.Put(controllerPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if controllerObjectSetResp == nil {
+		return nil,nil
+	}
+	return controllerObjectSetResp.(*model.Controller), err
 }
 
 // DeleteObject deletes the Controller object with the specified ID
 func (objectSet *ControllerObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(controllerPath, id)
+	err := objectSet.Client.Delete(controllerPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Controller object with the given ID
 func (objectSet *ControllerObjectSet) GetObject(id string) (*model.Controller, error) {
-	response, err := objectSet.Client.Get(controllerPath, id, model.Controller{})
-	if response == nil {
+	controllerObjectSetResp, err := objectSet.Client.Get(controllerPath, id, model.Controller{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Controller), err
+	
+	// null check
+	if controllerObjectSetResp == nil {
+		return nil,nil
+	}
+	return controllerObjectSetResp.(*model.Controller), err
 }
 
 // GetObjectList returns the list of Controller objects
 func (objectSet *ControllerObjectSet) GetObjectList() ([]*model.Controller, error) {
-	response, err := objectSet.Client.List(controllerPath)
-	return buildControllerObjectSet(response), err
+	controllerObjectSetResp, err := objectSet.Client.List(controllerPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildControllerObjectSet(controllerObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Controller objects using the given params query info
 func (objectSet *ControllerObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Controller, error) {
-	response, err := objectSet.Client.ListFromParams(controllerPath, params)
-	return buildControllerObjectSet(response), err
+	controllerObjectSetResp, err := objectSet.Client.ListFromParams(controllerPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildControllerObjectSet(controllerObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

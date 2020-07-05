@@ -82,6 +82,9 @@ func (client *GroupMgmtClient) login(username, password string) (string, error) 
 		AppName:  &appName,
 	}
 	token, err := client.GetTokenObjectSet().CreateObject(token)
+	if err != nil {
+		return "",err
+	}
 	return *token.SessionToken, err
 }
 
@@ -99,6 +102,14 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}) (interface
 		Post(url)
 	if err != nil {
 		return nil, err
+	}
+	// Http error
+	if !response.IsSuccess() {
+		errResp,err := unwrapError(response.Body())
+		if err != nil {
+				return nil, err
+		}
+		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
 	return unwrap(response.Body(), payload)
 }
@@ -118,7 +129,14 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}) (interf
 	if err != nil {
 		return nil, err
 	}
-
+	 // http Error
+	 if !response.IsSuccess() {
+		errResp,err := unwrapError(response.Body())
+		if err != nil {
+				return nil, err
+		}
+		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	}
 	return unwrap(response.Body(), payload)
 }
 
@@ -140,8 +158,6 @@ func (client *GroupMgmtClient) Get(path string, id string, intf interface{}) (in
 		return nil, nil
 	}
 
-	// TODO: add some logging
-
 	if response.IsSuccess() {
 		// TODO: handle 202 accepted... this might translate into an async job that we need to wait for
 
@@ -157,15 +173,15 @@ func (client *GroupMgmtClient) Get(path string, id string, intf interface{}) (in
 		// return it
 		return wrapper.Data, nil
 	}
-
-	// error condition - do we even need to unmarshal this?
+	// error condition unmarshalled
 	wrapper := &ErrorResponse{}
 	err = json.Unmarshal(response.Body(), wrapper)
+	errResp,err := unwrapError(response.Body())
 	if err != nil {
-		return nil, err
+			return nil, err
 	}
 
-	return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), response)
+	return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 }
 
 // Delete :
@@ -174,26 +190,40 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
 
 	// delete it
-	_, err := client.Client.R().
+	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
 		Delete(url)
 	if err != nil {
 		return err
 	}
 
-	// TODO: add some logging
-
+	// http Error
+	if !response.IsSuccess() {
+		errResp,err := unwrapError(response.Body())
+		if err != nil {
+				return err
+		}
+		return fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	}
 	return nil
 }
 
 // List without any params
 func (client *GroupMgmtClient) List(path string) (interface{}, error) {
-	return client.ListFromParams(path, nil)
+	listResp,err := client.ListFromParams(path, nil)
+	if err != nil {
+			return nil,err
+	}
+	return listResp,nil
 }
 
 // ListFromParams :
 func (client *GroupMgmtClient) ListFromParams(path string, params *util.GetParams) (interface{}, error) {
-	return client.listGetOrPost(path, params)
+	listResp,err := client.listGetOrPost(path, params)
+	if err != nil {
+			return nil,err
+	}
+	return listResp,nil
 }
 
 func (client *GroupMgmtClient) listGetOrPost(path string, params *util.GetParams) (interface{}, error) {
@@ -220,14 +250,26 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *util.GetParams
 				OperationType: &fetch,
 			}
 			// complex filter, need to POST it
-			return client.listPost(path, wrapper, queryParams)
+			postResp, err := client.listPost(path, wrapper, queryParams)
+            if err != nil {
+            	return nil,err
+            }
+           return postResp,nil
 		} else {
 			// get request
-			return client.listGet(path, queryParams)
+			getResp,err := client.listGet(path, queryParams)
+			if err != nil {
+				return nil,err
+            }
+            return getResp,nil
 		}
 	} else {
 		// get request
-		return client.listGet(path, queryParams)
+		getResp,err := client.listGet(path, queryParams)
+        if err != nil {
+        	return nil,err
+        }
+        return getResp,nil
 	}
 }
 
@@ -252,7 +294,14 @@ func (client *GroupMgmtClient) listPost(
 		return nil, err
 	}
 
-	// TODO: add some logging
+	// http Error
+	if !response.IsSuccess() {
+		errResp,err := unwrapError(response.Body())
+		if err != nil {
+				return nil, err
+		}
+		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	}
 
 	// unmarshal the response
 	wrapper := &DataWrapper{}
@@ -260,7 +309,6 @@ func (client *GroupMgmtClient) listPost(
 	if err != nil {
 		return nil, err
 	}
-
 	// return it
 	return wrapper.Data, nil
 }
@@ -281,7 +329,14 @@ func (client *GroupMgmtClient) listGet(
 		return nil, err
 	}
 
-	// TODO: add some logging
+	 // http Error
+	 if !response.IsSuccess() {
+		errResp,err := unwrapError(response.Body())
+		if err != nil {
+				return nil, err
+		}
+		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+}
 
 	// unmarshal the response
 	wrapper := &DataWrapper{}
@@ -310,3 +365,19 @@ func unwrap(body []byte, payload interface{}) (interface{}, error) {
 	// return it
 	return wrapper.Data, nil
 }
+
+//unwrap error response
+func unwrapError(body []byte) (string,error) {
+	errResp := ""
+	wrapper := &ErrorResponse{}
+	err := json.Unmarshal(body, wrapper)
+	if err != nil {
+			return errResp, err
+	}
+
+	for _, emsg := range wrapper.Messages {
+			errResp +=  fmt.Sprintf("%+v", *emsg)
+	}
+	return errResp,nil
+}
+

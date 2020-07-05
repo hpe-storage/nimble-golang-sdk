@@ -5,6 +5,7 @@ package service
 // FibreChannelInterface Service - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewFibreChannelInterfaceService(gs *NsGroupService) (*FibreChannelInterface
 
 // GetFibreChannelInterfaces - method returns a array of pointers of type "FibreChannelInterfaces"
 func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaces(params *util.GetParams) ([]*model.FibreChannelInterface, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	fibreChannelInterfaceResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return fibreChannelInterfaceResp,nil
 }
 
 // CreateFibreChannelInterface - method creates a "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) CreateFibreChannelInterface(obj *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	fibreChannelInterfaceResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return fibreChannelInterfaceResp,nil
 }
 
 // UpdateFibreChannelInterface - method modifies  the "FibreChannelInterface" 
 func (svc *FibreChannelInterfaceService) UpdateFibreChannelInterface(id string, obj *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	fibreChannelInterfaceResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return fibreChannelInterfaceResp,nil
 }
 
 // GetFibreChannelInterfaceById - method returns a pointer to "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceById(id string) (*model.FibreChannelInterface, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	fibreChannelInterfaceResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return fibreChannelInterfaceResp,nil
 }
 
 // GetFibreChannelInterfaceByName - method returns a pointer "FibreChannelInterface" 
@@ -51,19 +83,26 @@ func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceByName(name str
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	fibreChannelInterfaceResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(fibreChannelInterfaceResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return fibreChannelInterfaceResp[0],nil
 }	
 
 // DeleteFibreChannelInterface - deletes the "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) DeleteFibreChannelInterface(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

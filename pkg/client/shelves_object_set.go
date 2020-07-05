@@ -23,40 +23,71 @@ type ShelfObjectSet struct {
 
 // CreateObject creates a new Shelf object
 func (objectSet *ShelfObjectSet) CreateObject(payload *model.Shelf) (*model.Shelf, error) {
-	response, err := objectSet.Client.Post(shelfPath, payload)
-	return response.(*model.Shelf), err
+	shelfObjectSetResp, err := objectSet.Client.Post(shelfPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if shelfObjectSetResp == nil {
+		return nil,nil
+	}
+	return shelfObjectSetResp.(*model.Shelf), err
 }
 
 // UpdateObject Modify existing Shelf object
 func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *model.Shelf) (*model.Shelf, error) {
-	response, err := objectSet.Client.Put(shelfPath, id, payload)
-	return response.(*model.Shelf), err
+	shelfObjectSetResp, err := objectSet.Client.Put(shelfPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if shelfObjectSetResp == nil {
+		return nil,nil
+	}
+	return shelfObjectSetResp.(*model.Shelf), err
 }
 
 // DeleteObject deletes the Shelf object with the specified ID
 func (objectSet *ShelfObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(shelfPath, id)
+	err := objectSet.Client.Delete(shelfPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Shelf object with the given ID
 func (objectSet *ShelfObjectSet) GetObject(id string) (*model.Shelf, error) {
-	response, err := objectSet.Client.Get(shelfPath, id, model.Shelf{})
-	if response == nil {
+	shelfObjectSetResp, err := objectSet.Client.Get(shelfPath, id, model.Shelf{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Shelf), err
+	
+	// null check
+	if shelfObjectSetResp == nil {
+		return nil,nil
+	}
+	return shelfObjectSetResp.(*model.Shelf), err
 }
 
 // GetObjectList returns the list of Shelf objects
 func (objectSet *ShelfObjectSet) GetObjectList() ([]*model.Shelf, error) {
-	response, err := objectSet.Client.List(shelfPath)
-	return buildShelfObjectSet(response), err
+	shelfObjectSetResp, err := objectSet.Client.List(shelfPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildShelfObjectSet(shelfObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Shelf objects using the given params query info
 func (objectSet *ShelfObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Shelf, error) {
-	response, err := objectSet.Client.ListFromParams(shelfPath, params)
-	return buildShelfObjectSet(response), err
+	shelfObjectSetResp, err := objectSet.Client.ListFromParams(shelfPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildShelfObjectSet(shelfObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

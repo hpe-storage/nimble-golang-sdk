@@ -23,40 +23,71 @@ type ArrayObjectSet struct {
 
 // CreateObject creates a new Array object
 func (objectSet *ArrayObjectSet) CreateObject(payload *model.Array) (*model.Array, error) {
-	response, err := objectSet.Client.Post(arrayPath, payload)
-	return response.(*model.Array), err
+	arrayObjectSetResp, err := objectSet.Client.Post(arrayPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if arrayObjectSetResp == nil {
+		return nil,nil
+	}
+	return arrayObjectSetResp.(*model.Array), err
 }
 
 // UpdateObject Modify existing Array object
 func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *model.Array) (*model.Array, error) {
-	response, err := objectSet.Client.Put(arrayPath, id, payload)
-	return response.(*model.Array), err
+	arrayObjectSetResp, err := objectSet.Client.Put(arrayPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if arrayObjectSetResp == nil {
+		return nil,nil
+	}
+	return arrayObjectSetResp.(*model.Array), err
 }
 
 // DeleteObject deletes the Array object with the specified ID
 func (objectSet *ArrayObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(arrayPath, id)
+	err := objectSet.Client.Delete(arrayPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Array object with the given ID
 func (objectSet *ArrayObjectSet) GetObject(id string) (*model.Array, error) {
-	response, err := objectSet.Client.Get(arrayPath, id, model.Array{})
-	if response == nil {
+	arrayObjectSetResp, err := objectSet.Client.Get(arrayPath, id, model.Array{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Array), err
+	
+	// null check
+	if arrayObjectSetResp == nil {
+		return nil,nil
+	}
+	return arrayObjectSetResp.(*model.Array), err
 }
 
 // GetObjectList returns the list of Array objects
 func (objectSet *ArrayObjectSet) GetObjectList() ([]*model.Array, error) {
-	response, err := objectSet.Client.List(arrayPath)
-	return buildArrayObjectSet(response), err
+	arrayObjectSetResp, err := objectSet.Client.List(arrayPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildArrayObjectSet(arrayObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Array objects using the given params query info
 func (objectSet *ArrayObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Array, error) {
-	response, err := objectSet.Client.ListFromParams(arrayPath, params)
-	return buildArrayObjectSet(response), err
+	arrayObjectSetResp, err := objectSet.Client.ListFromParams(arrayPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildArrayObjectSet(arrayObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

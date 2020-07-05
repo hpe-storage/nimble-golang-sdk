@@ -8,6 +8,7 @@ package service
 // protection templates as needed.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -26,23 +27,54 @@ func NewProtectionTemplateService(gs *NsGroupService) (*ProtectionTemplateServic
 
 // GetProtectionTemplates - method returns a array of pointers of type "ProtectionTemplates"
 func (svc *ProtectionTemplateService) GetProtectionTemplates(params *util.GetParams) ([]*model.ProtectionTemplate, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	protectionTemplateResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return protectionTemplateResp,nil
 }
 
 // CreateProtectionTemplate - method creates a "ProtectionTemplate"
 func (svc *ProtectionTemplateService) CreateProtectionTemplate(obj *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	protectionTemplateResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return protectionTemplateResp,nil
 }
 
 // UpdateProtectionTemplate - method modifies  the "ProtectionTemplate" 
 func (svc *ProtectionTemplateService) UpdateProtectionTemplate(id string, obj *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	protectionTemplateResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return protectionTemplateResp,nil
 }
 
 // GetProtectionTemplateById - method returns a pointer to "ProtectionTemplate"
 func (svc *ProtectionTemplateService) GetProtectionTemplateById(id string) (*model.ProtectionTemplate, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	protectionTemplateResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return protectionTemplateResp,nil
 }
 
 // GetProtectionTemplateByName - method returns a pointer "ProtectionTemplate" 
@@ -54,19 +86,26 @@ func (svc *ProtectionTemplateService) GetProtectionTemplateByName(name string) (
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	protectionTemplateResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(protectionTemplateResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return protectionTemplateResp[0],nil
 }	
 
 // DeleteProtectionTemplate - deletes the "ProtectionTemplate"
 func (svc *ProtectionTemplateService) DeleteProtectionTemplate(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

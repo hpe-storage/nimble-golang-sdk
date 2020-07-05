@@ -23,40 +23,71 @@ type SpaceDomainObjectSet struct {
 
 // CreateObject creates a new SpaceDomain object
 func (objectSet *SpaceDomainObjectSet) CreateObject(payload *model.SpaceDomain) (*model.SpaceDomain, error) {
-	response, err := objectSet.Client.Post(spaceDomainPath, payload)
-	return response.(*model.SpaceDomain), err
+	spaceDomainObjectSetResp, err := objectSet.Client.Post(spaceDomainPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if spaceDomainObjectSetResp == nil {
+		return nil,nil
+	}
+	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
 }
 
 // UpdateObject Modify existing SpaceDomain object
 func (objectSet *SpaceDomainObjectSet) UpdateObject(id string, payload *model.SpaceDomain) (*model.SpaceDomain, error) {
-	response, err := objectSet.Client.Put(spaceDomainPath, id, payload)
-	return response.(*model.SpaceDomain), err
+	spaceDomainObjectSetResp, err := objectSet.Client.Put(spaceDomainPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if spaceDomainObjectSetResp == nil {
+		return nil,nil
+	}
+	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
 }
 
 // DeleteObject deletes the SpaceDomain object with the specified ID
 func (objectSet *SpaceDomainObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(spaceDomainPath, id)
+	err := objectSet.Client.Delete(spaceDomainPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a SpaceDomain object with the given ID
 func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*model.SpaceDomain, error) {
-	response, err := objectSet.Client.Get(spaceDomainPath, id, model.SpaceDomain{})
-	if response == nil {
+	spaceDomainObjectSetResp, err := objectSet.Client.Get(spaceDomainPath, id, model.SpaceDomain{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.SpaceDomain), err
+	
+	// null check
+	if spaceDomainObjectSetResp == nil {
+		return nil,nil
+	}
+	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
 }
 
 // GetObjectList returns the list of SpaceDomain objects
 func (objectSet *SpaceDomainObjectSet) GetObjectList() ([]*model.SpaceDomain, error) {
-	response, err := objectSet.Client.List(spaceDomainPath)
-	return buildSpaceDomainObjectSet(response), err
+	spaceDomainObjectSetResp, err := objectSet.Client.List(spaceDomainPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildSpaceDomainObjectSet(spaceDomainObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of SpaceDomain objects using the given params query info
 func (objectSet *SpaceDomainObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.SpaceDomain, error) {
-	response, err := objectSet.Client.ListFromParams(spaceDomainPath, params)
-	return buildSpaceDomainObjectSet(response), err
+	spaceDomainObjectSetResp, err := objectSet.Client.ListFromParams(spaceDomainPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildSpaceDomainObjectSet(spaceDomainObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

@@ -23,40 +23,71 @@ type TokenObjectSet struct {
 
 // CreateObject creates a new Token object
 func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Token, error) {
-	response, err := objectSet.Client.Post(tokenPath, payload)
-	return response.(*model.Token), err
+	tokenObjectSetResp, err := objectSet.Client.Post(tokenPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if tokenObjectSetResp == nil {
+		return nil,nil
+	}
+	return tokenObjectSetResp.(*model.Token), err
 }
 
 // UpdateObject Modify existing Token object
 func (objectSet *TokenObjectSet) UpdateObject(id string, payload *model.Token) (*model.Token, error) {
-	response, err := objectSet.Client.Put(tokenPath, id, payload)
-	return response.(*model.Token), err
+	tokenObjectSetResp, err := objectSet.Client.Put(tokenPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if tokenObjectSetResp == nil {
+		return nil,nil
+	}
+	return tokenObjectSetResp.(*model.Token), err
 }
 
 // DeleteObject deletes the Token object with the specified ID
 func (objectSet *TokenObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(tokenPath, id)
+	err := objectSet.Client.Delete(tokenPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Token object with the given ID
 func (objectSet *TokenObjectSet) GetObject(id string) (*model.Token, error) {
-	response, err := objectSet.Client.Get(tokenPath, id, model.Token{})
-	if response == nil {
+	tokenObjectSetResp, err := objectSet.Client.Get(tokenPath, id, model.Token{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Token), err
+	
+	// null check
+	if tokenObjectSetResp == nil {
+		return nil,nil
+	}
+	return tokenObjectSetResp.(*model.Token), err
 }
 
 // GetObjectList returns the list of Token objects
 func (objectSet *TokenObjectSet) GetObjectList() ([]*model.Token, error) {
-	response, err := objectSet.Client.List(tokenPath)
-	return buildTokenObjectSet(response), err
+	tokenObjectSetResp, err := objectSet.Client.List(tokenPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildTokenObjectSet(tokenObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Token objects using the given params query info
 func (objectSet *TokenObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Token, error) {
-	response, err := objectSet.Client.ListFromParams(tokenPath, params)
-	return buildTokenObjectSet(response), err
+	tokenObjectSetResp, err := objectSet.Client.ListFromParams(tokenPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildTokenObjectSet(tokenObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

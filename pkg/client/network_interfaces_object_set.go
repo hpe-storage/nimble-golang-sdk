@@ -23,40 +23,71 @@ type NetworkInterfaceObjectSet struct {
 
 // CreateObject creates a new NetworkInterface object
 func (objectSet *NetworkInterfaceObjectSet) CreateObject(payload *model.NetworkInterface) (*model.NetworkInterface, error) {
-	response, err := objectSet.Client.Post(networkInterfacePath, payload)
-	return response.(*model.NetworkInterface), err
+	networkInterfaceObjectSetResp, err := objectSet.Client.Post(networkInterfacePath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if networkInterfaceObjectSetResp == nil {
+		return nil,nil
+	}
+	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
 }
 
 // UpdateObject Modify existing NetworkInterface object
 func (objectSet *NetworkInterfaceObjectSet) UpdateObject(id string, payload *model.NetworkInterface) (*model.NetworkInterface, error) {
-	response, err := objectSet.Client.Put(networkInterfacePath, id, payload)
-	return response.(*model.NetworkInterface), err
+	networkInterfaceObjectSetResp, err := objectSet.Client.Put(networkInterfacePath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if networkInterfaceObjectSetResp == nil {
+		return nil,nil
+	}
+	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
 }
 
 // DeleteObject deletes the NetworkInterface object with the specified ID
 func (objectSet *NetworkInterfaceObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(networkInterfacePath, id)
+	err := objectSet.Client.Delete(networkInterfacePath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a NetworkInterface object with the given ID
 func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*model.NetworkInterface, error) {
-	response, err := objectSet.Client.Get(networkInterfacePath, id, model.NetworkInterface{})
-	if response == nil {
+	networkInterfaceObjectSetResp, err := objectSet.Client.Get(networkInterfacePath, id, model.NetworkInterface{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.NetworkInterface), err
+	
+	// null check
+	if networkInterfaceObjectSetResp == nil {
+		return nil,nil
+	}
+	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
 }
 
 // GetObjectList returns the list of NetworkInterface objects
 func (objectSet *NetworkInterfaceObjectSet) GetObjectList() ([]*model.NetworkInterface, error) {
-	response, err := objectSet.Client.List(networkInterfacePath)
-	return buildNetworkInterfaceObjectSet(response), err
+	networkInterfaceObjectSetResp, err := objectSet.Client.List(networkInterfacePath)
+	if err != nil {
+		return nil, err
+	}
+	return buildNetworkInterfaceObjectSet(networkInterfaceObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of NetworkInterface objects using the given params query info
 func (objectSet *NetworkInterfaceObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.NetworkInterface, error) {
-	response, err := objectSet.Client.ListFromParams(networkInterfacePath, params)
-	return buildNetworkInterfaceObjectSet(response), err
+	networkInterfaceObjectSetResp, err := objectSet.Client.ListFromParams(networkInterfacePath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildNetworkInterfaceObjectSet(networkInterfaceObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

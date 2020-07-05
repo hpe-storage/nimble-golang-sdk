@@ -70,6 +70,11 @@ func NewNsGroupService(ip string, username string, password string) (gs *NsGroup
 	return &NsGroupService{ip: ip, client: client}, nil
 }
 
+// SetDebug - enable debugging
+func (gs *NsGroupService) SetDebug() {
+	gs.client.EnableDebug()
+}
+
 // GetVersionService - returns service of a type *VersionService
 func (gs *NsGroupService) GetVersionService() (vs *VersionService) {
 	if gs.versionService == nil {

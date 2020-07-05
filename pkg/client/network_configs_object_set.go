@@ -23,40 +23,71 @@ type NetworkConfigObjectSet struct {
 
 // CreateObject creates a new NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) CreateObject(payload *model.NetworkConfig) (*model.NetworkConfig, error) {
-	response, err := objectSet.Client.Post(networkConfigPath, payload)
-	return response.(*model.NetworkConfig), err
+	networkConfigObjectSetResp, err := objectSet.Client.Post(networkConfigPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if networkConfigObjectSetResp == nil {
+		return nil,nil
+	}
+	return networkConfigObjectSetResp.(*model.NetworkConfig), err
 }
 
 // UpdateObject Modify existing NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *model.NetworkConfig) (*model.NetworkConfig, error) {
-	response, err := objectSet.Client.Put(networkConfigPath, id, payload)
-	return response.(*model.NetworkConfig), err
+	networkConfigObjectSetResp, err := objectSet.Client.Put(networkConfigPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if networkConfigObjectSetResp == nil {
+		return nil,nil
+	}
+	return networkConfigObjectSetResp.(*model.NetworkConfig), err
 }
 
 // DeleteObject deletes the NetworkConfig object with the specified ID
 func (objectSet *NetworkConfigObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(networkConfigPath, id)
+	err := objectSet.Client.Delete(networkConfigPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a NetworkConfig object with the given ID
 func (objectSet *NetworkConfigObjectSet) GetObject(id string) (*model.NetworkConfig, error) {
-	response, err := objectSet.Client.Get(networkConfigPath, id, model.NetworkConfig{})
-	if response == nil {
+	networkConfigObjectSetResp, err := objectSet.Client.Get(networkConfigPath, id, model.NetworkConfig{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.NetworkConfig), err
+	
+	// null check
+	if networkConfigObjectSetResp == nil {
+		return nil,nil
+	}
+	return networkConfigObjectSetResp.(*model.NetworkConfig), err
 }
 
 // GetObjectList returns the list of NetworkConfig objects
 func (objectSet *NetworkConfigObjectSet) GetObjectList() ([]*model.NetworkConfig, error) {
-	response, err := objectSet.Client.List(networkConfigPath)
-	return buildNetworkConfigObjectSet(response), err
+	networkConfigObjectSetResp, err := objectSet.Client.List(networkConfigPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildNetworkConfigObjectSet(networkConfigObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of NetworkConfig objects using the given params query info
 func (objectSet *NetworkConfigObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.NetworkConfig, error) {
-	response, err := objectSet.Client.ListFromParams(networkConfigPath, params)
-	return buildNetworkConfigObjectSet(response), err
+	networkConfigObjectSetResp, err := objectSet.Client.ListFromParams(networkConfigPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildNetworkConfigObjectSet(networkConfigObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

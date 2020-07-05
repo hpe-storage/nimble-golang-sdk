@@ -23,40 +23,71 @@ type SoftwareVersionObjectSet struct {
 
 // CreateObject creates a new SoftwareVersion object
 func (objectSet *SoftwareVersionObjectSet) CreateObject(payload *model.SoftwareVersion) (*model.SoftwareVersion, error) {
-	response, err := objectSet.Client.Post(softwareVersionPath, payload)
-	return response.(*model.SoftwareVersion), err
+	softwareVersionObjectSetResp, err := objectSet.Client.Post(softwareVersionPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if softwareVersionObjectSetResp == nil {
+		return nil,nil
+	}
+	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
 }
 
 // UpdateObject Modify existing SoftwareVersion object
 func (objectSet *SoftwareVersionObjectSet) UpdateObject(id string, payload *model.SoftwareVersion) (*model.SoftwareVersion, error) {
-	response, err := objectSet.Client.Put(softwareVersionPath, id, payload)
-	return response.(*model.SoftwareVersion), err
+	softwareVersionObjectSetResp, err := objectSet.Client.Put(softwareVersionPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if softwareVersionObjectSetResp == nil {
+		return nil,nil
+	}
+	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
 }
 
 // DeleteObject deletes the SoftwareVersion object with the specified ID
 func (objectSet *SoftwareVersionObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(softwareVersionPath, id)
+	err := objectSet.Client.Delete(softwareVersionPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a SoftwareVersion object with the given ID
 func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*model.SoftwareVersion, error) {
-	response, err := objectSet.Client.Get(softwareVersionPath, id, model.SoftwareVersion{})
-	if response == nil {
+	softwareVersionObjectSetResp, err := objectSet.Client.Get(softwareVersionPath, id, model.SoftwareVersion{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.SoftwareVersion), err
+	
+	// null check
+	if softwareVersionObjectSetResp == nil {
+		return nil,nil
+	}
+	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
 }
 
 // GetObjectList returns the list of SoftwareVersion objects
 func (objectSet *SoftwareVersionObjectSet) GetObjectList() ([]*model.SoftwareVersion, error) {
-	response, err := objectSet.Client.List(softwareVersionPath)
-	return buildSoftwareVersionObjectSet(response), err
+	softwareVersionObjectSetResp, err := objectSet.Client.List(softwareVersionPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildSoftwareVersionObjectSet(softwareVersionObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of SoftwareVersion objects using the given params query info
 func (objectSet *SoftwareVersionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.SoftwareVersion, error) {
-	response, err := objectSet.Client.ListFromParams(softwareVersionPath, params)
-	return buildSoftwareVersionObjectSet(response), err
+	softwareVersionObjectSetResp, err := objectSet.Client.ListFromParams(softwareVersionPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildSoftwareVersionObjectSet(softwareVersionObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

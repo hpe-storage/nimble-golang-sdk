@@ -5,6 +5,7 @@ package service
 // ProtocolEndpoint Service - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewProtocolEndpointService(gs *NsGroupService) (*ProtocolEndpointService) {
 
 // GetProtocolEndpoints - method returns a array of pointers of type "ProtocolEndpoints"
 func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *util.GetParams) ([]*model.ProtocolEndpoint, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	protocolEndpointResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return protocolEndpointResp,nil
 }
 
 // CreateProtocolEndpoint - method creates a "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) CreateProtocolEndpoint(obj *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	protocolEndpointResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return protocolEndpointResp,nil
 }
 
 // UpdateProtocolEndpoint - method modifies  the "ProtocolEndpoint" 
 func (svc *ProtocolEndpointService) UpdateProtocolEndpoint(id string, obj *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	protocolEndpointResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return protocolEndpointResp,nil
 }
 
 // GetProtocolEndpointById - method returns a pointer to "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) GetProtocolEndpointById(id string) (*model.ProtocolEndpoint, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	protocolEndpointResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return protocolEndpointResp,nil
 }
 
 // GetProtocolEndpointByName - method returns a pointer "ProtocolEndpoint" 
@@ -51,16 +83,16 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointByName(name string) (*mod
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	protocolEndpointResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(protocolEndpointResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return protocolEndpointResp[0],nil
 }	
 // GetProtocolEndpointBySerialNumber method returns a pointer to "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) GetProtocolEndpointBySerialNumber(serialNumber string) (*model.ProtocolEndpoint, error) {
@@ -71,18 +103,25 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointBySerialNumber(serialNumb
 			Value:     serialNumber,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	protocolEndpointResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
-	if len(objs) == 0 {
+	if len(protocolEndpointResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return protocolEndpointResp[0],nil
 }
 
 // DeleteProtocolEndpoint - deletes the "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) DeleteProtocolEndpoint(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

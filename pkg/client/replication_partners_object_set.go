@@ -25,40 +25,71 @@ type ReplicationPartnerObjectSet struct {
 
 // CreateObject creates a new ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
-	response, err := objectSet.Client.Post(replicationPartnerPath, payload)
-	return response.(*model.ReplicationPartner), err
+	replicationPartnerObjectSetResp, err := objectSet.Client.Post(replicationPartnerPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if replicationPartnerObjectSetResp == nil {
+		return nil,nil
+	}
+	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
 }
 
 // UpdateObject Modify existing ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
-	response, err := objectSet.Client.Put(replicationPartnerPath, id, payload)
-	return response.(*model.ReplicationPartner), err
+	replicationPartnerObjectSetResp, err := objectSet.Client.Put(replicationPartnerPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if replicationPartnerObjectSetResp == nil {
+		return nil,nil
+	}
+	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
 }
 
 // DeleteObject deletes the ReplicationPartner object with the specified ID
 func (objectSet *ReplicationPartnerObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(replicationPartnerPath, id)
+	err := objectSet.Client.Delete(replicationPartnerPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a ReplicationPartner object with the given ID
 func (objectSet *ReplicationPartnerObjectSet) GetObject(id string) (*model.ReplicationPartner, error) {
-	response, err := objectSet.Client.Get(replicationPartnerPath, id, model.ReplicationPartner{})
-	if response == nil {
+	replicationPartnerObjectSetResp, err := objectSet.Client.Get(replicationPartnerPath, id, model.ReplicationPartner{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.ReplicationPartner), err
+	
+	// null check
+	if replicationPartnerObjectSetResp == nil {
+		return nil,nil
+	}
+	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
 }
 
 // GetObjectList returns the list of ReplicationPartner objects
 func (objectSet *ReplicationPartnerObjectSet) GetObjectList() ([]*model.ReplicationPartner, error) {
-	response, err := objectSet.Client.List(replicationPartnerPath)
-	return buildReplicationPartnerObjectSet(response), err
+	replicationPartnerObjectSetResp, err := objectSet.Client.List(replicationPartnerPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildReplicationPartnerObjectSet(replicationPartnerObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of ReplicationPartner objects using the given params query info
 func (objectSet *ReplicationPartnerObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ReplicationPartner, error) {
-	response, err := objectSet.Client.ListFromParams(replicationPartnerPath, params)
-	return buildReplicationPartnerObjectSet(response), err
+	replicationPartnerObjectSetResp, err := objectSet.Client.ListFromParams(replicationPartnerPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildReplicationPartnerObjectSet(replicationPartnerObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

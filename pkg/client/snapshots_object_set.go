@@ -25,40 +25,71 @@ type SnapshotObjectSet struct {
 
 // CreateObject creates a new Snapshot object
 func (objectSet *SnapshotObjectSet) CreateObject(payload *model.Snapshot) (*model.Snapshot, error) {
-	response, err := objectSet.Client.Post(snapshotPath, payload)
-	return response.(*model.Snapshot), err
+	snapshotObjectSetResp, err := objectSet.Client.Post(snapshotPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if snapshotObjectSetResp == nil {
+		return nil,nil
+	}
+	return snapshotObjectSetResp.(*model.Snapshot), err
 }
 
 // UpdateObject Modify existing Snapshot object
 func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *model.Snapshot) (*model.Snapshot, error) {
-	response, err := objectSet.Client.Put(snapshotPath, id, payload)
-	return response.(*model.Snapshot), err
+	snapshotObjectSetResp, err := objectSet.Client.Put(snapshotPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if snapshotObjectSetResp == nil {
+		return nil,nil
+	}
+	return snapshotObjectSetResp.(*model.Snapshot), err
 }
 
 // DeleteObject deletes the Snapshot object with the specified ID
 func (objectSet *SnapshotObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(snapshotPath, id)
+	err := objectSet.Client.Delete(snapshotPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Snapshot object with the given ID
 func (objectSet *SnapshotObjectSet) GetObject(id string) (*model.Snapshot, error) {
-	response, err := objectSet.Client.Get(snapshotPath, id, model.Snapshot{})
-	if response == nil {
+	snapshotObjectSetResp, err := objectSet.Client.Get(snapshotPath, id, model.Snapshot{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Snapshot), err
+	
+	// null check
+	if snapshotObjectSetResp == nil {
+		return nil,nil
+	}
+	return snapshotObjectSetResp.(*model.Snapshot), err
 }
 
 // GetObjectList returns the list of Snapshot objects
 func (objectSet *SnapshotObjectSet) GetObjectList() ([]*model.Snapshot, error) {
-	response, err := objectSet.Client.List(snapshotPath)
-	return buildSnapshotObjectSet(response), err
+	snapshotObjectSetResp, err := objectSet.Client.List(snapshotPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildSnapshotObjectSet(snapshotObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Snapshot objects using the given params query info
 func (objectSet *SnapshotObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Snapshot, error) {
-	response, err := objectSet.Client.ListFromParams(snapshotPath, params)
-	return buildSnapshotObjectSet(response), err
+	snapshotObjectSetResp, err := objectSet.Client.ListFromParams(snapshotPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildSnapshotObjectSet(snapshotObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

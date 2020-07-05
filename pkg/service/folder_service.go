@@ -5,6 +5,7 @@ package service
 // Folder Service - Folders are a way to group volumes, as well as a way to apply space constraints to them.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewFolderService(gs *NsGroupService) (*FolderService) {
 
 // GetFolders - method returns a array of pointers of type "Folders"
 func (svc *FolderService) GetFolders(params *util.GetParams) ([]*model.Folder, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	folderResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return folderResp,nil
 }
 
 // CreateFolder - method creates a "Folder"
 func (svc *FolderService) CreateFolder(obj *model.Folder) (*model.Folder, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	folderResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return folderResp,nil
 }
 
 // UpdateFolder - method modifies  the "Folder" 
 func (svc *FolderService) UpdateFolder(id string, obj *model.Folder) (*model.Folder, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	folderResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return folderResp,nil
 }
 
 // GetFolderById - method returns a pointer to "Folder"
 func (svc *FolderService) GetFolderById(id string) (*model.Folder, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	folderResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return folderResp,nil
 }
 
 // GetFolderByName - method returns a pointer "Folder" 
@@ -51,19 +83,26 @@ func (svc *FolderService) GetFolderByName(name string) (*model.Folder, error) {
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	folderResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(folderResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return folderResp[0],nil
 }	
 
 // DeleteFolder - deletes the "Folder"
 func (svc *FolderService) DeleteFolder(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

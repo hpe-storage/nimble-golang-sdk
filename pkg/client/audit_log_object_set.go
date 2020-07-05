@@ -23,40 +23,71 @@ type AuditLogObjectSet struct {
 
 // CreateObject creates a new AuditLog object
 func (objectSet *AuditLogObjectSet) CreateObject(payload *model.AuditLog) (*model.AuditLog, error) {
-	response, err := objectSet.Client.Post(auditLogPath, payload)
-	return response.(*model.AuditLog), err
+	auditLogObjectSetResp, err := objectSet.Client.Post(auditLogPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if auditLogObjectSetResp == nil {
+		return nil,nil
+	}
+	return auditLogObjectSetResp.(*model.AuditLog), err
 }
 
 // UpdateObject Modify existing AuditLog object
 func (objectSet *AuditLogObjectSet) UpdateObject(id string, payload *model.AuditLog) (*model.AuditLog, error) {
-	response, err := objectSet.Client.Put(auditLogPath, id, payload)
-	return response.(*model.AuditLog), err
+	auditLogObjectSetResp, err := objectSet.Client.Put(auditLogPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if auditLogObjectSetResp == nil {
+		return nil,nil
+	}
+	return auditLogObjectSetResp.(*model.AuditLog), err
 }
 
 // DeleteObject deletes the AuditLog object with the specified ID
 func (objectSet *AuditLogObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(auditLogPath, id)
+	err := objectSet.Client.Delete(auditLogPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a AuditLog object with the given ID
 func (objectSet *AuditLogObjectSet) GetObject(id string) (*model.AuditLog, error) {
-	response, err := objectSet.Client.Get(auditLogPath, id, model.AuditLog{})
-	if response == nil {
+	auditLogObjectSetResp, err := objectSet.Client.Get(auditLogPath, id, model.AuditLog{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.AuditLog), err
+	
+	// null check
+	if auditLogObjectSetResp == nil {
+		return nil,nil
+	}
+	return auditLogObjectSetResp.(*model.AuditLog), err
 }
 
 // GetObjectList returns the list of AuditLog objects
 func (objectSet *AuditLogObjectSet) GetObjectList() ([]*model.AuditLog, error) {
-	response, err := objectSet.Client.List(auditLogPath)
-	return buildAuditLogObjectSet(response), err
+	auditLogObjectSetResp, err := objectSet.Client.List(auditLogPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildAuditLogObjectSet(auditLogObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of AuditLog objects using the given params query info
 func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.AuditLog, error) {
-	response, err := objectSet.Client.ListFromParams(auditLogPath, params)
-	return buildAuditLogObjectSet(response), err
+	auditLogObjectSetResp, err := objectSet.Client.ListFromParams(auditLogPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildAuditLogObjectSet(auditLogObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

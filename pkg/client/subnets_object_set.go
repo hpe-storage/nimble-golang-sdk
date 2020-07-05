@@ -24,40 +24,71 @@ type SubnetObjectSet struct {
 
 // CreateObject creates a new Subnet object
 func (objectSet *SubnetObjectSet) CreateObject(payload *model.Subnet) (*model.Subnet, error) {
-	response, err := objectSet.Client.Post(subnetPath, payload)
-	return response.(*model.Subnet), err
+	subnetObjectSetResp, err := objectSet.Client.Post(subnetPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if subnetObjectSetResp == nil {
+		return nil,nil
+	}
+	return subnetObjectSetResp.(*model.Subnet), err
 }
 
 // UpdateObject Modify existing Subnet object
 func (objectSet *SubnetObjectSet) UpdateObject(id string, payload *model.Subnet) (*model.Subnet, error) {
-	response, err := objectSet.Client.Put(subnetPath, id, payload)
-	return response.(*model.Subnet), err
+	subnetObjectSetResp, err := objectSet.Client.Put(subnetPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if subnetObjectSetResp == nil {
+		return nil,nil
+	}
+	return subnetObjectSetResp.(*model.Subnet), err
 }
 
 // DeleteObject deletes the Subnet object with the specified ID
 func (objectSet *SubnetObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(subnetPath, id)
+	err := objectSet.Client.Delete(subnetPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a Subnet object with the given ID
 func (objectSet *SubnetObjectSet) GetObject(id string) (*model.Subnet, error) {
-	response, err := objectSet.Client.Get(subnetPath, id, model.Subnet{})
-	if response == nil {
+	subnetObjectSetResp, err := objectSet.Client.Get(subnetPath, id, model.Subnet{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Subnet), err
+	
+	// null check
+	if subnetObjectSetResp == nil {
+		return nil,nil
+	}
+	return subnetObjectSetResp.(*model.Subnet), err
 }
 
 // GetObjectList returns the list of Subnet objects
 func (objectSet *SubnetObjectSet) GetObjectList() ([]*model.Subnet, error) {
-	response, err := objectSet.Client.List(subnetPath)
-	return buildSubnetObjectSet(response), err
+	subnetObjectSetResp, err := objectSet.Client.List(subnetPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildSubnetObjectSet(subnetObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Subnet objects using the given params query info
 func (objectSet *SubnetObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Subnet, error) {
-	response, err := objectSet.Client.ListFromParams(subnetPath, params)
-	return buildSubnetObjectSet(response), err
+	subnetObjectSetResp, err := objectSet.Client.ListFromParams(subnetPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildSubnetObjectSet(subnetObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

@@ -24,40 +24,71 @@ type InitiatorGroupObjectSet struct {
 
 // CreateObject creates a new InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	response, err := objectSet.Client.Post(initiatorGroupPath, payload)
-	return response.(*model.InitiatorGroup), err
+	initiatorGroupObjectSetResp, err := objectSet.Client.Post(initiatorGroupPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if initiatorGroupObjectSetResp == nil {
+		return nil,nil
+	}
+	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
 }
 
 // UpdateObject Modify existing InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	response, err := objectSet.Client.Put(initiatorGroupPath, id, payload)
-	return response.(*model.InitiatorGroup), err
+	initiatorGroupObjectSetResp, err := objectSet.Client.Put(initiatorGroupPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if initiatorGroupObjectSetResp == nil {
+		return nil,nil
+	}
+	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
 }
 
 // DeleteObject deletes the InitiatorGroup object with the specified ID
 func (objectSet *InitiatorGroupObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(initiatorGroupPath, id)
+	err := objectSet.Client.Delete(initiatorGroupPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a InitiatorGroup object with the given ID
 func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*model.InitiatorGroup, error) {
-	response, err := objectSet.Client.Get(initiatorGroupPath, id, model.InitiatorGroup{})
-	if response == nil {
+	initiatorGroupObjectSetResp, err := objectSet.Client.Get(initiatorGroupPath, id, model.InitiatorGroup{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.InitiatorGroup), err
+	
+	// null check
+	if initiatorGroupObjectSetResp == nil {
+		return nil,nil
+	}
+	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
 }
 
 // GetObjectList returns the list of InitiatorGroup objects
 func (objectSet *InitiatorGroupObjectSet) GetObjectList() ([]*model.InitiatorGroup, error) {
-	response, err := objectSet.Client.List(initiatorGroupPath)
-	return buildInitiatorGroupObjectSet(response), err
+	initiatorGroupObjectSetResp, err := objectSet.Client.List(initiatorGroupPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildInitiatorGroupObjectSet(initiatorGroupObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of InitiatorGroup objects using the given params query info
 func (objectSet *InitiatorGroupObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.InitiatorGroup, error) {
-	response, err := objectSet.Client.ListFromParams(initiatorGroupPath, params)
-	return buildInitiatorGroupObjectSet(response), err
+	initiatorGroupObjectSetResp, err := objectSet.Client.ListFromParams(initiatorGroupPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildInitiatorGroupObjectSet(initiatorGroupObjectSetResp), err
 }
 
 // generated function to build the appropriate response types

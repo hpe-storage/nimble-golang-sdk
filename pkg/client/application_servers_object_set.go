@@ -23,40 +23,71 @@ type ApplicationServerObjectSet struct {
 
 // CreateObject creates a new ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *model.ApplicationServer) (*model.ApplicationServer, error) {
-	response, err := objectSet.Client.Post(applicationServerPath, payload)
-	return response.(*model.ApplicationServer), err
+	applicationServerObjectSetResp, err := objectSet.Client.Post(applicationServerPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if applicationServerObjectSetResp == nil {
+		return nil,nil
+	}
+	return applicationServerObjectSetResp.(*model.ApplicationServer), err
 }
 
 // UpdateObject Modify existing ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *model.ApplicationServer) (*model.ApplicationServer, error) {
-	response, err := objectSet.Client.Put(applicationServerPath, id, payload)
-	return response.(*model.ApplicationServer), err
+	applicationServerObjectSetResp, err := objectSet.Client.Put(applicationServerPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if applicationServerObjectSetResp == nil {
+		return nil,nil
+	}
+	return applicationServerObjectSetResp.(*model.ApplicationServer), err
 }
 
 // DeleteObject deletes the ApplicationServer object with the specified ID
 func (objectSet *ApplicationServerObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(applicationServerPath, id)
+	err := objectSet.Client.Delete(applicationServerPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a ApplicationServer object with the given ID
 func (objectSet *ApplicationServerObjectSet) GetObject(id string) (*model.ApplicationServer, error) {
-	response, err := objectSet.Client.Get(applicationServerPath, id, model.ApplicationServer{})
-	if response == nil {
+	applicationServerObjectSetResp, err := objectSet.Client.Get(applicationServerPath, id, model.ApplicationServer{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.ApplicationServer), err
+	
+	// null check
+	if applicationServerObjectSetResp == nil {
+		return nil,nil
+	}
+	return applicationServerObjectSetResp.(*model.ApplicationServer), err
 }
 
 // GetObjectList returns the list of ApplicationServer objects
 func (objectSet *ApplicationServerObjectSet) GetObjectList() ([]*model.ApplicationServer, error) {
-	response, err := objectSet.Client.List(applicationServerPath)
-	return buildApplicationServerObjectSet(response), err
+	applicationServerObjectSetResp, err := objectSet.Client.List(applicationServerPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildApplicationServerObjectSet(applicationServerObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of ApplicationServer objects using the given params query info
 func (objectSet *ApplicationServerObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ApplicationServer, error) {
-	response, err := objectSet.Client.ListFromParams(applicationServerPath, params)
-	return buildApplicationServerObjectSet(response), err
+	applicationServerObjectSetResp, err := objectSet.Client.ListFromParams(applicationServerPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildApplicationServerObjectSet(applicationServerObjectSetResp), err
 }
 
 // generated function to build the appropriate response types
