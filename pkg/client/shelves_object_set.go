@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,16 +23,7 @@ type ShelfObjectSet struct {
 
 // CreateObject creates a new Shelf object
 func (objectSet *ShelfObjectSet) CreateObject(payload *model.Shelf) (*model.Shelf, error) {
-	shelfObjectSetResp, err := objectSet.Client.Post(shelfPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if shelfObjectSetResp == nil {
-		return nil,nil
-	}
-	return shelfObjectSetResp.(*model.Shelf), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Shelf")
 }
 
 // UpdateObject Modify existing Shelf object
@@ -51,11 +42,7 @@ func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *model.Shelf) (
 
 // DeleteObject deletes the Shelf object with the specified ID
 func (objectSet *ShelfObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(shelfPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Shelf")
 }
 
 // GetObject returns a Shelf object with the given ID
@@ -89,7 +76,6 @@ func (objectSet *ShelfObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildShelfObjectSet(shelfObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildShelfObjectSet(response interface{}) ([]*model.Shelf) {
 	values := reflect.ValueOf(response)

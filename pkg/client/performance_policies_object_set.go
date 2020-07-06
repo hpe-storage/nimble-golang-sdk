@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -91,7 +90,6 @@ func (objectSet *PerformancePolicyObjectSet) GetObjectListFromParams(params *uti
 	}
 	return buildPerformancePolicyObjectSet(performancePolicyObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildPerformancePolicyObjectSet(response interface{}) ([]*model.PerformancePolicy) {
 	values := reflect.ValueOf(response)

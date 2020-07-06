@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type FibreChannelInitiatorAliasObjectSet struct {
 
 // CreateObject creates a new FibreChannelInitiatorAlias object
 func (objectSet *FibreChannelInitiatorAliasObjectSet) CreateObject(payload *model.FibreChannelInitiatorAlias) (*model.FibreChannelInitiatorAlias, error) {
-	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.Post(fibreChannelInitiatorAliasPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if fibreChannelInitiatorAliasObjectSetResp == nil {
-		return nil,nil
-	}
-	return fibreChannelInitiatorAliasObjectSetResp.(*model.FibreChannelInitiatorAlias), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelInitiatorAlias")
 }
 
 // UpdateObject Modify existing FibreChannelInitiatorAlias object
 func (objectSet *FibreChannelInitiatorAliasObjectSet) UpdateObject(id string, payload *model.FibreChannelInitiatorAlias) (*model.FibreChannelInitiatorAlias, error) {
-	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.Put(fibreChannelInitiatorAliasPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if fibreChannelInitiatorAliasObjectSetResp == nil {
-		return nil,nil
-	}
-	return fibreChannelInitiatorAliasObjectSetResp.(*model.FibreChannelInitiatorAlias), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on FibreChannelInitiatorAlias")
 }
 
 // DeleteObject deletes the FibreChannelInitiatorAlias object with the specified ID
 func (objectSet *FibreChannelInitiatorAliasObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(fibreChannelInitiatorAliasPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on FibreChannelInitiatorAlias")
 }
 
 // GetObject returns a FibreChannelInitiatorAlias object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectListFromParams(pa
 	}
 	return buildFibreChannelInitiatorAliasObjectSet(fibreChannelInitiatorAliasObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildFibreChannelInitiatorAliasObjectSet(response interface{}) ([]*model.FibreChannelInitiatorAlias) {
 	values := reflect.ValueOf(response)

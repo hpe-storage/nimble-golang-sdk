@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,16 +23,7 @@ type AlarmObjectSet struct {
 
 // CreateObject creates a new Alarm object
 func (objectSet *AlarmObjectSet) CreateObject(payload *model.Alarm) (*model.Alarm, error) {
-	alarmObjectSetResp, err := objectSet.Client.Post(alarmPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if alarmObjectSetResp == nil {
-		return nil,nil
-	}
-	return alarmObjectSetResp.(*model.Alarm), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Alarm")
 }
 
 // UpdateObject Modify existing Alarm object
@@ -89,7 +80,6 @@ func (objectSet *AlarmObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildAlarmObjectSet(alarmObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildAlarmObjectSet(response interface{}) ([]*model.Alarm) {
 	values := reflect.ValueOf(response)

@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -37,16 +37,7 @@ func (objectSet *InitiatorObjectSet) CreateObject(payload *model.Initiator) (*mo
 
 // UpdateObject Modify existing Initiator object
 func (objectSet *InitiatorObjectSet) UpdateObject(id string, payload *model.Initiator) (*model.Initiator, error) {
-	initiatorObjectSetResp, err := objectSet.Client.Put(initiatorPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if initiatorObjectSetResp == nil {
-		return nil,nil
-	}
-	return initiatorObjectSetResp.(*model.Initiator), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Initiator")
 }
 
 // DeleteObject deletes the Initiator object with the specified ID
@@ -89,7 +80,6 @@ func (objectSet *InitiatorObjectSet) GetObjectListFromParams(params *util.GetPar
 	}
 	return buildInitiatorObjectSet(initiatorObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildInitiatorObjectSet(response interface{}) ([]*model.Initiator) {
 	values := reflect.ValueOf(response)

@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type AuditLogObjectSet struct {
 
 // CreateObject creates a new AuditLog object
 func (objectSet *AuditLogObjectSet) CreateObject(payload *model.AuditLog) (*model.AuditLog, error) {
-	auditLogObjectSetResp, err := objectSet.Client.Post(auditLogPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if auditLogObjectSetResp == nil {
-		return nil,nil
-	}
-	return auditLogObjectSetResp.(*model.AuditLog), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on AuditLog")
 }
 
 // UpdateObject Modify existing AuditLog object
 func (objectSet *AuditLogObjectSet) UpdateObject(id string, payload *model.AuditLog) (*model.AuditLog, error) {
-	auditLogObjectSetResp, err := objectSet.Client.Put(auditLogPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if auditLogObjectSetResp == nil {
-		return nil,nil
-	}
-	return auditLogObjectSetResp.(*model.AuditLog), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on AuditLog")
 }
 
 // DeleteObject deletes the AuditLog object with the specified ID
 func (objectSet *AuditLogObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(auditLogPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on AuditLog")
 }
 
 // GetObject returns a AuditLog object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *util.GetPara
 	}
 	return buildAuditLogObjectSet(auditLogObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildAuditLogObjectSet(response interface{}) ([]*model.AuditLog) {
 	values := reflect.ValueOf(response)

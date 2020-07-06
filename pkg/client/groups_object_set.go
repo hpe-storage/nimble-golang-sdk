@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,16 +23,7 @@ type GroupObjectSet struct {
 
 // CreateObject creates a new Group object
 func (objectSet *GroupObjectSet) CreateObject(payload *model.Group) (*model.Group, error) {
-	groupObjectSetResp, err := objectSet.Client.Post(groupPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if groupObjectSetResp == nil {
-		return nil,nil
-	}
-	return groupObjectSetResp.(*model.Group), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Group")
 }
 
 // UpdateObject Modify existing Group object
@@ -51,11 +42,7 @@ func (objectSet *GroupObjectSet) UpdateObject(id string, payload *model.Group) (
 
 // DeleteObject deletes the Group object with the specified ID
 func (objectSet *GroupObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(groupPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Group")
 }
 
 // GetObject returns a Group object with the given ID
@@ -89,7 +76,6 @@ func (objectSet *GroupObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildGroupObjectSet(groupObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildGroupObjectSet(response interface{}) ([]*model.Group) {
 	values := reflect.ValueOf(response)

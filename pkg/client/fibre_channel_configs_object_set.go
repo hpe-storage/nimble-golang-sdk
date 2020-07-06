@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type FibreChannelConfigObjectSet struct {
 
 // CreateObject creates a new FibreChannelConfig object
 func (objectSet *FibreChannelConfigObjectSet) CreateObject(payload *model.FibreChannelConfig) (*model.FibreChannelConfig, error) {
-	fibreChannelConfigObjectSetResp, err := objectSet.Client.Post(fibreChannelConfigPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if fibreChannelConfigObjectSetResp == nil {
-		return nil,nil
-	}
-	return fibreChannelConfigObjectSetResp.(*model.FibreChannelConfig), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelConfig")
 }
 
 // UpdateObject Modify existing FibreChannelConfig object
 func (objectSet *FibreChannelConfigObjectSet) UpdateObject(id string, payload *model.FibreChannelConfig) (*model.FibreChannelConfig, error) {
-	fibreChannelConfigObjectSetResp, err := objectSet.Client.Put(fibreChannelConfigPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if fibreChannelConfigObjectSetResp == nil {
-		return nil,nil
-	}
-	return fibreChannelConfigObjectSetResp.(*model.FibreChannelConfig), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on FibreChannelConfig")
 }
 
 // DeleteObject deletes the FibreChannelConfig object with the specified ID
 func (objectSet *FibreChannelConfigObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(fibreChannelConfigPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on FibreChannelConfig")
 }
 
 // GetObject returns a FibreChannelConfig object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *FibreChannelConfigObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildFibreChannelConfigObjectSet(fibreChannelConfigObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildFibreChannelConfigObjectSet(response interface{}) ([]*model.FibreChannelConfig) {
 	values := reflect.ValueOf(response)

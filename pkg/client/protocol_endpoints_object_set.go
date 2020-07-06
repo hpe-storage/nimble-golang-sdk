@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type ProtocolEndpointObjectSet struct {
 
 // CreateObject creates a new ProtocolEndpoint object
 func (objectSet *ProtocolEndpointObjectSet) CreateObject(payload *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
-	protocolEndpointObjectSetResp, err := objectSet.Client.Post(protocolEndpointPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if protocolEndpointObjectSetResp == nil {
-		return nil,nil
-	}
-	return protocolEndpointObjectSetResp.(*model.ProtocolEndpoint), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on ProtocolEndpoint")
 }
 
 // UpdateObject Modify existing ProtocolEndpoint object
 func (objectSet *ProtocolEndpointObjectSet) UpdateObject(id string, payload *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
-	protocolEndpointObjectSetResp, err := objectSet.Client.Put(protocolEndpointPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if protocolEndpointObjectSetResp == nil {
-		return nil,nil
-	}
-	return protocolEndpointObjectSetResp.(*model.ProtocolEndpoint), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on ProtocolEndpoint")
 }
 
 // DeleteObject deletes the ProtocolEndpoint object with the specified ID
 func (objectSet *ProtocolEndpointObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(protocolEndpointPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on ProtocolEndpoint")
 }
 
 // GetObject returns a ProtocolEndpoint object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *ProtocolEndpointObjectSet) GetObjectListFromParams(params *util
 	}
 	return buildProtocolEndpointObjectSet(protocolEndpointObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildProtocolEndpointObjectSet(response interface{}) ([]*model.ProtocolEndpoint) {
 	values := reflect.ValueOf(response)

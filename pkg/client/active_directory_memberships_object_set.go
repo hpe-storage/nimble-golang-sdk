@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -51,11 +51,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, pay
 
 // DeleteObject deletes the ActiveDirectoryMembership object with the specified ID
 func (objectSet *ActiveDirectoryMembershipObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(activeDirectoryMembershipPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on ActiveDirectoryMembership")
 }
 
 // GetObject returns a ActiveDirectoryMembership object with the given ID
@@ -89,7 +85,6 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectListFromParams(par
 	}
 	return buildActiveDirectoryMembershipObjectSet(activeDirectoryMembershipObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildActiveDirectoryMembershipObjectSet(response interface{}) ([]*model.ActiveDirectoryMembership) {
 	values := reflect.ValueOf(response)

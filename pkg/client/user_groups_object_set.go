@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -89,7 +88,6 @@ func (objectSet *UserGroupObjectSet) GetObjectListFromParams(params *util.GetPar
 	}
 	return buildUserGroupObjectSet(userGroupObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildUserGroupObjectSet(response interface{}) ([]*model.UserGroup) {
 	values := reflect.ValueOf(response)

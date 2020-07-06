@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type EventObjectSet struct {
 
 // CreateObject creates a new Event object
 func (objectSet *EventObjectSet) CreateObject(payload *model.Event) (*model.Event, error) {
-	eventObjectSetResp, err := objectSet.Client.Post(eventPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if eventObjectSetResp == nil {
-		return nil,nil
-	}
-	return eventObjectSetResp.(*model.Event), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Event")
 }
 
 // UpdateObject Modify existing Event object
 func (objectSet *EventObjectSet) UpdateObject(id string, payload *model.Event) (*model.Event, error) {
-	eventObjectSetResp, err := objectSet.Client.Put(eventPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if eventObjectSetResp == nil {
-		return nil,nil
-	}
-	return eventObjectSetResp.(*model.Event), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Event")
 }
 
 // DeleteObject deletes the Event object with the specified ID
 func (objectSet *EventObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(eventPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Event")
 }
 
 // GetObject returns a Event object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *EventObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildEventObjectSet(eventObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildEventObjectSet(response interface{}) ([]*model.Event) {
 	values := reflect.ValueOf(response)

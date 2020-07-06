@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type ApplicationCategoryObjectSet struct {
 
 // CreateObject creates a new ApplicationCategory object
 func (objectSet *ApplicationCategoryObjectSet) CreateObject(payload *model.ApplicationCategory) (*model.ApplicationCategory, error) {
-	applicationCategoryObjectSetResp, err := objectSet.Client.Post(applicationCategoryPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if applicationCategoryObjectSetResp == nil {
-		return nil,nil
-	}
-	return applicationCategoryObjectSetResp.(*model.ApplicationCategory), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on ApplicationCategory")
 }
 
 // UpdateObject Modify existing ApplicationCategory object
 func (objectSet *ApplicationCategoryObjectSet) UpdateObject(id string, payload *model.ApplicationCategory) (*model.ApplicationCategory, error) {
-	applicationCategoryObjectSetResp, err := objectSet.Client.Put(applicationCategoryPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if applicationCategoryObjectSetResp == nil {
-		return nil,nil
-	}
-	return applicationCategoryObjectSetResp.(*model.ApplicationCategory), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on ApplicationCategory")
 }
 
 // DeleteObject deletes the ApplicationCategory object with the specified ID
 func (objectSet *ApplicationCategoryObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(applicationCategoryPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on ApplicationCategory")
 }
 
 // GetObject returns a ApplicationCategory object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *ApplicationCategoryObjectSet) GetObjectListFromParams(params *u
 	}
 	return buildApplicationCategoryObjectSet(applicationCategoryObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildApplicationCategoryObjectSet(response interface{}) ([]*model.ApplicationCategory) {
 	values := reflect.ValueOf(response)

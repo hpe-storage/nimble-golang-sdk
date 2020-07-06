@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -91,7 +90,6 @@ func (objectSet *MasterKeyObjectSet) GetObjectListFromParams(params *util.GetPar
 	}
 	return buildMasterKeyObjectSet(masterKeyObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildMasterKeyObjectSet(response interface{}) ([]*model.MasterKey) {
 	values := reflect.ValueOf(response)

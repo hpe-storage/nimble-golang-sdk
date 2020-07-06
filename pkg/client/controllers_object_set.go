@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type ControllerObjectSet struct {
 
 // CreateObject creates a new Controller object
 func (objectSet *ControllerObjectSet) CreateObject(payload *model.Controller) (*model.Controller, error) {
-	controllerObjectSetResp, err := objectSet.Client.Post(controllerPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if controllerObjectSetResp == nil {
-		return nil,nil
-	}
-	return controllerObjectSetResp.(*model.Controller), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Controller")
 }
 
 // UpdateObject Modify existing Controller object
 func (objectSet *ControllerObjectSet) UpdateObject(id string, payload *model.Controller) (*model.Controller, error) {
-	controllerObjectSetResp, err := objectSet.Client.Put(controllerPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if controllerObjectSetResp == nil {
-		return nil,nil
-	}
-	return controllerObjectSetResp.(*model.Controller), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Controller")
 }
 
 // DeleteObject deletes the Controller object with the specified ID
 func (objectSet *ControllerObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(controllerPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Controller")
 }
 
 // GetObject returns a Controller object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *ControllerObjectSet) GetObjectListFromParams(params *util.GetPa
 	}
 	return buildControllerObjectSet(controllerObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildControllerObjectSet(response interface{}) ([]*model.Controller) {
 	values := reflect.ValueOf(response)

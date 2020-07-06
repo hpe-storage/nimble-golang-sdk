@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -51,11 +51,7 @@ func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *model.Key
 
 // DeleteObject deletes the KeyManager object with the specified ID
 func (objectSet *KeyManagerObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(keyManagerPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on KeyManager")
 }
 
 // GetObject returns a KeyManager object with the given ID
@@ -89,7 +85,6 @@ func (objectSet *KeyManagerObjectSet) GetObjectListFromParams(params *util.GetPa
 	}
 	return buildKeyManagerObjectSet(keyManagerObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildKeyManagerObjectSet(response interface{}) ([]*model.KeyManager) {
 	values := reflect.ValueOf(response)

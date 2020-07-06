@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,16 +23,7 @@ type FibreChannelInterfaceObjectSet struct {
 
 // CreateObject creates a new FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Post(fibreChannelInterfacePath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if fibreChannelInterfaceObjectSetResp == nil {
-		return nil,nil
-	}
-	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelInterface")
 }
 
 // UpdateObject Modify existing FibreChannelInterface object
@@ -51,11 +42,7 @@ func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload
 
 // DeleteObject deletes the FibreChannelInterface object with the specified ID
 func (objectSet *FibreChannelInterfaceObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(fibreChannelInterfacePath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on FibreChannelInterface")
 }
 
 // GetObject returns a FibreChannelInterface object with the given ID
@@ -89,7 +76,6 @@ func (objectSet *FibreChannelInterfaceObjectSet) GetObjectListFromParams(params 
 	}
 	return buildFibreChannelInterfaceObjectSet(fibreChannelInterfaceObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildFibreChannelInterfaceObjectSet(response interface{}) ([]*model.FibreChannelInterface) {
 	values := reflect.ValueOf(response)

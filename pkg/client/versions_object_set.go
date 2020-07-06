@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type VersionObjectSet struct {
 
 // CreateObject creates a new Version object
 func (objectSet *VersionObjectSet) CreateObject(payload *model.Version) (*model.Version, error) {
-	versionObjectSetResp, err := objectSet.Client.Post(versionPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if versionObjectSetResp == nil {
-		return nil,nil
-	}
-	return versionObjectSetResp.(*model.Version), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Version")
 }
 
 // UpdateObject Modify existing Version object
 func (objectSet *VersionObjectSet) UpdateObject(id string, payload *model.Version) (*model.Version, error) {
-	versionObjectSetResp, err := objectSet.Client.Put(versionPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if versionObjectSetResp == nil {
-		return nil,nil
-	}
-	return versionObjectSetResp.(*model.Version), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Version")
 }
 
 // DeleteObject deletes the Version object with the specified ID
 func (objectSet *VersionObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(versionPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Version")
 }
 
 // GetObject returns a Version object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *VersionObjectSet) GetObjectListFromParams(params *util.GetParam
 	}
 	return buildVersionObjectSet(versionObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildVersionObjectSet(response interface{}) ([]*model.Version) {
 	values := reflect.ValueOf(response)

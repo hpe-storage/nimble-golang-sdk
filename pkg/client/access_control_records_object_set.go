@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -37,16 +37,7 @@ func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *model.Acces
 
 // UpdateObject Modify existing AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) UpdateObject(id string, payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
-	accessControlRecordObjectSetResp, err := objectSet.Client.Put(accessControlRecordPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if accessControlRecordObjectSetResp == nil {
-		return nil,nil
-	}
-	return accessControlRecordObjectSetResp.(*model.AccessControlRecord), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on AccessControlRecord")
 }
 
 // DeleteObject deletes the AccessControlRecord object with the specified ID
@@ -89,7 +80,6 @@ func (objectSet *AccessControlRecordObjectSet) GetObjectListFromParams(params *u
 	}
 	return buildAccessControlRecordObjectSet(accessControlRecordObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildAccessControlRecordObjectSet(response interface{}) ([]*model.AccessControlRecord) {
 	values := reflect.ValueOf(response)

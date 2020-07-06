@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -90,7 +89,6 @@ func (objectSet *VolumeObjectSet) GetObjectListFromParams(params *util.GetParams
 	}
 	return buildVolumeObjectSet(volumeObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildVolumeObjectSet(response interface{}) ([]*model.Volume) {
 	values := reflect.ValueOf(response)

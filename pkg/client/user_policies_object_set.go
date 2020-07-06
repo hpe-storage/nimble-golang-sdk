@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,16 +23,7 @@ type UserPolicyObjectSet struct {
 
 // CreateObject creates a new UserPolicy object
 func (objectSet *UserPolicyObjectSet) CreateObject(payload *model.UserPolicy) (*model.UserPolicy, error) {
-	userPolicyObjectSetResp, err := objectSet.Client.Post(userPolicyPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if userPolicyObjectSetResp == nil {
-		return nil,nil
-	}
-	return userPolicyObjectSetResp.(*model.UserPolicy), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on UserPolicy")
 }
 
 // UpdateObject Modify existing UserPolicy object
@@ -51,11 +42,7 @@ func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *model.Use
 
 // DeleteObject deletes the UserPolicy object with the specified ID
 func (objectSet *UserPolicyObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(userPolicyPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on UserPolicy")
 }
 
 // GetObject returns a UserPolicy object with the given ID
@@ -89,7 +76,6 @@ func (objectSet *UserPolicyObjectSet) GetObjectListFromParams(params *util.GetPa
 	}
 	return buildUserPolicyObjectSet(userPolicyObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildUserPolicyObjectSet(response interface{}) ([]*model.UserPolicy) {
 	values := reflect.ValueOf(response)

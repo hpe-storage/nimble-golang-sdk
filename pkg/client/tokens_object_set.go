@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -37,16 +37,7 @@ func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Toke
 
 // UpdateObject Modify existing Token object
 func (objectSet *TokenObjectSet) UpdateObject(id string, payload *model.Token) (*model.Token, error) {
-	tokenObjectSetResp, err := objectSet.Client.Put(tokenPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if tokenObjectSetResp == nil {
-		return nil,nil
-	}
-	return tokenObjectSetResp.(*model.Token), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Token")
 }
 
 // DeleteObject deletes the Token object with the specified ID
@@ -89,7 +80,6 @@ func (objectSet *TokenObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildTokenObjectSet(tokenObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildTokenObjectSet(response interface{}) ([]*model.Token) {
 	values := reflect.ValueOf(response)

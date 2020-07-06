@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -89,7 +88,6 @@ func (objectSet *ArrayObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildArrayObjectSet(arrayObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildArrayObjectSet(response interface{}) ([]*model.Array) {
 	values := reflect.ValueOf(response)

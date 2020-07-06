@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -37,16 +37,7 @@ func (objectSet *WitnessObjectSet) CreateObject(payload *model.Witness) (*model.
 
 // UpdateObject Modify existing Witness object
 func (objectSet *WitnessObjectSet) UpdateObject(id string, payload *model.Witness) (*model.Witness, error) {
-	witnessObjectSetResp, err := objectSet.Client.Put(witnessPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if witnessObjectSetResp == nil {
-		return nil,nil
-	}
-	return witnessObjectSetResp.(*model.Witness), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Witness")
 }
 
 // DeleteObject deletes the Witness object with the specified ID
@@ -89,7 +80,6 @@ func (objectSet *WitnessObjectSet) GetObjectListFromParams(params *util.GetParam
 	}
 	return buildWitnessObjectSet(witnessObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildWitnessObjectSet(response interface{}) ([]*model.Witness) {
 	values := reflect.ValueOf(response)

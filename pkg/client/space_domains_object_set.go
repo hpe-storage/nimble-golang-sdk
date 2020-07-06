@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type SpaceDomainObjectSet struct {
 
 // CreateObject creates a new SpaceDomain object
 func (objectSet *SpaceDomainObjectSet) CreateObject(payload *model.SpaceDomain) (*model.SpaceDomain, error) {
-	spaceDomainObjectSetResp, err := objectSet.Client.Post(spaceDomainPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if spaceDomainObjectSetResp == nil {
-		return nil,nil
-	}
-	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on SpaceDomain")
 }
 
 // UpdateObject Modify existing SpaceDomain object
 func (objectSet *SpaceDomainObjectSet) UpdateObject(id string, payload *model.SpaceDomain) (*model.SpaceDomain, error) {
-	spaceDomainObjectSetResp, err := objectSet.Client.Put(spaceDomainPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if spaceDomainObjectSetResp == nil {
-		return nil,nil
-	}
-	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on SpaceDomain")
 }
 
 // DeleteObject deletes the SpaceDomain object with the specified ID
 func (objectSet *SpaceDomainObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(spaceDomainPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on SpaceDomain")
 }
 
 // GetObject returns a SpaceDomain object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *SpaceDomainObjectSet) GetObjectListFromParams(params *util.GetP
 	}
 	return buildSpaceDomainObjectSet(spaceDomainObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildSpaceDomainObjectSet(response interface{}) ([]*model.SpaceDomain) {
 	values := reflect.ValueOf(response)

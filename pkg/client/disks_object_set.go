@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,16 +23,7 @@ type DiskObjectSet struct {
 
 // CreateObject creates a new Disk object
 func (objectSet *DiskObjectSet) CreateObject(payload *model.Disk) (*model.Disk, error) {
-	diskObjectSetResp, err := objectSet.Client.Post(diskPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if diskObjectSetResp == nil {
-		return nil,nil
-	}
-	return diskObjectSetResp.(*model.Disk), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Disk")
 }
 
 // UpdateObject Modify existing Disk object
@@ -51,11 +42,7 @@ func (objectSet *DiskObjectSet) UpdateObject(id string, payload *model.Disk) (*m
 
 // DeleteObject deletes the Disk object with the specified ID
 func (objectSet *DiskObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(diskPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Disk")
 }
 
 // GetObject returns a Disk object with the given ID
@@ -89,7 +76,6 @@ func (objectSet *DiskObjectSet) GetObjectListFromParams(params *util.GetParams) 
 	}
 	return buildDiskObjectSet(diskObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildDiskObjectSet(response interface{}) ([]*model.Disk) {
 	values := reflect.ValueOf(response)

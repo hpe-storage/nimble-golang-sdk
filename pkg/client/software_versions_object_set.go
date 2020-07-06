@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type SoftwareVersionObjectSet struct {
 
 // CreateObject creates a new SoftwareVersion object
 func (objectSet *SoftwareVersionObjectSet) CreateObject(payload *model.SoftwareVersion) (*model.SoftwareVersion, error) {
-	softwareVersionObjectSetResp, err := objectSet.Client.Post(softwareVersionPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if softwareVersionObjectSetResp == nil {
-		return nil,nil
-	}
-	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on SoftwareVersion")
 }
 
 // UpdateObject Modify existing SoftwareVersion object
 func (objectSet *SoftwareVersionObjectSet) UpdateObject(id string, payload *model.SoftwareVersion) (*model.SoftwareVersion, error) {
-	softwareVersionObjectSetResp, err := objectSet.Client.Put(softwareVersionPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if softwareVersionObjectSetResp == nil {
-		return nil,nil
-	}
-	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on SoftwareVersion")
 }
 
 // DeleteObject deletes the SoftwareVersion object with the specified ID
 func (objectSet *SoftwareVersionObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(softwareVersionPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on SoftwareVersion")
 }
 
 // GetObject returns a SoftwareVersion object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *SoftwareVersionObjectSet) GetObjectListFromParams(params *util.
 	}
 	return buildSoftwareVersionObjectSet(softwareVersionObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildSoftwareVersionObjectSet(response interface{}) ([]*model.SoftwareVersion) {
 	values := reflect.ValueOf(response)

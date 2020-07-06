@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,39 +23,17 @@ type NetworkInterfaceObjectSet struct {
 
 // CreateObject creates a new NetworkInterface object
 func (objectSet *NetworkInterfaceObjectSet) CreateObject(payload *model.NetworkInterface) (*model.NetworkInterface, error) {
-	networkInterfaceObjectSetResp, err := objectSet.Client.Post(networkInterfacePath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if networkInterfaceObjectSetResp == nil {
-		return nil,nil
-	}
-	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on NetworkInterface")
 }
 
 // UpdateObject Modify existing NetworkInterface object
 func (objectSet *NetworkInterfaceObjectSet) UpdateObject(id string, payload *model.NetworkInterface) (*model.NetworkInterface, error) {
-	networkInterfaceObjectSetResp, err := objectSet.Client.Put(networkInterfacePath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if networkInterfaceObjectSetResp == nil {
-		return nil,nil
-	}
-	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on NetworkInterface")
 }
 
 // DeleteObject deletes the NetworkInterface object with the specified ID
 func (objectSet *NetworkInterfaceObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(networkInterfacePath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on NetworkInterface")
 }
 
 // GetObject returns a NetworkInterface object with the given ID
@@ -89,7 +67,6 @@ func (objectSet *NetworkInterfaceObjectSet) GetObjectListFromParams(params *util
 	}
 	return buildNetworkInterfaceObjectSet(networkInterfaceObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildNetworkInterfaceObjectSet(response interface{}) ([]*model.NetworkInterface) {
 	values := reflect.ValueOf(response)

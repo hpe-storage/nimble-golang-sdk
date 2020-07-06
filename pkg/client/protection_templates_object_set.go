@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -92,7 +91,6 @@ func (objectSet *ProtectionTemplateObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildProtectionTemplateObjectSet(protectionTemplateObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildProtectionTemplateObjectSet(response interface{}) ([]*model.ProtectionTemplate) {
 	values := reflect.ValueOf(response)

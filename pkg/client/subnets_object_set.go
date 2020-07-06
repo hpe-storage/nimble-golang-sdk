@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -24,39 +24,17 @@ type SubnetObjectSet struct {
 
 // CreateObject creates a new Subnet object
 func (objectSet *SubnetObjectSet) CreateObject(payload *model.Subnet) (*model.Subnet, error) {
-	subnetObjectSetResp, err := objectSet.Client.Post(subnetPath, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if subnetObjectSetResp == nil {
-		return nil,nil
-	}
-	return subnetObjectSetResp.(*model.Subnet), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Subnet")
 }
 
 // UpdateObject Modify existing Subnet object
 func (objectSet *SubnetObjectSet) UpdateObject(id string, payload *model.Subnet) (*model.Subnet, error) {
-	subnetObjectSetResp, err := objectSet.Client.Put(subnetPath, id, payload)
-	if err !=nil {
-		return nil,err
-	}
-	
-	// null check
-	if subnetObjectSetResp == nil {
-		return nil,nil
-	}
-	return subnetObjectSetResp.(*model.Subnet), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Subnet")
 }
 
 // DeleteObject deletes the Subnet object with the specified ID
 func (objectSet *SubnetObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(subnetPath, id)
-	if err !=nil {
-		return err
-	}
-	return nil
+	return fmt.Errorf("Unsupported operation 'delete' on Subnet")
 }
 
 // GetObject returns a Subnet object with the given ID
@@ -90,7 +68,6 @@ func (objectSet *SubnetObjectSet) GetObjectListFromParams(params *util.GetParams
 	}
 	return buildSubnetObjectSet(subnetObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildSubnetObjectSet(response interface{}) ([]*model.Subnet) {
 	values := reflect.ValueOf(response)
