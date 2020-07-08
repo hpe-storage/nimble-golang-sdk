@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage group wide Fibre Channel configuration.
 const (
-    fibreChannelConfigPath = "fibre_channel_configs"
+	fibreChannelConfigPath = "fibre_channel_configs"
 )
 
 // FibreChannelConfigObjectSet
 type FibreChannelConfigObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new FibreChannelConfig object
@@ -42,10 +41,10 @@ func (objectSet *FibreChannelConfigObjectSet) GetObject(id string) (*model.Fibre
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if fibreChannelConfigObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return fibreChannelConfigObjectSetResp.(*model.FibreChannelConfig), err
 }
@@ -67,8 +66,9 @@ func (objectSet *FibreChannelConfigObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildFibreChannelConfigObjectSet(fibreChannelConfigObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildFibreChannelConfigObjectSet(response interface{}) ([]*model.FibreChannelConfig) {
+func buildFibreChannelConfigObjectSet(response interface{}) []*model.FibreChannelConfig {
 	values := reflect.ValueOf(response)
 	results := make([]*model.FibreChannelConfig, values.Len())
 

@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsShelfSwType Enum.
- 
-type NsShelfSwType string 
+
+type NsShelfSwType string
 
 const (
-	NSSHELFSWTYPE_DISK_SHELF NsShelfSwType = "Disk Shelf"
-	NSSHELFSWTYPE_UNKNOWN_SHELF_SOFTWARE_TYPE NsShelfSwType = "unknown shelf software type"
-	NSSHELFSWTYPE_ALL_FLASH_SHELF NsShelfSwType = "All Flash Shelf"
-	NSSHELFSWTYPE_HEAD_SHELF NsShelfSwType = "Head Shelf"
+	cNsShelfSwTypeDiskShelf                NsShelfSwType = "Disk Shelf"
+	cNsShelfSwTypeUnknownShelfSoftwareType NsShelfSwType = "unknown shelf software type"
+	cNsShelfSwTypeAllFlashShelf            NsShelfSwType = "All Flash Shelf"
+	cNsShelfSwTypeHeadShelf                NsShelfSwType = "Head Shelf"
+)
 
-) 
+var pNsShelfSwTypeDiskShelf NsShelfSwType
+var pNsShelfSwTypeUnknownShelfSoftwareType NsShelfSwType
+var pNsShelfSwTypeAllFlashShelf NsShelfSwType
+var pNsShelfSwTypeHeadShelf NsShelfSwType
+
+// Export
+var NsShelfSwTypeDiskShelf *NsShelfSwType
+var NsShelfSwTypeUnknownShelfSoftwareType *NsShelfSwType
+var NsShelfSwTypeAllFlashShelf *NsShelfSwType
+var NsShelfSwTypeHeadShelf *NsShelfSwType
+
+func init() {
+	pNsShelfSwTypeDiskShelf = cNsShelfSwTypeDiskShelf
+	NsShelfSwTypeDiskShelf = &pNsShelfSwTypeDiskShelf
+
+	pNsShelfSwTypeUnknownShelfSoftwareType = cNsShelfSwTypeUnknownShelfSoftwareType
+	NsShelfSwTypeUnknownShelfSoftwareType = &pNsShelfSwTypeUnknownShelfSoftwareType
+
+	pNsShelfSwTypeAllFlashShelf = cNsShelfSwTypeAllFlashShelf
+	NsShelfSwTypeAllFlashShelf = &pNsShelfSwTypeAllFlashShelf
+
+	pNsShelfSwTypeHeadShelf = cNsShelfSwTypeHeadShelf
+	NsShelfSwTypeHeadShelf = &pNsShelfSwTypeHeadShelf
+
+}

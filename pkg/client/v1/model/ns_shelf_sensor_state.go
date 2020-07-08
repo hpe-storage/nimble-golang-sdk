@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsShelfSensorState Enum.
- 
-type NsShelfSensorState string 
+
+type NsShelfSensorState string
 
 const (
-	NSSHELFSENSORSTATE_MISSING NsShelfSensorState = "Missing"
-	NSSHELFSENSORSTATE_FAILED NsShelfSensorState = "Failed"
-	NSSHELFSENSORSTATE_OK NsShelfSensorState = "OK"
-	NSSHELFSENSORSTATE_ALERTED NsShelfSensorState = "Alerted"
+	cNsShelfSensorStateMissing NsShelfSensorState = "Missing"
+	cNsShelfSensorStateFailed  NsShelfSensorState = "Failed"
+	cNsShelfSensorStateOk      NsShelfSensorState = "OK"
+	cNsShelfSensorStateAlerted NsShelfSensorState = "Alerted"
+)
 
-) 
+var pNsShelfSensorStateMissing NsShelfSensorState
+var pNsShelfSensorStateFailed NsShelfSensorState
+var pNsShelfSensorStateOk NsShelfSensorState
+var pNsShelfSensorStateAlerted NsShelfSensorState
+
+// Export
+var NsShelfSensorStateMissing *NsShelfSensorState
+var NsShelfSensorStateFailed *NsShelfSensorState
+var NsShelfSensorStateOk *NsShelfSensorState
+var NsShelfSensorStateAlerted *NsShelfSensorState
+
+func init() {
+	pNsShelfSensorStateMissing = cNsShelfSensorStateMissing
+	NsShelfSensorStateMissing = &pNsShelfSensorStateMissing
+
+	pNsShelfSensorStateFailed = cNsShelfSensorStateFailed
+	NsShelfSensorStateFailed = &pNsShelfSensorStateFailed
+
+	pNsShelfSensorStateOk = cNsShelfSensorStateOk
+	NsShelfSensorStateOk = &pNsShelfSensorStateOk
+
+	pNsShelfSensorStateAlerted = cNsShelfSensorStateAlerted
+	NsShelfSensorStateAlerted = &pNsShelfSensorStateAlerted
+
+}

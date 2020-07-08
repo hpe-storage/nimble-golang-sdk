@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsHCIConfigType Enum.
- 
-type NsHCIConfigType string 
+
+type NsHCIConfigType string
 
 const (
-	NSHCICONFIGTYPE_CLUSTER NsHCIConfigType = "cluster"
-	NSHCICONFIGTYPE_NODE NsHCIConfigType = "node"
-	NSHCICONFIGTYPE_BLOCK NsHCIConfigType = "block"
+	cNsHCIConfigTypeCluster NsHCIConfigType = "cluster"
+	cNsHCIConfigTypeNode    NsHCIConfigType = "node"
+	cNsHCIConfigTypeBlock   NsHCIConfigType = "block"
+)
 
-) 
+var pNsHCIConfigTypeCluster NsHCIConfigType
+var pNsHCIConfigTypeNode NsHCIConfigType
+var pNsHCIConfigTypeBlock NsHCIConfigType
+
+// Export
+var NsHCIConfigTypeCluster *NsHCIConfigType
+var NsHCIConfigTypeNode *NsHCIConfigType
+var NsHCIConfigTypeBlock *NsHCIConfigType
+
+func init() {
+	pNsHCIConfigTypeCluster = cNsHCIConfigTypeCluster
+	NsHCIConfigTypeCluster = &pNsHCIConfigTypeCluster
+
+	pNsHCIConfigTypeNode = cNsHCIConfigTypeNode
+	NsHCIConfigTypeNode = &pNsHCIConfigTypeNode
+
+	pNsHCIConfigTypeBlock = cNsHCIConfigTypeBlock
+	NsHCIConfigTypeBlock = &pNsHCIConfigTypeBlock
+
+}

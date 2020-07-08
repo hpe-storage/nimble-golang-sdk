@@ -3,56 +3,58 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through
 // group membership.
 const (
-    initiatorGroupPath = "initiator_groups"
+	initiatorGroupPath = "initiator_groups"
 )
 
 // InitiatorGroupObjectSet
 type InitiatorGroupObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	initiatorGroupObjectSetResp, err := objectSet.Client.Post(initiatorGroupPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeInitiatorGroup(payload)
+	resp, err := objectSet.Client.Post(initiatorGroupPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if initiatorGroupObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
+
+	return model.DecodeInitiatorGroup(resp)
 }
 
 // UpdateObject Modify existing InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	initiatorGroupObjectSetResp, err := objectSet.Client.Put(initiatorGroupPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeInitiatorGroup(payload)
+	resp, err := objectSet.Client.Put(initiatorGroupPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if initiatorGroupObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
+	return model.DecodeInitiatorGroup(resp)
 }
 
 // DeleteObject deletes the InitiatorGroup object with the specified ID
 func (objectSet *InitiatorGroupObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(initiatorGroupPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -64,10 +66,10 @@ func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*model.Initiator
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if initiatorGroupObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
 }
@@ -89,8 +91,9 @@ func (objectSet *InitiatorGroupObjectSet) GetObjectListFromParams(params *util.G
 	}
 	return buildInitiatorGroupObjectSet(initiatorGroupObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildInitiatorGroupObjectSet(response interface{}) ([]*model.InitiatorGroup) {
+func buildInitiatorGroupObjectSet(response interface{}) []*model.InitiatorGroup {
 	values := reflect.ValueOf(response)
 	results := make([]*model.InitiatorGroup, values.Len())
 

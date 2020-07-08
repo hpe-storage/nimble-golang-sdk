@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsJobStatus Enum.
- 
-type NsJobStatus string 
+
+type NsJobStatus string
 
 const (
-	NSJOBSTATUS_CANCELED NsJobStatus = "canceled"
-	NSJOBSTATUS_PENDING NsJobStatus = "pending"
-	NSJOBSTATUS_INPROGRESS NsJobStatus = "inprogress"
-	NSJOBSTATUS_DONE NsJobStatus = "done"
+	cNsJobStatusCanceled   NsJobStatus = "canceled"
+	cNsJobStatusPending    NsJobStatus = "pending"
+	cNsJobStatusInprogress NsJobStatus = "inprogress"
+	cNsJobStatusDone       NsJobStatus = "done"
+)
 
-) 
+var pNsJobStatusCanceled NsJobStatus
+var pNsJobStatusPending NsJobStatus
+var pNsJobStatusInprogress NsJobStatus
+var pNsJobStatusDone NsJobStatus
+
+// Export
+var NsJobStatusCanceled *NsJobStatus
+var NsJobStatusPending *NsJobStatus
+var NsJobStatusInprogress *NsJobStatus
+var NsJobStatusDone *NsJobStatus
+
+func init() {
+	pNsJobStatusCanceled = cNsJobStatusCanceled
+	NsJobStatusCanceled = &pNsJobStatusCanceled
+
+	pNsJobStatusPending = cNsJobStatusPending
+	NsJobStatusPending = &pNsJobStatusPending
+
+	pNsJobStatusInprogress = cNsJobStatusInprogress
+	NsJobStatusInprogress = &pNsJobStatusInprogress
+
+	pNsJobStatusDone = cNsJobStatusDone
+	NsJobStatusDone = &pNsJobStatusDone
+
+}

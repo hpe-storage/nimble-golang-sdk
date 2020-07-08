@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Provides the list of application categories that are available, to classify volumes depending on the applications that use them.
 const (
-    applicationCategoryPath = "application_categories"
+	applicationCategoryPath = "application_categories"
 )
 
 // ApplicationCategoryObjectSet
 type ApplicationCategoryObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ApplicationCategory object
@@ -42,10 +41,10 @@ func (objectSet *ApplicationCategoryObjectSet) GetObject(id string) (*model.Appl
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if applicationCategoryObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return applicationCategoryObjectSetResp.(*model.ApplicationCategory), err
 }
@@ -67,8 +66,9 @@ func (objectSet *ApplicationCategoryObjectSet) GetObjectListFromParams(params *u
 	}
 	return buildApplicationCategoryObjectSet(applicationCategoryObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildApplicationCategoryObjectSet(response interface{}) ([]*model.ApplicationCategory) {
+func buildApplicationCategoryObjectSet(response interface{}) []*model.ApplicationCategory {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ApplicationCategory, values.Len())
 

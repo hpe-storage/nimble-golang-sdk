@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsNotificationType Enum.
- 
-type NsNotificationType string 
+
+type NsNotificationType string
 
 const (
-	NSNOTIFICATIONTYPE_ALERTS NsNotificationType = "alerts"
-	NSNOTIFICATIONTYPE_AUDITLOGS NsNotificationType = "auditlogs"
+	cNsNotificationTypeAlerts    NsNotificationType = "alerts"
+	cNsNotificationTypeAuditlogs NsNotificationType = "auditlogs"
+)
 
-) 
+var pNsNotificationTypeAlerts NsNotificationType
+var pNsNotificationTypeAuditlogs NsNotificationType
+
+// Export
+var NsNotificationTypeAlerts *NsNotificationType
+var NsNotificationTypeAuditlogs *NsNotificationType
+
+func init() {
+	pNsNotificationTypeAlerts = cNsNotificationTypeAlerts
+	NsNotificationTypeAlerts = &pNsNotificationTypeAlerts
+
+	pNsNotificationTypeAuditlogs = cNsNotificationTypeAuditlogs
+	NsNotificationTypeAuditlogs = &pNsNotificationTypeAuditlogs
+
+}

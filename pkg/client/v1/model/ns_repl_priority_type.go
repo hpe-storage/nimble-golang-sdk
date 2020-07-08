@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsReplPriorityType Enum.
- 
-type NsReplPriorityType string 
+
+type NsReplPriorityType string
 
 const (
-	NSREPLPRIORITYTYPE_NORMAL NsReplPriorityType = "normal"
-	NSREPLPRIORITYTYPE_HIGH NsReplPriorityType = "high"
+	cNsReplPriorityTypeNormal NsReplPriorityType = "normal"
+	cNsReplPriorityTypeHigh   NsReplPriorityType = "high"
+)
 
-) 
+var pNsReplPriorityTypeNormal NsReplPriorityType
+var pNsReplPriorityTypeHigh NsReplPriorityType
+
+// Export
+var NsReplPriorityTypeNormal *NsReplPriorityType
+var NsReplPriorityTypeHigh *NsReplPriorityType
+
+func init() {
+	pNsReplPriorityTypeNormal = cNsReplPriorityTypeNormal
+	NsReplPriorityTypeNormal = &pNsReplPriorityTypeNormal
+
+	pNsReplPriorityTypeHigh = cNsReplPriorityTypeHigh
+	NsReplPriorityTypeHigh = &pNsReplPriorityTypeHigh
+
+}

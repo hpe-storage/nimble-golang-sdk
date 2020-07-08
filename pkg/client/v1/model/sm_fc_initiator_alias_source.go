@@ -2,12 +2,32 @@
 package model
 
 // Golang package for SmFcInitiatorAliasSource Enum.
- 
-type SmFcInitiatorAliasSource string 
+
+type SmFcInitiatorAliasSource string
 
 const (
-	SMFCINITIATORALIASSOURCE_FABRIC SmFcInitiatorAliasSource = "fabric"
-	SMFCINITIATORALIASSOURCE_INVALID SmFcInitiatorAliasSource = "invalid"
-	SMFCINITIATORALIASSOURCE_USER SmFcInitiatorAliasSource = "user"
+	cSmFcInitiatorAliasSourceFabric  SmFcInitiatorAliasSource = "fabric"
+	cSmFcInitiatorAliasSourceInvalid SmFcInitiatorAliasSource = "invalid"
+	cSmFcInitiatorAliasSourceUser    SmFcInitiatorAliasSource = "user"
+)
 
-) 
+var pSmFcInitiatorAliasSourceFabric SmFcInitiatorAliasSource
+var pSmFcInitiatorAliasSourceInvalid SmFcInitiatorAliasSource
+var pSmFcInitiatorAliasSourceUser SmFcInitiatorAliasSource
+
+// Export
+var SmFcInitiatorAliasSourceFabric *SmFcInitiatorAliasSource
+var SmFcInitiatorAliasSourceInvalid *SmFcInitiatorAliasSource
+var SmFcInitiatorAliasSourceUser *SmFcInitiatorAliasSource
+
+func init() {
+	pSmFcInitiatorAliasSourceFabric = cSmFcInitiatorAliasSourceFabric
+	SmFcInitiatorAliasSourceFabric = &pSmFcInitiatorAliasSourceFabric
+
+	pSmFcInitiatorAliasSourceInvalid = cSmFcInitiatorAliasSourceInvalid
+	SmFcInitiatorAliasSourceInvalid = &pSmFcInitiatorAliasSourceInvalid
+
+	pSmFcInitiatorAliasSourceUser = cSmFcInitiatorAliasSourceUser
+	SmFcInitiatorAliasSourceUser = &pSmFcInitiatorAliasSourceUser
+
+}

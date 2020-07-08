@@ -11,13 +11,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// ArrayService type 
+// ArrayService type
 type ArrayService struct {
 	objectSet *client.ArrayObjectSet
 }
 
-// NewArrayService - method to initialize "ArrayService" 
-func NewArrayService(gs *NsGroupService) (*ArrayService) {
+// NewArrayService - method to initialize "ArrayService"
+func NewArrayService(gs *NsGroupService) *ArrayService {
 	objectSet := gs.client.GetArrayObjectSet()
 	return &ArrayService{objectSet: objectSet}
 }
@@ -25,60 +25,60 @@ func NewArrayService(gs *NsGroupService) (*ArrayService) {
 // GetArrays - method returns a array of pointers of type "Arrays"
 func (svc *ArrayService) GetArrays(params *util.GetParams) ([]*model.Array, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	arrayResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	arrayResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return arrayResp,nil
+	return arrayResp, nil
 }
 
 // CreateArray - method creates a "Array"
 func (svc *ArrayService) CreateArray(obj *model.Array) (*model.Array, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	arrayResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	arrayResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return arrayResp,nil
+	return arrayResp, nil
 }
 
-// UpdateArray - method modifies  the "Array" 
+// UpdateArray - method modifies  the "Array"
 func (svc *ArrayService) UpdateArray(id string, obj *model.Array) (*model.Array, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	arrayResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	arrayResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return arrayResp,nil
+	return arrayResp, nil
 }
 
 // GetArrayById - method returns a pointer to "Array"
 func (svc *ArrayService) GetArrayById(id string) (*model.Array, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	arrayResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return arrayResp,nil
+	return arrayResp, nil
 }
 
-// GetArrayByName - method returns a pointer "Array" 
+// GetArrayByName - method returns a pointer "Array"
 func (svc *ArrayService) GetArrayByName(name string) (*model.Array, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
+			FieldName: &model.VolumeFields.Name,
 			Operator:  util.EQUALS.String(),
 			Value:     name,
 		},
@@ -87,18 +87,18 @@ func (svc *ArrayService) GetArrayByName(name string) (*model.Array, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(arrayResp) == 0 {
-    	return nil, nil
-    }
-    
-	return arrayResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return arrayResp[0], nil
+}
 
 // DeleteArray - deletes the "Array"
 func (svc *ArrayService) DeleteArray(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

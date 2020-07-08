@@ -2,10 +2,20 @@
 package model
 
 // Golang package for NsSupportPasswordMode Enum.
- 
-type NsSupportPasswordMode string 
+
+type NsSupportPasswordMode string
 
 const (
-	NSSUPPORTPASSWORDMODE_CIPHERTEXT NsSupportPasswordMode = "ciphertext"
+	cNsSupportPasswordModeCiphertext NsSupportPasswordMode = "ciphertext"
+)
 
-) 
+var pNsSupportPasswordModeCiphertext NsSupportPasswordMode
+
+// Export
+var NsSupportPasswordModeCiphertext *NsSupportPasswordMode
+
+func init() {
+	pNsSupportPasswordModeCiphertext = cNsSupportPasswordModeCiphertext
+	NsSupportPasswordModeCiphertext = &pNsSupportPasswordModeCiphertext
+
+}

@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manages the password policies configured for the group.
 const (
-    userPolicyPath = "user_policies"
+	userPolicyPath = "user_policies"
 )
 
 // UserPolicyObjectSet
 type UserPolicyObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new UserPolicy object
@@ -28,16 +27,17 @@ func (objectSet *UserPolicyObjectSet) CreateObject(payload *model.UserPolicy) (*
 
 // UpdateObject Modify existing UserPolicy object
 func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *model.UserPolicy) (*model.UserPolicy, error) {
-	userPolicyObjectSetResp, err := objectSet.Client.Put(userPolicyPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeUserPolicy(payload)
+	resp, err := objectSet.Client.Put(userPolicyPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userPolicyObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userPolicyObjectSetResp.(*model.UserPolicy), err
+	return model.DecodeUserPolicy(resp)
 }
 
 // DeleteObject deletes the UserPolicy object with the specified ID
@@ -51,10 +51,10 @@ func (objectSet *UserPolicyObjectSet) GetObject(id string) (*model.UserPolicy, e
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if userPolicyObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return userPolicyObjectSetResp.(*model.UserPolicy), err
 }
@@ -76,8 +76,9 @@ func (objectSet *UserPolicyObjectSet) GetObjectListFromParams(params *util.GetPa
 	}
 	return buildUserPolicyObjectSet(userPolicyObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildUserPolicyObjectSet(response interface{}) ([]*model.UserPolicy) {
+func buildUserPolicyObjectSet(response interface{}) []*model.UserPolicy {
 	values := reflect.ValueOf(response)
 	results := make([]*model.UserPolicy, values.Len())
 

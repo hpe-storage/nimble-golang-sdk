@@ -2,22 +2,92 @@
 package model
 
 // Golang package for NsReplVolPartnerStatus Enum.
- 
-type NsReplVolPartnerStatus string 
+
+type NsReplVolPartnerStatus string
 
 const (
-	NSREPLVOLPARTNERSTATUS_DATA_TRANSFER_TERMINATED NsReplVolPartnerStatus = "Data transfer terminated"
-	NSREPLVOLPARTNERSTATUS_INITIATING_CONTENT_BASED_REPLICATION NsReplVolPartnerStatus = "Initiating content based replication"
-	NSREPLVOLPARTNERSTATUS_CONTENT_BASED_REPLICATION_COMPLETE NsReplVolPartnerStatus = "Content based replication complete"
-	NSREPLVOLPARTNERSTATUS_DATA_TRANSFER_COMPLETE NsReplVolPartnerStatus = "Data transfer complete"
-	NSREPLVOLPARTNERSTATUS_CREATING_SNAPSHOT_ON_PARTNER NsReplVolPartnerStatus = "Creating snapshot on partner"
-	NSREPLVOLPARTNERSTATUS_SYNCHRONIZING_PARTNER_CONFIGURATION NsReplVolPartnerStatus = "Synchronizing partner configuration"
-	NSREPLVOLPARTNERSTATUS_DATA_TRANSFER_IN_PROGRESS NsReplVolPartnerStatus = "Data transfer in progress"
-	NSREPLVOLPARTNERSTATUS_IDLE NsReplVolPartnerStatus = "Idle"
-	NSREPLVOLPARTNERSTATUS_IDENTIFYING_COMMON_ANCESTRY_ON_PARTNER NsReplVolPartnerStatus = "Identifying common ancestry on partner"
-	NSREPLVOLPARTNERSTATUS_CONTENT_BASED_REPLICATION_IN_PROGRESS NsReplVolPartnerStatus = "Content based replication in progress"
-	NSREPLVOLPARTNERSTATUS_TERMINATING_DATA_TRANSFER NsReplVolPartnerStatus = "Terminating data transfer"
-	NSREPLVOLPARTNERSTATUS_PAUSED NsReplVolPartnerStatus = "Paused"
-	NSREPLVOLPARTNERSTATUS_INITIATING_DATA_TRANSFER NsReplVolPartnerStatus = "Initiating data transfer"
+	cNsReplVolPartnerStatusDataTransferTerminated             NsReplVolPartnerStatus = "Data transfer terminated"
+	cNsReplVolPartnerStatusInitiatingContentBasedReplication  NsReplVolPartnerStatus = "Initiating content based replication"
+	cNsReplVolPartnerStatusContentBasedReplicationComplete    NsReplVolPartnerStatus = "Content based replication complete"
+	cNsReplVolPartnerStatusDataTransferComplete               NsReplVolPartnerStatus = "Data transfer complete"
+	cNsReplVolPartnerStatusCreatingSnapshotOnPartner          NsReplVolPartnerStatus = "Creating snapshot on partner"
+	cNsReplVolPartnerStatusSynchronizingPartnerConfiguration  NsReplVolPartnerStatus = "Synchronizing partner configuration"
+	cNsReplVolPartnerStatusDataTransferInProgress             NsReplVolPartnerStatus = "Data transfer in progress"
+	cNsReplVolPartnerStatusIdle                               NsReplVolPartnerStatus = "Idle"
+	cNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner NsReplVolPartnerStatus = "Identifying common ancestry on partner"
+	cNsReplVolPartnerStatusContentBasedReplicationInProgress  NsReplVolPartnerStatus = "Content based replication in progress"
+	cNsReplVolPartnerStatusTerminatingDataTransfer            NsReplVolPartnerStatus = "Terminating data transfer"
+	cNsReplVolPartnerStatusPaused                             NsReplVolPartnerStatus = "Paused"
+	cNsReplVolPartnerStatusInitiatingDataTransfer             NsReplVolPartnerStatus = "Initiating data transfer"
+)
 
-) 
+var pNsReplVolPartnerStatusDataTransferTerminated NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusInitiatingContentBasedReplication NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusContentBasedReplicationComplete NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusDataTransferComplete NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusCreatingSnapshotOnPartner NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusSynchronizingPartnerConfiguration NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusDataTransferInProgress NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusIdle NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusContentBasedReplicationInProgress NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusTerminatingDataTransfer NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusPaused NsReplVolPartnerStatus
+var pNsReplVolPartnerStatusInitiatingDataTransfer NsReplVolPartnerStatus
+
+// Export
+var NsReplVolPartnerStatusDataTransferTerminated *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusInitiatingContentBasedReplication *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusContentBasedReplicationComplete *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusDataTransferComplete *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusCreatingSnapshotOnPartner *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusSynchronizingPartnerConfiguration *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusDataTransferInProgress *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusIdle *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusContentBasedReplicationInProgress *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusTerminatingDataTransfer *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusPaused *NsReplVolPartnerStatus
+var NsReplVolPartnerStatusInitiatingDataTransfer *NsReplVolPartnerStatus
+
+func init() {
+	pNsReplVolPartnerStatusDataTransferTerminated = cNsReplVolPartnerStatusDataTransferTerminated
+	NsReplVolPartnerStatusDataTransferTerminated = &pNsReplVolPartnerStatusDataTransferTerminated
+
+	pNsReplVolPartnerStatusInitiatingContentBasedReplication = cNsReplVolPartnerStatusInitiatingContentBasedReplication
+	NsReplVolPartnerStatusInitiatingContentBasedReplication = &pNsReplVolPartnerStatusInitiatingContentBasedReplication
+
+	pNsReplVolPartnerStatusContentBasedReplicationComplete = cNsReplVolPartnerStatusContentBasedReplicationComplete
+	NsReplVolPartnerStatusContentBasedReplicationComplete = &pNsReplVolPartnerStatusContentBasedReplicationComplete
+
+	pNsReplVolPartnerStatusDataTransferComplete = cNsReplVolPartnerStatusDataTransferComplete
+	NsReplVolPartnerStatusDataTransferComplete = &pNsReplVolPartnerStatusDataTransferComplete
+
+	pNsReplVolPartnerStatusCreatingSnapshotOnPartner = cNsReplVolPartnerStatusCreatingSnapshotOnPartner
+	NsReplVolPartnerStatusCreatingSnapshotOnPartner = &pNsReplVolPartnerStatusCreatingSnapshotOnPartner
+
+	pNsReplVolPartnerStatusSynchronizingPartnerConfiguration = cNsReplVolPartnerStatusSynchronizingPartnerConfiguration
+	NsReplVolPartnerStatusSynchronizingPartnerConfiguration = &pNsReplVolPartnerStatusSynchronizingPartnerConfiguration
+
+	pNsReplVolPartnerStatusDataTransferInProgress = cNsReplVolPartnerStatusDataTransferInProgress
+	NsReplVolPartnerStatusDataTransferInProgress = &pNsReplVolPartnerStatusDataTransferInProgress
+
+	pNsReplVolPartnerStatusIdle = cNsReplVolPartnerStatusIdle
+	NsReplVolPartnerStatusIdle = &pNsReplVolPartnerStatusIdle
+
+	pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner = cNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner
+	NsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner = &pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner
+
+	pNsReplVolPartnerStatusContentBasedReplicationInProgress = cNsReplVolPartnerStatusContentBasedReplicationInProgress
+	NsReplVolPartnerStatusContentBasedReplicationInProgress = &pNsReplVolPartnerStatusContentBasedReplicationInProgress
+
+	pNsReplVolPartnerStatusTerminatingDataTransfer = cNsReplVolPartnerStatusTerminatingDataTransfer
+	NsReplVolPartnerStatusTerminatingDataTransfer = &pNsReplVolPartnerStatusTerminatingDataTransfer
+
+	pNsReplVolPartnerStatusPaused = cNsReplVolPartnerStatusPaused
+	NsReplVolPartnerStatusPaused = &pNsReplVolPartnerStatusPaused
+
+	pNsReplVolPartnerStatusInitiatingDataTransfer = cNsReplVolPartnerStatusInitiatingDataTransfer
+	NsReplVolPartnerStatusInitiatingDataTransfer = &pNsReplVolPartnerStatusInitiatingDataTransfer
+
+}

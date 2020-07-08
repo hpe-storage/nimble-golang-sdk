@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsJobType Enum.
- 
-type NsJobType string 
+
+type NsJobType string
 
 const (
-	NSJOBTYPE_BULK_CHILD NsJobType = "bulk_child"
-	NSJOBTYPE_BULK_PARENT NsJobType = "bulk_parent"
-	NSJOBTYPE_SIMPLE NsJobType = "simple"
+	cNsJobTypeBulkChild  NsJobType = "bulk_child"
+	cNsJobTypeBulkParent NsJobType = "bulk_parent"
+	cNsJobTypeSimple     NsJobType = "simple"
+)
 
-) 
+var pNsJobTypeBulkChild NsJobType
+var pNsJobTypeBulkParent NsJobType
+var pNsJobTypeSimple NsJobType
+
+// Export
+var NsJobTypeBulkChild *NsJobType
+var NsJobTypeBulkParent *NsJobType
+var NsJobTypeSimple *NsJobType
+
+func init() {
+	pNsJobTypeBulkChild = cNsJobTypeBulkChild
+	NsJobTypeBulkChild = &pNsJobTypeBulkChild
+
+	pNsJobTypeBulkParent = cNsJobTypeBulkParent
+	NsJobTypeBulkParent = &pNsJobTypeBulkParent
+
+	pNsJobTypeSimple = cNsJobTypeSimple
+	NsJobTypeSimple = &pNsJobTypeSimple
+
+}

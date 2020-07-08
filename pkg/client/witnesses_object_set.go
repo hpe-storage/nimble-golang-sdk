@@ -3,36 +3,37 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage witness host configuration.
 const (
-    witnessPath = "witnesses"
+	witnessPath = "witnesses"
 )
 
 // WitnessObjectSet
 type WitnessObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Witness object
 func (objectSet *WitnessObjectSet) CreateObject(payload *model.Witness) (*model.Witness, error) {
-	witnessObjectSetResp, err := objectSet.Client.Post(witnessPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeWitness(payload)
+	resp, err := objectSet.Client.Post(witnessPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if witnessObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return witnessObjectSetResp.(*model.Witness), err
+
+	return model.DecodeWitness(resp)
 }
 
 // UpdateObject Modify existing Witness object
@@ -43,7 +44,7 @@ func (objectSet *WitnessObjectSet) UpdateObject(id string, payload *model.Witnes
 // DeleteObject deletes the Witness object with the specified ID
 func (objectSet *WitnessObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(witnessPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -55,10 +56,10 @@ func (objectSet *WitnessObjectSet) GetObject(id string) (*model.Witness, error) 
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if witnessObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return witnessObjectSetResp.(*model.Witness), err
 }
@@ -80,8 +81,9 @@ func (objectSet *WitnessObjectSet) GetObjectListFromParams(params *util.GetParam
 	}
 	return buildWitnessObjectSet(witnessObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildWitnessObjectSet(response interface{}) ([]*model.Witness) {
+func buildWitnessObjectSet(response interface{}) []*model.Witness {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Witness, values.Len())
 

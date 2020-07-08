@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
 const (
-    fibreChannelInterfacePath = "fibre_channel_interfaces"
+	fibreChannelInterfacePath = "fibre_channel_interfaces"
 )
 
 // FibreChannelInterfaceObjectSet
 type FibreChannelInterfaceObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new FibreChannelInterface object
@@ -28,16 +27,17 @@ func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *model.Fib
 
 // UpdateObject Modify existing FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeFibreChannelInterface(payload)
+	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if fibreChannelInterfaceObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
+	return model.DecodeFibreChannelInterface(resp)
 }
 
 // DeleteObject deletes the FibreChannelInterface object with the specified ID
@@ -51,10 +51,10 @@ func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*model.Fi
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if fibreChannelInterfaceObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
 }
@@ -76,8 +76,9 @@ func (objectSet *FibreChannelInterfaceObjectSet) GetObjectListFromParams(params 
 	}
 	return buildFibreChannelInterfaceObjectSet(fibreChannelInterfaceObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildFibreChannelInterfaceObjectSet(response interface{}) ([]*model.FibreChannelInterface) {
+func buildFibreChannelInterfaceObjectSet(response interface{}) []*model.FibreChannelInterface {
 	values := reflect.ValueOf(response)
 	results := make([]*model.FibreChannelInterface, values.Len())
 

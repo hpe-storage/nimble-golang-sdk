@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsAlarmStatus Enum.
- 
-type NsAlarmStatus string 
+
+type NsAlarmStatus string
 
 const (
-	NSALARMSTATUS_ACKNOWLEDGED NsAlarmStatus = "acknowledged"
-	NSALARMSTATUS_OPEN NsAlarmStatus = "open"
+	cNsAlarmStatusAcknowledged NsAlarmStatus = "acknowledged"
+	cNsAlarmStatusOpen         NsAlarmStatus = "open"
+)
 
-) 
+var pNsAlarmStatusAcknowledged NsAlarmStatus
+var pNsAlarmStatusOpen NsAlarmStatus
+
+// Export
+var NsAlarmStatusAcknowledged *NsAlarmStatus
+var NsAlarmStatusOpen *NsAlarmStatus
+
+func init() {
+	pNsAlarmStatusAcknowledged = cNsAlarmStatusAcknowledged
+	NsAlarmStatusAcknowledged = &pNsAlarmStatusAcknowledged
+
+	pNsAlarmStatusOpen = cNsAlarmStatusOpen
+	NsAlarmStatusOpen = &pNsAlarmStatusOpen
+
+}

@@ -2,15 +2,50 @@
 package model
 
 // Golang package for NsAuditOperationTypeOrAll Enum.
- 
-type NsAuditOperationTypeOrAll string 
+
+type NsAuditOperationTypeOrAll string
 
 const (
-	NSAUDITOPERATIONTYPEORALL_ALL NsAuditOperationTypeOrAll = "all"
-	NSAUDITOPERATIONTYPEORALL_OTHER NsAuditOperationTypeOrAll = "other"
-	NSAUDITOPERATIONTYPEORALL_READ NsAuditOperationTypeOrAll = "read"
-	NSAUDITOPERATIONTYPEORALL_CREATE NsAuditOperationTypeOrAll = "create"
-	NSAUDITOPERATIONTYPEORALL_UPDATE NsAuditOperationTypeOrAll = "update"
-	NSAUDITOPERATIONTYPEORALL_DELETE NsAuditOperationTypeOrAll = "delete"
+	cNsAuditOperationTypeOrAllAll    NsAuditOperationTypeOrAll = "all"
+	cNsAuditOperationTypeOrAllOther  NsAuditOperationTypeOrAll = "other"
+	cNsAuditOperationTypeOrAllRead   NsAuditOperationTypeOrAll = "read"
+	cNsAuditOperationTypeOrAllCreate NsAuditOperationTypeOrAll = "create"
+	cNsAuditOperationTypeOrAllUpdate NsAuditOperationTypeOrAll = "update"
+	cNsAuditOperationTypeOrAllDelete NsAuditOperationTypeOrAll = "delete"
+)
 
-) 
+var pNsAuditOperationTypeOrAllAll NsAuditOperationTypeOrAll
+var pNsAuditOperationTypeOrAllOther NsAuditOperationTypeOrAll
+var pNsAuditOperationTypeOrAllRead NsAuditOperationTypeOrAll
+var pNsAuditOperationTypeOrAllCreate NsAuditOperationTypeOrAll
+var pNsAuditOperationTypeOrAllUpdate NsAuditOperationTypeOrAll
+var pNsAuditOperationTypeOrAllDelete NsAuditOperationTypeOrAll
+
+// Export
+var NsAuditOperationTypeOrAllAll *NsAuditOperationTypeOrAll
+var NsAuditOperationTypeOrAllOther *NsAuditOperationTypeOrAll
+var NsAuditOperationTypeOrAllRead *NsAuditOperationTypeOrAll
+var NsAuditOperationTypeOrAllCreate *NsAuditOperationTypeOrAll
+var NsAuditOperationTypeOrAllUpdate *NsAuditOperationTypeOrAll
+var NsAuditOperationTypeOrAllDelete *NsAuditOperationTypeOrAll
+
+func init() {
+	pNsAuditOperationTypeOrAllAll = cNsAuditOperationTypeOrAllAll
+	NsAuditOperationTypeOrAllAll = &pNsAuditOperationTypeOrAllAll
+
+	pNsAuditOperationTypeOrAllOther = cNsAuditOperationTypeOrAllOther
+	NsAuditOperationTypeOrAllOther = &pNsAuditOperationTypeOrAllOther
+
+	pNsAuditOperationTypeOrAllRead = cNsAuditOperationTypeOrAllRead
+	NsAuditOperationTypeOrAllRead = &pNsAuditOperationTypeOrAllRead
+
+	pNsAuditOperationTypeOrAllCreate = cNsAuditOperationTypeOrAllCreate
+	NsAuditOperationTypeOrAllCreate = &pNsAuditOperationTypeOrAllCreate
+
+	pNsAuditOperationTypeOrAllUpdate = cNsAuditOperationTypeOrAllUpdate
+	NsAuditOperationTypeOrAllUpdate = &pNsAuditOperationTypeOrAllUpdate
+
+	pNsAuditOperationTypeOrAllDelete = cNsAuditOperationTypeOrAllDelete
+	NsAuditOperationTypeOrAllDelete = &pNsAuditOperationTypeOrAllDelete
+
+}

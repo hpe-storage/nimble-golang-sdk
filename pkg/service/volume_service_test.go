@@ -5,10 +5,10 @@ package service
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
 )
 
 type VolumeServiceTestSuite struct {
@@ -44,27 +44,17 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *model.Volume {
 	perfPolicy, _ := suite.performancePolicyService.GetPerformancePolicyByName("default")
-	// Initialize volume attributes
-	var sizeField int64 = 5120
-	descriptionField := "This volume was created as part of a unit test"
-	var limitIopsField int64 = 256
-	var limitMbpsField int64 = 1
-
-	// Enum check
-	var agentType model.NsAgentType
-	agentType = model.NSAGENTTYPE_NONE
 
 	newVolume := &model.Volume{
-		Size:              &sizeField,
-		Description:       &descriptionField,
+		Size:              5120,
+		Description:       "This volume was created as part of a unit test",
 		PerfpolicyId:      perfPolicy.ID,
 		ThinlyProvisioned: util.NewBool(true),
 		Online:            util.NewBool(true),
-		LimitIops:         &limitIopsField,
-		LimitMbps:         &limitMbpsField,
+		LimitIops:         256,
+		LimitMbps:         1,
 		MultiInitiator:    util.NewBool(true),
-		AgentType:		   &agentType,
-
+		AgentType:         model.NsAgentTypeNone,
 	}
 	return newVolume
 }
@@ -73,7 +63,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *model.Volu
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()
-		volume.Name = &volumeName
+		volume.Name = volumeName
 		volume, _ = suite.volumeService.CreateVolume(volume)
 	}
 	return volume
@@ -82,7 +72,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *model.Volu
 func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume != nil {
-		suite.volumeService.DeleteVolume(*volume.ID)
+		suite.volumeService.DeleteVolume(volume.ID)
 		volume, _ = suite.volumeService.GetVolumeByName(volumeName)
 	}
 
@@ -91,9 +81,8 @@ func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	}
 }
 
-
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
-	 volume,err:=suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
+	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to get non-existent volume, err: %v", err.Error())
 		return

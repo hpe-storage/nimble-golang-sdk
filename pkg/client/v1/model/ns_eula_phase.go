@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsEulaPhase Enum.
- 
-type NsEulaPhase string 
+
+type NsEulaPhase string
 
 const (
-	NSEULAPHASE_SOFTWARE NsEulaPhase = "software"
-	NSEULAPHASE_SETUP NsEulaPhase = "setup"
+	cNsEulaPhaseSoftware NsEulaPhase = "software"
+	cNsEulaPhaseSetup    NsEulaPhase = "setup"
+)
 
-) 
+var pNsEulaPhaseSoftware NsEulaPhase
+var pNsEulaPhaseSetup NsEulaPhase
+
+// Export
+var NsEulaPhaseSoftware *NsEulaPhase
+var NsEulaPhaseSetup *NsEulaPhase
+
+func init() {
+	pNsEulaPhaseSoftware = cNsEulaPhaseSoftware
+	NsEulaPhaseSoftware = &pNsEulaPhaseSoftware
+
+	pNsEulaPhaseSetup = cNsEulaPhaseSetup
+	NsEulaPhaseSetup = &pNsEulaPhaseSetup
+
+}

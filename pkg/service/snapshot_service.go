@@ -13,13 +13,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// SnapshotService type 
+// SnapshotService type
 type SnapshotService struct {
 	objectSet *client.SnapshotObjectSet
 }
 
-// NewSnapshotService - method to initialize "SnapshotService" 
-func NewSnapshotService(gs *NsGroupService) (*SnapshotService) {
+// NewSnapshotService - method to initialize "SnapshotService"
+func NewSnapshotService(gs *NsGroupService) *SnapshotService {
 	objectSet := gs.client.GetSnapshotObjectSet()
 	return &SnapshotService{objectSet: objectSet}
 }
@@ -27,60 +27,60 @@ func NewSnapshotService(gs *NsGroupService) (*SnapshotService) {
 // GetSnapshots - method returns a array of pointers of type "Snapshots"
 func (svc *SnapshotService) GetSnapshots(params *util.GetParams) ([]*model.Snapshot, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	snapshotResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	snapshotResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return snapshotResp,nil
+	return snapshotResp, nil
 }
 
 // CreateSnapshot - method creates a "Snapshot"
 func (svc *SnapshotService) CreateSnapshot(obj *model.Snapshot) (*model.Snapshot, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	snapshotResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	snapshotResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return snapshotResp,nil
+	return snapshotResp, nil
 }
 
-// UpdateSnapshot - method modifies  the "Snapshot" 
+// UpdateSnapshot - method modifies  the "Snapshot"
 func (svc *SnapshotService) UpdateSnapshot(id string, obj *model.Snapshot) (*model.Snapshot, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	snapshotResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	snapshotResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return snapshotResp,nil
+	return snapshotResp, nil
 }
 
 // GetSnapshotById - method returns a pointer to "Snapshot"
 func (svc *SnapshotService) GetSnapshotById(id string) (*model.Snapshot, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	snapshotResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return snapshotResp,nil
+	return snapshotResp, nil
 }
 
-// GetSnapshotByName - method returns a pointer "Snapshot" 
+// GetSnapshotByName - method returns a pointer "Snapshot"
 func (svc *SnapshotService) GetSnapshotByName(name string) (*model.Snapshot, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
+			FieldName: &model.VolumeFields.Name,
 			Operator:  util.EQUALS.String(),
 			Value:     name,
 		},
@@ -89,18 +89,19 @@ func (svc *SnapshotService) GetSnapshotByName(name string) (*model.Snapshot, err
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(snapshotResp) == 0 {
-    	return nil, nil
-    }
-    
-	return snapshotResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return snapshotResp[0], nil
+}
+
 // GetSnapshotBySerialNumber method returns a pointer to "Snapshot"
 func (svc *SnapshotService) GetSnapshotBySerialNumber(serialNumber string) (*model.Snapshot, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: model.SnapshotFields.SerialNumber,
+			FieldName: &model.SnapshotFields.SerialNumber,
 			Operator:  util.EQUALS.String(),
 			Value:     serialNumber,
 		},
@@ -110,16 +111,16 @@ func (svc *SnapshotService) GetSnapshotBySerialNumber(serialNumber string) (*mod
 		return nil, err
 	}
 	if len(snapshotResp) == 0 {
-    	return nil, nil
-    }
-    
-	return snapshotResp[0],nil
+		return nil, nil
+	}
+
+	return snapshotResp[0], nil
 }
 
 // DeleteSnapshot - deletes the "Snapshot"
 func (svc *SnapshotService) DeleteSnapshot(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

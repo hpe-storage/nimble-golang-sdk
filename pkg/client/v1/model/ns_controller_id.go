@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsControllerId Enum.
- 
-type NsControllerId string 
+
+type NsControllerId string
 
 const (
-	NSCONTROLLERID_A NsControllerId = "A"
-	NSCONTROLLERID_B NsControllerId = "B"
-	NSCONTROLLERID_INDEPENDENT NsControllerId = "independent"
+	cNsControllerIdA           NsControllerId = "A"
+	cNsControllerIdB           NsControllerId = "B"
+	cNsControllerIdIndependent NsControllerId = "independent"
+)
 
-) 
+var pNsControllerIdA NsControllerId
+var pNsControllerIdB NsControllerId
+var pNsControllerIdIndependent NsControllerId
+
+// Export
+var NsControllerIdA *NsControllerId
+var NsControllerIdB *NsControllerId
+var NsControllerIdIndependent *NsControllerId
+
+func init() {
+	pNsControllerIdA = cNsControllerIdA
+	NsControllerIdA = &pNsControllerIdA
+
+	pNsControllerIdB = cNsControllerIdB
+	NsControllerIdB = &pNsControllerIdB
+
+	pNsControllerIdIndependent = cNsControllerIdIndependent
+	NsControllerIdIndependent = &pNsControllerIdIndependent
+
+}

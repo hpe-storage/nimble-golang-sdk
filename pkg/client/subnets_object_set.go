@@ -3,23 +3,22 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets
 // let you create logical addressing for selective routing.
 const (
-    subnetPath = "subnets"
+	subnetPath = "subnets"
 )
 
 // SubnetObjectSet
 type SubnetObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Subnet object
@@ -43,10 +42,10 @@ func (objectSet *SubnetObjectSet) GetObject(id string) (*model.Subnet, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if subnetObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return subnetObjectSetResp.(*model.Subnet), err
 }
@@ -68,8 +67,9 @@ func (objectSet *SubnetObjectSet) GetObjectListFromParams(params *util.GetParams
 	}
 	return buildSubnetObjectSet(subnetObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildSubnetObjectSet(response interface{}) ([]*model.Subnet) {
+func buildSubnetObjectSet(response interface{}) []*model.Subnet {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Subnet, values.Len())
 

@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Jobs are operations in progress in the system.
 const (
-    jobPath = "jobs"
+	jobPath = "jobs"
 )
 
 // JobObjectSet
 type JobObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Job object
@@ -42,10 +41,10 @@ func (objectSet *JobObjectSet) GetObject(id string) (*model.Job, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if jobObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return jobObjectSetResp.(*model.Job), err
 }
@@ -67,8 +66,9 @@ func (objectSet *JobObjectSet) GetObjectListFromParams(params *util.GetParams) (
 	}
 	return buildJobObjectSet(jobObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildJobObjectSet(response interface{}) ([]*model.Job) {
+func buildJobObjectSet(response interface{}) []*model.Job {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Job, values.Len())
 

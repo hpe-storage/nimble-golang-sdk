@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
 const (
-    protocolEndpointPath = "protocol_endpoints"
+	protocolEndpointPath = "protocol_endpoints"
 )
 
 // ProtocolEndpointObjectSet
 type ProtocolEndpointObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ProtocolEndpoint object
@@ -42,10 +41,10 @@ func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*model.Protoco
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if protocolEndpointObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return protocolEndpointObjectSetResp.(*model.ProtocolEndpoint), err
 }
@@ -67,8 +66,9 @@ func (objectSet *ProtocolEndpointObjectSet) GetObjectListFromParams(params *util
 	}
 	return buildProtocolEndpointObjectSet(protocolEndpointObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildProtocolEndpointObjectSet(response interface{}) ([]*model.ProtocolEndpoint) {
+func buildProtocolEndpointObjectSet(response interface{}) []*model.ProtocolEndpoint {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ProtocolEndpoint, values.Len())
 

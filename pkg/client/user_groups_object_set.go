@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Represents Active Directory groups configured to manage the system.
 const (
-    userGroupPath = "user_groups"
+	userGroupPath = "user_groups"
 )
 
 // UserGroupObjectSet
 type UserGroupObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new UserGroup object
 func (objectSet *UserGroupObjectSet) CreateObject(payload *model.UserGroup) (*model.UserGroup, error) {
-	userGroupObjectSetResp, err := objectSet.Client.Post(userGroupPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeUserGroup(payload)
+	resp, err := objectSet.Client.Post(userGroupPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userGroupObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userGroupObjectSetResp.(*model.UserGroup), err
+
+	return model.DecodeUserGroup(resp)
 }
 
 // UpdateObject Modify existing UserGroup object
 func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *model.UserGroup) (*model.UserGroup, error) {
-	userGroupObjectSetResp, err := objectSet.Client.Put(userGroupPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeUserGroup(payload)
+	resp, err := objectSet.Client.Put(userGroupPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userGroupObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userGroupObjectSetResp.(*model.UserGroup), err
+	return model.DecodeUserGroup(resp)
 }
 
 // DeleteObject deletes the UserGroup object with the specified ID
 func (objectSet *UserGroupObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(userGroupPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *UserGroupObjectSet) GetObject(id string) (*model.UserGroup, err
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if userGroupObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return userGroupObjectSetResp.(*model.UserGroup), err
 }
@@ -88,8 +90,9 @@ func (objectSet *UserGroupObjectSet) GetObjectListFromParams(params *util.GetPar
 	}
 	return buildUserGroupObjectSet(userGroupObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildUserGroupObjectSet(response interface{}) ([]*model.UserGroup) {
+func buildUserGroupObjectSet(response interface{}) []*model.UserGroup {
 	values := reflect.ValueOf(response)
 	results := make([]*model.UserGroup, values.Len())
 

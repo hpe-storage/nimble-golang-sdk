@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsCtrlrNvmeCardState Enum.
- 
-type NsCtrlrNvmeCardState string 
+
+type NsCtrlrNvmeCardState string
 
 const (
-	NSCTRLRNVMECARDSTATE_VALID NsCtrlrNvmeCardState = "valid"
-	NSCTRLRNVMECARDSTATE_IN_USE NsCtrlrNvmeCardState = "in use"
-	NSCTRLRNVMECARDSTATE_FAILED NsCtrlrNvmeCardState = "failed"
+	cNsCtrlrNvmeCardStateValid  NsCtrlrNvmeCardState = "valid"
+	cNsCtrlrNvmeCardStateInUse  NsCtrlrNvmeCardState = "in use"
+	cNsCtrlrNvmeCardStateFailed NsCtrlrNvmeCardState = "failed"
+)
 
-) 
+var pNsCtrlrNvmeCardStateValid NsCtrlrNvmeCardState
+var pNsCtrlrNvmeCardStateInUse NsCtrlrNvmeCardState
+var pNsCtrlrNvmeCardStateFailed NsCtrlrNvmeCardState
+
+// Export
+var NsCtrlrNvmeCardStateValid *NsCtrlrNvmeCardState
+var NsCtrlrNvmeCardStateInUse *NsCtrlrNvmeCardState
+var NsCtrlrNvmeCardStateFailed *NsCtrlrNvmeCardState
+
+func init() {
+	pNsCtrlrNvmeCardStateValid = cNsCtrlrNvmeCardStateValid
+	NsCtrlrNvmeCardStateValid = &pNsCtrlrNvmeCardStateValid
+
+	pNsCtrlrNvmeCardStateInUse = cNsCtrlrNvmeCardStateInUse
+	NsCtrlrNvmeCardStateInUse = &pNsCtrlrNvmeCardStateInUse
+
+	pNsCtrlrNvmeCardStateFailed = cNsCtrlrNvmeCardStateFailed
+	NsCtrlrNvmeCardStateFailed = &pNsCtrlrNvmeCardStateFailed
+
+}

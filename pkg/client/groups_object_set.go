@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Group is a collection of arrays operating together organized into storage pools.
 const (
-    groupPath = "groups"
+	groupPath = "groups"
 )
 
 // GroupObjectSet
 type GroupObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Group object
@@ -28,16 +27,17 @@ func (objectSet *GroupObjectSet) CreateObject(payload *model.Group) (*model.Grou
 
 // UpdateObject Modify existing Group object
 func (objectSet *GroupObjectSet) UpdateObject(id string, payload *model.Group) (*model.Group, error) {
-	groupObjectSetResp, err := objectSet.Client.Put(groupPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeGroup(payload)
+	resp, err := objectSet.Client.Put(groupPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if groupObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return groupObjectSetResp.(*model.Group), err
+	return model.DecodeGroup(resp)
 }
 
 // DeleteObject deletes the Group object with the specified ID
@@ -51,10 +51,10 @@ func (objectSet *GroupObjectSet) GetObject(id string) (*model.Group, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if groupObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return groupObjectSetResp.(*model.Group), err
 }
@@ -76,8 +76,9 @@ func (objectSet *GroupObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildGroupObjectSet(groupObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildGroupObjectSet(response interface{}) ([]*model.Group) {
+func buildGroupObjectSet(response interface{}) []*model.Group {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Group, values.Len())
 

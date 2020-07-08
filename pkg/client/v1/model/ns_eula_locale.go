@@ -2,10 +2,20 @@
 package model
 
 // Golang package for NsEulaLocale Enum.
- 
-type NsEulaLocale string 
+
+type NsEulaLocale string
 
 const (
-	NSEULALOCALE_EN NsEulaLocale = "en"
+	cNsEulaLocaleEn NsEulaLocale = "en"
+)
 
-) 
+var pNsEulaLocaleEn NsEulaLocale
+
+// Export
+var NsEulaLocaleEn *NsEulaLocale
+
+func init() {
+	pNsEulaLocaleEn = cNsEulaLocaleEn
+	NsEulaLocaleEn = &pNsEulaLocaleEn
+
+}

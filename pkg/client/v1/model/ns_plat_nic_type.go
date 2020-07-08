@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsPlatNicType Enum.
- 
-type NsPlatNicType string 
+
+type NsPlatNicType string
 
 const (
-	NSPLATNICTYPE_NIC_TYPE_UNKNOWN NsPlatNicType = "nic_type_unknown"
-	NSPLATNICTYPE_NIC_TYPE_TP NsPlatNicType = "nic_type_tp"
-	NSPLATNICTYPE_NIC_TYPE_SFP NsPlatNicType = "nic_type_sfp"
+	cNsPlatNicTypeNicTypeUnknown NsPlatNicType = "nic_type_unknown"
+	cNsPlatNicTypeNicTypeTp      NsPlatNicType = "nic_type_tp"
+	cNsPlatNicTypeNicTypeSfp     NsPlatNicType = "nic_type_sfp"
+)
 
-) 
+var pNsPlatNicTypeNicTypeUnknown NsPlatNicType
+var pNsPlatNicTypeNicTypeTp NsPlatNicType
+var pNsPlatNicTypeNicTypeSfp NsPlatNicType
+
+// Export
+var NsPlatNicTypeNicTypeUnknown *NsPlatNicType
+var NsPlatNicTypeNicTypeTp *NsPlatNicType
+var NsPlatNicTypeNicTypeSfp *NsPlatNicType
+
+func init() {
+	pNsPlatNicTypeNicTypeUnknown = cNsPlatNicTypeNicTypeUnknown
+	NsPlatNicTypeNicTypeUnknown = &pNsPlatNicTypeNicTypeUnknown
+
+	pNsPlatNicTypeNicTypeTp = cNsPlatNicTypeNicTypeTp
+	NsPlatNicTypeNicTypeTp = &pNsPlatNicTypeNicTypeTp
+
+	pNsPlatNicTypeNicTypeSfp = cNsPlatNicTypeNicTypeSfp
+	NsPlatNicTypeNicTypeSfp = &pNsPlatNicTypeNicTypeSfp
+
+}

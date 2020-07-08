@@ -2,36 +2,72 @@
 
 package model
 
+import (
+	"encoding/json"
+)
 
 // NsAuditlogNotification - Represents an auditlog notification message.
 // Export NsAuditlogNotificationFields for advance operations like search filter etc.
 var NsAuditlogNotificationFields *NsAuditlogNotification
 
-func init(){
-	Activityfield:= "activity"
-	ObjectIdfield:= "object_id"
-	ObjectNamefield:= "object_name"
-		
-	NsAuditlogNotificationFields= &NsAuditlogNotification{
-		Activity:         &Activityfield,
-		ObjectId:         &ObjectIdfield,
-		ObjectName:       &ObjectNamefield,
+func init() {
+
+	NsAuditlogNotificationFields = &NsAuditlogNotification{
+		Activity:   "activity",
+		ObjectId:   "object_id",
+		ObjectName: "object_name",
 	}
 }
 
 type NsAuditlogNotification struct {
 	// SequenceNumber - Notification Sequence Number.
-   	SequenceNumber *int64 `json:"sequence_number,omitempty"`
+	SequenceNumber int64 `json:"sequence_number,omitempty"`
 	// NotificationType - Represents the type of the notification.
-   	NotificationType *NsNotificationType `json:"notification_type,omitempty"`
+	NotificationType *NsNotificationType `json:"notification_type,omitempty"`
 	// Activity - Represents CUD message of auditlog notification.
- 	Activity *string `json:"activity,omitempty"`
+	Activity string `json:"activity,omitempty"`
 	// ObjectType - Represents the object type of an auditlog based notification.
-   	ObjectType *NsObjectType `json:"object_type,omitempty"`
+	ObjectType *NsObjectType `json:"object_type,omitempty"`
 	// ObjectId - Represents the object of an auditlog based notification.
- 	ObjectId *string `json:"object_id,omitempty"`
+	ObjectId string `json:"object_id,omitempty"`
 	// ObjectName - Represents the object name of an auditlog based notification.
- 	ObjectName *string `json:"object_name,omitempty"`
+	ObjectName string `json:"object_name,omitempty"`
 	// Timestamp - The timestamp when the activity happened in seconds since last epoch.
-   	Timestamp *int64 `json:"timestamp,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+}
+
+// sdk internal struct
+type nsAuditlogNotification struct {
+	// SequenceNumber - Notification Sequence Number.
+	SequenceNumber *int64 `json:"sequence_number,omitempty"`
+	// NotificationType - Represents the type of the notification.
+	NotificationType *NsNotificationType `json:"notification_type,omitempty"`
+	// Activity - Represents CUD message of auditlog notification.
+	Activity *string `json:"activity,omitempty"`
+	// ObjectType - Represents the object type of an auditlog based notification.
+	ObjectType *NsObjectType `json:"object_type,omitempty"`
+	// ObjectId - Represents the object of an auditlog based notification.
+	ObjectId *string `json:"object_id,omitempty"`
+	// ObjectName - Represents the object name of an auditlog based notification.
+	ObjectName *string `json:"object_name,omitempty"`
+	// Timestamp - The timestamp when the activity happened in seconds since last epoch.
+	Timestamp *int64 `json:"timestamp,omitempty"`
+}
+
+// EncodeNsAuditlogNotification - Transform NsAuditlogNotification to nsAuditlogNotification type
+func EncodeNsAuditlogNotification(request interface{}) (*nsAuditlogNotification, error) {
+	reqNsAuditlogNotification := request.(*NsAuditlogNotification)
+	byte, err := json.Marshal(reqNsAuditlogNotification)
+	objPtr := &nsAuditlogNotification{}
+	err = json.Unmarshal(byte, objPtr)
+	return objPtr, err
+}
+
+// DecodeNsAuditlogNotification Transform nsAuditlogNotification to NsAuditlogNotification type
+func DecodeNsAuditlogNotification(request interface{}) (*NsAuditlogNotification, error) {
+	reqNsAuditlogNotification := request.(*nsAuditlogNotification)
+	byte, err := json.Marshal(reqNsAuditlogNotification)
+	obj := &NsAuditlogNotification{}
+	err = json.Unmarshal(byte, obj)
+	return obj, err
 }

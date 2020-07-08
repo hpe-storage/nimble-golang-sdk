@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
 const (
-    arrayPath = "arrays"
+	arrayPath = "arrays"
 )
 
 // ArrayObjectSet
 type ArrayObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Array object
 func (objectSet *ArrayObjectSet) CreateObject(payload *model.Array) (*model.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.Post(arrayPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeArray(payload)
+	resp, err := objectSet.Client.Post(arrayPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if arrayObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return arrayObjectSetResp.(*model.Array), err
+
+	return model.DecodeArray(resp)
 }
 
 // UpdateObject Modify existing Array object
 func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *model.Array) (*model.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.Put(arrayPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeArray(payload)
+	resp, err := objectSet.Client.Put(arrayPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if arrayObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return arrayObjectSetResp.(*model.Array), err
+	return model.DecodeArray(resp)
 }
 
 // DeleteObject deletes the Array object with the specified ID
 func (objectSet *ArrayObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(arrayPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *ArrayObjectSet) GetObject(id string) (*model.Array, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if arrayObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return arrayObjectSetResp.(*model.Array), err
 }
@@ -88,8 +90,9 @@ func (objectSet *ArrayObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildArrayObjectSet(arrayObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildArrayObjectSet(response interface{}) ([]*model.Array) {
+func buildArrayObjectSet(response interface{}) []*model.Array {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Array, values.Len())
 

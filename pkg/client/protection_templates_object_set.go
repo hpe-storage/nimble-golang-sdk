@@ -3,58 +3,60 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection
 // information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the
 // volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom
 // protection templates as needed.
 const (
-    protectionTemplatePath = "protection_templates"
+	protectionTemplatePath = "protection_templates"
 )
 
 // ProtectionTemplateObjectSet
 type ProtectionTemplateObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
-	protectionTemplateObjectSetResp, err := objectSet.Client.Post(protectionTemplatePath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeProtectionTemplate(payload)
+	resp, err := objectSet.Client.Post(protectionTemplatePath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if protectionTemplateObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return protectionTemplateObjectSetResp.(*model.ProtectionTemplate), err
+
+	return model.DecodeProtectionTemplate(resp)
 }
 
 // UpdateObject Modify existing ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
-	protectionTemplateObjectSetResp, err := objectSet.Client.Put(protectionTemplatePath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeProtectionTemplate(payload)
+	resp, err := objectSet.Client.Put(protectionTemplatePath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if protectionTemplateObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return protectionTemplateObjectSetResp.(*model.ProtectionTemplate), err
+	return model.DecodeProtectionTemplate(resp)
 }
 
 // DeleteObject deletes the ProtectionTemplate object with the specified ID
 func (objectSet *ProtectionTemplateObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(protectionTemplatePath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -66,10 +68,10 @@ func (objectSet *ProtectionTemplateObjectSet) GetObject(id string) (*model.Prote
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if protectionTemplateObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return protectionTemplateObjectSetResp.(*model.ProtectionTemplate), err
 }
@@ -91,8 +93,9 @@ func (objectSet *ProtectionTemplateObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildProtectionTemplateObjectSet(protectionTemplateObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildProtectionTemplateObjectSet(response interface{}) ([]*model.ProtectionTemplate) {
+func buildProtectionTemplateObjectSet(response interface{}) []*model.ProtectionTemplate {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ProtectionTemplate, values.Len())
 

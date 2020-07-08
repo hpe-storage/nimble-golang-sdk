@@ -3,36 +3,37 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 const (
-    initiatorPath = "initiators"
+	initiatorPath = "initiators"
 )
 
 // InitiatorObjectSet
 type InitiatorObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Initiator object
 func (objectSet *InitiatorObjectSet) CreateObject(payload *model.Initiator) (*model.Initiator, error) {
-	initiatorObjectSetResp, err := objectSet.Client.Post(initiatorPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeInitiator(payload)
+	resp, err := objectSet.Client.Post(initiatorPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if initiatorObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return initiatorObjectSetResp.(*model.Initiator), err
+
+	return model.DecodeInitiator(resp)
 }
 
 // UpdateObject Modify existing Initiator object
@@ -43,7 +44,7 @@ func (objectSet *InitiatorObjectSet) UpdateObject(id string, payload *model.Init
 // DeleteObject deletes the Initiator object with the specified ID
 func (objectSet *InitiatorObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(initiatorPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -55,10 +56,10 @@ func (objectSet *InitiatorObjectSet) GetObject(id string) (*model.Initiator, err
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if initiatorObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return initiatorObjectSetResp.(*model.Initiator), err
 }
@@ -80,8 +81,9 @@ func (objectSet *InitiatorObjectSet) GetObjectListFromParams(params *util.GetPar
 	}
 	return buildInitiatorObjectSet(initiatorObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildInitiatorObjectSet(response interface{}) ([]*model.Initiator) {
+func buildInitiatorObjectSet(response interface{}) []*model.Initiator {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Initiator, values.Len())
 

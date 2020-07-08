@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsSnapReplStatus Enum.
- 
-type NsSnapReplStatus string 
+
+type NsSnapReplStatus string
 
 const (
-	NSSNAPREPLSTATUS_FAIL NsSnapReplStatus = "fail"
-	NSSNAPREPLSTATUS_IN_PROGRESS NsSnapReplStatus = "in_progress"
-	NSSNAPREPLSTATUS_PENDING NsSnapReplStatus = "pending"
-	NSSNAPREPLSTATUS_COMPLETE NsSnapReplStatus = "complete"
+	cNsSnapReplStatusFail       NsSnapReplStatus = "fail"
+	cNsSnapReplStatusInProgress NsSnapReplStatus = "in_progress"
+	cNsSnapReplStatusPending    NsSnapReplStatus = "pending"
+	cNsSnapReplStatusComplete   NsSnapReplStatus = "complete"
+)
 
-) 
+var pNsSnapReplStatusFail NsSnapReplStatus
+var pNsSnapReplStatusInProgress NsSnapReplStatus
+var pNsSnapReplStatusPending NsSnapReplStatus
+var pNsSnapReplStatusComplete NsSnapReplStatus
+
+// Export
+var NsSnapReplStatusFail *NsSnapReplStatus
+var NsSnapReplStatusInProgress *NsSnapReplStatus
+var NsSnapReplStatusPending *NsSnapReplStatus
+var NsSnapReplStatusComplete *NsSnapReplStatus
+
+func init() {
+	pNsSnapReplStatusFail = cNsSnapReplStatusFail
+	NsSnapReplStatusFail = &pNsSnapReplStatusFail
+
+	pNsSnapReplStatusInProgress = cNsSnapReplStatusInProgress
+	NsSnapReplStatusInProgress = &pNsSnapReplStatusInProgress
+
+	pNsSnapReplStatusPending = cNsSnapReplStatusPending
+	NsSnapReplStatusPending = &pNsSnapReplStatusPending
+
+	pNsSnapReplStatusComplete = cNsSnapReplStatusComplete
+	NsSnapReplStatusComplete = &pNsSnapReplStatusComplete
+
+}

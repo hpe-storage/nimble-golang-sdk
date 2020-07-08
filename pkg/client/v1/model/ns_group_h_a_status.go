@@ -2,17 +2,62 @@
 package model
 
 // Golang package for NsGroupHAStatus Enum.
- 
-type NsGroupHAStatus string 
+
+type NsGroupHAStatus string
 
 const (
-	NSGROUPHASTATUS_IN_SYNC NsGroupHAStatus = "in_sync"
-	NSGROUPHASTATUS_REMOVE_IN_PROGRESS NsGroupHAStatus = "remove_in_progress"
-	NSGROUPHASTATUS_YET_TO_SETUP NsGroupHAStatus = "yet_to_setup"
-	NSGROUPHASTATUS_UNSETUP_IN_PROGRESS NsGroupHAStatus = "unsetup_in_progress"
-	NSGROUPHASTATUS_SETUP_IN_PROGRESS NsGroupHAStatus = "setup_in_progress"
-	NSGROUPHASTATUS_OUT_OF_SYNC NsGroupHAStatus = "out_of_sync"
-	NSGROUPHASTATUS_ADD_IN_PROGRESS NsGroupHAStatus = "add_in_progress"
-	NSGROUPHASTATUS_SETUP_FAILED NsGroupHAStatus = "setup_failed"
+	cNsGroupHAStatusInSync            NsGroupHAStatus = "in_sync"
+	cNsGroupHAStatusRemoveInProgress  NsGroupHAStatus = "remove_in_progress"
+	cNsGroupHAStatusYetToSetup        NsGroupHAStatus = "yet_to_setup"
+	cNsGroupHAStatusUnsetupInProgress NsGroupHAStatus = "unsetup_in_progress"
+	cNsGroupHAStatusSetupInProgress   NsGroupHAStatus = "setup_in_progress"
+	cNsGroupHAStatusOutOfSync         NsGroupHAStatus = "out_of_sync"
+	cNsGroupHAStatusAddInProgress     NsGroupHAStatus = "add_in_progress"
+	cNsGroupHAStatusSetupFailed       NsGroupHAStatus = "setup_failed"
+)
 
-) 
+var pNsGroupHAStatusInSync NsGroupHAStatus
+var pNsGroupHAStatusRemoveInProgress NsGroupHAStatus
+var pNsGroupHAStatusYetToSetup NsGroupHAStatus
+var pNsGroupHAStatusUnsetupInProgress NsGroupHAStatus
+var pNsGroupHAStatusSetupInProgress NsGroupHAStatus
+var pNsGroupHAStatusOutOfSync NsGroupHAStatus
+var pNsGroupHAStatusAddInProgress NsGroupHAStatus
+var pNsGroupHAStatusSetupFailed NsGroupHAStatus
+
+// Export
+var NsGroupHAStatusInSync *NsGroupHAStatus
+var NsGroupHAStatusRemoveInProgress *NsGroupHAStatus
+var NsGroupHAStatusYetToSetup *NsGroupHAStatus
+var NsGroupHAStatusUnsetupInProgress *NsGroupHAStatus
+var NsGroupHAStatusSetupInProgress *NsGroupHAStatus
+var NsGroupHAStatusOutOfSync *NsGroupHAStatus
+var NsGroupHAStatusAddInProgress *NsGroupHAStatus
+var NsGroupHAStatusSetupFailed *NsGroupHAStatus
+
+func init() {
+	pNsGroupHAStatusInSync = cNsGroupHAStatusInSync
+	NsGroupHAStatusInSync = &pNsGroupHAStatusInSync
+
+	pNsGroupHAStatusRemoveInProgress = cNsGroupHAStatusRemoveInProgress
+	NsGroupHAStatusRemoveInProgress = &pNsGroupHAStatusRemoveInProgress
+
+	pNsGroupHAStatusYetToSetup = cNsGroupHAStatusYetToSetup
+	NsGroupHAStatusYetToSetup = &pNsGroupHAStatusYetToSetup
+
+	pNsGroupHAStatusUnsetupInProgress = cNsGroupHAStatusUnsetupInProgress
+	NsGroupHAStatusUnsetupInProgress = &pNsGroupHAStatusUnsetupInProgress
+
+	pNsGroupHAStatusSetupInProgress = cNsGroupHAStatusSetupInProgress
+	NsGroupHAStatusSetupInProgress = &pNsGroupHAStatusSetupInProgress
+
+	pNsGroupHAStatusOutOfSync = cNsGroupHAStatusOutOfSync
+	NsGroupHAStatusOutOfSync = &pNsGroupHAStatusOutOfSync
+
+	pNsGroupHAStatusAddInProgress = cNsGroupHAStatusAddInProgress
+	NsGroupHAStatusAddInProgress = &pNsGroupHAStatusAddInProgress
+
+	pNsGroupHAStatusSetupFailed = cNsGroupHAStatusSetupFailed
+	NsGroupHAStatusSetupFailed = &pNsGroupHAStatusSetupFailed
+
+}

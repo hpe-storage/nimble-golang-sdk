@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsNetZoneType Enum.
- 
-type NsNetZoneType string 
+
+type NsNetZoneType string
 
 const (
-	NSNETZONETYPE_SINGLE NsNetZoneType = "single"
-	NSNETZONETYPE_EVENODD NsNetZoneType = "evenodd"
-	NSNETZONETYPE_BISECT NsNetZoneType = "bisect"
-	NSNETZONETYPE_NONE NsNetZoneType = "none"
+	cNsNetZoneTypeSingle  NsNetZoneType = "single"
+	cNsNetZoneTypeEvenodd NsNetZoneType = "evenodd"
+	cNsNetZoneTypeBisect  NsNetZoneType = "bisect"
+	cNsNetZoneTypeNone    NsNetZoneType = "none"
+)
 
-) 
+var pNsNetZoneTypeSingle NsNetZoneType
+var pNsNetZoneTypeEvenodd NsNetZoneType
+var pNsNetZoneTypeBisect NsNetZoneType
+var pNsNetZoneTypeNone NsNetZoneType
+
+// Export
+var NsNetZoneTypeSingle *NsNetZoneType
+var NsNetZoneTypeEvenodd *NsNetZoneType
+var NsNetZoneTypeBisect *NsNetZoneType
+var NsNetZoneTypeNone *NsNetZoneType
+
+func init() {
+	pNsNetZoneTypeSingle = cNsNetZoneTypeSingle
+	NsNetZoneTypeSingle = &pNsNetZoneTypeSingle
+
+	pNsNetZoneTypeEvenodd = cNsNetZoneTypeEvenodd
+	NsNetZoneTypeEvenodd = &pNsNetZoneTypeEvenodd
+
+	pNsNetZoneTypeBisect = cNsNetZoneTypeBisect
+	NsNetZoneTypeBisect = &pNsNetZoneTypeBisect
+
+	pNsNetZoneTypeNone = cNsNetZoneTypeNone
+	NsNetZoneTypeNone = &pNsNetZoneTypeNone
+
+}

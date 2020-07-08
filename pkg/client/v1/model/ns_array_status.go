@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsArrayStatus Enum.
- 
-type NsArrayStatus string 
+
+type NsArrayStatus string
 
 const (
-	NSARRAYSTATUS_UNREACHABLE NsArrayStatus = "unreachable"
-	NSARRAYSTATUS_REACHABLE NsArrayStatus = "reachable"
+	cNsArrayStatusUnreachable NsArrayStatus = "unreachable"
+	cNsArrayStatusReachable   NsArrayStatus = "reachable"
+)
 
-) 
+var pNsArrayStatusUnreachable NsArrayStatus
+var pNsArrayStatusReachable NsArrayStatus
+
+// Export
+var NsArrayStatusUnreachable *NsArrayStatus
+var NsArrayStatusReachable *NsArrayStatus
+
+func init() {
+	pNsArrayStatusUnreachable = cNsArrayStatusUnreachable
+	NsArrayStatusUnreachable = &pNsArrayStatusUnreachable
+
+	pNsArrayStatusReachable = cNsArrayStatusReachable
+	NsArrayStatusReachable = &pNsArrayStatusReachable
+
+}

@@ -13,13 +13,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// ReplicationPartnerService type 
+// ReplicationPartnerService type
 type ReplicationPartnerService struct {
 	objectSet *client.ReplicationPartnerObjectSet
 }
 
-// NewReplicationPartnerService - method to initialize "ReplicationPartnerService" 
-func NewReplicationPartnerService(gs *NsGroupService) (*ReplicationPartnerService) {
+// NewReplicationPartnerService - method to initialize "ReplicationPartnerService"
+func NewReplicationPartnerService(gs *NsGroupService) *ReplicationPartnerService {
 	objectSet := gs.client.GetReplicationPartnerObjectSet()
 	return &ReplicationPartnerService{objectSet: objectSet}
 }
@@ -27,60 +27,60 @@ func NewReplicationPartnerService(gs *NsGroupService) (*ReplicationPartnerServic
 // GetReplicationPartners - method returns a array of pointers of type "ReplicationPartners"
 func (svc *ReplicationPartnerService) GetReplicationPartners(params *util.GetParams) ([]*model.ReplicationPartner, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	replicationPartnerResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	replicationPartnerResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return replicationPartnerResp,nil
+	return replicationPartnerResp, nil
 }
 
 // CreateReplicationPartner - method creates a "ReplicationPartner"
 func (svc *ReplicationPartnerService) CreateReplicationPartner(obj *model.ReplicationPartner) (*model.ReplicationPartner, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	replicationPartnerResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	replicationPartnerResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return replicationPartnerResp,nil
+	return replicationPartnerResp, nil
 }
 
-// UpdateReplicationPartner - method modifies  the "ReplicationPartner" 
+// UpdateReplicationPartner - method modifies  the "ReplicationPartner"
 func (svc *ReplicationPartnerService) UpdateReplicationPartner(id string, obj *model.ReplicationPartner) (*model.ReplicationPartner, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	replicationPartnerResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	replicationPartnerResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return replicationPartnerResp,nil
+	return replicationPartnerResp, nil
 }
 
 // GetReplicationPartnerById - method returns a pointer to "ReplicationPartner"
 func (svc *ReplicationPartnerService) GetReplicationPartnerById(id string) (*model.ReplicationPartner, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	replicationPartnerResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return replicationPartnerResp,nil
+	return replicationPartnerResp, nil
 }
 
-// GetReplicationPartnerByName - method returns a pointer "ReplicationPartner" 
+// GetReplicationPartnerByName - method returns a pointer "ReplicationPartner"
 func (svc *ReplicationPartnerService) GetReplicationPartnerByName(name string) (*model.ReplicationPartner, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
+			FieldName: &model.VolumeFields.Name,
 			Operator:  util.EQUALS.String(),
 			Value:     name,
 		},
@@ -89,18 +89,18 @@ func (svc *ReplicationPartnerService) GetReplicationPartnerByName(name string) (
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(replicationPartnerResp) == 0 {
-    	return nil, nil
-    }
-    
-	return replicationPartnerResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return replicationPartnerResp[0], nil
+}
 
 // DeleteReplicationPartner - deletes the "ReplicationPartner"
 func (svc *ReplicationPartnerService) DeleteReplicationPartner(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

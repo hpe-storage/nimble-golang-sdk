@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsEncryptionKeyManager Enum.
- 
-type NsEncryptionKeyManager string 
+
+type NsEncryptionKeyManager string
 
 const (
-	NSENCRYPTIONKEYMANAGER_EXTERNAL NsEncryptionKeyManager = "external"
-	NSENCRYPTIONKEYMANAGER_LOCAL NsEncryptionKeyManager = "local"
+	cNsEncryptionKeyManagerExternal NsEncryptionKeyManager = "external"
+	cNsEncryptionKeyManagerLocal    NsEncryptionKeyManager = "local"
+)
 
-) 
+var pNsEncryptionKeyManagerExternal NsEncryptionKeyManager
+var pNsEncryptionKeyManagerLocal NsEncryptionKeyManager
+
+// Export
+var NsEncryptionKeyManagerExternal *NsEncryptionKeyManager
+var NsEncryptionKeyManagerLocal *NsEncryptionKeyManager
+
+func init() {
+	pNsEncryptionKeyManagerExternal = cNsEncryptionKeyManagerExternal
+	NsEncryptionKeyManagerExternal = &pNsEncryptionKeyManagerExternal
+
+	pNsEncryptionKeyManagerLocal = cNsEncryptionKeyManagerLocal
+	NsEncryptionKeyManagerLocal = &pNsEncryptionKeyManagerLocal
+
+}

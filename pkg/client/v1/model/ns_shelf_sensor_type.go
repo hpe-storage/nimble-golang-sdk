@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsShelfSensorType Enum.
- 
-type NsShelfSensorType string 
+
+type NsShelfSensorType string
 
 const (
-	NSSHELFSENSORTYPE_FAN NsShelfSensorType = "fan"
-	NSSHELFSENSORTYPE_NVRAM NsShelfSensorType = "nvram"
-	NSSHELFSENSORTYPE_TEMPERATURE NsShelfSensorType = "temperature"
-	NSSHELFSENSORTYPE_POWER_SUPPLY NsShelfSensorType = "power supply"
+	cNsShelfSensorTypeFan         NsShelfSensorType = "fan"
+	cNsShelfSensorTypeNvram       NsShelfSensorType = "nvram"
+	cNsShelfSensorTypeTemperature NsShelfSensorType = "temperature"
+	cNsShelfSensorTypePowerSupply NsShelfSensorType = "power supply"
+)
 
-) 
+var pNsShelfSensorTypeFan NsShelfSensorType
+var pNsShelfSensorTypeNvram NsShelfSensorType
+var pNsShelfSensorTypeTemperature NsShelfSensorType
+var pNsShelfSensorTypePowerSupply NsShelfSensorType
+
+// Export
+var NsShelfSensorTypeFan *NsShelfSensorType
+var NsShelfSensorTypeNvram *NsShelfSensorType
+var NsShelfSensorTypeTemperature *NsShelfSensorType
+var NsShelfSensorTypePowerSupply *NsShelfSensorType
+
+func init() {
+	pNsShelfSensorTypeFan = cNsShelfSensorTypeFan
+	NsShelfSensorTypeFan = &pNsShelfSensorTypeFan
+
+	pNsShelfSensorTypeNvram = cNsShelfSensorTypeNvram
+	NsShelfSensorTypeNvram = &pNsShelfSensorTypeNvram
+
+	pNsShelfSensorTypeTemperature = cNsShelfSensorTypeTemperature
+	NsShelfSensorTypeTemperature = &pNsShelfSensorTypeTemperature
+
+	pNsShelfSensorTypePowerSupply = cNsShelfSensorTypePowerSupply
+	NsShelfSensorTypePowerSupply = &pNsShelfSensorTypePowerSupply
+
+}

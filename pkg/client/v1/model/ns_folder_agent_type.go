@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsFolderAgentType Enum.
- 
-type NsFolderAgentType string 
+
+type NsFolderAgentType string
 
 const (
-	NSFOLDERAGENTTYPE_SMIS NsFolderAgentType = "smis"
-	NSFOLDERAGENTTYPE_VVOL NsFolderAgentType = "vvol"
-	NSFOLDERAGENTTYPE_OPENSTACK NsFolderAgentType = "openstack"
-	NSFOLDERAGENTTYPE_NONE NsFolderAgentType = "none"
+	cNsFolderAgentTypeSmis      NsFolderAgentType = "smis"
+	cNsFolderAgentTypeVvol      NsFolderAgentType = "vvol"
+	cNsFolderAgentTypeOpenstack NsFolderAgentType = "openstack"
+	cNsFolderAgentTypeNone      NsFolderAgentType = "none"
+)
 
-) 
+var pNsFolderAgentTypeSmis NsFolderAgentType
+var pNsFolderAgentTypeVvol NsFolderAgentType
+var pNsFolderAgentTypeOpenstack NsFolderAgentType
+var pNsFolderAgentTypeNone NsFolderAgentType
+
+// Export
+var NsFolderAgentTypeSmis *NsFolderAgentType
+var NsFolderAgentTypeVvol *NsFolderAgentType
+var NsFolderAgentTypeOpenstack *NsFolderAgentType
+var NsFolderAgentTypeNone *NsFolderAgentType
+
+func init() {
+	pNsFolderAgentTypeSmis = cNsFolderAgentTypeSmis
+	NsFolderAgentTypeSmis = &pNsFolderAgentTypeSmis
+
+	pNsFolderAgentTypeVvol = cNsFolderAgentTypeVvol
+	NsFolderAgentTypeVvol = &pNsFolderAgentTypeVvol
+
+	pNsFolderAgentTypeOpenstack = cNsFolderAgentTypeOpenstack
+	NsFolderAgentTypeOpenstack = &pNsFolderAgentTypeOpenstack
+
+	pNsFolderAgentTypeNone = cNsFolderAgentTypeNone
+	NsFolderAgentTypeNone = &pNsFolderAgentTypeNone
+
+}

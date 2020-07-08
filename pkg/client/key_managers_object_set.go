@@ -3,50 +3,52 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Key Manager stores encryption keys for the array volumes / dedupe domains.
 const (
-    keyManagerPath = "key_managers"
+	keyManagerPath = "key_managers"
 )
 
 // KeyManagerObjectSet
 type KeyManagerObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new KeyManager object
 func (objectSet *KeyManagerObjectSet) CreateObject(payload *model.KeyManager) (*model.KeyManager, error) {
-	keyManagerObjectSetResp, err := objectSet.Client.Post(keyManagerPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeKeyManager(payload)
+	resp, err := objectSet.Client.Post(keyManagerPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if keyManagerObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return keyManagerObjectSetResp.(*model.KeyManager), err
+
+	return model.DecodeKeyManager(resp)
 }
 
 // UpdateObject Modify existing KeyManager object
 func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *model.KeyManager) (*model.KeyManager, error) {
-	keyManagerObjectSetResp, err := objectSet.Client.Put(keyManagerPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeKeyManager(payload)
+	resp, err := objectSet.Client.Put(keyManagerPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if keyManagerObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return keyManagerObjectSetResp.(*model.KeyManager), err
+	return model.DecodeKeyManager(resp)
 }
 
 // DeleteObject deletes the KeyManager object with the specified ID
@@ -60,10 +62,10 @@ func (objectSet *KeyManagerObjectSet) GetObject(id string) (*model.KeyManager, e
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if keyManagerObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return keyManagerObjectSetResp.(*model.KeyManager), err
 }
@@ -85,8 +87,9 @@ func (objectSet *KeyManagerObjectSet) GetObjectListFromParams(params *util.GetPa
 	}
 	return buildKeyManagerObjectSet(keyManagerObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildKeyManagerObjectSet(response interface{}) ([]*model.KeyManager) {
+func buildKeyManagerObjectSet(response interface{}) []*model.KeyManager {
 	values := reflect.ValueOf(response)
 	results := make([]*model.KeyManager, values.Len())
 

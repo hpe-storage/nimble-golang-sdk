@@ -11,13 +11,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// ApplicationCategoryService type 
+// ApplicationCategoryService type
 type ApplicationCategoryService struct {
 	objectSet *client.ApplicationCategoryObjectSet
 }
 
-// NewApplicationCategoryService - method to initialize "ApplicationCategoryService" 
-func NewApplicationCategoryService(gs *NsGroupService) (*ApplicationCategoryService) {
+// NewApplicationCategoryService - method to initialize "ApplicationCategoryService"
+func NewApplicationCategoryService(gs *NsGroupService) *ApplicationCategoryService {
 	objectSet := gs.client.GetApplicationCategoryObjectSet()
 	return &ApplicationCategoryService{objectSet: objectSet}
 }
@@ -25,61 +25,60 @@ func NewApplicationCategoryService(gs *NsGroupService) (*ApplicationCategoryServ
 // GetApplicationCategories - method returns a array of pointers of type "ApplicationCategories"
 func (svc *ApplicationCategoryService) GetApplicationCategories(params *util.GetParams) ([]*model.ApplicationCategory, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	applicationCategoryResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
-	}
-	return applicationCategoryResp,nil
-}
 
+	applicationCategoryResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
+	}
+	return applicationCategoryResp, nil
+}
 
 // CreateApplicationCategory - method creates a "ApplicationCategory"
 func (svc *ApplicationCategoryService) CreateApplicationCategory(obj *model.ApplicationCategory) (*model.ApplicationCategory, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	applicationCategoryResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	applicationCategoryResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return applicationCategoryResp,nil
+	return applicationCategoryResp, nil
 }
 
-// UpdateApplicationCategory - method modifies  the "ApplicationCategory" 
+// UpdateApplicationCategory - method modifies  the "ApplicationCategory"
 func (svc *ApplicationCategoryService) UpdateApplicationCategory(id string, obj *model.ApplicationCategory) (*model.ApplicationCategory, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	applicationCategoryResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	applicationCategoryResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return applicationCategoryResp,nil
+	return applicationCategoryResp, nil
 }
 
 // GetApplicationCategoryById - method returns a pointer to "ApplicationCategory"
 func (svc *ApplicationCategoryService) GetApplicationCategoryById(id string) (*model.ApplicationCategory, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	applicationCategoryResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return applicationCategoryResp,nil
+	return applicationCategoryResp, nil
 }
 
-// GetApplicationCategoryByName - method returns a pointer "ApplicationCategory" 
+// GetApplicationCategoryByName - method returns a pointer "ApplicationCategory"
 func (svc *ApplicationCategoryService) GetApplicationCategoryByName(name string) (*model.ApplicationCategory, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
+			FieldName: &model.VolumeFields.Name,
 			Operator:  util.EQUALS.String(),
 			Value:     name,
 		},
@@ -88,18 +87,18 @@ func (svc *ApplicationCategoryService) GetApplicationCategoryByName(name string)
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(applicationCategoryResp) == 0 {
-    	return nil, nil
-    }
-    
-	return applicationCategoryResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return applicationCategoryResp[0], nil
+}
 
 // DeleteApplicationCategory - deletes the "ApplicationCategory"
 func (svc *ApplicationCategoryService) DeleteApplicationCategory(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

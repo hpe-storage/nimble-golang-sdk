@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsOnlineStatus Enum.
- 
-type NsOnlineStatus string 
+
+type NsOnlineStatus string
 
 const (
-	NSONLINESTATUS_OFFLINE NsOnlineStatus = "offline"
-	NSONLINESTATUS_ONLINE NsOnlineStatus = "online"
-	NSONLINESTATUS_PARTIAL NsOnlineStatus = "partial"
+	cNsOnlineStatusOffline NsOnlineStatus = "offline"
+	cNsOnlineStatusOnline  NsOnlineStatus = "online"
+	cNsOnlineStatusPartial NsOnlineStatus = "partial"
+)
 
-) 
+var pNsOnlineStatusOffline NsOnlineStatus
+var pNsOnlineStatusOnline NsOnlineStatus
+var pNsOnlineStatusPartial NsOnlineStatus
+
+// Export
+var NsOnlineStatusOffline *NsOnlineStatus
+var NsOnlineStatusOnline *NsOnlineStatus
+var NsOnlineStatusPartial *NsOnlineStatus
+
+func init() {
+	pNsOnlineStatusOffline = cNsOnlineStatusOffline
+	NsOnlineStatusOffline = &pNsOnlineStatusOffline
+
+	pNsOnlineStatusOnline = cNsOnlineStatusOnline
+	NsOnlineStatusOnline = &pNsOnlineStatusOnline
+
+	pNsOnlineStatusPartial = cNsOnlineStatusPartial
+	NsOnlineStatusPartial = &pNsOnlineStatusPartial
+
+}

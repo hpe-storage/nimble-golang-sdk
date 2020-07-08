@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsArrayUpgradeStage Enum.
- 
-type NsArrayUpgradeStage string 
+
+type NsArrayUpgradeStage string
 
 const (
-	NSARRAYUPGRADESTAGE_PREPARE NsArrayUpgradeStage = "prepare"
-	NSARRAYUPGRADESTAGE_FINISH NsArrayUpgradeStage = "finish"
-	NSARRAYUPGRADESTAGE_NONE NsArrayUpgradeStage = "none"
+	cNsArrayUpgradeStagePrepare NsArrayUpgradeStage = "prepare"
+	cNsArrayUpgradeStageFinish  NsArrayUpgradeStage = "finish"
+	cNsArrayUpgradeStageNone    NsArrayUpgradeStage = "none"
+)
 
-) 
+var pNsArrayUpgradeStagePrepare NsArrayUpgradeStage
+var pNsArrayUpgradeStageFinish NsArrayUpgradeStage
+var pNsArrayUpgradeStageNone NsArrayUpgradeStage
+
+// Export
+var NsArrayUpgradeStagePrepare *NsArrayUpgradeStage
+var NsArrayUpgradeStageFinish *NsArrayUpgradeStage
+var NsArrayUpgradeStageNone *NsArrayUpgradeStage
+
+func init() {
+	pNsArrayUpgradeStagePrepare = cNsArrayUpgradeStagePrepare
+	NsArrayUpgradeStagePrepare = &pNsArrayUpgradeStagePrepare
+
+	pNsArrayUpgradeStageFinish = cNsArrayUpgradeStageFinish
+	NsArrayUpgradeStageFinish = &pNsArrayUpgradeStageFinish
+
+	pNsArrayUpgradeStageNone = cNsArrayUpgradeStageNone
+	NsArrayUpgradeStageNone = &pNsArrayUpgradeStageNone
+
+}

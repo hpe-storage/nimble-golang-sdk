@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsNetConfigName Enum.
- 
-type NsNetConfigName string 
+
+type NsNetConfigName string
 
 const (
-	NSNETCONFIGNAME_BACKUP NsNetConfigName = "backup"
-	NSNETCONFIGNAME_DRAFT NsNetConfigName = "draft"
-	NSNETCONFIGNAME_ACTIVE NsNetConfigName = "active"
+	cNsNetConfigNameBackup NsNetConfigName = "backup"
+	cNsNetConfigNameDraft  NsNetConfigName = "draft"
+	cNsNetConfigNameActive NsNetConfigName = "active"
+)
 
-) 
+var pNsNetConfigNameBackup NsNetConfigName
+var pNsNetConfigNameDraft NsNetConfigName
+var pNsNetConfigNameActive NsNetConfigName
+
+// Export
+var NsNetConfigNameBackup *NsNetConfigName
+var NsNetConfigNameDraft *NsNetConfigName
+var NsNetConfigNameActive *NsNetConfigName
+
+func init() {
+	pNsNetConfigNameBackup = cNsNetConfigNameBackup
+	NsNetConfigNameBackup = &pNsNetConfigNameBackup
+
+	pNsNetConfigNameDraft = cNsNetConfigNameDraft
+	NsNetConfigNameDraft = &pNsNetConfigNameDraft
+
+	pNsNetConfigNameActive = cNsNetConfigNameActive
+	NsNetConfigNameActive = &pNsNetConfigNameActive
+
+}

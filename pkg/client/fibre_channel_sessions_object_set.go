@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Fibre Channel session is created when Fibre Channel initiator connects to this group.
 const (
-    fibreChannelSessionPath = "fibre_channel_sessions"
+	fibreChannelSessionPath = "fibre_channel_sessions"
 )
 
 // FibreChannelSessionObjectSet
 type FibreChannelSessionObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new FibreChannelSession object
@@ -42,10 +41,10 @@ func (objectSet *FibreChannelSessionObjectSet) GetObject(id string) (*model.Fibr
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if fibreChannelSessionObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return fibreChannelSessionObjectSetResp.(*model.FibreChannelSession), err
 }
@@ -67,8 +66,9 @@ func (objectSet *FibreChannelSessionObjectSet) GetObjectListFromParams(params *u
 	}
 	return buildFibreChannelSessionObjectSet(fibreChannelSessionObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildFibreChannelSessionObjectSet(response interface{}) ([]*model.FibreChannelSession) {
+func buildFibreChannelSessionObjectSet(response interface{}) []*model.FibreChannelSession {
 	values := reflect.ValueOf(response)
 	results := make([]*model.FibreChannelSession, values.Len())
 

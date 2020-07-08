@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsEulaFormat Enum.
- 
-type NsEulaFormat string 
+
+type NsEulaFormat string
 
 const (
-	NSEULAFORMAT_HTML NsEulaFormat = "html"
-	NSEULAFORMAT_TEXT NsEulaFormat = "text"
+	cNsEulaFormatHtml NsEulaFormat = "html"
+	cNsEulaFormatText NsEulaFormat = "text"
+)
 
-) 
+var pNsEulaFormatHtml NsEulaFormat
+var pNsEulaFormatText NsEulaFormat
+
+// Export
+var NsEulaFormatHtml *NsEulaFormat
+var NsEulaFormatText *NsEulaFormat
+
+func init() {
+	pNsEulaFormatHtml = cNsEulaFormatHtml
+	NsEulaFormatHtml = &pNsEulaFormatHtml
+
+	pNsEulaFormatText = cNsEulaFormatText
+	NsEulaFormatText = &pNsEulaFormatText
+
+}

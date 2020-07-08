@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsSynchronousReplicationType Enum.
- 
-type NsSynchronousReplicationType string 
+
+type NsSynchronousReplicationType string
 
 const (
-	NSSYNCHRONOUSREPLICATIONTYPE_SOFT_AVAILABLE NsSynchronousReplicationType = "soft_available"
-	NSSYNCHRONOUSREPLICATIONTYPE_NOT_APPLICABLE NsSynchronousReplicationType = "not_applicable"
+	cNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType = "soft_available"
+	cNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType = "not_applicable"
+)
 
-) 
+var pNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType
+var pNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType
+
+// Export
+var NsSynchronousReplicationTypeSoftAvailable *NsSynchronousReplicationType
+var NsSynchronousReplicationTypeNotApplicable *NsSynchronousReplicationType
+
+func init() {
+	pNsSynchronousReplicationTypeSoftAvailable = cNsSynchronousReplicationTypeSoftAvailable
+	NsSynchronousReplicationTypeSoftAvailable = &pNsSynchronousReplicationTypeSoftAvailable
+
+	pNsSynchronousReplicationTypeNotApplicable = cNsSynchronousReplicationTypeNotApplicable
+	NsSynchronousReplicationTypeNotApplicable = &pNsSynchronousReplicationTypeNotApplicable
+
+}

@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage per array network interface configuration.
 const (
-    networkInterfacePath = "network_interfaces"
+	networkInterfacePath = "network_interfaces"
 )
 
 // NetworkInterfaceObjectSet
 type NetworkInterfaceObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new NetworkInterface object
@@ -42,10 +41,10 @@ func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*model.Network
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if networkInterfaceObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
 }
@@ -67,8 +66,9 @@ func (objectSet *NetworkInterfaceObjectSet) GetObjectListFromParams(params *util
 	}
 	return buildNetworkInterfaceObjectSet(networkInterfaceObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildNetworkInterfaceObjectSet(response interface{}) ([]*model.NetworkInterface) {
+func buildNetworkInterfaceObjectSet(response interface{}) []*model.NetworkInterface {
 	values := reflect.ValueOf(response)
 	results := make([]*model.NetworkInterface, values.Len())
 

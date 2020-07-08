@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsDiskOp Enum.
- 
-type NsDiskOp string 
+
+type NsDiskOp string
 
 const (
-	NSDISKOP_ADD NsDiskOp = "add"
-	NSDISKOP_REMOVE NsDiskOp = "remove"
+	cNsDiskOpAdd    NsDiskOp = "add"
+	cNsDiskOpRemove NsDiskOp = "remove"
+)
 
-) 
+var pNsDiskOpAdd NsDiskOp
+var pNsDiskOpRemove NsDiskOp
+
+// Export
+var NsDiskOpAdd *NsDiskOp
+var NsDiskOpRemove *NsDiskOp
+
+func init() {
+	pNsDiskOpAdd = cNsDiskOpAdd
+	NsDiskOpAdd = &pNsDiskOpAdd
+
+	pNsDiskOpRemove = cNsDiskOpRemove
+	NsDiskOpRemove = &pNsDiskOpRemove
+
+}

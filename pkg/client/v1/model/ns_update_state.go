@@ -2,15 +2,50 @@
 package model
 
 // Golang package for NsUpdateState Enum.
- 
-type NsUpdateState string 
+
+type NsUpdateState string
 
 const (
-	NSUPDATESTATE_NORMAL NsUpdateState = "normal"
-	NSUPDATESTATE_PAUSED NsUpdateState = "paused"
-	NSUPDATESTATE_UPDATING NsUpdateState = "updating"
-	NSUPDATESTATE_INVALID NsUpdateState = "invalid"
-	NSUPDATESTATE_TIMED_OUT NsUpdateState = "timed_out"
-	NSUPDATESTATE_FAILED NsUpdateState = "failed"
+	cNsUpdateStateNormal   NsUpdateState = "normal"
+	cNsUpdateStatePaused   NsUpdateState = "paused"
+	cNsUpdateStateUpdating NsUpdateState = "updating"
+	cNsUpdateStateInvalid  NsUpdateState = "invalid"
+	cNsUpdateStateTimedOut NsUpdateState = "timed_out"
+	cNsUpdateStateFailed   NsUpdateState = "failed"
+)
 
-) 
+var pNsUpdateStateNormal NsUpdateState
+var pNsUpdateStatePaused NsUpdateState
+var pNsUpdateStateUpdating NsUpdateState
+var pNsUpdateStateInvalid NsUpdateState
+var pNsUpdateStateTimedOut NsUpdateState
+var pNsUpdateStateFailed NsUpdateState
+
+// Export
+var NsUpdateStateNormal *NsUpdateState
+var NsUpdateStatePaused *NsUpdateState
+var NsUpdateStateUpdating *NsUpdateState
+var NsUpdateStateInvalid *NsUpdateState
+var NsUpdateStateTimedOut *NsUpdateState
+var NsUpdateStateFailed *NsUpdateState
+
+func init() {
+	pNsUpdateStateNormal = cNsUpdateStateNormal
+	NsUpdateStateNormal = &pNsUpdateStateNormal
+
+	pNsUpdateStatePaused = cNsUpdateStatePaused
+	NsUpdateStatePaused = &pNsUpdateStatePaused
+
+	pNsUpdateStateUpdating = cNsUpdateStateUpdating
+	NsUpdateStateUpdating = &pNsUpdateStateUpdating
+
+	pNsUpdateStateInvalid = cNsUpdateStateInvalid
+	NsUpdateStateInvalid = &pNsUpdateStateInvalid
+
+	pNsUpdateStateTimedOut = cNsUpdateStateTimedOut
+	NsUpdateStateTimedOut = &pNsUpdateStateTimedOut
+
+	pNsUpdateStateFailed = cNsUpdateStateFailed
+	NsUpdateStateFailed = &pNsUpdateStateFailed
+
+}

@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsTargetScope Enum.
- 
-type NsTargetScope string 
+
+type NsTargetScope string
 
 const (
-	NSTARGETSCOPE_VOLUME NsTargetScope = "volume"
-	NSTARGETSCOPE_GROUP NsTargetScope = "group"
+	cNsTargetScopeVolume NsTargetScope = "volume"
+	cNsTargetScopeGroup  NsTargetScope = "group"
+)
 
-) 
+var pNsTargetScopeVolume NsTargetScope
+var pNsTargetScopeGroup NsTargetScope
+
+// Export
+var NsTargetScopeVolume *NsTargetScope
+var NsTargetScopeGroup *NsTargetScope
+
+func init() {
+	pNsTargetScopeVolume = cNsTargetScopeVolume
+	NsTargetScopeVolume = &pNsTargetScopeVolume
+
+	pNsTargetScopeGroup = cNsTargetScopeGroup
+	NsTargetScopeGroup = &pNsTargetScopeGroup
+
+}

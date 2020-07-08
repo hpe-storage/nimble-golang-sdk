@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsGroupFailoverMode Enum.
- 
-type NsGroupFailoverMode string 
+
+type NsGroupFailoverMode string
 
 const (
-	NSGROUPFAILOVERMODE_MANUAL NsGroupFailoverMode = "Manual"
-	NSGROUPFAILOVERMODE_AUTOMATIC NsGroupFailoverMode = "Automatic"
+	cNsGroupFailoverModeManual    NsGroupFailoverMode = "Manual"
+	cNsGroupFailoverModeAutomatic NsGroupFailoverMode = "Automatic"
+)
 
-) 
+var pNsGroupFailoverModeManual NsGroupFailoverMode
+var pNsGroupFailoverModeAutomatic NsGroupFailoverMode
+
+// Export
+var NsGroupFailoverModeManual *NsGroupFailoverMode
+var NsGroupFailoverModeAutomatic *NsGroupFailoverMode
+
+func init() {
+	pNsGroupFailoverModeManual = cNsGroupFailoverModeManual
+	NsGroupFailoverModeManual = &pNsGroupFailoverModeManual
+
+	pNsGroupFailoverModeAutomatic = cNsGroupFailoverModeAutomatic
+	NsGroupFailoverModeAutomatic = &pNsGroupFailoverModeAutomatic
+
+}

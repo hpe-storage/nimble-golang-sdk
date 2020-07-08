@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsSpaceUsageLevel Enum.
- 
-type NsSpaceUsageLevel string 
+
+type NsSpaceUsageLevel string
 
 const (
-	NSSPACEUSAGELEVEL_NORMAL NsSpaceUsageLevel = "normal"
-	NSSPACEUSAGELEVEL_CRITICAL NsSpaceUsageLevel = "critical"
-	NSSPACEUSAGELEVEL_WARNING NsSpaceUsageLevel = "warning"
+	cNsSpaceUsageLevelNormal   NsSpaceUsageLevel = "normal"
+	cNsSpaceUsageLevelCritical NsSpaceUsageLevel = "critical"
+	cNsSpaceUsageLevelWarning  NsSpaceUsageLevel = "warning"
+)
 
-) 
+var pNsSpaceUsageLevelNormal NsSpaceUsageLevel
+var pNsSpaceUsageLevelCritical NsSpaceUsageLevel
+var pNsSpaceUsageLevelWarning NsSpaceUsageLevel
+
+// Export
+var NsSpaceUsageLevelNormal *NsSpaceUsageLevel
+var NsSpaceUsageLevelCritical *NsSpaceUsageLevel
+var NsSpaceUsageLevelWarning *NsSpaceUsageLevel
+
+func init() {
+	pNsSpaceUsageLevelNormal = cNsSpaceUsageLevelNormal
+	NsSpaceUsageLevelNormal = &pNsSpaceUsageLevelNormal
+
+	pNsSpaceUsageLevelCritical = cNsSpaceUsageLevelCritical
+	NsSpaceUsageLevelCritical = &pNsSpaceUsageLevelCritical
+
+	pNsSpaceUsageLevelWarning = cNsSpaceUsageLevelWarning
+	NsSpaceUsageLevelWarning = &pNsSpaceUsageLevelWarning
+
+}

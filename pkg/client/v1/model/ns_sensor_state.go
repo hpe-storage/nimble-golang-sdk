@@ -2,14 +2,44 @@
 package model
 
 // Golang package for NsSensorState Enum.
- 
-type NsSensorState string 
+
+type NsSensorState string
 
 const (
-	NSSENSORSTATE_SENSOR_OK NsSensorState = "sensor_ok"
-	NSSENSORSTATE_SENSOR_ALERT_COND NsSensorState = "sensor_alert_cond"
-	NSSENSORSTATE_SENSOR_MISSING NsSensorState = "sensor_missing"
-	NSSENSORSTATE_SENSOR_READING_UNAVAIL NsSensorState = "sensor_reading_unavail"
-	NSSENSORSTATE_SENSOR_FAILED NsSensorState = "sensor_failed"
+	cNsSensorStateSensorOk             NsSensorState = "sensor_ok"
+	cNsSensorStateSensorAlertCond      NsSensorState = "sensor_alert_cond"
+	cNsSensorStateSensorMissing        NsSensorState = "sensor_missing"
+	cNsSensorStateSensorReadingUnavail NsSensorState = "sensor_reading_unavail"
+	cNsSensorStateSensorFailed         NsSensorState = "sensor_failed"
+)
 
-) 
+var pNsSensorStateSensorOk NsSensorState
+var pNsSensorStateSensorAlertCond NsSensorState
+var pNsSensorStateSensorMissing NsSensorState
+var pNsSensorStateSensorReadingUnavail NsSensorState
+var pNsSensorStateSensorFailed NsSensorState
+
+// Export
+var NsSensorStateSensorOk *NsSensorState
+var NsSensorStateSensorAlertCond *NsSensorState
+var NsSensorStateSensorMissing *NsSensorState
+var NsSensorStateSensorReadingUnavail *NsSensorState
+var NsSensorStateSensorFailed *NsSensorState
+
+func init() {
+	pNsSensorStateSensorOk = cNsSensorStateSensorOk
+	NsSensorStateSensorOk = &pNsSensorStateSensorOk
+
+	pNsSensorStateSensorAlertCond = cNsSensorStateSensorAlertCond
+	NsSensorStateSensorAlertCond = &pNsSensorStateSensorAlertCond
+
+	pNsSensorStateSensorMissing = cNsSensorStateSensorMissing
+	NsSensorStateSensorMissing = &pNsSensorStateSensorMissing
+
+	pNsSensorStateSensorReadingUnavail = cNsSensorStateSensorReadingUnavail
+	NsSensorStateSensorReadingUnavail = &pNsSensorStateSensorReadingUnavail
+
+	pNsSensorStateSensorFailed = cNsSensorStateSensorFailed
+	NsSensorStateSensorFailed = &pNsSensorStateSensorFailed
+
+}

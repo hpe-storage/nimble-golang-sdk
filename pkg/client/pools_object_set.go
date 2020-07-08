@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage pools. Pools are an aggregation of arrays.
 const (
-    poolPath = "pools"
+	poolPath = "pools"
 )
 
 // PoolObjectSet
 type PoolObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Pool object
 func (objectSet *PoolObjectSet) CreateObject(payload *model.Pool) (*model.Pool, error) {
-	poolObjectSetResp, err := objectSet.Client.Post(poolPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodePool(payload)
+	resp, err := objectSet.Client.Post(poolPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if poolObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return poolObjectSetResp.(*model.Pool), err
+
+	return model.DecodePool(resp)
 }
 
 // UpdateObject Modify existing Pool object
 func (objectSet *PoolObjectSet) UpdateObject(id string, payload *model.Pool) (*model.Pool, error) {
-	poolObjectSetResp, err := objectSet.Client.Put(poolPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodePool(payload)
+	resp, err := objectSet.Client.Put(poolPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if poolObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return poolObjectSetResp.(*model.Pool), err
+	return model.DecodePool(resp)
 }
 
 // DeleteObject deletes the Pool object with the specified ID
 func (objectSet *PoolObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(poolPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *PoolObjectSet) GetObject(id string) (*model.Pool, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if poolObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return poolObjectSetResp.(*model.Pool), err
 }
@@ -88,8 +90,9 @@ func (objectSet *PoolObjectSet) GetObjectListFromParams(params *util.GetParams) 
 	}
 	return buildPoolObjectSet(poolObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildPoolObjectSet(response interface{}) ([]*model.Pool) {
+func buildPoolObjectSet(response interface{}) []*model.Pool {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Pool, values.Len())
 

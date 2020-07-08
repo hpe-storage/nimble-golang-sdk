@@ -3,57 +3,59 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage the master key. Data encryption keys for volumes are encrypted by using a master key that must be initialized before encrypted volumes can be created. The master key in
 // turn is protected by a passphrase that is set when the master key is created. The passphrase may have to be entered to enable the master key when it is not available, for
 // example, after an array reboot.
 const (
-    masterKeyPath = "master_key"
+	masterKeyPath = "master_key"
 )
 
 // MasterKeyObjectSet
 type MasterKeyObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new MasterKey object
 func (objectSet *MasterKeyObjectSet) CreateObject(payload *model.MasterKey) (*model.MasterKey, error) {
-	masterKeyObjectSetResp, err := objectSet.Client.Post(masterKeyPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeMasterKey(payload)
+	resp, err := objectSet.Client.Post(masterKeyPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if masterKeyObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return masterKeyObjectSetResp.(*model.MasterKey), err
+
+	return model.DecodeMasterKey(resp)
 }
 
 // UpdateObject Modify existing MasterKey object
 func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *model.MasterKey) (*model.MasterKey, error) {
-	masterKeyObjectSetResp, err := objectSet.Client.Put(masterKeyPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeMasterKey(payload)
+	resp, err := objectSet.Client.Put(masterKeyPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if masterKeyObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return masterKeyObjectSetResp.(*model.MasterKey), err
+	return model.DecodeMasterKey(resp)
 }
 
 // DeleteObject deletes the MasterKey object with the specified ID
 func (objectSet *MasterKeyObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(masterKeyPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -65,10 +67,10 @@ func (objectSet *MasterKeyObjectSet) GetObject(id string) (*model.MasterKey, err
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if masterKeyObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return masterKeyObjectSetResp.(*model.MasterKey), err
 }
@@ -90,8 +92,9 @@ func (objectSet *MasterKeyObjectSet) GetObjectListFromParams(params *util.GetPar
 	}
 	return buildMasterKeyObjectSet(masterKeyObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildMasterKeyObjectSet(response interface{}) ([]*model.MasterKey) {
+func buildMasterKeyObjectSet(response interface{}) []*model.MasterKey {
 	values := reflect.ValueOf(response)
 	results := make([]*model.MasterKey, values.Len())
 

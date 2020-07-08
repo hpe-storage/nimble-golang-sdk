@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsDiskType Enum.
- 
-type NsDiskType string 
+
+type NsDiskType string
 
 const (
-	NSDISKTYPE_SSD NsDiskType = "ssd"
-	NSDISKTYPE_HDD NsDiskType = "hdd"
+	cNsDiskTypeSsd NsDiskType = "ssd"
+	cNsDiskTypeHdd NsDiskType = "hdd"
+)
 
-) 
+var pNsDiskTypeSsd NsDiskType
+var pNsDiskTypeHdd NsDiskType
+
+// Export
+var NsDiskTypeSsd *NsDiskType
+var NsDiskTypeHdd *NsDiskType
+
+func init() {
+	pNsDiskTypeSsd = cNsDiskTypeSsd
+	NsDiskTypeSsd = &pNsDiskTypeSsd
+
+	pNsDiskTypeHdd = cNsDiskTypeHdd
+	NsDiskTypeHdd = &pNsDiskTypeHdd
+
+}

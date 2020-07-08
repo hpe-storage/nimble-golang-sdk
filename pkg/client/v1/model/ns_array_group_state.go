@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsArrayGroupState Enum.
- 
-type NsArrayGroupState string 
+
+type NsArrayGroupState string
 
 const (
-	NSARRAYGROUPSTATE_INVALID NsArrayGroupState = "invalid"
-	NSARRAYGROUPSTATE_INITIALIZED NsArrayGroupState = "initialized"
-	NSARRAYGROUPSTATE_UNUSED NsArrayGroupState = "unused"
-	NSARRAYGROUPSTATE_REMOVING NsArrayGroupState = "removing"
+	cNsArrayGroupStateInvalid     NsArrayGroupState = "invalid"
+	cNsArrayGroupStateInitialized NsArrayGroupState = "initialized"
+	cNsArrayGroupStateUnused      NsArrayGroupState = "unused"
+	cNsArrayGroupStateRemoving    NsArrayGroupState = "removing"
+)
 
-) 
+var pNsArrayGroupStateInvalid NsArrayGroupState
+var pNsArrayGroupStateInitialized NsArrayGroupState
+var pNsArrayGroupStateUnused NsArrayGroupState
+var pNsArrayGroupStateRemoving NsArrayGroupState
+
+// Export
+var NsArrayGroupStateInvalid *NsArrayGroupState
+var NsArrayGroupStateInitialized *NsArrayGroupState
+var NsArrayGroupStateUnused *NsArrayGroupState
+var NsArrayGroupStateRemoving *NsArrayGroupState
+
+func init() {
+	pNsArrayGroupStateInvalid = cNsArrayGroupStateInvalid
+	NsArrayGroupStateInvalid = &pNsArrayGroupStateInvalid
+
+	pNsArrayGroupStateInitialized = cNsArrayGroupStateInitialized
+	NsArrayGroupStateInitialized = &pNsArrayGroupStateInitialized
+
+	pNsArrayGroupStateUnused = cNsArrayGroupStateUnused
+	NsArrayGroupStateUnused = &pNsArrayGroupStateUnused
+
+	pNsArrayGroupStateRemoving = cNsArrayGroupStateRemoving
+	NsArrayGroupStateRemoving = &pNsArrayGroupStateRemoving
+
+}

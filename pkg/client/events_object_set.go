@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // View events.
 const (
-    eventPath = "events"
+	eventPath = "events"
 )
 
 // EventObjectSet
 type EventObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Event object
@@ -42,10 +41,10 @@ func (objectSet *EventObjectSet) GetObject(id string) (*model.Event, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if eventObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return eventObjectSetResp.(*model.Event), err
 }
@@ -67,8 +66,9 @@ func (objectSet *EventObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildEventObjectSet(eventObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildEventObjectSet(response interface{}) ([]*model.Event) {
+func buildEventObjectSet(response interface{}) []*model.Event {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Event, values.Len())
 

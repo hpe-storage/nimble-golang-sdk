@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // A space domain is created for each application category and block size for each each pool.
 const (
-    spaceDomainPath = "space_domains"
+	spaceDomainPath = "space_domains"
 )
 
 // SpaceDomainObjectSet
 type SpaceDomainObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new SpaceDomain object
@@ -42,10 +41,10 @@ func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*model.SpaceDomain,
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if spaceDomainObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
 }
@@ -67,8 +66,9 @@ func (objectSet *SpaceDomainObjectSet) GetObjectListFromParams(params *util.GetP
 	}
 	return buildSpaceDomainObjectSet(spaceDomainObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildSpaceDomainObjectSet(response interface{}) ([]*model.SpaceDomain) {
+func buildSpaceDomainObjectSet(response interface{}) []*model.SpaceDomain {
 	values := reflect.ValueOf(response)
 	results := make([]*model.SpaceDomain, values.Len())
 

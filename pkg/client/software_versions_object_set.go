@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Show the software version.
 const (
-    softwareVersionPath = "software_versions"
+	softwareVersionPath = "software_versions"
 )
 
 // SoftwareVersionObjectSet
 type SoftwareVersionObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new SoftwareVersion object
@@ -42,10 +41,10 @@ func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*model.Software
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if softwareVersionObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
 }
@@ -67,8 +66,9 @@ func (objectSet *SoftwareVersionObjectSet) GetObjectListFromParams(params *util.
 	}
 	return buildSoftwareVersionObjectSet(softwareVersionObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildSoftwareVersionObjectSet(response interface{}) ([]*model.SoftwareVersion) {
+func buildSoftwareVersionObjectSet(response interface{}) []*model.SoftwareVersion {
 	values := reflect.ValueOf(response)
 	results := make([]*model.SoftwareVersion, values.Len())
 

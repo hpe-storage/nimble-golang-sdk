@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsPoolMigrate Enum.
- 
-type NsPoolMigrate string 
+
+type NsPoolMigrate string
 
 const (
-	NSPOOLMIGRATE_IN NsPoolMigrate = "in"
-	NSPOOLMIGRATE_NONE NsPoolMigrate = "none"
-	NSPOOLMIGRATE_OUT NsPoolMigrate = "out"
+	cNsPoolMigrateIn   NsPoolMigrate = "in"
+	cNsPoolMigrateNone NsPoolMigrate = "none"
+	cNsPoolMigrateOut  NsPoolMigrate = "out"
+)
 
-) 
+var pNsPoolMigrateIn NsPoolMigrate
+var pNsPoolMigrateNone NsPoolMigrate
+var pNsPoolMigrateOut NsPoolMigrate
+
+// Export
+var NsPoolMigrateIn *NsPoolMigrate
+var NsPoolMigrateNone *NsPoolMigrate
+var NsPoolMigrateOut *NsPoolMigrate
+
+func init() {
+	pNsPoolMigrateIn = cNsPoolMigrateIn
+	NsPoolMigrateIn = &pNsPoolMigrateIn
+
+	pNsPoolMigrateNone = cNsPoolMigrateNone
+	NsPoolMigrateNone = &pNsPoolMigrateNone
+
+	pNsPoolMigrateOut = cNsPoolMigrateOut
+	NsPoolMigrateOut = &pNsPoolMigrateOut
+
+}

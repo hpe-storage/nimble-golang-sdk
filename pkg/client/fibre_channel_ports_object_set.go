@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
 const (
-    fibreChannelPortPath = "fibre_channel_ports"
+	fibreChannelPortPath = "fibre_channel_ports"
 )
 
 // FibreChannelPortObjectSet
 type FibreChannelPortObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new FibreChannelPort object
@@ -42,10 +41,10 @@ func (objectSet *FibreChannelPortObjectSet) GetObject(id string) (*model.FibreCh
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if fibreChannelPortObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return fibreChannelPortObjectSetResp.(*model.FibreChannelPort), err
 }
@@ -67,8 +66,9 @@ func (objectSet *FibreChannelPortObjectSet) GetObjectListFromParams(params *util
 	}
 	return buildFibreChannelPortObjectSet(fibreChannelPortObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildFibreChannelPortObjectSet(response interface{}) ([]*model.FibreChannelPort) {
+func buildFibreChannelPortObjectSet(response interface{}) []*model.FibreChannelPort {
 	values := reflect.ValueOf(response)
 	results := make([]*model.FibreChannelPort, values.Len())
 

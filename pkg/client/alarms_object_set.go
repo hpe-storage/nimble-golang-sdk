@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // View alarms.
 const (
-    alarmPath = "alarms"
+	alarmPath = "alarms"
 )
 
 // AlarmObjectSet
 type AlarmObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Alarm object
@@ -28,22 +27,23 @@ func (objectSet *AlarmObjectSet) CreateObject(payload *model.Alarm) (*model.Alar
 
 // UpdateObject Modify existing Alarm object
 func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *model.Alarm) (*model.Alarm, error) {
-	alarmObjectSetResp, err := objectSet.Client.Put(alarmPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeAlarm(payload)
+	resp, err := objectSet.Client.Put(alarmPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if alarmObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return alarmObjectSetResp.(*model.Alarm), err
+	return model.DecodeAlarm(resp)
 }
 
 // DeleteObject deletes the Alarm object with the specified ID
 func (objectSet *AlarmObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(alarmPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -55,10 +55,10 @@ func (objectSet *AlarmObjectSet) GetObject(id string) (*model.Alarm, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if alarmObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return alarmObjectSetResp.(*model.Alarm), err
 }
@@ -80,8 +80,9 @@ func (objectSet *AlarmObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildAlarmObjectSet(alarmObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildAlarmObjectSet(response interface{}) ([]*model.Alarm) {
+func buildAlarmObjectSet(response interface{}) []*model.Alarm {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Alarm, values.Len())
 

@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsEncryptionCipher Enum.
- 
-type NsEncryptionCipher string 
+
+type NsEncryptionCipher string
 
 const (
-	NSENCRYPTIONCIPHER_AES_256_XTS NsEncryptionCipher = "aes_256_xts"
-	NSENCRYPTIONCIPHER_NONE NsEncryptionCipher = "none"
+	cNsEncryptionCipherAes256Xts NsEncryptionCipher = "aes_256_xts"
+	cNsEncryptionCipherNone      NsEncryptionCipher = "none"
+)
 
-) 
+var pNsEncryptionCipherAes256Xts NsEncryptionCipher
+var pNsEncryptionCipherNone NsEncryptionCipher
+
+// Export
+var NsEncryptionCipherAes256Xts *NsEncryptionCipher
+var NsEncryptionCipherNone *NsEncryptionCipher
+
+func init() {
+	pNsEncryptionCipherAes256Xts = cNsEncryptionCipherAes256Xts
+	NsEncryptionCipherAes256Xts = &pNsEncryptionCipherAes256Xts
+
+	pNsEncryptionCipherNone = cNsEncryptionCipherNone
+	NsEncryptionCipherNone = &pNsEncryptionCipherNone
+
+}

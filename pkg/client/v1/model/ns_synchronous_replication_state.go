@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsSynchronousReplicationState Enum.
- 
-type NsSynchronousReplicationState string 
+
+type NsSynchronousReplicationState string
 
 const (
-	NSSYNCHRONOUSREPLICATIONSTATE_IN_SYNC NsSynchronousReplicationState = "in_sync"
-	NSSYNCHRONOUSREPLICATIONSTATE_NOT_APPLICABLE NsSynchronousReplicationState = "not_applicable"
-	NSSYNCHRONOUSREPLICATIONSTATE_OUT_OF_SYNC NsSynchronousReplicationState = "out_of_sync"
-	NSSYNCHRONOUSREPLICATIONSTATE_UNKNOWN NsSynchronousReplicationState = "unknown"
+	cNsSynchronousReplicationStateInSync        NsSynchronousReplicationState = "in_sync"
+	cNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState = "not_applicable"
+	cNsSynchronousReplicationStateOutOfSync     NsSynchronousReplicationState = "out_of_sync"
+	cNsSynchronousReplicationStateUnknown       NsSynchronousReplicationState = "unknown"
+)
 
-) 
+var pNsSynchronousReplicationStateInSync NsSynchronousReplicationState
+var pNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState
+var pNsSynchronousReplicationStateOutOfSync NsSynchronousReplicationState
+var pNsSynchronousReplicationStateUnknown NsSynchronousReplicationState
+
+// Export
+var NsSynchronousReplicationStateInSync *NsSynchronousReplicationState
+var NsSynchronousReplicationStateNotApplicable *NsSynchronousReplicationState
+var NsSynchronousReplicationStateOutOfSync *NsSynchronousReplicationState
+var NsSynchronousReplicationStateUnknown *NsSynchronousReplicationState
+
+func init() {
+	pNsSynchronousReplicationStateInSync = cNsSynchronousReplicationStateInSync
+	NsSynchronousReplicationStateInSync = &pNsSynchronousReplicationStateInSync
+
+	pNsSynchronousReplicationStateNotApplicable = cNsSynchronousReplicationStateNotApplicable
+	NsSynchronousReplicationStateNotApplicable = &pNsSynchronousReplicationStateNotApplicable
+
+	pNsSynchronousReplicationStateOutOfSync = cNsSynchronousReplicationStateOutOfSync
+	NsSynchronousReplicationStateOutOfSync = &pNsSynchronousReplicationStateOutOfSync
+
+	pNsSynchronousReplicationStateUnknown = cNsSynchronousReplicationStateUnknown
+	NsSynchronousReplicationStateUnknown = &pNsSynchronousReplicationStateUnknown
+
+}

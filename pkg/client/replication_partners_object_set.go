@@ -3,57 +3,59 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and
 // use ports 4213 and 4214. Replication partners have the same name as the remote group. Replication partners can be reciprocal, upstream (the source of replicas), or downstream
 // (the receiver of replicas) partners.
 const (
-    replicationPartnerPath = "replication_partners"
+	replicationPartnerPath = "replication_partners"
 )
 
 // ReplicationPartnerObjectSet
 type ReplicationPartnerObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
-	replicationPartnerObjectSetResp, err := objectSet.Client.Post(replicationPartnerPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeReplicationPartner(payload)
+	resp, err := objectSet.Client.Post(replicationPartnerPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if replicationPartnerObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
+
+	return model.DecodeReplicationPartner(resp)
 }
 
 // UpdateObject Modify existing ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
-	replicationPartnerObjectSetResp, err := objectSet.Client.Put(replicationPartnerPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeReplicationPartner(payload)
+	resp, err := objectSet.Client.Put(replicationPartnerPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if replicationPartnerObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
+	return model.DecodeReplicationPartner(resp)
 }
 
 // DeleteObject deletes the ReplicationPartner object with the specified ID
 func (objectSet *ReplicationPartnerObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(replicationPartnerPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -65,10 +67,10 @@ func (objectSet *ReplicationPartnerObjectSet) GetObject(id string) (*model.Repli
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if replicationPartnerObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
 }
@@ -90,8 +92,9 @@ func (objectSet *ReplicationPartnerObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildReplicationPartnerObjectSet(replicationPartnerObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildReplicationPartnerObjectSet(response interface{}) ([]*model.ReplicationPartner) {
+func buildReplicationPartnerObjectSet(response interface{}) []*model.ReplicationPartner {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ReplicationPartner, values.Len())
 

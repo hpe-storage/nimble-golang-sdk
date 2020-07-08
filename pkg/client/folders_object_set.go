@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Folders are a way to group volumes, as well as a way to apply space constraints to them.
 const (
-    folderPath = "folders"
+	folderPath = "folders"
 )
 
 // FolderObjectSet
 type FolderObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Folder object
 func (objectSet *FolderObjectSet) CreateObject(payload *model.Folder) (*model.Folder, error) {
-	folderObjectSetResp, err := objectSet.Client.Post(folderPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeFolder(payload)
+	resp, err := objectSet.Client.Post(folderPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if folderObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return folderObjectSetResp.(*model.Folder), err
+
+	return model.DecodeFolder(resp)
 }
 
 // UpdateObject Modify existing Folder object
 func (objectSet *FolderObjectSet) UpdateObject(id string, payload *model.Folder) (*model.Folder, error) {
-	folderObjectSetResp, err := objectSet.Client.Put(folderPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeFolder(payload)
+	resp, err := objectSet.Client.Put(folderPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if folderObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return folderObjectSetResp.(*model.Folder), err
+	return model.DecodeFolder(resp)
 }
 
 // DeleteObject deletes the Folder object with the specified ID
 func (objectSet *FolderObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(folderPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *FolderObjectSet) GetObject(id string) (*model.Folder, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if folderObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return folderObjectSetResp.(*model.Folder), err
 }
@@ -88,8 +90,9 @@ func (objectSet *FolderObjectSet) GetObjectListFromParams(params *util.GetParams
 	}
 	return buildFolderObjectSet(folderObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildFolderObjectSet(response interface{}) ([]*model.Folder) {
+func buildFolderObjectSet(response interface{}) []*model.Folder {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Folder, values.Len())
 

@@ -2,14 +2,44 @@
 package model
 
 // Golang package for NsShelfSesMasterSwState Enum.
- 
-type NsShelfSesMasterSwState string 
+
+type NsShelfSesMasterSwState string
 
 const (
-	NSSHELFSESMASTERSWSTATE_WANT_MASTER NsShelfSesMasterSwState = "want master"
-	NSSHELFSESMASTERSWSTATE_RELEASE_MASTER NsShelfSesMasterSwState = "release master"
-	NSSHELFSESMASTERSWSTATE_NOT_MASTER NsShelfSesMasterSwState = "not master"
-	NSSHELFSESMASTERSWSTATE_UNKNOWN NsShelfSesMasterSwState = "unknown"
-	NSSHELFSESMASTERSWSTATE_MASTER NsShelfSesMasterSwState = "master"
+	cNsShelfSesMasterSwStateWantMaster    NsShelfSesMasterSwState = "want master"
+	cNsShelfSesMasterSwStateReleaseMaster NsShelfSesMasterSwState = "release master"
+	cNsShelfSesMasterSwStateNotMaster     NsShelfSesMasterSwState = "not master"
+	cNsShelfSesMasterSwStateUnknown       NsShelfSesMasterSwState = "unknown"
+	cNsShelfSesMasterSwStateMaster        NsShelfSesMasterSwState = "master"
+)
 
-) 
+var pNsShelfSesMasterSwStateWantMaster NsShelfSesMasterSwState
+var pNsShelfSesMasterSwStateReleaseMaster NsShelfSesMasterSwState
+var pNsShelfSesMasterSwStateNotMaster NsShelfSesMasterSwState
+var pNsShelfSesMasterSwStateUnknown NsShelfSesMasterSwState
+var pNsShelfSesMasterSwStateMaster NsShelfSesMasterSwState
+
+// Export
+var NsShelfSesMasterSwStateWantMaster *NsShelfSesMasterSwState
+var NsShelfSesMasterSwStateReleaseMaster *NsShelfSesMasterSwState
+var NsShelfSesMasterSwStateNotMaster *NsShelfSesMasterSwState
+var NsShelfSesMasterSwStateUnknown *NsShelfSesMasterSwState
+var NsShelfSesMasterSwStateMaster *NsShelfSesMasterSwState
+
+func init() {
+	pNsShelfSesMasterSwStateWantMaster = cNsShelfSesMasterSwStateWantMaster
+	NsShelfSesMasterSwStateWantMaster = &pNsShelfSesMasterSwStateWantMaster
+
+	pNsShelfSesMasterSwStateReleaseMaster = cNsShelfSesMasterSwStateReleaseMaster
+	NsShelfSesMasterSwStateReleaseMaster = &pNsShelfSesMasterSwStateReleaseMaster
+
+	pNsShelfSesMasterSwStateNotMaster = cNsShelfSesMasterSwStateNotMaster
+	NsShelfSesMasterSwStateNotMaster = &pNsShelfSesMasterSwStateNotMaster
+
+	pNsShelfSesMasterSwStateUnknown = cNsShelfSesMasterSwStateUnknown
+	NsShelfSesMasterSwStateUnknown = &pNsShelfSesMasterSwStateUnknown
+
+	pNsShelfSesMasterSwStateMaster = cNsShelfSesMasterSwStateMaster
+	NsShelfSesMasterSwStateMaster = &pNsShelfSesMasterSwStateMaster
+
+}

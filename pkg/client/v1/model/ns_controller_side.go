@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsControllerSide Enum.
- 
-type NsControllerSide string 
+
+type NsControllerSide string
 
 const (
-	NSCONTROLLERSIDE_A NsControllerSide = "A"
-	NSCONTROLLERSIDE_B NsControllerSide = "B"
+	cNsControllerSideA NsControllerSide = "A"
+	cNsControllerSideB NsControllerSide = "B"
+)
 
-) 
+var pNsControllerSideA NsControllerSide
+var pNsControllerSideB NsControllerSide
+
+// Export
+var NsControllerSideA *NsControllerSide
+var NsControllerSideB *NsControllerSide
+
+func init() {
+	pNsControllerSideA = cNsControllerSideA
+	NsControllerSideA = &pNsControllerSideA
+
+	pNsControllerSideB = cNsControllerSideB
+	NsControllerSideB = &pNsControllerSideB
+
+}

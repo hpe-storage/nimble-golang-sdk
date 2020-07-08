@@ -3,36 +3,37 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage user's session information.
 const (
-    tokenPath = "tokens"
+	tokenPath = "tokens"
 )
 
 // TokenObjectSet
 type TokenObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Token object
 func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Token, error) {
-	tokenObjectSetResp, err := objectSet.Client.Post(tokenPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeToken(payload)
+	resp, err := objectSet.Client.Post(tokenPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if tokenObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return tokenObjectSetResp.(*model.Token), err
+
+	return model.DecodeToken(resp)
 }
 
 // UpdateObject Modify existing Token object
@@ -43,7 +44,7 @@ func (objectSet *TokenObjectSet) UpdateObject(id string, payload *model.Token) (
 // DeleteObject deletes the Token object with the specified ID
 func (objectSet *TokenObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(tokenPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -55,10 +56,10 @@ func (objectSet *TokenObjectSet) GetObject(id string) (*model.Token, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if tokenObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return tokenObjectSetResp.(*model.Token), err
 }
@@ -80,8 +81,9 @@ func (objectSet *TokenObjectSet) GetObjectListFromParams(params *util.GetParams)
 	}
 	return buildTokenObjectSet(tokenObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildTokenObjectSet(response interface{}) ([]*model.Token) {
+func buildTokenObjectSet(response interface{}) []*model.Token {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Token, values.Len())
 

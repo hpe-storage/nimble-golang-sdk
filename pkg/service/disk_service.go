@@ -11,13 +11,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// DiskService type 
+// DiskService type
 type DiskService struct {
 	objectSet *client.DiskObjectSet
 }
 
-// NewDiskService - method to initialize "DiskService" 
-func NewDiskService(gs *NsGroupService) (*DiskService) {
+// NewDiskService - method to initialize "DiskService"
+func NewDiskService(gs *NsGroupService) *DiskService {
 	objectSet := gs.client.GetDiskObjectSet()
 	return &DiskService{objectSet: objectSet}
 }
@@ -25,60 +25,59 @@ func NewDiskService(gs *NsGroupService) (*DiskService) {
 // GetDisks - method returns a array of pointers of type "Disks"
 func (svc *DiskService) GetDisks(params *util.GetParams) ([]*model.Disk, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	diskResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	diskResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return diskResp,nil
+	return diskResp, nil
 }
 
 // CreateDisk - method creates a "Disk"
 func (svc *DiskService) CreateDisk(obj *model.Disk) (*model.Disk, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	diskResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	diskResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return diskResp,nil
+	return diskResp, nil
 }
 
-// UpdateDisk - method modifies  the "Disk" 
+// UpdateDisk - method modifies  the "Disk"
 func (svc *DiskService) UpdateDisk(id string, obj *model.Disk) (*model.Disk, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	diskResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	diskResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return diskResp,nil
+	return diskResp, nil
 }
 
 // GetDiskById - method returns a pointer to "Disk"
 func (svc *DiskService) GetDiskById(id string) (*model.Disk, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	diskResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return diskResp,nil
+	return diskResp, nil
 }
-
 
 // DeleteDisk - deletes the "Disk"
 func (svc *DiskService) DeleteDisk(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsHcfContext Enum.
- 
-type NsHcfContext string 
+
+type NsHcfContext string
 
 const (
-	NSHCFCONTEXT_ALL NsHcfContext = "all"
-	NSHCFCONTEXT_FAILOVER NsHcfContext = "failover"
-	NSHCFCONTEXT_SW_UPDATE NsHcfContext = "sw_update"
+	cNsHcfContextAll      NsHcfContext = "all"
+	cNsHcfContextFailover NsHcfContext = "failover"
+	cNsHcfContextSwUpdate NsHcfContext = "sw_update"
+)
 
-) 
+var pNsHcfContextAll NsHcfContext
+var pNsHcfContextFailover NsHcfContext
+var pNsHcfContextSwUpdate NsHcfContext
+
+// Export
+var NsHcfContextAll *NsHcfContext
+var NsHcfContextFailover *NsHcfContext
+var NsHcfContextSwUpdate *NsHcfContext
+
+func init() {
+	pNsHcfContextAll = cNsHcfContextAll
+	NsHcfContextAll = &pNsHcfContextAll
+
+	pNsHcfContextFailover = cNsHcfContextFailover
+	NsHcfContextFailover = &pNsHcfContextFailover
+
+	pNsHcfContextSwUpdate = cNsHcfContextSwUpdate
+	NsHcfContextSwUpdate = &pNsHcfContextSwUpdate
+
+}

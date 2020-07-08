@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsPartnerCfgSyncStatus Enum.
- 
-type NsPartnerCfgSyncStatus string 
+
+type NsPartnerCfgSyncStatus string
 
 const (
-	NSPARTNERCFGSYNCSTATUS_N_A NsPartnerCfgSyncStatus = "N/A"
-	NSPARTNERCFGSYNCSTATUS_NO NsPartnerCfgSyncStatus = "No"
-	NSPARTNERCFGSYNCSTATUS_YES NsPartnerCfgSyncStatus = "Yes"
+	cNsPartnerCfgSyncStatusNA  NsPartnerCfgSyncStatus = "N/A"
+	cNsPartnerCfgSyncStatusNo  NsPartnerCfgSyncStatus = "No"
+	cNsPartnerCfgSyncStatusYes NsPartnerCfgSyncStatus = "Yes"
+)
 
-) 
+var pNsPartnerCfgSyncStatusNA NsPartnerCfgSyncStatus
+var pNsPartnerCfgSyncStatusNo NsPartnerCfgSyncStatus
+var pNsPartnerCfgSyncStatusYes NsPartnerCfgSyncStatus
+
+// Export
+var NsPartnerCfgSyncStatusNA *NsPartnerCfgSyncStatus
+var NsPartnerCfgSyncStatusNo *NsPartnerCfgSyncStatus
+var NsPartnerCfgSyncStatusYes *NsPartnerCfgSyncStatus
+
+func init() {
+	pNsPartnerCfgSyncStatusNA = cNsPartnerCfgSyncStatusNA
+	NsPartnerCfgSyncStatusNA = &pNsPartnerCfgSyncStatusNA
+
+	pNsPartnerCfgSyncStatusNo = cNsPartnerCfgSyncStatusNo
+	NsPartnerCfgSyncStatusNo = &pNsPartnerCfgSyncStatusNo
+
+	pNsPartnerCfgSyncStatusYes = cNsPartnerCfgSyncStatusYes
+	NsPartnerCfgSyncStatusYes = &pNsPartnerCfgSyncStatusYes
+
+}

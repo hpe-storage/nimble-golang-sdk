@@ -2,15 +2,50 @@
 package model
 
 // Golang package for NsPlatFcLinkStatus Enum.
- 
-type NsPlatFcLinkStatus string 
+
+type NsPlatFcLinkStatus string
 
 const (
-	NSPLATFCLINKSTATUS_PLAT_FC_LINK_STATUS_RESET NsPlatFcLinkStatus = "plat_fc_link_status_reset"
-	NSPLATFCLINKSTATUS_PLAT_FC_LINK_STATUS_DOWN NsPlatFcLinkStatus = "plat_fc_link_status_down"
-	NSPLATFCLINKSTATUS_PLAT_FC_LINK_STATUS_UP NsPlatFcLinkStatus = "plat_fc_link_status_up"
-	NSPLATFCLINKSTATUS_PLAT_FC_LINK_STATUS_ERROR NsPlatFcLinkStatus = "plat_fc_link_status_error"
-	NSPLATFCLINKSTATUS_PLAT_FC_LINK_STATUS_UNKNOWN NsPlatFcLinkStatus = "plat_fc_link_status_unknown"
-	NSPLATFCLINKSTATUS_PLAT_FC_LINK_STATUS_NOT_CONNECTED NsPlatFcLinkStatus = "plat_fc_link_status_not_connected"
+	cNsPlatFcLinkStatusPlatFcLinkStatusReset        NsPlatFcLinkStatus = "plat_fc_link_status_reset"
+	cNsPlatFcLinkStatusPlatFcLinkStatusDown         NsPlatFcLinkStatus = "plat_fc_link_status_down"
+	cNsPlatFcLinkStatusPlatFcLinkStatusUp           NsPlatFcLinkStatus = "plat_fc_link_status_up"
+	cNsPlatFcLinkStatusPlatFcLinkStatusError        NsPlatFcLinkStatus = "plat_fc_link_status_error"
+	cNsPlatFcLinkStatusPlatFcLinkStatusUnknown      NsPlatFcLinkStatus = "plat_fc_link_status_unknown"
+	cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus = "plat_fc_link_status_not_connected"
+)
 
-) 
+var pNsPlatFcLinkStatusPlatFcLinkStatusReset NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusDown NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusUp NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusError NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusUnknown NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus
+
+// Export
+var NsPlatFcLinkStatusPlatFcLinkStatusReset *NsPlatFcLinkStatus
+var NsPlatFcLinkStatusPlatFcLinkStatusDown *NsPlatFcLinkStatus
+var NsPlatFcLinkStatusPlatFcLinkStatusUp *NsPlatFcLinkStatus
+var NsPlatFcLinkStatusPlatFcLinkStatusError *NsPlatFcLinkStatus
+var NsPlatFcLinkStatusPlatFcLinkStatusUnknown *NsPlatFcLinkStatus
+var NsPlatFcLinkStatusPlatFcLinkStatusNotConnected *NsPlatFcLinkStatus
+
+func init() {
+	pNsPlatFcLinkStatusPlatFcLinkStatusReset = cNsPlatFcLinkStatusPlatFcLinkStatusReset
+	NsPlatFcLinkStatusPlatFcLinkStatusReset = &pNsPlatFcLinkStatusPlatFcLinkStatusReset
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusDown = cNsPlatFcLinkStatusPlatFcLinkStatusDown
+	NsPlatFcLinkStatusPlatFcLinkStatusDown = &pNsPlatFcLinkStatusPlatFcLinkStatusDown
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusUp = cNsPlatFcLinkStatusPlatFcLinkStatusUp
+	NsPlatFcLinkStatusPlatFcLinkStatusUp = &pNsPlatFcLinkStatusPlatFcLinkStatusUp
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusError = cNsPlatFcLinkStatusPlatFcLinkStatusError
+	NsPlatFcLinkStatusPlatFcLinkStatusError = &pNsPlatFcLinkStatusPlatFcLinkStatusError
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusUnknown = cNsPlatFcLinkStatusPlatFcLinkStatusUnknown
+	NsPlatFcLinkStatusPlatFcLinkStatusUnknown = &pNsPlatFcLinkStatusPlatFcLinkStatusUnknown
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected = cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
+	NsPlatFcLinkStatusPlatFcLinkStatusNotConnected = &pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
+
+}

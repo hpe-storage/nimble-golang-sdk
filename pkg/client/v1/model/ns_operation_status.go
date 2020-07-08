@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsOperationStatus Enum.
- 
-type NsOperationStatus string 
+
+type NsOperationStatus string
 
 const (
-	NSOPERATIONSTATUS_INPROGRESS NsOperationStatus = "inprogress"
-	NSOPERATIONSTATUS_FAILED NsOperationStatus = "failed"
-	NSOPERATIONSTATUS_UNKNOWN NsOperationStatus = "unknown"
-	NSOPERATIONSTATUS_SUCCEEDED NsOperationStatus = "succeeded"
+	cNsOperationStatusInprogress NsOperationStatus = "inprogress"
+	cNsOperationStatusFailed     NsOperationStatus = "failed"
+	cNsOperationStatusUnknown    NsOperationStatus = "unknown"
+	cNsOperationStatusSucceeded  NsOperationStatus = "succeeded"
+)
 
-) 
+var pNsOperationStatusInprogress NsOperationStatus
+var pNsOperationStatusFailed NsOperationStatus
+var pNsOperationStatusUnknown NsOperationStatus
+var pNsOperationStatusSucceeded NsOperationStatus
+
+// Export
+var NsOperationStatusInprogress *NsOperationStatus
+var NsOperationStatusFailed *NsOperationStatus
+var NsOperationStatusUnknown *NsOperationStatus
+var NsOperationStatusSucceeded *NsOperationStatus
+
+func init() {
+	pNsOperationStatusInprogress = cNsOperationStatusInprogress
+	NsOperationStatusInprogress = &pNsOperationStatusInprogress
+
+	pNsOperationStatusFailed = cNsOperationStatusFailed
+	NsOperationStatusFailed = &pNsOperationStatusFailed
+
+	pNsOperationStatusUnknown = cNsOperationStatusUnknown
+	NsOperationStatusUnknown = &pNsOperationStatusUnknown
+
+	pNsOperationStatusSucceeded = cNsOperationStatusSucceeded
+	NsOperationStatusSucceeded = &pNsOperationStatusSucceeded
+
+}

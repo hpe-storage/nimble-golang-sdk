@@ -13,13 +13,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// MasterKeyService type 
+// MasterKeyService type
 type MasterKeyService struct {
 	objectSet *client.MasterKeyObjectSet
 }
 
-// NewMasterKeyService - method to initialize "MasterKeyService" 
-func NewMasterKeyService(gs *NsGroupService) (*MasterKeyService) {
+// NewMasterKeyService - method to initialize "MasterKeyService"
+func NewMasterKeyService(gs *NsGroupService) *MasterKeyService {
 	objectSet := gs.client.GetMasterKeyObjectSet()
 	return &MasterKeyService{objectSet: objectSet}
 }
@@ -27,60 +27,60 @@ func NewMasterKeyService(gs *NsGroupService) (*MasterKeyService) {
 // GetMasterKeys - method returns a array of pointers of type "MasterKeys"
 func (svc *MasterKeyService) GetMasterKeys(params *util.GetParams) ([]*model.MasterKey, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	masterKeyResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	masterKeyResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return masterKeyResp,nil
+	return masterKeyResp, nil
 }
 
 // CreateMasterKey - method creates a "MasterKey"
 func (svc *MasterKeyService) CreateMasterKey(obj *model.MasterKey) (*model.MasterKey, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	masterKeyResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	masterKeyResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return masterKeyResp,nil
+	return masterKeyResp, nil
 }
 
-// UpdateMasterKey - method modifies  the "MasterKey" 
+// UpdateMasterKey - method modifies  the "MasterKey"
 func (svc *MasterKeyService) UpdateMasterKey(id string, obj *model.MasterKey) (*model.MasterKey, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	masterKeyResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	masterKeyResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return masterKeyResp,nil
+	return masterKeyResp, nil
 }
 
 // GetMasterKeyById - method returns a pointer to "MasterKey"
 func (svc *MasterKeyService) GetMasterKeyById(id string) (*model.MasterKey, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	masterKeyResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return masterKeyResp,nil
+	return masterKeyResp, nil
 }
 
-// GetMasterKeyByName - method returns a pointer "MasterKey" 
+// GetMasterKeyByName - method returns a pointer "MasterKey"
 func (svc *MasterKeyService) GetMasterKeyByName(name string) (*model.MasterKey, error) {
 	params := &util.GetParams{
 		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
+			FieldName: &model.VolumeFields.Name,
 			Operator:  util.EQUALS.String(),
 			Value:     name,
 		},
@@ -89,18 +89,18 @@ func (svc *MasterKeyService) GetMasterKeyByName(name string) (*model.MasterKey, 
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(masterKeyResp) == 0 {
-    	return nil, nil
-    }
-    
-	return masterKeyResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return masterKeyResp[0], nil
+}
 
 // DeleteMasterKey - deletes the "MasterKey"
 func (svc *MasterKeyService) DeleteMasterKey(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

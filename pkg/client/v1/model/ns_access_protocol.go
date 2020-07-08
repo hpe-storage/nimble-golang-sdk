@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsAccessProtocol Enum.
- 
-type NsAccessProtocol string 
+
+type NsAccessProtocol string
 
 const (
-	NSACCESSPROTOCOL_ISCSI NsAccessProtocol = "iscsi"
-	NSACCESSPROTOCOL_FC NsAccessProtocol = "fc"
+	cNsAccessProtocolIscsi NsAccessProtocol = "iscsi"
+	cNsAccessProtocolFc    NsAccessProtocol = "fc"
+)
 
-) 
+var pNsAccessProtocolIscsi NsAccessProtocol
+var pNsAccessProtocolFc NsAccessProtocol
+
+// Export
+var NsAccessProtocolIscsi *NsAccessProtocol
+var NsAccessProtocolFc *NsAccessProtocol
+
+func init() {
+	pNsAccessProtocolIscsi = cNsAccessProtocolIscsi
+	NsAccessProtocolIscsi = &pNsAccessProtocolIscsi
+
+	pNsAccessProtocolFc = cNsAccessProtocolFc
+	NsAccessProtocolFc = &pNsAccessProtocolFc
+
+}

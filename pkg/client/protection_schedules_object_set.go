@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage protection schedules used in protection templates.
 const (
-    protectionSchedulePath = "protection_schedules"
+	protectionSchedulePath = "protection_schedules"
 )
 
 // ProtectionScheduleObjectSet
 type ProtectionScheduleObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	protectionScheduleObjectSetResp, err := objectSet.Client.Post(protectionSchedulePath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeProtectionSchedule(payload)
+	resp, err := objectSet.Client.Post(protectionSchedulePath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if protectionScheduleObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return protectionScheduleObjectSetResp.(*model.ProtectionSchedule), err
+
+	return model.DecodeProtectionSchedule(resp)
 }
 
 // UpdateObject Modify existing ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	protectionScheduleObjectSetResp, err := objectSet.Client.Put(protectionSchedulePath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeProtectionSchedule(payload)
+	resp, err := objectSet.Client.Put(protectionSchedulePath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if protectionScheduleObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return protectionScheduleObjectSetResp.(*model.ProtectionSchedule), err
+	return model.DecodeProtectionSchedule(resp)
 }
 
 // DeleteObject deletes the ProtectionSchedule object with the specified ID
 func (objectSet *ProtectionScheduleObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(protectionSchedulePath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *ProtectionScheduleObjectSet) GetObject(id string) (*model.Prote
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if protectionScheduleObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return protectionScheduleObjectSetResp.(*model.ProtectionSchedule), err
 }
@@ -88,8 +90,9 @@ func (objectSet *ProtectionScheduleObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildProtectionScheduleObjectSet(protectionScheduleObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildProtectionScheduleObjectSet(response interface{}) ([]*model.ProtectionSchedule) {
+func buildProtectionScheduleObjectSet(response interface{}) []*model.ProtectionSchedule {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ProtectionSchedule, values.Len())
 

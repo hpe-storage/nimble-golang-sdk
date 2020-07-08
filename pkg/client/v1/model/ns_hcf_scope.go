@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsHcfScope Enum.
- 
-type NsHcfScope string 
+
+type NsHcfScope string
 
 const (
-	NSHCFSCOPE_CONTROLLER NsHcfScope = "controller"
-	NSHCFSCOPE_ARRAY NsHcfScope = "array"
-	NSHCFSCOPE_GROUP NsHcfScope = "group"
+	cNsHcfScopeController NsHcfScope = "controller"
+	cNsHcfScopeArray      NsHcfScope = "array"
+	cNsHcfScopeGroup      NsHcfScope = "group"
+)
 
-) 
+var pNsHcfScopeController NsHcfScope
+var pNsHcfScopeArray NsHcfScope
+var pNsHcfScopeGroup NsHcfScope
+
+// Export
+var NsHcfScopeController *NsHcfScope
+var NsHcfScopeArray *NsHcfScope
+var NsHcfScopeGroup *NsHcfScope
+
+func init() {
+	pNsHcfScopeController = cNsHcfScopeController
+	NsHcfScopeController = &pNsHcfScopeController
+
+	pNsHcfScopeArray = cNsHcfScopeArray
+	NsHcfScopeArray = &pNsHcfScopeArray
+
+	pNsHcfScopeGroup = cNsHcfScopeGroup
+	NsHcfScopeGroup = &pNsHcfScopeGroup
+
+}

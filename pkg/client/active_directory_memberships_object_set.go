@@ -3,50 +3,52 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manages the storage array's membership with the Active Directory.
 const (
-    activeDirectoryMembershipPath = "active_directory_memberships"
+	activeDirectoryMembershipPath = "active_directory_memberships"
 )
 
 // ActiveDirectoryMembershipObjectSet
 type ActiveDirectoryMembershipObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeActiveDirectoryMembership(payload)
+	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if activeDirectoryMembershipObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
+
+	return model.DecodeActiveDirectoryMembership(resp)
 }
 
 // UpdateObject Modify existing ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeActiveDirectoryMembership(payload)
+	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if activeDirectoryMembershipObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
+	return model.DecodeActiveDirectoryMembership(resp)
 }
 
 // DeleteObject deletes the ActiveDirectoryMembership object with the specified ID
@@ -60,10 +62,10 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) GetObject(id string) (*mode
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if activeDirectoryMembershipObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
 }
@@ -85,8 +87,9 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectListFromParams(par
 	}
 	return buildActiveDirectoryMembershipObjectSet(activeDirectoryMembershipObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildActiveDirectoryMembershipObjectSet(response interface{}) ([]*model.ActiveDirectoryMembership) {
+func buildActiveDirectoryMembershipObjectSet(response interface{}) []*model.ActiveDirectoryMembership {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ActiveDirectoryMembership, values.Len())
 

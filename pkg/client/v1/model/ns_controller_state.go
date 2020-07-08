@@ -2,16 +2,56 @@
 package model
 
 // Golang package for NsControllerState Enum.
- 
-type NsControllerState string 
+
+type NsControllerState string
 
 const (
-	NSCONTROLLERSTATE_START_ACTIVE NsControllerState = "start_active"
-	NSCONTROLLERSTATE_START_STANDBY NsControllerState = "start_standby"
-	NSCONTROLLERSTATE_STALE NsControllerState = "stale"
-	NSCONTROLLERSTATE_STANDBY NsControllerState = "standby"
-	NSCONTROLLERSTATE_ACTIVE NsControllerState = "active"
-	NSCONTROLLERSTATE_SOLO NsControllerState = "solo"
-	NSCONTROLLERSTATE_NONE NsControllerState = "none"
+	cNsControllerStateStartActive  NsControllerState = "start_active"
+	cNsControllerStateStartStandby NsControllerState = "start_standby"
+	cNsControllerStateStale        NsControllerState = "stale"
+	cNsControllerStateStandby      NsControllerState = "standby"
+	cNsControllerStateActive       NsControllerState = "active"
+	cNsControllerStateSolo         NsControllerState = "solo"
+	cNsControllerStateNone         NsControllerState = "none"
+)
 
-) 
+var pNsControllerStateStartActive NsControllerState
+var pNsControllerStateStartStandby NsControllerState
+var pNsControllerStateStale NsControllerState
+var pNsControllerStateStandby NsControllerState
+var pNsControllerStateActive NsControllerState
+var pNsControllerStateSolo NsControllerState
+var pNsControllerStateNone NsControllerState
+
+// Export
+var NsControllerStateStartActive *NsControllerState
+var NsControllerStateStartStandby *NsControllerState
+var NsControllerStateStale *NsControllerState
+var NsControllerStateStandby *NsControllerState
+var NsControllerStateActive *NsControllerState
+var NsControllerStateSolo *NsControllerState
+var NsControllerStateNone *NsControllerState
+
+func init() {
+	pNsControllerStateStartActive = cNsControllerStateStartActive
+	NsControllerStateStartActive = &pNsControllerStateStartActive
+
+	pNsControllerStateStartStandby = cNsControllerStateStartStandby
+	NsControllerStateStartStandby = &pNsControllerStateStartStandby
+
+	pNsControllerStateStale = cNsControllerStateStale
+	NsControllerStateStale = &pNsControllerStateStale
+
+	pNsControllerStateStandby = cNsControllerStateStandby
+	NsControllerStateStandby = &pNsControllerStateStandby
+
+	pNsControllerStateActive = cNsControllerStateActive
+	NsControllerStateActive = &pNsControllerStateActive
+
+	pNsControllerStateSolo = cNsControllerStateSolo
+	NsControllerStateSolo = &pNsControllerStateSolo
+
+	pNsControllerStateNone = cNsControllerStateNone
+	NsControllerStateNone = &pNsControllerStateNone
+
+}

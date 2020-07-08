@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // View audit log.
 const (
-    auditLogPath = "audit_log"
+	auditLogPath = "audit_log"
 )
 
 // AuditLogObjectSet
 type AuditLogObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new AuditLog object
@@ -42,10 +41,10 @@ func (objectSet *AuditLogObjectSet) GetObject(id string) (*model.AuditLog, error
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if auditLogObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return auditLogObjectSetResp.(*model.AuditLog), err
 }
@@ -67,8 +66,9 @@ func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *util.GetPara
 	}
 	return buildAuditLogObjectSet(auditLogObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildAuditLogObjectSet(response interface{}) ([]*model.AuditLog) {
+func buildAuditLogObjectSet(response interface{}) []*model.AuditLog {
 	values := reflect.ValueOf(response)
 	results := make([]*model.AuditLog, values.Len())
 

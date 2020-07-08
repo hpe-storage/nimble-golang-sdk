@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsPlatOrientation Enum.
- 
-type NsPlatOrientation string 
+
+type NsPlatOrientation string
 
 const (
-	NSPLATORIENTATION_RIGHT_TO_LEFT NsPlatOrientation = "right_to_left"
-	NSPLATORIENTATION_LEFT_TO_RIGHT NsPlatOrientation = "left_to_right"
+	cNsPlatOrientationRightToLeft NsPlatOrientation = "right_to_left"
+	cNsPlatOrientationLeftToRight NsPlatOrientation = "left_to_right"
+)
 
-) 
+var pNsPlatOrientationRightToLeft NsPlatOrientation
+var pNsPlatOrientationLeftToRight NsPlatOrientation
+
+// Export
+var NsPlatOrientationRightToLeft *NsPlatOrientation
+var NsPlatOrientationLeftToRight *NsPlatOrientation
+
+func init() {
+	pNsPlatOrientationRightToLeft = cNsPlatOrientationRightToLeft
+	NsPlatOrientationRightToLeft = &pNsPlatOrientationRightToLeft
+
+	pNsPlatOrientationLeftToRight = cNsPlatOrientationLeftToRight
+	NsPlatOrientationLeftToRight = &pNsPlatOrientationLeftToRight
+
+}

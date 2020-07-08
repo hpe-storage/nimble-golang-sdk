@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // This API provides the alias information for Fibre Channel initiators.
 const (
-    fibreChannelInitiatorAliasPath = "fibre_channel_initiator_aliases"
+	fibreChannelInitiatorAliasPath = "fibre_channel_initiator_aliases"
 )
 
 // FibreChannelInitiatorAliasObjectSet
 type FibreChannelInitiatorAliasObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new FibreChannelInitiatorAlias object
@@ -42,10 +41,10 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObject(id string) (*mod
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if fibreChannelInitiatorAliasObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return fibreChannelInitiatorAliasObjectSetResp.(*model.FibreChannelInitiatorAlias), err
 }
@@ -67,8 +66,9 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectListFromParams(pa
 	}
 	return buildFibreChannelInitiatorAliasObjectSet(fibreChannelInitiatorAliasObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildFibreChannelInitiatorAliasObjectSet(response interface{}) ([]*model.FibreChannelInitiatorAlias) {
+func buildFibreChannelInitiatorAliasObjectSet(response interface{}) []*model.FibreChannelInitiatorAlias {
 	values := reflect.ValueOf(response)
 	results := make([]*model.FibreChannelInitiatorAlias, values.Len())
 

@@ -2,12 +2,32 @@
 package model
 
 // Golang package for NsProtectionType Enum.
- 
-type NsProtectionType string 
+
+type NsProtectionType string
 
 const (
-	NSPROTECTIONTYPE_UNPROTECTED NsProtectionType = "unprotected"
-	NSPROTECTIONTYPE_REMOTE NsProtectionType = "remote"
-	NSPROTECTIONTYPE_LOCAL NsProtectionType = "local"
+	cNsProtectionTypeUnprotected NsProtectionType = "unprotected"
+	cNsProtectionTypeRemote      NsProtectionType = "remote"
+	cNsProtectionTypeLocal       NsProtectionType = "local"
+)
 
-) 
+var pNsProtectionTypeUnprotected NsProtectionType
+var pNsProtectionTypeRemote NsProtectionType
+var pNsProtectionTypeLocal NsProtectionType
+
+// Export
+var NsProtectionTypeUnprotected *NsProtectionType
+var NsProtectionTypeRemote *NsProtectionType
+var NsProtectionTypeLocal *NsProtectionType
+
+func init() {
+	pNsProtectionTypeUnprotected = cNsProtectionTypeUnprotected
+	NsProtectionTypeUnprotected = &pNsProtectionTypeUnprotected
+
+	pNsProtectionTypeRemote = cNsProtectionTypeRemote
+	NsProtectionTypeRemote = &pNsProtectionTypeRemote
+
+	pNsProtectionTypeLocal = cNsProtectionTypeLocal
+	NsProtectionTypeLocal = &pNsProtectionTypeLocal
+
+}

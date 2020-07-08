@@ -3,57 +3,59 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best
 // configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full
 // compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 const (
-    performancePolicyPath = "performance_policies"
+	performancePolicyPath = "performance_policies"
 )
 
 // PerformancePolicyObjectSet
 type PerformancePolicyObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	performancePolicyObjectSetResp, err := objectSet.Client.Post(performancePolicyPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodePerformancePolicy(payload)
+	resp, err := objectSet.Client.Post(performancePolicyPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if performancePolicyObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return performancePolicyObjectSetResp.(*model.PerformancePolicy), err
+
+	return model.DecodePerformancePolicy(resp)
 }
 
 // UpdateObject Modify existing PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	performancePolicyObjectSetResp, err := objectSet.Client.Put(performancePolicyPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodePerformancePolicy(payload)
+	resp, err := objectSet.Client.Put(performancePolicyPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if performancePolicyObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return performancePolicyObjectSetResp.(*model.PerformancePolicy), err
+	return model.DecodePerformancePolicy(resp)
 }
 
 // DeleteObject deletes the PerformancePolicy object with the specified ID
 func (objectSet *PerformancePolicyObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(performancePolicyPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -65,10 +67,10 @@ func (objectSet *PerformancePolicyObjectSet) GetObject(id string) (*model.Perfor
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if performancePolicyObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return performancePolicyObjectSetResp.(*model.PerformancePolicy), err
 }
@@ -90,8 +92,9 @@ func (objectSet *PerformancePolicyObjectSet) GetObjectListFromParams(params *uti
 	}
 	return buildPerformancePolicyObjectSet(performancePolicyObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildPerformancePolicyObjectSet(response interface{}) ([]*model.PerformancePolicy) {
+func buildPerformancePolicyObjectSet(response interface{}) []*model.PerformancePolicy {
 	values := reflect.ValueOf(response)
 	results := make([]*model.PerformancePolicy, values.Len())
 

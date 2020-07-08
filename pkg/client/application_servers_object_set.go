@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 const (
-    applicationServerPath = "application_servers"
+	applicationServerPath = "application_servers"
 )
 
 // ApplicationServerObjectSet
 type ApplicationServerObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *model.ApplicationServer) (*model.ApplicationServer, error) {
-	applicationServerObjectSetResp, err := objectSet.Client.Post(applicationServerPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeApplicationServer(payload)
+	resp, err := objectSet.Client.Post(applicationServerPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if applicationServerObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return applicationServerObjectSetResp.(*model.ApplicationServer), err
+
+	return model.DecodeApplicationServer(resp)
 }
 
 // UpdateObject Modify existing ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *model.ApplicationServer) (*model.ApplicationServer, error) {
-	applicationServerObjectSetResp, err := objectSet.Client.Put(applicationServerPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeApplicationServer(payload)
+	resp, err := objectSet.Client.Put(applicationServerPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if applicationServerObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return applicationServerObjectSetResp.(*model.ApplicationServer), err
+	return model.DecodeApplicationServer(resp)
 }
 
 // DeleteObject deletes the ApplicationServer object with the specified ID
 func (objectSet *ApplicationServerObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(applicationServerPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *ApplicationServerObjectSet) GetObject(id string) (*model.Applic
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if applicationServerObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return applicationServerObjectSetResp.(*model.ApplicationServer), err
 }
@@ -88,8 +90,9 @@ func (objectSet *ApplicationServerObjectSet) GetObjectListFromParams(params *uti
 	}
 	return buildApplicationServerObjectSet(applicationServerObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildApplicationServerObjectSet(response interface{}) ([]*model.ApplicationServer) {
+func buildApplicationServerObjectSet(response interface{}) []*model.ApplicationServer {
 	values := reflect.ValueOf(response)
 	results := make([]*model.ApplicationServer, values.Len())
 

@@ -3,22 +3,21 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Controller is a redundant collection of hardware capable of running the array software.
 const (
-    controllerPath = "controllers"
+	controllerPath = "controllers"
 )
 
 // ControllerObjectSet
 type ControllerObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Controller object
@@ -42,10 +41,10 @@ func (objectSet *ControllerObjectSet) GetObject(id string) (*model.Controller, e
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if controllerObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return controllerObjectSetResp.(*model.Controller), err
 }
@@ -67,8 +66,9 @@ func (objectSet *ControllerObjectSet) GetObjectListFromParams(params *util.GetPa
 	}
 	return buildControllerObjectSet(controllerObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildControllerObjectSet(response interface{}) ([]*model.Controller) {
+func buildControllerObjectSet(response interface{}) []*model.Controller {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Controller, values.Len())
 

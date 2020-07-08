@@ -3,55 +3,57 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Represents users configured to manage the system.
 const (
-    userPath = "users"
+	userPath = "users"
 )
 
 // UserObjectSet
 type UserObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new User object
 func (objectSet *UserObjectSet) CreateObject(payload *model.User) (*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.Post(userPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeUser(payload)
+	resp, err := objectSet.Client.Post(userPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userObjectSetResp.(*model.User), err
+
+	return model.DecodeUser(resp)
 }
 
 // UpdateObject Modify existing User object
 func (objectSet *UserObjectSet) UpdateObject(id string, payload *model.User) (*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.Put(userPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeUser(payload)
+	resp, err := objectSet.Client.Put(userPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userObjectSetResp.(*model.User), err
+	return model.DecodeUser(resp)
 }
 
 // DeleteObject deletes the User object with the specified ID
 func (objectSet *UserObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(userPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -63,10 +65,10 @@ func (objectSet *UserObjectSet) GetObject(id string) (*model.User, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if userObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return userObjectSetResp.(*model.User), err
 }
@@ -88,8 +90,9 @@ func (objectSet *UserObjectSet) GetObjectListFromParams(params *util.GetParams) 
 	}
 	return buildUserObjectSet(userObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildUserObjectSet(response interface{}) ([]*model.User) {
+func buildUserObjectSet(response interface{}) []*model.User {
 	values := reflect.ValueOf(response)
 	results := make([]*model.User, values.Len())
 

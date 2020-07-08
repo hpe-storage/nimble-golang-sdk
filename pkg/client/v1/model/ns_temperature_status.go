@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsTemperatureStatus Enum.
- 
-type NsTemperatureStatus string 
+
+type NsTemperatureStatus string
 
 const (
-	NSTEMPERATURESTATUS_TEMPERATURE_UNKNOWN NsTemperatureStatus = "temperature_unknown"
-	NSTEMPERATURESTATUS_TEMPERATURE_ALERTED NsTemperatureStatus = "temperature_alerted"
-	NSTEMPERATURESTATUS_TEMPERATURE_OKAY NsTemperatureStatus = "temperature_okay"
-	NSTEMPERATURESTATUS_TEMPERATURE_FAIL NsTemperatureStatus = "temperature_fail"
+	cNsTemperatureStatusTemperatureUnknown NsTemperatureStatus = "temperature_unknown"
+	cNsTemperatureStatusTemperatureAlerted NsTemperatureStatus = "temperature_alerted"
+	cNsTemperatureStatusTemperatureOkay    NsTemperatureStatus = "temperature_okay"
+	cNsTemperatureStatusTemperatureFail    NsTemperatureStatus = "temperature_fail"
+)
 
-) 
+var pNsTemperatureStatusTemperatureUnknown NsTemperatureStatus
+var pNsTemperatureStatusTemperatureAlerted NsTemperatureStatus
+var pNsTemperatureStatusTemperatureOkay NsTemperatureStatus
+var pNsTemperatureStatusTemperatureFail NsTemperatureStatus
+
+// Export
+var NsTemperatureStatusTemperatureUnknown *NsTemperatureStatus
+var NsTemperatureStatusTemperatureAlerted *NsTemperatureStatus
+var NsTemperatureStatusTemperatureOkay *NsTemperatureStatus
+var NsTemperatureStatusTemperatureFail *NsTemperatureStatus
+
+func init() {
+	pNsTemperatureStatusTemperatureUnknown = cNsTemperatureStatusTemperatureUnknown
+	NsTemperatureStatusTemperatureUnknown = &pNsTemperatureStatusTemperatureUnknown
+
+	pNsTemperatureStatusTemperatureAlerted = cNsTemperatureStatusTemperatureAlerted
+	NsTemperatureStatusTemperatureAlerted = &pNsTemperatureStatusTemperatureAlerted
+
+	pNsTemperatureStatusTemperatureOkay = cNsTemperatureStatusTemperatureOkay
+	NsTemperatureStatusTemperatureOkay = &pNsTemperatureStatusTemperatureOkay
+
+	pNsTemperatureStatusTemperatureFail = cNsTemperatureStatusTemperatureFail
+	NsTemperatureStatusTemperatureFail = &pNsTemperatureStatusTemperatureFail
+
+}

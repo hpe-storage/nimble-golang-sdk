@@ -3,56 +3,58 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections
 // can be created from scratch or based on predefined protection templates.
 const (
-    volumeCollectionPath = "volume_collections"
+	volumeCollectionPath = "volume_collections"
 )
 
 // VolumeCollectionObjectSet
 type VolumeCollectionObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *model.VolumeCollection) (*model.VolumeCollection, error) {
-	volumeCollectionObjectSetResp, err := objectSet.Client.Post(volumeCollectionPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeVolumeCollection(payload)
+	resp, err := objectSet.Client.Post(volumeCollectionPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if volumeCollectionObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
+
+	return model.DecodeVolumeCollection(resp)
 }
 
 // UpdateObject Modify existing VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *model.VolumeCollection) (*model.VolumeCollection, error) {
-	volumeCollectionObjectSetResp, err := objectSet.Client.Put(volumeCollectionPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeVolumeCollection(payload)
+	resp, err := objectSet.Client.Put(volumeCollectionPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if volumeCollectionObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
+	return model.DecodeVolumeCollection(resp)
 }
 
 // DeleteObject deletes the VolumeCollection object with the specified ID
 func (objectSet *VolumeCollectionObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(volumeCollectionPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -64,10 +66,10 @@ func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*model.VolumeC
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if volumeCollectionObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
 }
@@ -89,8 +91,9 @@ func (objectSet *VolumeCollectionObjectSet) GetObjectListFromParams(params *util
 	}
 	return buildVolumeCollectionObjectSet(volumeCollectionObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildVolumeCollectionObjectSet(response interface{}) ([]*model.VolumeCollection) {
+func buildVolumeCollectionObjectSet(response interface{}) []*model.VolumeCollection {
 	values := reflect.ValueOf(response)
 	results := make([]*model.VolumeCollection, values.Len())
 

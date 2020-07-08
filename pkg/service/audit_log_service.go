@@ -11,13 +11,13 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
 )
 
-// AuditLogService type 
+// AuditLogService type
 type AuditLogService struct {
 	objectSet *client.AuditLogObjectSet
 }
 
-// NewAuditLogService - method to initialize "AuditLogService" 
-func NewAuditLogService(gs *NsGroupService) (*AuditLogService) {
+// NewAuditLogService - method to initialize "AuditLogService"
+func NewAuditLogService(gs *NsGroupService) *AuditLogService {
 	objectSet := gs.client.GetAuditLogObjectSet()
 	return &AuditLogService{objectSet: objectSet}
 }
@@ -25,60 +25,59 @@ func NewAuditLogService(gs *NsGroupService) (*AuditLogService) {
 // GetAuditLogs - method returns a array of pointers of type "AuditLogs"
 func (svc *AuditLogService) GetAuditLogs(params *util.GetParams) ([]*model.AuditLog, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	auditLogResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	auditLogResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return auditLogResp,nil
+	return auditLogResp, nil
 }
 
 // CreateAuditLog - method creates a "AuditLog"
 func (svc *AuditLogService) CreateAuditLog(obj *model.AuditLog) (*model.AuditLog, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	auditLogResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	auditLogResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return auditLogResp,nil
+	return auditLogResp, nil
 }
 
-// UpdateAuditLog - method modifies  the "AuditLog" 
+// UpdateAuditLog - method modifies  the "AuditLog"
 func (svc *AuditLogService) UpdateAuditLog(id string, obj *model.AuditLog) (*model.AuditLog, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	auditLogResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	auditLogResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return auditLogResp,nil
+	return auditLogResp, nil
 }
 
 // GetAuditLogById - method returns a pointer to "AuditLog"
 func (svc *AuditLogService) GetAuditLogById(id string) (*model.AuditLog, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	auditLogResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return auditLogResp,nil
+	return auditLogResp, nil
 }
-
 
 // DeleteAuditLog - deletes the "AuditLog"
 func (svc *AuditLogService) DeleteAuditLog(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

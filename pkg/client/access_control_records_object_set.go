@@ -3,36 +3,37 @@
 package client
 
 import (
-	"reflect"
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Manage access control records for volumes.
 const (
-    accessControlRecordPath = "access_control_records"
+	accessControlRecordPath = "access_control_records"
 )
 
 // AccessControlRecordObjectSet
 type AccessControlRecordObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
-	accessControlRecordObjectSetResp, err := objectSet.Client.Post(accessControlRecordPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeAccessControlRecord(payload)
+	resp, err := objectSet.Client.Post(accessControlRecordPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if accessControlRecordObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return accessControlRecordObjectSetResp.(*model.AccessControlRecord), err
+
+	return model.DecodeAccessControlRecord(resp)
 }
 
 // UpdateObject Modify existing AccessControlRecord object
@@ -43,7 +44,7 @@ func (objectSet *AccessControlRecordObjectSet) UpdateObject(id string, payload *
 // DeleteObject deletes the AccessControlRecord object with the specified ID
 func (objectSet *AccessControlRecordObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(accessControlRecordPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -55,10 +56,10 @@ func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*model.Acce
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if accessControlRecordObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return accessControlRecordObjectSetResp.(*model.AccessControlRecord), err
 }
@@ -80,8 +81,9 @@ func (objectSet *AccessControlRecordObjectSet) GetObjectListFromParams(params *u
 	}
 	return buildAccessControlRecordObjectSet(accessControlRecordObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildAccessControlRecordObjectSet(response interface{}) ([]*model.AccessControlRecord) {
+func buildAccessControlRecordObjectSet(response interface{}) []*model.AccessControlRecord {
 	values := reflect.ValueOf(response)
 	results := make([]*model.AccessControlRecord, values.Len())
 

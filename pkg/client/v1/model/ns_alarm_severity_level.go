@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsAlarmSeverityLevel Enum.
- 
-type NsAlarmSeverityLevel string 
+
+type NsAlarmSeverityLevel string
 
 const (
-	NSALARMSEVERITYLEVEL_CRITICAL NsAlarmSeverityLevel = "critical"
-	NSALARMSEVERITYLEVEL_WARNING NsAlarmSeverityLevel = "warning"
+	cNsAlarmSeverityLevelCritical NsAlarmSeverityLevel = "critical"
+	cNsAlarmSeverityLevelWarning  NsAlarmSeverityLevel = "warning"
+)
 
-) 
+var pNsAlarmSeverityLevelCritical NsAlarmSeverityLevel
+var pNsAlarmSeverityLevelWarning NsAlarmSeverityLevel
+
+// Export
+var NsAlarmSeverityLevelCritical *NsAlarmSeverityLevel
+var NsAlarmSeverityLevelWarning *NsAlarmSeverityLevel
+
+func init() {
+	pNsAlarmSeverityLevelCritical = cNsAlarmSeverityLevelCritical
+	NsAlarmSeverityLevelCritical = &pNsAlarmSeverityLevelCritical
+
+	pNsAlarmSeverityLevelWarning = cNsAlarmSeverityLevelWarning
+	NsAlarmSeverityLevelWarning = &pNsAlarmSeverityLevelWarning
+
+}

@@ -2,11 +2,26 @@
 package model
 
 // Golang package for NsScheduleType Enum.
- 
-type NsScheduleType string 
+
+type NsScheduleType string
 
 const (
-	NSSCHEDULETYPE_EXTERNAL_TRIGGER NsScheduleType = "external_trigger"
-	NSSCHEDULETYPE_REGULAR NsScheduleType = "regular"
+	cNsScheduleTypeExternalTrigger NsScheduleType = "external_trigger"
+	cNsScheduleTypeRegular         NsScheduleType = "regular"
+)
 
-) 
+var pNsScheduleTypeExternalTrigger NsScheduleType
+var pNsScheduleTypeRegular NsScheduleType
+
+// Export
+var NsScheduleTypeExternalTrigger *NsScheduleType
+var NsScheduleTypeRegular *NsScheduleType
+
+func init() {
+	pNsScheduleTypeExternalTrigger = cNsScheduleTypeExternalTrigger
+	NsScheduleTypeExternalTrigger = &pNsScheduleTypeExternalTrigger
+
+	pNsScheduleTypeRegular = cNsScheduleTypeRegular
+	NsScheduleTypeRegular = &pNsScheduleTypeRegular
+
+}

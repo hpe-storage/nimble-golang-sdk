@@ -3,56 +3,58 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the
 // collections were taken.
 const (
-    snapshotCollectionPath = "snapshot_collections"
+	snapshotCollectionPath = "snapshot_collections"
 )
 
 // SnapshotCollectionObjectSet
 type SnapshotCollectionObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *model.SnapshotCollection) (*model.SnapshotCollection, error) {
-	snapshotCollectionObjectSetResp, err := objectSet.Client.Post(snapshotCollectionPath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeSnapshotCollection(payload)
+	resp, err := objectSet.Client.Post(snapshotCollectionPath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if snapshotCollectionObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return snapshotCollectionObjectSetResp.(*model.SnapshotCollection), err
+
+	return model.DecodeSnapshotCollection(resp)
 }
 
 // UpdateObject Modify existing SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *model.SnapshotCollection) (*model.SnapshotCollection, error) {
-	snapshotCollectionObjectSetResp, err := objectSet.Client.Put(snapshotCollectionPath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeSnapshotCollection(payload)
+	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if snapshotCollectionObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return snapshotCollectionObjectSetResp.(*model.SnapshotCollection), err
+	return model.DecodeSnapshotCollection(resp)
 }
 
 // DeleteObject deletes the SnapshotCollection object with the specified ID
 func (objectSet *SnapshotCollectionObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(snapshotCollectionPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -64,10 +66,10 @@ func (objectSet *SnapshotCollectionObjectSet) GetObject(id string) (*model.Snaps
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if snapshotCollectionObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return snapshotCollectionObjectSetResp.(*model.SnapshotCollection), err
 }
@@ -89,8 +91,9 @@ func (objectSet *SnapshotCollectionObjectSet) GetObjectListFromParams(params *ut
 	}
 	return buildSnapshotCollectionObjectSet(snapshotCollectionObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildSnapshotCollectionObjectSet(response interface{}) ([]*model.SnapshotCollection) {
+func buildSnapshotCollectionObjectSet(response interface{}) []*model.SnapshotCollection {
 	values := reflect.ValueOf(response)
 	results := make([]*model.SnapshotCollection, values.Len())
 

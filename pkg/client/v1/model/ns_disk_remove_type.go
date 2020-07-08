@@ -2,14 +2,44 @@
 package model
 
 // Golang package for NsDiskRemoveType Enum.
- 
-type NsDiskRemoveType string 
+
+type NsDiskRemoveType string
 
 const (
-	NSDISKREMOVETYPE_TEMP_FAIL NsDiskRemoveType = "temp_fail"
-	NSDISKREMOVETYPE_LDR_REMOVE NsDiskRemoveType = "ldr_remove"
-	NSDISKREMOVETYPE_PERM_FAIL NsDiskRemoveType = "perm_fail"
-	NSDISKREMOVETYPE_REMOVE NsDiskRemoveType = "remove"
-	NSDISKREMOVETYPE_DIAG_REMOVE NsDiskRemoveType = "diag_remove"
+	cNsDiskRemoveTypeTempFail   NsDiskRemoveType = "temp_fail"
+	cNsDiskRemoveTypeLdrRemove  NsDiskRemoveType = "ldr_remove"
+	cNsDiskRemoveTypePermFail   NsDiskRemoveType = "perm_fail"
+	cNsDiskRemoveTypeRemove     NsDiskRemoveType = "remove"
+	cNsDiskRemoveTypeDiagRemove NsDiskRemoveType = "diag_remove"
+)
 
-) 
+var pNsDiskRemoveTypeTempFail NsDiskRemoveType
+var pNsDiskRemoveTypeLdrRemove NsDiskRemoveType
+var pNsDiskRemoveTypePermFail NsDiskRemoveType
+var pNsDiskRemoveTypeRemove NsDiskRemoveType
+var pNsDiskRemoveTypeDiagRemove NsDiskRemoveType
+
+// Export
+var NsDiskRemoveTypeTempFail *NsDiskRemoveType
+var NsDiskRemoveTypeLdrRemove *NsDiskRemoveType
+var NsDiskRemoveTypePermFail *NsDiskRemoveType
+var NsDiskRemoveTypeRemove *NsDiskRemoveType
+var NsDiskRemoveTypeDiagRemove *NsDiskRemoveType
+
+func init() {
+	pNsDiskRemoveTypeTempFail = cNsDiskRemoveTypeTempFail
+	NsDiskRemoveTypeTempFail = &pNsDiskRemoveTypeTempFail
+
+	pNsDiskRemoveTypeLdrRemove = cNsDiskRemoveTypeLdrRemove
+	NsDiskRemoveTypeLdrRemove = &pNsDiskRemoveTypeLdrRemove
+
+	pNsDiskRemoveTypePermFail = cNsDiskRemoveTypePermFail
+	NsDiskRemoveTypePermFail = &pNsDiskRemoveTypePermFail
+
+	pNsDiskRemoveTypeRemove = cNsDiskRemoveTypeRemove
+	NsDiskRemoveTypeRemove = &pNsDiskRemoveTypeRemove
+
+	pNsDiskRemoveTypeDiagRemove = cNsDiskRemoveTypeDiagRemove
+	NsDiskRemoveTypeDiagRemove = &pNsDiskRemoveTypeDiagRemove
+
+}

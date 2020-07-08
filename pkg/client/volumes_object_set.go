@@ -3,56 +3,58 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"reflect"
 )
-
 
 // Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on
 // storage allocation.
 const (
-    volumePath = "volumes"
+	volumePath = "volumes"
 )
 
 // VolumeObjectSet
 type VolumeObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Volume object
 func (objectSet *VolumeObjectSet) CreateObject(payload *model.Volume) (*model.Volume, error) {
-	volumeObjectSetResp, err := objectSet.Client.Post(volumePath, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeVolume(payload)
+	resp, err := objectSet.Client.Post(volumePath, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if volumeObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return volumeObjectSetResp.(*model.Volume), err
+
+	return model.DecodeVolume(resp)
 }
 
 // UpdateObject Modify existing Volume object
 func (objectSet *VolumeObjectSet) UpdateObject(id string, payload *model.Volume) (*model.Volume, error) {
-	volumeObjectSetResp, err := objectSet.Client.Put(volumePath, id, payload)
-	if err !=nil {
-		return nil,err
+	newPayload, err := model.EncodeVolume(payload)
+	resp, err := objectSet.Client.Put(volumePath, id, newPayload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if volumeObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return volumeObjectSetResp.(*model.Volume), err
+	return model.DecodeVolume(resp)
 }
 
 // DeleteObject deletes the Volume object with the specified ID
 func (objectSet *VolumeObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(volumePath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
@@ -64,10 +66,10 @@ func (objectSet *VolumeObjectSet) GetObject(id string) (*model.Volume, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
 	if volumeObjectSetResp == nil {
-		return nil,nil
+		return nil, nil
 	}
 	return volumeObjectSetResp.(*model.Volume), err
 }
@@ -89,8 +91,9 @@ func (objectSet *VolumeObjectSet) GetObjectListFromParams(params *util.GetParams
 	}
 	return buildVolumeObjectSet(volumeObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildVolumeObjectSet(response interface{}) ([]*model.Volume) {
+func buildVolumeObjectSet(response interface{}) []*model.Volume {
 	values := reflect.ValueOf(response)
 	results := make([]*model.Volume, values.Len())
 

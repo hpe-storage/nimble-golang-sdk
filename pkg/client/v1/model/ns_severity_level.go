@@ -2,13 +2,38 @@
 package model
 
 // Golang package for NsSeverityLevel Enum.
- 
-type NsSeverityLevel string 
+
+type NsSeverityLevel string
 
 const (
-	NSSEVERITYLEVEL_CRITICAL NsSeverityLevel = "critical"
-	NSSEVERITYLEVEL_WARNING NsSeverityLevel = "warning"
-	NSSEVERITYLEVEL_INFO NsSeverityLevel = "info"
-	NSSEVERITYLEVEL_NOTICE NsSeverityLevel = "notice"
+	cNsSeverityLevelCritical NsSeverityLevel = "critical"
+	cNsSeverityLevelWarning  NsSeverityLevel = "warning"
+	cNsSeverityLevelInfo     NsSeverityLevel = "info"
+	cNsSeverityLevelNotice   NsSeverityLevel = "notice"
+)
 
-) 
+var pNsSeverityLevelCritical NsSeverityLevel
+var pNsSeverityLevelWarning NsSeverityLevel
+var pNsSeverityLevelInfo NsSeverityLevel
+var pNsSeverityLevelNotice NsSeverityLevel
+
+// Export
+var NsSeverityLevelCritical *NsSeverityLevel
+var NsSeverityLevelWarning *NsSeverityLevel
+var NsSeverityLevelInfo *NsSeverityLevel
+var NsSeverityLevelNotice *NsSeverityLevel
+
+func init() {
+	pNsSeverityLevelCritical = cNsSeverityLevelCritical
+	NsSeverityLevelCritical = &pNsSeverityLevelCritical
+
+	pNsSeverityLevelWarning = cNsSeverityLevelWarning
+	NsSeverityLevelWarning = &pNsSeverityLevelWarning
+
+	pNsSeverityLevelInfo = cNsSeverityLevelInfo
+	NsSeverityLevelInfo = &pNsSeverityLevelInfo
+
+	pNsSeverityLevelNotice = cNsSeverityLevelNotice
+	NsSeverityLevelNotice = &pNsSeverityLevelNotice
+
+}
