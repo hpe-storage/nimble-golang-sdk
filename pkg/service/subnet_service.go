@@ -6,6 +6,7 @@ package service
 // let you create logical addressing for selective routing.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -24,23 +25,54 @@ func NewSubnetService(gs *NsGroupService) (*SubnetService) {
 
 // GetSubnets - method returns a array of pointers of type "Subnets"
 func (svc *SubnetService) GetSubnets(params *util.GetParams) ([]*model.Subnet, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	subnetResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return subnetResp,nil
 }
 
 // CreateSubnet - method creates a "Subnet"
 func (svc *SubnetService) CreateSubnet(obj *model.Subnet) (*model.Subnet, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	subnetResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return subnetResp,nil
 }
 
 // UpdateSubnet - method modifies  the "Subnet" 
 func (svc *SubnetService) UpdateSubnet(id string, obj *model.Subnet) (*model.Subnet, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	subnetResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return subnetResp,nil
 }
 
 // GetSubnetById - method returns a pointer to "Subnet"
 func (svc *SubnetService) GetSubnetById(id string) (*model.Subnet, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	subnetResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return subnetResp,nil
 }
 
 // GetSubnetByName - method returns a pointer "Subnet" 
@@ -52,19 +84,26 @@ func (svc *SubnetService) GetSubnetByName(name string) (*model.Subnet, error) {
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	subnetResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(subnetResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return subnetResp[0],nil
 }	
 
 // DeleteSubnet - deletes the "Subnet"
 func (svc *SubnetService) DeleteSubnet(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

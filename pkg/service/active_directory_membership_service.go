@@ -5,6 +5,7 @@ package service
 // ActiveDirectoryMembership Service - Manages the storage array's membership with the Active Directory.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewActiveDirectoryMembershipService(gs *NsGroupService) (*ActiveDirectoryMe
 
 // GetActiveDirectoryMemberships - method returns a array of pointers of type "ActiveDirectoryMemberships"
 func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(params *util.GetParams) ([]*model.ActiveDirectoryMembership, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	activeDirectoryMembershipResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return activeDirectoryMembershipResp,nil
 }
 
 // CreateActiveDirectoryMembership - method creates a "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) CreateActiveDirectoryMembership(obj *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	activeDirectoryMembershipResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return activeDirectoryMembershipResp,nil
 }
 
 // UpdateActiveDirectoryMembership - method modifies  the "ActiveDirectoryMembership" 
 func (svc *ActiveDirectoryMembershipService) UpdateActiveDirectoryMembership(id string, obj *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	activeDirectoryMembershipResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return activeDirectoryMembershipResp,nil
 }
 
 // GetActiveDirectoryMembershipById - method returns a pointer to "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipById(id string) (*model.ActiveDirectoryMembership, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	activeDirectoryMembershipResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return activeDirectoryMembershipResp,nil
 }
 
 // GetActiveDirectoryMembershipByName - method returns a pointer "ActiveDirectoryMembership" 
@@ -51,19 +83,26 @@ func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipByName(
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	activeDirectoryMembershipResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(activeDirectoryMembershipResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return activeDirectoryMembershipResp[0],nil
 }	
 
 // DeleteActiveDirectoryMembership - deletes the "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -5,6 +5,7 @@ package service
 // ProtectionSchedule Service - Manage protection schedules used in protection templates.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewProtectionScheduleService(gs *NsGroupService) (*ProtectionScheduleServic
 
 // GetProtectionSchedules - method returns a array of pointers of type "ProtectionSchedules"
 func (svc *ProtectionScheduleService) GetProtectionSchedules(params *util.GetParams) ([]*model.ProtectionSchedule, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	protectionScheduleResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return protectionScheduleResp,nil
 }
 
 // CreateProtectionSchedule - method creates a "ProtectionSchedule"
 func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	protectionScheduleResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return protectionScheduleResp,nil
 }
 
 // UpdateProtectionSchedule - method modifies  the "ProtectionSchedule" 
 func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	protectionScheduleResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return protectionScheduleResp,nil
 }
 
 // GetProtectionScheduleById - method returns a pointer to "ProtectionSchedule"
 func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*model.ProtectionSchedule, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	protectionScheduleResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return protectionScheduleResp,nil
 }
 
 // GetProtectionScheduleByName - method returns a pointer "ProtectionSchedule" 
@@ -51,19 +83,26 @@ func (svc *ProtectionScheduleService) GetProtectionScheduleByName(name string) (
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	protectionScheduleResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(protectionScheduleResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return protectionScheduleResp[0],nil
 }	
 
 // DeleteProtectionSchedule - deletes the "ProtectionSchedule"
 func (svc *ProtectionScheduleService) DeleteProtectionSchedule(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

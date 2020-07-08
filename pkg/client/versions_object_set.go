@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,42 +23,50 @@ type VersionObjectSet struct {
 
 // CreateObject creates a new Version object
 func (objectSet *VersionObjectSet) CreateObject(payload *model.Version) (*model.Version, error) {
-	response, err := objectSet.Client.Post(versionPath, payload)
-	return response.(*model.Version), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Version")
 }
 
 // UpdateObject Modify existing Version object
 func (objectSet *VersionObjectSet) UpdateObject(id string, payload *model.Version) (*model.Version, error) {
-	response, err := objectSet.Client.Put(versionPath, id, payload)
-	return response.(*model.Version), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Version")
 }
 
 // DeleteObject deletes the Version object with the specified ID
 func (objectSet *VersionObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(versionPath, id)
+	return fmt.Errorf("Unsupported operation 'delete' on Version")
 }
 
 // GetObject returns a Version object with the given ID
 func (objectSet *VersionObjectSet) GetObject(id string) (*model.Version, error) {
-	response, err := objectSet.Client.Get(versionPath, id, model.Version{})
-	if response == nil {
+	versionObjectSetResp, err := objectSet.Client.Get(versionPath, id, model.Version{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Version), err
+	
+	// null check
+	if versionObjectSetResp == nil {
+		return nil,nil
+	}
+	return versionObjectSetResp.(*model.Version), err
 }
 
 // GetObjectList returns the list of Version objects
 func (objectSet *VersionObjectSet) GetObjectList() ([]*model.Version, error) {
-	response, err := objectSet.Client.List(versionPath)
-	return buildVersionObjectSet(response), err
+	versionObjectSetResp, err := objectSet.Client.List(versionPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildVersionObjectSet(versionObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Version objects using the given params query info
 func (objectSet *VersionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Version, error) {
-	response, err := objectSet.Client.ListFromParams(versionPath, params)
-	return buildVersionObjectSet(response), err
+	versionObjectSetResp, err := objectSet.Client.ListFromParams(versionPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildVersionObjectSet(versionObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildVersionObjectSet(response interface{}) ([]*model.Version) {
 	values := reflect.ValueOf(response)

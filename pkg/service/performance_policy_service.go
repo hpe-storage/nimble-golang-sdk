@@ -7,6 +7,7 @@ package service
 // compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -25,24 +26,55 @@ func NewPerformancePolicyService(gs *NsGroupService) (*PerformancePolicyService)
 
 // GetPerformancePolicies - method returns a array of pointers of type "PerformancePolicies"
 func (svc *PerformancePolicyService) GetPerformancePolicies(params *util.GetParams) ([]*model.PerformancePolicy, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	performancePolicyResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return performancePolicyResp,nil
 }
 
 
 // CreatePerformancePolicy - method creates a "PerformancePolicy"
 func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	performancePolicyResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return performancePolicyResp,nil
 }
 
 // UpdatePerformancePolicy - method modifies  the "PerformancePolicy" 
 func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	performancePolicyResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return performancePolicyResp,nil
 }
 
 // GetPerformancePolicyById - method returns a pointer to "PerformancePolicy"
 func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*model.PerformancePolicy, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	performancePolicyResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return performancePolicyResp,nil
 }
 
 // GetPerformancePolicyByName - method returns a pointer "PerformancePolicy" 
@@ -54,19 +86,26 @@ func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*m
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	performancePolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(performancePolicyResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return performancePolicyResp[0],nil
 }	
 
 // DeletePerformancePolicy - deletes the "PerformancePolicy"
 func (svc *PerformancePolicyService) DeletePerformancePolicy(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -5,6 +5,7 @@ package service
 // FibreChannelPort Service - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,27 +24,65 @@ func NewFibreChannelPortService(gs *NsGroupService) (*FibreChannelPortService) {
 
 // GetFibreChannelPorts - method returns a array of pointers of type "FibreChannelPorts"
 func (svc *FibreChannelPortService) GetFibreChannelPorts(params *util.GetParams) ([]*model.FibreChannelPort, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	fibreChannelPortResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return fibreChannelPortResp,nil
 }
 
 // CreateFibreChannelPort - method creates a "FibreChannelPort"
 func (svc *FibreChannelPortService) CreateFibreChannelPort(obj *model.FibreChannelPort) (*model.FibreChannelPort, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	fibreChannelPortResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return fibreChannelPortResp,nil
 }
 
 // UpdateFibreChannelPort - method modifies  the "FibreChannelPort" 
 func (svc *FibreChannelPortService) UpdateFibreChannelPort(id string, obj *model.FibreChannelPort) (*model.FibreChannelPort, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	fibreChannelPortResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return fibreChannelPortResp,nil
 }
 
 // GetFibreChannelPortById - method returns a pointer to "FibreChannelPort"
 func (svc *FibreChannelPortService) GetFibreChannelPortById(id string) (*model.FibreChannelPort, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	fibreChannelPortResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return fibreChannelPortResp,nil
 }
 
 
 // DeleteFibreChannelPort - deletes the "FibreChannelPort"
 func (svc *FibreChannelPortService) DeleteFibreChannelPort(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

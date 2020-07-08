@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,42 +23,50 @@ type AuditLogObjectSet struct {
 
 // CreateObject creates a new AuditLog object
 func (objectSet *AuditLogObjectSet) CreateObject(payload *model.AuditLog) (*model.AuditLog, error) {
-	response, err := objectSet.Client.Post(auditLogPath, payload)
-	return response.(*model.AuditLog), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on AuditLog")
 }
 
 // UpdateObject Modify existing AuditLog object
 func (objectSet *AuditLogObjectSet) UpdateObject(id string, payload *model.AuditLog) (*model.AuditLog, error) {
-	response, err := objectSet.Client.Put(auditLogPath, id, payload)
-	return response.(*model.AuditLog), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on AuditLog")
 }
 
 // DeleteObject deletes the AuditLog object with the specified ID
 func (objectSet *AuditLogObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(auditLogPath, id)
+	return fmt.Errorf("Unsupported operation 'delete' on AuditLog")
 }
 
 // GetObject returns a AuditLog object with the given ID
 func (objectSet *AuditLogObjectSet) GetObject(id string) (*model.AuditLog, error) {
-	response, err := objectSet.Client.Get(auditLogPath, id, model.AuditLog{})
-	if response == nil {
+	auditLogObjectSetResp, err := objectSet.Client.Get(auditLogPath, id, model.AuditLog{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.AuditLog), err
+	
+	// null check
+	if auditLogObjectSetResp == nil {
+		return nil,nil
+	}
+	return auditLogObjectSetResp.(*model.AuditLog), err
 }
 
 // GetObjectList returns the list of AuditLog objects
 func (objectSet *AuditLogObjectSet) GetObjectList() ([]*model.AuditLog, error) {
-	response, err := objectSet.Client.List(auditLogPath)
-	return buildAuditLogObjectSet(response), err
+	auditLogObjectSetResp, err := objectSet.Client.List(auditLogPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildAuditLogObjectSet(auditLogObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of AuditLog objects using the given params query info
 func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.AuditLog, error) {
-	response, err := objectSet.Client.ListFromParams(auditLogPath, params)
-	return buildAuditLogObjectSet(response), err
+	auditLogObjectSetResp, err := objectSet.Client.ListFromParams(auditLogPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildAuditLogObjectSet(auditLogObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildAuditLogObjectSet(response interface{}) ([]*model.AuditLog) {
 	values := reflect.ValueOf(response)

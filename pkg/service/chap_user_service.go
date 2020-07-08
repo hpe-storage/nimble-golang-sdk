@@ -7,6 +7,7 @@ package service
 // access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -25,23 +26,54 @@ func NewChapUserService(gs *NsGroupService) (*ChapUserService) {
 
 // GetChapUsers - method returns a array of pointers of type "ChapUsers"
 func (svc *ChapUserService) GetChapUsers(params *util.GetParams) ([]*model.ChapUser, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	chapUserResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return chapUserResp,nil
 }
 
 // CreateChapUser - method creates a "ChapUser"
 func (svc *ChapUserService) CreateChapUser(obj *model.ChapUser) (*model.ChapUser, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	chapUserResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return chapUserResp,nil
 }
 
 // UpdateChapUser - method modifies  the "ChapUser" 
 func (svc *ChapUserService) UpdateChapUser(id string, obj *model.ChapUser) (*model.ChapUser, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	chapUserResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return chapUserResp,nil
 }
 
 // GetChapUserById - method returns a pointer to "ChapUser"
 func (svc *ChapUserService) GetChapUserById(id string) (*model.ChapUser, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	chapUserResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return chapUserResp,nil
 }
 
 // GetChapUserByName - method returns a pointer "ChapUser" 
@@ -53,19 +85,26 @@ func (svc *ChapUserService) GetChapUserByName(name string) (*model.ChapUser, err
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	chapUserResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(chapUserResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return chapUserResp[0],nil
 }	
 
 // DeleteChapUser - deletes the "ChapUser"
 func (svc *ChapUserService) DeleteChapUser(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

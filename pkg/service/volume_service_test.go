@@ -24,8 +24,9 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
 	}
-	// groupService.client.EnableDebug()
 
+	// set debug
+	//groupService.SetDebug()
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.performancePolicyService = groupService.GetPerformancePolicyService()
@@ -42,7 +43,6 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *model.Volume {
-
 	perfPolicy, _ := suite.performancePolicyService.GetPerformancePolicyByName("default")
 	// Initialize volume attributes
 	var sizeField int64 = 5120
@@ -93,7 +93,7 @@ func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
-	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
+	 volume,err:=suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to get non-existent volume, err: %v", err.Error())
 		return

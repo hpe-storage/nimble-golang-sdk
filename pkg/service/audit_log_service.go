@@ -5,6 +5,7 @@ package service
 // AuditLog Service - View audit log.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,27 +24,65 @@ func NewAuditLogService(gs *NsGroupService) (*AuditLogService) {
 
 // GetAuditLogs - method returns a array of pointers of type "AuditLogs"
 func (svc *AuditLogService) GetAuditLogs(params *util.GetParams) ([]*model.AuditLog, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	auditLogResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return auditLogResp,nil
 }
 
 // CreateAuditLog - method creates a "AuditLog"
 func (svc *AuditLogService) CreateAuditLog(obj *model.AuditLog) (*model.AuditLog, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	auditLogResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return auditLogResp,nil
 }
 
 // UpdateAuditLog - method modifies  the "AuditLog" 
 func (svc *AuditLogService) UpdateAuditLog(id string, obj *model.AuditLog) (*model.AuditLog, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	auditLogResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return auditLogResp,nil
 }
 
 // GetAuditLogById - method returns a pointer to "AuditLog"
 func (svc *AuditLogService) GetAuditLogById(id string) (*model.AuditLog, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	auditLogResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return auditLogResp,nil
 }
 
 
 // DeleteAuditLog - deletes the "AuditLog"
 func (svc *AuditLogService) DeleteAuditLog(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -5,6 +5,7 @@ package service
 // ApplicationServer Service - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewApplicationServerService(gs *NsGroupService) (*ApplicationServerService)
 
 // GetApplicationServers - method returns a array of pointers of type "ApplicationServers"
 func (svc *ApplicationServerService) GetApplicationServers(params *util.GetParams) ([]*model.ApplicationServer, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	applicationServerResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return applicationServerResp,nil
 }
 
 // CreateApplicationServer - method creates a "ApplicationServer"
 func (svc *ApplicationServerService) CreateApplicationServer(obj *model.ApplicationServer) (*model.ApplicationServer, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	applicationServerResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return applicationServerResp,nil
 }
 
 // UpdateApplicationServer - method modifies  the "ApplicationServer" 
 func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *model.ApplicationServer) (*model.ApplicationServer, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	applicationServerResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return applicationServerResp,nil
 }
 
 // GetApplicationServerById - method returns a pointer to "ApplicationServer"
 func (svc *ApplicationServerService) GetApplicationServerById(id string) (*model.ApplicationServer, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	applicationServerResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return applicationServerResp,nil
 }
 
 // GetApplicationServerByName - method returns a pointer "ApplicationServer" 
@@ -51,19 +83,26 @@ func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*m
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	applicationServerResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(applicationServerResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return applicationServerResp[0],nil
 }	
 
 // DeleteApplicationServer - deletes the "ApplicationServer"
 func (svc *ApplicationServerService) DeleteApplicationServer(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

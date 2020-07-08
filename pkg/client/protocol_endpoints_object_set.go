@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,42 +23,50 @@ type ProtocolEndpointObjectSet struct {
 
 // CreateObject creates a new ProtocolEndpoint object
 func (objectSet *ProtocolEndpointObjectSet) CreateObject(payload *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
-	response, err := objectSet.Client.Post(protocolEndpointPath, payload)
-	return response.(*model.ProtocolEndpoint), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on ProtocolEndpoint")
 }
 
 // UpdateObject Modify existing ProtocolEndpoint object
 func (objectSet *ProtocolEndpointObjectSet) UpdateObject(id string, payload *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
-	response, err := objectSet.Client.Put(protocolEndpointPath, id, payload)
-	return response.(*model.ProtocolEndpoint), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on ProtocolEndpoint")
 }
 
 // DeleteObject deletes the ProtocolEndpoint object with the specified ID
 func (objectSet *ProtocolEndpointObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(protocolEndpointPath, id)
+	return fmt.Errorf("Unsupported operation 'delete' on ProtocolEndpoint")
 }
 
 // GetObject returns a ProtocolEndpoint object with the given ID
 func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*model.ProtocolEndpoint, error) {
-	response, err := objectSet.Client.Get(protocolEndpointPath, id, model.ProtocolEndpoint{})
-	if response == nil {
+	protocolEndpointObjectSetResp, err := objectSet.Client.Get(protocolEndpointPath, id, model.ProtocolEndpoint{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.ProtocolEndpoint), err
+	
+	// null check
+	if protocolEndpointObjectSetResp == nil {
+		return nil,nil
+	}
+	return protocolEndpointObjectSetResp.(*model.ProtocolEndpoint), err
 }
 
 // GetObjectList returns the list of ProtocolEndpoint objects
 func (objectSet *ProtocolEndpointObjectSet) GetObjectList() ([]*model.ProtocolEndpoint, error) {
-	response, err := objectSet.Client.List(protocolEndpointPath)
-	return buildProtocolEndpointObjectSet(response), err
+	protocolEndpointObjectSetResp, err := objectSet.Client.List(protocolEndpointPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildProtocolEndpointObjectSet(protocolEndpointObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of ProtocolEndpoint objects using the given params query info
 func (objectSet *ProtocolEndpointObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ProtocolEndpoint, error) {
-	response, err := objectSet.Client.ListFromParams(protocolEndpointPath, params)
-	return buildProtocolEndpointObjectSet(response), err
+	protocolEndpointObjectSetResp, err := objectSet.Client.ListFromParams(protocolEndpointPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildProtocolEndpointObjectSet(protocolEndpointObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildProtocolEndpointObjectSet(response interface{}) ([]*model.ProtocolEndpoint) {
 	values := reflect.ValueOf(response)

@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,42 +23,50 @@ type FibreChannelPortObjectSet struct {
 
 // CreateObject creates a new FibreChannelPort object
 func (objectSet *FibreChannelPortObjectSet) CreateObject(payload *model.FibreChannelPort) (*model.FibreChannelPort, error) {
-	response, err := objectSet.Client.Post(fibreChannelPortPath, payload)
-	return response.(*model.FibreChannelPort), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelPort")
 }
 
 // UpdateObject Modify existing FibreChannelPort object
 func (objectSet *FibreChannelPortObjectSet) UpdateObject(id string, payload *model.FibreChannelPort) (*model.FibreChannelPort, error) {
-	response, err := objectSet.Client.Put(fibreChannelPortPath, id, payload)
-	return response.(*model.FibreChannelPort), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on FibreChannelPort")
 }
 
 // DeleteObject deletes the FibreChannelPort object with the specified ID
 func (objectSet *FibreChannelPortObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(fibreChannelPortPath, id)
+	return fmt.Errorf("Unsupported operation 'delete' on FibreChannelPort")
 }
 
 // GetObject returns a FibreChannelPort object with the given ID
 func (objectSet *FibreChannelPortObjectSet) GetObject(id string) (*model.FibreChannelPort, error) {
-	response, err := objectSet.Client.Get(fibreChannelPortPath, id, model.FibreChannelPort{})
-	if response == nil {
+	fibreChannelPortObjectSetResp, err := objectSet.Client.Get(fibreChannelPortPath, id, model.FibreChannelPort{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.FibreChannelPort), err
+	
+	// null check
+	if fibreChannelPortObjectSetResp == nil {
+		return nil,nil
+	}
+	return fibreChannelPortObjectSetResp.(*model.FibreChannelPort), err
 }
 
 // GetObjectList returns the list of FibreChannelPort objects
 func (objectSet *FibreChannelPortObjectSet) GetObjectList() ([]*model.FibreChannelPort, error) {
-	response, err := objectSet.Client.List(fibreChannelPortPath)
-	return buildFibreChannelPortObjectSet(response), err
+	fibreChannelPortObjectSetResp, err := objectSet.Client.List(fibreChannelPortPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildFibreChannelPortObjectSet(fibreChannelPortObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of FibreChannelPort objects using the given params query info
 func (objectSet *FibreChannelPortObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.FibreChannelPort, error) {
-	response, err := objectSet.Client.ListFromParams(fibreChannelPortPath, params)
-	return buildFibreChannelPortObjectSet(response), err
+	fibreChannelPortObjectSetResp, err := objectSet.Client.ListFromParams(fibreChannelPortPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildFibreChannelPortObjectSet(fibreChannelPortObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildFibreChannelPortObjectSet(response interface{}) ([]*model.FibreChannelPort) {
 	values := reflect.ValueOf(response)

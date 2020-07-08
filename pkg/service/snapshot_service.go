@@ -7,6 +7,7 @@ package service
 // the original data with the source volume. Each successive snapshot captures the changes that have occurred on the volume. The changed blocks are compressed.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -25,23 +26,54 @@ func NewSnapshotService(gs *NsGroupService) (*SnapshotService) {
 
 // GetSnapshots - method returns a array of pointers of type "Snapshots"
 func (svc *SnapshotService) GetSnapshots(params *util.GetParams) ([]*model.Snapshot, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	snapshotResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return snapshotResp,nil
 }
 
 // CreateSnapshot - method creates a "Snapshot"
 func (svc *SnapshotService) CreateSnapshot(obj *model.Snapshot) (*model.Snapshot, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	snapshotResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return snapshotResp,nil
 }
 
 // UpdateSnapshot - method modifies  the "Snapshot" 
 func (svc *SnapshotService) UpdateSnapshot(id string, obj *model.Snapshot) (*model.Snapshot, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	snapshotResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return snapshotResp,nil
 }
 
 // GetSnapshotById - method returns a pointer to "Snapshot"
 func (svc *SnapshotService) GetSnapshotById(id string) (*model.Snapshot, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	snapshotResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return snapshotResp,nil
 }
 
 // GetSnapshotByName - method returns a pointer "Snapshot" 
@@ -53,16 +85,16 @@ func (svc *SnapshotService) GetSnapshotByName(name string) (*model.Snapshot, err
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	snapshotResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(snapshotResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return snapshotResp[0],nil
 }	
 // GetSnapshotBySerialNumber method returns a pointer to "Snapshot"
 func (svc *SnapshotService) GetSnapshotBySerialNumber(serialNumber string) (*model.Snapshot, error) {
@@ -73,18 +105,25 @@ func (svc *SnapshotService) GetSnapshotBySerialNumber(serialNumber string) (*mod
 			Value:     serialNumber,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	snapshotResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
-	if len(objs) == 0 {
+	if len(snapshotResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return snapshotResp[0],nil
 }
 
 // DeleteSnapshot - deletes the "Snapshot"
 func (svc *SnapshotService) DeleteSnapshot(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

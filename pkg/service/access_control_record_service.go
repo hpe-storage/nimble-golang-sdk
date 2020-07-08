@@ -5,6 +5,7 @@ package service
 // AccessControlRecord Service - Manage access control records for volumes.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,27 +24,65 @@ func NewAccessControlRecordService(gs *NsGroupService) (*AccessControlRecordServ
 
 // GetAccessControlRecords - method returns a array of pointers of type "AccessControlRecords"
 func (svc *AccessControlRecordService) GetAccessControlRecords(params *util.GetParams) ([]*model.AccessControlRecord, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	accessControlRecordResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return accessControlRecordResp,nil
 }
 
 // CreateAccessControlRecord - method creates a "AccessControlRecord"
 func (svc *AccessControlRecordService) CreateAccessControlRecord(obj *model.AccessControlRecord) (*model.AccessControlRecord, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	accessControlRecordResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return accessControlRecordResp,nil
 }
 
 // UpdateAccessControlRecord - method modifies  the "AccessControlRecord" 
 func (svc *AccessControlRecordService) UpdateAccessControlRecord(id string, obj *model.AccessControlRecord) (*model.AccessControlRecord, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	accessControlRecordResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return accessControlRecordResp,nil
 }
 
 // GetAccessControlRecordById - method returns a pointer to "AccessControlRecord"
 func (svc *AccessControlRecordService) GetAccessControlRecordById(id string) (*model.AccessControlRecord, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	accessControlRecordResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return accessControlRecordResp,nil
 }
 
 
 // DeleteAccessControlRecord - deletes the "AccessControlRecord"
 func (svc *AccessControlRecordService) DeleteAccessControlRecord(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }

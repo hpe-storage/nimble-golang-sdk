@@ -4,7 +4,6 @@ package client
 
 import (
 	"reflect"
-
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -25,42 +24,72 @@ type ChapUserObjectSet struct {
 
 // CreateObject creates a new ChapUser object
 func (objectSet *ChapUserObjectSet) CreateObject(payload *model.ChapUser) (*model.ChapUser, error) {
-	response, err := objectSet.Client.Post(chapUserPath, payload)
-	return response.(*model.ChapUser), err
+	chapUserObjectSetResp, err := objectSet.Client.Post(chapUserPath, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if chapUserObjectSetResp == nil {
+		return nil,nil
+	}
+	return chapUserObjectSetResp.(*model.ChapUser), err
 }
 
 // UpdateObject Modify existing ChapUser object
 func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *model.ChapUser) (*model.ChapUser, error) {
-	response, err := objectSet.Client.Put(chapUserPath, id, payload)
-	return response.(*model.ChapUser), err
+	chapUserObjectSetResp, err := objectSet.Client.Put(chapUserPath, id, payload)
+	if err !=nil {
+		return nil,err
+	}
+	
+	// null check
+	if chapUserObjectSetResp == nil {
+		return nil,nil
+	}
+	return chapUserObjectSetResp.(*model.ChapUser), err
 }
 
 // DeleteObject deletes the ChapUser object with the specified ID
 func (objectSet *ChapUserObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(chapUserPath, id)
+	err := objectSet.Client.Delete(chapUserPath, id)
+	if err !=nil {
+		return err
+	}
+	return nil
 }
 
 // GetObject returns a ChapUser object with the given ID
 func (objectSet *ChapUserObjectSet) GetObject(id string) (*model.ChapUser, error) {
-	response, err := objectSet.Client.Get(chapUserPath, id, model.ChapUser{})
-	if response == nil {
+	chapUserObjectSetResp, err := objectSet.Client.Get(chapUserPath, id, model.ChapUser{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.ChapUser), err
+	
+	// null check
+	if chapUserObjectSetResp == nil {
+		return nil,nil
+	}
+	return chapUserObjectSetResp.(*model.ChapUser), err
 }
 
 // GetObjectList returns the list of ChapUser objects
 func (objectSet *ChapUserObjectSet) GetObjectList() ([]*model.ChapUser, error) {
-	response, err := objectSet.Client.List(chapUserPath)
-	return buildChapUserObjectSet(response), err
+	chapUserObjectSetResp, err := objectSet.Client.List(chapUserPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildChapUserObjectSet(chapUserObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of ChapUser objects using the given params query info
 func (objectSet *ChapUserObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ChapUser, error) {
-	response, err := objectSet.Client.ListFromParams(chapUserPath, params)
-	return buildChapUserObjectSet(response), err
+	chapUserObjectSetResp, err := objectSet.Client.ListFromParams(chapUserPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildChapUserObjectSet(chapUserObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildChapUserObjectSet(response interface{}) ([]*model.ChapUser) {
 	values := reflect.ValueOf(response)

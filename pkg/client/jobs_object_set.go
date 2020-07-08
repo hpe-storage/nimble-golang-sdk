@@ -4,7 +4,7 @@ package client
 
 import (
 	"reflect"
-
+	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,42 +23,50 @@ type JobObjectSet struct {
 
 // CreateObject creates a new Job object
 func (objectSet *JobObjectSet) CreateObject(payload *model.Job) (*model.Job, error) {
-	response, err := objectSet.Client.Post(jobPath, payload)
-	return response.(*model.Job), err
+	return nil, fmt.Errorf("Unsupported operation 'create' on Job")
 }
 
 // UpdateObject Modify existing Job object
 func (objectSet *JobObjectSet) UpdateObject(id string, payload *model.Job) (*model.Job, error) {
-	response, err := objectSet.Client.Put(jobPath, id, payload)
-	return response.(*model.Job), err
+	return nil, fmt.Errorf("Unsupported operation 'update' on Job")
 }
 
 // DeleteObject deletes the Job object with the specified ID
 func (objectSet *JobObjectSet) DeleteObject(id string) error {
-	return objectSet.Client.Delete(jobPath, id)
+	return fmt.Errorf("Unsupported operation 'delete' on Job")
 }
 
 // GetObject returns a Job object with the given ID
 func (objectSet *JobObjectSet) GetObject(id string) (*model.Job, error) {
-	response, err := objectSet.Client.Get(jobPath, id, model.Job{})
-	if response == nil {
+	jobObjectSetResp, err := objectSet.Client.Get(jobPath, id, model.Job{})
+	if err != nil {
 		return nil, err
 	}
-	return response.(*model.Job), err
+	
+	// null check
+	if jobObjectSetResp == nil {
+		return nil,nil
+	}
+	return jobObjectSetResp.(*model.Job), err
 }
 
 // GetObjectList returns the list of Job objects
 func (objectSet *JobObjectSet) GetObjectList() ([]*model.Job, error) {
-	response, err := objectSet.Client.List(jobPath)
-	return buildJobObjectSet(response), err
+	jobObjectSetResp, err := objectSet.Client.List(jobPath)
+	if err != nil {
+		return nil, err
+	}
+	return buildJobObjectSet(jobObjectSetResp), err
 }
 
 // GetObjectListFromParams returns the list of Job objects using the given params query info
 func (objectSet *JobObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Job, error) {
-	response, err := objectSet.Client.ListFromParams(jobPath, params)
-	return buildJobObjectSet(response), err
+	jobObjectSetResp, err := objectSet.Client.ListFromParams(jobPath, params)
+	if err != nil {
+		return nil, err
+	}
+	return buildJobObjectSet(jobObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
 func buildJobObjectSet(response interface{}) ([]*model.Job) {
 	values := reflect.ValueOf(response)

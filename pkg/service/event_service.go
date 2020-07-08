@@ -5,6 +5,7 @@ package service
 // Event Service - View events.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
@@ -23,23 +24,54 @@ func NewEventService(gs *NsGroupService) (*EventService) {
 
 // GetEvents - method returns a array of pointers of type "Events"
 func (svc *EventService) GetEvents(params *util.GetParams) ([]*model.Event, error) {
-	return svc.objectSet.GetObjectListFromParams(params)
+	if params == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+	}
+	
+	eventResp,err := svc.objectSet.GetObjectListFromParams(params)
+	if err !=nil {
+		return nil,err
+	}
+	return eventResp,nil
 }
 
 // CreateEvent - method creates a "Event"
 func (svc *EventService) CreateEvent(obj *model.Event) (*model.Event, error) {
-	// TODO: validate parameters
-	return svc.objectSet.CreateObject(obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	eventResp,err := svc.objectSet.CreateObject(obj)
+	if err !=nil {
+		return nil,err
+	}
+	return eventResp,nil
 }
 
 // UpdateEvent - method modifies  the "Event" 
 func (svc *EventService) UpdateEvent(id string, obj *model.Event) (*model.Event, error) {
-	return svc.objectSet.UpdateObject(id, obj)
+	if obj == nil {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+	}
+	
+	eventResp,err :=svc.objectSet.UpdateObject(id, obj)
+	if err !=nil {
+		return nil,err
+	}
+	return eventResp,nil
 }
 
 // GetEventById - method returns a pointer to "Event"
 func (svc *EventService) GetEventById(id string) (*model.Event, error) {
-	return svc.objectSet.GetObject(id)
+	if len(id) == 0 {
+		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+	}
+	
+	eventResp, err := svc.objectSet.GetObject(id)
+	if err != nil {
+		return nil,err
+	}
+	return eventResp,nil
 }
 
 // GetEventByName - method returns a pointer "Event" 
@@ -51,19 +83,26 @@ func (svc *EventService) GetEventByName(name string) (*model.Event, error) {
 			Value:     name,
 		},
 	}
-	objs, err := svc.objectSet.GetObjectListFromParams(params)
+	eventResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
 	}
 	
-	if len(objs) == 0 {
+	if len(eventResp) == 0 {
     	return nil, nil
     }
     
-	return objs[0],nil
+	return eventResp[0],nil
 }	
 
 // DeleteEvent - deletes the "Event"
 func (svc *EventService) DeleteEvent(id string) error {
-	return svc.objectSet.DeleteObject(id)
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, %s",id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }
