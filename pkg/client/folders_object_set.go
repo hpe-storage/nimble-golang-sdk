@@ -22,32 +22,32 @@ type FolderObjectSet struct {
 // CreateObject creates a new Folder object
 func (objectSet *FolderObjectSet) CreateObject(payload *model.Folder) (*model.Folder, error) {
 	newPayload, err := model.EncodeFolder(payload)
-	resp, err := objectSet.Client.Post(folderPath, newPayload)
+	folderObjectSetResp, err := objectSet.Client.Post(folderPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if folderObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeFolder(resp)
+	return model.DecodeFolder(folderObjectSetResp)
 }
 
 // UpdateObject Modify existing Folder object
 func (objectSet *FolderObjectSet) UpdateObject(id string, payload *model.Folder) (*model.Folder, error) {
 	newPayload, err := model.EncodeFolder(payload)
-	resp, err := objectSet.Client.Put(folderPath, id, newPayload)
+	folderObjectSetResp, err := objectSet.Client.Put(folderPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if folderObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeFolder(resp)
+	return model.DecodeFolder(folderObjectSetResp)
 }
 
 // DeleteObject deletes the Folder object with the specified ID

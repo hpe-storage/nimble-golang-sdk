@@ -22,32 +22,32 @@ type UserGroupObjectSet struct {
 // CreateObject creates a new UserGroup object
 func (objectSet *UserGroupObjectSet) CreateObject(payload *model.UserGroup) (*model.UserGroup, error) {
 	newPayload, err := model.EncodeUserGroup(payload)
-	resp, err := objectSet.Client.Post(userGroupPath, newPayload)
+	userGroupObjectSetResp, err := objectSet.Client.Post(userGroupPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if userGroupObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeUserGroup(resp)
+	return model.DecodeUserGroup(userGroupObjectSetResp)
 }
 
 // UpdateObject Modify existing UserGroup object
 func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *model.UserGroup) (*model.UserGroup, error) {
 	newPayload, err := model.EncodeUserGroup(payload)
-	resp, err := objectSet.Client.Put(userGroupPath, id, newPayload)
+	userGroupObjectSetResp, err := objectSet.Client.Put(userGroupPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if userGroupObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeUserGroup(resp)
+	return model.DecodeUserGroup(userGroupObjectSetResp)
 }
 
 // DeleteObject deletes the UserGroup object with the specified ID

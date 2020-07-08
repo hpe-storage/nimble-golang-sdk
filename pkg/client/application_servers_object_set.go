@@ -22,32 +22,32 @@ type ApplicationServerObjectSet struct {
 // CreateObject creates a new ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *model.ApplicationServer) (*model.ApplicationServer, error) {
 	newPayload, err := model.EncodeApplicationServer(payload)
-	resp, err := objectSet.Client.Post(applicationServerPath, newPayload)
+	applicationServerObjectSetResp, err := objectSet.Client.Post(applicationServerPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if applicationServerObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeApplicationServer(resp)
+	return model.DecodeApplicationServer(applicationServerObjectSetResp)
 }
 
 // UpdateObject Modify existing ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *model.ApplicationServer) (*model.ApplicationServer, error) {
 	newPayload, err := model.EncodeApplicationServer(payload)
-	resp, err := objectSet.Client.Put(applicationServerPath, id, newPayload)
+	applicationServerObjectSetResp, err := objectSet.Client.Put(applicationServerPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if applicationServerObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeApplicationServer(resp)
+	return model.DecodeApplicationServer(applicationServerObjectSetResp)
 }
 
 // DeleteObject deletes the ApplicationServer object with the specified ID

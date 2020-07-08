@@ -22,32 +22,32 @@ type PoolObjectSet struct {
 // CreateObject creates a new Pool object
 func (objectSet *PoolObjectSet) CreateObject(payload *model.Pool) (*model.Pool, error) {
 	newPayload, err := model.EncodePool(payload)
-	resp, err := objectSet.Client.Post(poolPath, newPayload)
+	poolObjectSetResp, err := objectSet.Client.Post(poolPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if poolObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodePool(resp)
+	return model.DecodePool(poolObjectSetResp)
 }
 
 // UpdateObject Modify existing Pool object
 func (objectSet *PoolObjectSet) UpdateObject(id string, payload *model.Pool) (*model.Pool, error) {
 	newPayload, err := model.EncodePool(payload)
-	resp, err := objectSet.Client.Put(poolPath, id, newPayload)
+	poolObjectSetResp, err := objectSet.Client.Put(poolPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if poolObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodePool(resp)
+	return model.DecodePool(poolObjectSetResp)
 }
 
 // DeleteObject deletes the Pool object with the specified ID

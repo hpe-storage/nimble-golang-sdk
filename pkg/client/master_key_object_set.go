@@ -24,32 +24,32 @@ type MasterKeyObjectSet struct {
 // CreateObject creates a new MasterKey object
 func (objectSet *MasterKeyObjectSet) CreateObject(payload *model.MasterKey) (*model.MasterKey, error) {
 	newPayload, err := model.EncodeMasterKey(payload)
-	resp, err := objectSet.Client.Post(masterKeyPath, newPayload)
+	masterKeyObjectSetResp, err := objectSet.Client.Post(masterKeyPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if masterKeyObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeMasterKey(resp)
+	return model.DecodeMasterKey(masterKeyObjectSetResp)
 }
 
 // UpdateObject Modify existing MasterKey object
 func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *model.MasterKey) (*model.MasterKey, error) {
 	newPayload, err := model.EncodeMasterKey(payload)
-	resp, err := objectSet.Client.Put(masterKeyPath, id, newPayload)
+	masterKeyObjectSetResp, err := objectSet.Client.Put(masterKeyPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if masterKeyObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeMasterKey(resp)
+	return model.DecodeMasterKey(masterKeyObjectSetResp)
 }
 
 // DeleteObject deletes the MasterKey object with the specified ID

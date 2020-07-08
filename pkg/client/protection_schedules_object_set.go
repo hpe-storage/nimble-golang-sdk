@@ -22,32 +22,32 @@ type ProtectionScheduleObjectSet struct {
 // CreateObject creates a new ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
 	newPayload, err := model.EncodeProtectionSchedule(payload)
-	resp, err := objectSet.Client.Post(protectionSchedulePath, newPayload)
+	protectionScheduleObjectSetResp, err := objectSet.Client.Post(protectionSchedulePath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if protectionScheduleObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeProtectionSchedule(resp)
+	return model.DecodeProtectionSchedule(protectionScheduleObjectSetResp)
 }
 
 // UpdateObject Modify existing ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
 	newPayload, err := model.EncodeProtectionSchedule(payload)
-	resp, err := objectSet.Client.Put(protectionSchedulePath, id, newPayload)
+	protectionScheduleObjectSetResp, err := objectSet.Client.Put(protectionSchedulePath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if protectionScheduleObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeProtectionSchedule(resp)
+	return model.DecodeProtectionSchedule(protectionScheduleObjectSetResp)
 }
 
 // DeleteObject deletes the ProtectionSchedule object with the specified ID

@@ -22,32 +22,32 @@ type NetworkConfigObjectSet struct {
 // CreateObject creates a new NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) CreateObject(payload *model.NetworkConfig) (*model.NetworkConfig, error) {
 	newPayload, err := model.EncodeNetworkConfig(payload)
-	resp, err := objectSet.Client.Post(networkConfigPath, newPayload)
+	networkConfigObjectSetResp, err := objectSet.Client.Post(networkConfigPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if networkConfigObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeNetworkConfig(resp)
+	return model.DecodeNetworkConfig(networkConfigObjectSetResp)
 }
 
 // UpdateObject Modify existing NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *model.NetworkConfig) (*model.NetworkConfig, error) {
 	newPayload, err := model.EncodeNetworkConfig(payload)
-	resp, err := objectSet.Client.Put(networkConfigPath, id, newPayload)
+	networkConfigObjectSetResp, err := objectSet.Client.Put(networkConfigPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if networkConfigObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeNetworkConfig(resp)
+	return model.DecodeNetworkConfig(networkConfigObjectSetResp)
 }
 
 // DeleteObject deletes the NetworkConfig object with the specified ID

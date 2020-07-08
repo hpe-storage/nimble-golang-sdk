@@ -24,32 +24,32 @@ type ChapUserObjectSet struct {
 // CreateObject creates a new ChapUser object
 func (objectSet *ChapUserObjectSet) CreateObject(payload *model.ChapUser) (*model.ChapUser, error) {
 	newPayload, err := model.EncodeChapUser(payload)
-	resp, err := objectSet.Client.Post(chapUserPath, newPayload)
+	chapUserObjectSetResp, err := objectSet.Client.Post(chapUserPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if chapUserObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeChapUser(resp)
+	return model.DecodeChapUser(chapUserObjectSetResp)
 }
 
 // UpdateObject Modify existing ChapUser object
 func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *model.ChapUser) (*model.ChapUser, error) {
 	newPayload, err := model.EncodeChapUser(payload)
-	resp, err := objectSet.Client.Put(chapUserPath, id, newPayload)
+	chapUserObjectSetResp, err := objectSet.Client.Put(chapUserPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if chapUserObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeChapUser(resp)
+	return model.DecodeChapUser(chapUserObjectSetResp)
 }
 
 // DeleteObject deletes the ChapUser object with the specified ID

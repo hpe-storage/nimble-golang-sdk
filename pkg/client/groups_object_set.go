@@ -28,16 +28,16 @@ func (objectSet *GroupObjectSet) CreateObject(payload *model.Group) (*model.Grou
 // UpdateObject Modify existing Group object
 func (objectSet *GroupObjectSet) UpdateObject(id string, payload *model.Group) (*model.Group, error) {
 	newPayload, err := model.EncodeGroup(payload)
-	resp, err := objectSet.Client.Put(groupPath, id, newPayload)
+	groupObjectSetResp, err := objectSet.Client.Put(groupPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if groupObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeGroup(resp)
+	return model.DecodeGroup(groupObjectSetResp)
 }
 
 // DeleteObject deletes the Group object with the specified ID

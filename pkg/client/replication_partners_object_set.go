@@ -24,32 +24,32 @@ type ReplicationPartnerObjectSet struct {
 // CreateObject creates a new ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
 	newPayload, err := model.EncodeReplicationPartner(payload)
-	resp, err := objectSet.Client.Post(replicationPartnerPath, newPayload)
+	replicationPartnerObjectSetResp, err := objectSet.Client.Post(replicationPartnerPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if replicationPartnerObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeReplicationPartner(resp)
+	return model.DecodeReplicationPartner(replicationPartnerObjectSetResp)
 }
 
 // UpdateObject Modify existing ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
 	newPayload, err := model.EncodeReplicationPartner(payload)
-	resp, err := objectSet.Client.Put(replicationPartnerPath, id, newPayload)
+	replicationPartnerObjectSetResp, err := objectSet.Client.Put(replicationPartnerPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if replicationPartnerObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeReplicationPartner(resp)
+	return model.DecodeReplicationPartner(replicationPartnerObjectSetResp)
 }
 
 // DeleteObject deletes the ReplicationPartner object with the specified ID

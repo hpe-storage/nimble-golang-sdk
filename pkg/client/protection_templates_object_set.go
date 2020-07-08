@@ -25,32 +25,32 @@ type ProtectionTemplateObjectSet struct {
 // CreateObject creates a new ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
 	newPayload, err := model.EncodeProtectionTemplate(payload)
-	resp, err := objectSet.Client.Post(protectionTemplatePath, newPayload)
+	protectionTemplateObjectSetResp, err := objectSet.Client.Post(protectionTemplatePath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if protectionTemplateObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeProtectionTemplate(resp)
+	return model.DecodeProtectionTemplate(protectionTemplateObjectSetResp)
 }
 
 // UpdateObject Modify existing ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
 	newPayload, err := model.EncodeProtectionTemplate(payload)
-	resp, err := objectSet.Client.Put(protectionTemplatePath, id, newPayload)
+	protectionTemplateObjectSetResp, err := objectSet.Client.Put(protectionTemplatePath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if protectionTemplateObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeProtectionTemplate(resp)
+	return model.DecodeProtectionTemplate(protectionTemplateObjectSetResp)
 }
 
 // DeleteObject deletes the ProtectionTemplate object with the specified ID

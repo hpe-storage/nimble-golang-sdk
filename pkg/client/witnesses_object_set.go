@@ -23,17 +23,17 @@ type WitnessObjectSet struct {
 // CreateObject creates a new Witness object
 func (objectSet *WitnessObjectSet) CreateObject(payload *model.Witness) (*model.Witness, error) {
 	newPayload, err := model.EncodeWitness(payload)
-	resp, err := objectSet.Client.Post(witnessPath, newPayload)
+	witnessObjectSetResp, err := objectSet.Client.Post(witnessPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if witnessObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeWitness(resp)
+	return model.DecodeWitness(witnessObjectSetResp)
 }
 
 // UpdateObject Modify existing Witness object

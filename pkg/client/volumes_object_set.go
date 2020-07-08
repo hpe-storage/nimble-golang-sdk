@@ -23,32 +23,32 @@ type VolumeObjectSet struct {
 // CreateObject creates a new Volume object
 func (objectSet *VolumeObjectSet) CreateObject(payload *model.Volume) (*model.Volume, error) {
 	newPayload, err := model.EncodeVolume(payload)
-	resp, err := objectSet.Client.Post(volumePath, newPayload)
+	volumeObjectSetResp, err := objectSet.Client.Post(volumePath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if volumeObjectSetResp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeVolume(resp)
+	return model.DecodeVolume(volumeObjectSetResp)
 }
 
 // UpdateObject Modify existing Volume object
 func (objectSet *VolumeObjectSet) UpdateObject(id string, payload *model.Volume) (*model.Volume, error) {
 	newPayload, err := model.EncodeVolume(payload)
-	resp, err := objectSet.Client.Put(volumePath, id, newPayload)
+	volumeObjectSetResp, err := objectSet.Client.Put(volumePath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if resp == nil {
+	if volumeObjectSetResp == nil {
 		return nil, nil
 	}
-	return model.DecodeVolume(resp)
+	return model.DecodeVolume(volumeObjectSetResp)
 }
 
 // DeleteObject deletes the Volume object with the specified ID
