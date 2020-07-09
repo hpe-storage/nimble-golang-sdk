@@ -19,11 +19,19 @@ var pNsCachePolicyAggressiveReadNoWrite NsCachePolicy
 var pNsCachePolicyDisabled NsCachePolicy
 var pNsCachePolicyAggressive NsCachePolicy
 
-// Export
+// NsCachePolicyNormal enum exports
 var NsCachePolicyNormal *NsCachePolicy
+
+// NsCachePolicyNoWrite enum exports
 var NsCachePolicyNoWrite *NsCachePolicy
+
+// NsCachePolicyAggressiveReadNoWrite enum exports
 var NsCachePolicyAggressiveReadNoWrite *NsCachePolicy
+
+// NsCachePolicyDisabled enum exports
 var NsCachePolicyDisabled *NsCachePolicy
+
+// NsCachePolicyAggressive enum exports
 var NsCachePolicyAggressive *NsCachePolicy
 
 func init() {

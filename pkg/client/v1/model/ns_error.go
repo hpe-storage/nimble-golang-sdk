@@ -1017,510 +1017,1516 @@ var pNsErrorSmErrShelfExprMfgVerInval NsError
 var pNsErrorSmMgmtIpInvalid NsError
 var pNsErrorSmErrShelfWrongCtrlrSide NsError
 
-// Export
+// NsErrorSmReplVolcollDeletion enum exports
 var NsErrorSmReplVolcollDeletion *NsError
+
+// NsErrorSmEncryptionGroupCipherOverride enum exports
 var NsErrorSmEncryptionGroupCipherOverride *NsError
+
+// NsErrorSmEncryptionMustBeEnabled enum exports
 var NsErrorSmEncryptionMustBeEnabled *NsError
+
+// NsErrorSmExtTrigSchedNotPresent enum exports
 var NsErrorSmExtTrigSchedNotPresent *NsError
+
+// NsErrorSmAppserverNotFound enum exports
 var NsErrorSmAppserverNotFound *NsError
+
+// NsErrorSmFolderReplPartner enum exports
 var NsErrorSmFolderReplPartner *NsError
+
+// NsErrorSmArrayPoolMember enum exports
 var NsErrorSmArrayPoolMember *NsError
+
+// NsErrorSmErrShelfCreateRfail enum exports
 var NsErrorSmErrShelfCreateRfail *NsError
+
+// NsErrorSmStarterVolCreate enum exports
 var NsErrorSmStarterVolCreate *NsError
+
+// NsErrorSmInvalidNetconfigName enum exports
 var NsErrorSmInvalidNetconfigName *NsError
+
+// NsErrorSmInvalidVolaclScope enum exports
 var NsErrorSmInvalidVolaclScope *NsError
+
+// NsErrorSmErrShelfNoElocId enum exports
 var NsErrorSmErrShelfNoElocId *NsError
+
+// NsErrorSmInvalidNetzoneType enum exports
 var NsErrorSmInvalidNetzoneType *NsError
+
+// NsErrorSmErrCannotModifyTdz enum exports
 var NsErrorSmErrCannotModifyTdz *NsError
+
+// NsErrorSmControllerActive enum exports
 var NsErrorSmControllerActive *NsError
+
+// NsErrorSmPoolHasVolume enum exports
 var NsErrorSmPoolHasVolume *NsError
+
+// NsErrorSmExtTrigSchedAttrib enum exports
 var NsErrorSmExtTrigSchedAttrib *NsError
+
+// NsErrorSmMissingCriteriaFieldname enum exports
 var NsErrorSmMissingCriteriaFieldname *NsError
+
+// NsErrorSmNetconfigAlreadyActive enum exports
 var NsErrorSmNetconfigAlreadyActive *NsError
+
+// NsErrorSmStartRowBeyondEndRow enum exports
 var NsErrorSmStartRowBeyondEndRow *NsError
+
+// NsErrorSmInsufficientFcInitiatorInput enum exports
 var NsErrorSmInsufficientFcInitiatorInput *NsError
+
+// NsErrorSmSecondMgmtSubnet enum exports
 var NsErrorSmSecondMgmtSubnet *NsError
+
+// NsErrorSmInvalidInitiatorWwpn enum exports
 var NsErrorSmInvalidInitiatorWwpn *NsError
+
+// NsErrorSmArrayFlashMismatch enum exports
 var NsErrorSmArrayFlashMismatch *NsError
+
+// NsErrorSmErrShelfPmdState enum exports
 var NsErrorSmErrShelfPmdState *NsError
+
+// NsErrorSmInvalidFcConfig enum exports
 var NsErrorSmInvalidFcConfig *NsError
+
+// NsErrorSmSrepDownstreamIsUpstream enum exports
 var NsErrorSmSrepDownstreamIsUpstream *NsError
+
+// NsErrorSmKeymgrLeave enum exports
 var NsErrorSmKeymgrLeave *NsError
+
+// NsErrorSmVolmvVolEinprog enum exports
 var NsErrorSmVolmvVolEinprog *NsError
+
+// NsErrorSmSrepNameConflictVol enum exports
 var NsErrorSmSrepNameConflictVol *NsError
+
+// NsErrorSmMultiArrayWithoutAutomaticConnectionMethod enum exports
 var NsErrorSmMultiArrayWithoutAutomaticConnectionMethod *NsError
+
+// NsErrorSmFolderUsageLimitOverPoolCapacity enum exports
 var NsErrorSmFolderUsageLimitOverPoolCapacity *NsError
+
+// NsErrorSmEnomem enum exports
 var NsErrorSmEnomem *NsError
+
+// NsErrorSmErrShelfNotInuse enum exports
 var NsErrorSmErrShelfNotInuse *NsError
+
+// NsErrorSmErrShelfPreactivationMfrErr enum exports
 var NsErrorSmErrShelfPreactivationMfrErr *NsError
+
+// NsErrorSmUpdateBusy enum exports
 var NsErrorSmUpdateBusy *NsError
+
+// NsErrorSmProtpolInvalidAppSync enum exports
 var NsErrorSmProtpolInvalidAppSync *NsError
+
+// NsErrorSmErrShelfRaidDegraded enum exports
 var NsErrorSmErrShelfRaidDegraded *NsError
+
+// NsErrorSmLimitFreqSchedGroup enum exports
 var NsErrorSmLimitFreqSchedGroup *NsError
+
+// NsErrorSmSwupdateEinprog enum exports
 var NsErrorSmSwupdateEinprog *NsError
+
+// NsErrorSmMissingCriteriaParam enum exports
 var NsErrorSmMissingCriteriaParam *NsError
+
+// NsErrorSmNoPathFound enum exports
 var NsErrorSmNoPathFound *NsError
+
+// NsErrorSmIncompatibleAppCategory enum exports
 var NsErrorSmIncompatibleAppCategory *NsError
+
+// NsErrorSmVolmvAbortEnomove enum exports
 var NsErrorSmVolmvAbortEnomove *NsError
+
+// NsErrorSmLimitSnapRetentionVolcoll enum exports
 var NsErrorSmLimitSnapRetentionVolcoll *NsError
+
+// NsErrorSmKeymgrRemove enum exports
 var NsErrorSmKeymgrRemove *NsError
+
+// NsErrorSmArrayNotReachable enum exports
 var NsErrorSmArrayNotReachable *NsError
+
+// NsErrorSmErrGroupMergeEventsPending enum exports
 var NsErrorSmErrGroupMergeEventsPending *NsError
+
+// NsErrorSmSrepNameConflictVols enum exports
 var NsErrorSmSrepNameConflictVols *NsError
+
+// NsErrorSmPoolPartnerResumeUnsup enum exports
 var NsErrorSmPoolPartnerResumeUnsup *NsError
+
+// NsErrorSmArrayNotFound enum exports
 var NsErrorSmArrayNotFound *NsError
+
+// NsErrorSmNoIscsiHardware enum exports
 var NsErrorSmNoIscsiHardware *NsError
+
+// NsErrorSmEnospc enum exports
 var NsErrorSmEnospc *NsError
+
+// NsErrorSmReservedPerfpolName enum exports
 var NsErrorSmReservedPerfpolName *NsError
+
+// NsErrorSmInvalidRoute enum exports
 var NsErrorSmInvalidRoute *NsError
+
+// NsErrorSmVolDedupeMoveInvalid enum exports
 var NsErrorSmVolDedupeMoveInvalid *NsError
+
+// NsErrorSmKeymgrJoin enum exports
 var NsErrorSmKeymgrJoin *NsError
+
+// NsErrorSmErrSrvUnreach enum exports
 var NsErrorSmErrSrvUnreach *NsError
+
+// NsErrorSmErrShelfDiskSasLinkDegraded enum exports
 var NsErrorSmErrShelfDiskSasLinkDegraded *NsError
+
+// NsErrorSmErrShelfInvalidEeprom enum exports
 var NsErrorSmErrShelfInvalidEeprom *NsError
+
+// NsErrorSmInvalidKeyValue enum exports
 var NsErrorSmInvalidKeyValue *NsError
+
+// NsErrorSmNoIscsiLunAssignment enum exports
 var NsErrorSmNoIscsiLunAssignment *NsError
+
+// NsErrorSmSnapshotOffline enum exports
 var NsErrorSmSnapshotOffline *NsError
+
+// NsErrorSmDefaultGatewayNotInMgmtSubnet enum exports
 var NsErrorSmDefaultGatewayNotInMgmtSubnet *NsError
+
+// NsErrorSmErrPassphraseAuth enum exports
 var NsErrorSmErrPassphraseAuth *NsError
+
+// NsErrorSmReplEexist enum exports
 var NsErrorSmReplEexist *NsError
+
+// NsErrorSmDisableLastProtocol enum exports
 var NsErrorSmDisableLastProtocol *NsError
+
+// NsErrorSmSecondUntaggedAssignment enum exports
 var NsErrorSmSecondUntaggedAssignment *NsError
+
+// NsErrorSmPoolHasPe enum exports
 var NsErrorSmPoolHasPe *NsError
+
+// NsErrorSmErrShelfInvalidCount enum exports
 var NsErrorSmErrShelfInvalidCount *NsError
+
+// NsErrorSmLimitSnapRetentionGroup enum exports
 var NsErrorSmLimitSnapRetentionGroup *NsError
+
+// NsErrorSmVolDedupeThickProvInvalid enum exports
 var NsErrorSmVolDedupeThickProvInvalid *NsError
+
+// NsErrorSmUnknown enum exports
 var NsErrorSmUnknown *NsError
+
+// NsErrorSmErrShelfDedupeImpact enum exports
 var NsErrorSmErrShelfDedupeImpact *NsError
+
+// NsErrorSmInvalidInitiatorAccessProtocol enum exports
 var NsErrorSmInvalidInitiatorAccessProtocol *NsError
+
+// NsErrorSmInternal enum exports
 var NsErrorSmInternal *NsError
+
+// NsErrorSmAsupEbusy enum exports
 var NsErrorSmAsupEbusy *NsError
+
+// NsErrorSmInvalidVolMbpsLimit enum exports
 var NsErrorSmInvalidVolMbpsLimit *NsError
+
+// NsErrorSmInfoConfigSyncInprogress enum exports
 var NsErrorSmInfoConfigSyncInprogress *NsError
+
+// NsErrorSmErrPoolStillMerging enum exports
 var NsErrorSmErrPoolStillMerging *NsError
+
+// NsErrorSmFolderPerfpolAgentType enum exports
 var NsErrorSmFolderPerfpolAgentType *NsError
+
+// NsErrorSmEinval enum exports
 var NsErrorSmEinval *NsError
+
+// NsErrorSmNoAssocVols enum exports
 var NsErrorSmNoAssocVols *NsError
+
+// NsErrorSmShelfNotInuse enum exports
 var NsErrorSmShelfNotInuse *NsError
+
+// NsErrorSmErrProtpolSettingsNotAllowed enum exports
 var NsErrorSmErrProtpolSettingsNotAllowed *NsError
+
+// NsErrorSmFcRegenerate enum exports
 var NsErrorSmFcRegenerate *NsError
+
+// NsErrorSmErrMultiArrayGroup enum exports
 var NsErrorSmErrMultiArrayGroup *NsError
+
+// NsErrorSmReplRemoteNoBaseSnap enum exports
 var NsErrorSmReplRemoteNoBaseSnap *NsError
+
+// NsErrorSmUnsupportedQueryOperator enum exports
 var NsErrorSmUnsupportedQueryOperator *NsError
+
+// NsErrorSmSrepSizeMismatchDownstreamVol enum exports
 var NsErrorSmSrepSizeMismatchDownstreamVol *NsError
+
+// NsErrorSmNoSuchPartner enum exports
 var NsErrorSmNoSuchPartner *NsError
+
+// NsErrorSmIscsiAllAccessNotAvailable enum exports
 var NsErrorSmIscsiAllAccessNotAvailable *NsError
+
+// NsErrorSmVvolAlreadyEnabled enum exports
 var NsErrorSmVvolAlreadyEnabled *NsError
+
+// NsErrorSmUsageUnavaiable enum exports
 var NsErrorSmUsageUnavaiable *NsError
+
+// NsErrorSmEconnrefused enum exports
 var NsErrorSmEconnrefused *NsError
+
+// NsErrorSmReplRenameNotsup enum exports
 var NsErrorSmReplRenameNotsup *NsError
+
+// NsErrorSmSessionCreate enum exports
 var NsErrorSmSessionCreate *NsError
+
+// NsErrorSmConflictingAclVol enum exports
 var NsErrorSmConflictingAclVol *NsError
+
+// NsErrorSmNospace enum exports
 var NsErrorSmNospace *NsError
+
+// NsErrorSmReservedVolcollName enum exports
 var NsErrorSmReservedVolcollName *NsError
+
+// NsErrorSmPoolHasFolder enum exports
 var NsErrorSmPoolHasFolder *NsError
+
+// NsErrorSmPartnerOffline enum exports
 var NsErrorSmPartnerOffline *NsError
+
+// NsErrorSmConflictingInitiatorAliasWithArgs enum exports
 var NsErrorSmConflictingInitiatorAliasWithArgs *NsError
+
+// NsErrorSmErrShelfNotReady enum exports
 var NsErrorSmErrShelfNotReady *NsError
+
+// NsErrorSmReplCmprVersionUnsup enum exports
 var NsErrorSmReplCmprVersionUnsup *NsError
+
+// NsErrorSmErrShelfPreactivationIoErr enum exports
 var NsErrorSmErrShelfPreactivationIoErr *NsError
+
+// NsErrorSmVolmvEinprog enum exports
 var NsErrorSmVolmvEinprog *NsError
+
+// NsErrorSmPerfpolIncompatibleAppCategory enum exports
 var NsErrorSmPerfpolIncompatibleAppCategory *NsError
+
+// NsErrorSmInvalidArgValue enum exports
 var NsErrorSmInvalidArgValue *NsError
+
+// NsErrorSmErrShelfDedupeBelowFdr enum exports
 var NsErrorSmErrShelfDedupeBelowFdr *NsError
+
+// NsErrorSmErrShelfInvalidAfsCount enum exports
 var NsErrorSmErrShelfInvalidAfsCount *NsError
+
+// NsErrorSmSerialNotAvail enum exports
 var NsErrorSmSerialNotAvail *NsError
+
+// NsErrorSmErrShelfSesMshipErr enum exports
 var NsErrorSmErrShelfSesMshipErr *NsError
+
+// NsErrorSmFolderProvisionedLimitBelowCurrentUsage enum exports
 var NsErrorSmFolderProvisionedLimitBelowCurrentUsage *NsError
+
+// NsErrorSmPeMultiProtocolAccessNotSupported enum exports
 var NsErrorSmPeMultiProtocolAccessNotSupported *NsError
+
+// NsErrorSmLimitHretSnapRetentionPool enum exports
 var NsErrorSmLimitHretSnapRetentionPool *NsError
+
+// NsErrorSmPeConflictingAcl enum exports
 var NsErrorSmPeConflictingAcl *NsError
+
+// NsErrorSmFolderOverUsageLimit enum exports
 var NsErrorSmFolderOverUsageLimit *NsError
+
+// NsErrorSmErrEncryptionMasterKeyMissing enum exports
 var NsErrorSmErrEncryptionMasterKeyMissing *NsError
+
+// NsErrorSmProtpolInvalidDomainName enum exports
 var NsErrorSmProtpolInvalidDomainName *NsError
+
+// NsErrorSmTooMany enum exports
 var NsErrorSmTooMany *NsError
+
+// NsErrorSmErrShelfExprRevIncompatible enum exports
 var NsErrorSmErrShelfExprRevIncompatible *NsError
+
+// NsErrorSmSrvUnreachable enum exports
 var NsErrorSmSrvUnreachable *NsError
+
+// NsErrorSmVolumeConflict enum exports
 var NsErrorSmVolumeConflict *NsError
+
+// NsErrorSmInvalidArrayName enum exports
 var NsErrorSmInvalidArrayName *NsError
+
+// NsErrorSmCannotReadObject enum exports
 var NsErrorSmCannotReadObject *NsError
+
+// NsErrorSmReservedVolName enum exports
 var NsErrorSmReservedVolName *NsError
+
+// NsErrorSmPoolPartnerInUse enum exports
 var NsErrorSmPoolPartnerInUse *NsError
+
+// NsErrorSmInvalidInitiatorgrpName enum exports
 var NsErrorSmInvalidInitiatorgrpName *NsError
+
+// NsErrorSmAsupValidateError enum exports
 var NsErrorSmAsupValidateError *NsError
+
+// NsErrorSmVersionName enum exports
 var NsErrorSmVersionName *NsError
+
+// NsErrorSmVvolAlreadyDisabled enum exports
 var NsErrorSmVvolAlreadyDisabled *NsError
+
+// NsErrorSmUnexpectedArg enum exports
 var NsErrorSmUnexpectedArg *NsError
+
+// NsErrorSmErrShelfInvalidAfs enum exports
 var NsErrorSmErrShelfInvalidAfs *NsError
+
+// NsErrorSmUnexpectedChild enum exports
 var NsErrorSmUnexpectedChild *NsError
+
+// NsErrorSmFolderOverProvisionedLimit enum exports
 var NsErrorSmFolderOverProvisionedLimit *NsError
+
+// NsErrorSmPoolFlashMismatch enum exports
 var NsErrorSmPoolFlashMismatch *NsError
+
+// NsErrorSmLimitScope enum exports
 var NsErrorSmLimitScope *NsError
+
+// NsErrorSmSrepSizeMismatchDownstreamVols enum exports
 var NsErrorSmSrepSizeMismatchDownstreamVols *NsError
+
+// NsErrorSmFolderAppsrvrInconsistent enum exports
 var NsErrorSmFolderAppsrvrInconsistent *NsError
+
+// NsErrorSmErrShelfDedupeReduction enum exports
 var NsErrorSmErrShelfDedupeReduction *NsError
+
+// NsErrorSmIscsiSvcNotAvailable enum exports
 var NsErrorSmIscsiSvcNotAvailable *NsError
+
+// NsErrorSmInvalidNetconfigToDelete enum exports
 var NsErrorSmInvalidNetconfigToDelete *NsError
+
+// NsErrorSmErrUnknown enum exports
 var NsErrorSmErrUnknown *NsError
+
+// NsErrorSmMissingCriteriaOperator enum exports
 var NsErrorSmMissingCriteriaOperator *NsError
+
+// NsErrorSmInvalidAppUuid enum exports
 var NsErrorSmInvalidAppUuid *NsError
+
+// NsErrorSmArrayMemberOrphanWithArgs enum exports
 var NsErrorSmArrayMemberOrphanWithArgs *NsError
+
+// NsErrorSmEmptyVol enum exports
 var NsErrorSmEmptyVol *NsError
+
+// NsErrorSmDuplicateSubnetLabel enum exports
 var NsErrorSmDuplicateSubnetLabel *NsError
+
+// NsErrorSmZeroVlanIdForTaggedAssignment enum exports
 var NsErrorSmZeroVlanIdForTaggedAssignment *NsError
+
+// NsErrorSmNoActionFound enum exports
 var NsErrorSmNoActionFound *NsError
+
+// NsErrorSmSyncReplUnconfigureInProgress enum exports
 var NsErrorSmSyncReplUnconfigureInProgress *NsError
+
+// NsErrorSmVolThickProvMoveInvalid enum exports
 var NsErrorSmVolThickProvMoveInvalid *NsError
+
+// NsErrorSmMissingAdvancedCriteriaConstructor enum exports
 var NsErrorSmMissingAdvancedCriteriaConstructor *NsError
+
+// NsErrorSmPoolUnknown enum exports
 var NsErrorSmPoolUnknown *NsError
+
+// NsErrorSmHaltGlWithLiveMemberArray enum exports
 var NsErrorSmHaltGlWithLiveMemberArray *NsError
+
+// NsErrorSmReplThrottleOverlap enum exports
 var NsErrorSmReplThrottleOverlap *NsError
+
+// NsErrorSmNetconfigUpdateMismatch enum exports
 var NsErrorSmNetconfigUpdateMismatch *NsError
+
+// NsErrorSmSrepDownstreamVolsAcl enum exports
 var NsErrorSmSrepDownstreamVolsAcl *NsError
+
+// NsErrorSmStatsFrequencyInvalid enum exports
 var NsErrorSmStatsFrequencyInvalid *NsError
+
+// NsErrorSmDdupFolderMerge enum exports
 var NsErrorSmDdupFolderMerge *NsError
+
+// NsErrorSmInvalidSubnet enum exports
 var NsErrorSmInvalidSubnet *NsError
+
+// NsErrorSmReplEnabled enum exports
 var NsErrorSmReplEnabled *NsError
+
+// NsErrorSmPoolPartnerNameConflict enum exports
 var NsErrorSmPoolPartnerNameConflict *NsError
+
+// NsErrorSmAsupPingfromMgmtipError enum exports
 var NsErrorSmAsupPingfromMgmtipError *NsError
+
+// NsErrorSmEncryptionGroupScopeOverride enum exports
 var NsErrorSmEncryptionGroupScopeOverride *NsError
+
+// NsErrorSmErrMaxSessionsReached enum exports
 var NsErrorSmErrMaxSessionsReached *NsError
+
+// NsErrorSmErrReplMultiplePartners enum exports
 var NsErrorSmErrReplMultiplePartners *NsError
+
+// NsErrorSmStatsNoSensors enum exports
 var NsErrorSmStatsNoSensors *NsError
+
+// NsErrorSmFolderNeedsLimit enum exports
 var NsErrorSmFolderNeedsLimit *NsError
+
+// NsErrorSmVolmvVvol enum exports
 var NsErrorSmVolmvVvol *NsError
+
+// NsErrorSmErrGroupMergeInprogress enum exports
 var NsErrorSmErrGroupMergeInprogress *NsError
+
+// NsErrorSmFolderNotFound enum exports
 var NsErrorSmFolderNotFound *NsError
+
+// NsErrorSmRouteExists enum exports
 var NsErrorSmRouteExists *NsError
+
+// NsErrorSmInvalidDiscoveryIp enum exports
 var NsErrorSmInvalidDiscoveryIp *NsError
+
+// NsErrorSmErrVolmvCachePinDedupeNotsupp enum exports
 var NsErrorSmErrVolmvCachePinDedupeNotsupp *NsError
+
+// NsErrorSmMissingCriteria enum exports
 var NsErrorSmMissingCriteria *NsError
+
+// NsErrorSmRootBranchPinned enum exports
 var NsErrorSmRootBranchPinned *NsError
+
+// NsErrorSmInvalidMtu enum exports
 var NsErrorSmInvalidMtu *NsError
+
+// NsErrorSmNoFcHardware enum exports
 var NsErrorSmNoFcHardware *NsError
+
+// NsErrorSmPoolNotFound enum exports
 var NsErrorSmPoolNotFound *NsError
+
+// NsErrorSmDuplicateIp enum exports
 var NsErrorSmDuplicateIp *NsError
+
+// NsErrorSmNoAction enum exports
 var NsErrorSmNoAction *NsError
+
+// NsErrorSmProtpolAppSyncOracleParams enum exports
 var NsErrorSmProtpolAppSyncOracleParams *NsError
+
+// NsErrorSmProtpolInvalidVssSettings enum exports
 var NsErrorSmProtpolInvalidVssSettings *NsError
+
+// NsErrorSmEncryptionInvalidScope enum exports
 var NsErrorSmEncryptionInvalidScope *NsError
+
+// NsErrorSmLimitSnapcollVolcoll enum exports
 var NsErrorSmLimitSnapcollVolcoll *NsError
+
+// NsErrorSmShelfRaidDegraded enum exports
 var NsErrorSmShelfRaidDegraded *NsError
+
+// NsErrorSmInvalidNonIscsiDataSubnetType enum exports
 var NsErrorSmInvalidNonIscsiDataSubnetType *NsError
+
+// NsErrorSmVolmvIncompatibleAgentType enum exports
 var NsErrorSmVolmvIncompatibleAgentType *NsError
+
+// NsErrorSmReplPartnerVersionUnknown enum exports
 var NsErrorSmReplPartnerVersionUnknown *NsError
+
+// NsErrorSmAsupNameresError enum exports
 var NsErrorSmAsupNameresError *NsError
+
+// NsErrorSmReplApiUnsup enum exports
 var NsErrorSmReplApiUnsup *NsError
+
+// NsErrorSmEperm enum exports
 var NsErrorSmEperm *NsError
+
+// NsErrorSmEnoentEnoent enum exports
 var NsErrorSmEnoentEnoent *NsError
+
+// NsErrorSmArrayGroupLeader enum exports
 var NsErrorSmArrayGroupLeader *NsError
+
+// NsErrorSmInvalidInitiatorIqn enum exports
 var NsErrorSmInvalidInitiatorIqn *NsError
+
+// NsErrorSmReplIntragroup enum exports
 var NsErrorSmReplIntragroup *NsError
+
+// NsErrorSmRemoveNonemptyFolder enum exports
 var NsErrorSmRemoveNonemptyFolder *NsError
+
+// NsErrorSmAddNoniscsiToIscsiGroup enum exports
 var NsErrorSmAddNoniscsiToIscsiGroup *NsError
+
+// NsErrorSmPoolDedupeIncapable enum exports
 var NsErrorSmPoolDedupeIncapable *NsError
+
+// NsErrorSmNoVvolSupport enum exports
 var NsErrorSmNoVvolSupport *NsError
+
+// NsErrorSmNoInitiatorgrp enum exports
 var NsErrorSmNoInitiatorgrp *NsError
+
+// NsErrorSmInvalidNetmask enum exports
 var NsErrorSmInvalidNetmask *NsError
+
+// NsErrorSmNoDiscoveryIpInManualMode enum exports
 var NsErrorSmNoDiscoveryIpInManualMode *NsError
+
+// NsErrorSmInvalidVolReserveValues enum exports
 var NsErrorSmInvalidVolReserveValues *NsError
+
+// NsErrorSmSupportIpInvalid enum exports
 var NsErrorSmSupportIpInvalid *NsError
+
+// NsErrorSmErrShelfForeignDisk enum exports
 var NsErrorSmErrShelfForeignDisk *NsError
+
+// NsErrorSmVolsnapAlreadyExported enum exports
 var NsErrorSmVolsnapAlreadyExported *NsError
+
+// NsErrorSmFcInitiatorgrpSubnetNotSupported enum exports
 var NsErrorSmFcInitiatorgrpSubnetNotSupported *NsError
+
+// NsErrorSmIncompatibleInitiatorAccessProtocol enum exports
 var NsErrorSmIncompatibleInitiatorAccessProtocol *NsError
+
+// NsErrorSmInvalidInitiatorgrpAccessProtocol enum exports
 var NsErrorSmInvalidInitiatorgrpAccessProtocol *NsError
+
+// NsErrorSmLimitPeacl enum exports
 var NsErrorSmLimitPeacl *NsError
+
+// NsErrorSmEtimedout enum exports
 var NsErrorSmEtimedout *NsError
+
+// NsErrorSmInitiatorgrpSubnetDoesNotExist enum exports
 var NsErrorSmInitiatorgrpSubnetDoesNotExist *NsError
+
+// NsErrorSmVolOffline enum exports
 var NsErrorSmVolOffline *NsError
+
+// NsErrorSmErrSreplMgmtOpInProgress enum exports
 var NsErrorSmErrSreplMgmtOpInProgress *NsError
+
+// NsErrorSmReplFanoutMaximumCloudPartnersExceeded enum exports
 var NsErrorSmReplFanoutMaximumCloudPartnersExceeded *NsError
+
+// NsErrorSmMalformedUrl enum exports
 var NsErrorSmMalformedUrl *NsError
+
+// NsErrorSmErrSessionCreate enum exports
 var NsErrorSmErrSessionCreate *NsError
+
+// NsErrorSmErrShelfCtrlrLoop enum exports
 var NsErrorSmErrShelfCtrlrLoop *NsError
+
+// NsErrorSmPeConflictingAclLun enum exports
 var NsErrorSmPeConflictingAclLun *NsError
+
+// NsErrorSmInvalidCtrlrName enum exports
 var NsErrorSmInvalidCtrlrName *NsError
+
+// NsErrorSmBackupNetconfigReadonly enum exports
 var NsErrorSmBackupNetconfigReadonly *NsError
+
+// NsErrorSmLimitSnapGroup enum exports
 var NsErrorSmLimitSnapGroup *NsError
+
+// NsErrorSmEncryptionInvalidCipher enum exports
 var NsErrorSmEncryptionInvalidCipher *NsError
+
+// NsErrorSmPerfpolInvalidAppCategory enum exports
 var NsErrorSmPerfpolInvalidAppCategory *NsError
+
+// NsErrorSmArrayPoolFlashMismatch enum exports
 var NsErrorSmArrayPoolFlashMismatch *NsError
+
+// NsErrorSmFolderLimitInval enum exports
 var NsErrorSmFolderLimitInval *NsError
+
+// NsErrorSmShelfSsdDegraded enum exports
 var NsErrorSmShelfSsdDegraded *NsError
+
+// NsErrorSmFolderOverdraftLimitNeedsUsageLimit enum exports
 var NsErrorSmFolderOverdraftLimitNeedsUsageLimit *NsError
+
+// NsErrorSmEncryptionMasterKeyMissing enum exports
 var NsErrorSmEncryptionMasterKeyMissing *NsError
+
+// NsErrorSmSrepAgentTypeMismatchDownstreamVols enum exports
 var NsErrorSmSrepAgentTypeMismatchDownstreamVols *NsError
+
+// NsErrorSmErrVolNotOfflineOnRestore enum exports
 var NsErrorSmErrVolNotOfflineOnRestore *NsError
+
+// NsErrorSmReplHandoverBusy enum exports
 var NsErrorSmReplHandoverBusy *NsError
+
+// NsErrorSmNotOwner enum exports
 var NsErrorSmNotOwner *NsError
+
+// NsErrorSmSrepDownstreamAcl enum exports
 var NsErrorSmSrepDownstreamAcl *NsError
+
+// NsErrorSmNoSubnetWithLabel enum exports
 var NsErrorSmNoSubnetWithLabel *NsError
+
+// NsErrorSmPoolUpdateInvalArrays enum exports
 var NsErrorSmPoolUpdateInvalArrays *NsError
+
+// NsErrorSmVolHasOnlineSnap enum exports
 var NsErrorSmVolHasOnlineSnap *NsError
+
+// NsErrorSmInvalidDataIp enum exports
 var NsErrorSmInvalidDataIp *NsError
+
+// NsErrorSmPoolVolmvEinprog enum exports
 var NsErrorSmPoolVolmvEinprog *NsError
+
+// NsErrorSmNoDataIpOnMgmtPlusData enum exports
 var NsErrorSmNoDataIpOnMgmtPlusData *NsError
+
+// NsErrorSmConflictingAclLun enum exports
 var NsErrorSmConflictingAclLun *NsError
+
+// NsErrorSmVpCreatedIgrp enum exports
 var NsErrorSmVpCreatedIgrp *NsError
+
+// NsErrorSmStarterVolAclCreate enum exports
 var NsErrorSmStarterVolAclCreate *NsError
+
+// NsErrorSmBadPkg enum exports
 var NsErrorSmBadPkg *NsError
+
+// NsErrorSmPasswdSameAsCurrent enum exports
 var NsErrorSmPasswdSameAsCurrent *NsError
+
+// NsErrorSmSnaplunsOutOfSync enum exports
 var NsErrorSmSnaplunsOutOfSync *NsError
+
+// NsErrorSmLimitSnapPool enum exports
 var NsErrorSmLimitSnapPool *NsError
+
+// NsErrorSmMultiProtocolAccessNotSupported enum exports
 var NsErrorSmMultiProtocolAccessNotSupported *NsError
+
+// NsErrorSmVolHasClone enum exports
 var NsErrorSmVolHasClone *NsError
+
+// NsErrorSmDedupeSingleArray enum exports
 var NsErrorSmDedupeSingleArray *NsError
+
+// NsErrorSmEncryptionMasterKeyInactive enum exports
 var NsErrorSmEncryptionMasterKeyInactive *NsError
+
+// NsErrorSmSnapHasClone enum exports
 var NsErrorSmSnapHasClone *NsError
+
+// NsErrorSmErrEncryptionNeeded enum exports
 var NsErrorSmErrEncryptionNeeded *NsError
+
+// NsErrorSmMismatchingDuplicateSubnet enum exports
 var NsErrorSmMismatchingDuplicateSubnet *NsError
+
+// NsErrorSmSrepNotGroupScopedVol enum exports
 var NsErrorSmSrepNotGroupScopedVol *NsError
+
+// NsErrorSmOnlyVvolFolderFolset enum exports
 var NsErrorSmOnlyVvolFolderFolset *NsError
+
+// NsErrorSmReplSnapshotSync enum exports
 var NsErrorSmReplSnapshotSync *NsError
+
+// NsErrorSmStatsNoSuchObject enum exports
 var NsErrorSmStatsNoSuchObject *NsError
+
+// NsErrorSmDefaultRouteMissing enum exports
 var NsErrorSmDefaultRouteMissing *NsError
+
+// NsErrorSmReplVasa3ApiUnsup enum exports
 var NsErrorSmReplVasa3ApiUnsup *NsError
+
+// NsErrorSmOverlappingSubnets enum exports
 var NsErrorSmOverlappingSubnets *NsError
+
+// NsErrorSmMissingArg enum exports
 var NsErrorSmMissingArg *NsError
+
+// NsErrorSmVolmvCachePinDedupeNotsupp enum exports
 var NsErrorSmVolmvCachePinDedupeNotsupp *NsError
+
+// NsErrorSmErrMergeConflict enum exports
 var NsErrorSmErrMergeConflict *NsError
+
+// NsErrorSmTooSmall enum exports
 var NsErrorSmTooSmall *NsError
+
+// NsErrorSmVolWarnGreaterThanLimit enum exports
 var NsErrorSmVolWarnGreaterThanLimit *NsError
+
+// NsErrorSmKeymgrUnreach enum exports
 var NsErrorSmKeymgrUnreach *NsError
+
+// NsErrorSmErrFcAsymmetryNotSupported enum exports
 var NsErrorSmErrFcAsymmetryNotSupported *NsError
+
+// NsErrorSmLunMismatch enum exports
 var NsErrorSmLunMismatch *NsError
+
+// NsErrorSmErrShelfInvalidDiskCount enum exports
 var NsErrorSmErrShelfInvalidDiskCount *NsError
+
+// NsErrorSmLimitVolacl enum exports
 var NsErrorSmLimitVolacl *NsError
+
+// NsErrorSmControllerNotActive enum exports
 var NsErrorSmControllerNotActive *NsError
+
+// NsErrorSmReplNoPartnerAvail enum exports
 var NsErrorSmReplNoPartnerAvail *NsError
+
+// NsErrorSmSreplMgmtOpDisallowedWhenSolo enum exports
 var NsErrorSmSreplMgmtOpDisallowedWhenSolo *NsError
+
+// NsErrorSmNoMgmtSubnetSpecified enum exports
 var NsErrorSmNoMgmtSubnetSpecified *NsError
+
+// NsErrorSmFolderConflict enum exports
 var NsErrorSmFolderConflict *NsError
+
+// NsErrorSmInvalidDataSubnet enum exports
 var NsErrorSmInvalidDataSubnet *NsError
+
+// NsErrorSmVolUsageUnavailable enum exports
 var NsErrorSmVolUsageUnavailable *NsError
+
+// NsErrorSmAclScopeOverlap enum exports
 var NsErrorSmAclScopeOverlap *NsError
+
+// NsErrorSmErrVvolAclGrpMerge enum exports
 var NsErrorSmErrVvolAclGrpMerge *NsError
+
+// NsErrorSmDisabledProtocolArtifacts enum exports
 var NsErrorSmDisabledProtocolArtifacts *NsError
+
+// NsErrorSmDuplicateSubnetVlanId enum exports
 var NsErrorSmDuplicateSubnetVlanId *NsError
+
+// NsErrorSmReplOpenstackUnsup enum exports
 var NsErrorSmReplOpenstackUnsup *NsError
+
+// NsErrorSmNoAvailableLun enum exports
 var NsErrorSmNoAvailableLun *NsError
+
+// NsErrorSmGroupPartnerNameConflict enum exports
 var NsErrorSmGroupPartnerNameConflict *NsError
+
+// NsErrorSmMgmtIpNotOnMgmt enum exports
 var NsErrorSmMgmtIpNotOnMgmt *NsError
+
+// NsErrorSmInUseLun enum exports
 var NsErrorSmInUseLun *NsError
+
+// NsErrorSmNotFcInitiatorgrp enum exports
 var NsErrorSmNotFcInitiatorgrp *NsError
+
+// NsErrorSmErrShelfInvalidCsz enum exports
 var NsErrorSmErrShelfInvalidCsz *NsError
+
+// NsErrorSmVolDedupeInvalidPerfPolicy enum exports
 var NsErrorSmVolDedupeInvalidPerfPolicy *NsError
+
+// NsErrorSmEncryptionInvalidMode enum exports
 var NsErrorSmEncryptionInvalidMode *NsError
+
+// NsErrorSmAsupDisabled enum exports
 var NsErrorSmAsupDisabled *NsError
+
+// NsErrorSmErrShelfConnectedOnlyOneSide enum exports
 var NsErrorSmErrShelfConnectedOnlyOneSide *NsError
+
+// NsErrorSmVolmvEnospace enum exports
 var NsErrorSmVolmvEnospace *NsError
+
+// NsErrorSmIncompatibleVolumes enum exports
 var NsErrorSmIncompatibleVolumes *NsError
+
+// NsErrorSmComplexTypeQueryParam enum exports
 var NsErrorSmComplexTypeQueryParam *NsError
+
+// NsErrorSmAsupError enum exports
 var NsErrorSmAsupError *NsError
+
+// NsErrorSmReplUnassignedAppcat enum exports
 var NsErrorSmReplUnassignedAppcat *NsError
+
+// NsErrorSmErrFcRegenerateInvalidOperationTdz enum exports
 var NsErrorSmErrFcRegenerateInvalidOperationTdz *NsError
+
+// NsErrorSmInvalidPathVariable enum exports
 var NsErrorSmInvalidPathVariable *NsError
+
+// NsErrorSmErrArgChangeNotAllowed enum exports
 var NsErrorSmErrArgChangeNotAllowed *NsError
+
+// NsErrorSmSpecifiedSnapshotLun enum exports
 var NsErrorSmSpecifiedSnapshotLun *NsError
+
+// NsErrorSmSrepDownstreamAssocedVol enum exports
 var NsErrorSmSrepDownstreamAssocedVol *NsError
+
+// NsErrorSmLimitScopeValues enum exports
 var NsErrorSmLimitScopeValues *NsError
+
+// NsErrorSmErrPassphraseInval enum exports
 var NsErrorSmErrPassphraseInval *NsError
+
+// NsErrorSmInitiatorgroupsOutOfSync enum exports
 var NsErrorSmInitiatorgroupsOutOfSync *NsError
+
+// NsErrorSmCachePinnedNotsup enum exports
 var NsErrorSmCachePinnedNotsup *NsError
+
+// NsErrorSmNoOperationFound enum exports
 var NsErrorSmNoOperationFound *NsError
+
+// NsErrorSmInvalidDataForPartnerType enum exports
 var NsErrorSmInvalidDataForPartnerType *NsError
+
+// NsErrorSmSrvUpdatePrecheck enum exports
 var NsErrorSmSrvUpdatePrecheck *NsError
+
+// NsErrorSmVolDedupeEncryptionInvalid enum exports
 var NsErrorSmVolDedupeEncryptionInvalid *NsError
+
+// NsErrorSmVvolFolderNoAppsrvr enum exports
 var NsErrorSmVvolFolderNoAppsrvr *NsError
+
+// NsErrorSmHttpConflict enum exports
 var NsErrorSmHttpConflict *NsError
+
+// NsErrorSmArrayRenameInNetconfigFailed enum exports
 var NsErrorSmArrayRenameInNetconfigFailed *NsError
+
+// NsErrorSmInvalidInitiatorIp enum exports
 var NsErrorSmInvalidInitiatorIp *NsError
+
+// NsErrorSmDuplicateVol enum exports
 var NsErrorSmDuplicateVol *NsError
+
+// NsErrorSmErrShelfInvalidModel enum exports
 var NsErrorSmErrShelfInvalidModel *NsError
+
+// NsErrorSmReplProtectLastSnap enum exports
 var NsErrorSmReplProtectLastSnap *NsError
+
+// NsErrorSmErrGroupMergeBusy enum exports
 var NsErrorSmErrGroupMergeBusy *NsError
+
+// NsErrorSmErrVolmvPoolMerging enum exports
 var NsErrorSmErrVolmvPoolMerging *NsError
+
+// NsErrorSmArrayNotFoundWithArgs enum exports
 var NsErrorSmArrayNotFoundWithArgs *NsError
+
+// NsErrorSmConnectionRebalancingWithoutAutomaticMethod enum exports
 var NsErrorSmConnectionRebalancingWithoutAutomaticMethod *NsError
+
+// NsErrorSmSrepDownstreamNoCommonSnapVols enum exports
 var NsErrorSmSrepDownstreamNoCommonSnapVols *NsError
+
+// NsErrorSmErrShelfWrongSasPort enum exports
 var NsErrorSmErrShelfWrongSasPort *NsError
+
+// NsErrorSmFolderUsageLimitBelowCurrentUsage enum exports
 var NsErrorSmFolderUsageLimitBelowCurrentUsage *NsError
+
+// NsErrorSmLimitSnapRetentionPool enum exports
 var NsErrorSmLimitSnapRetentionPool *NsError
+
+// NsErrorSmErrShelfExprFwVerInval enum exports
 var NsErrorSmErrShelfExprFwVerInval *NsError
+
+// NsErrorSmSrepVolcollUnsup enum exports
 var NsErrorSmSrepVolcollUnsup *NsError
+
+// NsErrorSmSrepNotGroupScopedVols enum exports
 var NsErrorSmSrepNotGroupScopedVols *NsError
+
+// NsErrorSmFcIntfNotFound enum exports
 var NsErrorSmFcIntfNotFound *NsError
+
+// NsErrorSmVolUnknown enum exports
 var NsErrorSmVolUnknown *NsError
+
+// NsErrorSmErrShelfEbusy enum exports
 var NsErrorSmErrShelfEbusy *NsError
+
+// NsErrorSmAppserverInUse enum exports
 var NsErrorSmAppserverInUse *NsError
+
+// NsErrorSmPoolDoesNotHaveFolder enum exports
 var NsErrorSmPoolDoesNotHaveFolder *NsError
+
+// NsErrorSmPerfpolNotFound enum exports
 var NsErrorSmPerfpolNotFound *NsError
+
+// NsErrorSmPerfpolOob enum exports
 var NsErrorSmPerfpolOob *NsError
+
+// NsErrorSmDuplicateInitiator enum exports
 var NsErrorSmDuplicateInitiator *NsError
+
+// NsErrorSmInUseAppUuid enum exports
 var NsErrorSmInUseAppUuid *NsError
+
+// NsErrorSmPartnerCfgSync enum exports
 var NsErrorSmPartnerCfgSync *NsError
+
+// NsErrorSmNotDownloadingSw enum exports
 var NsErrorSmNotDownloadingSw *NsError
+
+// NsErrorSmMissingMgmtIp enum exports
 var NsErrorSmMissingMgmtIp *NsError
+
+// NsErrorSmSrepDownstreamNoCommonSnapVol enum exports
 var NsErrorSmSrepDownstreamNoCommonSnapVol *NsError
+
+// NsErrorSmEbusy enum exports
 var NsErrorSmEbusy *NsError
+
+// NsErrorSmErrReplCantConnect enum exports
 var NsErrorSmErrReplCantConnect *NsError
+
+// NsErrorSmErrShelfExpanderErr enum exports
 var NsErrorSmErrShelfExpanderErr *NsError
+
+// NsErrorSmPeFailAclRemoval enum exports
 var NsErrorSmPeFailAclRemoval *NsError
+
+// NsErrorSmSupportIpNotOnMgmt enum exports
 var NsErrorSmSupportIpNotOnMgmt *NsError
+
+// NsErrorSmAtLeastOneGroupSubnet enum exports
 var NsErrorSmAtLeastOneGroupSubnet *NsError
+
+// NsErrorSmUnsupportedAccessProtocol enum exports
 var NsErrorSmUnsupportedAccessProtocol *NsError
+
+// NsErrorSmSpaceInfoUnavail enum exports
 var NsErrorSmSpaceInfoUnavail *NsError
+
+// NsErrorSmLimitVolmvHretSnapPool enum exports
 var NsErrorSmLimitVolmvHretSnapPool *NsError
+
+// NsErrorSmStartTimeBeyondEndTime enum exports
 var NsErrorSmStartTimeBeyondEndTime *NsError
+
+// NsErrorSmReplRemotePaused enum exports
 var NsErrorSmReplRemotePaused *NsError
+
+// NsErrorSmDataIpNotOnSubnet enum exports
 var NsErrorSmDataIpNotOnSubnet *NsError
+
+// NsErrorSmConflictingInitiatorAlias enum exports
 var NsErrorSmConflictingInitiatorAlias *NsError
+
+// NsErrorSmReplEditPartnerNameNotPaused enum exports
 var NsErrorSmReplEditPartnerNameNotPaused *NsError
+
+// NsErrorSmShelfForeignDisk enum exports
 var NsErrorSmShelfForeignDisk *NsError
+
+// NsErrorSmQosLimitNotInRange enum exports
 var NsErrorSmQosLimitNotInRange *NsError
+
+// NsErrorSmErrShelfNoRserial enum exports
 var NsErrorSmErrShelfNoRserial *NsError
+
+// NsErrorSmUntaggedMtuNotLargest enum exports
 var NsErrorSmUntaggedMtuNotLargest *NsError
+
+// NsErrorSmErrShelfDisconnected enum exports
 var NsErrorSmErrShelfDisconnected *NsError
+
+// NsErrorSmSubnetAlreadyAssignedOnNic enum exports
 var NsErrorSmSubnetAlreadyAssignedOnNic *NsError
+
+// NsErrorSmFcSessionExist enum exports
 var NsErrorSmFcSessionExist *NsError
+
+// NsErrorSmVvolCannotOfflineBoundSnap enum exports
 var NsErrorSmVvolCannotOfflineBoundSnap *NsError
+
+// NsErrorSmArrayMemberOrphan enum exports
 var NsErrorSmArrayMemberOrphan *NsError
+
+// NsErrorSmArrayMissingSubnet enum exports
 var NsErrorSmArrayMissingSubnet *NsError
+
+// NsErrorSmDisableVvolWithPe enum exports
 var NsErrorSmDisableVvolWithPe *NsError
+
+// NsErrorSmLimitSnapVol enum exports
 var NsErrorSmLimitSnapVol *NsError
+
+// NsErrorSmPoolUsageUnavailable enum exports
 var NsErrorSmPoolUsageUnavailable *NsError
+
+// NsErrorSmInvalidQueryParam enum exports
 var NsErrorSmInvalidQueryParam *NsError
+
+// NsErrorSmErrGroupMergeDbLoad enum exports
 var NsErrorSmErrGroupMergeDbLoad *NsError
+
+// NsErrorSmEio enum exports
 var NsErrorSmEio *NsError
+
+// NsErrorSmSrepDownstreamOnlineVol enum exports
 var NsErrorSmSrepDownstreamOnlineVol *NsError
+
+// NsErrorSmPoolNoSrcArray enum exports
 var NsErrorSmPoolNoSrcArray *NsError
+
+// NsErrorSmInvalidKeyvalue enum exports
 var NsErrorSmInvalidKeyvalue *NsError
+
+// NsErrorSmProtpolMaxLength enum exports
 var NsErrorSmProtpolMaxLength *NsError
+
+// NsErrorSmVolAssocVolcoll enum exports
 var NsErrorSmVolAssocVolcoll *NsError
+
+// NsErrorSmMissingDiscoveryIp enum exports
 var NsErrorSmMissingDiscoveryIp *NsError
+
+// NsErrorSmReplDeleteReplicaUnsup enum exports
 var NsErrorSmReplDeleteReplicaUnsup *NsError
+
+// NsErrorSmVolSizeDecreased enum exports
 var NsErrorSmVolSizeDecreased *NsError
+
+// NsErrorSmSrepDownstreamAssocedVols enum exports
 var NsErrorSmSrepDownstreamAssocedVols *NsError
+
+// NsErrorSmAddNonfcToFcGroup enum exports
 var NsErrorSmAddNonfcToFcGroup *NsError
+
+// NsErrorSmNetconfigDoesNotExist enum exports
 var NsErrorSmNetconfigDoesNotExist *NsError
+
+// NsErrorSmFolderVolmvEnospace enum exports
 var NsErrorSmFolderVolmvEnospace *NsError
+
+// NsErrorSmNetconfigExistNoForce enum exports
 var NsErrorSmNetconfigExistNoForce *NsError
+
+// NsErrorSmPoolUpdateInval enum exports
 var NsErrorSmPoolUpdateInval *NsError
+
+// NsErrorSmVlanSubnetInManual enum exports
 var NsErrorSmVlanSubnetInManual *NsError
+
+// NsErrorSmReplVvolUnsup enum exports
 var NsErrorSmReplVvolUnsup *NsError
+
+// NsErrorSmErrTdzNotSupported enum exports
 var NsErrorSmErrTdzNotSupported *NsError
+
+// NsErrorSmPoolExists enum exports
 var NsErrorSmPoolExists *NsError
+
+// NsErrorSmAuth enum exports
 var NsErrorSmAuth *NsError
+
+// NsErrorSmInvalidObjectSetQuery enum exports
 var NsErrorSmInvalidObjectSetQuery *NsError
+
+// NsErrorSmSrepDownstreamOnlineVols enum exports
 var NsErrorSmSrepDownstreamOnlineVols *NsError
+
+// NsErrorSmNoMethodForUrlPattern enum exports
 var NsErrorSmNoMethodForUrlPattern *NsError
+
+// NsErrorSmVolNotOnline enum exports
 var NsErrorSmVolNotOnline *NsError
+
+// NsErrorSmVolDedupeVolfamAppcat enum exports
 var NsErrorSmVolDedupeVolfamAppcat *NsError
+
+// NsErrorSmInvalidNic enum exports
 var NsErrorSmInvalidNic *NsError
+
+// NsErrorSmArrayNotGroupLeader enum exports
 var NsErrorSmArrayNotGroupLeader *NsError
+
+// NsErrorSmInvalidVlanId enum exports
 var NsErrorSmInvalidVlanId *NsError
+
+// NsErrorSmLimitSnaplun enum exports
 var NsErrorSmLimitSnaplun *NsError
+
+// NsErrorSmIncompatibleCachePolicy enum exports
 var NsErrorSmIncompatibleCachePolicy *NsError
+
+// NsErrorSmVolmvAbortEnospace enum exports
 var NsErrorSmVolmvAbortEnospace *NsError
+
+// NsErrorSmLimitHretSnapGroup enum exports
 var NsErrorSmLimitHretSnapGroup *NsError
+
+// NsErrorSmVolmvEalready enum exports
 var NsErrorSmVolmvEalready *NsError
+
+// NsErrorSmAsupPingfromCtrlrbError enum exports
 var NsErrorSmAsupPingfromCtrlrbError *NsError
+
+// NsErrorSmVolDedupeUnassignedAppCategory enum exports
 var NsErrorSmVolDedupeUnassignedAppCategory *NsError
+
+// NsErrorSmEnoent enum exports
 var NsErrorSmEnoent *NsError
+
+// NsErrorSmPerfpolDedupeUnassignedAppCategory enum exports
 var NsErrorSmPerfpolDedupeUnassignedAppCategory *NsError
+
+// NsErrorSmInvalidInitiatorLabel enum exports
 var NsErrorSmInvalidInitiatorLabel *NsError
+
+// NsErrorSmDuplicateInitiatorWithArgs enum exports
 var NsErrorSmDuplicateInitiatorWithArgs *NsError
+
+// NsErrorSmErrShelfForeign enum exports
 var NsErrorSmErrShelfForeign *NsError
+
+// NsErrorSmInvalidAgentType enum exports
 var NsErrorSmInvalidAgentType *NsError
+
+// NsErrorSmEinprogress enum exports
 var NsErrorSmEinprogress *NsError
+
+// NsErrorSmNotEnoughCache enum exports
 var NsErrorSmNotEnoughCache *NsError
+
+// NsErrorSmEexist enum exports
 var NsErrorSmEexist *NsError
+
+// NsErrorSmMissingArrayNetconfig enum exports
 var NsErrorSmMissingArrayNetconfig *NsError
+
+// NsErrorSmInvalidInitiatorAlias enum exports
 var NsErrorSmInvalidInitiatorAlias *NsError
+
+// NsErrorSmProtpolAppSyncOracle enum exports
 var NsErrorSmProtpolAppSyncOracle *NsError
+
+// NsErrorSmNoSupport enum exports
 var NsErrorSmNoSupport *NsError
+
+// NsErrorSmDataIpMissingSubnet enum exports
 var NsErrorSmDataIpMissingSubnet *NsError
+
+// NsErrorSmErrShelfHddsInAfs enum exports
 var NsErrorSmErrShelfHddsInAfs *NsError
+
+// NsErrorSmStartRowBeyondTotalRows enum exports
 var NsErrorSmStartRowBeyondTotalRows *NsError
+
+// NsErrorSmExtraneousArrayNetconfig enum exports
 var NsErrorSmExtraneousArrayNetconfig *NsError
+
+// NsErrorSmPoolCachePinNotsupp enum exports
 var NsErrorSmPoolCachePinNotsupp *NsError
+
+// NsErrorSmUsageUnavailable enum exports
 var NsErrorSmUsageUnavailable *NsError
+
+// NsErrorSmReplAgentTypeUnsup enum exports
 var NsErrorSmReplAgentTypeUnsup *NsError
+
+// NsErrorSmReplFanoutMaximumPartnersExceeded enum exports
 var NsErrorSmReplFanoutMaximumPartnersExceeded *NsError
+
+// NsErrorSmAsupPingfromCtrlraError enum exports
 var NsErrorSmAsupPingfromCtrlraError *NsError
+
+// NsErrorSmErrShelfInvalidLoc enum exports
 var NsErrorSmErrShelfInvalidLoc *NsError
+
+// NsErrorSmErrShelfSsdDegraded enum exports
 var NsErrorSmErrShelfSsdDegraded *NsError
+
+// NsErrorSmSyncReplConfigure enum exports
 var NsErrorSmSyncReplConfigure *NsError
+
+// NsErrorSmAsupHeartbeatError enum exports
 var NsErrorSmAsupHeartbeatError *NsError
+
+// NsErrorSmLimitHretSnapRetentionPoolWarn enum exports
 var NsErrorSmLimitHretSnapRetentionPoolWarn *NsError
+
+// NsErrorSmErrAuth enum exports
 var NsErrorSmErrAuth *NsError
+
+// NsErrorSmPartnerSubnetDoesNotExist enum exports
 var NsErrorSmPartnerSubnetDoesNotExist *NsError
+
+// NsErrorSmErrShelfLocOrder enum exports
 var NsErrorSmErrShelfLocOrder *NsError
+
+// NsErrorSmFolderEnospace enum exports
 var NsErrorSmFolderEnospace *NsError
+
+// NsErrorSmErrPoolHasGroupPartners enum exports
 var NsErrorSmErrPoolHasGroupPartners *NsError
+
+// NsErrorSmProtpolNotSpecified enum exports
 var NsErrorSmProtpolNotSpecified *NsError
+
+// NsErrorSmUnexpectedQueryParam enum exports
 var NsErrorSmUnexpectedQueryParam *NsError
+
+// NsErrorSmVolmvAbortEalready enum exports
 var NsErrorSmVolmvAbortEalready *NsError
+
+// NsErrorSmFcIntfAlreadyInState enum exports
 var NsErrorSmFcIntfAlreadyInState *NsError
+
+// NsErrorSmLimitHretSnapPool enum exports
 var NsErrorSmLimitHretSnapPool *NsError
+
+// NsErrorSmIpUpdateNoForce enum exports
 var NsErrorSmIpUpdateNoForce *NsError
+
+// NsErrorSmSrepAgentTypeMismatchDownstreamVol enum exports
 var NsErrorSmSrepAgentTypeMismatchDownstreamVol *NsError
+
+// NsErrorSmVssValidationTimedout enum exports
 var NsErrorSmVssValidationTimedout *NsError
+
+// NsErrorSmConfigSyncInprogress enum exports
 var NsErrorSmConfigSyncInprogress *NsError
+
+// NsErrorSmAsyncJobId enum exports
 var NsErrorSmAsyncJobId *NsError
+
+// NsErrorSmEagain enum exports
 var NsErrorSmEagain *NsError
+
+// NsErrorSmPerfpolVolMoveAppCategory enum exports
 var NsErrorSmPerfpolVolMoveAppCategory *NsError
+
+// NsErrorSmLimitHretSnapRetentionPoolMax enum exports
 var NsErrorSmLimitHretSnapRetentionPoolMax *NsError
+
+// NsErrorSmVolHasConnections enum exports
 var NsErrorSmVolHasConnections *NsError
+
+// NsErrorSmNoCommonLun enum exports
 var NsErrorSmNoCommonLun *NsError
+
+// NsErrorSmErrShelfSasLanesDegraded enum exports
 var NsErrorSmErrShelfSasLanesDegraded *NsError
+
+// NsErrorSmVolAppCategoryMoveInvalid enum exports
 var NsErrorSmVolAppCategoryMoveInvalid *NsError
+
+// NsErrorSmExtTrigSchedAlreadyPresent enum exports
 var NsErrorSmExtTrigSchedAlreadyPresent *NsError
+
+// NsErrorSmNoDataIpSpecified enum exports
 var NsErrorSmNoDataIpSpecified *NsError
+
+// NsErrorSmInvalidVolAssoc enum exports
 var NsErrorSmInvalidVolAssoc *NsError
+
+// NsErrorSmReplObjectBusy enum exports
 var NsErrorSmReplObjectBusy *NsError
+
+// NsErrorSmVolcollOwner enum exports
 var NsErrorSmVolcollOwner *NsError
+
+// NsErrorSmReservedUsername enum exports
 var NsErrorSmReservedUsername *NsError
+
+// NsErrorSmVvolsnapOnline enum exports
 var NsErrorSmVvolsnapOnline *NsError
+
+// NsErrorSmFolderVolmvEinprog enum exports
 var NsErrorSmFolderVolmvEinprog *NsError
+
+// NsErrorSmUnexpectedObjectSetQuery enum exports
 var NsErrorSmUnexpectedObjectSetQuery *NsError
+
+// NsErrorSmProtpolInvalidValue enum exports
 var NsErrorSmProtpolInvalidValue *NsError
+
+// NsErrorSmFolderIncompatibleAgentType enum exports
 var NsErrorSmFolderIncompatibleAgentType *NsError
+
+// NsErrorSmProtpolVmwareInvalidVcenterHostname enum exports
 var NsErrorSmProtpolVmwareInvalidVcenterHostname *NsError
+
+// NsErrorSmErrVolCollMultipleSchedules enum exports
 var NsErrorSmErrVolCollMultipleSchedules *NsError
+
+// NsErrorSmReplPartnerNameMismatch enum exports
 var NsErrorSmReplPartnerNameMismatch *NsError
+
+// NsErrorSmInvalidFolder enum exports
 var NsErrorSmInvalidFolder *NsError
+
+// NsErrorSmSrvUpdatePrecheckArray enum exports
 var NsErrorSmSrvUpdatePrecheckArray *NsError
+
+// NsErrorSmGatewayNotInSubnets enum exports
 var NsErrorSmGatewayNotInSubnets *NsError
+
+// NsErrorSmDeprecatedPerfpol enum exports
 var NsErrorSmDeprecatedPerfpol *NsError
+
+// NsErrorSmTakeoverSplitBrain enum exports
 var NsErrorSmTakeoverSplitBrain *NsError
+
+// NsErrorSmPeIgroupProtocolMismatched enum exports
 var NsErrorSmPeIgroupProtocolMismatched *NsError
+
+// NsErrorSmOnlyVvolFolderAppsrvr enum exports
 var NsErrorSmOnlyVvolFolderAppsrvr *NsError
+
+// NsErrorSmVersionMismatch enum exports
 var NsErrorSmVersionMismatch *NsError
+
+// NsErrorSmPoolLastArray enum exports
 var NsErrorSmPoolLastArray *NsError
+
+// NsErrorSmEaccess enum exports
 var NsErrorSmEaccess *NsError
+
+// NsErrorSmInvalidSubnetLabel enum exports
 var NsErrorSmInvalidSubnetLabel *NsError
+
+// NsErrorSmInvalidArg enum exports
 var NsErrorSmInvalidArg *NsError
+
+// NsErrorSmDedupeVolfamAppcat enum exports
 var NsErrorSmDedupeVolfamAppcat *NsError
+
+// NsErrorSmSrvUnreach enum exports
 var NsErrorSmSrvUnreach *NsError
+
+// NsErrorSmPoolPartnerPauseUnsup enum exports
 var NsErrorSmPoolPartnerPauseUnsup *NsError
+
+// NsErrorSmNetconfigCreateDraftOnly enum exports
 var NsErrorSmNetconfigCreateDraftOnly *NsError
+
+// NsErrorSmErrArrayNotFound enum exports
 var NsErrorSmErrArrayNotFound *NsError
+
+// NsErrorSmFolsetInUse enum exports
 var NsErrorSmFolsetInUse *NsError
+
+// NsErrorSmErrShelfSesDeviceNotReady enum exports
 var NsErrorSmErrShelfSesDeviceNotReady *NsError
+
+// NsErrorSmInvalidIp enum exports
 var NsErrorSmInvalidIp *NsError
+
+// NsErrorSmEalready enum exports
 var NsErrorSmEalready *NsError
+
+// NsErrorSmInvalidNonIscsiDataSubnet enum exports
 var NsErrorSmInvalidNonIscsiDataSubnet *NsError
+
+// NsErrorSmReplHandoverUnsupPtype enum exports
 var NsErrorSmReplHandoverUnsupPtype *NsError
+
+// NsErrorSmArrayNotAssigned enum exports
 var NsErrorSmArrayNotAssigned *NsError
+
+// NsErrorSmEpartial enum exports
 var NsErrorSmEpartial *NsError
+
+// NsErrorSmErrProtpolMissingName enum exports
 var NsErrorSmErrProtpolMissingName *NsError
+
+// NsErrorSmVfVolCachePinned enum exports
 var NsErrorSmVfVolCachePinned *NsError
+
+// NsErrorSmAtLeastOneIscsiCluster enum exports
 var NsErrorSmAtLeastOneIscsiCluster *NsError
+
+// NsErrorSmErrTooMany enum exports
 var NsErrorSmErrTooMany *NsError
+
+// NsErrorSmErrShelfExprMfgVerInval enum exports
 var NsErrorSmErrShelfExprMfgVerInval *NsError
+
+// NsErrorSmMgmtIpInvalid enum exports
 var NsErrorSmMgmtIpInvalid *NsError
+
+// NsErrorSmErrShelfWrongCtrlrSide enum exports
 var NsErrorSmErrShelfWrongCtrlrSide *NsError
 
 func init() {

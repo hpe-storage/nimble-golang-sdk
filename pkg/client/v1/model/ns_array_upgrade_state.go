@@ -31,17 +31,37 @@ var pNsArrayUpgradeStateFailed NsArrayUpgradeState
 var pNsArrayUpgradeStateAwaitingNextStage NsArrayUpgradeState
 var pNsArrayUpgradeStateComplete NsArrayUpgradeState
 
-// Export
+// NsArrayUpgradeStateAbortFailed enum exports
 var NsArrayUpgradeStateAbortFailed *NsArrayUpgradeState
+
+// NsArrayUpgradeStatePrecheck enum exports
 var NsArrayUpgradeStatePrecheck *NsArrayUpgradeState
+
+// NsArrayUpgradeStateInProgress enum exports
 var NsArrayUpgradeStateInProgress *NsArrayUpgradeState
+
+// NsArrayUpgradeStatePaused enum exports
 var NsArrayUpgradeStatePaused *NsArrayUpgradeState
+
+// NsArrayUpgradeStateAborted enum exports
 var NsArrayUpgradeStateAborted *NsArrayUpgradeState
+
+// NsArrayUpgradeStateAborting enum exports
 var NsArrayUpgradeStateAborting *NsArrayUpgradeState
+
+// NsArrayUpgradeStateStarted enum exports
 var NsArrayUpgradeStateStarted *NsArrayUpgradeState
+
+// NsArrayUpgradeStateNone enum exports
 var NsArrayUpgradeStateNone *NsArrayUpgradeState
+
+// NsArrayUpgradeStateFailed enum exports
 var NsArrayUpgradeStateFailed *NsArrayUpgradeState
+
+// NsArrayUpgradeStateAwaitingNextStage enum exports
 var NsArrayUpgradeStateAwaitingNextStage *NsArrayUpgradeState
+
+// NsArrayUpgradeStateComplete enum exports
 var NsArrayUpgradeStateComplete *NsArrayUpgradeState
 
 func init() {

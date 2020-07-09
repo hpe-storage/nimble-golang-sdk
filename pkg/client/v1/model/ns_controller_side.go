@@ -13,8 +13,10 @@ const (
 var pNsControllerSideA NsControllerSide
 var pNsControllerSideB NsControllerSide
 
-// Export
+// NsControllerSideA enum exports
 var NsControllerSideA *NsControllerSide
+
+// NsControllerSideB enum exports
 var NsControllerSideB *NsControllerSide
 
 func init() {

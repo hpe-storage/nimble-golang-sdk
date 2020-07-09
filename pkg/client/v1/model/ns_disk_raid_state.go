@@ -19,11 +19,19 @@ var pNsDiskRaidStateResynchronizing NsDiskRaidState
 var pNsDiskRaidStateFaulty NsDiskRaidState
 var pNsDiskRaidStateSpare NsDiskRaidState
 
-// Export
+// NsDiskRaidStateOkay enum exports
 var NsDiskRaidStateOkay *NsDiskRaidState
+
+// NsDiskRaidStateNA enum exports
 var NsDiskRaidStateNA *NsDiskRaidState
+
+// NsDiskRaidStateResynchronizing enum exports
 var NsDiskRaidStateResynchronizing *NsDiskRaidState
+
+// NsDiskRaidStateFaulty enum exports
 var NsDiskRaidStateFaulty *NsDiskRaidState
+
+// NsDiskRaidStateSpare enum exports
 var NsDiskRaidStateSpare *NsDiskRaidState
 
 func init() {

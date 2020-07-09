@@ -15,9 +15,13 @@ var pNsProtectionTypeUnprotected NsProtectionType
 var pNsProtectionTypeRemote NsProtectionType
 var pNsProtectionTypeLocal NsProtectionType
 
-// Export
+// NsProtectionTypeUnprotected enum exports
 var NsProtectionTypeUnprotected *NsProtectionType
+
+// NsProtectionTypeRemote enum exports
 var NsProtectionTypeRemote *NsProtectionType
+
+// NsProtectionTypeLocal enum exports
 var NsProtectionTypeLocal *NsProtectionType
 
 func init() {

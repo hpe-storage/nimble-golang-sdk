@@ -17,10 +17,16 @@ var pNsSnapReplStatusInProgress NsSnapReplStatus
 var pNsSnapReplStatusPending NsSnapReplStatus
 var pNsSnapReplStatusComplete NsSnapReplStatus
 
-// Export
+// NsSnapReplStatusFail enum exports
 var NsSnapReplStatusFail *NsSnapReplStatus
+
+// NsSnapReplStatusInProgress enum exports
 var NsSnapReplStatusInProgress *NsSnapReplStatus
+
+// NsSnapReplStatusPending enum exports
 var NsSnapReplStatusPending *NsSnapReplStatus
+
+// NsSnapReplStatusComplete enum exports
 var NsSnapReplStatusComplete *NsSnapReplStatus
 
 func init() {

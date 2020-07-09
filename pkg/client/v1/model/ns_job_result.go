@@ -17,10 +17,16 @@ var pNsJobResultPartial NsJobResult
 var pNsJobResultUnknown NsJobResult
 var pNsJobResultSucceeded NsJobResult
 
-// Export
+// NsJobResultFailed enum exports
 var NsJobResultFailed *NsJobResult
+
+// NsJobResultPartial enum exports
 var NsJobResultPartial *NsJobResult
+
+// NsJobResultUnknown enum exports
 var NsJobResultUnknown *NsJobResult
+
+// NsJobResultSucceeded enum exports
 var NsJobResultSucceeded *NsJobResult
 
 func init() {

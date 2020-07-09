@@ -17,10 +17,16 @@ var pNsFanStatusFanOkay NsFanStatus
 var pNsFanStatusFanAlerted NsFanStatus
 var pNsFanStatusFanUnknown NsFanStatus
 
-// Export
+// NsFanStatusFanFailed enum exports
 var NsFanStatusFanFailed *NsFanStatus
+
+// NsFanStatusFanOkay enum exports
 var NsFanStatusFanOkay *NsFanStatus
+
+// NsFanStatusFanAlerted enum exports
 var NsFanStatusFanAlerted *NsFanStatus
+
+// NsFanStatusFanUnknown enum exports
 var NsFanStatusFanUnknown *NsFanStatus
 
 func init() {

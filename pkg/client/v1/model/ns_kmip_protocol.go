@@ -17,10 +17,16 @@ var pNsKmipProtocolKmip12 NsKmipProtocol
 var pNsKmipProtocolKmip10 NsKmipProtocol
 var pNsKmipProtocolKmip13 NsKmipProtocol
 
-// Export
+// NsKmipProtocolKmip11 enum exports
 var NsKmipProtocolKmip11 *NsKmipProtocol
+
+// NsKmipProtocolKmip12 enum exports
 var NsKmipProtocolKmip12 *NsKmipProtocol
+
+// NsKmipProtocolKmip10 enum exports
 var NsKmipProtocolKmip10 *NsKmipProtocol
+
+// NsKmipProtocolKmip13 enum exports
 var NsKmipProtocolKmip13 *NsKmipProtocol
 
 func init() {

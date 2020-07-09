@@ -13,8 +13,10 @@ const (
 var pNsScheduleTypeExternalTrigger NsScheduleType
 var pNsScheduleTypeRegular NsScheduleType
 
-// Export
+// NsScheduleTypeExternalTrigger enum exports
 var NsScheduleTypeExternalTrigger *NsScheduleType
+
+// NsScheduleTypeRegular enum exports
 var NsScheduleTypeRegular *NsScheduleType
 
 func init() {

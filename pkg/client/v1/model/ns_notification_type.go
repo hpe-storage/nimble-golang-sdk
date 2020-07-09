@@ -13,8 +13,10 @@ const (
 var pNsNotificationTypeAlerts NsNotificationType
 var pNsNotificationTypeAuditlogs NsNotificationType
 
-// Export
+// NsNotificationTypeAlerts enum exports
 var NsNotificationTypeAlerts *NsNotificationType
+
+// NsNotificationTypeAuditlogs enum exports
 var NsNotificationTypeAuditlogs *NsNotificationType
 
 func init() {

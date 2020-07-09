@@ -15,9 +15,13 @@ var pNsControllerIdA NsControllerId
 var pNsControllerIdB NsControllerId
 var pNsControllerIdIndependent NsControllerId
 
-// Export
+// NsControllerIdA enum exports
 var NsControllerIdA *NsControllerId
+
+// NsControllerIdB enum exports
 var NsControllerIdB *NsControllerId
+
+// NsControllerIdIndependent enum exports
 var NsControllerIdIndependent *NsControllerId
 
 func init() {

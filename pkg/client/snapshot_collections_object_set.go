@@ -23,32 +23,32 @@ type SnapshotCollectionObjectSet struct {
 // CreateObject creates a new SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *model.SnapshotCollection) (*model.SnapshotCollection, error) {
 	newPayload, err := model.EncodeSnapshotCollection(payload)
-	snapshotCollectionObjectSetResp, err := objectSet.Client.Post(snapshotCollectionPath, newPayload)
+	resp, err := objectSet.Client.Post(snapshotCollectionPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if snapshotCollectionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeSnapshotCollection(snapshotCollectionObjectSetResp)
+	return model.DecodeSnapshotCollection(resp)
 }
 
 // UpdateObject Modify existing SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *model.SnapshotCollection) (*model.SnapshotCollection, error) {
 	newPayload, err := model.EncodeSnapshotCollection(payload)
-	snapshotCollectionObjectSetResp, err := objectSet.Client.Put(snapshotCollectionPath, id, newPayload)
+	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if snapshotCollectionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeSnapshotCollection(snapshotCollectionObjectSetResp)
+	return model.DecodeSnapshotCollection(resp)
 }
 
 // DeleteObject deletes the SnapshotCollection object with the specified ID

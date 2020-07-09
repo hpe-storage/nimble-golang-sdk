@@ -15,9 +15,13 @@ var pNsHCIConfigTypeCluster NsHCIConfigType
 var pNsHCIConfigTypeNode NsHCIConfigType
 var pNsHCIConfigTypeBlock NsHCIConfigType
 
-// Export
+// NsHCIConfigTypeCluster enum exports
 var NsHCIConfigTypeCluster *NsHCIConfigType
+
+// NsHCIConfigTypeNode enum exports
 var NsHCIConfigTypeNode *NsHCIConfigType
+
+// NsHCIConfigTypeBlock enum exports
 var NsHCIConfigTypeBlock *NsHCIConfigType
 
 func init() {

@@ -25,14 +25,28 @@ var pNsSnapStatusCreateRetry NsSnapStatus
 var pNsSnapStatusInvalid NsSnapStatus
 var pNsSnapStatusCreating NsSnapStatus
 
-// Export
+// NsSnapStatusOkay enum exports
 var NsSnapStatusOkay *NsSnapStatus
+
+// NsSnapStatusDeleted enum exports
 var NsSnapStatusDeleted *NsSnapStatus
+
+// NsSnapStatusDeferredDelete enum exports
 var NsSnapStatusDeferredDelete *NsSnapStatus
+
+// NsSnapStatusFailedDelete enum exports
 var NsSnapStatusFailedDelete *NsSnapStatus
+
+// NsSnapStatusForceDelete enum exports
 var NsSnapStatusForceDelete *NsSnapStatus
+
+// NsSnapStatusCreateRetry enum exports
 var NsSnapStatusCreateRetry *NsSnapStatus
+
+// NsSnapStatusInvalid enum exports
 var NsSnapStatusInvalid *NsSnapStatus
+
+// NsSnapStatusCreating enum exports
 var NsSnapStatusCreating *NsSnapStatus
 
 func init() {

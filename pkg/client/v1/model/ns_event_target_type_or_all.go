@@ -55,29 +55,73 @@ var pNsEventTargetTypeOrAllInitiatorGroup NsEventTargetTypeOrAll
 var pNsEventTargetTypeOrAllRaid NsEventTargetTypeOrAll
 var pNsEventTargetTypeOrAllGroup NsEventTargetTypeOrAll
 
-// Export
+// NsEventTargetTypeOrAllAll enum exports
 var NsEventTargetTypeOrAllAll *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllAnon enum exports
 var NsEventTargetTypeOrAllAnon *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllController enum exports
 var NsEventTargetTypeOrAllController *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllTest enum exports
 var NsEventTargetTypeOrAllTest *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllProtectionSet enum exports
 var NsEventTargetTypeOrAllProtectionSet *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllPool enum exports
 var NsEventTargetTypeOrAllPool *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllNic enum exports
 var NsEventTargetTypeOrAllNic *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllShelf enum exports
 var NsEventTargetTypeOrAllShelf *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllVolume enum exports
 var NsEventTargetTypeOrAllVolume *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllDisk enum exports
 var NsEventTargetTypeOrAllDisk *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllFan enum exports
 var NsEventTargetTypeOrAllFan *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllIscsi enum exports
 var NsEventTargetTypeOrAllIscsi *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllNvram enum exports
 var NsEventTargetTypeOrAllNvram *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllPowerSupply enum exports
 var NsEventTargetTypeOrAllPowerSupply *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllPartner enum exports
 var NsEventTargetTypeOrAllPartner *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllArray enum exports
 var NsEventTargetTypeOrAllArray *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllService enum exports
 var NsEventTargetTypeOrAllService *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllTemperature enum exports
 var NsEventTargetTypeOrAllTemperature *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllNtb enum exports
 var NsEventTargetTypeOrAllNtb *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllFc enum exports
 var NsEventTargetTypeOrAllFc *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllInitiatorGroup enum exports
 var NsEventTargetTypeOrAllInitiatorGroup *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllRaid enum exports
 var NsEventTargetTypeOrAllRaid *NsEventTargetTypeOrAll
+
+// NsEventTargetTypeOrAllGroup enum exports
 var NsEventTargetTypeOrAllGroup *NsEventTargetTypeOrAll
 
 func init() {

@@ -17,10 +17,16 @@ var pNsArrayGroupStateInitialized NsArrayGroupState
 var pNsArrayGroupStateUnused NsArrayGroupState
 var pNsArrayGroupStateRemoving NsArrayGroupState
 
-// Export
+// NsArrayGroupStateInvalid enum exports
 var NsArrayGroupStateInvalid *NsArrayGroupState
+
+// NsArrayGroupStateInitialized enum exports
 var NsArrayGroupStateInitialized *NsArrayGroupState
+
+// NsArrayGroupStateUnused enum exports
 var NsArrayGroupStateUnused *NsArrayGroupState
+
+// NsArrayGroupStateRemoving enum exports
 var NsArrayGroupStateRemoving *NsArrayGroupState
 
 func init() {

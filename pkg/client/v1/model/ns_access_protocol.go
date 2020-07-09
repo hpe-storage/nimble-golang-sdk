@@ -13,8 +13,10 @@ const (
 var pNsAccessProtocolIscsi NsAccessProtocol
 var pNsAccessProtocolFc NsAccessProtocol
 
-// Export
+// NsAccessProtocolIscsi enum exports
 var NsAccessProtocolIscsi *NsAccessProtocol
+
+// NsAccessProtocolFc enum exports
 var NsAccessProtocolFc *NsAccessProtocol
 
 func init() {

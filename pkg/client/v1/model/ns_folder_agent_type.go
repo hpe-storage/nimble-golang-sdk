@@ -17,10 +17,16 @@ var pNsFolderAgentTypeVvol NsFolderAgentType
 var pNsFolderAgentTypeOpenstack NsFolderAgentType
 var pNsFolderAgentTypeNone NsFolderAgentType
 
-// Export
+// NsFolderAgentTypeSmis enum exports
 var NsFolderAgentTypeSmis *NsFolderAgentType
+
+// NsFolderAgentTypeVvol enum exports
 var NsFolderAgentTypeVvol *NsFolderAgentType
+
+// NsFolderAgentTypeOpenstack enum exports
 var NsFolderAgentTypeOpenstack *NsFolderAgentType
+
+// NsFolderAgentTypeNone enum exports
 var NsFolderAgentTypeNone *NsFolderAgentType
 
 func init() {

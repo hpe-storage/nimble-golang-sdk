@@ -28,16 +28,16 @@ func (objectSet *UserPolicyObjectSet) CreateObject(payload *model.UserPolicy) (*
 // UpdateObject Modify existing UserPolicy object
 func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *model.UserPolicy) (*model.UserPolicy, error) {
 	newPayload, err := model.EncodeUserPolicy(payload)
-	userPolicyObjectSetResp, err := objectSet.Client.Put(userPolicyPath, id, newPayload)
+	resp, err := objectSet.Client.Put(userPolicyPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if userPolicyObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeUserPolicy(userPolicyObjectSetResp)
+	return model.DecodeUserPolicy(resp)
 }
 
 // DeleteObject deletes the UserPolicy object with the specified ID

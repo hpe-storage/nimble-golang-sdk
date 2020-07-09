@@ -13,8 +13,10 @@ const (
 var pNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType
 var pNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType
 
-// Export
+// NsSynchronousReplicationTypeSoftAvailable enum exports
 var NsSynchronousReplicationTypeSoftAvailable *NsSynchronousReplicationType
+
+// NsSynchronousReplicationTypeNotApplicable enum exports
 var NsSynchronousReplicationTypeNotApplicable *NsSynchronousReplicationType
 
 func init() {

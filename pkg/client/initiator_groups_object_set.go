@@ -23,32 +23,32 @@ type InitiatorGroupObjectSet struct {
 // CreateObject creates a new InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
 	newPayload, err := model.EncodeInitiatorGroup(payload)
-	initiatorGroupObjectSetResp, err := objectSet.Client.Post(initiatorGroupPath, newPayload)
+	resp, err := objectSet.Client.Post(initiatorGroupPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if initiatorGroupObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeInitiatorGroup(initiatorGroupObjectSetResp)
+	return model.DecodeInitiatorGroup(resp)
 }
 
 // UpdateObject Modify existing InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
 	newPayload, err := model.EncodeInitiatorGroup(payload)
-	initiatorGroupObjectSetResp, err := objectSet.Client.Put(initiatorGroupPath, id, newPayload)
+	resp, err := objectSet.Client.Put(initiatorGroupPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if initiatorGroupObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeInitiatorGroup(initiatorGroupObjectSetResp)
+	return model.DecodeInitiatorGroup(resp)
 }
 
 // DeleteObject deletes the InitiatorGroup object with the specified ID

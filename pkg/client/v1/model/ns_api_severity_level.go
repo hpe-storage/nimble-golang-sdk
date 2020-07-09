@@ -19,11 +19,19 @@ var pNsApiSeverityLevelError NsApiSeverityLevel
 var pNsApiSeverityLevelFatal NsApiSeverityLevel
 var pNsApiSeverityLevelInfo NsApiSeverityLevel
 
-// Export
+// NsApiSeverityLevelWarn enum exports
 var NsApiSeverityLevelWarn *NsApiSeverityLevel
+
+// NsApiSeverityLevelDebug enum exports
 var NsApiSeverityLevelDebug *NsApiSeverityLevel
+
+// NsApiSeverityLevelError enum exports
 var NsApiSeverityLevelError *NsApiSeverityLevel
+
+// NsApiSeverityLevelFatal enum exports
 var NsApiSeverityLevelFatal *NsApiSeverityLevel
+
+// NsApiSeverityLevelInfo enum exports
 var NsApiSeverityLevelInfo *NsApiSeverityLevel
 
 func init() {

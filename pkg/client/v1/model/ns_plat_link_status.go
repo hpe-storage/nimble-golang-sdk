@@ -15,9 +15,13 @@ var pNsPlatLinkStatusLinkStatusDown NsPlatLinkStatus
 var pNsPlatLinkStatusLinkStatusUp NsPlatLinkStatus
 var pNsPlatLinkStatusLinkStatusUnknown NsPlatLinkStatus
 
-// Export
+// NsPlatLinkStatusLinkStatusDown enum exports
 var NsPlatLinkStatusLinkStatusDown *NsPlatLinkStatus
+
+// NsPlatLinkStatusLinkStatusUp enum exports
 var NsPlatLinkStatusLinkStatusUp *NsPlatLinkStatus
+
+// NsPlatLinkStatusLinkStatusUnknown enum exports
 var NsPlatLinkStatusLinkStatusUnknown *NsPlatLinkStatus
 
 func init() {

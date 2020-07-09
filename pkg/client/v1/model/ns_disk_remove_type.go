@@ -19,11 +19,19 @@ var pNsDiskRemoveTypePermFail NsDiskRemoveType
 var pNsDiskRemoveTypeRemove NsDiskRemoveType
 var pNsDiskRemoveTypeDiagRemove NsDiskRemoveType
 
-// Export
+// NsDiskRemoveTypeTempFail enum exports
 var NsDiskRemoveTypeTempFail *NsDiskRemoveType
+
+// NsDiskRemoveTypeLdrRemove enum exports
 var NsDiskRemoveTypeLdrRemove *NsDiskRemoveType
+
+// NsDiskRemoveTypePermFail enum exports
 var NsDiskRemoveTypePermFail *NsDiskRemoveType
+
+// NsDiskRemoveTypeRemove enum exports
 var NsDiskRemoveTypeRemove *NsDiskRemoveType
+
+// NsDiskRemoveTypeDiagRemove enum exports
 var NsDiskRemoveTypeDiagRemove *NsDiskRemoveType
 
 func init() {

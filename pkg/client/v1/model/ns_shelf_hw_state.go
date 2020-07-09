@@ -19,11 +19,19 @@ var pNsShelfHwStateVoid NsShelfHwState
 var pNsShelfHwStateReady NsShelfHwState
 var pNsShelfHwStateFaulty NsShelfHwState
 
-// Export
+// NsShelfHwStateDiscovering enum exports
 var NsShelfHwStateDiscovering *NsShelfHwState
+
+// NsShelfHwStateDisconnected enum exports
 var NsShelfHwStateDisconnected *NsShelfHwState
+
+// NsShelfHwStateVoid enum exports
 var NsShelfHwStateVoid *NsShelfHwState
+
+// NsShelfHwStateReady enum exports
 var NsShelfHwStateReady *NsShelfHwState
+
+// NsShelfHwStateFaulty enum exports
 var NsShelfHwStateFaulty *NsShelfHwState
 
 func init() {

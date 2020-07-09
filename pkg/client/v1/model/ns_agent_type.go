@@ -19,11 +19,19 @@ var pNsAgentTypeOpenstack NsAgentType
 var pNsAgentTypeOpenstackv2 NsAgentType
 var pNsAgentTypeNone NsAgentType
 
-// Export
+// NsAgentTypeSmis enum exports
 var NsAgentTypeSmis *NsAgentType
+
+// NsAgentTypeVvol enum exports
 var NsAgentTypeVvol *NsAgentType
+
+// NsAgentTypeOpenstack enum exports
 var NsAgentTypeOpenstack *NsAgentType
+
+// NsAgentTypeOpenstackv2 enum exports
 var NsAgentTypeOpenstackv2 *NsAgentType
+
+// NsAgentTypeNone enum exports
 var NsAgentTypeNone *NsAgentType
 
 func init() {

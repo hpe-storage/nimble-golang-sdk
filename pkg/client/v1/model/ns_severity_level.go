@@ -17,10 +17,16 @@ var pNsSeverityLevelWarning NsSeverityLevel
 var pNsSeverityLevelInfo NsSeverityLevel
 var pNsSeverityLevelNotice NsSeverityLevel
 
-// Export
+// NsSeverityLevelCritical enum exports
 var NsSeverityLevelCritical *NsSeverityLevel
+
+// NsSeverityLevelWarning enum exports
 var NsSeverityLevelWarning *NsSeverityLevel
+
+// NsSeverityLevelInfo enum exports
 var NsSeverityLevelInfo *NsSeverityLevel
+
+// NsSeverityLevelNotice enum exports
 var NsSeverityLevelNotice *NsSeverityLevel
 
 func init() {

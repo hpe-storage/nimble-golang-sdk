@@ -28,16 +28,16 @@ func (objectSet *DiskObjectSet) CreateObject(payload *model.Disk) (*model.Disk, 
 // UpdateObject Modify existing Disk object
 func (objectSet *DiskObjectSet) UpdateObject(id string, payload *model.Disk) (*model.Disk, error) {
 	newPayload, err := model.EncodeDisk(payload)
-	diskObjectSetResp, err := objectSet.Client.Put(diskPath, id, newPayload)
+	resp, err := objectSet.Client.Put(diskPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if diskObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeDisk(diskObjectSetResp)
+	return model.DecodeDisk(resp)
 }
 
 // DeleteObject deletes the Disk object with the specified ID

@@ -17,10 +17,16 @@ var pNsAppSyncTypeVmware NsAppSyncType
 var pNsAppSyncTypeNone NsAppSyncType
 var pNsAppSyncTypeGeneric NsAppSyncType
 
-// Export
+// NsAppSyncTypeVss enum exports
 var NsAppSyncTypeVss *NsAppSyncType
+
+// NsAppSyncTypeVmware enum exports
 var NsAppSyncTypeVmware *NsAppSyncType
+
+// NsAppSyncTypeNone enum exports
 var NsAppSyncTypeNone *NsAppSyncType
+
+// NsAppSyncTypeGeneric enum exports
 var NsAppSyncTypeGeneric *NsAppSyncType
 
 func init() {

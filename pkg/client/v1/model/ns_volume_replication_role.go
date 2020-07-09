@@ -19,11 +19,19 @@ var pNsVolumeReplicationRoleSynchronousDownstream NsVolumeReplicationRole
 var pNsVolumeReplicationRoleNoReplication NsVolumeReplicationRole
 var pNsVolumeReplicationRolePeriodicSnapshotUpstream NsVolumeReplicationRole
 
-// Export
+// NsVolumeReplicationRolePeriodicSnapshotDownstream enum exports
 var NsVolumeReplicationRolePeriodicSnapshotDownstream *NsVolumeReplicationRole
+
+// NsVolumeReplicationRoleSynchronousUpstream enum exports
 var NsVolumeReplicationRoleSynchronousUpstream *NsVolumeReplicationRole
+
+// NsVolumeReplicationRoleSynchronousDownstream enum exports
 var NsVolumeReplicationRoleSynchronousDownstream *NsVolumeReplicationRole
+
+// NsVolumeReplicationRoleNoReplication enum exports
 var NsVolumeReplicationRoleNoReplication *NsVolumeReplicationRole
+
+// NsVolumeReplicationRolePeriodicSnapshotUpstream enum exports
 var NsVolumeReplicationRolePeriodicSnapshotUpstream *NsVolumeReplicationRole
 
 func init() {

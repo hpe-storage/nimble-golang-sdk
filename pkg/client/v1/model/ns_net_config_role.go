@@ -15,9 +15,13 @@ var pNsNetConfigRoleBackup NsNetConfigRole
 var pNsNetConfigRoleDraft NsNetConfigRole
 var pNsNetConfigRoleActive NsNetConfigRole
 
-// Export
+// NsNetConfigRoleBackup enum exports
 var NsNetConfigRoleBackup *NsNetConfigRole
+
+// NsNetConfigRoleDraft enum exports
 var NsNetConfigRoleDraft *NsNetConfigRole
+
+// NsNetConfigRoleActive enum exports
 var NsNetConfigRoleActive *NsNetConfigRole
 
 func init() {

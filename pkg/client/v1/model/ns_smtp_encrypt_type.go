@@ -15,9 +15,13 @@ var pNsSmtpEncryptTypeStarttls NsSmtpEncryptType
 var pNsSmtpEncryptTypeNone NsSmtpEncryptType
 var pNsSmtpEncryptTypeSsl NsSmtpEncryptType
 
-// Export
+// NsSmtpEncryptTypeStarttls enum exports
 var NsSmtpEncryptTypeStarttls *NsSmtpEncryptType
+
+// NsSmtpEncryptTypeNone enum exports
 var NsSmtpEncryptTypeNone *NsSmtpEncryptType
+
+// NsSmtpEncryptTypeSsl enum exports
 var NsSmtpEncryptTypeSsl *NsSmtpEncryptType
 
 func init() {

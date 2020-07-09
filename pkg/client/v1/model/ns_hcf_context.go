@@ -15,9 +15,13 @@ var pNsHcfContextAll NsHcfContext
 var pNsHcfContextFailover NsHcfContext
 var pNsHcfContextSwUpdate NsHcfContext
 
-// Export
+// NsHcfContextAll enum exports
 var NsHcfContextAll *NsHcfContext
+
+// NsHcfContextFailover enum exports
 var NsHcfContextFailover *NsHcfContext
+
+// NsHcfContextSwUpdate enum exports
 var NsHcfContextSwUpdate *NsHcfContext
 
 func init() {

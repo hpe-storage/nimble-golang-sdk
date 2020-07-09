@@ -17,10 +17,16 @@ var pNsOperationStatusFailed NsOperationStatus
 var pNsOperationStatusUnknown NsOperationStatus
 var pNsOperationStatusSucceeded NsOperationStatus
 
-// Export
+// NsOperationStatusInprogress enum exports
 var NsOperationStatusInprogress *NsOperationStatus
+
+// NsOperationStatusFailed enum exports
 var NsOperationStatusFailed *NsOperationStatus
+
+// NsOperationStatusUnknown enum exports
 var NsOperationStatusUnknown *NsOperationStatus
+
+// NsOperationStatusSucceeded enum exports
 var NsOperationStatusSucceeded *NsOperationStatus
 
 func init() {

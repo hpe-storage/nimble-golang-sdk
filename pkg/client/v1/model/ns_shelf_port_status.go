@@ -17,10 +17,16 @@ var pNsShelfPortStatusDisconnected NsShelfPortStatus
 var pNsShelfPortStatusDisabled NsShelfPortStatus
 var pNsShelfPortStatusUnknown NsShelfPortStatus
 
-// Export
+// NsShelfPortStatusConnected enum exports
 var NsShelfPortStatusConnected *NsShelfPortStatus
+
+// NsShelfPortStatusDisconnected enum exports
 var NsShelfPortStatusDisconnected *NsShelfPortStatus
+
+// NsShelfPortStatusDisabled enum exports
 var NsShelfPortStatusDisabled *NsShelfPortStatus
+
+// NsShelfPortStatusUnknown enum exports
 var NsShelfPortStatusUnknown *NsShelfPortStatus
 
 func init() {

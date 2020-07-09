@@ -21,12 +21,22 @@ var pNsAuditOperationTypeOrAllCreate NsAuditOperationTypeOrAll
 var pNsAuditOperationTypeOrAllUpdate NsAuditOperationTypeOrAll
 var pNsAuditOperationTypeOrAllDelete NsAuditOperationTypeOrAll
 
-// Export
+// NsAuditOperationTypeOrAllAll enum exports
 var NsAuditOperationTypeOrAllAll *NsAuditOperationTypeOrAll
+
+// NsAuditOperationTypeOrAllOther enum exports
 var NsAuditOperationTypeOrAllOther *NsAuditOperationTypeOrAll
+
+// NsAuditOperationTypeOrAllRead enum exports
 var NsAuditOperationTypeOrAllRead *NsAuditOperationTypeOrAll
+
+// NsAuditOperationTypeOrAllCreate enum exports
 var NsAuditOperationTypeOrAllCreate *NsAuditOperationTypeOrAll
+
+// NsAuditOperationTypeOrAllUpdate enum exports
 var NsAuditOperationTypeOrAllUpdate *NsAuditOperationTypeOrAll
+
+// NsAuditOperationTypeOrAllDelete enum exports
 var NsAuditOperationTypeOrAllDelete *NsAuditOperationTypeOrAll
 
 func init() {

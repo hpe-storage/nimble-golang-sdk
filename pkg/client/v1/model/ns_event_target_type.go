@@ -53,28 +53,70 @@ var pNsEventTargetTypeInitiatorGroup NsEventTargetType
 var pNsEventTargetTypeRaid NsEventTargetType
 var pNsEventTargetTypeGroup NsEventTargetType
 
-// Export
+// NsEventTargetTypeAnon enum exports
 var NsEventTargetTypeAnon *NsEventTargetType
+
+// NsEventTargetTypeController enum exports
 var NsEventTargetTypeController *NsEventTargetType
+
+// NsEventTargetTypeTest enum exports
 var NsEventTargetTypeTest *NsEventTargetType
+
+// NsEventTargetTypeProtectionSet enum exports
 var NsEventTargetTypeProtectionSet *NsEventTargetType
+
+// NsEventTargetTypePool enum exports
 var NsEventTargetTypePool *NsEventTargetType
+
+// NsEventTargetTypeNic enum exports
 var NsEventTargetTypeNic *NsEventTargetType
+
+// NsEventTargetTypeShelf enum exports
 var NsEventTargetTypeShelf *NsEventTargetType
+
+// NsEventTargetTypeVolume enum exports
 var NsEventTargetTypeVolume *NsEventTargetType
+
+// NsEventTargetTypeDisk enum exports
 var NsEventTargetTypeDisk *NsEventTargetType
+
+// NsEventTargetTypeFan enum exports
 var NsEventTargetTypeFan *NsEventTargetType
+
+// NsEventTargetTypeIscsi enum exports
 var NsEventTargetTypeIscsi *NsEventTargetType
+
+// NsEventTargetTypeNvram enum exports
 var NsEventTargetTypeNvram *NsEventTargetType
+
+// NsEventTargetTypePowerSupply enum exports
 var NsEventTargetTypePowerSupply *NsEventTargetType
+
+// NsEventTargetTypePartner enum exports
 var NsEventTargetTypePartner *NsEventTargetType
+
+// NsEventTargetTypeArray enum exports
 var NsEventTargetTypeArray *NsEventTargetType
+
+// NsEventTargetTypeService enum exports
 var NsEventTargetTypeService *NsEventTargetType
+
+// NsEventTargetTypeTemperature enum exports
 var NsEventTargetTypeTemperature *NsEventTargetType
+
+// NsEventTargetTypeNtb enum exports
 var NsEventTargetTypeNtb *NsEventTargetType
+
+// NsEventTargetTypeFc enum exports
 var NsEventTargetTypeFc *NsEventTargetType
+
+// NsEventTargetTypeInitiatorGroup enum exports
 var NsEventTargetTypeInitiatorGroup *NsEventTargetType
+
+// NsEventTargetTypeRaid enum exports
 var NsEventTargetTypeRaid *NsEventTargetType
+
+// NsEventTargetTypeGroup enum exports
 var NsEventTargetTypeGroup *NsEventTargetType
 
 func init() {

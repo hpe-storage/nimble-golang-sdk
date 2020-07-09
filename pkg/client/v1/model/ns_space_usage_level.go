@@ -15,9 +15,13 @@ var pNsSpaceUsageLevelNormal NsSpaceUsageLevel
 var pNsSpaceUsageLevelCritical NsSpaceUsageLevel
 var pNsSpaceUsageLevelWarning NsSpaceUsageLevel
 
-// Export
+// NsSpaceUsageLevelNormal enum exports
 var NsSpaceUsageLevelNormal *NsSpaceUsageLevel
+
+// NsSpaceUsageLevelCritical enum exports
 var NsSpaceUsageLevelCritical *NsSpaceUsageLevel
+
+// NsSpaceUsageLevelWarning enum exports
 var NsSpaceUsageLevelWarning *NsSpaceUsageLevel
 
 func init() {

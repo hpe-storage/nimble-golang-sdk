@@ -23,17 +23,17 @@ type TokenObjectSet struct {
 // CreateObject creates a new Token object
 func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Token, error) {
 	newPayload, err := model.EncodeToken(payload)
-	tokenObjectSetResp, err := objectSet.Client.Post(tokenPath, newPayload)
+	resp, err := objectSet.Client.Post(tokenPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if tokenObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeToken(tokenObjectSetResp)
+	return model.DecodeToken(resp)
 }
 
 // UpdateObject Modify existing Token object

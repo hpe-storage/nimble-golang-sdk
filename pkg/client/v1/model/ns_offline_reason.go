@@ -43,23 +43,55 @@ var pNsOfflineReasonUser NsOfflineReason
 var pNsOfflineReasonOverVolumeReserve NsOfflineReason
 var pNsOfflineReasonOverSnapshotReserve NsOfflineReason
 
-// Export
+// NsOfflineReasonReplica enum exports
 var NsOfflineReasonReplica *NsOfflineReason
+
+// NsOfflineReasonRecovery enum exports
 var NsOfflineReasonRecovery *NsOfflineReason
+
+// NsOfflineReasonNvramLossRecovery enum exports
 var NsOfflineReasonNvramLossRecovery *NsOfflineReason
+
+// NsOfflineReasonSerialNumberCollision enum exports
 var NsOfflineReasonSerialNumberCollision *NsOfflineReason
+
+// NsOfflineReasonEncryptionKeyDeleted enum exports
 var NsOfflineReasonEncryptionKeyDeleted *NsOfflineReason
+
+// NsOfflineReasonOverVolumeUsageLimit enum exports
 var NsOfflineReasonOverVolumeUsageLimit *NsOfflineReason
+
+// NsOfflineReasonOverFolderOverdraftLimit enum exports
 var NsOfflineReasonOverFolderOverdraftLimit *NsOfflineReason
+
+// NsOfflineReasonCacheUnpinInProgress enum exports
 var NsOfflineReasonCacheUnpinInProgress *NsOfflineReason
+
+// NsOfflineReasonVvolUnbind enum exports
 var NsOfflineReasonVvolUnbind *NsOfflineReason
+
+// NsOfflineReasonOverVolumeLimit enum exports
 var NsOfflineReasonOverVolumeLimit *NsOfflineReason
+
+// NsOfflineReasonOverSnapshotLimit enum exports
 var NsOfflineReasonOverSnapshotLimit *NsOfflineReason
+
+// NsOfflineReasonEncryptionInactive enum exports
 var NsOfflineReasonEncryptionInactive *NsOfflineReason
+
+// NsOfflineReasonPoolFreeSpaceExhausted enum exports
 var NsOfflineReasonPoolFreeSpaceExhausted *NsOfflineReason
+
+// NsOfflineReasonSrepUnconfigured enum exports
 var NsOfflineReasonSrepUnconfigured *NsOfflineReason
+
+// NsOfflineReasonUser enum exports
 var NsOfflineReasonUser *NsOfflineReason
+
+// NsOfflineReasonOverVolumeReserve enum exports
 var NsOfflineReasonOverVolumeReserve *NsOfflineReason
+
+// NsOfflineReasonOverSnapshotReserve enum exports
 var NsOfflineReasonOverSnapshotReserve *NsOfflineReason
 
 func init() {

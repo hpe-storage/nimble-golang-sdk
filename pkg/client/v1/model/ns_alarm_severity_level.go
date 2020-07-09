@@ -13,8 +13,10 @@ const (
 var pNsAlarmSeverityLevelCritical NsAlarmSeverityLevel
 var pNsAlarmSeverityLevelWarning NsAlarmSeverityLevel
 
-// Export
+// NsAlarmSeverityLevelCritical enum exports
 var NsAlarmSeverityLevelCritical *NsAlarmSeverityLevel
+
+// NsAlarmSeverityLevelWarning enum exports
 var NsAlarmSeverityLevelWarning *NsAlarmSeverityLevel
 
 func init() {

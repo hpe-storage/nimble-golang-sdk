@@ -28,16 +28,16 @@ func (objectSet *ShelfObjectSet) CreateObject(payload *model.Shelf) (*model.Shel
 // UpdateObject Modify existing Shelf object
 func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *model.Shelf) (*model.Shelf, error) {
 	newPayload, err := model.EncodeShelf(payload)
-	shelfObjectSetResp, err := objectSet.Client.Put(shelfPath, id, newPayload)
+	resp, err := objectSet.Client.Put(shelfPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if shelfObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeShelf(shelfObjectSetResp)
+	return model.DecodeShelf(resp)
 }
 
 // DeleteObject deletes the Shelf object with the specified ID

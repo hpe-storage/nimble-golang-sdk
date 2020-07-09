@@ -15,9 +15,13 @@ var pNsArrayUpgradeStagePrepare NsArrayUpgradeStage
 var pNsArrayUpgradeStageFinish NsArrayUpgradeStage
 var pNsArrayUpgradeStageNone NsArrayUpgradeStage
 
-// Export
+// NsArrayUpgradeStagePrepare enum exports
 var NsArrayUpgradeStagePrepare *NsArrayUpgradeStage
+
+// NsArrayUpgradeStageFinish enum exports
 var NsArrayUpgradeStageFinish *NsArrayUpgradeStage
+
+// NsArrayUpgradeStageNone enum exports
 var NsArrayUpgradeStageNone *NsArrayUpgradeStage
 
 func init() {

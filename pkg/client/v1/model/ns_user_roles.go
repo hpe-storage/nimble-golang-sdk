@@ -17,10 +17,16 @@ var pNsUserRolesGuest NsUserRoles
 var pNsUserRolesOperator NsUserRoles
 var pNsUserRolesPoweruser NsUserRoles
 
-// Export
+// NsUserRolesAdministrator enum exports
 var NsUserRolesAdministrator *NsUserRoles
+
+// NsUserRolesGuest enum exports
 var NsUserRolesGuest *NsUserRoles
+
+// NsUserRolesOperator enum exports
 var NsUserRolesOperator *NsUserRoles
+
+// NsUserRolesPoweruser enum exports
 var NsUserRolesPoweruser *NsUserRoles
 
 func init() {

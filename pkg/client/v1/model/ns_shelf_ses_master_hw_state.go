@@ -17,10 +17,16 @@ var pNsShelfSesMasterHwStateFailed NsShelfSesMasterHwState
 var pNsShelfSesMasterHwStateUnknown NsShelfSesMasterHwState
 var pNsShelfSesMasterHwStateMaster NsShelfSesMasterHwState
 
-// Export
+// NsShelfSesMasterHwStateNotMaster enum exports
 var NsShelfSesMasterHwStateNotMaster *NsShelfSesMasterHwState
+
+// NsShelfSesMasterHwStateFailed enum exports
 var NsShelfSesMasterHwStateFailed *NsShelfSesMasterHwState
+
+// NsShelfSesMasterHwStateUnknown enum exports
 var NsShelfSesMasterHwStateUnknown *NsShelfSesMasterHwState
+
+// NsShelfSesMasterHwStateMaster enum exports
 var NsShelfSesMasterHwStateMaster *NsShelfSesMasterHwState
 
 func init() {

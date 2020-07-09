@@ -23,17 +23,17 @@ type InitiatorObjectSet struct {
 // CreateObject creates a new Initiator object
 func (objectSet *InitiatorObjectSet) CreateObject(payload *model.Initiator) (*model.Initiator, error) {
 	newPayload, err := model.EncodeInitiator(payload)
-	initiatorObjectSetResp, err := objectSet.Client.Post(initiatorPath, newPayload)
+	resp, err := objectSet.Client.Post(initiatorPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if initiatorObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeInitiator(initiatorObjectSetResp)
+	return model.DecodeInitiator(resp)
 }
 
 // UpdateObject Modify existing Initiator object

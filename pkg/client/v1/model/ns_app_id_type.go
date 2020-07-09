@@ -29,16 +29,34 @@ var pNsAppIdTypeSql2017 NsAppIdType
 var pNsAppIdTypeSql2008 NsAppIdType
 var pNsAppIdTypeHyperv NsAppIdType
 
-// Export
+// NsAppIdTypeExchangeDag enum exports
 var NsAppIdTypeExchangeDag *NsAppIdType
+
+// NsAppIdTypeSql2012 enum exports
 var NsAppIdTypeSql2012 *NsAppIdType
+
+// NsAppIdTypeSql2014 enum exports
 var NsAppIdTypeSql2014 *NsAppIdType
+
+// NsAppIdTypeInval enum exports
 var NsAppIdTypeInval *NsAppIdType
+
+// NsAppIdTypeSql2005 enum exports
 var NsAppIdTypeSql2005 *NsAppIdType
+
+// NsAppIdTypeSql2016 enum exports
 var NsAppIdTypeSql2016 *NsAppIdType
+
+// NsAppIdTypeExchange enum exports
 var NsAppIdTypeExchange *NsAppIdType
+
+// NsAppIdTypeSql2017 enum exports
 var NsAppIdTypeSql2017 *NsAppIdType
+
+// NsAppIdTypeSql2008 enum exports
 var NsAppIdTypeSql2008 *NsAppIdType
+
+// NsAppIdTypeHyperv enum exports
 var NsAppIdTypeHyperv *NsAppIdType
 
 func init() {

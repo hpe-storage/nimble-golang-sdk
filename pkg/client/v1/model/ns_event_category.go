@@ -29,16 +29,34 @@ var pNsEventCategoryArrayUpgrade NsEventCategory
 var pNsEventCategoryUnknown NsEventCategory
 var pNsEventCategoryHardware NsEventCategory
 
-// Export
+// NsEventCategoryReplication enum exports
 var NsEventCategoryReplication *NsEventCategory
+
+// NsEventCategoryVolume enum exports
 var NsEventCategoryVolume *NsEventCategory
+
+// NsEventCategorySecurity enum exports
 var NsEventCategorySecurity *NsEventCategory
+
+// NsEventCategoryTest enum exports
 var NsEventCategoryTest *NsEventCategory
+
+// NsEventCategoryConfiguration enum exports
 var NsEventCategoryConfiguration *NsEventCategory
+
+// NsEventCategoryService enum exports
 var NsEventCategoryService *NsEventCategory
+
+// NsEventCategoryUpdate enum exports
 var NsEventCategoryUpdate *NsEventCategory
+
+// NsEventCategoryArrayUpgrade enum exports
 var NsEventCategoryArrayUpgrade *NsEventCategory
+
+// NsEventCategoryUnknown enum exports
 var NsEventCategoryUnknown *NsEventCategory
+
+// NsEventCategoryHardware enum exports
 var NsEventCategoryHardware *NsEventCategory
 
 func init() {

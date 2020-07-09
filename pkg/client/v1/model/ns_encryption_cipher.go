@@ -13,8 +13,10 @@ const (
 var pNsEncryptionCipherAes256Xts NsEncryptionCipher
 var pNsEncryptionCipherNone NsEncryptionCipher
 
-// Export
+// NsEncryptionCipherAes256Xts enum exports
 var NsEncryptionCipherAes256Xts *NsEncryptionCipher
+
+// NsEncryptionCipherNone enum exports
 var NsEncryptionCipherNone *NsEncryptionCipher
 
 func init() {

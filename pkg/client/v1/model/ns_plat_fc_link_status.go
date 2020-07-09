@@ -21,12 +21,22 @@ var pNsPlatFcLinkStatusPlatFcLinkStatusError NsPlatFcLinkStatus
 var pNsPlatFcLinkStatusPlatFcLinkStatusUnknown NsPlatFcLinkStatus
 var pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus
 
-// Export
+// NsPlatFcLinkStatusPlatFcLinkStatusReset enum exports
 var NsPlatFcLinkStatusPlatFcLinkStatusReset *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusDown enum exports
 var NsPlatFcLinkStatusPlatFcLinkStatusDown *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusUp enum exports
 var NsPlatFcLinkStatusPlatFcLinkStatusUp *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusError enum exports
 var NsPlatFcLinkStatusPlatFcLinkStatusError *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusUnknown enum exports
 var NsPlatFcLinkStatusPlatFcLinkStatusUnknown *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusNotConnected enum exports
 var NsPlatFcLinkStatusPlatFcLinkStatusNotConnected *NsPlatFcLinkStatus
 
 func init() {

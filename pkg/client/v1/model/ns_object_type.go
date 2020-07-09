@@ -129,66 +129,184 @@ var pNsObjectTypeEventDipatcher NsObjectType
 var pNsObjectTypeVolacl NsObjectType
 var pNsObjectTypeUser NsObjectType
 
-// Export
+// NsObjectTypeArrayNetconfig enum exports
 var NsObjectTypeArrayNetconfig *NsObjectType
+
+// NsObjectTypeUserPolicy enum exports
 var NsObjectTypeUserPolicy *NsObjectType
+
+// NsObjectTypeSubnet enum exports
 var NsObjectTypeSubnet *NsObjectType
+
+// NsObjectTypeEncryptKey enum exports
 var NsObjectTypeEncryptKey *NsObjectType
+
+// NsObjectTypeInitiator enum exports
 var NsObjectTypeInitiator *NsObjectType
+
+// NsObjectTypeKeymanager enum exports
 var NsObjectTypeKeymanager *NsObjectType
+
+// NsObjectTypeNic enum exports
 var NsObjectTypeNic *NsObjectType
+
+// NsObjectTypeBranch enum exports
 var NsObjectTypeBranch *NsObjectType
+
+// NsObjectTypeFcTargetPortGroup enum exports
 var NsObjectTypeFcTargetPortGroup *NsObjectType
+
+// NsObjectTypeProttmpl enum exports
 var NsObjectTypeProttmpl *NsObjectType
+
+// NsObjectTypeProtpol enum exports
 var NsObjectTypeProtpol *NsObjectType
+
+// NsObjectTypeSshkey enum exports
 var NsObjectTypeSshkey *NsObjectType
+
+// NsObjectTypeFcInterfaceCollection enum exports
 var NsObjectTypeFcInterfaceCollection *NsObjectType
+
+// NsObjectTypeVolcoll enum exports
 var NsObjectTypeVolcoll *NsObjectType
+
+// NsObjectTypeInitiatorgrpSubnet enum exports
 var NsObjectTypeInitiatorgrpSubnet *NsObjectType
+
+// NsObjectTypePeAcl enum exports
 var NsObjectTypePeAcl *NsObjectType
+
+// NsObjectTypeVvolAcl enum exports
 var NsObjectTypeVvolAcl *NsObjectType
+
+// NsObjectTypeChapuser enum exports
 var NsObjectTypeChapuser *NsObjectType
+
+// NsObjectTypeEvents enum exports
 var NsObjectTypeEvents *NsObjectType
+
+// NsObjectTypeApplicationServer enum exports
 var NsObjectTypeApplicationServer *NsObjectType
+
+// NsObjectTypeGroup enum exports
 var NsObjectTypeGroup *NsObjectType
+
+// NsObjectTypePool enum exports
 var NsObjectTypePool *NsObjectType
+
+// NsObjectTypeVvol enum exports
 var NsObjectTypeVvol *NsObjectType
+
+// NsObjectTypeActiveDirectory enum exports
 var NsObjectTypeActiveDirectory *NsObjectType
+
+// NsObjectTypeShelf enum exports
 var NsObjectTypeShelf *NsObjectType
+
+// NsObjectTypeDisk enum exports
 var NsObjectTypeDisk *NsObjectType
+
+// NsObjectTypeRoute enum exports
 var NsObjectTypeRoute *NsObjectType
+
+// NsObjectTypeFolder enum exports
 var NsObjectTypeFolder *NsObjectType
+
+// NsObjectTypeIpAddress enum exports
 var NsObjectTypeIpAddress *NsObjectType
+
+// NsObjectTypeFc enum exports
 var NsObjectTypeFc *NsObjectType
+
+// NsObjectTypeSupport enum exports
 var NsObjectTypeSupport *NsObjectType
+
+// NsObjectTypeSnapshot enum exports
 var NsObjectTypeSnapshot *NsObjectType
+
+// NsObjectTypeThrottle enum exports
 var NsObjectTypeThrottle *NsObjectType
+
+// NsObjectTypeRole enum exports
 var NsObjectTypeRole *NsObjectType
+
+// NsObjectTypeSnapcoll enum exports
 var NsObjectTypeSnapcoll *NsObjectType
+
+// NsObjectTypeSession enum exports
 var NsObjectTypeSession *NsObjectType
+
+// NsObjectTypeAsyncJob enum exports
 var NsObjectTypeAsyncJob *NsObjectType
+
+// NsObjectTypeInitiatorgrp enum exports
 var NsObjectTypeInitiatorgrp *NsObjectType
+
+// NsObjectTypePerfpolicy enum exports
 var NsObjectTypePerfpolicy *NsObjectType
+
+// NsObjectTypePrivilege enum exports
 var NsObjectTypePrivilege *NsObjectType
+
+// NsObjectTypeSyslog enum exports
 var NsObjectTypeSyslog *NsObjectType
+
+// NsObjectTypeUserGroup enum exports
 var NsObjectTypeUserGroup *NsObjectType
+
+// NsObjectTypeProtsched enum exports
 var NsObjectTypeProtsched *NsObjectType
+
+// NsObjectTypeNetconfig enum exports
 var NsObjectTypeNetconfig *NsObjectType
+
+// NsObjectTypeVol enum exports
 var NsObjectTypeVol *NsObjectType
+
+// NsObjectTypeFcInitiatorAlias enum exports
 var NsObjectTypeFcInitiatorAlias *NsObjectType
+
+// NsObjectTypeArray enum exports
 var NsObjectTypeArray *NsObjectType
+
+// NsObjectTypeAlarm enum exports
 var NsObjectTypeAlarm *NsObjectType
+
+// NsObjectTypeFcPort enum exports
 var NsObjectTypeFcPort *NsObjectType
+
+// NsObjectTypeProtocolEndpoint enum exports
 var NsObjectTypeProtocolEndpoint *NsObjectType
+
+// NsObjectTypeFolset enum exports
 var NsObjectTypeFolset *NsObjectType
+
+// NsObjectTypeAuditLog enum exports
 var NsObjectTypeAuditLog *NsObjectType
+
+// NsObjectTypeHcClusterConfig enum exports
 var NsObjectTypeHcClusterConfig *NsObjectType
+
+// NsObjectTypeEncryptConfig enum exports
 var NsObjectTypeEncryptConfig *NsObjectType
+
+// NsObjectTypeWitness enum exports
 var NsObjectTypeWitness *NsObjectType
+
+// NsObjectTypePartner enum exports
 var NsObjectTypePartner *NsObjectType
+
+// NsObjectTypeSnapshotLun enum exports
 var NsObjectTypeSnapshotLun *NsObjectType
+
+// NsObjectTypeEventDipatcher enum exports
 var NsObjectTypeEventDipatcher *NsObjectType
+
+// NsObjectTypeVolacl enum exports
 var NsObjectTypeVolacl *NsObjectType
+
+// NsObjectTypeUser enum exports
 var NsObjectTypeUser *NsObjectType
 
 func init() {

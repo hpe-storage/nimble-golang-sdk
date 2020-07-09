@@ -13,8 +13,10 @@ const (
 var pNsEulaPhaseSoftware NsEulaPhase
 var pNsEulaPhaseSetup NsEulaPhase
 
-// Export
+// NsEulaPhaseSoftware enum exports
 var NsEulaPhaseSoftware *NsEulaPhase
+
+// NsEulaPhaseSetup enum exports
 var NsEulaPhaseSetup *NsEulaPhase
 
 func init() {

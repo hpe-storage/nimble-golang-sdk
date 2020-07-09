@@ -24,32 +24,32 @@ type PerformancePolicyObjectSet struct {
 // CreateObject creates a new PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *model.PerformancePolicy) (*model.PerformancePolicy, error) {
 	newPayload, err := model.EncodePerformancePolicy(payload)
-	performancePolicyObjectSetResp, err := objectSet.Client.Post(performancePolicyPath, newPayload)
+	resp, err := objectSet.Client.Post(performancePolicyPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if performancePolicyObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodePerformancePolicy(performancePolicyObjectSetResp)
+	return model.DecodePerformancePolicy(resp)
 }
 
 // UpdateObject Modify existing PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *model.PerformancePolicy) (*model.PerformancePolicy, error) {
 	newPayload, err := model.EncodePerformancePolicy(payload)
-	performancePolicyObjectSetResp, err := objectSet.Client.Put(performancePolicyPath, id, newPayload)
+	resp, err := objectSet.Client.Put(performancePolicyPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if performancePolicyObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodePerformancePolicy(performancePolicyObjectSetResp)
+	return model.DecodePerformancePolicy(resp)
 }
 
 // DeleteObject deletes the PerformancePolicy object with the specified ID

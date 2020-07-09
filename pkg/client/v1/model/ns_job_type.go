@@ -15,9 +15,13 @@ var pNsJobTypeBulkChild NsJobType
 var pNsJobTypeBulkParent NsJobType
 var pNsJobTypeSimple NsJobType
 
-// Export
+// NsJobTypeBulkChild enum exports
 var NsJobTypeBulkChild *NsJobType
+
+// NsJobTypeBulkParent enum exports
 var NsJobTypeBulkParent *NsJobType
+
+// NsJobTypeSimple enum exports
 var NsJobTypeSimple *NsJobType
 
 func init() {

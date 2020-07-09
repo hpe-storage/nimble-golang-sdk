@@ -25,14 +25,28 @@ var pNsGroupHAStatusOutOfSync NsGroupHAStatus
 var pNsGroupHAStatusAddInProgress NsGroupHAStatus
 var pNsGroupHAStatusSetupFailed NsGroupHAStatus
 
-// Export
+// NsGroupHAStatusInSync enum exports
 var NsGroupHAStatusInSync *NsGroupHAStatus
+
+// NsGroupHAStatusRemoveInProgress enum exports
 var NsGroupHAStatusRemoveInProgress *NsGroupHAStatus
+
+// NsGroupHAStatusYetToSetup enum exports
 var NsGroupHAStatusYetToSetup *NsGroupHAStatus
+
+// NsGroupHAStatusUnsetupInProgress enum exports
 var NsGroupHAStatusUnsetupInProgress *NsGroupHAStatus
+
+// NsGroupHAStatusSetupInProgress enum exports
 var NsGroupHAStatusSetupInProgress *NsGroupHAStatus
+
+// NsGroupHAStatusOutOfSync enum exports
 var NsGroupHAStatusOutOfSync *NsGroupHAStatus
+
+// NsGroupHAStatusAddInProgress enum exports
 var NsGroupHAStatusAddInProgress *NsGroupHAStatus
+
+// NsGroupHAStatusSetupFailed enum exports
 var NsGroupHAStatusSetupFailed *NsGroupHAStatus
 
 func init() {

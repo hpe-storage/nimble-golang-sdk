@@ -15,9 +15,13 @@ var pNsOnlineStatusOffline NsOnlineStatus
 var pNsOnlineStatusOnline NsOnlineStatus
 var pNsOnlineStatusPartial NsOnlineStatus
 
-// Export
+// NsOnlineStatusOffline enum exports
 var NsOnlineStatusOffline *NsOnlineStatus
+
+// NsOnlineStatusOnline enum exports
 var NsOnlineStatusOnline *NsOnlineStatus
+
+// NsOnlineStatusPartial enum exports
 var NsOnlineStatusPartial *NsOnlineStatus
 
 func init() {

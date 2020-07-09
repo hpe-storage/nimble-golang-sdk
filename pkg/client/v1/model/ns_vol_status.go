@@ -19,11 +19,19 @@ var pNsVolStatusNonWritable NsVolStatus
 var pNsVolStatusReadOnly NsVolStatus
 var pNsVolStatusOnline NsVolStatus
 
-// Export
+// NsVolStatusOffline enum exports
 var NsVolStatusOffline *NsVolStatus
+
+// NsVolStatusLoginOnly enum exports
 var NsVolStatusLoginOnly *NsVolStatus
+
+// NsVolStatusNonWritable enum exports
 var NsVolStatusNonWritable *NsVolStatus
+
+// NsVolStatusReadOnly enum exports
 var NsVolStatusReadOnly *NsVolStatus
+
+// NsVolStatusOnline enum exports
 var NsVolStatusOnline *NsVolStatus
 
 func init() {

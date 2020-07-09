@@ -17,10 +17,16 @@ var pNsShelfSwStateOnline NsShelfSwState
 var pNsShelfSwStateForeign NsShelfSwState
 var pNsShelfSwStateUnknown NsShelfSwState
 
-// Export
+// NsShelfSwStateAvailable enum exports
 var NsShelfSwStateAvailable *NsShelfSwState
+
+// NsShelfSwStateOnline enum exports
 var NsShelfSwStateOnline *NsShelfSwState
+
+// NsShelfSwStateForeign enum exports
 var NsShelfSwStateForeign *NsShelfSwState
+
+// NsShelfSwStateUnknown enum exports
 var NsShelfSwStateUnknown *NsShelfSwState
 
 func init() {

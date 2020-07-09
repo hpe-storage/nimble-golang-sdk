@@ -13,8 +13,10 @@ const (
 var pNsEulaFormatHtml NsEulaFormat
 var pNsEulaFormatText NsEulaFormat
 
-// Export
+// NsEulaFormatHtml enum exports
 var NsEulaFormatHtml *NsEulaFormat
+
+// NsEulaFormatText enum exports
 var NsEulaFormatText *NsEulaFormat
 
 func init() {

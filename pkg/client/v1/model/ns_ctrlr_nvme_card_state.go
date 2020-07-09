@@ -15,9 +15,13 @@ var pNsCtrlrNvmeCardStateValid NsCtrlrNvmeCardState
 var pNsCtrlrNvmeCardStateInUse NsCtrlrNvmeCardState
 var pNsCtrlrNvmeCardStateFailed NsCtrlrNvmeCardState
 
-// Export
+// NsCtrlrNvmeCardStateValid enum exports
 var NsCtrlrNvmeCardStateValid *NsCtrlrNvmeCardState
+
+// NsCtrlrNvmeCardStateInUse enum exports
 var NsCtrlrNvmeCardStateInUse *NsCtrlrNvmeCardState
+
+// NsCtrlrNvmeCardStateFailed enum exports
 var NsCtrlrNvmeCardStateFailed *NsCtrlrNvmeCardState
 
 func init() {

@@ -17,10 +17,16 @@ var pNsReplDirectionDownstream NsReplDirection
 var pNsReplDirectionNone NsReplDirection
 var pNsReplDirectionBiDirectional NsReplDirection
 
-// Export
+// NsReplDirectionUpstream enum exports
 var NsReplDirectionUpstream *NsReplDirection
+
+// NsReplDirectionDownstream enum exports
 var NsReplDirectionDownstream *NsReplDirection
+
+// NsReplDirectionNone enum exports
 var NsReplDirectionNone *NsReplDirection
+
+// NsReplDirectionBiDirectional enum exports
 var NsReplDirectionBiDirectional *NsReplDirection
 
 func init() {

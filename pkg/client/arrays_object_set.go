@@ -22,32 +22,32 @@ type ArrayObjectSet struct {
 // CreateObject creates a new Array object
 func (objectSet *ArrayObjectSet) CreateObject(payload *model.Array) (*model.Array, error) {
 	newPayload, err := model.EncodeArray(payload)
-	arrayObjectSetResp, err := objectSet.Client.Post(arrayPath, newPayload)
+	resp, err := objectSet.Client.Post(arrayPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if arrayObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeArray(arrayObjectSetResp)
+	return model.DecodeArray(resp)
 }
 
 // UpdateObject Modify existing Array object
 func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *model.Array) (*model.Array, error) {
 	newPayload, err := model.EncodeArray(payload)
-	arrayObjectSetResp, err := objectSet.Client.Put(arrayPath, id, newPayload)
+	resp, err := objectSet.Client.Put(arrayPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if arrayObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeArray(arrayObjectSetResp)
+	return model.DecodeArray(resp)
 }
 
 // DeleteObject deletes the Array object with the specified ID

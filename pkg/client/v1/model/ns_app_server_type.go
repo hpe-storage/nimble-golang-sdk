@@ -19,11 +19,19 @@ var pNsAppServerTypeCisco NsAppServerType
 var pNsAppServerTypeContainerNode NsAppServerType
 var pNsAppServerTypeStackVision NsAppServerType
 
-// Export
+// NsAppServerTypeVss enum exports
 var NsAppServerTypeVss *NsAppServerType
+
+// NsAppServerTypeVmware enum exports
 var NsAppServerTypeVmware *NsAppServerType
+
+// NsAppServerTypeCisco enum exports
 var NsAppServerTypeCisco *NsAppServerType
+
+// NsAppServerTypeContainerNode enum exports
 var NsAppServerTypeContainerNode *NsAppServerType
+
+// NsAppServerTypeStackVision enum exports
 var NsAppServerTypeStackVision *NsAppServerType
 
 func init() {

@@ -13,8 +13,10 @@ const (
 var pNsGroupFailoverModeManual NsGroupFailoverMode
 var pNsGroupFailoverModeAutomatic NsGroupFailoverMode
 
-// Export
+// NsGroupFailoverModeManual enum exports
 var NsGroupFailoverModeManual *NsGroupFailoverMode
+
+// NsGroupFailoverModeAutomatic enum exports
 var NsGroupFailoverModeAutomatic *NsGroupFailoverMode
 
 func init() {

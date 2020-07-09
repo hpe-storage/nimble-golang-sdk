@@ -17,10 +17,16 @@ var pNsShelfSensorStateFailed NsShelfSensorState
 var pNsShelfSensorStateOk NsShelfSensorState
 var pNsShelfSensorStateAlerted NsShelfSensorState
 
-// Export
+// NsShelfSensorStateMissing enum exports
 var NsShelfSensorStateMissing *NsShelfSensorState
+
+// NsShelfSensorStateFailed enum exports
 var NsShelfSensorStateFailed *NsShelfSensorState
+
+// NsShelfSensorStateOk enum exports
 var NsShelfSensorStateOk *NsShelfSensorState
+
+// NsShelfSensorStateAlerted enum exports
 var NsShelfSensorStateAlerted *NsShelfSensorState
 
 func init() {

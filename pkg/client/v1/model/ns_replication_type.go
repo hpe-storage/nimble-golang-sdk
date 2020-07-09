@@ -13,8 +13,10 @@ const (
 var pNsReplicationTypeSynchronous NsReplicationType
 var pNsReplicationTypePeriodicSnapshot NsReplicationType
 
-// Export
+// NsReplicationTypeSynchronous enum exports
 var NsReplicationTypeSynchronous *NsReplicationType
+
+// NsReplicationTypePeriodicSnapshot enum exports
 var NsReplicationTypePeriodicSnapshot *NsReplicationType
 
 func init() {

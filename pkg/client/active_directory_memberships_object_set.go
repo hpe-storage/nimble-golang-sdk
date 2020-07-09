@@ -23,32 +23,32 @@ type ActiveDirectoryMembershipObjectSet struct {
 // CreateObject creates a new ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
 	newPayload, err := model.EncodeActiveDirectoryMembership(payload)
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Post(activeDirectoryMembershipPath, newPayload)
+	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if activeDirectoryMembershipObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeActiveDirectoryMembership(activeDirectoryMembershipObjectSetResp)
+	return model.DecodeActiveDirectoryMembership(resp)
 }
 
 // UpdateObject Modify existing ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
 	newPayload, err := model.EncodeActiveDirectoryMembership(payload)
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, newPayload)
+	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if activeDirectoryMembershipObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeActiveDirectoryMembership(activeDirectoryMembershipObjectSetResp)
+	return model.DecodeActiveDirectoryMembership(resp)
 }
 
 // DeleteObject deletes the ActiveDirectoryMembership object with the specified ID

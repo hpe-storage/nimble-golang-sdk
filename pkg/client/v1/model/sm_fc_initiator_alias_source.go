@@ -15,9 +15,13 @@ var pSmFcInitiatorAliasSourceFabric SmFcInitiatorAliasSource
 var pSmFcInitiatorAliasSourceInvalid SmFcInitiatorAliasSource
 var pSmFcInitiatorAliasSourceUser SmFcInitiatorAliasSource
 
-// Export
+// SmFcInitiatorAliasSourceFabric enum exports
 var SmFcInitiatorAliasSourceFabric *SmFcInitiatorAliasSource
+
+// SmFcInitiatorAliasSourceInvalid enum exports
 var SmFcInitiatorAliasSourceInvalid *SmFcInitiatorAliasSource
+
+// SmFcInitiatorAliasSourceUser enum exports
 var SmFcInitiatorAliasSourceUser *SmFcInitiatorAliasSource
 
 func init() {

@@ -24,32 +24,32 @@ type SnapshotObjectSet struct {
 // CreateObject creates a new Snapshot object
 func (objectSet *SnapshotObjectSet) CreateObject(payload *model.Snapshot) (*model.Snapshot, error) {
 	newPayload, err := model.EncodeSnapshot(payload)
-	snapshotObjectSetResp, err := objectSet.Client.Post(snapshotPath, newPayload)
+	resp, err := objectSet.Client.Post(snapshotPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if snapshotObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeSnapshot(snapshotObjectSetResp)
+	return model.DecodeSnapshot(resp)
 }
 
 // UpdateObject Modify existing Snapshot object
 func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *model.Snapshot) (*model.Snapshot, error) {
 	newPayload, err := model.EncodeSnapshot(payload)
-	snapshotObjectSetResp, err := objectSet.Client.Put(snapshotPath, id, newPayload)
+	resp, err := objectSet.Client.Put(snapshotPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if snapshotObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeSnapshot(snapshotObjectSetResp)
+	return model.DecodeSnapshot(resp)
 }
 
 // DeleteObject deletes the Snapshot object with the specified ID

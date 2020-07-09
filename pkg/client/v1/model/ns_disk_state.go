@@ -25,14 +25,28 @@ var pNsDiskStateAbsent NsDiskState
 var pNsDiskStateFailed NsDiskState
 var pNsDiskStateForeign NsDiskState
 
-// Export
+// NsDiskStateValid enum exports
 var NsDiskStateValid *NsDiskState
+
+// NsDiskStateVoid enum exports
 var NsDiskStateVoid *NsDiskState
+
+// NsDiskStateRemoved enum exports
 var NsDiskStateRemoved *NsDiskState
+
+// NsDiskStateTFail enum exports
 var NsDiskStateTFail *NsDiskState
+
+// NsDiskStateInUse enum exports
 var NsDiskStateInUse *NsDiskState
+
+// NsDiskStateAbsent enum exports
 var NsDiskStateAbsent *NsDiskState
+
+// NsDiskStateFailed enum exports
 var NsDiskStateFailed *NsDiskState
+
+// NsDiskStateForeign enum exports
 var NsDiskStateForeign *NsDiskState
 
 func init() {

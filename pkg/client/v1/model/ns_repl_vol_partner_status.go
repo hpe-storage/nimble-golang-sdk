@@ -35,19 +35,43 @@ var pNsReplVolPartnerStatusTerminatingDataTransfer NsReplVolPartnerStatus
 var pNsReplVolPartnerStatusPaused NsReplVolPartnerStatus
 var pNsReplVolPartnerStatusInitiatingDataTransfer NsReplVolPartnerStatus
 
-// Export
+// NsReplVolPartnerStatusDataTransferTerminated enum exports
 var NsReplVolPartnerStatusDataTransferTerminated *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusInitiatingContentBasedReplication enum exports
 var NsReplVolPartnerStatusInitiatingContentBasedReplication *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusContentBasedReplicationComplete enum exports
 var NsReplVolPartnerStatusContentBasedReplicationComplete *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusDataTransferComplete enum exports
 var NsReplVolPartnerStatusDataTransferComplete *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusCreatingSnapshotOnPartner enum exports
 var NsReplVolPartnerStatusCreatingSnapshotOnPartner *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusSynchronizingPartnerConfiguration enum exports
 var NsReplVolPartnerStatusSynchronizingPartnerConfiguration *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusDataTransferInProgress enum exports
 var NsReplVolPartnerStatusDataTransferInProgress *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusIdle enum exports
 var NsReplVolPartnerStatusIdle *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner enum exports
 var NsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusContentBasedReplicationInProgress enum exports
 var NsReplVolPartnerStatusContentBasedReplicationInProgress *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusTerminatingDataTransfer enum exports
 var NsReplVolPartnerStatusTerminatingDataTransfer *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusPaused enum exports
 var NsReplVolPartnerStatusPaused *NsReplVolPartnerStatus
+
+// NsReplVolPartnerStatusInitiatingDataTransfer enum exports
 var NsReplVolPartnerStatusInitiatingDataTransfer *NsReplVolPartnerStatus
 
 func init() {

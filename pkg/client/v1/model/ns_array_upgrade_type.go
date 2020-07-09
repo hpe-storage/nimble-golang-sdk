@@ -13,8 +13,10 @@ const (
 var pNsArrayUpgradeTypeOffline NsArrayUpgradeType
 var pNsArrayUpgradeTypeInvalid NsArrayUpgradeType
 
-// Export
+// NsArrayUpgradeTypeOffline enum exports
 var NsArrayUpgradeTypeOffline *NsArrayUpgradeType
+
+// NsArrayUpgradeTypeInvalid enum exports
 var NsArrayUpgradeTypeInvalid *NsArrayUpgradeType
 
 func init() {

@@ -15,9 +15,13 @@ var pNsShelfPortTypeUpstream NsShelfPortType
 var pNsShelfPortTypeDownstream NsShelfPortType
 var pNsShelfPortTypeUnknown NsShelfPortType
 
-// Export
+// NsShelfPortTypeUpstream enum exports
 var NsShelfPortTypeUpstream *NsShelfPortType
+
+// NsShelfPortTypeDownstream enum exports
 var NsShelfPortTypeDownstream *NsShelfPortType
+
+// NsShelfPortTypeUnknown enum exports
 var NsShelfPortTypeUnknown *NsShelfPortType
 
 func init() {

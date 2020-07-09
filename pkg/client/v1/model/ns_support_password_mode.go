@@ -11,7 +11,7 @@ const (
 
 var pNsSupportPasswordModeCiphertext NsSupportPasswordMode
 
-// Export
+// NsSupportPasswordModeCiphertext enum exports
 var NsSupportPasswordModeCiphertext *NsSupportPasswordMode
 
 func init() {

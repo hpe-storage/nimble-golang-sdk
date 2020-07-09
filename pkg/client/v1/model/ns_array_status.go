@@ -13,8 +13,10 @@ const (
 var pNsArrayStatusUnreachable NsArrayStatus
 var pNsArrayStatusReachable NsArrayStatus
 
-// Export
+// NsArrayStatusUnreachable enum exports
 var NsArrayStatusUnreachable *NsArrayStatus
+
+// NsArrayStatusReachable enum exports
 var NsArrayStatusReachable *NsArrayStatus
 
 func init() {

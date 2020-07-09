@@ -13,8 +13,10 @@ const (
 var pNsDiskOpAdd NsDiskOp
 var pNsDiskOpRemove NsDiskOp
 
-// Export
+// NsDiskOpAdd enum exports
 var NsDiskOpAdd *NsDiskOp
+
+// NsDiskOpRemove enum exports
 var NsDiskOpRemove *NsDiskOp
 
 func init() {

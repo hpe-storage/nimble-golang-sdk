@@ -17,10 +17,16 @@ var pNsNetZoneTypeEvenodd NsNetZoneType
 var pNsNetZoneTypeBisect NsNetZoneType
 var pNsNetZoneTypeNone NsNetZoneType
 
-// Export
+// NsNetZoneTypeSingle enum exports
 var NsNetZoneTypeSingle *NsNetZoneType
+
+// NsNetZoneTypeEvenodd enum exports
 var NsNetZoneTypeEvenodd *NsNetZoneType
+
+// NsNetZoneTypeBisect enum exports
 var NsNetZoneTypeBisect *NsNetZoneType
+
+// NsNetZoneTypeNone enum exports
 var NsNetZoneTypeNone *NsNetZoneType
 
 func init() {

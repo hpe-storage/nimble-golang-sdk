@@ -21,12 +21,22 @@ var pNsAuditCategoryUserAccess NsAuditCategory
 var pNsAuditCategoryDataAccess NsAuditCategory
 var pNsAuditCategoryDataProvisioning NsAuditCategory
 
-// Export
+// NsAuditCategoryDataProtection enum exports
 var NsAuditCategoryDataProtection *NsAuditCategory
+
+// NsAuditCategorySystemConfiguration enum exports
 var NsAuditCategorySystemConfiguration *NsAuditCategory
+
+// NsAuditCategorySoftwareUpdate enum exports
 var NsAuditCategorySoftwareUpdate *NsAuditCategory
+
+// NsAuditCategoryUserAccess enum exports
 var NsAuditCategoryUserAccess *NsAuditCategory
+
+// NsAuditCategoryDataAccess enum exports
 var NsAuditCategoryDataAccess *NsAuditCategory
+
+// NsAuditCategoryDataProvisioning enum exports
 var NsAuditCategoryDataProvisioning *NsAuditCategory
 
 func init() {

@@ -13,8 +13,10 @@ const (
 var pNsReplPriorityTypeNormal NsReplPriorityType
 var pNsReplPriorityTypeHigh NsReplPriorityType
 
-// Export
+// NsReplPriorityTypeNormal enum exports
 var NsReplPriorityTypeNormal *NsReplPriorityType
+
+// NsReplPriorityTypeHigh enum exports
 var NsReplPriorityTypeHigh *NsReplPriorityType
 
 func init() {

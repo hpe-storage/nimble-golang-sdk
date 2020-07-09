@@ -15,9 +15,13 @@ var pNsEncryptionModeAvailable NsEncryptionMode
 var pNsEncryptionModeNone NsEncryptionMode
 var pNsEncryptionModeSecure NsEncryptionMode
 
-// Export
+// NsEncryptionModeAvailable enum exports
 var NsEncryptionModeAvailable *NsEncryptionMode
+
+// NsEncryptionModeNone enum exports
 var NsEncryptionModeNone *NsEncryptionMode
+
+// NsEncryptionModeSecure enum exports
 var NsEncryptionModeSecure *NsEncryptionMode
 
 func init() {

@@ -13,8 +13,10 @@ const (
 var pNsPEOpStateTypeNormal NsPEOpStateType
 var pNsPEOpStateTypeDeprecated NsPEOpStateType
 
-// Export
+// NsPEOpStateTypeNormal enum exports
 var NsPEOpStateTypeNormal *NsPEOpStateType
+
+// NsPEOpStateTypeDeprecated enum exports
 var NsPEOpStateTypeDeprecated *NsPEOpStateType
 
 func init() {

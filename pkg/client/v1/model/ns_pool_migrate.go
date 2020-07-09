@@ -15,9 +15,13 @@ var pNsPoolMigrateIn NsPoolMigrate
 var pNsPoolMigrateNone NsPoolMigrate
 var pNsPoolMigrateOut NsPoolMigrate
 
-// Export
+// NsPoolMigrateIn enum exports
 var NsPoolMigrateIn *NsPoolMigrate
+
+// NsPoolMigrateNone enum exports
 var NsPoolMigrateNone *NsPoolMigrate
+
+// NsPoolMigrateOut enum exports
 var NsPoolMigrateOut *NsPoolMigrate
 
 func init() {

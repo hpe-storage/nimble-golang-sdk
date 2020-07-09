@@ -15,9 +15,13 @@ var pNsPartnerCfgSyncStatusNA NsPartnerCfgSyncStatus
 var pNsPartnerCfgSyncStatusNo NsPartnerCfgSyncStatus
 var pNsPartnerCfgSyncStatusYes NsPartnerCfgSyncStatus
 
-// Export
+// NsPartnerCfgSyncStatusNA enum exports
 var NsPartnerCfgSyncStatusNA *NsPartnerCfgSyncStatus
+
+// NsPartnerCfgSyncStatusNo enum exports
 var NsPartnerCfgSyncStatusNo *NsPartnerCfgSyncStatus
+
+// NsPartnerCfgSyncStatusYes enum exports
 var NsPartnerCfgSyncStatusYes *NsPartnerCfgSyncStatus
 
 func init() {

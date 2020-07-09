@@ -22,32 +22,32 @@ type UserObjectSet struct {
 // CreateObject creates a new User object
 func (objectSet *UserObjectSet) CreateObject(payload *model.User) (*model.User, error) {
 	newPayload, err := model.EncodeUser(payload)
-	userObjectSetResp, err := objectSet.Client.Post(userPath, newPayload)
+	resp, err := objectSet.Client.Post(userPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if userObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeUser(userObjectSetResp)
+	return model.DecodeUser(resp)
 }
 
 // UpdateObject Modify existing User object
 func (objectSet *UserObjectSet) UpdateObject(id string, payload *model.User) (*model.User, error) {
 	newPayload, err := model.EncodeUser(payload)
-	userObjectSetResp, err := objectSet.Client.Put(userPath, id, newPayload)
+	resp, err := objectSet.Client.Put(userPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if userObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeUser(userObjectSetResp)
+	return model.DecodeUser(resp)
 }
 
 // DeleteObject deletes the User object with the specified ID

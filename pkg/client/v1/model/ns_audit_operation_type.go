@@ -19,11 +19,19 @@ var pNsAuditOperationTypeCreate NsAuditOperationType
 var pNsAuditOperationTypeUpdate NsAuditOperationType
 var pNsAuditOperationTypeDelete NsAuditOperationType
 
-// Export
+// NsAuditOperationTypeOther enum exports
 var NsAuditOperationTypeOther *NsAuditOperationType
+
+// NsAuditOperationTypeRead enum exports
 var NsAuditOperationTypeRead *NsAuditOperationType
+
+// NsAuditOperationTypeCreate enum exports
 var NsAuditOperationTypeCreate *NsAuditOperationType
+
+// NsAuditOperationTypeUpdate enum exports
 var NsAuditOperationTypeUpdate *NsAuditOperationType
+
+// NsAuditOperationTypeDelete enum exports
 var NsAuditOperationTypeDelete *NsAuditOperationType
 
 func init() {

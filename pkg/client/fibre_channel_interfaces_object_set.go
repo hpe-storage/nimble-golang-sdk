@@ -28,16 +28,16 @@ func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *model.Fib
 // UpdateObject Modify existing FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
 	newPayload, err := model.EncodeFibreChannelInterface(payload)
-	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, newPayload)
+	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if fibreChannelInterfaceObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeFibreChannelInterface(fibreChannelInterfaceObjectSetResp)
+	return model.DecodeFibreChannelInterface(resp)
 }
 
 // DeleteObject deletes the FibreChannelInterface object with the specified ID

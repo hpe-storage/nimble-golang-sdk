@@ -19,11 +19,19 @@ var pNsSensorStateSensorMissing NsSensorState
 var pNsSensorStateSensorReadingUnavail NsSensorState
 var pNsSensorStateSensorFailed NsSensorState
 
-// Export
+// NsSensorStateSensorOk enum exports
 var NsSensorStateSensorOk *NsSensorState
+
+// NsSensorStateSensorAlertCond enum exports
 var NsSensorStateSensorAlertCond *NsSensorState
+
+// NsSensorStateSensorMissing enum exports
 var NsSensorStateSensorMissing *NsSensorState
+
+// NsSensorStateSensorReadingUnavail enum exports
 var NsSensorStateSensorReadingUnavail *NsSensorState
+
+// NsSensorStateSensorFailed enum exports
 var NsSensorStateSensorFailed *NsSensorState
 
 func init() {

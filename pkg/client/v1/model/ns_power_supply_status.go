@@ -17,10 +17,16 @@ var pNsPowerSupplyStatusPsOkay NsPowerSupplyStatus
 var pNsPowerSupplyStatusPsFailed NsPowerSupplyStatus
 var pNsPowerSupplyStatusPsUnknown NsPowerSupplyStatus
 
-// Export
+// NsPowerSupplyStatusPsAlerted enum exports
 var NsPowerSupplyStatusPsAlerted *NsPowerSupplyStatus
+
+// NsPowerSupplyStatusPsOkay enum exports
 var NsPowerSupplyStatusPsOkay *NsPowerSupplyStatus
+
+// NsPowerSupplyStatusPsFailed enum exports
 var NsPowerSupplyStatusPsFailed *NsPowerSupplyStatus
+
+// NsPowerSupplyStatusPsUnknown enum exports
 var NsPowerSupplyStatusPsUnknown *NsPowerSupplyStatus
 
 func init() {

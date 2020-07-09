@@ -17,10 +17,16 @@ var pNsShelfSensorTypeNvram NsShelfSensorType
 var pNsShelfSensorTypeTemperature NsShelfSensorType
 var pNsShelfSensorTypePowerSupply NsShelfSensorType
 
-// Export
+// NsShelfSensorTypeFan enum exports
 var NsShelfSensorTypeFan *NsShelfSensorType
+
+// NsShelfSensorTypeNvram enum exports
 var NsShelfSensorTypeNvram *NsShelfSensorType
+
+// NsShelfSensorTypeTemperature enum exports
 var NsShelfSensorTypeTemperature *NsShelfSensorType
+
+// NsShelfSensorTypePowerSupply enum exports
 var NsShelfSensorTypePowerSupply *NsShelfSensorType
 
 func init() {

@@ -13,8 +13,10 @@ const (
 var pNsAlarmStatusAcknowledged NsAlarmStatus
 var pNsAlarmStatusOpen NsAlarmStatus
 
-// Export
+// NsAlarmStatusAcknowledged enum exports
 var NsAlarmStatusAcknowledged *NsAlarmStatus
+
+// NsAlarmStatusOpen enum exports
 var NsAlarmStatusOpen *NsAlarmStatus
 
 func init() {

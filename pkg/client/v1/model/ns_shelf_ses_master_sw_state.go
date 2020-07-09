@@ -19,11 +19,19 @@ var pNsShelfSesMasterSwStateNotMaster NsShelfSesMasterSwState
 var pNsShelfSesMasterSwStateUnknown NsShelfSesMasterSwState
 var pNsShelfSesMasterSwStateMaster NsShelfSesMasterSwState
 
-// Export
+// NsShelfSesMasterSwStateWantMaster enum exports
 var NsShelfSesMasterSwStateWantMaster *NsShelfSesMasterSwState
+
+// NsShelfSesMasterSwStateReleaseMaster enum exports
 var NsShelfSesMasterSwStateReleaseMaster *NsShelfSesMasterSwState
+
+// NsShelfSesMasterSwStateNotMaster enum exports
 var NsShelfSesMasterSwStateNotMaster *NsShelfSesMasterSwState
+
+// NsShelfSesMasterSwStateUnknown enum exports
 var NsShelfSesMasterSwStateUnknown *NsShelfSesMasterSwState
+
+// NsShelfSesMasterSwStateMaster enum exports
 var NsShelfSesMasterSwStateMaster *NsShelfSesMasterSwState
 
 func init() {

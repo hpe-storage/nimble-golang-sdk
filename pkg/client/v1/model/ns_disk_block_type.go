@@ -17,10 +17,16 @@ var pNsDiskBlockTypeBlock4kn NsDiskBlockType
 var pNsDiskBlockTypeBlockNone NsDiskBlockType
 var pNsDiskBlockTypeBlock512n NsDiskBlockType
 
-// Export
+// NsDiskBlockTypeBlock512e enum exports
 var NsDiskBlockTypeBlock512e *NsDiskBlockType
+
+// NsDiskBlockTypeBlock4kn enum exports
 var NsDiskBlockTypeBlock4kn *NsDiskBlockType
+
+// NsDiskBlockTypeBlockNone enum exports
 var NsDiskBlockTypeBlockNone *NsDiskBlockType
+
+// NsDiskBlockTypeBlock512n enum exports
 var NsDiskBlockTypeBlock512n *NsDiskBlockType
 
 func init() {

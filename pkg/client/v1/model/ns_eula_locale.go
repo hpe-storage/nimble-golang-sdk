@@ -11,7 +11,7 @@ const (
 
 var pNsEulaLocaleEn NsEulaLocale
 
-// Export
+// NsEulaLocaleEn enum exports
 var NsEulaLocaleEn *NsEulaLocale
 
 func init() {

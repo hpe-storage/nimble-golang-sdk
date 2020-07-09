@@ -35,19 +35,43 @@ var pNsMergeStateDestMergeValidation NsMergeState
 var pNsMergeStateSrcReassignFailed NsMergeState
 var pNsMergeStateDestDbFailed NsMergeState
 
-// Export
+// NsMergeStateDestDbDone enum exports
 var NsMergeStateDestDbDone *NsMergeState
+
+// NsMergeStateDestDb enum exports
 var NsMergeStateDestDb *NsMergeState
+
+// NsMergeStateDestReassigned enum exports
 var NsMergeStateDestReassigned *NsMergeState
+
+// NsMergeStateSrcQuiesced enum exports
 var NsMergeStateSrcQuiesced *NsMergeState
+
+// NsMergeStateNone enum exports
 var NsMergeStateNone *NsMergeState
+
+// NsMergeStateDestRelinquish enum exports
 var NsMergeStateDestRelinquish *NsMergeState
+
+// NsMergeStateSrcReassigned enum exports
 var NsMergeStateSrcReassigned *NsMergeState
+
+// NsMergeStateDestStart enum exports
 var NsMergeStateDestStart *NsMergeState
+
+// NsMergeStateSrcStart enum exports
 var NsMergeStateSrcStart *NsMergeState
+
+// NsMergeStateSrcQuiesceFailed enum exports
 var NsMergeStateSrcQuiesceFailed *NsMergeState
+
+// NsMergeStateDestMergeValidation enum exports
 var NsMergeStateDestMergeValidation *NsMergeState
+
+// NsMergeStateSrcReassignFailed enum exports
 var NsMergeStateSrcReassignFailed *NsMergeState
+
+// NsMergeStateDestDbFailed enum exports
 var NsMergeStateDestDbFailed *NsMergeState
 
 func init() {

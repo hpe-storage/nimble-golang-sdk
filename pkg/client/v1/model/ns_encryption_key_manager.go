@@ -13,8 +13,10 @@ const (
 var pNsEncryptionKeyManagerExternal NsEncryptionKeyManager
 var pNsEncryptionKeyManagerLocal NsEncryptionKeyManager
 
-// Export
+// NsEncryptionKeyManagerExternal enum exports
 var NsEncryptionKeyManagerExternal *NsEncryptionKeyManager
+
+// NsEncryptionKeyManagerLocal enum exports
 var NsEncryptionKeyManagerLocal *NsEncryptionKeyManager
 
 func init() {

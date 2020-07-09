@@ -17,10 +17,16 @@ var pNsPeriodUnitWeeks NsPeriodUnit
 var pNsPeriodUnitMinutes NsPeriodUnit
 var pNsPeriodUnitDays NsPeriodUnit
 
-// Export
+// NsPeriodUnitHours enum exports
 var NsPeriodUnitHours *NsPeriodUnit
+
+// NsPeriodUnitWeeks enum exports
 var NsPeriodUnitWeeks *NsPeriodUnit
+
+// NsPeriodUnitMinutes enum exports
 var NsPeriodUnitMinutes *NsPeriodUnit
+
+// NsPeriodUnitDays enum exports
 var NsPeriodUnitDays *NsPeriodUnit
 
 func init() {

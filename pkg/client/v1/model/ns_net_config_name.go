@@ -15,9 +15,13 @@ var pNsNetConfigNameBackup NsNetConfigName
 var pNsNetConfigNameDraft NsNetConfigName
 var pNsNetConfigNameActive NsNetConfigName
 
-// Export
+// NsNetConfigNameBackup enum exports
 var NsNetConfigNameBackup *NsNetConfigName
+
+// NsNetConfigNameDraft enum exports
 var NsNetConfigNameDraft *NsNetConfigName
+
+// NsNetConfigNameActive enum exports
 var NsNetConfigNameActive *NsNetConfigName
 
 func init() {

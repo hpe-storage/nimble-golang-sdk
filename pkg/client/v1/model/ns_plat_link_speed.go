@@ -19,11 +19,19 @@ var pNsPlatLinkSpeedLinkSpeedUnknown NsPlatLinkSpeed
 var pNsPlatLinkSpeedLinkSpeed1000m NsPlatLinkSpeed
 var pNsPlatLinkSpeedLinkSpeed100m NsPlatLinkSpeed
 
-// Export
+// NsPlatLinkSpeedLinkSpeed10000m enum exports
 var NsPlatLinkSpeedLinkSpeed10000m *NsPlatLinkSpeed
+
+// NsPlatLinkSpeedLinkSpeed10m enum exports
 var NsPlatLinkSpeedLinkSpeed10m *NsPlatLinkSpeed
+
+// NsPlatLinkSpeedLinkSpeedUnknown enum exports
 var NsPlatLinkSpeedLinkSpeedUnknown *NsPlatLinkSpeed
+
+// NsPlatLinkSpeedLinkSpeed1000m enum exports
 var NsPlatLinkSpeedLinkSpeed1000m *NsPlatLinkSpeed
+
+// NsPlatLinkSpeedLinkSpeed100m enum exports
 var NsPlatLinkSpeedLinkSpeed100m *NsPlatLinkSpeed
 
 func init() {

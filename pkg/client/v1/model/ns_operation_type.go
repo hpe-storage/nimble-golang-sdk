@@ -85,44 +85,118 @@ var pNsOperationTypeSnapshotsCreate NsOperationType
 var pNsOperationTypeVolumeCollectionsPromote NsOperationType
 var pNsOperationTypeRemoveInitiator NsOperationType
 
-// Export
+// NsOperationTypeCreateInitiatorGrp enum exports
 var NsOperationTypeCreateInitiatorGrp *NsOperationType
+
+// NsOperationTypeVolumeCollectionsHandover enum exports
 var NsOperationTypeVolumeCollectionsHandover *NsOperationType
+
+// NsOperationTypeFoldersDelete enum exports
 var NsOperationTypeFoldersDelete *NsOperationType
+
+// NsOperationTypeSnapshotsDelete enum exports
 var NsOperationTypeSnapshotsDelete *NsOperationType
+
+// NsOperationTypeAddVolAcl enum exports
 var NsOperationTypeAddVolAcl *NsOperationType
+
+// NsOperationTypeAlarmsUpdate enum exports
 var NsOperationTypeAlarmsUpdate *NsOperationType
+
+// NsOperationTypeAlarmsAcknowledge enum exports
 var NsOperationTypeAlarmsAcknowledge *NsOperationType
+
+// NsOperationTypeEditInitiatorGrp enum exports
 var NsOperationTypeEditInitiatorGrp *NsOperationType
+
+// NsOperationTypeVolumeCollectionsDemote enum exports
 var NsOperationTypeVolumeCollectionsDemote *NsOperationType
+
+// NsOperationTypeVolumesBulkDelete enum exports
 var NsOperationTypeVolumesBulkDelete *NsOperationType
+
+// NsOperationTypeEditFolder enum exports
 var NsOperationTypeEditFolder *NsOperationType
+
+// NsOperationTypeRemoveSnapshot enum exports
 var NsOperationTypeRemoveSnapshot *NsOperationType
+
+// NsOperationTypeVolumeCollectionsBulkHandover enum exports
 var NsOperationTypeVolumeCollectionsBulkHandover *NsOperationType
+
+// NsOperationTypeVolumesDelete enum exports
 var NsOperationTypeVolumesDelete *NsOperationType
+
+// NsOperationTypeAddFcVolAcl enum exports
 var NsOperationTypeAddFcVolAcl *NsOperationType
+
+// NsOperationTypeSnapshotCollectionsDelete enum exports
 var NsOperationTypeSnapshotCollectionsDelete *NsOperationType
+
+// NsOperationTypeAddInitiator enum exports
 var NsOperationTypeAddInitiator *NsOperationType
+
+// NsOperationTypeEditSnap enum exports
 var NsOperationTypeEditSnap *NsOperationType
+
+// NsOperationTypeAlarmsUnacknowledge enum exports
 var NsOperationTypeAlarmsUnacknowledge *NsOperationType
+
+// NsOperationTypeAlarmsBulkUnacknowledge enum exports
 var NsOperationTypeAlarmsBulkUnacknowledge *NsOperationType
+
+// NsOperationTypeSnapVolcoll enum exports
 var NsOperationTypeSnapVolcoll *NsOperationType
+
+// NsOperationTypeEditVol enum exports
 var NsOperationTypeEditVol *NsOperationType
+
+// NsOperationTypeVolumeCollectionsBulkDemote enum exports
 var NsOperationTypeVolumeCollectionsBulkDemote *NsOperationType
+
+// NsOperationTypeAlarmsBulkAcknowledge enum exports
 var NsOperationTypeAlarmsBulkAcknowledge *NsOperationType
+
+// NsOperationTypeSnapshotsBulkDelete enum exports
 var NsOperationTypeSnapshotsBulkDelete *NsOperationType
+
+// NsOperationTypeFoldersBulkDelete enum exports
 var NsOperationTypeFoldersBulkDelete *NsOperationType
+
+// NsOperationTypeVolumeCollectionsBulkPromote enum exports
 var NsOperationTypeVolumeCollectionsBulkPromote *NsOperationType
+
+// NsOperationTypeVolumesBulkUpdate enum exports
 var NsOperationTypeVolumesBulkUpdate *NsOperationType
+
+// NsOperationTypeSnapVol enum exports
 var NsOperationTypeSnapVol *NsOperationType
+
+// NsOperationTypeRemoveVolAcl enum exports
 var NsOperationTypeRemoveVolAcl *NsOperationType
+
+// NsOperationTypeVolumesUpdate enum exports
 var NsOperationTypeVolumesUpdate *NsOperationType
+
+// NsOperationTypeAlarmsBulkUpdate enum exports
 var NsOperationTypeAlarmsBulkUpdate *NsOperationType
+
+// NsOperationTypeDeleteInitiatorGrp enum exports
 var NsOperationTypeDeleteInitiatorGrp *NsOperationType
+
+// NsOperationTypeSnapshotsBulkCreate enum exports
 var NsOperationTypeSnapshotsBulkCreate *NsOperationType
+
+// NsOperationTypeSnapshotCollectionsBulkDelete enum exports
 var NsOperationTypeSnapshotCollectionsBulkDelete *NsOperationType
+
+// NsOperationTypeSnapshotsCreate enum exports
 var NsOperationTypeSnapshotsCreate *NsOperationType
+
+// NsOperationTypeVolumeCollectionsPromote enum exports
 var NsOperationTypeVolumeCollectionsPromote *NsOperationType
+
+// NsOperationTypeRemoveInitiator enum exports
 var NsOperationTypeRemoveInitiator *NsOperationType
 
 func init() {

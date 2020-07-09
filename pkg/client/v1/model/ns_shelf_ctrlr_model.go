@@ -31,17 +31,37 @@ var pNsShelfCtrlrModelHeadGen5 NsShelfCtrlrModel
 var pNsShelfCtrlrModelEs34u NsShelfCtrlrModel
 var pNsShelfCtrlrModelUnknown NsShelfCtrlrModel
 
-// Export
+// NsShelfCtrlrModelHeadX9 enum exports
 var NsShelfCtrlrModelHeadX9 *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadX8 enum exports
 var NsShelfCtrlrModelHeadX8 *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadGen52u enum exports
 var NsShelfCtrlrModelHeadGen52u *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelEs24u enum exports
 var NsShelfCtrlrModelEs24u *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadVmware enum exports
 var NsShelfCtrlrModelHeadVmware *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelEs13u enum exports
 var NsShelfCtrlrModelEs13u *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadX92u enum exports
 var NsShelfCtrlrModelHeadX92u *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadX10 enum exports
 var NsShelfCtrlrModelHeadX10 *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadGen5 enum exports
 var NsShelfCtrlrModelHeadGen5 *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelEs34u enum exports
 var NsShelfCtrlrModelEs34u *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelUnknown enum exports
 var NsShelfCtrlrModelUnknown *NsShelfCtrlrModel
 
 func init() {

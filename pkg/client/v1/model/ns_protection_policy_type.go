@@ -13,8 +13,10 @@ const (
 var pNsProtectionPolicyTypeProtectionTemplate NsProtectionPolicyType
 var pNsProtectionPolicyTypeVolumeCollection NsProtectionPolicyType
 
-// Export
+// NsProtectionPolicyTypeProtectionTemplate enum exports
 var NsProtectionPolicyTypeProtectionTemplate *NsProtectionPolicyType
+
+// NsProtectionPolicyTypeVolumeCollection enum exports
 var NsProtectionPolicyTypeVolumeCollection *NsProtectionPolicyType
 
 func init() {

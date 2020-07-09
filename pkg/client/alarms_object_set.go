@@ -28,16 +28,16 @@ func (objectSet *AlarmObjectSet) CreateObject(payload *model.Alarm) (*model.Alar
 // UpdateObject Modify existing Alarm object
 func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *model.Alarm) (*model.Alarm, error) {
 	newPayload, err := model.EncodeAlarm(payload)
-	alarmObjectSetResp, err := objectSet.Client.Put(alarmPath, id, newPayload)
+	resp, err := objectSet.Client.Put(alarmPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if alarmObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeAlarm(alarmObjectSetResp)
+	return model.DecodeAlarm(resp)
 }
 
 // DeleteObject deletes the Alarm object with the specified ID

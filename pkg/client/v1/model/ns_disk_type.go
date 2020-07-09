@@ -13,8 +13,10 @@ const (
 var pNsDiskTypeSsd NsDiskType
 var pNsDiskTypeHdd NsDiskType
 
-// Export
+// NsDiskTypeSsd enum exports
 var NsDiskTypeSsd *NsDiskType
+
+// NsDiskTypeHdd enum exports
 var NsDiskTypeHdd *NsDiskType
 
 func init() {

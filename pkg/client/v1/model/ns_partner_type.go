@@ -17,10 +17,16 @@ var pNsPartnerTypePool NsPartnerType
 var pNsPartnerTypeTunnelInitiator NsPartnerType
 var pNsPartnerTypeGroup NsPartnerType
 
-// Export
+// NsPartnerTypeTunnelEndpoint enum exports
 var NsPartnerTypeTunnelEndpoint *NsPartnerType
+
+// NsPartnerTypePool enum exports
 var NsPartnerTypePool *NsPartnerType
+
+// NsPartnerTypeTunnelInitiator enum exports
 var NsPartnerTypeTunnelInitiator *NsPartnerType
+
+// NsPartnerTypeGroup enum exports
 var NsPartnerTypeGroup *NsPartnerType
 
 func init() {

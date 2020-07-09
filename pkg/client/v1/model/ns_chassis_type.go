@@ -19,11 +19,19 @@ var pNsChassisTypeChassisSmc3u16 NsChassisType
 var pNsChassisTypeChassisNmbl2u12 NsChassisType
 var pNsChassisTypeChassisNmbl4u24 NsChassisType
 
-// Export
+// NsChassisTypeChassisSmc4u24 enum exports
 var NsChassisTypeChassisSmc4u24 *NsChassisType
+
+// NsChassisTypeChassisUnknown enum exports
 var NsChassisTypeChassisUnknown *NsChassisType
+
+// NsChassisTypeChassisSmc3u16 enum exports
 var NsChassisTypeChassisSmc3u16 *NsChassisType
+
+// NsChassisTypeChassisNmbl2u12 enum exports
 var NsChassisTypeChassisNmbl2u12 *NsChassisType
+
+// NsChassisTypeChassisNmbl4u24 enum exports
 var NsChassisTypeChassisNmbl4u24 *NsChassisType
 
 func init() {

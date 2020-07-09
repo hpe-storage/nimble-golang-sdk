@@ -17,10 +17,16 @@ var pNsEncryptionScopePool NsEncryptionScope
 var pNsEncryptionScopeNone NsEncryptionScope
 var pNsEncryptionScopeGroup NsEncryptionScope
 
-// Export
+// NsEncryptionScopeVolume enum exports
 var NsEncryptionScopeVolume *NsEncryptionScope
+
+// NsEncryptionScopePool enum exports
 var NsEncryptionScopePool *NsEncryptionScope
+
+// NsEncryptionScopeNone enum exports
 var NsEncryptionScopeNone *NsEncryptionScope
+
+// NsEncryptionScopeGroup enum exports
 var NsEncryptionScopeGroup *NsEncryptionScope
 
 func init() {

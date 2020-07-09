@@ -17,10 +17,16 @@ var pNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState
 var pNsSynchronousReplicationStateOutOfSync NsSynchronousReplicationState
 var pNsSynchronousReplicationStateUnknown NsSynchronousReplicationState
 
-// Export
+// NsSynchronousReplicationStateInSync enum exports
 var NsSynchronousReplicationStateInSync *NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateNotApplicable enum exports
 var NsSynchronousReplicationStateNotApplicable *NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateOutOfSync enum exports
 var NsSynchronousReplicationStateOutOfSync *NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateUnknown enum exports
 var NsSynchronousReplicationStateUnknown *NsSynchronousReplicationState
 
 func init() {

@@ -19,11 +19,19 @@ var pNsSpacePolicyNonWritable NsSpacePolicy
 var pNsSpacePolicyReadOnly NsSpacePolicy
 var pNsSpacePolicyInvalid NsSpacePolicy
 
-// Export
+// NsSpacePolicyOffline enum exports
 var NsSpacePolicyOffline *NsSpacePolicy
+
+// NsSpacePolicyLoginOnly enum exports
 var NsSpacePolicyLoginOnly *NsSpacePolicy
+
+// NsSpacePolicyNonWritable enum exports
 var NsSpacePolicyNonWritable *NsSpacePolicy
+
+// NsSpacePolicyReadOnly enum exports
 var NsSpacePolicyReadOnly *NsSpacePolicy
+
+// NsSpacePolicyInvalid enum exports
 var NsSpacePolicyInvalid *NsSpacePolicy
 
 func init() {

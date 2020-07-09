@@ -19,11 +19,19 @@ var pNsSubnetTypeData NsSubnetType
 var pNsSubnetTypeMgmtData NsSubnetType
 var pNsSubnetTypeInvalid NsSubnetType
 
-// Export
+// NsSubnetTypeMgmt enum exports
 var NsSubnetTypeMgmt *NsSubnetType
+
+// NsSubnetTypeUnconfigured enum exports
 var NsSubnetTypeUnconfigured *NsSubnetType
+
+// NsSubnetTypeData enum exports
 var NsSubnetTypeData *NsSubnetType
+
+// NsSubnetTypeMgmtData enum exports
 var NsSubnetTypeMgmtData *NsSubnetType
+
+// NsSubnetTypeInvalid enum exports
 var NsSubnetTypeInvalid *NsSubnetType
 
 func init() {

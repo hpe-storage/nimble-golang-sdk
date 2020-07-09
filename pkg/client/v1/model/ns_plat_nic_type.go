@@ -15,9 +15,13 @@ var pNsPlatNicTypeNicTypeUnknown NsPlatNicType
 var pNsPlatNicTypeNicTypeTp NsPlatNicType
 var pNsPlatNicTypeNicTypeSfp NsPlatNicType
 
-// Export
+// NsPlatNicTypeNicTypeUnknown enum exports
 var NsPlatNicTypeNicTypeUnknown *NsPlatNicType
+
+// NsPlatNicTypeNicTypeTp enum exports
 var NsPlatNicTypeNicTypeTp *NsPlatNicType
+
+// NsPlatNicTypeNicTypeSfp enum exports
 var NsPlatNicTypeNicTypeSfp *NsPlatNicType
 
 func init() {

@@ -15,9 +15,13 @@ var pNsHcfScopeController NsHcfScope
 var pNsHcfScopeArray NsHcfScope
 var pNsHcfScopeGroup NsHcfScope
 
-// Export
+// NsHcfScopeController enum exports
 var NsHcfScopeController *NsHcfScope
+
+// NsHcfScopeArray enum exports
 var NsHcfScopeArray *NsHcfScope
+
+// NsHcfScopeGroup enum exports
 var NsHcfScopeGroup *NsHcfScope
 
 func init() {

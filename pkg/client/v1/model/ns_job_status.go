@@ -17,10 +17,16 @@ var pNsJobStatusPending NsJobStatus
 var pNsJobStatusInprogress NsJobStatus
 var pNsJobStatusDone NsJobStatus
 
-// Export
+// NsJobStatusCanceled enum exports
 var NsJobStatusCanceled *NsJobStatus
+
+// NsJobStatusPending enum exports
 var NsJobStatusPending *NsJobStatus
+
+// NsJobStatusInprogress enum exports
 var NsJobStatusInprogress *NsJobStatus
+
+// NsJobStatusDone enum exports
 var NsJobStatusDone *NsJobStatus
 
 func init() {

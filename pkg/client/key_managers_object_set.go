@@ -23,32 +23,32 @@ type KeyManagerObjectSet struct {
 // CreateObject creates a new KeyManager object
 func (objectSet *KeyManagerObjectSet) CreateObject(payload *model.KeyManager) (*model.KeyManager, error) {
 	newPayload, err := model.EncodeKeyManager(payload)
-	keyManagerObjectSetResp, err := objectSet.Client.Post(keyManagerPath, newPayload)
+	resp, err := objectSet.Client.Post(keyManagerPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if keyManagerObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeKeyManager(keyManagerObjectSetResp)
+	return model.DecodeKeyManager(resp)
 }
 
 // UpdateObject Modify existing KeyManager object
 func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *model.KeyManager) (*model.KeyManager, error) {
 	newPayload, err := model.EncodeKeyManager(payload)
-	keyManagerObjectSetResp, err := objectSet.Client.Put(keyManagerPath, id, newPayload)
+	resp, err := objectSet.Client.Put(keyManagerPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if keyManagerObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeKeyManager(keyManagerObjectSetResp)
+	return model.DecodeKeyManager(resp)
 }
 
 // DeleteObject deletes the KeyManager object with the specified ID

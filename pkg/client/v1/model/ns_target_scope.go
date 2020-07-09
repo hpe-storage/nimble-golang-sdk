@@ -13,8 +13,10 @@ const (
 var pNsTargetScopeVolume NsTargetScope
 var pNsTargetScopeGroup NsTargetScope
 
-// Export
+// NsTargetScopeVolume enum exports
 var NsTargetScopeVolume *NsTargetScope
+
+// NsTargetScopeGroup enum exports
 var NsTargetScopeGroup *NsTargetScope
 
 func init() {

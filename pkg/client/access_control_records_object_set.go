@@ -23,17 +23,17 @@ type AccessControlRecordObjectSet struct {
 // CreateObject creates a new AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
 	newPayload, err := model.EncodeAccessControlRecord(payload)
-	accessControlRecordObjectSetResp, err := objectSet.Client.Post(accessControlRecordPath, newPayload)
+	resp, err := objectSet.Client.Post(accessControlRecordPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if accessControlRecordObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeAccessControlRecord(accessControlRecordObjectSetResp)
+	return model.DecodeAccessControlRecord(resp)
 }
 
 // UpdateObject Modify existing AccessControlRecord object

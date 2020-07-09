@@ -21,12 +21,22 @@ var pNsUpdateStateInvalid NsUpdateState
 var pNsUpdateStateTimedOut NsUpdateState
 var pNsUpdateStateFailed NsUpdateState
 
-// Export
+// NsUpdateStateNormal enum exports
 var NsUpdateStateNormal *NsUpdateState
+
+// NsUpdateStatePaused enum exports
 var NsUpdateStatePaused *NsUpdateState
+
+// NsUpdateStateUpdating enum exports
 var NsUpdateStateUpdating *NsUpdateState
+
+// NsUpdateStateInvalid enum exports
 var NsUpdateStateInvalid *NsUpdateState
+
+// NsUpdateStateTimedOut enum exports
 var NsUpdateStateTimedOut *NsUpdateState
+
+// NsUpdateStateFailed enum exports
 var NsUpdateStateFailed *NsUpdateState
 
 func init() {

@@ -21,12 +21,22 @@ var pNsAccessApplyToVvolSnapshot NsAccessApplyTo
 var pNsAccessApplyToSnapshot NsAccessApplyTo
 var pNsAccessApplyToBoth NsAccessApplyTo
 
-// Export
+// NsAccessApplyToVolume enum exports
 var NsAccessApplyToVolume *NsAccessApplyTo
+
+// NsAccessApplyToPe enum exports
 var NsAccessApplyToPe *NsAccessApplyTo
+
+// NsAccessApplyToVvolVolume enum exports
 var NsAccessApplyToVvolVolume *NsAccessApplyTo
+
+// NsAccessApplyToVvolSnapshot enum exports
 var NsAccessApplyToVvolSnapshot *NsAccessApplyTo
+
+// NsAccessApplyToSnapshot enum exports
 var NsAccessApplyToSnapshot *NsAccessApplyTo
+
+// NsAccessApplyToBoth enum exports
 var NsAccessApplyToBoth *NsAccessApplyTo
 
 func init() {

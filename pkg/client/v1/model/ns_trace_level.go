@@ -19,11 +19,19 @@ var pNsTraceLevelCritical NsTraceLevel
 var pNsTraceLevelError NsTraceLevel
 var pNsTraceLevelInfo NsTraceLevel
 
-// Export
+// NsTraceLevelNote enum exports
 var NsTraceLevelNote *NsTraceLevel
+
+// NsTraceLevelWarn enum exports
 var NsTraceLevelWarn *NsTraceLevel
+
+// NsTraceLevelCritical enum exports
 var NsTraceLevelCritical *NsTraceLevel
+
+// NsTraceLevelError enum exports
 var NsTraceLevelError *NsTraceLevel
+
+// NsTraceLevelInfo enum exports
 var NsTraceLevelInfo *NsTraceLevel
 
 func init() {

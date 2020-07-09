@@ -21,12 +21,22 @@ var pNsArrayRoleBackupLeader NsArrayRole
 var pNsArrayRoleMember NsArrayRole
 var pNsArrayRoleFailed NsArrayRole
 
-// Export
+// NsArrayRoleLeader enum exports
 var NsArrayRoleLeader *NsArrayRole
+
+// NsArrayRoleNonMember enum exports
 var NsArrayRoleNonMember *NsArrayRole
+
+// NsArrayRoleInvalid enum exports
 var NsArrayRoleInvalid *NsArrayRole
+
+// NsArrayRoleBackupLeader enum exports
 var NsArrayRoleBackupLeader *NsArrayRole
+
+// NsArrayRoleMember enum exports
 var NsArrayRoleMember *NsArrayRole
+
+// NsArrayRoleFailed enum exports
 var NsArrayRoleFailed *NsArrayRole
 
 func init() {

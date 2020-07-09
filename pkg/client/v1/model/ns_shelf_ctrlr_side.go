@@ -15,9 +15,13 @@ var pNsShelfCtrlrSideA NsShelfCtrlrSide
 var pNsShelfCtrlrSideB NsShelfCtrlrSide
 var pNsShelfCtrlrSideUnknown NsShelfCtrlrSide
 
-// Export
+// NsShelfCtrlrSideA enum exports
 var NsShelfCtrlrSideA *NsShelfCtrlrSide
+
+// NsShelfCtrlrSideB enum exports
 var NsShelfCtrlrSideB *NsShelfCtrlrSide
+
+// NsShelfCtrlrSideUnknown enum exports
 var NsShelfCtrlrSideUnknown *NsShelfCtrlrSide
 
 func init() {

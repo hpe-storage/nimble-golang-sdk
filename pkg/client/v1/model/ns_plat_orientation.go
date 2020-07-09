@@ -13,8 +13,10 @@ const (
 var pNsPlatOrientationRightToLeft NsPlatOrientation
 var pNsPlatOrientationLeftToRight NsPlatOrientation
 
-// Export
+// NsPlatOrientationRightToLeft enum exports
 var NsPlatOrientationRightToLeft *NsPlatOrientation
+
+// NsPlatOrientationLeftToRight enum exports
 var NsPlatOrientationLeftToRight *NsPlatOrientation
 
 func init() {

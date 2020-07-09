@@ -23,13 +23,25 @@ var pNsControllerStateActive NsControllerState
 var pNsControllerStateSolo NsControllerState
 var pNsControllerStateNone NsControllerState
 
-// Export
+// NsControllerStateStartActive enum exports
 var NsControllerStateStartActive *NsControllerState
+
+// NsControllerStateStartStandby enum exports
 var NsControllerStateStartStandby *NsControllerState
+
+// NsControllerStateStale enum exports
 var NsControllerStateStale *NsControllerState
+
+// NsControllerStateStandby enum exports
 var NsControllerStateStandby *NsControllerState
+
+// NsControllerStateActive enum exports
 var NsControllerStateActive *NsControllerState
+
+// NsControllerStateSolo enum exports
 var NsControllerStateSolo *NsControllerState
+
+// NsControllerStateNone enum exports
 var NsControllerStateNone *NsControllerState
 
 func init() {

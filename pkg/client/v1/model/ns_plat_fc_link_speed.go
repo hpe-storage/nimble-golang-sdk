@@ -25,14 +25,28 @@ var pNsPlatFcLinkSpeedPlatFcLinkSpeed8g NsPlatFcLinkSpeed
 var pNsPlatFcLinkSpeedPlatFcLinkSpeed4g NsPlatFcLinkSpeed
 var pNsPlatFcLinkSpeedPlatFcLinkSpeed40g NsPlatFcLinkSpeed
 
-// Export
+// NsPlatFcLinkSpeedPlatFcLinkSpeed32g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed32g *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeed10g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed10g *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeed2g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed2g *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeedUnknown enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeedUnknown *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeed16g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed16g *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeed8g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed8g *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeed4g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed4g *NsPlatFcLinkSpeed
+
+// NsPlatFcLinkSpeedPlatFcLinkSpeed40g enum exports
 var NsPlatFcLinkSpeedPlatFcLinkSpeed40g *NsPlatFcLinkSpeed
 
 func init() {

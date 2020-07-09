@@ -17,10 +17,16 @@ var pNsShelfSwTypeUnknownShelfSoftwareType NsShelfSwType
 var pNsShelfSwTypeAllFlashShelf NsShelfSwType
 var pNsShelfSwTypeHeadShelf NsShelfSwType
 
-// Export
+// NsShelfSwTypeDiskShelf enum exports
 var NsShelfSwTypeDiskShelf *NsShelfSwType
+
+// NsShelfSwTypeUnknownShelfSoftwareType enum exports
 var NsShelfSwTypeUnknownShelfSoftwareType *NsShelfSwType
+
+// NsShelfSwTypeAllFlashShelf enum exports
 var NsShelfSwTypeAllFlashShelf *NsShelfSwType
+
+// NsShelfSwTypeHeadShelf enum exports
 var NsShelfSwTypeHeadShelf *NsShelfSwType
 
 func init() {

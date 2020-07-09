@@ -25,14 +25,28 @@ var pNsShelfStateFaulty NsShelfState
 var pNsShelfStateForeign NsShelfState
 var pNsShelfStateUnknown NsShelfState
 
-// Export
+// NsShelfStateDiscovering enum exports
 var NsShelfStateDiscovering *NsShelfState
+
+// NsShelfStateDisconnected enum exports
 var NsShelfStateDisconnected *NsShelfState
+
+// NsShelfStateVoid enum exports
 var NsShelfStateVoid *NsShelfState
+
+// NsShelfStateAvailable enum exports
 var NsShelfStateAvailable *NsShelfState
+
+// NsShelfStateOnline enum exports
 var NsShelfStateOnline *NsShelfState
+
+// NsShelfStateFaulty enum exports
 var NsShelfStateFaulty *NsShelfState
+
+// NsShelfStateForeign enum exports
 var NsShelfStateForeign *NsShelfState
+
+// NsShelfStateUnknown enum exports
 var NsShelfStateUnknown *NsShelfState
 
 func init() {

@@ -25,14 +25,28 @@ var pNsALUAUnavailable NsALUA
 var pNsALUAInvalid NsALUA
 var pNsALUAActiveNonOptimized NsALUA
 
-// Export
+// NsALUALogicalBlockDependent enum exports
 var NsALUALogicalBlockDependent *NsALUA
+
+// NsALUAOffline enum exports
 var NsALUAOffline *NsALUA
+
+// NsALUAActiveOptimized enum exports
 var NsALUAActiveOptimized *NsALUA
+
+// NsALUAStandby enum exports
 var NsALUAStandby *NsALUA
+
+// NsALUATransitioning enum exports
 var NsALUATransitioning *NsALUA
+
+// NsALUAUnavailable enum exports
 var NsALUAUnavailable *NsALUA
+
+// NsALUAInvalid enum exports
 var NsALUAInvalid *NsALUA
+
+// NsALUAActiveNonOptimized enum exports
 var NsALUAActiveNonOptimized *NsALUA
 
 func init() {

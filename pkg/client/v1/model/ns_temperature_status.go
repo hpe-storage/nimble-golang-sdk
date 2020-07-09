@@ -17,10 +17,16 @@ var pNsTemperatureStatusTemperatureAlerted NsTemperatureStatus
 var pNsTemperatureStatusTemperatureOkay NsTemperatureStatus
 var pNsTemperatureStatusTemperatureFail NsTemperatureStatus
 
-// Export
+// NsTemperatureStatusTemperatureUnknown enum exports
 var NsTemperatureStatusTemperatureUnknown *NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureAlerted enum exports
 var NsTemperatureStatusTemperatureAlerted *NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureOkay enum exports
 var NsTemperatureStatusTemperatureOkay *NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureFail enum exports
 var NsTemperatureStatusTemperatureFail *NsTemperatureStatus
 
 func init() {

@@ -23,32 +23,32 @@ type VolumeCollectionObjectSet struct {
 // CreateObject creates a new VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *model.VolumeCollection) (*model.VolumeCollection, error) {
 	newPayload, err := model.EncodeVolumeCollection(payload)
-	volumeCollectionObjectSetResp, err := objectSet.Client.Post(volumeCollectionPath, newPayload)
+	resp, err := objectSet.Client.Post(volumeCollectionPath, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if volumeCollectionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
 
-	return model.DecodeVolumeCollection(volumeCollectionObjectSetResp)
+	return model.DecodeVolumeCollection(resp)
 }
 
 // UpdateObject Modify existing VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *model.VolumeCollection) (*model.VolumeCollection, error) {
 	newPayload, err := model.EncodeVolumeCollection(payload)
-	volumeCollectionObjectSetResp, err := objectSet.Client.Put(volumeCollectionPath, id, newPayload)
+	resp, err := objectSet.Client.Put(volumeCollectionPath, id, newPayload)
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if volumeCollectionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeVolumeCollection(volumeCollectionObjectSetResp)
+	return model.DecodeVolumeCollection(resp)
 }
 
 // DeleteObject deletes the VolumeCollection object with the specified ID
