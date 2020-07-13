@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ControllerService type
@@ -23,7 +23,7 @@ func NewControllerService(gs *NsGroupService) *ControllerService {
 }
 
 // GetControllers - method returns a array of pointers of type "Controllers"
-func (svc *ControllerService) GetControllers(params *util.GetParams) ([]*model.Controller, error) {
+func (svc *ControllerService) GetControllers(params *param.GetParams) ([]*nimbleos.Controller, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ControllerService) GetControllers(params *util.GetParams) ([]*model.C
 }
 
 // CreateController - method creates a "Controller"
-func (svc *ControllerService) CreateController(obj *model.Controller) (*model.Controller, error) {
+func (svc *ControllerService) CreateController(obj *nimbleos.Controller) (*nimbleos.Controller, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ControllerService) CreateController(obj *model.Controller) (*model.Co
 }
 
 // UpdateController - method modifies  the "Controller"
-func (svc *ControllerService) UpdateController(id string, obj *model.Controller) (*model.Controller, error) {
+func (svc *ControllerService) UpdateController(id string, obj *nimbleos.Controller) (*nimbleos.Controller, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ControllerService) UpdateController(id string, obj *model.Controller)
 }
 
 // GetControllerById - method returns a pointer to "Controller"
-func (svc *ControllerService) GetControllerById(id string) (*model.Controller, error) {
+func (svc *ControllerService) GetControllerById(id string) (*nimbleos.Controller, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ControllerService) GetControllerById(id string) (*model.Controller, e
 }
 
 // GetControllerByName - method returns a pointer "Controller"
-func (svc *ControllerService) GetControllerByName(name string) (*model.Controller, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ControllerService) GetControllerByName(name string) (*nimbleos.Controller, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

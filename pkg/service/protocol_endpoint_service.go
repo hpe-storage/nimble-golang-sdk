@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ProtocolEndpointService type
@@ -23,7 +23,7 @@ func NewProtocolEndpointService(gs *NsGroupService) *ProtocolEndpointService {
 }
 
 // GetProtocolEndpoints - method returns a array of pointers of type "ProtocolEndpoints"
-func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *util.GetParams) ([]*model.ProtocolEndpoint, error) {
+func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *param.GetParams) ([]*nimbleos.ProtocolEndpoint, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *util.GetParams)
 }
 
 // CreateProtocolEndpoint - method creates a "ProtocolEndpoint"
-func (svc *ProtocolEndpointService) CreateProtocolEndpoint(obj *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
+func (svc *ProtocolEndpointService) CreateProtocolEndpoint(obj *nimbleos.ProtocolEndpoint) (*nimbleos.ProtocolEndpoint, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ProtocolEndpointService) CreateProtocolEndpoint(obj *model.ProtocolEn
 }
 
 // UpdateProtocolEndpoint - method modifies  the "ProtocolEndpoint"
-func (svc *ProtocolEndpointService) UpdateProtocolEndpoint(id string, obj *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
+func (svc *ProtocolEndpointService) UpdateProtocolEndpoint(id string, obj *nimbleos.ProtocolEndpoint) (*nimbleos.ProtocolEndpoint, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ProtocolEndpointService) UpdateProtocolEndpoint(id string, obj *model
 }
 
 // GetProtocolEndpointById - method returns a pointer to "ProtocolEndpoint"
-func (svc *ProtocolEndpointService) GetProtocolEndpointById(id string) (*model.ProtocolEndpoint, error) {
+func (svc *ProtocolEndpointService) GetProtocolEndpointById(id string) (*nimbleos.ProtocolEndpoint, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointById(id string) (*model.P
 }
 
 // GetProtocolEndpointByName - method returns a pointer "ProtocolEndpoint"
-func (svc *ProtocolEndpointService) GetProtocolEndpointByName(name string) (*model.ProtocolEndpoint, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ProtocolEndpointService) GetProtocolEndpointByName(name string) (*nimbleos.ProtocolEndpoint, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}
@@ -96,11 +96,11 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointByName(name string) (*mod
 }
 
 // GetProtocolEndpointBySerialNumber method returns a pointer to "ProtocolEndpoint"
-func (svc *ProtocolEndpointService) GetProtocolEndpointBySerialNumber(serialNumber string) (*model.ProtocolEndpoint, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.ProtocolEndpointFields.SerialNumber,
-			Operator:  util.EQUALS.String(),
+func (svc *ProtocolEndpointService) GetProtocolEndpointBySerialNumber(serialNumber string) (*nimbleos.ProtocolEndpoint, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.ProtocolEndpointFields.SerialNumber,
+			Operator:  param.EQUALS.String(),
 			Value:     serialNumber,
 		},
 	}

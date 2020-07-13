@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // AlarmService type
@@ -23,7 +23,7 @@ func NewAlarmService(gs *NsGroupService) *AlarmService {
 }
 
 // GetAlarms - method returns a array of pointers of type "Alarms"
-func (svc *AlarmService) GetAlarms(params *util.GetParams) ([]*model.Alarm, error) {
+func (svc *AlarmService) GetAlarms(params *param.GetParams) ([]*nimbleos.Alarm, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *AlarmService) GetAlarms(params *util.GetParams) ([]*model.Alarm, erro
 }
 
 // CreateAlarm - method creates a "Alarm"
-func (svc *AlarmService) CreateAlarm(obj *model.Alarm) (*model.Alarm, error) {
+func (svc *AlarmService) CreateAlarm(obj *nimbleos.Alarm) (*nimbleos.Alarm, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *AlarmService) CreateAlarm(obj *model.Alarm) (*model.Alarm, error) {
 }
 
 // UpdateAlarm - method modifies  the "Alarm"
-func (svc *AlarmService) UpdateAlarm(id string, obj *model.Alarm) (*model.Alarm, error) {
+func (svc *AlarmService) UpdateAlarm(id string, obj *nimbleos.Alarm) (*nimbleos.Alarm, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *AlarmService) UpdateAlarm(id string, obj *model.Alarm) (*model.Alarm,
 }
 
 // GetAlarmById - method returns a pointer to "Alarm"
-func (svc *AlarmService) GetAlarmById(id string) (*model.Alarm, error) {
+func (svc *AlarmService) GetAlarmById(id string) (*nimbleos.Alarm, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

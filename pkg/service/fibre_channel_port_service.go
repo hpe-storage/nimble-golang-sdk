@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // FibreChannelPortService type
@@ -23,7 +23,7 @@ func NewFibreChannelPortService(gs *NsGroupService) *FibreChannelPortService {
 }
 
 // GetFibreChannelPorts - method returns a array of pointers of type "FibreChannelPorts"
-func (svc *FibreChannelPortService) GetFibreChannelPorts(params *util.GetParams) ([]*model.FibreChannelPort, error) {
+func (svc *FibreChannelPortService) GetFibreChannelPorts(params *param.GetParams) ([]*nimbleos.FibreChannelPort, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *FibreChannelPortService) GetFibreChannelPorts(params *util.GetParams)
 }
 
 // CreateFibreChannelPort - method creates a "FibreChannelPort"
-func (svc *FibreChannelPortService) CreateFibreChannelPort(obj *model.FibreChannelPort) (*model.FibreChannelPort, error) {
+func (svc *FibreChannelPortService) CreateFibreChannelPort(obj *nimbleos.FibreChannelPort) (*nimbleos.FibreChannelPort, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *FibreChannelPortService) CreateFibreChannelPort(obj *model.FibreChann
 }
 
 // UpdateFibreChannelPort - method modifies  the "FibreChannelPort"
-func (svc *FibreChannelPortService) UpdateFibreChannelPort(id string, obj *model.FibreChannelPort) (*model.FibreChannelPort, error) {
+func (svc *FibreChannelPortService) UpdateFibreChannelPort(id string, obj *nimbleos.FibreChannelPort) (*nimbleos.FibreChannelPort, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *FibreChannelPortService) UpdateFibreChannelPort(id string, obj *model
 }
 
 // GetFibreChannelPortById - method returns a pointer to "FibreChannelPort"
-func (svc *FibreChannelPortService) GetFibreChannelPortById(id string) (*model.FibreChannelPort, error) {
+func (svc *FibreChannelPortService) GetFibreChannelPortById(id string) (*nimbleos.FibreChannelPort, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -22,8 +22,8 @@ type ChapUserObjectSet struct {
 }
 
 // CreateObject creates a new ChapUser object
-func (objectSet *ChapUserObjectSet) CreateObject(payload *model.ChapUser) (*model.ChapUser, error) {
-	newPayload, err := model.EncodeChapUser(payload)
+func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
+	newPayload, err := nimbleos.EncodeChapUser(payload)
 	resp, err := objectSet.Client.Post(chapUserPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -34,12 +34,12 @@ func (objectSet *ChapUserObjectSet) CreateObject(payload *model.ChapUser) (*mode
 		return nil, nil
 	}
 
-	return model.DecodeChapUser(resp)
+	return nimbleos.DecodeChapUser(resp)
 }
 
 // UpdateObject Modify existing ChapUser object
-func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *model.ChapUser) (*model.ChapUser, error) {
-	newPayload, err := model.EncodeChapUser(payload)
+func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
+	newPayload, err := nimbleos.EncodeChapUser(payload)
 	resp, err := objectSet.Client.Put(chapUserPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *model.ChapU
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeChapUser(resp)
+	return nimbleos.DecodeChapUser(resp)
 }
 
 // DeleteObject deletes the ChapUser object with the specified ID
@@ -62,8 +62,8 @@ func (objectSet *ChapUserObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a ChapUser object with the given ID
-func (objectSet *ChapUserObjectSet) GetObject(id string) (*model.ChapUser, error) {
-	chapUserObjectSetResp, err := objectSet.Client.Get(chapUserPath, id, model.ChapUser{})
+func (objectSet *ChapUserObjectSet) GetObject(id string) (*nimbleos.ChapUser, error) {
+	chapUserObjectSetResp, err := objectSet.Client.Get(chapUserPath, id, nimbleos.ChapUser{})
 	if err != nil {
 		return nil, err
 	}
@@ -72,11 +72,11 @@ func (objectSet *ChapUserObjectSet) GetObject(id string) (*model.ChapUser, error
 	if chapUserObjectSetResp == nil {
 		return nil, nil
 	}
-	return chapUserObjectSetResp.(*model.ChapUser), err
+	return chapUserObjectSetResp.(*nimbleos.ChapUser), err
 }
 
 // GetObjectList returns the list of ChapUser objects
-func (objectSet *ChapUserObjectSet) GetObjectList() ([]*model.ChapUser, error) {
+func (objectSet *ChapUserObjectSet) GetObjectList() ([]*nimbleos.ChapUser, error) {
 	chapUserObjectSetResp, err := objectSet.Client.List(chapUserPath)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func (objectSet *ChapUserObjectSet) GetObjectList() ([]*model.ChapUser, error) {
 }
 
 // GetObjectListFromParams returns the list of ChapUser objects using the given params query info
-func (objectSet *ChapUserObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ChapUser, error) {
+func (objectSet *ChapUserObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.ChapUser, error) {
 	chapUserObjectSetResp, err := objectSet.Client.ListFromParams(chapUserPath, params)
 	if err != nil {
 		return nil, err
@@ -94,12 +94,12 @@ func (objectSet *ChapUserObjectSet) GetObjectListFromParams(params *util.GetPara
 }
 
 // generated function to build the appropriate response types
-func buildChapUserObjectSet(response interface{}) []*model.ChapUser {
+func buildChapUserObjectSet(response interface{}) []*nimbleos.ChapUser {
 	values := reflect.ValueOf(response)
-	results := make([]*model.ChapUser, values.Len())
+	results := make([]*nimbleos.ChapUser, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.ChapUser{}
+		value := &nimbleos.ChapUser{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

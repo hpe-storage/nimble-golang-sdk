@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,13 +21,13 @@ type FibreChannelInterfaceObjectSet struct {
 }
 
 // CreateObject creates a new FibreChannelInterface object
-func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
+func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelInterface")
 }
 
 // UpdateObject Modify existing FibreChannelInterface object
-func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
-	newPayload, err := model.EncodeFibreChannelInterface(payload)
+func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
+	newPayload, err := nimbleos.EncodeFibreChannelInterface(payload)
 	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -37,7 +37,7 @@ func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeFibreChannelInterface(resp)
+	return nimbleos.DecodeFibreChannelInterface(resp)
 }
 
 // DeleteObject deletes the FibreChannelInterface object with the specified ID
@@ -46,8 +46,8 @@ func (objectSet *FibreChannelInterfaceObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a FibreChannelInterface object with the given ID
-func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*model.FibreChannelInterface, error) {
-	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, model.FibreChannelInterface{})
+func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*nimbleos.FibreChannelInterface, error) {
+	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, nimbleos.FibreChannelInterface{})
 	if err != nil {
 		return nil, err
 	}
@@ -56,11 +56,11 @@ func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*model.Fi
 	if fibreChannelInterfaceObjectSetResp == nil {
 		return nil, nil
 	}
-	return fibreChannelInterfaceObjectSetResp.(*model.FibreChannelInterface), err
+	return fibreChannelInterfaceObjectSetResp.(*nimbleos.FibreChannelInterface), err
 }
 
 // GetObjectList returns the list of FibreChannelInterface objects
-func (objectSet *FibreChannelInterfaceObjectSet) GetObjectList() ([]*model.FibreChannelInterface, error) {
+func (objectSet *FibreChannelInterfaceObjectSet) GetObjectList() ([]*nimbleos.FibreChannelInterface, error) {
 	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.List(fibreChannelInterfacePath)
 	if err != nil {
 		return nil, err
@@ -69,7 +69,7 @@ func (objectSet *FibreChannelInterfaceObjectSet) GetObjectList() ([]*model.Fibre
 }
 
 // GetObjectListFromParams returns the list of FibreChannelInterface objects using the given params query info
-func (objectSet *FibreChannelInterfaceObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.FibreChannelInterface, error) {
+func (objectSet *FibreChannelInterfaceObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.FibreChannelInterface, error) {
 	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.ListFromParams(fibreChannelInterfacePath, params)
 	if err != nil {
 		return nil, err
@@ -78,12 +78,12 @@ func (objectSet *FibreChannelInterfaceObjectSet) GetObjectListFromParams(params 
 }
 
 // generated function to build the appropriate response types
-func buildFibreChannelInterfaceObjectSet(response interface{}) []*model.FibreChannelInterface {
+func buildFibreChannelInterfaceObjectSet(response interface{}) []*nimbleos.FibreChannelInterface {
 	values := reflect.ValueOf(response)
-	results := make([]*model.FibreChannelInterface, values.Len())
+	results := make([]*nimbleos.FibreChannelInterface, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.FibreChannelInterface{}
+		value := &nimbleos.FibreChannelInterface{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

@@ -9,8 +9,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // MasterKeyService type
@@ -25,7 +25,7 @@ func NewMasterKeyService(gs *NsGroupService) *MasterKeyService {
 }
 
 // GetMasterKeys - method returns a array of pointers of type "MasterKeys"
-func (svc *MasterKeyService) GetMasterKeys(params *util.GetParams) ([]*model.MasterKey, error) {
+func (svc *MasterKeyService) GetMasterKeys(params *param.GetParams) ([]*nimbleos.MasterKey, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -38,7 +38,7 @@ func (svc *MasterKeyService) GetMasterKeys(params *util.GetParams) ([]*model.Mas
 }
 
 // CreateMasterKey - method creates a "MasterKey"
-func (svc *MasterKeyService) CreateMasterKey(obj *model.MasterKey) (*model.MasterKey, error) {
+func (svc *MasterKeyService) CreateMasterKey(obj *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -51,7 +51,7 @@ func (svc *MasterKeyService) CreateMasterKey(obj *model.MasterKey) (*model.Maste
 }
 
 // UpdateMasterKey - method modifies  the "MasterKey"
-func (svc *MasterKeyService) UpdateMasterKey(id string, obj *model.MasterKey) (*model.MasterKey, error) {
+func (svc *MasterKeyService) UpdateMasterKey(id string, obj *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -64,7 +64,7 @@ func (svc *MasterKeyService) UpdateMasterKey(id string, obj *model.MasterKey) (*
 }
 
 // GetMasterKeyById - method returns a pointer to "MasterKey"
-func (svc *MasterKeyService) GetMasterKeyById(id string) (*model.MasterKey, error) {
+func (svc *MasterKeyService) GetMasterKeyById(id string) (*nimbleos.MasterKey, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -77,11 +77,11 @@ func (svc *MasterKeyService) GetMasterKeyById(id string) (*model.MasterKey, erro
 }
 
 // GetMasterKeyByName - method returns a pointer "MasterKey"
-func (svc *MasterKeyService) GetMasterKeyByName(name string) (*model.MasterKey, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *MasterKeyService) GetMasterKeyByName(name string) (*nimbleos.MasterKey, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

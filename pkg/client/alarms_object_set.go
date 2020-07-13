@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,13 +21,13 @@ type AlarmObjectSet struct {
 }
 
 // CreateObject creates a new Alarm object
-func (objectSet *AlarmObjectSet) CreateObject(payload *model.Alarm) (*model.Alarm, error) {
+func (objectSet *AlarmObjectSet) CreateObject(payload *nimbleos.Alarm) (*nimbleos.Alarm, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on Alarm")
 }
 
 // UpdateObject Modify existing Alarm object
-func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *model.Alarm) (*model.Alarm, error) {
-	newPayload, err := model.EncodeAlarm(payload)
+func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *nimbleos.Alarm) (*nimbleos.Alarm, error) {
+	newPayload, err := nimbleos.EncodeAlarm(payload)
 	resp, err := objectSet.Client.Put(alarmPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -37,7 +37,7 @@ func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *model.Alarm) (
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeAlarm(resp)
+	return nimbleos.DecodeAlarm(resp)
 }
 
 // DeleteObject deletes the Alarm object with the specified ID
@@ -50,8 +50,8 @@ func (objectSet *AlarmObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Alarm object with the given ID
-func (objectSet *AlarmObjectSet) GetObject(id string) (*model.Alarm, error) {
-	alarmObjectSetResp, err := objectSet.Client.Get(alarmPath, id, model.Alarm{})
+func (objectSet *AlarmObjectSet) GetObject(id string) (*nimbleos.Alarm, error) {
+	alarmObjectSetResp, err := objectSet.Client.Get(alarmPath, id, nimbleos.Alarm{})
 	if err != nil {
 		return nil, err
 	}
@@ -60,11 +60,11 @@ func (objectSet *AlarmObjectSet) GetObject(id string) (*model.Alarm, error) {
 	if alarmObjectSetResp == nil {
 		return nil, nil
 	}
-	return alarmObjectSetResp.(*model.Alarm), err
+	return alarmObjectSetResp.(*nimbleos.Alarm), err
 }
 
 // GetObjectList returns the list of Alarm objects
-func (objectSet *AlarmObjectSet) GetObjectList() ([]*model.Alarm, error) {
+func (objectSet *AlarmObjectSet) GetObjectList() ([]*nimbleos.Alarm, error) {
 	alarmObjectSetResp, err := objectSet.Client.List(alarmPath)
 	if err != nil {
 		return nil, err
@@ -73,7 +73,7 @@ func (objectSet *AlarmObjectSet) GetObjectList() ([]*model.Alarm, error) {
 }
 
 // GetObjectListFromParams returns the list of Alarm objects using the given params query info
-func (objectSet *AlarmObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Alarm, error) {
+func (objectSet *AlarmObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Alarm, error) {
 	alarmObjectSetResp, err := objectSet.Client.ListFromParams(alarmPath, params)
 	if err != nil {
 		return nil, err
@@ -82,12 +82,12 @@ func (objectSet *AlarmObjectSet) GetObjectListFromParams(params *util.GetParams)
 }
 
 // generated function to build the appropriate response types
-func buildAlarmObjectSet(response interface{}) []*model.Alarm {
+func buildAlarmObjectSet(response interface{}) []*nimbleos.Alarm {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Alarm, values.Len())
+	results := make([]*nimbleos.Alarm, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Alarm{}
+		value := &nimbleos.Alarm{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

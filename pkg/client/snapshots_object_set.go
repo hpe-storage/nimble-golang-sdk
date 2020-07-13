@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -22,8 +22,8 @@ type SnapshotObjectSet struct {
 }
 
 // CreateObject creates a new Snapshot object
-func (objectSet *SnapshotObjectSet) CreateObject(payload *model.Snapshot) (*model.Snapshot, error) {
-	newPayload, err := model.EncodeSnapshot(payload)
+func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
+	newPayload, err := nimbleos.EncodeSnapshot(payload)
 	resp, err := objectSet.Client.Post(snapshotPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -34,12 +34,12 @@ func (objectSet *SnapshotObjectSet) CreateObject(payload *model.Snapshot) (*mode
 		return nil, nil
 	}
 
-	return model.DecodeSnapshot(resp)
+	return nimbleos.DecodeSnapshot(resp)
 }
 
 // UpdateObject Modify existing Snapshot object
-func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *model.Snapshot) (*model.Snapshot, error) {
-	newPayload, err := model.EncodeSnapshot(payload)
+func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
+	newPayload, err := nimbleos.EncodeSnapshot(payload)
 	resp, err := objectSet.Client.Put(snapshotPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *model.Snaps
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeSnapshot(resp)
+	return nimbleos.DecodeSnapshot(resp)
 }
 
 // DeleteObject deletes the Snapshot object with the specified ID
@@ -62,8 +62,8 @@ func (objectSet *SnapshotObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Snapshot object with the given ID
-func (objectSet *SnapshotObjectSet) GetObject(id string) (*model.Snapshot, error) {
-	snapshotObjectSetResp, err := objectSet.Client.Get(snapshotPath, id, model.Snapshot{})
+func (objectSet *SnapshotObjectSet) GetObject(id string) (*nimbleos.Snapshot, error) {
+	snapshotObjectSetResp, err := objectSet.Client.Get(snapshotPath, id, nimbleos.Snapshot{})
 	if err != nil {
 		return nil, err
 	}
@@ -72,11 +72,11 @@ func (objectSet *SnapshotObjectSet) GetObject(id string) (*model.Snapshot, error
 	if snapshotObjectSetResp == nil {
 		return nil, nil
 	}
-	return snapshotObjectSetResp.(*model.Snapshot), err
+	return snapshotObjectSetResp.(*nimbleos.Snapshot), err
 }
 
 // GetObjectList returns the list of Snapshot objects
-func (objectSet *SnapshotObjectSet) GetObjectList() ([]*model.Snapshot, error) {
+func (objectSet *SnapshotObjectSet) GetObjectList() ([]*nimbleos.Snapshot, error) {
 	snapshotObjectSetResp, err := objectSet.Client.List(snapshotPath)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func (objectSet *SnapshotObjectSet) GetObjectList() ([]*model.Snapshot, error) {
 }
 
 // GetObjectListFromParams returns the list of Snapshot objects using the given params query info
-func (objectSet *SnapshotObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Snapshot, error) {
+func (objectSet *SnapshotObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Snapshot, error) {
 	snapshotObjectSetResp, err := objectSet.Client.ListFromParams(snapshotPath, params)
 	if err != nil {
 		return nil, err
@@ -94,12 +94,12 @@ func (objectSet *SnapshotObjectSet) GetObjectListFromParams(params *util.GetPara
 }
 
 // generated function to build the appropriate response types
-func buildSnapshotObjectSet(response interface{}) []*model.Snapshot {
+func buildSnapshotObjectSet(response interface{}) []*nimbleos.Snapshot {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Snapshot, values.Len())
+	results := make([]*nimbleos.Snapshot, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Snapshot{}
+		value := &nimbleos.Snapshot{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

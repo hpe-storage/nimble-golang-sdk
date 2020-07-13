@@ -8,8 +8,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // InitiatorGroupService type
@@ -24,7 +24,7 @@ func NewInitiatorGroupService(gs *NsGroupService) *InitiatorGroupService {
 }
 
 // GetInitiatorGroups - method returns a array of pointers of type "InitiatorGroups"
-func (svc *InitiatorGroupService) GetInitiatorGroups(params *util.GetParams) ([]*model.InitiatorGroup, error) {
+func (svc *InitiatorGroupService) GetInitiatorGroups(params *param.GetParams) ([]*nimbleos.InitiatorGroup, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -37,7 +37,7 @@ func (svc *InitiatorGroupService) GetInitiatorGroups(params *util.GetParams) ([]
 }
 
 // CreateInitiatorGroup - method creates a "InitiatorGroup"
-func (svc *InitiatorGroupService) CreateInitiatorGroup(obj *model.InitiatorGroup) (*model.InitiatorGroup, error) {
+func (svc *InitiatorGroupService) CreateInitiatorGroup(obj *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -50,7 +50,7 @@ func (svc *InitiatorGroupService) CreateInitiatorGroup(obj *model.InitiatorGroup
 }
 
 // UpdateInitiatorGroup - method modifies  the "InitiatorGroup"
-func (svc *InitiatorGroupService) UpdateInitiatorGroup(id string, obj *model.InitiatorGroup) (*model.InitiatorGroup, error) {
+func (svc *InitiatorGroupService) UpdateInitiatorGroup(id string, obj *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -63,7 +63,7 @@ func (svc *InitiatorGroupService) UpdateInitiatorGroup(id string, obj *model.Ini
 }
 
 // GetInitiatorGroupById - method returns a pointer to "InitiatorGroup"
-func (svc *InitiatorGroupService) GetInitiatorGroupById(id string) (*model.InitiatorGroup, error) {
+func (svc *InitiatorGroupService) GetInitiatorGroupById(id string) (*nimbleos.InitiatorGroup, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -76,11 +76,11 @@ func (svc *InitiatorGroupService) GetInitiatorGroupById(id string) (*model.Initi
 }
 
 // GetInitiatorGroupByName - method returns a pointer "InitiatorGroup"
-func (svc *InitiatorGroupService) GetInitiatorGroupByName(name string) (*model.InitiatorGroup, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *InitiatorGroupService) GetInitiatorGroupByName(name string) (*nimbleos.InitiatorGroup, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

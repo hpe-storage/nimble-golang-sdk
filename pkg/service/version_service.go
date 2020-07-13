@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // VersionService type
@@ -23,7 +23,7 @@ func NewVersionService(gs *NsGroupService) *VersionService {
 }
 
 // GetVersions - method returns a array of pointers of type "Versions"
-func (svc *VersionService) GetVersions(params *util.GetParams) ([]*model.Version, error) {
+func (svc *VersionService) GetVersions(params *param.GetParams) ([]*nimbleos.Version, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *VersionService) GetVersions(params *util.GetParams) ([]*model.Version
 }
 
 // CreateVersion - method creates a "Version"
-func (svc *VersionService) CreateVersion(obj *model.Version) (*model.Version, error) {
+func (svc *VersionService) CreateVersion(obj *nimbleos.Version) (*nimbleos.Version, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *VersionService) CreateVersion(obj *model.Version) (*model.Version, er
 }
 
 // UpdateVersion - method modifies  the "Version"
-func (svc *VersionService) UpdateVersion(id string, obj *model.Version) (*model.Version, error) {
+func (svc *VersionService) UpdateVersion(id string, obj *nimbleos.Version) (*nimbleos.Version, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,11 +62,11 @@ func (svc *VersionService) UpdateVersion(id string, obj *model.Version) (*model.
 }
 
 // GetVersionByName - method returns a pointer "Version"
-func (svc *VersionService) GetVersionByName(name string) (*model.Version, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *VersionService) GetVersionByName(name string) (*nimbleos.Version, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

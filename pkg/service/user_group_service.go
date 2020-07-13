@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // UserGroupService type
@@ -23,7 +23,7 @@ func NewUserGroupService(gs *NsGroupService) *UserGroupService {
 }
 
 // GetUserGroups - method returns a array of pointers of type "UserGroups"
-func (svc *UserGroupService) GetUserGroups(params *util.GetParams) ([]*model.UserGroup, error) {
+func (svc *UserGroupService) GetUserGroups(params *param.GetParams) ([]*nimbleos.UserGroup, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *UserGroupService) GetUserGroups(params *util.GetParams) ([]*model.Use
 }
 
 // CreateUserGroup - method creates a "UserGroup"
-func (svc *UserGroupService) CreateUserGroup(obj *model.UserGroup) (*model.UserGroup, error) {
+func (svc *UserGroupService) CreateUserGroup(obj *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *UserGroupService) CreateUserGroup(obj *model.UserGroup) (*model.UserG
 }
 
 // UpdateUserGroup - method modifies  the "UserGroup"
-func (svc *UserGroupService) UpdateUserGroup(id string, obj *model.UserGroup) (*model.UserGroup, error) {
+func (svc *UserGroupService) UpdateUserGroup(id string, obj *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *UserGroupService) UpdateUserGroup(id string, obj *model.UserGroup) (*
 }
 
 // GetUserGroupById - method returns a pointer to "UserGroup"
-func (svc *UserGroupService) GetUserGroupById(id string) (*model.UserGroup, error) {
+func (svc *UserGroupService) GetUserGroupById(id string) (*nimbleos.UserGroup, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *UserGroupService) GetUserGroupById(id string) (*model.UserGroup, erro
 }
 
 // GetUserGroupByName - method returns a pointer "UserGroup"
-func (svc *UserGroupService) GetUserGroupByName(name string) (*model.UserGroup, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *UserGroupService) GetUserGroupByName(name string) (*nimbleos.UserGroup, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

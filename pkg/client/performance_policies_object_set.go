@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -22,8 +22,8 @@ type PerformancePolicyObjectSet struct {
 }
 
 // CreateObject creates a new PerformancePolicy object
-func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	newPayload, err := model.EncodePerformancePolicy(payload)
+func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
+	newPayload, err := nimbleos.EncodePerformancePolicy(payload)
 	resp, err := objectSet.Client.Post(performancePolicyPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -34,12 +34,12 @@ func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *model.Perform
 		return nil, nil
 	}
 
-	return model.DecodePerformancePolicy(resp)
+	return nimbleos.DecodePerformancePolicy(resp)
 }
 
 // UpdateObject Modify existing PerformancePolicy object
-func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *model.PerformancePolicy) (*model.PerformancePolicy, error) {
-	newPayload, err := model.EncodePerformancePolicy(payload)
+func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
+	newPayload, err := nimbleos.EncodePerformancePolicy(payload)
 	resp, err := objectSet.Client.Put(performancePolicyPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *mo
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodePerformancePolicy(resp)
+	return nimbleos.DecodePerformancePolicy(resp)
 }
 
 // DeleteObject deletes the PerformancePolicy object with the specified ID
@@ -62,8 +62,8 @@ func (objectSet *PerformancePolicyObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a PerformancePolicy object with the given ID
-func (objectSet *PerformancePolicyObjectSet) GetObject(id string) (*model.PerformancePolicy, error) {
-	performancePolicyObjectSetResp, err := objectSet.Client.Get(performancePolicyPath, id, model.PerformancePolicy{})
+func (objectSet *PerformancePolicyObjectSet) GetObject(id string) (*nimbleos.PerformancePolicy, error) {
+	performancePolicyObjectSetResp, err := objectSet.Client.Get(performancePolicyPath, id, nimbleos.PerformancePolicy{})
 	if err != nil {
 		return nil, err
 	}
@@ -72,11 +72,11 @@ func (objectSet *PerformancePolicyObjectSet) GetObject(id string) (*model.Perfor
 	if performancePolicyObjectSetResp == nil {
 		return nil, nil
 	}
-	return performancePolicyObjectSetResp.(*model.PerformancePolicy), err
+	return performancePolicyObjectSetResp.(*nimbleos.PerformancePolicy), err
 }
 
 // GetObjectList returns the list of PerformancePolicy objects
-func (objectSet *PerformancePolicyObjectSet) GetObjectList() ([]*model.PerformancePolicy, error) {
+func (objectSet *PerformancePolicyObjectSet) GetObjectList() ([]*nimbleos.PerformancePolicy, error) {
 	performancePolicyObjectSetResp, err := objectSet.Client.List(performancePolicyPath)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func (objectSet *PerformancePolicyObjectSet) GetObjectList() ([]*model.Performan
 }
 
 // GetObjectListFromParams returns the list of PerformancePolicy objects using the given params query info
-func (objectSet *PerformancePolicyObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.PerformancePolicy, error) {
+func (objectSet *PerformancePolicyObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.PerformancePolicy, error) {
 	performancePolicyObjectSetResp, err := objectSet.Client.ListFromParams(performancePolicyPath, params)
 	if err != nil {
 		return nil, err
@@ -94,12 +94,12 @@ func (objectSet *PerformancePolicyObjectSet) GetObjectListFromParams(params *uti
 }
 
 // generated function to build the appropriate response types
-func buildPerformancePolicyObjectSet(response interface{}) []*model.PerformancePolicy {
+func buildPerformancePolicyObjectSet(response interface{}) []*nimbleos.PerformancePolicy {
 	values := reflect.ValueOf(response)
-	results := make([]*model.PerformancePolicy, values.Len())
+	results := make([]*nimbleos.PerformancePolicy, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.PerformancePolicy{}
+		value := &nimbleos.PerformancePolicy{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

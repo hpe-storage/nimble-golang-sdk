@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type SoftwareVersionObjectSet struct {
 }
 
 // CreateObject creates a new SoftwareVersion object
-func (objectSet *SoftwareVersionObjectSet) CreateObject(payload *model.SoftwareVersion) (*model.SoftwareVersion, error) {
+func (objectSet *SoftwareVersionObjectSet) CreateObject(payload *nimbleos.SoftwareVersion) (*nimbleos.SoftwareVersion, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on SoftwareVersion")
 }
 
 // UpdateObject Modify existing SoftwareVersion object
-func (objectSet *SoftwareVersionObjectSet) UpdateObject(id string, payload *model.SoftwareVersion) (*model.SoftwareVersion, error) {
+func (objectSet *SoftwareVersionObjectSet) UpdateObject(id string, payload *nimbleos.SoftwareVersion) (*nimbleos.SoftwareVersion, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on SoftwareVersion")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *SoftwareVersionObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a SoftwareVersion object with the given ID
-func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*model.SoftwareVersion, error) {
-	softwareVersionObjectSetResp, err := objectSet.Client.Get(softwareVersionPath, id, model.SoftwareVersion{})
+func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*nimbleos.SoftwareVersion, error) {
+	softwareVersionObjectSetResp, err := objectSet.Client.Get(softwareVersionPath, id, nimbleos.SoftwareVersion{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*model.Software
 	if softwareVersionObjectSetResp == nil {
 		return nil, nil
 	}
-	return softwareVersionObjectSetResp.(*model.SoftwareVersion), err
+	return softwareVersionObjectSetResp.(*nimbleos.SoftwareVersion), err
 }
 
 // GetObjectList returns the list of SoftwareVersion objects
-func (objectSet *SoftwareVersionObjectSet) GetObjectList() ([]*model.SoftwareVersion, error) {
+func (objectSet *SoftwareVersionObjectSet) GetObjectList() ([]*nimbleos.SoftwareVersion, error) {
 	softwareVersionObjectSetResp, err := objectSet.Client.List(softwareVersionPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *SoftwareVersionObjectSet) GetObjectList() ([]*model.SoftwareVer
 }
 
 // GetObjectListFromParams returns the list of SoftwareVersion objects using the given params query info
-func (objectSet *SoftwareVersionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.SoftwareVersion, error) {
+func (objectSet *SoftwareVersionObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.SoftwareVersion, error) {
 	softwareVersionObjectSetResp, err := objectSet.Client.ListFromParams(softwareVersionPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *SoftwareVersionObjectSet) GetObjectListFromParams(params *util.
 }
 
 // generated function to build the appropriate response types
-func buildSoftwareVersionObjectSet(response interface{}) []*model.SoftwareVersion {
+func buildSoftwareVersionObjectSet(response interface{}) []*nimbleos.SoftwareVersion {
 	values := reflect.ValueOf(response)
-	results := make([]*model.SoftwareVersion, values.Len())
+	results := make([]*nimbleos.SoftwareVersion, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.SoftwareVersion{}
+		value := &nimbleos.SoftwareVersion{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

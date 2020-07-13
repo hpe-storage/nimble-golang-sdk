@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,13 +21,13 @@ type GroupObjectSet struct {
 }
 
 // CreateObject creates a new Group object
-func (objectSet *GroupObjectSet) CreateObject(payload *model.Group) (*model.Group, error) {
+func (objectSet *GroupObjectSet) CreateObject(payload *nimbleos.Group) (*nimbleos.Group, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on Group")
 }
 
 // UpdateObject Modify existing Group object
-func (objectSet *GroupObjectSet) UpdateObject(id string, payload *model.Group) (*model.Group, error) {
-	newPayload, err := model.EncodeGroup(payload)
+func (objectSet *GroupObjectSet) UpdateObject(id string, payload *nimbleos.Group) (*nimbleos.Group, error) {
+	newPayload, err := nimbleos.EncodeGroup(payload)
 	resp, err := objectSet.Client.Put(groupPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -37,7 +37,7 @@ func (objectSet *GroupObjectSet) UpdateObject(id string, payload *model.Group) (
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeGroup(resp)
+	return nimbleos.DecodeGroup(resp)
 }
 
 // DeleteObject deletes the Group object with the specified ID
@@ -46,8 +46,8 @@ func (objectSet *GroupObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Group object with the given ID
-func (objectSet *GroupObjectSet) GetObject(id string) (*model.Group, error) {
-	groupObjectSetResp, err := objectSet.Client.Get(groupPath, id, model.Group{})
+func (objectSet *GroupObjectSet) GetObject(id string) (*nimbleos.Group, error) {
+	groupObjectSetResp, err := objectSet.Client.Get(groupPath, id, nimbleos.Group{})
 	if err != nil {
 		return nil, err
 	}
@@ -56,11 +56,11 @@ func (objectSet *GroupObjectSet) GetObject(id string) (*model.Group, error) {
 	if groupObjectSetResp == nil {
 		return nil, nil
 	}
-	return groupObjectSetResp.(*model.Group), err
+	return groupObjectSetResp.(*nimbleos.Group), err
 }
 
 // GetObjectList returns the list of Group objects
-func (objectSet *GroupObjectSet) GetObjectList() ([]*model.Group, error) {
+func (objectSet *GroupObjectSet) GetObjectList() ([]*nimbleos.Group, error) {
 	groupObjectSetResp, err := objectSet.Client.List(groupPath)
 	if err != nil {
 		return nil, err
@@ -69,7 +69,7 @@ func (objectSet *GroupObjectSet) GetObjectList() ([]*model.Group, error) {
 }
 
 // GetObjectListFromParams returns the list of Group objects using the given params query info
-func (objectSet *GroupObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Group, error) {
+func (objectSet *GroupObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Group, error) {
 	groupObjectSetResp, err := objectSet.Client.ListFromParams(groupPath, params)
 	if err != nil {
 		return nil, err
@@ -78,12 +78,12 @@ func (objectSet *GroupObjectSet) GetObjectListFromParams(params *util.GetParams)
 }
 
 // generated function to build the appropriate response types
-func buildGroupObjectSet(response interface{}) []*model.Group {
+func buildGroupObjectSet(response interface{}) []*nimbleos.Group {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Group, values.Len())
+	results := make([]*nimbleos.Group, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Group{}
+		value := &nimbleos.Group{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

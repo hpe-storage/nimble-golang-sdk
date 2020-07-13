@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // EventService type
@@ -23,7 +23,7 @@ func NewEventService(gs *NsGroupService) *EventService {
 }
 
 // GetEvents - method returns a array of pointers of type "Events"
-func (svc *EventService) GetEvents(params *util.GetParams) ([]*model.Event, error) {
+func (svc *EventService) GetEvents(params *param.GetParams) ([]*nimbleos.Event, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *EventService) GetEvents(params *util.GetParams) ([]*model.Event, erro
 }
 
 // CreateEvent - method creates a "Event"
-func (svc *EventService) CreateEvent(obj *model.Event) (*model.Event, error) {
+func (svc *EventService) CreateEvent(obj *nimbleos.Event) (*nimbleos.Event, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *EventService) CreateEvent(obj *model.Event) (*model.Event, error) {
 }
 
 // UpdateEvent - method modifies  the "Event"
-func (svc *EventService) UpdateEvent(id string, obj *model.Event) (*model.Event, error) {
+func (svc *EventService) UpdateEvent(id string, obj *nimbleos.Event) (*nimbleos.Event, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *EventService) UpdateEvent(id string, obj *model.Event) (*model.Event,
 }
 
 // GetEventById - method returns a pointer to "Event"
-func (svc *EventService) GetEventById(id string) (*model.Event, error) {
+func (svc *EventService) GetEventById(id string) (*nimbleos.Event, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *EventService) GetEventById(id string) (*model.Event, error) {
 }
 
 // GetEventByName - method returns a pointer "Event"
-func (svc *EventService) GetEventByName(name string) (*model.Event, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *EventService) GetEventByName(name string) (*nimbleos.Event, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

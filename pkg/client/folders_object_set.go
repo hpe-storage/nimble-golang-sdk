@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -20,8 +20,8 @@ type FolderObjectSet struct {
 }
 
 // CreateObject creates a new Folder object
-func (objectSet *FolderObjectSet) CreateObject(payload *model.Folder) (*model.Folder, error) {
-	newPayload, err := model.EncodeFolder(payload)
+func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbleos.Folder, error) {
+	newPayload, err := nimbleos.EncodeFolder(payload)
 	resp, err := objectSet.Client.Post(folderPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -32,12 +32,12 @@ func (objectSet *FolderObjectSet) CreateObject(payload *model.Folder) (*model.Fo
 		return nil, nil
 	}
 
-	return model.DecodeFolder(resp)
+	return nimbleos.DecodeFolder(resp)
 }
 
 // UpdateObject Modify existing Folder object
-func (objectSet *FolderObjectSet) UpdateObject(id string, payload *model.Folder) (*model.Folder, error) {
-	newPayload, err := model.EncodeFolder(payload)
+func (objectSet *FolderObjectSet) UpdateObject(id string, payload *nimbleos.Folder) (*nimbleos.Folder, error) {
+	newPayload, err := nimbleos.EncodeFolder(payload)
 	resp, err := objectSet.Client.Put(folderPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (objectSet *FolderObjectSet) UpdateObject(id string, payload *model.Folder)
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeFolder(resp)
+	return nimbleos.DecodeFolder(resp)
 }
 
 // DeleteObject deletes the Folder object with the specified ID
@@ -60,8 +60,8 @@ func (objectSet *FolderObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Folder object with the given ID
-func (objectSet *FolderObjectSet) GetObject(id string) (*model.Folder, error) {
-	folderObjectSetResp, err := objectSet.Client.Get(folderPath, id, model.Folder{})
+func (objectSet *FolderObjectSet) GetObject(id string) (*nimbleos.Folder, error) {
+	folderObjectSetResp, err := objectSet.Client.Get(folderPath, id, nimbleos.Folder{})
 	if err != nil {
 		return nil, err
 	}
@@ -70,11 +70,11 @@ func (objectSet *FolderObjectSet) GetObject(id string) (*model.Folder, error) {
 	if folderObjectSetResp == nil {
 		return nil, nil
 	}
-	return folderObjectSetResp.(*model.Folder), err
+	return folderObjectSetResp.(*nimbleos.Folder), err
 }
 
 // GetObjectList returns the list of Folder objects
-func (objectSet *FolderObjectSet) GetObjectList() ([]*model.Folder, error) {
+func (objectSet *FolderObjectSet) GetObjectList() ([]*nimbleos.Folder, error) {
 	folderObjectSetResp, err := objectSet.Client.List(folderPath)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (objectSet *FolderObjectSet) GetObjectList() ([]*model.Folder, error) {
 }
 
 // GetObjectListFromParams returns the list of Folder objects using the given params query info
-func (objectSet *FolderObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Folder, error) {
+func (objectSet *FolderObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Folder, error) {
 	folderObjectSetResp, err := objectSet.Client.ListFromParams(folderPath, params)
 	if err != nil {
 		return nil, err
@@ -92,12 +92,12 @@ func (objectSet *FolderObjectSet) GetObjectListFromParams(params *util.GetParams
 }
 
 // generated function to build the appropriate response types
-func buildFolderObjectSet(response interface{}) []*model.Folder {
+func buildFolderObjectSet(response interface{}) []*nimbleos.Folder {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Folder, values.Len())
+	results := make([]*nimbleos.Folder, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Folder{}
+		value := &nimbleos.Folder{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

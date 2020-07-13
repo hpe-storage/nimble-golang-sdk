@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type FibreChannelSessionObjectSet struct {
 }
 
 // CreateObject creates a new FibreChannelSession object
-func (objectSet *FibreChannelSessionObjectSet) CreateObject(payload *model.FibreChannelSession) (*model.FibreChannelSession, error) {
+func (objectSet *FibreChannelSessionObjectSet) CreateObject(payload *nimbleos.FibreChannelSession) (*nimbleos.FibreChannelSession, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelSession")
 }
 
 // UpdateObject Modify existing FibreChannelSession object
-func (objectSet *FibreChannelSessionObjectSet) UpdateObject(id string, payload *model.FibreChannelSession) (*model.FibreChannelSession, error) {
+func (objectSet *FibreChannelSessionObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelSession) (*nimbleos.FibreChannelSession, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on FibreChannelSession")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *FibreChannelSessionObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a FibreChannelSession object with the given ID
-func (objectSet *FibreChannelSessionObjectSet) GetObject(id string) (*model.FibreChannelSession, error) {
-	fibreChannelSessionObjectSetResp, err := objectSet.Client.Get(fibreChannelSessionPath, id, model.FibreChannelSession{})
+func (objectSet *FibreChannelSessionObjectSet) GetObject(id string) (*nimbleos.FibreChannelSession, error) {
+	fibreChannelSessionObjectSetResp, err := objectSet.Client.Get(fibreChannelSessionPath, id, nimbleos.FibreChannelSession{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *FibreChannelSessionObjectSet) GetObject(id string) (*model.Fibr
 	if fibreChannelSessionObjectSetResp == nil {
 		return nil, nil
 	}
-	return fibreChannelSessionObjectSetResp.(*model.FibreChannelSession), err
+	return fibreChannelSessionObjectSetResp.(*nimbleos.FibreChannelSession), err
 }
 
 // GetObjectList returns the list of FibreChannelSession objects
-func (objectSet *FibreChannelSessionObjectSet) GetObjectList() ([]*model.FibreChannelSession, error) {
+func (objectSet *FibreChannelSessionObjectSet) GetObjectList() ([]*nimbleos.FibreChannelSession, error) {
 	fibreChannelSessionObjectSetResp, err := objectSet.Client.List(fibreChannelSessionPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *FibreChannelSessionObjectSet) GetObjectList() ([]*model.FibreCh
 }
 
 // GetObjectListFromParams returns the list of FibreChannelSession objects using the given params query info
-func (objectSet *FibreChannelSessionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.FibreChannelSession, error) {
+func (objectSet *FibreChannelSessionObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.FibreChannelSession, error) {
 	fibreChannelSessionObjectSetResp, err := objectSet.Client.ListFromParams(fibreChannelSessionPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *FibreChannelSessionObjectSet) GetObjectListFromParams(params *u
 }
 
 // generated function to build the appropriate response types
-func buildFibreChannelSessionObjectSet(response interface{}) []*model.FibreChannelSession {
+func buildFibreChannelSessionObjectSet(response interface{}) []*nimbleos.FibreChannelSession {
 	values := reflect.ValueOf(response)
-	results := make([]*model.FibreChannelSession, values.Len())
+	results := make([]*nimbleos.FibreChannelSession, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.FibreChannelSession{}
+		value := &nimbleos.FibreChannelSession{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

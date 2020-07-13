@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type AuditLogObjectSet struct {
 }
 
 // CreateObject creates a new AuditLog object
-func (objectSet *AuditLogObjectSet) CreateObject(payload *model.AuditLog) (*model.AuditLog, error) {
+func (objectSet *AuditLogObjectSet) CreateObject(payload *nimbleos.AuditLog) (*nimbleos.AuditLog, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on AuditLog")
 }
 
 // UpdateObject Modify existing AuditLog object
-func (objectSet *AuditLogObjectSet) UpdateObject(id string, payload *model.AuditLog) (*model.AuditLog, error) {
+func (objectSet *AuditLogObjectSet) UpdateObject(id string, payload *nimbleos.AuditLog) (*nimbleos.AuditLog, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on AuditLog")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *AuditLogObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a AuditLog object with the given ID
-func (objectSet *AuditLogObjectSet) GetObject(id string) (*model.AuditLog, error) {
-	auditLogObjectSetResp, err := objectSet.Client.Get(auditLogPath, id, model.AuditLog{})
+func (objectSet *AuditLogObjectSet) GetObject(id string) (*nimbleos.AuditLog, error) {
+	auditLogObjectSetResp, err := objectSet.Client.Get(auditLogPath, id, nimbleos.AuditLog{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *AuditLogObjectSet) GetObject(id string) (*model.AuditLog, error
 	if auditLogObjectSetResp == nil {
 		return nil, nil
 	}
-	return auditLogObjectSetResp.(*model.AuditLog), err
+	return auditLogObjectSetResp.(*nimbleos.AuditLog), err
 }
 
 // GetObjectList returns the list of AuditLog objects
-func (objectSet *AuditLogObjectSet) GetObjectList() ([]*model.AuditLog, error) {
+func (objectSet *AuditLogObjectSet) GetObjectList() ([]*nimbleos.AuditLog, error) {
 	auditLogObjectSetResp, err := objectSet.Client.List(auditLogPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *AuditLogObjectSet) GetObjectList() ([]*model.AuditLog, error) {
 }
 
 // GetObjectListFromParams returns the list of AuditLog objects using the given params query info
-func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.AuditLog, error) {
+func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.AuditLog, error) {
 	auditLogObjectSetResp, err := objectSet.Client.ListFromParams(auditLogPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *AuditLogObjectSet) GetObjectListFromParams(params *util.GetPara
 }
 
 // generated function to build the appropriate response types
-func buildAuditLogObjectSet(response interface{}) []*model.AuditLog {
+func buildAuditLogObjectSet(response interface{}) []*nimbleos.AuditLog {
 	values := reflect.ValueOf(response)
-	results := make([]*model.AuditLog, values.Len())
+	results := make([]*nimbleos.AuditLog, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.AuditLog{}
+		value := &nimbleos.AuditLog{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

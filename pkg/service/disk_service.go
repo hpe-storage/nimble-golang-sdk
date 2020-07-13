@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // DiskService type
@@ -23,7 +23,7 @@ func NewDiskService(gs *NsGroupService) *DiskService {
 }
 
 // GetDisks - method returns a array of pointers of type "Disks"
-func (svc *DiskService) GetDisks(params *util.GetParams) ([]*model.Disk, error) {
+func (svc *DiskService) GetDisks(params *param.GetParams) ([]*nimbleos.Disk, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *DiskService) GetDisks(params *util.GetParams) ([]*model.Disk, error) 
 }
 
 // CreateDisk - method creates a "Disk"
-func (svc *DiskService) CreateDisk(obj *model.Disk) (*model.Disk, error) {
+func (svc *DiskService) CreateDisk(obj *nimbleos.Disk) (*nimbleos.Disk, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *DiskService) CreateDisk(obj *model.Disk) (*model.Disk, error) {
 }
 
 // UpdateDisk - method modifies  the "Disk"
-func (svc *DiskService) UpdateDisk(id string, obj *model.Disk) (*model.Disk, error) {
+func (svc *DiskService) UpdateDisk(id string, obj *nimbleos.Disk) (*nimbleos.Disk, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *DiskService) UpdateDisk(id string, obj *model.Disk) (*model.Disk, err
 }
 
 // GetDiskById - method returns a pointer to "Disk"
-func (svc *DiskService) GetDiskById(id string) (*model.Disk, error) {
+func (svc *DiskService) GetDiskById(id string) (*nimbleos.Disk, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

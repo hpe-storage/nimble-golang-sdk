@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -20,8 +20,8 @@ type UserGroupObjectSet struct {
 }
 
 // CreateObject creates a new UserGroup object
-func (objectSet *UserGroupObjectSet) CreateObject(payload *model.UserGroup) (*model.UserGroup, error) {
-	newPayload, err := model.EncodeUserGroup(payload)
+func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
+	newPayload, err := nimbleos.EncodeUserGroup(payload)
 	resp, err := objectSet.Client.Post(userGroupPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -32,12 +32,12 @@ func (objectSet *UserGroupObjectSet) CreateObject(payload *model.UserGroup) (*mo
 		return nil, nil
 	}
 
-	return model.DecodeUserGroup(resp)
+	return nimbleos.DecodeUserGroup(resp)
 }
 
 // UpdateObject Modify existing UserGroup object
-func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *model.UserGroup) (*model.UserGroup, error) {
-	newPayload, err := model.EncodeUserGroup(payload)
+func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
+	newPayload, err := nimbleos.EncodeUserGroup(payload)
 	resp, err := objectSet.Client.Put(userGroupPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *model.User
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeUserGroup(resp)
+	return nimbleos.DecodeUserGroup(resp)
 }
 
 // DeleteObject deletes the UserGroup object with the specified ID
@@ -60,8 +60,8 @@ func (objectSet *UserGroupObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a UserGroup object with the given ID
-func (objectSet *UserGroupObjectSet) GetObject(id string) (*model.UserGroup, error) {
-	userGroupObjectSetResp, err := objectSet.Client.Get(userGroupPath, id, model.UserGroup{})
+func (objectSet *UserGroupObjectSet) GetObject(id string) (*nimbleos.UserGroup, error) {
+	userGroupObjectSetResp, err := objectSet.Client.Get(userGroupPath, id, nimbleos.UserGroup{})
 	if err != nil {
 		return nil, err
 	}
@@ -70,11 +70,11 @@ func (objectSet *UserGroupObjectSet) GetObject(id string) (*model.UserGroup, err
 	if userGroupObjectSetResp == nil {
 		return nil, nil
 	}
-	return userGroupObjectSetResp.(*model.UserGroup), err
+	return userGroupObjectSetResp.(*nimbleos.UserGroup), err
 }
 
 // GetObjectList returns the list of UserGroup objects
-func (objectSet *UserGroupObjectSet) GetObjectList() ([]*model.UserGroup, error) {
+func (objectSet *UserGroupObjectSet) GetObjectList() ([]*nimbleos.UserGroup, error) {
 	userGroupObjectSetResp, err := objectSet.Client.List(userGroupPath)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (objectSet *UserGroupObjectSet) GetObjectList() ([]*model.UserGroup, error)
 }
 
 // GetObjectListFromParams returns the list of UserGroup objects using the given params query info
-func (objectSet *UserGroupObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.UserGroup, error) {
+func (objectSet *UserGroupObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.UserGroup, error) {
 	userGroupObjectSetResp, err := objectSet.Client.ListFromParams(userGroupPath, params)
 	if err != nil {
 		return nil, err
@@ -92,12 +92,12 @@ func (objectSet *UserGroupObjectSet) GetObjectListFromParams(params *util.GetPar
 }
 
 // generated function to build the appropriate response types
-func buildUserGroupObjectSet(response interface{}) []*model.UserGroup {
+func buildUserGroupObjectSet(response interface{}) []*nimbleos.UserGroup {
 	values := reflect.ValueOf(response)
-	results := make([]*model.UserGroup, values.Len())
+	results := make([]*nimbleos.UserGroup, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.UserGroup{}
+		value := &nimbleos.UserGroup{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

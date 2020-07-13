@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type JobObjectSet struct {
 }
 
 // CreateObject creates a new Job object
-func (objectSet *JobObjectSet) CreateObject(payload *model.Job) (*model.Job, error) {
+func (objectSet *JobObjectSet) CreateObject(payload *nimbleos.Job) (*nimbleos.Job, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on Job")
 }
 
 // UpdateObject Modify existing Job object
-func (objectSet *JobObjectSet) UpdateObject(id string, payload *model.Job) (*model.Job, error) {
+func (objectSet *JobObjectSet) UpdateObject(id string, payload *nimbleos.Job) (*nimbleos.Job, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on Job")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *JobObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Job object with the given ID
-func (objectSet *JobObjectSet) GetObject(id string) (*model.Job, error) {
-	jobObjectSetResp, err := objectSet.Client.Get(jobPath, id, model.Job{})
+func (objectSet *JobObjectSet) GetObject(id string) (*nimbleos.Job, error) {
+	jobObjectSetResp, err := objectSet.Client.Get(jobPath, id, nimbleos.Job{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *JobObjectSet) GetObject(id string) (*model.Job, error) {
 	if jobObjectSetResp == nil {
 		return nil, nil
 	}
-	return jobObjectSetResp.(*model.Job), err
+	return jobObjectSetResp.(*nimbleos.Job), err
 }
 
 // GetObjectList returns the list of Job objects
-func (objectSet *JobObjectSet) GetObjectList() ([]*model.Job, error) {
+func (objectSet *JobObjectSet) GetObjectList() ([]*nimbleos.Job, error) {
 	jobObjectSetResp, err := objectSet.Client.List(jobPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *JobObjectSet) GetObjectList() ([]*model.Job, error) {
 }
 
 // GetObjectListFromParams returns the list of Job objects using the given params query info
-func (objectSet *JobObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Job, error) {
+func (objectSet *JobObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Job, error) {
 	jobObjectSetResp, err := objectSet.Client.ListFromParams(jobPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *JobObjectSet) GetObjectListFromParams(params *util.GetParams) (
 }
 
 // generated function to build the appropriate response types
-func buildJobObjectSet(response interface{}) []*model.Job {
+func buildJobObjectSet(response interface{}) []*nimbleos.Job {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Job, values.Len())
+	results := make([]*nimbleos.Job, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Job{}
+		value := &nimbleos.Job{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

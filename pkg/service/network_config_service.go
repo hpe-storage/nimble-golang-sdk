@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // NetworkConfigService type
@@ -23,7 +23,7 @@ func NewNetworkConfigService(gs *NsGroupService) *NetworkConfigService {
 }
 
 // GetNetworkConfigs - method returns a array of pointers of type "NetworkConfigs"
-func (svc *NetworkConfigService) GetNetworkConfigs(params *util.GetParams) ([]*model.NetworkConfig, error) {
+func (svc *NetworkConfigService) GetNetworkConfigs(params *param.GetParams) ([]*nimbleos.NetworkConfig, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *NetworkConfigService) GetNetworkConfigs(params *util.GetParams) ([]*m
 }
 
 // CreateNetworkConfig - method creates a "NetworkConfig"
-func (svc *NetworkConfigService) CreateNetworkConfig(obj *model.NetworkConfig) (*model.NetworkConfig, error) {
+func (svc *NetworkConfigService) CreateNetworkConfig(obj *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *NetworkConfigService) CreateNetworkConfig(obj *model.NetworkConfig) (
 }
 
 // UpdateNetworkConfig - method modifies  the "NetworkConfig"
-func (svc *NetworkConfigService) UpdateNetworkConfig(id string, obj *model.NetworkConfig) (*model.NetworkConfig, error) {
+func (svc *NetworkConfigService) UpdateNetworkConfig(id string, obj *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *NetworkConfigService) UpdateNetworkConfig(id string, obj *model.Netwo
 }
 
 // GetNetworkConfigById - method returns a pointer to "NetworkConfig"
-func (svc *NetworkConfigService) GetNetworkConfigById(id string) (*model.NetworkConfig, error) {
+func (svc *NetworkConfigService) GetNetworkConfigById(id string) (*nimbleos.NetworkConfig, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // AccessControlRecordService type
@@ -23,7 +23,7 @@ func NewAccessControlRecordService(gs *NsGroupService) *AccessControlRecordServi
 }
 
 // GetAccessControlRecords - method returns a array of pointers of type "AccessControlRecords"
-func (svc *AccessControlRecordService) GetAccessControlRecords(params *util.GetParams) ([]*model.AccessControlRecord, error) {
+func (svc *AccessControlRecordService) GetAccessControlRecords(params *param.GetParams) ([]*nimbleos.AccessControlRecord, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *AccessControlRecordService) GetAccessControlRecords(params *util.GetP
 }
 
 // CreateAccessControlRecord - method creates a "AccessControlRecord"
-func (svc *AccessControlRecordService) CreateAccessControlRecord(obj *model.AccessControlRecord) (*model.AccessControlRecord, error) {
+func (svc *AccessControlRecordService) CreateAccessControlRecord(obj *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *AccessControlRecordService) CreateAccessControlRecord(obj *model.Acce
 }
 
 // UpdateAccessControlRecord - method modifies  the "AccessControlRecord"
-func (svc *AccessControlRecordService) UpdateAccessControlRecord(id string, obj *model.AccessControlRecord) (*model.AccessControlRecord, error) {
+func (svc *AccessControlRecordService) UpdateAccessControlRecord(id string, obj *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *AccessControlRecordService) UpdateAccessControlRecord(id string, obj 
 }
 
 // GetAccessControlRecordById - method returns a pointer to "AccessControlRecord"
-func (svc *AccessControlRecordService) GetAccessControlRecordById(id string) (*model.AccessControlRecord, error) {
+func (svc *AccessControlRecordService) GetAccessControlRecordById(id string) (*nimbleos.AccessControlRecord, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

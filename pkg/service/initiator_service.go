@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // InitiatorService type
@@ -23,7 +23,7 @@ func NewInitiatorService(gs *NsGroupService) *InitiatorService {
 }
 
 // GetInitiators - method returns a array of pointers of type "Initiators"
-func (svc *InitiatorService) GetInitiators(params *util.GetParams) ([]*model.Initiator, error) {
+func (svc *InitiatorService) GetInitiators(params *param.GetParams) ([]*nimbleos.Initiator, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *InitiatorService) GetInitiators(params *util.GetParams) ([]*model.Ini
 }
 
 // CreateInitiator - method creates a "Initiator"
-func (svc *InitiatorService) CreateInitiator(obj *model.Initiator) (*model.Initiator, error) {
+func (svc *InitiatorService) CreateInitiator(obj *nimbleos.Initiator) (*nimbleos.Initiator, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *InitiatorService) CreateInitiator(obj *model.Initiator) (*model.Initi
 }
 
 // UpdateInitiator - method modifies  the "Initiator"
-func (svc *InitiatorService) UpdateInitiator(id string, obj *model.Initiator) (*model.Initiator, error) {
+func (svc *InitiatorService) UpdateInitiator(id string, obj *nimbleos.Initiator) (*nimbleos.Initiator, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *InitiatorService) UpdateInitiator(id string, obj *model.Initiator) (*
 }
 
 // GetInitiatorById - method returns a pointer to "Initiator"
-func (svc *InitiatorService) GetInitiatorById(id string) (*model.Initiator, error) {
+func (svc *InitiatorService) GetInitiatorById(id string) (*nimbleos.Initiator, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

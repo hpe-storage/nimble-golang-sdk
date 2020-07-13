@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -23,8 +23,8 @@ type ProtectionTemplateObjectSet struct {
 }
 
 // CreateObject creates a new ProtectionTemplate object
-func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
-	newPayload, err := model.EncodeProtectionTemplate(payload)
+func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
+	newPayload, err := nimbleos.EncodeProtectionTemplate(payload)
 	resp, err := objectSet.Client.Post(protectionTemplatePath, newPayload)
 	if err != nil {
 		return nil, err
@@ -35,12 +35,12 @@ func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *model.Protec
 		return nil, nil
 	}
 
-	return model.DecodeProtectionTemplate(resp)
+	return nimbleos.DecodeProtectionTemplate(resp)
 }
 
 // UpdateObject Modify existing ProtectionTemplate object
-func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
-	newPayload, err := model.EncodeProtectionTemplate(payload)
+func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
+	newPayload, err := nimbleos.EncodeProtectionTemplate(payload)
 	resp, err := objectSet.Client.Put(protectionTemplatePath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *m
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeProtectionTemplate(resp)
+	return nimbleos.DecodeProtectionTemplate(resp)
 }
 
 // DeleteObject deletes the ProtectionTemplate object with the specified ID
@@ -63,8 +63,8 @@ func (objectSet *ProtectionTemplateObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a ProtectionTemplate object with the given ID
-func (objectSet *ProtectionTemplateObjectSet) GetObject(id string) (*model.ProtectionTemplate, error) {
-	protectionTemplateObjectSetResp, err := objectSet.Client.Get(protectionTemplatePath, id, model.ProtectionTemplate{})
+func (objectSet *ProtectionTemplateObjectSet) GetObject(id string) (*nimbleos.ProtectionTemplate, error) {
+	protectionTemplateObjectSetResp, err := objectSet.Client.Get(protectionTemplatePath, id, nimbleos.ProtectionTemplate{})
 	if err != nil {
 		return nil, err
 	}
@@ -73,11 +73,11 @@ func (objectSet *ProtectionTemplateObjectSet) GetObject(id string) (*model.Prote
 	if protectionTemplateObjectSetResp == nil {
 		return nil, nil
 	}
-	return protectionTemplateObjectSetResp.(*model.ProtectionTemplate), err
+	return protectionTemplateObjectSetResp.(*nimbleos.ProtectionTemplate), err
 }
 
 // GetObjectList returns the list of ProtectionTemplate objects
-func (objectSet *ProtectionTemplateObjectSet) GetObjectList() ([]*model.ProtectionTemplate, error) {
+func (objectSet *ProtectionTemplateObjectSet) GetObjectList() ([]*nimbleos.ProtectionTemplate, error) {
 	protectionTemplateObjectSetResp, err := objectSet.Client.List(protectionTemplatePath)
 	if err != nil {
 		return nil, err
@@ -86,7 +86,7 @@ func (objectSet *ProtectionTemplateObjectSet) GetObjectList() ([]*model.Protecti
 }
 
 // GetObjectListFromParams returns the list of ProtectionTemplate objects using the given params query info
-func (objectSet *ProtectionTemplateObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ProtectionTemplate, error) {
+func (objectSet *ProtectionTemplateObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.ProtectionTemplate, error) {
 	protectionTemplateObjectSetResp, err := objectSet.Client.ListFromParams(protectionTemplatePath, params)
 	if err != nil {
 		return nil, err
@@ -95,12 +95,12 @@ func (objectSet *ProtectionTemplateObjectSet) GetObjectListFromParams(params *ut
 }
 
 // generated function to build the appropriate response types
-func buildProtectionTemplateObjectSet(response interface{}) []*model.ProtectionTemplate {
+func buildProtectionTemplateObjectSet(response interface{}) []*nimbleos.ProtectionTemplate {
 	values := reflect.ValueOf(response)
-	results := make([]*model.ProtectionTemplate, values.Len())
+	results := make([]*nimbleos.ProtectionTemplate, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.ProtectionTemplate{}
+		value := &nimbleos.ProtectionTemplate{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

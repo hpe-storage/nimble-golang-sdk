@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // SpaceDomainService type
@@ -23,7 +23,7 @@ func NewSpaceDomainService(gs *NsGroupService) *SpaceDomainService {
 }
 
 // GetSpaceDomains - method returns a array of pointers of type "SpaceDomains"
-func (svc *SpaceDomainService) GetSpaceDomains(params *util.GetParams) ([]*model.SpaceDomain, error) {
+func (svc *SpaceDomainService) GetSpaceDomains(params *param.GetParams) ([]*nimbleos.SpaceDomain, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *SpaceDomainService) GetSpaceDomains(params *util.GetParams) ([]*model
 }
 
 // CreateSpaceDomain - method creates a "SpaceDomain"
-func (svc *SpaceDomainService) CreateSpaceDomain(obj *model.SpaceDomain) (*model.SpaceDomain, error) {
+func (svc *SpaceDomainService) CreateSpaceDomain(obj *nimbleos.SpaceDomain) (*nimbleos.SpaceDomain, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *SpaceDomainService) CreateSpaceDomain(obj *model.SpaceDomain) (*model
 }
 
 // UpdateSpaceDomain - method modifies  the "SpaceDomain"
-func (svc *SpaceDomainService) UpdateSpaceDomain(id string, obj *model.SpaceDomain) (*model.SpaceDomain, error) {
+func (svc *SpaceDomainService) UpdateSpaceDomain(id string, obj *nimbleos.SpaceDomain) (*nimbleos.SpaceDomain, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *SpaceDomainService) UpdateSpaceDomain(id string, obj *model.SpaceDoma
 }
 
 // GetSpaceDomainById - method returns a pointer to "SpaceDomain"
-func (svc *SpaceDomainService) GetSpaceDomainById(id string) (*model.SpaceDomain, error) {
+func (svc *SpaceDomainService) GetSpaceDomainById(id string) (*nimbleos.SpaceDomain, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

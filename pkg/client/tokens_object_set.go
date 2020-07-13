@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type TokenObjectSet struct {
 }
 
 // CreateObject creates a new Token object
-func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Token, error) {
-	newPayload, err := model.EncodeToken(payload)
+func (objectSet *TokenObjectSet) CreateObject(payload *nimbleos.Token) (*nimbleos.Token, error) {
+	newPayload, err := nimbleos.EncodeToken(payload)
 	resp, err := objectSet.Client.Post(tokenPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,11 +33,11 @@ func (objectSet *TokenObjectSet) CreateObject(payload *model.Token) (*model.Toke
 		return nil, nil
 	}
 
-	return model.DecodeToken(resp)
+	return nimbleos.DecodeToken(resp)
 }
 
 // UpdateObject Modify existing Token object
-func (objectSet *TokenObjectSet) UpdateObject(id string, payload *model.Token) (*model.Token, error) {
+func (objectSet *TokenObjectSet) UpdateObject(id string, payload *nimbleos.Token) (*nimbleos.Token, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on Token")
 }
 
@@ -51,8 +51,8 @@ func (objectSet *TokenObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Token object with the given ID
-func (objectSet *TokenObjectSet) GetObject(id string) (*model.Token, error) {
-	tokenObjectSetResp, err := objectSet.Client.Get(tokenPath, id, model.Token{})
+func (objectSet *TokenObjectSet) GetObject(id string) (*nimbleos.Token, error) {
+	tokenObjectSetResp, err := objectSet.Client.Get(tokenPath, id, nimbleos.Token{})
 	if err != nil {
 		return nil, err
 	}
@@ -61,11 +61,11 @@ func (objectSet *TokenObjectSet) GetObject(id string) (*model.Token, error) {
 	if tokenObjectSetResp == nil {
 		return nil, nil
 	}
-	return tokenObjectSetResp.(*model.Token), err
+	return tokenObjectSetResp.(*nimbleos.Token), err
 }
 
 // GetObjectList returns the list of Token objects
-func (objectSet *TokenObjectSet) GetObjectList() ([]*model.Token, error) {
+func (objectSet *TokenObjectSet) GetObjectList() ([]*nimbleos.Token, error) {
 	tokenObjectSetResp, err := objectSet.Client.List(tokenPath)
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (objectSet *TokenObjectSet) GetObjectList() ([]*model.Token, error) {
 }
 
 // GetObjectListFromParams returns the list of Token objects using the given params query info
-func (objectSet *TokenObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Token, error) {
+func (objectSet *TokenObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Token, error) {
 	tokenObjectSetResp, err := objectSet.Client.ListFromParams(tokenPath, params)
 	if err != nil {
 		return nil, err
@@ -83,12 +83,12 @@ func (objectSet *TokenObjectSet) GetObjectListFromParams(params *util.GetParams)
 }
 
 // generated function to build the appropriate response types
-func buildTokenObjectSet(response interface{}) []*model.Token {
+func buildTokenObjectSet(response interface{}) []*nimbleos.Token {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Token, values.Len())
+	results := make([]*nimbleos.Token, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Token{}
+		value := &nimbleos.Token{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

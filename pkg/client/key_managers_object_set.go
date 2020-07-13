@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type KeyManagerObjectSet struct {
 }
 
 // CreateObject creates a new KeyManager object
-func (objectSet *KeyManagerObjectSet) CreateObject(payload *model.KeyManager) (*model.KeyManager, error) {
-	newPayload, err := model.EncodeKeyManager(payload)
+func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
+	newPayload, err := nimbleos.EncodeKeyManager(payload)
 	resp, err := objectSet.Client.Post(keyManagerPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,12 +33,12 @@ func (objectSet *KeyManagerObjectSet) CreateObject(payload *model.KeyManager) (*
 		return nil, nil
 	}
 
-	return model.DecodeKeyManager(resp)
+	return nimbleos.DecodeKeyManager(resp)
 }
 
 // UpdateObject Modify existing KeyManager object
-func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *model.KeyManager) (*model.KeyManager, error) {
-	newPayload, err := model.EncodeKeyManager(payload)
+func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
+	newPayload, err := nimbleos.EncodeKeyManager(payload)
 	resp, err := objectSet.Client.Put(keyManagerPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *model.Key
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeKeyManager(resp)
+	return nimbleos.DecodeKeyManager(resp)
 }
 
 // DeleteObject deletes the KeyManager object with the specified ID
@@ -57,8 +57,8 @@ func (objectSet *KeyManagerObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a KeyManager object with the given ID
-func (objectSet *KeyManagerObjectSet) GetObject(id string) (*model.KeyManager, error) {
-	keyManagerObjectSetResp, err := objectSet.Client.Get(keyManagerPath, id, model.KeyManager{})
+func (objectSet *KeyManagerObjectSet) GetObject(id string) (*nimbleos.KeyManager, error) {
+	keyManagerObjectSetResp, err := objectSet.Client.Get(keyManagerPath, id, nimbleos.KeyManager{})
 	if err != nil {
 		return nil, err
 	}
@@ -67,11 +67,11 @@ func (objectSet *KeyManagerObjectSet) GetObject(id string) (*model.KeyManager, e
 	if keyManagerObjectSetResp == nil {
 		return nil, nil
 	}
-	return keyManagerObjectSetResp.(*model.KeyManager), err
+	return keyManagerObjectSetResp.(*nimbleos.KeyManager), err
 }
 
 // GetObjectList returns the list of KeyManager objects
-func (objectSet *KeyManagerObjectSet) GetObjectList() ([]*model.KeyManager, error) {
+func (objectSet *KeyManagerObjectSet) GetObjectList() ([]*nimbleos.KeyManager, error) {
 	keyManagerObjectSetResp, err := objectSet.Client.List(keyManagerPath)
 	if err != nil {
 		return nil, err
@@ -80,7 +80,7 @@ func (objectSet *KeyManagerObjectSet) GetObjectList() ([]*model.KeyManager, erro
 }
 
 // GetObjectListFromParams returns the list of KeyManager objects using the given params query info
-func (objectSet *KeyManagerObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.KeyManager, error) {
+func (objectSet *KeyManagerObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.KeyManager, error) {
 	keyManagerObjectSetResp, err := objectSet.Client.ListFromParams(keyManagerPath, params)
 	if err != nil {
 		return nil, err
@@ -89,12 +89,12 @@ func (objectSet *KeyManagerObjectSet) GetObjectListFromParams(params *util.GetPa
 }
 
 // generated function to build the appropriate response types
-func buildKeyManagerObjectSet(response interface{}) []*model.KeyManager {
+func buildKeyManagerObjectSet(response interface{}) []*nimbleos.KeyManager {
 	values := reflect.ValueOf(response)
-	results := make([]*model.KeyManager, values.Len())
+	results := make([]*nimbleos.KeyManager, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.KeyManager{}
+		value := &nimbleos.KeyManager{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

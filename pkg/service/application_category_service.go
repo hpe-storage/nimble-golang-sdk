@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ApplicationCategoryService type
@@ -23,7 +23,7 @@ func NewApplicationCategoryService(gs *NsGroupService) *ApplicationCategoryServi
 }
 
 // GetApplicationCategories - method returns a array of pointers of type "ApplicationCategories"
-func (svc *ApplicationCategoryService) GetApplicationCategories(params *util.GetParams) ([]*model.ApplicationCategory, error) {
+func (svc *ApplicationCategoryService) GetApplicationCategories(params *param.GetParams) ([]*nimbleos.ApplicationCategory, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ApplicationCategoryService) GetApplicationCategories(params *util.Get
 }
 
 // CreateApplicationCategory - method creates a "ApplicationCategory"
-func (svc *ApplicationCategoryService) CreateApplicationCategory(obj *model.ApplicationCategory) (*model.ApplicationCategory, error) {
+func (svc *ApplicationCategoryService) CreateApplicationCategory(obj *nimbleos.ApplicationCategory) (*nimbleos.ApplicationCategory, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ApplicationCategoryService) CreateApplicationCategory(obj *model.Appl
 }
 
 // UpdateApplicationCategory - method modifies  the "ApplicationCategory"
-func (svc *ApplicationCategoryService) UpdateApplicationCategory(id string, obj *model.ApplicationCategory) (*model.ApplicationCategory, error) {
+func (svc *ApplicationCategoryService) UpdateApplicationCategory(id string, obj *nimbleos.ApplicationCategory) (*nimbleos.ApplicationCategory, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ApplicationCategoryService) UpdateApplicationCategory(id string, obj 
 }
 
 // GetApplicationCategoryById - method returns a pointer to "ApplicationCategory"
-func (svc *ApplicationCategoryService) GetApplicationCategoryById(id string) (*model.ApplicationCategory, error) {
+func (svc *ApplicationCategoryService) GetApplicationCategoryById(id string) (*nimbleos.ApplicationCategory, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ApplicationCategoryService) GetApplicationCategoryById(id string) (*m
 }
 
 // GetApplicationCategoryByName - method returns a pointer "ApplicationCategory"
-func (svc *ApplicationCategoryService) GetApplicationCategoryByName(name string) (*model.ApplicationCategory, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ApplicationCategoryService) GetApplicationCategoryByName(name string) (*nimbleos.ApplicationCategory, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

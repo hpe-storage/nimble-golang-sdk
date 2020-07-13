@@ -9,8 +9,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ReplicationPartnerService type
@@ -25,7 +25,7 @@ func NewReplicationPartnerService(gs *NsGroupService) *ReplicationPartnerService
 }
 
 // GetReplicationPartners - method returns a array of pointers of type "ReplicationPartners"
-func (svc *ReplicationPartnerService) GetReplicationPartners(params *util.GetParams) ([]*model.ReplicationPartner, error) {
+func (svc *ReplicationPartnerService) GetReplicationPartners(params *param.GetParams) ([]*nimbleos.ReplicationPartner, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -38,7 +38,7 @@ func (svc *ReplicationPartnerService) GetReplicationPartners(params *util.GetPar
 }
 
 // CreateReplicationPartner - method creates a "ReplicationPartner"
-func (svc *ReplicationPartnerService) CreateReplicationPartner(obj *model.ReplicationPartner) (*model.ReplicationPartner, error) {
+func (svc *ReplicationPartnerService) CreateReplicationPartner(obj *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -51,7 +51,7 @@ func (svc *ReplicationPartnerService) CreateReplicationPartner(obj *model.Replic
 }
 
 // UpdateReplicationPartner - method modifies  the "ReplicationPartner"
-func (svc *ReplicationPartnerService) UpdateReplicationPartner(id string, obj *model.ReplicationPartner) (*model.ReplicationPartner, error) {
+func (svc *ReplicationPartnerService) UpdateReplicationPartner(id string, obj *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -64,7 +64,7 @@ func (svc *ReplicationPartnerService) UpdateReplicationPartner(id string, obj *m
 }
 
 // GetReplicationPartnerById - method returns a pointer to "ReplicationPartner"
-func (svc *ReplicationPartnerService) GetReplicationPartnerById(id string) (*model.ReplicationPartner, error) {
+func (svc *ReplicationPartnerService) GetReplicationPartnerById(id string) (*nimbleos.ReplicationPartner, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -77,11 +77,11 @@ func (svc *ReplicationPartnerService) GetReplicationPartnerById(id string) (*mod
 }
 
 // GetReplicationPartnerByName - method returns a pointer "ReplicationPartner"
-func (svc *ReplicationPartnerService) GetReplicationPartnerByName(name string) (*model.ReplicationPartner, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ReplicationPartnerService) GetReplicationPartnerByName(name string) (*nimbleos.ReplicationPartner, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

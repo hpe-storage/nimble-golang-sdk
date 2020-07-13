@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // SoftwareVersionService type
@@ -23,7 +23,7 @@ func NewSoftwareVersionService(gs *NsGroupService) *SoftwareVersionService {
 }
 
 // GetSoftwareVersions - method returns a array of pointers of type "SoftwareVersions"
-func (svc *SoftwareVersionService) GetSoftwareVersions(params *util.GetParams) ([]*model.SoftwareVersion, error) {
+func (svc *SoftwareVersionService) GetSoftwareVersions(params *param.GetParams) ([]*nimbleos.SoftwareVersion, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *SoftwareVersionService) GetSoftwareVersions(params *util.GetParams) (
 }
 
 // CreateSoftwareVersion - method creates a "SoftwareVersion"
-func (svc *SoftwareVersionService) CreateSoftwareVersion(obj *model.SoftwareVersion) (*model.SoftwareVersion, error) {
+func (svc *SoftwareVersionService) CreateSoftwareVersion(obj *nimbleos.SoftwareVersion) (*nimbleos.SoftwareVersion, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *SoftwareVersionService) CreateSoftwareVersion(obj *model.SoftwareVers
 }
 
 // UpdateSoftwareVersion - method modifies  the "SoftwareVersion"
-func (svc *SoftwareVersionService) UpdateSoftwareVersion(id string, obj *model.SoftwareVersion) (*model.SoftwareVersion, error) {
+func (svc *SoftwareVersionService) UpdateSoftwareVersion(id string, obj *nimbleos.SoftwareVersion) (*nimbleos.SoftwareVersion, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,11 +62,11 @@ func (svc *SoftwareVersionService) UpdateSoftwareVersion(id string, obj *model.S
 }
 
 // GetSoftwareVersionByName - method returns a pointer "SoftwareVersion"
-func (svc *SoftwareVersionService) GetSoftwareVersionByName(name string) (*model.SoftwareVersion, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *SoftwareVersionService) GetSoftwareVersionByName(name string) (*nimbleos.SoftwareVersion, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

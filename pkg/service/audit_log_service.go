@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // AuditLogService type
@@ -23,7 +23,7 @@ func NewAuditLogService(gs *NsGroupService) *AuditLogService {
 }
 
 // GetAuditLogs - method returns a array of pointers of type "AuditLogs"
-func (svc *AuditLogService) GetAuditLogs(params *util.GetParams) ([]*model.AuditLog, error) {
+func (svc *AuditLogService) GetAuditLogs(params *param.GetParams) ([]*nimbleos.AuditLog, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *AuditLogService) GetAuditLogs(params *util.GetParams) ([]*model.Audit
 }
 
 // CreateAuditLog - method creates a "AuditLog"
-func (svc *AuditLogService) CreateAuditLog(obj *model.AuditLog) (*model.AuditLog, error) {
+func (svc *AuditLogService) CreateAuditLog(obj *nimbleos.AuditLog) (*nimbleos.AuditLog, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *AuditLogService) CreateAuditLog(obj *model.AuditLog) (*model.AuditLog
 }
 
 // UpdateAuditLog - method modifies  the "AuditLog"
-func (svc *AuditLogService) UpdateAuditLog(id string, obj *model.AuditLog) (*model.AuditLog, error) {
+func (svc *AuditLogService) UpdateAuditLog(id string, obj *nimbleos.AuditLog) (*nimbleos.AuditLog, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *AuditLogService) UpdateAuditLog(id string, obj *model.AuditLog) (*mod
 }
 
 // GetAuditLogById - method returns a pointer to "AuditLog"
-func (svc *AuditLogService) GetAuditLogById(id string) (*model.AuditLog, error) {
+func (svc *AuditLogService) GetAuditLogById(id string) (*nimbleos.AuditLog, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

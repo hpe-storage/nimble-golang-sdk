@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type ProtocolEndpointObjectSet struct {
 }
 
 // CreateObject creates a new ProtocolEndpoint object
-func (objectSet *ProtocolEndpointObjectSet) CreateObject(payload *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
+func (objectSet *ProtocolEndpointObjectSet) CreateObject(payload *nimbleos.ProtocolEndpoint) (*nimbleos.ProtocolEndpoint, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on ProtocolEndpoint")
 }
 
 // UpdateObject Modify existing ProtocolEndpoint object
-func (objectSet *ProtocolEndpointObjectSet) UpdateObject(id string, payload *model.ProtocolEndpoint) (*model.ProtocolEndpoint, error) {
+func (objectSet *ProtocolEndpointObjectSet) UpdateObject(id string, payload *nimbleos.ProtocolEndpoint) (*nimbleos.ProtocolEndpoint, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on ProtocolEndpoint")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *ProtocolEndpointObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a ProtocolEndpoint object with the given ID
-func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*model.ProtocolEndpoint, error) {
-	protocolEndpointObjectSetResp, err := objectSet.Client.Get(protocolEndpointPath, id, model.ProtocolEndpoint{})
+func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*nimbleos.ProtocolEndpoint, error) {
+	protocolEndpointObjectSetResp, err := objectSet.Client.Get(protocolEndpointPath, id, nimbleos.ProtocolEndpoint{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*model.Protoco
 	if protocolEndpointObjectSetResp == nil {
 		return nil, nil
 	}
-	return protocolEndpointObjectSetResp.(*model.ProtocolEndpoint), err
+	return protocolEndpointObjectSetResp.(*nimbleos.ProtocolEndpoint), err
 }
 
 // GetObjectList returns the list of ProtocolEndpoint objects
-func (objectSet *ProtocolEndpointObjectSet) GetObjectList() ([]*model.ProtocolEndpoint, error) {
+func (objectSet *ProtocolEndpointObjectSet) GetObjectList() ([]*nimbleos.ProtocolEndpoint, error) {
 	protocolEndpointObjectSetResp, err := objectSet.Client.List(protocolEndpointPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *ProtocolEndpointObjectSet) GetObjectList() ([]*model.ProtocolEn
 }
 
 // GetObjectListFromParams returns the list of ProtocolEndpoint objects using the given params query info
-func (objectSet *ProtocolEndpointObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ProtocolEndpoint, error) {
+func (objectSet *ProtocolEndpointObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.ProtocolEndpoint, error) {
 	protocolEndpointObjectSetResp, err := objectSet.Client.ListFromParams(protocolEndpointPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *ProtocolEndpointObjectSet) GetObjectListFromParams(params *util
 }
 
 // generated function to build the appropriate response types
-func buildProtocolEndpointObjectSet(response interface{}) []*model.ProtocolEndpoint {
+func buildProtocolEndpointObjectSet(response interface{}) []*nimbleos.ProtocolEndpoint {
 	values := reflect.ValueOf(response)
-	results := make([]*model.ProtocolEndpoint, values.Len())
+	results := make([]*nimbleos.ProtocolEndpoint, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.ProtocolEndpoint{}
+		value := &nimbleos.ProtocolEndpoint{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

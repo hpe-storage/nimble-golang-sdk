@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type InitiatorGroupObjectSet struct {
 }
 
 // CreateObject creates a new InitiatorGroup object
-func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	newPayload, err := model.EncodeInitiatorGroup(payload)
+func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
+	newPayload, err := nimbleos.EncodeInitiatorGroup(payload)
 	resp, err := objectSet.Client.Post(initiatorGroupPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,12 +33,12 @@ func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *model.InitiatorG
 		return nil, nil
 	}
 
-	return model.DecodeInitiatorGroup(resp)
+	return nimbleos.DecodeInitiatorGroup(resp)
 }
 
 // UpdateObject Modify existing InitiatorGroup object
-func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *model.InitiatorGroup) (*model.InitiatorGroup, error) {
-	newPayload, err := model.EncodeInitiatorGroup(payload)
+func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
+	newPayload, err := nimbleos.EncodeInitiatorGroup(payload)
 	resp, err := objectSet.Client.Put(initiatorGroupPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *model
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeInitiatorGroup(resp)
+	return nimbleos.DecodeInitiatorGroup(resp)
 }
 
 // DeleteObject deletes the InitiatorGroup object with the specified ID
@@ -61,8 +61,8 @@ func (objectSet *InitiatorGroupObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a InitiatorGroup object with the given ID
-func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*model.InitiatorGroup, error) {
-	initiatorGroupObjectSetResp, err := objectSet.Client.Get(initiatorGroupPath, id, model.InitiatorGroup{})
+func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*nimbleos.InitiatorGroup, error) {
+	initiatorGroupObjectSetResp, err := objectSet.Client.Get(initiatorGroupPath, id, nimbleos.InitiatorGroup{})
 	if err != nil {
 		return nil, err
 	}
@@ -71,11 +71,11 @@ func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*model.Initiator
 	if initiatorGroupObjectSetResp == nil {
 		return nil, nil
 	}
-	return initiatorGroupObjectSetResp.(*model.InitiatorGroup), err
+	return initiatorGroupObjectSetResp.(*nimbleos.InitiatorGroup), err
 }
 
 // GetObjectList returns the list of InitiatorGroup objects
-func (objectSet *InitiatorGroupObjectSet) GetObjectList() ([]*model.InitiatorGroup, error) {
+func (objectSet *InitiatorGroupObjectSet) GetObjectList() ([]*nimbleos.InitiatorGroup, error) {
 	initiatorGroupObjectSetResp, err := objectSet.Client.List(initiatorGroupPath)
 	if err != nil {
 		return nil, err
@@ -84,7 +84,7 @@ func (objectSet *InitiatorGroupObjectSet) GetObjectList() ([]*model.InitiatorGro
 }
 
 // GetObjectListFromParams returns the list of InitiatorGroup objects using the given params query info
-func (objectSet *InitiatorGroupObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.InitiatorGroup, error) {
+func (objectSet *InitiatorGroupObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.InitiatorGroup, error) {
 	initiatorGroupObjectSetResp, err := objectSet.Client.ListFromParams(initiatorGroupPath, params)
 	if err != nil {
 		return nil, err
@@ -93,12 +93,12 @@ func (objectSet *InitiatorGroupObjectSet) GetObjectListFromParams(params *util.G
 }
 
 // generated function to build the appropriate response types
-func buildInitiatorGroupObjectSet(response interface{}) []*model.InitiatorGroup {
+func buildInitiatorGroupObjectSet(response interface{}) []*nimbleos.InitiatorGroup {
 	values := reflect.ValueOf(response)
-	results := make([]*model.InitiatorGroup, values.Len())
+	results := make([]*nimbleos.InitiatorGroup, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.InitiatorGroup{}
+		value := &nimbleos.InitiatorGroup{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

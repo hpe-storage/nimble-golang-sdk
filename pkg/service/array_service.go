@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ArrayService type
@@ -23,7 +23,7 @@ func NewArrayService(gs *NsGroupService) *ArrayService {
 }
 
 // GetArrays - method returns a array of pointers of type "Arrays"
-func (svc *ArrayService) GetArrays(params *util.GetParams) ([]*model.Array, error) {
+func (svc *ArrayService) GetArrays(params *param.GetParams) ([]*nimbleos.Array, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ArrayService) GetArrays(params *util.GetParams) ([]*model.Array, erro
 }
 
 // CreateArray - method creates a "Array"
-func (svc *ArrayService) CreateArray(obj *model.Array) (*model.Array, error) {
+func (svc *ArrayService) CreateArray(obj *nimbleos.Array) (*nimbleos.Array, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ArrayService) CreateArray(obj *model.Array) (*model.Array, error) {
 }
 
 // UpdateArray - method modifies  the "Array"
-func (svc *ArrayService) UpdateArray(id string, obj *model.Array) (*model.Array, error) {
+func (svc *ArrayService) UpdateArray(id string, obj *nimbleos.Array) (*nimbleos.Array, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ArrayService) UpdateArray(id string, obj *model.Array) (*model.Array,
 }
 
 // GetArrayById - method returns a pointer to "Array"
-func (svc *ArrayService) GetArrayById(id string) (*model.Array, error) {
+func (svc *ArrayService) GetArrayById(id string) (*nimbleos.Array, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ArrayService) GetArrayById(id string) (*model.Array, error) {
 }
 
 // GetArrayByName - method returns a pointer "Array"
-func (svc *ArrayService) GetArrayByName(name string) (*model.Array, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ArrayService) GetArrayByName(name string) (*nimbleos.Array, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

@@ -5,8 +5,8 @@ package service
 import (
 	"testing"
 
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )
@@ -42,24 +42,24 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 	suite.deleteVolume("GetVolume")
 }
 
-func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *model.Volume {
+func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
 	perfPolicy, _ := suite.performancePolicyService.GetPerformancePolicyByName("default")
 
-	newVolume := &model.Volume{
+	newVolume := &nimbleos.Volume{
 		Size:              5120,
 		Description:       "This volume was created as part of a unit test",
 		PerfpolicyId:      perfPolicy.ID,
-		ThinlyProvisioned: util.NewBool(true),
-		Online:            util.NewBool(true),
+		ThinlyProvisioned: param.NewBool(true),
+		Online:            param.NewBool(true),
 		LimitIops:         256,
 		LimitMbps:         1,
-		MultiInitiator:    util.NewBool(true),
-		AgentType:         model.NsAgentTypeNone,
+		MultiInitiator:    param.NewBool(true),
+		AgentType:         nimbleos.NsAgentTypeNone,
 	}
 	return newVolume
 }
 
-func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *model.Volume {
+func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *nimbleos.Volume {
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()

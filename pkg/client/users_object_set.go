@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -20,8 +20,8 @@ type UserObjectSet struct {
 }
 
 // CreateObject creates a new User object
-func (objectSet *UserObjectSet) CreateObject(payload *model.User) (*model.User, error) {
-	newPayload, err := model.EncodeUser(payload)
+func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.User, error) {
+	newPayload, err := nimbleos.EncodeUser(payload)
 	resp, err := objectSet.Client.Post(userPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -32,12 +32,12 @@ func (objectSet *UserObjectSet) CreateObject(payload *model.User) (*model.User, 
 		return nil, nil
 	}
 
-	return model.DecodeUser(resp)
+	return nimbleos.DecodeUser(resp)
 }
 
 // UpdateObject Modify existing User object
-func (objectSet *UserObjectSet) UpdateObject(id string, payload *model.User) (*model.User, error) {
-	newPayload, err := model.EncodeUser(payload)
+func (objectSet *UserObjectSet) UpdateObject(id string, payload *nimbleos.User) (*nimbleos.User, error) {
+	newPayload, err := nimbleos.EncodeUser(payload)
 	resp, err := objectSet.Client.Put(userPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (objectSet *UserObjectSet) UpdateObject(id string, payload *model.User) (*m
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeUser(resp)
+	return nimbleos.DecodeUser(resp)
 }
 
 // DeleteObject deletes the User object with the specified ID
@@ -60,8 +60,8 @@ func (objectSet *UserObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a User object with the given ID
-func (objectSet *UserObjectSet) GetObject(id string) (*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.Get(userPath, id, model.User{})
+func (objectSet *UserObjectSet) GetObject(id string) (*nimbleos.User, error) {
+	userObjectSetResp, err := objectSet.Client.Get(userPath, id, nimbleos.User{})
 	if err != nil {
 		return nil, err
 	}
@@ -70,11 +70,11 @@ func (objectSet *UserObjectSet) GetObject(id string) (*model.User, error) {
 	if userObjectSetResp == nil {
 		return nil, nil
 	}
-	return userObjectSetResp.(*model.User), err
+	return userObjectSetResp.(*nimbleos.User), err
 }
 
 // GetObjectList returns the list of User objects
-func (objectSet *UserObjectSet) GetObjectList() ([]*model.User, error) {
+func (objectSet *UserObjectSet) GetObjectList() ([]*nimbleos.User, error) {
 	userObjectSetResp, err := objectSet.Client.List(userPath)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (objectSet *UserObjectSet) GetObjectList() ([]*model.User, error) {
 }
 
 // GetObjectListFromParams returns the list of User objects using the given params query info
-func (objectSet *UserObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.User, error) {
+func (objectSet *UserObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.User, error) {
 	userObjectSetResp, err := objectSet.Client.ListFromParams(userPath, params)
 	if err != nil {
 		return nil, err
@@ -92,12 +92,12 @@ func (objectSet *UserObjectSet) GetObjectListFromParams(params *util.GetParams) 
 }
 
 // generated function to build the appropriate response types
-func buildUserObjectSet(response interface{}) []*model.User {
+func buildUserObjectSet(response interface{}) []*nimbleos.User {
 	values := reflect.ValueOf(response)
-	results := make([]*model.User, values.Len())
+	results := make([]*nimbleos.User, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.User{}
+		value := &nimbleos.User{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

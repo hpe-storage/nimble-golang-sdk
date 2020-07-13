@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,13 +21,13 @@ type UserPolicyObjectSet struct {
 }
 
 // CreateObject creates a new UserPolicy object
-func (objectSet *UserPolicyObjectSet) CreateObject(payload *model.UserPolicy) (*model.UserPolicy, error) {
+func (objectSet *UserPolicyObjectSet) CreateObject(payload *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on UserPolicy")
 }
 
 // UpdateObject Modify existing UserPolicy object
-func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *model.UserPolicy) (*model.UserPolicy, error) {
-	newPayload, err := model.EncodeUserPolicy(payload)
+func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
+	newPayload, err := nimbleos.EncodeUserPolicy(payload)
 	resp, err := objectSet.Client.Put(userPolicyPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -37,7 +37,7 @@ func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *model.Use
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeUserPolicy(resp)
+	return nimbleos.DecodeUserPolicy(resp)
 }
 
 // DeleteObject deletes the UserPolicy object with the specified ID
@@ -46,8 +46,8 @@ func (objectSet *UserPolicyObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a UserPolicy object with the given ID
-func (objectSet *UserPolicyObjectSet) GetObject(id string) (*model.UserPolicy, error) {
-	userPolicyObjectSetResp, err := objectSet.Client.Get(userPolicyPath, id, model.UserPolicy{})
+func (objectSet *UserPolicyObjectSet) GetObject(id string) (*nimbleos.UserPolicy, error) {
+	userPolicyObjectSetResp, err := objectSet.Client.Get(userPolicyPath, id, nimbleos.UserPolicy{})
 	if err != nil {
 		return nil, err
 	}
@@ -56,11 +56,11 @@ func (objectSet *UserPolicyObjectSet) GetObject(id string) (*model.UserPolicy, e
 	if userPolicyObjectSetResp == nil {
 		return nil, nil
 	}
-	return userPolicyObjectSetResp.(*model.UserPolicy), err
+	return userPolicyObjectSetResp.(*nimbleos.UserPolicy), err
 }
 
 // GetObjectList returns the list of UserPolicy objects
-func (objectSet *UserPolicyObjectSet) GetObjectList() ([]*model.UserPolicy, error) {
+func (objectSet *UserPolicyObjectSet) GetObjectList() ([]*nimbleos.UserPolicy, error) {
 	userPolicyObjectSetResp, err := objectSet.Client.List(userPolicyPath)
 	if err != nil {
 		return nil, err
@@ -69,7 +69,7 @@ func (objectSet *UserPolicyObjectSet) GetObjectList() ([]*model.UserPolicy, erro
 }
 
 // GetObjectListFromParams returns the list of UserPolicy objects using the given params query info
-func (objectSet *UserPolicyObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.UserPolicy, error) {
+func (objectSet *UserPolicyObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.UserPolicy, error) {
 	userPolicyObjectSetResp, err := objectSet.Client.ListFromParams(userPolicyPath, params)
 	if err != nil {
 		return nil, err
@@ -78,12 +78,12 @@ func (objectSet *UserPolicyObjectSet) GetObjectListFromParams(params *util.GetPa
 }
 
 // generated function to build the appropriate response types
-func buildUserPolicyObjectSet(response interface{}) []*model.UserPolicy {
+func buildUserPolicyObjectSet(response interface{}) []*nimbleos.UserPolicy {
 	values := reflect.ValueOf(response)
-	results := make([]*model.UserPolicy, values.Len())
+	results := make([]*nimbleos.UserPolicy, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.UserPolicy{}
+		value := &nimbleos.UserPolicy{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

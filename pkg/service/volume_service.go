@@ -8,8 +8,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // VolumeService type
@@ -24,7 +24,7 @@ func NewVolumeService(gs *NsGroupService) *VolumeService {
 }
 
 // GetVolumes - method returns a array of pointers of type "Volumes"
-func (svc *VolumeService) GetVolumes(params *util.GetParams) ([]*model.Volume, error) {
+func (svc *VolumeService) GetVolumes(params *param.GetParams) ([]*nimbleos.Volume, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -37,7 +37,7 @@ func (svc *VolumeService) GetVolumes(params *util.GetParams) ([]*model.Volume, e
 }
 
 // CreateVolume - method creates a "Volume"
-func (svc *VolumeService) CreateVolume(obj *model.Volume) (*model.Volume, error) {
+func (svc *VolumeService) CreateVolume(obj *nimbleos.Volume) (*nimbleos.Volume, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -50,7 +50,7 @@ func (svc *VolumeService) CreateVolume(obj *model.Volume) (*model.Volume, error)
 }
 
 // UpdateVolume - method modifies  the "Volume"
-func (svc *VolumeService) UpdateVolume(id string, obj *model.Volume) (*model.Volume, error) {
+func (svc *VolumeService) UpdateVolume(id string, obj *nimbleos.Volume) (*nimbleos.Volume, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -63,7 +63,7 @@ func (svc *VolumeService) UpdateVolume(id string, obj *model.Volume) (*model.Vol
 }
 
 // GetVolumeById - method returns a pointer to "Volume"
-func (svc *VolumeService) GetVolumeById(id string) (*model.Volume, error) {
+func (svc *VolumeService) GetVolumeById(id string) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -76,11 +76,11 @@ func (svc *VolumeService) GetVolumeById(id string) (*model.Volume, error) {
 }
 
 // GetVolumeByName - method returns a pointer "Volume"
-func (svc *VolumeService) GetVolumeByName(name string) (*model.Volume, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *VolumeService) GetVolumeByName(name string) (*nimbleos.Volume, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}
@@ -97,11 +97,11 @@ func (svc *VolumeService) GetVolumeByName(name string) (*model.Volume, error) {
 }
 
 // GetVolumeBySerialNumber method returns a pointer to "Volume"
-func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*model.Volume, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.SerialNumber,
-			Operator:  util.EQUALS.String(),
+func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*nimbleos.Volume, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.SerialNumber,
+			Operator:  param.EQUALS.String(),
 			Value:     serialNumber,
 		},
 	}
@@ -117,14 +117,14 @@ func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*model.V
 }
 
 //OnlineVolume - method makes the volume online
-func (svc *VolumeService) OnlineVolume(id string, force bool) (*model.Volume, error) {
+func (svc *VolumeService) OnlineVolume(id string, force bool) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 
-	volumeResp, err := svc.UpdateVolume(id, &model.Volume{
-		Online: util.NewBool(true),
-		Force:  util.NewBool(force),
+	volumeResp, err := svc.UpdateVolume(id, &nimbleos.Volume{
+		Online: param.NewBool(true),
+		Force:  param.NewBool(force),
 	})
 	if err != nil {
 		return nil, err
@@ -133,14 +133,14 @@ func (svc *VolumeService) OnlineVolume(id string, force bool) (*model.Volume, er
 }
 
 // OfflineVolume - makes the volume offline
-func (svc *VolumeService) OfflineVolume(id string, force bool) (*model.Volume, error) {
+func (svc *VolumeService) OfflineVolume(id string, force bool) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 
-	volumeResp, err := svc.UpdateVolume(id, &model.Volume{
-		Online: util.NewBool(false),
-		Force:  util.NewBool(force),
+	volumeResp, err := svc.UpdateVolume(id, &nimbleos.Volume{
+		Online: param.NewBool(false),
+		Force:  param.NewBool(force),
 	})
 	if err != nil {
 		return nil, err

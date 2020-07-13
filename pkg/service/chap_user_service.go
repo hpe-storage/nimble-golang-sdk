@@ -9,8 +9,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ChapUserService type
@@ -25,7 +25,7 @@ func NewChapUserService(gs *NsGroupService) *ChapUserService {
 }
 
 // GetChapUsers - method returns a array of pointers of type "ChapUsers"
-func (svc *ChapUserService) GetChapUsers(params *util.GetParams) ([]*model.ChapUser, error) {
+func (svc *ChapUserService) GetChapUsers(params *param.GetParams) ([]*nimbleos.ChapUser, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -38,7 +38,7 @@ func (svc *ChapUserService) GetChapUsers(params *util.GetParams) ([]*model.ChapU
 }
 
 // CreateChapUser - method creates a "ChapUser"
-func (svc *ChapUserService) CreateChapUser(obj *model.ChapUser) (*model.ChapUser, error) {
+func (svc *ChapUserService) CreateChapUser(obj *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -51,7 +51,7 @@ func (svc *ChapUserService) CreateChapUser(obj *model.ChapUser) (*model.ChapUser
 }
 
 // UpdateChapUser - method modifies  the "ChapUser"
-func (svc *ChapUserService) UpdateChapUser(id string, obj *model.ChapUser) (*model.ChapUser, error) {
+func (svc *ChapUserService) UpdateChapUser(id string, obj *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -64,7 +64,7 @@ func (svc *ChapUserService) UpdateChapUser(id string, obj *model.ChapUser) (*mod
 }
 
 // GetChapUserById - method returns a pointer to "ChapUser"
-func (svc *ChapUserService) GetChapUserById(id string) (*model.ChapUser, error) {
+func (svc *ChapUserService) GetChapUserById(id string) (*nimbleos.ChapUser, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -77,11 +77,11 @@ func (svc *ChapUserService) GetChapUserById(id string) (*model.ChapUser, error) 
 }
 
 // GetChapUserByName - method returns a pointer "ChapUser"
-func (svc *ChapUserService) GetChapUserByName(name string) (*model.ChapUser, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ChapUserService) GetChapUserByName(name string) (*nimbleos.ChapUser, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

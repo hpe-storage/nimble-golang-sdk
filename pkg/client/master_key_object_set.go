@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -22,8 +22,8 @@ type MasterKeyObjectSet struct {
 }
 
 // CreateObject creates a new MasterKey object
-func (objectSet *MasterKeyObjectSet) CreateObject(payload *model.MasterKey) (*model.MasterKey, error) {
-	newPayload, err := model.EncodeMasterKey(payload)
+func (objectSet *MasterKeyObjectSet) CreateObject(payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
+	newPayload, err := nimbleos.EncodeMasterKey(payload)
 	resp, err := objectSet.Client.Post(masterKeyPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -34,12 +34,12 @@ func (objectSet *MasterKeyObjectSet) CreateObject(payload *model.MasterKey) (*mo
 		return nil, nil
 	}
 
-	return model.DecodeMasterKey(resp)
+	return nimbleos.DecodeMasterKey(resp)
 }
 
 // UpdateObject Modify existing MasterKey object
-func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *model.MasterKey) (*model.MasterKey, error) {
-	newPayload, err := model.EncodeMasterKey(payload)
+func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
+	newPayload, err := nimbleos.EncodeMasterKey(payload)
 	resp, err := objectSet.Client.Put(masterKeyPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *model.Mast
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeMasterKey(resp)
+	return nimbleos.DecodeMasterKey(resp)
 }
 
 // DeleteObject deletes the MasterKey object with the specified ID
@@ -62,8 +62,8 @@ func (objectSet *MasterKeyObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a MasterKey object with the given ID
-func (objectSet *MasterKeyObjectSet) GetObject(id string) (*model.MasterKey, error) {
-	masterKeyObjectSetResp, err := objectSet.Client.Get(masterKeyPath, id, model.MasterKey{})
+func (objectSet *MasterKeyObjectSet) GetObject(id string) (*nimbleos.MasterKey, error) {
+	masterKeyObjectSetResp, err := objectSet.Client.Get(masterKeyPath, id, nimbleos.MasterKey{})
 	if err != nil {
 		return nil, err
 	}
@@ -72,11 +72,11 @@ func (objectSet *MasterKeyObjectSet) GetObject(id string) (*model.MasterKey, err
 	if masterKeyObjectSetResp == nil {
 		return nil, nil
 	}
-	return masterKeyObjectSetResp.(*model.MasterKey), err
+	return masterKeyObjectSetResp.(*nimbleos.MasterKey), err
 }
 
 // GetObjectList returns the list of MasterKey objects
-func (objectSet *MasterKeyObjectSet) GetObjectList() ([]*model.MasterKey, error) {
+func (objectSet *MasterKeyObjectSet) GetObjectList() ([]*nimbleos.MasterKey, error) {
 	masterKeyObjectSetResp, err := objectSet.Client.List(masterKeyPath)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func (objectSet *MasterKeyObjectSet) GetObjectList() ([]*model.MasterKey, error)
 }
 
 // GetObjectListFromParams returns the list of MasterKey objects using the given params query info
-func (objectSet *MasterKeyObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.MasterKey, error) {
+func (objectSet *MasterKeyObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.MasterKey, error) {
 	masterKeyObjectSetResp, err := objectSet.Client.ListFromParams(masterKeyPath, params)
 	if err != nil {
 		return nil, err
@@ -94,12 +94,12 @@ func (objectSet *MasterKeyObjectSet) GetObjectListFromParams(params *util.GetPar
 }
 
 // generated function to build the appropriate response types
-func buildMasterKeyObjectSet(response interface{}) []*model.MasterKey {
+func buildMasterKeyObjectSet(response interface{}) []*nimbleos.MasterKey {
 	values := reflect.ValueOf(response)
-	results := make([]*model.MasterKey, values.Len())
+	results := make([]*nimbleos.MasterKey, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.MasterKey{}
+		value := &nimbleos.MasterKey{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

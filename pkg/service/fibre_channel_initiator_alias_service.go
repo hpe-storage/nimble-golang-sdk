@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // FibreChannelInitiatorAliasService type
@@ -23,7 +23,7 @@ func NewFibreChannelInitiatorAliasService(gs *NsGroupService) *FibreChannelIniti
 }
 
 // GetFibreChannelInitiatorAliass - method returns a array of pointers of type "FibreChannelInitiatorAliass"
-func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliass(params *util.GetParams) ([]*model.FibreChannelInitiatorAlias, error) {
+func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliass(params *param.GetParams) ([]*nimbleos.FibreChannelInitiatorAlias, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliass(par
 }
 
 // CreateFibreChannelInitiatorAlias - method creates a "FibreChannelInitiatorAlias"
-func (svc *FibreChannelInitiatorAliasService) CreateFibreChannelInitiatorAlias(obj *model.FibreChannelInitiatorAlias) (*model.FibreChannelInitiatorAlias, error) {
+func (svc *FibreChannelInitiatorAliasService) CreateFibreChannelInitiatorAlias(obj *nimbleos.FibreChannelInitiatorAlias) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *FibreChannelInitiatorAliasService) CreateFibreChannelInitiatorAlias(o
 }
 
 // UpdateFibreChannelInitiatorAlias - method modifies  the "FibreChannelInitiatorAlias"
-func (svc *FibreChannelInitiatorAliasService) UpdateFibreChannelInitiatorAlias(id string, obj *model.FibreChannelInitiatorAlias) (*model.FibreChannelInitiatorAlias, error) {
+func (svc *FibreChannelInitiatorAliasService) UpdateFibreChannelInitiatorAlias(id string, obj *nimbleos.FibreChannelInitiatorAlias) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *FibreChannelInitiatorAliasService) UpdateFibreChannelInitiatorAlias(i
 }
 
 // GetFibreChannelInitiatorAliasById - method returns a pointer to "FibreChannelInitiatorAlias"
-func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliasById(id string) (*model.FibreChannelInitiatorAlias, error) {
+func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliasById(id string) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

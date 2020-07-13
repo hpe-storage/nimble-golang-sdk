@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type NetworkInterfaceObjectSet struct {
 }
 
 // CreateObject creates a new NetworkInterface object
-func (objectSet *NetworkInterfaceObjectSet) CreateObject(payload *model.NetworkInterface) (*model.NetworkInterface, error) {
+func (objectSet *NetworkInterfaceObjectSet) CreateObject(payload *nimbleos.NetworkInterface) (*nimbleos.NetworkInterface, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on NetworkInterface")
 }
 
 // UpdateObject Modify existing NetworkInterface object
-func (objectSet *NetworkInterfaceObjectSet) UpdateObject(id string, payload *model.NetworkInterface) (*model.NetworkInterface, error) {
+func (objectSet *NetworkInterfaceObjectSet) UpdateObject(id string, payload *nimbleos.NetworkInterface) (*nimbleos.NetworkInterface, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on NetworkInterface")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *NetworkInterfaceObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a NetworkInterface object with the given ID
-func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*model.NetworkInterface, error) {
-	networkInterfaceObjectSetResp, err := objectSet.Client.Get(networkInterfacePath, id, model.NetworkInterface{})
+func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*nimbleos.NetworkInterface, error) {
+	networkInterfaceObjectSetResp, err := objectSet.Client.Get(networkInterfacePath, id, nimbleos.NetworkInterface{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*model.Network
 	if networkInterfaceObjectSetResp == nil {
 		return nil, nil
 	}
-	return networkInterfaceObjectSetResp.(*model.NetworkInterface), err
+	return networkInterfaceObjectSetResp.(*nimbleos.NetworkInterface), err
 }
 
 // GetObjectList returns the list of NetworkInterface objects
-func (objectSet *NetworkInterfaceObjectSet) GetObjectList() ([]*model.NetworkInterface, error) {
+func (objectSet *NetworkInterfaceObjectSet) GetObjectList() ([]*nimbleos.NetworkInterface, error) {
 	networkInterfaceObjectSetResp, err := objectSet.Client.List(networkInterfacePath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *NetworkInterfaceObjectSet) GetObjectList() ([]*model.NetworkInt
 }
 
 // GetObjectListFromParams returns the list of NetworkInterface objects using the given params query info
-func (objectSet *NetworkInterfaceObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.NetworkInterface, error) {
+func (objectSet *NetworkInterfaceObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.NetworkInterface, error) {
 	networkInterfaceObjectSetResp, err := objectSet.Client.ListFromParams(networkInterfacePath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *NetworkInterfaceObjectSet) GetObjectListFromParams(params *util
 }
 
 // generated function to build the appropriate response types
-func buildNetworkInterfaceObjectSet(response interface{}) []*model.NetworkInterface {
+func buildNetworkInterfaceObjectSet(response interface{}) []*nimbleos.NetworkInterface {
 	values := reflect.ValueOf(response)
-	results := make([]*model.NetworkInterface, values.Len())
+	results := make([]*nimbleos.NetworkInterface, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.NetworkInterface{}
+		value := &nimbleos.NetworkInterface{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

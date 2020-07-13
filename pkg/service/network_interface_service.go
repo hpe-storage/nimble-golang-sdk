@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // NetworkInterfaceService type
@@ -23,7 +23,7 @@ func NewNetworkInterfaceService(gs *NsGroupService) *NetworkInterfaceService {
 }
 
 // GetNetworkInterfaces - method returns a array of pointers of type "NetworkInterfaces"
-func (svc *NetworkInterfaceService) GetNetworkInterfaces(params *util.GetParams) ([]*model.NetworkInterface, error) {
+func (svc *NetworkInterfaceService) GetNetworkInterfaces(params *param.GetParams) ([]*nimbleos.NetworkInterface, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *NetworkInterfaceService) GetNetworkInterfaces(params *util.GetParams)
 }
 
 // CreateNetworkInterface - method creates a "NetworkInterface"
-func (svc *NetworkInterfaceService) CreateNetworkInterface(obj *model.NetworkInterface) (*model.NetworkInterface, error) {
+func (svc *NetworkInterfaceService) CreateNetworkInterface(obj *nimbleos.NetworkInterface) (*nimbleos.NetworkInterface, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *NetworkInterfaceService) CreateNetworkInterface(obj *model.NetworkInt
 }
 
 // UpdateNetworkInterface - method modifies  the "NetworkInterface"
-func (svc *NetworkInterfaceService) UpdateNetworkInterface(id string, obj *model.NetworkInterface) (*model.NetworkInterface, error) {
+func (svc *NetworkInterfaceService) UpdateNetworkInterface(id string, obj *nimbleos.NetworkInterface) (*nimbleos.NetworkInterface, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *NetworkInterfaceService) UpdateNetworkInterface(id string, obj *model
 }
 
 // GetNetworkInterfaceById - method returns a pointer to "NetworkInterface"
-func (svc *NetworkInterfaceService) GetNetworkInterfaceById(id string) (*model.NetworkInterface, error) {
+func (svc *NetworkInterfaceService) GetNetworkInterfaceById(id string) (*nimbleos.NetworkInterface, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *NetworkInterfaceService) GetNetworkInterfaceById(id string) (*model.N
 }
 
 // GetNetworkInterfaceByName - method returns a pointer "NetworkInterface"
-func (svc *NetworkInterfaceService) GetNetworkInterfaceByName(name string) (*model.NetworkInterface, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *NetworkInterfaceService) GetNetworkInterfaceByName(name string) (*nimbleos.NetworkInterface, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

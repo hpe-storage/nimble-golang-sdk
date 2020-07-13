@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // WitnessService type
@@ -23,7 +23,7 @@ func NewWitnessService(gs *NsGroupService) *WitnessService {
 }
 
 // GetWitnesses - method returns a array of pointers of type "Witnesses"
-func (svc *WitnessService) GetWitnesses(params *util.GetParams) ([]*model.Witness, error) {
+func (svc *WitnessService) GetWitnesses(params *param.GetParams) ([]*nimbleos.Witness, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *WitnessService) GetWitnesses(params *util.GetParams) ([]*model.Witnes
 }
 
 // CreateWitness - method creates a "Witness"
-func (svc *WitnessService) CreateWitness(obj *model.Witness) (*model.Witness, error) {
+func (svc *WitnessService) CreateWitness(obj *nimbleos.Witness) (*nimbleos.Witness, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *WitnessService) CreateWitness(obj *model.Witness) (*model.Witness, er
 }
 
 // UpdateWitness - method modifies  the "Witness"
-func (svc *WitnessService) UpdateWitness(id string, obj *model.Witness) (*model.Witness, error) {
+func (svc *WitnessService) UpdateWitness(id string, obj *nimbleos.Witness) (*nimbleos.Witness, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *WitnessService) UpdateWitness(id string, obj *model.Witness) (*model.
 }
 
 // GetWitnessById - method returns a pointer to "Witness"
-func (svc *WitnessService) GetWitnessById(id string) (*model.Witness, error) {
+func (svc *WitnessService) GetWitnessById(id string) (*nimbleos.Witness, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

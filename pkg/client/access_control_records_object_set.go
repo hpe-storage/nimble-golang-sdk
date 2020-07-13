@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type AccessControlRecordObjectSet struct {
 }
 
 // CreateObject creates a new AccessControlRecord object
-func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
-	newPayload, err := model.EncodeAccessControlRecord(payload)
+func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
+	newPayload, err := nimbleos.EncodeAccessControlRecord(payload)
 	resp, err := objectSet.Client.Post(accessControlRecordPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,11 +33,11 @@ func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *model.Acces
 		return nil, nil
 	}
 
-	return model.DecodeAccessControlRecord(resp)
+	return nimbleos.DecodeAccessControlRecord(resp)
 }
 
 // UpdateObject Modify existing AccessControlRecord object
-func (objectSet *AccessControlRecordObjectSet) UpdateObject(id string, payload *model.AccessControlRecord) (*model.AccessControlRecord, error) {
+func (objectSet *AccessControlRecordObjectSet) UpdateObject(id string, payload *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on AccessControlRecord")
 }
 
@@ -51,8 +51,8 @@ func (objectSet *AccessControlRecordObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a AccessControlRecord object with the given ID
-func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*model.AccessControlRecord, error) {
-	accessControlRecordObjectSetResp, err := objectSet.Client.Get(accessControlRecordPath, id, model.AccessControlRecord{})
+func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*nimbleos.AccessControlRecord, error) {
+	accessControlRecordObjectSetResp, err := objectSet.Client.Get(accessControlRecordPath, id, nimbleos.AccessControlRecord{})
 	if err != nil {
 		return nil, err
 	}
@@ -61,11 +61,11 @@ func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*model.Acce
 	if accessControlRecordObjectSetResp == nil {
 		return nil, nil
 	}
-	return accessControlRecordObjectSetResp.(*model.AccessControlRecord), err
+	return accessControlRecordObjectSetResp.(*nimbleos.AccessControlRecord), err
 }
 
 // GetObjectList returns the list of AccessControlRecord objects
-func (objectSet *AccessControlRecordObjectSet) GetObjectList() ([]*model.AccessControlRecord, error) {
+func (objectSet *AccessControlRecordObjectSet) GetObjectList() ([]*nimbleos.AccessControlRecord, error) {
 	accessControlRecordObjectSetResp, err := objectSet.Client.List(accessControlRecordPath)
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (objectSet *AccessControlRecordObjectSet) GetObjectList() ([]*model.AccessC
 }
 
 // GetObjectListFromParams returns the list of AccessControlRecord objects using the given params query info
-func (objectSet *AccessControlRecordObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.AccessControlRecord, error) {
+func (objectSet *AccessControlRecordObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.AccessControlRecord, error) {
 	accessControlRecordObjectSetResp, err := objectSet.Client.ListFromParams(accessControlRecordPath, params)
 	if err != nil {
 		return nil, err
@@ -83,12 +83,12 @@ func (objectSet *AccessControlRecordObjectSet) GetObjectListFromParams(params *u
 }
 
 // generated function to build the appropriate response types
-func buildAccessControlRecordObjectSet(response interface{}) []*model.AccessControlRecord {
+func buildAccessControlRecordObjectSet(response interface{}) []*nimbleos.AccessControlRecord {
 	values := reflect.ValueOf(response)
-	results := make([]*model.AccessControlRecord, values.Len())
+	results := make([]*nimbleos.AccessControlRecord, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.AccessControlRecord{}
+		value := &nimbleos.AccessControlRecord{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

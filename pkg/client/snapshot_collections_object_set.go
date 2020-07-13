@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type SnapshotCollectionObjectSet struct {
 }
 
 // CreateObject creates a new SnapshotCollection object
-func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *model.SnapshotCollection) (*model.SnapshotCollection, error) {
-	newPayload, err := model.EncodeSnapshotCollection(payload)
+func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
+	newPayload, err := nimbleos.EncodeSnapshotCollection(payload)
 	resp, err := objectSet.Client.Post(snapshotCollectionPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,12 +33,12 @@ func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *model.Snapsh
 		return nil, nil
 	}
 
-	return model.DecodeSnapshotCollection(resp)
+	return nimbleos.DecodeSnapshotCollection(resp)
 }
 
 // UpdateObject Modify existing SnapshotCollection object
-func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *model.SnapshotCollection) (*model.SnapshotCollection, error) {
-	newPayload, err := model.EncodeSnapshotCollection(payload)
+func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
+	newPayload, err := nimbleos.EncodeSnapshotCollection(payload)
 	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *m
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeSnapshotCollection(resp)
+	return nimbleos.DecodeSnapshotCollection(resp)
 }
 
 // DeleteObject deletes the SnapshotCollection object with the specified ID
@@ -61,8 +61,8 @@ func (objectSet *SnapshotCollectionObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a SnapshotCollection object with the given ID
-func (objectSet *SnapshotCollectionObjectSet) GetObject(id string) (*model.SnapshotCollection, error) {
-	snapshotCollectionObjectSetResp, err := objectSet.Client.Get(snapshotCollectionPath, id, model.SnapshotCollection{})
+func (objectSet *SnapshotCollectionObjectSet) GetObject(id string) (*nimbleos.SnapshotCollection, error) {
+	snapshotCollectionObjectSetResp, err := objectSet.Client.Get(snapshotCollectionPath, id, nimbleos.SnapshotCollection{})
 	if err != nil {
 		return nil, err
 	}
@@ -71,11 +71,11 @@ func (objectSet *SnapshotCollectionObjectSet) GetObject(id string) (*model.Snaps
 	if snapshotCollectionObjectSetResp == nil {
 		return nil, nil
 	}
-	return snapshotCollectionObjectSetResp.(*model.SnapshotCollection), err
+	return snapshotCollectionObjectSetResp.(*nimbleos.SnapshotCollection), err
 }
 
 // GetObjectList returns the list of SnapshotCollection objects
-func (objectSet *SnapshotCollectionObjectSet) GetObjectList() ([]*model.SnapshotCollection, error) {
+func (objectSet *SnapshotCollectionObjectSet) GetObjectList() ([]*nimbleos.SnapshotCollection, error) {
 	snapshotCollectionObjectSetResp, err := objectSet.Client.List(snapshotCollectionPath)
 	if err != nil {
 		return nil, err
@@ -84,7 +84,7 @@ func (objectSet *SnapshotCollectionObjectSet) GetObjectList() ([]*model.Snapshot
 }
 
 // GetObjectListFromParams returns the list of SnapshotCollection objects using the given params query info
-func (objectSet *SnapshotCollectionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.SnapshotCollection, error) {
+func (objectSet *SnapshotCollectionObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.SnapshotCollection, error) {
 	snapshotCollectionObjectSetResp, err := objectSet.Client.ListFromParams(snapshotCollectionPath, params)
 	if err != nil {
 		return nil, err
@@ -93,12 +93,12 @@ func (objectSet *SnapshotCollectionObjectSet) GetObjectListFromParams(params *ut
 }
 
 // generated function to build the appropriate response types
-func buildSnapshotCollectionObjectSet(response interface{}) []*model.SnapshotCollection {
+func buildSnapshotCollectionObjectSet(response interface{}) []*nimbleos.SnapshotCollection {
 	values := reflect.ValueOf(response)
-	results := make([]*model.SnapshotCollection, values.Len())
+	results := make([]*nimbleos.SnapshotCollection, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.SnapshotCollection{}
+		value := &nimbleos.SnapshotCollection{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

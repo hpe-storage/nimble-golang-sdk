@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // FolderService type
@@ -23,7 +23,7 @@ func NewFolderService(gs *NsGroupService) *FolderService {
 }
 
 // GetFolders - method returns a array of pointers of type "Folders"
-func (svc *FolderService) GetFolders(params *util.GetParams) ([]*model.Folder, error) {
+func (svc *FolderService) GetFolders(params *param.GetParams) ([]*nimbleos.Folder, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *FolderService) GetFolders(params *util.GetParams) ([]*model.Folder, e
 }
 
 // CreateFolder - method creates a "Folder"
-func (svc *FolderService) CreateFolder(obj *model.Folder) (*model.Folder, error) {
+func (svc *FolderService) CreateFolder(obj *nimbleos.Folder) (*nimbleos.Folder, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *FolderService) CreateFolder(obj *model.Folder) (*model.Folder, error)
 }
 
 // UpdateFolder - method modifies  the "Folder"
-func (svc *FolderService) UpdateFolder(id string, obj *model.Folder) (*model.Folder, error) {
+func (svc *FolderService) UpdateFolder(id string, obj *nimbleos.Folder) (*nimbleos.Folder, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *FolderService) UpdateFolder(id string, obj *model.Folder) (*model.Fol
 }
 
 // GetFolderById - method returns a pointer to "Folder"
-func (svc *FolderService) GetFolderById(id string) (*model.Folder, error) {
+func (svc *FolderService) GetFolderById(id string) (*nimbleos.Folder, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *FolderService) GetFolderById(id string) (*model.Folder, error) {
 }
 
 // GetFolderByName - method returns a pointer "Folder"
-func (svc *FolderService) GetFolderByName(name string) (*model.Folder, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *FolderService) GetFolderByName(name string) (*nimbleos.Folder, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

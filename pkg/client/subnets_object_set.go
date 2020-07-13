@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -22,12 +22,12 @@ type SubnetObjectSet struct {
 }
 
 // CreateObject creates a new Subnet object
-func (objectSet *SubnetObjectSet) CreateObject(payload *model.Subnet) (*model.Subnet, error) {
+func (objectSet *SubnetObjectSet) CreateObject(payload *nimbleos.Subnet) (*nimbleos.Subnet, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on Subnet")
 }
 
 // UpdateObject Modify existing Subnet object
-func (objectSet *SubnetObjectSet) UpdateObject(id string, payload *model.Subnet) (*model.Subnet, error) {
+func (objectSet *SubnetObjectSet) UpdateObject(id string, payload *nimbleos.Subnet) (*nimbleos.Subnet, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on Subnet")
 }
 
@@ -37,8 +37,8 @@ func (objectSet *SubnetObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Subnet object with the given ID
-func (objectSet *SubnetObjectSet) GetObject(id string) (*model.Subnet, error) {
-	subnetObjectSetResp, err := objectSet.Client.Get(subnetPath, id, model.Subnet{})
+func (objectSet *SubnetObjectSet) GetObject(id string) (*nimbleos.Subnet, error) {
+	subnetObjectSetResp, err := objectSet.Client.Get(subnetPath, id, nimbleos.Subnet{})
 	if err != nil {
 		return nil, err
 	}
@@ -47,11 +47,11 @@ func (objectSet *SubnetObjectSet) GetObject(id string) (*model.Subnet, error) {
 	if subnetObjectSetResp == nil {
 		return nil, nil
 	}
-	return subnetObjectSetResp.(*model.Subnet), err
+	return subnetObjectSetResp.(*nimbleos.Subnet), err
 }
 
 // GetObjectList returns the list of Subnet objects
-func (objectSet *SubnetObjectSet) GetObjectList() ([]*model.Subnet, error) {
+func (objectSet *SubnetObjectSet) GetObjectList() ([]*nimbleos.Subnet, error) {
 	subnetObjectSetResp, err := objectSet.Client.List(subnetPath)
 	if err != nil {
 		return nil, err
@@ -60,7 +60,7 @@ func (objectSet *SubnetObjectSet) GetObjectList() ([]*model.Subnet, error) {
 }
 
 // GetObjectListFromParams returns the list of Subnet objects using the given params query info
-func (objectSet *SubnetObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Subnet, error) {
+func (objectSet *SubnetObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Subnet, error) {
 	subnetObjectSetResp, err := objectSet.Client.ListFromParams(subnetPath, params)
 	if err != nil {
 		return nil, err
@@ -69,12 +69,12 @@ func (objectSet *SubnetObjectSet) GetObjectListFromParams(params *util.GetParams
 }
 
 // generated function to build the appropriate response types
-func buildSubnetObjectSet(response interface{}) []*model.Subnet {
+func buildSubnetObjectSet(response interface{}) []*nimbleos.Subnet {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Subnet, values.Len())
+	results := make([]*nimbleos.Subnet, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Subnet{}
+		value := &nimbleos.Subnet{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

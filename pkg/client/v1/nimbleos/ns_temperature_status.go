@@ -1,0 +1,45 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+package nimbleos
+
+// Golang package for NsTemperatureStatus Enum.
+
+type NsTemperatureStatus string
+
+const (
+	cNsTemperatureStatusTemperatureUnknown NsTemperatureStatus = "temperature_unknown"
+	cNsTemperatureStatusTemperatureAlerted NsTemperatureStatus = "temperature_alerted"
+	cNsTemperatureStatusTemperatureOkay    NsTemperatureStatus = "temperature_okay"
+	cNsTemperatureStatusTemperatureFail    NsTemperatureStatus = "temperature_fail"
+)
+
+var pNsTemperatureStatusTemperatureUnknown NsTemperatureStatus
+var pNsTemperatureStatusTemperatureAlerted NsTemperatureStatus
+var pNsTemperatureStatusTemperatureOkay NsTemperatureStatus
+var pNsTemperatureStatusTemperatureFail NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureUnknown enum exports
+var NsTemperatureStatusTemperatureUnknown *NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureAlerted enum exports
+var NsTemperatureStatusTemperatureAlerted *NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureOkay enum exports
+var NsTemperatureStatusTemperatureOkay *NsTemperatureStatus
+
+// NsTemperatureStatusTemperatureFail enum exports
+var NsTemperatureStatusTemperatureFail *NsTemperatureStatus
+
+func init() {
+	pNsTemperatureStatusTemperatureUnknown = cNsTemperatureStatusTemperatureUnknown
+	NsTemperatureStatusTemperatureUnknown = &pNsTemperatureStatusTemperatureUnknown
+
+	pNsTemperatureStatusTemperatureAlerted = cNsTemperatureStatusTemperatureAlerted
+	NsTemperatureStatusTemperatureAlerted = &pNsTemperatureStatusTemperatureAlerted
+
+	pNsTemperatureStatusTemperatureOkay = cNsTemperatureStatusTemperatureOkay
+	NsTemperatureStatusTemperatureOkay = &pNsTemperatureStatusTemperatureOkay
+
+	pNsTemperatureStatusTemperatureFail = cNsTemperatureStatusTemperatureFail
+	NsTemperatureStatusTemperatureFail = &pNsTemperatureStatusTemperatureFail
+
+}

@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type FibreChannelInitiatorAliasObjectSet struct {
 }
 
 // CreateObject creates a new FibreChannelInitiatorAlias object
-func (objectSet *FibreChannelInitiatorAliasObjectSet) CreateObject(payload *model.FibreChannelInitiatorAlias) (*model.FibreChannelInitiatorAlias, error) {
+func (objectSet *FibreChannelInitiatorAliasObjectSet) CreateObject(payload *nimbleos.FibreChannelInitiatorAlias) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelInitiatorAlias")
 }
 
 // UpdateObject Modify existing FibreChannelInitiatorAlias object
-func (objectSet *FibreChannelInitiatorAliasObjectSet) UpdateObject(id string, payload *model.FibreChannelInitiatorAlias) (*model.FibreChannelInitiatorAlias, error) {
+func (objectSet *FibreChannelInitiatorAliasObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelInitiatorAlias) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on FibreChannelInitiatorAlias")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) DeleteObject(id string) er
 }
 
 // GetObject returns a FibreChannelInitiatorAlias object with the given ID
-func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObject(id string) (*model.FibreChannelInitiatorAlias, error) {
-	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.Get(fibreChannelInitiatorAliasPath, id, model.FibreChannelInitiatorAlias{})
+func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObject(id string) (*nimbleos.FibreChannelInitiatorAlias, error) {
+	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.Get(fibreChannelInitiatorAliasPath, id, nimbleos.FibreChannelInitiatorAlias{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObject(id string) (*mod
 	if fibreChannelInitiatorAliasObjectSetResp == nil {
 		return nil, nil
 	}
-	return fibreChannelInitiatorAliasObjectSetResp.(*model.FibreChannelInitiatorAlias), err
+	return fibreChannelInitiatorAliasObjectSetResp.(*nimbleos.FibreChannelInitiatorAlias), err
 }
 
 // GetObjectList returns the list of FibreChannelInitiatorAlias objects
-func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectList() ([]*model.FibreChannelInitiatorAlias, error) {
+func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectList() ([]*nimbleos.FibreChannelInitiatorAlias, error) {
 	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.List(fibreChannelInitiatorAliasPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectList() ([]*model.
 }
 
 // GetObjectListFromParams returns the list of FibreChannelInitiatorAlias objects using the given params query info
-func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.FibreChannelInitiatorAlias, error) {
+func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.FibreChannelInitiatorAlias, error) {
 	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.ListFromParams(fibreChannelInitiatorAliasPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectListFromParams(pa
 }
 
 // generated function to build the appropriate response types
-func buildFibreChannelInitiatorAliasObjectSet(response interface{}) []*model.FibreChannelInitiatorAlias {
+func buildFibreChannelInitiatorAliasObjectSet(response interface{}) []*nimbleos.FibreChannelInitiatorAlias {
 	values := reflect.ValueOf(response)
-	results := make([]*model.FibreChannelInitiatorAlias, values.Len())
+	results := make([]*nimbleos.FibreChannelInitiatorAlias, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.FibreChannelInitiatorAlias{}
+		value := &nimbleos.FibreChannelInitiatorAlias{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

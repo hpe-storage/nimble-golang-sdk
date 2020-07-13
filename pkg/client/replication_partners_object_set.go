@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -22,8 +22,8 @@ type ReplicationPartnerObjectSet struct {
 }
 
 // CreateObject creates a new ReplicationPartner object
-func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
-	newPayload, err := model.EncodeReplicationPartner(payload)
+func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
+	newPayload, err := nimbleos.EncodeReplicationPartner(payload)
 	resp, err := objectSet.Client.Post(replicationPartnerPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -34,12 +34,12 @@ func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *model.Replic
 		return nil, nil
 	}
 
-	return model.DecodeReplicationPartner(resp)
+	return nimbleos.DecodeReplicationPartner(resp)
 }
 
 // UpdateObject Modify existing ReplicationPartner object
-func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *model.ReplicationPartner) (*model.ReplicationPartner, error) {
-	newPayload, err := model.EncodeReplicationPartner(payload)
+func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
+	newPayload, err := nimbleos.EncodeReplicationPartner(payload)
 	resp, err := objectSet.Client.Put(replicationPartnerPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *m
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeReplicationPartner(resp)
+	return nimbleos.DecodeReplicationPartner(resp)
 }
 
 // DeleteObject deletes the ReplicationPartner object with the specified ID
@@ -62,8 +62,8 @@ func (objectSet *ReplicationPartnerObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a ReplicationPartner object with the given ID
-func (objectSet *ReplicationPartnerObjectSet) GetObject(id string) (*model.ReplicationPartner, error) {
-	replicationPartnerObjectSetResp, err := objectSet.Client.Get(replicationPartnerPath, id, model.ReplicationPartner{})
+func (objectSet *ReplicationPartnerObjectSet) GetObject(id string) (*nimbleos.ReplicationPartner, error) {
+	replicationPartnerObjectSetResp, err := objectSet.Client.Get(replicationPartnerPath, id, nimbleos.ReplicationPartner{})
 	if err != nil {
 		return nil, err
 	}
@@ -72,11 +72,11 @@ func (objectSet *ReplicationPartnerObjectSet) GetObject(id string) (*model.Repli
 	if replicationPartnerObjectSetResp == nil {
 		return nil, nil
 	}
-	return replicationPartnerObjectSetResp.(*model.ReplicationPartner), err
+	return replicationPartnerObjectSetResp.(*nimbleos.ReplicationPartner), err
 }
 
 // GetObjectList returns the list of ReplicationPartner objects
-func (objectSet *ReplicationPartnerObjectSet) GetObjectList() ([]*model.ReplicationPartner, error) {
+func (objectSet *ReplicationPartnerObjectSet) GetObjectList() ([]*nimbleos.ReplicationPartner, error) {
 	replicationPartnerObjectSetResp, err := objectSet.Client.List(replicationPartnerPath)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func (objectSet *ReplicationPartnerObjectSet) GetObjectList() ([]*model.Replicat
 }
 
 // GetObjectListFromParams returns the list of ReplicationPartner objects using the given params query info
-func (objectSet *ReplicationPartnerObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ReplicationPartner, error) {
+func (objectSet *ReplicationPartnerObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.ReplicationPartner, error) {
 	replicationPartnerObjectSetResp, err := objectSet.Client.ListFromParams(replicationPartnerPath, params)
 	if err != nil {
 		return nil, err
@@ -94,12 +94,12 @@ func (objectSet *ReplicationPartnerObjectSet) GetObjectListFromParams(params *ut
 }
 
 // generated function to build the appropriate response types
-func buildReplicationPartnerObjectSet(response interface{}) []*model.ReplicationPartner {
+func buildReplicationPartnerObjectSet(response interface{}) []*nimbleos.ReplicationPartner {
 	values := reflect.ValueOf(response)
-	results := make([]*model.ReplicationPartner, values.Len())
+	results := make([]*nimbleos.ReplicationPartner, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.ReplicationPartner{}
+		value := &nimbleos.ReplicationPartner{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ActiveDirectoryMembershipService type
@@ -23,7 +23,7 @@ func NewActiveDirectoryMembershipService(gs *NsGroupService) *ActiveDirectoryMem
 }
 
 // GetActiveDirectoryMemberships - method returns a array of pointers of type "ActiveDirectoryMemberships"
-func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(params *util.GetParams) ([]*model.ActiveDirectoryMembership, error) {
+func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(params *param.GetParams) ([]*nimbleos.ActiveDirectoryMembership, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(param
 }
 
 // CreateActiveDirectoryMembership - method creates a "ActiveDirectoryMembership"
-func (svc *ActiveDirectoryMembershipService) CreateActiveDirectoryMembership(obj *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
+func (svc *ActiveDirectoryMembershipService) CreateActiveDirectoryMembership(obj *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ActiveDirectoryMembershipService) CreateActiveDirectoryMembership(obj
 }
 
 // UpdateActiveDirectoryMembership - method modifies  the "ActiveDirectoryMembership"
-func (svc *ActiveDirectoryMembershipService) UpdateActiveDirectoryMembership(id string, obj *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
+func (svc *ActiveDirectoryMembershipService) UpdateActiveDirectoryMembership(id string, obj *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ActiveDirectoryMembershipService) UpdateActiveDirectoryMembership(id 
 }
 
 // GetActiveDirectoryMembershipById - method returns a pointer to "ActiveDirectoryMembership"
-func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipById(id string) (*model.ActiveDirectoryMembership, error) {
+func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipById(id string) (*nimbleos.ActiveDirectoryMembership, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipById(id
 }
 
 // GetActiveDirectoryMembershipByName - method returns a pointer "ActiveDirectoryMembership"
-func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipByName(name string) (*model.ActiveDirectoryMembership, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipByName(name string) (*nimbleos.ActiveDirectoryMembership, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

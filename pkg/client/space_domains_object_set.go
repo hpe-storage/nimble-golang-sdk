@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type SpaceDomainObjectSet struct {
 }
 
 // CreateObject creates a new SpaceDomain object
-func (objectSet *SpaceDomainObjectSet) CreateObject(payload *model.SpaceDomain) (*model.SpaceDomain, error) {
+func (objectSet *SpaceDomainObjectSet) CreateObject(payload *nimbleos.SpaceDomain) (*nimbleos.SpaceDomain, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on SpaceDomain")
 }
 
 // UpdateObject Modify existing SpaceDomain object
-func (objectSet *SpaceDomainObjectSet) UpdateObject(id string, payload *model.SpaceDomain) (*model.SpaceDomain, error) {
+func (objectSet *SpaceDomainObjectSet) UpdateObject(id string, payload *nimbleos.SpaceDomain) (*nimbleos.SpaceDomain, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on SpaceDomain")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *SpaceDomainObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a SpaceDomain object with the given ID
-func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*model.SpaceDomain, error) {
-	spaceDomainObjectSetResp, err := objectSet.Client.Get(spaceDomainPath, id, model.SpaceDomain{})
+func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*nimbleos.SpaceDomain, error) {
+	spaceDomainObjectSetResp, err := objectSet.Client.Get(spaceDomainPath, id, nimbleos.SpaceDomain{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*model.SpaceDomain,
 	if spaceDomainObjectSetResp == nil {
 		return nil, nil
 	}
-	return spaceDomainObjectSetResp.(*model.SpaceDomain), err
+	return spaceDomainObjectSetResp.(*nimbleos.SpaceDomain), err
 }
 
 // GetObjectList returns the list of SpaceDomain objects
-func (objectSet *SpaceDomainObjectSet) GetObjectList() ([]*model.SpaceDomain, error) {
+func (objectSet *SpaceDomainObjectSet) GetObjectList() ([]*nimbleos.SpaceDomain, error) {
 	spaceDomainObjectSetResp, err := objectSet.Client.List(spaceDomainPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *SpaceDomainObjectSet) GetObjectList() ([]*model.SpaceDomain, er
 }
 
 // GetObjectListFromParams returns the list of SpaceDomain objects using the given params query info
-func (objectSet *SpaceDomainObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.SpaceDomain, error) {
+func (objectSet *SpaceDomainObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.SpaceDomain, error) {
 	spaceDomainObjectSetResp, err := objectSet.Client.ListFromParams(spaceDomainPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *SpaceDomainObjectSet) GetObjectListFromParams(params *util.GetP
 }
 
 // generated function to build the appropriate response types
-func buildSpaceDomainObjectSet(response interface{}) []*model.SpaceDomain {
+func buildSpaceDomainObjectSet(response interface{}) []*nimbleos.SpaceDomain {
 	values := reflect.ValueOf(response)
-	results := make([]*model.SpaceDomain, values.Len())
+	results := make([]*nimbleos.SpaceDomain, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.SpaceDomain{}
+		value := &nimbleos.SpaceDomain{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

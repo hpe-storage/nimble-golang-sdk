@@ -9,8 +9,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // PerformancePolicyService type
@@ -25,7 +25,7 @@ func NewPerformancePolicyService(gs *NsGroupService) *PerformancePolicyService {
 }
 
 // GetPerformancePolicies - method returns a array of pointers of type "PerformancePolicies"
-func (svc *PerformancePolicyService) GetPerformancePolicies(params *util.GetParams) ([]*model.PerformancePolicy, error) {
+func (svc *PerformancePolicyService) GetPerformancePolicies(params *param.GetParams) ([]*nimbleos.PerformancePolicy, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -38,7 +38,7 @@ func (svc *PerformancePolicyService) GetPerformancePolicies(params *util.GetPara
 }
 
 // CreatePerformancePolicy - method creates a "PerformancePolicy"
-func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
+func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -51,7 +51,7 @@ func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *model.Performa
 }
 
 // UpdatePerformancePolicy - method modifies  the "PerformancePolicy"
-func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *model.PerformancePolicy) (*model.PerformancePolicy, error) {
+func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -64,7 +64,7 @@ func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *mod
 }
 
 // GetPerformancePolicyById - method returns a pointer to "PerformancePolicy"
-func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*model.PerformancePolicy, error) {
+func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*nimbleos.PerformancePolicy, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -77,11 +77,11 @@ func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*model
 }
 
 // GetPerformancePolicyByName - method returns a pointer "PerformancePolicy"
-func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*model.PerformancePolicy, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*nimbleos.PerformancePolicy, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

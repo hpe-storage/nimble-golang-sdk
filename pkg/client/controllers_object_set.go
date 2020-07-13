@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type ControllerObjectSet struct {
 }
 
 // CreateObject creates a new Controller object
-func (objectSet *ControllerObjectSet) CreateObject(payload *model.Controller) (*model.Controller, error) {
+func (objectSet *ControllerObjectSet) CreateObject(payload *nimbleos.Controller) (*nimbleos.Controller, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on Controller")
 }
 
 // UpdateObject Modify existing Controller object
-func (objectSet *ControllerObjectSet) UpdateObject(id string, payload *model.Controller) (*model.Controller, error) {
+func (objectSet *ControllerObjectSet) UpdateObject(id string, payload *nimbleos.Controller) (*nimbleos.Controller, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on Controller")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *ControllerObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Controller object with the given ID
-func (objectSet *ControllerObjectSet) GetObject(id string) (*model.Controller, error) {
-	controllerObjectSetResp, err := objectSet.Client.Get(controllerPath, id, model.Controller{})
+func (objectSet *ControllerObjectSet) GetObject(id string) (*nimbleos.Controller, error) {
+	controllerObjectSetResp, err := objectSet.Client.Get(controllerPath, id, nimbleos.Controller{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *ControllerObjectSet) GetObject(id string) (*model.Controller, e
 	if controllerObjectSetResp == nil {
 		return nil, nil
 	}
-	return controllerObjectSetResp.(*model.Controller), err
+	return controllerObjectSetResp.(*nimbleos.Controller), err
 }
 
 // GetObjectList returns the list of Controller objects
-func (objectSet *ControllerObjectSet) GetObjectList() ([]*model.Controller, error) {
+func (objectSet *ControllerObjectSet) GetObjectList() ([]*nimbleos.Controller, error) {
 	controllerObjectSetResp, err := objectSet.Client.List(controllerPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *ControllerObjectSet) GetObjectList() ([]*model.Controller, erro
 }
 
 // GetObjectListFromParams returns the list of Controller objects using the given params query info
-func (objectSet *ControllerObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Controller, error) {
+func (objectSet *ControllerObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Controller, error) {
 	controllerObjectSetResp, err := objectSet.Client.ListFromParams(controllerPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *ControllerObjectSet) GetObjectListFromParams(params *util.GetPa
 }
 
 // generated function to build the appropriate response types
-func buildControllerObjectSet(response interface{}) []*model.Controller {
+func buildControllerObjectSet(response interface{}) []*nimbleos.Controller {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Controller, values.Len())
+	results := make([]*nimbleos.Controller, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Controller{}
+		value := &nimbleos.Controller{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

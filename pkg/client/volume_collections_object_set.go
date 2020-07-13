@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type VolumeCollectionObjectSet struct {
 }
 
 // CreateObject creates a new VolumeCollection object
-func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *model.VolumeCollection) (*model.VolumeCollection, error) {
-	newPayload, err := model.EncodeVolumeCollection(payload)
+func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
+	newPayload, err := nimbleos.EncodeVolumeCollection(payload)
 	resp, err := objectSet.Client.Post(volumeCollectionPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,12 +33,12 @@ func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *model.VolumeCo
 		return nil, nil
 	}
 
-	return model.DecodeVolumeCollection(resp)
+	return nimbleos.DecodeVolumeCollection(resp)
 }
 
 // UpdateObject Modify existing VolumeCollection object
-func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *model.VolumeCollection) (*model.VolumeCollection, error) {
-	newPayload, err := model.EncodeVolumeCollection(payload)
+func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
+	newPayload, err := nimbleos.EncodeVolumeCollection(payload)
 	resp, err := objectSet.Client.Put(volumeCollectionPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *mod
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeVolumeCollection(resp)
+	return nimbleos.DecodeVolumeCollection(resp)
 }
 
 // DeleteObject deletes the VolumeCollection object with the specified ID
@@ -61,8 +61,8 @@ func (objectSet *VolumeCollectionObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a VolumeCollection object with the given ID
-func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*model.VolumeCollection, error) {
-	volumeCollectionObjectSetResp, err := objectSet.Client.Get(volumeCollectionPath, id, model.VolumeCollection{})
+func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*nimbleos.VolumeCollection, error) {
+	volumeCollectionObjectSetResp, err := objectSet.Client.Get(volumeCollectionPath, id, nimbleos.VolumeCollection{})
 	if err != nil {
 		return nil, err
 	}
@@ -71,11 +71,11 @@ func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*model.VolumeC
 	if volumeCollectionObjectSetResp == nil {
 		return nil, nil
 	}
-	return volumeCollectionObjectSetResp.(*model.VolumeCollection), err
+	return volumeCollectionObjectSetResp.(*nimbleos.VolumeCollection), err
 }
 
 // GetObjectList returns the list of VolumeCollection objects
-func (objectSet *VolumeCollectionObjectSet) GetObjectList() ([]*model.VolumeCollection, error) {
+func (objectSet *VolumeCollectionObjectSet) GetObjectList() ([]*nimbleos.VolumeCollection, error) {
 	volumeCollectionObjectSetResp, err := objectSet.Client.List(volumeCollectionPath)
 	if err != nil {
 		return nil, err
@@ -84,7 +84,7 @@ func (objectSet *VolumeCollectionObjectSet) GetObjectList() ([]*model.VolumeColl
 }
 
 // GetObjectListFromParams returns the list of VolumeCollection objects using the given params query info
-func (objectSet *VolumeCollectionObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.VolumeCollection, error) {
+func (objectSet *VolumeCollectionObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.VolumeCollection, error) {
 	volumeCollectionObjectSetResp, err := objectSet.Client.ListFromParams(volumeCollectionPath, params)
 	if err != nil {
 		return nil, err
@@ -93,12 +93,12 @@ func (objectSet *VolumeCollectionObjectSet) GetObjectListFromParams(params *util
 }
 
 // generated function to build the appropriate response types
-func buildVolumeCollectionObjectSet(response interface{}) []*model.VolumeCollection {
+func buildVolumeCollectionObjectSet(response interface{}) []*nimbleos.VolumeCollection {
 	values := reflect.ValueOf(response)
-	results := make([]*model.VolumeCollection, values.Len())
+	results := make([]*nimbleos.VolumeCollection, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.VolumeCollection{}
+		value := &nimbleos.VolumeCollection{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

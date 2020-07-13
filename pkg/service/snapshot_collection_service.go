@@ -8,8 +8,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // SnapshotCollectionService type
@@ -24,7 +24,7 @@ func NewSnapshotCollectionService(gs *NsGroupService) *SnapshotCollectionService
 }
 
 // GetSnapshotCollections - method returns a array of pointers of type "SnapshotCollections"
-func (svc *SnapshotCollectionService) GetSnapshotCollections(params *util.GetParams) ([]*model.SnapshotCollection, error) {
+func (svc *SnapshotCollectionService) GetSnapshotCollections(params *param.GetParams) ([]*nimbleos.SnapshotCollection, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -37,7 +37,7 @@ func (svc *SnapshotCollectionService) GetSnapshotCollections(params *util.GetPar
 }
 
 // CreateSnapshotCollection - method creates a "SnapshotCollection"
-func (svc *SnapshotCollectionService) CreateSnapshotCollection(obj *model.SnapshotCollection) (*model.SnapshotCollection, error) {
+func (svc *SnapshotCollectionService) CreateSnapshotCollection(obj *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -50,7 +50,7 @@ func (svc *SnapshotCollectionService) CreateSnapshotCollection(obj *model.Snapsh
 }
 
 // UpdateSnapshotCollection - method modifies  the "SnapshotCollection"
-func (svc *SnapshotCollectionService) UpdateSnapshotCollection(id string, obj *model.SnapshotCollection) (*model.SnapshotCollection, error) {
+func (svc *SnapshotCollectionService) UpdateSnapshotCollection(id string, obj *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -63,7 +63,7 @@ func (svc *SnapshotCollectionService) UpdateSnapshotCollection(id string, obj *m
 }
 
 // GetSnapshotCollectionById - method returns a pointer to "SnapshotCollection"
-func (svc *SnapshotCollectionService) GetSnapshotCollectionById(id string) (*model.SnapshotCollection, error) {
+func (svc *SnapshotCollectionService) GetSnapshotCollectionById(id string) (*nimbleos.SnapshotCollection, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -76,11 +76,11 @@ func (svc *SnapshotCollectionService) GetSnapshotCollectionById(id string) (*mod
 }
 
 // GetSnapshotCollectionByName - method returns a pointer "SnapshotCollection"
-func (svc *SnapshotCollectionService) GetSnapshotCollectionByName(name string) (*model.SnapshotCollection, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *SnapshotCollectionService) GetSnapshotCollectionByName(name string) (*nimbleos.SnapshotCollection, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

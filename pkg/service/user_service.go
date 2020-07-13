@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // UserService type
@@ -23,7 +23,7 @@ func NewUserService(gs *NsGroupService) *UserService {
 }
 
 // GetUsers - method returns a array of pointers of type "Users"
-func (svc *UserService) GetUsers(params *util.GetParams) ([]*model.User, error) {
+func (svc *UserService) GetUsers(params *param.GetParams) ([]*nimbleos.User, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *UserService) GetUsers(params *util.GetParams) ([]*model.User, error) 
 }
 
 // CreateUser - method creates a "User"
-func (svc *UserService) CreateUser(obj *model.User) (*model.User, error) {
+func (svc *UserService) CreateUser(obj *nimbleos.User) (*nimbleos.User, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *UserService) CreateUser(obj *model.User) (*model.User, error) {
 }
 
 // UpdateUser - method modifies  the "User"
-func (svc *UserService) UpdateUser(id string, obj *model.User) (*model.User, error) {
+func (svc *UserService) UpdateUser(id string, obj *nimbleos.User) (*nimbleos.User, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *UserService) UpdateUser(id string, obj *model.User) (*model.User, err
 }
 
 // GetUserById - method returns a pointer to "User"
-func (svc *UserService) GetUserById(id string) (*model.User, error) {
+func (svc *UserService) GetUserById(id string) (*nimbleos.User, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *UserService) GetUserById(id string) (*model.User, error) {
 }
 
 // GetUserByName - method returns a pointer "User"
-func (svc *UserService) GetUserByName(name string) (*model.User, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *UserService) GetUserByName(name string) (*nimbleos.User, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

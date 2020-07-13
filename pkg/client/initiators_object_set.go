@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type InitiatorObjectSet struct {
 }
 
 // CreateObject creates a new Initiator object
-func (objectSet *InitiatorObjectSet) CreateObject(payload *model.Initiator) (*model.Initiator, error) {
-	newPayload, err := model.EncodeInitiator(payload)
+func (objectSet *InitiatorObjectSet) CreateObject(payload *nimbleos.Initiator) (*nimbleos.Initiator, error) {
+	newPayload, err := nimbleos.EncodeInitiator(payload)
 	resp, err := objectSet.Client.Post(initiatorPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,11 +33,11 @@ func (objectSet *InitiatorObjectSet) CreateObject(payload *model.Initiator) (*mo
 		return nil, nil
 	}
 
-	return model.DecodeInitiator(resp)
+	return nimbleos.DecodeInitiator(resp)
 }
 
 // UpdateObject Modify existing Initiator object
-func (objectSet *InitiatorObjectSet) UpdateObject(id string, payload *model.Initiator) (*model.Initiator, error) {
+func (objectSet *InitiatorObjectSet) UpdateObject(id string, payload *nimbleos.Initiator) (*nimbleos.Initiator, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on Initiator")
 }
 
@@ -51,8 +51,8 @@ func (objectSet *InitiatorObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Initiator object with the given ID
-func (objectSet *InitiatorObjectSet) GetObject(id string) (*model.Initiator, error) {
-	initiatorObjectSetResp, err := objectSet.Client.Get(initiatorPath, id, model.Initiator{})
+func (objectSet *InitiatorObjectSet) GetObject(id string) (*nimbleos.Initiator, error) {
+	initiatorObjectSetResp, err := objectSet.Client.Get(initiatorPath, id, nimbleos.Initiator{})
 	if err != nil {
 		return nil, err
 	}
@@ -61,11 +61,11 @@ func (objectSet *InitiatorObjectSet) GetObject(id string) (*model.Initiator, err
 	if initiatorObjectSetResp == nil {
 		return nil, nil
 	}
-	return initiatorObjectSetResp.(*model.Initiator), err
+	return initiatorObjectSetResp.(*nimbleos.Initiator), err
 }
 
 // GetObjectList returns the list of Initiator objects
-func (objectSet *InitiatorObjectSet) GetObjectList() ([]*model.Initiator, error) {
+func (objectSet *InitiatorObjectSet) GetObjectList() ([]*nimbleos.Initiator, error) {
 	initiatorObjectSetResp, err := objectSet.Client.List(initiatorPath)
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (objectSet *InitiatorObjectSet) GetObjectList() ([]*model.Initiator, error)
 }
 
 // GetObjectListFromParams returns the list of Initiator objects using the given params query info
-func (objectSet *InitiatorObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Initiator, error) {
+func (objectSet *InitiatorObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Initiator, error) {
 	initiatorObjectSetResp, err := objectSet.Client.ListFromParams(initiatorPath, params)
 	if err != nil {
 		return nil, err
@@ -83,12 +83,12 @@ func (objectSet *InitiatorObjectSet) GetObjectListFromParams(params *util.GetPar
 }
 
 // generated function to build the appropriate response types
-func buildInitiatorObjectSet(response interface{}) []*model.Initiator {
+func buildInitiatorObjectSet(response interface{}) []*nimbleos.Initiator {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Initiator, values.Len())
+	results := make([]*nimbleos.Initiator, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Initiator{}
+		value := &nimbleos.Initiator{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,8 +21,8 @@ type ActiveDirectoryMembershipObjectSet struct {
 }
 
 // CreateObject creates a new ActiveDirectoryMembership object
-func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	newPayload, err := model.EncodeActiveDirectoryMembership(payload)
+func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
+	newPayload, err := nimbleos.EncodeActiveDirectoryMembership(payload)
 	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -33,12 +33,12 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *model
 		return nil, nil
 	}
 
-	return model.DecodeActiveDirectoryMembership(resp)
+	return nimbleos.DecodeActiveDirectoryMembership(resp)
 }
 
 // UpdateObject Modify existing ActiveDirectoryMembership object
-func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *model.ActiveDirectoryMembership) (*model.ActiveDirectoryMembership, error) {
-	newPayload, err := model.EncodeActiveDirectoryMembership(payload)
+func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
+	newPayload, err := nimbleos.EncodeActiveDirectoryMembership(payload)
 	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, pay
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeActiveDirectoryMembership(resp)
+	return nimbleos.DecodeActiveDirectoryMembership(resp)
 }
 
 // DeleteObject deletes the ActiveDirectoryMembership object with the specified ID
@@ -57,8 +57,8 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) DeleteObject(id string) err
 }
 
 // GetObject returns a ActiveDirectoryMembership object with the given ID
-func (objectSet *ActiveDirectoryMembershipObjectSet) GetObject(id string) (*model.ActiveDirectoryMembership, error) {
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Get(activeDirectoryMembershipPath, id, model.ActiveDirectoryMembership{})
+func (objectSet *ActiveDirectoryMembershipObjectSet) GetObject(id string) (*nimbleos.ActiveDirectoryMembership, error) {
+	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Get(activeDirectoryMembershipPath, id, nimbleos.ActiveDirectoryMembership{})
 	if err != nil {
 		return nil, err
 	}
@@ -67,11 +67,11 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) GetObject(id string) (*mode
 	if activeDirectoryMembershipObjectSetResp == nil {
 		return nil, nil
 	}
-	return activeDirectoryMembershipObjectSetResp.(*model.ActiveDirectoryMembership), err
+	return activeDirectoryMembershipObjectSetResp.(*nimbleos.ActiveDirectoryMembership), err
 }
 
 // GetObjectList returns the list of ActiveDirectoryMembership objects
-func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectList() ([]*model.ActiveDirectoryMembership, error) {
+func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectList() ([]*nimbleos.ActiveDirectoryMembership, error) {
 	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.List(activeDirectoryMembershipPath)
 	if err != nil {
 		return nil, err
@@ -80,7 +80,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectList() ([]*model.A
 }
 
 // GetObjectListFromParams returns the list of ActiveDirectoryMembership objects using the given params query info
-func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ActiveDirectoryMembership, error) {
+func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.ActiveDirectoryMembership, error) {
 	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.ListFromParams(activeDirectoryMembershipPath, params)
 	if err != nil {
 		return nil, err
@@ -89,12 +89,12 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectListFromParams(par
 }
 
 // generated function to build the appropriate response types
-func buildActiveDirectoryMembershipObjectSet(response interface{}) []*model.ActiveDirectoryMembership {
+func buildActiveDirectoryMembershipObjectSet(response interface{}) []*nimbleos.ActiveDirectoryMembership {
 	values := reflect.ValueOf(response)
-	results := make([]*model.ActiveDirectoryMembership, values.Len())
+	results := make([]*nimbleos.ActiveDirectoryMembership, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.ActiveDirectoryMembership{}
+		value := &nimbleos.ActiveDirectoryMembership{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

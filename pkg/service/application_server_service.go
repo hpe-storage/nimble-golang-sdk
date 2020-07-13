@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ApplicationServerService type
@@ -23,7 +23,7 @@ func NewApplicationServerService(gs *NsGroupService) *ApplicationServerService {
 }
 
 // GetApplicationServers - method returns a array of pointers of type "ApplicationServers"
-func (svc *ApplicationServerService) GetApplicationServers(params *util.GetParams) ([]*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) GetApplicationServers(params *param.GetParams) ([]*nimbleos.ApplicationServer, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ApplicationServerService) GetApplicationServers(params *util.GetParam
 }
 
 // CreateApplicationServer - method creates a "ApplicationServer"
-func (svc *ApplicationServerService) CreateApplicationServer(obj *model.ApplicationServer) (*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) CreateApplicationServer(obj *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ApplicationServerService) CreateApplicationServer(obj *model.Applicat
 }
 
 // UpdateApplicationServer - method modifies  the "ApplicationServer"
-func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *model.ApplicationServer) (*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *mod
 }
 
 // GetApplicationServerById - method returns a pointer to "ApplicationServer"
-func (svc *ApplicationServerService) GetApplicationServerById(id string) (*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) GetApplicationServerById(id string) (*nimbleos.ApplicationServer, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ApplicationServerService) GetApplicationServerById(id string) (*model
 }
 
 // GetApplicationServerByName - method returns a pointer "ApplicationServer"
-func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*model.ApplicationServer, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*nimbleos.ApplicationServer, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

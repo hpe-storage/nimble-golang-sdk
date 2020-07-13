@@ -8,8 +8,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // SubnetService type
@@ -24,7 +24,7 @@ func NewSubnetService(gs *NsGroupService) *SubnetService {
 }
 
 // GetSubnets - method returns a array of pointers of type "Subnets"
-func (svc *SubnetService) GetSubnets(params *util.GetParams) ([]*model.Subnet, error) {
+func (svc *SubnetService) GetSubnets(params *param.GetParams) ([]*nimbleos.Subnet, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -37,7 +37,7 @@ func (svc *SubnetService) GetSubnets(params *util.GetParams) ([]*model.Subnet, e
 }
 
 // CreateSubnet - method creates a "Subnet"
-func (svc *SubnetService) CreateSubnet(obj *model.Subnet) (*model.Subnet, error) {
+func (svc *SubnetService) CreateSubnet(obj *nimbleos.Subnet) (*nimbleos.Subnet, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -50,7 +50,7 @@ func (svc *SubnetService) CreateSubnet(obj *model.Subnet) (*model.Subnet, error)
 }
 
 // UpdateSubnet - method modifies  the "Subnet"
-func (svc *SubnetService) UpdateSubnet(id string, obj *model.Subnet) (*model.Subnet, error) {
+func (svc *SubnetService) UpdateSubnet(id string, obj *nimbleos.Subnet) (*nimbleos.Subnet, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -63,7 +63,7 @@ func (svc *SubnetService) UpdateSubnet(id string, obj *model.Subnet) (*model.Sub
 }
 
 // GetSubnetById - method returns a pointer to "Subnet"
-func (svc *SubnetService) GetSubnetById(id string) (*model.Subnet, error) {
+func (svc *SubnetService) GetSubnetById(id string) (*nimbleos.Subnet, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -76,11 +76,11 @@ func (svc *SubnetService) GetSubnetById(id string) (*model.Subnet, error) {
 }
 
 // GetSubnetByName - method returns a pointer "Subnet"
-func (svc *SubnetService) GetSubnetByName(name string) (*model.Subnet, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *SubnetService) GetSubnetByName(name string) (*nimbleos.Subnet, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

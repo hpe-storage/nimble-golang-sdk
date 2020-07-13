@@ -5,8 +5,8 @@ package client
 import (
 	"fmt"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -21,12 +21,12 @@ type FibreChannelConfigObjectSet struct {
 }
 
 // CreateObject creates a new FibreChannelConfig object
-func (objectSet *FibreChannelConfigObjectSet) CreateObject(payload *model.FibreChannelConfig) (*model.FibreChannelConfig, error) {
+func (objectSet *FibreChannelConfigObjectSet) CreateObject(payload *nimbleos.FibreChannelConfig) (*nimbleos.FibreChannelConfig, error) {
 	return nil, fmt.Errorf("Unsupported operation 'create' on FibreChannelConfig")
 }
 
 // UpdateObject Modify existing FibreChannelConfig object
-func (objectSet *FibreChannelConfigObjectSet) UpdateObject(id string, payload *model.FibreChannelConfig) (*model.FibreChannelConfig, error) {
+func (objectSet *FibreChannelConfigObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelConfig) (*nimbleos.FibreChannelConfig, error) {
 	return nil, fmt.Errorf("Unsupported operation 'update' on FibreChannelConfig")
 }
 
@@ -36,8 +36,8 @@ func (objectSet *FibreChannelConfigObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a FibreChannelConfig object with the given ID
-func (objectSet *FibreChannelConfigObjectSet) GetObject(id string) (*model.FibreChannelConfig, error) {
-	fibreChannelConfigObjectSetResp, err := objectSet.Client.Get(fibreChannelConfigPath, id, model.FibreChannelConfig{})
+func (objectSet *FibreChannelConfigObjectSet) GetObject(id string) (*nimbleos.FibreChannelConfig, error) {
+	fibreChannelConfigObjectSetResp, err := objectSet.Client.Get(fibreChannelConfigPath, id, nimbleos.FibreChannelConfig{})
 	if err != nil {
 		return nil, err
 	}
@@ -46,11 +46,11 @@ func (objectSet *FibreChannelConfigObjectSet) GetObject(id string) (*model.Fibre
 	if fibreChannelConfigObjectSetResp == nil {
 		return nil, nil
 	}
-	return fibreChannelConfigObjectSetResp.(*model.FibreChannelConfig), err
+	return fibreChannelConfigObjectSetResp.(*nimbleos.FibreChannelConfig), err
 }
 
 // GetObjectList returns the list of FibreChannelConfig objects
-func (objectSet *FibreChannelConfigObjectSet) GetObjectList() ([]*model.FibreChannelConfig, error) {
+func (objectSet *FibreChannelConfigObjectSet) GetObjectList() ([]*nimbleos.FibreChannelConfig, error) {
 	fibreChannelConfigObjectSetResp, err := objectSet.Client.List(fibreChannelConfigPath)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (objectSet *FibreChannelConfigObjectSet) GetObjectList() ([]*model.FibreCha
 }
 
 // GetObjectListFromParams returns the list of FibreChannelConfig objects using the given params query info
-func (objectSet *FibreChannelConfigObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.FibreChannelConfig, error) {
+func (objectSet *FibreChannelConfigObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.FibreChannelConfig, error) {
 	fibreChannelConfigObjectSetResp, err := objectSet.Client.ListFromParams(fibreChannelConfigPath, params)
 	if err != nil {
 		return nil, err
@@ -68,12 +68,12 @@ func (objectSet *FibreChannelConfigObjectSet) GetObjectListFromParams(params *ut
 }
 
 // generated function to build the appropriate response types
-func buildFibreChannelConfigObjectSet(response interface{}) []*model.FibreChannelConfig {
+func buildFibreChannelConfigObjectSet(response interface{}) []*nimbleos.FibreChannelConfig {
 	values := reflect.ValueOf(response)
-	results := make([]*model.FibreChannelConfig, values.Len())
+	results := make([]*nimbleos.FibreChannelConfig, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.FibreChannelConfig{}
+		value := &nimbleos.FibreChannelConfig{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

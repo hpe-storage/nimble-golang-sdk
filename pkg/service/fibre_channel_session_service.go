@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // FibreChannelSessionService type
@@ -23,7 +23,7 @@ func NewFibreChannelSessionService(gs *NsGroupService) *FibreChannelSessionServi
 }
 
 // GetFibreChannelSessions - method returns a array of pointers of type "FibreChannelSessions"
-func (svc *FibreChannelSessionService) GetFibreChannelSessions(params *util.GetParams) ([]*model.FibreChannelSession, error) {
+func (svc *FibreChannelSessionService) GetFibreChannelSessions(params *param.GetParams) ([]*nimbleos.FibreChannelSession, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *FibreChannelSessionService) GetFibreChannelSessions(params *util.GetP
 }
 
 // CreateFibreChannelSession - method creates a "FibreChannelSession"
-func (svc *FibreChannelSessionService) CreateFibreChannelSession(obj *model.FibreChannelSession) (*model.FibreChannelSession, error) {
+func (svc *FibreChannelSessionService) CreateFibreChannelSession(obj *nimbleos.FibreChannelSession) (*nimbleos.FibreChannelSession, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *FibreChannelSessionService) CreateFibreChannelSession(obj *model.Fibr
 }
 
 // UpdateFibreChannelSession - method modifies  the "FibreChannelSession"
-func (svc *FibreChannelSessionService) UpdateFibreChannelSession(id string, obj *model.FibreChannelSession) (*model.FibreChannelSession, error) {
+func (svc *FibreChannelSessionService) UpdateFibreChannelSession(id string, obj *nimbleos.FibreChannelSession) (*nimbleos.FibreChannelSession, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *FibreChannelSessionService) UpdateFibreChannelSession(id string, obj 
 }
 
 // GetFibreChannelSessionById - method returns a pointer to "FibreChannelSession"
-func (svc *FibreChannelSessionService) GetFibreChannelSessionById(id string) (*model.FibreChannelSession, error) {
+func (svc *FibreChannelSessionService) GetFibreChannelSessionById(id string) (*nimbleos.FibreChannelSession, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

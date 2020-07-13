@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -20,8 +20,8 @@ type ProtectionScheduleObjectSet struct {
 }
 
 // CreateObject creates a new ProtectionSchedule object
-func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	newPayload, err := model.EncodeProtectionSchedule(payload)
+func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
+	newPayload, err := nimbleos.EncodeProtectionSchedule(payload)
 	resp, err := objectSet.Client.Post(protectionSchedulePath, newPayload)
 	if err != nil {
 		return nil, err
@@ -32,12 +32,12 @@ func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *model.Protec
 		return nil, nil
 	}
 
-	return model.DecodeProtectionSchedule(resp)
+	return nimbleos.DecodeProtectionSchedule(resp)
 }
 
 // UpdateObject Modify existing ProtectionSchedule object
-func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
-	newPayload, err := model.EncodeProtectionSchedule(payload)
+func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
+	newPayload, err := nimbleos.EncodeProtectionSchedule(payload)
 	resp, err := objectSet.Client.Put(protectionSchedulePath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *m
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodeProtectionSchedule(resp)
+	return nimbleos.DecodeProtectionSchedule(resp)
 }
 
 // DeleteObject deletes the ProtectionSchedule object with the specified ID
@@ -60,8 +60,8 @@ func (objectSet *ProtectionScheduleObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a ProtectionSchedule object with the given ID
-func (objectSet *ProtectionScheduleObjectSet) GetObject(id string) (*model.ProtectionSchedule, error) {
-	protectionScheduleObjectSetResp, err := objectSet.Client.Get(protectionSchedulePath, id, model.ProtectionSchedule{})
+func (objectSet *ProtectionScheduleObjectSet) GetObject(id string) (*nimbleos.ProtectionSchedule, error) {
+	protectionScheduleObjectSetResp, err := objectSet.Client.Get(protectionSchedulePath, id, nimbleos.ProtectionSchedule{})
 	if err != nil {
 		return nil, err
 	}
@@ -70,11 +70,11 @@ func (objectSet *ProtectionScheduleObjectSet) GetObject(id string) (*model.Prote
 	if protectionScheduleObjectSetResp == nil {
 		return nil, nil
 	}
-	return protectionScheduleObjectSetResp.(*model.ProtectionSchedule), err
+	return protectionScheduleObjectSetResp.(*nimbleos.ProtectionSchedule), err
 }
 
 // GetObjectList returns the list of ProtectionSchedule objects
-func (objectSet *ProtectionScheduleObjectSet) GetObjectList() ([]*model.ProtectionSchedule, error) {
+func (objectSet *ProtectionScheduleObjectSet) GetObjectList() ([]*nimbleos.ProtectionSchedule, error) {
 	protectionScheduleObjectSetResp, err := objectSet.Client.List(protectionSchedulePath)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (objectSet *ProtectionScheduleObjectSet) GetObjectList() ([]*model.Protecti
 }
 
 // GetObjectListFromParams returns the list of ProtectionSchedule objects using the given params query info
-func (objectSet *ProtectionScheduleObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.ProtectionSchedule, error) {
+func (objectSet *ProtectionScheduleObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.ProtectionSchedule, error) {
 	protectionScheduleObjectSetResp, err := objectSet.Client.ListFromParams(protectionSchedulePath, params)
 	if err != nil {
 		return nil, err
@@ -92,12 +92,12 @@ func (objectSet *ProtectionScheduleObjectSet) GetObjectListFromParams(params *ut
 }
 
 // generated function to build the appropriate response types
-func buildProtectionScheduleObjectSet(response interface{}) []*model.ProtectionSchedule {
+func buildProtectionScheduleObjectSet(response interface{}) []*nimbleos.ProtectionSchedule {
 	values := reflect.ValueOf(response)
-	results := make([]*model.ProtectionSchedule, values.Len())
+	results := make([]*nimbleos.ProtectionSchedule, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.ProtectionSchedule{}
+		value := &nimbleos.ProtectionSchedule{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

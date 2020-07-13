@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ProtectionScheduleService type
@@ -23,7 +23,7 @@ func NewProtectionScheduleService(gs *NsGroupService) *ProtectionScheduleService
 }
 
 // GetProtectionSchedules - method returns a array of pointers of type "ProtectionSchedules"
-func (svc *ProtectionScheduleService) GetProtectionSchedules(params *util.GetParams) ([]*model.ProtectionSchedule, error) {
+func (svc *ProtectionScheduleService) GetProtectionSchedules(params *param.GetParams) ([]*nimbleos.ProtectionSchedule, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ProtectionScheduleService) GetProtectionSchedules(params *util.GetPar
 }
 
 // CreateProtectionSchedule - method creates a "ProtectionSchedule"
-func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
+func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *model.Protec
 }
 
 // UpdateProtectionSchedule - method modifies  the "ProtectionSchedule"
-func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *model.ProtectionSchedule) (*model.ProtectionSchedule, error) {
+func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *m
 }
 
 // GetProtectionScheduleById - method returns a pointer to "ProtectionSchedule"
-func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*model.ProtectionSchedule, error) {
+func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*nimbleos.ProtectionSchedule, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*mod
 }
 
 // GetProtectionScheduleByName - method returns a pointer "ProtectionSchedule"
-func (svc *ProtectionScheduleService) GetProtectionScheduleByName(name string) (*model.ProtectionSchedule, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ProtectionScheduleService) GetProtectionScheduleByName(name string) (*nimbleos.ProtectionSchedule, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

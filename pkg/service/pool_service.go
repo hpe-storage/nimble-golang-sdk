@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // PoolService type
@@ -23,7 +23,7 @@ func NewPoolService(gs *NsGroupService) *PoolService {
 }
 
 // GetPools - method returns a array of pointers of type "Pools"
-func (svc *PoolService) GetPools(params *util.GetParams) ([]*model.Pool, error) {
+func (svc *PoolService) GetPools(params *param.GetParams) ([]*nimbleos.Pool, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *PoolService) GetPools(params *util.GetParams) ([]*model.Pool, error) 
 }
 
 // CreatePool - method creates a "Pool"
-func (svc *PoolService) CreatePool(obj *model.Pool) (*model.Pool, error) {
+func (svc *PoolService) CreatePool(obj *nimbleos.Pool) (*nimbleos.Pool, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *PoolService) CreatePool(obj *model.Pool) (*model.Pool, error) {
 }
 
 // UpdatePool - method modifies  the "Pool"
-func (svc *PoolService) UpdatePool(id string, obj *model.Pool) (*model.Pool, error) {
+func (svc *PoolService) UpdatePool(id string, obj *nimbleos.Pool) (*nimbleos.Pool, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *PoolService) UpdatePool(id string, obj *model.Pool) (*model.Pool, err
 }
 
 // GetPoolById - method returns a pointer to "Pool"
-func (svc *PoolService) GetPoolById(id string) (*model.Pool, error) {
+func (svc *PoolService) GetPoolById(id string) (*nimbleos.Pool, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *PoolService) GetPoolById(id string) (*model.Pool, error) {
 }
 
 // GetPoolByName - method returns a pointer "Pool"
-func (svc *PoolService) GetPoolByName(name string) (*model.Pool, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *PoolService) GetPoolByName(name string) (*nimbleos.Pool, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

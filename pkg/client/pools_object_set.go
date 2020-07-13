@@ -4,8 +4,8 @@ package client
 
 import (
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
 )
 
@@ -20,8 +20,8 @@ type PoolObjectSet struct {
 }
 
 // CreateObject creates a new Pool object
-func (objectSet *PoolObjectSet) CreateObject(payload *model.Pool) (*model.Pool, error) {
-	newPayload, err := model.EncodePool(payload)
+func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.Pool, error) {
+	newPayload, err := nimbleos.EncodePool(payload)
 	resp, err := objectSet.Client.Post(poolPath, newPayload)
 	if err != nil {
 		return nil, err
@@ -32,12 +32,12 @@ func (objectSet *PoolObjectSet) CreateObject(payload *model.Pool) (*model.Pool, 
 		return nil, nil
 	}
 
-	return model.DecodePool(resp)
+	return nimbleos.DecodePool(resp)
 }
 
 // UpdateObject Modify existing Pool object
-func (objectSet *PoolObjectSet) UpdateObject(id string, payload *model.Pool) (*model.Pool, error) {
-	newPayload, err := model.EncodePool(payload)
+func (objectSet *PoolObjectSet) UpdateObject(id string, payload *nimbleos.Pool) (*nimbleos.Pool, error) {
+	newPayload, err := nimbleos.EncodePool(payload)
 	resp, err := objectSet.Client.Put(poolPath, id, newPayload)
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (objectSet *PoolObjectSet) UpdateObject(id string, payload *model.Pool) (*m
 	if resp == nil {
 		return nil, nil
 	}
-	return model.DecodePool(resp)
+	return nimbleos.DecodePool(resp)
 }
 
 // DeleteObject deletes the Pool object with the specified ID
@@ -60,8 +60,8 @@ func (objectSet *PoolObjectSet) DeleteObject(id string) error {
 }
 
 // GetObject returns a Pool object with the given ID
-func (objectSet *PoolObjectSet) GetObject(id string) (*model.Pool, error) {
-	poolObjectSetResp, err := objectSet.Client.Get(poolPath, id, model.Pool{})
+func (objectSet *PoolObjectSet) GetObject(id string) (*nimbleos.Pool, error) {
+	poolObjectSetResp, err := objectSet.Client.Get(poolPath, id, nimbleos.Pool{})
 	if err != nil {
 		return nil, err
 	}
@@ -70,11 +70,11 @@ func (objectSet *PoolObjectSet) GetObject(id string) (*model.Pool, error) {
 	if poolObjectSetResp == nil {
 		return nil, nil
 	}
-	return poolObjectSetResp.(*model.Pool), err
+	return poolObjectSetResp.(*nimbleos.Pool), err
 }
 
 // GetObjectList returns the list of Pool objects
-func (objectSet *PoolObjectSet) GetObjectList() ([]*model.Pool, error) {
+func (objectSet *PoolObjectSet) GetObjectList() ([]*nimbleos.Pool, error) {
 	poolObjectSetResp, err := objectSet.Client.List(poolPath)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (objectSet *PoolObjectSet) GetObjectList() ([]*model.Pool, error) {
 }
 
 // GetObjectListFromParams returns the list of Pool objects using the given params query info
-func (objectSet *PoolObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Pool, error) {
+func (objectSet *PoolObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Pool, error) {
 	poolObjectSetResp, err := objectSet.Client.ListFromParams(poolPath, params)
 	if err != nil {
 		return nil, err
@@ -92,12 +92,12 @@ func (objectSet *PoolObjectSet) GetObjectListFromParams(params *util.GetParams) 
 }
 
 // generated function to build the appropriate response types
-func buildPoolObjectSet(response interface{}) []*model.Pool {
+func buildPoolObjectSet(response interface{}) []*nimbleos.Pool {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Pool, values.Len())
+	results := make([]*nimbleos.Pool, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Pool{}
+		value := &nimbleos.Pool{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

@@ -1,0 +1,29 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+package nimbleos
+
+// Golang package for NsSynchronousReplicationType Enum.
+
+type NsSynchronousReplicationType string
+
+const (
+	cNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType = "soft_available"
+	cNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType = "not_applicable"
+)
+
+var pNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType
+var pNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType
+
+// NsSynchronousReplicationTypeSoftAvailable enum exports
+var NsSynchronousReplicationTypeSoftAvailable *NsSynchronousReplicationType
+
+// NsSynchronousReplicationTypeNotApplicable enum exports
+var NsSynchronousReplicationTypeNotApplicable *NsSynchronousReplicationType
+
+func init() {
+	pNsSynchronousReplicationTypeSoftAvailable = cNsSynchronousReplicationTypeSoftAvailable
+	NsSynchronousReplicationTypeSoftAvailable = &pNsSynchronousReplicationTypeSoftAvailable
+
+	pNsSynchronousReplicationTypeNotApplicable = cNsSynchronousReplicationTypeNotApplicable
+	NsSynchronousReplicationTypeNotApplicable = &pNsSynchronousReplicationTypeNotApplicable
+
+}

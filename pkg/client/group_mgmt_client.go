@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 const (
@@ -76,7 +76,7 @@ func (client *GroupMgmtClient) EnableDebug() {
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
 	// Construct Payload
 	appName := "Go sdkv1 client"
-	token := &model.Token{
+	token := &nimbleos.Token{
 		Username: username,
 		Password: password,
 		AppName:  appName,
@@ -218,7 +218,7 @@ func (client *GroupMgmtClient) List(path string) (interface{}, error) {
 }
 
 // ListFromParams :
-func (client *GroupMgmtClient) ListFromParams(path string, params *util.GetParams) (interface{}, error) {
+func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetParams) (interface{}, error) {
 	listResp, err := client.listGetOrPost(path, params)
 	if err != nil {
 		return nil, err
@@ -226,7 +226,7 @@ func (client *GroupMgmtClient) ListFromParams(path string, params *util.GetParam
 	return listResp, nil
 }
 
-func (client *GroupMgmtClient) listGetOrPost(path string, params *util.GetParams) (interface{}, error) {
+func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
 	if params == nil {
 		return client.listGet(path, nil)
 	}

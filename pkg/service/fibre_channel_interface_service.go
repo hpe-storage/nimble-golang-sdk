@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // FibreChannelInterfaceService type
@@ -23,7 +23,7 @@ func NewFibreChannelInterfaceService(gs *NsGroupService) *FibreChannelInterfaceS
 }
 
 // GetFibreChannelInterfaces - method returns a array of pointers of type "FibreChannelInterfaces"
-func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaces(params *util.GetParams) ([]*model.FibreChannelInterface, error) {
+func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaces(params *param.GetParams) ([]*nimbleos.FibreChannelInterface, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaces(params *util.
 }
 
 // CreateFibreChannelInterface - method creates a "FibreChannelInterface"
-func (svc *FibreChannelInterfaceService) CreateFibreChannelInterface(obj *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
+func (svc *FibreChannelInterfaceService) CreateFibreChannelInterface(obj *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *FibreChannelInterfaceService) CreateFibreChannelInterface(obj *model.
 }
 
 // UpdateFibreChannelInterface - method modifies  the "FibreChannelInterface"
-func (svc *FibreChannelInterfaceService) UpdateFibreChannelInterface(id string, obj *model.FibreChannelInterface) (*model.FibreChannelInterface, error) {
+func (svc *FibreChannelInterfaceService) UpdateFibreChannelInterface(id string, obj *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *FibreChannelInterfaceService) UpdateFibreChannelInterface(id string, 
 }
 
 // GetFibreChannelInterfaceById - method returns a pointer to "FibreChannelInterface"
-func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceById(id string) (*model.FibreChannelInterface, error) {
+func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceById(id string) (*nimbleos.FibreChannelInterface, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceById(id string)
 }
 
 // GetFibreChannelInterfaceByName - method returns a pointer "FibreChannelInterface"
-func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceByName(name string) (*model.FibreChannelInterface, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceByName(name string) (*nimbleos.FibreChannelInterface, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

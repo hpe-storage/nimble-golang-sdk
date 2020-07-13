@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ShelfService type
@@ -23,7 +23,7 @@ func NewShelfService(gs *NsGroupService) *ShelfService {
 }
 
 // GetShelfs - method returns a array of pointers of type "Shelfs"
-func (svc *ShelfService) GetShelfs(params *util.GetParams) ([]*model.Shelf, error) {
+func (svc *ShelfService) GetShelfs(params *param.GetParams) ([]*nimbleos.Shelf, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *ShelfService) GetShelfs(params *util.GetParams) ([]*model.Shelf, erro
 }
 
 // CreateShelf - method creates a "Shelf"
-func (svc *ShelfService) CreateShelf(obj *model.Shelf) (*model.Shelf, error) {
+func (svc *ShelfService) CreateShelf(obj *nimbleos.Shelf) (*nimbleos.Shelf, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *ShelfService) CreateShelf(obj *model.Shelf) (*model.Shelf, error) {
 }
 
 // UpdateShelf - method modifies  the "Shelf"
-func (svc *ShelfService) UpdateShelf(id string, obj *model.Shelf) (*model.Shelf, error) {
+func (svc *ShelfService) UpdateShelf(id string, obj *nimbleos.Shelf) (*nimbleos.Shelf, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *ShelfService) UpdateShelf(id string, obj *model.Shelf) (*model.Shelf,
 }
 
 // GetShelfById - method returns a pointer to "Shelf"
-func (svc *ShelfService) GetShelfById(id string) (*model.Shelf, error) {
+func (svc *ShelfService) GetShelfById(id string) (*nimbleos.Shelf, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}

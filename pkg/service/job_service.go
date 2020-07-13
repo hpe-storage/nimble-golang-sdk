@@ -7,8 +7,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // JobService type
@@ -23,7 +23,7 @@ func NewJobService(gs *NsGroupService) *JobService {
 }
 
 // GetJobs - method returns a array of pointers of type "Jobs"
-func (svc *JobService) GetJobs(params *util.GetParams) ([]*model.Job, error) {
+func (svc *JobService) GetJobs(params *param.GetParams) ([]*nimbleos.Job, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -36,7 +36,7 @@ func (svc *JobService) GetJobs(params *util.GetParams) ([]*model.Job, error) {
 }
 
 // CreateJob - method creates a "Job"
-func (svc *JobService) CreateJob(obj *model.Job) (*model.Job, error) {
+func (svc *JobService) CreateJob(obj *nimbleos.Job) (*nimbleos.Job, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -49,7 +49,7 @@ func (svc *JobService) CreateJob(obj *model.Job) (*model.Job, error) {
 }
 
 // UpdateJob - method modifies  the "Job"
-func (svc *JobService) UpdateJob(id string, obj *model.Job) (*model.Job, error) {
+func (svc *JobService) UpdateJob(id string, obj *nimbleos.Job) (*nimbleos.Job, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -62,7 +62,7 @@ func (svc *JobService) UpdateJob(id string, obj *model.Job) (*model.Job, error) 
 }
 
 // GetJobById - method returns a pointer to "Job"
-func (svc *JobService) GetJobById(id string) (*model.Job, error) {
+func (svc *JobService) GetJobById(id string) (*nimbleos.Job, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -75,11 +75,11 @@ func (svc *JobService) GetJobById(id string) (*model.Job, error) {
 }
 
 // GetJobByName - method returns a pointer "Job"
-func (svc *JobService) GetJobByName(name string) (*model.Job, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *JobService) GetJobByName(name string) (*nimbleos.Job, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}

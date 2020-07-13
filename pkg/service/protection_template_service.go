@@ -10,8 +10,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // ProtectionTemplateService type
@@ -26,7 +26,7 @@ func NewProtectionTemplateService(gs *NsGroupService) *ProtectionTemplateService
 }
 
 // GetProtectionTemplates - method returns a array of pointers of type "ProtectionTemplates"
-func (svc *ProtectionTemplateService) GetProtectionTemplates(params *util.GetParams) ([]*model.ProtectionTemplate, error) {
+func (svc *ProtectionTemplateService) GetProtectionTemplates(params *param.GetParams) ([]*nimbleos.ProtectionTemplate, error) {
 	if params == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
@@ -39,7 +39,7 @@ func (svc *ProtectionTemplateService) GetProtectionTemplates(params *util.GetPar
 }
 
 // CreateProtectionTemplate - method creates a "ProtectionTemplate"
-func (svc *ProtectionTemplateService) CreateProtectionTemplate(obj *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
+func (svc *ProtectionTemplateService) CreateProtectionTemplate(obj *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -52,7 +52,7 @@ func (svc *ProtectionTemplateService) CreateProtectionTemplate(obj *model.Protec
 }
 
 // UpdateProtectionTemplate - method modifies  the "ProtectionTemplate"
-func (svc *ProtectionTemplateService) UpdateProtectionTemplate(id string, obj *model.ProtectionTemplate) (*model.ProtectionTemplate, error) {
+func (svc *ProtectionTemplateService) UpdateProtectionTemplate(id string, obj *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
@@ -65,7 +65,7 @@ func (svc *ProtectionTemplateService) UpdateProtectionTemplate(id string, obj *m
 }
 
 // GetProtectionTemplateById - method returns a pointer to "ProtectionTemplate"
-func (svc *ProtectionTemplateService) GetProtectionTemplateById(id string) (*model.ProtectionTemplate, error) {
+func (svc *ProtectionTemplateService) GetProtectionTemplateById(id string) (*nimbleos.ProtectionTemplate, error) {
 	if len(id) == 0 {
 		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
@@ -78,11 +78,11 @@ func (svc *ProtectionTemplateService) GetProtectionTemplateById(id string) (*mod
 }
 
 // GetProtectionTemplateByName - method returns a pointer "ProtectionTemplate"
-func (svc *ProtectionTemplateService) GetProtectionTemplateByName(name string) (*model.ProtectionTemplate, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: &model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+func (svc *ProtectionTemplateService) GetProtectionTemplateByName(name string) (*nimbleos.ProtectionTemplate, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: &nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}
