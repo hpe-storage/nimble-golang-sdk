@@ -33,30 +33,32 @@ type NsFCInitiator struct {
 
 // sdk internal struct
 type nsFCInitiator struct {
-	// ID - Unique identifier of the Fibre Channel initiator.
-	ID *string `json:"id,omitempty"`
-	// InitiatorId - Unique identifier of the Fibre Channel initiator.
+	ID          *string `json:"id,omitempty"`
 	InitiatorId *string `json:"initiator_id,omitempty"`
-	// Wwpn - WWPN (World Wide Port Name) of the Fibre Channel initiator.
-	Wwpn *string `json:"wwpn,omitempty"`
-	// Alias - Alias of the Fibre Channel initiator.
-	Alias *string `json:"alias,omitempty"`
+	Wwpn        *string `json:"wwpn,omitempty"`
+	Alias       *string `json:"alias,omitempty"`
 }
 
 // EncodeNsFCInitiator - Transform NsFCInitiator to nsFCInitiator type
 func EncodeNsFCInitiator(request interface{}) (*nsFCInitiator, error) {
 	reqNsFCInitiator := request.(*NsFCInitiator)
 	byte, err := json.Marshal(reqNsFCInitiator)
-	objPtr := &nsFCInitiator{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFCInitiatorPtr := &nsFCInitiator{}
+	err = json.Unmarshal(byte, respNsFCInitiatorPtr)
+	return respNsFCInitiatorPtr, err
 }
 
 // DecodeNsFCInitiator Transform nsFCInitiator to NsFCInitiator type
 func DecodeNsFCInitiator(request interface{}) (*NsFCInitiator, error) {
 	reqNsFCInitiator := request.(*nsFCInitiator)
 	byte, err := json.Marshal(reqNsFCInitiator)
-	obj := &NsFCInitiator{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFCInitiator := &NsFCInitiator{}
+	err = json.Unmarshal(byte, respNsFCInitiator)
+	return respNsFCInitiator, err
 }

@@ -28,28 +28,31 @@ type NsRequest struct {
 
 // sdk internal struct
 type nsRequest struct {
-	// Data - Request data.
-	Data *NsObject `json:"data,omitempty"`
-	// Method - HTTP method.
-	Method *int64 `json:"method,omitempty"`
-	// Path - Path which identifies the target resource.
-	Path *string `json:"path,omitempty"`
+	Data   *NsObject `json:"data,omitempty"`
+	Method *int64    `json:"method,omitempty"`
+	Path   *string   `json:"path,omitempty"`
 }
 
 // EncodeNsRequest - Transform NsRequest to nsRequest type
 func EncodeNsRequest(request interface{}) (*nsRequest, error) {
 	reqNsRequest := request.(*NsRequest)
 	byte, err := json.Marshal(reqNsRequest)
-	objPtr := &nsRequest{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsRequestPtr := &nsRequest{}
+	err = json.Unmarshal(byte, respNsRequestPtr)
+	return respNsRequestPtr, err
 }
 
 // DecodeNsRequest Transform nsRequest to NsRequest type
 func DecodeNsRequest(request interface{}) (*NsRequest, error) {
 	reqNsRequest := request.(*nsRequest)
 	byte, err := json.Marshal(reqNsRequest)
-	obj := &NsRequest{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsRequest := &NsRequest{}
+	err = json.Unmarshal(byte, respNsRequest)
+	return respNsRequest, err
 }

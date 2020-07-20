@@ -51,44 +51,39 @@ type Token struct {
 
 // sdk internal struct
 type token struct {
-	// ID - Object identifier for the session token.
-	ID *string `json:"id,omitempty"`
-	// SessionToken - Token used for authentication.
+	ID           *string `json:"id,omitempty"`
 	SessionToken *string `json:"session_token,omitempty"`
-	// Username - User name for the session.
-	Username *string `json:"username,omitempty"`
-	// Password - Password for the user. A password is required for creating a token.
-	Password *string `json:"password,omitempty"`
-	// AppName - Application name.
-	AppName *string `json:"app_name,omitempty"`
-	// SdkName - SDK name.
-	SdkName *string `json:"sdk_name,omitempty"`
-	// SourceIp - IP address from which the session originates.
-	SourceIp *string `json:"source_ip,omitempty"`
-	// CreationTime - Time when this token was created.
-	CreationTime *int64 `json:"creation_time,omitempty"`
-	// LastModified - Time when this token was last modified.
-	LastModified *int64 `json:"last_modified,omitempty"`
-	// ExpiryTime - Time when this token will expire.
-	ExpiryTime *int64 `json:"expiry_time,omitempty"`
-	// ServerUuid - Non mandatory 36 character uuid returned by the server. Currently only the witness REST server returns one.
-	ServerUuid *string `json:"server_uuid,omitempty"`
+	Username     *string `json:"username,omitempty"`
+	Password     *string `json:"password,omitempty"`
+	AppName      *string `json:"app_name,omitempty"`
+	SdkName      *string `json:"sdk_name,omitempty"`
+	SourceIp     *string `json:"source_ip,omitempty"`
+	CreationTime *int64  `json:"creation_time,omitempty"`
+	LastModified *int64  `json:"last_modified,omitempty"`
+	ExpiryTime   *int64  `json:"expiry_time,omitempty"`
+	ServerUuid   *string `json:"server_uuid,omitempty"`
 }
 
 // EncodeToken - Transform Token to token type
 func EncodeToken(request interface{}) (*token, error) {
 	reqToken := request.(*Token)
 	byte, err := json.Marshal(reqToken)
-	objPtr := &token{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respTokenPtr := &token{}
+	err = json.Unmarshal(byte, respTokenPtr)
+	return respTokenPtr, err
 }
 
 // DecodeToken Transform token to Token type
 func DecodeToken(request interface{}) (*Token, error) {
 	reqToken := request.(*token)
 	byte, err := json.Marshal(reqToken)
-	obj := &Token{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respToken := &Token{}
+	err = json.Unmarshal(byte, respToken)
+	return respToken, err
 }

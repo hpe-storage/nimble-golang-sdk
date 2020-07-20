@@ -33,13 +33,9 @@ type NsVolumePoolInfo struct {
 
 // sdk internal struct
 type nsVolumePoolInfo struct {
-	// VolId - ID of the volume.
-	VolId *string `json:"vol_id,omitempty"`
-	// VolName - Name of the volume.
-	VolName *string `json:"vol_name,omitempty"`
-	// PoolId - ID of the pool to which the volume belongs to.
-	PoolId *string `json:"pool_id,omitempty"`
-	// PoolName - Name of the pool to which volume belongs to.
+	VolId    *string `json:"vol_id,omitempty"`
+	VolName  *string `json:"vol_name,omitempty"`
+	PoolId   *string `json:"pool_id,omitempty"`
 	PoolName *string `json:"pool_name,omitempty"`
 }
 
@@ -47,16 +43,22 @@ type nsVolumePoolInfo struct {
 func EncodeNsVolumePoolInfo(request interface{}) (*nsVolumePoolInfo, error) {
 	reqNsVolumePoolInfo := request.(*NsVolumePoolInfo)
 	byte, err := json.Marshal(reqNsVolumePoolInfo)
-	objPtr := &nsVolumePoolInfo{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumePoolInfoPtr := &nsVolumePoolInfo{}
+	err = json.Unmarshal(byte, respNsVolumePoolInfoPtr)
+	return respNsVolumePoolInfoPtr, err
 }
 
 // DecodeNsVolumePoolInfo Transform nsVolumePoolInfo to NsVolumePoolInfo type
 func DecodeNsVolumePoolInfo(request interface{}) (*NsVolumePoolInfo, error) {
 	reqNsVolumePoolInfo := request.(*nsVolumePoolInfo)
 	byte, err := json.Marshal(reqNsVolumePoolInfo)
-	obj := &NsVolumePoolInfo{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumePoolInfo := &NsVolumePoolInfo{}
+	err = json.Unmarshal(byte, respNsVolumePoolInfo)
+	return respNsVolumePoolInfo, err
 }

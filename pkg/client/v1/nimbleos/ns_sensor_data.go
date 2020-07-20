@@ -26,9 +26,7 @@ type NsSensorData struct {
 
 // sdk internal struct
 type nsSensorData struct {
-	// Sensor - Sensor name.
-	Sensor *string `json:"sensor,omitempty"`
-	// Samples - A list of samples for the sensor.
+	Sensor  *string    `json:"sensor,omitempty"`
 	Samples []*float64 `json:"samples,omitempty"`
 }
 
@@ -36,16 +34,22 @@ type nsSensorData struct {
 func EncodeNsSensorData(request interface{}) (*nsSensorData, error) {
 	reqNsSensorData := request.(*NsSensorData)
 	byte, err := json.Marshal(reqNsSensorData)
-	objPtr := &nsSensorData{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSensorDataPtr := &nsSensorData{}
+	err = json.Unmarshal(byte, respNsSensorDataPtr)
+	return respNsSensorDataPtr, err
 }
 
 // DecodeNsSensorData Transform nsSensorData to NsSensorData type
 func DecodeNsSensorData(request interface{}) (*NsSensorData, error) {
 	reqNsSensorData := request.(*nsSensorData)
 	byte, err := json.Marshal(reqNsSensorData)
-	obj := &NsSensorData{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSensorData := &NsSensorData{}
+	err = json.Unmarshal(byte, respNsSensorData)
+	return respNsSensorData, err
 }

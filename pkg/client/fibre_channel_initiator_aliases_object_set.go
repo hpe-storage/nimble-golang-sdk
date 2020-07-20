@@ -37,25 +37,25 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) DeleteObject(id string) er
 
 // GetObject returns a FibreChannelInitiatorAlias object with the given ID
 func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObject(id string) (*nimbleos.FibreChannelInitiatorAlias, error) {
-	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.Get(fibreChannelInitiatorAliasPath, id, nimbleos.FibreChannelInitiatorAlias{})
+	resp, err := objectSet.Client.Get(fibreChannelInitiatorAliasPath, id, nimbleos.FibreChannelInitiatorAlias{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if fibreChannelInitiatorAliasObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return fibreChannelInitiatorAliasObjectSetResp.(*nimbleos.FibreChannelInitiatorAlias), err
+	return resp.(*nimbleos.FibreChannelInitiatorAlias), err
 }
 
 // GetObjectList returns the list of FibreChannelInitiatorAlias objects
 func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObjectList() ([]*nimbleos.FibreChannelInitiatorAlias, error) {
-	fibreChannelInitiatorAliasObjectSetResp, err := objectSet.Client.List(fibreChannelInitiatorAliasPath)
+	resp, err := objectSet.Client.List(fibreChannelInitiatorAliasPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildFibreChannelInitiatorAliasObjectSet(fibreChannelInitiatorAliasObjectSetResp), err
+	return buildFibreChannelInitiatorAliasObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of FibreChannelInitiatorAlias objects using the given params query info

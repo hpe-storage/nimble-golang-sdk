@@ -21,8 +21,11 @@ type PoolObjectSet struct {
 
 // CreateObject creates a new Pool object
 func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	newPayload, err := nimbleos.EncodePool(payload)
-	resp, err := objectSet.Client.Post(poolPath, newPayload)
+	encodedPayload, err := nimbleos.EncodePool(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(poolPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *PoolObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Pool object with the given ID
 func (objectSet *PoolObjectSet) GetObject(id string) (*nimbleos.Pool, error) {
-	poolObjectSetResp, err := objectSet.Client.Get(poolPath, id, nimbleos.Pool{})
+	resp, err := objectSet.Client.Get(poolPath, id, nimbleos.Pool{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if poolObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return poolObjectSetResp.(*nimbleos.Pool), err
+	return resp.(*nimbleos.Pool), err
 }
 
 // GetObjectList returns the list of Pool objects
 func (objectSet *PoolObjectSet) GetObjectList() ([]*nimbleos.Pool, error) {
-	poolObjectSetResp, err := objectSet.Client.List(poolPath)
+	resp, err := objectSet.Client.List(poolPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildPoolObjectSet(poolObjectSetResp), err
+	return buildPoolObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Pool objects using the given params query info

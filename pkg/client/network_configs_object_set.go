@@ -21,8 +21,11 @@ type NetworkConfigObjectSet struct {
 
 // CreateObject creates a new NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
-	newPayload, err := nimbleos.EncodeNetworkConfig(payload)
-	resp, err := objectSet.Client.Post(networkConfigPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeNetworkConfig(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(networkConfigPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *NetworkConfigObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a NetworkConfig object with the given ID
 func (objectSet *NetworkConfigObjectSet) GetObject(id string) (*nimbleos.NetworkConfig, error) {
-	networkConfigObjectSetResp, err := objectSet.Client.Get(networkConfigPath, id, nimbleos.NetworkConfig{})
+	resp, err := objectSet.Client.Get(networkConfigPath, id, nimbleos.NetworkConfig{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if networkConfigObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return networkConfigObjectSetResp.(*nimbleos.NetworkConfig), err
+	return resp.(*nimbleos.NetworkConfig), err
 }
 
 // GetObjectList returns the list of NetworkConfig objects
 func (objectSet *NetworkConfigObjectSet) GetObjectList() ([]*nimbleos.NetworkConfig, error) {
-	networkConfigObjectSetResp, err := objectSet.Client.List(networkConfigPath)
+	resp, err := objectSet.Client.List(networkConfigPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildNetworkConfigObjectSet(networkConfigObjectSetResp), err
+	return buildNetworkConfigObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of NetworkConfig objects using the given params query info

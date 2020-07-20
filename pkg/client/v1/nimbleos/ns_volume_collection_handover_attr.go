@@ -29,28 +29,31 @@ type NsVolumeCollectionHandoverAttr struct {
 
 // sdk internal struct
 type nsVolumeCollectionHandoverAttr struct {
-	// ID - ID of the volume collection to be handed over to the downstream replication partner.
-	ID *string `json:"id,omitempty"`
-	// ReplicationPartnerId - ID of the new owner.
+	ID                   *string `json:"id,omitempty"`
 	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
-	// NoReverse - Do not automatically reverse direction of replication. Using this argument will prevent the new owner from automatically replicating the volume collection to this node when the handover completes. The default behavior is to enable replication back to this node. Default: 'false'.
-	NoReverse *bool `json:"no_reverse,omitempty"`
+	NoReverse            *bool   `json:"no_reverse,omitempty"`
 }
 
 // EncodeNsVolumeCollectionHandoverAttr - Transform NsVolumeCollectionHandoverAttr to nsVolumeCollectionHandoverAttr type
 func EncodeNsVolumeCollectionHandoverAttr(request interface{}) (*nsVolumeCollectionHandoverAttr, error) {
 	reqNsVolumeCollectionHandoverAttr := request.(*NsVolumeCollectionHandoverAttr)
 	byte, err := json.Marshal(reqNsVolumeCollectionHandoverAttr)
-	objPtr := &nsVolumeCollectionHandoverAttr{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeCollectionHandoverAttrPtr := &nsVolumeCollectionHandoverAttr{}
+	err = json.Unmarshal(byte, respNsVolumeCollectionHandoverAttrPtr)
+	return respNsVolumeCollectionHandoverAttrPtr, err
 }
 
 // DecodeNsVolumeCollectionHandoverAttr Transform nsVolumeCollectionHandoverAttr to NsVolumeCollectionHandoverAttr type
 func DecodeNsVolumeCollectionHandoverAttr(request interface{}) (*NsVolumeCollectionHandoverAttr, error) {
 	reqNsVolumeCollectionHandoverAttr := request.(*nsVolumeCollectionHandoverAttr)
 	byte, err := json.Marshal(reqNsVolumeCollectionHandoverAttr)
-	obj := &NsVolumeCollectionHandoverAttr{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeCollectionHandoverAttr := &NsVolumeCollectionHandoverAttr{}
+	err = json.Unmarshal(byte, respNsVolumeCollectionHandoverAttr)
+	return respNsVolumeCollectionHandoverAttr, err
 }

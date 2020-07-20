@@ -47,25 +47,25 @@ func (objectSet *GroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Group object with the given ID
 func (objectSet *GroupObjectSet) GetObject(id string) (*nimbleos.Group, error) {
-	groupObjectSetResp, err := objectSet.Client.Get(groupPath, id, nimbleos.Group{})
+	resp, err := objectSet.Client.Get(groupPath, id, nimbleos.Group{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if groupObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return groupObjectSetResp.(*nimbleos.Group), err
+	return resp.(*nimbleos.Group), err
 }
 
 // GetObjectList returns the list of Group objects
 func (objectSet *GroupObjectSet) GetObjectList() ([]*nimbleos.Group, error) {
-	groupObjectSetResp, err := objectSet.Client.List(groupPath)
+	resp, err := objectSet.Client.List(groupPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildGroupObjectSet(groupObjectSetResp), err
+	return buildGroupObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Group objects using the given params query info

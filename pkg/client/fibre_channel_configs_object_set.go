@@ -37,25 +37,25 @@ func (objectSet *FibreChannelConfigObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a FibreChannelConfig object with the given ID
 func (objectSet *FibreChannelConfigObjectSet) GetObject(id string) (*nimbleos.FibreChannelConfig, error) {
-	fibreChannelConfigObjectSetResp, err := objectSet.Client.Get(fibreChannelConfigPath, id, nimbleos.FibreChannelConfig{})
+	resp, err := objectSet.Client.Get(fibreChannelConfigPath, id, nimbleos.FibreChannelConfig{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if fibreChannelConfigObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return fibreChannelConfigObjectSetResp.(*nimbleos.FibreChannelConfig), err
+	return resp.(*nimbleos.FibreChannelConfig), err
 }
 
 // GetObjectList returns the list of FibreChannelConfig objects
 func (objectSet *FibreChannelConfigObjectSet) GetObjectList() ([]*nimbleos.FibreChannelConfig, error) {
-	fibreChannelConfigObjectSetResp, err := objectSet.Client.List(fibreChannelConfigPath)
+	resp, err := objectSet.Client.List(fibreChannelConfigPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildFibreChannelConfigObjectSet(fibreChannelConfigObjectSetResp), err
+	return buildFibreChannelConfigObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of FibreChannelConfig objects using the given params query info

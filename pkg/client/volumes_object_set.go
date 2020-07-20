@@ -22,8 +22,11 @@ type VolumeObjectSet struct {
 
 // CreateObject creates a new Volume object
 func (objectSet *VolumeObjectSet) CreateObject(payload *nimbleos.Volume) (*nimbleos.Volume, error) {
-	newPayload, err := nimbleos.EncodeVolume(payload)
-	resp, err := objectSet.Client.Post(volumePath, newPayload)
+	encodedPayload, err := nimbleos.EncodeVolume(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(volumePath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -62,25 +65,25 @@ func (objectSet *VolumeObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Volume object with the given ID
 func (objectSet *VolumeObjectSet) GetObject(id string) (*nimbleos.Volume, error) {
-	volumeObjectSetResp, err := objectSet.Client.Get(volumePath, id, nimbleos.Volume{})
+	resp, err := objectSet.Client.Get(volumePath, id, nimbleos.Volume{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if volumeObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return volumeObjectSetResp.(*nimbleos.Volume), err
+	return resp.(*nimbleos.Volume), err
 }
 
 // GetObjectList returns the list of Volume objects
 func (objectSet *VolumeObjectSet) GetObjectList() ([]*nimbleos.Volume, error) {
-	volumeObjectSetResp, err := objectSet.Client.List(volumePath)
+	resp, err := objectSet.Client.List(volumePath)
 	if err != nil {
 		return nil, err
 	}
-	return buildVolumeObjectSet(volumeObjectSetResp), err
+	return buildVolumeObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Volume objects using the given params query info

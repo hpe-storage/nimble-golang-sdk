@@ -37,25 +37,25 @@ func (objectSet *SoftwareVersionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a SoftwareVersion object with the given ID
 func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*nimbleos.SoftwareVersion, error) {
-	softwareVersionObjectSetResp, err := objectSet.Client.Get(softwareVersionPath, id, nimbleos.SoftwareVersion{})
+	resp, err := objectSet.Client.Get(softwareVersionPath, id, nimbleos.SoftwareVersion{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if softwareVersionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return softwareVersionObjectSetResp.(*nimbleos.SoftwareVersion), err
+	return resp.(*nimbleos.SoftwareVersion), err
 }
 
 // GetObjectList returns the list of SoftwareVersion objects
 func (objectSet *SoftwareVersionObjectSet) GetObjectList() ([]*nimbleos.SoftwareVersion, error) {
-	softwareVersionObjectSetResp, err := objectSet.Client.List(softwareVersionPath)
+	resp, err := objectSet.Client.List(softwareVersionPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildSoftwareVersionObjectSet(softwareVersionObjectSetResp), err
+	return buildSoftwareVersionObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of SoftwareVersion objects using the given params query info

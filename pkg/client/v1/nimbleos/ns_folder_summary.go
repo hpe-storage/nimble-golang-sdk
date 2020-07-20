@@ -27,9 +27,7 @@ type NsFolderSummary struct {
 
 // sdk internal struct
 type nsFolderSummary struct {
-	// ID - ID of folder.
-	ID *string `json:"id,omitempty"`
-	// Fqn - Fully qualified name of folder.
+	ID  *string `json:"id,omitempty"`
 	Fqn *string `json:"fqn,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsFolderSummary struct {
 func EncodeNsFolderSummary(request interface{}) (*nsFolderSummary, error) {
 	reqNsFolderSummary := request.(*NsFolderSummary)
 	byte, err := json.Marshal(reqNsFolderSummary)
-	objPtr := &nsFolderSummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFolderSummaryPtr := &nsFolderSummary{}
+	err = json.Unmarshal(byte, respNsFolderSummaryPtr)
+	return respNsFolderSummaryPtr, err
 }
 
 // DecodeNsFolderSummary Transform nsFolderSummary to NsFolderSummary type
 func DecodeNsFolderSummary(request interface{}) (*NsFolderSummary, error) {
 	reqNsFolderSummary := request.(*nsFolderSummary)
 	byte, err := json.Marshal(reqNsFolderSummary)
-	obj := &NsFolderSummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFolderSummary := &NsFolderSummary{}
+	err = json.Unmarshal(byte, respNsFolderSummary)
+	return respNsFolderSummary, err
 }

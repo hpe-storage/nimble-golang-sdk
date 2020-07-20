@@ -21,8 +21,11 @@ type ApplicationServerObjectSet struct {
 
 // CreateObject creates a new ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
-	newPayload, err := nimbleos.EncodeApplicationServer(payload)
-	resp, err := objectSet.Client.Post(applicationServerPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeApplicationServer(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(applicationServerPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *ApplicationServerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ApplicationServer object with the given ID
 func (objectSet *ApplicationServerObjectSet) GetObject(id string) (*nimbleos.ApplicationServer, error) {
-	applicationServerObjectSetResp, err := objectSet.Client.Get(applicationServerPath, id, nimbleos.ApplicationServer{})
+	resp, err := objectSet.Client.Get(applicationServerPath, id, nimbleos.ApplicationServer{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if applicationServerObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return applicationServerObjectSetResp.(*nimbleos.ApplicationServer), err
+	return resp.(*nimbleos.ApplicationServer), err
 }
 
 // GetObjectList returns the list of ApplicationServer objects
 func (objectSet *ApplicationServerObjectSet) GetObjectList() ([]*nimbleos.ApplicationServer, error) {
-	applicationServerObjectSetResp, err := objectSet.Client.List(applicationServerPath)
+	resp, err := objectSet.Client.List(applicationServerPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildApplicationServerObjectSet(applicationServerObjectSetResp), err
+	return buildApplicationServerObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ApplicationServer objects using the given params query info

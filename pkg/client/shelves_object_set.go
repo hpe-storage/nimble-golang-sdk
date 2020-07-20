@@ -47,25 +47,25 @@ func (objectSet *ShelfObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Shelf object with the given ID
 func (objectSet *ShelfObjectSet) GetObject(id string) (*nimbleos.Shelf, error) {
-	shelfObjectSetResp, err := objectSet.Client.Get(shelfPath, id, nimbleos.Shelf{})
+	resp, err := objectSet.Client.Get(shelfPath, id, nimbleos.Shelf{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if shelfObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return shelfObjectSetResp.(*nimbleos.Shelf), err
+	return resp.(*nimbleos.Shelf), err
 }
 
 // GetObjectList returns the list of Shelf objects
 func (objectSet *ShelfObjectSet) GetObjectList() ([]*nimbleos.Shelf, error) {
-	shelfObjectSetResp, err := objectSet.Client.List(shelfPath)
+	resp, err := objectSet.Client.List(shelfPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildShelfObjectSet(shelfObjectSetResp), err
+	return buildShelfObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Shelf objects using the given params query info

@@ -24,7 +24,6 @@ type NsISCSIIQN struct {
 
 // sdk internal struct
 type nsISCSIIQN struct {
-	// Name - IQN name of the iSCSI initiator.
 	Name *string `json:"name,omitempty"`
 }
 
@@ -32,16 +31,22 @@ type nsISCSIIQN struct {
 func EncodeNsISCSIIQN(request interface{}) (*nsISCSIIQN, error) {
 	reqNsISCSIIQN := request.(*NsISCSIIQN)
 	byte, err := json.Marshal(reqNsISCSIIQN)
-	objPtr := &nsISCSIIQN{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsISCSIIQNPtr := &nsISCSIIQN{}
+	err = json.Unmarshal(byte, respNsISCSIIQNPtr)
+	return respNsISCSIIQNPtr, err
 }
 
 // DecodeNsISCSIIQN Transform nsISCSIIQN to NsISCSIIQN type
 func DecodeNsISCSIIQN(request interface{}) (*NsISCSIIQN, error) {
 	reqNsISCSIIQN := request.(*nsISCSIIQN)
 	byte, err := json.Marshal(reqNsISCSIIQN)
-	obj := &NsISCSIIQN{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsISCSIIQN := &NsISCSIIQN{}
+	err = json.Unmarshal(byte, respNsISCSIIQN)
+	return respNsISCSIIQN, err
 }

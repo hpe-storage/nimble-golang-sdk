@@ -27,9 +27,7 @@ type NsKeyValue struct {
 
 // sdk internal struct
 type nsKeyValue struct {
-	// Key - Identifier of key-value pair.
-	Key *string `json:"key,omitempty"`
-	// Value - Value of key-value pair.
+	Key   *string `json:"key,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsKeyValue struct {
 func EncodeNsKeyValue(request interface{}) (*nsKeyValue, error) {
 	reqNsKeyValue := request.(*NsKeyValue)
 	byte, err := json.Marshal(reqNsKeyValue)
-	objPtr := &nsKeyValue{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsKeyValuePtr := &nsKeyValue{}
+	err = json.Unmarshal(byte, respNsKeyValuePtr)
+	return respNsKeyValuePtr, err
 }
 
 // DecodeNsKeyValue Transform nsKeyValue to NsKeyValue type
 func DecodeNsKeyValue(request interface{}) (*NsKeyValue, error) {
 	reqNsKeyValue := request.(*nsKeyValue)
 	byte, err := json.Marshal(reqNsKeyValue)
-	obj := &NsKeyValue{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsKeyValue := &NsKeyValue{}
+	err = json.Unmarshal(byte, respNsKeyValue)
+	return respNsKeyValue, err
 }

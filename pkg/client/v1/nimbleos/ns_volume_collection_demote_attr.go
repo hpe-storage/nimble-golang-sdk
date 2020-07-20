@@ -27,9 +27,7 @@ type NsVolumeCollectionDemoteAttr struct {
 
 // sdk internal struct
 type nsVolumeCollectionDemoteAttr struct {
-	// ID - ID of the demoted volume collection.
-	ID *string `json:"id,omitempty"`
-	// ReplicationPartnerId - ID of the new owner. If invoke_on_upstream_partner is provided, utilize the ID of the current owner i.e. upstream replication partner.
+	ID                   *string `json:"id,omitempty"`
 	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsVolumeCollectionDemoteAttr struct {
 func EncodeNsVolumeCollectionDemoteAttr(request interface{}) (*nsVolumeCollectionDemoteAttr, error) {
 	reqNsVolumeCollectionDemoteAttr := request.(*NsVolumeCollectionDemoteAttr)
 	byte, err := json.Marshal(reqNsVolumeCollectionDemoteAttr)
-	objPtr := &nsVolumeCollectionDemoteAttr{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeCollectionDemoteAttrPtr := &nsVolumeCollectionDemoteAttr{}
+	err = json.Unmarshal(byte, respNsVolumeCollectionDemoteAttrPtr)
+	return respNsVolumeCollectionDemoteAttrPtr, err
 }
 
 // DecodeNsVolumeCollectionDemoteAttr Transform nsVolumeCollectionDemoteAttr to NsVolumeCollectionDemoteAttr type
 func DecodeNsVolumeCollectionDemoteAttr(request interface{}) (*NsVolumeCollectionDemoteAttr, error) {
 	reqNsVolumeCollectionDemoteAttr := request.(*nsVolumeCollectionDemoteAttr)
 	byte, err := json.Marshal(reqNsVolumeCollectionDemoteAttr)
-	obj := &NsVolumeCollectionDemoteAttr{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeCollectionDemoteAttr := &NsVolumeCollectionDemoteAttr{}
+	err = json.Unmarshal(byte, respNsVolumeCollectionDemoteAttr)
+	return respNsVolumeCollectionDemoteAttr, err
 }

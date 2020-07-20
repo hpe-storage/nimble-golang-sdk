@@ -22,7 +22,6 @@ type NsSnapVolListReturn struct {
 
 // sdk internal struct
 type nsSnapVolListReturn struct {
-	// SnapIds - A list of snapshot ids.
 	SnapIds []*NsObjectIDKV `json:"snap_ids,omitempty"`
 }
 
@@ -30,16 +29,22 @@ type nsSnapVolListReturn struct {
 func EncodeNsSnapVolListReturn(request interface{}) (*nsSnapVolListReturn, error) {
 	reqNsSnapVolListReturn := request.(*NsSnapVolListReturn)
 	byte, err := json.Marshal(reqNsSnapVolListReturn)
-	objPtr := &nsSnapVolListReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapVolListReturnPtr := &nsSnapVolListReturn{}
+	err = json.Unmarshal(byte, respNsSnapVolListReturnPtr)
+	return respNsSnapVolListReturnPtr, err
 }
 
 // DecodeNsSnapVolListReturn Transform nsSnapVolListReturn to NsSnapVolListReturn type
 func DecodeNsSnapVolListReturn(request interface{}) (*NsSnapVolListReturn, error) {
 	reqNsSnapVolListReturn := request.(*nsSnapVolListReturn)
 	byte, err := json.Marshal(reqNsSnapVolListReturn)
-	obj := &NsSnapVolListReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapVolListReturn := &NsSnapVolListReturn{}
+	err = json.Unmarshal(byte, respNsSnapVolListReturn)
+	return respNsSnapVolListReturn, err
 }

@@ -29,28 +29,31 @@ type NsSnapLunInfo struct {
 
 // sdk internal struct
 type nsSnapLunInfo struct {
-	// ID - Snapshot ID.
-	ID *string `json:"id,omitempty"`
-	// Name - Snapshot name.
+	ID   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	// Lun - Snapshot LUN.
-	Lun *int64 `json:"lun,omitempty"`
+	Lun  *int64  `json:"lun,omitempty"`
 }
 
 // EncodeNsSnapLunInfo - Transform NsSnapLunInfo to nsSnapLunInfo type
 func EncodeNsSnapLunInfo(request interface{}) (*nsSnapLunInfo, error) {
 	reqNsSnapLunInfo := request.(*NsSnapLunInfo)
 	byte, err := json.Marshal(reqNsSnapLunInfo)
-	objPtr := &nsSnapLunInfo{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapLunInfoPtr := &nsSnapLunInfo{}
+	err = json.Unmarshal(byte, respNsSnapLunInfoPtr)
+	return respNsSnapLunInfoPtr, err
 }
 
 // DecodeNsSnapLunInfo Transform nsSnapLunInfo to NsSnapLunInfo type
 func DecodeNsSnapLunInfo(request interface{}) (*NsSnapLunInfo, error) {
 	reqNsSnapLunInfo := request.(*nsSnapLunInfo)
 	byte, err := json.Marshal(reqNsSnapLunInfo)
-	obj := &NsSnapLunInfo{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapLunInfo := &NsSnapLunInfo{}
+	err = json.Unmarshal(byte, respNsSnapLunInfo)
+	return respNsSnapLunInfo, err
 }

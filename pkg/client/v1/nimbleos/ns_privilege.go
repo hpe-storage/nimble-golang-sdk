@@ -26,9 +26,7 @@ type NsPrivilege struct {
 
 // sdk internal struct
 type nsPrivilege struct {
-	// ObjectType - Object type name associated with this privilege.
-	ObjectType *string `json:"object_type,omitempty"`
-	// Operations - List of operations associated with the above object for this privilege.
+	ObjectType *string   `json:"object_type,omitempty"`
 	Operations []*string `json:"operations,omitempty"`
 }
 
@@ -36,16 +34,22 @@ type nsPrivilege struct {
 func EncodeNsPrivilege(request interface{}) (*nsPrivilege, error) {
 	reqNsPrivilege := request.(*NsPrivilege)
 	byte, err := json.Marshal(reqNsPrivilege)
-	objPtr := &nsPrivilege{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsPrivilegePtr := &nsPrivilege{}
+	err = json.Unmarshal(byte, respNsPrivilegePtr)
+	return respNsPrivilegePtr, err
 }
 
 // DecodeNsPrivilege Transform nsPrivilege to NsPrivilege type
 func DecodeNsPrivilege(request interface{}) (*NsPrivilege, error) {
 	reqNsPrivilege := request.(*nsPrivilege)
 	byte, err := json.Marshal(reqNsPrivilege)
-	obj := &NsPrivilege{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsPrivilege := &NsPrivilege{}
+	err = json.Unmarshal(byte, respNsPrivilege)
+	return respNsPrivilege, err
 }

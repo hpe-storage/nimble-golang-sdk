@@ -32,32 +32,33 @@ type NsCtrlrRaidInfo struct {
 
 // sdk internal struct
 type nsCtrlrRaidInfo struct {
-	// RaidId - Raid ID for this raid array.
-	RaidId *int64 `json:"raid_id,omitempty"`
-	// RaidType - Type of raid for this array.
-	RaidType *string `json:"raid_type,omitempty"`
-	// MaxCopies - Maximum number of copies.
-	MaxCopies *int64 `json:"max_copies,omitempty"`
-	// CurCopies - Current number of copies.
-	CurCopies *int64 `json:"cur_copies,omitempty"`
-	// IsResyncing - Is this raid array resynchronizing.
-	IsResyncing *bool `json:"is_resyncing,omitempty"`
+	RaidId      *int64  `json:"raid_id,omitempty"`
+	RaidType    *string `json:"raid_type,omitempty"`
+	MaxCopies   *int64  `json:"max_copies,omitempty"`
+	CurCopies   *int64  `json:"cur_copies,omitempty"`
+	IsResyncing *bool   `json:"is_resyncing,omitempty"`
 }
 
 // EncodeNsCtrlrRaidInfo - Transform NsCtrlrRaidInfo to nsCtrlrRaidInfo type
 func EncodeNsCtrlrRaidInfo(request interface{}) (*nsCtrlrRaidInfo, error) {
 	reqNsCtrlrRaidInfo := request.(*NsCtrlrRaidInfo)
 	byte, err := json.Marshal(reqNsCtrlrRaidInfo)
-	objPtr := &nsCtrlrRaidInfo{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsCtrlrRaidInfoPtr := &nsCtrlrRaidInfo{}
+	err = json.Unmarshal(byte, respNsCtrlrRaidInfoPtr)
+	return respNsCtrlrRaidInfoPtr, err
 }
 
 // DecodeNsCtrlrRaidInfo Transform nsCtrlrRaidInfo to NsCtrlrRaidInfo type
 func DecodeNsCtrlrRaidInfo(request interface{}) (*NsCtrlrRaidInfo, error) {
 	reqNsCtrlrRaidInfo := request.(*nsCtrlrRaidInfo)
 	byte, err := json.Marshal(reqNsCtrlrRaidInfo)
-	obj := &NsCtrlrRaidInfo{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsCtrlrRaidInfo := &NsCtrlrRaidInfo{}
+	err = json.Unmarshal(byte, respNsCtrlrRaidInfo)
+	return respNsCtrlrRaidInfo, err
 }

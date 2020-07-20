@@ -22,7 +22,6 @@ type NsDiscoveredGroupListReturn struct {
 
 // sdk internal struct
 type nsDiscoveredGroupListReturn struct {
-	// DiscoveredGroupList - List of discovered group details.
 	DiscoveredGroupList []*NsDiscoveredGroupInfo `json:"discovered_group_list,omitempty"`
 }
 
@@ -30,16 +29,22 @@ type nsDiscoveredGroupListReturn struct {
 func EncodeNsDiscoveredGroupListReturn(request interface{}) (*nsDiscoveredGroupListReturn, error) {
 	reqNsDiscoveredGroupListReturn := request.(*NsDiscoveredGroupListReturn)
 	byte, err := json.Marshal(reqNsDiscoveredGroupListReturn)
-	objPtr := &nsDiscoveredGroupListReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsDiscoveredGroupListReturnPtr := &nsDiscoveredGroupListReturn{}
+	err = json.Unmarshal(byte, respNsDiscoveredGroupListReturnPtr)
+	return respNsDiscoveredGroupListReturnPtr, err
 }
 
 // DecodeNsDiscoveredGroupListReturn Transform nsDiscoveredGroupListReturn to NsDiscoveredGroupListReturn type
 func DecodeNsDiscoveredGroupListReturn(request interface{}) (*NsDiscoveredGroupListReturn, error) {
 	reqNsDiscoveredGroupListReturn := request.(*nsDiscoveredGroupListReturn)
 	byte, err := json.Marshal(reqNsDiscoveredGroupListReturn)
-	obj := &NsDiscoveredGroupListReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsDiscoveredGroupListReturn := &NsDiscoveredGroupListReturn{}
+	err = json.Unmarshal(byte, respNsDiscoveredGroupListReturn)
+	return respNsDiscoveredGroupListReturn, err
 }

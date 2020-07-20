@@ -30,28 +30,31 @@ type NsFibreChannelInterfaceFullName struct {
 
 // sdk internal struct
 type nsFibreChannelInterfaceFullName struct {
-	// ArrayName - Array name.
 	ArrayName *string `json:"array_name,omitempty"`
-	// CtrlrName - Controller name.
 	CtrlrName *string `json:"ctrlr_name,omitempty"`
-	// IntfName - Fibre Channel interface name.
-	IntfName *string `json:"intf_name,omitempty"`
+	IntfName  *string `json:"intf_name,omitempty"`
 }
 
 // EncodeNsFibreChannelInterfaceFullName - Transform NsFibreChannelInterfaceFullName to nsFibreChannelInterfaceFullName type
 func EncodeNsFibreChannelInterfaceFullName(request interface{}) (*nsFibreChannelInterfaceFullName, error) {
 	reqNsFibreChannelInterfaceFullName := request.(*NsFibreChannelInterfaceFullName)
 	byte, err := json.Marshal(reqNsFibreChannelInterfaceFullName)
-	objPtr := &nsFibreChannelInterfaceFullName{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFibreChannelInterfaceFullNamePtr := &nsFibreChannelInterfaceFullName{}
+	err = json.Unmarshal(byte, respNsFibreChannelInterfaceFullNamePtr)
+	return respNsFibreChannelInterfaceFullNamePtr, err
 }
 
 // DecodeNsFibreChannelInterfaceFullName Transform nsFibreChannelInterfaceFullName to NsFibreChannelInterfaceFullName type
 func DecodeNsFibreChannelInterfaceFullName(request interface{}) (*NsFibreChannelInterfaceFullName, error) {
 	reqNsFibreChannelInterfaceFullName := request.(*nsFibreChannelInterfaceFullName)
 	byte, err := json.Marshal(reqNsFibreChannelInterfaceFullName)
-	obj := &NsFibreChannelInterfaceFullName{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFibreChannelInterfaceFullName := &NsFibreChannelInterfaceFullName{}
+	err = json.Unmarshal(byte, respNsFibreChannelInterfaceFullName)
+	return respNsFibreChannelInterfaceFullName, err
 }

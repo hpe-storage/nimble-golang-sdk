@@ -26,9 +26,7 @@ type NsSensorRate struct {
 
 // sdk internal struct
 type nsSensorRate struct {
-	// Name - Sensor name.
-	Name *string `json:"name,omitempty"`
-	// Rate - Sensor value.
+	Name *string  `json:"name,omitempty"`
 	Rate *float32 `json:"rate,omitempty"`
 }
 
@@ -36,16 +34,22 @@ type nsSensorRate struct {
 func EncodeNsSensorRate(request interface{}) (*nsSensorRate, error) {
 	reqNsSensorRate := request.(*NsSensorRate)
 	byte, err := json.Marshal(reqNsSensorRate)
-	objPtr := &nsSensorRate{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSensorRatePtr := &nsSensorRate{}
+	err = json.Unmarshal(byte, respNsSensorRatePtr)
+	return respNsSensorRatePtr, err
 }
 
 // DecodeNsSensorRate Transform nsSensorRate to NsSensorRate type
 func DecodeNsSensorRate(request interface{}) (*NsSensorRate, error) {
 	reqNsSensorRate := request.(*nsSensorRate)
 	byte, err := json.Marshal(reqNsSensorRate)
-	obj := &NsSensorRate{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSensorRate := &NsSensorRate{}
+	err = json.Unmarshal(byte, respNsSensorRate)
+	return respNsSensorRate, err
 }

@@ -23,8 +23,11 @@ type MasterKeyObjectSet struct {
 
 // CreateObject creates a new MasterKey object
 func (objectSet *MasterKeyObjectSet) CreateObject(payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
-	newPayload, err := nimbleos.EncodeMasterKey(payload)
-	resp, err := objectSet.Client.Post(masterKeyPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeMasterKey(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(masterKeyPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -63,25 +66,25 @@ func (objectSet *MasterKeyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a MasterKey object with the given ID
 func (objectSet *MasterKeyObjectSet) GetObject(id string) (*nimbleos.MasterKey, error) {
-	masterKeyObjectSetResp, err := objectSet.Client.Get(masterKeyPath, id, nimbleos.MasterKey{})
+	resp, err := objectSet.Client.Get(masterKeyPath, id, nimbleos.MasterKey{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if masterKeyObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return masterKeyObjectSetResp.(*nimbleos.MasterKey), err
+	return resp.(*nimbleos.MasterKey), err
 }
 
 // GetObjectList returns the list of MasterKey objects
 func (objectSet *MasterKeyObjectSet) GetObjectList() ([]*nimbleos.MasterKey, error) {
-	masterKeyObjectSetResp, err := objectSet.Client.List(masterKeyPath)
+	resp, err := objectSet.Client.List(masterKeyPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildMasterKeyObjectSet(masterKeyObjectSetResp), err
+	return buildMasterKeyObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of MasterKey objects using the given params query info

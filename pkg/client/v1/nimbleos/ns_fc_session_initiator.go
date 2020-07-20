@@ -45,38 +45,36 @@ type NsFcSessionInitiator struct {
 
 // sdk internal struct
 type nsFcSessionInitiator struct {
-	// InitiatorAlias - Alias of the Fibre Channel initiator.
-	InitiatorAlias *string `json:"initiator_alias,omitempty"`
-	// InitiatorWwpn - WWPN (World Wide Port Name) of the Fibre Channel initiator.
-	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
-	// InitiatorWwnn - WWNN (World Wide Node Name) of the Fibre Channel initiator.
-	InitiatorWwnn *string `json:"initiator_wwnn,omitempty"`
-	// InitiatorSwitchName - Name of the switch used by the Fibre Channel initiator.
-	InitiatorSwitchName *string `json:"initiator_switch_name,omitempty"`
-	// InitiatorSwitchPort - Port on the switch used by the Fibre Channel initiator.
-	InitiatorSwitchPort *string `json:"initiator_switch_port,omitempty"`
-	// InitiatorSymbolicPortname - Symbolic port name associated with the Fibre Channel initiator.
+	InitiatorAlias            *string `json:"initiator_alias,omitempty"`
+	InitiatorWwpn             *string `json:"initiator_wwpn,omitempty"`
+	InitiatorWwnn             *string `json:"initiator_wwnn,omitempty"`
+	InitiatorSwitchName       *string `json:"initiator_switch_name,omitempty"`
+	InitiatorSwitchPort       *string `json:"initiator_switch_port,omitempty"`
 	InitiatorSymbolicPortname *string `json:"initiator_symbolic_portname,omitempty"`
-	// InitiatorSymbolicNodename - Symbolic node name associated with the Fibre Channel initiator.
 	InitiatorSymbolicNodename *string `json:"initiator_symbolic_nodename,omitempty"`
-	// InitiatorFcid - FCID assigned to the Fibre Channel initiator.
-	InitiatorFcid *string `json:"initiator_fcid,omitempty"`
+	InitiatorFcid             *string `json:"initiator_fcid,omitempty"`
 }
 
 // EncodeNsFcSessionInitiator - Transform NsFcSessionInitiator to nsFcSessionInitiator type
 func EncodeNsFcSessionInitiator(request interface{}) (*nsFcSessionInitiator, error) {
 	reqNsFcSessionInitiator := request.(*NsFcSessionInitiator)
 	byte, err := json.Marshal(reqNsFcSessionInitiator)
-	objPtr := &nsFcSessionInitiator{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcSessionInitiatorPtr := &nsFcSessionInitiator{}
+	err = json.Unmarshal(byte, respNsFcSessionInitiatorPtr)
+	return respNsFcSessionInitiatorPtr, err
 }
 
 // DecodeNsFcSessionInitiator Transform nsFcSessionInitiator to NsFcSessionInitiator type
 func DecodeNsFcSessionInitiator(request interface{}) (*NsFcSessionInitiator, error) {
 	reqNsFcSessionInitiator := request.(*nsFcSessionInitiator)
 	byte, err := json.Marshal(reqNsFcSessionInitiator)
-	obj := &NsFcSessionInitiator{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcSessionInitiator := &NsFcSessionInitiator{}
+	err = json.Unmarshal(byte, respNsFcSessionInitiator)
+	return respNsFcSessionInitiator, err
 }

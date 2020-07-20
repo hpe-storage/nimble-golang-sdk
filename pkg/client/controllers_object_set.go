@@ -37,25 +37,25 @@ func (objectSet *ControllerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Controller object with the given ID
 func (objectSet *ControllerObjectSet) GetObject(id string) (*nimbleos.Controller, error) {
-	controllerObjectSetResp, err := objectSet.Client.Get(controllerPath, id, nimbleos.Controller{})
+	resp, err := objectSet.Client.Get(controllerPath, id, nimbleos.Controller{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if controllerObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return controllerObjectSetResp.(*nimbleos.Controller), err
+	return resp.(*nimbleos.Controller), err
 }
 
 // GetObjectList returns the list of Controller objects
 func (objectSet *ControllerObjectSet) GetObjectList() ([]*nimbleos.Controller, error) {
-	controllerObjectSetResp, err := objectSet.Client.List(controllerPath)
+	resp, err := objectSet.Client.List(controllerPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildControllerObjectSet(controllerObjectSetResp), err
+	return buildControllerObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Controller objects using the given params query info

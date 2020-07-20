@@ -37,25 +37,25 @@ func (objectSet *EventObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Event object with the given ID
 func (objectSet *EventObjectSet) GetObject(id string) (*nimbleos.Event, error) {
-	eventObjectSetResp, err := objectSet.Client.Get(eventPath, id, nimbleos.Event{})
+	resp, err := objectSet.Client.Get(eventPath, id, nimbleos.Event{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if eventObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return eventObjectSetResp.(*nimbleos.Event), err
+	return resp.(*nimbleos.Event), err
 }
 
 // GetObjectList returns the list of Event objects
 func (objectSet *EventObjectSet) GetObjectList() ([]*nimbleos.Event, error) {
-	eventObjectSetResp, err := objectSet.Client.List(eventPath)
+	resp, err := objectSet.Client.List(eventPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildEventObjectSet(eventObjectSetResp), err
+	return buildEventObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Event objects using the given params query info

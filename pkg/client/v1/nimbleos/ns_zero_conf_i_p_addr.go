@@ -30,11 +30,8 @@ type NsZeroConfIPAddr struct {
 
 // sdk internal struct
 type nsZeroConfIPAddr struct {
-	// Nic - Nic of array.
-	Nic *string `json:"nic,omitempty"`
-	// LocalIpaddr - Local IP address of array.
-	LocalIpaddr *string `json:"local_ipaddr,omitempty"`
-	// RemoteIpaddr - Remote IP address of array.
+	Nic          *string `json:"nic,omitempty"`
+	LocalIpaddr  *string `json:"local_ipaddr,omitempty"`
 	RemoteIpaddr *string `json:"remote_ipaddr,omitempty"`
 }
 
@@ -42,16 +39,22 @@ type nsZeroConfIPAddr struct {
 func EncodeNsZeroConfIPAddr(request interface{}) (*nsZeroConfIPAddr, error) {
 	reqNsZeroConfIPAddr := request.(*NsZeroConfIPAddr)
 	byte, err := json.Marshal(reqNsZeroConfIPAddr)
-	objPtr := &nsZeroConfIPAddr{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsZeroConfIPAddrPtr := &nsZeroConfIPAddr{}
+	err = json.Unmarshal(byte, respNsZeroConfIPAddrPtr)
+	return respNsZeroConfIPAddrPtr, err
 }
 
 // DecodeNsZeroConfIPAddr Transform nsZeroConfIPAddr to NsZeroConfIPAddr type
 func DecodeNsZeroConfIPAddr(request interface{}) (*NsZeroConfIPAddr, error) {
 	reqNsZeroConfIPAddr := request.(*nsZeroConfIPAddr)
 	byte, err := json.Marshal(reqNsZeroConfIPAddr)
-	obj := &NsZeroConfIPAddr{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsZeroConfIPAddr := &NsZeroConfIPAddr{}
+	err = json.Unmarshal(byte, respNsZeroConfIPAddr)
+	return respNsZeroConfIPAddr, err
 }

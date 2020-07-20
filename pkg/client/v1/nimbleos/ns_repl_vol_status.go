@@ -35,34 +35,34 @@ type NsReplVolStatus struct {
 
 // sdk internal struct
 type nsReplVolStatus struct {
-	// Name - Name of the volume being replicated.
-	Name *string `json:"name,omitempty"`
-	// SnapName - Name of the snapshot being replicated.
-	SnapName *string `json:"snap_name,omitempty"`
-	// Status - Replication status of the volume.
-	Status *NsReplVolPartnerStatus `json:"status,omitempty"`
-	// InternalStatus - Internal replication status of the volume.
+	Name           *string                 `json:"name,omitempty"`
+	SnapName       *string                 `json:"snap_name,omitempty"`
+	Status         *NsReplVolPartnerStatus `json:"status,omitempty"`
 	InternalStatus *NsReplVolPartnerStatus `json:"internal_status,omitempty"`
-	// ReplBytesDone - Transferred bytes.
-	ReplBytesDone *int64 `json:"repl_bytes_done,omitempty"`
-	// ReplBytesTotal - Total number of bytes to be transferred.
-	ReplBytesTotal *int64 `json:"repl_bytes_total,omitempty"`
+	ReplBytesDone  *int64                  `json:"repl_bytes_done,omitempty"`
+	ReplBytesTotal *int64                  `json:"repl_bytes_total,omitempty"`
 }
 
 // EncodeNsReplVolStatus - Transform NsReplVolStatus to nsReplVolStatus type
 func EncodeNsReplVolStatus(request interface{}) (*nsReplVolStatus, error) {
 	reqNsReplVolStatus := request.(*NsReplVolStatus)
 	byte, err := json.Marshal(reqNsReplVolStatus)
-	objPtr := &nsReplVolStatus{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsReplVolStatusPtr := &nsReplVolStatus{}
+	err = json.Unmarshal(byte, respNsReplVolStatusPtr)
+	return respNsReplVolStatusPtr, err
 }
 
 // DecodeNsReplVolStatus Transform nsReplVolStatus to NsReplVolStatus type
 func DecodeNsReplVolStatus(request interface{}) (*NsReplVolStatus, error) {
 	reqNsReplVolStatus := request.(*nsReplVolStatus)
 	byte, err := json.Marshal(reqNsReplVolStatus)
-	obj := &NsReplVolStatus{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsReplVolStatus := &NsReplVolStatus{}
+	err = json.Unmarshal(byte, respNsReplVolStatus)
+	return respNsReplVolStatus, err
 }

@@ -37,25 +37,25 @@ func (objectSet *ProtocolEndpointObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ProtocolEndpoint object with the given ID
 func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*nimbleos.ProtocolEndpoint, error) {
-	protocolEndpointObjectSetResp, err := objectSet.Client.Get(protocolEndpointPath, id, nimbleos.ProtocolEndpoint{})
+	resp, err := objectSet.Client.Get(protocolEndpointPath, id, nimbleos.ProtocolEndpoint{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if protocolEndpointObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return protocolEndpointObjectSetResp.(*nimbleos.ProtocolEndpoint), err
+	return resp.(*nimbleos.ProtocolEndpoint), err
 }
 
 // GetObjectList returns the list of ProtocolEndpoint objects
 func (objectSet *ProtocolEndpointObjectSet) GetObjectList() ([]*nimbleos.ProtocolEndpoint, error) {
-	protocolEndpointObjectSetResp, err := objectSet.Client.List(protocolEndpointPath)
+	resp, err := objectSet.Client.List(protocolEndpointPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildProtocolEndpointObjectSet(protocolEndpointObjectSetResp), err
+	return buildProtocolEndpointObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ProtocolEndpoint objects using the given params query info

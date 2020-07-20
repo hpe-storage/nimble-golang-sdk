@@ -27,9 +27,7 @@ type NsFolderCreateAttr struct {
 
 // sdk internal struct
 type nsFolderCreateAttr struct {
-	// Name - Name of folder.
-	Name *string `json:"name,omitempty"`
-	// PoolId - ID of pool to create the folder in.
+	Name   *string `json:"name,omitempty"`
 	PoolId *string `json:"pool_id,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsFolderCreateAttr struct {
 func EncodeNsFolderCreateAttr(request interface{}) (*nsFolderCreateAttr, error) {
 	reqNsFolderCreateAttr := request.(*NsFolderCreateAttr)
 	byte, err := json.Marshal(reqNsFolderCreateAttr)
-	objPtr := &nsFolderCreateAttr{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFolderCreateAttrPtr := &nsFolderCreateAttr{}
+	err = json.Unmarshal(byte, respNsFolderCreateAttrPtr)
+	return respNsFolderCreateAttrPtr, err
 }
 
 // DecodeNsFolderCreateAttr Transform nsFolderCreateAttr to NsFolderCreateAttr type
 func DecodeNsFolderCreateAttr(request interface{}) (*NsFolderCreateAttr, error) {
 	reqNsFolderCreateAttr := request.(*nsFolderCreateAttr)
 	byte, err := json.Marshal(reqNsFolderCreateAttr)
-	obj := &NsFolderCreateAttr{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFolderCreateAttr := &NsFolderCreateAttr{}
+	err = json.Unmarshal(byte, respNsFolderCreateAttr)
+	return respNsFolderCreateAttr, err
 }

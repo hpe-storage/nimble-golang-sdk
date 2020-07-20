@@ -37,25 +37,25 @@ func (objectSet *SpaceDomainObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a SpaceDomain object with the given ID
 func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*nimbleos.SpaceDomain, error) {
-	spaceDomainObjectSetResp, err := objectSet.Client.Get(spaceDomainPath, id, nimbleos.SpaceDomain{})
+	resp, err := objectSet.Client.Get(spaceDomainPath, id, nimbleos.SpaceDomain{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if spaceDomainObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return spaceDomainObjectSetResp.(*nimbleos.SpaceDomain), err
+	return resp.(*nimbleos.SpaceDomain), err
 }
 
 // GetObjectList returns the list of SpaceDomain objects
 func (objectSet *SpaceDomainObjectSet) GetObjectList() ([]*nimbleos.SpaceDomain, error) {
-	spaceDomainObjectSetResp, err := objectSet.Client.List(spaceDomainPath)
+	resp, err := objectSet.Client.List(spaceDomainPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildSpaceDomainObjectSet(spaceDomainObjectSetResp), err
+	return buildSpaceDomainObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of SpaceDomain objects using the given params query info

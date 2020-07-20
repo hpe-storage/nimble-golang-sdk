@@ -23,8 +23,11 @@ type ChapUserObjectSet struct {
 
 // CreateObject creates a new ChapUser object
 func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
-	newPayload, err := nimbleos.EncodeChapUser(payload)
-	resp, err := objectSet.Client.Post(chapUserPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeChapUser(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(chapUserPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -63,25 +66,25 @@ func (objectSet *ChapUserObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ChapUser object with the given ID
 func (objectSet *ChapUserObjectSet) GetObject(id string) (*nimbleos.ChapUser, error) {
-	chapUserObjectSetResp, err := objectSet.Client.Get(chapUserPath, id, nimbleos.ChapUser{})
+	resp, err := objectSet.Client.Get(chapUserPath, id, nimbleos.ChapUser{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if chapUserObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return chapUserObjectSetResp.(*nimbleos.ChapUser), err
+	return resp.(*nimbleos.ChapUser), err
 }
 
 // GetObjectList returns the list of ChapUser objects
 func (objectSet *ChapUserObjectSet) GetObjectList() ([]*nimbleos.ChapUser, error) {
-	chapUserObjectSetResp, err := objectSet.Client.List(chapUserPath)
+	resp, err := objectSet.Client.List(chapUserPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildChapUserObjectSet(chapUserObjectSetResp), err
+	return buildChapUserObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ChapUser objects using the given params query info

@@ -33,13 +33,9 @@ type NsSnapshotFromVolumes struct {
 
 // sdk internal struct
 type nsSnapshotFromVolumes struct {
-	// ID - Snapshot id.
-	ID *string `json:"id,omitempty"`
-	// SnapId - Snapshot id.
-	SnapId *string `json:"snap_id,omitempty"`
-	// Name - Snapshot name.
-	Name *string `json:"name,omitempty"`
-	// SnapName - Snapshot name.
+	ID       *string `json:"id,omitempty"`
+	SnapId   *string `json:"snap_id,omitempty"`
+	Name     *string `json:"name,omitempty"`
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
@@ -47,16 +43,22 @@ type nsSnapshotFromVolumes struct {
 func EncodeNsSnapshotFromVolumes(request interface{}) (*nsSnapshotFromVolumes, error) {
 	reqNsSnapshotFromVolumes := request.(*NsSnapshotFromVolumes)
 	byte, err := json.Marshal(reqNsSnapshotFromVolumes)
-	objPtr := &nsSnapshotFromVolumes{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapshotFromVolumesPtr := &nsSnapshotFromVolumes{}
+	err = json.Unmarshal(byte, respNsSnapshotFromVolumesPtr)
+	return respNsSnapshotFromVolumesPtr, err
 }
 
 // DecodeNsSnapshotFromVolumes Transform nsSnapshotFromVolumes to NsSnapshotFromVolumes type
 func DecodeNsSnapshotFromVolumes(request interface{}) (*NsSnapshotFromVolumes, error) {
 	reqNsSnapshotFromVolumes := request.(*nsSnapshotFromVolumes)
 	byte, err := json.Marshal(reqNsSnapshotFromVolumes)
-	obj := &NsSnapshotFromVolumes{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapshotFromVolumes := &NsSnapshotFromVolumes{}
+	err = json.Unmarshal(byte, respNsSnapshotFromVolumes)
+	return respNsSnapshotFromVolumes, err
 }

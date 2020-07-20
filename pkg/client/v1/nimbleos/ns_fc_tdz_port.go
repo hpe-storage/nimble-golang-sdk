@@ -27,26 +27,30 @@ type NsFcTdzPort struct {
 
 // sdk internal struct
 type nsFcTdzPort struct {
-	// ArrayName - Unique name of the array.
 	ArrayName *string `json:"array_name,omitempty"`
-	// FcName - Target port interface name.
-	FcName *string `json:"fc_name,omitempty"`
+	FcName    *string `json:"fc_name,omitempty"`
 }
 
 // EncodeNsFcTdzPort - Transform NsFcTdzPort to nsFcTdzPort type
 func EncodeNsFcTdzPort(request interface{}) (*nsFcTdzPort, error) {
 	reqNsFcTdzPort := request.(*NsFcTdzPort)
 	byte, err := json.Marshal(reqNsFcTdzPort)
-	objPtr := &nsFcTdzPort{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcTdzPortPtr := &nsFcTdzPort{}
+	err = json.Unmarshal(byte, respNsFcTdzPortPtr)
+	return respNsFcTdzPortPtr, err
 }
 
 // DecodeNsFcTdzPort Transform nsFcTdzPort to NsFcTdzPort type
 func DecodeNsFcTdzPort(request interface{}) (*NsFcTdzPort, error) {
 	reqNsFcTdzPort := request.(*nsFcTdzPort)
 	byte, err := json.Marshal(reqNsFcTdzPort)
-	obj := &NsFcTdzPort{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcTdzPort := &NsFcTdzPort{}
+	err = json.Unmarshal(byte, respNsFcTdzPort)
+	return respNsFcTdzPort, err
 }

@@ -27,9 +27,7 @@ type NsPoolSummary struct {
 
 // sdk internal struct
 type nsPoolSummary struct {
-	// ID - ID of pool.
-	ID *string `json:"id,omitempty"`
-	// Name - Name of pool.
+	ID   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsPoolSummary struct {
 func EncodeNsPoolSummary(request interface{}) (*nsPoolSummary, error) {
 	reqNsPoolSummary := request.(*NsPoolSummary)
 	byte, err := json.Marshal(reqNsPoolSummary)
-	objPtr := &nsPoolSummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsPoolSummaryPtr := &nsPoolSummary{}
+	err = json.Unmarshal(byte, respNsPoolSummaryPtr)
+	return respNsPoolSummaryPtr, err
 }
 
 // DecodeNsPoolSummary Transform nsPoolSummary to NsPoolSummary type
 func DecodeNsPoolSummary(request interface{}) (*NsPoolSummary, error) {
 	reqNsPoolSummary := request.(*nsPoolSummary)
 	byte, err := json.Marshal(reqNsPoolSummary)
-	obj := &NsPoolSummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsPoolSummary := &NsPoolSummary{}
+	err = json.Unmarshal(byte, respNsPoolSummary)
+	return respNsPoolSummary, err
 }

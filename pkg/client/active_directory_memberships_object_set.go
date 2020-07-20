@@ -22,8 +22,11 @@ type ActiveDirectoryMembershipObjectSet struct {
 
 // CreateObject creates a new ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
-	newPayload, err := nimbleos.EncodeActiveDirectoryMembership(payload)
-	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeActiveDirectoryMembership(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -58,25 +61,25 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) DeleteObject(id string) err
 
 // GetObject returns a ActiveDirectoryMembership object with the given ID
 func (objectSet *ActiveDirectoryMembershipObjectSet) GetObject(id string) (*nimbleos.ActiveDirectoryMembership, error) {
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.Get(activeDirectoryMembershipPath, id, nimbleos.ActiveDirectoryMembership{})
+	resp, err := objectSet.Client.Get(activeDirectoryMembershipPath, id, nimbleos.ActiveDirectoryMembership{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if activeDirectoryMembershipObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return activeDirectoryMembershipObjectSetResp.(*nimbleos.ActiveDirectoryMembership), err
+	return resp.(*nimbleos.ActiveDirectoryMembership), err
 }
 
 // GetObjectList returns the list of ActiveDirectoryMembership objects
 func (objectSet *ActiveDirectoryMembershipObjectSet) GetObjectList() ([]*nimbleos.ActiveDirectoryMembership, error) {
-	activeDirectoryMembershipObjectSetResp, err := objectSet.Client.List(activeDirectoryMembershipPath)
+	resp, err := objectSet.Client.List(activeDirectoryMembershipPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildActiveDirectoryMembershipObjectSet(activeDirectoryMembershipObjectSetResp), err
+	return buildActiveDirectoryMembershipObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ActiveDirectoryMembership objects using the given params query info

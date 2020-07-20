@@ -29,28 +29,31 @@ type NsSnapSummary struct {
 
 // sdk internal struct
 type nsSnapSummary struct {
-	// SnapId - ID of snapshot.
-	SnapId *string `json:"snap_id,omitempty"`
-	// SnapName - Name of snapshot.
-	SnapName *string `json:"snap_name,omitempty"`
-	// SnapCreationTime - Creation time of snapshot.
-	SnapCreationTime *int64 `json:"snap_creation_time,omitempty"`
+	SnapId           *string `json:"snap_id,omitempty"`
+	SnapName         *string `json:"snap_name,omitempty"`
+	SnapCreationTime *int64  `json:"snap_creation_time,omitempty"`
 }
 
 // EncodeNsSnapSummary - Transform NsSnapSummary to nsSnapSummary type
 func EncodeNsSnapSummary(request interface{}) (*nsSnapSummary, error) {
 	reqNsSnapSummary := request.(*NsSnapSummary)
 	byte, err := json.Marshal(reqNsSnapSummary)
-	objPtr := &nsSnapSummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapSummaryPtr := &nsSnapSummary{}
+	err = json.Unmarshal(byte, respNsSnapSummaryPtr)
+	return respNsSnapSummaryPtr, err
 }
 
 // DecodeNsSnapSummary Transform nsSnapSummary to NsSnapSummary type
 func DecodeNsSnapSummary(request interface{}) (*NsSnapSummary, error) {
 	reqNsSnapSummary := request.(*nsSnapSummary)
 	byte, err := json.Marshal(reqNsSnapSummary)
-	obj := &NsSnapSummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapSummary := &NsSnapSummary{}
+	err = json.Unmarshal(byte, respNsSnapSummary)
+	return respNsSnapSummary, err
 }

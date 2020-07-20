@@ -22,8 +22,11 @@ type KeyManagerObjectSet struct {
 
 // CreateObject creates a new KeyManager object
 func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
-	newPayload, err := nimbleos.EncodeKeyManager(payload)
-	resp, err := objectSet.Client.Post(keyManagerPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeKeyManager(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(keyManagerPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -58,25 +61,25 @@ func (objectSet *KeyManagerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a KeyManager object with the given ID
 func (objectSet *KeyManagerObjectSet) GetObject(id string) (*nimbleos.KeyManager, error) {
-	keyManagerObjectSetResp, err := objectSet.Client.Get(keyManagerPath, id, nimbleos.KeyManager{})
+	resp, err := objectSet.Client.Get(keyManagerPath, id, nimbleos.KeyManager{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if keyManagerObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return keyManagerObjectSetResp.(*nimbleos.KeyManager), err
+	return resp.(*nimbleos.KeyManager), err
 }
 
 // GetObjectList returns the list of KeyManager objects
 func (objectSet *KeyManagerObjectSet) GetObjectList() ([]*nimbleos.KeyManager, error) {
-	keyManagerObjectSetResp, err := objectSet.Client.List(keyManagerPath)
+	resp, err := objectSet.Client.List(keyManagerPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildKeyManagerObjectSet(keyManagerObjectSetResp), err
+	return buildKeyManagerObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of KeyManager objects using the given params query info

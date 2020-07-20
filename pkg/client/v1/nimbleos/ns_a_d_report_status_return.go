@@ -30,32 +30,33 @@ type NsADReportStatusReturn struct {
 
 // sdk internal struct
 type nsADReportStatusReturn struct {
-	// Joined - Joined the Active Directory group.
-	Joined *bool `json:"joined,omitempty"`
-	// Enabled - Active Directory group is enabled.
-	Enabled *bool `json:"enabled,omitempty"`
-	// LocalServiceStatus - Status of the local service.
-	LocalServiceStatus *bool `json:"local_service_status,omitempty"`
-	// RemoteServiceStatus - Status of the remote service.
+	Joined              *bool `json:"joined,omitempty"`
+	Enabled             *bool `json:"enabled,omitempty"`
+	LocalServiceStatus  *bool `json:"local_service_status,omitempty"`
 	RemoteServiceStatus *bool `json:"remote_service_status,omitempty"`
-	// TrustValid - Trust is valid.
-	TrustValid *bool `json:"trust_valid,omitempty"`
+	TrustValid          *bool `json:"trust_valid,omitempty"`
 }
 
 // EncodeNsADReportStatusReturn - Transform NsADReportStatusReturn to nsADReportStatusReturn type
 func EncodeNsADReportStatusReturn(request interface{}) (*nsADReportStatusReturn, error) {
 	reqNsADReportStatusReturn := request.(*NsADReportStatusReturn)
 	byte, err := json.Marshal(reqNsADReportStatusReturn)
-	objPtr := &nsADReportStatusReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsADReportStatusReturnPtr := &nsADReportStatusReturn{}
+	err = json.Unmarshal(byte, respNsADReportStatusReturnPtr)
+	return respNsADReportStatusReturnPtr, err
 }
 
 // DecodeNsADReportStatusReturn Transform nsADReportStatusReturn to NsADReportStatusReturn type
 func DecodeNsADReportStatusReturn(request interface{}) (*NsADReportStatusReturn, error) {
 	reqNsADReportStatusReturn := request.(*nsADReportStatusReturn)
 	byte, err := json.Marshal(reqNsADReportStatusReturn)
-	obj := &NsADReportStatusReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsADReportStatusReturn := &NsADReportStatusReturn{}
+	err = json.Unmarshal(byte, respNsADReportStatusReturn)
+	return respNsADReportStatusReturn, err
 }

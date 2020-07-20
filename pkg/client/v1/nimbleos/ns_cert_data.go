@@ -38,34 +38,34 @@ type NsCertData struct {
 
 // sdk internal struct
 type nsCertData struct {
-	// Description - Complete certificate description.
 	Description *string `json:"description,omitempty"`
-	// Subject - Certificate subject name.
-	Subject *string `json:"subject,omitempty"`
-	// Dnslist - Comma-separated list of DNS names from the Subject Alternate Name.
-	Dnslist *string `json:"dnslist,omitempty"`
-	// Iplist - Comma-separated list of IP addresses from the Subject Alternate Name.
-	Iplist *string `json:"iplist,omitempty"`
-	// Trusted - Certificate is an imported, trusted certificate.
-	Trusted *bool `json:"trusted,omitempty"`
-	// PemText - PEM text of the actual certificate.
-	PemText *string `json:"pem_text,omitempty"`
+	Subject     *string `json:"subject,omitempty"`
+	Dnslist     *string `json:"dnslist,omitempty"`
+	Iplist      *string `json:"iplist,omitempty"`
+	Trusted     *bool   `json:"trusted,omitempty"`
+	PemText     *string `json:"pem_text,omitempty"`
 }
 
 // EncodeNsCertData - Transform NsCertData to nsCertData type
 func EncodeNsCertData(request interface{}) (*nsCertData, error) {
 	reqNsCertData := request.(*NsCertData)
 	byte, err := json.Marshal(reqNsCertData)
-	objPtr := &nsCertData{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsCertDataPtr := &nsCertData{}
+	err = json.Unmarshal(byte, respNsCertDataPtr)
+	return respNsCertDataPtr, err
 }
 
 // DecodeNsCertData Transform nsCertData to NsCertData type
 func DecodeNsCertData(request interface{}) (*NsCertData, error) {
 	reqNsCertData := request.(*nsCertData)
 	byte, err := json.Marshal(reqNsCertData)
-	obj := &NsCertData{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsCertData := &NsCertData{}
+	err = json.Unmarshal(byte, respNsCertData)
+	return respNsCertData, err
 }

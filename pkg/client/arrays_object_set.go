@@ -21,8 +21,11 @@ type ArrayObjectSet struct {
 
 // CreateObject creates a new Array object
 func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleos.Array, error) {
-	newPayload, err := nimbleos.EncodeArray(payload)
-	resp, err := objectSet.Client.Post(arrayPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeArray(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(arrayPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *ArrayObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Array object with the given ID
 func (objectSet *ArrayObjectSet) GetObject(id string) (*nimbleos.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.Get(arrayPath, id, nimbleos.Array{})
+	resp, err := objectSet.Client.Get(arrayPath, id, nimbleos.Array{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if arrayObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return arrayObjectSetResp.(*nimbleos.Array), err
+	return resp.(*nimbleos.Array), err
 }
 
 // GetObjectList returns the list of Array objects
 func (objectSet *ArrayObjectSet) GetObjectList() ([]*nimbleos.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.List(arrayPath)
+	resp, err := objectSet.Client.List(arrayPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildArrayObjectSet(arrayObjectSetResp), err
+	return buildArrayObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Array objects using the given params query info

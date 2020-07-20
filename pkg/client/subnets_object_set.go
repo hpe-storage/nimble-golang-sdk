@@ -38,25 +38,25 @@ func (objectSet *SubnetObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Subnet object with the given ID
 func (objectSet *SubnetObjectSet) GetObject(id string) (*nimbleos.Subnet, error) {
-	subnetObjectSetResp, err := objectSet.Client.Get(subnetPath, id, nimbleos.Subnet{})
+	resp, err := objectSet.Client.Get(subnetPath, id, nimbleos.Subnet{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if subnetObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return subnetObjectSetResp.(*nimbleos.Subnet), err
+	return resp.(*nimbleos.Subnet), err
 }
 
 // GetObjectList returns the list of Subnet objects
 func (objectSet *SubnetObjectSet) GetObjectList() ([]*nimbleos.Subnet, error) {
-	subnetObjectSetResp, err := objectSet.Client.List(subnetPath)
+	resp, err := objectSet.Client.List(subnetPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildSubnetObjectSet(subnetObjectSetResp), err
+	return buildSubnetObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Subnet objects using the given params query info

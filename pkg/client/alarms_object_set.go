@@ -51,25 +51,25 @@ func (objectSet *AlarmObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Alarm object with the given ID
 func (objectSet *AlarmObjectSet) GetObject(id string) (*nimbleos.Alarm, error) {
-	alarmObjectSetResp, err := objectSet.Client.Get(alarmPath, id, nimbleos.Alarm{})
+	resp, err := objectSet.Client.Get(alarmPath, id, nimbleos.Alarm{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if alarmObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return alarmObjectSetResp.(*nimbleos.Alarm), err
+	return resp.(*nimbleos.Alarm), err
 }
 
 // GetObjectList returns the list of Alarm objects
 func (objectSet *AlarmObjectSet) GetObjectList() ([]*nimbleos.Alarm, error) {
-	alarmObjectSetResp, err := objectSet.Client.List(alarmPath)
+	resp, err := objectSet.Client.List(alarmPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildAlarmObjectSet(alarmObjectSetResp), err
+	return buildAlarmObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Alarm objects using the given params query info

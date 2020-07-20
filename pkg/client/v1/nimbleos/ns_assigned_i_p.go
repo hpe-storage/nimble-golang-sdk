@@ -26,26 +26,30 @@ type NsAssignedIP struct {
 
 // sdk internal struct
 type nsAssignedIP struct {
-	// VlanId - VLAN id of network interface.
-	VlanId *int64 `json:"vlan_id,omitempty"`
-	// Ip - Assigned IP address to network interface.
-	Ip *string `json:"ip,omitempty"`
+	VlanId *int64  `json:"vlan_id,omitempty"`
+	Ip     *string `json:"ip,omitempty"`
 }
 
 // EncodeNsAssignedIP - Transform NsAssignedIP to nsAssignedIP type
 func EncodeNsAssignedIP(request interface{}) (*nsAssignedIP, error) {
 	reqNsAssignedIP := request.(*NsAssignedIP)
 	byte, err := json.Marshal(reqNsAssignedIP)
-	objPtr := &nsAssignedIP{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAssignedIPPtr := &nsAssignedIP{}
+	err = json.Unmarshal(byte, respNsAssignedIPPtr)
+	return respNsAssignedIPPtr, err
 }
 
 // DecodeNsAssignedIP Transform nsAssignedIP to NsAssignedIP type
 func DecodeNsAssignedIP(request interface{}) (*NsAssignedIP, error) {
 	reqNsAssignedIP := request.(*nsAssignedIP)
 	byte, err := json.Marshal(reqNsAssignedIP)
-	obj := &NsAssignedIP{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAssignedIP := &NsAssignedIP{}
+	err = json.Unmarshal(byte, respNsAssignedIP)
+	return respNsAssignedIP, err
 }

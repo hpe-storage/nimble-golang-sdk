@@ -47,25 +47,25 @@ func (objectSet *FibreChannelInterfaceObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a FibreChannelInterface object with the given ID
 func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*nimbleos.FibreChannelInterface, error) {
-	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, nimbleos.FibreChannelInterface{})
+	resp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, nimbleos.FibreChannelInterface{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if fibreChannelInterfaceObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return fibreChannelInterfaceObjectSetResp.(*nimbleos.FibreChannelInterface), err
+	return resp.(*nimbleos.FibreChannelInterface), err
 }
 
 // GetObjectList returns the list of FibreChannelInterface objects
 func (objectSet *FibreChannelInterfaceObjectSet) GetObjectList() ([]*nimbleos.FibreChannelInterface, error) {
-	fibreChannelInterfaceObjectSetResp, err := objectSet.Client.List(fibreChannelInterfacePath)
+	resp, err := objectSet.Client.List(fibreChannelInterfacePath)
 	if err != nil {
 		return nil, err
 	}
-	return buildFibreChannelInterfaceObjectSet(fibreChannelInterfaceObjectSetResp), err
+	return buildFibreChannelInterfaceObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of FibreChannelInterface objects using the given params query info

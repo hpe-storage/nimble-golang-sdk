@@ -36,32 +36,33 @@ type NsISCSIInitiator struct {
 
 // sdk internal struct
 type nsISCSIInitiator struct {
-	// ID - Unique identifier of the iSCSI initiator.
-	ID *string `json:"id,omitempty"`
-	// InitiatorId - Unique identifier of the iSCSI initiator.
+	ID          *string `json:"id,omitempty"`
 	InitiatorId *string `json:"initiator_id,omitempty"`
-	// Label - Unique label of the iSCSI initiator.
-	Label *string `json:"label,omitempty"`
-	// Iqn - IQN name of the iSCSI initiator.
-	Iqn *string `json:"iqn,omitempty"`
-	// IpAddress - IP address of the iSCSI initiator.
-	IpAddress *string `json:"ip_address,omitempty"`
+	Label       *string `json:"label,omitempty"`
+	Iqn         *string `json:"iqn,omitempty"`
+	IpAddress   *string `json:"ip_address,omitempty"`
 }
 
 // EncodeNsISCSIInitiator - Transform NsISCSIInitiator to nsISCSIInitiator type
 func EncodeNsISCSIInitiator(request interface{}) (*nsISCSIInitiator, error) {
 	reqNsISCSIInitiator := request.(*NsISCSIInitiator)
 	byte, err := json.Marshal(reqNsISCSIInitiator)
-	objPtr := &nsISCSIInitiator{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsISCSIInitiatorPtr := &nsISCSIInitiator{}
+	err = json.Unmarshal(byte, respNsISCSIInitiatorPtr)
+	return respNsISCSIInitiatorPtr, err
 }
 
 // DecodeNsISCSIInitiator Transform nsISCSIInitiator to NsISCSIInitiator type
 func DecodeNsISCSIInitiator(request interface{}) (*NsISCSIInitiator, error) {
 	reqNsISCSIInitiator := request.(*nsISCSIInitiator)
 	byte, err := json.Marshal(reqNsISCSIInitiator)
-	obj := &NsISCSIInitiator{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsISCSIInitiator := &NsISCSIInitiator{}
+	err = json.Unmarshal(byte, respNsISCSIInitiator)
+	return respNsISCSIInitiator, err
 }

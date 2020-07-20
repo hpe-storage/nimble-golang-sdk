@@ -22,8 +22,11 @@ type VolumeCollectionObjectSet struct {
 
 // CreateObject creates a new VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
-	newPayload, err := nimbleos.EncodeVolumeCollection(payload)
-	resp, err := objectSet.Client.Post(volumeCollectionPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeVolumeCollection(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(volumeCollectionPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -62,25 +65,25 @@ func (objectSet *VolumeCollectionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a VolumeCollection object with the given ID
 func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*nimbleos.VolumeCollection, error) {
-	volumeCollectionObjectSetResp, err := objectSet.Client.Get(volumeCollectionPath, id, nimbleos.VolumeCollection{})
+	resp, err := objectSet.Client.Get(volumeCollectionPath, id, nimbleos.VolumeCollection{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if volumeCollectionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return volumeCollectionObjectSetResp.(*nimbleos.VolumeCollection), err
+	return resp.(*nimbleos.VolumeCollection), err
 }
 
 // GetObjectList returns the list of VolumeCollection objects
 func (objectSet *VolumeCollectionObjectSet) GetObjectList() ([]*nimbleos.VolumeCollection, error) {
-	volumeCollectionObjectSetResp, err := objectSet.Client.List(volumeCollectionPath)
+	resp, err := objectSet.Client.List(volumeCollectionPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildVolumeCollectionObjectSet(volumeCollectionObjectSetResp), err
+	return buildVolumeCollectionObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of VolumeCollection objects using the given params query info

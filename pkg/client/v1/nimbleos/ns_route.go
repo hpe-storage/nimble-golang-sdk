@@ -30,28 +30,31 @@ type NsRoute struct {
 
 // sdk internal struct
 type nsRoute struct {
-	// TgtNetwork - Target network address.
 	TgtNetwork *string `json:"tgt_network,omitempty"`
-	// TgtNetmask - Target network mask.
 	TgtNetmask *string `json:"tgt_netmask,omitempty"`
-	// Gateway - Gateway IP address.
-	Gateway *string `json:"gateway,omitempty"`
+	Gateway    *string `json:"gateway,omitempty"`
 }
 
 // EncodeNsRoute - Transform NsRoute to nsRoute type
 func EncodeNsRoute(request interface{}) (*nsRoute, error) {
 	reqNsRoute := request.(*NsRoute)
 	byte, err := json.Marshal(reqNsRoute)
-	objPtr := &nsRoute{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsRoutePtr := &nsRoute{}
+	err = json.Unmarshal(byte, respNsRoutePtr)
+	return respNsRoutePtr, err
 }
 
 // DecodeNsRoute Transform nsRoute to NsRoute type
 func DecodeNsRoute(request interface{}) (*NsRoute, error) {
 	reqNsRoute := request.(*nsRoute)
 	byte, err := json.Marshal(reqNsRoute)
-	obj := &NsRoute{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsRoute := &NsRoute{}
+	err = json.Unmarshal(byte, respNsRoute)
+	return respNsRoute, err
 }

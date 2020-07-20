@@ -29,28 +29,31 @@ type NsVolumeSnapshotAttribute struct {
 
 // sdk internal struct
 type nsVolumeSnapshotAttribute struct {
-	// VolId - ID of the volume on which snapshot will be created.
-	VolId *string `json:"vol_id,omitempty"`
-	// Metadata - Key-value pairs that augment a snapshot's attributes.
+	VolId    *string       `json:"vol_id,omitempty"`
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
-	// AppUuid - Application identifier of snapshot.
-	AppUuid *string `json:"app_uuid,omitempty"`
+	AppUuid  *string       `json:"app_uuid,omitempty"`
 }
 
 // EncodeNsVolumeSnapshotAttribute - Transform NsVolumeSnapshotAttribute to nsVolumeSnapshotAttribute type
 func EncodeNsVolumeSnapshotAttribute(request interface{}) (*nsVolumeSnapshotAttribute, error) {
 	reqNsVolumeSnapshotAttribute := request.(*NsVolumeSnapshotAttribute)
 	byte, err := json.Marshal(reqNsVolumeSnapshotAttribute)
-	objPtr := &nsVolumeSnapshotAttribute{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeSnapshotAttributePtr := &nsVolumeSnapshotAttribute{}
+	err = json.Unmarshal(byte, respNsVolumeSnapshotAttributePtr)
+	return respNsVolumeSnapshotAttributePtr, err
 }
 
 // DecodeNsVolumeSnapshotAttribute Transform nsVolumeSnapshotAttribute to NsVolumeSnapshotAttribute type
 func DecodeNsVolumeSnapshotAttribute(request interface{}) (*NsVolumeSnapshotAttribute, error) {
 	reqNsVolumeSnapshotAttribute := request.(*nsVolumeSnapshotAttribute)
 	byte, err := json.Marshal(reqNsVolumeSnapshotAttribute)
-	obj := &NsVolumeSnapshotAttribute{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeSnapshotAttribute := &NsVolumeSnapshotAttribute{}
+	err = json.Unmarshal(byte, respNsVolumeSnapshotAttribute)
+	return respNsVolumeSnapshotAttribute, err
 }

@@ -30,28 +30,31 @@ type NsSshKey struct {
 
 // sdk internal struct
 type nsSshKey struct {
-	// KeyName - The user that owns the key.
 	KeyName *string `json:"key_name,omitempty"`
-	// KeyType - The key type.
 	KeyType *string `json:"key_type,omitempty"`
-	// Key - The key.
-	Key *string `json:"key,omitempty"`
+	Key     *string `json:"key,omitempty"`
 }
 
 // EncodeNsSshKey - Transform NsSshKey to nsSshKey type
 func EncodeNsSshKey(request interface{}) (*nsSshKey, error) {
 	reqNsSshKey := request.(*NsSshKey)
 	byte, err := json.Marshal(reqNsSshKey)
-	objPtr := &nsSshKey{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSshKeyPtr := &nsSshKey{}
+	err = json.Unmarshal(byte, respNsSshKeyPtr)
+	return respNsSshKeyPtr, err
 }
 
 // DecodeNsSshKey Transform nsSshKey to NsSshKey type
 func DecodeNsSshKey(request interface{}) (*NsSshKey, error) {
 	reqNsSshKey := request.(*nsSshKey)
 	byte, err := json.Marshal(reqNsSshKey)
-	obj := &NsSshKey{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSshKey := &NsSshKey{}
+	err = json.Unmarshal(byte, respNsSshKey)
+	return respNsSshKey, err
 }

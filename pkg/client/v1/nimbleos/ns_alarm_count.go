@@ -26,28 +26,31 @@ type NsAlarmCount struct {
 
 // sdk internal struct
 type nsAlarmCount struct {
-	// Category - Alert category.
 	Category *NsEventCategory `json:"category,omitempty"`
-	// Critical - Critical alarm count of a particular category.
-	Critical *int64 `json:"critical,omitempty"`
-	// Warning - Warning alarm count of a particular category.
-	Warning *int64 `json:"warning,omitempty"`
+	Critical *int64           `json:"critical,omitempty"`
+	Warning  *int64           `json:"warning,omitempty"`
 }
 
 // EncodeNsAlarmCount - Transform NsAlarmCount to nsAlarmCount type
 func EncodeNsAlarmCount(request interface{}) (*nsAlarmCount, error) {
 	reqNsAlarmCount := request.(*NsAlarmCount)
 	byte, err := json.Marshal(reqNsAlarmCount)
-	objPtr := &nsAlarmCount{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAlarmCountPtr := &nsAlarmCount{}
+	err = json.Unmarshal(byte, respNsAlarmCountPtr)
+	return respNsAlarmCountPtr, err
 }
 
 // DecodeNsAlarmCount Transform nsAlarmCount to NsAlarmCount type
 func DecodeNsAlarmCount(request interface{}) (*NsAlarmCount, error) {
 	reqNsAlarmCount := request.(*nsAlarmCount)
 	byte, err := json.Marshal(reqNsAlarmCount)
-	obj := &NsAlarmCount{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAlarmCount := &NsAlarmCount{}
+	err = json.Unmarshal(byte, respNsAlarmCount)
+	return respNsAlarmCount, err
 }

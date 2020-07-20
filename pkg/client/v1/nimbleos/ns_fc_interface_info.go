@@ -39,36 +39,35 @@ type NsFcInterfaceInfo struct {
 
 // sdk internal struct
 type nsFcInterfaceInfo struct {
-	// Name - Name of Fibre Channel interface.
-	Name *string `json:"name,omitempty"`
-	// Wwnn - WWNN (World Wide Node Name) for this Fibre Channel interface.
-	Wwnn *string `json:"wwnn,omitempty"`
-	// Wwpn - WWPN (World Wide Port Name)for this Fibre Channel interface.
-	Wwpn *string `json:"wwpn,omitempty"`
-	// Online - Identify whether the Fibre Channel interface is online.
-	Online *bool `json:"online,omitempty"`
-	// BusLocation - PCI bus location of the HBA.
+	Name        *string `json:"name,omitempty"`
+	Wwnn        *string `json:"wwnn,omitempty"`
+	Wwpn        *string `json:"wwpn,omitempty"`
+	Online      *bool   `json:"online,omitempty"`
 	BusLocation *string `json:"bus_location,omitempty"`
-	// Slot - Information about the Fibre Channel slot.
-	Slot *int64 `json:"slot,omitempty"`
-	// Port - Information about the Fibre Channel port on which the interface is hosted.
-	Port *int64 `json:"port,omitempty"`
+	Slot        *int64  `json:"slot,omitempty"`
+	Port        *int64  `json:"port,omitempty"`
 }
 
 // EncodeNsFcInterfaceInfo - Transform NsFcInterfaceInfo to nsFcInterfaceInfo type
 func EncodeNsFcInterfaceInfo(request interface{}) (*nsFcInterfaceInfo, error) {
 	reqNsFcInterfaceInfo := request.(*NsFcInterfaceInfo)
 	byte, err := json.Marshal(reqNsFcInterfaceInfo)
-	objPtr := &nsFcInterfaceInfo{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcInterfaceInfoPtr := &nsFcInterfaceInfo{}
+	err = json.Unmarshal(byte, respNsFcInterfaceInfoPtr)
+	return respNsFcInterfaceInfoPtr, err
 }
 
 // DecodeNsFcInterfaceInfo Transform nsFcInterfaceInfo to NsFcInterfaceInfo type
 func DecodeNsFcInterfaceInfo(request interface{}) (*NsFcInterfaceInfo, error) {
 	reqNsFcInterfaceInfo := request.(*nsFcInterfaceInfo)
 	byte, err := json.Marshal(reqNsFcInterfaceInfo)
-	obj := &NsFcInterfaceInfo{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcInterfaceInfo := &NsFcInterfaceInfo{}
+	err = json.Unmarshal(byte, respNsFcInterfaceInfo)
+	return respNsFcInterfaceInfo, err
 }

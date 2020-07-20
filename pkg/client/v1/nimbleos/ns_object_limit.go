@@ -26,28 +26,31 @@ type NsObjectLimit struct {
 
 // sdk internal struct
 type nsObjectLimit struct {
-	// ObjType - Type of the object.
-	ObjType *NsObjectType `json:"obj_type,omitempty"`
-	// ObjLimit - Limit of the objects.
-	ObjLimit *int64 `json:"obj_limit,omitempty"`
-	// ObjNum - Number of objects after group merge.
-	ObjNum *int64 `json:"obj_num,omitempty"`
+	ObjType  *NsObjectType `json:"obj_type,omitempty"`
+	ObjLimit *int64        `json:"obj_limit,omitempty"`
+	ObjNum   *int64        `json:"obj_num,omitempty"`
 }
 
 // EncodeNsObjectLimit - Transform NsObjectLimit to nsObjectLimit type
 func EncodeNsObjectLimit(request interface{}) (*nsObjectLimit, error) {
 	reqNsObjectLimit := request.(*NsObjectLimit)
 	byte, err := json.Marshal(reqNsObjectLimit)
-	objPtr := &nsObjectLimit{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsObjectLimitPtr := &nsObjectLimit{}
+	err = json.Unmarshal(byte, respNsObjectLimitPtr)
+	return respNsObjectLimitPtr, err
 }
 
 // DecodeNsObjectLimit Transform nsObjectLimit to NsObjectLimit type
 func DecodeNsObjectLimit(request interface{}) (*NsObjectLimit, error) {
 	reqNsObjectLimit := request.(*nsObjectLimit)
 	byte, err := json.Marshal(reqNsObjectLimit)
-	obj := &NsObjectLimit{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsObjectLimit := &NsObjectLimit{}
+	err = json.Unmarshal(byte, respNsObjectLimit)
+	return respNsObjectLimit, err
 }

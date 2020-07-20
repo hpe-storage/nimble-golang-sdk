@@ -27,9 +27,7 @@ type NsTargetSubnet struct {
 
 // sdk internal struct
 type nsTargetSubnet struct {
-	// ID - Subnet ID.
-	ID *string `json:"id,omitempty"`
-	// Label - Subnet label.
+	ID    *string `json:"id,omitempty"`
 	Label *string `json:"label,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsTargetSubnet struct {
 func EncodeNsTargetSubnet(request interface{}) (*nsTargetSubnet, error) {
 	reqNsTargetSubnet := request.(*NsTargetSubnet)
 	byte, err := json.Marshal(reqNsTargetSubnet)
-	objPtr := &nsTargetSubnet{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsTargetSubnetPtr := &nsTargetSubnet{}
+	err = json.Unmarshal(byte, respNsTargetSubnetPtr)
+	return respNsTargetSubnetPtr, err
 }
 
 // DecodeNsTargetSubnet Transform nsTargetSubnet to NsTargetSubnet type
 func DecodeNsTargetSubnet(request interface{}) (*NsTargetSubnet, error) {
 	reqNsTargetSubnet := request.(*nsTargetSubnet)
 	byte, err := json.Marshal(reqNsTargetSubnet)
-	obj := &NsTargetSubnet{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsTargetSubnet := &NsTargetSubnet{}
+	err = json.Unmarshal(byte, respNsTargetSubnet)
+	return respNsTargetSubnet, err
 }

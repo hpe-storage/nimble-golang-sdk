@@ -24,7 +24,6 @@ type NsPerfPolicySummary struct {
 
 // sdk internal struct
 type nsPerfPolicySummary struct {
-	// Name - Name of performance policy.
 	Name *string `json:"name,omitempty"`
 }
 
@@ -32,16 +31,22 @@ type nsPerfPolicySummary struct {
 func EncodeNsPerfPolicySummary(request interface{}) (*nsPerfPolicySummary, error) {
 	reqNsPerfPolicySummary := request.(*NsPerfPolicySummary)
 	byte, err := json.Marshal(reqNsPerfPolicySummary)
-	objPtr := &nsPerfPolicySummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsPerfPolicySummaryPtr := &nsPerfPolicySummary{}
+	err = json.Unmarshal(byte, respNsPerfPolicySummaryPtr)
+	return respNsPerfPolicySummaryPtr, err
 }
 
 // DecodeNsPerfPolicySummary Transform nsPerfPolicySummary to NsPerfPolicySummary type
 func DecodeNsPerfPolicySummary(request interface{}) (*NsPerfPolicySummary, error) {
 	reqNsPerfPolicySummary := request.(*nsPerfPolicySummary)
 	byte, err := json.Marshal(reqNsPerfPolicySummary)
-	obj := &NsPerfPolicySummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsPerfPolicySummary := &NsPerfPolicySummary{}
+	err = json.Unmarshal(byte, respNsPerfPolicySummary)
+	return respNsPerfPolicySummary, err
 }

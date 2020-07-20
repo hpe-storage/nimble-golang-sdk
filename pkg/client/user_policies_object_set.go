@@ -47,25 +47,25 @@ func (objectSet *UserPolicyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a UserPolicy object with the given ID
 func (objectSet *UserPolicyObjectSet) GetObject(id string) (*nimbleos.UserPolicy, error) {
-	userPolicyObjectSetResp, err := objectSet.Client.Get(userPolicyPath, id, nimbleos.UserPolicy{})
+	resp, err := objectSet.Client.Get(userPolicyPath, id, nimbleos.UserPolicy{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if userPolicyObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return userPolicyObjectSetResp.(*nimbleos.UserPolicy), err
+	return resp.(*nimbleos.UserPolicy), err
 }
 
 // GetObjectList returns the list of UserPolicy objects
 func (objectSet *UserPolicyObjectSet) GetObjectList() ([]*nimbleos.UserPolicy, error) {
-	userPolicyObjectSetResp, err := objectSet.Client.List(userPolicyPath)
+	resp, err := objectSet.Client.List(userPolicyPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildUserPolicyObjectSet(userPolicyObjectSetResp), err
+	return buildUserPolicyObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of UserPolicy objects using the given params query info

@@ -29,28 +29,31 @@ type NsExtendedPrivilege struct {
 
 // sdk internal struct
 type nsExtendedPrivilege struct {
-	// ObjectType - Object type name associated with this privilege.
 	ObjectType *string `json:"object_type,omitempty"`
-	// Operation - Operation associated with the above object for this privilege.
-	Operation *string `json:"operation,omitempty"`
-	// Allow - Indicate whether the above operation is allowed for this privilege.
-	Allow *bool `json:"allow,omitempty"`
+	Operation  *string `json:"operation,omitempty"`
+	Allow      *bool   `json:"allow,omitempty"`
 }
 
 // EncodeNsExtendedPrivilege - Transform NsExtendedPrivilege to nsExtendedPrivilege type
 func EncodeNsExtendedPrivilege(request interface{}) (*nsExtendedPrivilege, error) {
 	reqNsExtendedPrivilege := request.(*NsExtendedPrivilege)
 	byte, err := json.Marshal(reqNsExtendedPrivilege)
-	objPtr := &nsExtendedPrivilege{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsExtendedPrivilegePtr := &nsExtendedPrivilege{}
+	err = json.Unmarshal(byte, respNsExtendedPrivilegePtr)
+	return respNsExtendedPrivilegePtr, err
 }
 
 // DecodeNsExtendedPrivilege Transform nsExtendedPrivilege to NsExtendedPrivilege type
 func DecodeNsExtendedPrivilege(request interface{}) (*NsExtendedPrivilege, error) {
 	reqNsExtendedPrivilege := request.(*nsExtendedPrivilege)
 	byte, err := json.Marshal(reqNsExtendedPrivilege)
-	obj := &NsExtendedPrivilege{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsExtendedPrivilege := &NsExtendedPrivilege{}
+	err = json.Unmarshal(byte, respNsExtendedPrivilege)
+	return respNsExtendedPrivilege, err
 }

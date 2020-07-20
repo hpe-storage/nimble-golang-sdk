@@ -22,8 +22,11 @@ type InitiatorGroupObjectSet struct {
 
 // CreateObject creates a new InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
-	newPayload, err := nimbleos.EncodeInitiatorGroup(payload)
-	resp, err := objectSet.Client.Post(initiatorGroupPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeInitiatorGroup(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(initiatorGroupPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -62,25 +65,25 @@ func (objectSet *InitiatorGroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a InitiatorGroup object with the given ID
 func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*nimbleos.InitiatorGroup, error) {
-	initiatorGroupObjectSetResp, err := objectSet.Client.Get(initiatorGroupPath, id, nimbleos.InitiatorGroup{})
+	resp, err := objectSet.Client.Get(initiatorGroupPath, id, nimbleos.InitiatorGroup{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if initiatorGroupObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return initiatorGroupObjectSetResp.(*nimbleos.InitiatorGroup), err
+	return resp.(*nimbleos.InitiatorGroup), err
 }
 
 // GetObjectList returns the list of InitiatorGroup objects
 func (objectSet *InitiatorGroupObjectSet) GetObjectList() ([]*nimbleos.InitiatorGroup, error) {
-	initiatorGroupObjectSetResp, err := objectSet.Client.List(initiatorGroupPath)
+	resp, err := objectSet.Client.List(initiatorGroupPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildInitiatorGroupObjectSet(initiatorGroupObjectSetResp), err
+	return buildInitiatorGroupObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of InitiatorGroup objects using the given params query info

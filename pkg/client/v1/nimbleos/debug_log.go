@@ -29,28 +29,31 @@ type DebugLog struct {
 
 // sdk internal struct
 type debugLog struct {
-	// Level - Log level.
-	Level *NsTraceLevel `json:"level,omitempty"`
-	// Tag - Specifies the context of the message.
-	Tag *string `json:"tag,omitempty"`
-	// Message - The message to log.
-	Message *string `json:"message,omitempty"`
+	Level   *NsTraceLevel `json:"level,omitempty"`
+	Tag     *string       `json:"tag,omitempty"`
+	Message *string       `json:"message,omitempty"`
 }
 
 // EncodeDebugLog - Transform DebugLog to debugLog type
 func EncodeDebugLog(request interface{}) (*debugLog, error) {
 	reqDebugLog := request.(*DebugLog)
 	byte, err := json.Marshal(reqDebugLog)
-	objPtr := &debugLog{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respDebugLogPtr := &debugLog{}
+	err = json.Unmarshal(byte, respDebugLogPtr)
+	return respDebugLogPtr, err
 }
 
 // DecodeDebugLog Transform debugLog to DebugLog type
 func DecodeDebugLog(request interface{}) (*DebugLog, error) {
 	reqDebugLog := request.(*debugLog)
 	byte, err := json.Marshal(reqDebugLog)
-	obj := &DebugLog{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respDebugLog := &DebugLog{}
+	err = json.Unmarshal(byte, respDebugLog)
+	return respDebugLog, err
 }

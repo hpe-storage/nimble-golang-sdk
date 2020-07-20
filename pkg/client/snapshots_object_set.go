@@ -23,8 +23,11 @@ type SnapshotObjectSet struct {
 
 // CreateObject creates a new Snapshot object
 func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
-	newPayload, err := nimbleos.EncodeSnapshot(payload)
-	resp, err := objectSet.Client.Post(snapshotPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeSnapshot(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(snapshotPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -63,25 +66,25 @@ func (objectSet *SnapshotObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Snapshot object with the given ID
 func (objectSet *SnapshotObjectSet) GetObject(id string) (*nimbleos.Snapshot, error) {
-	snapshotObjectSetResp, err := objectSet.Client.Get(snapshotPath, id, nimbleos.Snapshot{})
+	resp, err := objectSet.Client.Get(snapshotPath, id, nimbleos.Snapshot{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if snapshotObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return snapshotObjectSetResp.(*nimbleos.Snapshot), err
+	return resp.(*nimbleos.Snapshot), err
 }
 
 // GetObjectList returns the list of Snapshot objects
 func (objectSet *SnapshotObjectSet) GetObjectList() ([]*nimbleos.Snapshot, error) {
-	snapshotObjectSetResp, err := objectSet.Client.List(snapshotPath)
+	resp, err := objectSet.Client.List(snapshotPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildSnapshotObjectSet(snapshotObjectSetResp), err
+	return buildSnapshotObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Snapshot objects using the given params query info

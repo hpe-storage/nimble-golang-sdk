@@ -49,46 +49,40 @@ type NsSubnet struct {
 
 // sdk internal struct
 type nsSubnet struct {
-	// Label - Subnet label.
-	Label *string `json:"label,omitempty"`
-	// Network - Network IP address.
-	Network *string `json:"network,omitempty"`
-	// Netmask - Subnet netmask address.
-	Netmask *string `json:"netmask,omitempty"`
-	// NetzoneType - Netzone type.
-	NetzoneType *NsNetZoneType `json:"netzone_type,omitempty"`
-	// Type - Subnet type.
-	Type *NsSubnetType `json:"type,omitempty"`
-	// AllowIscsi - Allow iSCSI.
-	AllowIscsi *bool `json:"allow_iscsi,omitempty"`
-	// AllowGroup - Allow group.
-	AllowGroup *bool `json:"allow_group,omitempty"`
-	// DiscoveryIp - Discovery IP address.
-	DiscoveryIp *string `json:"discovery_ip,omitempty"`
-	// Mtu - MTU for specified subnet.
-	Mtu *int64 `json:"mtu,omitempty"`
-	// VlanId - VLAN ID for specified subnet.
-	VlanId *int64 `json:"vlan_id,omitempty"`
-	// Failover - Failover setting of the subnet.
-	Failover *bool `json:"failover,omitempty"`
-	// FailoverEnableTime - Failover for this subnet will be enabled again at the time specified by failover_enable_time.
-	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
+	Label              *string        `json:"label,omitempty"`
+	Network            *string        `json:"network,omitempty"`
+	Netmask            *string        `json:"netmask,omitempty"`
+	NetzoneType        *NsNetZoneType `json:"netzone_type,omitempty"`
+	Type               *NsSubnetType  `json:"type,omitempty"`
+	AllowIscsi         *bool          `json:"allow_iscsi,omitempty"`
+	AllowGroup         *bool          `json:"allow_group,omitempty"`
+	DiscoveryIp        *string        `json:"discovery_ip,omitempty"`
+	Mtu                *int64         `json:"mtu,omitempty"`
+	VlanId             *int64         `json:"vlan_id,omitempty"`
+	Failover           *bool          `json:"failover,omitempty"`
+	FailoverEnableTime *int64         `json:"failover_enable_time,omitempty"`
 }
 
 // EncodeNsSubnet - Transform NsSubnet to nsSubnet type
 func EncodeNsSubnet(request interface{}) (*nsSubnet, error) {
 	reqNsSubnet := request.(*NsSubnet)
 	byte, err := json.Marshal(reqNsSubnet)
-	objPtr := &nsSubnet{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSubnetPtr := &nsSubnet{}
+	err = json.Unmarshal(byte, respNsSubnetPtr)
+	return respNsSubnetPtr, err
 }
 
 // DecodeNsSubnet Transform nsSubnet to NsSubnet type
 func DecodeNsSubnet(request interface{}) (*NsSubnet, error) {
 	reqNsSubnet := request.(*nsSubnet)
 	byte, err := json.Marshal(reqNsSubnet)
-	obj := &NsSubnet{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSubnet := &NsSubnet{}
+	err = json.Unmarshal(byte, respNsSubnet)
+	return respNsSubnet, err
 }

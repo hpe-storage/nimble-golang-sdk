@@ -27,9 +27,7 @@ type NsReplPair struct {
 
 // sdk internal struct
 type nsReplPair struct {
-	// SrcName - Name of the replicated obj on the source group.
 	SrcName *string `json:"src_name,omitempty"`
-	// DstName - Name of the replicated obj on the destination group.
 	DstName *string `json:"dst_name,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsReplPair struct {
 func EncodeNsReplPair(request interface{}) (*nsReplPair, error) {
 	reqNsReplPair := request.(*NsReplPair)
 	byte, err := json.Marshal(reqNsReplPair)
-	objPtr := &nsReplPair{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsReplPairPtr := &nsReplPair{}
+	err = json.Unmarshal(byte, respNsReplPairPtr)
+	return respNsReplPairPtr, err
 }
 
 // DecodeNsReplPair Transform nsReplPair to NsReplPair type
 func DecodeNsReplPair(request interface{}) (*NsReplPair, error) {
 	reqNsReplPair := request.(*nsReplPair)
 	byte, err := json.Marshal(reqNsReplPair)
-	obj := &NsReplPair{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsReplPair := &NsReplPair{}
+	err = json.Unmarshal(byte, respNsReplPair)
+	return respNsReplPair, err
 }

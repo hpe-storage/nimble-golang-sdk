@@ -26,26 +26,30 @@ type NsFcInterfaceUpdateInfo struct {
 
 // sdk internal struct
 type nsFcInterfaceUpdateInfo struct {
-	// ID - ID of Fibre Channel interface.
-	ID *string `json:"id,omitempty"`
-	// Online - Identify whether the Fibre Channel interface is online.
-	Online *bool `json:"online,omitempty"`
+	ID     *string `json:"id,omitempty"`
+	Online *bool   `json:"online,omitempty"`
 }
 
 // EncodeNsFcInterfaceUpdateInfo - Transform NsFcInterfaceUpdateInfo to nsFcInterfaceUpdateInfo type
 func EncodeNsFcInterfaceUpdateInfo(request interface{}) (*nsFcInterfaceUpdateInfo, error) {
 	reqNsFcInterfaceUpdateInfo := request.(*NsFcInterfaceUpdateInfo)
 	byte, err := json.Marshal(reqNsFcInterfaceUpdateInfo)
-	objPtr := &nsFcInterfaceUpdateInfo{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcInterfaceUpdateInfoPtr := &nsFcInterfaceUpdateInfo{}
+	err = json.Unmarshal(byte, respNsFcInterfaceUpdateInfoPtr)
+	return respNsFcInterfaceUpdateInfoPtr, err
 }
 
 // DecodeNsFcInterfaceUpdateInfo Transform nsFcInterfaceUpdateInfo to NsFcInterfaceUpdateInfo type
 func DecodeNsFcInterfaceUpdateInfo(request interface{}) (*NsFcInterfaceUpdateInfo, error) {
 	reqNsFcInterfaceUpdateInfo := request.(*nsFcInterfaceUpdateInfo)
 	byte, err := json.Marshal(reqNsFcInterfaceUpdateInfo)
-	obj := &NsFcInterfaceUpdateInfo{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcInterfaceUpdateInfo := &NsFcInterfaceUpdateInfo{}
+	err = json.Unmarshal(byte, respNsFcInterfaceUpdateInfo)
+	return respNsFcInterfaceUpdateInfo, err
 }

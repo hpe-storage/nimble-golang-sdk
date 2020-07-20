@@ -27,26 +27,30 @@ type NsSupportPasswordObject struct {
 
 // sdk internal struct
 type nsSupportPasswordObject struct {
-	// Username - The username for the account the password blob relates to.
 	Username *string `json:"username,omitempty"`
-	// Blob - The ciphertext blob holding the randomly produced password.
-	Blob *string `json:"blob,omitempty"`
+	Blob     *string `json:"blob,omitempty"`
 }
 
 // EncodeNsSupportPasswordObject - Transform NsSupportPasswordObject to nsSupportPasswordObject type
 func EncodeNsSupportPasswordObject(request interface{}) (*nsSupportPasswordObject, error) {
 	reqNsSupportPasswordObject := request.(*NsSupportPasswordObject)
 	byte, err := json.Marshal(reqNsSupportPasswordObject)
-	objPtr := &nsSupportPasswordObject{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSupportPasswordObjectPtr := &nsSupportPasswordObject{}
+	err = json.Unmarshal(byte, respNsSupportPasswordObjectPtr)
+	return respNsSupportPasswordObjectPtr, err
 }
 
 // DecodeNsSupportPasswordObject Transform nsSupportPasswordObject to NsSupportPasswordObject type
 func DecodeNsSupportPasswordObject(request interface{}) (*NsSupportPasswordObject, error) {
 	reqNsSupportPasswordObject := request.(*nsSupportPasswordObject)
 	byte, err := json.Marshal(reqNsSupportPasswordObject)
-	obj := &NsSupportPasswordObject{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSupportPasswordObject := &NsSupportPasswordObject{}
+	err = json.Unmarshal(byte, respNsSupportPasswordObject)
+	return respNsSupportPasswordObject, err
 }

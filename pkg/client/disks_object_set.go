@@ -47,25 +47,25 @@ func (objectSet *DiskObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Disk object with the given ID
 func (objectSet *DiskObjectSet) GetObject(id string) (*nimbleos.Disk, error) {
-	diskObjectSetResp, err := objectSet.Client.Get(diskPath, id, nimbleos.Disk{})
+	resp, err := objectSet.Client.Get(diskPath, id, nimbleos.Disk{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if diskObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return diskObjectSetResp.(*nimbleos.Disk), err
+	return resp.(*nimbleos.Disk), err
 }
 
 // GetObjectList returns the list of Disk objects
 func (objectSet *DiskObjectSet) GetObjectList() ([]*nimbleos.Disk, error) {
-	diskObjectSetResp, err := objectSet.Client.List(diskPath)
+	resp, err := objectSet.Client.List(diskPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildDiskObjectSet(diskObjectSetResp), err
+	return buildDiskObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Disk objects using the given params query info

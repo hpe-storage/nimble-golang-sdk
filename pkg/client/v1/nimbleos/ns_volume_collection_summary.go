@@ -27,9 +27,7 @@ type NsVolumeCollectionSummary struct {
 
 // sdk internal struct
 type nsVolumeCollectionSummary struct {
-	// ID - Identifier of volume collection.
-	ID *string `json:"id,omitempty"`
-	// Name - Name of volume collection.
+	ID   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type nsVolumeCollectionSummary struct {
 func EncodeNsVolumeCollectionSummary(request interface{}) (*nsVolumeCollectionSummary, error) {
 	reqNsVolumeCollectionSummary := request.(*NsVolumeCollectionSummary)
 	byte, err := json.Marshal(reqNsVolumeCollectionSummary)
-	objPtr := &nsVolumeCollectionSummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeCollectionSummaryPtr := &nsVolumeCollectionSummary{}
+	err = json.Unmarshal(byte, respNsVolumeCollectionSummaryPtr)
+	return respNsVolumeCollectionSummaryPtr, err
 }
 
 // DecodeNsVolumeCollectionSummary Transform nsVolumeCollectionSummary to NsVolumeCollectionSummary type
 func DecodeNsVolumeCollectionSummary(request interface{}) (*NsVolumeCollectionSummary, error) {
 	reqNsVolumeCollectionSummary := request.(*nsVolumeCollectionSummary)
 	byte, err := json.Marshal(reqNsVolumeCollectionSummary)
-	obj := &NsVolumeCollectionSummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeCollectionSummary := &NsVolumeCollectionSummary{}
+	err = json.Unmarshal(byte, respNsVolumeCollectionSummary)
+	return respNsVolumeCollectionSummary, err
 }

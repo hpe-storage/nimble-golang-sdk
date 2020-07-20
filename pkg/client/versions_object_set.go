@@ -37,25 +37,25 @@ func (objectSet *VersionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Version object with the given ID
 func (objectSet *VersionObjectSet) GetObject(id string) (*nimbleos.Version, error) {
-	versionObjectSetResp, err := objectSet.Client.Get(versionPath, id, nimbleos.Version{})
+	resp, err := objectSet.Client.Get(versionPath, id, nimbleos.Version{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if versionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return versionObjectSetResp.(*nimbleos.Version), err
+	return resp.(*nimbleos.Version), err
 }
 
 // GetObjectList returns the list of Version objects
 func (objectSet *VersionObjectSet) GetObjectList() ([]*nimbleos.Version, error) {
-	versionObjectSetResp, err := objectSet.Client.List(versionPath)
+	resp, err := objectSet.Client.List(versionPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildVersionObjectSet(versionObjectSetResp), err
+	return buildVersionObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Version objects using the given params query info

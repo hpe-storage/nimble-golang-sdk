@@ -37,25 +37,25 @@ func (objectSet *NetworkInterfaceObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a NetworkInterface object with the given ID
 func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*nimbleos.NetworkInterface, error) {
-	networkInterfaceObjectSetResp, err := objectSet.Client.Get(networkInterfacePath, id, nimbleos.NetworkInterface{})
+	resp, err := objectSet.Client.Get(networkInterfacePath, id, nimbleos.NetworkInterface{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if networkInterfaceObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return networkInterfaceObjectSetResp.(*nimbleos.NetworkInterface), err
+	return resp.(*nimbleos.NetworkInterface), err
 }
 
 // GetObjectList returns the list of NetworkInterface objects
 func (objectSet *NetworkInterfaceObjectSet) GetObjectList() ([]*nimbleos.NetworkInterface, error) {
-	networkInterfaceObjectSetResp, err := objectSet.Client.List(networkInterfacePath)
+	resp, err := objectSet.Client.List(networkInterfacePath)
 	if err != nil {
 		return nil, err
 	}
-	return buildNetworkInterfaceObjectSet(networkInterfaceObjectSetResp), err
+	return buildNetworkInterfaceObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of NetworkInterface objects using the given params query info

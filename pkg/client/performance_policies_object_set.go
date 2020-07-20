@@ -23,8 +23,11 @@ type PerformancePolicyObjectSet struct {
 
 // CreateObject creates a new PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	newPayload, err := nimbleos.EncodePerformancePolicy(payload)
-	resp, err := objectSet.Client.Post(performancePolicyPath, newPayload)
+	encodedPayload, err := nimbleos.EncodePerformancePolicy(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(performancePolicyPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -63,25 +66,25 @@ func (objectSet *PerformancePolicyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a PerformancePolicy object with the given ID
 func (objectSet *PerformancePolicyObjectSet) GetObject(id string) (*nimbleos.PerformancePolicy, error) {
-	performancePolicyObjectSetResp, err := objectSet.Client.Get(performancePolicyPath, id, nimbleos.PerformancePolicy{})
+	resp, err := objectSet.Client.Get(performancePolicyPath, id, nimbleos.PerformancePolicy{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if performancePolicyObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return performancePolicyObjectSetResp.(*nimbleos.PerformancePolicy), err
+	return resp.(*nimbleos.PerformancePolicy), err
 }
 
 // GetObjectList returns the list of PerformancePolicy objects
 func (objectSet *PerformancePolicyObjectSet) GetObjectList() ([]*nimbleos.PerformancePolicy, error) {
-	performancePolicyObjectSetResp, err := objectSet.Client.List(performancePolicyPath)
+	resp, err := objectSet.Client.List(performancePolicyPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildPerformancePolicyObjectSet(performancePolicyObjectSetResp), err
+	return buildPerformancePolicyObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of PerformancePolicy objects using the given params query info

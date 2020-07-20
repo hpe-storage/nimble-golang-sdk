@@ -33,13 +33,9 @@ type NsArraySummary struct {
 
 // sdk internal struct
 type nsArraySummary struct {
-	// ID - Array API ID.
-	ID *string `json:"id,omitempty"`
-	// ArrayId - Array API ID.
-	ArrayId *string `json:"array_id,omitempty"`
-	// Name - Unique name of array.
-	Name *string `json:"name,omitempty"`
-	// ArrayName - Unique name of array.
+	ID        *string `json:"id,omitempty"`
+	ArrayId   *string `json:"array_id,omitempty"`
+	Name      *string `json:"name,omitempty"`
 	ArrayName *string `json:"array_name,omitempty"`
 }
 
@@ -47,16 +43,22 @@ type nsArraySummary struct {
 func EncodeNsArraySummary(request interface{}) (*nsArraySummary, error) {
 	reqNsArraySummary := request.(*NsArraySummary)
 	byte, err := json.Marshal(reqNsArraySummary)
-	objPtr := &nsArraySummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArraySummaryPtr := &nsArraySummary{}
+	err = json.Unmarshal(byte, respNsArraySummaryPtr)
+	return respNsArraySummaryPtr, err
 }
 
 // DecodeNsArraySummary Transform nsArraySummary to NsArraySummary type
 func DecodeNsArraySummary(request interface{}) (*NsArraySummary, error) {
 	reqNsArraySummary := request.(*nsArraySummary)
 	byte, err := json.Marshal(reqNsArraySummary)
-	obj := &NsArraySummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArraySummary := &NsArraySummary{}
+	err = json.Unmarshal(byte, respNsArraySummary)
+	return respNsArraySummary, err
 }

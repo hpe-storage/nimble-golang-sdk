@@ -22,7 +22,6 @@ type NsVolumeListReturn struct {
 
 // sdk internal struct
 type nsVolumeListReturn struct {
-	// VolList - A list of volume names and IDs.
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 }
 
@@ -30,16 +29,22 @@ type nsVolumeListReturn struct {
 func EncodeNsVolumeListReturn(request interface{}) (*nsVolumeListReturn, error) {
 	reqNsVolumeListReturn := request.(*NsVolumeListReturn)
 	byte, err := json.Marshal(reqNsVolumeListReturn)
-	objPtr := &nsVolumeListReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeListReturnPtr := &nsVolumeListReturn{}
+	err = json.Unmarshal(byte, respNsVolumeListReturnPtr)
+	return respNsVolumeListReturnPtr, err
 }
 
 // DecodeNsVolumeListReturn Transform nsVolumeListReturn to NsVolumeListReturn type
 func DecodeNsVolumeListReturn(request interface{}) (*NsVolumeListReturn, error) {
 	reqNsVolumeListReturn := request.(*nsVolumeListReturn)
 	byte, err := json.Marshal(reqNsVolumeListReturn)
-	obj := &NsVolumeListReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsVolumeListReturn := &NsVolumeListReturn{}
+	err = json.Unmarshal(byte, respNsVolumeListReturn)
+	return respNsVolumeListReturn, err
 }

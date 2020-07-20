@@ -24,7 +24,6 @@ type NsBitMapReturn struct {
 
 // sdk internal struct
 type nsBitMapReturn struct {
-	// Bitmap - Returned bitmap.
 	Bitmap *string `json:"bitmap,omitempty"`
 }
 
@@ -32,16 +31,22 @@ type nsBitMapReturn struct {
 func EncodeNsBitMapReturn(request interface{}) (*nsBitMapReturn, error) {
 	reqNsBitMapReturn := request.(*NsBitMapReturn)
 	byte, err := json.Marshal(reqNsBitMapReturn)
-	objPtr := &nsBitMapReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsBitMapReturnPtr := &nsBitMapReturn{}
+	err = json.Unmarshal(byte, respNsBitMapReturnPtr)
+	return respNsBitMapReturnPtr, err
 }
 
 // DecodeNsBitMapReturn Transform nsBitMapReturn to NsBitMapReturn type
 func DecodeNsBitMapReturn(request interface{}) (*NsBitMapReturn, error) {
 	reqNsBitMapReturn := request.(*nsBitMapReturn)
 	byte, err := json.Marshal(reqNsBitMapReturn)
-	obj := &NsBitMapReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsBitMapReturn := &NsBitMapReturn{}
+	err = json.Unmarshal(byte, respNsBitMapReturn)
+	return respNsBitMapReturn, err
 }

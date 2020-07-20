@@ -22,8 +22,11 @@ type AccessControlRecordObjectSet struct {
 
 // CreateObject creates a new AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
-	newPayload, err := nimbleos.EncodeAccessControlRecord(payload)
-	resp, err := objectSet.Client.Post(accessControlRecordPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeAccessControlRecord(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(accessControlRecordPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,25 +55,25 @@ func (objectSet *AccessControlRecordObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a AccessControlRecord object with the given ID
 func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*nimbleos.AccessControlRecord, error) {
-	accessControlRecordObjectSetResp, err := objectSet.Client.Get(accessControlRecordPath, id, nimbleos.AccessControlRecord{})
+	resp, err := objectSet.Client.Get(accessControlRecordPath, id, nimbleos.AccessControlRecord{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if accessControlRecordObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return accessControlRecordObjectSetResp.(*nimbleos.AccessControlRecord), err
+	return resp.(*nimbleos.AccessControlRecord), err
 }
 
 // GetObjectList returns the list of AccessControlRecord objects
 func (objectSet *AccessControlRecordObjectSet) GetObjectList() ([]*nimbleos.AccessControlRecord, error) {
-	accessControlRecordObjectSetResp, err := objectSet.Client.List(accessControlRecordPath)
+	resp, err := objectSet.Client.List(accessControlRecordPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildAccessControlRecordObjectSet(accessControlRecordObjectSetResp), err
+	return buildAccessControlRecordObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of AccessControlRecord objects using the given params query info

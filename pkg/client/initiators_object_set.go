@@ -22,8 +22,11 @@ type InitiatorObjectSet struct {
 
 // CreateObject creates a new Initiator object
 func (objectSet *InitiatorObjectSet) CreateObject(payload *nimbleos.Initiator) (*nimbleos.Initiator, error) {
-	newPayload, err := nimbleos.EncodeInitiator(payload)
-	resp, err := objectSet.Client.Post(initiatorPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeInitiator(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(initiatorPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,25 +55,25 @@ func (objectSet *InitiatorObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Initiator object with the given ID
 func (objectSet *InitiatorObjectSet) GetObject(id string) (*nimbleos.Initiator, error) {
-	initiatorObjectSetResp, err := objectSet.Client.Get(initiatorPath, id, nimbleos.Initiator{})
+	resp, err := objectSet.Client.Get(initiatorPath, id, nimbleos.Initiator{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if initiatorObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return initiatorObjectSetResp.(*nimbleos.Initiator), err
+	return resp.(*nimbleos.Initiator), err
 }
 
 // GetObjectList returns the list of Initiator objects
 func (objectSet *InitiatorObjectSet) GetObjectList() ([]*nimbleos.Initiator, error) {
-	initiatorObjectSetResp, err := objectSet.Client.List(initiatorPath)
+	resp, err := objectSet.Client.List(initiatorPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildInitiatorObjectSet(initiatorObjectSetResp), err
+	return buildInitiatorObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Initiator objects using the given params query info

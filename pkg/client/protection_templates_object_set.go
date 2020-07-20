@@ -24,8 +24,11 @@ type ProtectionTemplateObjectSet struct {
 
 // CreateObject creates a new ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
-	newPayload, err := nimbleos.EncodeProtectionTemplate(payload)
-	resp, err := objectSet.Client.Post(protectionTemplatePath, newPayload)
+	encodedPayload, err := nimbleos.EncodeProtectionTemplate(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(protectionTemplatePath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -64,25 +67,25 @@ func (objectSet *ProtectionTemplateObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ProtectionTemplate object with the given ID
 func (objectSet *ProtectionTemplateObjectSet) GetObject(id string) (*nimbleos.ProtectionTemplate, error) {
-	protectionTemplateObjectSetResp, err := objectSet.Client.Get(protectionTemplatePath, id, nimbleos.ProtectionTemplate{})
+	resp, err := objectSet.Client.Get(protectionTemplatePath, id, nimbleos.ProtectionTemplate{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if protectionTemplateObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return protectionTemplateObjectSetResp.(*nimbleos.ProtectionTemplate), err
+	return resp.(*nimbleos.ProtectionTemplate), err
 }
 
 // GetObjectList returns the list of ProtectionTemplate objects
 func (objectSet *ProtectionTemplateObjectSet) GetObjectList() ([]*nimbleos.ProtectionTemplate, error) {
-	protectionTemplateObjectSetResp, err := objectSet.Client.List(protectionTemplatePath)
+	resp, err := objectSet.Client.List(protectionTemplatePath)
 	if err != nil {
 		return nil, err
 	}
-	return buildProtectionTemplateObjectSet(protectionTemplateObjectSetResp), err
+	return buildProtectionTemplateObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ProtectionTemplate objects using the given params query info

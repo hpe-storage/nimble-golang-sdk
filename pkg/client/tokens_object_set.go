@@ -22,8 +22,11 @@ type TokenObjectSet struct {
 
 // CreateObject creates a new Token object
 func (objectSet *TokenObjectSet) CreateObject(payload *nimbleos.Token) (*nimbleos.Token, error) {
-	newPayload, err := nimbleos.EncodeToken(payload)
-	resp, err := objectSet.Client.Post(tokenPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeToken(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(tokenPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,25 +55,25 @@ func (objectSet *TokenObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Token object with the given ID
 func (objectSet *TokenObjectSet) GetObject(id string) (*nimbleos.Token, error) {
-	tokenObjectSetResp, err := objectSet.Client.Get(tokenPath, id, nimbleos.Token{})
+	resp, err := objectSet.Client.Get(tokenPath, id, nimbleos.Token{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if tokenObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return tokenObjectSetResp.(*nimbleos.Token), err
+	return resp.(*nimbleos.Token), err
 }
 
 // GetObjectList returns the list of Token objects
 func (objectSet *TokenObjectSet) GetObjectList() ([]*nimbleos.Token, error) {
-	tokenObjectSetResp, err := objectSet.Client.List(tokenPath)
+	resp, err := objectSet.Client.List(tokenPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildTokenObjectSet(tokenObjectSetResp), err
+	return buildTokenObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Token objects using the given params query info

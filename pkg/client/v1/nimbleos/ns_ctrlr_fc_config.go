@@ -24,9 +24,7 @@ type NsCtrlrFcConfig struct {
 
 // sdk internal struct
 type nsCtrlrFcConfig struct {
-	// FcPortList - List of Fibre Channel ports.
-	FcPortList []*NsFcPortInfo `json:"fc_port_list,omitempty"`
-	// FcInterfaceList - List of Fibre Channel interfaces.
+	FcPortList      []*NsFcPortInfo      `json:"fc_port_list,omitempty"`
 	FcInterfaceList []*NsFcInterfaceInfo `json:"fc_interface_list,omitempty"`
 }
 
@@ -34,16 +32,22 @@ type nsCtrlrFcConfig struct {
 func EncodeNsCtrlrFcConfig(request interface{}) (*nsCtrlrFcConfig, error) {
 	reqNsCtrlrFcConfig := request.(*NsCtrlrFcConfig)
 	byte, err := json.Marshal(reqNsCtrlrFcConfig)
-	objPtr := &nsCtrlrFcConfig{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsCtrlrFcConfigPtr := &nsCtrlrFcConfig{}
+	err = json.Unmarshal(byte, respNsCtrlrFcConfigPtr)
+	return respNsCtrlrFcConfigPtr, err
 }
 
 // DecodeNsCtrlrFcConfig Transform nsCtrlrFcConfig to NsCtrlrFcConfig type
 func DecodeNsCtrlrFcConfig(request interface{}) (*NsCtrlrFcConfig, error) {
 	reqNsCtrlrFcConfig := request.(*nsCtrlrFcConfig)
 	byte, err := json.Marshal(reqNsCtrlrFcConfig)
-	obj := &NsCtrlrFcConfig{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsCtrlrFcConfig := &NsCtrlrFcConfig{}
+	err = json.Unmarshal(byte, respNsCtrlrFcConfig)
+	return respNsCtrlrFcConfig, err
 }

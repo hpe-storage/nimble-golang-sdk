@@ -29,28 +29,31 @@ type NsSnapcollSummary struct {
 
 // sdk internal struct
 type nsSnapcollSummary struct {
-	// SnapcollId - ID of snapshot collection.
-	SnapcollId *string `json:"snapcoll_id,omitempty"`
-	// SnapcollName - Name of snapshot collection.
-	SnapcollName *string `json:"snapcoll_name,omitempty"`
-	// SnapcollCreationTime - Creation time of snapshot collection.
-	SnapcollCreationTime *int64 `json:"snapcoll_creation_time,omitempty"`
+	SnapcollId           *string `json:"snapcoll_id,omitempty"`
+	SnapcollName         *string `json:"snapcoll_name,omitempty"`
+	SnapcollCreationTime *int64  `json:"snapcoll_creation_time,omitempty"`
 }
 
 // EncodeNsSnapcollSummary - Transform NsSnapcollSummary to nsSnapcollSummary type
 func EncodeNsSnapcollSummary(request interface{}) (*nsSnapcollSummary, error) {
 	reqNsSnapcollSummary := request.(*NsSnapcollSummary)
 	byte, err := json.Marshal(reqNsSnapcollSummary)
-	objPtr := &nsSnapcollSummary{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapcollSummaryPtr := &nsSnapcollSummary{}
+	err = json.Unmarshal(byte, respNsSnapcollSummaryPtr)
+	return respNsSnapcollSummaryPtr, err
 }
 
 // DecodeNsSnapcollSummary Transform nsSnapcollSummary to NsSnapcollSummary type
 func DecodeNsSnapcollSummary(request interface{}) (*NsSnapcollSummary, error) {
 	reqNsSnapcollSummary := request.(*nsSnapcollSummary)
 	byte, err := json.Marshal(reqNsSnapcollSummary)
-	obj := &NsSnapcollSummary{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSnapcollSummary := &NsSnapcollSummary{}
+	err = json.Unmarshal(byte, respNsSnapcollSummary)
+	return respNsSnapcollSummary, err
 }

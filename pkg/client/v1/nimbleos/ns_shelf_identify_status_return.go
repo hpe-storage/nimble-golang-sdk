@@ -22,7 +22,6 @@ type NsShelfIdentifyStatusReturn struct {
 
 // sdk internal struct
 type nsShelfIdentifyStatusReturn struct {
-	// Enabled - Shelf identifier is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
@@ -30,16 +29,22 @@ type nsShelfIdentifyStatusReturn struct {
 func EncodeNsShelfIdentifyStatusReturn(request interface{}) (*nsShelfIdentifyStatusReturn, error) {
 	reqNsShelfIdentifyStatusReturn := request.(*NsShelfIdentifyStatusReturn)
 	byte, err := json.Marshal(reqNsShelfIdentifyStatusReturn)
-	objPtr := &nsShelfIdentifyStatusReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsShelfIdentifyStatusReturnPtr := &nsShelfIdentifyStatusReturn{}
+	err = json.Unmarshal(byte, respNsShelfIdentifyStatusReturnPtr)
+	return respNsShelfIdentifyStatusReturnPtr, err
 }
 
 // DecodeNsShelfIdentifyStatusReturn Transform nsShelfIdentifyStatusReturn to NsShelfIdentifyStatusReturn type
 func DecodeNsShelfIdentifyStatusReturn(request interface{}) (*NsShelfIdentifyStatusReturn, error) {
 	reqNsShelfIdentifyStatusReturn := request.(*nsShelfIdentifyStatusReturn)
 	byte, err := json.Marshal(reqNsShelfIdentifyStatusReturn)
-	obj := &NsShelfIdentifyStatusReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsShelfIdentifyStatusReturn := &NsShelfIdentifyStatusReturn{}
+	err = json.Unmarshal(byte, respNsShelfIdentifyStatusReturn)
+	return respNsShelfIdentifyStatusReturn, err
 }

@@ -41,38 +41,36 @@ type VolumeFamily struct {
 
 // sdk internal struct
 type volumeFamily struct {
-	// ID - Identifier for the volume family.
-	ID *string `json:"id,omitempty"`
-	// PoolId - Identifier associated with the pool in the pools table.
-	PoolId *string `json:"pool_id,omitempty"`
-	// PoolName - Name of the pool where the volume family resides.
-	PoolName *string `json:"pool_name,omitempty"`
-	// Blocksize - Size of blocks in the volume.
-	Blocksize *int64 `json:"blocksize,omitempty"`
-	// RootVolName - Volume family root volume name.
-	RootVolName *string `json:"root_vol_name,omitempty"`
-	// Volumes - List of volumes.
-	Volumes []*NsVolumeSummary `json:"volumes,omitempty"`
-	// VolUsageCompressedBytes - Sum of compressed bytes stored in the volumes of this family.
-	VolUsageCompressedBytes *int64 `json:"vol_usage_compressed_bytes,omitempty"`
-	// SnapUsageCompressedBytes - Sum of compressed bytes stored in the snapshots of this family.
-	SnapUsageCompressedBytes *int64 `json:"snap_usage_compressed_bytes,omitempty"`
+	ID                       *string            `json:"id,omitempty"`
+	PoolId                   *string            `json:"pool_id,omitempty"`
+	PoolName                 *string            `json:"pool_name,omitempty"`
+	Blocksize                *int64             `json:"blocksize,omitempty"`
+	RootVolName              *string            `json:"root_vol_name,omitempty"`
+	Volumes                  []*NsVolumeSummary `json:"volumes,omitempty"`
+	VolUsageCompressedBytes  *int64             `json:"vol_usage_compressed_bytes,omitempty"`
+	SnapUsageCompressedBytes *int64             `json:"snap_usage_compressed_bytes,omitempty"`
 }
 
 // EncodeVolumeFamily - Transform VolumeFamily to volumeFamily type
 func EncodeVolumeFamily(request interface{}) (*volumeFamily, error) {
 	reqVolumeFamily := request.(*VolumeFamily)
 	byte, err := json.Marshal(reqVolumeFamily)
-	objPtr := &volumeFamily{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respVolumeFamilyPtr := &volumeFamily{}
+	err = json.Unmarshal(byte, respVolumeFamilyPtr)
+	return respVolumeFamilyPtr, err
 }
 
 // DecodeVolumeFamily Transform volumeFamily to VolumeFamily type
 func DecodeVolumeFamily(request interface{}) (*VolumeFamily, error) {
 	reqVolumeFamily := request.(*volumeFamily)
 	byte, err := json.Marshal(reqVolumeFamily)
-	obj := &VolumeFamily{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respVolumeFamily := &VolumeFamily{}
+	err = json.Unmarshal(byte, respVolumeFamily)
+	return respVolumeFamily, err
 }

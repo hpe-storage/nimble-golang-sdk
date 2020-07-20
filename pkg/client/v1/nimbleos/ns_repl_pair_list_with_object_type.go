@@ -24,9 +24,7 @@ type NsReplPairListWithObjectType struct {
 
 // sdk internal struct
 type nsReplPairListWithObjectType struct {
-	// ObjType - Type of the replicated object.
-	ObjType *NsObjectType `json:"obj_type,omitempty"`
-	// ReplList - List of replicated objects of this type.
+	ObjType  *NsObjectType `json:"obj_type,omitempty"`
 	ReplList []*NsReplPair `json:"repl_list,omitempty"`
 }
 
@@ -34,16 +32,22 @@ type nsReplPairListWithObjectType struct {
 func EncodeNsReplPairListWithObjectType(request interface{}) (*nsReplPairListWithObjectType, error) {
 	reqNsReplPairListWithObjectType := request.(*NsReplPairListWithObjectType)
 	byte, err := json.Marshal(reqNsReplPairListWithObjectType)
-	objPtr := &nsReplPairListWithObjectType{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsReplPairListWithObjectTypePtr := &nsReplPairListWithObjectType{}
+	err = json.Unmarshal(byte, respNsReplPairListWithObjectTypePtr)
+	return respNsReplPairListWithObjectTypePtr, err
 }
 
 // DecodeNsReplPairListWithObjectType Transform nsReplPairListWithObjectType to NsReplPairListWithObjectType type
 func DecodeNsReplPairListWithObjectType(request interface{}) (*NsReplPairListWithObjectType, error) {
 	reqNsReplPairListWithObjectType := request.(*nsReplPairListWithObjectType)
 	byte, err := json.Marshal(reqNsReplPairListWithObjectType)
-	obj := &NsReplPairListWithObjectType{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsReplPairListWithObjectType := &NsReplPairListWithObjectType{}
+	err = json.Unmarshal(byte, respNsReplPairListWithObjectType)
+	return respNsReplPairListWithObjectType, err
 }

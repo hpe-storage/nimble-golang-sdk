@@ -24,9 +24,7 @@ type NsResponse struct {
 
 // sdk internal struct
 type nsResponse struct {
-	// Data - Response data.
-	Data *NsObject `json:"data,omitempty"`
-	// Messages - A list of error messages.
+	Data     *NsObject               `json:"data,omitempty"`
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
@@ -34,16 +32,22 @@ type nsResponse struct {
 func EncodeNsResponse(request interface{}) (*nsResponse, error) {
 	reqNsResponse := request.(*NsResponse)
 	byte, err := json.Marshal(reqNsResponse)
-	objPtr := &nsResponse{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsResponsePtr := &nsResponse{}
+	err = json.Unmarshal(byte, respNsResponsePtr)
+	return respNsResponsePtr, err
 }
 
 // DecodeNsResponse Transform nsResponse to NsResponse type
 func DecodeNsResponse(request interface{}) (*NsResponse, error) {
 	reqNsResponse := request.(*nsResponse)
 	byte, err := json.Marshal(reqNsResponse)
-	obj := &NsResponse{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsResponse := &NsResponse{}
+	err = json.Unmarshal(byte, respNsResponse)
+	return respNsResponse, err
 }

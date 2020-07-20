@@ -24,7 +24,6 @@ type NsObject struct {
 
 // sdk internal struct
 type nsObject struct {
-	// ID - ID of object.
 	ID *string `json:"id,omitempty"`
 }
 
@@ -32,16 +31,22 @@ type nsObject struct {
 func EncodeNsObject(request interface{}) (*nsObject, error) {
 	reqNsObject := request.(*NsObject)
 	byte, err := json.Marshal(reqNsObject)
-	objPtr := &nsObject{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsObjectPtr := &nsObject{}
+	err = json.Unmarshal(byte, respNsObjectPtr)
+	return respNsObjectPtr, err
 }
 
 // DecodeNsObject Transform nsObject to NsObject type
 func DecodeNsObject(request interface{}) (*NsObject, error) {
 	reqNsObject := request.(*nsObject)
 	byte, err := json.Marshal(reqNsObject)
-	obj := &NsObject{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsObject := &NsObject{}
+	err = json.Unmarshal(byte, respNsObject)
+	return respNsObject, err
 }

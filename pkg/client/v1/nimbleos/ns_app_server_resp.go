@@ -34,17 +34,11 @@ type NsAppServerResp struct {
 
 // sdk internal struct
 type nsAppServerResp struct {
-	// GeneralError - Error code from app server.
-	GeneralError *string `json:"general_error,omitempty"`
-	// AppSync - Type of app server.
-	AppSync *NsAppSyncType `json:"app_sync,omitempty"`
-	// HasAssocVols - Indicates if there are associated volumes.
-	HasAssocVols *bool `json:"has_assoc_vols,omitempty"`
-	// VssResponse - Response from vss app server.
-	VssResponse *NsVssResp `json:"vss_response,omitempty"`
-	// VmwResponse - Response from vmware app server.
-	VmwResponse *NsVmwareResp `json:"vmw_response,omitempty"`
-	// GenericResponse - Response from generic app server.
+	GeneralError    *string        `json:"general_error,omitempty"`
+	AppSync         *NsAppSyncType `json:"app_sync,omitempty"`
+	HasAssocVols    *bool          `json:"has_assoc_vols,omitempty"`
+	VssResponse     *NsVssResp     `json:"vss_response,omitempty"`
+	VmwResponse     *NsVmwareResp  `json:"vmw_response,omitempty"`
 	GenericResponse *NsGenericResp `json:"generic_response,omitempty"`
 }
 
@@ -52,16 +46,22 @@ type nsAppServerResp struct {
 func EncodeNsAppServerResp(request interface{}) (*nsAppServerResp, error) {
 	reqNsAppServerResp := request.(*NsAppServerResp)
 	byte, err := json.Marshal(reqNsAppServerResp)
-	objPtr := &nsAppServerResp{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAppServerRespPtr := &nsAppServerResp{}
+	err = json.Unmarshal(byte, respNsAppServerRespPtr)
+	return respNsAppServerRespPtr, err
 }
 
 // DecodeNsAppServerResp Transform nsAppServerResp to NsAppServerResp type
 func DecodeNsAppServerResp(request interface{}) (*NsAppServerResp, error) {
 	reqNsAppServerResp := request.(*nsAppServerResp)
 	byte, err := json.Marshal(reqNsAppServerResp)
-	obj := &NsAppServerResp{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAppServerResp := &NsAppServerResp{}
+	err = json.Unmarshal(byte, respNsAppServerResp)
+	return respNsAppServerResp, err
 }

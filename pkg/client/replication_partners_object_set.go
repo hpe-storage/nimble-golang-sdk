@@ -23,8 +23,11 @@ type ReplicationPartnerObjectSet struct {
 
 // CreateObject creates a new ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
-	newPayload, err := nimbleos.EncodeReplicationPartner(payload)
-	resp, err := objectSet.Client.Post(replicationPartnerPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeReplicationPartner(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(replicationPartnerPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -63,25 +66,25 @@ func (objectSet *ReplicationPartnerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ReplicationPartner object with the given ID
 func (objectSet *ReplicationPartnerObjectSet) GetObject(id string) (*nimbleos.ReplicationPartner, error) {
-	replicationPartnerObjectSetResp, err := objectSet.Client.Get(replicationPartnerPath, id, nimbleos.ReplicationPartner{})
+	resp, err := objectSet.Client.Get(replicationPartnerPath, id, nimbleos.ReplicationPartner{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if replicationPartnerObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return replicationPartnerObjectSetResp.(*nimbleos.ReplicationPartner), err
+	return resp.(*nimbleos.ReplicationPartner), err
 }
 
 // GetObjectList returns the list of ReplicationPartner objects
 func (objectSet *ReplicationPartnerObjectSet) GetObjectList() ([]*nimbleos.ReplicationPartner, error) {
-	replicationPartnerObjectSetResp, err := objectSet.Client.List(replicationPartnerPath)
+	resp, err := objectSet.Client.List(replicationPartnerPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildReplicationPartnerObjectSet(replicationPartnerObjectSetResp), err
+	return buildReplicationPartnerObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ReplicationPartner objects using the given params query info

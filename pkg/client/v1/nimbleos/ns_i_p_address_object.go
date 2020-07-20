@@ -24,7 +24,6 @@ type NsIPAddressObject struct {
 
 // sdk internal struct
 type nsIPAddressObject struct {
-	// IpAddr - An IP Address.
 	IpAddr *string `json:"ip_addr,omitempty"`
 }
 
@@ -32,16 +31,22 @@ type nsIPAddressObject struct {
 func EncodeNsIPAddressObject(request interface{}) (*nsIPAddressObject, error) {
 	reqNsIPAddressObject := request.(*NsIPAddressObject)
 	byte, err := json.Marshal(reqNsIPAddressObject)
-	objPtr := &nsIPAddressObject{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsIPAddressObjectPtr := &nsIPAddressObject{}
+	err = json.Unmarshal(byte, respNsIPAddressObjectPtr)
+	return respNsIPAddressObjectPtr, err
 }
 
 // DecodeNsIPAddressObject Transform nsIPAddressObject to NsIPAddressObject type
 func DecodeNsIPAddressObject(request interface{}) (*NsIPAddressObject, error) {
 	reqNsIPAddressObject := request.(*nsIPAddressObject)
 	byte, err := json.Marshal(reqNsIPAddressObject)
-	obj := &NsIPAddressObject{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsIPAddressObject := &NsIPAddressObject{}
+	err = json.Unmarshal(byte, respNsIPAddressObject)
+	return respNsIPAddressObject, err
 }

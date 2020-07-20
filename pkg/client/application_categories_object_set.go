@@ -37,25 +37,25 @@ func (objectSet *ApplicationCategoryObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ApplicationCategory object with the given ID
 func (objectSet *ApplicationCategoryObjectSet) GetObject(id string) (*nimbleos.ApplicationCategory, error) {
-	applicationCategoryObjectSetResp, err := objectSet.Client.Get(applicationCategoryPath, id, nimbleos.ApplicationCategory{})
+	resp, err := objectSet.Client.Get(applicationCategoryPath, id, nimbleos.ApplicationCategory{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if applicationCategoryObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return applicationCategoryObjectSetResp.(*nimbleos.ApplicationCategory), err
+	return resp.(*nimbleos.ApplicationCategory), err
 }
 
 // GetObjectList returns the list of ApplicationCategory objects
 func (objectSet *ApplicationCategoryObjectSet) GetObjectList() ([]*nimbleos.ApplicationCategory, error) {
-	applicationCategoryObjectSetResp, err := objectSet.Client.List(applicationCategoryPath)
+	resp, err := objectSet.Client.List(applicationCategoryPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildApplicationCategoryObjectSet(applicationCategoryObjectSetResp), err
+	return buildApplicationCategoryObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of ApplicationCategory objects using the given params query info

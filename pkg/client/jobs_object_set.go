@@ -37,25 +37,25 @@ func (objectSet *JobObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Job object with the given ID
 func (objectSet *JobObjectSet) GetObject(id string) (*nimbleos.Job, error) {
-	jobObjectSetResp, err := objectSet.Client.Get(jobPath, id, nimbleos.Job{})
+	resp, err := objectSet.Client.Get(jobPath, id, nimbleos.Job{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if jobObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return jobObjectSetResp.(*nimbleos.Job), err
+	return resp.(*nimbleos.Job), err
 }
 
 // GetObjectList returns the list of Job objects
 func (objectSet *JobObjectSet) GetObjectList() ([]*nimbleos.Job, error) {
-	jobObjectSetResp, err := objectSet.Client.List(jobPath)
+	resp, err := objectSet.Client.List(jobPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildJobObjectSet(jobObjectSetResp), err
+	return buildJobObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Job objects using the given params query info

@@ -37,25 +37,25 @@ func (objectSet *FibreChannelSessionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a FibreChannelSession object with the given ID
 func (objectSet *FibreChannelSessionObjectSet) GetObject(id string) (*nimbleos.FibreChannelSession, error) {
-	fibreChannelSessionObjectSetResp, err := objectSet.Client.Get(fibreChannelSessionPath, id, nimbleos.FibreChannelSession{})
+	resp, err := objectSet.Client.Get(fibreChannelSessionPath, id, nimbleos.FibreChannelSession{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if fibreChannelSessionObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return fibreChannelSessionObjectSetResp.(*nimbleos.FibreChannelSession), err
+	return resp.(*nimbleos.FibreChannelSession), err
 }
 
 // GetObjectList returns the list of FibreChannelSession objects
 func (objectSet *FibreChannelSessionObjectSet) GetObjectList() ([]*nimbleos.FibreChannelSession, error) {
-	fibreChannelSessionObjectSetResp, err := objectSet.Client.List(fibreChannelSessionPath)
+	resp, err := objectSet.Client.List(fibreChannelSessionPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildFibreChannelSessionObjectSet(fibreChannelSessionObjectSetResp), err
+	return buildFibreChannelSessionObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of FibreChannelSession objects using the given params query info

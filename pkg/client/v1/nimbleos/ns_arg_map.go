@@ -26,16 +26,22 @@ type nsArgMap struct {
 func EncodeNsArgMap(request interface{}) (*nsArgMap, error) {
 	reqNsArgMap := request.(*NsArgMap)
 	byte, err := json.Marshal(reqNsArgMap)
-	objPtr := &nsArgMap{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArgMapPtr := &nsArgMap{}
+	err = json.Unmarshal(byte, respNsArgMapPtr)
+	return respNsArgMapPtr, err
 }
 
 // DecodeNsArgMap Transform nsArgMap to NsArgMap type
 func DecodeNsArgMap(request interface{}) (*NsArgMap, error) {
 	reqNsArgMap := request.(*nsArgMap)
 	byte, err := json.Marshal(reqNsArgMap)
-	obj := &NsArgMap{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArgMap := &NsArgMap{}
+	err = json.Unmarshal(byte, respNsArgMap)
+	return respNsArgMap, err
 }

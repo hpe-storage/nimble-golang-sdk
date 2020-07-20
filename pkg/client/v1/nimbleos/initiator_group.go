@@ -64,58 +64,46 @@ type InitiatorGroup struct {
 
 // sdk internal struct
 type initiatorGroup struct {
-	// ID - Identifier for initiator group.
-	ID *string `json:"id,omitempty"`
-	// Name - Name of initiator group.
-	Name *string `json:"name,omitempty"`
-	// FullName - Initiator group's full name.
-	FullName *string `json:"full_name,omitempty"`
-	// SearchName - Initiator group name used for search.
-	SearchName *string `json:"search_name,omitempty"`
-	// Description - Text description of initiator group.
-	Description *string `json:"description,omitempty"`
-	// AccessProtocol - Initiator group access protocol.
-	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
-	// HostType - Initiator group host type. Available options are auto and hpux. The default option is auto. This attribute will be applied to all the initiators in the initiator group. Initiators with different host OSes should not be kept in the same initiator group having a non-default host type attribute.
-	HostType *string `json:"host_type,omitempty"`
-	// FcTdzPorts - List of target Fibre Channel ports with Target Driven Zoning configured on this initiator group.
-	FcTdzPorts []*NsFcTdzPort `json:"fc_tdz_ports,omitempty"`
-	// TargetSubnets - List of target subnet labels. If specified, discovery and access to volumes will be restricted to the specified subnets.
-	TargetSubnets []*NsTargetSubnet `json:"target_subnets,omitempty"`
-	// IscsiInitiators - List of iSCSI initiators. When create/update iscsi_initiators, either iqn or ip_address is always required with label.
-	IscsiInitiators []*NsISCSIInitiator `json:"iscsi_initiators,omitempty"`
-	// FcInitiators - List of FC initiators. When create/update fc_initiators, wwpn is required.
-	FcInitiators []*NsFCInitiator `json:"fc_initiators,omitempty"`
-	// CreationTime - Time when this initiator group was created.
-	CreationTime *int64 `json:"creation_time,omitempty"`
-	// LastModified - Time when this initiator group was last modified.
-	LastModified *int64 `json:"last_modified,omitempty"`
-	// AppUuid - Application identifier of initiator group.
-	AppUuid *string `json:"app_uuid,omitempty"`
-	// VolumeCount - Number of volumes that are accessible by the initiator group.
-	VolumeCount *int64 `json:"volume_count,omitempty"`
-	// VolumeList - List of volumes that are accessible by the initiator group.
-	VolumeList []*NsVolumeSummaryWithAppCategory `json:"volume_list,omitempty"`
-	// NumConnections - Total number of connections from initiators in the initiator group.
-	NumConnections *int64 `json:"num_connections,omitempty"`
-	// Metadata - Key-value pairs that augment an initiator group's attributes.
-	Metadata []*NsKeyValue `json:"metadata,omitempty"`
+	ID              *string                           `json:"id,omitempty"`
+	Name            *string                           `json:"name,omitempty"`
+	FullName        *string                           `json:"full_name,omitempty"`
+	SearchName      *string                           `json:"search_name,omitempty"`
+	Description     *string                           `json:"description,omitempty"`
+	AccessProtocol  *NsAccessProtocol                 `json:"access_protocol,omitempty"`
+	HostType        *string                           `json:"host_type,omitempty"`
+	FcTdzPorts      []*NsFcTdzPort                    `json:"fc_tdz_ports,omitempty"`
+	TargetSubnets   []*NsTargetSubnet                 `json:"target_subnets,omitempty"`
+	IscsiInitiators []*NsISCSIInitiator               `json:"iscsi_initiators,omitempty"`
+	FcInitiators    []*NsFCInitiator                  `json:"fc_initiators,omitempty"`
+	CreationTime    *int64                            `json:"creation_time,omitempty"`
+	LastModified    *int64                            `json:"last_modified,omitempty"`
+	AppUuid         *string                           `json:"app_uuid,omitempty"`
+	VolumeCount     *int64                            `json:"volume_count,omitempty"`
+	VolumeList      []*NsVolumeSummaryWithAppCategory `json:"volume_list,omitempty"`
+	NumConnections  *int64                            `json:"num_connections,omitempty"`
+	Metadata        []*NsKeyValue                     `json:"metadata,omitempty"`
 }
 
 // EncodeInitiatorGroup - Transform InitiatorGroup to initiatorGroup type
 func EncodeInitiatorGroup(request interface{}) (*initiatorGroup, error) {
 	reqInitiatorGroup := request.(*InitiatorGroup)
 	byte, err := json.Marshal(reqInitiatorGroup)
-	objPtr := &initiatorGroup{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respInitiatorGroupPtr := &initiatorGroup{}
+	err = json.Unmarshal(byte, respInitiatorGroupPtr)
+	return respInitiatorGroupPtr, err
 }
 
 // DecodeInitiatorGroup Transform initiatorGroup to InitiatorGroup type
 func DecodeInitiatorGroup(request interface{}) (*InitiatorGroup, error) {
 	reqInitiatorGroup := request.(*initiatorGroup)
 	byte, err := json.Marshal(reqInitiatorGroup)
-	obj := &InitiatorGroup{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respInitiatorGroup := &InitiatorGroup{}
+	err = json.Unmarshal(byte, respInitiatorGroup)
+	return respInitiatorGroup, err
 }

@@ -24,7 +24,6 @@ type NsArraySoftwareUpdateError struct {
 
 // sdk internal struct
 type nsArraySoftwareUpdateError struct {
-	// Error - Error code from software update.
 	Error *string `json:"error,omitempty"`
 }
 
@@ -32,16 +31,22 @@ type nsArraySoftwareUpdateError struct {
 func EncodeNsArraySoftwareUpdateError(request interface{}) (*nsArraySoftwareUpdateError, error) {
 	reqNsArraySoftwareUpdateError := request.(*NsArraySoftwareUpdateError)
 	byte, err := json.Marshal(reqNsArraySoftwareUpdateError)
-	objPtr := &nsArraySoftwareUpdateError{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArraySoftwareUpdateErrorPtr := &nsArraySoftwareUpdateError{}
+	err = json.Unmarshal(byte, respNsArraySoftwareUpdateErrorPtr)
+	return respNsArraySoftwareUpdateErrorPtr, err
 }
 
 // DecodeNsArraySoftwareUpdateError Transform nsArraySoftwareUpdateError to NsArraySoftwareUpdateError type
 func DecodeNsArraySoftwareUpdateError(request interface{}) (*NsArraySoftwareUpdateError, error) {
 	reqNsArraySoftwareUpdateError := request.(*nsArraySoftwareUpdateError)
 	byte, err := json.Marshal(reqNsArraySoftwareUpdateError)
-	obj := &NsArraySoftwareUpdateError{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArraySoftwareUpdateError := &NsArraySoftwareUpdateError{}
+	err = json.Unmarshal(byte, respNsArraySoftwareUpdateError)
+	return respNsArraySoftwareUpdateError, err
 }

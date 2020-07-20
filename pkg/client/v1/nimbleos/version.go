@@ -27,9 +27,7 @@ type Version struct {
 
 // sdk internal struct
 type version struct {
-	// Name - API version number.
-	Name *string `json:"name,omitempty"`
-	// SoftwareVersion - Software version of the group.
+	Name            *string `json:"name,omitempty"`
 	SoftwareVersion *string `json:"software_version,omitempty"`
 }
 
@@ -37,16 +35,22 @@ type version struct {
 func EncodeVersion(request interface{}) (*version, error) {
 	reqVersion := request.(*Version)
 	byte, err := json.Marshal(reqVersion)
-	objPtr := &version{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respVersionPtr := &version{}
+	err = json.Unmarshal(byte, respVersionPtr)
+	return respVersionPtr, err
 }
 
 // DecodeVersion Transform version to Version type
 func DecodeVersion(request interface{}) (*Version, error) {
 	reqVersion := request.(*version)
 	byte, err := json.Marshal(reqVersion)
-	obj := &Version{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respVersion := &Version{}
+	err = json.Unmarshal(byte, respVersion)
+	return respVersion, err
 }

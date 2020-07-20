@@ -24,9 +24,7 @@ type NsObjectOwnerPairWithType struct {
 
 // sdk internal struct
 type nsObjectOwnerPairWithType struct {
-	// ObjType - Type of the object.
-	ObjType *NsObjectType `json:"obj_type,omitempty"`
-	// ObjOwnerPairList - List of object names and owners.
+	ObjType          *NsObjectType        `json:"obj_type,omitempty"`
 	ObjOwnerPairList []*NsObjectOwnerPair `json:"obj_owner_pair_list,omitempty"`
 }
 
@@ -34,16 +32,22 @@ type nsObjectOwnerPairWithType struct {
 func EncodeNsObjectOwnerPairWithType(request interface{}) (*nsObjectOwnerPairWithType, error) {
 	reqNsObjectOwnerPairWithType := request.(*NsObjectOwnerPairWithType)
 	byte, err := json.Marshal(reqNsObjectOwnerPairWithType)
-	objPtr := &nsObjectOwnerPairWithType{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsObjectOwnerPairWithTypePtr := &nsObjectOwnerPairWithType{}
+	err = json.Unmarshal(byte, respNsObjectOwnerPairWithTypePtr)
+	return respNsObjectOwnerPairWithTypePtr, err
 }
 
 // DecodeNsObjectOwnerPairWithType Transform nsObjectOwnerPairWithType to NsObjectOwnerPairWithType type
 func DecodeNsObjectOwnerPairWithType(request interface{}) (*NsObjectOwnerPairWithType, error) {
 	reqNsObjectOwnerPairWithType := request.(*nsObjectOwnerPairWithType)
 	byte, err := json.Marshal(reqNsObjectOwnerPairWithType)
-	obj := &NsObjectOwnerPairWithType{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsObjectOwnerPairWithType := &NsObjectOwnerPairWithType{}
+	err = json.Unmarshal(byte, respNsObjectOwnerPairWithType)
+	return respNsObjectOwnerPairWithType, err
 }

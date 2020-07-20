@@ -37,25 +37,25 @@ func (objectSet *AuditLogObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a AuditLog object with the given ID
 func (objectSet *AuditLogObjectSet) GetObject(id string) (*nimbleos.AuditLog, error) {
-	auditLogObjectSetResp, err := objectSet.Client.Get(auditLogPath, id, nimbleos.AuditLog{})
+	resp, err := objectSet.Client.Get(auditLogPath, id, nimbleos.AuditLog{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if auditLogObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return auditLogObjectSetResp.(*nimbleos.AuditLog), err
+	return resp.(*nimbleos.AuditLog), err
 }
 
 // GetObjectList returns the list of AuditLog objects
 func (objectSet *AuditLogObjectSet) GetObjectList() ([]*nimbleos.AuditLog, error) {
-	auditLogObjectSetResp, err := objectSet.Client.List(auditLogPath)
+	resp, err := objectSet.Client.List(auditLogPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildAuditLogObjectSet(auditLogObjectSetResp), err
+	return buildAuditLogObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of AuditLog objects using the given params query info

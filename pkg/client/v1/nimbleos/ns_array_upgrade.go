@@ -28,13 +28,9 @@ type NsArrayUpgrade struct {
 
 // sdk internal struct
 type nsArrayUpgrade struct {
-	// Type - Array upgrade type.
-	Type *NsArrayUpgradeType `json:"type,omitempty"`
-	// State - Array upgrade state.
-	State *NsArrayUpgradeState `json:"state,omitempty"`
-	// Stage - Array upgrade stage.
-	Stage *NsArrayUpgradeStage `json:"stage,omitempty"`
-	// Messages - List of error or info messages.
+	Type     *NsArrayUpgradeType     `json:"type,omitempty"`
+	State    *NsArrayUpgradeState    `json:"state,omitempty"`
+	Stage    *NsArrayUpgradeStage    `json:"stage,omitempty"`
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
@@ -42,16 +38,22 @@ type nsArrayUpgrade struct {
 func EncodeNsArrayUpgrade(request interface{}) (*nsArrayUpgrade, error) {
 	reqNsArrayUpgrade := request.(*NsArrayUpgrade)
 	byte, err := json.Marshal(reqNsArrayUpgrade)
-	objPtr := &nsArrayUpgrade{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArrayUpgradePtr := &nsArrayUpgrade{}
+	err = json.Unmarshal(byte, respNsArrayUpgradePtr)
+	return respNsArrayUpgradePtr, err
 }
 
 // DecodeNsArrayUpgrade Transform nsArrayUpgrade to NsArrayUpgrade type
 func DecodeNsArrayUpgrade(request interface{}) (*NsArrayUpgrade, error) {
 	reqNsArrayUpgrade := request.(*nsArrayUpgrade)
 	byte, err := json.Marshal(reqNsArrayUpgrade)
-	obj := &NsArrayUpgrade{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsArrayUpgrade := &NsArrayUpgrade{}
+	err = json.Unmarshal(byte, respNsArrayUpgrade)
+	return respNsArrayUpgrade, err
 }

@@ -37,34 +37,34 @@ type MasterKey struct {
 
 // sdk internal struct
 type masterKey struct {
-	// ID - Identifier of the master key.
-	ID *string `json:"id,omitempty"`
-	// Name - Name of the master key. The only allowed value is "default".
-	Name *string `json:"name,omitempty"`
-	// Passphrase - Passphrase used to protect the master key, required during creation, enabling/disabling the key and change the passphrase to a new value.
-	Passphrase *string `json:"passphrase,omitempty"`
-	// NewPassphrase - When changing the passphrase, this attribute specifies the new value of the passphrase.
+	ID            *string `json:"id,omitempty"`
+	Name          *string `json:"name,omitempty"`
+	Passphrase    *string `json:"passphrase,omitempty"`
 	NewPassphrase *string `json:"new_passphrase,omitempty"`
-	// Active - Whether the master key is active or not.
-	Active *bool `json:"active,omitempty"`
-	// PurgeAge - Default minimum age (in hours) of inactive encryption keys to be purged. '0' indicates to purge keys immediately.
-	PurgeAge *int64 `json:"purge_age,omitempty"`
+	Active        *bool   `json:"active,omitempty"`
+	PurgeAge      *int64  `json:"purge_age,omitempty"`
 }
 
 // EncodeMasterKey - Transform MasterKey to masterKey type
 func EncodeMasterKey(request interface{}) (*masterKey, error) {
 	reqMasterKey := request.(*MasterKey)
 	byte, err := json.Marshal(reqMasterKey)
-	objPtr := &masterKey{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respMasterKeyPtr := &masterKey{}
+	err = json.Unmarshal(byte, respMasterKeyPtr)
+	return respMasterKeyPtr, err
 }
 
 // DecodeMasterKey Transform masterKey to MasterKey type
 func DecodeMasterKey(request interface{}) (*MasterKey, error) {
 	reqMasterKey := request.(*masterKey)
 	byte, err := json.Marshal(reqMasterKey)
-	obj := &MasterKey{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respMasterKey := &MasterKey{}
+	err = json.Unmarshal(byte, respMasterKey)
+	return respMasterKey, err
 }

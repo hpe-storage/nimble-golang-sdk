@@ -29,28 +29,31 @@ type NsFcConfigRegenerateReturn struct {
 
 // sdk internal struct
 type nsFcConfigRegenerateReturn struct {
-	// ArrayList - List of array Fibre Channel configs.
-	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
-	// GroupLeaderArray - Name of the group leader array.
-	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
-	// ID - Identifier for Fibre Channel configuration.
-	ID *string `json:"id,omitempty"`
+	ArrayList        []*NsArrayFcConfig `json:"array_list,omitempty"`
+	GroupLeaderArray *string            `json:"group_leader_array,omitempty"`
+	ID               *string            `json:"id,omitempty"`
 }
 
 // EncodeNsFcConfigRegenerateReturn - Transform NsFcConfigRegenerateReturn to nsFcConfigRegenerateReturn type
 func EncodeNsFcConfigRegenerateReturn(request interface{}) (*nsFcConfigRegenerateReturn, error) {
 	reqNsFcConfigRegenerateReturn := request.(*NsFcConfigRegenerateReturn)
 	byte, err := json.Marshal(reqNsFcConfigRegenerateReturn)
-	objPtr := &nsFcConfigRegenerateReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcConfigRegenerateReturnPtr := &nsFcConfigRegenerateReturn{}
+	err = json.Unmarshal(byte, respNsFcConfigRegenerateReturnPtr)
+	return respNsFcConfigRegenerateReturnPtr, err
 }
 
 // DecodeNsFcConfigRegenerateReturn Transform nsFcConfigRegenerateReturn to NsFcConfigRegenerateReturn type
 func DecodeNsFcConfigRegenerateReturn(request interface{}) (*NsFcConfigRegenerateReturn, error) {
 	reqNsFcConfigRegenerateReturn := request.(*nsFcConfigRegenerateReturn)
 	byte, err := json.Marshal(reqNsFcConfigRegenerateReturn)
-	obj := &NsFcConfigRegenerateReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsFcConfigRegenerateReturn := &NsFcConfigRegenerateReturn{}
+	err = json.Unmarshal(byte, respNsFcConfigRegenerateReturn)
+	return respNsFcConfigRegenerateReturn, err
 }

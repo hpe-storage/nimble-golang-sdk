@@ -21,8 +21,11 @@ type UserGroupObjectSet struct {
 
 // CreateObject creates a new UserGroup object
 func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
-	newPayload, err := nimbleos.EncodeUserGroup(payload)
-	resp, err := objectSet.Client.Post(userGroupPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeUserGroup(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(userGroupPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *UserGroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a UserGroup object with the given ID
 func (objectSet *UserGroupObjectSet) GetObject(id string) (*nimbleos.UserGroup, error) {
-	userGroupObjectSetResp, err := objectSet.Client.Get(userGroupPath, id, nimbleos.UserGroup{})
+	resp, err := objectSet.Client.Get(userGroupPath, id, nimbleos.UserGroup{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if userGroupObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return userGroupObjectSetResp.(*nimbleos.UserGroup), err
+	return resp.(*nimbleos.UserGroup), err
 }
 
 // GetObjectList returns the list of UserGroup objects
 func (objectSet *UserGroupObjectSet) GetObjectList() ([]*nimbleos.UserGroup, error) {
-	userGroupObjectSetResp, err := objectSet.Client.List(userGroupPath)
+	resp, err := objectSet.Client.List(userGroupPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildUserGroupObjectSet(userGroupObjectSetResp), err
+	return buildUserGroupObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of UserGroup objects using the given params query info

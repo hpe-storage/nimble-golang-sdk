@@ -21,8 +21,11 @@ type FolderObjectSet struct {
 
 // CreateObject creates a new Folder object
 func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbleos.Folder, error) {
-	newPayload, err := nimbleos.EncodeFolder(payload)
-	resp, err := objectSet.Client.Post(folderPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeFolder(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(folderPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *FolderObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Folder object with the given ID
 func (objectSet *FolderObjectSet) GetObject(id string) (*nimbleos.Folder, error) {
-	folderObjectSetResp, err := objectSet.Client.Get(folderPath, id, nimbleos.Folder{})
+	resp, err := objectSet.Client.Get(folderPath, id, nimbleos.Folder{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if folderObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return folderObjectSetResp.(*nimbleos.Folder), err
+	return resp.(*nimbleos.Folder), err
 }
 
 // GetObjectList returns the list of Folder objects
 func (objectSet *FolderObjectSet) GetObjectList() ([]*nimbleos.Folder, error) {
-	folderObjectSetResp, err := objectSet.Client.List(folderPath)
+	resp, err := objectSet.Client.List(folderPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildFolderObjectSet(folderObjectSetResp), err
+	return buildFolderObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Folder objects using the given params query info

@@ -22,7 +22,6 @@ type NsBulkVolSettingReturn struct {
 
 // sdk internal struct
 type nsBulkVolSettingReturn struct {
-	// ErrorCodes - Error codes for every element in a list of items.
 	ErrorCodes []*string `json:"error_codes,omitempty"`
 }
 
@@ -30,16 +29,22 @@ type nsBulkVolSettingReturn struct {
 func EncodeNsBulkVolSettingReturn(request interface{}) (*nsBulkVolSettingReturn, error) {
 	reqNsBulkVolSettingReturn := request.(*NsBulkVolSettingReturn)
 	byte, err := json.Marshal(reqNsBulkVolSettingReturn)
-	objPtr := &nsBulkVolSettingReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsBulkVolSettingReturnPtr := &nsBulkVolSettingReturn{}
+	err = json.Unmarshal(byte, respNsBulkVolSettingReturnPtr)
+	return respNsBulkVolSettingReturnPtr, err
 }
 
 // DecodeNsBulkVolSettingReturn Transform nsBulkVolSettingReturn to NsBulkVolSettingReturn type
 func DecodeNsBulkVolSettingReturn(request interface{}) (*NsBulkVolSettingReturn, error) {
 	reqNsBulkVolSettingReturn := request.(*nsBulkVolSettingReturn)
 	byte, err := json.Marshal(reqNsBulkVolSettingReturn)
-	obj := &NsBulkVolSettingReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsBulkVolSettingReturn := &NsBulkVolSettingReturn{}
+	err = json.Unmarshal(byte, respNsBulkVolSettingReturn)
+	return respNsBulkVolSettingReturn, err
 }

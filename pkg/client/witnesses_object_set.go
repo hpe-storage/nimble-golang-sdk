@@ -22,8 +22,11 @@ type WitnessObjectSet struct {
 
 // CreateObject creates a new Witness object
 func (objectSet *WitnessObjectSet) CreateObject(payload *nimbleos.Witness) (*nimbleos.Witness, error) {
-	newPayload, err := nimbleos.EncodeWitness(payload)
-	resp, err := objectSet.Client.Post(witnessPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeWitness(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(witnessPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,25 +55,25 @@ func (objectSet *WitnessObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Witness object with the given ID
 func (objectSet *WitnessObjectSet) GetObject(id string) (*nimbleos.Witness, error) {
-	witnessObjectSetResp, err := objectSet.Client.Get(witnessPath, id, nimbleos.Witness{})
+	resp, err := objectSet.Client.Get(witnessPath, id, nimbleos.Witness{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if witnessObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return witnessObjectSetResp.(*nimbleos.Witness), err
+	return resp.(*nimbleos.Witness), err
 }
 
 // GetObjectList returns the list of Witness objects
 func (objectSet *WitnessObjectSet) GetObjectList() ([]*nimbleos.Witness, error) {
-	witnessObjectSetResp, err := objectSet.Client.List(witnessPath)
+	resp, err := objectSet.Client.List(witnessPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildWitnessObjectSet(witnessObjectSetResp), err
+	return buildWitnessObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Witness objects using the given params query info

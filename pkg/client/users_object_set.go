@@ -21,8 +21,11 @@ type UserObjectSet struct {
 
 // CreateObject creates a new User object
 func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.User, error) {
-	newPayload, err := nimbleos.EncodeUser(payload)
-	resp, err := objectSet.Client.Post(userPath, newPayload)
+	encodedPayload, err := nimbleos.EncodeUser(payload)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := objectSet.Client.Post(userPath, encodedPayload)
 	if err != nil {
 		return nil, err
 	}
@@ -61,25 +64,25 @@ func (objectSet *UserObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a User object with the given ID
 func (objectSet *UserObjectSet) GetObject(id string) (*nimbleos.User, error) {
-	userObjectSetResp, err := objectSet.Client.Get(userPath, id, nimbleos.User{})
+	resp, err := objectSet.Client.Get(userPath, id, nimbleos.User{})
 	if err != nil {
 		return nil, err
 	}
 
 	// null check
-	if userObjectSetResp == nil {
+	if resp == nil {
 		return nil, nil
 	}
-	return userObjectSetResp.(*nimbleos.User), err
+	return resp.(*nimbleos.User), err
 }
 
 // GetObjectList returns the list of User objects
 func (objectSet *UserObjectSet) GetObjectList() ([]*nimbleos.User, error) {
-	userObjectSetResp, err := objectSet.Client.List(userPath)
+	resp, err := objectSet.Client.List(userPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildUserObjectSet(userObjectSetResp), err
+	return buildUserObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of User objects using the given params query info

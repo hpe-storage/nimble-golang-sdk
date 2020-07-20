@@ -30,28 +30,31 @@ type NsAliasConflictPair struct {
 
 // sdk internal struct
 type nsAliasConflictPair struct {
-	// InitiatorWwpn - WWPN of the common initiator.
 	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
-	// DstAliasName - Name of the alias on the destination group.
-	DstAliasName *string `json:"dst_alias_name,omitempty"`
-	// SrcAliasName - Name of the alias on the source group.
-	SrcAliasName *string `json:"src_alias_name,omitempty"`
+	DstAliasName  *string `json:"dst_alias_name,omitempty"`
+	SrcAliasName  *string `json:"src_alias_name,omitempty"`
 }
 
 // EncodeNsAliasConflictPair - Transform NsAliasConflictPair to nsAliasConflictPair type
 func EncodeNsAliasConflictPair(request interface{}) (*nsAliasConflictPair, error) {
 	reqNsAliasConflictPair := request.(*NsAliasConflictPair)
 	byte, err := json.Marshal(reqNsAliasConflictPair)
-	objPtr := &nsAliasConflictPair{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAliasConflictPairPtr := &nsAliasConflictPair{}
+	err = json.Unmarshal(byte, respNsAliasConflictPairPtr)
+	return respNsAliasConflictPairPtr, err
 }
 
 // DecodeNsAliasConflictPair Transform nsAliasConflictPair to NsAliasConflictPair type
 func DecodeNsAliasConflictPair(request interface{}) (*NsAliasConflictPair, error) {
 	reqNsAliasConflictPair := request.(*nsAliasConflictPair)
 	byte, err := json.Marshal(reqNsAliasConflictPair)
-	obj := &NsAliasConflictPair{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsAliasConflictPair := &NsAliasConflictPair{}
+	err = json.Unmarshal(byte, respNsAliasConflictPair)
+	return respNsAliasConflictPair, err
 }

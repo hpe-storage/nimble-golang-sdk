@@ -26,9 +26,7 @@ type NsSoftwareUpdateReturn struct {
 
 // sdk internal struct
 type nsSoftwareUpdateReturn struct {
-	// Error - Top level error.
-	Error *string `json:"error,omitempty"`
-	// ArrayResponseList - Errors from all the arrays in the group.
+	Error             *string                        `json:"error,omitempty"`
 	ArrayResponseList []*NsArraySoftwareUpdateStatus `json:"array_response_list,omitempty"`
 }
 
@@ -36,16 +34,22 @@ type nsSoftwareUpdateReturn struct {
 func EncodeNsSoftwareUpdateReturn(request interface{}) (*nsSoftwareUpdateReturn, error) {
 	reqNsSoftwareUpdateReturn := request.(*NsSoftwareUpdateReturn)
 	byte, err := json.Marshal(reqNsSoftwareUpdateReturn)
-	objPtr := &nsSoftwareUpdateReturn{}
-	err = json.Unmarshal(byte, objPtr)
-	return objPtr, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSoftwareUpdateReturnPtr := &nsSoftwareUpdateReturn{}
+	err = json.Unmarshal(byte, respNsSoftwareUpdateReturnPtr)
+	return respNsSoftwareUpdateReturnPtr, err
 }
 
 // DecodeNsSoftwareUpdateReturn Transform nsSoftwareUpdateReturn to NsSoftwareUpdateReturn type
 func DecodeNsSoftwareUpdateReturn(request interface{}) (*NsSoftwareUpdateReturn, error) {
 	reqNsSoftwareUpdateReturn := request.(*nsSoftwareUpdateReturn)
 	byte, err := json.Marshal(reqNsSoftwareUpdateReturn)
-	obj := &NsSoftwareUpdateReturn{}
-	err = json.Unmarshal(byte, obj)
-	return obj, err
+	if err != nil {
+		return nil, err
+	}
+	respNsSoftwareUpdateReturn := &NsSoftwareUpdateReturn{}
+	err = json.Unmarshal(byte, respNsSoftwareUpdateReturn)
+	return respNsSoftwareUpdateReturn, err
 }
