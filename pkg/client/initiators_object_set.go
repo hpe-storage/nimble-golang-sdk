@@ -22,11 +22,7 @@ type InitiatorObjectSet struct {
 
 // CreateObject creates a new Initiator object
 func (objectSet *InitiatorObjectSet) CreateObject(payload *nimbleos.Initiator) (*nimbleos.Initiator, error) {
-	encodedPayload, err := nimbleos.EncodeInitiator(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(initiatorPath, encodedPayload)
+	resp, err := objectSet.Client.Post(initiatorPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +32,7 @@ func (objectSet *InitiatorObjectSet) CreateObject(payload *nimbleos.Initiator) (
 		return nil, nil
 	}
 
-	return nimbleos.DecodeInitiator(resp)
+	return resp.(*nimbleos.Initiator), err
 }
 
 // UpdateObject Modify existing Initiator object

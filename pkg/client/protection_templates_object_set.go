@@ -24,11 +24,7 @@ type ProtectionTemplateObjectSet struct {
 
 // CreateObject creates a new ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
-	encodedPayload, err := nimbleos.EncodeProtectionTemplate(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(protectionTemplatePath, encodedPayload)
+	resp, err := objectSet.Client.Post(protectionTemplatePath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -38,13 +34,12 @@ func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *nimbleos.Pro
 		return nil, nil
 	}
 
-	return nimbleos.DecodeProtectionTemplate(resp)
+	return resp.(*nimbleos.ProtectionTemplate), err
 }
 
 // UpdateObject Modify existing ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
-	newPayload, err := nimbleos.EncodeProtectionTemplate(payload)
-	resp, err := objectSet.Client.Put(protectionTemplatePath, id, newPayload)
+	resp, err := objectSet.Client.Put(protectionTemplatePath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +48,7 @@ func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *n
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeProtectionTemplate(resp)
+	return resp.(*nimbleos.ProtectionTemplate), err
 }
 
 // DeleteObject deletes the ProtectionTemplate object with the specified ID

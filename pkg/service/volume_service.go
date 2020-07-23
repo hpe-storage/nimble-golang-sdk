@@ -79,7 +79,7 @@ func (svc *VolumeService) GetVolumeById(id string) (*nimbleos.Volume, error) {
 func (svc *VolumeService) GetVolumeByName(name string) (*nimbleos.Volume, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
@@ -100,7 +100,7 @@ func (svc *VolumeService) GetVolumeByName(name string) (*nimbleos.Volume, error)
 func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*nimbleos.Volume, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.SerialNumber,
+			FieldName: nimbleos.VolumeFields.SerialNumber,
 			Operator:  param.EQUALS.String(),
 			Value:     serialNumber,
 		},

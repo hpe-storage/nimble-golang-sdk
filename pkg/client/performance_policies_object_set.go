@@ -23,11 +23,7 @@ type PerformancePolicyObjectSet struct {
 
 // CreateObject creates a new PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	encodedPayload, err := nimbleos.EncodePerformancePolicy(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(performancePolicyPath, encodedPayload)
+	resp, err := objectSet.Client.Post(performancePolicyPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,13 +33,12 @@ func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.Perf
 		return nil, nil
 	}
 
-	return nimbleos.DecodePerformancePolicy(resp)
+	return resp.(*nimbleos.PerformancePolicy), err
 }
 
 // UpdateObject Modify existing PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	newPayload, err := nimbleos.EncodePerformancePolicy(payload)
-	resp, err := objectSet.Client.Put(performancePolicyPath, id, newPayload)
+	resp, err := objectSet.Client.Put(performancePolicyPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +47,7 @@ func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *ni
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodePerformancePolicy(resp)
+	return resp.(*nimbleos.PerformancePolicy), err
 }
 
 // DeleteObject deletes the PerformancePolicy object with the specified ID

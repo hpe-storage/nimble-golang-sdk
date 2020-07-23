@@ -23,11 +23,7 @@ type MasterKeyObjectSet struct {
 
 // CreateObject creates a new MasterKey object
 func (objectSet *MasterKeyObjectSet) CreateObject(payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
-	encodedPayload, err := nimbleos.EncodeMasterKey(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(masterKeyPath, encodedPayload)
+	resp, err := objectSet.Client.Post(masterKeyPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,13 +33,12 @@ func (objectSet *MasterKeyObjectSet) CreateObject(payload *nimbleos.MasterKey) (
 		return nil, nil
 	}
 
-	return nimbleos.DecodeMasterKey(resp)
+	return resp.(*nimbleos.MasterKey), err
 }
 
 // UpdateObject Modify existing MasterKey object
 func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
-	newPayload, err := nimbleos.EncodeMasterKey(payload)
-	resp, err := objectSet.Client.Put(masterKeyPath, id, newPayload)
+	resp, err := objectSet.Client.Put(masterKeyPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +47,7 @@ func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *nimbleos.M
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeMasterKey(resp)
+	return resp.(*nimbleos.MasterKey), err
 }
 
 // DeleteObject deletes the MasterKey object with the specified ID

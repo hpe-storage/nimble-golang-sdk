@@ -81,7 +81,7 @@ func (svc *ProtectionTemplateService) GetProtectionTemplateById(id string) (*nim
 func (svc *ProtectionTemplateService) GetProtectionTemplateByName(name string) (*nimbleos.ProtectionTemplate, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

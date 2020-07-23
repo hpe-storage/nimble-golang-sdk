@@ -27,8 +27,7 @@ func (objectSet *GroupObjectSet) CreateObject(payload *nimbleos.Group) (*nimbleo
 
 // UpdateObject Modify existing Group object
 func (objectSet *GroupObjectSet) UpdateObject(id string, payload *nimbleos.Group) (*nimbleos.Group, error) {
-	newPayload, err := nimbleos.EncodeGroup(payload)
-	resp, err := objectSet.Client.Put(groupPath, id, newPayload)
+	resp, err := objectSet.Client.Put(groupPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +36,7 @@ func (objectSet *GroupObjectSet) UpdateObject(id string, payload *nimbleos.Group
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeGroup(resp)
+	return resp.(*nimbleos.Group), err
 }
 
 // DeleteObject deletes the Group object with the specified ID

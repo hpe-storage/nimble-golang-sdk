@@ -2,19 +2,17 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsFcConfigRegenerateReturn - Return values of Fibre channel config regeneration.
 // Export NsFcConfigRegenerateReturnFields for advance operations like search filter etc.
 var NsFcConfigRegenerateReturnFields *NsFcConfigRegenerateReturn
 
 func init() {
+	GroupLeaderArrayfield := "group_leader_array"
+	IDfield := "id"
 
 	NsFcConfigRegenerateReturnFields = &NsFcConfigRegenerateReturn{
-		GroupLeaderArray: "group_leader_array",
-		ID:               "id",
+		GroupLeaderArray: &GroupLeaderArrayfield,
+		ID:               &IDfield,
 	}
 }
 
@@ -22,38 +20,7 @@ type NsFcConfigRegenerateReturn struct {
 	// ArrayList - List of array Fibre Channel configs.
 	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
 	// GroupLeaderArray - Name of the group leader array.
-	GroupLeaderArray string `json:"group_leader_array,omitempty"`
+	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
 	// ID - Identifier for Fibre Channel configuration.
-	ID string `json:"id,omitempty"`
-}
-
-// sdk internal struct
-type nsFcConfigRegenerateReturn struct {
-	ArrayList        []*NsArrayFcConfig `json:"array_list,omitempty"`
-	GroupLeaderArray *string            `json:"group_leader_array,omitempty"`
-	ID               *string            `json:"id,omitempty"`
-}
-
-// EncodeNsFcConfigRegenerateReturn - Transform NsFcConfigRegenerateReturn to nsFcConfigRegenerateReturn type
-func EncodeNsFcConfigRegenerateReturn(request interface{}) (*nsFcConfigRegenerateReturn, error) {
-	reqNsFcConfigRegenerateReturn := request.(*NsFcConfigRegenerateReturn)
-	byte, err := json.Marshal(reqNsFcConfigRegenerateReturn)
-	if err != nil {
-		return nil, err
-	}
-	respNsFcConfigRegenerateReturnPtr := &nsFcConfigRegenerateReturn{}
-	err = json.Unmarshal(byte, respNsFcConfigRegenerateReturnPtr)
-	return respNsFcConfigRegenerateReturnPtr, err
-}
-
-// DecodeNsFcConfigRegenerateReturn Transform nsFcConfigRegenerateReturn to NsFcConfigRegenerateReturn type
-func DecodeNsFcConfigRegenerateReturn(request interface{}) (*NsFcConfigRegenerateReturn, error) {
-	reqNsFcConfigRegenerateReturn := request.(*nsFcConfigRegenerateReturn)
-	byte, err := json.Marshal(reqNsFcConfigRegenerateReturn)
-	if err != nil {
-		return nil, err
-	}
-	respNsFcConfigRegenerateReturn := &NsFcConfigRegenerateReturn{}
-	err = json.Unmarshal(byte, respNsFcConfigRegenerateReturn)
-	return respNsFcConfigRegenerateReturn, err
+	ID *string `json:"id,omitempty"`
 }

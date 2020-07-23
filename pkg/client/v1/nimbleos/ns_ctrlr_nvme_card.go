@@ -2,57 +2,23 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsCtrlrNvmeCard - NVMe accelerator card.
 // Export NsCtrlrNvmeCardFields for advance operations like search filter etc.
 var NsCtrlrNvmeCardFields *NsCtrlrNvmeCard
 
 func init() {
+	SerialNumberfield := "serial_number"
 
 	NsCtrlrNvmeCardFields = &NsCtrlrNvmeCard{
-		SerialNumber: "serial_number",
+		SerialNumber: &SerialNumberfield,
 	}
 }
 
 type NsCtrlrNvmeCard struct {
 	// SerialNumber - Serial number.
-	SerialNumber string `json:"serial_number,omitempty"`
+	SerialNumber *string `json:"serial_number,omitempty"`
 	// Size - NVMe card cache size in bytes.
-	Size int64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 	// State - Online state.
 	State *NsCtrlrNvmeCardState `json:"state,omitempty"`
-}
-
-// sdk internal struct
-type nsCtrlrNvmeCard struct {
-	SerialNumber *string               `json:"serial_number,omitempty"`
-	Size         *int64                `json:"size,omitempty"`
-	State        *NsCtrlrNvmeCardState `json:"state,omitempty"`
-}
-
-// EncodeNsCtrlrNvmeCard - Transform NsCtrlrNvmeCard to nsCtrlrNvmeCard type
-func EncodeNsCtrlrNvmeCard(request interface{}) (*nsCtrlrNvmeCard, error) {
-	reqNsCtrlrNvmeCard := request.(*NsCtrlrNvmeCard)
-	byte, err := json.Marshal(reqNsCtrlrNvmeCard)
-	if err != nil {
-		return nil, err
-	}
-	respNsCtrlrNvmeCardPtr := &nsCtrlrNvmeCard{}
-	err = json.Unmarshal(byte, respNsCtrlrNvmeCardPtr)
-	return respNsCtrlrNvmeCardPtr, err
-}
-
-// DecodeNsCtrlrNvmeCard Transform nsCtrlrNvmeCard to NsCtrlrNvmeCard type
-func DecodeNsCtrlrNvmeCard(request interface{}) (*NsCtrlrNvmeCard, error) {
-	reqNsCtrlrNvmeCard := request.(*nsCtrlrNvmeCard)
-	byte, err := json.Marshal(reqNsCtrlrNvmeCard)
-	if err != nil {
-		return nil, err
-	}
-	respNsCtrlrNvmeCard := &NsCtrlrNvmeCard{}
-	err = json.Unmarshal(byte, respNsCtrlrNvmeCard)
-	return respNsCtrlrNvmeCard, err
 }

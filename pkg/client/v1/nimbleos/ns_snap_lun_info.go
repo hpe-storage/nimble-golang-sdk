@@ -2,58 +2,25 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsSnapLunInfo - Snapshot LUN information as presented in the access_control_records object set. This information is only available for Fibre Channel.
 // Export NsSnapLunInfoFields for advance operations like search filter etc.
 var NsSnapLunInfoFields *NsSnapLunInfo
 
 func init() {
+	IDfield := "id"
+	Namefield := "name"
 
 	NsSnapLunInfoFields = &NsSnapLunInfo{
-		ID:   "id",
-		Name: "name",
+		ID:   &IDfield,
+		Name: &Namefield,
 	}
 }
 
 type NsSnapLunInfo struct {
 	// ID - Snapshot ID.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 	// Name - Snapshot name.
-	Name string `json:"name,omitempty"`
-	// Lun - Snapshot LUN.
-	Lun int64 `json:"lun,omitempty"`
-}
-
-// sdk internal struct
-type nsSnapLunInfo struct {
-	ID   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Lun  *int64  `json:"lun,omitempty"`
-}
-
-// EncodeNsSnapLunInfo - Transform NsSnapLunInfo to nsSnapLunInfo type
-func EncodeNsSnapLunInfo(request interface{}) (*nsSnapLunInfo, error) {
-	reqNsSnapLunInfo := request.(*NsSnapLunInfo)
-	byte, err := json.Marshal(reqNsSnapLunInfo)
-	if err != nil {
-		return nil, err
-	}
-	respNsSnapLunInfoPtr := &nsSnapLunInfo{}
-	err = json.Unmarshal(byte, respNsSnapLunInfoPtr)
-	return respNsSnapLunInfoPtr, err
-}
-
-// DecodeNsSnapLunInfo Transform nsSnapLunInfo to NsSnapLunInfo type
-func DecodeNsSnapLunInfo(request interface{}) (*NsSnapLunInfo, error) {
-	reqNsSnapLunInfo := request.(*nsSnapLunInfo)
-	byte, err := json.Marshal(reqNsSnapLunInfo)
-	if err != nil {
-		return nil, err
-	}
-	respNsSnapLunInfo := &NsSnapLunInfo{}
-	err = json.Unmarshal(byte, respNsSnapLunInfo)
-	return respNsSnapLunInfo, err
+	// Lun - Snapshot LUN.
+	Lun *int64 `json:"lun,omitempty"`
 }

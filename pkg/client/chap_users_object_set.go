@@ -23,11 +23,7 @@ type ChapUserObjectSet struct {
 
 // CreateObject creates a new ChapUser object
 func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
-	encodedPayload, err := nimbleos.EncodeChapUser(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(chapUserPath, encodedPayload)
+	resp, err := objectSet.Client.Post(chapUserPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,13 +33,12 @@ func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*n
 		return nil, nil
 	}
 
-	return nimbleos.DecodeChapUser(resp)
+	return resp.(*nimbleos.ChapUser), err
 }
 
 // UpdateObject Modify existing ChapUser object
 func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
-	newPayload, err := nimbleos.EncodeChapUser(payload)
-	resp, err := objectSet.Client.Put(chapUserPath, id, newPayload)
+	resp, err := objectSet.Client.Put(chapUserPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +47,7 @@ func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *nimbleos.Ch
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeChapUser(resp)
+	return resp.(*nimbleos.ChapUser), err
 }
 
 // DeleteObject deletes the ChapUser object with the specified ID

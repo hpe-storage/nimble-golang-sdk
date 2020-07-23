@@ -22,11 +22,7 @@ type SnapshotCollectionObjectSet struct {
 
 // CreateObject creates a new SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
-	encodedPayload, err := nimbleos.EncodeSnapshotCollection(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(snapshotCollectionPath, encodedPayload)
+	resp, err := objectSet.Client.Post(snapshotCollectionPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,13 +32,12 @@ func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.Sna
 		return nil, nil
 	}
 
-	return nimbleos.DecodeSnapshotCollection(resp)
+	return resp.(*nimbleos.SnapshotCollection), err
 }
 
 // UpdateObject Modify existing SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
-	newPayload, err := nimbleos.EncodeSnapshotCollection(payload)
-	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, newPayload)
+	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +46,7 @@ func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *n
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeSnapshotCollection(resp)
+	return resp.(*nimbleos.SnapshotCollection), err
 }
 
 // DeleteObject deletes the SnapshotCollection object with the specified ID

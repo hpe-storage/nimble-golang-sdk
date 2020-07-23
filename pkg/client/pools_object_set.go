@@ -21,11 +21,7 @@ type PoolObjectSet struct {
 
 // CreateObject creates a new Pool object
 func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	encodedPayload, err := nimbleos.EncodePool(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(poolPath, encodedPayload)
+	resp, err := objectSet.Client.Post(poolPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.
 		return nil, nil
 	}
 
-	return nimbleos.DecodePool(resp)
+	return resp.(*nimbleos.Pool), err
 }
 
 // UpdateObject Modify existing Pool object
 func (objectSet *PoolObjectSet) UpdateObject(id string, payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	newPayload, err := nimbleos.EncodePool(payload)
-	resp, err := objectSet.Client.Put(poolPath, id, newPayload)
+	resp, err := objectSet.Client.Put(poolPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *PoolObjectSet) UpdateObject(id string, payload *nimbleos.Pool) 
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodePool(resp)
+	return resp.(*nimbleos.Pool), err
 }
 
 // DeleteObject deletes the Pool object with the specified ID

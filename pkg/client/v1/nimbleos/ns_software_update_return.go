@@ -2,54 +2,21 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsSoftwareUpdateReturn - The status returned by the software update precheck and start actions.
 // Export NsSoftwareUpdateReturnFields for advance operations like search filter etc.
 var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturn
 
 func init() {
+	Errorfield := "error"
 
 	NsSoftwareUpdateReturnFields = &NsSoftwareUpdateReturn{
-		Error: "error",
+		Error: &Errorfield,
 	}
 }
 
 type NsSoftwareUpdateReturn struct {
 	// Error - Top level error.
-	Error string `json:"error,omitempty"`
+	Error *string `json:"error,omitempty"`
 	// ArrayResponseList - Errors from all the arrays in the group.
 	ArrayResponseList []*NsArraySoftwareUpdateStatus `json:"array_response_list,omitempty"`
-}
-
-// sdk internal struct
-type nsSoftwareUpdateReturn struct {
-	Error             *string                        `json:"error,omitempty"`
-	ArrayResponseList []*NsArraySoftwareUpdateStatus `json:"array_response_list,omitempty"`
-}
-
-// EncodeNsSoftwareUpdateReturn - Transform NsSoftwareUpdateReturn to nsSoftwareUpdateReturn type
-func EncodeNsSoftwareUpdateReturn(request interface{}) (*nsSoftwareUpdateReturn, error) {
-	reqNsSoftwareUpdateReturn := request.(*NsSoftwareUpdateReturn)
-	byte, err := json.Marshal(reqNsSoftwareUpdateReturn)
-	if err != nil {
-		return nil, err
-	}
-	respNsSoftwareUpdateReturnPtr := &nsSoftwareUpdateReturn{}
-	err = json.Unmarshal(byte, respNsSoftwareUpdateReturnPtr)
-	return respNsSoftwareUpdateReturnPtr, err
-}
-
-// DecodeNsSoftwareUpdateReturn Transform nsSoftwareUpdateReturn to NsSoftwareUpdateReturn type
-func DecodeNsSoftwareUpdateReturn(request interface{}) (*NsSoftwareUpdateReturn, error) {
-	reqNsSoftwareUpdateReturn := request.(*nsSoftwareUpdateReturn)
-	byte, err := json.Marshal(reqNsSoftwareUpdateReturn)
-	if err != nil {
-		return nil, err
-	}
-	respNsSoftwareUpdateReturn := &NsSoftwareUpdateReturn{}
-	err = json.Unmarshal(byte, respNsSoftwareUpdateReturn)
-	return respNsSoftwareUpdateReturn, err
 }

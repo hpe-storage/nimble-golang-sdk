@@ -23,11 +23,7 @@ type SnapshotObjectSet struct {
 
 // CreateObject creates a new Snapshot object
 func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
-	encodedPayload, err := nimbleos.EncodeSnapshot(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(snapshotPath, encodedPayload)
+	resp, err := objectSet.Client.Post(snapshotPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,13 +33,12 @@ func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*n
 		return nil, nil
 	}
 
-	return nimbleos.DecodeSnapshot(resp)
+	return resp.(*nimbleos.Snapshot), err
 }
 
 // UpdateObject Modify existing Snapshot object
 func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
-	newPayload, err := nimbleos.EncodeSnapshot(payload)
-	resp, err := objectSet.Client.Put(snapshotPath, id, newPayload)
+	resp, err := objectSet.Client.Put(snapshotPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +47,7 @@ func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *nimbleos.Sn
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeSnapshot(resp)
+	return resp.(*nimbleos.Snapshot), err
 }
 
 // DeleteObject deletes the Snapshot object with the specified ID

@@ -21,11 +21,7 @@ type FolderObjectSet struct {
 
 // CreateObject creates a new Folder object
 func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbleos.Folder, error) {
-	encodedPayload, err := nimbleos.EncodeFolder(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(folderPath, encodedPayload)
+	resp, err := objectSet.Client.Post(folderPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbl
 		return nil, nil
 	}
 
-	return nimbleos.DecodeFolder(resp)
+	return resp.(*nimbleos.Folder), err
 }
 
 // UpdateObject Modify existing Folder object
 func (objectSet *FolderObjectSet) UpdateObject(id string, payload *nimbleos.Folder) (*nimbleos.Folder, error) {
-	newPayload, err := nimbleos.EncodeFolder(payload)
-	resp, err := objectSet.Client.Put(folderPath, id, newPayload)
+	resp, err := objectSet.Client.Put(folderPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *FolderObjectSet) UpdateObject(id string, payload *nimbleos.Fold
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeFolder(resp)
+	return resp.(*nimbleos.Folder), err
 }
 
 // DeleteObject deletes the Folder object with the specified ID

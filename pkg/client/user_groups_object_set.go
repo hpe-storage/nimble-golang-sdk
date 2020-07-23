@@ -21,11 +21,7 @@ type UserGroupObjectSet struct {
 
 // CreateObject creates a new UserGroup object
 func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
-	encodedPayload, err := nimbleos.EncodeUserGroup(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(userGroupPath, encodedPayload)
+	resp, err := objectSet.Client.Post(userGroupPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (
 		return nil, nil
 	}
 
-	return nimbleos.DecodeUserGroup(resp)
+	return resp.(*nimbleos.UserGroup), err
 }
 
 // UpdateObject Modify existing UserGroup object
 func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
-	newPayload, err := nimbleos.EncodeUserGroup(payload)
-	resp, err := objectSet.Client.Put(userGroupPath, id, newPayload)
+	resp, err := objectSet.Client.Put(userGroupPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *nimbleos.U
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeUserGroup(resp)
+	return resp.(*nimbleos.UserGroup), err
 }
 
 // DeleteObject deletes the UserGroup object with the specified ID

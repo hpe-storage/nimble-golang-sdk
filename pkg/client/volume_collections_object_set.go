@@ -22,11 +22,7 @@ type VolumeCollectionObjectSet struct {
 
 // CreateObject creates a new VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
-	encodedPayload, err := nimbleos.EncodeVolumeCollection(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(volumeCollectionPath, encodedPayload)
+	resp, err := objectSet.Client.Post(volumeCollectionPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,13 +32,12 @@ func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.Volum
 		return nil, nil
 	}
 
-	return nimbleos.DecodeVolumeCollection(resp)
+	return resp.(*nimbleos.VolumeCollection), err
 }
 
 // UpdateObject Modify existing VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
-	newPayload, err := nimbleos.EncodeVolumeCollection(payload)
-	resp, err := objectSet.Client.Put(volumeCollectionPath, id, newPayload)
+	resp, err := objectSet.Client.Put(volumeCollectionPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +46,7 @@ func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *nim
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeVolumeCollection(resp)
+	return resp.(*nimbleos.VolumeCollection), err
 }
 
 // DeleteObject deletes the VolumeCollection object with the specified ID

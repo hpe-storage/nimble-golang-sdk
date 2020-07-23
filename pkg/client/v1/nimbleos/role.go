@@ -2,78 +2,41 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // Role - Retrieve roles and privileges for role-based access control.
 // Export RoleFields for advance operations like search filter etc.
 var RoleFields *Role
 
 func init() {
+	IDfield := "id"
+	Namefield := "name"
+	FullNamefield := "full_name"
+	Descriptionfield := "description"
 
 	RoleFields = &Role{
-		ID:          "id",
-		Name:        "name",
-		FullName:    "full_name",
-		Description: "description",
+		ID:          &IDfield,
+		Name:        &Namefield,
+		FullName:    &FullNamefield,
+		Description: &Descriptionfield,
 	}
 }
 
 type Role struct {
 	// ID - Identifier for role.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 	// Name - Name of role.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// FullName - Full name of role.
-	FullName string `json:"full_name,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
 	// Description - Description of role.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// PrivilegeList - List of privileges for this role.
 	PrivilegeList []*NsPrivilege `json:"privilege_list,omitempty"`
 	// ExtendedPrivilegeList - List of extended privileges for this role.
 	ExtendedPrivilegeList []*NsExtendedPrivilege `json:"extended_privilege_list,omitempty"`
 	// CreationTime - Time when this role was created.
-	CreationTime int64 `json:"creation_time,omitempty"`
+	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this role was last modified.
-	LastModified int64 `json:"last_modified,omitempty"`
+	LastModified *int64 `json:"last_modified,omitempty"`
 	// Hidden - Indicate whether the role is hidden.
 	Hidden *bool `json:"hidden,omitempty"`
-}
-
-// sdk internal struct
-type role struct {
-	ID                    *string                `json:"id,omitempty"`
-	Name                  *string                `json:"name,omitempty"`
-	FullName              *string                `json:"full_name,omitempty"`
-	Description           *string                `json:"description,omitempty"`
-	PrivilegeList         []*NsPrivilege         `json:"privilege_list,omitempty"`
-	ExtendedPrivilegeList []*NsExtendedPrivilege `json:"extended_privilege_list,omitempty"`
-	CreationTime          *int64                 `json:"creation_time,omitempty"`
-	LastModified          *int64                 `json:"last_modified,omitempty"`
-	Hidden                *bool                  `json:"hidden,omitempty"`
-}
-
-// EncodeRole - Transform Role to role type
-func EncodeRole(request interface{}) (*role, error) {
-	reqRole := request.(*Role)
-	byte, err := json.Marshal(reqRole)
-	if err != nil {
-		return nil, err
-	}
-	respRolePtr := &role{}
-	err = json.Unmarshal(byte, respRolePtr)
-	return respRolePtr, err
-}
-
-// DecodeRole Transform role to Role type
-func DecodeRole(request interface{}) (*Role, error) {
-	reqRole := request.(*role)
-	byte, err := json.Marshal(reqRole)
-	if err != nil {
-		return nil, err
-	}
-	respRole := &Role{}
-	err = json.Unmarshal(byte, respRole)
-	return respRole, err
 }

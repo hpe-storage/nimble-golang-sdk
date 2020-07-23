@@ -22,11 +22,7 @@ type KeyManagerObjectSet struct {
 
 // CreateObject creates a new KeyManager object
 func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
-	encodedPayload, err := nimbleos.EncodeKeyManager(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(keyManagerPath, encodedPayload)
+	resp, err := objectSet.Client.Post(keyManagerPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,13 +32,12 @@ func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager)
 		return nil, nil
 	}
 
-	return nimbleos.DecodeKeyManager(resp)
+	return resp.(*nimbleos.KeyManager), err
 }
 
 // UpdateObject Modify existing KeyManager object
 func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
-	newPayload, err := nimbleos.EncodeKeyManager(payload)
-	resp, err := objectSet.Client.Put(keyManagerPath, id, newPayload)
+	resp, err := objectSet.Client.Put(keyManagerPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +46,7 @@ func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *nimbleos.
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeKeyManager(resp)
+	return resp.(*nimbleos.KeyManager), err
 }
 
 // DeleteObject deletes the KeyManager object with the specified ID

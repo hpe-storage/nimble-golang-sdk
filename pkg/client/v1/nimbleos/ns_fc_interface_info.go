@@ -2,72 +2,37 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsFcInterfaceInfo - Fibre Channel interface information.
 // Export NsFcInterfaceInfoFields for advance operations like search filter etc.
 var NsFcInterfaceInfoFields *NsFcInterfaceInfo
 
 func init() {
+	Namefield := "name"
+	Wwnnfield := "wwnn"
+	Wwpnfield := "wwpn"
+	BusLocationfield := "bus_location"
 
 	NsFcInterfaceInfoFields = &NsFcInterfaceInfo{
-		Name:        "name",
-		Wwnn:        "wwnn",
-		Wwpn:        "wwpn",
-		BusLocation: "bus_location",
+		Name:        &Namefield,
+		Wwnn:        &Wwnnfield,
+		Wwpn:        &Wwpnfield,
+		BusLocation: &BusLocationfield,
 	}
 }
 
 type NsFcInterfaceInfo struct {
 	// Name - Name of Fibre Channel interface.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Wwnn - WWNN (World Wide Node Name) for this Fibre Channel interface.
-	Wwnn string `json:"wwnn,omitempty"`
+	Wwnn *string `json:"wwnn,omitempty"`
 	// Wwpn - WWPN (World Wide Port Name)for this Fibre Channel interface.
-	Wwpn string `json:"wwpn,omitempty"`
+	Wwpn *string `json:"wwpn,omitempty"`
 	// Online - Identify whether the Fibre Channel interface is online.
 	Online *bool `json:"online,omitempty"`
 	// BusLocation - PCI bus location of the HBA.
-	BusLocation string `json:"bus_location,omitempty"`
-	// Slot - Information about the Fibre Channel slot.
-	Slot int64 `json:"slot,omitempty"`
-	// Port - Information about the Fibre Channel port on which the interface is hosted.
-	Port int64 `json:"port,omitempty"`
-}
-
-// sdk internal struct
-type nsFcInterfaceInfo struct {
-	Name        *string `json:"name,omitempty"`
-	Wwnn        *string `json:"wwnn,omitempty"`
-	Wwpn        *string `json:"wwpn,omitempty"`
-	Online      *bool   `json:"online,omitempty"`
 	BusLocation *string `json:"bus_location,omitempty"`
-	Slot        *int64  `json:"slot,omitempty"`
-	Port        *int64  `json:"port,omitempty"`
-}
-
-// EncodeNsFcInterfaceInfo - Transform NsFcInterfaceInfo to nsFcInterfaceInfo type
-func EncodeNsFcInterfaceInfo(request interface{}) (*nsFcInterfaceInfo, error) {
-	reqNsFcInterfaceInfo := request.(*NsFcInterfaceInfo)
-	byte, err := json.Marshal(reqNsFcInterfaceInfo)
-	if err != nil {
-		return nil, err
-	}
-	respNsFcInterfaceInfoPtr := &nsFcInterfaceInfo{}
-	err = json.Unmarshal(byte, respNsFcInterfaceInfoPtr)
-	return respNsFcInterfaceInfoPtr, err
-}
-
-// DecodeNsFcInterfaceInfo Transform nsFcInterfaceInfo to NsFcInterfaceInfo type
-func DecodeNsFcInterfaceInfo(request interface{}) (*NsFcInterfaceInfo, error) {
-	reqNsFcInterfaceInfo := request.(*nsFcInterfaceInfo)
-	byte, err := json.Marshal(reqNsFcInterfaceInfo)
-	if err != nil {
-		return nil, err
-	}
-	respNsFcInterfaceInfo := &NsFcInterfaceInfo{}
-	err = json.Unmarshal(byte, respNsFcInterfaceInfo)
-	return respNsFcInterfaceInfo, err
+	// Slot - Information about the Fibre Channel slot.
+	Slot *int64 `json:"slot,omitempty"`
+	// Port - Information about the Fibre Channel port on which the interface is hosted.
+	Port *int64 `json:"port,omitempty"`
 }

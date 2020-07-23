@@ -21,11 +21,7 @@ type ApplicationServerObjectSet struct {
 
 // CreateObject creates a new ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
-	encodedPayload, err := nimbleos.EncodeApplicationServer(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(applicationServerPath, encodedPayload)
+	resp, err := objectSet.Client.Post(applicationServerPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.Appl
 		return nil, nil
 	}
 
-	return nimbleos.DecodeApplicationServer(resp)
+	return resp.(*nimbleos.ApplicationServer), err
 }
 
 // UpdateObject Modify existing ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
-	newPayload, err := nimbleos.EncodeApplicationServer(payload)
-	resp, err := objectSet.Client.Put(applicationServerPath, id, newPayload)
+	resp, err := objectSet.Client.Put(applicationServerPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *ni
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeApplicationServer(resp)
+	return resp.(*nimbleos.ApplicationServer), err
 }
 
 // DeleteObject deletes the ApplicationServer object with the specified ID

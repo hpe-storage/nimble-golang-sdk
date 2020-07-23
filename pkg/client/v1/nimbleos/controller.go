@@ -2,50 +2,55 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // Controller - Controller is a redundant collection of hardware capable of running the array software.
 // Export ControllerFields for advance operations like search filter etc.
 var ControllerFields *Controller
 
 func init() {
+	IDfield := "id"
+	Namefield := "name"
+	ArrayNamefield := "array_name"
+	ArrayIdfield := "array_id"
+	Serialfield := "serial"
+	Hostnamefield := "hostname"
+	SupportAddressfield := "support_address"
+	SupportNetmaskfield := "support_netmask"
+	SupportNicfield := "support_nic"
 
 	ControllerFields = &Controller{
-		ID:             "id",
-		Name:           "name",
-		ArrayName:      "array_name",
-		ArrayId:        "array_id",
-		Serial:         "serial",
-		Hostname:       "hostname",
-		SupportAddress: "support_address",
-		SupportNetmask: "support_netmask",
-		SupportNic:     "support_nic",
+		ID:             &IDfield,
+		Name:           &Namefield,
+		ArrayName:      &ArrayNamefield,
+		ArrayId:        &ArrayIdfield,
+		Serial:         &Serialfield,
+		Hostname:       &Hostnamefield,
+		SupportAddress: &SupportAddressfield,
+		SupportNetmask: &SupportNetmaskfield,
+		SupportNic:     &SupportNicfield,
 	}
 }
 
 type Controller struct {
 	// ID - Identifier of the controller.
-	ID string `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 	// Name - Name of the controller.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// ArrayName - Name of the array containing this controller.
-	ArrayName string `json:"array_name,omitempty"`
+	ArrayName *string `json:"array_name,omitempty"`
 	// ArrayId - Rest ID of the array containing this controller.
-	ArrayId string `json:"array_id,omitempty"`
+	ArrayId *string `json:"array_id,omitempty"`
 	// PartialResponseOk - Indicate that it is ok to provide partially available response.
 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 	// Serial - Serial number for this controller.
-	Serial string `json:"serial,omitempty"`
+	Serial *string `json:"serial,omitempty"`
 	// Hostname - Host name for the controller.
-	Hostname string `json:"hostname,omitempty"`
+	Hostname *string `json:"hostname,omitempty"`
 	// SupportAddress - IP address used for support.
-	SupportAddress string `json:"support_address,omitempty"`
+	SupportAddress *string `json:"support_address,omitempty"`
 	// SupportNetmask - IP netmask used for support.
-	SupportNetmask string `json:"support_netmask,omitempty"`
+	SupportNetmask *string `json:"support_netmask,omitempty"`
 	// SupportNic - Network card used for support.
-	SupportNic string `json:"support_nic,omitempty"`
+	SupportNic *string `json:"support_nic,omitempty"`
 	// PowerStatus - Overall power supply status for the controller.
 	PowerStatus *NsPowerSupplyStatus `json:"power_status,omitempty"`
 	// FanStatus - Overall fan status for the controller.
@@ -65,59 +70,9 @@ type Controller struct {
 	// State - Indicates whether this controller is active or not.
 	State *NsControllerState `json:"state,omitempty"`
 	// NvmeCardsEnabled - Indicates if the NVMe accelerator card is enabled.
-	NvmeCardsEnabled int64 `json:"nvme_cards_enabled,omitempty"`
+	NvmeCardsEnabled *int64 `json:"nvme_cards_enabled,omitempty"`
 	// NvmeCards - List of NVMe accelerator cards.
 	NvmeCards []*NsCtrlrNvmeCard `json:"nvme_cards,omitempty"`
 	// AsupTime - Time of the last autosupport by the controller.
-	AsupTime int64 `json:"asup_time,omitempty"`
-}
-
-// sdk internal struct
-type controller struct {
-	ID                 *string                `json:"id,omitempty"`
-	Name               *string                `json:"name,omitempty"`
-	ArrayName          *string                `json:"array_name,omitempty"`
-	ArrayId            *string                `json:"array_id,omitempty"`
-	PartialResponseOk  *bool                  `json:"partial_response_ok,omitempty"`
-	Serial             *string                `json:"serial,omitempty"`
-	Hostname           *string                `json:"hostname,omitempty"`
-	SupportAddress     *string                `json:"support_address,omitempty"`
-	SupportNetmask     *string                `json:"support_netmask,omitempty"`
-	SupportNic         *string                `json:"support_nic,omitempty"`
-	PowerStatus        *NsPowerSupplyStatus   `json:"power_status,omitempty"`
-	FanStatus          *NsFanStatus           `json:"fan_status,omitempty"`
-	TemperatureStatus  *NsTemperatureStatus   `json:"temperature_status,omitempty"`
-	PowerSupplies      []*NsCtrlrHwSensorInfo `json:"power_supplies,omitempty"`
-	Fans               []*NsCtrlrHwSensorInfo `json:"fans,omitempty"`
-	TemperatureSensors []*NsCtrlrHwSensorInfo `json:"temperature_sensors,omitempty"`
-	PartitionStatus    []*NsCtrlrRaidInfo     `json:"partition_status,omitempty"`
-	CtrlrSide          *NsControllerSide      `json:"ctrlr_side,omitempty"`
-	State              *NsControllerState     `json:"state,omitempty"`
-	NvmeCardsEnabled   *int64                 `json:"nvme_cards_enabled,omitempty"`
-	NvmeCards          []*NsCtrlrNvmeCard     `json:"nvme_cards,omitempty"`
-	AsupTime           *int64                 `json:"asup_time,omitempty"`
-}
-
-// EncodeController - Transform Controller to controller type
-func EncodeController(request interface{}) (*controller, error) {
-	reqController := request.(*Controller)
-	byte, err := json.Marshal(reqController)
-	if err != nil {
-		return nil, err
-	}
-	respControllerPtr := &controller{}
-	err = json.Unmarshal(byte, respControllerPtr)
-	return respControllerPtr, err
-}
-
-// DecodeController Transform controller to Controller type
-func DecodeController(request interface{}) (*Controller, error) {
-	reqController := request.(*controller)
-	byte, err := json.Marshal(reqController)
-	if err != nil {
-		return nil, err
-	}
-	respController := &Controller{}
-	err = json.Unmarshal(byte, respController)
-	return respController, err
+	AsupTime *int64 `json:"asup_time,omitempty"`
 }

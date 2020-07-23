@@ -77,15 +77,15 @@ func (client *GroupMgmtClient) login(username, password string) (string, error) 
 	// Construct Payload
 	appName := "Go sdkv1 client"
 	token := &nimbleos.Token{
-		Username: username,
-		Password: password,
-		AppName:  appName,
+		Username: &username,
+		Password: &password,
+		AppName:  &appName,
 	}
 	token, err := client.GetTokenObjectSet().CreateObject(token)
 	if err != nil {
 		return "", err
 	}
-	return token.SessionToken, err
+	return *token.SessionToken, err
 }
 
 // Post :

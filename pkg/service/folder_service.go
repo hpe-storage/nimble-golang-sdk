@@ -78,7 +78,7 @@ func (svc *FolderService) GetFolderById(id string) (*nimbleos.Folder, error) {
 func (svc *FolderService) GetFolderByName(name string) (*nimbleos.Folder, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

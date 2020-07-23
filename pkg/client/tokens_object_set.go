@@ -22,11 +22,7 @@ type TokenObjectSet struct {
 
 // CreateObject creates a new Token object
 func (objectSet *TokenObjectSet) CreateObject(payload *nimbleos.Token) (*nimbleos.Token, error) {
-	encodedPayload, err := nimbleos.EncodeToken(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(tokenPath, encodedPayload)
+	resp, err := objectSet.Client.Post(tokenPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +32,7 @@ func (objectSet *TokenObjectSet) CreateObject(payload *nimbleos.Token) (*nimbleo
 		return nil, nil
 	}
 
-	return nimbleos.DecodeToken(resp)
+	return resp.(*nimbleos.Token), err
 }
 
 // UpdateObject Modify existing Token object

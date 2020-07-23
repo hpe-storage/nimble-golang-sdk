@@ -22,11 +22,7 @@ type InitiatorGroupObjectSet struct {
 
 // CreateObject creates a new InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
-	encodedPayload, err := nimbleos.EncodeInitiatorGroup(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(initiatorGroupPath, encodedPayload)
+	resp, err := objectSet.Client.Post(initiatorGroupPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,13 +32,12 @@ func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.Initiat
 		return nil, nil
 	}
 
-	return nimbleos.DecodeInitiatorGroup(resp)
+	return resp.(*nimbleos.InitiatorGroup), err
 }
 
 // UpdateObject Modify existing InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
-	newPayload, err := nimbleos.EncodeInitiatorGroup(payload)
-	resp, err := objectSet.Client.Put(initiatorGroupPath, id, newPayload)
+	resp, err := objectSet.Client.Put(initiatorGroupPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +46,7 @@ func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *nimbl
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeInitiatorGroup(resp)
+	return resp.(*nimbleos.InitiatorGroup), err
 }
 
 // DeleteObject deletes the InitiatorGroup object with the specified ID

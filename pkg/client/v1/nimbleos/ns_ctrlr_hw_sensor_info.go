@@ -2,68 +2,33 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsCtrlrHwSensorInfo - Information on a controller hardware sensor.
 // Export NsCtrlrHwSensorInfoFields for advance operations like search filter etc.
 var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfo
 
 func init() {
+	Namefield := "name"
+	DisplayNamefield := "display_name"
+	Locationfield := "location"
 
 	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfo{
-		Name:        "name",
-		DisplayName: "display_name",
-		Location:    "location",
+		Name:        &Namefield,
+		DisplayName: &DisplayNamefield,
+		Location:    &Locationfield,
 	}
 }
 
 type NsCtrlrHwSensorInfo struct {
 	// Name - A uniquely identifying name.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// DisplayName - A human readable name for the sensor.
-	DisplayName string `json:"display_name,omitempty"`
+	DisplayName *string `json:"display_name,omitempty"`
 	// Location - The location of this sensor.
-	Location string `json:"location,omitempty"`
+	Location *string `json:"location,omitempty"`
 	// CtrlrOwner - The controller owning this sensor.
 	CtrlrOwner *NsControllerId `json:"ctrlr_owner,omitempty"`
 	// State - The current state of this sensor.
 	State *NsSensorState `json:"state,omitempty"`
 	// CurrentReading - A sensor type specific reading (RPM for fans, degrees celcius for temperature).
-	CurrentReading int64 `json:"current_reading,omitempty"`
-}
-
-// sdk internal struct
-type nsCtrlrHwSensorInfo struct {
-	Name           *string         `json:"name,omitempty"`
-	DisplayName    *string         `json:"display_name,omitempty"`
-	Location       *string         `json:"location,omitempty"`
-	CtrlrOwner     *NsControllerId `json:"ctrlr_owner,omitempty"`
-	State          *NsSensorState  `json:"state,omitempty"`
-	CurrentReading *int64          `json:"current_reading,omitempty"`
-}
-
-// EncodeNsCtrlrHwSensorInfo - Transform NsCtrlrHwSensorInfo to nsCtrlrHwSensorInfo type
-func EncodeNsCtrlrHwSensorInfo(request interface{}) (*nsCtrlrHwSensorInfo, error) {
-	reqNsCtrlrHwSensorInfo := request.(*NsCtrlrHwSensorInfo)
-	byte, err := json.Marshal(reqNsCtrlrHwSensorInfo)
-	if err != nil {
-		return nil, err
-	}
-	respNsCtrlrHwSensorInfoPtr := &nsCtrlrHwSensorInfo{}
-	err = json.Unmarshal(byte, respNsCtrlrHwSensorInfoPtr)
-	return respNsCtrlrHwSensorInfoPtr, err
-}
-
-// DecodeNsCtrlrHwSensorInfo Transform nsCtrlrHwSensorInfo to NsCtrlrHwSensorInfo type
-func DecodeNsCtrlrHwSensorInfo(request interface{}) (*NsCtrlrHwSensorInfo, error) {
-	reqNsCtrlrHwSensorInfo := request.(*nsCtrlrHwSensorInfo)
-	byte, err := json.Marshal(reqNsCtrlrHwSensorInfo)
-	if err != nil {
-		return nil, err
-	}
-	respNsCtrlrHwSensorInfo := &NsCtrlrHwSensorInfo{}
-	err = json.Unmarshal(byte, respNsCtrlrHwSensorInfo)
-	return respNsCtrlrHwSensorInfo, err
+	CurrentReading *int64 `json:"current_reading,omitempty"`
 }

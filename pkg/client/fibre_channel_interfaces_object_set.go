@@ -27,8 +27,7 @@ func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *nimbleos.
 
 // UpdateObject Modify existing FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
-	newPayload, err := nimbleos.EncodeFibreChannelInterface(payload)
-	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, newPayload)
+	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +36,7 @@ func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeFibreChannelInterface(resp)
+	return resp.(*nimbleos.FibreChannelInterface), err
 }
 
 // DeleteObject deletes the FibreChannelInterface object with the specified ID

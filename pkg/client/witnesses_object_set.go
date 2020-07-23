@@ -22,11 +22,7 @@ type WitnessObjectSet struct {
 
 // CreateObject creates a new Witness object
 func (objectSet *WitnessObjectSet) CreateObject(payload *nimbleos.Witness) (*nimbleos.Witness, error) {
-	encodedPayload, err := nimbleos.EncodeWitness(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(witnessPath, encodedPayload)
+	resp, err := objectSet.Client.Post(witnessPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +32,7 @@ func (objectSet *WitnessObjectSet) CreateObject(payload *nimbleos.Witness) (*nim
 		return nil, nil
 	}
 
-	return nimbleos.DecodeWitness(resp)
+	return resp.(*nimbleos.Witness), err
 }
 
 // UpdateObject Modify existing Witness object

@@ -27,8 +27,7 @@ func (objectSet *ShelfObjectSet) CreateObject(payload *nimbleos.Shelf) (*nimbleo
 
 // UpdateObject Modify existing Shelf object
 func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *nimbleos.Shelf) (*nimbleos.Shelf, error) {
-	newPayload, err := nimbleos.EncodeShelf(payload)
-	resp, err := objectSet.Client.Put(shelfPath, id, newPayload)
+	resp, err := objectSet.Client.Put(shelfPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +36,7 @@ func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *nimbleos.Shelf
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeShelf(resp)
+	return resp.(*nimbleos.Shelf), err
 }
 
 // DeleteObject deletes the Shelf object with the specified ID

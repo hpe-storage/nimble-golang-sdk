@@ -2,10 +2,6 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsEncryptionSettings - Group encryption settings.
 // Export NsEncryptionSettingsFields for advance operations like search filter etc.
 var NsEncryptionSettingsFields *NsEncryptionSettings
@@ -28,38 +24,4 @@ type NsEncryptionSettings struct {
 	EncryptionActive *bool `json:"encryption_active,omitempty"`
 	// EncryptionKeyManager - Is the master key on local or external key manager (output only).
 	EncryptionKeyManager *NsEncryptionKeyManager `json:"encryption_key_manager,omitempty"`
-}
-
-// sdk internal struct
-type nsEncryptionSettings struct {
-	MasterKeySet         *bool                   `json:"master_key_set,omitempty"`
-	Mode                 *NsEncryptionMode       `json:"mode,omitempty"`
-	Scope                *NsEncryptionScope      `json:"scope,omitempty"`
-	Cipher               *NsEncryptionCipher     `json:"cipher,omitempty"`
-	EncryptionActive     *bool                   `json:"encryption_active,omitempty"`
-	EncryptionKeyManager *NsEncryptionKeyManager `json:"encryption_key_manager,omitempty"`
-}
-
-// EncodeNsEncryptionSettings - Transform NsEncryptionSettings to nsEncryptionSettings type
-func EncodeNsEncryptionSettings(request interface{}) (*nsEncryptionSettings, error) {
-	reqNsEncryptionSettings := request.(*NsEncryptionSettings)
-	byte, err := json.Marshal(reqNsEncryptionSettings)
-	if err != nil {
-		return nil, err
-	}
-	respNsEncryptionSettingsPtr := &nsEncryptionSettings{}
-	err = json.Unmarshal(byte, respNsEncryptionSettingsPtr)
-	return respNsEncryptionSettingsPtr, err
-}
-
-// DecodeNsEncryptionSettings Transform nsEncryptionSettings to NsEncryptionSettings type
-func DecodeNsEncryptionSettings(request interface{}) (*NsEncryptionSettings, error) {
-	reqNsEncryptionSettings := request.(*nsEncryptionSettings)
-	byte, err := json.Marshal(reqNsEncryptionSettings)
-	if err != nil {
-		return nil, err
-	}
-	respNsEncryptionSettings := &NsEncryptionSettings{}
-	err = json.Unmarshal(byte, respNsEncryptionSettings)
-	return respNsEncryptionSettings, err
 }

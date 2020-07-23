@@ -44,15 +44,20 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
 	perfPolicy, _ := suite.performancePolicyService.GetPerformancePolicyByName("default")
+	// Initialize volume attributes
+	var sizeField int64 = 5120
+	descriptionField := "This volume was created as part of a unit test"
+	var limitIopsField int64 = 256
+	var limitMbpsField int64 = 1
 
 	newVolume := &nimbleos.Volume{
-		Size:              5120,
-		Description:       "This volume was created as part of a unit test",
+		Size:              &sizeField,
+		Description:       &descriptionField,
 		PerfpolicyId:      perfPolicy.ID,
 		ThinlyProvisioned: param.NewBool(true),
 		Online:            param.NewBool(true),
-		LimitIops:         256,
-		LimitMbps:         1,
+		LimitIops:         &limitIopsField,
+		LimitMbps:         &limitMbpsField,
 		MultiInitiator:    param.NewBool(true),
 		AgentType:         nimbleos.NsAgentTypeNone,
 	}
@@ -63,7 +68,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *nimbleos.V
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()
-		volume.Name = volumeName
+		volume.Name = &volumeName
 		volume, _ = suite.volumeService.CreateVolume(volume)
 	}
 	return volume
@@ -72,7 +77,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *nimbleos.V
 func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume != nil {
-		suite.volumeService.DeleteVolume(volume.ID)
+		suite.volumeService.DeleteVolume(*volume.ID)
 		volume, _ = suite.volumeService.GetVolumeByName(volumeName)
 	}
 

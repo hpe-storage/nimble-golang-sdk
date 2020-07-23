@@ -78,7 +78,7 @@ func (svc *KeyManagerService) GetKeyManagerById(id string) (*nimbleos.KeyManager
 func (svc *KeyManagerService) GetKeyManagerByName(name string) (*nimbleos.KeyManager, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

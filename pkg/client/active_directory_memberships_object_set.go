@@ -22,11 +22,7 @@ type ActiveDirectoryMembershipObjectSet struct {
 
 // CreateObject creates a new ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
-	encodedPayload, err := nimbleos.EncodeActiveDirectoryMembership(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, encodedPayload)
+	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,13 +32,12 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbl
 		return nil, nil
 	}
 
-	return nimbleos.DecodeActiveDirectoryMembership(resp)
+	return resp.(*nimbleos.ActiveDirectoryMembership), err
 }
 
 // UpdateObject Modify existing ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
-	newPayload, err := nimbleos.EncodeActiveDirectoryMembership(payload)
-	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, newPayload)
+	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +46,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, pay
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeActiveDirectoryMembership(resp)
+	return resp.(*nimbleos.ActiveDirectoryMembership), err
 }
 
 // DeleteObject deletes the ActiveDirectoryMembership object with the specified ID

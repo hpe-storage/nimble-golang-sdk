@@ -78,7 +78,7 @@ func (svc *ArrayService) GetArrayById(id string) (*nimbleos.Array, error) {
 func (svc *ArrayService) GetArrayByName(name string) (*nimbleos.Array, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

@@ -27,8 +27,7 @@ func (objectSet *DiskObjectSet) CreateObject(payload *nimbleos.Disk) (*nimbleos.
 
 // UpdateObject Modify existing Disk object
 func (objectSet *DiskObjectSet) UpdateObject(id string, payload *nimbleos.Disk) (*nimbleos.Disk, error) {
-	newPayload, err := nimbleos.EncodeDisk(payload)
-	resp, err := objectSet.Client.Put(diskPath, id, newPayload)
+	resp, err := objectSet.Client.Put(diskPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +36,7 @@ func (objectSet *DiskObjectSet) UpdateObject(id string, payload *nimbleos.Disk) 
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeDisk(resp)
+	return resp.(*nimbleos.Disk), err
 }
 
 // DeleteObject deletes the Disk object with the specified ID

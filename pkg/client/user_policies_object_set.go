@@ -27,8 +27,7 @@ func (objectSet *UserPolicyObjectSet) CreateObject(payload *nimbleos.UserPolicy)
 
 // UpdateObject Modify existing UserPolicy object
 func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
-	newPayload, err := nimbleos.EncodeUserPolicy(payload)
-	resp, err := objectSet.Client.Put(userPolicyPath, id, newPayload)
+	resp, err := objectSet.Client.Put(userPolicyPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +36,7 @@ func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *nimbleos.
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeUserPolicy(resp)
+	return resp.(*nimbleos.UserPolicy), err
 }
 
 // DeleteObject deletes the UserPolicy object with the specified ID

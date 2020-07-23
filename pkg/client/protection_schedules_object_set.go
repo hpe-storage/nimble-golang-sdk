@@ -21,11 +21,7 @@ type ProtectionScheduleObjectSet struct {
 
 // CreateObject creates a new ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
-	encodedPayload, err := nimbleos.EncodeProtectionSchedule(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(protectionSchedulePath, encodedPayload)
+	resp, err := objectSet.Client.Post(protectionSchedulePath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.Pro
 		return nil, nil
 	}
 
-	return nimbleos.DecodeProtectionSchedule(resp)
+	return resp.(*nimbleos.ProtectionSchedule), err
 }
 
 // UpdateObject Modify existing ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
-	newPayload, err := nimbleos.EncodeProtectionSchedule(payload)
-	resp, err := objectSet.Client.Put(protectionSchedulePath, id, newPayload)
+	resp, err := objectSet.Client.Put(protectionSchedulePath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *n
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeProtectionSchedule(resp)
+	return resp.(*nimbleos.ProtectionSchedule), err
 }
 
 // DeleteObject deletes the ProtectionSchedule object with the specified ID

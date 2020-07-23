@@ -27,8 +27,7 @@ func (objectSet *AlarmObjectSet) CreateObject(payload *nimbleos.Alarm) (*nimbleo
 
 // UpdateObject Modify existing Alarm object
 func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *nimbleos.Alarm) (*nimbleos.Alarm, error) {
-	newPayload, err := nimbleos.EncodeAlarm(payload)
-	resp, err := objectSet.Client.Put(alarmPath, id, newPayload)
+	resp, err := objectSet.Client.Put(alarmPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +36,7 @@ func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *nimbleos.Alarm
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeAlarm(resp)
+	return resp.(*nimbleos.Alarm), err
 }
 
 // DeleteObject deletes the Alarm object with the specified ID

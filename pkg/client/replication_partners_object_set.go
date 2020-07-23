@@ -23,11 +23,7 @@ type ReplicationPartnerObjectSet struct {
 
 // CreateObject creates a new ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
-	encodedPayload, err := nimbleos.EncodeReplicationPartner(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(replicationPartnerPath, encodedPayload)
+	resp, err := objectSet.Client.Post(replicationPartnerPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -37,13 +33,12 @@ func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.Rep
 		return nil, nil
 	}
 
-	return nimbleos.DecodeReplicationPartner(resp)
+	return resp.(*nimbleos.ReplicationPartner), err
 }
 
 // UpdateObject Modify existing ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
-	newPayload, err := nimbleos.EncodeReplicationPartner(payload)
-	resp, err := objectSet.Client.Put(replicationPartnerPath, id, newPayload)
+	resp, err := objectSet.Client.Put(replicationPartnerPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +47,7 @@ func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *n
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeReplicationPartner(resp)
+	return resp.(*nimbleos.ReplicationPartner), err
 }
 
 // DeleteObject deletes the ReplicationPartner object with the specified ID

@@ -78,7 +78,7 @@ func (svc *ControllerService) GetControllerById(id string) (*nimbleos.Controller
 func (svc *ControllerService) GetControllerByName(name string) (*nimbleos.Controller, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

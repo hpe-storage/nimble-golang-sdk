@@ -21,11 +21,7 @@ type NetworkConfigObjectSet struct {
 
 // CreateObject creates a new NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
-	encodedPayload, err := nimbleos.EncodeNetworkConfig(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(networkConfigPath, encodedPayload)
+	resp, err := objectSet.Client.Post(networkConfigPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkC
 		return nil, nil
 	}
 
-	return nimbleos.DecodeNetworkConfig(resp)
+	return resp.(*nimbleos.NetworkConfig), err
 }
 
 // UpdateObject Modify existing NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
-	newPayload, err := nimbleos.EncodeNetworkConfig(payload)
-	resp, err := objectSet.Client.Put(networkConfigPath, id, newPayload)
+	resp, err := objectSet.Client.Put(networkConfigPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *nimble
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeNetworkConfig(resp)
+	return resp.(*nimbleos.NetworkConfig), err
 }
 
 // DeleteObject deletes the NetworkConfig object with the specified ID

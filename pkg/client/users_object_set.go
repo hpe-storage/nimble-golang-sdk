@@ -21,11 +21,7 @@ type UserObjectSet struct {
 
 // CreateObject creates a new User object
 func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.User, error) {
-	encodedPayload, err := nimbleos.EncodeUser(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(userPath, encodedPayload)
+	resp, err := objectSet.Client.Post(userPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.
 		return nil, nil
 	}
 
-	return nimbleos.DecodeUser(resp)
+	return resp.(*nimbleos.User), err
 }
 
 // UpdateObject Modify existing User object
 func (objectSet *UserObjectSet) UpdateObject(id string, payload *nimbleos.User) (*nimbleos.User, error) {
-	newPayload, err := nimbleos.EncodeUser(payload)
-	resp, err := objectSet.Client.Put(userPath, id, newPayload)
+	resp, err := objectSet.Client.Put(userPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *UserObjectSet) UpdateObject(id string, payload *nimbleos.User) 
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeUser(resp)
+	return resp.(*nimbleos.User), err
 }
 
 // DeleteObject deletes the User object with the specified ID

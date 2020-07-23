@@ -2,65 +2,31 @@
 
 package nimbleos
 
-import (
-	"encoding/json"
-)
-
 // NsHostType - Host type attribute.
 // Export NsHostTypeFields for advance operations like search filter etc.
 var NsHostTypeFields *NsHostType
 
 func init() {
+	InitiatorNamefield := "initiator_name"
+	SourceHostTypefield := "source_host_type"
+	DestinationHostTypefield := "destination_host_type"
 
 	NsHostTypeFields = &NsHostType{
-		InitiatorName:       "initiator_name",
-		SourceHostType:      "source_host_type",
-		DestinationHostType: "destination_host_type",
+		InitiatorName:       &InitiatorNamefield,
+		SourceHostType:      &SourceHostTypefield,
+		DestinationHostType: &DestinationHostTypefield,
 	}
 }
 
 type NsHostType struct {
 	// InitiatorName - The initiator for which the conflict exists.
-	InitiatorName string `json:"initiator_name,omitempty"`
+	InitiatorName *string `json:"initiator_name,omitempty"`
 	// SourceInitiatorGroup - Source initiator group.
 	SourceInitiatorGroup []*string `json:"source_initiator_group,omitempty"`
 	// SourceHostType - Source host type.
-	SourceHostType string `json:"source_host_type,omitempty"`
+	SourceHostType *string `json:"source_host_type,omitempty"`
 	// DestinationInitiatorGroup - Destination initiator group.
 	DestinationInitiatorGroup []*string `json:"destination_initiator_group,omitempty"`
 	// DestinationHostType - Destination Host type.
-	DestinationHostType string `json:"destination_host_type,omitempty"`
-}
-
-// sdk internal struct
-type nsHostType struct {
-	InitiatorName             *string   `json:"initiator_name,omitempty"`
-	SourceInitiatorGroup      []*string `json:"source_initiator_group,omitempty"`
-	SourceHostType            *string   `json:"source_host_type,omitempty"`
-	DestinationInitiatorGroup []*string `json:"destination_initiator_group,omitempty"`
-	DestinationHostType       *string   `json:"destination_host_type,omitempty"`
-}
-
-// EncodeNsHostType - Transform NsHostType to nsHostType type
-func EncodeNsHostType(request interface{}) (*nsHostType, error) {
-	reqNsHostType := request.(*NsHostType)
-	byte, err := json.Marshal(reqNsHostType)
-	if err != nil {
-		return nil, err
-	}
-	respNsHostTypePtr := &nsHostType{}
-	err = json.Unmarshal(byte, respNsHostTypePtr)
-	return respNsHostTypePtr, err
-}
-
-// DecodeNsHostType Transform nsHostType to NsHostType type
-func DecodeNsHostType(request interface{}) (*NsHostType, error) {
-	reqNsHostType := request.(*nsHostType)
-	byte, err := json.Marshal(reqNsHostType)
-	if err != nil {
-		return nil, err
-	}
-	respNsHostType := &NsHostType{}
-	err = json.Unmarshal(byte, respNsHostType)
-	return respNsHostType, err
+	DestinationHostType *string `json:"destination_host_type,omitempty"`
 }

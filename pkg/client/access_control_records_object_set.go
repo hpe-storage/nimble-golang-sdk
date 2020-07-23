@@ -22,11 +22,7 @@ type AccessControlRecordObjectSet struct {
 
 // CreateObject creates a new AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
-	encodedPayload, err := nimbleos.EncodeAccessControlRecord(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(accessControlRecordPath, encodedPayload)
+	resp, err := objectSet.Client.Post(accessControlRecordPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +32,7 @@ func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *nimbleos.Ac
 		return nil, nil
 	}
 
-	return nimbleos.DecodeAccessControlRecord(resp)
+	return resp.(*nimbleos.AccessControlRecord), err
 }
 
 // UpdateObject Modify existing AccessControlRecord object

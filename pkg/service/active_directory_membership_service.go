@@ -78,7 +78,7 @@ func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipById(id
 func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipByName(name string) (*nimbleos.ActiveDirectoryMembership, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: &nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.VolumeFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

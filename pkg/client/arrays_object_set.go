@@ -21,11 +21,7 @@ type ArrayObjectSet struct {
 
 // CreateObject creates a new Array object
 func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleos.Array, error) {
-	encodedPayload, err := nimbleos.EncodeArray(payload)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := objectSet.Client.Post(arrayPath, encodedPayload)
+	resp, err := objectSet.Client.Post(arrayPath, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +31,12 @@ func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleo
 		return nil, nil
 	}
 
-	return nimbleos.DecodeArray(resp)
+	return resp.(*nimbleos.Array), err
 }
 
 // UpdateObject Modify existing Array object
 func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *nimbleos.Array) (*nimbleos.Array, error) {
-	newPayload, err := nimbleos.EncodeArray(payload)
-	resp, err := objectSet.Client.Put(arrayPath, id, newPayload)
+	resp, err := objectSet.Client.Put(arrayPath, id, payload)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *nimbleos.Array
 	if resp == nil {
 		return nil, nil
 	}
-	return nimbleos.DecodeArray(resp)
+	return resp.(*nimbleos.Array), err
 }
 
 // DeleteObject deletes the Array object with the specified ID
