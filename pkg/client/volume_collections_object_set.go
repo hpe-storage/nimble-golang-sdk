@@ -22,14 +22,9 @@ type VolumeCollectionObjectSet struct {
 
 // CreateObject creates a new VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
-	resp, err := objectSet.Client.Post(volumeCollectionPath, payload)
+	resp, err := objectSet.Client.Post(volumeCollectionPath, payload, &nimbleos.VolumeCollection{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.VolumeCollection), err
@@ -37,15 +32,11 @@ func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.Volum
 
 // UpdateObject Modify existing VolumeCollection object
 func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
-	resp, err := objectSet.Client.Put(volumeCollectionPath, id, payload)
+	resp, err := objectSet.Client.Put(volumeCollectionPath, id, payload, &nimbleos.VolumeCollection{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.VolumeCollection), err
 }
 

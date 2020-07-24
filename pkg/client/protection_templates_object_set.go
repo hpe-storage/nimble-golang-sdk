@@ -24,14 +24,9 @@ type ProtectionTemplateObjectSet struct {
 
 // CreateObject creates a new ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
-	resp, err := objectSet.Client.Post(protectionTemplatePath, payload)
+	resp, err := objectSet.Client.Post(protectionTemplatePath, payload, &nimbleos.ProtectionTemplate{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.ProtectionTemplate), err
@@ -39,15 +34,11 @@ func (objectSet *ProtectionTemplateObjectSet) CreateObject(payload *nimbleos.Pro
 
 // UpdateObject Modify existing ProtectionTemplate object
 func (objectSet *ProtectionTemplateObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionTemplate) (*nimbleos.ProtectionTemplate, error) {
-	resp, err := objectSet.Client.Put(protectionTemplatePath, id, payload)
+	resp, err := objectSet.Client.Put(protectionTemplatePath, id, payload, &nimbleos.ProtectionTemplate{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.ProtectionTemplate), err
 }
 

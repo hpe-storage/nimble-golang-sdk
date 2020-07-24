@@ -23,14 +23,9 @@ type ReplicationPartnerObjectSet struct {
 
 // CreateObject creates a new ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
-	resp, err := objectSet.Client.Post(replicationPartnerPath, payload)
+	resp, err := objectSet.Client.Post(replicationPartnerPath, payload, &nimbleos.ReplicationPartner{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.ReplicationPartner), err
@@ -38,15 +33,11 @@ func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.Rep
 
 // UpdateObject Modify existing ReplicationPartner object
 func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
-	resp, err := objectSet.Client.Put(replicationPartnerPath, id, payload)
+	resp, err := objectSet.Client.Put(replicationPartnerPath, id, payload, &nimbleos.ReplicationPartner{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.ReplicationPartner), err
 }
 

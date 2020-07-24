@@ -23,14 +23,9 @@ type ChapUserObjectSet struct {
 
 // CreateObject creates a new ChapUser object
 func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
-	resp, err := objectSet.Client.Post(chapUserPath, payload)
+	resp, err := objectSet.Client.Post(chapUserPath, payload, &nimbleos.ChapUser{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.ChapUser), err
@@ -38,15 +33,11 @@ func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*n
 
 // UpdateObject Modify existing ChapUser object
 func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
-	resp, err := objectSet.Client.Put(chapUserPath, id, payload)
+	resp, err := objectSet.Client.Put(chapUserPath, id, payload, &nimbleos.ChapUser{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.ChapUser), err
 }
 

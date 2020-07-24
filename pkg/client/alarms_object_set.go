@@ -27,15 +27,11 @@ func (objectSet *AlarmObjectSet) CreateObject(payload *nimbleos.Alarm) (*nimbleo
 
 // UpdateObject Modify existing Alarm object
 func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *nimbleos.Alarm) (*nimbleos.Alarm, error) {
-	resp, err := objectSet.Client.Put(alarmPath, id, payload)
+	resp, err := objectSet.Client.Put(alarmPath, id, payload, &nimbleos.Alarm{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Alarm), err
 }
 

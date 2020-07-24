@@ -22,14 +22,9 @@ type InitiatorGroupObjectSet struct {
 
 // CreateObject creates a new InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
-	resp, err := objectSet.Client.Post(initiatorGroupPath, payload)
+	resp, err := objectSet.Client.Post(initiatorGroupPath, payload, &nimbleos.InitiatorGroup{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.InitiatorGroup), err
@@ -37,15 +32,11 @@ func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.Initiat
 
 // UpdateObject Modify existing InitiatorGroup object
 func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
-	resp, err := objectSet.Client.Put(initiatorGroupPath, id, payload)
+	resp, err := objectSet.Client.Put(initiatorGroupPath, id, payload, &nimbleos.InitiatorGroup{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.InitiatorGroup), err
 }
 

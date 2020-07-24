@@ -21,14 +21,9 @@ type NetworkConfigObjectSet struct {
 
 // CreateObject creates a new NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
-	resp, err := objectSet.Client.Post(networkConfigPath, payload)
+	resp, err := objectSet.Client.Post(networkConfigPath, payload, &nimbleos.NetworkConfig{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.NetworkConfig), err
@@ -36,15 +31,11 @@ func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkC
 
 // UpdateObject Modify existing NetworkConfig object
 func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
-	resp, err := objectSet.Client.Put(networkConfigPath, id, payload)
+	resp, err := objectSet.Client.Put(networkConfigPath, id, payload, &nimbleos.NetworkConfig{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.NetworkConfig), err
 }
 

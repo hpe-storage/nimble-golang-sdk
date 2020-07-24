@@ -22,14 +22,9 @@ type VolumeObjectSet struct {
 
 // CreateObject creates a new Volume object
 func (objectSet *VolumeObjectSet) CreateObject(payload *nimbleos.Volume) (*nimbleos.Volume, error) {
-	resp, err := objectSet.Client.Post(volumePath, payload)
+	resp, err := objectSet.Client.Post(volumePath, payload, &nimbleos.Volume{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Volume), err
@@ -37,15 +32,11 @@ func (objectSet *VolumeObjectSet) CreateObject(payload *nimbleos.Volume) (*nimbl
 
 // UpdateObject Modify existing Volume object
 func (objectSet *VolumeObjectSet) UpdateObject(id string, payload *nimbleos.Volume) (*nimbleos.Volume, error) {
-	resp, err := objectSet.Client.Put(volumePath, id, payload)
+	resp, err := objectSet.Client.Put(volumePath, id, payload, &nimbleos.Volume{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Volume), err
 }
 

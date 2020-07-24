@@ -89,7 +89,7 @@ func (client *GroupMgmtClient) login(username, password string) (string, error) 
 }
 
 // Post :
-func (client *GroupMgmtClient) Post(path string, payload interface{}) (interface{}, error) {
+func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s", client.URL, path)
 
@@ -111,11 +111,11 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}) (interface
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
-	return unwrap(response.Body(), payload)
+	return unwrap(response.Body(), respHolder)
 }
 
 // Put :
-func (client *GroupMgmtClient) Put(path, id string, payload interface{}) (interface{}, error) {
+func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
 
@@ -137,7 +137,7 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}) (interf
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
-	return unwrap(response.Body(), payload)
+	return unwrap(response.Body(), respHolder)
 }
 
 // Get : Only used to get a single object with the given ID

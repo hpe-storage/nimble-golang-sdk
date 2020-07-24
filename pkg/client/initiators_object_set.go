@@ -22,14 +22,9 @@ type InitiatorObjectSet struct {
 
 // CreateObject creates a new Initiator object
 func (objectSet *InitiatorObjectSet) CreateObject(payload *nimbleos.Initiator) (*nimbleos.Initiator, error) {
-	resp, err := objectSet.Client.Post(initiatorPath, payload)
+	resp, err := objectSet.Client.Post(initiatorPath, payload, &nimbleos.Initiator{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Initiator), err

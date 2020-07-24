@@ -21,14 +21,9 @@ type ArrayObjectSet struct {
 
 // CreateObject creates a new Array object
 func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleos.Array, error) {
-	resp, err := objectSet.Client.Post(arrayPath, payload)
+	resp, err := objectSet.Client.Post(arrayPath, payload, &nimbleos.Array{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Array), err
@@ -36,15 +31,11 @@ func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleo
 
 // UpdateObject Modify existing Array object
 func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *nimbleos.Array) (*nimbleos.Array, error) {
-	resp, err := objectSet.Client.Put(arrayPath, id, payload)
+	resp, err := objectSet.Client.Put(arrayPath, id, payload, &nimbleos.Array{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Array), err
 }
 

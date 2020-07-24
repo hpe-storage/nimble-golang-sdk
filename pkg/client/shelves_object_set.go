@@ -27,15 +27,11 @@ func (objectSet *ShelfObjectSet) CreateObject(payload *nimbleos.Shelf) (*nimbleo
 
 // UpdateObject Modify existing Shelf object
 func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *nimbleos.Shelf) (*nimbleos.Shelf, error) {
-	resp, err := objectSet.Client.Put(shelfPath, id, payload)
+	resp, err := objectSet.Client.Put(shelfPath, id, payload, &nimbleos.Shelf{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Shelf), err
 }
 

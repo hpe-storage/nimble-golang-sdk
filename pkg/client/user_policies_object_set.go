@@ -27,15 +27,11 @@ func (objectSet *UserPolicyObjectSet) CreateObject(payload *nimbleos.UserPolicy)
 
 // UpdateObject Modify existing UserPolicy object
 func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
-	resp, err := objectSet.Client.Put(userPolicyPath, id, payload)
+	resp, err := objectSet.Client.Put(userPolicyPath, id, payload, &nimbleos.UserPolicy{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.UserPolicy), err
 }
 
