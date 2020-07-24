@@ -7,79 +7,79 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
-// ApplicationServerService type 
+// ApplicationServerService type
 type ApplicationServerService struct {
 	objectSet *client.ApplicationServerObjectSet
 }
 
-// NewApplicationServerService - method to initialize "ApplicationServerService" 
-func NewApplicationServerService(gs *NsGroupService) (*ApplicationServerService) {
+// NewApplicationServerService - method to initialize "ApplicationServerService"
+func NewApplicationServerService(gs *NsGroupService) *ApplicationServerService {
 	objectSet := gs.client.GetApplicationServerObjectSet()
 	return &ApplicationServerService{objectSet: objectSet}
 }
 
 // GetApplicationServers - method returns a array of pointers of type "ApplicationServers"
-func (svc *ApplicationServerService) GetApplicationServers(params *util.GetParams) ([]*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) GetApplicationServers(params *param.GetParams) ([]*nimbleos.ApplicationServer, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	applicationServerResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	applicationServerResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return applicationServerResp,nil
+	return applicationServerResp, nil
 }
 
 // CreateApplicationServer - method creates a "ApplicationServer"
-func (svc *ApplicationServerService) CreateApplicationServer(obj *model.ApplicationServer) (*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) CreateApplicationServer(obj *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	applicationServerResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	applicationServerResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return applicationServerResp,nil
+	return applicationServerResp, nil
 }
 
-// UpdateApplicationServer - method modifies  the "ApplicationServer" 
-func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *model.ApplicationServer) (*model.ApplicationServer, error) {
+// UpdateApplicationServer - method modifies  the "ApplicationServer"
+func (svc *ApplicationServerService) UpdateApplicationServer(id string, obj *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	applicationServerResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	applicationServerResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return applicationServerResp,nil
+	return applicationServerResp, nil
 }
 
 // GetApplicationServerById - method returns a pointer to "ApplicationServer"
-func (svc *ApplicationServerService) GetApplicationServerById(id string) (*model.ApplicationServer, error) {
+func (svc *ApplicationServerService) GetApplicationServerById(id string) (*nimbleos.ApplicationServer, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	applicationServerResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return applicationServerResp,nil
+	return applicationServerResp, nil
 }
 
-// GetApplicationServerByName - method returns a pointer "ApplicationServer" 
-func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*model.ApplicationServer, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+// GetApplicationServerByName - method returns a pointer "ApplicationServer"
+func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*nimbleos.ApplicationServer, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}
@@ -87,18 +87,18 @@ func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*m
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(applicationServerResp) == 0 {
-    	return nil, nil
-    }
-    
-	return applicationServerResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return applicationServerResp[0], nil
+}
 
 // DeleteApplicationServer - deletes the "ApplicationServer"
 func (svc *ApplicationServerService) DeleteApplicationServer(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

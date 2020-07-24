@@ -1,0 +1,45 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+package nimbleos
+
+// Golang package for NsSynchronousReplicationState Enum.
+
+type NsSynchronousReplicationState string
+
+const (
+	cNsSynchronousReplicationStateInSync        NsSynchronousReplicationState = "in_sync"
+	cNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState = "not_applicable"
+	cNsSynchronousReplicationStateOutOfSync     NsSynchronousReplicationState = "out_of_sync"
+	cNsSynchronousReplicationStateUnknown       NsSynchronousReplicationState = "unknown"
+)
+
+var pNsSynchronousReplicationStateInSync NsSynchronousReplicationState
+var pNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState
+var pNsSynchronousReplicationStateOutOfSync NsSynchronousReplicationState
+var pNsSynchronousReplicationStateUnknown NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateInSync enum exports
+var NsSynchronousReplicationStateInSync *NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateNotApplicable enum exports
+var NsSynchronousReplicationStateNotApplicable *NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateOutOfSync enum exports
+var NsSynchronousReplicationStateOutOfSync *NsSynchronousReplicationState
+
+// NsSynchronousReplicationStateUnknown enum exports
+var NsSynchronousReplicationStateUnknown *NsSynchronousReplicationState
+
+func init() {
+	pNsSynchronousReplicationStateInSync = cNsSynchronousReplicationStateInSync
+	NsSynchronousReplicationStateInSync = &pNsSynchronousReplicationStateInSync
+
+	pNsSynchronousReplicationStateNotApplicable = cNsSynchronousReplicationStateNotApplicable
+	NsSynchronousReplicationStateNotApplicable = &pNsSynchronousReplicationStateNotApplicable
+
+	pNsSynchronousReplicationStateOutOfSync = cNsSynchronousReplicationStateOutOfSync
+	NsSynchronousReplicationStateOutOfSync = &pNsSynchronousReplicationStateOutOfSync
+
+	pNsSynchronousReplicationStateUnknown = cNsSynchronousReplicationStateUnknown
+	NsSynchronousReplicationStateUnknown = &pNsSynchronousReplicationStateUnknown
+
+}

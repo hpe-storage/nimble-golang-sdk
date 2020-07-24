@@ -7,79 +7,79 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
-// UserService type 
+// UserService type
 type UserService struct {
 	objectSet *client.UserObjectSet
 }
 
-// NewUserService - method to initialize "UserService" 
-func NewUserService(gs *NsGroupService) (*UserService) {
+// NewUserService - method to initialize "UserService"
+func NewUserService(gs *NsGroupService) *UserService {
 	objectSet := gs.client.GetUserObjectSet()
 	return &UserService{objectSet: objectSet}
 }
 
 // GetUsers - method returns a array of pointers of type "Users"
-func (svc *UserService) GetUsers(params *util.GetParams) ([]*model.User, error) {
+func (svc *UserService) GetUsers(params *param.GetParams) ([]*nimbleos.User, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	userResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	userResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return userResp,nil
+	return userResp, nil
 }
 
 // CreateUser - method creates a "User"
-func (svc *UserService) CreateUser(obj *model.User) (*model.User, error) {
+func (svc *UserService) CreateUser(obj *nimbleos.User) (*nimbleos.User, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	userResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	userResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return userResp,nil
+	return userResp, nil
 }
 
-// UpdateUser - method modifies  the "User" 
-func (svc *UserService) UpdateUser(id string, obj *model.User) (*model.User, error) {
+// UpdateUser - method modifies  the "User"
+func (svc *UserService) UpdateUser(id string, obj *nimbleos.User) (*nimbleos.User, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	userResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	userResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return userResp,nil
+	return userResp, nil
 }
 
 // GetUserById - method returns a pointer to "User"
-func (svc *UserService) GetUserById(id string) (*model.User, error) {
+func (svc *UserService) GetUserById(id string) (*nimbleos.User, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	userResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return userResp,nil
+	return userResp, nil
 }
 
-// GetUserByName - method returns a pointer "User" 
-func (svc *UserService) GetUserByName(name string) (*model.User, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+// GetUserByName - method returns a pointer "User"
+func (svc *UserService) GetUserByName(name string) (*nimbleos.User, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}
@@ -87,18 +87,18 @@ func (svc *UserService) GetUserByName(name string) (*model.User, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(userResp) == 0 {
-    	return nil, nil
-    }
-    
-	return userResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return userResp[0], nil
+}
 
 // DeleteUser - deletes the "User"
 func (svc *UserService) DeleteUser(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

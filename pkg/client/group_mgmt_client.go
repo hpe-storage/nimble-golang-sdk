@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 const (
@@ -76,14 +76,14 @@ func (client *GroupMgmtClient) EnableDebug() {
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
 	// Construct Payload
 	appName := "Go sdkv1 client"
-	token := &model.Token{
+	token := &nimbleos.Token{
 		Username: &username,
 		Password: &password,
 		AppName:  &appName,
 	}
 	token, err := client.GetTokenObjectSet().CreateObject(token)
 	if err != nil {
-		return "",err
+		return "", err
 	}
 	return *token.SessionToken, err
 }
@@ -105,9 +105,9 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}) (interface
 	}
 	// Http error
 	if !response.IsSuccess() {
-		errResp,err := unwrapError(response.Body())
+		errResp, err := unwrapError(response.Body())
 		if err != nil {
-				return nil, err
+			return nil, err
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
@@ -129,11 +129,11 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}) (interf
 	if err != nil {
 		return nil, err
 	}
-	 // http Error
-	 if !response.IsSuccess() {
-		errResp,err := unwrapError(response.Body())
+	// http Error
+	if !response.IsSuccess() {
+		errResp, err := unwrapError(response.Body())
 		if err != nil {
-				return nil, err
+			return nil, err
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
@@ -176,9 +176,9 @@ func (client *GroupMgmtClient) Get(path string, id string, intf interface{}) (in
 	// error condition unmarshalled
 	wrapper := &ErrorResponse{}
 	err = json.Unmarshal(response.Body(), wrapper)
-	errResp,err := unwrapError(response.Body())
+	errResp, err := unwrapError(response.Body())
 	if err != nil {
-			return nil, err
+		return nil, err
 	}
 
 	return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
@@ -199,9 +199,9 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 
 	// http Error
 	if !response.IsSuccess() {
-		errResp,err := unwrapError(response.Body())
+		errResp, err := unwrapError(response.Body())
 		if err != nil {
-				return err
+			return err
 		}
 		return fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
@@ -210,23 +210,23 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 
 // List without any params
 func (client *GroupMgmtClient) List(path string) (interface{}, error) {
-	listResp,err := client.ListFromParams(path, nil)
+	listResp, err := client.ListFromParams(path, nil)
 	if err != nil {
-			return nil,err
+		return nil, err
 	}
-	return listResp,nil
+	return listResp, nil
 }
 
 // ListFromParams :
-func (client *GroupMgmtClient) ListFromParams(path string, params *util.GetParams) (interface{}, error) {
-	listResp,err := client.listGetOrPost(path, params)
+func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetParams) (interface{}, error) {
+	listResp, err := client.listGetOrPost(path, params)
 	if err != nil {
-			return nil,err
+		return nil, err
 	}
-	return listResp,nil
+	return listResp, nil
 }
 
-func (client *GroupMgmtClient) listGetOrPost(path string, params *util.GetParams) (interface{}, error) {
+func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
 	if params == nil {
 		return client.listGet(path, nil)
 	}
@@ -251,25 +251,25 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *util.GetParams
 			}
 			// complex filter, need to POST it
 			postResp, err := client.listPost(path, wrapper, queryParams)
-            if err != nil {
-            	return nil,err
-            }
-           return postResp,nil
+			if err != nil {
+				return nil, err
+			}
+			return postResp, nil
 		} else {
 			// get request
-			getResp,err := client.listGet(path, queryParams)
+			getResp, err := client.listGet(path, queryParams)
 			if err != nil {
-				return nil,err
-            }
-            return getResp,nil
+				return nil, err
+			}
+			return getResp, nil
 		}
 	} else {
 		// get request
-		getResp,err := client.listGet(path, queryParams)
-        if err != nil {
-        	return nil,err
-        }
-        return getResp,nil
+		getResp, err := client.listGet(path, queryParams)
+		if err != nil {
+			return nil, err
+		}
+		return getResp, nil
 	}
 }
 
@@ -296,9 +296,9 @@ func (client *GroupMgmtClient) listPost(
 
 	// http Error
 	if !response.IsSuccess() {
-		errResp,err := unwrapError(response.Body())
+		errResp, err := unwrapError(response.Body())
 		if err != nil {
-				return nil, err
+			return nil, err
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
@@ -329,14 +329,14 @@ func (client *GroupMgmtClient) listGet(
 		return nil, err
 	}
 
-	 // http Error
-	 if !response.IsSuccess() {
-		errResp,err := unwrapError(response.Body())
+	// http Error
+	if !response.IsSuccess() {
+		errResp, err := unwrapError(response.Body())
 		if err != nil {
-				return nil, err
+			return nil, err
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-}
+	}
 
 	// unmarshal the response
 	wrapper := &DataWrapper{}
@@ -367,17 +367,16 @@ func unwrap(body []byte, payload interface{}) (interface{}, error) {
 }
 
 //unwrap error response
-func unwrapError(body []byte) (string,error) {
+func unwrapError(body []byte) (string, error) {
 	errResp := ""
 	wrapper := &ErrorResponse{}
 	err := json.Unmarshal(body, wrapper)
 	if err != nil {
-			return errResp, err
+		return errResp, err
 	}
 
 	for _, emsg := range wrapper.Messages {
-			errResp +=  fmt.Sprintf("%+v", *emsg)
+		errResp += fmt.Sprintf("%+v", *emsg)
 	}
-	return errResp,nil
+	return errResp, nil
 }
-

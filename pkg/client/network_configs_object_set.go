@@ -3,98 +3,99 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"reflect"
 )
-
 
 // Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
 const (
-    networkConfigPath = "network_configs"
+	networkConfigPath = "network_configs"
 )
 
 // NetworkConfigObjectSet
 type NetworkConfigObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new NetworkConfig object
-func (objectSet *NetworkConfigObjectSet) CreateObject(payload *model.NetworkConfig) (*model.NetworkConfig, error) {
-	networkConfigObjectSetResp, err := objectSet.Client.Post(networkConfigPath, payload)
-	if err !=nil {
-		return nil,err
+func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
+	resp, err := objectSet.Client.Post(networkConfigPath, payload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if networkConfigObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return networkConfigObjectSetResp.(*model.NetworkConfig), err
+
+	return resp.(*nimbleos.NetworkConfig), err
 }
 
 // UpdateObject Modify existing NetworkConfig object
-func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *model.NetworkConfig) (*model.NetworkConfig, error) {
-	networkConfigObjectSetResp, err := objectSet.Client.Put(networkConfigPath, id, payload)
-	if err !=nil {
-		return nil,err
+func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
+	resp, err := objectSet.Client.Put(networkConfigPath, id, payload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if networkConfigObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return networkConfigObjectSetResp.(*model.NetworkConfig), err
+	return resp.(*nimbleos.NetworkConfig), err
 }
 
 // DeleteObject deletes the NetworkConfig object with the specified ID
 func (objectSet *NetworkConfigObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(networkConfigPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
 }
 
 // GetObject returns a NetworkConfig object with the given ID
-func (objectSet *NetworkConfigObjectSet) GetObject(id string) (*model.NetworkConfig, error) {
-	networkConfigObjectSetResp, err := objectSet.Client.Get(networkConfigPath, id, model.NetworkConfig{})
+func (objectSet *NetworkConfigObjectSet) GetObject(id string) (*nimbleos.NetworkConfig, error) {
+	resp, err := objectSet.Client.Get(networkConfigPath, id, nimbleos.NetworkConfig{})
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
-	if networkConfigObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return networkConfigObjectSetResp.(*model.NetworkConfig), err
+	return resp.(*nimbleos.NetworkConfig), err
 }
 
 // GetObjectList returns the list of NetworkConfig objects
-func (objectSet *NetworkConfigObjectSet) GetObjectList() ([]*model.NetworkConfig, error) {
-	networkConfigObjectSetResp, err := objectSet.Client.List(networkConfigPath)
+func (objectSet *NetworkConfigObjectSet) GetObjectList() ([]*nimbleos.NetworkConfig, error) {
+	resp, err := objectSet.Client.List(networkConfigPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildNetworkConfigObjectSet(networkConfigObjectSetResp), err
+	return buildNetworkConfigObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of NetworkConfig objects using the given params query info
-func (objectSet *NetworkConfigObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.NetworkConfig, error) {
+func (objectSet *NetworkConfigObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.NetworkConfig, error) {
 	networkConfigObjectSetResp, err := objectSet.Client.ListFromParams(networkConfigPath, params)
 	if err != nil {
 		return nil, err
 	}
 	return buildNetworkConfigObjectSet(networkConfigObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildNetworkConfigObjectSet(response interface{}) ([]*model.NetworkConfig) {
+func buildNetworkConfigObjectSet(response interface{}) []*nimbleos.NetworkConfig {
 	values := reflect.ValueOf(response)
-	results := make([]*model.NetworkConfig, values.Len())
+	results := make([]*nimbleos.NetworkConfig, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.NetworkConfig{}
+		value := &nimbleos.NetworkConfig{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

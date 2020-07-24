@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 var (
@@ -29,7 +29,7 @@ func TestNewClient(t *testing.T) {
 
 	tokenObjectSet := client.GetTokenObjectSet()
 
-	payload := &model.Token{
+	payload := &nimbleos.Token{
 		Username: "admin",
 		Password: "admin",
 	}
@@ -83,9 +83,9 @@ func TestListGetOrPost(t *testing.T) {
 	//TODO: Create some volumes
 
 	// List Volumes with Fields
-	params := util.GetParams{
+	params := param.GetParams{
 		Fields: []string{"id", "full_name", "creation_time"},
-		SortBy: []util.SortOrder{{Field: "creation_time", Ascending: false}},
+		SortBy: []param.SortOrder{{Field: "creation_time", Ascending: false}},
 	}
 	response, err := client.ListFromParams("volumes", &params)
 	if err != nil {

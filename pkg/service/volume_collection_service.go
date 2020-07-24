@@ -8,79 +8,79 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
-// VolumeCollectionService type 
+// VolumeCollectionService type
 type VolumeCollectionService struct {
 	objectSet *client.VolumeCollectionObjectSet
 }
 
-// NewVolumeCollectionService - method to initialize "VolumeCollectionService" 
-func NewVolumeCollectionService(gs *NsGroupService) (*VolumeCollectionService) {
+// NewVolumeCollectionService - method to initialize "VolumeCollectionService"
+func NewVolumeCollectionService(gs *NsGroupService) *VolumeCollectionService {
 	objectSet := gs.client.GetVolumeCollectionObjectSet()
 	return &VolumeCollectionService{objectSet: objectSet}
 }
 
 // GetVolumeCollections - method returns a array of pointers of type "VolumeCollections"
-func (svc *VolumeCollectionService) GetVolumeCollections(params *util.GetParams) ([]*model.VolumeCollection, error) {
+func (svc *VolumeCollectionService) GetVolumeCollections(params *param.GetParams) ([]*nimbleos.VolumeCollection, error) {
 	if params == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",params)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
 	}
-	
-	volumeCollectionResp,err := svc.objectSet.GetObjectListFromParams(params)
-	if err !=nil {
-		return nil,err
+
+	volumeCollectionResp, err := svc.objectSet.GetObjectListFromParams(params)
+	if err != nil {
+		return nil, err
 	}
-	return volumeCollectionResp,nil
+	return volumeCollectionResp, nil
 }
 
 // CreateVolumeCollection - method creates a "VolumeCollection"
-func (svc *VolumeCollectionService) CreateVolumeCollection(obj *model.VolumeCollection) (*model.VolumeCollection, error) {
+func (svc *VolumeCollectionService) CreateVolumeCollection(obj *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	volumeCollectionResp,err := svc.objectSet.CreateObject(obj)
-	if err !=nil {
-		return nil,err
+
+	volumeCollectionResp, err := svc.objectSet.CreateObject(obj)
+	if err != nil {
+		return nil, err
 	}
-	return volumeCollectionResp,nil
+	return volumeCollectionResp, nil
 }
 
-// UpdateVolumeCollection - method modifies  the "VolumeCollection" 
-func (svc *VolumeCollectionService) UpdateVolumeCollection(id string, obj *model.VolumeCollection) (*model.VolumeCollection, error) {
+// UpdateVolumeCollection - method modifies  the "VolumeCollection"
+func (svc *VolumeCollectionService) UpdateVolumeCollection(id string, obj *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
 	if obj == nil {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",obj)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
 	}
-	
-	volumeCollectionResp,err :=svc.objectSet.UpdateObject(id, obj)
-	if err !=nil {
-		return nil,err
+
+	volumeCollectionResp, err := svc.objectSet.UpdateObject(id, obj)
+	if err != nil {
+		return nil, err
 	}
-	return volumeCollectionResp,nil
+	return volumeCollectionResp, nil
 }
 
 // GetVolumeCollectionById - method returns a pointer to "VolumeCollection"
-func (svc *VolumeCollectionService) GetVolumeCollectionById(id string) (*model.VolumeCollection, error) {
+func (svc *VolumeCollectionService) GetVolumeCollectionById(id string) (*nimbleos.VolumeCollection, error) {
 	if len(id) == 0 {
-		return nil,fmt.Errorf("error: invalid parameter specified, %v",id)
+		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
 	}
-	
+
 	volumeCollectionResp, err := svc.objectSet.GetObject(id)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return volumeCollectionResp,nil
+	return volumeCollectionResp, nil
 }
 
-// GetVolumeCollectionByName - method returns a pointer "VolumeCollection" 
-func (svc *VolumeCollectionService) GetVolumeCollectionByName(name string) (*model.VolumeCollection, error) {
-	params := &util.GetParams{
-		Filter: &util.SearchFilter{
-			FieldName: model.VolumeFields.Name,
-			Operator:  util.EQUALS.String(),
+// GetVolumeCollectionByName - method returns a pointer "VolumeCollection"
+func (svc *VolumeCollectionService) GetVolumeCollectionByName(name string) (*nimbleos.VolumeCollection, error) {
+	params := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: nimbleos.VolumeFields.Name,
+			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
 	}
@@ -88,18 +88,18 @@ func (svc *VolumeCollectionService) GetVolumeCollectionByName(name string) (*mod
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if len(volumeCollectionResp) == 0 {
-    	return nil, nil
-    }
-    
-	return volumeCollectionResp[0],nil
-}	
+		return nil, nil
+	}
+
+	return volumeCollectionResp[0], nil
+}
 
 // DeleteVolumeCollection - deletes the "VolumeCollection"
 func (svc *VolumeCollectionService) DeleteVolumeCollection(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s",id)
+		return fmt.Errorf("error: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

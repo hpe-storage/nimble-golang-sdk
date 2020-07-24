@@ -1,0 +1,61 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+package nimbleos
+
+// Golang package for NsPlatFcLinkStatus Enum.
+
+type NsPlatFcLinkStatus string
+
+const (
+	cNsPlatFcLinkStatusPlatFcLinkStatusReset        NsPlatFcLinkStatus = "plat_fc_link_status_reset"
+	cNsPlatFcLinkStatusPlatFcLinkStatusDown         NsPlatFcLinkStatus = "plat_fc_link_status_down"
+	cNsPlatFcLinkStatusPlatFcLinkStatusUp           NsPlatFcLinkStatus = "plat_fc_link_status_up"
+	cNsPlatFcLinkStatusPlatFcLinkStatusError        NsPlatFcLinkStatus = "plat_fc_link_status_error"
+	cNsPlatFcLinkStatusPlatFcLinkStatusUnknown      NsPlatFcLinkStatus = "plat_fc_link_status_unknown"
+	cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus = "plat_fc_link_status_not_connected"
+)
+
+var pNsPlatFcLinkStatusPlatFcLinkStatusReset NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusDown NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusUp NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusError NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusUnknown NsPlatFcLinkStatus
+var pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusReset enum exports
+var NsPlatFcLinkStatusPlatFcLinkStatusReset *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusDown enum exports
+var NsPlatFcLinkStatusPlatFcLinkStatusDown *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusUp enum exports
+var NsPlatFcLinkStatusPlatFcLinkStatusUp *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusError enum exports
+var NsPlatFcLinkStatusPlatFcLinkStatusError *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusUnknown enum exports
+var NsPlatFcLinkStatusPlatFcLinkStatusUnknown *NsPlatFcLinkStatus
+
+// NsPlatFcLinkStatusPlatFcLinkStatusNotConnected enum exports
+var NsPlatFcLinkStatusPlatFcLinkStatusNotConnected *NsPlatFcLinkStatus
+
+func init() {
+	pNsPlatFcLinkStatusPlatFcLinkStatusReset = cNsPlatFcLinkStatusPlatFcLinkStatusReset
+	NsPlatFcLinkStatusPlatFcLinkStatusReset = &pNsPlatFcLinkStatusPlatFcLinkStatusReset
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusDown = cNsPlatFcLinkStatusPlatFcLinkStatusDown
+	NsPlatFcLinkStatusPlatFcLinkStatusDown = &pNsPlatFcLinkStatusPlatFcLinkStatusDown
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusUp = cNsPlatFcLinkStatusPlatFcLinkStatusUp
+	NsPlatFcLinkStatusPlatFcLinkStatusUp = &pNsPlatFcLinkStatusPlatFcLinkStatusUp
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusError = cNsPlatFcLinkStatusPlatFcLinkStatusError
+	NsPlatFcLinkStatusPlatFcLinkStatusError = &pNsPlatFcLinkStatusPlatFcLinkStatusError
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusUnknown = cNsPlatFcLinkStatusPlatFcLinkStatusUnknown
+	NsPlatFcLinkStatusPlatFcLinkStatusUnknown = &pNsPlatFcLinkStatusPlatFcLinkStatusUnknown
+
+	pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected = cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
+	NsPlatFcLinkStatusPlatFcLinkStatusNotConnected = &pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
+
+}

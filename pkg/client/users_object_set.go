@@ -3,98 +3,99 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"reflect"
 )
-
 
 // Represents users configured to manage the system.
 const (
-    userPath = "users"
+	userPath = "users"
 )
 
 // UserObjectSet
 type UserObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new User object
-func (objectSet *UserObjectSet) CreateObject(payload *model.User) (*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.Post(userPath, payload)
-	if err !=nil {
-		return nil,err
+func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.User, error) {
+	resp, err := objectSet.Client.Post(userPath, payload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userObjectSetResp.(*model.User), err
+
+	return resp.(*nimbleos.User), err
 }
 
 // UpdateObject Modify existing User object
-func (objectSet *UserObjectSet) UpdateObject(id string, payload *model.User) (*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.Put(userPath, id, payload)
-	if err !=nil {
-		return nil,err
+func (objectSet *UserObjectSet) UpdateObject(id string, payload *nimbleos.User) (*nimbleos.User, error) {
+	resp, err := objectSet.Client.Put(userPath, id, payload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if userObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userObjectSetResp.(*model.User), err
+	return resp.(*nimbleos.User), err
 }
 
 // DeleteObject deletes the User object with the specified ID
 func (objectSet *UserObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(userPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
 }
 
 // GetObject returns a User object with the given ID
-func (objectSet *UserObjectSet) GetObject(id string) (*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.Get(userPath, id, model.User{})
+func (objectSet *UserObjectSet) GetObject(id string) (*nimbleos.User, error) {
+	resp, err := objectSet.Client.Get(userPath, id, nimbleos.User{})
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
-	if userObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return userObjectSetResp.(*model.User), err
+	return resp.(*nimbleos.User), err
 }
 
 // GetObjectList returns the list of User objects
-func (objectSet *UserObjectSet) GetObjectList() ([]*model.User, error) {
-	userObjectSetResp, err := objectSet.Client.List(userPath)
+func (objectSet *UserObjectSet) GetObjectList() ([]*nimbleos.User, error) {
+	resp, err := objectSet.Client.List(userPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildUserObjectSet(userObjectSetResp), err
+	return buildUserObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of User objects using the given params query info
-func (objectSet *UserObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.User, error) {
+func (objectSet *UserObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.User, error) {
 	userObjectSetResp, err := objectSet.Client.ListFromParams(userPath, params)
 	if err != nil {
 		return nil, err
 	}
 	return buildUserObjectSet(userObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildUserObjectSet(response interface{}) ([]*model.User) {
+func buildUserObjectSet(response interface{}) []*nimbleos.User {
 	values := reflect.ValueOf(response)
-	results := make([]*model.User, values.Len())
+	results := make([]*nimbleos.User, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.User{}
+		value := &nimbleos.User{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}

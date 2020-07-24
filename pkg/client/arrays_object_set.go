@@ -3,98 +3,99 @@
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/model"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/util"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"reflect"
 )
-
 
 // Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
 const (
-    arrayPath = "arrays"
+	arrayPath = "arrays"
 )
 
 // ArrayObjectSet
 type ArrayObjectSet struct {
-    Client *GroupMgmtClient
+	Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Array object
-func (objectSet *ArrayObjectSet) CreateObject(payload *model.Array) (*model.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.Post(arrayPath, payload)
-	if err !=nil {
-		return nil,err
+func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleos.Array, error) {
+	resp, err := objectSet.Client.Post(arrayPath, payload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if arrayObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return arrayObjectSetResp.(*model.Array), err
+
+	return resp.(*nimbleos.Array), err
 }
 
 // UpdateObject Modify existing Array object
-func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *model.Array) (*model.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.Put(arrayPath, id, payload)
-	if err !=nil {
-		return nil,err
+func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *nimbleos.Array) (*nimbleos.Array, error) {
+	resp, err := objectSet.Client.Put(arrayPath, id, payload)
+	if err != nil {
+		return nil, err
 	}
-	
+
 	// null check
-	if arrayObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return arrayObjectSetResp.(*model.Array), err
+	return resp.(*nimbleos.Array), err
 }
 
 // DeleteObject deletes the Array object with the specified ID
 func (objectSet *ArrayObjectSet) DeleteObject(id string) error {
 	err := objectSet.Client.Delete(arrayPath, id)
-	if err !=nil {
+	if err != nil {
 		return err
 	}
 	return nil
 }
 
 // GetObject returns a Array object with the given ID
-func (objectSet *ArrayObjectSet) GetObject(id string) (*model.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.Get(arrayPath, id, model.Array{})
+func (objectSet *ArrayObjectSet) GetObject(id string) (*nimbleos.Array, error) {
+	resp, err := objectSet.Client.Get(arrayPath, id, nimbleos.Array{})
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// null check
-	if arrayObjectSetResp == nil {
-		return nil,nil
+	if resp == nil {
+		return nil, nil
 	}
-	return arrayObjectSetResp.(*model.Array), err
+	return resp.(*nimbleos.Array), err
 }
 
 // GetObjectList returns the list of Array objects
-func (objectSet *ArrayObjectSet) GetObjectList() ([]*model.Array, error) {
-	arrayObjectSetResp, err := objectSet.Client.List(arrayPath)
+func (objectSet *ArrayObjectSet) GetObjectList() ([]*nimbleos.Array, error) {
+	resp, err := objectSet.Client.List(arrayPath)
 	if err != nil {
 		return nil, err
 	}
-	return buildArrayObjectSet(arrayObjectSetResp), err
+	return buildArrayObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Array objects using the given params query info
-func (objectSet *ArrayObjectSet) GetObjectListFromParams(params *util.GetParams) ([]*model.Array, error) {
+func (objectSet *ArrayObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Array, error) {
 	arrayObjectSetResp, err := objectSet.Client.ListFromParams(arrayPath, params)
 	if err != nil {
 		return nil, err
 	}
 	return buildArrayObjectSet(arrayObjectSetResp), err
 }
+
 // generated function to build the appropriate response types
-func buildArrayObjectSet(response interface{}) ([]*model.Array) {
+func buildArrayObjectSet(response interface{}) []*nimbleos.Array {
 	values := reflect.ValueOf(response)
-	results := make([]*model.Array, values.Len())
+	results := make([]*nimbleos.Array, values.Len())
 
 	for i := 0; i < values.Len(); i++ {
-		value := &model.Array{}
+		value := &nimbleos.Array{}
 		jsonutil.Decode(values.Index(i).Interface(), value)
 		results[i] = value
 	}
