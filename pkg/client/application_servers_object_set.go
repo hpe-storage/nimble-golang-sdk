@@ -21,14 +21,9 @@ type ApplicationServerObjectSet struct {
 
 // CreateObject creates a new ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
-	resp, err := objectSet.Client.Post(applicationServerPath, payload)
+	resp, err := objectSet.Client.Post(applicationServerPath, payload, &nimbleos.ApplicationServer{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.ApplicationServer), err
@@ -36,15 +31,11 @@ func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.Appl
 
 // UpdateObject Modify existing ApplicationServer object
 func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
-	resp, err := objectSet.Client.Put(applicationServerPath, id, payload)
+	resp, err := objectSet.Client.Put(applicationServerPath, id, payload, &nimbleos.ApplicationServer{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.ApplicationServer), err
 }
 

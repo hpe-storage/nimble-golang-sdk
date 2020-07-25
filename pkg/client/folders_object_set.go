@@ -21,14 +21,9 @@ type FolderObjectSet struct {
 
 // CreateObject creates a new Folder object
 func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbleos.Folder, error) {
-	resp, err := objectSet.Client.Post(folderPath, payload)
+	resp, err := objectSet.Client.Post(folderPath, payload, &nimbleos.Folder{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Folder), err
@@ -36,15 +31,11 @@ func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbl
 
 // UpdateObject Modify existing Folder object
 func (objectSet *FolderObjectSet) UpdateObject(id string, payload *nimbleos.Folder) (*nimbleos.Folder, error) {
-	resp, err := objectSet.Client.Put(folderPath, id, payload)
+	resp, err := objectSet.Client.Put(folderPath, id, payload, &nimbleos.Folder{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Folder), err
 }
 

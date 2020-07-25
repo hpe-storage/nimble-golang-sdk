@@ -21,14 +21,9 @@ type PoolObjectSet struct {
 
 // CreateObject creates a new Pool object
 func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.Post(poolPath, payload)
+	resp, err := objectSet.Client.Post(poolPath, payload, &nimbleos.Pool{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Pool), err
@@ -36,15 +31,11 @@ func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.
 
 // UpdateObject Modify existing Pool object
 func (objectSet *PoolObjectSet) UpdateObject(id string, payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.Put(poolPath, id, payload)
+	resp, err := objectSet.Client.Put(poolPath, id, payload, &nimbleos.Pool{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Pool), err
 }
 

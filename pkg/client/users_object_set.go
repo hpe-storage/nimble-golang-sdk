@@ -21,14 +21,9 @@ type UserObjectSet struct {
 
 // CreateObject creates a new User object
 func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.User, error) {
-	resp, err := objectSet.Client.Post(userPath, payload)
+	resp, err := objectSet.Client.Post(userPath, payload, &nimbleos.User{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.User), err
@@ -36,15 +31,11 @@ func (objectSet *UserObjectSet) CreateObject(payload *nimbleos.User) (*nimbleos.
 
 // UpdateObject Modify existing User object
 func (objectSet *UserObjectSet) UpdateObject(id string, payload *nimbleos.User) (*nimbleos.User, error) {
-	resp, err := objectSet.Client.Put(userPath, id, payload)
+	resp, err := objectSet.Client.Put(userPath, id, payload, &nimbleos.User{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.User), err
 }
 

@@ -22,14 +22,9 @@ type ActiveDirectoryMembershipObjectSet struct {
 
 // CreateObject creates a new ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
-	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload)
+	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload, &nimbleos.ActiveDirectoryMembership{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.ActiveDirectoryMembership), err
@@ -37,15 +32,11 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbl
 
 // UpdateObject Modify existing ActiveDirectoryMembership object
 func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
-	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload)
+	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload, &nimbleos.ActiveDirectoryMembership{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.ActiveDirectoryMembership), err
 }
 

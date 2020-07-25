@@ -22,14 +22,9 @@ type AccessControlRecordObjectSet struct {
 
 // CreateObject creates a new AccessControlRecord object
 func (objectSet *AccessControlRecordObjectSet) CreateObject(payload *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
-	resp, err := objectSet.Client.Post(accessControlRecordPath, payload)
+	resp, err := objectSet.Client.Post(accessControlRecordPath, payload, &nimbleos.AccessControlRecord{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.AccessControlRecord), err

@@ -22,14 +22,9 @@ type KeyManagerObjectSet struct {
 
 // CreateObject creates a new KeyManager object
 func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
-	resp, err := objectSet.Client.Post(keyManagerPath, payload)
+	resp, err := objectSet.Client.Post(keyManagerPath, payload, &nimbleos.KeyManager{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.KeyManager), err
@@ -37,15 +32,11 @@ func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager)
 
 // UpdateObject Modify existing KeyManager object
 func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
-	resp, err := objectSet.Client.Put(keyManagerPath, id, payload)
+	resp, err := objectSet.Client.Put(keyManagerPath, id, payload, &nimbleos.KeyManager{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.KeyManager), err
 }
 

@@ -27,15 +27,11 @@ func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *nimbleos.
 
 // UpdateObject Modify existing FibreChannelInterface object
 func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
-	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload)
+	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload, &nimbleos.FibreChannelInterface{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.FibreChannelInterface), err
 }
 

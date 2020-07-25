@@ -23,14 +23,9 @@ type PerformancePolicyObjectSet struct {
 
 // CreateObject creates a new PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	resp, err := objectSet.Client.Post(performancePolicyPath, payload)
+	resp, err := objectSet.Client.Post(performancePolicyPath, payload, &nimbleos.PerformancePolicy{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.PerformancePolicy), err
@@ -38,15 +33,11 @@ func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.Perf
 
 // UpdateObject Modify existing PerformancePolicy object
 func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	resp, err := objectSet.Client.Put(performancePolicyPath, id, payload)
+	resp, err := objectSet.Client.Put(performancePolicyPath, id, payload, &nimbleos.PerformancePolicy{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.PerformancePolicy), err
 }
 

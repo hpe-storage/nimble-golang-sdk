@@ -22,14 +22,9 @@ type SnapshotCollectionObjectSet struct {
 
 // CreateObject creates a new SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
-	resp, err := objectSet.Client.Post(snapshotCollectionPath, payload)
+	resp, err := objectSet.Client.Post(snapshotCollectionPath, payload, &nimbleos.SnapshotCollection{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.SnapshotCollection), err
@@ -37,15 +32,11 @@ func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.Sna
 
 // UpdateObject Modify existing SnapshotCollection object
 func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
-	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, payload)
+	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, payload, &nimbleos.SnapshotCollection{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.SnapshotCollection), err
 }
 

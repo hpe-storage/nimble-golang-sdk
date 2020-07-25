@@ -21,14 +21,9 @@ type UserGroupObjectSet struct {
 
 // CreateObject creates a new UserGroup object
 func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
-	resp, err := objectSet.Client.Post(userGroupPath, payload)
+	resp, err := objectSet.Client.Post(userGroupPath, payload, &nimbleos.UserGroup{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.UserGroup), err
@@ -36,15 +31,11 @@ func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (
 
 // UpdateObject Modify existing UserGroup object
 func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
-	resp, err := objectSet.Client.Put(userGroupPath, id, payload)
+	resp, err := objectSet.Client.Put(userGroupPath, id, payload, &nimbleos.UserGroup{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.UserGroup), err
 }
 

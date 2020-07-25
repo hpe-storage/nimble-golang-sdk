@@ -23,14 +23,9 @@ type SnapshotObjectSet struct {
 
 // CreateObject creates a new Snapshot object
 func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
-	resp, err := objectSet.Client.Post(snapshotPath, payload)
+	resp, err := objectSet.Client.Post(snapshotPath, payload, &nimbleos.Snapshot{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Snapshot), err
@@ -38,15 +33,11 @@ func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*n
 
 // UpdateObject Modify existing Snapshot object
 func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
-	resp, err := objectSet.Client.Put(snapshotPath, id, payload)
+	resp, err := objectSet.Client.Put(snapshotPath, id, payload, &nimbleos.Snapshot{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Snapshot), err
 }
 

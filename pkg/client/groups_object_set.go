@@ -27,15 +27,11 @@ func (objectSet *GroupObjectSet) CreateObject(payload *nimbleos.Group) (*nimbleo
 
 // UpdateObject Modify existing Group object
 func (objectSet *GroupObjectSet) UpdateObject(id string, payload *nimbleos.Group) (*nimbleos.Group, error) {
-	resp, err := objectSet.Client.Put(groupPath, id, payload)
+	resp, err := objectSet.Client.Put(groupPath, id, payload, &nimbleos.Group{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Group), err
 }
 

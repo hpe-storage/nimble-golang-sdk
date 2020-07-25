@@ -21,14 +21,9 @@ type ProtectionScheduleObjectSet struct {
 
 // CreateObject creates a new ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
-	resp, err := objectSet.Client.Post(protectionSchedulePath, payload)
+	resp, err := objectSet.Client.Post(protectionSchedulePath, payload, &nimbleos.ProtectionSchedule{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.ProtectionSchedule), err
@@ -36,15 +31,11 @@ func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.Pro
 
 // UpdateObject Modify existing ProtectionSchedule object
 func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
-	resp, err := objectSet.Client.Put(protectionSchedulePath, id, payload)
+	resp, err := objectSet.Client.Put(protectionSchedulePath, id, payload, &nimbleos.ProtectionSchedule{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.ProtectionSchedule), err
 }
 

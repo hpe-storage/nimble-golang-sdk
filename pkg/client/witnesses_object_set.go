@@ -22,14 +22,9 @@ type WitnessObjectSet struct {
 
 // CreateObject creates a new Witness object
 func (objectSet *WitnessObjectSet) CreateObject(payload *nimbleos.Witness) (*nimbleos.Witness, error) {
-	resp, err := objectSet.Client.Post(witnessPath, payload)
+	resp, err := objectSet.Client.Post(witnessPath, payload, &nimbleos.Witness{})
 	if err != nil {
 		return nil, err
-	}
-
-	// null check
-	if resp == nil {
-		return nil, nil
 	}
 
 	return resp.(*nimbleos.Witness), err

@@ -27,15 +27,11 @@ func (objectSet *DiskObjectSet) CreateObject(payload *nimbleos.Disk) (*nimbleos.
 
 // UpdateObject Modify existing Disk object
 func (objectSet *DiskObjectSet) UpdateObject(id string, payload *nimbleos.Disk) (*nimbleos.Disk, error) {
-	resp, err := objectSet.Client.Put(diskPath, id, payload)
+	resp, err := objectSet.Client.Put(diskPath, id, payload, &nimbleos.Disk{})
 	if err != nil {
 		return nil, err
 	}
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
 	return resp.(*nimbleos.Disk), err
 }
 
