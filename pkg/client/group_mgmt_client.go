@@ -33,6 +33,7 @@ type DataWrapper struct {
 	StartRow      *int        `json:"startRow,omitempty"`
 	EndRow        *int        `json:"endRow,omitempty"`
 	PageSize      *int        `json:"pageSize,omitempty"`
+	TotalRows     *int        `json:"totalRows,omitempty"`
 	OperationType *string     `json:"operationType,omitempty"`
 }
 
@@ -219,14 +220,45 @@ func (client *GroupMgmtClient) List(path string) (interface{}, error) {
 
 // ListFromParams :
 func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetParams) (interface{}, error) {
-	listResp, err := client.listGetOrPost(path, params)
+
+	// pagination, set the start row and end row if the pagination is enabled.
+	// TotalRows is nil if this is first pagination request.
+	if params != nil && params.Page != nil {
+		// TotalRows is nil for first request
+		if params.Page.TotalRows == nil {
+			//check if page size is set
+			if params.Page.PageSize != nil {
+				if params.Page.StartRow == nil {
+					params.Page.SetStartRow(0)
+				}
+				params.Page.SetEndRow(*params.Page.PageSize)
+			}
+		} else {
+			params.Page.SetStartRow(*params.Page.EndRow)
+
+			totalRows := *params.Page.StartRow + *params.Page.PageSize
+			// overflow check
+			if totalRows > *params.Page.TotalRows {
+				totalRows = *params.Page.TotalRows
+			}
+			params.Page.SetEndRow(totalRows)
+
+		}
+	}
+
+	wrapper, err := client.listGetOrPost(path, params)
 	if err != nil {
 		return nil, err
 	}
-	return listResp, nil
+
+	// pagination, reset the start row and end row
+	if params != nil && params.Page != nil {
+		params.Page.TotalRows = wrapper.TotalRows
+	}
+	return wrapper.Data, nil
 }
 
-func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
+func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (*DataWrapper, error) {
 	if params == nil {
 		return client.listGet(path, nil)
 	}
@@ -244,9 +276,8 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 			fetch := "fetch"
 			wrapper := &DataWrapper{
 				Data:          params.Filter,
-				StartRow:      params.StartRow,
-				EndRow:        params.EndRow,
-				PageSize:      params.PageSize,
+				StartRow:      params.Page.StartRow,
+				EndRow:        params.Page.EndRow,
 				OperationType: &fetch,
 			}
 			// complex filter, need to POST it
@@ -278,7 +309,7 @@ func (client *GroupMgmtClient) listPost(
 	path string,
 	payload *DataWrapper,
 	queryParams map[string]string,
-) (interface{}, error) {
+) (*DataWrapper, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
 
@@ -310,14 +341,14 @@ func (client *GroupMgmtClient) listPost(
 		return nil, err
 	}
 	// return it
-	return wrapper.Data, nil
+	return wrapper, nil
 }
 
 // listGet uses a get request to get all objects on the path
 func (client *GroupMgmtClient) listGet(
 	path string,
 	queryParams map[string]string,
-) (interface{}, error) {
+) (*DataWrapper, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
 
@@ -346,7 +377,7 @@ func (client *GroupMgmtClient) listGet(
 	}
 
 	// return it
-	return wrapper.Data, nil
+	return wrapper, nil
 }
 
 // unwrap a response body

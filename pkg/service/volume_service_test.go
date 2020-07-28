@@ -3,12 +3,13 @@
 package service
 
 import (
-	"testing"
-
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	"testing"
 )
 
 type VolumeServiceTestSuite struct {
@@ -26,7 +27,7 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	}
 
 	// set debug
-	//groupService.SetDebug()
+	groupService.SetDebug()
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.performancePolicyService = groupService.GetPerformancePolicyService()
@@ -99,6 +100,50 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Expected error")
 		return
 	}
+}
+
+func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
+	arg := new(param.GetParams)
+	arg.Page = new(pagination.GetPage)
+
+	// set batch size
+	arg.Page.SetPageSize(2)
+	// fetch only 2 volumes
+	volumes, err := suite.volumeService.GetVolumes(arg)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
+		return
+	}
+
+	if len(volumes) != 2 {
+		suite.T().Errorf("TestGetVolumesPagination(): pagination count doesnt match with # of return volumes ")
+		return
+	}
+
+	// Batch processing
+	for arg.Page.ContainsMore() {
+		volumes, err := suite.volumeService.GetVolumes(arg)
+		if err != nil {
+			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
+			return
+		}
+		fmt.Printf("contains more volumes , parmas %+v, volumes : %v", arg, volumes)
+	}
+
+	// dont set batch size, should return all the volumes
+	narg := new(param.GetParams)
+
+	// fetch all volumes
+	vols, err := suite.volumeService.GetVolumes(narg)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all volumes, err: %v", err.Error())
+		return
+	}
+	if len(vols) < 3 {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all the volumes")
+		return
+	}
+
 }
 
 // Runs all test via go test
