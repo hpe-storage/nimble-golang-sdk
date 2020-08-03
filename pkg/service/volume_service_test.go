@@ -27,7 +27,7 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	}
 
 	// set debug
-	groupService.SetDebug()
+	//groupService.SetDebug()
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.performancePolicyService = groupService.GetPerformancePolicyService()
@@ -104,7 +104,7 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 
 func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 	arg := new(param.GetParams)
-	arg.Page = new(pagination.GetPage)
+	arg.Page = new(pagination.Page)
 
 	// set batch size
 	arg.Page.SetPageSize(2)
@@ -127,7 +127,7 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
 			return
 		}
-		fmt.Printf("contains more volumes , parmas %+v, volumes : %v", arg, volumes)
+
 	}
 
 	// dont set batch size, should return all the volumes

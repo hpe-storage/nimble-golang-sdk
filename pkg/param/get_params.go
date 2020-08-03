@@ -11,7 +11,7 @@ import (
 type GetParams struct {
 	Filter *SearchFilter
 	Fields []string
-	Page   *pagination.GetPage
+	Page   *pagination.Page
 	SortBy []SortOrder
 }
 
