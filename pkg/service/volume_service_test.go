@@ -3,7 +3,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
@@ -104,10 +103,12 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 
 func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 	arg := new(param.GetParams)
-	arg.Page = new(pagination.Page)
-
+	//arg.Page = new(pagination.Page)
+	pagination := new(pagination.Page)
 	// set batch size
-	arg.Page.SetPageSize(2)
+	pagination.SetPageSize(2)
+
+	arg.Page = pagination
 	// fetch only 2 volumes
 	volumes, err := suite.volumeService.GetVolumes(arg)
 	if err != nil {
@@ -121,13 +122,13 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 	}
 
 	// Batch processing
-	for arg.Page.ContainsMore() {
+	for arg.Page.NextPage() {
 		volumes, err := suite.volumeService.GetVolumes(arg)
 		if err != nil {
 			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
 			return
 		}
-
+		_= volumes
 	}
 
 	// dont set batch size, should return all the volumes

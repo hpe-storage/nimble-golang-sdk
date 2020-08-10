@@ -221,31 +221,6 @@ func (client *GroupMgmtClient) List(path string) (interface{}, error) {
 // ListFromParams :
 func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetParams) (interface{}, error) {
 
-	// pagination, set the start row and end row if the pagination is enabled.
-	// TotalRows is nil if this is first pagination request.
-	if params != nil && params.Page != nil {
-		// TotalRows is nil for first request
-		if params.Page.TotalRows == nil {
-			//check if page size is set
-			if params.Page.PageSize != nil {
-				if params.Page.StartRow == nil {
-					params.Page.SetStartRow(0)
-				}
-				params.Page.SetEndRow(*params.Page.PageSize)
-			}
-		} else {
-			params.Page.SetStartRow(*params.Page.EndRow)
-
-			totalRows := *params.Page.StartRow + *params.Page.PageSize
-			// overflow check
-			if totalRows > *params.Page.TotalRows {
-				totalRows = *params.Page.TotalRows
-			}
-			params.Page.SetEndRow(totalRows)
-
-		}
-	}
-
 	wrapper, err := client.listGetOrPost(path, params)
 	if err != nil {
 		return nil, err
