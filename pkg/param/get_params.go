@@ -4,16 +4,15 @@ package param
 
 import (
 	"fmt"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"strings"
 )
 
 type GetParams struct {
-	Filter   *SearchFilter
-	Fields   []string
-	StartRow *int
-	EndRow   *int
-	PageSize *int
-	SortBy   []SortOrder
+	Filter *SearchFilter
+	Fields []string
+	Page   *pagination.Page
+	SortBy []SortOrder
 }
 
 func (params *GetParams) WithFields(fields []string) {
@@ -30,12 +29,12 @@ func (params *GetParams) WithSortBy(sortBy []SortOrder) {
 
 func (params *GetParams) BuildQueryParts() (map[string]string, error) {
 	queryParts := make(map[string]string)
-	if params.StartRow != nil {
-		queryParts["startRow"] = fmt.Sprintf("%d", *params.StartRow)
+	if params.Page != nil && params.Page.StartRow != nil {
+		queryParts["startRow"] = fmt.Sprintf("%d", *params.Page.StartRow)
 	}
 
-	if params.EndRow != nil {
-		queryParts["endRow"] = fmt.Sprintf("%d", *params.EndRow)
+	if params.Page != nil && params.Page.EndRow != nil {
+		queryParts["endRow"] = fmt.Sprintf("%d", *params.Page.EndRow)
 	}
 
 	if params.Fields != nil {
@@ -43,9 +42,6 @@ func (params *GetParams) BuildQueryParts() (map[string]string, error) {
 			return nil, fmt.Errorf("No fields specified")
 		}
 		queryParts["fields"] = strings.Join(params.Fields, ",")
-	}
-	if params.PageSize != nil {
-		queryParts["pageSize"] = fmt.Sprintf("%d", *params.PageSize)
 	}
 
 	if params.SortBy != nil {

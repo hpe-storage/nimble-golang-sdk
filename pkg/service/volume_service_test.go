@@ -3,12 +3,12 @@
 package service
 
 import (
-	"testing"
-
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	"testing"
 )
 
 type VolumeServiceTestSuite struct {
@@ -99,6 +99,44 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Expected error")
 		return
 	}
+}
+
+func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
+	arg := new(param.GetParams)
+	//arg.Page = new(pagination.Page)
+	pagination := new(pagination.Page)
+	// set batch size
+	pagination.SetPageSize(2)
+
+	arg.Page = pagination
+	// fetch only 2 volumes
+	for hasNextPage := true; hasNextPage; hasNextPage = arg.Page.NextPage() {
+		volumes, err := suite.volumeService.GetVolumes(arg)
+		if err != nil {
+			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
+			return
+		}
+
+		if len(volumes) > 2 {
+			suite.T().Errorf("TestGetVolumesPagination(): Returned volumes are more than the requested page size")
+			return
+		}
+	}
+
+	// dont set batch size, should return all the volumes
+	narg := new(param.GetParams)
+
+	// fetch all volumes
+	vols, err := suite.volumeService.GetVolumes(narg)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all volumes, err: %v", err.Error())
+		return
+	}
+	if len(vols) < 3 {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all the volumes")
+		return
+	}
+
 }
 
 // Runs all test via go test

@@ -33,6 +33,7 @@ type DataWrapper struct {
 	StartRow      *int        `json:"startRow,omitempty"`
 	EndRow        *int        `json:"endRow,omitempty"`
 	PageSize      *int        `json:"pageSize,omitempty"`
+	TotalRows     *int        `json:"totalRows,omitempty"`
 	OperationType *string     `json:"operationType,omitempty"`
 }
 
@@ -219,14 +220,19 @@ func (client *GroupMgmtClient) List(path string) (interface{}, error) {
 
 // ListFromParams :
 func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetParams) (interface{}, error) {
-	listResp, err := client.listGetOrPost(path, params)
+
+	wrapper, err := client.listGetOrPost(path, params)
 	if err != nil {
 		return nil, err
 	}
-	return listResp, nil
+
+	if params != nil && params.Page != nil {
+		params.Page.TotalRows = wrapper.TotalRows
+	}
+	return wrapper.Data, nil
 }
 
-func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
+func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (*DataWrapper, error) {
 	if params == nil {
 		return client.listGet(path, nil)
 	}
@@ -244,9 +250,8 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 			fetch := "fetch"
 			wrapper := &DataWrapper{
 				Data:          params.Filter,
-				StartRow:      params.StartRow,
-				EndRow:        params.EndRow,
-				PageSize:      params.PageSize,
+				StartRow:      params.Page.StartRow,
+				EndRow:        params.Page.EndRow,
 				OperationType: &fetch,
 			}
 			// complex filter, need to POST it
@@ -278,7 +283,7 @@ func (client *GroupMgmtClient) listPost(
 	path string,
 	payload *DataWrapper,
 	queryParams map[string]string,
-) (interface{}, error) {
+) (*DataWrapper, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
 
@@ -310,14 +315,14 @@ func (client *GroupMgmtClient) listPost(
 		return nil, err
 	}
 	// return it
-	return wrapper.Data, nil
+	return wrapper, nil
 }
 
 // listGet uses a get request to get all objects on the path
 func (client *GroupMgmtClient) listGet(
 	path string,
 	queryParams map[string]string,
-) (interface{}, error) {
+) (*DataWrapper, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
 
@@ -346,7 +351,7 @@ func (client *GroupMgmtClient) listGet(
 	}
 
 	// return it
-	return wrapper.Data, nil
+	return wrapper, nil
 }
 
 // unwrap a response body
