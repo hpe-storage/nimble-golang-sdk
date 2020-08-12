@@ -110,25 +110,17 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 
 	arg.Page = pagination
 	// fetch only 2 volumes
-	volumes, err := suite.volumeService.GetVolumes(arg)
-	if err != nil {
-		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
-		return
-	}
-
-	if len(volumes) != 2 {
-		suite.T().Errorf("TestGetVolumesPagination(): pagination count doesnt match with # of return volumes ")
-		return
-	}
-
-	// Batch processing
-	for arg.Page.NextPage() {
+	for hasNextPage := true; hasNextPage; hasNextPage = arg.Page.NextPage() {
 		volumes, err := suite.volumeService.GetVolumes(arg)
 		if err != nil {
 			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
 			return
 		}
-		_= volumes
+
+		if len(volumes) > 2 {
+			suite.T().Errorf("TestGetVolumesPagination(): Returned volumes are more than the requested page size")
+			return
+		}
 	}
 
 	// dont set batch size, should return all the volumes

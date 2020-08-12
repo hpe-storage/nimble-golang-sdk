@@ -226,7 +226,6 @@ func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetPara
 		return nil, err
 	}
 
-	// pagination, reset the start row and end row
 	if params != nil && params.Page != nil {
 		params.Page.TotalRows = wrapper.TotalRows
 	}

@@ -43,9 +43,6 @@ func (params *GetParams) BuildQueryParts() (map[string]string, error) {
 		}
 		queryParts["fields"] = strings.Join(params.Fields, ",")
 	}
-	//if params.PageSize != nil {
-	//queryParts["pageSize"] = fmt.Sprintf("%d", *params.PageSize)
-	//}
 
 	if params.SortBy != nil {
 		var sortByStrings []string
