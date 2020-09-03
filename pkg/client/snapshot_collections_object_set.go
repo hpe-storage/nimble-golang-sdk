@@ -94,5 +94,3 @@ func buildSnapshotCollectionObjectSet(response interface{}) []*nimbleos.Snapshot
 
 	return results
 }
-
-// List of supported actions on object sets

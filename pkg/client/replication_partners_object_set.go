@@ -99,7 +99,7 @@ func buildReplicationPartnerObjectSet(response interface{}) []*nimbleos.Replicat
 // List of supported actions on object sets
 
 // Pause - Pause replication for the specified partner.
-func (objectSet *ReplicationPartnerObjectSet) PauseObjectSet(id *string) error {
+func (objectSet *ReplicationPartnerObjectSet) Pause(id *string) error {
 
 	pauseUri := replicationPartnerPath
 	pauseUri = pauseUri + "/" + *id
@@ -117,7 +117,7 @@ func (objectSet *ReplicationPartnerObjectSet) PauseObjectSet(id *string) error {
 }
 
 // Resume - Resume replication for the specified partner.
-func (objectSet *ReplicationPartnerObjectSet) ResumeObjectSet(id *string) error {
+func (objectSet *ReplicationPartnerObjectSet) Resume(id *string) error {
 
 	resumeUri := replicationPartnerPath
 	resumeUri = resumeUri + "/" + *id
@@ -135,7 +135,7 @@ func (objectSet *ReplicationPartnerObjectSet) ResumeObjectSet(id *string) error 
 }
 
 // Test - Test connectivity to the specified partner.
-func (objectSet *ReplicationPartnerObjectSet) TestObjectSet(id *string) error {
+func (objectSet *ReplicationPartnerObjectSet) Test(id *string) error {
 
 	testUri := replicationPartnerPath
 	testUri = testUri + "/" + *id

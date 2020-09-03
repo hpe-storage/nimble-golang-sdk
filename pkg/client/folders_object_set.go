@@ -97,7 +97,7 @@ func buildFolderObjectSet(response interface{}) []*nimbleos.Folder {
 // List of supported actions on object sets
 
 // SetDedupe - Set dedupe enabled/disabled for all applicable volumes inside a folder.
-func (objectSet *FolderObjectSet) SetDedupeObjectSet(dedupeEnabled *bool, id *string) error {
+func (objectSet *FolderObjectSet) SetDedupe(dedupeEnabled *bool, id *string) error {
 
 	setDedupeUri := folderPath
 	setDedupeUri = setDedupeUri + "/" + *id

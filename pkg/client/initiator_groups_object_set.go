@@ -98,7 +98,7 @@ func buildInitiatorGroupObjectSet(response interface{}) []*nimbleos.InitiatorGro
 // List of supported actions on object sets
 
 // SuggestLun - Suggest an LU number for the volume and initiator group combination.
-func (objectSet *InitiatorGroupObjectSet) SuggestLunObjectSet(id *string, volId *string) (*nimbleos.NsLunReturn, error) {
+func (objectSet *InitiatorGroupObjectSet) SuggestLun(id *string, volId *string) (*nimbleos.NsLunReturn, error) {
 
 	suggestLunUri := initiatorGroupPath
 	suggestLunUri = suggestLunUri + "/" + *id
@@ -121,7 +121,7 @@ func (objectSet *InitiatorGroupObjectSet) SuggestLunObjectSet(id *string, volId 
 }
 
 // ValidateLun - Validate an LU number for the volume and initiator group combination.
-func (objectSet *InitiatorGroupObjectSet) ValidateLunObjectSet(id *string, volId *string, lun *uint64) error {
+func (objectSet *InitiatorGroupObjectSet) ValidateLun(id *string, volId *string, lun *uint64) error {
 
 	validateLunUri := initiatorGroupPath
 	validateLunUri = validateLunUri + "/" + *id

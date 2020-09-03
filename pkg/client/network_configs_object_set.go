@@ -97,7 +97,7 @@ func buildNetworkConfigObjectSet(response interface{}) []*nimbleos.NetworkConfig
 // List of supported actions on object sets
 
 // ActivateNetconfig - Activate a network configuration.
-func (objectSet *NetworkConfigObjectSet) ActivateNetconfigObjectSet(id *string, ignoreValidationMask *uint64) error {
+func (objectSet *NetworkConfigObjectSet) ActivateNetconfig(id *string, ignoreValidationMask *uint64) error {
 
 	activateNetconfigUri := networkConfigPath
 	activateNetconfigUri = activateNetconfigUri + "/" + *id
@@ -117,7 +117,7 @@ func (objectSet *NetworkConfigObjectSet) ActivateNetconfigObjectSet(id *string, 
 }
 
 // ValidateNetconfig - Validate a network configuration.
-func (objectSet *NetworkConfigObjectSet) ValidateNetconfigObjectSet(id *string, ignoreValidationMask *uint64) error {
+func (objectSet *NetworkConfigObjectSet) ValidateNetconfig(id *string, ignoreValidationMask *uint64) error {
 
 	validateNetconfigUri := networkConfigPath
 	validateNetconfigUri = validateNetconfigUri + "/" + *id

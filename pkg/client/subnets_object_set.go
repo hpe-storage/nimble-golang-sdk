@@ -81,5 +81,3 @@ func buildSubnetObjectSet(response interface{}) []*nimbleos.Subnet {
 
 	return results
 }
-
-// List of supported actions on object sets

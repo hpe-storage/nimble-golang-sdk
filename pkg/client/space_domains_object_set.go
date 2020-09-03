@@ -80,5 +80,3 @@ func buildSpaceDomainObjectSet(response interface{}) []*nimbleos.SpaceDomain {
 
 	return results
 }
-
-// List of supported actions on object sets

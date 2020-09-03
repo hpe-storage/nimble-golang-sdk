@@ -80,5 +80,3 @@ func buildAuditLogObjectSet(response interface{}) []*nimbleos.AuditLog {
 
 	return results
 }
-
-// List of supported actions on object sets

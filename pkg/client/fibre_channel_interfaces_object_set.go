@@ -85,5 +85,3 @@ func buildFibreChannelInterfaceObjectSet(response interface{}) []*nimbleos.Fibre
 
 	return results
 }
-
-// List of supported actions on object sets

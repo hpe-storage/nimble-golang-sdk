@@ -93,7 +93,7 @@ func buildWitnessObjectSet(response interface{}) []*nimbleos.Witness {
 // List of supported actions on object sets
 
 // Test - Tests and validates witness configuration between the array and the witness.
-func (objectSet *WitnessObjectSet) TestObjectSet(id *string) (*[]*nimbleos.NsWitnessTestResponse, error) {
+func (objectSet *WitnessObjectSet) Test(id *string) (*[]*nimbleos.NsWitnessTestResponse, error) {
 
 	testUri := witnessPath
 	testUri = testUri + "/" + *id

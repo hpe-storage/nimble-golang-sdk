@@ -89,7 +89,7 @@ func buildGroupObjectSet(response interface{}) []*nimbleos.Group {
 // List of supported actions on object sets
 
 // Reboot - Reboot all arrays in the group.
-func (objectSet *GroupObjectSet) RebootObjectSet(id *string) error {
+func (objectSet *GroupObjectSet) Reboot(id *string) error {
 
 	rebootUri := groupPath
 	rebootUri = rebootUri + "/" + *id
@@ -107,7 +107,7 @@ func (objectSet *GroupObjectSet) RebootObjectSet(id *string) error {
 }
 
 // Halt - Halt all arrays in the group.
-func (objectSet *GroupObjectSet) HaltObjectSet(id *string, force *bool) error {
+func (objectSet *GroupObjectSet) Halt(id *string, force *bool) error {
 
 	haltUri := groupPath
 	haltUri = haltUri + "/" + *id
@@ -127,7 +127,7 @@ func (objectSet *GroupObjectSet) HaltObjectSet(id *string, force *bool) error {
 }
 
 // TestAlert - Generate a test alert.
-func (objectSet *GroupObjectSet) TestAlertObjectSet(id *string, level *nimbleos.NsSeverityLevel) error {
+func (objectSet *GroupObjectSet) TestAlert(id *string, level *nimbleos.NsSeverityLevel) error {
 
 	testAlertUri := groupPath
 	testAlertUri = testAlertUri + "/" + *id
@@ -147,7 +147,7 @@ func (objectSet *GroupObjectSet) TestAlertObjectSet(id *string, level *nimbleos.
 }
 
 // SoftwareUpdatePrecheck - Run software update precheck.
-func (objectSet *GroupObjectSet) SoftwareUpdatePrecheckObjectSet(id *string, skipPrecheckMask *uint64) (*nimbleos.NsSoftwareUpdateReturn, error) {
+func (objectSet *GroupObjectSet) SoftwareUpdatePrecheck(id *string, skipPrecheckMask *uint64) (*nimbleos.NsSoftwareUpdateReturn, error) {
 
 	softwareUpdatePrecheckUri := groupPath
 	softwareUpdatePrecheckUri = softwareUpdatePrecheckUri + "/" + *id
@@ -170,7 +170,7 @@ func (objectSet *GroupObjectSet) SoftwareUpdatePrecheckObjectSet(id *string, ski
 }
 
 // SoftwareUpdateStart - Update the group software to the downloaded version.
-func (objectSet *GroupObjectSet) SoftwareUpdateStartObjectSet(id *string, skipStartCheckMask *uint64) (*nimbleos.NsSoftwareUpdateReturn, error) {
+func (objectSet *GroupObjectSet) SoftwareUpdateStart(id *string, skipStartCheckMask *uint64) (*nimbleos.NsSoftwareUpdateReturn, error) {
 
 	softwareUpdateStartUri := groupPath
 	softwareUpdateStartUri = softwareUpdateStartUri + "/" + *id
@@ -193,7 +193,7 @@ func (objectSet *GroupObjectSet) SoftwareUpdateStartObjectSet(id *string, skipSt
 }
 
 // SoftwareDownload - Download software update package.
-func (objectSet *GroupObjectSet) SoftwareDownloadObjectSet(id *string, version *string, force *bool) error {
+func (objectSet *GroupObjectSet) SoftwareDownload(id *string, version *string, force *bool) error {
 
 	softwareDownloadUri := groupPath
 	softwareDownloadUri = softwareDownloadUri + "/" + *id
@@ -215,7 +215,7 @@ func (objectSet *GroupObjectSet) SoftwareDownloadObjectSet(id *string, version *
 }
 
 // SoftwareCancelDownload - Cancel ongoing download of software.
-func (objectSet *GroupObjectSet) SoftwareCancelDownloadObjectSet(id *string) error {
+func (objectSet *GroupObjectSet) SoftwareCancelDownload(id *string) error {
 
 	softwareCancelDownloadUri := groupPath
 	softwareCancelDownloadUri = softwareCancelDownloadUri + "/" + *id
@@ -233,7 +233,7 @@ func (objectSet *GroupObjectSet) SoftwareCancelDownloadObjectSet(id *string) err
 }
 
 // SoftwareUpdateResume - Resume stopped software update.
-func (objectSet *GroupObjectSet) SoftwareUpdateResumeObjectSet(id *string) error {
+func (objectSet *GroupObjectSet) SoftwareUpdateResume(id *string) error {
 
 	softwareUpdateResumeUri := groupPath
 	softwareUpdateResumeUri = softwareUpdateResumeUri + "/" + *id
@@ -251,7 +251,7 @@ func (objectSet *GroupObjectSet) SoftwareUpdateResumeObjectSet(id *string) error
 }
 
 // GetGroupDiscoveredList - Get list of discovered groups with arrays that are initialized.
-func (objectSet *GroupObjectSet) GetGroupDiscoveredListObjectSet(id *string, groupName *string) (*nimbleos.NsDiscoveredGroupListReturn, error) {
+func (objectSet *GroupObjectSet) GetGroupDiscoveredList(id *string, groupName *string) (*nimbleos.NsDiscoveredGroupListReturn, error) {
 
 	getGroupDiscoveredListUri := groupPath
 	getGroupDiscoveredListUri = getGroupDiscoveredListUri + "/" + *id
@@ -274,7 +274,7 @@ func (objectSet *GroupObjectSet) GetGroupDiscoveredListObjectSet(id *string, gro
 }
 
 // ValidateMerge - Perform group merge validation.
-func (objectSet *GroupObjectSet) ValidateMergeObjectSet(id *string, srcGroupName *string, srcGroupIp *string, srcUsername *string, srcPassword *string, srcPassphrase *string, skipSecondaryMgmtIp *bool) (*nimbleos.NsGroupMergeReturn, error) {
+func (objectSet *GroupObjectSet) ValidateMerge(id *string, srcGroupName *string, srcGroupIp *string, srcUsername *string, srcPassword *string, srcPassphrase *string, skipSecondaryMgmtIp *bool) (*nimbleos.NsGroupMergeReturn, error) {
 
 	validateMergeUri := groupPath
 	validateMergeUri = validateMergeUri + "/" + *id
@@ -307,7 +307,7 @@ func (objectSet *GroupObjectSet) ValidateMergeObjectSet(id *string, srcGroupName
 }
 
 // Merge - Perform group merge with the specified group.
-func (objectSet *GroupObjectSet) MergeObjectSet(id *string, srcGroupName *string, srcGroupIp *string, srcUsername *string, srcPassword *string, srcPassphrase *string, force *bool, skipSecondaryMgmtIp *bool) (*nimbleos.NsGroupMergeReturn, error) {
+func (objectSet *GroupObjectSet) Merge(id *string, srcGroupName *string, srcGroupIp *string, srcUsername *string, srcPassword *string, srcPassphrase *string, force *bool, skipSecondaryMgmtIp *bool) (*nimbleos.NsGroupMergeReturn, error) {
 
 	mergeUri := groupPath
 	mergeUri = mergeUri + "/" + *id
@@ -342,7 +342,7 @@ func (objectSet *GroupObjectSet) MergeObjectSet(id *string, srcGroupName *string
 }
 
 // GetEula - Get URL to download EULA contents.
-func (objectSet *GroupObjectSet) GetEulaObjectSet(id *string, locale *nimbleos.NsEulaLocale, format *nimbleos.NsEulaFormat, phase *nimbleos.NsEulaPhase, force *bool) (*nimbleos.NsEulaReturn, error) {
+func (objectSet *GroupObjectSet) GetEula(id *string, locale *nimbleos.NsEulaLocale, format *nimbleos.NsEulaFormat, phase *nimbleos.NsEulaPhase, force *bool) (*nimbleos.NsEulaReturn, error) {
 
 	getEulaUri := groupPath
 	getEulaUri = getEulaUri + "/" + *id
@@ -371,7 +371,7 @@ func (objectSet *GroupObjectSet) GetEulaObjectSet(id *string, locale *nimbleos.N
 }
 
 // CheckMigrate - Check if the group Management Service can be migrated to the group Management Service backup array.
-func (objectSet *GroupObjectSet) CheckMigrateObjectSet(id *string) error {
+func (objectSet *GroupObjectSet) CheckMigrate(id *string) error {
 
 	checkMigrateUri := groupPath
 	checkMigrateUri = checkMigrateUri + "/" + *id
@@ -389,7 +389,7 @@ func (objectSet *GroupObjectSet) CheckMigrateObjectSet(id *string) error {
 }
 
 // Migrate - Migrate the group Management Service to the current group Management Service backup array.
-func (objectSet *GroupObjectSet) MigrateObjectSet(id *string) error {
+func (objectSet *GroupObjectSet) Migrate(id *string) error {
 
 	migrateUri := groupPath
 	migrateUri = migrateUri + "/" + *id
@@ -407,7 +407,7 @@ func (objectSet *GroupObjectSet) MigrateObjectSet(id *string) error {
 }
 
 // GetTimezoneList - Get list of group timezones.
-func (objectSet *GroupObjectSet) GetTimezoneListObjectSet(id *string) (*nimbleos.NsTimezonesReturn, error) {
+func (objectSet *GroupObjectSet) GetTimezoneList(id *string) (*nimbleos.NsTimezonesReturn, error) {
 
 	getTimezoneListUri := groupPath
 	getTimezoneListUri = getTimezoneListUri + "/" + *id

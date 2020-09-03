@@ -97,7 +97,7 @@ func buildPoolObjectSet(response interface{}) []*nimbleos.Pool {
 // List of supported actions on object sets
 
 // Merge - Merge the specified pool into the target pool. All volumes on the specified pool are moved to the target pool and the specified pool is then deleted. All the arrays in the pool are assigned to the target pool.
-func (objectSet *PoolObjectSet) MergeObjectSet(id *string, targetPoolId *string, force *bool) (*nimbleos.NsPoolMergeReturn, error) {
+func (objectSet *PoolObjectSet) Merge(id *string, targetPoolId *string, force *bool) (*nimbleos.NsPoolMergeReturn, error) {
 
 	mergeUri := poolPath
 	mergeUri = mergeUri + "/" + *id

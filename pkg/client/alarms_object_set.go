@@ -93,7 +93,7 @@ func buildAlarmObjectSet(response interface{}) []*nimbleos.Alarm {
 // List of supported actions on object sets
 
 // Acknowledge - Acknowledge an alarm.
-func (objectSet *AlarmObjectSet) AcknowledgeObjectSet(id *string, remindEvery *uint64, remindEveryUnit *nimbleos.NsPeriodUnit) error {
+func (objectSet *AlarmObjectSet) Acknowledge(id *string, remindEvery *uint64, remindEveryUnit *nimbleos.NsPeriodUnit) error {
 
 	acknowledgeUri := alarmPath
 	acknowledgeUri = acknowledgeUri + "/" + *id
@@ -115,7 +115,7 @@ func (objectSet *AlarmObjectSet) AcknowledgeObjectSet(id *string, remindEvery *u
 }
 
 // Unacknowledge - Unacknowledge an alarm.
-func (objectSet *AlarmObjectSet) UnacknowledgeObjectSet(id *string) error {
+func (objectSet *AlarmObjectSet) Unacknowledge(id *string) error {
 
 	unacknowledgeUri := alarmPath
 	unacknowledgeUri = unacknowledgeUri + "/" + *id

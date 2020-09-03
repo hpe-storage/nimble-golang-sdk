@@ -89,7 +89,7 @@ func buildShelfObjectSet(response interface{}) []*nimbleos.Shelf {
 // List of supported actions on object sets
 
 // Identify - Turn on chassis identifier for a controller.
-func (objectSet *ShelfObjectSet) IdentifyObjectSet(id *string, cid *nimbleos.NsControllerId, status *bool) (*nimbleos.NsShelfIdentifyStatusReturn, error) {
+func (objectSet *ShelfObjectSet) Identify(id *string, cid *nimbleos.NsControllerId, status *bool) (*nimbleos.NsShelfIdentifyStatusReturn, error) {
 
 	identifyUri := shelfPath
 	identifyUri = identifyUri + "/" + *id
@@ -114,7 +114,7 @@ func (objectSet *ShelfObjectSet) IdentifyObjectSet(id *string, cid *nimbleos.NsC
 }
 
 // Evacuate - Perform shelf evacuation.
-func (objectSet *ShelfObjectSet) EvacuateObjectSet(id *string, driveset *uint64, dryRun *bool, start *bool, cancel *bool, pause *bool, resume *bool) error {
+func (objectSet *ShelfObjectSet) Evacuate(id *string, driveset *uint64, dryRun *bool, start *bool, cancel *bool, pause *bool, resume *bool) error {
 
 	evacuateUri := shelfPath
 	evacuateUri = evacuateUri + "/" + *id

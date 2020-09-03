@@ -96,5 +96,3 @@ func buildProtectionTemplateObjectSet(response interface{}) []*nimbleos.Protecti
 
 	return results
 }
-
-// List of supported actions on object sets

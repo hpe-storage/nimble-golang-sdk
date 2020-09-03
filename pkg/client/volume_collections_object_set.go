@@ -98,7 +98,7 @@ func buildVolumeCollectionObjectSet(response interface{}) []*nimbleos.VolumeColl
 // List of supported actions on object sets
 
 // Promote - Take ownership of the specified volume collection. The volumes associated with the volume collection will be set to online and be available for reading and writing. Replication will be disabled on the affected schedules and must be re-configured if desired. Snapshot retention for the affected schedules will be set to the greater of the current local or replica retention values. This operation is not supported for synchronous replication volume collections.
-func (objectSet *VolumeCollectionObjectSet) PromoteObjectSet(id *string) error {
+func (objectSet *VolumeCollectionObjectSet) Promote(id *string) error {
 
 	promoteUri := volumeCollectionPath
 	promoteUri = promoteUri + "/" + *id
@@ -116,7 +116,7 @@ func (objectSet *VolumeCollectionObjectSet) PromoteObjectSet(id *string) error {
 }
 
 // Demote - Release ownership of the specified volume collection. The volumes associated with the volume collection will set to offline and a snapshot will be created, then full control over the volume collection will be transferred to the new owner. This option can be used following a promote to revert the volume collection back to its prior configured state. This operation does not alter the configuration on the new owner itself, but does require the new owner to be running in order to obtain its identity information. This operation is not supported for synchronous replication volume collections.
-func (objectSet *VolumeCollectionObjectSet) DemoteObjectSet(id *string, replicationPartnerId *string, invokeOnUpstreamPartner *bool) error {
+func (objectSet *VolumeCollectionObjectSet) Demote(id *string, replicationPartnerId *string, invokeOnUpstreamPartner *bool) error {
 
 	demoteUri := volumeCollectionPath
 	demoteUri = demoteUri + "/" + *id
@@ -138,7 +138,7 @@ func (objectSet *VolumeCollectionObjectSet) DemoteObjectSet(id *string, replicat
 }
 
 // Handover - Gracefully transfer ownership of the specified volume collection. This action can be used to pass control of the volume collection to the downstream replication partner. Ownership and full control over the volume collection will be given to the downstream replication partner. The volumes associated with the volume collection will be set to offline prior to the final snapshot being taken and replicated, thus ensuring full data synchronization as part of the transfer. By default, the new owner will automatically begin replicating the volume collection back to this node when the handover completes.
-func (objectSet *VolumeCollectionObjectSet) HandoverObjectSet(id *string, replicationPartnerId *string, noReverse *bool, invokeOnUpstreamPartner *bool, overrideUpstreamDown *bool) error {
+func (objectSet *VolumeCollectionObjectSet) Handover(id *string, replicationPartnerId *string, noReverse *bool, invokeOnUpstreamPartner *bool, overrideUpstreamDown *bool) error {
 
 	handoverUri := volumeCollectionPath
 	handoverUri = handoverUri + "/" + *id
@@ -164,7 +164,7 @@ func (objectSet *VolumeCollectionObjectSet) HandoverObjectSet(id *string, replic
 }
 
 // AbortHandover - Abort in-progress handover. If for some reason a previously invoked handover request is unable to complete, this action can be used to cancel it. This operation is not supported for synchronous replication volume collections.
-func (objectSet *VolumeCollectionObjectSet) AbortHandoverObjectSet(id *string) error {
+func (objectSet *VolumeCollectionObjectSet) AbortHandover(id *string) error {
 
 	abortHandoverUri := volumeCollectionPath
 	abortHandoverUri = abortHandoverUri + "/" + *id
@@ -182,7 +182,7 @@ func (objectSet *VolumeCollectionObjectSet) AbortHandoverObjectSet(id *string) e
 }
 
 // Validate - Validate a volume collection with either Microsoft VSS or VMware application synchronization.
-func (objectSet *VolumeCollectionObjectSet) ValidateObjectSet(id *string) (*nimbleos.NsAppServerResp, error) {
+func (objectSet *VolumeCollectionObjectSet) Validate(id *string) (*nimbleos.NsAppServerResp, error) {
 
 	validateUri := volumeCollectionPath
 	validateUri = validateUri + "/" + *id

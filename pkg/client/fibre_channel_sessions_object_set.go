@@ -80,5 +80,3 @@ func buildFibreChannelSessionObjectSet(response interface{}) []*nimbleos.FibreCh
 
 	return results
 }
-
-// List of supported actions on object sets

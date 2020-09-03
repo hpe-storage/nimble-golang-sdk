@@ -97,7 +97,7 @@ func buildArrayObjectSet(response interface{}) []*nimbleos.Array {
 // List of supported actions on object sets
 
 // Failover - Perform a failover on the specified array.
-func (objectSet *ArrayObjectSet) FailoverObjectSet(id *string, force *bool) error {
+func (objectSet *ArrayObjectSet) Failover(id *string, force *bool) error {
 
 	failoverUri := arrayPath
 	failoverUri = failoverUri + "/" + *id
@@ -117,7 +117,7 @@ func (objectSet *ArrayObjectSet) FailoverObjectSet(id *string, force *bool) erro
 }
 
 // Halt - Halt the specified array. Restarting the array will require physically powering it back on.
-func (objectSet *ArrayObjectSet) HaltObjectSet(id *string) error {
+func (objectSet *ArrayObjectSet) Halt(id *string) error {
 
 	haltUri := arrayPath
 	haltUri = haltUri + "/" + *id
@@ -135,7 +135,7 @@ func (objectSet *ArrayObjectSet) HaltObjectSet(id *string) error {
 }
 
 // Reboot - Reboot the specified array.
-func (objectSet *ArrayObjectSet) RebootObjectSet(id *string) error {
+func (objectSet *ArrayObjectSet) Reboot(id *string) error {
 
 	rebootUri := arrayPath
 	rebootUri = rebootUri + "/" + *id

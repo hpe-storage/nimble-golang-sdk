@@ -165,7 +165,6 @@ func (svc *VolumeService) DeleteVolume(id string) error {
 	}
 	return nil
 }
-
 //OnlineBulkVolumes - method makes the volume online
 func (svc *VolumeService) OnlineBulkVolumes(volList []string) error {
 	if len(volList) == 0 {
@@ -176,6 +175,6 @@ func (svc *VolumeService) OnlineBulkVolumes(volList []string) error {
 		volPtrList = append(volPtrList, &id)
 	}
 
-	err := svc.objectSet.BulkSetOnlineAndOfflineObjectSet(volPtrList, param.NewBool(true))
+	err := svc.objectSet.BulkSetOnlineAndOffline(volPtrList, param.NewBool(true))
 	return err
 }

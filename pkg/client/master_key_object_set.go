@@ -99,7 +99,7 @@ func buildMasterKeyObjectSet(response interface{}) []*nimbleos.MasterKey {
 // List of supported actions on object sets
 
 // PurgeInactive - Purges encryption keys that have been inactive for the age or longer. If you do not specify an age, the keys will be purged immediately.
-func (objectSet *MasterKeyObjectSet) PurgeInactiveObjectSet(id *string, age *int) error {
+func (objectSet *MasterKeyObjectSet) PurgeInactive(id *string, age *int) error {
 
 	purgeInactiveUri := masterKeyPath
 	purgeInactiveUri = purgeInactiveUri + "/" + *id

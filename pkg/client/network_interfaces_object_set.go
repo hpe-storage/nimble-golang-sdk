@@ -80,5 +80,3 @@ func buildNetworkInterfaceObjectSet(response interface{}) []*nimbleos.NetworkInt
 
 	return results
 }
-
-// List of supported actions on object sets

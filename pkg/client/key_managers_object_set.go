@@ -94,7 +94,7 @@ func buildKeyManagerObjectSet(response interface{}) []*nimbleos.KeyManager {
 // List of supported actions on object sets
 
 // Remove - Remove external key manager. You must migrate the keys to an inactive external key manager before removing the active key manager. If you remove the active external key manager the passphrase is used to enable the internal key manager.
-func (objectSet *KeyManagerObjectSet) RemoveObjectSet(id *string, passphrase *string) error {
+func (objectSet *KeyManagerObjectSet) Remove(id *string, passphrase *string) error {
 
 	removeUri := keyManagerPath
 	removeUri = removeUri + "/" + *id
@@ -114,7 +114,7 @@ func (objectSet *KeyManagerObjectSet) RemoveObjectSet(id *string, passphrase *st
 }
 
 // MigrateKeys - Migrate volume encryption keys from the active key manager to the destination id given in the input. After successfully migrating the encryption keys, the destination key manager is made the active key manager.
-func (objectSet *KeyManagerObjectSet) MigrateKeysObjectSet(id *string) error {
+func (objectSet *KeyManagerObjectSet) MigrateKeys(id *string) error {
 
 	migrateKeysUri := keyManagerPath
 	migrateKeysUri = migrateKeysUri + "/" + *id

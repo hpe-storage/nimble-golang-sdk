@@ -93,5 +93,3 @@ func buildApplicationServerObjectSet(response interface{}) []*nimbleos.Applicati
 
 	return results
 }
-
-// List of supported actions on object sets

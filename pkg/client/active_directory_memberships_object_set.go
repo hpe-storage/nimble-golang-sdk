@@ -94,7 +94,7 @@ func buildActiveDirectoryMembershipObjectSet(response interface{}) []*nimbleos.A
 // List of supported actions on object sets
 
 // Remove - Leaves the Active Directory domain.
-func (objectSet *ActiveDirectoryMembershipObjectSet) RemoveObjectSet(id *string, user *string, password *string, force *bool) error {
+func (objectSet *ActiveDirectoryMembershipObjectSet) Remove(id *string, user *string, password *string, force *bool) error {
 
 	removeUri := activeDirectoryMembershipPath
 	removeUri = removeUri + "/" + *id
@@ -118,7 +118,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) RemoveObjectSet(id *string,
 }
 
 // ReportStatus - Reports the detail status of the Active Directory domain.
-func (objectSet *ActiveDirectoryMembershipObjectSet) ReportStatusObjectSet(id *string) (*nimbleos.NsADReportStatusReturn, error) {
+func (objectSet *ActiveDirectoryMembershipObjectSet) ReportStatus(id *string) (*nimbleos.NsADReportStatusReturn, error) {
 
 	reportStatusUri := activeDirectoryMembershipPath
 	reportStatusUri = reportStatusUri + "/" + *id
@@ -139,7 +139,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) ReportStatusObjectSet(id *s
 }
 
 // TestUser - Tests whether the user exist in the Active Directory. If the user is present, then the user's group and role information is reported.
-func (objectSet *ActiveDirectoryMembershipObjectSet) TestUserObjectSet(id *string, name *string) (*nimbleos.NsADTestUserReturn, error) {
+func (objectSet *ActiveDirectoryMembershipObjectSet) TestUser(id *string, name *string) (*nimbleos.NsADTestUserReturn, error) {
 
 	testUserUri := activeDirectoryMembershipPath
 	testUserUri = testUserUri + "/" + *id
@@ -162,7 +162,7 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) TestUserObjectSet(id *strin
 }
 
 // TestGroup - Tests whether the user group exist in the Active Directory.
-func (objectSet *ActiveDirectoryMembershipObjectSet) TestGroupObjectSet(id *string, name *string) error {
+func (objectSet *ActiveDirectoryMembershipObjectSet) TestGroup(id *string, name *string) error {
 
 	testGroupUri := activeDirectoryMembershipPath
 	testGroupUri = testGroupUri + "/" + *id

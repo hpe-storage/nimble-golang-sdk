@@ -80,5 +80,3 @@ func buildProtocolEndpointObjectSet(response interface{}) []*nimbleos.ProtocolEn
 
 	return results
 }
-
-// List of supported actions on object sets

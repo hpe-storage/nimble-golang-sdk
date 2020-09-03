@@ -98,7 +98,7 @@ func buildVolumeObjectSet(response interface{}) []*nimbleos.Volume {
 // List of supported actions on object sets
 
 // Restore - Restore volume data from a previous snapshot.
-func (objectSet *VolumeObjectSet) RestoreObjectSet(id *string, baseSnapId *string) error {
+func (objectSet *VolumeObjectSet) Restore(id *string, baseSnapId *string) error {
 
 	restoreUri := volumePath
 	restoreUri = restoreUri + "/" + *id
@@ -118,7 +118,7 @@ func (objectSet *VolumeObjectSet) RestoreObjectSet(id *string, baseSnapId *strin
 }
 
 // Move - Move a volume and its related volumes to another pool. To change a single volume's folder assignment (while remaining in the same pool), use a volume update operation to change the folder_id attribute.
-func (objectSet *VolumeObjectSet) MoveObjectSet(id *string, destPoolId *string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
+func (objectSet *VolumeObjectSet) Move(id *string, destPoolId *string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
 
 	moveUri := volumePath
 	moveUri = moveUri + "/" + *id
@@ -143,7 +143,7 @@ func (objectSet *VolumeObjectSet) MoveObjectSet(id *string, destPoolId *string, 
 }
 
 // BulkMove - Move volumes and their related volumes to another pool. To change a single volume's folder assignment (while remaining in the same pool), use a volume update operation to change the folder_id attribute.
-func (objectSet *VolumeObjectSet) BulkMoveObjectSet(volIds []*string, destPoolId *string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
+func (objectSet *VolumeObjectSet) BulkMove(volIds []*string, destPoolId *string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
 
 	bulkMoveUri := volumePath
 	bulkMoveUri = bulkMoveUri + "/actions/" + "bulk_move"
@@ -167,7 +167,7 @@ func (objectSet *VolumeObjectSet) BulkMoveObjectSet(volIds []*string, destPoolId
 }
 
 // AbortMove - Abort the in-progress move of the specified volume to another pool.
-func (objectSet *VolumeObjectSet) AbortMoveObjectSet(id *string) error {
+func (objectSet *VolumeObjectSet) AbortMove(id *string) error {
 
 	abortMoveUri := volumePath
 	abortMoveUri = abortMoveUri + "/" + *id
@@ -185,7 +185,7 @@ func (objectSet *VolumeObjectSet) AbortMoveObjectSet(id *string) error {
 }
 
 // BulkSetDedupe - Enable or disable dedupe on a list of volumes. If the volumes are not dedupe capable, the operation will fail for the specified volume.
-func (objectSet *VolumeObjectSet) BulkSetDedupeObjectSet(volIds []*string, dedupeEnabled *bool) error {
+func (objectSet *VolumeObjectSet) BulkSetDedupe(volIds []*string, dedupeEnabled *bool) error {
 
 	bulkSetDedupeUri := volumePath
 	bulkSetDedupeUri = bulkSetDedupeUri + "/actions/" + "bulk_set_dedupe"
@@ -204,7 +204,7 @@ func (objectSet *VolumeObjectSet) BulkSetDedupeObjectSet(volIds []*string, dedup
 }
 
 // BulkSetOnlineAndOffline - Bring a list of volumes online or offline.
-func (objectSet *VolumeObjectSet) BulkSetOnlineAndOfflineObjectSet(volIds []*string, online *bool) error {
+func (objectSet *VolumeObjectSet) BulkSetOnlineAndOffline(volIds []*string, online *bool) error {
 
 	bulkSetOnlineAndOfflineUri := volumePath
 	bulkSetOnlineAndOfflineUri = bulkSetOnlineAndOfflineUri + "/actions/" + "bulk_set_online_and_offline"
