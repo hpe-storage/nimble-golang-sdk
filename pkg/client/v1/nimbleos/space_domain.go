@@ -72,9 +72,9 @@ type SpaceDomain struct {
 	// UncompressedUsageBytes - Uncompressed usage of volumes and snapshots in the space domain.
 	UncompressedUsageBytes *int64 `json:"uncompressed_usage_bytes,omitempty"`
 	// CompressionRatio - Compression savings for the space domain expressed as ratio.
-	CompressionRatio *float32 `json:"compression_ratio,omitempty"`
+	CompressionRatio *float64 `json:"compression_ratio,omitempty"`
 	// DedupeRatio - Deduplication savings for the space domain expressed as ratio.
-	DedupeRatio *float32 `json:"dedupe_ratio,omitempty"`
+	DedupeRatio *float64 `json:"dedupe_ratio,omitempty"`
 	// CloneRatio - Clone savings for the space domain expressed as ratio.
-	CloneRatio *float32 `json:"clone_ratio,omitempty"`
+	CloneRatio *float64 `json:"clone_ratio,omitempty"`
 }

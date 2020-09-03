@@ -80,3 +80,48 @@ func buildFibreChannelConfigObjectSet(response interface{}) []*nimbleos.FibreCha
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Regenerate - Regenerate Fibre Channel configuration.
+func (objectSet *FibreChannelConfigObjectSet) RegenerateObjectSet(id *string, wwnnBaseStr *string, precheck *bool) (*nimbleos.NsFcConfigRegenerateReturn, error) {
+
+	regenerateUri := fibreChannelConfigPath
+	regenerateUri = regenerateUri + "/" + *id
+	regenerateUri = regenerateUri + "/actions/" + "regenerate"
+
+	payload := &struct {
+		Id          *string `json:"id,omitempty"`
+		WwnnBaseStr *string `json:"wwnn_base_str,omitempty"`
+		Precheck    *bool   `json:"precheck,omitempty"`
+	}{
+		id,
+		wwnnBaseStr,
+		precheck,
+	}
+
+	resp, err := objectSet.Client.Post(regenerateUri, payload, &nimbleos.NsFcConfigRegenerateReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsFcConfigRegenerateReturn), err
+}
+
+// HwUpgrade - Update Fibre Channel configuration after hardware changes.
+func (objectSet *FibreChannelConfigObjectSet) HwUpgradeObjectSet(id *string) error {
+
+	hwUpgradeUri := fibreChannelConfigPath
+	hwUpgradeUri = hwUpgradeUri + "/" + *id
+	hwUpgradeUri = hwUpgradeUri + "/actions/" + "hw_upgrade"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(hwUpgradeUri, payload, &emptyStruct)
+	return err
+}

@@ -89,3 +89,45 @@ func buildAlarmObjectSet(response interface{}) []*nimbleos.Alarm {
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Acknowledge - Acknowledge an alarm.
+func (objectSet *AlarmObjectSet) AcknowledgeObjectSet(id *string, remindEvery *uint64, remindEveryUnit *nimbleos.NsPeriodUnit) error {
+
+	acknowledgeUri := alarmPath
+	acknowledgeUri = acknowledgeUri + "/" + *id
+	acknowledgeUri = acknowledgeUri + "/actions/" + "acknowledge"
+
+	payload := &struct {
+		Id              *string                `json:"id,omitempty"`
+		RemindEvery     *uint64                `json:"remind_every,omitempty"`
+		RemindEveryUnit *nimbleos.NsPeriodUnit `json:"remind_every_unit,omitempty"`
+	}{
+		id,
+		remindEvery,
+		remindEveryUnit,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(acknowledgeUri, payload, &emptyStruct)
+	return err
+}
+
+// Unacknowledge - Unacknowledge an alarm.
+func (objectSet *AlarmObjectSet) UnacknowledgeObjectSet(id *string) error {
+
+	unacknowledgeUri := alarmPath
+	unacknowledgeUri = unacknowledgeUri + "/" + *id
+	unacknowledgeUri = unacknowledgeUri + "/actions/" + "unacknowledge"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(unacknowledgeUri, payload, &emptyStruct)
+	return err
+}

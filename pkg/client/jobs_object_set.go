@@ -80,3 +80,5 @@ func buildJobObjectSet(response interface{}) []*nimbleos.Job {
 
 	return results
 }
+
+// List of supported actions on object sets

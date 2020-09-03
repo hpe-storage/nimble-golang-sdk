@@ -85,3 +85,5 @@ func buildUserPolicyObjectSet(response interface{}) []*nimbleos.UserPolicy {
 
 	return results
 }
+
+// List of supported actions on object sets

@@ -80,3 +80,5 @@ func buildControllerObjectSet(response interface{}) []*nimbleos.Controller {
 
 	return results
 }
+
+// List of supported actions on object sets

@@ -102,11 +102,11 @@ type Folder struct {
 	// UncompressedSnapUsageBytes - Uncompressed usage of snapshots in the folder. This field is meaningful only when the usage_valid attribute is true.
 	UncompressedSnapUsageBytes *int64 `json:"uncompressed_snap_usage_bytes,omitempty"`
 	// VolCompressionRatio - Compression ratio of volumes in the folder. This field is meaningful only when the usage_valid attribute is true.
-	VolCompressionRatio *float32 `json:"vol_compression_ratio,omitempty"`
+	VolCompressionRatio *float64 `json:"vol_compression_ratio,omitempty"`
 	// SnapCompressionRatio - Compression ratio of snapshots in the folder. This field is meaningful only when the usage_valid attribute is true.
-	SnapCompressionRatio *float32 `json:"snap_compression_ratio,omitempty"`
+	SnapCompressionRatio *float64 `json:"snap_compression_ratio,omitempty"`
 	// CompressionRatio - Compression savings for the folder expressed as ratio. This field is meaningful only when the usage_valid attribute is true.
-	CompressionRatio *float32 `json:"compression_ratio,omitempty"`
+	CompressionRatio *float64 `json:"compression_ratio,omitempty"`
 	// CreationTime - Time when this folder was created.
 	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this folder was last modified.

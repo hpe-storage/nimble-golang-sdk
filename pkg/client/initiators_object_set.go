@@ -89,3 +89,5 @@ func buildInitiatorObjectSet(response interface{}) []*nimbleos.Initiator {
 
 	return results
 }
+
+// List of supported actions on object sets

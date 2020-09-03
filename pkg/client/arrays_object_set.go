@@ -93,3 +93,61 @@ func buildArrayObjectSet(response interface{}) []*nimbleos.Array {
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Failover - Perform a failover on the specified array.
+func (objectSet *ArrayObjectSet) FailoverObjectSet(id *string, force *bool) error {
+
+	failoverUri := arrayPath
+	failoverUri = failoverUri + "/" + *id
+	failoverUri = failoverUri + "/actions/" + "failover"
+
+	payload := &struct {
+		Id    *string `json:"id,omitempty"`
+		Force *bool   `json:"force,omitempty"`
+	}{
+		id,
+		force,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(failoverUri, payload, &emptyStruct)
+	return err
+}
+
+// Halt - Halt the specified array. Restarting the array will require physically powering it back on.
+func (objectSet *ArrayObjectSet) HaltObjectSet(id *string) error {
+
+	haltUri := arrayPath
+	haltUri = haltUri + "/" + *id
+	haltUri = haltUri + "/actions/" + "halt"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(haltUri, payload, &emptyStruct)
+	return err
+}
+
+// Reboot - Reboot the specified array.
+func (objectSet *ArrayObjectSet) RebootObjectSet(id *string) error {
+
+	rebootUri := arrayPath
+	rebootUri = rebootUri + "/" + *id
+	rebootUri = rebootUri + "/actions/" + "reboot"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(rebootUri, payload, &emptyStruct)
+	return err
+}

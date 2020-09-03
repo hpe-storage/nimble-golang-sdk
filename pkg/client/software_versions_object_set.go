@@ -80,3 +80,5 @@ func buildSoftwareVersionObjectSet(response interface{}) []*nimbleos.SoftwareVer
 
 	return results
 }
+
+// List of supported actions on object sets

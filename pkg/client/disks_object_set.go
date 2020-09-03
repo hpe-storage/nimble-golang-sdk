@@ -85,3 +85,5 @@ func buildDiskObjectSet(response interface{}) []*nimbleos.Disk {
 
 	return results
 }
+
+// List of supported actions on object sets

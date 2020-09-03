@@ -90,3 +90,93 @@ func buildActiveDirectoryMembershipObjectSet(response interface{}) []*nimbleos.A
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Remove - Leaves the Active Directory domain.
+func (objectSet *ActiveDirectoryMembershipObjectSet) RemoveObjectSet(id *string, user *string, password *string, force *bool) error {
+
+	removeUri := activeDirectoryMembershipPath
+	removeUri = removeUri + "/" + *id
+	removeUri = removeUri + "/actions/" + "remove"
+
+	payload := &struct {
+		Id       *string `json:"id,omitempty"`
+		User     *string `json:"user,omitempty"`
+		Password *string `json:"password,omitempty"`
+		Force    *bool   `json:"force,omitempty"`
+	}{
+		id,
+		user,
+		password,
+		force,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(removeUri, payload, &emptyStruct)
+	return err
+}
+
+// ReportStatus - Reports the detail status of the Active Directory domain.
+func (objectSet *ActiveDirectoryMembershipObjectSet) ReportStatusObjectSet(id *string) (*nimbleos.NsADReportStatusReturn, error) {
+
+	reportStatusUri := activeDirectoryMembershipPath
+	reportStatusUri = reportStatusUri + "/" + *id
+	reportStatusUri = reportStatusUri + "/actions/" + "report_status"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	resp, err := objectSet.Client.Post(reportStatusUri, payload, &nimbleos.NsADReportStatusReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsADReportStatusReturn), err
+}
+
+// TestUser - Tests whether the user exist in the Active Directory. If the user is present, then the user's group and role information is reported.
+func (objectSet *ActiveDirectoryMembershipObjectSet) TestUserObjectSet(id *string, name *string) (*nimbleos.NsADTestUserReturn, error) {
+
+	testUserUri := activeDirectoryMembershipPath
+	testUserUri = testUserUri + "/" + *id
+	testUserUri = testUserUri + "/actions/" + "test_user"
+
+	payload := &struct {
+		Id   *string `json:"id,omitempty"`
+		Name *string `json:"name,omitempty"`
+	}{
+		id,
+		name,
+	}
+
+	resp, err := objectSet.Client.Post(testUserUri, payload, &nimbleos.NsADTestUserReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsADTestUserReturn), err
+}
+
+// TestGroup - Tests whether the user group exist in the Active Directory.
+func (objectSet *ActiveDirectoryMembershipObjectSet) TestGroupObjectSet(id *string, name *string) error {
+
+	testGroupUri := activeDirectoryMembershipPath
+	testGroupUri = testGroupUri + "/" + *id
+	testGroupUri = testGroupUri + "/actions/" + "test_group"
+
+	payload := &struct {
+		Id   *string `json:"id,omitempty"`
+		Name *string `json:"name,omitempty"`
+	}{
+		id,
+		name,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(testGroupUri, payload, &emptyStruct)
+	return err
+}

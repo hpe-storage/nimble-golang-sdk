@@ -88,7 +88,7 @@ type Array struct {
 	// VolUsageUncompressedBytes - The uncompressed usage of volumes in array. This is the pre-reduced usage.
 	VolUsageUncompressedBytes *int64 `json:"vol_usage_uncompressed_bytes,omitempty"`
 	// VolCompression - The compression rate of volumes in array expressed as ratio.
-	VolCompression *float32 `json:"vol_compression,omitempty"`
+	VolCompression *float64 `json:"vol_compression,omitempty"`
 	// VolSavedBytes - The saved space of volumes in array.
 	VolSavedBytes *int64 `json:"vol_saved_bytes,omitempty"`
 	// SnapUsageBytes - The compressed usage of snapshots in array.
@@ -96,9 +96,9 @@ type Array struct {
 	// SnapUsageUncompressedBytes - The uncompressed usage of snapshots in array. This is the pre-reduced usage.
 	SnapUsageUncompressedBytes *int64 `json:"snap_usage_uncompressed_bytes,omitempty"`
 	// SnapCompression - The compression rate of snapshots in array expressed as ratio.
-	SnapCompression *float32 `json:"snap_compression,omitempty"`
+	SnapCompression *float64 `json:"snap_compression,omitempty"`
 	// SnapSpaceReduction - The space reduction rate of snapshots in array expressed as ratio.
-	SnapSpaceReduction *float32 `json:"snap_space_reduction,omitempty"`
+	SnapSpaceReduction *float64 `json:"snap_space_reduction,omitempty"`
 	// SnapSavedBytes - The saved space of snapshots in array.
 	SnapSavedBytes *int64 `json:"snap_saved_bytes,omitempty"`
 	// PendingDeleteBytes - The pending delete bytes in array.

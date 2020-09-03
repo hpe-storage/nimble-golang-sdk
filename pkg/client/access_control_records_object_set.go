@@ -89,3 +89,5 @@ func buildAccessControlRecordObjectSet(response interface{}) []*nimbleos.AccessC
 
 	return results
 }
+
+// List of supported actions on object sets

@@ -80,3 +80,5 @@ func buildFibreChannelInitiatorAliasObjectSet(response interface{}) []*nimbleos.
 
 	return results
 }
+
+// List of supported actions on object sets

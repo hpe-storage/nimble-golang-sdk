@@ -89,3 +89,26 @@ func buildTokenObjectSet(response interface{}) []*nimbleos.Token {
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// ReportUserDetails - Reports the user details for this token.
+func (objectSet *TokenObjectSet) ReportUserDetailsObjectSet(id *string) (*nimbleos.NsTokenReportUserDetailsReturn, error) {
+
+	reportUserDetailsUri := tokenPath
+	reportUserDetailsUri = reportUserDetailsUri + "/" + *id
+	reportUserDetailsUri = reportUserDetailsUri + "/actions/" + "report_user_details"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	resp, err := objectSet.Client.Post(reportUserDetailsUri, payload, &nimbleos.NsTokenReportUserDetailsReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsTokenReportUserDetailsReturn), err
+}

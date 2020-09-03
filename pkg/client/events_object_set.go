@@ -80,3 +80,5 @@ func buildEventObjectSet(response interface{}) []*nimbleos.Event {
 
 	return results
 }
+
+// List of supported actions on object sets

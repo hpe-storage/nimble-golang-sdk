@@ -95,3 +95,5 @@ func buildPerformancePolicyObjectSet(response interface{}) []*nimbleos.Performan
 
 	return results
 }
+
+// List of supported actions on object sets

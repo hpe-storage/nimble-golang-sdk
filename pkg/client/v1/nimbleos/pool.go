@@ -70,17 +70,17 @@ type Pool struct {
 	// DedupeUsageBytes - The dedupe usage of a hybrid pool. Does not apply to all-flash pools.
 	DedupeUsageBytes *int64 `json:"dedupe_usage_bytes,omitempty"`
 	// SavingsRatio - Overall space usage savings in the pool expressed as ratio.
-	SavingsRatio *float32 `json:"savings_ratio,omitempty"`
+	SavingsRatio *float64 `json:"savings_ratio,omitempty"`
 	// DataReductionRatio - Space usage savings in the pool expressed as ratio that does not include thin-provisioning savings.
-	DataReductionRatio *float32 `json:"data_reduction_ratio,omitempty"`
+	DataReductionRatio *float64 `json:"data_reduction_ratio,omitempty"`
 	// CompressionRatio - Compression savings for the pool expressed as ratio.
-	CompressionRatio *float32 `json:"compression_ratio,omitempty"`
+	CompressionRatio *float64 `json:"compression_ratio,omitempty"`
 	// DedupeRatio - Dedupe savings for the pool expressed as ratio.
-	DedupeRatio *float32 `json:"dedupe_ratio,omitempty"`
+	DedupeRatio *float64 `json:"dedupe_ratio,omitempty"`
 	// CloneRatio - Clone savings for the pool expressed as ratio.
-	CloneRatio *float32 `json:"clone_ratio,omitempty"`
+	CloneRatio *float64 `json:"clone_ratio,omitempty"`
 	// VolThinProvisioningRatio - Thin provisioning savings for volumes in the pool expressed as ratio.
-	VolThinProvisioningRatio *float32 `json:"vol_thin_provisioning_ratio,omitempty"`
+	VolThinProvisioningRatio *float64 `json:"vol_thin_provisioning_ratio,omitempty"`
 	// SnapcollCount - Snapshot collection count.
 	SnapcollCount *int64 `json:"snapcoll_count,omitempty"`
 	// SnapCount - Snapshot count.
