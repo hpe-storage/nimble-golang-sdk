@@ -94,3 +94,130 @@ func buildVolumeObjectSet(response interface{}) []*nimbleos.Volume {
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Restore - Restore volume data from a previous snapshot.
+func (objectSet *VolumeObjectSet) Restore(id *string, baseSnapId *string) error {
+
+	restoreUri := volumePath
+	restoreUri = restoreUri + "/" + *id
+	restoreUri = restoreUri + "/actions/" + "restore"
+
+	payload := &struct {
+		Id         *string `json:"id,omitempty"`
+		BaseSnapId *string `json:"base_snap_id,omitempty"`
+	}{
+		id,
+		baseSnapId,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(restoreUri, payload, &emptyStruct)
+	return err
+}
+
+// Move - Move a volume and its related volumes to another pool. To change a single volume's folder assignment (while remaining in the same pool), use a volume update operation to change the folder_id attribute.
+func (objectSet *VolumeObjectSet) Move(id *string, destPoolId *string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
+
+	moveUri := volumePath
+	moveUri = moveUri + "/" + *id
+	moveUri = moveUri + "/actions/" + "move"
+
+	payload := &struct {
+		Id         *string `json:"id,omitempty"`
+		DestPoolId *string `json:"dest_pool_id,omitempty"`
+		ForceVvol  *bool   `json:"force_vvol,omitempty"`
+	}{
+		id,
+		destPoolId,
+		forceVvol,
+	}
+
+	resp, err := objectSet.Client.Post(moveUri, payload, &nimbleos.NsVolumeListReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsVolumeListReturn), err
+}
+
+// BulkMove - Move volumes and their related volumes to another pool. To change a single volume's folder assignment (while remaining in the same pool), use a volume update operation to change the folder_id attribute.
+func (objectSet *VolumeObjectSet) BulkMove(volIds []*string, destPoolId *string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
+
+	bulkMoveUri := volumePath
+	bulkMoveUri = bulkMoveUri + "/actions/" + "bulk_move"
+
+	payload := &struct {
+		VolIds     []*string `json:"vol_ids,omitempty"`
+		DestPoolId *string   `json:"dest_pool_id,omitempty"`
+		ForceVvol  *bool     `json:"force_vvol,omitempty"`
+	}{
+		volIds,
+		destPoolId,
+		forceVvol,
+	}
+
+	resp, err := objectSet.Client.Post(bulkMoveUri, payload, &nimbleos.NsVolumeListReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsVolumeListReturn), err
+}
+
+// AbortMove - Abort the in-progress move of the specified volume to another pool.
+func (objectSet *VolumeObjectSet) AbortMove(id *string) error {
+
+	abortMoveUri := volumePath
+	abortMoveUri = abortMoveUri + "/" + *id
+	abortMoveUri = abortMoveUri + "/actions/" + "abort_move"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(abortMoveUri, payload, &emptyStruct)
+	return err
+}
+
+// BulkSetDedupe - Enable or disable dedupe on a list of volumes. If the volumes are not dedupe capable, the operation will fail for the specified volume.
+func (objectSet *VolumeObjectSet) BulkSetDedupe(volIds []*string, dedupeEnabled *bool) error {
+
+	bulkSetDedupeUri := volumePath
+	bulkSetDedupeUri = bulkSetDedupeUri + "/actions/" + "bulk_set_dedupe"
+
+	payload := &struct {
+		VolIds        []*string `json:"vol_ids,omitempty"`
+		DedupeEnabled *bool     `json:"dedupe_enabled,omitempty"`
+	}{
+		volIds,
+		dedupeEnabled,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(bulkSetDedupeUri, payload, &emptyStruct)
+	return err
+}
+
+// BulkSetOnlineAndOffline - Bring a list of volumes online or offline.
+func (objectSet *VolumeObjectSet) BulkSetOnlineAndOffline(volIds []*string, online *bool) error {
+
+	bulkSetOnlineAndOfflineUri := volumePath
+	bulkSetOnlineAndOfflineUri = bulkSetOnlineAndOfflineUri + "/actions/" + "bulk_set_online_and_offline"
+
+	payload := &struct {
+		VolIds []*string `json:"vol_ids,omitempty"`
+		Online *bool     `json:"online,omitempty"`
+	}{
+		volIds,
+		online,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(bulkSetOnlineAndOfflineUri, payload, &emptyStruct)
+	return err
+}

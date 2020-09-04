@@ -85,3 +85,60 @@ func buildShelfObjectSet(response interface{}) []*nimbleos.Shelf {
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Identify - Turn on chassis identifier for a controller.
+func (objectSet *ShelfObjectSet) Identify(id *string, cid *nimbleos.NsControllerId, status *bool) (*nimbleos.NsShelfIdentifyStatusReturn, error) {
+
+	identifyUri := shelfPath
+	identifyUri = identifyUri + "/" + *id
+	identifyUri = identifyUri + "/actions/" + "identify"
+
+	payload := &struct {
+		Id     *string                  `json:"id,omitempty"`
+		Cid    *nimbleos.NsControllerId `json:"cid,omitempty"`
+		Status *bool                    `json:"status,omitempty"`
+	}{
+		id,
+		cid,
+		status,
+	}
+
+	resp, err := objectSet.Client.Post(identifyUri, payload, &nimbleos.NsShelfIdentifyStatusReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsShelfIdentifyStatusReturn), err
+}
+
+// Evacuate - Perform shelf evacuation.
+func (objectSet *ShelfObjectSet) Evacuate(id *string, driveset *uint64, dryRun *bool, start *bool, cancel *bool, pause *bool, resume *bool) error {
+
+	evacuateUri := shelfPath
+	evacuateUri = evacuateUri + "/" + *id
+	evacuateUri = evacuateUri + "/actions/" + "evacuate"
+
+	payload := &struct {
+		Id       *string `json:"id,omitempty"`
+		Driveset *uint64 `json:"driveset,omitempty"`
+		DryRun   *bool   `json:"dry_run,omitempty"`
+		Start    *bool   `json:"start,omitempty"`
+		Cancel   *bool   `json:"cancel,omitempty"`
+		Pause    *bool   `json:"pause,omitempty"`
+		Resume   *bool   `json:"resume,omitempty"`
+	}{
+		id,
+		driveset,
+		dryRun,
+		start,
+		cancel,
+		pause,
+		resume,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(evacuateUri, payload, &emptyStruct)
+	return err
+}

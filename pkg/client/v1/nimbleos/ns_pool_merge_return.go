@@ -42,11 +42,11 @@ type NsPoolMergeReturn struct {
 	// CompressedVolUsageBytes - Compressed usage of volumes in the pool.
 	CompressedVolUsageBytes *int64 `json:"compressed_vol_usage_bytes,omitempty"`
 	// CompressionRatio - Compression savings for the pool expressed as ratio.
-	CompressionRatio *float32 `json:"compression_ratio,omitempty"`
+	CompressionRatio *float64 `json:"compression_ratio,omitempty"`
 	// CreationTime - Time when this pool was created.
 	CreationTime *int64 `json:"creation_time,omitempty"`
 	// DedupeRatio - Dedupe savings for the pool expressed as ratio.
-	DedupeRatio *float32 `json:"dedupe_ratio,omitempty"`
+	DedupeRatio *float64 `json:"dedupe_ratio,omitempty"`
 	// Description - Text description of pool. Default: ''.
 	Description *string `json:"description,omitempty"`
 	// FreeSpace - Free space of the pool in bytes.
@@ -74,7 +74,7 @@ type NsPoolMergeReturn struct {
 	// SearchName - Name of pool used for object search.
 	SearchName *string `json:"search_name,omitempty"`
 	// SnapCompressionRatio - Compression ratio of snapshots in the pool.
-	SnapCompressionRatio *float32 `json:"snap_compression_ratio,omitempty"`
+	SnapCompressionRatio *float64 `json:"snap_compression_ratio,omitempty"`
 	// SnapCount - Snapshot count.
 	SnapCount *int64 `json:"snap_count,omitempty"`
 	// UncompressedSnapUsageBytes - Uncompressed usage of snapshots in the pool.
@@ -88,7 +88,7 @@ type NsPoolMergeReturn struct {
 	// UsageValid - Indicate whether the usage of pool is valid.
 	UsageValid *bool `json:"usage_valid,omitempty"`
 	// VolCompressionRatio - Compression ratio of volumes in the pool.
-	VolCompressionRatio *float32 `json:"vol_compression_ratio,omitempty"`
+	VolCompressionRatio *float64 `json:"vol_compression_ratio,omitempty"`
 	// VolCount - Number of volumes assigned to the pool.
 	VolCount *int64 `json:"vol_count,omitempty"`
 	// VolList - The list of volumes in the pool.

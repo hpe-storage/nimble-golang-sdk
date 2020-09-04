@@ -93,7 +93,6 @@ func (client *GroupMgmtClient) login(username, password string) (string, error) 
 func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s", client.URL, path)
-
 	// Post it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).

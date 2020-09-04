@@ -138,6 +138,19 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 	}
 
 }
+func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
+	volume, _ := suite.volumeService.GetVolumeByName("GetVolume")
+	if volume != nil {
+		var volList [1]string
+		volList[0] = *volume.ID
+		err := suite.volumeService.OnlineBulkVolumes(volList[:])
+		if err != nil {
+			suite.T().Fatalf("BulkOnlineVolumes: Failed to set volumes %v online", volList)
+		}
+
+	}
+	suite.volumeService.DeleteVolume(*volume.ID)
+}
 
 // Runs all test via go test
 func TestVolumeServiceTestSuite(t *testing.T) {

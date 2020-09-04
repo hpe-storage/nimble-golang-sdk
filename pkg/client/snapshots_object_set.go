@@ -95,3 +95,29 @@ func buildSnapshotObjectSet(response interface{}) []*nimbleos.Snapshot {
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// BulkCreate - Create snapshots on the given set of volumes.
+func (objectSet *SnapshotObjectSet) BulkCreate(snapVolList []*nimbleos.NsSnapVol, replicate *bool, vssSnap *bool) (*nimbleos.NsSnapVolListReturn, error) {
+
+	bulkCreateUri := snapshotPath
+	bulkCreateUri = bulkCreateUri + "/actions/" + "bulk_create"
+
+	payload := &struct {
+		SnapVolList []*nimbleos.NsSnapVol `json:"snap_vol_list,omitempty"`
+		Replicate   *bool                 `json:"replicate,omitempty"`
+		VssSnap     *bool                 `json:"vss_snap,omitempty"`
+	}{
+		snapVolList,
+		replicate,
+		vssSnap,
+	}
+
+	resp, err := objectSet.Client.Post(bulkCreateUri, payload, &nimbleos.NsSnapVolListReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsSnapVolListReturn), err
+}

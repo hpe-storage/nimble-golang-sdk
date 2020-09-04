@@ -94,3 +94,50 @@ func buildInitiatorGroupObjectSet(response interface{}) []*nimbleos.InitiatorGro
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// SuggestLun - Suggest an LU number for the volume and initiator group combination.
+func (objectSet *InitiatorGroupObjectSet) SuggestLun(id *string, volId *string) (*nimbleos.NsLunReturn, error) {
+
+	suggestLunUri := initiatorGroupPath
+	suggestLunUri = suggestLunUri + "/" + *id
+	suggestLunUri = suggestLunUri + "/actions/" + "suggest_lun"
+
+	payload := &struct {
+		Id    *string `json:"id,omitempty"`
+		VolId *string `json:"vol_id,omitempty"`
+	}{
+		id,
+		volId,
+	}
+
+	resp, err := objectSet.Client.Post(suggestLunUri, payload, &nimbleos.NsLunReturn{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*nimbleos.NsLunReturn), err
+}
+
+// ValidateLun - Validate an LU number for the volume and initiator group combination.
+func (objectSet *InitiatorGroupObjectSet) ValidateLun(id *string, volId *string, lun *uint64) error {
+
+	validateLunUri := initiatorGroupPath
+	validateLunUri = validateLunUri + "/" + *id
+	validateLunUri = validateLunUri + "/actions/" + "validate_lun"
+
+	payload := &struct {
+		Id    *string `json:"id,omitempty"`
+		VolId *string `json:"vol_id,omitempty"`
+		Lun   *uint64 `json:"lun,omitempty"`
+	}{
+		id,
+		volId,
+		lun,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(validateLunUri, payload, &emptyStruct)
+	return err
+}

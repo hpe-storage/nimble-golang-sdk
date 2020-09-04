@@ -18,5 +18,5 @@ type NsSensorRate struct {
 	// Name - Sensor name.
 	Name *string `json:"name,omitempty"`
 	// Rate - Sensor value.
-	Rate *float32 `json:"rate,omitempty"`
+	Rate *float64 `json:"rate,omitempty"`
 }

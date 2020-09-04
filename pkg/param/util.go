@@ -18,3 +18,8 @@ func NewInt(i int) *int {
 func NewInt64(i int64) *int64 {
 	return &i
 }
+
+// NewString - type string pointer
+func NewString(s string) *string {
+	return &s
+}

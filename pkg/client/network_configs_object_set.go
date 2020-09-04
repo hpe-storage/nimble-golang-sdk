@@ -93,3 +93,45 @@ func buildNetworkConfigObjectSet(response interface{}) []*nimbleos.NetworkConfig
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// ActivateNetconfig - Activate a network configuration.
+func (objectSet *NetworkConfigObjectSet) ActivateNetconfig(id *string, ignoreValidationMask *uint64) error {
+
+	activateNetconfigUri := networkConfigPath
+	activateNetconfigUri = activateNetconfigUri + "/" + *id
+	activateNetconfigUri = activateNetconfigUri + "/actions/" + "activate_netconfig"
+
+	payload := &struct {
+		Id                   *string `json:"id,omitempty"`
+		IgnoreValidationMask *uint64 `json:"ignore_validation_mask,omitempty"`
+	}{
+		id,
+		ignoreValidationMask,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(activateNetconfigUri, payload, &emptyStruct)
+	return err
+}
+
+// ValidateNetconfig - Validate a network configuration.
+func (objectSet *NetworkConfigObjectSet) ValidateNetconfig(id *string, ignoreValidationMask *uint64) error {
+
+	validateNetconfigUri := networkConfigPath
+	validateNetconfigUri = validateNetconfigUri + "/" + *id
+	validateNetconfigUri = validateNetconfigUri + "/actions/" + "validate_netconfig"
+
+	payload := &struct {
+		Id                   *string `json:"id,omitempty"`
+		IgnoreValidationMask *uint64 `json:"ignore_validation_mask,omitempty"`
+	}{
+		id,
+		ignoreValidationMask,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(validateNetconfigUri, payload, &emptyStruct)
+	return err
+}

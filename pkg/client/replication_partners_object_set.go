@@ -95,3 +95,59 @@ func buildReplicationPartnerObjectSet(response interface{}) []*nimbleos.Replicat
 
 	return results
 }
+
+// List of supported actions on object sets
+
+// Pause - Pause replication for the specified partner.
+func (objectSet *ReplicationPartnerObjectSet) Pause(id *string) error {
+
+	pauseUri := replicationPartnerPath
+	pauseUri = pauseUri + "/" + *id
+	pauseUri = pauseUri + "/actions/" + "pause"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(pauseUri, payload, &emptyStruct)
+	return err
+}
+
+// Resume - Resume replication for the specified partner.
+func (objectSet *ReplicationPartnerObjectSet) Resume(id *string) error {
+
+	resumeUri := replicationPartnerPath
+	resumeUri = resumeUri + "/" + *id
+	resumeUri = resumeUri + "/actions/" + "resume"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(resumeUri, payload, &emptyStruct)
+	return err
+}
+
+// Test - Test connectivity to the specified partner.
+func (objectSet *ReplicationPartnerObjectSet) Test(id *string) error {
+
+	testUri := replicationPartnerPath
+	testUri = testUri + "/" + *id
+	testUri = testUri + "/actions/" + "test"
+
+	payload := &struct {
+		Id *string `json:"id,omitempty"`
+	}{
+		id,
+	}
+
+	var emptyStruct struct{}
+	_, err := objectSet.Client.Post(testUri, payload, &emptyStruct)
+	return err
+}

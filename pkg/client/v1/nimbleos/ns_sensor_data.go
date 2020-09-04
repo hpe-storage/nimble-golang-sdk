@@ -18,5 +18,5 @@ type NsSensorData struct {
 	// Sensor - Sensor name.
 	Sensor *string `json:"sensor,omitempty"`
 	// Samples - A list of samples for the sensor.
-	Samples []*float64 `json:"samples,omitempty"`
+	Samples []*uint64 `json:"samples,omitempty"`
 }

@@ -165,3 +165,16 @@ func (svc *VolumeService) DeleteVolume(id string) error {
 	}
 	return nil
 }
+//OnlineBulkVolumes - method makes the volume online
+func (svc *VolumeService) OnlineBulkVolumes(volList []string) error {
+	if len(volList) == 0 {
+		return fmt.Errorf("error: invalid parameter specified, volList is empty, %v", volList)
+	}
+	var volPtrList []*string
+	for _, id := range volList {
+		volPtrList = append(volPtrList, &id)
+	}
+
+	err := svc.objectSet.BulkSetOnlineAndOffline(volPtrList, param.NewBool(true))
+	return err
+}

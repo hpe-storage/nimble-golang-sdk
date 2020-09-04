@@ -254,21 +254,21 @@ type Group struct {
 	// NumConnections - Number of connections to the group.
 	NumConnections *int64 `json:"num_connections,omitempty"`
 	// VolCompressionRatio - Compression ratio of volumes in the group.
-	VolCompressionRatio *float32 `json:"vol_compression_ratio,omitempty"`
+	VolCompressionRatio *float64 `json:"vol_compression_ratio,omitempty"`
 	// SnapCompressionRatio - Compression ratio of snapshots in the group.
-	SnapCompressionRatio *float32 `json:"snap_compression_ratio,omitempty"`
+	SnapCompressionRatio *float64 `json:"snap_compression_ratio,omitempty"`
 	// CompressionRatio - Compression savings for the group expressed as ratio.
-	CompressionRatio *float32 `json:"compression_ratio,omitempty"`
+	CompressionRatio *float64 `json:"compression_ratio,omitempty"`
 	// DedupeRatio - Dedupe savings for the group expressed as ratio.
-	DedupeRatio *float32 `json:"dedupe_ratio,omitempty"`
+	DedupeRatio *float64 `json:"dedupe_ratio,omitempty"`
 	// CloneRatio - Clone savings for the group expressed as ratio.
-	CloneRatio *float32 `json:"clone_ratio,omitempty"`
+	CloneRatio *float64 `json:"clone_ratio,omitempty"`
 	// VolThinProvisioningRatio - Thin provisioning savings for volumes in the group expressed as ratio.
-	VolThinProvisioningRatio *float32 `json:"vol_thin_provisioning_ratio,omitempty"`
+	VolThinProvisioningRatio *float64 `json:"vol_thin_provisioning_ratio,omitempty"`
 	// SavingsRatio - Overall savings in the group expressed as ratio.
-	SavingsRatio *float32 `json:"savings_ratio,omitempty"`
+	SavingsRatio *float64 `json:"savings_ratio,omitempty"`
 	// DataReductionRatio - Space savings in the group that does not include thin-provisioning savings expressed as ratio.
-	DataReductionRatio *float32 `json:"data_reduction_ratio,omitempty"`
+	DataReductionRatio *float64 `json:"data_reduction_ratio,omitempty"`
 	// SavingsDedupe - Space usage savings in the group due to deduplication.
 	SavingsDedupe *int64 `json:"savings_dedupe,omitempty"`
 	// SavingsCompression - Space usage savings in the group due to compression.
