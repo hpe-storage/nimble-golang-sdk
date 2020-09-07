@@ -106,3 +106,34 @@ func (svc *KeyManagerService) DeleteKeyManager(id string) error {
 	}
 	return nil
 }
+
+// RemoveKeyManager - remove external key manager. You must migrate the keys to an inactive external key manager before removing the active key manager. If you remove the active external key manager the passphrase is used to enable the internal key manager.
+//   Required parameters:
+//       id - ID of the external key manager.
+
+//   Optional parameters:
+//       passphrase - Passphrase used to protect the master key, required during deletion of external key manager.
+
+func (svc *KeyManagerService) RemoveKeyManager(id string, passphrase *string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, passphrase:%v ", id, passphrase)
+	}
+
+	err := svc.objectSet.Remove(&id, passphrase)
+	return err
+}
+
+// MigrateKeysKeyManager - migrate volume encryption keys from the active key manager to the destination id given in the input. After successfully migrating the encryption keys, the destination key manager is made the active key manager.
+//   Required parameters:
+//       id - ID of the destination external key manager.
+
+func (svc *KeyManagerService) MigrateKeysKeyManager(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.MigrateKeys(&id)
+	return err
+}

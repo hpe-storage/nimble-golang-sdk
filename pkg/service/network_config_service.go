@@ -85,3 +85,33 @@ func (svc *NetworkConfigService) DeleteNetworkConfig(id string) error {
 	}
 	return nil
 }
+
+// ActivateNetconfigNetworkConfig - activate a network configuration.
+//   Required parameters:
+//       id - ID of the netconfig to activate.
+//       ignoreValidationMask - Whether to ignore validation or not.
+
+func (svc *NetworkConfigService) ActivateNetconfigNetworkConfig(id string, ignoreValidationMask uint64) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, ignoreValidationMask:%v ", id, ignoreValidationMask)
+	}
+
+	err := svc.objectSet.ActivateNetconfig(&id, &ignoreValidationMask)
+	return err
+}
+
+// ValidateNetconfigNetworkConfig - validate a network configuration.
+//   Required parameters:
+//       id - ID of the netconfig to validate.
+//       ignoreValidationMask - Whether to ignore validation or not.
+
+func (svc *NetworkConfigService) ValidateNetconfigNetworkConfig(id string, ignoreValidationMask uint64) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, ignoreValidationMask:%v ", id, ignoreValidationMask)
+	}
+
+	err := svc.objectSet.ValidateNetconfig(&id, &ignoreValidationMask)
+	return err
+}

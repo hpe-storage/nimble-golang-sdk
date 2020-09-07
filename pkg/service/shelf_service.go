@@ -85,3 +85,42 @@ func (svc *ShelfService) DeleteShelf(id string) error {
 	}
 	return nil
 }
+
+// IdentifyShelf - turn on chassis identifier for a controller.
+//   Required parameters:
+//       id - ID of shelf.
+//       cid - Possible values: 'A', 'B'.
+//       status - Status value of identifier to set.
+
+func (svc *ShelfService) IdentifyShelf(id string, cid *nimbleos.NsControllerId, status bool) (*nimbleos.NsShelfIdentifyStatusReturn, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v, cid:%v, status:%v ", id, cid, status)
+	}
+
+	resp, err := svc.objectSet.Identify(&id, cid, &status)
+	return resp, err
+
+}
+
+// EvacuateShelf - perform shelf evacuation.
+//   Required parameters:
+//       id - ID of shelf.
+//       driveset - Driveset to evacuate.
+
+//   Optional parameters:
+//       dryRun - Argument to perform a dry run, not the actual shelf evacuation.
+//       start - Argument to perform the shelf evacuation.
+//       cancel - Argument to cancel the shelf evacuation.
+//       pause - Argument to pause the shelf evacuation.
+//       resume - Argument to resume the shelf evacuation.
+
+func (svc *ShelfService) EvacuateShelf(id string, driveset uint64, dryRun *bool, start *bool, cancel *bool, pause *bool, resume *bool) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, driveset:%v, dryRun:%v, start:%v, cancel:%v, pause:%v, resume:%v ", id, driveset, dryRun, start, cancel, pause, resume)
+	}
+
+	err := svc.objectSet.Evacuate(&id, &driveset, dryRun, start, cancel, pause, resume)
+	return err
+}

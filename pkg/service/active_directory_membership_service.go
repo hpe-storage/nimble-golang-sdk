@@ -106,3 +106,68 @@ func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id 
 	}
 	return nil
 }
+
+// RemoveActiveDirectoryMembership - leaves the Active Directory domain.
+//   Required parameters:
+//       id - ID of the active directory.
+//       user - Name of the Activer Directory user with the privilege to leave the domain.
+//       password - Password for the Active Directory user.
+
+//   Optional parameters:
+//       force - Use this option when there is an error when leaving the domain.
+
+func (svc *ActiveDirectoryMembershipService) RemoveActiveDirectoryMembership(id string, user string, password string, force *bool) error {
+
+	if len(id) == 0 || len(user) == 0 || len(password) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, user:%v, password:%v, force:%v ", id, user, password, force)
+	}
+
+	err := svc.objectSet.Remove(&id, &user, &password, force)
+	return err
+}
+
+// ReportStatusActiveDirectoryMembership - reports the detail status of the Active Directory domain.
+//   Required parameters:
+//       id - ID of the active directory.
+
+func (svc *ActiveDirectoryMembershipService) ReportStatusActiveDirectoryMembership(id string) (*nimbleos.NsADReportStatusReturn, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	resp, err := svc.objectSet.ReportStatus(&id)
+	return resp, err
+
+}
+
+// TestUserActiveDirectoryMembership - tests whether the user exist in the Active Directory. If the user is present, then the user's group and role information is reported.
+//   Required parameters:
+//       id - ID of the Active Directory.
+//       name - Name of the Active Directory user.
+
+func (svc *ActiveDirectoryMembershipService) TestUserActiveDirectoryMembership(id string, name string) (*nimbleos.NsADTestUserReturn, error) {
+
+	if len(id) == 0 || len(name) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v, name:%v ", id, name)
+	}
+
+	resp, err := svc.objectSet.TestUser(&id, &name)
+	return resp, err
+
+}
+
+// TestGroupActiveDirectoryMembership - tests whether the user group exist in the Active Directory.
+//   Required parameters:
+//       id - ID of the Active Directory.
+//       name - Name of the Active Directory group.
+
+func (svc *ActiveDirectoryMembershipService) TestGroupActiveDirectoryMembership(id string, name string) error {
+
+	if len(id) == 0 || len(name) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, name:%v ", id, name)
+	}
+
+	err := svc.objectSet.TestGroup(&id, &name)
+	return err
+}

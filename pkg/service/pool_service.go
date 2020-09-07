@@ -106,3 +106,22 @@ func (svc *PoolService) DeletePool(id string) error {
 	}
 	return nil
 }
+
+// MergePool - merge the specified pool into the target pool. All volumes on the specified pool are moved to the target pool and the specified pool is then deleted. All the arrays in the pool are assigned to the target pool.
+//   Required parameters:
+//       id - ID of the specified pool.
+//       targetPoolId - ID of the target pool.
+
+//   Optional parameters:
+//       force - Forcibly merge the specified pool into target pool.
+
+func (svc *PoolService) MergePool(id string, targetPoolId string, force *bool) (*nimbleos.NsPoolMergeReturn, error) {
+
+	if len(id) == 0 || len(targetPoolId) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v, targetPoolId:%v, force:%v ", id, targetPoolId, force)
+	}
+
+	resp, err := svc.objectSet.Merge(&id, &targetPoolId, force)
+	return resp, err
+
+}

@@ -108,3 +108,45 @@ func (svc *ReplicationPartnerService) DeleteReplicationPartner(id string) error 
 	}
 	return nil
 }
+
+// PauseReplicationPartner - pause replication for the specified partner.
+//   Required parameters:
+//       id - ID of the partner to pause.
+
+func (svc *ReplicationPartnerService) PauseReplicationPartner(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Pause(&id)
+	return err
+}
+
+// ResumeReplicationPartner - resume replication for the specified partner.
+//   Required parameters:
+//       id - ID of the partner to resume.
+
+func (svc *ReplicationPartnerService) ResumeReplicationPartner(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Resume(&id)
+	return err
+}
+
+// TestReplicationPartner - test connectivity to the specified partner.
+//   Required parameters:
+//       id - ID of the partner to test.
+
+func (svc *ReplicationPartnerService) TestReplicationPartner(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Test(&id)
+	return err
+}

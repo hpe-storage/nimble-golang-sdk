@@ -85,3 +85,34 @@ func (svc *FibreChannelConfigService) DeleteFibreChannelConfig(id string) error 
 	}
 	return nil
 }
+
+// RegenerateFibreChannelConfig - regenerate Fibre Channel configuration.
+//   Required parameters:
+//       id - ID of the Fibre Channel configuration.
+//       wwnnBaseStr - Base World Wide Node Name(WWNN).
+//       precheck - Check if the interfaces are offline before regenerating the WWNN (World Wide Node Name).
+
+func (svc *FibreChannelConfigService) RegenerateFibreChannelConfig(id string, wwnnBaseStr string, precheck bool) (*nimbleos.NsFcConfigRegenerateReturn, error) {
+
+	if len(id) == 0 || len(wwnnBaseStr) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v, wwnnBaseStr:%v, precheck:%v ", id, wwnnBaseStr, precheck)
+	}
+
+	resp, err := svc.objectSet.Regenerate(&id, &wwnnBaseStr, &precheck)
+	return resp, err
+
+}
+
+// HwUpgradeFibreChannelConfig - update Fibre Channel configuration after hardware changes.
+//   Required parameters:
+//       id - ID of the Fibre Channel configuration.
+
+func (svc *FibreChannelConfigService) HwUpgradeFibreChannelConfig(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.HwUpgrade(&id)
+	return err
+}

@@ -85,3 +85,35 @@ func (svc *AlarmService) DeleteAlarm(id string) error {
 	}
 	return nil
 }
+
+// AcknowledgeAlarm - acknowledge an alarm.
+//   Required parameters:
+//       id - ID of the acknowledged alarm.
+
+//   Optional parameters:
+//       remindEvery - Notification frequency unit.
+//       remindEveryUnit - Period unit.
+
+func (svc *AlarmService) AcknowledgeAlarm(id string, remindEvery *uint64, remindEveryUnit *nimbleos.NsPeriodUnit) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, remindEvery:%v, remindEveryUnit:%v ", id, remindEvery, remindEveryUnit)
+	}
+
+	err := svc.objectSet.Acknowledge(&id, remindEvery, remindEveryUnit)
+	return err
+}
+
+// UnacknowledgeAlarm - unacknowledge an alarm.
+//   Required parameters:
+//       id - ID of the acknowledged alarm.
+
+func (svc *AlarmService) UnacknowledgeAlarm(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Unacknowledge(&id)
+	return err
+}

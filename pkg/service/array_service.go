@@ -106,3 +106,48 @@ func (svc *ArrayService) DeleteArray(id string) error {
 	}
 	return nil
 }
+
+// FailoverArray - perform a failover on the specified array.
+//   Required parameters:
+//       id - ID of the array to perform failover on.
+
+//   Optional parameters:
+//       force - Initiate failover without performing any precheck.
+
+func (svc *ArrayService) FailoverArray(id string, force *bool) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, force:%v ", id, force)
+	}
+
+	err := svc.objectSet.Failover(&id, force)
+	return err
+}
+
+// HaltArray - halt the specified array. Restarting the array will require physically powering it back on.
+//   Required parameters:
+//       id - ID of the array to halt.
+
+func (svc *ArrayService) HaltArray(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Halt(&id)
+	return err
+}
+
+// RebootArray - reboot the specified array.
+//   Required parameters:
+//       id - ID of the array to reboot.
+
+func (svc *ArrayService) RebootArray(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Reboot(&id)
+	return err
+}

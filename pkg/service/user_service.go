@@ -106,3 +106,18 @@ func (svc *UserService) DeleteUser(id string) error {
 	}
 	return nil
 }
+
+// UnlockUser - unlocks user account locked due to failed logins.
+//   Required parameters:
+//       id - ID for the user.
+
+func (svc *UserService) UnlockUser(id string) (*nimbleos.NsUserLockStatus, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	resp, err := svc.objectSet.Unlock(&id)
+	return resp, err
+
+}

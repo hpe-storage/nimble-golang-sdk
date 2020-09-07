@@ -85,3 +85,18 @@ func (svc *TokenService) DeleteToken(id string) error {
 	}
 	return nil
 }
+
+// ReportUserDetailsToken - reports the user details for this token.
+//   Required parameters:
+//       id - ID for the session token.
+
+func (svc *TokenService) ReportUserDetailsToken(id string) (*nimbleos.NsTokenReportUserDetailsReturn, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	resp, err := svc.objectSet.ReportUserDetails(&id)
+	return resp, err
+
+}

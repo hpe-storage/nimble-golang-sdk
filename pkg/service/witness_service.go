@@ -85,3 +85,18 @@ func (svc *WitnessService) DeleteWitness(id string) error {
 	}
 	return nil
 }
+
+// TestWitness - tests and validates witness configuration between the array and the witness.
+//   Required parameters:
+//       id - ID of the witness.
+
+func (svc *WitnessService) TestWitness(id string) ([]*nimbleos.NsWitnessTestResponse, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	resp, err := svc.objectSet.Test(&id)
+	return *resp, err
+
+}

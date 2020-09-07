@@ -106,3 +106,18 @@ func (svc *FolderService) DeleteFolder(id string) error {
 	}
 	return nil
 }
+
+// SetDedupeFolder - set dedupe enabled/disabled for all applicable volumes inside a folder.
+//   Required parameters:
+//       dedupeEnabled - Enable/disable dedupe.
+//       id - Folder containing the volumes to enable/disable dedupe on.
+
+func (svc *FolderService) SetDedupeFolder(dedupeEnabled bool, id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified dedupeEnabled:%v, id:%v ", dedupeEnabled, id)
+	}
+
+	err := svc.objectSet.SetDedupe(&dedupeEnabled, &id)
+	return err
+}

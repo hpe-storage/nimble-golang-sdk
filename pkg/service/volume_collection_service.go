@@ -107,3 +107,84 @@ func (svc *VolumeCollectionService) DeleteVolumeCollection(id string) error {
 	}
 	return nil
 }
+
+// PromoteVolumeCollection - take ownership of the specified volume collection. The volumes associated with the volume collection will be set to online and be available for reading and writing. Replication will be disabled on the affected schedules and must be re-configured if desired. Snapshot retention for the affected schedules will be set to the greater of the current local or replica retention values. This operation is not supported for synchronous replication volume collections.
+//   Required parameters:
+//       id - ID of the promoted volume collection.
+
+func (svc *VolumeCollectionService) PromoteVolumeCollection(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.Promote(&id)
+	return err
+}
+
+// DemoteVolumeCollection - release ownership of the specified volume collection. The volumes associated with the volume collection will set to offline and a snapshot will be created, then full control over the volume collection will be transferred to the new owner. This option can be used following a promote to revert the volume collection back to its prior configured state. This operation does not alter the configuration on the new owner itself, but does require the new owner to be running in order to obtain its identity information. This operation is not supported for synchronous replication volume collections.
+//   Required parameters:
+//       id - ID of the demoted volume collection.
+//       replicationPartnerId - ID of the new owner. If invoke_on_upstream_partner is provided, utilize the ID of the current owner i.e. upstream replication partner.
+
+//   Optional parameters:
+//       invokeOnUpstreamPartner - Invoke demote request on upstream partner. Default: 'false'. This operation is not supported for synchronous replication volume vollections.
+
+func (svc *VolumeCollectionService) DemoteVolumeCollection(id string, replicationPartnerId string, invokeOnUpstreamPartner *bool) error {
+
+	if len(id) == 0 || len(replicationPartnerId) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, replicationPartnerId:%v, invokeOnUpstreamPartner:%v ", id, replicationPartnerId, invokeOnUpstreamPartner)
+	}
+
+	err := svc.objectSet.Demote(&id, &replicationPartnerId, invokeOnUpstreamPartner)
+	return err
+}
+
+// HandoverVolumeCollection - gracefully transfer ownership of the specified volume collection. This action can be used to pass control of the volume collection to the downstream replication partner. Ownership and full control over the volume collection will be given to the downstream replication partner. The volumes associated with the volume collection will be set to offline prior to the final snapshot being taken and replicated, thus ensuring full data synchronization as part of the transfer. By default, the new owner will automatically begin replicating the volume collection back to this node when the handover completes.
+//   Required parameters:
+//       id - ID of the volume collection be handed over to the downstream replication partner.
+//       replicationPartnerId - ID of the new owner.
+
+//   Optional parameters:
+//       noReverse - Do not automatically reverse direction of replication. Using this argument will prevent the new owner from automatically replicating the volume collection to this node when the handover completes. The default behavior is to enable replication back to this node. Default: 'false'.
+//       invokeOnUpstreamPartner - Invoke handover request on upstream partner. Default: 'false'. This operation is not supported for synchronous replication volume vollections.
+//       overrideUpstreamDown - Allow the handover request to proceed even if upstream array is down. The default behavior is to return an error when upstream is down. This option is applicable for synchronous replication only. Default: 'false'.
+
+func (svc *VolumeCollectionService) HandoverVolumeCollection(id string, replicationPartnerId string, noReverse *bool, invokeOnUpstreamPartner *bool, overrideUpstreamDown *bool) error {
+
+	if len(id) == 0 || len(replicationPartnerId) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, replicationPartnerId:%v, noReverse:%v, invokeOnUpstreamPartner:%v, overrideUpstreamDown:%v ", id, replicationPartnerId, noReverse, invokeOnUpstreamPartner, overrideUpstreamDown)
+	}
+
+	err := svc.objectSet.Handover(&id, &replicationPartnerId, noReverse, invokeOnUpstreamPartner, overrideUpstreamDown)
+	return err
+}
+
+// AbortHandoverVolumeCollection - abort in-progress handover. If for some reason a previously invoked handover request is unable to complete, this action can be used to cancel it. This operation is not supported for synchronous replication volume collections.
+//   Required parameters:
+//       id - ID of the volume collection on which to abort handover.
+
+func (svc *VolumeCollectionService) AbortHandoverVolumeCollection(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	err := svc.objectSet.AbortHandover(&id)
+	return err
+}
+
+// ValidateVolumeCollection - validate a volume collection with either Microsoft VSS or VMware application synchronization.
+//   Required parameters:
+//       id - ID of the volume collection that is to be validated.
+
+func (svc *VolumeCollectionService) ValidateVolumeCollection(id string) (*nimbleos.NsAppServerResp, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+	}
+
+	resp, err := svc.objectSet.Validate(&id)
+	return resp, err
+
+}

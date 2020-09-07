@@ -107,3 +107,39 @@ func (svc *InitiatorGroupService) DeleteInitiatorGroup(id string) error {
 	}
 	return nil
 }
+
+// SuggestLunInitiatorGroup - suggest an LU number for the volume and initiator group combination.
+//   Required parameters:
+//       id - ID of the initiator group.
+
+//   Optional parameters:
+//       volId - ID of the volume.
+
+func (svc *InitiatorGroupService) SuggestLunInitiatorGroup(id string, volId *string) (*nimbleos.NsLunReturn, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified id:%v, volId:%v ", id, volId)
+	}
+
+	resp, err := svc.objectSet.SuggestLun(&id, volId)
+	return resp, err
+
+}
+
+// ValidateLunInitiatorGroup - validate an LU number for the volume and initiator group combination.
+//   Required parameters:
+//       id - ID of the initiator group.
+//       lun - LU number to validate in decimal.
+
+//   Optional parameters:
+//       volId - ID of the volume.
+
+func (svc *InitiatorGroupService) ValidateLunInitiatorGroup(id string, volId *string, lun uint64) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, volId:%v, lun:%v ", id, volId, lun)
+	}
+
+	err := svc.objectSet.ValidateLun(&id, volId, &lun)
+	return err
+}

@@ -108,3 +108,20 @@ func (svc *MasterKeyService) DeleteMasterKey(id string) error {
 	}
 	return nil
 }
+
+// PurgeInactiveMasterKey - purges encryption keys that have been inactive for the age or longer. If you do not specify an age, the keys will be purged immediately.
+//   Required parameters:
+//       id - Identifier for the master key.
+
+//   Optional parameters:
+//       age - Minimum age (in hours) of inactive encryption keys to be purged. '0' indicates to purge the keys immediately.
+
+func (svc *MasterKeyService) PurgeInactiveMasterKey(id string, age *int) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("error: invalid parameter specified id:%v, age:%v ", id, age)
+	}
+
+	err := svc.objectSet.PurgeInactive(&id, age)
+	return err
+}

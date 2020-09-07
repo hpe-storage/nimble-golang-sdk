@@ -128,3 +128,20 @@ func (svc *SnapshotService) DeleteSnapshot(id string) error {
 	}
 	return nil
 }
+
+// BulkCreateSnapshots - create snapshots on the given set of volumes.
+//   Required parameters:
+//       snapVolList - List of volumes to snapshot and corresponding snapshot creation attributes. VSS application-synchronized snapshot must specify the 'writable' parameter and set it to true.
+//       replicate - Allow snapshot to be replicated.
+//       vssSnap - VSS app-synchronized snapshot; we don't support creation of non app-synchronized sanpshots through this interface; must be set to true.
+
+func (svc *SnapshotService) BulkCreateSnapshots(snapVolList []*nimbleos.NsSnapVol, replicate bool, vssSnap bool) (*nimbleos.NsSnapVolListReturn, error) {
+
+	if len(snapVolList) == 0 {
+		return nil, fmt.Errorf("error: invalid parameter specified snapVolList:%v, replicate:%v, vssSnap:%v ", snapVolList, replicate, vssSnap)
+	}
+
+	resp, err := svc.objectSet.BulkCreate(snapVolList, &replicate, &vssSnap)
+	return resp, err
+
+}
