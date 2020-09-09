@@ -25,7 +25,7 @@ func NewUserService(gs *NsGroupService) *UserService {
 // GetUsers - method returns a array of pointers of type "Users"
 func (svc *UserService) GetUsers(params *param.GetParams) ([]*nimbleos.User, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetUsers: invalid parameter specified, %v", params)
 	}
 
 	userResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *UserService) GetUsers(params *param.GetParams) ([]*nimbleos.User, err
 // CreateUser - method creates a "User"
 func (svc *UserService) CreateUser(obj *nimbleos.User) (*nimbleos.User, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateUser: invalid parameter specified, %v", obj)
 	}
 
 	userResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *UserService) CreateUser(obj *nimbleos.User) (*nimbleos.User, error) {
 // UpdateUser - method modifies  the "User"
 func (svc *UserService) UpdateUser(id string, obj *nimbleos.User) (*nimbleos.User, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateUser: invalid parameter specified, %v", obj)
 	}
 
 	userResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *UserService) UpdateUser(id string, obj *nimbleos.User) (*nimbleos.Use
 // GetUserById - method returns a pointer to "User"
 func (svc *UserService) GetUserById(id string) (*nimbleos.User, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetUserById: invalid parameter specified, %v", id)
 	}
 
 	userResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *UserService) GetUserByName(name string) (*nimbleos.User, error) {
 // DeleteUser - deletes the "User"
 func (svc *UserService) DeleteUser(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteUser: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -114,10 +114,9 @@ func (svc *UserService) DeleteUser(id string) error {
 func (svc *UserService) UnlockUser(id string) (*nimbleos.NsUserLockStatus, error) {
 
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return nil, fmt.Errorf("UnlockUser: invalid parameter specified id: %v ", id)
 	}
 
 	resp, err := svc.objectSet.Unlock(&id)
 	return resp, err
-
 }

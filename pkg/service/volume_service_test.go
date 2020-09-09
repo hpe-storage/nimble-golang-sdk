@@ -27,7 +27,7 @@ func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 		return nil
 	}
 	// set debug
-	groupService.SetDebug()
+	//groupService.SetDebug()
 	return groupService
 }
 

@@ -26,7 +26,7 @@ func NewSnapshotCollectionService(gs *NsGroupService) *SnapshotCollectionService
 // GetSnapshotCollections - method returns a array of pointers of type "SnapshotCollections"
 func (svc *SnapshotCollectionService) GetSnapshotCollections(params *param.GetParams) ([]*nimbleos.SnapshotCollection, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetSnapshotCollections: invalid parameter specified, %v", params)
 	}
 
 	snapshotCollectionResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -39,7 +39,7 @@ func (svc *SnapshotCollectionService) GetSnapshotCollections(params *param.GetPa
 // CreateSnapshotCollection - method creates a "SnapshotCollection"
 func (svc *SnapshotCollectionService) CreateSnapshotCollection(obj *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateSnapshotCollection: invalid parameter specified, %v", obj)
 	}
 
 	snapshotCollectionResp, err := svc.objectSet.CreateObject(obj)
@@ -52,7 +52,7 @@ func (svc *SnapshotCollectionService) CreateSnapshotCollection(obj *nimbleos.Sna
 // UpdateSnapshotCollection - method modifies  the "SnapshotCollection"
 func (svc *SnapshotCollectionService) UpdateSnapshotCollection(id string, obj *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateSnapshotCollection: invalid parameter specified, %v", obj)
 	}
 
 	snapshotCollectionResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -65,7 +65,7 @@ func (svc *SnapshotCollectionService) UpdateSnapshotCollection(id string, obj *n
 // GetSnapshotCollectionById - method returns a pointer to "SnapshotCollection"
 func (svc *SnapshotCollectionService) GetSnapshotCollectionById(id string) (*nimbleos.SnapshotCollection, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetSnapshotCollectionById: invalid parameter specified, %v", id)
 	}
 
 	snapshotCollectionResp, err := svc.objectSet.GetObject(id)
@@ -99,7 +99,7 @@ func (svc *SnapshotCollectionService) GetSnapshotCollectionByName(name string) (
 // DeleteSnapshotCollection - deletes the "SnapshotCollection"
 func (svc *SnapshotCollectionService) DeleteSnapshotCollection(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteSnapshotCollection: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

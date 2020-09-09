@@ -25,7 +25,7 @@ func NewFibreChannelInterfaceService(gs *NsGroupService) *FibreChannelInterfaceS
 // GetFibreChannelInterfaces - method returns a array of pointers of type "FibreChannelInterfaces"
 func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaces(params *param.GetParams) ([]*nimbleos.FibreChannelInterface, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetFibreChannelInterfaces: invalid parameter specified, %v", params)
 	}
 
 	fibreChannelInterfaceResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaces(params *param
 // CreateFibreChannelInterface - method creates a "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) CreateFibreChannelInterface(obj *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateFibreChannelInterface: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelInterfaceResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *FibreChannelInterfaceService) CreateFibreChannelInterface(obj *nimble
 // UpdateFibreChannelInterface - method modifies  the "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) UpdateFibreChannelInterface(id string, obj *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateFibreChannelInterface: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelInterfaceResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *FibreChannelInterfaceService) UpdateFibreChannelInterface(id string, 
 // GetFibreChannelInterfaceById - method returns a pointer to "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceById(id string) (*nimbleos.FibreChannelInterface, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetFibreChannelInterfaceById: invalid parameter specified, %v", id)
 	}
 
 	fibreChannelInterfaceResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceByName(name str
 // DeleteFibreChannelInterface - deletes the "FibreChannelInterface"
 func (svc *FibreChannelInterfaceService) DeleteFibreChannelInterface(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteFibreChannelInterface: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

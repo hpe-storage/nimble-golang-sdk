@@ -25,7 +25,7 @@ func NewUserGroupService(gs *NsGroupService) *UserGroupService {
 // GetUserGroups - method returns a array of pointers of type "UserGroups"
 func (svc *UserGroupService) GetUserGroups(params *param.GetParams) ([]*nimbleos.UserGroup, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetUserGroups: invalid parameter specified, %v", params)
 	}
 
 	userGroupResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *UserGroupService) GetUserGroups(params *param.GetParams) ([]*nimbleos
 // CreateUserGroup - method creates a "UserGroup"
 func (svc *UserGroupService) CreateUserGroup(obj *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateUserGroup: invalid parameter specified, %v", obj)
 	}
 
 	userGroupResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *UserGroupService) CreateUserGroup(obj *nimbleos.UserGroup) (*nimbleos
 // UpdateUserGroup - method modifies  the "UserGroup"
 func (svc *UserGroupService) UpdateUserGroup(id string, obj *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateUserGroup: invalid parameter specified, %v", obj)
 	}
 
 	userGroupResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *UserGroupService) UpdateUserGroup(id string, obj *nimbleos.UserGroup)
 // GetUserGroupById - method returns a pointer to "UserGroup"
 func (svc *UserGroupService) GetUserGroupById(id string) (*nimbleos.UserGroup, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetUserGroupById: invalid parameter specified, %v", id)
 	}
 
 	userGroupResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *UserGroupService) GetUserGroupByName(name string) (*nimbleos.UserGrou
 // DeleteUserGroup - deletes the "UserGroup"
 func (svc *UserGroupService) DeleteUserGroup(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteUserGroup: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

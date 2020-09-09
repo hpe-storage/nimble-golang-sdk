@@ -27,7 +27,7 @@ func NewChapUserService(gs *NsGroupService) *ChapUserService {
 // GetChapUsers - method returns a array of pointers of type "ChapUsers"
 func (svc *ChapUserService) GetChapUsers(params *param.GetParams) ([]*nimbleos.ChapUser, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetChapUsers: invalid parameter specified, %v", params)
 	}
 
 	chapUserResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -40,7 +40,7 @@ func (svc *ChapUserService) GetChapUsers(params *param.GetParams) ([]*nimbleos.C
 // CreateChapUser - method creates a "ChapUser"
 func (svc *ChapUserService) CreateChapUser(obj *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateChapUser: invalid parameter specified, %v", obj)
 	}
 
 	chapUserResp, err := svc.objectSet.CreateObject(obj)
@@ -53,7 +53,7 @@ func (svc *ChapUserService) CreateChapUser(obj *nimbleos.ChapUser) (*nimbleos.Ch
 // UpdateChapUser - method modifies  the "ChapUser"
 func (svc *ChapUserService) UpdateChapUser(id string, obj *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateChapUser: invalid parameter specified, %v", obj)
 	}
 
 	chapUserResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -66,7 +66,7 @@ func (svc *ChapUserService) UpdateChapUser(id string, obj *nimbleos.ChapUser) (*
 // GetChapUserById - method returns a pointer to "ChapUser"
 func (svc *ChapUserService) GetChapUserById(id string) (*nimbleos.ChapUser, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetChapUserById: invalid parameter specified, %v", id)
 	}
 
 	chapUserResp, err := svc.objectSet.GetObject(id)
@@ -100,7 +100,7 @@ func (svc *ChapUserService) GetChapUserByName(name string) (*nimbleos.ChapUser, 
 // DeleteChapUser - deletes the "ChapUser"
 func (svc *ChapUserService) DeleteChapUser(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteChapUser: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

@@ -25,7 +25,7 @@ func NewUserPolicyService(gs *NsGroupService) *UserPolicyService {
 // GetUserPolicies - method returns a array of pointers of type "UserPolicies"
 func (svc *UserPolicyService) GetUserPolicies(params *param.GetParams) ([]*nimbleos.UserPolicy, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetUserPolicies: invalid parameter specified, %v", params)
 	}
 
 	userPolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *UserPolicyService) GetUserPolicies(params *param.GetParams) ([]*nimbl
 // CreateUserPolicy - method creates a "UserPolicy"
 func (svc *UserPolicyService) CreateUserPolicy(obj *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateUserPolicy: invalid parameter specified, %v", obj)
 	}
 
 	userPolicyResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *UserPolicyService) CreateUserPolicy(obj *nimbleos.UserPolicy) (*nimbl
 // UpdateUserPolicy - method modifies  the "UserPolicy"
 func (svc *UserPolicyService) UpdateUserPolicy(id string, obj *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateUserPolicy: invalid parameter specified, %v", obj)
 	}
 
 	userPolicyResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *UserPolicyService) UpdateUserPolicy(id string, obj *nimbleos.UserPoli
 // GetUserPolicyById - method returns a pointer to "UserPolicy"
 func (svc *UserPolicyService) GetUserPolicyById(id string) (*nimbleos.UserPolicy, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetUserPolicyById: invalid parameter specified, %v", id)
 	}
 
 	userPolicyResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *UserPolicyService) GetUserPolicyById(id string) (*nimbleos.UserPolicy
 // DeleteUserPolicy - deletes the "UserPolicy"
 func (svc *UserPolicyService) DeleteUserPolicy(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteUserPolicy: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

@@ -25,7 +25,7 @@ func NewEventService(gs *NsGroupService) *EventService {
 // GetEvents - method returns a array of pointers of type "Events"
 func (svc *EventService) GetEvents(params *param.GetParams) ([]*nimbleos.Event, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetEvents: invalid parameter specified, %v", params)
 	}
 
 	eventResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *EventService) GetEvents(params *param.GetParams) ([]*nimbleos.Event, 
 // CreateEvent - method creates a "Event"
 func (svc *EventService) CreateEvent(obj *nimbleos.Event) (*nimbleos.Event, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateEvent: invalid parameter specified, %v", obj)
 	}
 
 	eventResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *EventService) CreateEvent(obj *nimbleos.Event) (*nimbleos.Event, erro
 // UpdateEvent - method modifies  the "Event"
 func (svc *EventService) UpdateEvent(id string, obj *nimbleos.Event) (*nimbleos.Event, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateEvent: invalid parameter specified, %v", obj)
 	}
 
 	eventResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *EventService) UpdateEvent(id string, obj *nimbleos.Event) (*nimbleos.
 // GetEventById - method returns a pointer to "Event"
 func (svc *EventService) GetEventById(id string) (*nimbleos.Event, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetEventById: invalid parameter specified, %v", id)
 	}
 
 	eventResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *EventService) GetEventByName(name string) (*nimbleos.Event, error) {
 // DeleteEvent - deletes the "Event"
 func (svc *EventService) DeleteEvent(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteEvent: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

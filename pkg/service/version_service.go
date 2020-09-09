@@ -25,7 +25,7 @@ func NewVersionService(gs *NsGroupService) *VersionService {
 // GetVersions - method returns a array of pointers of type "Versions"
 func (svc *VersionService) GetVersions(params *param.GetParams) ([]*nimbleos.Version, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetVersions: invalid parameter specified, %v", params)
 	}
 
 	versionResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *VersionService) GetVersions(params *param.GetParams) ([]*nimbleos.Ver
 // CreateVersion - method creates a "Version"
 func (svc *VersionService) CreateVersion(obj *nimbleos.Version) (*nimbleos.Version, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateVersion: invalid parameter specified, %v", obj)
 	}
 
 	versionResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *VersionService) CreateVersion(obj *nimbleos.Version) (*nimbleos.Versi
 // UpdateVersion - method modifies  the "Version"
 func (svc *VersionService) UpdateVersion(id string, obj *nimbleos.Version) (*nimbleos.Version, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateVersion: invalid parameter specified, %v", obj)
 	}
 
 	versionResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -85,7 +85,7 @@ func (svc *VersionService) GetVersionByName(name string) (*nimbleos.Version, err
 // DeleteVersion - deletes the "Version"
 func (svc *VersionService) DeleteVersion(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteVersion: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

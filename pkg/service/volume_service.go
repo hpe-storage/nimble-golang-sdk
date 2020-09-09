@@ -26,7 +26,7 @@ func NewVolumeService(gs *NsGroupService) *VolumeService {
 // GetVolumes - method returns a array of pointers of type "Volumes"
 func (svc *VolumeService) GetVolumes(params *param.GetParams) ([]*nimbleos.Volume, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetVolumes: invalid parameter specified, %v", params)
 	}
 
 	volumeResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -39,7 +39,7 @@ func (svc *VolumeService) GetVolumes(params *param.GetParams) ([]*nimbleos.Volum
 // CreateVolume - method creates a "Volume"
 func (svc *VolumeService) CreateVolume(obj *nimbleos.Volume) (*nimbleos.Volume, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateVolume: invalid parameter specified, %v", obj)
 	}
 
 	volumeResp, err := svc.objectSet.CreateObject(obj)
@@ -52,7 +52,7 @@ func (svc *VolumeService) CreateVolume(obj *nimbleos.Volume) (*nimbleos.Volume, 
 // UpdateVolume - method modifies  the "Volume"
 func (svc *VolumeService) UpdateVolume(id string, obj *nimbleos.Volume) (*nimbleos.Volume, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateVolume: invalid parameter specified, %v", obj)
 	}
 
 	volumeResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -65,7 +65,7 @@ func (svc *VolumeService) UpdateVolume(id string, obj *nimbleos.Volume) (*nimble
 // GetVolumeById - method returns a pointer to "Volume"
 func (svc *VolumeService) GetVolumeById(id string) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetVolumeById: invalid parameter specified, %v", id)
 	}
 
 	volumeResp, err := svc.objectSet.GetObject(id)
@@ -119,7 +119,7 @@ func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*nimbleo
 //OnlineVolume - method makes the volume online
 func (svc *VolumeService) OnlineVolume(id string, force bool) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %s", id)
+		return nil, fmt.Errorf("OnlineVolume: invalid parameter specified, %s", id)
 	}
 
 	volumeResp, err := svc.UpdateVolume(id, &nimbleos.Volume{
@@ -135,7 +135,7 @@ func (svc *VolumeService) OnlineVolume(id string, force bool) (*nimbleos.Volume,
 // OfflineVolume - makes the volume offline
 func (svc *VolumeService) OfflineVolume(id string, force bool) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %s", id)
+		return nil, fmt.Errorf("OfflineVolume: invalid parameter specified, %s", id)
 	}
 
 	volumeResp, err := svc.UpdateVolume(id, &nimbleos.Volume{
@@ -152,7 +152,7 @@ func (svc *VolumeService) OfflineVolume(id string, force bool) (*nimbleos.Volume
 // DeleteVolume - deletes the volume
 func (svc *VolumeService) DeleteVolume(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteVolume: invalid parameter specified, %s", id)
 	}
 	_, err := svc.OfflineVolume(id, false)
 	if err != nil {
@@ -169,7 +169,7 @@ func (svc *VolumeService) DeleteVolume(id string) error {
 // AssociateVolume - add a volume to a volume collection
 func (svc *VolumeService) AssociateVolume(volId string, volcollId string) error {
 	if len(volId) == 0 || len(volcollId) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", volId)
+		return fmt.Errorf("AssociateVolume: invalid parameter specified, %s", volId)
 	}
 
 	_, err := svc.UpdateVolume(volId, &nimbleos.Volume{
@@ -184,7 +184,7 @@ func (svc *VolumeService) AssociateVolume(volId string, volcollId string) error 
 // DisassociateVolume - remove a volume from a volume collection
 func (svc *VolumeService) DisassociateVolume(volId string) error {
 	if len(volId) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", volId)
+		return fmt.Errorf("DisassociateVolume: invalid parameter specified, %s", volId)
 	}
 
 	_, err := svc.UpdateVolume(volId, &nimbleos.Volume{
@@ -205,7 +205,7 @@ func (svc *VolumeService) DisassociateVolume(volId string) error {
 func (svc *VolumeService) RestoreVolume(id string, baseSnapId string) error {
 
 	if len(id) == 0 || len(baseSnapId) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, baseSnapId:%v ", id, baseSnapId)
+		return fmt.Errorf("RestoreVolume: invalid parameter specified id: %v, baseSnapId: %v ", id, baseSnapId)
 	}
 
 	err := svc.objectSet.Restore(&id, &baseSnapId)
@@ -223,12 +223,11 @@ func (svc *VolumeService) RestoreVolume(id string, baseSnapId string) error {
 func (svc *VolumeService) MoveVolume(id string, destPoolId string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
 
 	if len(id) == 0 || len(destPoolId) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified id:%v, destPoolId:%v, forceVvol:%v ", id, destPoolId, forceVvol)
+		return nil, fmt.Errorf("MoveVolume: invalid parameter specified id: %v, destPoolId: %v ", id, destPoolId)
 	}
 
 	resp, err := svc.objectSet.Move(&id, &destPoolId, forceVvol)
 	return resp, err
-
 }
 
 // BulkMoveVolumes - move volumes and their related volumes to another pool. To change a single volume's folder assignment (while remaining in the same pool), use a volume update operation to change the folder_id attribute.
@@ -242,12 +241,11 @@ func (svc *VolumeService) MoveVolume(id string, destPoolId string, forceVvol *bo
 func (svc *VolumeService) BulkMoveVolumes(volIds []*string, destPoolId string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
 
 	if len(volIds) == 0 || len(destPoolId) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified volIds:%v, destPoolId:%v, forceVvol:%v ", volIds, destPoolId, forceVvol)
+		return nil, fmt.Errorf("BulkMoveVolume: invalid parameter specified volIds: %v, destPoolId: %v ", volIds, destPoolId)
 	}
 
 	resp, err := svc.objectSet.BulkMove(volIds, &destPoolId, forceVvol)
 	return resp, err
-
 }
 
 // AbortMoveVolume - abort the in-progress move of the specified volume to another pool.
@@ -257,7 +255,7 @@ func (svc *VolumeService) BulkMoveVolumes(volIds []*string, destPoolId string, f
 func (svc *VolumeService) AbortMoveVolume(id string) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return fmt.Errorf("AbortMoveVolume: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.AbortMove(&id)
@@ -272,7 +270,7 @@ func (svc *VolumeService) AbortMoveVolume(id string) error {
 func (svc *VolumeService) BulkSetDedupeVolumes(volIds []*string, dedupeEnabled bool) error {
 
 	if len(volIds) == 0 {
-		return fmt.Errorf("error: invalid parameter specified volIds:%v, dedupeEnabled:%v ", volIds, dedupeEnabled)
+		return fmt.Errorf("BulkSetDedupeVolume: invalid parameter specified volIds: %v ", volIds)
 	}
 
 	err := svc.objectSet.BulkSetDedupe(volIds, &dedupeEnabled)
@@ -287,7 +285,7 @@ func (svc *VolumeService) BulkSetDedupeVolumes(volIds []*string, dedupeEnabled b
 func (svc *VolumeService) BulkSetOnlineAndOfflineVolumes(volIds []*string, online bool) error {
 
 	if len(volIds) == 0 {
-		return fmt.Errorf("error: invalid parameter specified volIds:%v, online:%v ", volIds, online)
+		return fmt.Errorf("BulkSetOnlineAndOfflineVolume: invalid parameter specified volIds: %v ", volIds)
 	}
 
 	err := svc.objectSet.BulkSetOnlineAndOffline(volIds, &online)

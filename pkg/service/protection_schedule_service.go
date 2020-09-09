@@ -25,7 +25,7 @@ func NewProtectionScheduleService(gs *NsGroupService) *ProtectionScheduleService
 // GetProtectionSchedules - method returns a array of pointers of type "ProtectionSchedules"
 func (svc *ProtectionScheduleService) GetProtectionSchedules(params *param.GetParams) ([]*nimbleos.ProtectionSchedule, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetProtectionSchedules: invalid parameter specified, %v", params)
 	}
 
 	protectionScheduleResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ProtectionScheduleService) GetProtectionSchedules(params *param.GetPa
 // CreateProtectionSchedule - method creates a "ProtectionSchedule"
 func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateProtectionSchedule: invalid parameter specified, %v", obj)
 	}
 
 	protectionScheduleResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ProtectionScheduleService) CreateProtectionSchedule(obj *nimbleos.Pro
 // UpdateProtectionSchedule - method modifies  the "ProtectionSchedule"
 func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateProtectionSchedule: invalid parameter specified, %v", obj)
 	}
 
 	protectionScheduleResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ProtectionScheduleService) UpdateProtectionSchedule(id string, obj *n
 // GetProtectionScheduleById - method returns a pointer to "ProtectionSchedule"
 func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*nimbleos.ProtectionSchedule, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetProtectionScheduleById: invalid parameter specified, %v", id)
 	}
 
 	protectionScheduleResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *ProtectionScheduleService) GetProtectionScheduleByName(name string) (
 // DeleteProtectionSchedule - deletes the "ProtectionSchedule"
 func (svc *ProtectionScheduleService) DeleteProtectionSchedule(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteProtectionSchedule: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

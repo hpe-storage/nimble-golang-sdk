@@ -25,7 +25,7 @@ func NewApplicationCategoryService(gs *NsGroupService) *ApplicationCategoryServi
 // GetApplicationCategories - method returns a array of pointers of type "ApplicationCategories"
 func (svc *ApplicationCategoryService) GetApplicationCategories(params *param.GetParams) ([]*nimbleos.ApplicationCategory, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetApplicationCategories: invalid parameter specified, %v", params)
 	}
 
 	applicationCategoryResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ApplicationCategoryService) GetApplicationCategories(params *param.Ge
 // CreateApplicationCategory - method creates a "ApplicationCategory"
 func (svc *ApplicationCategoryService) CreateApplicationCategory(obj *nimbleos.ApplicationCategory) (*nimbleos.ApplicationCategory, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateApplicationCategory: invalid parameter specified, %v", obj)
 	}
 
 	applicationCategoryResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ApplicationCategoryService) CreateApplicationCategory(obj *nimbleos.A
 // UpdateApplicationCategory - method modifies  the "ApplicationCategory"
 func (svc *ApplicationCategoryService) UpdateApplicationCategory(id string, obj *nimbleos.ApplicationCategory) (*nimbleos.ApplicationCategory, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateApplicationCategory: invalid parameter specified, %v", obj)
 	}
 
 	applicationCategoryResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ApplicationCategoryService) UpdateApplicationCategory(id string, obj 
 // GetApplicationCategoryById - method returns a pointer to "ApplicationCategory"
 func (svc *ApplicationCategoryService) GetApplicationCategoryById(id string) (*nimbleos.ApplicationCategory, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetApplicationCategoryById: invalid parameter specified, %v", id)
 	}
 
 	applicationCategoryResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *ApplicationCategoryService) GetApplicationCategoryByName(name string)
 // DeleteApplicationCategory - deletes the "ApplicationCategory"
 func (svc *ApplicationCategoryService) DeleteApplicationCategory(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteApplicationCategory: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

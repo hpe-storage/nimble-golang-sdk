@@ -26,7 +26,7 @@ func NewVolumeCollectionService(gs *NsGroupService) *VolumeCollectionService {
 // GetVolumeCollections - method returns a array of pointers of type "VolumeCollections"
 func (svc *VolumeCollectionService) GetVolumeCollections(params *param.GetParams) ([]*nimbleos.VolumeCollection, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetVolumeCollections: invalid parameter specified, %v", params)
 	}
 
 	volumeCollectionResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -39,7 +39,7 @@ func (svc *VolumeCollectionService) GetVolumeCollections(params *param.GetParams
 // CreateVolumeCollection - method creates a "VolumeCollection"
 func (svc *VolumeCollectionService) CreateVolumeCollection(obj *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateVolumeCollection: invalid parameter specified, %v", obj)
 	}
 
 	volumeCollectionResp, err := svc.objectSet.CreateObject(obj)
@@ -52,7 +52,7 @@ func (svc *VolumeCollectionService) CreateVolumeCollection(obj *nimbleos.VolumeC
 // UpdateVolumeCollection - method modifies  the "VolumeCollection"
 func (svc *VolumeCollectionService) UpdateVolumeCollection(id string, obj *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateVolumeCollection: invalid parameter specified, %v", obj)
 	}
 
 	volumeCollectionResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -65,7 +65,7 @@ func (svc *VolumeCollectionService) UpdateVolumeCollection(id string, obj *nimbl
 // GetVolumeCollectionById - method returns a pointer to "VolumeCollection"
 func (svc *VolumeCollectionService) GetVolumeCollectionById(id string) (*nimbleos.VolumeCollection, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetVolumeCollectionById: invalid parameter specified, %v", id)
 	}
 
 	volumeCollectionResp, err := svc.objectSet.GetObject(id)
@@ -99,7 +99,7 @@ func (svc *VolumeCollectionService) GetVolumeCollectionByName(name string) (*nim
 // DeleteVolumeCollection - deletes the "VolumeCollection"
 func (svc *VolumeCollectionService) DeleteVolumeCollection(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteVolumeCollection: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -115,7 +115,7 @@ func (svc *VolumeCollectionService) DeleteVolumeCollection(id string) error {
 func (svc *VolumeCollectionService) PromoteVolumeCollection(id string) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return fmt.Errorf("PromoteVolumeCollection: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.Promote(&id)
@@ -133,7 +133,7 @@ func (svc *VolumeCollectionService) PromoteVolumeCollection(id string) error {
 func (svc *VolumeCollectionService) DemoteVolumeCollection(id string, replicationPartnerId string, invokeOnUpstreamPartner *bool) error {
 
 	if len(id) == 0 || len(replicationPartnerId) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, replicationPartnerId:%v, invokeOnUpstreamPartner:%v ", id, replicationPartnerId, invokeOnUpstreamPartner)
+		return fmt.Errorf("DemoteVolumeCollection: invalid parameter specified id: %v, replicationPartnerId: %v ", id, replicationPartnerId)
 	}
 
 	err := svc.objectSet.Demote(&id, &replicationPartnerId, invokeOnUpstreamPartner)
@@ -153,7 +153,7 @@ func (svc *VolumeCollectionService) DemoteVolumeCollection(id string, replicatio
 func (svc *VolumeCollectionService) HandoverVolumeCollection(id string, replicationPartnerId string, noReverse *bool, invokeOnUpstreamPartner *bool, overrideUpstreamDown *bool) error {
 
 	if len(id) == 0 || len(replicationPartnerId) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, replicationPartnerId:%v, noReverse:%v, invokeOnUpstreamPartner:%v, overrideUpstreamDown:%v ", id, replicationPartnerId, noReverse, invokeOnUpstreamPartner, overrideUpstreamDown)
+		return fmt.Errorf("HandoverVolumeCollection: invalid parameter specified id: %v, replicationPartnerId: %v ", id, replicationPartnerId)
 	}
 
 	err := svc.objectSet.Handover(&id, &replicationPartnerId, noReverse, invokeOnUpstreamPartner, overrideUpstreamDown)
@@ -167,7 +167,7 @@ func (svc *VolumeCollectionService) HandoverVolumeCollection(id string, replicat
 func (svc *VolumeCollectionService) AbortHandoverVolumeCollection(id string) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return fmt.Errorf("AbortHandoverVolumeCollection: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.AbortHandover(&id)
@@ -181,10 +181,9 @@ func (svc *VolumeCollectionService) AbortHandoverVolumeCollection(id string) err
 func (svc *VolumeCollectionService) ValidateVolumeCollection(id string) (*nimbleos.NsAppServerResp, error) {
 
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return nil, fmt.Errorf("ValidateVolumeCollection: invalid parameter specified id: %v ", id)
 	}
 
 	resp, err := svc.objectSet.Validate(&id)
 	return resp, err
-
 }

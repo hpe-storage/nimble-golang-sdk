@@ -25,7 +25,7 @@ func NewActiveDirectoryMembershipService(gs *NsGroupService) *ActiveDirectoryMem
 // GetActiveDirectoryMemberships - method returns a array of pointers of type "ActiveDirectoryMemberships"
 func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(params *param.GetParams) ([]*nimbleos.ActiveDirectoryMembership, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetActiveDirectoryMemberships: invalid parameter specified, %v", params)
 	}
 
 	activeDirectoryMembershipResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(param
 // CreateActiveDirectoryMembership - method creates a "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) CreateActiveDirectoryMembership(obj *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateActiveDirectoryMembership: invalid parameter specified, %v", obj)
 	}
 
 	activeDirectoryMembershipResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ActiveDirectoryMembershipService) CreateActiveDirectoryMembership(obj
 // UpdateActiveDirectoryMembership - method modifies  the "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) UpdateActiveDirectoryMembership(id string, obj *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateActiveDirectoryMembership: invalid parameter specified, %v", obj)
 	}
 
 	activeDirectoryMembershipResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ActiveDirectoryMembershipService) UpdateActiveDirectoryMembership(id 
 // GetActiveDirectoryMembershipById - method returns a pointer to "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipById(id string) (*nimbleos.ActiveDirectoryMembership, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetActiveDirectoryMembershipById: invalid parameter specified, %v", id)
 	}
 
 	activeDirectoryMembershipResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMembershipByName(
 // DeleteActiveDirectoryMembership - deletes the "ActiveDirectoryMembership"
 func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteActiveDirectoryMembership: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -110,7 +110,7 @@ func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id 
 // RemoveActiveDirectoryMembership - leaves the Active Directory domain.
 //   Required parameters:
 //       id - ID of the active directory.
-//       user - Name of the Activer Directory user with the privilege to leave the domain.
+//       user - "Name of the Active Directory user with the privilege to leave the domain."
 //       password - Password for the Active Directory user.
 
 //   Optional parameters:
@@ -119,7 +119,7 @@ func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id 
 func (svc *ActiveDirectoryMembershipService) RemoveActiveDirectoryMembership(id string, user string, password string, force *bool) error {
 
 	if len(id) == 0 || len(user) == 0 || len(password) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, user:%v, password:%v, force:%v ", id, user, password, force)
+		return fmt.Errorf("RemoveActiveDirectoryMembership: invalid parameter specified id: %v, user: %v, password: %v ", id, user, &password)
 	}
 
 	err := svc.objectSet.Remove(&id, &user, &password, force)
@@ -133,12 +133,11 @@ func (svc *ActiveDirectoryMembershipService) RemoveActiveDirectoryMembership(id 
 func (svc *ActiveDirectoryMembershipService) ReportStatusActiveDirectoryMembership(id string) (*nimbleos.NsADReportStatusReturn, error) {
 
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return nil, fmt.Errorf("ReportStatusActiveDirectoryMembership: invalid parameter specified id: %v ", id)
 	}
 
 	resp, err := svc.objectSet.ReportStatus(&id)
 	return resp, err
-
 }
 
 // TestUserActiveDirectoryMembership - tests whether the user exist in the Active Directory. If the user is present, then the user's group and role information is reported.
@@ -149,12 +148,11 @@ func (svc *ActiveDirectoryMembershipService) ReportStatusActiveDirectoryMembersh
 func (svc *ActiveDirectoryMembershipService) TestUserActiveDirectoryMembership(id string, name string) (*nimbleos.NsADTestUserReturn, error) {
 
 	if len(id) == 0 || len(name) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified id:%v, name:%v ", id, name)
+		return nil, fmt.Errorf("TestUserActiveDirectoryMembership: invalid parameter specified id: %v, name: %v ", id, name)
 	}
 
 	resp, err := svc.objectSet.TestUser(&id, &name)
 	return resp, err
-
 }
 
 // TestGroupActiveDirectoryMembership - tests whether the user group exist in the Active Directory.
@@ -165,7 +163,7 @@ func (svc *ActiveDirectoryMembershipService) TestUserActiveDirectoryMembership(i
 func (svc *ActiveDirectoryMembershipService) TestGroupActiveDirectoryMembership(id string, name string) error {
 
 	if len(id) == 0 || len(name) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, name:%v ", id, name)
+		return fmt.Errorf("TestGroupActiveDirectoryMembership: invalid parameter specified id: %v, name: %v ", id, name)
 	}
 
 	err := svc.objectSet.TestGroup(&id, &name)

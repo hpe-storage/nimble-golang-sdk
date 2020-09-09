@@ -25,7 +25,7 @@ func NewFibreChannelInitiatorAliasService(gs *NsGroupService) *FibreChannelIniti
 // GetFibreChannelInitiatorAliass - method returns a array of pointers of type "FibreChannelInitiatorAliass"
 func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliass(params *param.GetParams) ([]*nimbleos.FibreChannelInitiatorAlias, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetFibreChannelInitiatorAliass: invalid parameter specified, %v", params)
 	}
 
 	fibreChannelInitiatorAliasResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliass(par
 // CreateFibreChannelInitiatorAlias - method creates a "FibreChannelInitiatorAlias"
 func (svc *FibreChannelInitiatorAliasService) CreateFibreChannelInitiatorAlias(obj *nimbleos.FibreChannelInitiatorAlias) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateFibreChannelInitiatorAlias: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelInitiatorAliasResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *FibreChannelInitiatorAliasService) CreateFibreChannelInitiatorAlias(o
 // UpdateFibreChannelInitiatorAlias - method modifies  the "FibreChannelInitiatorAlias"
 func (svc *FibreChannelInitiatorAliasService) UpdateFibreChannelInitiatorAlias(id string, obj *nimbleos.FibreChannelInitiatorAlias) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateFibreChannelInitiatorAlias: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelInitiatorAliasResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *FibreChannelInitiatorAliasService) UpdateFibreChannelInitiatorAlias(i
 // GetFibreChannelInitiatorAliasById - method returns a pointer to "FibreChannelInitiatorAlias"
 func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliasById(id string) (*nimbleos.FibreChannelInitiatorAlias, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetFibreChannelInitiatorAliasById: invalid parameter specified, %v", id)
 	}
 
 	fibreChannelInitiatorAliasResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliasById(
 // DeleteFibreChannelInitiatorAlias - deletes the "FibreChannelInitiatorAlias"
 func (svc *FibreChannelInitiatorAliasService) DeleteFibreChannelInitiatorAlias(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteFibreChannelInitiatorAlias: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

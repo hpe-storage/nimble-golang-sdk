@@ -25,7 +25,7 @@ func NewShelfService(gs *NsGroupService) *ShelfService {
 // GetShelfs - method returns a array of pointers of type "Shelfs"
 func (svc *ShelfService) GetShelfs(params *param.GetParams) ([]*nimbleos.Shelf, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetShelfs: invalid parameter specified, %v", params)
 	}
 
 	shelfResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ShelfService) GetShelfs(params *param.GetParams) ([]*nimbleos.Shelf, 
 // CreateShelf - method creates a "Shelf"
 func (svc *ShelfService) CreateShelf(obj *nimbleos.Shelf) (*nimbleos.Shelf, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateShelf: invalid parameter specified, %v", obj)
 	}
 
 	shelfResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ShelfService) CreateShelf(obj *nimbleos.Shelf) (*nimbleos.Shelf, erro
 // UpdateShelf - method modifies  the "Shelf"
 func (svc *ShelfService) UpdateShelf(id string, obj *nimbleos.Shelf) (*nimbleos.Shelf, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateShelf: invalid parameter specified, %v", obj)
 	}
 
 	shelfResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ShelfService) UpdateShelf(id string, obj *nimbleos.Shelf) (*nimbleos.
 // GetShelfById - method returns a pointer to "Shelf"
 func (svc *ShelfService) GetShelfById(id string) (*nimbleos.Shelf, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetShelfById: invalid parameter specified, %v", id)
 	}
 
 	shelfResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *ShelfService) GetShelfById(id string) (*nimbleos.Shelf, error) {
 // DeleteShelf - deletes the "Shelf"
 func (svc *ShelfService) DeleteShelf(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteShelf: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -95,12 +95,11 @@ func (svc *ShelfService) DeleteShelf(id string) error {
 func (svc *ShelfService) IdentifyShelf(id string, cid *nimbleos.NsControllerId, status bool) (*nimbleos.NsShelfIdentifyStatusReturn, error) {
 
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified id:%v, cid:%v, status:%v ", id, cid, status)
+		return nil, fmt.Errorf("IdentifyShelf: invalid parameter specified id: %v ", id)
 	}
 
 	resp, err := svc.objectSet.Identify(&id, cid, &status)
 	return resp, err
-
 }
 
 // EvacuateShelf - perform shelf evacuation.
@@ -118,7 +117,7 @@ func (svc *ShelfService) IdentifyShelf(id string, cid *nimbleos.NsControllerId, 
 func (svc *ShelfService) EvacuateShelf(id string, driveset uint64, dryRun *bool, start *bool, cancel *bool, pause *bool, resume *bool) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, driveset:%v, dryRun:%v, start:%v, cancel:%v, pause:%v, resume:%v ", id, driveset, dryRun, start, cancel, pause, resume)
+		return fmt.Errorf("EvacuateShelf: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.Evacuate(&id, &driveset, dryRun, start, cancel, pause, resume)

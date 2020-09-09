@@ -25,7 +25,7 @@ func NewSpaceDomainService(gs *NsGroupService) *SpaceDomainService {
 // GetSpaceDomains - method returns a array of pointers of type "SpaceDomains"
 func (svc *SpaceDomainService) GetSpaceDomains(params *param.GetParams) ([]*nimbleos.SpaceDomain, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetSpaceDomains: invalid parameter specified, %v", params)
 	}
 
 	spaceDomainResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *SpaceDomainService) GetSpaceDomains(params *param.GetParams) ([]*nimb
 // CreateSpaceDomain - method creates a "SpaceDomain"
 func (svc *SpaceDomainService) CreateSpaceDomain(obj *nimbleos.SpaceDomain) (*nimbleos.SpaceDomain, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateSpaceDomain: invalid parameter specified, %v", obj)
 	}
 
 	spaceDomainResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *SpaceDomainService) CreateSpaceDomain(obj *nimbleos.SpaceDomain) (*ni
 // UpdateSpaceDomain - method modifies  the "SpaceDomain"
 func (svc *SpaceDomainService) UpdateSpaceDomain(id string, obj *nimbleos.SpaceDomain) (*nimbleos.SpaceDomain, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateSpaceDomain: invalid parameter specified, %v", obj)
 	}
 
 	spaceDomainResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *SpaceDomainService) UpdateSpaceDomain(id string, obj *nimbleos.SpaceD
 // GetSpaceDomainById - method returns a pointer to "SpaceDomain"
 func (svc *SpaceDomainService) GetSpaceDomainById(id string) (*nimbleos.SpaceDomain, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetSpaceDomainById: invalid parameter specified, %v", id)
 	}
 
 	spaceDomainResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *SpaceDomainService) GetSpaceDomainById(id string) (*nimbleos.SpaceDom
 // DeleteSpaceDomain - deletes the "SpaceDomain"
 func (svc *SpaceDomainService) DeleteSpaceDomain(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteSpaceDomain: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

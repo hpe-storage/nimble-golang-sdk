@@ -25,7 +25,7 @@ func NewInitiatorService(gs *NsGroupService) *InitiatorService {
 // GetInitiators - method returns a array of pointers of type "Initiators"
 func (svc *InitiatorService) GetInitiators(params *param.GetParams) ([]*nimbleos.Initiator, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetInitiators: invalid parameter specified, %v", params)
 	}
 
 	initiatorResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *InitiatorService) GetInitiators(params *param.GetParams) ([]*nimbleos
 // CreateInitiator - method creates a "Initiator"
 func (svc *InitiatorService) CreateInitiator(obj *nimbleos.Initiator) (*nimbleos.Initiator, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateInitiator: invalid parameter specified, %v", obj)
 	}
 
 	initiatorResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *InitiatorService) CreateInitiator(obj *nimbleos.Initiator) (*nimbleos
 // UpdateInitiator - method modifies  the "Initiator"
 func (svc *InitiatorService) UpdateInitiator(id string, obj *nimbleos.Initiator) (*nimbleos.Initiator, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateInitiator: invalid parameter specified, %v", obj)
 	}
 
 	initiatorResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *InitiatorService) UpdateInitiator(id string, obj *nimbleos.Initiator)
 // GetInitiatorById - method returns a pointer to "Initiator"
 func (svc *InitiatorService) GetInitiatorById(id string) (*nimbleos.Initiator, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetInitiatorById: invalid parameter specified, %v", id)
 	}
 
 	initiatorResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *InitiatorService) GetInitiatorById(id string) (*nimbleos.Initiator, e
 // DeleteInitiator - deletes the "Initiator"
 func (svc *InitiatorService) DeleteInitiator(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteInitiator: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

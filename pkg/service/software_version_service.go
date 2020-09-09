@@ -25,7 +25,7 @@ func NewSoftwareVersionService(gs *NsGroupService) *SoftwareVersionService {
 // GetSoftwareVersions - method returns a array of pointers of type "SoftwareVersions"
 func (svc *SoftwareVersionService) GetSoftwareVersions(params *param.GetParams) ([]*nimbleos.SoftwareVersion, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetSoftwareVersions: invalid parameter specified, %v", params)
 	}
 
 	softwareVersionResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *SoftwareVersionService) GetSoftwareVersions(params *param.GetParams) 
 // CreateSoftwareVersion - method creates a "SoftwareVersion"
 func (svc *SoftwareVersionService) CreateSoftwareVersion(obj *nimbleos.SoftwareVersion) (*nimbleos.SoftwareVersion, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateSoftwareVersion: invalid parameter specified, %v", obj)
 	}
 
 	softwareVersionResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *SoftwareVersionService) CreateSoftwareVersion(obj *nimbleos.SoftwareV
 // UpdateSoftwareVersion - method modifies  the "SoftwareVersion"
 func (svc *SoftwareVersionService) UpdateSoftwareVersion(id string, obj *nimbleos.SoftwareVersion) (*nimbleos.SoftwareVersion, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateSoftwareVersion: invalid parameter specified, %v", obj)
 	}
 
 	softwareVersionResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -85,7 +85,7 @@ func (svc *SoftwareVersionService) GetSoftwareVersionByName(name string) (*nimbl
 // DeleteSoftwareVersion - deletes the "SoftwareVersion"
 func (svc *SoftwareVersionService) DeleteSoftwareVersion(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteSoftwareVersion: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

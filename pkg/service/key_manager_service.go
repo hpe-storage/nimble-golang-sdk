@@ -25,7 +25,7 @@ func NewKeyManagerService(gs *NsGroupService) *KeyManagerService {
 // GetKeyManagers - method returns a array of pointers of type "KeyManagers"
 func (svc *KeyManagerService) GetKeyManagers(params *param.GetParams) ([]*nimbleos.KeyManager, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetKeyManagers: invalid parameter specified, %v", params)
 	}
 
 	keyManagerResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *KeyManagerService) GetKeyManagers(params *param.GetParams) ([]*nimble
 // CreateKeyManager - method creates a "KeyManager"
 func (svc *KeyManagerService) CreateKeyManager(obj *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateKeyManager: invalid parameter specified, %v", obj)
 	}
 
 	keyManagerResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *KeyManagerService) CreateKeyManager(obj *nimbleos.KeyManager) (*nimbl
 // UpdateKeyManager - method modifies  the "KeyManager"
 func (svc *KeyManagerService) UpdateKeyManager(id string, obj *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateKeyManager: invalid parameter specified, %v", obj)
 	}
 
 	keyManagerResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *KeyManagerService) UpdateKeyManager(id string, obj *nimbleos.KeyManag
 // GetKeyManagerById - method returns a pointer to "KeyManager"
 func (svc *KeyManagerService) GetKeyManagerById(id string) (*nimbleos.KeyManager, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetKeyManagerById: invalid parameter specified, %v", id)
 	}
 
 	keyManagerResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *KeyManagerService) GetKeyManagerByName(name string) (*nimbleos.KeyMan
 // DeleteKeyManager - deletes the "KeyManager"
 func (svc *KeyManagerService) DeleteKeyManager(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteKeyManager: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -117,7 +117,7 @@ func (svc *KeyManagerService) DeleteKeyManager(id string) error {
 func (svc *KeyManagerService) RemoveKeyManager(id string, passphrase *string) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v, passphrase:%v ", id, passphrase)
+		return fmt.Errorf("RemoveKeyManager: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.Remove(&id, passphrase)
@@ -131,7 +131,7 @@ func (svc *KeyManagerService) RemoveKeyManager(id string, passphrase *string) er
 func (svc *KeyManagerService) MigrateKeysKeyManager(id string) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified id:%v ", id)
+		return fmt.Errorf("MigrateKeysKeyManager: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.MigrateKeys(&id)

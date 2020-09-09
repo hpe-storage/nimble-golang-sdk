@@ -25,7 +25,7 @@ func NewFibreChannelSessionService(gs *NsGroupService) *FibreChannelSessionServi
 // GetFibreChannelSessions - method returns a array of pointers of type "FibreChannelSessions"
 func (svc *FibreChannelSessionService) GetFibreChannelSessions(params *param.GetParams) ([]*nimbleos.FibreChannelSession, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetFibreChannelSessions: invalid parameter specified, %v", params)
 	}
 
 	fibreChannelSessionResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *FibreChannelSessionService) GetFibreChannelSessions(params *param.Get
 // CreateFibreChannelSession - method creates a "FibreChannelSession"
 func (svc *FibreChannelSessionService) CreateFibreChannelSession(obj *nimbleos.FibreChannelSession) (*nimbleos.FibreChannelSession, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateFibreChannelSession: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelSessionResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *FibreChannelSessionService) CreateFibreChannelSession(obj *nimbleos.F
 // UpdateFibreChannelSession - method modifies  the "FibreChannelSession"
 func (svc *FibreChannelSessionService) UpdateFibreChannelSession(id string, obj *nimbleos.FibreChannelSession) (*nimbleos.FibreChannelSession, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateFibreChannelSession: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelSessionResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *FibreChannelSessionService) UpdateFibreChannelSession(id string, obj 
 // GetFibreChannelSessionById - method returns a pointer to "FibreChannelSession"
 func (svc *FibreChannelSessionService) GetFibreChannelSessionById(id string) (*nimbleos.FibreChannelSession, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetFibreChannelSessionById: invalid parameter specified, %v", id)
 	}
 
 	fibreChannelSessionResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *FibreChannelSessionService) GetFibreChannelSessionById(id string) (*n
 // DeleteFibreChannelSession - deletes the "FibreChannelSession"
 func (svc *FibreChannelSessionService) DeleteFibreChannelSession(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteFibreChannelSession: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

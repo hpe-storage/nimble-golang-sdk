@@ -25,7 +25,7 @@ func NewNetworkInterfaceService(gs *NsGroupService) *NetworkInterfaceService {
 // GetNetworkInterfaces - method returns a array of pointers of type "NetworkInterfaces"
 func (svc *NetworkInterfaceService) GetNetworkInterfaces(params *param.GetParams) ([]*nimbleos.NetworkInterface, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetNetworkInterfaces: invalid parameter specified, %v", params)
 	}
 
 	networkInterfaceResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *NetworkInterfaceService) GetNetworkInterfaces(params *param.GetParams
 // CreateNetworkInterface - method creates a "NetworkInterface"
 func (svc *NetworkInterfaceService) CreateNetworkInterface(obj *nimbleos.NetworkInterface) (*nimbleos.NetworkInterface, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateNetworkInterface: invalid parameter specified, %v", obj)
 	}
 
 	networkInterfaceResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *NetworkInterfaceService) CreateNetworkInterface(obj *nimbleos.Network
 // UpdateNetworkInterface - method modifies  the "NetworkInterface"
 func (svc *NetworkInterfaceService) UpdateNetworkInterface(id string, obj *nimbleos.NetworkInterface) (*nimbleos.NetworkInterface, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateNetworkInterface: invalid parameter specified, %v", obj)
 	}
 
 	networkInterfaceResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *NetworkInterfaceService) UpdateNetworkInterface(id string, obj *nimbl
 // GetNetworkInterfaceById - method returns a pointer to "NetworkInterface"
 func (svc *NetworkInterfaceService) GetNetworkInterfaceById(id string) (*nimbleos.NetworkInterface, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetNetworkInterfaceById: invalid parameter specified, %v", id)
 	}
 
 	networkInterfaceResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *NetworkInterfaceService) GetNetworkInterfaceByName(name string) (*nim
 // DeleteNetworkInterface - deletes the "NetworkInterface"
 func (svc *NetworkInterfaceService) DeleteNetworkInterface(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteNetworkInterface: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

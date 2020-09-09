@@ -25,7 +25,7 @@ func NewJobService(gs *NsGroupService) *JobService {
 // GetJobs - method returns a array of pointers of type "Jobs"
 func (svc *JobService) GetJobs(params *param.GetParams) ([]*nimbleos.Job, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetJobs: invalid parameter specified, %v", params)
 	}
 
 	jobResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *JobService) GetJobs(params *param.GetParams) ([]*nimbleos.Job, error)
 // CreateJob - method creates a "Job"
 func (svc *JobService) CreateJob(obj *nimbleos.Job) (*nimbleos.Job, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateJob: invalid parameter specified, %v", obj)
 	}
 
 	jobResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *JobService) CreateJob(obj *nimbleos.Job) (*nimbleos.Job, error) {
 // UpdateJob - method modifies  the "Job"
 func (svc *JobService) UpdateJob(id string, obj *nimbleos.Job) (*nimbleos.Job, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateJob: invalid parameter specified, %v", obj)
 	}
 
 	jobResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *JobService) UpdateJob(id string, obj *nimbleos.Job) (*nimbleos.Job, e
 // GetJobById - method returns a pointer to "Job"
 func (svc *JobService) GetJobById(id string) (*nimbleos.Job, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetJobById: invalid parameter specified, %v", id)
 	}
 
 	jobResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *JobService) GetJobByName(name string) (*nimbleos.Job, error) {
 // DeleteJob - deletes the "Job"
 func (svc *JobService) DeleteJob(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteJob: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

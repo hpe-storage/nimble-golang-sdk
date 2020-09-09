@@ -25,7 +25,7 @@ func NewFolderService(gs *NsGroupService) *FolderService {
 // GetFolders - method returns a array of pointers of type "Folders"
 func (svc *FolderService) GetFolders(params *param.GetParams) ([]*nimbleos.Folder, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetFolders: invalid parameter specified, %v", params)
 	}
 
 	folderResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *FolderService) GetFolders(params *param.GetParams) ([]*nimbleos.Folde
 // CreateFolder - method creates a "Folder"
 func (svc *FolderService) CreateFolder(obj *nimbleos.Folder) (*nimbleos.Folder, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateFolder: invalid parameter specified, %v", obj)
 	}
 
 	folderResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *FolderService) CreateFolder(obj *nimbleos.Folder) (*nimbleos.Folder, 
 // UpdateFolder - method modifies  the "Folder"
 func (svc *FolderService) UpdateFolder(id string, obj *nimbleos.Folder) (*nimbleos.Folder, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateFolder: invalid parameter specified, %v", obj)
 	}
 
 	folderResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *FolderService) UpdateFolder(id string, obj *nimbleos.Folder) (*nimble
 // GetFolderById - method returns a pointer to "Folder"
 func (svc *FolderService) GetFolderById(id string) (*nimbleos.Folder, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetFolderById: invalid parameter specified, %v", id)
 	}
 
 	folderResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *FolderService) GetFolderByName(name string) (*nimbleos.Folder, error)
 // DeleteFolder - deletes the "Folder"
 func (svc *FolderService) DeleteFolder(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteFolder: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -115,7 +115,7 @@ func (svc *FolderService) DeleteFolder(id string) error {
 func (svc *FolderService) SetDedupeFolder(dedupeEnabled bool, id string) error {
 
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified dedupeEnabled:%v, id:%v ", dedupeEnabled, id)
+		return fmt.Errorf("SetDedupeFolder: invalid parameter specified id: %v ", id)
 	}
 
 	err := svc.objectSet.SetDedupe(&dedupeEnabled, &id)

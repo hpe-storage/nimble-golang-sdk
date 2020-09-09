@@ -27,7 +27,7 @@ func NewSnapshotService(gs *NsGroupService) *SnapshotService {
 // GetSnapshots - method returns a array of pointers of type "Snapshots"
 func (svc *SnapshotService) GetSnapshots(params *param.GetParams) ([]*nimbleos.Snapshot, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetSnapshots: invalid parameter specified, %v", params)
 	}
 
 	snapshotResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -40,7 +40,7 @@ func (svc *SnapshotService) GetSnapshots(params *param.GetParams) ([]*nimbleos.S
 // CreateSnapshot - method creates a "Snapshot"
 func (svc *SnapshotService) CreateSnapshot(obj *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateSnapshot: invalid parameter specified, %v", obj)
 	}
 
 	snapshotResp, err := svc.objectSet.CreateObject(obj)
@@ -53,7 +53,7 @@ func (svc *SnapshotService) CreateSnapshot(obj *nimbleos.Snapshot) (*nimbleos.Sn
 // UpdateSnapshot - method modifies  the "Snapshot"
 func (svc *SnapshotService) UpdateSnapshot(id string, obj *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateSnapshot: invalid parameter specified, %v", obj)
 	}
 
 	snapshotResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -66,7 +66,7 @@ func (svc *SnapshotService) UpdateSnapshot(id string, obj *nimbleos.Snapshot) (*
 // GetSnapshotById - method returns a pointer to "Snapshot"
 func (svc *SnapshotService) GetSnapshotById(id string) (*nimbleos.Snapshot, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetSnapshotById: invalid parameter specified, %v", id)
 	}
 
 	snapshotResp, err := svc.objectSet.GetObject(id)
@@ -120,7 +120,7 @@ func (svc *SnapshotService) GetSnapshotBySerialNumber(serialNumber string) (*nim
 // DeleteSnapshot - deletes the "Snapshot"
 func (svc *SnapshotService) DeleteSnapshot(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteSnapshot: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
@@ -138,10 +138,9 @@ func (svc *SnapshotService) DeleteSnapshot(id string) error {
 func (svc *SnapshotService) BulkCreateSnapshots(snapVolList []*nimbleos.NsSnapVol, replicate bool, vssSnap bool) (*nimbleos.NsSnapVolListReturn, error) {
 
 	if len(snapVolList) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified snapVolList:%v, replicate:%v, vssSnap:%v ", snapVolList, replicate, vssSnap)
+		return nil, fmt.Errorf("BulkCreateSnapshot: invalid parameter specified snapVolList: %v ", snapVolList)
 	}
 
 	resp, err := svc.objectSet.BulkCreate(snapVolList, &replicate, &vssSnap)
 	return resp, err
-
 }

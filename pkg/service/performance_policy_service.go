@@ -27,7 +27,7 @@ func NewPerformancePolicyService(gs *NsGroupService) *PerformancePolicyService {
 // GetPerformancePolicies - method returns a array of pointers of type "PerformancePolicies"
 func (svc *PerformancePolicyService) GetPerformancePolicies(params *param.GetParams) ([]*nimbleos.PerformancePolicy, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetPerformancePolicies: invalid parameter specified, %v", params)
 	}
 
 	performancePolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -40,7 +40,7 @@ func (svc *PerformancePolicyService) GetPerformancePolicies(params *param.GetPar
 // CreatePerformancePolicy - method creates a "PerformancePolicy"
 func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreatePerformancePolicy: invalid parameter specified, %v", obj)
 	}
 
 	performancePolicyResp, err := svc.objectSet.CreateObject(obj)
@@ -53,7 +53,7 @@ func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *nimbleos.Perfo
 // UpdatePerformancePolicy - method modifies  the "PerformancePolicy"
 func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdatePerformancePolicy: invalid parameter specified, %v", obj)
 	}
 
 	performancePolicyResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -66,7 +66,7 @@ func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *nim
 // GetPerformancePolicyById - method returns a pointer to "PerformancePolicy"
 func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*nimbleos.PerformancePolicy, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetPerformancePolicyById: invalid parameter specified, %v", id)
 	}
 
 	performancePolicyResp, err := svc.objectSet.GetObject(id)
@@ -100,7 +100,7 @@ func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*n
 // DeletePerformancePolicy - deletes the "PerformancePolicy"
 func (svc *PerformancePolicyService) DeletePerformancePolicy(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeletePerformancePolicy: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
