@@ -25,7 +25,7 @@ func NewControllerService(gs *NsGroupService) *ControllerService {
 // GetControllers - method returns a array of pointers of type "Controllers"
 func (svc *ControllerService) GetControllers(params *param.GetParams) ([]*nimbleos.Controller, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetControllers: invalid parameter specified, %v", params)
 	}
 
 	controllerResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ControllerService) GetControllers(params *param.GetParams) ([]*nimble
 // CreateController - method creates a "Controller"
 func (svc *ControllerService) CreateController(obj *nimbleos.Controller) (*nimbleos.Controller, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateController: invalid parameter specified, %v", obj)
 	}
 
 	controllerResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ControllerService) CreateController(obj *nimbleos.Controller) (*nimbl
 // UpdateController - method modifies  the "Controller"
 func (svc *ControllerService) UpdateController(id string, obj *nimbleos.Controller) (*nimbleos.Controller, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateController: invalid parameter specified, %v", obj)
 	}
 
 	controllerResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ControllerService) UpdateController(id string, obj *nimbleos.Controll
 // GetControllerById - method returns a pointer to "Controller"
 func (svc *ControllerService) GetControllerById(id string) (*nimbleos.Controller, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetControllerById: invalid parameter specified, %v", id)
 	}
 
 	controllerResp, err := svc.objectSet.GetObject(id)
@@ -98,7 +98,7 @@ func (svc *ControllerService) GetControllerByName(name string) (*nimbleos.Contro
 // DeleteController - deletes the "Controller"
 func (svc *ControllerService) DeleteController(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteController: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

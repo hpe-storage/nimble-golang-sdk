@@ -26,7 +26,7 @@ func NewInitiatorGroupService(gs *NsGroupService) *InitiatorGroupService {
 // GetInitiatorGroups - method returns a array of pointers of type "InitiatorGroups"
 func (svc *InitiatorGroupService) GetInitiatorGroups(params *param.GetParams) ([]*nimbleos.InitiatorGroup, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetInitiatorGroups: invalid parameter specified, %v", params)
 	}
 
 	initiatorGroupResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -39,7 +39,7 @@ func (svc *InitiatorGroupService) GetInitiatorGroups(params *param.GetParams) ([
 // CreateInitiatorGroup - method creates a "InitiatorGroup"
 func (svc *InitiatorGroupService) CreateInitiatorGroup(obj *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateInitiatorGroup: invalid parameter specified, %v", obj)
 	}
 
 	initiatorGroupResp, err := svc.objectSet.CreateObject(obj)
@@ -52,7 +52,7 @@ func (svc *InitiatorGroupService) CreateInitiatorGroup(obj *nimbleos.InitiatorGr
 // UpdateInitiatorGroup - method modifies  the "InitiatorGroup"
 func (svc *InitiatorGroupService) UpdateInitiatorGroup(id string, obj *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateInitiatorGroup: invalid parameter specified, %v", obj)
 	}
 
 	initiatorGroupResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -65,7 +65,7 @@ func (svc *InitiatorGroupService) UpdateInitiatorGroup(id string, obj *nimbleos.
 // GetInitiatorGroupById - method returns a pointer to "InitiatorGroup"
 func (svc *InitiatorGroupService) GetInitiatorGroupById(id string) (*nimbleos.InitiatorGroup, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetInitiatorGroupById: invalid parameter specified, %v", id)
 	}
 
 	initiatorGroupResp, err := svc.objectSet.GetObject(id)
@@ -99,11 +99,46 @@ func (svc *InitiatorGroupService) GetInitiatorGroupByName(name string) (*nimbleo
 // DeleteInitiatorGroup - deletes the "InitiatorGroup"
 func (svc *InitiatorGroupService) DeleteInitiatorGroup(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteInitiatorGroup: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+// SuggestLunInitiatorGroup - suggest an LU number for the volume and initiator group combination.
+//   Required parameters:
+//       id - ID of the initiator group.
+
+//   Optional parameters:
+//       volId - ID of the volume.
+
+func (svc *InitiatorGroupService) SuggestLunInitiatorGroup(id string, volId *string) (*nimbleos.NsLunReturn, error) {
+
+	if len(id) == 0 {
+		return nil, fmt.Errorf("SuggestLunInitiatorGroup: invalid parameter specified id: %v ", id)
+	}
+
+	resp, err := svc.objectSet.SuggestLun(&id, volId)
+	return resp, err
+}
+
+// ValidateLunInitiatorGroup - validate an LU number for the volume and initiator group combination.
+//   Required parameters:
+//       id - ID of the initiator group.
+//       lun - LU number to validate in decimal.
+
+//   Optional parameters:
+//       volId - ID of the volume.
+
+func (svc *InitiatorGroupService) ValidateLunInitiatorGroup(id string, volId *string, lun uint64) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("ValidateLunInitiatorGroup: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.ValidateLun(&id, volId, &lun)
+	return err
 }

@@ -25,7 +25,7 @@ func NewProtocolEndpointService(gs *NsGroupService) *ProtocolEndpointService {
 // GetProtocolEndpoints - method returns a array of pointers of type "ProtocolEndpoints"
 func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *param.GetParams) ([]*nimbleos.ProtocolEndpoint, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetProtocolEndpoints: invalid parameter specified, %v", params)
 	}
 
 	protocolEndpointResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *param.GetParams
 // CreateProtocolEndpoint - method creates a "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) CreateProtocolEndpoint(obj *nimbleos.ProtocolEndpoint) (*nimbleos.ProtocolEndpoint, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateProtocolEndpoint: invalid parameter specified, %v", obj)
 	}
 
 	protocolEndpointResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ProtocolEndpointService) CreateProtocolEndpoint(obj *nimbleos.Protoco
 // UpdateProtocolEndpoint - method modifies  the "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) UpdateProtocolEndpoint(id string, obj *nimbleos.ProtocolEndpoint) (*nimbleos.ProtocolEndpoint, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateProtocolEndpoint: invalid parameter specified, %v", obj)
 	}
 
 	protocolEndpointResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ProtocolEndpointService) UpdateProtocolEndpoint(id string, obj *nimbl
 // GetProtocolEndpointById - method returns a pointer to "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) GetProtocolEndpointById(id string) (*nimbleos.ProtocolEndpoint, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetProtocolEndpointById: invalid parameter specified, %v", id)
 	}
 
 	protocolEndpointResp, err := svc.objectSet.GetObject(id)
@@ -118,7 +118,7 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointBySerialNumber(serialNumb
 // DeleteProtocolEndpoint - deletes the "ProtocolEndpoint"
 func (svc *ProtocolEndpointService) DeleteProtocolEndpoint(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteProtocolEndpoint: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

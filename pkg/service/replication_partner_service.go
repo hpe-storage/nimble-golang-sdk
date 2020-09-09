@@ -27,7 +27,7 @@ func NewReplicationPartnerService(gs *NsGroupService) *ReplicationPartnerService
 // GetReplicationPartners - method returns a array of pointers of type "ReplicationPartners"
 func (svc *ReplicationPartnerService) GetReplicationPartners(params *param.GetParams) ([]*nimbleos.ReplicationPartner, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetReplicationPartners: invalid parameter specified, %v", params)
 	}
 
 	replicationPartnerResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -40,7 +40,7 @@ func (svc *ReplicationPartnerService) GetReplicationPartners(params *param.GetPa
 // CreateReplicationPartner - method creates a "ReplicationPartner"
 func (svc *ReplicationPartnerService) CreateReplicationPartner(obj *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateReplicationPartner: invalid parameter specified, %v", obj)
 	}
 
 	replicationPartnerResp, err := svc.objectSet.CreateObject(obj)
@@ -53,7 +53,7 @@ func (svc *ReplicationPartnerService) CreateReplicationPartner(obj *nimbleos.Rep
 // UpdateReplicationPartner - method modifies  the "ReplicationPartner"
 func (svc *ReplicationPartnerService) UpdateReplicationPartner(id string, obj *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateReplicationPartner: invalid parameter specified, %v", obj)
 	}
 
 	replicationPartnerResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -66,7 +66,7 @@ func (svc *ReplicationPartnerService) UpdateReplicationPartner(id string, obj *n
 // GetReplicationPartnerById - method returns a pointer to "ReplicationPartner"
 func (svc *ReplicationPartnerService) GetReplicationPartnerById(id string) (*nimbleos.ReplicationPartner, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetReplicationPartnerById: invalid parameter specified, %v", id)
 	}
 
 	replicationPartnerResp, err := svc.objectSet.GetObject(id)
@@ -100,11 +100,53 @@ func (svc *ReplicationPartnerService) GetReplicationPartnerByName(name string) (
 // DeleteReplicationPartner - deletes the "ReplicationPartner"
 func (svc *ReplicationPartnerService) DeleteReplicationPartner(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteReplicationPartner: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+// PauseReplicationPartner - pause replication for the specified partner.
+//   Required parameters:
+//       id - ID of the partner to pause.
+
+func (svc *ReplicationPartnerService) PauseReplicationPartner(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("PauseReplicationPartner: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Pause(&id)
+	return err
+}
+
+// ResumeReplicationPartner - resume replication for the specified partner.
+//   Required parameters:
+//       id - ID of the partner to resume.
+
+func (svc *ReplicationPartnerService) ResumeReplicationPartner(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("ResumeReplicationPartner: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Resume(&id)
+	return err
+}
+
+// TestReplicationPartner - test connectivity to the specified partner.
+//   Required parameters:
+//       id - ID of the partner to test.
+
+func (svc *ReplicationPartnerService) TestReplicationPartner(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("TestReplicationPartner: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Test(&id)
+	return err
 }

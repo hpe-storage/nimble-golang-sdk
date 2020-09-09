@@ -27,7 +27,7 @@ func NewMasterKeyService(gs *NsGroupService) *MasterKeyService {
 // GetMasterKeys - method returns a array of pointers of type "MasterKeys"
 func (svc *MasterKeyService) GetMasterKeys(params *param.GetParams) ([]*nimbleos.MasterKey, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetMasterKeys: invalid parameter specified, %v", params)
 	}
 
 	masterKeyResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -40,7 +40,7 @@ func (svc *MasterKeyService) GetMasterKeys(params *param.GetParams) ([]*nimbleos
 // CreateMasterKey - method creates a "MasterKey"
 func (svc *MasterKeyService) CreateMasterKey(obj *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateMasterKey: invalid parameter specified, %v", obj)
 	}
 
 	masterKeyResp, err := svc.objectSet.CreateObject(obj)
@@ -53,7 +53,7 @@ func (svc *MasterKeyService) CreateMasterKey(obj *nimbleos.MasterKey) (*nimbleos
 // UpdateMasterKey - method modifies  the "MasterKey"
 func (svc *MasterKeyService) UpdateMasterKey(id string, obj *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateMasterKey: invalid parameter specified, %v", obj)
 	}
 
 	masterKeyResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -66,7 +66,7 @@ func (svc *MasterKeyService) UpdateMasterKey(id string, obj *nimbleos.MasterKey)
 // GetMasterKeyById - method returns a pointer to "MasterKey"
 func (svc *MasterKeyService) GetMasterKeyById(id string) (*nimbleos.MasterKey, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetMasterKeyById: invalid parameter specified, %v", id)
 	}
 
 	masterKeyResp, err := svc.objectSet.GetObject(id)
@@ -100,11 +100,28 @@ func (svc *MasterKeyService) GetMasterKeyByName(name string) (*nimbleos.MasterKe
 // DeleteMasterKey - deletes the "MasterKey"
 func (svc *MasterKeyService) DeleteMasterKey(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteMasterKey: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+// PurgeInactiveMasterKey - purges encryption keys that have been inactive for the age or longer. If you do not specify an age, the keys will be purged immediately.
+//   Required parameters:
+//       id - Identifier for the master key.
+
+//   Optional parameters:
+//       age - Minimum age (in hours) of inactive encryption keys to be purged. '0' indicates to purge the keys immediately.
+
+func (svc *MasterKeyService) PurgeInactiveMasterKey(id string, age *int) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("PurgeInactiveMasterKey: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.PurgeInactive(&id, age)
+	return err
 }

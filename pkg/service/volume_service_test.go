@@ -13,33 +13,44 @@ import (
 
 type VolumeServiceTestSuite struct {
 	suite.Suite
-	groupService             *NsGroupService
-	volumeService            *VolumeService
-	performancePolicyService *PerformancePolicyService
+	groupService              *NsGroupService
+	volumeService             *VolumeService
+	performancePolicyService  *PerformancePolicyService
+	volumeCollectionService   *VolumeCollectionService
+	snapshotCollectionService *SnapshotCollectionService
 }
 
-func (suite *VolumeServiceTestSuite) SetupTest() {
+func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admin")
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
-		return
+		return nil
 	}
-
 	// set debug
 	//groupService.SetDebug()
+	return groupService
+}
+
+func (suite *VolumeServiceTestSuite) SetupTest() {
+	groupService := suite.config()
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.performancePolicyService = groupService.GetPerformancePolicyService()
+	suite.volumeCollectionService = groupService.GetVolumeCollectionService()
+	suite.snapshotCollectionService = groupService.GetSnapshotCollectionService()
 
 	suite.createVolume("GetVolume")
 	suite.createVolume("DeleteVolume")
 	suite.createVolume("DestroyVolume")
+	//volcoll
+	suite.createVolColl("TestVolColl")
 }
 
 func (suite *VolumeServiceTestSuite) TearDownTest() {
 	suite.deleteVolume("DestroyVolume")
 	suite.deleteVolume("DeleteVolume")
 	suite.deleteVolume("GetVolume")
+	suite.deleteVollColl("TestVolColl")
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
@@ -89,7 +100,7 @@ func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
-		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to get non-existent volume, err: %v", err.Error())
+		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to ge non-existent volume, err: %v", err.Error())
 		return
 	}
 	assert.Nil(suite.T(), volume)
@@ -141,15 +152,85 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 	volume, _ := suite.volumeService.GetVolumeByName("GetVolume")
 	if volume != nil {
-		var volList [1]string
-		volList[0] = *volume.ID
-		err := suite.volumeService.OnlineBulkVolumes(volList[:])
+		var volList [1]*string
+		volList[0] = volume.ID
+		err := suite.volumeService.BulkSetOnlineAndOfflineVolumes(volList[:], false)
 		if err != nil {
 			suite.T().Fatalf("BulkOnlineVolumes: Failed to set volumes %v online", volList)
 		}
 
 	}
 	suite.volumeService.DeleteVolume(*volume.ID)
+}
+func (suite *VolumeServiceTestSuite) deleteVollColl(name string) {
+	volcoll, _ := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+	suite.volumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
+}
+
+func (suite *VolumeServiceTestSuite) createVolColl(name string) {
+	volcoll := &nimbleos.VolumeCollection{
+		Name: param.NewString(name),
+	}
+	suite.volumeCollectionService.CreateVolumeCollection(volcoll)
+}
+func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
+
+	volume := suite.createVolume("TestAddVolVolcoll")
+	if volume != nil {
+		volcoll, _ := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		// add volume to volcoll
+		err := suite.volumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to add a %s volume to %s volume collection", *volume.ID, *volcoll.ID)
+			return
+		}
+
+	}
+	// remove volume from volcoll
+	err := suite.volumeService.DisassociateVolume(*volume.ID)
+	if err != nil {
+		suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
+		return
+	}
+	suite.deleteVolume("TestAddVolVolcoll")
+}
+
+func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
+	volume := suite.createVolume("RestoreVolume")
+	if volume != nil {
+		volcoll, err := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		if err != nil {
+			suite.T().Fatalf("Failed to get volume collection")
+			return
+		}
+		// add volume to volume collection
+		err = suite.volumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to associate RestoreVolume to volcoll ")
+			return
+		}
+		// create a snapshot collection
+		snapColl, _ := suite.snapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+			Name:      param.NewString("RestoreSnapColl"),
+			VolcollId: volcoll.ID,
+		})
+		// set the volume offline before restore
+		suite.volumeService.OfflineVolume(*volume.ID, true)
+		//restore volume to snapcoll
+		err = suite.volumeService.RestoreVolume(*volume.ID, *snapColl.SnapshotsList[0].SnapId)
+
+		if err != nil {
+			suite.T().Fatalf("Failed to restore volume")
+
+		}
+		// disassociate volume from volume collection
+		err = suite.volumeService.DisassociateVolume(*volume.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
+			return
+		}
+		suite.deleteVolume("RestoreVolume")
+	}
 }
 
 // Runs all test via go test

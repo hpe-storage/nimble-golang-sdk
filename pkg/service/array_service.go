@@ -25,7 +25,7 @@ func NewArrayService(gs *NsGroupService) *ArrayService {
 // GetArrays - method returns a array of pointers of type "Arrays"
 func (svc *ArrayService) GetArrays(params *param.GetParams) ([]*nimbleos.Array, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetArrays: invalid parameter specified, %v", params)
 	}
 
 	arrayResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *ArrayService) GetArrays(params *param.GetParams) ([]*nimbleos.Array, 
 // CreateArray - method creates a "Array"
 func (svc *ArrayService) CreateArray(obj *nimbleos.Array) (*nimbleos.Array, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateArray: invalid parameter specified, %v", obj)
 	}
 
 	arrayResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *ArrayService) CreateArray(obj *nimbleos.Array) (*nimbleos.Array, erro
 // UpdateArray - method modifies  the "Array"
 func (svc *ArrayService) UpdateArray(id string, obj *nimbleos.Array) (*nimbleos.Array, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateArray: invalid parameter specified, %v", obj)
 	}
 
 	arrayResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *ArrayService) UpdateArray(id string, obj *nimbleos.Array) (*nimbleos.
 // GetArrayById - method returns a pointer to "Array"
 func (svc *ArrayService) GetArrayById(id string) (*nimbleos.Array, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetArrayById: invalid parameter specified, %v", id)
 	}
 
 	arrayResp, err := svc.objectSet.GetObject(id)
@@ -98,11 +98,56 @@ func (svc *ArrayService) GetArrayByName(name string) (*nimbleos.Array, error) {
 // DeleteArray - deletes the "Array"
 func (svc *ArrayService) DeleteArray(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteArray: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+// FailoverArray - perform a failover on the specified array.
+//   Required parameters:
+//       id - ID of the array to perform failover on.
+
+//   Optional parameters:
+//       force - Initiate failover without performing any precheck.
+
+func (svc *ArrayService) FailoverArray(id string, force *bool) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("FailoverArray: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Failover(&id, force)
+	return err
+}
+
+// HaltArray - halt the specified array. Restarting the array will require physically powering it back on.
+//   Required parameters:
+//       id - ID of the array to halt.
+
+func (svc *ArrayService) HaltArray(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("HaltArray: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Halt(&id)
+	return err
+}
+
+// RebootArray - reboot the specified array.
+//   Required parameters:
+//       id - ID of the array to reboot.
+
+func (svc *ArrayService) RebootArray(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("RebootArray: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Reboot(&id)
+	return err
 }

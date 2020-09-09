@@ -25,7 +25,7 @@ func NewAlarmService(gs *NsGroupService) *AlarmService {
 // GetAlarms - method returns a array of pointers of type "Alarms"
 func (svc *AlarmService) GetAlarms(params *param.GetParams) ([]*nimbleos.Alarm, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetAlarms: invalid parameter specified, %v", params)
 	}
 
 	alarmResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *AlarmService) GetAlarms(params *param.GetParams) ([]*nimbleos.Alarm, 
 // CreateAlarm - method creates a "Alarm"
 func (svc *AlarmService) CreateAlarm(obj *nimbleos.Alarm) (*nimbleos.Alarm, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateAlarm: invalid parameter specified, %v", obj)
 	}
 
 	alarmResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *AlarmService) CreateAlarm(obj *nimbleos.Alarm) (*nimbleos.Alarm, erro
 // UpdateAlarm - method modifies  the "Alarm"
 func (svc *AlarmService) UpdateAlarm(id string, obj *nimbleos.Alarm) (*nimbleos.Alarm, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateAlarm: invalid parameter specified, %v", obj)
 	}
 
 	alarmResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *AlarmService) UpdateAlarm(id string, obj *nimbleos.Alarm) (*nimbleos.
 // GetAlarmById - method returns a pointer to "Alarm"
 func (svc *AlarmService) GetAlarmById(id string) (*nimbleos.Alarm, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetAlarmById: invalid parameter specified, %v", id)
 	}
 
 	alarmResp, err := svc.objectSet.GetObject(id)
@@ -77,11 +77,43 @@ func (svc *AlarmService) GetAlarmById(id string) (*nimbleos.Alarm, error) {
 // DeleteAlarm - deletes the "Alarm"
 func (svc *AlarmService) DeleteAlarm(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteAlarm: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+// AcknowledgeAlarm - acknowledge an alarm.
+//   Required parameters:
+//       id - ID of the acknowledged alarm.
+
+//   Optional parameters:
+//       remindEvery - Notification frequency unit.
+//       remindEveryUnit - Period unit.
+
+func (svc *AlarmService) AcknowledgeAlarm(id string, remindEvery *uint64, remindEveryUnit *nimbleos.NsPeriodUnit) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("AcknowledgeAlarm: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Acknowledge(&id, remindEvery, remindEveryUnit)
+	return err
+}
+
+// UnacknowledgeAlarm - unacknowledge an alarm.
+//   Required parameters:
+//       id - ID of the acknowledged alarm.
+
+func (svc *AlarmService) UnacknowledgeAlarm(id string) error {
+
+	if len(id) == 0 {
+		return fmt.Errorf("UnacknowledgeAlarm: invalid parameter specified id: %v ", id)
+	}
+
+	err := svc.objectSet.Unacknowledge(&id)
+	return err
 }

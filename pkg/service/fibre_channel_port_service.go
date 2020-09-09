@@ -25,7 +25,7 @@ func NewFibreChannelPortService(gs *NsGroupService) *FibreChannelPortService {
 // GetFibreChannelPorts - method returns a array of pointers of type "FibreChannelPorts"
 func (svc *FibreChannelPortService) GetFibreChannelPorts(params *param.GetParams) ([]*nimbleos.FibreChannelPort, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetFibreChannelPorts: invalid parameter specified, %v", params)
 	}
 
 	fibreChannelPortResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *FibreChannelPortService) GetFibreChannelPorts(params *param.GetParams
 // CreateFibreChannelPort - method creates a "FibreChannelPort"
 func (svc *FibreChannelPortService) CreateFibreChannelPort(obj *nimbleos.FibreChannelPort) (*nimbleos.FibreChannelPort, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateFibreChannelPort: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelPortResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *FibreChannelPortService) CreateFibreChannelPort(obj *nimbleos.FibreCh
 // UpdateFibreChannelPort - method modifies  the "FibreChannelPort"
 func (svc *FibreChannelPortService) UpdateFibreChannelPort(id string, obj *nimbleos.FibreChannelPort) (*nimbleos.FibreChannelPort, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateFibreChannelPort: invalid parameter specified, %v", obj)
 	}
 
 	fibreChannelPortResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *FibreChannelPortService) UpdateFibreChannelPort(id string, obj *nimbl
 // GetFibreChannelPortById - method returns a pointer to "FibreChannelPort"
 func (svc *FibreChannelPortService) GetFibreChannelPortById(id string) (*nimbleos.FibreChannelPort, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetFibreChannelPortById: invalid parameter specified, %v", id)
 	}
 
 	fibreChannelPortResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *FibreChannelPortService) GetFibreChannelPortById(id string) (*nimbleo
 // DeleteFibreChannelPort - deletes the "FibreChannelPort"
 func (svc *FibreChannelPortService) DeleteFibreChannelPort(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteFibreChannelPort: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

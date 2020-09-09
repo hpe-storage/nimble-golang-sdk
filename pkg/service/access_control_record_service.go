@@ -25,7 +25,7 @@ func NewAccessControlRecordService(gs *NsGroupService) *AccessControlRecordServi
 // GetAccessControlRecords - method returns a array of pointers of type "AccessControlRecords"
 func (svc *AccessControlRecordService) GetAccessControlRecords(params *param.GetParams) ([]*nimbleos.AccessControlRecord, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetAccessControlRecords: invalid parameter specified, %v", params)
 	}
 
 	accessControlRecordResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *AccessControlRecordService) GetAccessControlRecords(params *param.Get
 // CreateAccessControlRecord - method creates a "AccessControlRecord"
 func (svc *AccessControlRecordService) CreateAccessControlRecord(obj *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateAccessControlRecord: invalid parameter specified, %v", obj)
 	}
 
 	accessControlRecordResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *AccessControlRecordService) CreateAccessControlRecord(obj *nimbleos.A
 // UpdateAccessControlRecord - method modifies  the "AccessControlRecord"
 func (svc *AccessControlRecordService) UpdateAccessControlRecord(id string, obj *nimbleos.AccessControlRecord) (*nimbleos.AccessControlRecord, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateAccessControlRecord: invalid parameter specified, %v", obj)
 	}
 
 	accessControlRecordResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *AccessControlRecordService) UpdateAccessControlRecord(id string, obj 
 // GetAccessControlRecordById - method returns a pointer to "AccessControlRecord"
 func (svc *AccessControlRecordService) GetAccessControlRecordById(id string) (*nimbleos.AccessControlRecord, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetAccessControlRecordById: invalid parameter specified, %v", id)
 	}
 
 	accessControlRecordResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *AccessControlRecordService) GetAccessControlRecordById(id string) (*n
 // DeleteAccessControlRecord - deletes the "AccessControlRecord"
 func (svc *AccessControlRecordService) DeleteAccessControlRecord(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteAccessControlRecord: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {

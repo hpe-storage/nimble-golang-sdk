@@ -25,7 +25,7 @@ func NewDiskService(gs *NsGroupService) *DiskService {
 // GetDisks - method returns a array of pointers of type "Disks"
 func (svc *DiskService) GetDisks(params *param.GetParams) ([]*nimbleos.Disk, error) {
 	if params == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", params)
+		return nil, fmt.Errorf("GetDisks: invalid parameter specified, %v", params)
 	}
 
 	diskResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -38,7 +38,7 @@ func (svc *DiskService) GetDisks(params *param.GetParams) ([]*nimbleos.Disk, err
 // CreateDisk - method creates a "Disk"
 func (svc *DiskService) CreateDisk(obj *nimbleos.Disk) (*nimbleos.Disk, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("CreateDisk: invalid parameter specified, %v", obj)
 	}
 
 	diskResp, err := svc.objectSet.CreateObject(obj)
@@ -51,7 +51,7 @@ func (svc *DiskService) CreateDisk(obj *nimbleos.Disk) (*nimbleos.Disk, error) {
 // UpdateDisk - method modifies  the "Disk"
 func (svc *DiskService) UpdateDisk(id string, obj *nimbleos.Disk) (*nimbleos.Disk, error) {
 	if obj == nil {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", obj)
+		return nil, fmt.Errorf("UpdateDisk: invalid parameter specified, %v", obj)
 	}
 
 	diskResp, err := svc.objectSet.UpdateObject(id, obj)
@@ -64,7 +64,7 @@ func (svc *DiskService) UpdateDisk(id string, obj *nimbleos.Disk) (*nimbleos.Dis
 // GetDiskById - method returns a pointer to "Disk"
 func (svc *DiskService) GetDiskById(id string) (*nimbleos.Disk, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("error: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetDiskById: invalid parameter specified, %v", id)
 	}
 
 	diskResp, err := svc.objectSet.GetObject(id)
@@ -77,7 +77,7 @@ func (svc *DiskService) GetDiskById(id string) (*nimbleos.Disk, error) {
 // DeleteDisk - deletes the "Disk"
 func (svc *DiskService) DeleteDisk(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("error: invalid parameter specified, %s", id)
+		return fmt.Errorf("DeleteDisk: invalid parameter specified, %s", id)
 	}
 	err := svc.objectSet.DeleteObject(id)
 	if err != nil {
