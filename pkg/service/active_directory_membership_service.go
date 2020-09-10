@@ -110,7 +110,7 @@ func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id 
 // RemoveActiveDirectoryMembership - leaves the Active Directory domain.
 //   Required parameters:
 //       id - ID of the active directory.
-//       user - "Name of the Active Directory user with the privilege to leave the domain."
+//       user - Name of the Active Directory user with the privilege to leave the domain.
 //       password - Password for the Active Directory user.
 
 //   Optional parameters:
@@ -119,7 +119,7 @@ func (svc *ActiveDirectoryMembershipService) DeleteActiveDirectoryMembership(id 
 func (svc *ActiveDirectoryMembershipService) RemoveActiveDirectoryMembership(id string, user string, password string, force *bool) error {
 
 	if len(id) == 0 || len(user) == 0 || len(password) == 0 {
-		return fmt.Errorf("RemoveActiveDirectoryMembership: invalid parameter specified id: %v, user: %v, password: %v ", id, user, &password)
+		return fmt.Errorf("RemoveActiveDirectoryMembership: invalid parameter specified id: %v, user: %v, ", id, user)
 	}
 
 	err := svc.objectSet.Remove(&id, &user, &password, force)
