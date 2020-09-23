@@ -7,7 +7,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and
@@ -26,14 +25,6 @@ type ReplicationPartnerObjectSet struct {
 func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
 	resp, err := objectSet.Client.Post(replicationPartnerPath, payload, &nimbleos.ReplicationPartner{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -44,15 +35,6 @@ func (objectSet *ReplicationPartnerObjectSet) CreateObject(payload *nimbleos.Rep
 func (objectSet *ReplicationPartnerObjectSet) UpdateObject(id string, payload *nimbleos.ReplicationPartner) (*nimbleos.ReplicationPartner, error) {
 	resp, err := objectSet.Client.Put(replicationPartnerPath, id, payload, &nimbleos.ReplicationPartner{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

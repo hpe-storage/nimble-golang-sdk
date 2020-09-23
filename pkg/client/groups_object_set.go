@@ -8,7 +8,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Group is a collection of arrays operating together organized into storage pools.
@@ -30,15 +29,6 @@ func (objectSet *GroupObjectSet) CreateObject(payload *nimbleos.Group) (*nimbleo
 func (objectSet *GroupObjectSet) UpdateObject(id string, payload *nimbleos.Group) (*nimbleos.Group, error) {
 	resp, err := objectSet.Client.Put(groupPath, id, payload, &nimbleos.Group{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

@@ -8,7 +8,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Manage witness host configuration.
@@ -25,14 +24,6 @@ type WitnessObjectSet struct {
 func (objectSet *WitnessObjectSet) CreateObject(payload *nimbleos.Witness) (*nimbleos.Witness, error) {
 	resp, err := objectSet.Client.Post(witnessPath, payload, &nimbleos.Witness{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -116,7 +107,6 @@ func (objectSet *WitnessObjectSet) Test(id *string) (*[]*nimbleos.NsWitnessTestR
 
 	var emptyStruct struct{}
 	resp, err := objectSet.Client.Post(testUri, payload, &emptyStruct)
-
 	if err != nil {
 		return nil, err
 	}

@@ -125,7 +125,12 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 		// http code 202, handle async job
 		if response.StatusCode() == 202 {
 			// extract error message
-			return processAsyncResponse(client, response.Body())
+			id, err := processAsyncResponse(client, response.Body())
+			if id != nil {
+				return client.Get(path, id.(string), respHolder)
+			} else {
+				return nil, err
+			}
 		}
 		return unwrap(response.Body(), respHolder)
 	}
@@ -157,7 +162,12 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 		// http code 202, handle async job
 		if response.StatusCode() == 202 {
 			// extract error message
-			return processAsyncResponse(client, response.Body())
+			id, err := processAsyncResponse(client, response.Body())
+			if id != nil {
+				return client.Get(path, id.(string), respHolder)
+			} else {
+				return nil, err
+			}
 		}
 		return unwrap(response.Body(), respHolder)
 	}

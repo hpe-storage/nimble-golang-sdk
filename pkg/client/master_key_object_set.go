@@ -7,7 +7,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Manage the master key. Data encryption keys for volumes are encrypted by using a master key that must be initialized before encrypted volumes can be created. The master key in
@@ -26,14 +25,6 @@ type MasterKeyObjectSet struct {
 func (objectSet *MasterKeyObjectSet) CreateObject(payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
 	resp, err := objectSet.Client.Post(masterKeyPath, payload, &nimbleos.MasterKey{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -44,15 +35,6 @@ func (objectSet *MasterKeyObjectSet) CreateObject(payload *nimbleos.MasterKey) (
 func (objectSet *MasterKeyObjectSet) UpdateObject(id string, payload *nimbleos.MasterKey) (*nimbleos.MasterKey, error) {
 	resp, err := objectSet.Client.Put(masterKeyPath, id, payload, &nimbleos.MasterKey{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

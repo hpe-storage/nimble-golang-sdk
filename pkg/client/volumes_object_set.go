@@ -7,7 +7,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on
@@ -25,14 +24,6 @@ type VolumeObjectSet struct {
 func (objectSet *VolumeObjectSet) CreateObject(payload *nimbleos.Volume) (*nimbleos.Volume, error) {
 	resp, err := objectSet.Client.Post(volumePath, payload, &nimbleos.Volume{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -43,15 +34,6 @@ func (objectSet *VolumeObjectSet) CreateObject(payload *nimbleos.Volume) (*nimbl
 func (objectSet *VolumeObjectSet) UpdateObject(id string, payload *nimbleos.Volume) (*nimbleos.Volume, error) {
 	resp, err := objectSet.Client.Put(volumePath, id, payload, &nimbleos.Volume{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

@@ -8,7 +8,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Disks are used for storing user data.
@@ -30,15 +29,6 @@ func (objectSet *DiskObjectSet) CreateObject(payload *nimbleos.Disk) (*nimbleos.
 func (objectSet *DiskObjectSet) UpdateObject(id string, payload *nimbleos.Disk) (*nimbleos.Disk, error) {
 	resp, err := objectSet.Client.Put(diskPath, id, payload, &nimbleos.Disk{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 
