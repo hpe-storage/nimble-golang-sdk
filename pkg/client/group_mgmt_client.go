@@ -59,7 +59,7 @@ type Argument struct {
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, sync bool) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
 	// Create GroupMgmt Client
 	client := resty.New()
 	client.SetTLSClientConfig(&tls.Config{
@@ -68,7 +68,7 @@ func NewClient(ipAddress, username, password, apiVersion string, sync bool) (*Gr
 	groupMgmtClient := &GroupMgmtClient{
 		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
 		Client:    client,
-		WaitOnJob: sync,
+		WaitOnJob: waitOnJobs,
 	}
 
 	// Get session token
@@ -125,21 +125,7 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 		// http code 202, handle async job
 		if response.StatusCode() == 202 {
 			// extract error message
-			errResp, _ := unwrapError(response.Body())
-			if client.WaitOnJob { // check sync flag
-				unwrapMessage := &ErrorResponse{}
-				err = json.Unmarshal(response.Body(), unwrapMessage)
-				if err != nil {
-					return nil, err
-				}
-				ids, err := handleAsyncJob(unwrapMessage, client)
-
-				if err != nil {
-					return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), err.Error())
-				}
-				return ids, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-			}
-			return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+			return processAsyncResponse(client, response.Body())
 		}
 		return unwrap(response.Body(), respHolder)
 	}
@@ -171,21 +157,7 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 		// http code 202, handle async job
 		if response.StatusCode() == 202 {
 			// extract error message
-			errResp, _ := unwrapError(response.Body())
-			if client.WaitOnJob { // check sync flag
-				unwrapMessage := &ErrorResponse{}
-				err = json.Unmarshal(response.Body(), unwrapMessage)
-				if err != nil {
-					return nil, err
-				}
-				ids, err := handleAsyncJob(unwrapMessage, client)
-
-				if err != nil {
-					return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), err.Error())
-				}
-				return ids, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-			}
-			return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+			return processAsyncResponse(client, response.Body())
 		}
 		return unwrap(response.Body(), respHolder)
 	}
@@ -424,6 +396,26 @@ func unwrapError(body []byte) (string, error) {
 	return errResp, nil
 }
 
+// processAsyncResponse: process http code 202 response
+func processAsyncResponse(client *GroupMgmtClient, body []byte) (interface{}, error) {
+	errResp, _ := unwrapError(body)
+	if client.WaitOnJob { // check sync flag
+		unwrapMessage := &ErrorResponse{}
+		err := json.Unmarshal(body, unwrapMessage)
+		if err != nil {
+			return nil, err
+		}
+		ids, err := handleAsyncJob(unwrapMessage, client)
+
+		if err != nil {
+			return nil, fmt.Errorf("http response error: status (202), messages: %v", err.Error())
+		}
+		return ids, fmt.Errorf("http response error: status (202), messages: %v", errResp)
+	}
+	return nil, fmt.Errorf("http response error: status (202), messages: %v", errResp)
+}
+
+//handleAsyncJob : extract the job_id and monitor it periodically until job completion or timed out
 func handleAsyncJob(resp *ErrorResponse, client *GroupMgmtClient) (string, error) {
 	// filter list of async job id from the message
 

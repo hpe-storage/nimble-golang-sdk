@@ -9,7 +9,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
-
 )
 
 type VolumeServiceTestSuite struct {
@@ -111,7 +110,6 @@ func (suite *VolumeServiceTestSuite) createVolColl(name string) {
 	}
 	suite.volumeCollectionService.CreateVolumeCollection(volcoll)
 }
-
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
@@ -260,15 +258,15 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 
 		// update the properties of clone volume
 		cloneVolume := &nimbleos.Volume{
-			Clone:             param.NewBool(true),
-			BaseSnapId:        snapColl.SnapshotsList[0].SnapId,
-			Name:			   param.NewString("TestCloneVolume"),
+			Clone:      param.NewBool(true),
+			BaseSnapId: snapColl.SnapshotsList[0].SnapId,
+			Name:       param.NewString("TestCloneVolume"),
 		}
 		//restore volume to snapcoll
-		_,err = suite.volumeService.CreateVolume(cloneVolume)
+		_, err = suite.volumeService.CreateVolume(cloneVolume)
 
 		if err != nil {
-			suite.T().Fatalf("Failed to clone a volume, id %s",*volume.ID)
+			suite.T().Fatalf("Failed to clone a volume, id %s", *volume.ID)
 
 		}
 		// disassociate volume from volume collection
