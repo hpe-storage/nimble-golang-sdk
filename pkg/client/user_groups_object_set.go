@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Represents Active Directory groups configured to manage the system.
@@ -23,6 +27,14 @@ type UserGroupObjectSet struct {
 func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
 	resp, err := objectSet.Client.Post(userGroupPath, payload, &nimbleos.UserGroup{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -33,6 +45,15 @@ func (objectSet *UserGroupObjectSet) CreateObject(payload *nimbleos.UserGroup) (
 func (objectSet *UserGroupObjectSet) UpdateObject(id string, payload *nimbleos.UserGroup) (*nimbleos.UserGroup, error) {
 	resp, err := objectSet.Client.Put(userGroupPath, id, payload, &nimbleos.UserGroup{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -50,7 +71,7 @@ func (objectSet *UserGroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a UserGroup object with the given ID
 func (objectSet *UserGroupObjectSet) GetObject(id string) (*nimbleos.UserGroup, error) {
-	resp, err := objectSet.Client.Get(userGroupPath, id, nimbleos.UserGroup{})
+	resp, err := objectSet.Client.Get(userGroupPath, id, &nimbleos.UserGroup{})
 	if err != nil {
 		return nil, err
 	}

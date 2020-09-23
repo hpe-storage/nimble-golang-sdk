@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections
@@ -24,6 +28,14 @@ type VolumeCollectionObjectSet struct {
 func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
 	resp, err := objectSet.Client.Post(volumeCollectionPath, payload, &nimbleos.VolumeCollection{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -34,6 +46,15 @@ func (objectSet *VolumeCollectionObjectSet) CreateObject(payload *nimbleos.Volum
 func (objectSet *VolumeCollectionObjectSet) UpdateObject(id string, payload *nimbleos.VolumeCollection) (*nimbleos.VolumeCollection, error) {
 	resp, err := objectSet.Client.Put(volumeCollectionPath, id, payload, &nimbleos.VolumeCollection{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -51,7 +72,7 @@ func (objectSet *VolumeCollectionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a VolumeCollection object with the given ID
 func (objectSet *VolumeCollectionObjectSet) GetObject(id string) (*nimbleos.VolumeCollection, error) {
-	resp, err := objectSet.Client.Get(volumeCollectionPath, id, nimbleos.VolumeCollection{})
+	resp, err := objectSet.Client.Get(volumeCollectionPath, id, &nimbleos.VolumeCollection{})
 	if err != nil {
 		return nil, err
 	}

@@ -37,7 +37,7 @@ func (objectSet *ControllerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Controller object with the given ID
 func (objectSet *ControllerObjectSet) GetObject(id string) (*nimbleos.Controller, error) {
-	resp, err := objectSet.Client.Get(controllerPath, id, nimbleos.Controller{})
+	resp, err := objectSet.Client.Get(controllerPath, id, &nimbleos.Controller{})
 	if err != nil {
 		return nil, err
 	}

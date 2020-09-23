@@ -37,7 +37,7 @@ func (objectSet *EventObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Event object with the given ID
 func (objectSet *EventObjectSet) GetObject(id string) (*nimbleos.Event, error) {
-	resp, err := objectSet.Client.Get(eventPath, id, nimbleos.Event{})
+	resp, err := objectSet.Client.Get(eventPath, id, &nimbleos.Event{})
 	if err != nil {
 		return nil, err
 	}

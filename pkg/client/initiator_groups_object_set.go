@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through
@@ -24,6 +28,14 @@ type InitiatorGroupObjectSet struct {
 func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
 	resp, err := objectSet.Client.Post(initiatorGroupPath, payload, &nimbleos.InitiatorGroup{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -34,6 +46,15 @@ func (objectSet *InitiatorGroupObjectSet) CreateObject(payload *nimbleos.Initiat
 func (objectSet *InitiatorGroupObjectSet) UpdateObject(id string, payload *nimbleos.InitiatorGroup) (*nimbleos.InitiatorGroup, error) {
 	resp, err := objectSet.Client.Put(initiatorGroupPath, id, payload, &nimbleos.InitiatorGroup{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -51,7 +72,7 @@ func (objectSet *InitiatorGroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a InitiatorGroup object with the given ID
 func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*nimbleos.InitiatorGroup, error) {
-	resp, err := objectSet.Client.Get(initiatorGroupPath, id, nimbleos.InitiatorGroup{})
+	resp, err := objectSet.Client.Get(initiatorGroupPath, id, &nimbleos.InitiatorGroup{})
 	if err != nil {
 		return nil, err
 	}

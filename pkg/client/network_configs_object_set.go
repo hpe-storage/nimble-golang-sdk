@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
@@ -23,6 +27,14 @@ type NetworkConfigObjectSet struct {
 func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
 	resp, err := objectSet.Client.Post(networkConfigPath, payload, &nimbleos.NetworkConfig{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -33,6 +45,15 @@ func (objectSet *NetworkConfigObjectSet) CreateObject(payload *nimbleos.NetworkC
 func (objectSet *NetworkConfigObjectSet) UpdateObject(id string, payload *nimbleos.NetworkConfig) (*nimbleos.NetworkConfig, error) {
 	resp, err := objectSet.Client.Put(networkConfigPath, id, payload, &nimbleos.NetworkConfig{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -50,7 +71,7 @@ func (objectSet *NetworkConfigObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a NetworkConfig object with the given ID
 func (objectSet *NetworkConfigObjectSet) GetObject(id string) (*nimbleos.NetworkConfig, error) {
-	resp, err := objectSet.Client.Get(networkConfigPath, id, nimbleos.NetworkConfig{})
+	resp, err := objectSet.Client.Get(networkConfigPath, id, &nimbleos.NetworkConfig{})
 	if err != nil {
 		return nil, err
 	}

@@ -37,7 +37,7 @@ func (objectSet *FibreChannelInitiatorAliasObjectSet) DeleteObject(id string) er
 
 // GetObject returns a FibreChannelInitiatorAlias object with the given ID
 func (objectSet *FibreChannelInitiatorAliasObjectSet) GetObject(id string) (*nimbleos.FibreChannelInitiatorAlias, error) {
-	resp, err := objectSet.Client.Get(fibreChannelInitiatorAliasPath, id, nimbleos.FibreChannelInitiatorAlias{})
+	resp, err := objectSet.Client.Get(fibreChannelInitiatorAliasPath, id, &nimbleos.FibreChannelInitiatorAlias{})
 	if err != nil {
 		return nil, err
 	}

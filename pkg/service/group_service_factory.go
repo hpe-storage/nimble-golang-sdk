@@ -3,7 +3,9 @@
 package service
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"strings"
 )
 
 // NsGroupService type
@@ -60,8 +62,11 @@ type NsGroupService struct {
 }
 
 // NewNsGroupService - initializes NsGroupService
-func NewNsGroupService(ip string, username string, password string) (gs *NsGroupService, err error) {
-	client, err := client.NewClient(ip, username, password, "v1")
+func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool) (gs *NsGroupService, err error) {
+	if strings.Compare(apiVersion, "v1") != 0 {
+		return nil, fmt.Errorf("NewNsGroupService: unsupported %s sdk API version", apiVersion)
+	}
+	client, err := client.NewClient(ip, username, password, apiVersion, synchronous)
 	if err != nil {
 		return nil, err
 	}

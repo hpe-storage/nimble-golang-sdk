@@ -38,7 +38,7 @@ func (objectSet *SubnetObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Subnet object with the given ID
 func (objectSet *SubnetObjectSet) GetObject(id string) (*nimbleos.Subnet, error) {
-	resp, err := objectSet.Client.Get(subnetPath, id, nimbleos.Subnet{})
+	resp, err := objectSet.Client.Get(subnetPath, id, &nimbleos.Subnet{})
 	if err != nil {
 		return nil, err
 	}

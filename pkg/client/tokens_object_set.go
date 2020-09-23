@@ -1,5 +1,7 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
 package client
 
 import (
@@ -8,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Manage user's session information.
@@ -24,6 +27,14 @@ type TokenObjectSet struct {
 func (objectSet *TokenObjectSet) CreateObject(payload *nimbleos.Token) (*nimbleos.Token, error) {
 	resp, err := objectSet.Client.Post(tokenPath, payload, &nimbleos.Token{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -46,7 +57,7 @@ func (objectSet *TokenObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Token object with the given ID
 func (objectSet *TokenObjectSet) GetObject(id string) (*nimbleos.Token, error) {
-	resp, err := objectSet.Client.Get(tokenPath, id, nimbleos.Token{})
+	resp, err := objectSet.Client.Get(tokenPath, id, &nimbleos.Token{})
 	if err != nil {
 		return nil, err
 	}

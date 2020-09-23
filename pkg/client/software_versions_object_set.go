@@ -37,7 +37,7 @@ func (objectSet *SoftwareVersionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a SoftwareVersion object with the given ID
 func (objectSet *SoftwareVersionObjectSet) GetObject(id string) (*nimbleos.SoftwareVersion, error) {
-	resp, err := objectSet.Client.Get(softwareVersionPath, id, nimbleos.SoftwareVersion{})
+	resp, err := objectSet.Client.Get(softwareVersionPath, id, &nimbleos.SoftwareVersion{})
 	if err != nil {
 		return nil, err
 	}
