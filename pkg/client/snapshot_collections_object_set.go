@@ -7,7 +7,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the
@@ -25,14 +24,6 @@ type SnapshotCollectionObjectSet struct {
 func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
 	resp, err := objectSet.Client.Post(snapshotCollectionPath, payload, &nimbleos.SnapshotCollection{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -43,15 +34,6 @@ func (objectSet *SnapshotCollectionObjectSet) CreateObject(payload *nimbleos.Sna
 func (objectSet *SnapshotCollectionObjectSet) UpdateObject(id string, payload *nimbleos.SnapshotCollection) (*nimbleos.SnapshotCollection, error) {
 	resp, err := objectSet.Client.Put(snapshotCollectionPath, id, payload, &nimbleos.SnapshotCollection{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

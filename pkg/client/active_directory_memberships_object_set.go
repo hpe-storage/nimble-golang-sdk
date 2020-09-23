@@ -8,7 +8,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Manages the storage array's membership with the Active Directory.
@@ -25,14 +24,6 @@ type ActiveDirectoryMembershipObjectSet struct {
 func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
 	resp, err := objectSet.Client.Post(activeDirectoryMembershipPath, payload, &nimbleos.ActiveDirectoryMembership{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -43,15 +34,6 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) CreateObject(payload *nimbl
 func (objectSet *ActiveDirectoryMembershipObjectSet) UpdateObject(id string, payload *nimbleos.ActiveDirectoryMembership) (*nimbleos.ActiveDirectoryMembership, error) {
 	resp, err := objectSet.Client.Put(activeDirectoryMembershipPath, id, payload, &nimbleos.ActiveDirectoryMembership{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

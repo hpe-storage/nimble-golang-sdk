@@ -7,7 +7,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP
@@ -26,14 +25,6 @@ type ChapUserObjectSet struct {
 func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
 	resp, err := objectSet.Client.Post(chapUserPath, payload, &nimbleos.ChapUser{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -44,15 +35,6 @@ func (objectSet *ChapUserObjectSet) CreateObject(payload *nimbleos.ChapUser) (*n
 func (objectSet *ChapUserObjectSet) UpdateObject(id string, payload *nimbleos.ChapUser) (*nimbleos.ChapUser, error) {
 	resp, err := objectSet.Client.Put(chapUserPath, id, payload, &nimbleos.ChapUser{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

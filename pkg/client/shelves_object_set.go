@@ -8,7 +8,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Disk shelf and head unit houses disks and controller.
@@ -30,15 +29,6 @@ func (objectSet *ShelfObjectSet) CreateObject(payload *nimbleos.Shelf) (*nimbleo
 func (objectSet *ShelfObjectSet) UpdateObject(id string, payload *nimbleos.Shelf) (*nimbleos.Shelf, error) {
 	resp, err := objectSet.Client.Put(shelfPath, id, payload, &nimbleos.Shelf{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

@@ -7,7 +7,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best
@@ -26,14 +25,6 @@ type PerformancePolicyObjectSet struct {
 func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
 	resp, err := objectSet.Client.Post(performancePolicyPath, payload, &nimbleos.PerformancePolicy{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-			}
-		}
 		return nil, err
 	}
 
@@ -44,15 +35,6 @@ func (objectSet *PerformancePolicyObjectSet) CreateObject(payload *nimbleos.Perf
 func (objectSet *PerformancePolicyObjectSet) UpdateObject(id string, payload *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
 	resp, err := objectSet.Client.Put(performancePolicyPath, id, payload, &nimbleos.PerformancePolicy{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 

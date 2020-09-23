@@ -8,7 +8,6 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
-	"strings"
 )
 
 // Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
@@ -30,15 +29,6 @@ func (objectSet *FibreChannelInterfaceObjectSet) CreateObject(payload *nimbleos.
 func (objectSet *FibreChannelInterfaceObjectSet) UpdateObject(id string, payload *nimbleos.FibreChannelInterface) (*nimbleos.FibreChannelInterface, error) {
 	resp, err := objectSet.Client.Put(fibreChannelInterfacePath, id, payload, &nimbleos.FibreChannelInterface{})
 	if err != nil {
-		//process http code 202
-		if strings.Contains(err.Error(), "status (202)") {
-			if resp != nil {
-				ID := resp.(string)
-				// Get object
-				return objectSet.GetObject(ID)
-
-			}
-		}
 		return nil, err
 	}
 
