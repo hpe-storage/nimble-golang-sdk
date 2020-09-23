@@ -37,7 +37,7 @@ func (objectSet *FibreChannelSessionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a FibreChannelSession object with the given ID
 func (objectSet *FibreChannelSessionObjectSet) GetObject(id string) (*nimbleos.FibreChannelSession, error) {
-	resp, err := objectSet.Client.Get(fibreChannelSessionPath, id, nimbleos.FibreChannelSession{})
+	resp, err := objectSet.Client.Get(fibreChannelSessionPath, id, &nimbleos.FibreChannelSession{})
 	if err != nil {
 		return nil, err
 	}

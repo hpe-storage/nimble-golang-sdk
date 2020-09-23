@@ -1,5 +1,6 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// update true
 package client
 
 import (
@@ -8,6 +9,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Manages the password policies configured for the group.
@@ -29,6 +31,15 @@ func (objectSet *UserPolicyObjectSet) CreateObject(payload *nimbleos.UserPolicy)
 func (objectSet *UserPolicyObjectSet) UpdateObject(id string, payload *nimbleos.UserPolicy) (*nimbleos.UserPolicy, error) {
 	resp, err := objectSet.Client.Put(userPolicyPath, id, payload, &nimbleos.UserPolicy{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -42,7 +53,7 @@ func (objectSet *UserPolicyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a UserPolicy object with the given ID
 func (objectSet *UserPolicyObjectSet) GetObject(id string) (*nimbleos.UserPolicy, error) {
-	resp, err := objectSet.Client.Get(userPolicyPath, id, nimbleos.UserPolicy{})
+	resp, err := objectSet.Client.Get(userPolicyPath, id, &nimbleos.UserPolicy{})
 	if err != nil {
 		return nil, err
 	}

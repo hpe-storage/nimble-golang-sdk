@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Snapshots are point-in-time copies of a volume. Snapshots are managed the same way you manage volumes. In reality, snapshots are volumes: they can be accessed by initiators, are
@@ -25,6 +29,14 @@ type SnapshotObjectSet struct {
 func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
 	resp, err := objectSet.Client.Post(snapshotPath, payload, &nimbleos.Snapshot{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -35,6 +47,15 @@ func (objectSet *SnapshotObjectSet) CreateObject(payload *nimbleos.Snapshot) (*n
 func (objectSet *SnapshotObjectSet) UpdateObject(id string, payload *nimbleos.Snapshot) (*nimbleos.Snapshot, error) {
 	resp, err := objectSet.Client.Put(snapshotPath, id, payload, &nimbleos.Snapshot{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -52,7 +73,7 @@ func (objectSet *SnapshotObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Snapshot object with the given ID
 func (objectSet *SnapshotObjectSet) GetObject(id string) (*nimbleos.Snapshot, error) {
-	resp, err := objectSet.Client.Get(snapshotPath, id, nimbleos.Snapshot{})
+	resp, err := objectSet.Client.Get(snapshotPath, id, &nimbleos.Snapshot{})
 	if err != nil {
 		return nil, err
 	}

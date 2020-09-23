@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
@@ -23,6 +27,14 @@ type ApplicationServerObjectSet struct {
 func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
 	resp, err := objectSet.Client.Post(applicationServerPath, payload, &nimbleos.ApplicationServer{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -33,6 +45,15 @@ func (objectSet *ApplicationServerObjectSet) CreateObject(payload *nimbleos.Appl
 func (objectSet *ApplicationServerObjectSet) UpdateObject(id string, payload *nimbleos.ApplicationServer) (*nimbleos.ApplicationServer, error) {
 	resp, err := objectSet.Client.Put(applicationServerPath, id, payload, &nimbleos.ApplicationServer{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -50,7 +71,7 @@ func (objectSet *ApplicationServerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ApplicationServer object with the given ID
 func (objectSet *ApplicationServerObjectSet) GetObject(id string) (*nimbleos.ApplicationServer, error) {
-	resp, err := objectSet.Client.Get(applicationServerPath, id, nimbleos.ApplicationServer{})
+	resp, err := objectSet.Client.Get(applicationServerPath, id, &nimbleos.ApplicationServer{})
 	if err != nil {
 		return nil, err
 	}

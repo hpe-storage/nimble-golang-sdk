@@ -37,7 +37,7 @@ func (objectSet *AuditLogObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a AuditLog object with the given ID
 func (objectSet *AuditLogObjectSet) GetObject(id string) (*nimbleos.AuditLog, error) {
-	resp, err := objectSet.Client.Get(auditLogPath, id, nimbleos.AuditLog{})
+	resp, err := objectSet.Client.Get(auditLogPath, id, &nimbleos.AuditLog{})
 	if err != nil {
 		return nil, err
 	}

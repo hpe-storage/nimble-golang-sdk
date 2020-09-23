@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Manage protection schedules used in protection templates.
@@ -23,6 +27,14 @@ type ProtectionScheduleObjectSet struct {
 func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
 	resp, err := objectSet.Client.Post(protectionSchedulePath, payload, &nimbleos.ProtectionSchedule{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -33,6 +45,15 @@ func (objectSet *ProtectionScheduleObjectSet) CreateObject(payload *nimbleos.Pro
 func (objectSet *ProtectionScheduleObjectSet) UpdateObject(id string, payload *nimbleos.ProtectionSchedule) (*nimbleos.ProtectionSchedule, error) {
 	resp, err := objectSet.Client.Put(protectionSchedulePath, id, payload, &nimbleos.ProtectionSchedule{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -50,7 +71,7 @@ func (objectSet *ProtectionScheduleObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ProtectionSchedule object with the given ID
 func (objectSet *ProtectionScheduleObjectSet) GetObject(id string) (*nimbleos.ProtectionSchedule, error) {
-	resp, err := objectSet.Client.Get(protectionSchedulePath, id, nimbleos.ProtectionSchedule{})
+	resp, err := objectSet.Client.Get(protectionSchedulePath, id, &nimbleos.ProtectionSchedule{})
 	if err != nil {
 		return nil, err
 	}

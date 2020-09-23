@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
@@ -23,6 +27,14 @@ type ArrayObjectSet struct {
 func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleos.Array, error) {
 	resp, err := objectSet.Client.Post(arrayPath, payload, &nimbleos.Array{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -33,6 +45,15 @@ func (objectSet *ArrayObjectSet) CreateObject(payload *nimbleos.Array) (*nimbleo
 func (objectSet *ArrayObjectSet) UpdateObject(id string, payload *nimbleos.Array) (*nimbleos.Array, error) {
 	resp, err := objectSet.Client.Put(arrayPath, id, payload, &nimbleos.Array{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -50,7 +71,7 @@ func (objectSet *ArrayObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Array object with the given ID
 func (objectSet *ArrayObjectSet) GetObject(id string) (*nimbleos.Array, error) {
-	resp, err := objectSet.Client.Get(arrayPath, id, nimbleos.Array{})
+	resp, err := objectSet.Client.Get(arrayPath, id, &nimbleos.Array{})
 	if err != nil {
 		return nil, err
 	}

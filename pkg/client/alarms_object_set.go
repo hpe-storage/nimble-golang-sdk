@@ -1,5 +1,6 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// update true
 package client
 
 import (
@@ -8,6 +9,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // View alarms.
@@ -29,6 +31,15 @@ func (objectSet *AlarmObjectSet) CreateObject(payload *nimbleos.Alarm) (*nimbleo
 func (objectSet *AlarmObjectSet) UpdateObject(id string, payload *nimbleos.Alarm) (*nimbleos.Alarm, error) {
 	resp, err := objectSet.Client.Put(alarmPath, id, payload, &nimbleos.Alarm{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -46,7 +57,7 @@ func (objectSet *AlarmObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Alarm object with the given ID
 func (objectSet *AlarmObjectSet) GetObject(id string) (*nimbleos.Alarm, error) {
-	resp, err := objectSet.Client.Get(alarmPath, id, nimbleos.Alarm{})
+	resp, err := objectSet.Client.Get(alarmPath, id, &nimbleos.Alarm{})
 	if err != nil {
 		return nil, err
 	}

@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Folders are a way to group volumes, as well as a way to apply space constraints to them.
@@ -23,6 +27,14 @@ type FolderObjectSet struct {
 func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbleos.Folder, error) {
 	resp, err := objectSet.Client.Post(folderPath, payload, &nimbleos.Folder{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -33,6 +45,15 @@ func (objectSet *FolderObjectSet) CreateObject(payload *nimbleos.Folder) (*nimbl
 func (objectSet *FolderObjectSet) UpdateObject(id string, payload *nimbleos.Folder) (*nimbleos.Folder, error) {
 	resp, err := objectSet.Client.Put(folderPath, id, payload, &nimbleos.Folder{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -50,7 +71,7 @@ func (objectSet *FolderObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Folder object with the given ID
 func (objectSet *FolderObjectSet) GetObject(id string) (*nimbleos.Folder, error) {
-	resp, err := objectSet.Client.Get(folderPath, id, nimbleos.Folder{})
+	resp, err := objectSet.Client.Get(folderPath, id, &nimbleos.Folder{})
 	if err != nil {
 		return nil, err
 	}

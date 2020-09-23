@@ -1,5 +1,8 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+// create true
+
+// update true
 package client
 
 import (
@@ -8,6 +11,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"reflect"
+	"strings"
 )
 
 // Key Manager stores encryption keys for the array volumes / dedupe domains.
@@ -24,6 +28,14 @@ type KeyManagerObjectSet struct {
 func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
 	resp, err := objectSet.Client.Post(keyManagerPath, payload, &nimbleos.KeyManager{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+			}
+		}
 		return nil, err
 	}
 
@@ -34,6 +46,15 @@ func (objectSet *KeyManagerObjectSet) CreateObject(payload *nimbleos.KeyManager)
 func (objectSet *KeyManagerObjectSet) UpdateObject(id string, payload *nimbleos.KeyManager) (*nimbleos.KeyManager, error) {
 	resp, err := objectSet.Client.Put(keyManagerPath, id, payload, &nimbleos.KeyManager{})
 	if err != nil {
+		//process http code 202
+		if strings.Contains(err.Error(), "status (202)") {
+			if resp != nil {
+				ID := resp.(string)
+				// Get object
+				return objectSet.GetObject(ID)
+
+			}
+		}
 		return nil, err
 	}
 
@@ -47,7 +68,7 @@ func (objectSet *KeyManagerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a KeyManager object with the given ID
 func (objectSet *KeyManagerObjectSet) GetObject(id string) (*nimbleos.KeyManager, error) {
-	resp, err := objectSet.Client.Get(keyManagerPath, id, nimbleos.KeyManager{})
+	resp, err := objectSet.Client.Get(keyManagerPath, id, &nimbleos.KeyManager{})
 	if err != nil {
 		return nil, err
 	}
