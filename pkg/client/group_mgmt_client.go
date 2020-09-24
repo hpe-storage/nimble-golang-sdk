@@ -14,13 +14,12 @@ import (
 )
 
 const (
-	groupURIFmt        = "https://%s:5392/%s"
-	clientTimeout      = time.Second * 60 // 1 Minute
-	maxLoginRetries    = 5
-	retrySleepDuration = 2                 // Second
-	jobTimeout         = time.Second * 300 // 5 Minute
-	retryFrequency     = 5 * time.Second   // Second
-	smAsyncJobId       = "SM_async_job_id"
+	groupURIFmt     = "https://%s:5392/%s"
+	clientTimeout   = time.Second * 60 // 1 Minute
+	maxLoginRetries = 5
+	jobTimeout      = time.Second * 300 // 5 Minute
+	jobPollInterval = 5 * time.Second   // Second
+	smAsyncJobId    = "SM_async_job_id"
 )
 
 // GroupMgmtClient :
@@ -415,35 +414,31 @@ func processAsyncResponse(client *GroupMgmtClient, body []byte) (interface{}, er
 		if err != nil {
 			return nil, err
 		}
-		ids, err := handleAsyncJob(unwrapMessage, client)
+		var jobId string
+		for _, msg := range unwrapMessage.Messages {
+			if strings.Compare(msg.Code, smAsyncJobId) == 0 {
+				jobId = msg.Arguments.JobId
+			}
+		}
+		if len(jobId) == 0 {
+			return nil, fmt.Errorf("http response error: status (202), failed to get the job id")
+		}
 
+		id, err := waitForJobResult(jobId, client)
 		if err != nil {
 			return nil, fmt.Errorf("http response error: status (202), messages: %v", err.Error())
 		}
-		return ids, fmt.Errorf("http response error: status (202), messages: %v", errResp)
+		return id, fmt.Errorf("http response error: status (202), messages: %v", errResp)
 	}
 	return nil, fmt.Errorf("http response error: status (202), messages: %v", errResp)
 }
 
-//handleAsyncJob : extract the job_id and monitor it periodically until job completion or timed out
-func handleAsyncJob(resp *ErrorResponse, client *GroupMgmtClient) (string, error) {
-	// filter list of async job id from the message
+//waitForJobResult : it monitors jobId periodically until job completion or timed out
+func waitForJobResult(jobId string, client *GroupMgmtClient) (interface{}, error) {
 
-	var objectId string
-	var jobId string
-
-	for _, msg := range resp.Messages {
-		if strings.Compare(msg.Code, smAsyncJobId) == 0 {
-			jobId = msg.Arguments.JobId
-		}
-	}
-
-	if len(jobId) == 0 {
-		return jobId, fmt.Errorf("handleAsyncJob: failed to get the job id")
-	}
 	// Loop over job ids periodically unitl 300 sec timeout or unitl completion of jobs.
-	intervalChan := time.Tick(retryFrequency) // control the fequency of GetObject() API call.
-	timeoutChan := time.After(jobTimeout)     // timeout setting, 300 Seconds
+	intervalChan := time.Tick(jobPollInterval) // control the fequency of GetObject() API call.
+	timeoutChan := time.After(jobTimeout)      // timeout setting, 300 Seconds
 	for {
 		select {
 		case <-intervalChan:
@@ -452,15 +447,15 @@ func handleAsyncJob(resp *ErrorResponse, client *GroupMgmtClient) (string, error
 			if err != nil {
 				fmt.Println("Warning : failed to %s jobId info, err : %s", jobId, err.Error())
 			} else {
-				objectId = *job.ObjectId
-				if strings.Compare(string(*job.State), string(*nimbleos.NsJobStatusDone)) == 0 {
+				var objectId = *job.ObjectId
+				if string(*job.State) == string(*nimbleos.NsJobStatusDone) {
 					return objectId, nil
 				}
 			}
 
 		case <-timeoutChan:
-			return objectId, fmt.Errorf("handleAsyncJob: wait on jobs in progress has timed out. Following %v jobs didnt complete on time.", jobId)
+			return nil, fmt.Errorf("waitForJobResult: wait on jobs in progress has timed out. Following %v jobs didnt complete on time.", jobId)
 		}
 	}
-	return objectId, nil
+	return nil, nil
 }
