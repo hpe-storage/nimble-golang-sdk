@@ -98,7 +98,6 @@ func buildUserObjectSet(response interface{}) []*nimbleos.User {
 
 // Unlock - Unlocks user account locked due to failed logins.
 func (objectSet *UserObjectSet) Unlock(id *string) (*nimbleos.NsUserLockStatus, error) {
-
 	unlockUri := userPath
 	unlockUri = unlockUri + "/" + *id
 	unlockUri = unlockUri + "/actions/" + "unlock"

@@ -98,7 +98,6 @@ func buildNetworkConfigObjectSet(response interface{}) []*nimbleos.NetworkConfig
 
 // ActivateNetconfig - Activate a network configuration.
 func (objectSet *NetworkConfigObjectSet) ActivateNetconfig(id *string, ignoreValidationMask *uint64) error {
-
 	activateNetconfigUri := networkConfigPath
 	activateNetconfigUri = activateNetconfigUri + "/" + *id
 	activateNetconfigUri = activateNetconfigUri + "/actions/" + "activate_netconfig"
@@ -111,14 +110,12 @@ func (objectSet *NetworkConfigObjectSet) ActivateNetconfig(id *string, ignoreVal
 		ignoreValidationMask,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(activateNetconfigUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(activateNetconfigUri, payload, &nimbleos.NetworkConfig{})
 	return err
 }
 
 // ValidateNetconfig - Validate a network configuration.
 func (objectSet *NetworkConfigObjectSet) ValidateNetconfig(id *string, ignoreValidationMask *uint64) error {
-
 	validateNetconfigUri := networkConfigPath
 	validateNetconfigUri = validateNetconfigUri + "/" + *id
 	validateNetconfigUri = validateNetconfigUri + "/actions/" + "validate_netconfig"
@@ -131,7 +128,6 @@ func (objectSet *NetworkConfigObjectSet) ValidateNetconfig(id *string, ignoreVal
 		ignoreValidationMask,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(validateNetconfigUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(validateNetconfigUri, payload, &nimbleos.NetworkConfig{})
 	return err
 }

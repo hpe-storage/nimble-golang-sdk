@@ -85,7 +85,6 @@ func buildFibreChannelConfigObjectSet(response interface{}) []*nimbleos.FibreCha
 
 // Regenerate - Regenerate Fibre Channel configuration.
 func (objectSet *FibreChannelConfigObjectSet) Regenerate(id *string, wwnnBaseStr *string, precheck *bool) (*nimbleos.NsFcConfigRegenerateReturn, error) {
-
 	regenerateUri := fibreChannelConfigPath
 	regenerateUri = regenerateUri + "/" + *id
 	regenerateUri = regenerateUri + "/actions/" + "regenerate"
@@ -110,7 +109,6 @@ func (objectSet *FibreChannelConfigObjectSet) Regenerate(id *string, wwnnBaseStr
 
 // HwUpgrade - Update Fibre Channel configuration after hardware changes.
 func (objectSet *FibreChannelConfigObjectSet) HwUpgrade(id *string) error {
-
 	hwUpgradeUri := fibreChannelConfigPath
 	hwUpgradeUri = hwUpgradeUri + "/" + *id
 	hwUpgradeUri = hwUpgradeUri + "/actions/" + "hw_upgrade"
@@ -121,7 +119,6 @@ func (objectSet *FibreChannelConfigObjectSet) HwUpgrade(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(hwUpgradeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(hwUpgradeUri, payload, &nimbleos.FibreChannelConfig{})
 	return err
 }

@@ -9,6 +9,7 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"strings"
 	"time"
 )
 
@@ -125,7 +126,10 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 			// extract error message
 			id, err := processAsyncResponse(client, response.Body())
 			if id != nil {
-				return client.Get(path, id.(string), respHolder)
+				// action rpc may contains different path.
+				// extract Get uri path from original path.
+				newPath := strings.Split(path, "/")
+				return client.Get(newPath[0], id.(string), respHolder)
 			} else {
 				return nil, err
 			}
@@ -162,7 +166,10 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 			// extract error message
 			id, err := processAsyncResponse(client, response.Body())
 			if id != nil {
-				return client.Get(path, id.(string), respHolder)
+				// action rpc may contains different path.
+				// extract Get uri path from original path.
+				newPath := strings.Split(path, "/")
+				return client.Get(newPath[0], id.(string), respHolder)
 			} else {
 				return nil, err
 			}

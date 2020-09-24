@@ -94,7 +94,6 @@ func buildTokenObjectSet(response interface{}) []*nimbleos.Token {
 
 // ReportUserDetails - Reports the user details for this token.
 func (objectSet *TokenObjectSet) ReportUserDetails(id *string) (*nimbleos.NsTokenReportUserDetailsReturn, error) {
-
 	reportUserDetailsUri := tokenPath
 	reportUserDetailsUri = reportUserDetailsUri + "/" + *id
 	reportUserDetailsUri = reportUserDetailsUri + "/actions/" + "report_user_details"
