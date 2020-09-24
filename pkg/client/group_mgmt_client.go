@@ -9,7 +9,6 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
-	"strings"
 	"time"
 )
 
@@ -416,7 +415,7 @@ func processAsyncResponse(client *GroupMgmtClient, body []byte) (interface{}, er
 		}
 		var jobId string
 		for _, msg := range unwrapMessage.Messages {
-			if strings.Compare(msg.Code, smAsyncJobId) == 0 {
+			if msg.Code == smAsyncJobId {
 				jobId = msg.Arguments.JobId
 			}
 		}
@@ -428,7 +427,7 @@ func processAsyncResponse(client *GroupMgmtClient, body []byte) (interface{}, er
 		if err != nil {
 			return nil, fmt.Errorf("http response error: status (202), messages: %v", err.Error())
 		}
-		return id, fmt.Errorf("http response error: status (202), messages: %v", errResp)
+		return id, nil
 	}
 	return nil, fmt.Errorf("http response error: status (202), messages: %v", errResp)
 }
@@ -454,8 +453,7 @@ func waitForJobResult(jobId string, client *GroupMgmtClient) (interface{}, error
 			}
 
 		case <-timeoutChan:
-			return nil, fmt.Errorf("waitForJobResult: wait on jobs in progress has timed out. Following %v jobs didnt complete on time.", jobId)
+			return nil, fmt.Errorf("waitForJobResult: job with ID %v timed out after %v seconds.", jobId, jobTimeout)
 		}
 	}
-	return nil, nil
 }
