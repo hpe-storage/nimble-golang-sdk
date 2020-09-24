@@ -95,7 +95,6 @@ func buildKeyManagerObjectSet(response interface{}) []*nimbleos.KeyManager {
 
 // Remove - Remove external key manager. You must migrate the keys to an inactive external key manager before removing the active key manager. If you remove the active external key manager the passphrase is used to enable the internal key manager.
 func (objectSet *KeyManagerObjectSet) Remove(id *string, passphrase *string) error {
-
 	removeUri := keyManagerPath
 	removeUri = removeUri + "/" + *id
 	removeUri = removeUri + "/actions/" + "remove"
@@ -108,14 +107,12 @@ func (objectSet *KeyManagerObjectSet) Remove(id *string, passphrase *string) err
 		passphrase,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(removeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(removeUri, payload, &nimbleos.KeyManager{})
 	return err
 }
 
 // MigrateKeys - Migrate volume encryption keys from the active key manager to the destination id given in the input. After successfully migrating the encryption keys, the destination key manager is made the active key manager.
 func (objectSet *KeyManagerObjectSet) MigrateKeys(id *string) error {
-
 	migrateKeysUri := keyManagerPath
 	migrateKeysUri = migrateKeysUri + "/" + *id
 	migrateKeysUri = migrateKeysUri + "/actions/" + "migrate_keys"
@@ -126,7 +123,6 @@ func (objectSet *KeyManagerObjectSet) MigrateKeys(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(migrateKeysUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(migrateKeysUri, payload, &nimbleos.KeyManager{})
 	return err
 }

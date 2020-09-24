@@ -90,7 +90,7 @@ func (svc *WitnessService) DeleteWitness(id string) error {
 //   Required parameters:
 //       id - ID of the witness.
 
-func (svc *WitnessService) TestWitness(id string) ([]*nimbleos.NsWitnessTestResponse, error) {
+func (svc *WitnessService) TestWitness(id string) ([]nimbleos.NsWitnessTestResponse, error) {
 
 	if len(id) == 0 {
 		return nil, fmt.Errorf("TestWitness: invalid parameter specified id: %v ", id)

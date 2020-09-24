@@ -100,7 +100,6 @@ func buildReplicationPartnerObjectSet(response interface{}) []*nimbleos.Replicat
 
 // Pause - Pause replication for the specified partner.
 func (objectSet *ReplicationPartnerObjectSet) Pause(id *string) error {
-
 	pauseUri := replicationPartnerPath
 	pauseUri = pauseUri + "/" + *id
 	pauseUri = pauseUri + "/actions/" + "pause"
@@ -111,14 +110,12 @@ func (objectSet *ReplicationPartnerObjectSet) Pause(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(pauseUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(pauseUri, payload, &nimbleos.ReplicationPartner{})
 	return err
 }
 
 // Resume - Resume replication for the specified partner.
 func (objectSet *ReplicationPartnerObjectSet) Resume(id *string) error {
-
 	resumeUri := replicationPartnerPath
 	resumeUri = resumeUri + "/" + *id
 	resumeUri = resumeUri + "/actions/" + "resume"
@@ -129,14 +126,12 @@ func (objectSet *ReplicationPartnerObjectSet) Resume(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(resumeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(resumeUri, payload, &nimbleos.ReplicationPartner{})
 	return err
 }
 
 // Test - Test connectivity to the specified partner.
 func (objectSet *ReplicationPartnerObjectSet) Test(id *string) error {
-
 	testUri := replicationPartnerPath
 	testUri = testUri + "/" + *id
 	testUri = testUri + "/actions/" + "test"
@@ -147,7 +142,6 @@ func (objectSet *ReplicationPartnerObjectSet) Test(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(testUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(testUri, payload, &nimbleos.ReplicationPartner{})
 	return err
 }

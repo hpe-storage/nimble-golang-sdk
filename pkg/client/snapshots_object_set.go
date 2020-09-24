@@ -100,7 +100,6 @@ func buildSnapshotObjectSet(response interface{}) []*nimbleos.Snapshot {
 
 // BulkCreate - Create snapshots on the given set of volumes.
 func (objectSet *SnapshotObjectSet) BulkCreate(snapVolList []*nimbleos.NsSnapVol, replicate *bool, vssSnap *bool) (*nimbleos.NsSnapVolListReturn, error) {
-
 	bulkCreateUri := snapshotPath
 	bulkCreateUri = bulkCreateUri + "/actions/" + "bulk_create"
 

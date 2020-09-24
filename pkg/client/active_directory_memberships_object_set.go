@@ -95,7 +95,6 @@ func buildActiveDirectoryMembershipObjectSet(response interface{}) []*nimbleos.A
 
 // Remove - Leaves the Active Directory domain.
 func (objectSet *ActiveDirectoryMembershipObjectSet) Remove(id *string, user *string, password *string, force *bool) error {
-
 	removeUri := activeDirectoryMembershipPath
 	removeUri = removeUri + "/" + *id
 	removeUri = removeUri + "/actions/" + "remove"
@@ -112,14 +111,12 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) Remove(id *string, user *st
 		force,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(removeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(removeUri, payload, &nimbleos.ActiveDirectoryMembership{})
 	return err
 }
 
 // ReportStatus - Reports the detail status of the Active Directory domain.
 func (objectSet *ActiveDirectoryMembershipObjectSet) ReportStatus(id *string) (*nimbleos.NsADReportStatusReturn, error) {
-
 	reportStatusUri := activeDirectoryMembershipPath
 	reportStatusUri = reportStatusUri + "/" + *id
 	reportStatusUri = reportStatusUri + "/actions/" + "report_status"
@@ -140,7 +137,6 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) ReportStatus(id *string) (*
 
 // TestUser - Tests whether the user exist in the Active Directory. If the user is present, then the user's group and role information is reported.
 func (objectSet *ActiveDirectoryMembershipObjectSet) TestUser(id *string, name *string) (*nimbleos.NsADTestUserReturn, error) {
-
 	testUserUri := activeDirectoryMembershipPath
 	testUserUri = testUserUri + "/" + *id
 	testUserUri = testUserUri + "/actions/" + "test_user"
@@ -163,7 +159,6 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) TestUser(id *string, name *
 
 // TestGroup - Tests whether the user group exist in the Active Directory.
 func (objectSet *ActiveDirectoryMembershipObjectSet) TestGroup(id *string, name *string) error {
-
 	testGroupUri := activeDirectoryMembershipPath
 	testGroupUri = testGroupUri + "/" + *id
 	testGroupUri = testGroupUri + "/actions/" + "test_group"
@@ -176,7 +171,6 @@ func (objectSet *ActiveDirectoryMembershipObjectSet) TestGroup(id *string, name 
 		name,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(testGroupUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(testGroupUri, payload, &nimbleos.ActiveDirectoryMembership{})
 	return err
 }
