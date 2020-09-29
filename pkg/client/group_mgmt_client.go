@@ -90,9 +90,8 @@ func (client *GroupMgmtClient) EnableDebug() {
 
 // refreshSessionToken : refresh session token
 func (client *GroupMgmtClient) refreshSessionToken(code int, message string) (bool, error) {
-	if code >= 400 {
+	if code >= 400 && client.SessionToken != "" {
 		if strings.Contains(message, "SM_http_unauthorized") {
-			fmt.Println("refreshSessionToken : token refreshed")
 			newSessionToken, err := client.login(client.Username, client.Password)
 			if err != nil {
 				return false, err
