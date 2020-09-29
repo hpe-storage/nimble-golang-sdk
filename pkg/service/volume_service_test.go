@@ -3,12 +3,14 @@
 package service
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
+	"time"
 )
 
 type VolumeServiceTestSuite struct {
@@ -23,6 +25,7 @@ type VolumeServiceTestSuite struct {
 }
 
 func (suite *VolumeServiceTestSuite) config() *NsGroupService {
+
 	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admin", "v1", true)
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
@@ -54,6 +57,9 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 	suite.deleteVolume("DeleteVolume")
 	suite.deleteVolume("GetVolume")
 	suite.deleteVollColl("TestVolColl")
+
+	//Delete Group service
+	suite.groupService.DeleteNsGroupService()
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
@@ -236,6 +242,7 @@ func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
 		suite.deleteVolume("RestoreVolume")
 	}
 }
+
 func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 	volume := suite.createVolume("CloneVolume")
 	if volume != nil {
@@ -281,7 +288,6 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 
 	}
 }
-
 func (suite *VolumeServiceTestSuite) TestACLVolume() {
 	// create igroup with initiators
 	initiator := &nimbleos.NsISCSIInitiator{
@@ -316,6 +322,37 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 		suite.deleteVolume("TestAclVolume")
 		suite.igroupService.DeleteInitiatorGroup(*igroup.ID)
 	}
+}
+
+func (suite *VolumeServiceTestSuite) TestExpiredToken() {
+
+	volume := suite.createVolume("TestExpiredToken")
+	if volume != nil {
+		// Get the token expiry time
+		sToken := suite.groupService.client.SessionToken
+		tokenService := suite.groupService.GetTokenService()
+		// apply filter on session token
+		sFilter := &param.GetParams{
+			Filter: &param.SearchFilter{
+				FieldName: nimbleos.TokenFields.SessionToken,
+				Operator:  param.EQUALS.String(),
+				Value:     sToken,
+			},
+		}
+		tokenList, err := tokenService.GetTokens(sFilter)
+		if err != nil {
+			suite.T().Fatalf("Failed to get token, err %v", err)
+			return
+		}
+		expiry := *tokenList[0].ExpiryTime - *tokenList[0].CreationTime
+		// let the token expired
+		fmt.Printf("Session Token will expire in %v second. Waiting...\n", expiry)
+		// comment out below line for actual expiry test. It takes 30 Min
+		expiry = 5
+		time.Sleep(time.Duration(expiry) * time.Second)
+		suite.deleteVolume("TestExpiredToken")
+	}
+
 }
 
 // Runs all test via go test

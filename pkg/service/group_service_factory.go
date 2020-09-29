@@ -5,6 +5,8 @@ package service
 import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // NsGroupService type
@@ -70,6 +72,26 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 		return nil, err
 	}
 	return &NsGroupService{ip: ip, client: client}, nil
+}
+
+// DeleteNsGroupService - delete the client object and remove the session token
+func (gs *NsGroupService) DeleteNsGroupService() error {
+	tokenService := gs.GetTokenService()
+	sessionToken := gs.client.SessionToken
+
+	// apply filter on session token
+	sFilter := &param.GetParams{
+		Filter: &param.SearchFilter{
+			FieldName: nimbleos.TokenFields.SessionToken,
+			Operator:  param.EQUALS.String(),
+			Value:     sessionToken,
+		},
+	}
+	tokenList, err := tokenService.GetTokens(sFilter)
+	if err != nil {
+		return err
+	}
+	return tokenService.DeleteToken(*tokenList[0].ID)
 }
 
 // SetDebug - enable debugging

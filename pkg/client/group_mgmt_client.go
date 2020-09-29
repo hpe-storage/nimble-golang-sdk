@@ -28,6 +28,8 @@ type GroupMgmtClient struct {
 	Client       *resty.Client
 	SessionToken string
 	WaitOnJob    bool
+	Username     string
+	Password     string
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -68,6 +70,8 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
 		Client:    client,
 		WaitOnJob: waitOnJobs,
+		Username:  username,
+		Password:  password,
 	}
 
 	// Get session token
@@ -84,6 +88,21 @@ func (client *GroupMgmtClient) EnableDebug() {
 	client.Client.SetDebug(true)
 }
 
+// refreshSessionToken : refresh session token
+func (client *GroupMgmtClient) refreshSessionToken(code int, message string) (bool, error) {
+	if code >= 400 {
+		if strings.Contains(message, "SM_http_unauthorized") {
+			fmt.Println("refreshSessionToken : token refreshed")
+			newSessionToken, err := client.login(client.Username, client.Password)
+			if err != nil {
+				return false, err
+			}
+			client.SessionToken = newSessionToken
+			return true, nil
+		}
+	}
+	return false, nil
+}
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
 	// Construct Payload
 	appName := "Go sdkv1 client"
@@ -104,6 +123,7 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 	// build the url
 	url := fmt.Sprintf("%s/%s", client.URL, path)
 	// Post it
+RETRY:
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
 		SetBody(&DataWrapper{
@@ -113,11 +133,21 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 	if err != nil {
 		return nil, err
 	}
+
 	// IsSuccess method returns true if HTTP status `code >= 200 and <= 299` otherwise false.
 	if !response.IsSuccess() {
 		errResp, err := unwrapError(response.Body())
 		if err != nil {
 			return nil, err
+		}
+		// refresh session token
+		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		if err != nil {
+			return nil, err
+		}
+		if isSessionRefresh {
+			// retry the ops
+			goto RETRY
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	} else {
@@ -142,7 +172,7 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-
+RETRY:
 	// Put it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -158,6 +188,15 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 		errResp, err := unwrapError(response.Body())
 		if err != nil {
 			return nil, err
+		}
+		// refresh session token
+		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		if err != nil {
+			return nil, err
+		}
+		if isSessionRefresh {
+			// retry the ops
+			goto RETRY
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	} else {
@@ -182,7 +221,7 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-
+RETRY:
 	// Get it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -206,7 +245,15 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 	if err != nil {
 		return nil, err
 	}
-
+	// refresh session token
+	isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+	if err != nil {
+		return nil, err
+	}
+	if isSessionRefresh {
+		// retry the ops
+		goto RETRY
+	}
 	return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 }
 
@@ -214,7 +261,7 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 func (client *GroupMgmtClient) Delete(path string, id string) error {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-
+RETRY:
 	// delete it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -228,6 +275,15 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 		errResp, err := unwrapError(response.Body())
 		if err != nil {
 			return err
+		}
+		// refresh session token
+		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		if err != nil {
+			return err
+		}
+		if isSessionRefresh {
+			// retry the ops
+			goto RETRY
 		}
 		return fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
@@ -311,9 +367,7 @@ func (client *GroupMgmtClient) listPost(
 ) (*DataWrapper, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
-
-	fmt.Printf("request = %v", payload)
-
+RETRY:
 	// Post it
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
@@ -329,6 +383,15 @@ func (client *GroupMgmtClient) listPost(
 		errResp, err := unwrapError(response.Body())
 		if err != nil {
 			return nil, err
+		}
+		// refresh session token
+		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		if err != nil {
+			return nil, err
+		}
+		if isSessionRefresh {
+			// retry the ops
+			goto RETRY
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
@@ -350,7 +413,7 @@ func (client *GroupMgmtClient) listGet(
 ) (*DataWrapper, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
-
+RETRY:
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -364,6 +427,15 @@ func (client *GroupMgmtClient) listGet(
 		errResp, err := unwrapError(response.Body())
 		if err != nil {
 			return nil, err
+		}
+		// refresh session token
+		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		if err != nil {
+			return nil, err
+		}
+		if isSessionRefresh {
+			// retry the ops
+			goto RETRY
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
 	}
