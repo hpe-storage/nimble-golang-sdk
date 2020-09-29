@@ -92,6 +92,7 @@ func (client *GroupMgmtClient) EnableDebug() {
 func (client *GroupMgmtClient) refreshSessionToken(code int, message string) (bool, error) {
 	if code >= 400 && client.SessionToken != "" {
 		if strings.Contains(message, "SM_http_unauthorized") {
+			client.SessionToken = ""
 			newSessionToken, err := client.login(client.Username, client.Password)
 			if err != nil {
 				return false, err
@@ -102,6 +103,7 @@ func (client *GroupMgmtClient) refreshSessionToken(code int, message string) (bo
 	}
 	return false, nil
 }
+
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
 	// Construct Payload
 	appName := "Go sdkv1 client"

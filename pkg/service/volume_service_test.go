@@ -3,14 +3,12 @@
 package service
 
 import (
-	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
-	"time"
 )
 
 type VolumeServiceTestSuite struct {
@@ -328,31 +326,10 @@ func (suite *VolumeServiceTestSuite) TestExpiredToken() {
 
 	volume := suite.createVolume("TestExpiredToken")
 	if volume != nil {
-		// Get the token expiry time
-		sToken := suite.groupService.client.SessionToken
-		tokenService := suite.groupService.GetTokenService()
-		// apply filter on session token
-		sFilter := &param.GetParams{
-			Filter: &param.SearchFilter{
-				FieldName: nimbleos.TokenFields.SessionToken,
-				Operator:  param.EQUALS.String(),
-				Value:     sToken,
-			},
-		}
-		tokenList, err := tokenService.GetTokens(sFilter)
-		if err != nil {
-			suite.T().Fatalf("Failed to get token, err %v", err)
-			return
-		}
-		expiry := *tokenList[0].ExpiryTime - *tokenList[0].CreationTime
-		// let the token expired
-		fmt.Printf("Session Token will expire in %v second. Waiting...\n", expiry)
-		// comment out below line for actual expiry test. It takes 30 Min
-		expiry = 5
-		time.Sleep(time.Duration(expiry) * time.Second)
+		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
+		suite.groupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
 		suite.deleteVolume("TestExpiredToken")
 	}
-
 }
 
 // Runs all test via go test
