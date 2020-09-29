@@ -42,7 +42,7 @@ func (objectSet *DiskObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Disk object with the given ID
 func (objectSet *DiskObjectSet) GetObject(id string) (*nimbleos.Disk, error) {
-	resp, err := objectSet.Client.Get(diskPath, id, nimbleos.Disk{})
+	resp, err := objectSet.Client.Get(diskPath, id, &nimbleos.Disk{})
 	if err != nil {
 		return nil, err
 	}

@@ -52,7 +52,7 @@ func (objectSet *ChapUserObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ChapUser object with the given ID
 func (objectSet *ChapUserObjectSet) GetObject(id string) (*nimbleos.ChapUser, error) {
-	resp, err := objectSet.Client.Get(chapUserPath, id, nimbleos.ChapUser{})
+	resp, err := objectSet.Client.Get(chapUserPath, id, &nimbleos.ChapUser{})
 	if err != nil {
 		return nil, err
 	}

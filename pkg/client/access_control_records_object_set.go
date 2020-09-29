@@ -46,7 +46,7 @@ func (objectSet *AccessControlRecordObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a AccessControlRecord object with the given ID
 func (objectSet *AccessControlRecordObjectSet) GetObject(id string) (*nimbleos.AccessControlRecord, error) {
-	resp, err := objectSet.Client.Get(accessControlRecordPath, id, nimbleos.AccessControlRecord{})
+	resp, err := objectSet.Client.Get(accessControlRecordPath, id, &nimbleos.AccessControlRecord{})
 	if err != nil {
 		return nil, err
 	}

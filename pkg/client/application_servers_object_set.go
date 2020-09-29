@@ -50,7 +50,7 @@ func (objectSet *ApplicationServerObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ApplicationServer object with the given ID
 func (objectSet *ApplicationServerObjectSet) GetObject(id string) (*nimbleos.ApplicationServer, error) {
-	resp, err := objectSet.Client.Get(applicationServerPath, id, nimbleos.ApplicationServer{})
+	resp, err := objectSet.Client.Get(applicationServerPath, id, &nimbleos.ApplicationServer{})
 	if err != nil {
 		return nil, err
 	}

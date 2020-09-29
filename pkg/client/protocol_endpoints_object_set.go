@@ -37,7 +37,7 @@ func (objectSet *ProtocolEndpointObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ProtocolEndpoint object with the given ID
 func (objectSet *ProtocolEndpointObjectSet) GetObject(id string) (*nimbleos.ProtocolEndpoint, error) {
-	resp, err := objectSet.Client.Get(protocolEndpointPath, id, nimbleos.ProtocolEndpoint{})
+	resp, err := objectSet.Client.Get(protocolEndpointPath, id, &nimbleos.ProtocolEndpoint{})
 	if err != nil {
 		return nil, err
 	}

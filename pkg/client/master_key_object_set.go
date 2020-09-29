@@ -52,7 +52,7 @@ func (objectSet *MasterKeyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a MasterKey object with the given ID
 func (objectSet *MasterKeyObjectSet) GetObject(id string) (*nimbleos.MasterKey, error) {
-	resp, err := objectSet.Client.Get(masterKeyPath, id, nimbleos.MasterKey{})
+	resp, err := objectSet.Client.Get(masterKeyPath, id, &nimbleos.MasterKey{})
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +100,6 @@ func buildMasterKeyObjectSet(response interface{}) []*nimbleos.MasterKey {
 
 // PurgeInactive - Purges encryption keys that have been inactive for the age or longer. If you do not specify an age, the keys will be purged immediately.
 func (objectSet *MasterKeyObjectSet) PurgeInactive(id *string, age *int) error {
-
 	purgeInactiveUri := masterKeyPath
 	purgeInactiveUri = purgeInactiveUri + "/" + *id
 	purgeInactiveUri = purgeInactiveUri + "/actions/" + "purge_inactive"
@@ -113,7 +112,6 @@ func (objectSet *MasterKeyObjectSet) PurgeInactive(id *string, age *int) error {
 		age,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(purgeInactiveUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(purgeInactiveUri, payload, &nimbleos.MasterKey{})
 	return err
 }

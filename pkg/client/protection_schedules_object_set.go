@@ -50,7 +50,7 @@ func (objectSet *ProtectionScheduleObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ProtectionSchedule object with the given ID
 func (objectSet *ProtectionScheduleObjectSet) GetObject(id string) (*nimbleos.ProtectionSchedule, error) {
-	resp, err := objectSet.Client.Get(protectionSchedulePath, id, nimbleos.ProtectionSchedule{})
+	resp, err := objectSet.Client.Get(protectionSchedulePath, id, &nimbleos.ProtectionSchedule{})
 	if err != nil {
 		return nil, err
 	}

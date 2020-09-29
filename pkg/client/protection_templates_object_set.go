@@ -53,7 +53,7 @@ func (objectSet *ProtectionTemplateObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ProtectionTemplate object with the given ID
 func (objectSet *ProtectionTemplateObjectSet) GetObject(id string) (*nimbleos.ProtectionTemplate, error) {
-	resp, err := objectSet.Client.Get(protectionTemplatePath, id, nimbleos.ProtectionTemplate{})
+	resp, err := objectSet.Client.Get(protectionTemplatePath, id, &nimbleos.ProtectionTemplate{})
 	if err != nil {
 		return nil, err
 	}

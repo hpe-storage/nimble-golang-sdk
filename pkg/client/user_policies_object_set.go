@@ -42,7 +42,7 @@ func (objectSet *UserPolicyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a UserPolicy object with the given ID
 func (objectSet *UserPolicyObjectSet) GetObject(id string) (*nimbleos.UserPolicy, error) {
-	resp, err := objectSet.Client.Get(userPolicyPath, id, nimbleos.UserPolicy{})
+	resp, err := objectSet.Client.Get(userPolicyPath, id, &nimbleos.UserPolicy{})
 	if err != nil {
 		return nil, err
 	}

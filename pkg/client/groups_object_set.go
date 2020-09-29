@@ -42,7 +42,7 @@ func (objectSet *GroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Group object with the given ID
 func (objectSet *GroupObjectSet) GetObject(id string) (*nimbleos.Group, error) {
-	resp, err := objectSet.Client.Get(groupPath, id, nimbleos.Group{})
+	resp, err := objectSet.Client.Get(groupPath, id, &nimbleos.Group{})
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +90,6 @@ func buildGroupObjectSet(response interface{}) []*nimbleos.Group {
 
 // Reboot - Reboot all arrays in the group.
 func (objectSet *GroupObjectSet) Reboot(id *string) error {
-
 	rebootUri := groupPath
 	rebootUri = rebootUri + "/" + *id
 	rebootUri = rebootUri + "/actions/" + "reboot"
@@ -101,14 +100,12 @@ func (objectSet *GroupObjectSet) Reboot(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(rebootUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(rebootUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // Halt - Halt all arrays in the group.
 func (objectSet *GroupObjectSet) Halt(id *string, force *bool) error {
-
 	haltUri := groupPath
 	haltUri = haltUri + "/" + *id
 	haltUri = haltUri + "/actions/" + "halt"
@@ -121,14 +118,12 @@ func (objectSet *GroupObjectSet) Halt(id *string, force *bool) error {
 		force,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(haltUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(haltUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // TestAlert - Generate a test alert.
 func (objectSet *GroupObjectSet) TestAlert(id *string, level *nimbleos.NsSeverityLevel) error {
-
 	testAlertUri := groupPath
 	testAlertUri = testAlertUri + "/" + *id
 	testAlertUri = testAlertUri + "/actions/" + "test_alert"
@@ -141,14 +136,12 @@ func (objectSet *GroupObjectSet) TestAlert(id *string, level *nimbleos.NsSeverit
 		level,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(testAlertUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(testAlertUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // SoftwareUpdatePrecheck - Run software update precheck.
 func (objectSet *GroupObjectSet) SoftwareUpdatePrecheck(id *string, skipPrecheckMask *uint64) (*nimbleos.NsSoftwareUpdateReturn, error) {
-
 	softwareUpdatePrecheckUri := groupPath
 	softwareUpdatePrecheckUri = softwareUpdatePrecheckUri + "/" + *id
 	softwareUpdatePrecheckUri = softwareUpdatePrecheckUri + "/actions/" + "software_update_precheck"
@@ -171,7 +164,6 @@ func (objectSet *GroupObjectSet) SoftwareUpdatePrecheck(id *string, skipPrecheck
 
 // SoftwareUpdateStart - Update the group software to the downloaded version.
 func (objectSet *GroupObjectSet) SoftwareUpdateStart(id *string, skipStartCheckMask *uint64) (*nimbleos.NsSoftwareUpdateReturn, error) {
-
 	softwareUpdateStartUri := groupPath
 	softwareUpdateStartUri = softwareUpdateStartUri + "/" + *id
 	softwareUpdateStartUri = softwareUpdateStartUri + "/actions/" + "software_update_start"
@@ -194,7 +186,6 @@ func (objectSet *GroupObjectSet) SoftwareUpdateStart(id *string, skipStartCheckM
 
 // SoftwareDownload - Download software update package.
 func (objectSet *GroupObjectSet) SoftwareDownload(id *string, version *string, force *bool) error {
-
 	softwareDownloadUri := groupPath
 	softwareDownloadUri = softwareDownloadUri + "/" + *id
 	softwareDownloadUri = softwareDownloadUri + "/actions/" + "software_download"
@@ -209,14 +200,12 @@ func (objectSet *GroupObjectSet) SoftwareDownload(id *string, version *string, f
 		force,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(softwareDownloadUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(softwareDownloadUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // SoftwareCancelDownload - Cancel ongoing download of software.
 func (objectSet *GroupObjectSet) SoftwareCancelDownload(id *string) error {
-
 	softwareCancelDownloadUri := groupPath
 	softwareCancelDownloadUri = softwareCancelDownloadUri + "/" + *id
 	softwareCancelDownloadUri = softwareCancelDownloadUri + "/actions/" + "software_cancel_download"
@@ -227,14 +216,12 @@ func (objectSet *GroupObjectSet) SoftwareCancelDownload(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(softwareCancelDownloadUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(softwareCancelDownloadUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // SoftwareUpdateResume - Resume stopped software update.
 func (objectSet *GroupObjectSet) SoftwareUpdateResume(id *string) error {
-
 	softwareUpdateResumeUri := groupPath
 	softwareUpdateResumeUri = softwareUpdateResumeUri + "/" + *id
 	softwareUpdateResumeUri = softwareUpdateResumeUri + "/actions/" + "software_update_resume"
@@ -245,14 +232,12 @@ func (objectSet *GroupObjectSet) SoftwareUpdateResume(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(softwareUpdateResumeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(softwareUpdateResumeUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // GetGroupDiscoveredList - Get list of discovered groups with arrays that are initialized.
 func (objectSet *GroupObjectSet) GetGroupDiscoveredList(id *string, groupName *string) (*nimbleos.NsDiscoveredGroupListReturn, error) {
-
 	getGroupDiscoveredListUri := groupPath
 	getGroupDiscoveredListUri = getGroupDiscoveredListUri + "/" + *id
 	getGroupDiscoveredListUri = getGroupDiscoveredListUri + "/actions/" + "get_group_discovered_list"
@@ -275,7 +260,6 @@ func (objectSet *GroupObjectSet) GetGroupDiscoveredList(id *string, groupName *s
 
 // ValidateMerge - Perform group merge validation.
 func (objectSet *GroupObjectSet) ValidateMerge(id *string, srcGroupName *string, srcGroupIp *string, srcUsername *string, srcPassword *string, srcPassphrase *string, skipSecondaryMgmtIp *bool) (*nimbleos.NsGroupMergeReturn, error) {
-
 	validateMergeUri := groupPath
 	validateMergeUri = validateMergeUri + "/" + *id
 	validateMergeUri = validateMergeUri + "/actions/" + "validate_merge"
@@ -308,7 +292,6 @@ func (objectSet *GroupObjectSet) ValidateMerge(id *string, srcGroupName *string,
 
 // Merge - Perform group merge with the specified group.
 func (objectSet *GroupObjectSet) Merge(id *string, srcGroupName *string, srcGroupIp *string, srcUsername *string, srcPassword *string, srcPassphrase *string, force *bool, skipSecondaryMgmtIp *bool) (*nimbleos.NsGroupMergeReturn, error) {
-
 	mergeUri := groupPath
 	mergeUri = mergeUri + "/" + *id
 	mergeUri = mergeUri + "/actions/" + "merge"
@@ -343,7 +326,6 @@ func (objectSet *GroupObjectSet) Merge(id *string, srcGroupName *string, srcGrou
 
 // GetEula - Get URL to download EULA contents.
 func (objectSet *GroupObjectSet) GetEula(id *string, locale *nimbleos.NsEulaLocale, format *nimbleos.NsEulaFormat, phase *nimbleos.NsEulaPhase, force *bool) (*nimbleos.NsEulaReturn, error) {
-
 	getEulaUri := groupPath
 	getEulaUri = getEulaUri + "/" + *id
 	getEulaUri = getEulaUri + "/actions/" + "get_eula"
@@ -372,7 +354,6 @@ func (objectSet *GroupObjectSet) GetEula(id *string, locale *nimbleos.NsEulaLoca
 
 // CheckMigrate - Check if the group Management Service can be migrated to the group Management Service backup array.
 func (objectSet *GroupObjectSet) CheckMigrate(id *string) error {
-
 	checkMigrateUri := groupPath
 	checkMigrateUri = checkMigrateUri + "/" + *id
 	checkMigrateUri = checkMigrateUri + "/actions/" + "check_migrate"
@@ -383,14 +364,12 @@ func (objectSet *GroupObjectSet) CheckMigrate(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(checkMigrateUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(checkMigrateUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // Migrate - Migrate the group Management Service to the current group Management Service backup array.
 func (objectSet *GroupObjectSet) Migrate(id *string) error {
-
 	migrateUri := groupPath
 	migrateUri = migrateUri + "/" + *id
 	migrateUri = migrateUri + "/actions/" + "migrate"
@@ -401,14 +380,12 @@ func (objectSet *GroupObjectSet) Migrate(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(migrateUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(migrateUri, payload, &nimbleos.Group{})
 	return err
 }
 
 // GetTimezoneList - Get list of group timezones.
 func (objectSet *GroupObjectSet) GetTimezoneList(id *string) (*nimbleos.NsTimezonesReturn, error) {
-
 	getTimezoneListUri := groupPath
 	getTimezoneListUri = getTimezoneListUri + "/" + *id
 	getTimezoneListUri = getTimezoneListUri + "/actions/" + "get_timezone_list"

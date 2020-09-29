@@ -50,7 +50,7 @@ func (objectSet *UserObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a User object with the given ID
 func (objectSet *UserObjectSet) GetObject(id string) (*nimbleos.User, error) {
-	resp, err := objectSet.Client.Get(userPath, id, nimbleos.User{})
+	resp, err := objectSet.Client.Get(userPath, id, &nimbleos.User{})
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,6 @@ func buildUserObjectSet(response interface{}) []*nimbleos.User {
 
 // Unlock - Unlocks user account locked due to failed logins.
 func (objectSet *UserObjectSet) Unlock(id *string) (*nimbleos.NsUserLockStatus, error) {
-
 	unlockUri := userPath
 	unlockUri = unlockUri + "/" + *id
 	unlockUri = unlockUri + "/actions/" + "unlock"

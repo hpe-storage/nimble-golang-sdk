@@ -37,7 +37,7 @@ func (objectSet *ApplicationCategoryObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a ApplicationCategory object with the given ID
 func (objectSet *ApplicationCategoryObjectSet) GetObject(id string) (*nimbleos.ApplicationCategory, error) {
-	resp, err := objectSet.Client.Get(applicationCategoryPath, id, nimbleos.ApplicationCategory{})
+	resp, err := objectSet.Client.Get(applicationCategoryPath, id, &nimbleos.ApplicationCategory{})
 	if err != nil {
 		return nil, err
 	}

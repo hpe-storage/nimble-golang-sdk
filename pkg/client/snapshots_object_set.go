@@ -52,7 +52,7 @@ func (objectSet *SnapshotObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Snapshot object with the given ID
 func (objectSet *SnapshotObjectSet) GetObject(id string) (*nimbleos.Snapshot, error) {
-	resp, err := objectSet.Client.Get(snapshotPath, id, nimbleos.Snapshot{})
+	resp, err := objectSet.Client.Get(snapshotPath, id, &nimbleos.Snapshot{})
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +100,6 @@ func buildSnapshotObjectSet(response interface{}) []*nimbleos.Snapshot {
 
 // BulkCreate - Create snapshots on the given set of volumes.
 func (objectSet *SnapshotObjectSet) BulkCreate(snapVolList []*nimbleos.NsSnapVol, replicate *bool, vssSnap *bool) (*nimbleos.NsSnapVolListReturn, error) {
-
 	bulkCreateUri := snapshotPath
 	bulkCreateUri = bulkCreateUri + "/actions/" + "bulk_create"
 

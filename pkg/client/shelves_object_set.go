@@ -42,7 +42,7 @@ func (objectSet *ShelfObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Shelf object with the given ID
 func (objectSet *ShelfObjectSet) GetObject(id string) (*nimbleos.Shelf, error) {
-	resp, err := objectSet.Client.Get(shelfPath, id, nimbleos.Shelf{})
+	resp, err := objectSet.Client.Get(shelfPath, id, &nimbleos.Shelf{})
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +90,6 @@ func buildShelfObjectSet(response interface{}) []*nimbleos.Shelf {
 
 // Identify - Turn on chassis identifier for a controller.
 func (objectSet *ShelfObjectSet) Identify(id *string, cid *nimbleos.NsControllerId, status *bool) (*nimbleos.NsShelfIdentifyStatusReturn, error) {
-
 	identifyUri := shelfPath
 	identifyUri = identifyUri + "/" + *id
 	identifyUri = identifyUri + "/actions/" + "identify"
@@ -115,7 +114,6 @@ func (objectSet *ShelfObjectSet) Identify(id *string, cid *nimbleos.NsController
 
 // Evacuate - Perform shelf evacuation.
 func (objectSet *ShelfObjectSet) Evacuate(id *string, driveset *uint64, dryRun *bool, start *bool, cancel *bool, pause *bool, resume *bool) error {
-
 	evacuateUri := shelfPath
 	evacuateUri = evacuateUri + "/" + *id
 	evacuateUri = evacuateUri + "/actions/" + "evacuate"
@@ -138,7 +136,6 @@ func (objectSet *ShelfObjectSet) Evacuate(id *string, driveset *uint64, dryRun *
 		resume,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(evacuateUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(evacuateUri, payload, &nimbleos.Shelf{})
 	return err
 }

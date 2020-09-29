@@ -37,7 +37,7 @@ func (objectSet *NetworkInterfaceObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a NetworkInterface object with the given ID
 func (objectSet *NetworkInterfaceObjectSet) GetObject(id string) (*nimbleos.NetworkInterface, error) {
-	resp, err := objectSet.Client.Get(networkInterfacePath, id, nimbleos.NetworkInterface{})
+	resp, err := objectSet.Client.Get(networkInterfacePath, id, &nimbleos.NetworkInterface{})
 	if err != nil {
 		return nil, err
 	}

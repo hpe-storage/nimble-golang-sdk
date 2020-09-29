@@ -46,7 +46,7 @@ func (objectSet *AlarmObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Alarm object with the given ID
 func (objectSet *AlarmObjectSet) GetObject(id string) (*nimbleos.Alarm, error) {
-	resp, err := objectSet.Client.Get(alarmPath, id, nimbleos.Alarm{})
+	resp, err := objectSet.Client.Get(alarmPath, id, &nimbleos.Alarm{})
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +94,6 @@ func buildAlarmObjectSet(response interface{}) []*nimbleos.Alarm {
 
 // Acknowledge - Acknowledge an alarm.
 func (objectSet *AlarmObjectSet) Acknowledge(id *string, remindEvery *uint64, remindEveryUnit *nimbleos.NsPeriodUnit) error {
-
 	acknowledgeUri := alarmPath
 	acknowledgeUri = acknowledgeUri + "/" + *id
 	acknowledgeUri = acknowledgeUri + "/actions/" + "acknowledge"
@@ -109,14 +108,12 @@ func (objectSet *AlarmObjectSet) Acknowledge(id *string, remindEvery *uint64, re
 		remindEveryUnit,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(acknowledgeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(acknowledgeUri, payload, &nimbleos.Alarm{})
 	return err
 }
 
 // Unacknowledge - Unacknowledge an alarm.
 func (objectSet *AlarmObjectSet) Unacknowledge(id *string) error {
-
 	unacknowledgeUri := alarmPath
 	unacknowledgeUri = unacknowledgeUri + "/" + *id
 	unacknowledgeUri = unacknowledgeUri + "/actions/" + "unacknowledge"
@@ -127,7 +124,6 @@ func (objectSet *AlarmObjectSet) Unacknowledge(id *string) error {
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(unacknowledgeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(unacknowledgeUri, payload, &nimbleos.Alarm{})
 	return err
 }

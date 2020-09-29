@@ -18,10 +18,12 @@ type VolumeServiceTestSuite struct {
 	performancePolicyService  *PerformancePolicyService
 	volumeCollectionService   *VolumeCollectionService
 	snapshotCollectionService *SnapshotCollectionService
+	igroupService             *InitiatorGroupService
+	aclService                *AccessControlRecordService
 }
 
 func (suite *VolumeServiceTestSuite) config() *NsGroupService {
-	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admin")
+	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admin", "v1", true)
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return nil
@@ -38,7 +40,8 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.performancePolicyService = groupService.GetPerformancePolicyService()
 	suite.volumeCollectionService = groupService.GetVolumeCollectionService()
 	suite.snapshotCollectionService = groupService.GetSnapshotCollectionService()
-
+	suite.igroupService = groupService.GetInitiatorGroupService()
+	suite.aclService = groupService.GetAccessControlRecordService()
 	suite.createVolume("GetVolume")
 	suite.createVolume("DeleteVolume")
 	suite.createVolume("DestroyVolume")
@@ -95,6 +98,17 @@ func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	if volume != nil {
 		suite.T().Fatalf("deleteVolume: Failed to delete volume %s", volumeName)
 	}
+}
+func (suite *VolumeServiceTestSuite) deleteVollColl(name string) {
+	volcoll, _ := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+	suite.volumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
+}
+
+func (suite *VolumeServiceTestSuite) createVolColl(name string) {
+	volcoll := &nimbleos.VolumeCollection{
+		Name: param.NewString(name),
+	}
+	suite.volumeCollectionService.CreateVolumeCollection(volcoll)
 }
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
@@ -162,17 +176,7 @@ func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 	}
 	suite.volumeService.DeleteVolume(*volume.ID)
 }
-func (suite *VolumeServiceTestSuite) deleteVollColl(name string) {
-	volcoll, _ := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
-	suite.volumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
-}
 
-func (suite *VolumeServiceTestSuite) createVolColl(name string) {
-	volcoll := &nimbleos.VolumeCollection{
-		Name: param.NewString(name),
-	}
-	suite.volumeCollectionService.CreateVolumeCollection(volcoll)
-}
 func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 
 	volume := suite.createVolume("TestAddVolVolcoll")
@@ -230,6 +234,87 @@ func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
 			return
 		}
 		suite.deleteVolume("RestoreVolume")
+	}
+}
+func (suite *VolumeServiceTestSuite) TestCloneVolume() {
+	volume := suite.createVolume("CloneVolume")
+	if volume != nil {
+		volcoll, err := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		if err != nil {
+			suite.T().Fatalf("Failed to get volume collection")
+			return
+		}
+		// add volume to volume collection
+		err = suite.volumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to associate CloneVolume to volcoll ")
+			return
+		}
+		// create a snapshot collection
+		snapColl, _ := suite.snapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+			Name:      param.NewString("CloneSnapColl"),
+			VolcollId: volcoll.ID,
+		})
+
+		// update the properties of clone volume
+		cloneVolume := &nimbleos.Volume{
+			Clone:      param.NewBool(true),
+			BaseSnapId: snapColl.SnapshotsList[0].SnapId,
+			Name:       param.NewString("TestCloneVolume"),
+		}
+		//restore volume to snapcoll
+		_, err = suite.volumeService.CreateVolume(cloneVolume)
+
+		if err != nil {
+			suite.T().Fatalf("Failed to clone a volume, id %s", *volume.ID)
+
+		}
+		// disassociate volume from volume collection
+		err = suite.volumeService.DisassociateVolume(*volume.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
+			return
+		}
+		//delete clone first
+		suite.deleteVolume("TestCloneVolume")
+		suite.deleteVolume("CloneVolume")
+
+	}
+}
+
+func (suite *VolumeServiceTestSuite) TestACLVolume() {
+	// create igroup with initiators
+	initiator := &nimbleos.NsISCSIInitiator{
+		Label:     param.NewString("iqn.1998-01.com.vmware:sasi-srm82-pesxi-4b00546a"),
+		Iqn:       param.NewString("iqn.1998-01.com.vmware:sasi-srm82-pesxi-4b00546a"),
+		IpAddress: param.NewString("*"),
+	}
+
+	var initiatorList []*nimbleos.NsISCSIInitiator
+	initiatorList = append(initiatorList, initiator)
+
+	igroup := &nimbleos.InitiatorGroup{
+		Name:            param.NewString("sdkigroup"),
+		AccessProtocol:  nimbleos.NsAccessProtocolIscsi,
+		IscsiInitiators: initiatorList,
+	}
+	igroup, _ = suite.igroupService.CreateInitiatorGroup(igroup)
+
+	// create new volume and add ACL to to.
+	volume := suite.createVolume("TestAclVolume")
+	if volume != nil {
+		acl := &nimbleos.AccessControlRecord{
+			InitiatorGroupId: igroup.ID,
+			VolId:            volume.ID,
+		}
+		// create acl
+		acl, err := suite.aclService.CreateAccessControlRecord(acl)
+		if err != nil {
+			suite.T().Fatalf("Failed to create access control record, err %v", err)
+
+		}
+		suite.deleteVolume("TestAclVolume")
+		suite.igroupService.DeleteInitiatorGroup(*igroup.ID)
 	}
 }
 

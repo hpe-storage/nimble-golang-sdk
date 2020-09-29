@@ -42,7 +42,7 @@ func (objectSet *FibreChannelInterfaceObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a FibreChannelInterface object with the given ID
 func (objectSet *FibreChannelInterfaceObjectSet) GetObject(id string) (*nimbleos.FibreChannelInterface, error) {
-	resp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, nimbleos.FibreChannelInterface{})
+	resp, err := objectSet.Client.Get(fibreChannelInterfacePath, id, &nimbleos.FibreChannelInterface{})
 	if err != nil {
 		return nil, err
 	}

@@ -52,7 +52,7 @@ func (objectSet *PerformancePolicyObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a PerformancePolicy object with the given ID
 func (objectSet *PerformancePolicyObjectSet) GetObject(id string) (*nimbleos.PerformancePolicy, error) {
-	resp, err := objectSet.Client.Get(performancePolicyPath, id, nimbleos.PerformancePolicy{})
+	resp, err := objectSet.Client.Get(performancePolicyPath, id, &nimbleos.PerformancePolicy{})
 	if err != nil {
 		return nil, err
 	}

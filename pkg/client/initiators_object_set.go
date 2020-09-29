@@ -46,7 +46,7 @@ func (objectSet *InitiatorObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Initiator object with the given ID
 func (objectSet *InitiatorObjectSet) GetObject(id string) (*nimbleos.Initiator, error) {
-	resp, err := objectSet.Client.Get(initiatorPath, id, nimbleos.Initiator{})
+	resp, err := objectSet.Client.Get(initiatorPath, id, &nimbleos.Initiator{})
 	if err != nil {
 		return nil, err
 	}

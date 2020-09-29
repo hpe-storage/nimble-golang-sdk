@@ -51,7 +51,7 @@ func (objectSet *SnapshotCollectionObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a SnapshotCollection object with the given ID
 func (objectSet *SnapshotCollectionObjectSet) GetObject(id string) (*nimbleos.SnapshotCollection, error) {
-	resp, err := objectSet.Client.Get(snapshotCollectionPath, id, nimbleos.SnapshotCollection{})
+	resp, err := objectSet.Client.Get(snapshotCollectionPath, id, &nimbleos.SnapshotCollection{})
 	if err != nil {
 		return nil, err
 	}

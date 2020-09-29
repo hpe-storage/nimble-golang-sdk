@@ -46,7 +46,7 @@ func (objectSet *TokenObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Token object with the given ID
 func (objectSet *TokenObjectSet) GetObject(id string) (*nimbleos.Token, error) {
-	resp, err := objectSet.Client.Get(tokenPath, id, nimbleos.Token{})
+	resp, err := objectSet.Client.Get(tokenPath, id, &nimbleos.Token{})
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +94,6 @@ func buildTokenObjectSet(response interface{}) []*nimbleos.Token {
 
 // ReportUserDetails - Reports the user details for this token.
 func (objectSet *TokenObjectSet) ReportUserDetails(id *string) (*nimbleos.NsTokenReportUserDetailsReturn, error) {
-
 	reportUserDetailsUri := tokenPath
 	reportUserDetailsUri = reportUserDetailsUri + "/" + *id
 	reportUserDetailsUri = reportUserDetailsUri + "/actions/" + "report_user_details"

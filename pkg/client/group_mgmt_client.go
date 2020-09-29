@@ -6,18 +6,20 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"time"
-
 	"github.com/go-resty/resty/v2"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"strings"
+	"time"
 )
 
 const (
-	groupURIFmt        = "https://%s:5392/%s"
-	clientTimeout      = time.Second * 60 // 1 Minute
-	maxLoginRetries    = 5
-	retrySleepDuration = 2 // Seconds
+	groupURIFmt     = "https://%s:5392/%s"
+	clientTimeout   = time.Second * 60 // 1 Minute
+	maxLoginRetries = 5
+	jobTimeout      = time.Second * 300 // 5 Minute
+	jobPollInterval = 5 * time.Second   // Second
+	smAsyncJobId    = "SM_async_job_id"
 )
 
 // GroupMgmtClient :
@@ -25,6 +27,7 @@ type GroupMgmtClient struct {
 	URL          string
 	Client       *resty.Client
 	SessionToken string
+	WaitOnJob    bool
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -44,20 +47,27 @@ type ErrorResponse struct {
 
 // Message is an `Error` implementation as well as an implementation of the JSON API error object.
 type Message struct {
-	Code string `json:"code,omitempty"`
-	Text string `json:"text,omitempty"`
+	Code      string   `json:"code,omitempty"`
+	Text      string   `json:"text,omitempty"`
+	Severity  string   `json:"severity,omitempty"`
+	Arguments Argument `json:"arguments,omitempty"`
+}
+
+type Argument struct {
+	JobId string `json:"job_id,omitempty"`
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
 	// Create GroupMgmt Client
 	client := resty.New()
 	client.SetTLSClientConfig(&tls.Config{
 		InsecureSkipVerify: true,
 	})
 	groupMgmtClient := &GroupMgmtClient{
-		URL:    fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
-		Client: client,
+		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
+		Client:    client,
+		WaitOnJob: waitOnJobs,
 	}
 
 	// Get session token
@@ -103,18 +113,32 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 	if err != nil {
 		return nil, err
 	}
-	// Http error
+	// IsSuccess method returns true if HTTP status `code >= 200 and <= 299` otherwise false.
 	if !response.IsSuccess() {
 		errResp, err := unwrapError(response.Body())
 		if err != nil {
 			return nil, err
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	} else {
+		// http code 202, handle async job
+		if response.StatusCode() == 202 {
+			// extract error message
+			id, err := processAsyncResponse(client, response.Body())
+			if id != nil {
+				// action rpc may contains different path.
+				// extract Get uri path from original path.
+				newPath := strings.Split(path, "/")
+				return client.Get(newPath[0], id.(string), respHolder)
+			} else {
+				return nil, err
+			}
+		}
+		return unwrap(response.Body(), respHolder)
 	}
-	return unwrap(response.Body(), respHolder)
 }
 
-// Put :
+// Put
 func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
@@ -136,12 +160,26 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 			return nil, err
 		}
 		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	} else {
+		// http code 202, handle async job
+		if response.StatusCode() == 202 {
+			// extract error message
+			id, err := processAsyncResponse(client, response.Body())
+			if id != nil {
+				// action rpc may contains different path.
+				// extract Get uri path from original path.
+				newPath := strings.Split(path, "/")
+				return client.Get(newPath[0], id.(string), respHolder)
+			} else {
+				return nil, err
+			}
+		}
+		return unwrap(response.Body(), respHolder)
 	}
-	return unwrap(response.Body(), respHolder)
 }
 
 // Get : Only used to get a single object with the given ID
-func (client *GroupMgmtClient) Get(path string, id string, intf interface{}) (interface{}, error) {
+func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
 
@@ -159,19 +197,7 @@ func (client *GroupMgmtClient) Get(path string, id string, intf interface{}) (in
 	}
 
 	if response.IsSuccess() {
-		// TODO: handle 202 accepted... this might translate into an async job that we need to wait for
-
-		// unmarshal the response
-		wrapper := &DataWrapper{
-			Data: intf,
-		}
-		err = json.Unmarshal(response.Body(), wrapper)
-		if err != nil {
-			return nil, err
-		}
-
-		// return it
-		return wrapper.Data, nil
+		return unwrap(response.Body(), respHolder)
 	}
 	// error condition unmarshalled
 	wrapper := &ErrorResponse{}
@@ -383,4 +409,58 @@ func unwrapError(body []byte) (string, error) {
 		errResp += fmt.Sprintf("%+v", *emsg)
 	}
 	return errResp, nil
+}
+
+// processAsyncResponse: process http code 202 response
+func processAsyncResponse(client *GroupMgmtClient, body []byte) (interface{}, error) {
+	errResp, _ := unwrapError(body)
+	if client.WaitOnJob { // check sync flag
+		unwrapMessage := &ErrorResponse{}
+		err := json.Unmarshal(body, unwrapMessage)
+		if err != nil {
+			return nil, err
+		}
+		var jobId string
+		for _, msg := range unwrapMessage.Messages {
+			if msg.Code == smAsyncJobId {
+				jobId = msg.Arguments.JobId
+			}
+		}
+		if len(jobId) == 0 {
+			return nil, fmt.Errorf("http response error: status (202), failed to get the job id")
+		}
+
+		id, err := waitForJobResult(jobId, client)
+		if err != nil {
+			return nil, fmt.Errorf("http response error: status (202), messages: %v", err.Error())
+		}
+		return id, nil
+	}
+	return nil, fmt.Errorf("http response error: status (202), messages: %v", errResp)
+}
+
+//waitForJobResult : it monitors jobId periodically until job completion or timed out
+func waitForJobResult(jobId string, client *GroupMgmtClient) (interface{}, error) {
+
+	// Loop over job ids periodically unitl 300 sec timeout or unitl completion of jobs.
+	intervalChan := time.Tick(jobPollInterval) // control the fequency of GetObject() API call.
+	timeoutChan := time.After(jobTimeout)      // timeout setting, 300 Seconds
+	for {
+		select {
+		case <-intervalChan:
+
+			job, err := client.GetJobObjectSet().GetObject(jobId)
+			if err != nil {
+				fmt.Println("Warning : failed to %s jobId info, err : %s", jobId, err.Error())
+			} else {
+				var objectId = *job.ObjectId
+				if string(*job.State) == string(*nimbleos.NsJobStatusDone) {
+					return objectId, nil
+				}
+			}
+
+		case <-timeoutChan:
+			return nil, fmt.Errorf("waitForJobResult: job with ID %v timed out after %v seconds.", jobId, jobTimeout)
+		}
+	}
 }

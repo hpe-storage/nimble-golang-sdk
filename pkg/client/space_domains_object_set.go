@@ -37,7 +37,7 @@ func (objectSet *SpaceDomainObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a SpaceDomain object with the given ID
 func (objectSet *SpaceDomainObjectSet) GetObject(id string) (*nimbleos.SpaceDomain, error) {
-	resp, err := objectSet.Client.Get(spaceDomainPath, id, nimbleos.SpaceDomain{})
+	resp, err := objectSet.Client.Get(spaceDomainPath, id, &nimbleos.SpaceDomain{})
 	if err != nil {
 		return nil, err
 	}

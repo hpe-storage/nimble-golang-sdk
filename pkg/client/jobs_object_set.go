@@ -37,7 +37,7 @@ func (objectSet *JobObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Job object with the given ID
 func (objectSet *JobObjectSet) GetObject(id string) (*nimbleos.Job, error) {
-	resp, err := objectSet.Client.Get(jobPath, id, nimbleos.Job{})
+	resp, err := objectSet.Client.Get(jobPath, id, &nimbleos.Job{})
 	if err != nil {
 		return nil, err
 	}

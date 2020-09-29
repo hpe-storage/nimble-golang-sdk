@@ -50,7 +50,7 @@ func (objectSet *UserGroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a UserGroup object with the given ID
 func (objectSet *UserGroupObjectSet) GetObject(id string) (*nimbleos.UserGroup, error) {
-	resp, err := objectSet.Client.Get(userGroupPath, id, nimbleos.UserGroup{})
+	resp, err := objectSet.Client.Get(userGroupPath, id, &nimbleos.UserGroup{})
 	if err != nil {
 		return nil, err
 	}

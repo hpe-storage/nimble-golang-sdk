@@ -50,7 +50,7 @@ func (objectSet *PoolObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Pool object with the given ID
 func (objectSet *PoolObjectSet) GetObject(id string) (*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.Get(poolPath, id, nimbleos.Pool{})
+	resp, err := objectSet.Client.Get(poolPath, id, &nimbleos.Pool{})
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,6 @@ func buildPoolObjectSet(response interface{}) []*nimbleos.Pool {
 
 // Merge - Merge the specified pool into the target pool. All volumes on the specified pool are moved to the target pool and the specified pool is then deleted. All the arrays in the pool are assigned to the target pool.
 func (objectSet *PoolObjectSet) Merge(id *string, targetPoolId *string, force *bool) (*nimbleos.NsPoolMergeReturn, error) {
-
 	mergeUri := poolPath
 	mergeUri = mergeUri + "/" + *id
 	mergeUri = mergeUri + "/actions/" + "merge"

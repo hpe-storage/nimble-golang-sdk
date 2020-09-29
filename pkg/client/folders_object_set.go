@@ -50,7 +50,7 @@ func (objectSet *FolderObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a Folder object with the given ID
 func (objectSet *FolderObjectSet) GetObject(id string) (*nimbleos.Folder, error) {
-	resp, err := objectSet.Client.Get(folderPath, id, nimbleos.Folder{})
+	resp, err := objectSet.Client.Get(folderPath, id, &nimbleos.Folder{})
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,6 @@ func buildFolderObjectSet(response interface{}) []*nimbleos.Folder {
 
 // SetDedupe - Set dedupe enabled/disabled for all applicable volumes inside a folder.
 func (objectSet *FolderObjectSet) SetDedupe(dedupeEnabled *bool, id *string) error {
-
 	setDedupeUri := folderPath
 	setDedupeUri = setDedupeUri + "/" + *id
 	setDedupeUri = setDedupeUri + "/actions/" + "set_dedupe"
@@ -111,7 +110,6 @@ func (objectSet *FolderObjectSet) SetDedupe(dedupeEnabled *bool, id *string) err
 		id,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(setDedupeUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(setDedupeUri, payload, &nimbleos.Folder{})
 	return err
 }

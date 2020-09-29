@@ -51,7 +51,7 @@ func (objectSet *InitiatorGroupObjectSet) DeleteObject(id string) error {
 
 // GetObject returns a InitiatorGroup object with the given ID
 func (objectSet *InitiatorGroupObjectSet) GetObject(id string) (*nimbleos.InitiatorGroup, error) {
-	resp, err := objectSet.Client.Get(initiatorGroupPath, id, nimbleos.InitiatorGroup{})
+	resp, err := objectSet.Client.Get(initiatorGroupPath, id, &nimbleos.InitiatorGroup{})
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +99,6 @@ func buildInitiatorGroupObjectSet(response interface{}) []*nimbleos.InitiatorGro
 
 // SuggestLun - Suggest an LU number for the volume and initiator group combination.
 func (objectSet *InitiatorGroupObjectSet) SuggestLun(id *string, volId *string) (*nimbleos.NsLunReturn, error) {
-
 	suggestLunUri := initiatorGroupPath
 	suggestLunUri = suggestLunUri + "/" + *id
 	suggestLunUri = suggestLunUri + "/actions/" + "suggest_lun"
@@ -122,7 +121,6 @@ func (objectSet *InitiatorGroupObjectSet) SuggestLun(id *string, volId *string) 
 
 // ValidateLun - Validate an LU number for the volume and initiator group combination.
 func (objectSet *InitiatorGroupObjectSet) ValidateLun(id *string, volId *string, lun *uint64) error {
-
 	validateLunUri := initiatorGroupPath
 	validateLunUri = validateLunUri + "/" + *id
 	validateLunUri = validateLunUri + "/actions/" + "validate_lun"
@@ -137,7 +135,6 @@ func (objectSet *InitiatorGroupObjectSet) ValidateLun(id *string, volId *string,
 		lun,
 	}
 
-	var emptyStruct struct{}
-	_, err := objectSet.Client.Post(validateLunUri, payload, &emptyStruct)
+	_, err := objectSet.Client.Post(validateLunUri, payload, &nimbleos.InitiatorGroup{})
 	return err
 }
