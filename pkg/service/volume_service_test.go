@@ -56,8 +56,8 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 	suite.deleteVolume("GetVolume")
 	suite.deleteVollColl("TestVolColl")
 
-	//Delete Group service
-	suite.groupService.DeleteNsGroupService()
+	//Logout Group service
+	suite.groupService.LogoutService()
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {

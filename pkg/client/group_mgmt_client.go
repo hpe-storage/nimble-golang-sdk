@@ -89,19 +89,20 @@ func (client *GroupMgmtClient) EnableDebug() {
 }
 
 // refreshSessionToken : refresh session token
-func (client *GroupMgmtClient) refreshSessionToken(code int, message string) (bool, error) {
-	if code >= 400 && client.SessionToken != "" {
-		if strings.Contains(message, "SM_http_unauthorized") {
-			client.SessionToken = ""
-			newSessionToken, err := client.login(client.Username, client.Password)
-			if err != nil {
-				return false, err
-			}
-			client.SessionToken = newSessionToken
-			return true, nil
+func (client *GroupMgmtClient) refreshSessionToken() (bool,error) {
+	// Invalid credential has empty token
+	if client.SessionToken != "" {
+		client.SessionToken = ""
+		newSessionToken, err := client.login(client.Username, client.Password)
+		if err != nil {
+			return false, err
 		}
+
+		// set new auth token
+		client.SessionToken = newSessionToken
+		return true,nil
 	}
-	return false, nil
+	return false,nil
 }
 
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
@@ -121,10 +122,10 @@ func (client *GroupMgmtClient) login(username, password string) (string, error) 
 
 // Post :
 func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder interface{}) (interface{}, error) {
+
 	// build the url
 	url := fmt.Sprintf("%s/%s", client.URL, path)
-	// Post it
-RETRY:
+	// post it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
 		SetBody(&DataWrapper{
@@ -135,45 +136,26 @@ RETRY:
 		return nil, err
 	}
 
-	// IsSuccess method returns true if HTTP status `code >= 200 and <= 299` otherwise false.
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
+	// Unauthorize access, retry POST if Auth token is expired
+	if response.StatusCode() == 401 {
 		// refresh session token
-		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		isSessionRefreshed, err := client.refreshSessionToken()
 		if err != nil {
 			return nil, err
 		}
-		if isSessionRefresh {
+		if isSessionRefreshed {
 			// retry the ops
-			goto RETRY
+			return client.Post(path,payload,respHolder)
 		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	} else {
-		// http code 202, handle async job
-		if response.StatusCode() == 202 {
-			// extract error message
-			id, err := processAsyncResponse(client, response.Body())
-			if id != nil {
-				// action rpc may contains different path.
-				// extract Get uri path from original path.
-				newPath := strings.Split(path, "/")
-				return client.Get(newPath[0], id.(string), respHolder)
-			} else {
-				return nil, err
-			}
-		}
-		return unwrap(response.Body(), respHolder)
+		return processError(response.StatusCode(),response.Body())
 	}
+	return processResponse(client, response, path, respHolder)
 }
 
 // Put
 func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-RETRY:
 	// Put it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -181,48 +163,31 @@ RETRY:
 			Data: payload,
 		}).
 		Put(url)
+
 	if err != nil {
 		return nil, err
 	}
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
+	// Unauthorize access, retry PUT if Auth token is expired
+	if response.StatusCode() == 401 {
 		// refresh session token
-		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		isSessionRefreshed, err := client.refreshSessionToken()
 		if err != nil {
 			return nil, err
 		}
-		if isSessionRefresh {
+		if isSessionRefreshed {
 			// retry the ops
-			goto RETRY
+			return client.Put(path,id,payload,respHolder)
 		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	} else {
-		// http code 202, handle async job
-		if response.StatusCode() == 202 {
-			// extract error message
-			id, err := processAsyncResponse(client, response.Body())
-			if id != nil {
-				// action rpc may contains different path.
-				// extract Get uri path from original path.
-				newPath := strings.Split(path, "/")
-				return client.Get(newPath[0], id.(string), respHolder)
-			} else {
-				return nil, err
-			}
-		}
-		return unwrap(response.Body(), respHolder)
+		return processError(response.StatusCode(),response.Body())
 	}
+	return processResponse(client, response, path, respHolder)
 }
 
 // Get : Only used to get a single object with the given ID
 func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-RETRY:
+
 	// Get it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -236,33 +201,26 @@ RETRY:
 		return nil, nil
 	}
 
-	if response.IsSuccess() {
-		return unwrap(response.Body(), respHolder)
+	// Unauthorize access, retry Get if Auth token is expired
+	if response.StatusCode() == 401 {
+		// refresh session token
+		isSessionRefreshed, err := client.refreshSessionToken()
+		if err != nil {
+			return nil, err
+		}
+		if isSessionRefreshed {
+			// retry the ops
+			return client.Get(path,id,respHolder)
+		}
+		return processError(response.StatusCode(),response.Body())
 	}
-	// error condition unmarshalled
-	wrapper := &ErrorResponse{}
-	err = json.Unmarshal(response.Body(), wrapper)
-	errResp, err := unwrapError(response.Body())
-	if err != nil {
-		return nil, err
-	}
-	// refresh session token
-	isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
-	if err != nil {
-		return nil, err
-	}
-	if isSessionRefresh {
-		// retry the ops
-		goto RETRY
-	}
-	return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	return processResponse(client, response, path, respHolder)
 }
 
 // Delete :
 func (client *GroupMgmtClient) Delete(path string, id string) error {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-RETRY:
 	// delete it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -271,24 +229,22 @@ RETRY:
 		return err
 	}
 
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return err
-		}
+	// Unauthorize access, retry Delete if Auth token is expired
+	if response.StatusCode() == 401 {
 		// refresh session token
-		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		isSessionRefreshed, err := client.refreshSessionToken()
 		if err != nil {
 			return err
 		}
-		if isSessionRefresh {
+		if isSessionRefreshed {
 			// retry the ops
-			goto RETRY
+			return client.Delete(path,id)
 		}
-		return fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+		_, err = processError(response.StatusCode(),response.Body())
+		return err
 	}
-	return nil
+	_,err= processResponse(client, response, path, nil)
+	return err
 }
 
 // List without any params
@@ -307,16 +263,16 @@ func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetPara
 	if err != nil {
 		return nil, err
 	}
-
+	/*
 	if params != nil && params.Page != nil {
 		params.Page.TotalRows = wrapper.TotalRows
-	}
-	return wrapper.Data, nil
+	}*/
+	return wrapper, nil
 }
 
-func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (*DataWrapper, error) {
+func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
 	if params == nil {
-		return client.listGet(path, nil)
+		return client.listGet(path, nil,nil)
 	}
 
 	// load the url query parameters
@@ -337,14 +293,14 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 				OperationType: &fetch,
 			}
 			// complex filter, need to POST it
-			postResp, err := client.listPost(path, wrapper, queryParams)
+			postResp, err := client.listPost(path, wrapper, queryParams,params)
 			if err != nil {
 				return nil, err
 			}
 			return postResp, nil
 		} else {
 			// get request
-			getResp, err := client.listGet(path, queryParams)
+			getResp, err := client.listGet(path, queryParams,params)
 			if err != nil {
 				return nil, err
 			}
@@ -352,7 +308,7 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 		}
 	} else {
 		// get request
-		getResp, err := client.listGet(path, queryParams)
+		getResp, err := client.listGet(path, queryParams,params)
 		if err != nil {
 			return nil, err
 		}
@@ -365,10 +321,10 @@ func (client *GroupMgmtClient) listPost(
 	path string,
 	payload *DataWrapper,
 	queryParams map[string]string,
-) (*DataWrapper, error) {
+	params *param.GetParams,
+) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
-RETRY:
 	// Post it
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
@@ -378,43 +334,39 @@ RETRY:
 	if err != nil {
 		return nil, err
 	}
-
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
+	// Unauthorize access, retry listPost if Auth token is expired
+	if response.StatusCode() == 401 {
 		// refresh session token
-		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		isSessionRefreshed, err := client.refreshSessionToken()
 		if err != nil {
 			return nil, err
 		}
-		if isSessionRefresh {
+		if isSessionRefreshed {
 			// retry the ops
-			goto RETRY
+			return client.listPost(path,payload,queryParams,params)
 		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+		return processError(response.StatusCode(),response.Body())
 	}
 
-	// unmarshal the response
-	wrapper := &DataWrapper{}
-	err = json.Unmarshal(response.Body(), wrapper)
-	if err != nil {
-		return nil, err
+	if params != nil && params.Page != nil {
+		totalRows,err := getTotalRows(response.Body())
+		if err != nil {
+			return nil,err
+		}
+		params.Page.TotalRows = totalRows
 	}
-	// return it
-	return wrapper, nil
+	return processResponse(client, response, path, nil)
 }
 
 // listGet uses a get request to get all objects on the path
 func (client *GroupMgmtClient) listGet(
 	path string,
 	queryParams map[string]string,
-) (*DataWrapper, error) {
+	params *param.GetParams,
+) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
-RETRY:
+
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -423,39 +375,43 @@ RETRY:
 		return nil, err
 	}
 
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
+	// Unauthorize access, retry listPost if Auth token is expired
+	if response.StatusCode() == 401 {
 		// refresh session token
-		isSessionRefresh, err := client.refreshSessionToken(response.StatusCode(), errResp)
+		isSessionRefreshed, err := client.refreshSessionToken()
 		if err != nil {
 			return nil, err
 		}
-		if isSessionRefresh {
+		if isSessionRefreshed {
 			// retry the ops
-			goto RETRY
+			return client.listGet(path,queryParams,params)
 		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+		return processError(response.StatusCode(),response.Body())
 	}
 
+	if params != nil && params.Page != nil {
+		totalRows,err := getTotalRows(response.Body())
+		if err != nil {
+			return nil,err
+		}
+		params.Page.TotalRows = totalRows
+	}
+	return processResponse(client, response, path, nil)
+}
+// unwrapData
+func getTotalRows(body []byte) (*int, error) {
 	// unmarshal the response
 	wrapper := &DataWrapper{}
-	err = json.Unmarshal(response.Body(), wrapper)
+	err := json.Unmarshal(body, wrapper)
 	if err != nil {
 		return nil, err
 	}
-
 	// return it
-	return wrapper, nil
+	return wrapper.TotalRows, nil
 }
 
-// unwrap a response body
-func unwrap(body []byte, payload interface{}) (interface{}, error) {
-	// TODO: add some logging
-
+// unwrapData
+func unwrapData(body []byte, payload interface{}) (interface{}, error) {
 	// unmarshal the response
 	wrapper := &DataWrapper{
 		Data: payload,
@@ -464,9 +420,45 @@ func unwrap(body []byte, payload interface{}) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	// return it
 	return wrapper.Data, nil
+}
+
+//processResponse
+func processResponse(client *GroupMgmtClient, response *resty.Response, path string, respHolder interface{})(interface{}, error){
+
+	// process successfull response
+	if response.IsSuccess() {
+		// http code 202, handle async job
+		if response.StatusCode() == 202 {
+
+			id, err := processAsyncResponse(client, response.Body())
+			if id != nil {
+				// action rpc may contain different path.
+				// extract Get uri path from original path.
+				newPath := strings.Split(path, "/")
+				return client.Get(newPath[0], id.(string), respHolder)
+			} else {
+				return nil, err
+			}
+		}
+		// process success response
+
+		return unwrapData(response.Body(), respHolder)
+
+	} else {
+		// error response
+		return processError(response.StatusCode(),response.Body())
+	}
+}
+
+// append error code and error message
+func processError(httpCode int, body []byte)(interface{}, error) {
+		errResp, err := unwrapError(body)
+		if err != nil {
+			return nil, err
+		}
+		return nil, fmt.Errorf("http response error: status (%d), messages: %v", httpCode, errResp)
 }
 
 //unwrap error response
