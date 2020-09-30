@@ -89,7 +89,7 @@ func (client *GroupMgmtClient) EnableDebug() {
 }
 
 // refreshSessionToken : refresh session token
-func (client *GroupMgmtClient) refreshSessionToken() (bool,error) {
+func (client *GroupMgmtClient) refreshSessionToken() (bool, error) {
 	// Invalid credential has empty token
 	if client.SessionToken != "" {
 		client.SessionToken = ""
@@ -100,9 +100,9 @@ func (client *GroupMgmtClient) refreshSessionToken() (bool,error) {
 
 		// set new auth token
 		client.SessionToken = newSessionToken
-		return true,nil
+		return true, nil
 	}
-	return false,nil
+	return false, nil
 }
 
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
@@ -145,9 +145,9 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 		}
 		if isSessionRefreshed {
 			// retry the ops
-			return client.Post(path,payload,respHolder)
+			return client.Post(path, payload, respHolder)
 		}
-		return processError(response.StatusCode(),response.Body())
+		return processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -176,9 +176,9 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 		}
 		if isSessionRefreshed {
 			// retry the ops
-			return client.Put(path,id,payload,respHolder)
+			return client.Put(path, id, payload, respHolder)
 		}
-		return processError(response.StatusCode(),response.Body())
+		return processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -210,9 +210,9 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 		}
 		if isSessionRefreshed {
 			// retry the ops
-			return client.Get(path,id,respHolder)
+			return client.Get(path, id, respHolder)
 		}
-		return processError(response.StatusCode(),response.Body())
+		return processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -238,12 +238,12 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 		}
 		if isSessionRefreshed {
 			// retry the ops
-			return client.Delete(path,id)
+			return client.Delete(path, id)
 		}
-		_, err = processError(response.StatusCode(),response.Body())
+		_, err = processError(response.StatusCode(), response.Body())
 		return err
 	}
-	_,err= processResponse(client, response, path, nil)
+	_, err = processResponse(client, response, path, nil)
 	return err
 }
 
@@ -263,16 +263,12 @@ func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetPara
 	if err != nil {
 		return nil, err
 	}
-	/*
-	if params != nil && params.Page != nil {
-		params.Page.TotalRows = wrapper.TotalRows
-	}*/
 	return wrapper, nil
 }
 
 func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
 	if params == nil {
-		return client.listGet(path, nil,nil)
+		return client.listGet(path, nil, nil)
 	}
 
 	// load the url query parameters
@@ -293,14 +289,14 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 				OperationType: &fetch,
 			}
 			// complex filter, need to POST it
-			postResp, err := client.listPost(path, wrapper, queryParams,params)
+			postResp, err := client.listPost(path, wrapper, queryParams, params)
 			if err != nil {
 				return nil, err
 			}
 			return postResp, nil
 		} else {
 			// get request
-			getResp, err := client.listGet(path, queryParams,params)
+			getResp, err := client.listGet(path, queryParams, params)
 			if err != nil {
 				return nil, err
 			}
@@ -308,7 +304,7 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 		}
 	} else {
 		// get request
-		getResp, err := client.listGet(path, queryParams,params)
+		getResp, err := client.listGet(path, queryParams, params)
 		if err != nil {
 			return nil, err
 		}
@@ -343,15 +339,15 @@ func (client *GroupMgmtClient) listPost(
 		}
 		if isSessionRefreshed {
 			// retry the ops
-			return client.listPost(path,payload,queryParams,params)
+			return client.listPost(path, payload, queryParams, params)
 		}
-		return processError(response.StatusCode(),response.Body())
+		return processError(response.StatusCode(), response.Body())
 	}
 
 	if params != nil && params.Page != nil {
-		totalRows,err := getTotalRows(response.Body())
+		totalRows, err := getTotalRows(response.Body())
 		if err != nil {
-			return nil,err
+			return nil, err
 		}
 		params.Page.TotalRows = totalRows
 	}
@@ -384,20 +380,21 @@ func (client *GroupMgmtClient) listGet(
 		}
 		if isSessionRefreshed {
 			// retry the ops
-			return client.listGet(path,queryParams,params)
+			return client.listGet(path, queryParams, params)
 		}
-		return processError(response.StatusCode(),response.Body())
+		return processError(response.StatusCode(), response.Body())
 	}
 
 	if params != nil && params.Page != nil {
-		totalRows,err := getTotalRows(response.Body())
+		totalRows, err := getTotalRows(response.Body())
 		if err != nil {
-			return nil,err
+			return nil, err
 		}
 		params.Page.TotalRows = totalRows
 	}
 	return processResponse(client, response, path, nil)
 }
+
 // unwrapData
 func getTotalRows(body []byte) (*int, error) {
 	// unmarshal the response
@@ -425,7 +422,7 @@ func unwrapData(body []byte, payload interface{}) (interface{}, error) {
 }
 
 //processResponse
-func processResponse(client *GroupMgmtClient, response *resty.Response, path string, respHolder interface{})(interface{}, error){
+func processResponse(client *GroupMgmtClient, response *resty.Response, path string, respHolder interface{}) (interface{}, error) {
 
 	// process successfull response
 	if response.IsSuccess() {
@@ -448,17 +445,17 @@ func processResponse(client *GroupMgmtClient, response *resty.Response, path str
 
 	} else {
 		// error response
-		return processError(response.StatusCode(),response.Body())
+		return processError(response.StatusCode(), response.Body())
 	}
 }
 
 // append error code and error message
-func processError(httpCode int, body []byte)(interface{}, error) {
-		errResp, err := unwrapError(body)
-		if err != nil {
-			return nil, err
-		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", httpCode, errResp)
+func processError(httpCode int, body []byte) (interface{}, error) {
+	errResp, err := unwrapError(body)
+	if err != nil {
+		return nil, err
+	}
+	return nil, fmt.Errorf("http response error: status (%d), messages: %v", httpCode, errResp)
 }
 
 //unwrap error response
