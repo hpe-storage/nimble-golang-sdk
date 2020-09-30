@@ -74,8 +74,8 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 	return &NsGroupService{ip: ip, client: client}, nil
 }
 
-// DeleteNsGroupService - delete the client object and remove the session token
-func (gs *NsGroupService) DeleteNsGroupService() error {
+// LogoutService - delete session token
+func (gs *NsGroupService) LogoutService() error {
 	tokenService := gs.GetTokenService()
 	sessionToken := gs.client.SessionToken
 
