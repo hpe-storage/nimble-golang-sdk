@@ -147,7 +147,7 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 			// retry the ops
 			return client.Post(path, payload, respHolder)
 		}
-		return processError(response.StatusCode(), response.Body())
+		return nil,processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -178,7 +178,7 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 			// retry the ops
 			return client.Put(path, id, payload, respHolder)
 		}
-		return processError(response.StatusCode(), response.Body())
+		return nil,processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -212,7 +212,7 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 			// retry the ops
 			return client.Get(path, id, respHolder)
 		}
-		return processError(response.StatusCode(), response.Body())
+		return nil,processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -240,8 +240,7 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 			// retry the ops
 			return client.Delete(path, id)
 		}
-		_, err = processError(response.StatusCode(), response.Body())
-		return err
+		return processError(response.StatusCode(), response.Body())
 	}
 	_, err = processResponse(client, response, path, nil)
 	return err
@@ -341,7 +340,7 @@ func (client *GroupMgmtClient) listPost(
 			// retry the ops
 			return client.listPost(path, payload, queryParams, params)
 		}
-		return processError(response.StatusCode(), response.Body())
+		return nil,processError(response.StatusCode(), response.Body())
 	}
 
 	if params != nil && params.Page != nil {
@@ -382,7 +381,7 @@ func (client *GroupMgmtClient) listGet(
 			// retry the ops
 			return client.listGet(path, queryParams, params)
 		}
-		return processError(response.StatusCode(), response.Body())
+		return nil,processError(response.StatusCode(), response.Body())
 	}
 
 	if params != nil && params.Page != nil {
@@ -445,17 +444,23 @@ func processResponse(client *GroupMgmtClient, response *resty.Response, path str
 
 	} else {
 		// error response
-		return processError(response.StatusCode(), response.Body())
+		return nil,processError(response.StatusCode(), response.Body())
 	}
 }
 
-// append error code and error message
-func processError(httpCode int, body []byte) (interface{}, error) {
-	errResp, err := unwrapError(body)
+// process error response
+func processError(httpCode int, body []byte) (error) {
+	errResp := ""
+	wrapper := &ErrorResponse{}
+	err := json.Unmarshal(body, wrapper)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return nil, fmt.Errorf("http response error: status (%d), messages: %v", httpCode, errResp)
+
+	for _, emsg := range wrapper.Messages {
+		errResp += fmt.Sprintf("%+v", *emsg)
+	}
+	return fmt.Errorf("error: http status(%d), messages: %v", httpCode, errResp)
 }
 
 //unwrap error response
