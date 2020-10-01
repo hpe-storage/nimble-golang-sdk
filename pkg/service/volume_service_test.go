@@ -56,13 +56,13 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 
 func (suite *VolumeServiceTestSuite) TearDownTest() {
 	if suite.groupService != nil {
-	suite.deleteVolume("DestroyVolume")
-	suite.deleteVolume("DeleteVolume")
-	suite.deleteVolume("GetVolume")
-	suite.deleteVollColl("TestVolColl")
+		suite.deleteVolume("DestroyVolume")
+		suite.deleteVolume("DeleteVolume")
+		suite.deleteVolume("GetVolume")
+		suite.deleteVollColl("TestVolColl")
 
-	//Logout Group service
-	suite.groupService.LogoutService()
+		//Logout Group service
+		suite.groupService.LogoutService()
 	}
 }
 

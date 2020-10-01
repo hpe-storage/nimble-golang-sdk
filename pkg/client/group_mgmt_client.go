@@ -20,6 +20,7 @@ const (
 	jobTimeout      = time.Second * 300 // 5 Minute
 	jobPollInterval = 5 * time.Second   // Second
 	smAsyncJobId    = "SM_async_job_id"
+	maxOpsRetries   = 2
 )
 
 // GroupMgmtClient :
@@ -80,29 +81,52 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 		return nil, err
 	}
 	groupMgmtClient.SessionToken = sessionToken
+
+	// Add retryCondition
+	groupMgmtClient.Client.
+		SetRetryCount(maxOpsRetries).
+		AddRetryCondition(
+			func(resp *resty.Response, err error) bool {
+				if err == nil && resp.StatusCode() == 401 {
+
+					err := groupMgmtClient.refreshSessionToken()
+					if err != nil {
+						return false
+					}
+					resp.Request.SetHeader("X-Auth-Token", groupMgmtClient.SessionToken)
+					return true
+				}
+				return false
+			},
+		)
 	return groupMgmtClient, nil
 }
 
-// EnableDebug : Enables debug logging of client request/response
+// EnableDebug : enables debug logging of client request/response
 func (client *GroupMgmtClient) EnableDebug() {
 	client.Client.SetDebug(true)
 }
 
 // refreshSessionToken : refresh session token
-func (client *GroupMgmtClient) refreshSessionToken() (bool, error) {
-	// Invalid credential has empty token
-	if client.SessionToken != "" {
-		client.SessionToken = ""
-		newSessionToken, err := client.login(client.Username, client.Password)
-		if err != nil {
-			return false, err
-		}
+func (client *GroupMgmtClient) refreshSessionToken() error {
+	// copy the client data to temp
+	tempClient := *client
+	// create a new client from copy
+	newClient := &tempClient
 
-		// set new auth token
-		client.SessionToken = newSessionToken
-		return true, nil
+	rclient := resty.New()
+	rclient.SetTLSClientConfig(&tls.Config{
+		InsecureSkipVerify: true,
+	})
+	newClient.Client = rclient
+	newSessionToken, err := newClient.login(client.Username, client.Password)
+	if err != nil {
+		return err
 	}
-	return false, nil
+	// set new auth token
+	client.SessionToken = newSessionToken
+	return nil
+
 }
 
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
@@ -137,17 +161,8 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 	}
 
 	// Unauthorize access, retry POST if Auth token is expired
-	if response.StatusCode() == 401 {
-		// refresh session token
-		isSessionRefreshed, err := client.refreshSessionToken()
-		if err != nil {
-			return nil, err
-		}
-		if isSessionRefreshed {
-			// retry the ops
-			return client.Post(path, payload, respHolder)
-		}
-		return nil,processError(response.StatusCode(), response.Body())
+	if !response.IsSuccess() {
+		return nil, processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -167,18 +182,9 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 	if err != nil {
 		return nil, err
 	}
-	// Unauthorize access, retry PUT if Auth token is expired
-	if response.StatusCode() == 401 {
-		// refresh session token
-		isSessionRefreshed, err := client.refreshSessionToken()
-		if err != nil {
-			return nil, err
-		}
-		if isSessionRefreshed {
-			// retry the ops
-			return client.Put(path, id, payload, respHolder)
-		}
-		return nil,processError(response.StatusCode(), response.Body())
+	// Unauthorize access, retry POST if Auth token is expired
+	if !response.IsSuccess() {
+		return nil, processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -201,18 +207,9 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 		return nil, nil
 	}
 
-	// Unauthorize access, retry Get if Auth token is expired
-	if response.StatusCode() == 401 {
-		// refresh session token
-		isSessionRefreshed, err := client.refreshSessionToken()
-		if err != nil {
-			return nil, err
-		}
-		if isSessionRefreshed {
-			// retry the ops
-			return client.Get(path, id, respHolder)
-		}
-		return nil,processError(response.StatusCode(), response.Body())
+	// Unauthorize access, retry POST if Auth token is expired
+	if !response.IsSuccess() {
+		return nil, processError(response.StatusCode(), response.Body())
 	}
 	return processResponse(client, response, path, respHolder)
 }
@@ -230,16 +227,8 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 	}
 
 	// Unauthorize access, retry Delete if Auth token is expired
-	if response.StatusCode() == 401 {
-		// refresh session token
-		isSessionRefreshed, err := client.refreshSessionToken()
-		if err != nil {
-			return err
-		}
-		if isSessionRefreshed {
-			// retry the ops
-			return client.Delete(path, id)
-		}
+	// Unauthorize access, retry POST if Auth token is expired
+	if !response.IsSuccess() {
 		return processError(response.StatusCode(), response.Body())
 	}
 	_, err = processResponse(client, response, path, nil)
@@ -330,17 +319,9 @@ func (client *GroupMgmtClient) listPost(
 		return nil, err
 	}
 	// Unauthorize access, retry listPost if Auth token is expired
-	if response.StatusCode() == 401 {
-		// refresh session token
-		isSessionRefreshed, err := client.refreshSessionToken()
-		if err != nil {
-			return nil, err
-		}
-		if isSessionRefreshed {
-			// retry the ops
-			return client.listPost(path, payload, queryParams, params)
-		}
-		return nil,processError(response.StatusCode(), response.Body())
+	// Unauthorize access, retry POST if Auth token is expired
+	if !response.IsSuccess() {
+		return nil, processError(response.StatusCode(), response.Body())
 	}
 
 	if params != nil && params.Page != nil {
@@ -371,17 +352,9 @@ func (client *GroupMgmtClient) listGet(
 	}
 
 	// Unauthorize access, retry listPost if Auth token is expired
-	if response.StatusCode() == 401 {
-		// refresh session token
-		isSessionRefreshed, err := client.refreshSessionToken()
-		if err != nil {
-			return nil, err
-		}
-		if isSessionRefreshed {
-			// retry the ops
-			return client.listGet(path, queryParams, params)
-		}
-		return nil,processError(response.StatusCode(), response.Body())
+	// Unauthorize access, retry POST if Auth token is expired
+	if !response.IsSuccess() {
+		return nil, processError(response.StatusCode(), response.Body())
 	}
 
 	if params != nil && params.Page != nil {
@@ -444,12 +417,12 @@ func processResponse(client *GroupMgmtClient, response *resty.Response, path str
 
 	} else {
 		// error response
-		return nil,processError(response.StatusCode(), response.Body())
+		return nil, processError(response.StatusCode(), response.Body())
 	}
 }
 
 // process error response
-func processError(httpCode int, body []byte) (error) {
+func processError(httpCode int, body []byte) error {
 	errResp := ""
 	wrapper := &ErrorResponse{}
 	err := json.Unmarshal(body, wrapper)
