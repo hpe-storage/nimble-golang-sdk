@@ -88,11 +88,12 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 		AddRetryCondition(
 			func(resp *resty.Response, err error) bool {
 				if err == nil && resp.StatusCode() == 401 {
-
-					err := groupMgmtClient.refreshSessionToken()
+					// login again and refreh the session token
+					sessionToken, err = groupMgmtClient.login(username, password)
 					if err != nil {
 						return false
 					}
+					groupMgmtClient.SessionToken = sessionToken
 					resp.Request.SetHeader("X-Auth-Token", groupMgmtClient.SessionToken)
 					return true
 				}
@@ -105,28 +106,6 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 // EnableDebug : enables debug logging of client request/response
 func (client *GroupMgmtClient) EnableDebug() {
 	client.Client.SetDebug(true)
-}
-
-// refreshSessionToken : refresh session token
-func (client *GroupMgmtClient) refreshSessionToken() error {
-	// copy the client data to temp
-	tempClient := *client
-	// create a new client from copy
-	newClient := &tempClient
-
-	rclient := resty.New()
-	rclient.SetTLSClientConfig(&tls.Config{
-		InsecureSkipVerify: true,
-	})
-	newClient.Client = rclient
-	newSessionToken, err := newClient.login(client.Username, client.Password)
-	if err != nil {
-		return err
-	}
-	// set new auth token
-	client.SessionToken = newSessionToken
-	return nil
-
 }
 
 func (client *GroupMgmtClient) login(username, password string) (string, error) {
@@ -159,12 +138,7 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 	if err != nil {
 		return nil, err
 	}
-
-	// Unauthorize access, retry POST if Auth token is expired
-	if !response.IsSuccess() {
-		return nil, processError(response.StatusCode(), response.Body())
-	}
-	return processResponse(client, response, path, respHolder)
+	return processResponse(client, response, path, respHolder, nil)
 }
 
 // Put
@@ -182,11 +156,7 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 	if err != nil {
 		return nil, err
 	}
-	// Unauthorize access, retry POST if Auth token is expired
-	if !response.IsSuccess() {
-		return nil, processError(response.StatusCode(), response.Body())
-	}
-	return processResponse(client, response, path, respHolder)
+	return processResponse(client, response, path, respHolder, nil)
 }
 
 // Get : Only used to get a single object with the given ID
@@ -206,12 +176,7 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 	if response.StatusCode() == 404 {
 		return nil, nil
 	}
-
-	// Unauthorize access, retry POST if Auth token is expired
-	if !response.IsSuccess() {
-		return nil, processError(response.StatusCode(), response.Body())
-	}
-	return processResponse(client, response, path, respHolder)
+	return processResponse(client, response, path, respHolder, nil)
 }
 
 // Delete :
@@ -225,13 +190,7 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 	if err != nil {
 		return err
 	}
-
-	// Unauthorize access, retry Delete if Auth token is expired
-	// Unauthorize access, retry POST if Auth token is expired
-	if !response.IsSuccess() {
-		return processError(response.StatusCode(), response.Body())
-	}
-	_, err = processResponse(client, response, path, nil)
+	_, err = processResponse(client, response, path, nil, nil)
 	return err
 }
 
@@ -318,20 +277,7 @@ func (client *GroupMgmtClient) listPost(
 	if err != nil {
 		return nil, err
 	}
-	// Unauthorize access, retry listPost if Auth token is expired
-	// Unauthorize access, retry POST if Auth token is expired
-	if !response.IsSuccess() {
-		return nil, processError(response.StatusCode(), response.Body())
-	}
-
-	if params != nil && params.Page != nil {
-		totalRows, err := getTotalRows(response.Body())
-		if err != nil {
-			return nil, err
-		}
-		params.Page.TotalRows = totalRows
-	}
-	return processResponse(client, response, path, nil)
+	return processResponse(client, response, path, nil, params)
 }
 
 // listGet uses a get request to get all objects on the path
@@ -350,57 +296,30 @@ func (client *GroupMgmtClient) listGet(
 	if err != nil {
 		return nil, err
 	}
-
-	// Unauthorize access, retry listPost if Auth token is expired
-	// Unauthorize access, retry POST if Auth token is expired
-	if !response.IsSuccess() {
-		return nil, processError(response.StatusCode(), response.Body())
-	}
-
-	if params != nil && params.Page != nil {
-		totalRows, err := getTotalRows(response.Body())
-		if err != nil {
-			return nil, err
-		}
-		params.Page.TotalRows = totalRows
-	}
-	return processResponse(client, response, path, nil)
+	return processResponse(client, response, path, nil, params)
 }
 
 // unwrapData
-func getTotalRows(body []byte) (*int, error) {
-	// unmarshal the response
-	wrapper := &DataWrapper{}
-	err := json.Unmarshal(body, wrapper)
-	if err != nil {
-		return nil, err
-	}
-	// return it
-	return wrapper.TotalRows, nil
-}
-
-// unwrapData
-func unwrapData(body []byte, payload interface{}) (interface{}, error) {
+func unwrapData(body []byte, payload interface{}) (interface{}, *int, error) {
 	// unmarshal the response
 	wrapper := &DataWrapper{
 		Data: payload,
 	}
 	err := json.Unmarshal(body, wrapper)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	// return it
-	return wrapper.Data, nil
+	return wrapper.Data, wrapper.TotalRows, nil
 }
 
 //processResponse
-func processResponse(client *GroupMgmtClient, response *resty.Response, path string, respHolder interface{}) (interface{}, error) {
+func processResponse(client *GroupMgmtClient, response *resty.Response, path string, respHolder interface{}, params *param.GetParams) (interface{}, error) {
 
 	// process successfull response
 	if response.IsSuccess() {
 		// http code 202, handle async job
 		if response.StatusCode() == 202 {
-
 			id, err := processAsyncResponse(client, response.Body())
 			if id != nil {
 				// action rpc may contain different path.
@@ -411,9 +330,12 @@ func processResponse(client *GroupMgmtClient, response *resty.Response, path str
 				return nil, err
 			}
 		}
-		// process success response
-
-		return unwrapData(response.Body(), respHolder)
+		// unmarshall response data
+		dataIntf, totalRows, err := unwrapData(response.Body(), respHolder)
+		if params != nil && params.Page != nil && totalRows != nil {
+			params.Page.TotalRows = totalRows
+		}
+		return dataIntf, err
 
 	} else {
 		// error response
