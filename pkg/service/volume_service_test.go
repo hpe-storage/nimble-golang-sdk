@@ -25,13 +25,13 @@ type VolumeServiceTestSuite struct {
 
 func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 
-	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admina", "v1", true)
+	groupService, err := NewNsGroupService("10.18.174.8", "xxx", "xxx", "v1", true)
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return nil
 	}
 	// set debug
-	//groupService.SetDebug()
+	groupService.SetDebug()
 	return groupService
 }
 
