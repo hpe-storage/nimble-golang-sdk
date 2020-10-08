@@ -20,6 +20,7 @@ const (
 	jobTimeout      = time.Second * 300 // 5 Minute
 	jobPollInterval = 5 * time.Second   // Second
 	smAsyncJobId    = "SM_async_job_id"
+	maxOpsRetries   = 2
 )
 
 // GroupMgmtClient :
@@ -28,6 +29,8 @@ type GroupMgmtClient struct {
 	Client       *resty.Client
 	SessionToken string
 	WaitOnJob    bool
+	Username     string
+	Password     string
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -68,6 +71,8 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
 		Client:    client,
 		WaitOnJob: waitOnJobs,
+		Username:  username,
+		Password:  password,
 	}
 
 	// Get session token
@@ -76,10 +81,29 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 		return nil, err
 	}
 	groupMgmtClient.SessionToken = sessionToken
+
+	// Add retryCondition
+	groupMgmtClient.Client.
+		SetRetryCount(maxOpsRetries).
+		AddRetryCondition(
+			func(resp *resty.Response, err error) bool {
+				if err == nil && resp.StatusCode() == 401 {
+					// login again and refreh the session token
+					sessionToken, err = groupMgmtClient.login(username, password)
+					if err != nil {
+						return false
+					}
+					groupMgmtClient.SessionToken = sessionToken
+					resp.Request.SetHeader("X-Auth-Token", groupMgmtClient.SessionToken)
+					return true
+				}
+				return false
+			},
+		)
 	return groupMgmtClient, nil
 }
 
-// EnableDebug : Enables debug logging of client request/response
+// EnableDebug : enables debug logging of client request/response
 func (client *GroupMgmtClient) EnableDebug() {
 	client.Client.SetDebug(true)
 }
@@ -101,9 +125,10 @@ func (client *GroupMgmtClient) login(username, password string) (string, error) 
 
 // Post :
 func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder interface{}) (interface{}, error) {
+
 	// build the url
 	url := fmt.Sprintf("%s/%s", client.URL, path)
-	// Post it
+	// post it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
 		SetBody(&DataWrapper{
@@ -113,36 +138,13 @@ func (client *GroupMgmtClient) Post(path string, payload interface{}, respHolder
 	if err != nil {
 		return nil, err
 	}
-	// IsSuccess method returns true if HTTP status `code >= 200 and <= 299` otherwise false.
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	} else {
-		// http code 202, handle async job
-		if response.StatusCode() == 202 {
-			// extract error message
-			id, err := processAsyncResponse(client, response.Body())
-			if id != nil {
-				// action rpc may contains different path.
-				// extract Get uri path from original path.
-				newPath := strings.Split(path, "/")
-				return client.Get(newPath[0], id.(string), respHolder)
-			} else {
-				return nil, err
-			}
-		}
-		return unwrap(response.Body(), respHolder)
-	}
+	return processResponse(client, response, path, respHolder, nil)
 }
 
 // Put
 func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHolder interface{}) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-
 	// Put it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -150,32 +152,11 @@ func (client *GroupMgmtClient) Put(path, id string, payload interface{}, respHol
 			Data: payload,
 		}).
 		Put(url)
+
 	if err != nil {
 		return nil, err
 	}
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	} else {
-		// http code 202, handle async job
-		if response.StatusCode() == 202 {
-			// extract error message
-			id, err := processAsyncResponse(client, response.Body())
-			if id != nil {
-				// action rpc may contains different path.
-				// extract Get uri path from original path.
-				newPath := strings.Split(path, "/")
-				return client.Get(newPath[0], id.(string), respHolder)
-			} else {
-				return nil, err
-			}
-		}
-		return unwrap(response.Body(), respHolder)
-	}
+	return processResponse(client, response, path, respHolder, nil)
 }
 
 // Get : Only used to get a single object with the given ID
@@ -195,26 +176,13 @@ func (client *GroupMgmtClient) Get(path string, id string, respHolder interface{
 	if response.StatusCode() == 404 {
 		return nil, nil
 	}
-
-	if response.IsSuccess() {
-		return unwrap(response.Body(), respHolder)
-	}
-	// error condition unmarshalled
-	wrapper := &ErrorResponse{}
-	err = json.Unmarshal(response.Body(), wrapper)
-	errResp, err := unwrapError(response.Body())
-	if err != nil {
-		return nil, err
-	}
-
-	return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
+	return processResponse(client, response, path, respHolder, nil)
 }
 
 // Delete :
 func (client *GroupMgmtClient) Delete(path string, id string) error {
 	// build the url
 	url := fmt.Sprintf("%s/%s/%s", client.URL, path, id)
-
 	// delete it
 	response, err := client.Client.R().
 		SetHeader("X-Auth-Token", client.SessionToken).
@@ -222,16 +190,8 @@ func (client *GroupMgmtClient) Delete(path string, id string) error {
 	if err != nil {
 		return err
 	}
-
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return err
-		}
-		return fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	}
-	return nil
+	_, err = processResponse(client, response, path, nil, nil)
+	return err
 }
 
 // List without any params
@@ -250,16 +210,12 @@ func (client *GroupMgmtClient) ListFromParams(path string, params *param.GetPara
 	if err != nil {
 		return nil, err
 	}
-
-	if params != nil && params.Page != nil {
-		params.Page.TotalRows = wrapper.TotalRows
-	}
-	return wrapper.Data, nil
+	return wrapper, nil
 }
 
-func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (*DataWrapper, error) {
+func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParams) (interface{}, error) {
 	if params == nil {
-		return client.listGet(path, nil)
+		return client.listGet(path, nil, nil)
 	}
 
 	// load the url query parameters
@@ -280,14 +236,14 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 				OperationType: &fetch,
 			}
 			// complex filter, need to POST it
-			postResp, err := client.listPost(path, wrapper, queryParams)
+			postResp, err := client.listPost(path, wrapper, queryParams, params)
 			if err != nil {
 				return nil, err
 			}
 			return postResp, nil
 		} else {
 			// get request
-			getResp, err := client.listGet(path, queryParams)
+			getResp, err := client.listGet(path, queryParams, params)
 			if err != nil {
 				return nil, err
 			}
@@ -295,7 +251,7 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 		}
 	} else {
 		// get request
-		getResp, err := client.listGet(path, queryParams)
+		getResp, err := client.listGet(path, queryParams, params)
 		if err != nil {
 			return nil, err
 		}
@@ -308,12 +264,10 @@ func (client *GroupMgmtClient) listPost(
 	path string,
 	payload *DataWrapper,
 	queryParams map[string]string,
-) (*DataWrapper, error) {
+	params *param.GetParams,
+) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
-
-	fmt.Printf("request = %v", payload)
-
 	// Post it
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
@@ -323,31 +277,15 @@ func (client *GroupMgmtClient) listPost(
 	if err != nil {
 		return nil, err
 	}
-
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	}
-
-	// unmarshal the response
-	wrapper := &DataWrapper{}
-	err = json.Unmarshal(response.Body(), wrapper)
-	if err != nil {
-		return nil, err
-	}
-	// return it
-	return wrapper, nil
+	return processResponse(client, response, path, nil, params)
 }
 
 // listGet uses a get request to get all objects on the path
 func (client *GroupMgmtClient) listGet(
 	path string,
 	queryParams map[string]string,
-) (*DataWrapper, error) {
+	params *param.GetParams,
+) (interface{}, error) {
 	// build the url
 	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
 
@@ -358,42 +296,66 @@ func (client *GroupMgmtClient) listGet(
 	if err != nil {
 		return nil, err
 	}
-
-	// http Error
-	if !response.IsSuccess() {
-		errResp, err := unwrapError(response.Body())
-		if err != nil {
-			return nil, err
-		}
-		return nil, fmt.Errorf("http response error: status (%d), messages: %v", response.StatusCode(), errResp)
-	}
-
-	// unmarshal the response
-	wrapper := &DataWrapper{}
-	err = json.Unmarshal(response.Body(), wrapper)
-	if err != nil {
-		return nil, err
-	}
-
-	// return it
-	return wrapper, nil
+	return processResponse(client, response, path, nil, params)
 }
 
-// unwrap a response body
-func unwrap(body []byte, payload interface{}) (interface{}, error) {
-	// TODO: add some logging
-
+// unwrapData
+func unwrapData(body []byte, payload interface{}) (interface{}, *int, error) {
 	// unmarshal the response
 	wrapper := &DataWrapper{
 		Data: payload,
 	}
 	err := json.Unmarshal(body, wrapper)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
+	}
+	// return it
+	return wrapper.Data, wrapper.TotalRows, nil
+}
+
+//processResponse
+func processResponse(client *GroupMgmtClient, response *resty.Response, path string, respHolder interface{}, params *param.GetParams) (interface{}, error) {
+
+	// process successfull response
+	if response.IsSuccess() {
+		// http code 202, handle async job
+		if response.StatusCode() == 202 {
+			id, err := processAsyncResponse(client, response.Body())
+			if id != nil {
+				// action rpc may contain different path.
+				// extract Get uri path from original path.
+				newPath := strings.Split(path, "/")
+				return client.Get(newPath[0], id.(string), respHolder)
+			} else {
+				return nil, err
+			}
+		}
+		// unmarshall response data
+		dataIntf, totalRows, err := unwrapData(response.Body(), respHolder)
+		if params != nil && params.Page != nil && totalRows != nil {
+			params.Page.TotalRows = totalRows
+		}
+		return dataIntf, err
+
+	} else {
+		// error response
+		return nil, processError(response.StatusCode(), response.Body())
+	}
+}
+
+// process error response
+func processError(httpCode int, body []byte) error {
+	errResp := ""
+	wrapper := &ErrorResponse{}
+	err := json.Unmarshal(body, wrapper)
+	if err != nil {
+		return err
 	}
 
-	// return it
-	return wrapper.Data, nil
+	for _, emsg := range wrapper.Messages {
+		errResp += fmt.Sprintf("%+v", *emsg)
+	}
+	return fmt.Errorf("error: http status(%d), messages: %v", httpCode, errResp)
 }
 
 //unwrap error response

@@ -8,6 +8,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	"os"
 	"testing"
 )
 
@@ -23,7 +24,8 @@ type VolumeServiceTestSuite struct {
 }
 
 func (suite *VolumeServiceTestSuite) config() *NsGroupService {
-	groupService, err := NewNsGroupService("10.18.174.8", "admin", "admin", "v1", true)
+
+	groupService, err := NewNsGroupService("10.18.174.8", "xxx", "xxx", "v1", true)
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return nil
@@ -35,6 +37,11 @@ func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 
 func (suite *VolumeServiceTestSuite) SetupTest() {
 	groupService := suite.config()
+	if groupService == nil {
+		suite.T().Errorf("Failed to initialized suite.")
+		os.Exit(1)
+		return
+	}
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.performancePolicyService = groupService.GetPerformancePolicyService()
@@ -50,10 +57,15 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 }
 
 func (suite *VolumeServiceTestSuite) TearDownTest() {
+
 	suite.deleteVolume("DestroyVolume")
 	suite.deleteVolume("DeleteVolume")
 	suite.deleteVolume("GetVolume")
 	suite.deleteVollColl("TestVolColl")
+
+	//Logout Group service
+	suite.groupService.LogoutService()
+
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
@@ -112,6 +124,7 @@ func (suite *VolumeServiceTestSuite) createVolColl(name string) {
 }
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
+
 	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to ge non-existent volume, err: %v", err.Error())
@@ -127,6 +140,7 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 }
 
 func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
+
 	arg := new(param.GetParams)
 	//arg.Page = new(pagination.Page)
 	pagination := new(pagination.Page)
@@ -164,6 +178,7 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 
 }
 func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
+
 	volume, _ := suite.volumeService.GetVolumeByName("GetVolume")
 	if volume != nil {
 		var volList [1]*string
@@ -200,6 +215,7 @@ func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 }
 
 func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
+
 	volume := suite.createVolume("RestoreVolume")
 	if volume != nil {
 		volcoll, err := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
@@ -236,7 +252,9 @@ func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
 		suite.deleteVolume("RestoreVolume")
 	}
 }
+
 func (suite *VolumeServiceTestSuite) TestCloneVolume() {
+
 	volume := suite.createVolume("CloneVolume")
 	if volume != nil {
 		volcoll, err := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
@@ -281,8 +299,8 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 
 	}
 }
-
 func (suite *VolumeServiceTestSuite) TestACLVolume() {
+
 	// create igroup with initiators
 	initiator := &nimbleos.NsISCSIInitiator{
 		Label:     param.NewString("iqn.1998-01.com.vmware:sasi-srm82-pesxi-4b00546a"),
@@ -315,6 +333,16 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 		}
 		suite.deleteVolume("TestAclVolume")
 		suite.igroupService.DeleteInitiatorGroup(*igroup.ID)
+	}
+}
+
+func (suite *VolumeServiceTestSuite) TestExpiredToken() {
+
+	volume := suite.createVolume("TestExpiredToken")
+	if volume != nil {
+		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
+		suite.groupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
+		suite.deleteVolume("TestExpiredToken")
 	}
 }
 
