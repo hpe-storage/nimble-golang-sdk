@@ -24,10 +24,6 @@ func NewProtectionScheduleService(gs *NsGroupService) *ProtectionScheduleService
 
 // GetProtectionSchedules - method returns a array of pointers of type "ProtectionSchedules"
 func (svc *ProtectionScheduleService) GetProtectionSchedules(params *param.GetParams) ([]*nimbleos.ProtectionSchedule, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetProtectionSchedules: invalid parameter specified, %v", params)
-	}
-
 	protectionScheduleResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

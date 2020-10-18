@@ -25,10 +25,6 @@ func NewSubnetService(gs *NsGroupService) *SubnetService {
 
 // GetSubnets - method returns a array of pointers of type "Subnets"
 func (svc *SubnetService) GetSubnets(params *param.GetParams) ([]*nimbleos.Subnet, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetSubnets: invalid parameter specified, %v", params)
-	}
-
 	subnetResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

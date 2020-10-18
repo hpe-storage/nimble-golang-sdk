@@ -25,10 +25,6 @@ func NewVolumeCollectionService(gs *NsGroupService) *VolumeCollectionService {
 
 // GetVolumeCollections - method returns a array of pointers of type "VolumeCollections"
 func (svc *VolumeCollectionService) GetVolumeCollections(params *param.GetParams) ([]*nimbleos.VolumeCollection, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetVolumeCollections: invalid parameter specified, %v", params)
-	}
-
 	volumeCollectionResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

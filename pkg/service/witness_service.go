@@ -24,10 +24,6 @@ func NewWitnessService(gs *NsGroupService) *WitnessService {
 
 // GetWitnesses - method returns a array of pointers of type "Witnesses"
 func (svc *WitnessService) GetWitnesses(params *param.GetParams) ([]*nimbleos.Witness, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetWitnesses: invalid parameter specified, %v", params)
-	}
-
 	witnessResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

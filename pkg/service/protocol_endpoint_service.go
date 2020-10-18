@@ -24,10 +24,6 @@ func NewProtocolEndpointService(gs *NsGroupService) *ProtocolEndpointService {
 
 // GetProtocolEndpoints - method returns a array of pointers of type "ProtocolEndpoints"
 func (svc *ProtocolEndpointService) GetProtocolEndpoints(params *param.GetParams) ([]*nimbleos.ProtocolEndpoint, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetProtocolEndpoints: invalid parameter specified, %v", params)
-	}
-
 	protocolEndpointResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

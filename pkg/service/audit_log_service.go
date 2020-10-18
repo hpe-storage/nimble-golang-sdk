@@ -24,10 +24,6 @@ func NewAuditLogService(gs *NsGroupService) *AuditLogService {
 
 // GetAuditLogs - method returns a array of pointers of type "AuditLogs"
 func (svc *AuditLogService) GetAuditLogs(params *param.GetParams) ([]*nimbleos.AuditLog, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetAuditLogs: invalid parameter specified, %v", params)
-	}
-
 	auditLogResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

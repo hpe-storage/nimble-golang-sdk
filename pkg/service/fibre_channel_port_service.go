@@ -24,10 +24,6 @@ func NewFibreChannelPortService(gs *NsGroupService) *FibreChannelPortService {
 
 // GetFibreChannelPorts - method returns a array of pointers of type "FibreChannelPorts"
 func (svc *FibreChannelPortService) GetFibreChannelPorts(params *param.GetParams) ([]*nimbleos.FibreChannelPort, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetFibreChannelPorts: invalid parameter specified, %v", params)
-	}
-
 	fibreChannelPortResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

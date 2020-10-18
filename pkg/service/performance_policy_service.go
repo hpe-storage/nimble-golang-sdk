@@ -26,10 +26,6 @@ func NewPerformancePolicyService(gs *NsGroupService) *PerformancePolicyService {
 
 // GetPerformancePolicies - method returns a array of pointers of type "PerformancePolicies"
 func (svc *PerformancePolicyService) GetPerformancePolicies(params *param.GetParams) ([]*nimbleos.PerformancePolicy, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetPerformancePolicies: invalid parameter specified, %v", params)
-	}
-
 	performancePolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

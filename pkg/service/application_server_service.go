@@ -24,10 +24,6 @@ func NewApplicationServerService(gs *NsGroupService) *ApplicationServerService {
 
 // GetApplicationServers - method returns a array of pointers of type "ApplicationServers"
 func (svc *ApplicationServerService) GetApplicationServers(params *param.GetParams) ([]*nimbleos.ApplicationServer, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetApplicationServers: invalid parameter specified, %v", params)
-	}
-
 	applicationServerResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

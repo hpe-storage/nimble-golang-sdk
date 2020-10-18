@@ -26,10 +26,6 @@ func NewChapUserService(gs *NsGroupService) *ChapUserService {
 
 // GetChapUsers - method returns a array of pointers of type "ChapUsers"
 func (svc *ChapUserService) GetChapUsers(params *param.GetParams) ([]*nimbleos.ChapUser, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetChapUsers: invalid parameter specified, %v", params)
-	}
-
 	chapUserResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

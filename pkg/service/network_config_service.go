@@ -24,10 +24,6 @@ func NewNetworkConfigService(gs *NsGroupService) *NetworkConfigService {
 
 // GetNetworkConfigs - method returns a array of pointers of type "NetworkConfigs"
 func (svc *NetworkConfigService) GetNetworkConfigs(params *param.GetParams) ([]*nimbleos.NetworkConfig, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetNetworkConfigs: invalid parameter specified, %v", params)
-	}
-
 	networkConfigResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

@@ -79,4 +79,6 @@ type NsGroupMergeReturn struct {
 	ValidationError []*NsErrorWithArguments `json:"validation_error,omitempty"`
 	// ValidationErrorMsg - Detailed error message.
 	ValidationErrorMsg *string `json:"validation_error_msg,omitempty"`
+	// WarningList - List of warning messages.
+	WarningList []*string `json:"warning_list,omitempty"`
 }

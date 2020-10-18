@@ -37,6 +37,13 @@ func (client *GroupMgmtClient) GetAlarmObjectSet() *AlarmObjectSet {
 	}
 }
 
+// SubscriptionObjectSet returns a reference to the Subscription object set
+func (client *GroupMgmtClient) GetSubscriptionObjectSet() *SubscriptionObjectSet {
+	return &SubscriptionObjectSet{
+		Client: client,
+	}
+}
+
 // VolumeObjectSet returns a reference to the Volume object set
 func (client *GroupMgmtClient) GetVolumeObjectSet() *VolumeObjectSet {
 	return &VolumeObjectSet{
@@ -282,6 +289,13 @@ func (client *GroupMgmtClient) GetVolumeCollectionObjectSet() *VolumeCollectionO
 	}
 }
 
+// SubscriberObjectSet returns a reference to the Subscriber object set
+func (client *GroupMgmtClient) GetSubscriberObjectSet() *SubscriberObjectSet {
+	return &SubscriberObjectSet{
+		Client: client,
+	}
+}
+
 // DiskObjectSet returns a reference to the Disk object set
 func (client *GroupMgmtClient) GetDiskObjectSet() *DiskObjectSet {
 	return &DiskObjectSet{
@@ -306,6 +320,13 @@ func (client *GroupMgmtClient) GetGroupObjectSet() *GroupObjectSet {
 // SoftwareVersionObjectSet returns a reference to the SoftwareVersion object set
 func (client *GroupMgmtClient) GetSoftwareVersionObjectSet() *SoftwareVersionObjectSet {
 	return &SoftwareVersionObjectSet{
+		Client: client,
+	}
+}
+
+// LdapDomainObjectSet returns a reference to the LdapDomain object set
+func (client *GroupMgmtClient) GetLdapDomainObjectSet() *LdapDomainObjectSet {
+	return &LdapDomainObjectSet{
 		Client: client,
 	}
 }

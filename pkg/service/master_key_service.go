@@ -26,10 +26,6 @@ func NewMasterKeyService(gs *NsGroupService) *MasterKeyService {
 
 // GetMasterKeys - method returns a array of pointers of type "MasterKeys"
 func (svc *MasterKeyService) GetMasterKeys(params *param.GetParams) ([]*nimbleos.MasterKey, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetMasterKeys: invalid parameter specified, %v", params)
-	}
-
 	masterKeyResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

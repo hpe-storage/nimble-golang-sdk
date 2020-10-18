@@ -24,10 +24,6 @@ func NewPoolService(gs *NsGroupService) *PoolService {
 
 // GetPools - method returns a array of pointers of type "Pools"
 func (svc *PoolService) GetPools(params *param.GetParams) ([]*nimbleos.Pool, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetPools: invalid parameter specified, %v", params)
-	}
-
 	poolResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

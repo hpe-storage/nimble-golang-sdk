@@ -25,10 +25,6 @@ func NewInitiatorGroupService(gs *NsGroupService) *InitiatorGroupService {
 
 // GetInitiatorGroups - method returns a array of pointers of type "InitiatorGroups"
 func (svc *InitiatorGroupService) GetInitiatorGroups(params *param.GetParams) ([]*nimbleos.InitiatorGroup, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetInitiatorGroups: invalid parameter specified, %v", params)
-	}
-
 	initiatorGroupResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

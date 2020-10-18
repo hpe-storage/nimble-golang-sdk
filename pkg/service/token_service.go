@@ -24,10 +24,6 @@ func NewTokenService(gs *NsGroupService) *TokenService {
 
 // GetTokens - method returns a array of pointers of type "Tokens"
 func (svc *TokenService) GetTokens(params *param.GetParams) ([]*nimbleos.Token, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetTokens: invalid parameter specified, %v", params)
-	}
-
 	tokenResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

@@ -24,10 +24,6 @@ func NewArrayService(gs *NsGroupService) *ArrayService {
 
 // GetArrays - method returns a array of pointers of type "Arrays"
 func (svc *ArrayService) GetArrays(params *param.GetParams) ([]*nimbleos.Array, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetArrays: invalid parameter specified, %v", params)
-	}
-
 	arrayResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

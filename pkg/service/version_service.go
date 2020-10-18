@@ -24,10 +24,6 @@ func NewVersionService(gs *NsGroupService) *VersionService {
 
 // GetVersions - method returns a array of pointers of type "Versions"
 func (svc *VersionService) GetVersions(params *param.GetParams) ([]*nimbleos.Version, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetVersions: invalid parameter specified, %v", params)
-	}
-
 	versionResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

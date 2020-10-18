@@ -57,6 +57,8 @@ type SnapshotCollection struct {
 	SrepOwnerId *string `json:"srep_owner_id,omitempty"`
 	// PeerSnapcollId - ID of the peer snapshot collection created by synchronous replication. Field will be null if no peer snapshot_collection was created by synchronous replication.
 	PeerSnapcollId *string `json:"peer_snapcoll_id,omitempty"`
+	// NumSnaps - Current number of live, non-hidden snaps in this collection.
+	NumSnaps *int64 `json:"num_snaps,omitempty"`
 	// IsComplete - Is complete.
 	IsComplete *bool `json:"is_complete,omitempty"`
 	// IsManual - Is manual.

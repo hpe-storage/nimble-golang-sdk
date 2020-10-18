@@ -24,10 +24,6 @@ func NewAccessControlRecordService(gs *NsGroupService) *AccessControlRecordServi
 
 // GetAccessControlRecords - method returns a array of pointers of type "AccessControlRecords"
 func (svc *AccessControlRecordService) GetAccessControlRecords(params *param.GetParams) ([]*nimbleos.AccessControlRecord, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetAccessControlRecords: invalid parameter specified, %v", params)
-	}
-
 	accessControlRecordResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

@@ -3,13 +3,14 @@
 package service
 
 import (
+	"os"
+	"testing"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"os"
-	"testing"
 )
 
 type VolumeServiceTestSuite struct {
@@ -25,7 +26,7 @@ type VolumeServiceTestSuite struct {
 
 func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 
-	groupService, err := NewNsGroupService("10.18.174.8", "xxx", "xxx", "v1", true)
+	groupService, err := NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return nil
@@ -344,6 +345,15 @@ func (suite *VolumeServiceTestSuite) TestExpiredToken() {
 		suite.groupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
 		suite.deleteVolume("TestExpiredToken")
 	}
+}
+func (suite *VolumeServiceTestSuite) TestGetVolumes() {
+
+	volumes, err := suite.volumeService.GetVolumes(nil)
+	if err != nil || len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
+		return
+	}
+
 }
 
 // Runs all test via go test

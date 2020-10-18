@@ -6,11 +6,12 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
+	"strings"
+	"time"
+
 	"github.com/go-resty/resty/v2"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
-	"strings"
-	"time"
 )
 
 const (
@@ -267,7 +268,7 @@ func (client *GroupMgmtClient) listPost(
 	params *param.GetParams,
 ) (interface{}, error) {
 	// build the url
-	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
+	url := fmt.Sprintf("%s/%s/details", client.URL, path)
 	// Post it
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
