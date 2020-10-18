@@ -24,10 +24,6 @@ func NewApplicationCategoryService(gs *NsGroupService) *ApplicationCategoryServi
 
 // GetApplicationCategories - method returns a array of pointers of type "ApplicationCategories"
 func (svc *ApplicationCategoryService) GetApplicationCategories(params *param.GetParams) ([]*nimbleos.ApplicationCategory, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetApplicationCategories: invalid parameter specified, %v", params)
-	}
-
 	applicationCategoryResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

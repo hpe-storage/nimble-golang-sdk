@@ -24,10 +24,6 @@ func NewKeyManagerService(gs *NsGroupService) *KeyManagerService {
 
 // GetKeyManagers - method returns a array of pointers of type "KeyManagers"
 func (svc *KeyManagerService) GetKeyManagers(params *param.GetParams) ([]*nimbleos.KeyManager, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetKeyManagers: invalid parameter specified, %v", params)
-	}
-
 	keyManagerResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

@@ -26,10 +26,6 @@ func NewReplicationPartnerService(gs *NsGroupService) *ReplicationPartnerService
 
 // GetReplicationPartners - method returns a array of pointers of type "ReplicationPartners"
 func (svc *ReplicationPartnerService) GetReplicationPartners(params *param.GetParams) ([]*nimbleos.ReplicationPartner, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetReplicationPartners: invalid parameter specified, %v", params)
-	}
-
 	replicationPartnerResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

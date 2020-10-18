@@ -24,10 +24,6 @@ func NewControllerService(gs *NsGroupService) *ControllerService {
 
 // GetControllers - method returns a array of pointers of type "Controllers"
 func (svc *ControllerService) GetControllers(params *param.GetParams) ([]*nimbleos.Controller, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetControllers: invalid parameter specified, %v", params)
-	}
-
 	controllerResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

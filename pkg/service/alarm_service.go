@@ -24,10 +24,6 @@ func NewAlarmService(gs *NsGroupService) *AlarmService {
 
 // GetAlarms - method returns a array of pointers of type "Alarms"
 func (svc *AlarmService) GetAlarms(params *param.GetParams) ([]*nimbleos.Alarm, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetAlarms: invalid parameter specified, %v", params)
-	}
-
 	alarmResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

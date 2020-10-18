@@ -27,10 +27,6 @@ func NewProtectionTemplateService(gs *NsGroupService) *ProtectionTemplateService
 
 // GetProtectionTemplates - method returns a array of pointers of type "ProtectionTemplates"
 func (svc *ProtectionTemplateService) GetProtectionTemplates(params *param.GetParams) ([]*nimbleos.ProtectionTemplate, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetProtectionTemplates: invalid parameter specified, %v", params)
-	}
-
 	protectionTemplateResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

@@ -20,6 +20,7 @@ type NsGroupService struct {
 	chapUserService                   *ChapUserService
 	masterKeyService                  *MasterKeyService
 	alarmService                      *AlarmService
+	subscriptionService               *SubscriptionService
 	volumeService                     *VolumeService
 	shelfService                      *ShelfService
 	keyManagerService                 *KeyManagerService
@@ -55,10 +56,12 @@ type NsGroupService struct {
 	auditLogService                   *AuditLogService
 	poolService                       *PoolService
 	volumeCollectionService           *VolumeCollectionService
+	subscriberService                 *SubscriberService
 	diskService                       *DiskService
 	fibreChannelInitiatorAliasService *FibreChannelInitiatorAliasService
 	groupService                      *GroupService
 	softwareVersionService            *SoftwareVersionService
+	ldapDomainService                 *LdapDomainService
 	networkConfigService              *NetworkConfigService
 }
 
@@ -74,7 +77,7 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 	return &NsGroupService{ip: ip, client: client}, nil
 }
 
-// LogoutService - delete session token
+// LogoutService - delete the session token
 func (gs *NsGroupService) LogoutService() error {
 	tokenService := gs.GetTokenService()
 	sessionToken := gs.client.SessionToken
@@ -137,6 +140,14 @@ func (gs *NsGroupService) GetAlarmService() (vs *AlarmService) {
 		gs.alarmService = NewAlarmService(gs)
 	}
 	return gs.alarmService
+}
+
+// GetSubscriptionService - returns service of a type *SubscriptionService
+func (gs *NsGroupService) GetSubscriptionService() (vs *SubscriptionService) {
+	if gs.subscriptionService == nil {
+		gs.subscriptionService = NewSubscriptionService(gs)
+	}
+	return gs.subscriptionService
 }
 
 // GetVolumeService - returns service of a type *VolumeService
@@ -419,6 +430,14 @@ func (gs *NsGroupService) GetVolumeCollectionService() (vs *VolumeCollectionServ
 	return gs.volumeCollectionService
 }
 
+// GetSubscriberService - returns service of a type *SubscriberService
+func (gs *NsGroupService) GetSubscriberService() (vs *SubscriberService) {
+	if gs.subscriberService == nil {
+		gs.subscriberService = NewSubscriberService(gs)
+	}
+	return gs.subscriberService
+}
+
 // GetDiskService - returns service of a type *DiskService
 func (gs *NsGroupService) GetDiskService() (vs *DiskService) {
 	if gs.diskService == nil {
@@ -449,6 +468,14 @@ func (gs *NsGroupService) GetSoftwareVersionService() (vs *SoftwareVersionServic
 		gs.softwareVersionService = NewSoftwareVersionService(gs)
 	}
 	return gs.softwareVersionService
+}
+
+// GetLdapDomainService - returns service of a type *LdapDomainService
+func (gs *NsGroupService) GetLdapDomainService() (vs *LdapDomainService) {
+	if gs.ldapDomainService == nil {
+		gs.ldapDomainService = NewLdapDomainService(gs)
+	}
+	return gs.ldapDomainService
 }
 
 // GetNetworkConfigService - returns service of a type *NetworkConfigService

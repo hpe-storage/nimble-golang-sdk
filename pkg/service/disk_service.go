@@ -24,10 +24,6 @@ func NewDiskService(gs *NsGroupService) *DiskService {
 
 // GetDisks - method returns a array of pointers of type "Disks"
 func (svc *DiskService) GetDisks(params *param.GetParams) ([]*nimbleos.Disk, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetDisks: invalid parameter specified, %v", params)
-	}
-
 	diskResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

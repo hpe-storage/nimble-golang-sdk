@@ -24,10 +24,6 @@ func NewUserPolicyService(gs *NsGroupService) *UserPolicyService {
 
 // GetUserPolicies - method returns a array of pointers of type "UserPolicies"
 func (svc *UserPolicyService) GetUserPolicies(params *param.GetParams) ([]*nimbleos.UserPolicy, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetUserPolicies: invalid parameter specified, %v", params)
-	}
-
 	userPolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

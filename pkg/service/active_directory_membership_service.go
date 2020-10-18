@@ -24,10 +24,6 @@ func NewActiveDirectoryMembershipService(gs *NsGroupService) *ActiveDirectoryMem
 
 // GetActiveDirectoryMemberships - method returns a array of pointers of type "ActiveDirectoryMemberships"
 func (svc *ActiveDirectoryMembershipService) GetActiveDirectoryMemberships(params *param.GetParams) ([]*nimbleos.ActiveDirectoryMembership, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetActiveDirectoryMemberships: invalid parameter specified, %v", params)
-	}
-
 	activeDirectoryMembershipResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

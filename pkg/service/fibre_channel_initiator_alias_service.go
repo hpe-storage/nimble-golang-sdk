@@ -24,10 +24,6 @@ func NewFibreChannelInitiatorAliasService(gs *NsGroupService) *FibreChannelIniti
 
 // GetFibreChannelInitiatorAliass - method returns a array of pointers of type "FibreChannelInitiatorAliass"
 func (svc *FibreChannelInitiatorAliasService) GetFibreChannelInitiatorAliass(params *param.GetParams) ([]*nimbleos.FibreChannelInitiatorAlias, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetFibreChannelInitiatorAliass: invalid parameter specified, %v", params)
-	}
-
 	fibreChannelInitiatorAliasResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

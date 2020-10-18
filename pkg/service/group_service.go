@@ -24,10 +24,6 @@ func NewGroupService(gs *NsGroupService) *GroupService {
 
 // GetGroups - method returns a array of pointers of type "Groups"
 func (svc *GroupService) GetGroups(params *param.GetParams) ([]*nimbleos.Group, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetGroups: invalid parameter specified, %v", params)
-	}
-
 	groupResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

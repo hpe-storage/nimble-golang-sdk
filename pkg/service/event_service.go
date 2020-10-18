@@ -24,10 +24,6 @@ func NewEventService(gs *NsGroupService) *EventService {
 
 // GetEvents - method returns a array of pointers of type "Events"
 func (svc *EventService) GetEvents(params *param.GetParams) ([]*nimbleos.Event, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetEvents: invalid parameter specified, %v", params)
-	}
-
 	eventResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

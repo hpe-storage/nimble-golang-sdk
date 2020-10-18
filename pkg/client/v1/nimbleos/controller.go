@@ -12,6 +12,7 @@ func init() {
 	ArrayNamefield := "array_name"
 	ArrayIdfield := "array_id"
 	Serialfield := "serial"
+	Modelfield := "model"
 	Hostnamefield := "hostname"
 	SupportAddressfield := "support_address"
 	SupportNetmaskfield := "support_netmask"
@@ -23,6 +24,7 @@ func init() {
 		ArrayName:      &ArrayNamefield,
 		ArrayId:        &ArrayIdfield,
 		Serial:         &Serialfield,
+		Model:          &Modelfield,
 		Hostname:       &Hostnamefield,
 		SupportAddress: &SupportAddressfield,
 		SupportNetmask: &SupportNetmaskfield,
@@ -43,6 +45,8 @@ type Controller struct {
 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 	// Serial - Serial number for this controller.
 	Serial *string `json:"serial,omitempty"`
+	// Model - Model of this controller.
+	Model *string `json:"model,omitempty"`
 	// Hostname - Host name for the controller.
 	Hostname *string `json:"hostname,omitempty"`
 	// SupportAddress - IP address used for support.

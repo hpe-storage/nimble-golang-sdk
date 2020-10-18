@@ -24,10 +24,6 @@ func NewUserGroupService(gs *NsGroupService) *UserGroupService {
 
 // GetUserGroups - method returns a array of pointers of type "UserGroups"
 func (svc *UserGroupService) GetUserGroups(params *param.GetParams) ([]*nimbleos.UserGroup, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetUserGroups: invalid parameter specified, %v", params)
-	}
-
 	userGroupResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

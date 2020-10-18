@@ -121,7 +121,7 @@ type Array struct {
 	IsSupportedHwConfig *bool `json:"is_supported_hw_config,omitempty"`
 	// GigNicPortCount - Count of 1G NIC Ports installed on the array.
 	GigNicPortCount *int64 `json:"gig_nic_port_count,omitempty"`
-	// TenGigSfpNicPortCount - Count of 10G SFP NIC Ports installed on the array.
+	// TenGigSfpNicPortCount - Count of SFP NIC Ports installed on the array capable of 10G, 25G or 100G speeds.
 	TenGigSfpNicPortCount *int64 `json:"ten_gig_sfp_nic_port_count,omitempty"`
 	// TenGigTNicPortCount - Count of 10G BaseT NIC Ports installed on the array.
 	TenGigTNicPortCount *int64 `json:"ten_gig_t_nic_port_count,omitempty"`
