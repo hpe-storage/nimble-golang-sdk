@@ -24,10 +24,6 @@ func NewFibreChannelSessionService(gs *NsGroupService) *FibreChannelSessionServi
 
 // GetFibreChannelSessions - method returns a array of pointers of type "FibreChannelSessions"
 func (svc *FibreChannelSessionService) GetFibreChannelSessions(params *param.GetParams) ([]*nimbleos.FibreChannelSession, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetFibreChannelSessions: invalid parameter specified, %v", params)
-	}
-
 	fibreChannelSessionResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

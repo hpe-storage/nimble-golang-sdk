@@ -24,10 +24,6 @@ func NewFolderService(gs *NsGroupService) *FolderService {
 
 // GetFolders - method returns a array of pointers of type "Folders"
 func (svc *FolderService) GetFolders(params *param.GetParams) ([]*nimbleos.Folder, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetFolders: invalid parameter specified, %v", params)
-	}
-
 	folderResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

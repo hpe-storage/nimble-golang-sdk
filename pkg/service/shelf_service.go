@@ -24,10 +24,6 @@ func NewShelfService(gs *NsGroupService) *ShelfService {
 
 // GetShelfs - method returns a array of pointers of type "Shelfs"
 func (svc *ShelfService) GetShelfs(params *param.GetParams) ([]*nimbleos.Shelf, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetShelfs: invalid parameter specified, %v", params)
-	}
-
 	shelfResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

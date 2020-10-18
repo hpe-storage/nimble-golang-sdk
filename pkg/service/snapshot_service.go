@@ -26,10 +26,6 @@ func NewSnapshotService(gs *NsGroupService) *SnapshotService {
 
 // GetSnapshots - method returns a array of pointers of type "Snapshots"
 func (svc *SnapshotService) GetSnapshots(params *param.GetParams) ([]*nimbleos.Snapshot, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetSnapshots: invalid parameter specified, %v", params)
-	}
-
 	snapshotResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

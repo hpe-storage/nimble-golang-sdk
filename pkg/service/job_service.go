@@ -24,10 +24,6 @@ func NewJobService(gs *NsGroupService) *JobService {
 
 // GetJobs - method returns a array of pointers of type "Jobs"
 func (svc *JobService) GetJobs(params *param.GetParams) ([]*nimbleos.Job, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetJobs: invalid parameter specified, %v", params)
-	}
-
 	jobResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

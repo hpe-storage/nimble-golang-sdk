@@ -24,10 +24,6 @@ func NewSpaceDomainService(gs *NsGroupService) *SpaceDomainService {
 
 // GetSpaceDomains - method returns a array of pointers of type "SpaceDomains"
 func (svc *SpaceDomainService) GetSpaceDomains(params *param.GetParams) ([]*nimbleos.SpaceDomain, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetSpaceDomains: invalid parameter specified, %v", params)
-	}
-
 	spaceDomainResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err

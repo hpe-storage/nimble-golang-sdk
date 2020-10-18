@@ -24,10 +24,6 @@ func NewNetworkInterfaceService(gs *NsGroupService) *NetworkInterfaceService {
 
 // GetNetworkInterfaces - method returns a array of pointers of type "NetworkInterfaces"
 func (svc *NetworkInterfaceService) GetNetworkInterfaces(params *param.GetParams) ([]*nimbleos.NetworkInterface, error) {
-	if params == nil {
-		return nil, fmt.Errorf("GetNetworkInterfaces: invalid parameter specified, %v", params)
-	}
-
 	networkInterfaceResp, err := svc.objectSet.GetObjectListFromParams(params)
 	if err != nil {
 		return nil, err
