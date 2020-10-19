@@ -355,6 +355,97 @@ func (suite *VolumeServiceTestSuite) TestGetVolumes() {
 	}
 
 }
+func (suite *VolumeServiceTestSuite) TestVolumeSortFilters() {
+	// sort unit test
+	sfilter := new(param.GetParams)
+	var sortOrderList []param.SortOrder
+	sortOrderList = append(sortOrderList, param.SortOrder{
+		Field:     *nimbleos.VolumeFields.Name,
+		Ascending: true,
+	})
+
+	sfilter.WithSortBy(sortOrderList)
+	volumes, err := suite.volumeService.GetVolumes(sfilter)
+	if err != nil || len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
+		return
+	}
+
+}
+
+func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
+	// search filter unit test
+	sfilter := &param.GetParams{}
+	sf := &param.SearchFilter{
+		FieldName: nimbleos.VolumeFields.Name,
+		Operator:  param.EQUALS.String(),
+		Value:     "GetVolume",
+	}
+
+	sfilter.WithSearchFilter(sf)
+	volumes, _ := suite.volumeService.GetVolumes(sfilter)
+	if len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes")
+		return
+	}
+
+}
+func (suite *VolumeServiceTestSuite) TestVolumeMultiSearchFilters() {
+	// compound search filter unit test
+	filters := &param.GetParams{}
+
+	var searchList []*param.SearchFilter
+	sf1 := &param.SearchFilter{
+		FieldName: nimbleos.VolumeFields.Name,
+		Operator:  param.EQUALS.String(),
+		Value:     "GetVolume",
+	}
+	sf2 := &param.SearchFilter{
+		FieldName: nimbleos.VolumeFields.SearchName,
+		Operator:  param.EQUALS.String(),
+		Value:     "Volume",
+	}
+	searchList = append(searchList, sf1)
+	searchList = append(searchList, sf2)
+
+	// Logical AND on multiple filters
+	compoundFilter := &param.SearchFilter{
+		Operator: param.OR.String(),
+		Criteria: searchList,
+	}
+	filters.WithSearchFilter(compoundFilter)
+
+	_, err := suite.volumeService.GetVolumes(filters)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
+		return
+	}
+}
+
+func (suite *VolumeServiceTestSuite) TestVolumeFields() {
+	// fields unit test
+	filter := &param.GetParams{}
+	var volAttrList = []string{
+		*nimbleos.VolumeFields.ID,
+		*nimbleos.VolumeFields.Name,
+		*nimbleos.VolumeFields.PerfpolicyName,
+	}
+
+	filter.WithFields(volAttrList)
+
+	sf := &param.SearchFilter{
+		FieldName: nimbleos.VolumeFields.Name,
+		Operator:  param.EQUALS.String(),
+		Value:     "GetVolume",
+	}
+	filter.WithSearchFilter(sf)
+
+	volumes, _ := suite.volumeService.GetVolumes(filter)
+	if len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes")
+		return
+	}
+}
 
 // Runs all test via go test
 func TestVolumeServiceTestSuite(t *testing.T) {
