@@ -271,7 +271,7 @@ func (client *GroupMgmtClient) listPost(
 	params *param.GetParams,
 ) (interface{}, error) {
 	// build the url
-	url := fmt.Sprintf("%s/%s/details", client.URL, path)
+	url := fmt.Sprintf("%s/%s/detail", client.URL, path)
 	// Post it
 	response, err := client.Client.R().
 		SetQueryParams(queryParams).
