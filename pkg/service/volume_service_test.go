@@ -417,7 +417,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeMultiSearchFilters() {
 
 	_, err := suite.volumeService.GetVolumes(filters)
 	if err != nil {
-		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volume, err: %v", err.Error())
 		return
 	}
 }
@@ -440,9 +440,9 @@ func (suite *VolumeServiceTestSuite) TestVolumeFields() {
 	}
 	filter.WithSearchFilter(sf)
 
-	volumes, _ := suite.volumeService.GetVolumes(filter)
-	if len(volumes) == 0 {
-		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes")
+	_, err := suite.volumeService.GetVolumes(filter)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volume")
 		return
 	}
 }
