@@ -232,10 +232,13 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 			fetch := "fetch"
 			wrapper := &DataWrapper{
 				Data:          params.Filter,
-				StartRow:      params.Page.StartRow,
-				EndRow:        params.Page.EndRow,
 				OperationType: &fetch,
 			}
+			if params.Page != nil && params.Page.StartRow != nil && params.Page.EndRow != nil {
+				wrapper.StartRow = params.Page.StartRow
+				wrapper.EndRow = params.Page.EndRow
+			}
+
 			// complex filter, need to POST it
 			postResp, err := client.listPost(path, wrapper, queryParams, params)
 			if err != nil {
