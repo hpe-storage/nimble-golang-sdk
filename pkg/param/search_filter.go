@@ -139,9 +139,7 @@ func (filter *SearchFilter) makeSimpleMap() map[string]string {
 		simpleMap[*filter.FieldName] = valueStr
 		return simpleMap
 	} else {
-		if !strings.EqualFold(LogicalOperator(AND).String(), filter.Operator) {
-			return nil
-		}
+
 		simpleMap := make(map[string]string)
 		for _, filter := range filter.Criteria {
 			submap := filter.makeSimpleMap()
