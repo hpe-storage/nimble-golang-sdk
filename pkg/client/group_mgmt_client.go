@@ -234,7 +234,7 @@ func (client *GroupMgmtClient) listGetOrPost(path string, params *param.GetParam
 				Data:          params.Filter,
 				OperationType: &fetch,
 			}
-			if params.Page != nil && params.Page.StartRow != nil && params.Page.EndRow != nil {
+			if params.Page != nil {
 				wrapper.StartRow = params.Page.StartRow
 				wrapper.EndRow = params.Page.EndRow
 			}
