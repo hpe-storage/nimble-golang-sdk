@@ -16,7 +16,7 @@ import (
 type VolumeServiceTestSuite struct {
 	suite.Suite
 	groupService              *NsGroupService
-	volumeService             *VolumeService
+	volumeService             VolumeServicer
 	performancePolicyService  *PerformancePolicyService
 	volumeCollectionService   *VolumeCollectionService
 	snapshotCollectionService *SnapshotCollectionService
@@ -126,14 +126,14 @@ func (suite *VolumeServiceTestSuite) createVolColl(name string) {
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 
-	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
+	volume, err := suite.volumeService.GetVolumeByID("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to ge non-existent volume, err: %v", err.Error())
 		return
 	}
 	assert.Nil(suite.T(), volume)
 
-	volume, err = suite.volumeService.GetVolumeById("badf0rmat")
+	volume, err = suite.volumeService.GetVolumeByID("badf0rmat")
 	if err == nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Expected error")
 		return
@@ -346,6 +346,7 @@ func (suite *VolumeServiceTestSuite) TestExpiredToken() {
 		suite.deleteVolume("TestExpiredToken")
 	}
 }
+
 func (suite *VolumeServiceTestSuite) TestGetVolumes() {
 
 	volumes, err := suite.volumeService.GetVolumes(nil)

@@ -7,10 +7,31 @@ package service
 
 import (
 	"fmt"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
+
+type VolumeServicer interface {
+	GetVolumes(params *param.GetParams) ([]*nimbleos.Volume, error)
+	CreateVolume(obj *nimbleos.Volume) (*nimbleos.Volume, error)
+	UpdateVolume(id string, obj *nimbleos.Volume) (*nimbleos.Volume, error)
+	GetVolumeByID(id string) (*nimbleos.Volume, error)
+	GetVolumeByName(name string) (*nimbleos.Volume, error)
+	GetVolumeBySerialNumber(serialNumber string) (*nimbleos.Volume, error)
+	OnlineVolume(id string, force bool) (*nimbleos.Volume, error)
+	OfflineVolume(id string, force bool) (*nimbleos.Volume, error)
+	DeleteVolume(id string) error
+	AssociateVolume(volID string, volcollID string) error
+	DisassociateVolume(volID string) error
+	RestoreVolume(id string, baseSnapID string) error
+	MoveVolume(id string, destPoolID string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error)
+	BulkMoveVolumes(volIds []*string, destPoolID string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error)
+	AbortMoveVolume(id string) error
+	BulkSetDedupeVolumes(volIds []*string, dedupeEnabled bool) error
+	BulkSetOnlineAndOfflineVolumes(volIds []*string, online bool) error
+}
 
 // VolumeService type
 type VolumeService struct {
@@ -58,10 +79,10 @@ func (svc *VolumeService) UpdateVolume(id string, obj *nimbleos.Volume) (*nimble
 	return volumeResp, nil
 }
 
-// GetVolumeById - method returns a pointer to "Volume"
-func (svc *VolumeService) GetVolumeById(id string) (*nimbleos.Volume, error) {
+// GetVolumeByID - method returns a pointer to "Volume"
+func (svc *VolumeService) GetVolumeByID(id string) (*nimbleos.Volume, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("GetVolumeById: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetVolumeByID: invalid parameter specified, %v", id)
 	}
 
 	volumeResp, err := svc.objectSet.GetObject(id)

@@ -6,10 +6,21 @@ package service
 
 import (
 	"fmt"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
+
+type PoolServicer interface {
+	GetPools(params *param.GetParams) ([]*nimbleos.Pool, error)
+	CreatePool(obj *nimbleos.Pool) (*nimbleos.Pool, error)
+	UpdatePool(id string, obj *nimbleos.Pool) (*nimbleos.Pool, error)
+	GetPoolByID(id string) (*nimbleos.Pool, error)
+	GetPoolByName(name string) (*nimbleos.Pool, error)
+	DeletePool(id string) error
+	MergePool(id string, targetPoolID string, force *bool) (*nimbleos.NsPoolMergeReturn, error)
+}
 
 // PoolService type
 type PoolService struct {
@@ -57,10 +68,10 @@ func (svc *PoolService) UpdatePool(id string, obj *nimbleos.Pool) (*nimbleos.Poo
 	return poolResp, nil
 }
 
-// GetPoolById - method returns a pointer to "Pool"
-func (svc *PoolService) GetPoolById(id string) (*nimbleos.Pool, error) {
+// GetPoolByID - method returns a pointer to "Pool"
+func (svc *PoolService) GetPoolByID(id string) (*nimbleos.Pool, error) {
 	if len(id) == 0 {
-		return nil, fmt.Errorf("GetPoolById: invalid parameter specified, %v", id)
+		return nil, fmt.Errorf("GetPoolByID: invalid parameter specified, %v", id)
 	}
 
 	poolResp, err := svc.objectSet.GetObject(id)

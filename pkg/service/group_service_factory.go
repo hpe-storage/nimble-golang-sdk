@@ -4,10 +4,17 @@ package service
 
 import (
 	"fmt"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
+
+//GroupServiceFactory - Interface for the group_service_factory
+type GroupServiceFactory interface {
+	GetVolumeService() (s VolumeServicer)
+	GetPoolService() (s PoolServicer)
+}
 
 // NsGroupService type
 type NsGroupService struct {
@@ -21,7 +28,7 @@ type NsGroupService struct {
 	masterKeyService                  *MasterKeyService
 	alarmService                      *AlarmService
 	subscriptionService               *SubscriptionService
-	volumeService                     *VolumeService
+	volumeService                     VolumeServicer
 	shelfService                      *ShelfService
 	keyManagerService                 *KeyManagerService
 	protectionTemplateService         *ProtectionTemplateService
@@ -54,7 +61,7 @@ type NsGroupService struct {
 	witnessService                    *WitnessService
 	jobService                        *JobService
 	auditLogService                   *AuditLogService
-	poolService                       *PoolService
+	poolService                       PoolServicer
 	volumeCollectionService           *VolumeCollectionService
 	subscriberService                 *SubscriberService
 	diskService                       *DiskService
@@ -151,7 +158,7 @@ func (gs *NsGroupService) GetSubscriptionService() (vs *SubscriptionService) {
 }
 
 // GetVolumeService - returns service of a type *VolumeService
-func (gs *NsGroupService) GetVolumeService() (vs *VolumeService) {
+func (gs *NsGroupService) GetVolumeService() (vs VolumeServicer) {
 	if gs.volumeService == nil {
 		gs.volumeService = NewVolumeService(gs)
 	}
@@ -415,7 +422,7 @@ func (gs *NsGroupService) GetAuditLogService() (vs *AuditLogService) {
 }
 
 // GetPoolService - returns service of a type *PoolService
-func (gs *NsGroupService) GetPoolService() (vs *PoolService) {
+func (gs *NsGroupService) GetPoolService() (vs PoolServicer) {
 	if gs.poolService == nil {
 		gs.poolService = NewPoolService(gs)
 	}
