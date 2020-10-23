@@ -7,6 +7,7 @@ package service
 
 import (
 	"fmt"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -69,6 +70,19 @@ func (svc *VolumeService) GetVolumeById(id string) (*nimbleos.Volume, error) {
 		return nil, err
 	}
 	return volumeResp, nil
+}
+
+// GetVolumeStats - method returns a pointer to "Stats"
+func (svc *VolumeService) GetVolumeStats(id string) (*nimbleos.Stat, error) {
+	if len(id) == 0 {
+		return nil, fmt.Errorf("GetVolumeStats: invalid parameter specified, %v", id)
+	}
+
+	statsResp, err := svc.objectSet.GetObjectStats(id)
+	if err != nil {
+		return nil, err
+	}
+	return statsResp, nil
 }
 
 // GetVolumeByName - method returns a pointer "Volume"

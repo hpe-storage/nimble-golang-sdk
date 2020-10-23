@@ -3,10 +3,11 @@
 package client
 
 import (
+	"reflect"
+
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
-	"reflect"
 )
 
 // Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on
@@ -61,6 +62,22 @@ func (objectSet *VolumeObjectSet) GetObject(id string) (*nimbleos.Volume, error)
 		return nil, nil
 	}
 	return resp.(*nimbleos.Volume), err
+}
+
+// GetObjectStats returns a Stats object of the given ID
+func (objectSet *VolumeObjectSet) GetObjectStats(id string) (*nimbleos.Stat, error) {
+	// stats endpoint is /{id}/stats
+	id = id + "/stats"
+	resp, err := objectSet.Client.Get(volumePath, id, &nimbleos.Stat{})
+	if err != nil {
+		return nil, err
+	}
+
+	// null check
+	if resp == nil {
+		return nil, nil
+	}
+	return resp.(*nimbleos.Stat), err
 }
 
 // GetObjectList returns the list of Volume objects
