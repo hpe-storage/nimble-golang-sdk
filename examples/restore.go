@@ -16,6 +16,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 	}
+	defer groupService.LogoutService()
 	// set debug
 	groupService.SetDebug()
 
@@ -43,12 +44,12 @@ func main() {
 	// create volume
 	volume, err := volSvc.CreateVolume(newVolume)
 	if volume != nil {
-		volcollname := &nimbleos.VolumeCollection{
+		volcollName := &nimbleos.VolumeCollection{
 			Name: param.NewString("TestVolcoll"),
 		}
-		volcoll, err := groupService.GetVolumeCollectionService().CreateVolumeCollection(volcollname)
+		volcoll, err := groupService.GetVolumeCollectionService().CreateVolumeCollection(volcollName)
 		if err != nil {
-			fmt.Println("Failed to get volume collection")
+			fmt.Println("Failed to create volume collection")
 			return
 		}
 		// add volume to volume collection
@@ -84,6 +85,5 @@ func main() {
 		volSvc.DeleteVolume(*volume.ID)
 
 	}
-	// logout
-	groupService.LogoutService()
+
 }

@@ -16,6 +16,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 	}
+	defer groupService.LogoutService()
 	// set debug
 	groupService.SetDebug()
 
@@ -36,7 +37,4 @@ func main() {
 	//GetVolumes
 	volumes, err := volSvc.GetVolumes(sfilter)
 	fmt.Printf("%v", volumes)
-
-	// logout
-	groupService.LogoutService()
 }

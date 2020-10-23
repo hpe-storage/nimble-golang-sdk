@@ -13,7 +13,9 @@ func main() {
 	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
+		return
 	}
+	defer groupService.LogoutService()
 	// set debug
 	groupService.SetDebug()
 	volSvc := groupService.GetVolumeService()
@@ -38,7 +40,9 @@ func main() {
 
 	// create volume
 	volume, err := volSvc.CreateVolume(newVolume)
-
+	if err != nil {
+		fmt.Println("Failed to create volume, ", err)
+	}
 	// init param
 	filter := &param.GetParams{}
 
@@ -65,7 +69,4 @@ func main() {
 
 	// delete
 	volSvc.DeleteVolume(*volume.ID)
-
-	groupService.LogoutService()
-
 }

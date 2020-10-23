@@ -16,8 +16,8 @@ func main() {
 		return
 	}
 	// set debug
-	//groupService.SetDebug()
-
+	groupService.SetDebug()
+	defer groupService.LogoutService()
 	// get  volume service instance
 	volSvc := groupService.GetVolumeService()
 	// Initialize volume attributes
@@ -49,7 +49,4 @@ func main() {
 	fmt.Println(volume)
 	// delete volume, cleanup
 	volSvc.DeleteVolume(*volume.ID)
-
-	// logout
-	groupService.LogoutService()
 }

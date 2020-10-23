@@ -15,6 +15,7 @@ func main() {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
 	}
+	defer groupService.LogoutService()
 	// set debug
 	groupService.SetDebug()
 
@@ -86,7 +87,6 @@ func main() {
 	}
 
 	// cleaup
-	volume, _ = volSvc.GetVolumeById(*volume.ID)
 	updateVol := &nimbleos.Volume{
 		Online: param.NewBool(false),
 	}
@@ -97,8 +97,4 @@ func main() {
 	_ = volSvc.DeleteVolume(*volume.ID)
 	// delete igroup
 	_ = igroupSvc.DeleteInitiatorGroup(*igroup.ID)
-
-	// logout
-	groupService.LogoutService()
-
 }
