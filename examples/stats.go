@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -10,11 +11,12 @@ import (
 )
 
 func main() {
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", false)
+	groupService, err := service.NewNsGroupService("10.18.161.49", "admin", "admin", "v1", false)
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
 	}
+	defer groupService.LogoutService()
 	// set debug
 	groupService.SetDebug()
 
@@ -46,14 +48,11 @@ func main() {
 		fmt.Printf("Failed to create volume, err ", err)
 		return
 	}
-
+	time.Sleep(60 * time.Second)
 	// get stats
 	stats, err := volSvc.GetVolumeStats(*volume.ID)
 
 	fmt.Println(stats)
 	// delete volume, cleanup
 	volSvc.DeleteVolume(*volume.ID)
-
-	// logout
-	groupService.LogoutService()
 }
