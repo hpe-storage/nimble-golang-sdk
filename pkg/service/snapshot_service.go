@@ -72,13 +72,13 @@ func (svc *SnapshotService) GetSnapshotById(id string) (*nimbleos.Snapshot, erro
 	return snapshotResp, nil
 }
 
-// GetSnapshotByName - method returns a pointer "Snapshot"
-func (svc *SnapshotService) GetSnapshotByName(name string) (*nimbleos.Snapshot, error) {
+// GetSnapshotByName - method returns a list of pointers to "Snapshot"
+func (svc *SnapshotService) GetSnapshotByName(volName string) ([]*nimbleos.Snapshot, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: nimbleos.SnapshotFields.VolName,
 			Operator:  param.EQUALS.String(),
-			Value:     name,
+			Value:     volName,
 		},
 	}
 	snapshotResp, err := svc.objectSet.GetObjectListFromParams(params)
@@ -89,8 +89,7 @@ func (svc *SnapshotService) GetSnapshotByName(name string) (*nimbleos.Snapshot, 
 	if len(snapshotResp) == 0 {
 		return nil, nil
 	}
-
-	return snapshotResp[0], nil
+	return snapshotResp, nil
 }
 
 // GetSnapshotBySerialNumber method returns a pointer to "Snapshot"
