@@ -1,4 +1,4 @@
-package workflows
+package workflow
 
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
@@ -18,17 +18,30 @@ type IGWorkflowSuite struct {
 }
 
 func (suite *IGWorkflowSuite) SetupTest() {
-	groupService := config()
+	groupService, err := config()
+	if err != nil {
+		suite.T().Errorf("Unable to connect to group: %v", err.Error())
+	}
 	suite.groupService = groupService
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
 	suite.volumeService = groupService.GetVolumeService()
-	createDefaultVolume(groupService)
+	createDefaultVolume(suite.volumeService)
 }
 
 func (suite *IGWorkflowSuite) TearDownSuite() {
-	deleteInitiatorGroup(suite.groupService, "TestIGIscsi")
-	deleteInitiatorGroup(suite.groupService, initiatorGroupName)
-	deleteVolume(suite.groupService, defaultVolumeName)
+	suite.deleteInitiatorGroup("TestIGIscsi")
+	suite.deleteInitiatorGroup(initiatorGroupName)
+	deleteDefaultVolume(suite.volumeService)
+}
+
+func (suite *IGWorkflowSuite) deleteInitiatorGroup(igName string) {
+	ig, _ := suite.initiatorGrpService.GetInitiatorGroupByName(igName)
+	if ig != nil {
+		err := suite.initiatorGrpService.DeleteInitiatorGroup(*ig.ID)
+		if err != nil {
+			suite.T().Errorf("Issue deleting Initiator group: %v", igName)
+		}
+	}
 }
 
 func (suite *IGWorkflowSuite) TestCreateIGMissingParam() {

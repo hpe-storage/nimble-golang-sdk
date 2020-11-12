@@ -1,5 +1,5 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
-package workflows
+package workflow
 
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
@@ -18,27 +18,32 @@ type ACRWorkflowSuite struct {
 }
 
 func (suite *ACRWorkflowSuite) SetupTest() {
-	groupService := config()
+	groupService, err := config()
+	if err != nil {
+		suite.T().Errorf("Unable to connect to group: %v", err.Error())
+	}
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.igService = groupService.GetInitiatorGroupService()
 	suite.acrService = groupService.GetAccessControlRecordService()
-	createDefaultVolume(groupService)
-	createDefaultInitiatorGrp(groupService)
+	createDefaultVolume(suite.volumeService)
+	createDefaultInitiatorGrp(suite.igService)
 }
 
 func (suite *ACRWorkflowSuite) TearDownSuite() {
-	err := suite.acrService.DeleteAccessControlRecord(*suite.acr.ID)
-	if err != nil {
-		suite.T().Errorf("Access Control Record deletion failed: %v", err.Error())
+	if suite.acr != nil {
+		err := suite.acrService.DeleteAccessControlRecord(*suite.acr.ID)
+		if err != nil {
+			suite.T().Errorf("Access Control Record deletion failed: %v", err.Error())
+		}
 	}
-	deleteVolume(suite.groupService, defaultVolumeName)
-	deleteInitiatorGroup(suite.groupService, defaultInitiatorGrp)
+	deleteDefaultVolume(suite.volumeService)
+	deleteDefaultInitiatorGroup(suite.igService)
 }
 
 func (suite *ACRWorkflowSuite) TestCreateACR() {
 	vol, _ := suite.volumeService.GetVolumeByName(defaultVolumeName)
-	ig, _ := suite.igService.GetInitiatorGroupByName(defaultInitiatorGrp)
+	ig, _ := suite.igService.GetInitiatorGroupByName(defaultInitiatorGrpName)
 	newACR := &nimbleos.AccessControlRecord{
 		InitiatorGroupId: ig.ID,
 		VolId:            vol.ID,
@@ -61,7 +66,7 @@ func (suite *ACRWorkflowSuite) TestModifyACR() {
 }
 
 func (suite *ACRWorkflowSuite) TestDeleteIGAssociated() {
-	ig, _ := suite.igService.GetInitiatorGroupByName(defaultInitiatorGrp)
+	ig, _ := suite.igService.GetInitiatorGroupByName(defaultInitiatorGrpName)
 	err := suite.igService.DeleteInitiatorGroup(*ig.ID)
 	if err == nil {
 		suite.T().Errorf("Deletion of Initiator Group associated with volume should have failed")

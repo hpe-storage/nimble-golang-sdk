@@ -1,4 +1,4 @@
-package workflows
+package workflow
 
 import (
 	"fmt"
@@ -16,25 +16,38 @@ type VolumeWorkflowSuite struct {
 	groupService        *service.NsGroupService
 	volumeService       *service.VolumeService
 	snapshotService     *service.SnapshotService
-	volcolService       *service.VolumeCollectionService
+	volcollService      *service.VolumeCollectionService
 	initiatorGrpService *service.InitiatorGroupService
 }
 
 func (suite *VolumeWorkflowSuite) SetupTest() {
-	groupService := config()
+	groupService, err := config()
+	if err != nil {
+		suite.T().Errorf("Unable to connect to group: %v", err.Error())
+	}
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.snapshotService = groupService.GetSnapshotService()
-	suite.volcolService = groupService.GetVolumeCollectionService()
+	suite.volcollService = groupService.GetVolumeCollectionService()
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
-	createDefaultInitiatorGrp(groupService)
-	createDefaultVolumeCollection(groupService)
+	createDefaultInitiatorGrp(suite.initiatorGrpService)
+	createDefaultVolColl(suite.volcollService)
 }
 
 func (suite *VolumeWorkflowSuite) TearDownSuite() {
-	deleteVolume(suite.groupService, volumeName)
-	deleteInitiatorGroup(suite.groupService, defaultInitiatorGrp)
-	deleteVolCol(suite.groupService, defaultVolColName)
+	suite.deleteVolume(volumeName)
+	deleteDefaultInitiatorGroup(suite.initiatorGrpService)
+	deleteDefaultVolColl(suite.volcollService)
+}
+
+func (suite *VolumeWorkflowSuite) deleteVolume(volumeName string) {
+	volObj, _ := suite.volumeService.GetVolumeByName(volumeName)
+	if volObj != nil {
+		err := suite.volumeService.DeleteVolume(*volObj.ID)
+		if err != nil {
+			fmt.Errorf("Issue deleting volume: %v", volumeName)
+		}
+	}
 }
 
 func (suite *VolumeWorkflowSuite) TestVolumeCreateWithMissParams() {
@@ -169,10 +182,10 @@ func (suite *VolumeWorkflowSuite) TestVolumeUpdateOnlineVolume() {
 	}
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeVolColAssociate() {
+func (suite *VolumeWorkflowSuite) TestVolumeVolCollAssociate() {
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)
-	volcol, _ := suite.volcolService.GetVolumeCollectionByName(defaultVolColName)
-	err := suite.volumeService.AssociateVolume(*vol.ID, *volcol.ID)
+	volcoll, _ := suite.volcollService.GetVolumeCollectionByName(defaultVolCollName)
+	err := suite.volumeService.AssociateVolume(*vol.ID, *volcoll.ID)
 	if err != nil {
 		suite.T().Errorf("Associating volume to a volume collection failed: %v", err.Error())
 	}
