@@ -6,13 +6,15 @@ package fakeservice
 // storage allocation.
 
 import (
+	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+        "github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // VolumeService type
 type VolumeService struct {
 	// create a map
+	VolumeMemory map[string]*nimbleos.Volume
 }
 
 // NewVolumeService - method to initialize "VolumeService"
@@ -23,58 +25,117 @@ func NewVolumeService(gs *NsGroupService) *VolumeService {
 
 // GetVolumes - method returns a array of pointers of type "Volumes"
 func (svc *VolumeService) GetVolumes(params *param.GetParams) ([]*nimbleos.Volume, error) {
+	var vols []*nimbleos.Volume
+	for _, v := range svc.VolumeMemory {
+		vols = append(vols, v)
+	}
+	return vols, nil
+}
+
+// GetVolumeStats - method returns a pointer to "Stats"
+func (svc *VolumeService) GetVolumeStats(id string) (*nimbleos.Stat, error) {
 	return nil, nil
 }
 
 // CreateVolume - method creates a "Volume"
 func (svc *VolumeService) CreateVolume(obj *nimbleos.Volume) (*nimbleos.Volume, error) {
-	return nil, nil
+	if svc.VolumeMemory == nil {
+		svc.VolumeMemory = make(map[string]*nimbleos.Volume)
+	}
+	if _, ok := svc.VolumeMemory[*obj.ID]; !ok {
+		svc.VolumeMemory[*obj.ID] = obj
+	} else {
+		return nil, fmt.Errorf("object already exist, duplicate volume %v", obj.Name)
+	}
+	return obj, nil
 }
 
 // UpdateVolume - method modifies  the "Volume"
 func (svc *VolumeService) UpdateVolume(id string, obj *nimbleos.Volume) (*nimbleos.Volume, error) {
-	return nil, nil
+	if _, ok := svc.VolumeMemory[id]; ok {
+		svc.VolumeMemory[id] = obj
+	} else {
+		return nil, fmt.Errorf("object doesn't exist, failed to update volume %v", obj.Name)
+	}
+	return obj, nil
 }
 
 // GetVolumeById - method returns a pointer to "Volume"
 func (svc *VolumeService) GetVolumeById(id string) (*nimbleos.Volume, error) {
+	if _, ok := svc.VolumeMemory[id]; ok {
+		return svc.VolumeMemory[id], nil
+	}
 	return nil, nil
 }
 
 // GetVolumeByName - method returns a pointer "Volume"
 func (svc *VolumeService) GetVolumeByName(name string) (*nimbleos.Volume, error) {
+	for _, v := range svc.VolumeMemory {
+		if *v.Name == name {
+			return v, nil
+		}
+	}
 	return nil, nil
 }
 
 // GetVolumeBySerialNumber method returns a pointer to "Volume"
 func (svc *VolumeService) GetVolumeBySerialNumber(serialNumber string) (*nimbleos.Volume, error) {
+	for _, v := range svc.VolumeMemory {
+		if *v.SerialNumber == serialNumber {
+			return v, nil
+		}
+	}
 	return nil, nil
 }
 
 //OnlineVolume - method makes the volume online
 func (svc *VolumeService) OnlineVolume(id string, force bool) (*nimbleos.Volume, error) {
-	return nil, nil
+	if _, ok := svc.VolumeMemory[id]; ok {
+		svc.VolumeMemory[id].Online = param.NewBool(true)
+	} else {
+		return nil, fmt.Errorf("object doesn't exist, failed to update volume %v", id)
+	}
+	return svc.VolumeMemory[id], nil
 }
 
 // OfflineVolume - makes the volume offline
 func (svc *VolumeService) OfflineVolume(id string, force bool) (*nimbleos.Volume, error) {
-	return nil, nil
+	if _, ok := svc.VolumeMemory[id]; ok {
+		svc.VolumeMemory[id].Online = param.NewBool(false)
+	} else {
+		return nil, fmt.Errorf("object doesn't exist, failed to update volume %v", id)
+	}
+	return svc.VolumeMemory[id], nil
 
 }
 
 // DeleteVolume - deletes the volume
 func (svc *VolumeService) DeleteVolume(id string) error {
+	if _, ok := svc.VolumeMemory[id]; ok {
+		delete(svc.VolumeMemory, id)
+	}
 	return nil
 }
 
 // AssociateVolume - add a volume to a volume collection
 func (svc *VolumeService) AssociateVolume(volId string, volcollId string) error {
+	if _, ok := svc.VolumeMemory[volId]; ok {
+		svc.VolumeMemory[volId].VolcollId = param.NewString(volcollId)
+	} else {
+		return fmt.Errorf("object doesn't exist, failed to associate volume %v", volId)
+	}
 
 	return nil
 }
 
 // DisassociateVolume - remove a volume from a volume collection
 func (svc *VolumeService) DisassociateVolume(volId string) error {
+
+	if _, ok := svc.VolumeMemory[volId]; ok {
+		svc.VolumeMemory[volId].VolcollId = nil
+	} else {
+		return fmt.Errorf("object doesn't exist, failed to disassociate volume %v", volId)
+	}
 
 	return nil
 
@@ -86,7 +147,6 @@ func (svc *VolumeService) DisassociateVolume(volId string) error {
 //       baseSnapId - ID of the snapshot to which this the volume is restored.
 
 func (svc *VolumeService) RestoreVolume(id string, baseSnapId string) error {
-
 	return nil
 }
 
@@ -99,7 +159,11 @@ func (svc *VolumeService) RestoreVolume(id string, baseSnapId string) error {
 //       forceVvol - Forcibly move a Virtual Volume. Moving Virtual Volume is disruptive to the vCenter, hence it should only be done by the VASA Provider (VP). This flag should only be set by the VP when it calls this API.
 
 func (svc *VolumeService) MoveVolume(id string, destPoolId string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
-
+	if _, ok := svc.VolumeMemory[id]; ok {
+		svc.VolumeMemory[id].DestPoolId = param.NewString(destPoolId)
+	} else {
+		return nil, fmt.Errorf("object doesn't exist, failed to move volume %v to pool %v", id, destPoolId)
+	}
 	return nil, nil
 }
 
@@ -112,6 +176,13 @@ func (svc *VolumeService) MoveVolume(id string, destPoolId string, forceVvol *bo
 //       forceVvol - Forcibly move a Virtual Volume. Moving Virtual Volume is disruptive to the vCenter, hence it should only be done by the VASA Provider (VP). This flag should only be set by the VP when it calls this API.
 
 func (svc *VolumeService) BulkMoveVolumes(volIds []*string, destPoolId string, forceVvol *bool) (*nimbleos.NsVolumeListReturn, error) {
+
+	for _, id := range volIds {
+		if _, ok := svc.VolumeMemory[*id]; ok {
+			svc.VolumeMemory[*id].DestPoolId = param.NewString(destPoolId)
+		}
+
+	}
 	return nil, nil
 }
 
@@ -130,7 +201,11 @@ func (svc *VolumeService) AbortMoveVolume(id string) error {
 //       dedupeEnabled - Dedupe property to be applied to the list of volumes.
 
 func (svc *VolumeService) BulkSetDedupeVolumes(volIds []*string, dedupeEnabled bool) error {
-
+	for _, id := range volIds {
+		if _, ok := svc.VolumeMemory[*id]; ok {
+			svc.VolumeMemory[*id].DedupeEnabled = param.NewBool(dedupeEnabled)
+		}
+	}
 	return nil
 }
 
@@ -140,6 +215,10 @@ func (svc *VolumeService) BulkSetDedupeVolumes(volIds []*string, dedupeEnabled b
 //       online - Desired state of the volumes. "true" for online, "false" for offline.
 
 func (svc *VolumeService) BulkSetOnlineAndOfflineVolumes(volIds []*string, online bool) error {
-
+	for _, id := range volIds {
+		if _, ok := svc.VolumeMemory[*id]; ok {
+			svc.VolumeMemory[*id].Online = param.NewBool(online)
+		}
+	}
 	return nil
 }
