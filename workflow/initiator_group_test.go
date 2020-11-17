@@ -4,6 +4,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
 )
@@ -17,11 +18,9 @@ type IGWorkflowSuite struct {
 	volumeService       *service.VolumeService
 }
 
-func (suite *IGWorkflowSuite) SetupTest() {
+func (suite *IGWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	if err != nil {
-		suite.T().Errorf("Unable to connect to group: %v", err.Error())
-	}
+	assert.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
 	suite.groupService = groupService
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
 	suite.volumeService = groupService.GetVolumeService()
@@ -31,16 +30,15 @@ func (suite *IGWorkflowSuite) SetupTest() {
 func (suite *IGWorkflowSuite) TearDownSuite() {
 	suite.deleteInitiatorGroup("TestIGIscsi")
 	suite.deleteInitiatorGroup(initiatorGroupName)
-	deleteDefaultVolume(suite.volumeService)
+	err := deleteDefaultVolume(suite.volumeService)
+	assert.Nilf(suite.T(), err, "Unable to delete default volume, err: %v", err)
 }
 
 func (suite *IGWorkflowSuite) deleteInitiatorGroup(igName string) {
 	ig, _ := suite.initiatorGrpService.GetInitiatorGroupByName(igName)
 	if ig != nil {
 		err := suite.initiatorGrpService.DeleteInitiatorGroup(*ig.ID)
-		if err != nil {
-			suite.T().Errorf("Issue deleting Initiator group: %v", igName)
-		}
+		assert.Nilf(suite.T(), err, "Unable to delete Initiator group, err: %v", igName)
 	}
 }
 
@@ -49,9 +47,7 @@ func (suite *IGWorkflowSuite) TestCreateIGMissingParam() {
 		Name: param.NewString(initiatorGroupName),
 	}
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	if err == nil {
-		suite.T().Error("Initiator group creation should have failed with error missing param")
-	}
+	assert.NotNil(suite.T(), err, "Initiator group creation should have failed with error missing param")
 }
 
 func (suite *IGWorkflowSuite) TestCreateIG() {
@@ -62,13 +58,9 @@ func (suite *IGWorkflowSuite) TestCreateIG() {
 		AccessProtocol: nimbleos.NsAccessProtocolIscsi,
 	}
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	if err != nil {
-		suite.T().Errorf("Initiator group creation failed with error: %v", err.Error())
-	}
+	assert.Nilf(suite.T(), err, "Unable to create initiator group, err: %v", err)
 	ig, _ := suite.initiatorGrpService.GetInitiatorGroupByName(initiatorGroupName)
-	if *ig.Description != *desc {
-		suite.T().Errorf("Initiator group creation failed to have correct description: %v", desc)
-	}
+	assert.Equalf(suite.T(), *desc, *ig.Description, "Initiator group creation does not have expected description: %v", desc)
 }
 
 func (suite *IGWorkflowSuite) TestCreateIGDuplicate() {
@@ -78,9 +70,7 @@ func (suite *IGWorkflowSuite) TestCreateIGDuplicate() {
 		AccessProtocol: nimbleos.NsAccessProtocolIscsi,
 	}
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(dupIG)
-	if err == nil {
-		suite.T().Error("Initiator group creation should have failed")
-	}
+	assert.NotNil(suite.T(), err, "Initiator group creation should have failed")
 }
 
 func (suite *IGWorkflowSuite) TestCreateIGIscsiInitiators() {
@@ -98,9 +88,7 @@ func (suite *IGWorkflowSuite) TestCreateIGIscsiInitiators() {
 		IscsiInitiators: initiatorList,
 	}
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	if err != nil {
-		suite.T().Errorf("Initiator group creation failed: %v", err.Error())
-	}
+	assert.Nilf(suite.T(), err, "Unable to create initiator group, err: %v", err)
 }
 
 func (suite *IGWorkflowSuite) TestCreateIGInvalidIscsi() {
@@ -118,9 +106,7 @@ func (suite *IGWorkflowSuite) TestCreateIGInvalidIscsi() {
 		IscsiInitiators: initiatorList,
 	}
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	if err == nil {
-		suite.T().Errorf("Initiator group cretaion with invalid iscsi initiators should have failed")
-	}
+	assert.NotNil(suite.T(), err, "Initiator group cretaion with invalid iscsi initiators should have failed")
 }
 
 func (suite *IGWorkflowSuite) TestModifyIGDescription() {
@@ -133,9 +119,7 @@ func (suite *IGWorkflowSuite) TestModifyIGDescription() {
 		suite.initiatorGrpService.UpdateInitiatorGroup(*ig.ID, updateIG)
 	}
 	ig, _ = suite.initiatorGrpService.GetInitiatorGroupByName(initiatorGroupName)
-	if *ig.Description != *desc {
-		suite.T().Errorf("Initiator group description did not update: %v", ig.Description)
-	}
+	assert.Equalf(suite.T(), *desc, *ig.Description, "Unable to update Initiatot Group, err: %v", ig.Description)
 }
 
 func (suite *IGWorkflowSuite) TestModifyIGInitiators() {
@@ -151,11 +135,8 @@ func (suite *IGWorkflowSuite) TestModifyIGInitiators() {
 	}
 	currentIG, _ := suite.initiatorGrpService.GetInitiatorGroupByName("TestIGIscsi")
 	updatedIG, err := suite.initiatorGrpService.UpdateInitiatorGroup(*currentIG.ID, updateIG)
-	if err != nil {
-		suite.T().Errorf("Modifying IP address of initiator failed: %v", err.Error())
-	} else if *updatedIG.IscsiInitiators[0].IpAddress != *ipAdd {
-		suite.T().Errorf("Updating iscsi initiatos failed: %v", updatedIG.IscsiInitiators[0].IpAddress)
-	}
+	assert.Nilf(suite.T(), err, "Modifying IP address of initiator failed: %v", err)
+	assert.Equalf(suite.T(), *ipAdd, *updateIG.IscsiInitiators[0].IpAddress, "Updating iscsi initiatos failed: %v", updatedIG.IscsiInitiators[0].IpAddress)
 }
 
 func TestInitiatorGroupSuite(t *testing.T) {

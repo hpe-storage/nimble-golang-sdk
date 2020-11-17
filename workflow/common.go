@@ -1,7 +1,6 @@
 package workflow
 
 import (
-	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
@@ -14,7 +13,7 @@ var defaultVolCollName = "DefaultVolCollTest"
 func config() (*service.NsGroupService, error) {
 	groupService, err := service.NewNsGroupService("", "admin", "admin", "v1", true)
 	if err != nil {
-		fmt.Errorf("NewGroupService(): unable to connect to group, err: %v", err.Error())
+		return groupService, err
 	}
 	defer groupService.LogoutService()
 	// set debug
@@ -31,62 +30,43 @@ func createDefaultVolume(volSvc *service.VolumeService) (*nimbleos.Volume, error
 	return volSvc.CreateVolume(newVolume)
 }
 
-func createDefaultInitiatorGrp(igSvc *service.InitiatorGroupService) {
+func createDefaultInitiatorGrp(igSvc *service.InitiatorGroupService) (*nimbleos.InitiatorGroup, error) {
 	newIG := &nimbleos.InitiatorGroup{
 		Name:           param.NewString(defaultInitiatorGrpName),
 		Description:    param.NewString("Workflow initiator group"),
 		AccessProtocol: nimbleos.NsAccessProtocolIscsi,
 	}
-	_, err := igSvc.CreateInitiatorGroup(newIG)
-	if err != nil {
-		fmt.Errorf("Initiator group creation failed with error: %v", err.Error())
-	}
+	return igSvc.CreateInitiatorGroup(newIG)
+
 }
 
-func createDefaultVolColl(volcollService *service.VolumeCollectionService) {
+func createDefaultVolColl(volcollService *service.VolumeCollectionService) (*nimbleos.VolumeCollection, error) {
 	newVolColl := &nimbleos.VolumeCollection{
 		Name: param.NewString(defaultVolCollName),
 	}
-	_, err := volcollService.CreateVolumeCollection(newVolColl)
-	if err != nil {
-		fmt.Errorf("Volume Collection creation failed: %v", err.Error())
-	}
+	return volcollService.CreateVolumeCollection(newVolColl)
 }
 
-func deleteDefaultVolume(volSvc *service.VolumeService) {
+func deleteDefaultVolume(volSvc *service.VolumeService) error {
 	volObj, err := volSvc.GetVolumeByName(defaultVolumeName)
 	if err != nil {
-		fmt.Errorf("Unable to volume, err: %v", err.Error())
-	} else {
-		err := volSvc.DeleteVolume(*volObj.ID)
-		if err != nil {
-			fmt.Errorf("Unable to delete volume: %v", defaultVolumeName)
-		}
+		return err
 	}
+	return volSvc.DeleteVolume(*volObj.ID)
 }
 
-func deleteDefaultInitiatorGroup(igSvc *service.InitiatorGroupService) {
+func deleteDefaultInitiatorGroup(igSvc *service.InitiatorGroupService) error {
 	ig, err := igSvc.GetInitiatorGroupByName(defaultInitiatorGrpName)
 	if err != nil {
-		fmt.Errorf("Unable to get initiator group, err: %v", err.Error())
+		return err
 	}
-	if ig != nil {
-		err := igSvc.DeleteInitiatorGroup(*ig.ID)
-		if err != nil {
-			fmt.Errorf("Unable to delete Initiator group: %v", defaultInitiatorGrpName)
-		}
-	}
+	return igSvc.DeleteInitiatorGroup(*ig.ID)
 }
 
-func deleteDefaultVolColl(volcollService *service.VolumeCollectionService) {
+func deleteDefaultVolColl(volcollService *service.VolumeCollectionService) error {
 	volcoll, err := volcollService.GetVolumeCollectionByName(defaultVolCollName)
 	if err != nil {
-		fmt.Errorf("Unable to get volume collection, err: %v", err.Error())
+		return err
 	}
-	if volcoll != nil {
-		err := volcollService.DeleteVolumeCollection(*volcoll.ID)
-		if err != nil {
-			fmt.Errorf("Unable to delete volume collection: %v", defaultVolCollName)
-		}
-	}
+	return volcollService.DeleteVolumeCollection(*volcoll.ID)
 }

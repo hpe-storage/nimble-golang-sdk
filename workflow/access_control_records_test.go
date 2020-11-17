@@ -4,6 +4,7 @@ package workflow
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
 )
@@ -17,11 +18,9 @@ type ACRWorkflowSuite struct {
 	acrService    *service.AccessControlRecordService
 }
 
-func (suite *ACRWorkflowSuite) SetupTest() {
+func (suite *ACRWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	if err != nil {
-		suite.T().Errorf("Unable to connect to group: %v", err.Error())
-	}
+	assert.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.igService = groupService.GetInitiatorGroupService()
@@ -33,12 +32,12 @@ func (suite *ACRWorkflowSuite) SetupTest() {
 func (suite *ACRWorkflowSuite) TearDownSuite() {
 	if suite.acr != nil {
 		err := suite.acrService.DeleteAccessControlRecord(*suite.acr.ID)
-		if err != nil {
-			suite.T().Errorf("Access Control Record deletion failed: %v", err.Error())
-		}
+		assert.Nilf(suite.T(), err, "Unable to delete Access control record, err: %v", err)
 	}
-	deleteDefaultVolume(suite.volumeService)
-	deleteDefaultInitiatorGroup(suite.igService)
+	err := deleteDefaultVolume(suite.volumeService)
+	assert.Nilf(suite.T(), err, "Unable to delete default volume, err: %v", err)
+	err = deleteDefaultInitiatorGroup(suite.igService)
+	assert.Nilf(suite.T(), err, "Unable to delete default initiator group, err: %v", err)
 }
 
 func (suite *ACRWorkflowSuite) TestCreateACR() {
@@ -49,9 +48,7 @@ func (suite *ACRWorkflowSuite) TestCreateACR() {
 		VolId:            vol.ID,
 	}
 	acr, err := suite.acrService.CreateAccessControlRecord(newACR)
-	if err != nil {
-		suite.T().Errorf("Access Control Record creation failed: %v", err.Error())
-	}
+	assert.Nilf(suite.T(), err, "Unable to create Access Control Record, err: %v", err)
 	suite.acr = acr
 }
 
@@ -60,17 +57,13 @@ func (suite *ACRWorkflowSuite) TestModifyACR() {
 		ApplyTo: nimbleos.NsAccessApplyToVolume,
 	}
 	_, err := suite.acrService.UpdateAccessControlRecord(*suite.acr.ID, updateACR)
-	if err == nil {
-		suite.T().Error("ACR update should have failed")
-	}
+	assert.NotNilf(suite.T(), err, "Access Control Record update should have failed")
 }
 
 func (suite *ACRWorkflowSuite) TestDeleteIGAssociated() {
 	ig, _ := suite.igService.GetInitiatorGroupByName(defaultInitiatorGrpName)
 	err := suite.igService.DeleteInitiatorGroup(*ig.ID)
-	if err == nil {
-		suite.T().Errorf("Deletion of Initiator Group associated with volume should have failed")
-	}
+	assert.NotNilf(suite.T(), err, "Deletion of Initiator Group associated with volume should have failed")
 }
 
 func TestACRWorkflowSuite(t *testing.T) {
