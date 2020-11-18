@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-var initiatorGroupName = "InitiatorGroupTest"
+const initiatorGroupName = "InitiatorGroupTest"
 
 type IGWorkflowSuite struct {
 	suite.Suite
@@ -38,7 +38,7 @@ func (suite *IGWorkflowSuite) deleteInitiatorGroup(igName string) {
 	ig, _ := suite.initiatorGrpService.GetInitiatorGroupByName(igName)
 	if ig != nil {
 		err := suite.initiatorGrpService.DeleteInitiatorGroup(*ig.ID)
-		assert.Nilf(suite.T(), err, "Unable to delete Initiator group, err: %v", igName)
+		assert.Nilf(suite.T(), err, "Unable to delete Initiator group, err: %v", err)
 	}
 }
 
@@ -60,7 +60,7 @@ func (suite *IGWorkflowSuite) TestCreateIG() {
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
 	assert.Nilf(suite.T(), err, "Unable to create initiator group, err: %v", err)
 	ig, _ := suite.initiatorGrpService.GetInitiatorGroupByName(initiatorGroupName)
-	assert.Equalf(suite.T(), *desc, *ig.Description, "Initiator group creation does not have expected description: %v", desc)
+	assert.Equal(suite.T(), *desc, *ig.Description, "Initiator group creation does not have expected description.")
 }
 
 func (suite *IGWorkflowSuite) TestCreateIGDuplicate() {
@@ -106,7 +106,7 @@ func (suite *IGWorkflowSuite) TestCreateIGInvalidIscsi() {
 		IscsiInitiators: initiatorList,
 	}
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	assert.NotNil(suite.T(), err, "Initiator group cretaion with invalid iscsi initiators should have failed")
+	assert.NotNil(suite.T(), err, "Initiator group creation with invalid iscsi initiators should have failed")
 }
 
 func (suite *IGWorkflowSuite) TestModifyIGDescription() {
@@ -119,7 +119,7 @@ func (suite *IGWorkflowSuite) TestModifyIGDescription() {
 		suite.initiatorGrpService.UpdateInitiatorGroup(*ig.ID, updateIG)
 	}
 	ig, _ = suite.initiatorGrpService.GetInitiatorGroupByName(initiatorGroupName)
-	assert.Equalf(suite.T(), *desc, *ig.Description, "Unable to update Initiatot Group, err: %v", ig.Description)
+	assert.Equal(suite.T(), *desc, *ig.Description, "Unable to update Initiator Group")
 }
 
 func (suite *IGWorkflowSuite) TestModifyIGInitiators() {
@@ -134,9 +134,9 @@ func (suite *IGWorkflowSuite) TestModifyIGInitiators() {
 		IscsiInitiators: initiatorList,
 	}
 	currentIG, _ := suite.initiatorGrpService.GetInitiatorGroupByName("TestIGIscsi")
-	updatedIG, err := suite.initiatorGrpService.UpdateInitiatorGroup(*currentIG.ID, updateIG)
+	_, err := suite.initiatorGrpService.UpdateInitiatorGroup(*currentIG.ID, updateIG)
 	assert.Nilf(suite.T(), err, "Modifying IP address of initiator failed: %v", err)
-	assert.Equalf(suite.T(), *ipAdd, *updateIG.IscsiInitiators[0].IpAddress, "Updating iscsi initiatos failed: %v", updatedIG.IscsiInitiators[0].IpAddress)
+	assert.Equal(suite.T(), *ipAdd, *updateIG.IscsiInitiators[0].IpAddress, "Updating iscsi initiators failed")
 }
 
 func TestInitiatorGroupSuite(t *testing.T) {

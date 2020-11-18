@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-var volumeName = "VolumeTest"
+const volumeName = "VolumeTest"
 
 type VolumeWorkflowSuite struct {
 	suite.Suite
@@ -65,7 +65,7 @@ func (suite *VolumeWorkflowSuite) TestVolumeCreate() {
 	_, err := suite.volumeService.CreateVolume(newVolume)
 	assert.Nilf(suite.T(), err, "Volume creation failed with error: %v", err)
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)
-	assert.Equalf(suite.T(), sizeField, *vol.Size, "Size was not set correctly: %v", *vol.Size)
+	assert.Equal(suite.T(), sizeField, *vol.Size, "Size was not set correctly")
 }
 
 func (suite *VolumeWorkflowSuite) TestVolumeCreateDuplicate() {

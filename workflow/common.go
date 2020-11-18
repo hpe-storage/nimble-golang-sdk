@@ -6,12 +6,12 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 )
 
-var defaultVolumeName = "DefaultVolumeTest"
-var defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
-var defaultVolCollName = "DefaultVolCollTest"
+const defaultVolumeName = "DefaultVolumeTest"
+const defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
+const defaultVolCollName = "DefaultVolCollTest"
 
 func config() (*service.NsGroupService, error) {
-	groupService, err := service.NewNsGroupService("", "admin", "admin", "v1", true)
+	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
 	if err != nil {
 		return groupService, err
 	}
