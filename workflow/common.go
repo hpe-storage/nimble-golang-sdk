@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 package workflow
 
 import (
@@ -15,7 +17,6 @@ func config() (*service.NsGroupService, error) {
 	if err != nil {
 		return groupService, err
 	}
-	defer groupService.LogoutService()
 	// set debug
 	groupService.SetDebug()
 	return groupService, err

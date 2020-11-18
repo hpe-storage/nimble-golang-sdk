@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 package workflow
 
 import (
@@ -32,6 +34,7 @@ func (suite *IGWorkflowSuite) TearDownSuite() {
 	suite.deleteInitiatorGroup(initiatorGroupName)
 	err := deleteDefaultVolume(suite.volumeService)
 	assert.Nilf(suite.T(), err, "Unable to delete default volume, err: %v", err)
+	suite.groupService.LogoutService()
 }
 
 func (suite *IGWorkflowSuite) deleteInitiatorGroup(igName string) {

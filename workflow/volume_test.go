@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 package workflow
 
 import (
@@ -38,6 +40,7 @@ func (suite *VolumeWorkflowSuite) TearDownSuite() {
 	assert.Nilf(suite.T(), err, "Unable to delete default initiator group, err: %v", err)
 	err = deleteDefaultVolColl(suite.volcollService)
 	assert.Nilf(suite.T(), err, "Unable to delete default volume collection, err: %v", err)
+	suite.groupService.LogoutService()
 }
 
 func (suite *VolumeWorkflowSuite) deleteVolume(volumeName string) {

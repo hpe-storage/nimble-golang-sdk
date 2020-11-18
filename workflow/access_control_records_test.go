@@ -1,4 +1,5 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
+
 package workflow
 
 import (
@@ -38,6 +39,7 @@ func (suite *ACRWorkflowSuite) TearDownSuite() {
 	assert.Nilf(suite.T(), err, "Unable to delete default volume, err: %v", err)
 	err = deleteDefaultInitiatorGroup(suite.igService)
 	assert.Nilf(suite.T(), err, "Unable to delete default initiator group, err: %v", err)
+	suite.groupService.LogoutService()
 }
 
 func (suite *ACRWorkflowSuite) TestCreateACR() {
