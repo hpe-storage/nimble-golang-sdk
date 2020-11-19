@@ -1,6 +1,6 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
-package workflow
+package test
 
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"

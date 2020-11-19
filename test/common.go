@@ -1,6 +1,6 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
-package workflow
+package test
 
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
@@ -13,7 +13,7 @@ const defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
 const defaultVolCollName = "DefaultVolCollTest"
 
 func config() (*service.NsGroupService, error) {
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
+	groupService, err := service.NewNsGroupService("10.21.1.216", "admin", "admin", "v1", true)
 	if err != nil {
 		return groupService, err
 	}
