@@ -104,7 +104,7 @@ func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *nimbleos.V
 func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
 	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if volume != nil {
-		suite.volumeService.DeleteVolume(*volume.ID)
+		suite.volumeService.DestroyVolume(*volume.ID)
 		volume, _ = suite.volumeService.GetVolumeByName(volumeName)
 	}
 
@@ -190,7 +190,7 @@ func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 		}
 
 	}
-	suite.volumeService.DeleteVolume(*volume.ID)
+	suite.volumeService.DestroyVolume(*volume.ID)
 }
 
 func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
