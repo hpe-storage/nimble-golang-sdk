@@ -34,10 +34,9 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-var sourceArrayIP = "1.1.1.1"
-var sourceArrayusername = "****"
-var sourceArraypassword = "****"
-var newPoolName = "testnondefaultpool"
+const sourceArrayIP = "1.1.1.1"
+const sourceArrayusername = "****"
+const sourceArraypassword = "****"
 
 type GroupPoolWorkflowSuite struct {
 	suite.Suite
@@ -105,7 +104,7 @@ func (suite *GroupPoolWorkflowSuite) TestGroupMerge() {
 	for i := 0; i < len(groupMemberList); i++ {
 		exisitingGroupMemberList = append(exisitingGroupMemberList, *groupMemberList[i])
 	}
-	_, contains := Contains(exisitingGroupMemberList, sourcegroupArrayName)
+	_, contains := contains(exisitingGroupMemberList, sourcegroupArrayName)
 	if !contains {
 		suite.T().Errorf("Array %v not found in group after group merge", sourcegroupArrayName)
 	}
@@ -239,7 +238,7 @@ func (suite *GroupPoolWorkflowSuite) TestModifyPoolArray() {
 }
 
 // Check if the element is present in the provided list/array/slice
-func Contains(slice []string, val string) (int, bool) {
+func contains(slice []string, val string) (int, bool) {
 	for i, item := range slice {
 		if item == val {
 			return i, true
@@ -269,7 +268,7 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 	var unassignedArrayName string
 	fmt.Printf("initiated Unassigned array name %+v\n", unassignedArrayName)
 	for i := 0; i < len(groupMemberList); i++ {
-		_, contains := Contains(exisitingPoolArrayList, *groupMemberList[i])
+		_, contains := contains(exisitingPoolArrayList, *groupMemberList[i])
 		if !contains {
 			unassignedArrayName = *groupMemberList[i]
 			break
@@ -279,7 +278,7 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 	respArray, _ := suite.arrayService.GetArrayByName(unassignedArrayName)
 	unassignedArrayID := *respArray.ID
 	fmt.Printf("Unassigned arrayID %+v\n", unassignedArrayID)
-
+	var newPoolName = "testnondefaultpool"
 	// Create new pool with unassigned array
 	arraylist := &nimbleos.NsArrayDetail{
 		ID:      param.NewString(unassignedArrayID),
@@ -317,7 +316,6 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 
 	// Delete pool when volumes are present, expected to fail
 	err = suite.poolService.DeletePool(newPoolID)
-	fmt.Printf("Error %+v\n", err.Error())
 	assert.NotNil(suite.T(), err, "Pool Deletion expected to be failed")
 
 	// Delete Volume
@@ -326,7 +324,6 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 
 	// Delete Pool
 	err = suite.poolService.DeletePool(newPoolID)
-	fmt.Printf("Error %+v\n", err)
 	assert.Nilf(suite.T(), err, "Pool Deletion failed")
 }
 
