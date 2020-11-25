@@ -11,9 +11,12 @@ import (
 const defaultVolumeName = "DefaultVolumeTest"
 const defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
 const defaultVolCollName = "DefaultVolCollTest"
+const arrayIP = "1.1.1.1"
+const arrayUsername = "xxx"
+const arrayPassword = "xxx"
 
 func config() (*service.NsGroupService, error) {
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
+	groupService, err := service.NewNsGroupService(arrayIP, arrayUsername, arrayPassword, "v1", true)
 	if err != nil {
 		return groupService, err
 	}
