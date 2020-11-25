@@ -32,7 +32,7 @@ func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 		return nil
 	}
 	// set debug
-	//groupService.SetDebug()
+	groupService.SetDebug()
 	return groupService
 }
 
@@ -81,7 +81,6 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 		Size:              &sizeField,
 		Description:       &descriptionField,
 		PerfpolicyId:      perfPolicy.ID,
-		ThinlyProvisioned: param.NewBool(true),
 		Online:            param.NewBool(true),
 		LimitIops:         &limitIopsField,
 		LimitMbps:         &limitMbpsField,
@@ -318,7 +317,8 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 		IscsiInitiators: initiatorList,
 	}
 	igroup, _ = suite.igroupService.CreateInitiatorGroup(igroup)
-
+	assert.NotNil(suite.T(), igroup)
+	
 	// create new volume and add ACL to to.
 	volume := suite.createVolume("TestAclVolume")
 	if volume != nil {
