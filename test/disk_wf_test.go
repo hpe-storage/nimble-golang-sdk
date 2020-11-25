@@ -28,7 +28,7 @@ type DiskWorkflowSuite struct {
 	diskService  *service.DiskService
 }
 
-func (suite *DiskWorkflowSuite) SetupTest() {
+func (suite *DiskWorkflowSuite) SetupSuite() {
 	groupService, err := config()
 	assert.Nilf(suite.T(), err, "Could not connect to array")
 	suite.groupService = groupService

@@ -44,7 +44,7 @@ type GroupPoolWorkflowSuite struct {
 	sourcearrayGroupService *service.GroupService
 }
 
-func (suite *GroupPoolWorkflowSuite) SetupTest() {
+func (suite *GroupPoolWorkflowSuite) SetupSuite() {
 	groupService, err := config()
 	assert.Nilf(suite.T(), err, "Could not connect to array")
 	suite.groupService = groupService
@@ -90,7 +90,7 @@ func (suite *GroupPoolWorkflowSuite) TestGroupMerge() {
 
 	// Perform group merge
 	_, err = suite.arraygroupService.MergeGroup(groupID, sourcegroupName, sourceArrayIP, sourceArrayusername, sourceArraypassword, nil, nil, nil)
-	fmt.Printf("Wait 1 min for group merge")
+	fmt.Printf("Wait 2 mins for group merge")
 	time.Sleep(120 * time.Second)
 
 	// Check if the array is added to leader group

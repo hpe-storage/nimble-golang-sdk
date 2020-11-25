@@ -34,7 +34,7 @@ type UserWorkflowSuite struct {
 	userPolicyService *service.UserPolicyService
 }
 
-func (suite *UserWorkflowSuite) SetupTest() {
+func (suite *UserWorkflowSuite) SetupSuite() {
 	groupService, err := config()
 	assert.Nilf(suite.T(), err, "Could not connect to array")
 	suite.groupService = groupService
