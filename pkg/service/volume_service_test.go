@@ -78,14 +78,14 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	var limitMbpsField int64 = 1
 
 	newVolume := &nimbleos.Volume{
-		Size:              &sizeField,
-		Description:       &descriptionField,
-		PerfpolicyId:      perfPolicy.ID,
-		Online:            param.NewBool(true),
-		LimitIops:         &limitIopsField,
-		LimitMbps:         &limitMbpsField,
-		MultiInitiator:    param.NewBool(true),
-		AgentType:         nimbleos.NsAgentTypeNone,
+		Size:           &sizeField,
+		Description:    &descriptionField,
+		PerfpolicyId:   perfPolicy.ID,
+		Online:         param.NewBool(true),
+		LimitIops:      &limitIopsField,
+		LimitMbps:      &limitMbpsField,
+		MultiInitiator: param.NewBool(true),
+		AgentType:      nimbleos.NsAgentTypeNone,
 	}
 	return newVolume
 }
@@ -318,7 +318,7 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 	}
 	igroup, _ = suite.igroupService.CreateInitiatorGroup(igroup)
 	assert.NotNil(suite.T(), igroup)
-	
+
 	// create new volume and add ACL to to.
 	volume := suite.createVolume("TestAclVolume")
 	if volume != nil {
