@@ -145,7 +145,7 @@ func (svc *VolumeService) OfflineVolume(id string, force bool) (*nimbleos.Volume
 
 }
 
-// DestroyVolume - deletes the volume
+// DestroyVolume - makes the  volume offline and delete it
 func (svc *VolumeService) DestroyVolume(id string) error {
 	if len(id) == 0 {
 		return fmt.Errorf("DestroyVolume: invalid parameter specified, %s", id)
