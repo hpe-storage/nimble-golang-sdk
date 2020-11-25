@@ -15,6 +15,11 @@ const arrayIP = "1.1.1.1"
 const arrayUsername = "xxx"
 const arrayPassword = "xxx"
 
+// Required for group merge test
+const sourceArrayIP = "1.1.1.1"
+const sourceArrayusername = "xxx"
+const sourceArraypassword = "xxx"
+
 func config() (*service.NsGroupService, error) {
 	groupService, err := service.NewNsGroupService(arrayIP, arrayUsername, arrayPassword, "v1", true)
 	if err != nil {

@@ -25,7 +25,6 @@ import (
 
 const powerUserName = "testpoweruser"
 const guestUserName = "testguestuser"
-const volumeName = "poweruser-testvol"
 
 type UserWorkflowSuite struct {
 	suite.Suite
@@ -87,6 +86,7 @@ func (suite *UserWorkflowSuite) TestCreateModifyDeletePowerUser() {
 	powerUserID := *userResp.ID
 
 	// Create a volume using power user
+	volumeName := "poweruser-testvol"
 	powerusergroupService := suite.connectArray(arrayIP, powerUserName, powerUserPassword)
 	poweruserVolumeService := powerusergroupService.GetVolumeService()
 	var sizeField int64 = 5120
