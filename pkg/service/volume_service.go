@@ -145,10 +145,10 @@ func (svc *VolumeService) OfflineVolume(id string, force bool) (*nimbleos.Volume
 
 }
 
-// DeleteVolume - deletes the volume
-func (svc *VolumeService) DeleteVolume(id string) error {
+// DestroyVolume - makes the  volume offline and delete it
+func (svc *VolumeService) DestroyVolume(id string) error {
 	if len(id) == 0 {
-		return fmt.Errorf("DeleteVolume: invalid parameter specified, %s", id)
+		return fmt.Errorf("DestroyVolume: invalid parameter specified, %s", id)
 	}
 	_, err := svc.OfflineVolume(id, false)
 	if err != nil {
@@ -191,6 +191,18 @@ func (svc *VolumeService) DisassociateVolume(volId string) error {
 	}
 	return nil
 
+}
+
+// DeleteVolume - deletes the "Volume"
+func (svc *VolumeService) DeleteVolume(id string) error {
+	if len(id) == 0 {
+		return fmt.Errorf("DeleteVolume: invalid parameter specified, %s", id)
+	}
+	err := svc.objectSet.DeleteObject(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // RestoreVolume - restore volume data from a previous snapshot.
