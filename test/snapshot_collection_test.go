@@ -9,7 +9,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
-	"time"
 )
 
 const snapcollName = "SnapshotCollectionTest"
@@ -43,6 +42,7 @@ func (suite *SnapCollWorkflowSuite) TearDownSuite() {
 	err = deleteDefaultVolColl(suite.volcollService)
 	assert.Nilf(suite.T(), err, "Unable to delete default volume collection, err: %v", err)
 	suite.deleteSnapColl(snapcollName)
+	suite.groupService.LogoutService()
 }
 
 func (suite *SnapCollWorkflowSuite) deleteSnapColl(snapcollName string) {
@@ -76,9 +76,6 @@ func (suite *SnapCollWorkflowSuite) TestCreateSnapshotCollection() {
 	filter := &param.GetParams{}
 	snapcollBefore, _ := suite.snapcollService.GetSnapshotCollections(filter)
 
-	time.Sleep(60 * time.Second)
-	snapcollAfter, _ := suite.snapcollService.GetSnapshotCollections(filter)
-	assert.Greater(suite.T(), len(snapcollAfter), len(snapcollBefore), "Snapshot collection did not start on time")
 	snapcoll := &nimbleos.SnapshotCollection{
 		Name:      param.NewString(snapcollName),
 		VolcollId: volcoll.ID,
@@ -86,7 +83,7 @@ func (suite *SnapCollWorkflowSuite) TestCreateSnapshotCollection() {
 	_, err = suite.snapcollService.CreateSnapshotCollection(snapcoll)
 	assert.Nilf(suite.T(), err, "Unable to create snapshot collection, err: %v ", err)
 	snapcollCreate, _ := suite.snapcollService.GetSnapshotCollections(filter)
-	assert.Greater(suite.T(), len(snapcollCreate), len(snapcollAfter), "Unable to create snapshot collection")
+	assert.Greater(suite.T(), len(snapcollCreate), len(snapcollBefore), "Unable to create snapshot collection")
 	_ = suite.volumeService.DisassociateVolume(*vol.ID)
 	updateSnapcoll := &nimbleos.SnapshotCollection{
 		Description: param.NewString("Updated snapshot collection"),

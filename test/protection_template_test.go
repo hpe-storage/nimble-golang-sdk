@@ -24,13 +24,24 @@ type ProtectionTemplateWorkflowSuite struct {
 func (suite *ProtectionTemplateWorkflowSuite) SetupSuite() {
 	groupService, err := config()
 	assert.Nilf(suite.T(), err, "Unable to connect to group: %v", err)
+	suite.groupService = groupService
 	suite.protectionTemplateService = groupService.GetProtectionTemplateService()
 	suite.protectionScheduleService = groupService.GetProtectionScheduleService()
+	suite.createProtectionTemplate(protectionTemplateName)
 }
 
 func (suite *ProtectionTemplateWorkflowSuite) TearDownSuite() {
 	suite.deleteProtectionTemplate(protectionTemplateName)
 	suite.deleteProtectionSchedule(protectionScheduleName)
+	suite.groupService.LogoutService()
+}
+
+func (suite *ProtectionTemplateWorkflowSuite) createProtectionTemplate(ptName string) {
+	newPT := &nimbleos.ProtectionTemplate{
+		Name: param.NewString(ptName),
+	}
+	_, err := suite.protectionTemplateService.CreateProtectionTemplate(newPT)
+	assert.Nilf(suite.T(), err, "Unable to create Protection template, err: %v", err)
 }
 
 func (suite *ProtectionTemplateWorkflowSuite) deleteProtectionTemplate(ptName string) {
@@ -50,11 +61,8 @@ func (suite *ProtectionTemplateWorkflowSuite) deleteProtectionSchedule(psName st
 }
 
 func (suite *ProtectionTemplateWorkflowSuite) TestCreateProtectionTemplate() {
-	newPT := &nimbleos.ProtectionTemplate{
-		Name: param.NewString(protectionTemplateName),
-	}
-	pt, err := suite.protectionTemplateService.CreateProtectionTemplate(newPT)
-	assert.Nilf(suite.T(), err, "Unable to create Protection template, err: %v", err)
+	pt, err := suite.protectionTemplateService.GetProtectionTemplateByName(protectionTemplateName)
+	assert.Nilf(suite.T(), err, "Unable to get protection template, err: %v", err)
 	var numRetain *int64 = param.NewInt64(1234)
 	newPS := &nimbleos.ProtectionSchedule{
 		Name:                  param.NewString(protectionScheduleName),

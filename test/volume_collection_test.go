@@ -27,23 +27,17 @@ func (suite *VolCollWorkflowSuite) SetupSuite() {
 	suite.volcollService = groupService.GetVolumeCollectionService()
 	suite.volService = groupService.GetVolumeService()
 	createDefaultVolume(suite.volService)
-
+	suite.createVolColl(volcollName)
 }
 
 func (suite *VolCollWorkflowSuite) TearDownSuite() {
 	err := deleteDefaultVolume(suite.volService)
 	assert.Nilf(suite.T(), err, "Unable to delete default volume, err: %v", err)
 	suite.deleteVolColl(volcollName)
+	suite.groupService.LogoutService()
 }
 
-func (suite *VolCollWorkflowSuite) deleteVolColl(volcollName string) {
-	volcoll, _ := suite.volcollService.GetVolumeCollectionByName(volcollName)
-	if volcoll != nil {
-		err := suite.volcollService.DeleteVolumeCollection(*volcoll.ID)
-		assert.Nilf(suite.T(), err, "Unable to delete volume collection, err: %v", defaultVolCollName)
-	}
-}
-func (suite *VolCollWorkflowSuite) TestCreateVolColl() {
+func (suite *VolCollWorkflowSuite) createVolColl(volcollName string) {
 	newVolColl := &nimbleos.VolumeCollection{
 		Name: param.NewString(volcollName),
 	}
@@ -52,6 +46,14 @@ func (suite *VolCollWorkflowSuite) TestCreateVolColl() {
 	vol, _ := suite.volService.GetVolumeByName(defaultVolumeName)
 	err = suite.volService.AssociateVolume(*vol.ID, *volcoll.ID)
 	assert.Nilf(suite.T(), err, "Associating volume to volume collection failed, err: %v", err)
+}
+
+func (suite *VolCollWorkflowSuite) deleteVolColl(volcollName string) {
+	volcoll, _ := suite.volcollService.GetVolumeCollectionByName(volcollName)
+	if volcoll != nil {
+		err := suite.volcollService.DeleteVolumeCollection(*volcoll.ID)
+		assert.Nilf(suite.T(), err, "Unable to delete volume collection, err: %v", defaultVolCollName)
+	}
 }
 
 func (suite *VolCollWorkflowSuite) TestCreateVolCollDuplicate() {

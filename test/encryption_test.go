@@ -24,13 +24,25 @@ type EncryptionWorkflowSuite struct {
 func (suite *EncryptionWorkflowSuite) SetupSuite() {
 	groupService, err := config()
 	assert.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
+	suite.groupService = groupService
 	suite.keyManagerService = groupService.GetKeyManagerService()
 	suite.masterKeyService = groupService.GetMasterKeyService()
 	suite.deleteMasterKey()
+	suite.createMasterKey()
 }
 
 func (suite *EncryptionWorkflowSuite) TearDownSuite() {
 	suite.deleteMasterKey()
+	suite.groupService.LogoutService()
+}
+
+func (suite *EncryptionWorkflowSuite) createMasterKey() {
+	var passphrase *string = param.NewString(passphrase)
+	key := &nimbleos.MasterKey{
+		Passphrase: passphrase,
+	}
+	_, err := suite.masterKeyService.CreateMasterKey(key)
+	assert.Nilf(suite.T(), err, "Master key creation failed, err: %v", err)
 }
 
 func (suite *EncryptionWorkflowSuite) deleteMasterKey() {
@@ -40,15 +52,6 @@ func (suite *EncryptionWorkflowSuite) deleteMasterKey() {
 		err := suite.masterKeyService.DeleteMasterKey(*key[0].ID)
 		assert.Nilf(suite.T(), err, "Unable to delete key, err: %v", err)
 	}
-}
-
-func (suite *EncryptionWorkflowSuite) TestCreateMasterKey() {
-	var passphrase *string = param.NewString(passphrase)
-	key := &nimbleos.MasterKey{
-		Passphrase: passphrase,
-	}
-	_, err := suite.masterKeyService.CreateMasterKey(key)
-	assert.Nilf(suite.T(), err, "Master key creation failed, err: %v", err)
 }
 
 func (suite *EncryptionWorkflowSuite) TestCreateMasterKeyDuplicate() {
