@@ -28,7 +28,7 @@ func main() {
 		true)                       // Perform operations synchronous
 
 	if err != nil {
-		fmt.Printf("Unable to connect to group, %v", err.Error())
+		fmt.Printf("Unable to connect to group, %+v\n", err.Error())
 		return
 	}
 
@@ -51,7 +51,7 @@ func main() {
 	volume, err := volSvc.CreateVolume(newVolume)
 
 	if err != nil {
-		fmt.Printf("Failed to create volume, %+v", err.Error())
+		fmt.Printf("Failed to create volume, %+v\n", err.Error())
 		return
 	}
 	// Volume created
@@ -59,7 +59,7 @@ func main() {
 }
 ```
 
-Service types may be found in [pkg/service](pkg/service) and it's recommended to have a basic understanding and familiarity of the [HPE Nimble Storage REST API](https://infosight.hpe.com/InfoSight/media/cms/active/public/pubs_REST_API_Reference_NOS_51x.whz/jun1455055569904.html).
+Service types may be found in [pkg/service](pkg/service) and it's recommended to have a basic understanding and familiarity of the [HPE Nimble Storage REST API](https://infosight.hpe.com/InfoSight/media/cms/active/public/pubs_REST_API_Reference_NOS_53x.whz).
 
 # Requirements
 
