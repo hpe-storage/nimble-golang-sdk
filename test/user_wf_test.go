@@ -44,8 +44,9 @@ func (suite *UserWorkflowSuite) SetupSuite() {
 
 // Delete User
 func (suite *UserWorkflowSuite) deleteUser(userName string) error {
-	userObj, _ := suite.userService.GetUserByName(userName)
-	err := suite.userService.DeleteUser(*userObj.ID)
+	userObj, err := suite.userService.GetUserByName(userName)
+	assert.NotNilf(suite.T(), userObj, "Failed to get user details")
+	err = suite.userService.DeleteUser(*userObj.ID)
 	return err
 }
 

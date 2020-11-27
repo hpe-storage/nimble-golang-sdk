@@ -36,12 +36,11 @@ import (
 
 type GroupPoolWorkflowSuite struct {
 	suite.Suite
-	groupService            *service.NsGroupService
-	arraygroupService       *service.GroupService
-	volumeService           *service.VolumeService
-	poolService             *service.PoolService
-	arrayService            *service.ArrayService
-	sourcearrayGroupService *service.GroupService
+	groupService      *service.NsGroupService
+	arraygroupService *service.GroupService
+	volumeService     *service.VolumeService
+	poolService       *service.PoolService
+	arrayService      *service.ArrayService
 }
 
 func (suite *GroupPoolWorkflowSuite) SetupSuite() {
@@ -76,8 +75,8 @@ func (suite *GroupPoolWorkflowSuite) TestGetGroupDetailsLeaderArray() {
 func (suite *GroupPoolWorkflowSuite) TestGroupMerge() {
 	filter := &param.GetParams{}
 	srcgroupService := suite.connectSourceArray()
-	suite.sourcearrayGroupService = srcgroupService.GetGroupService()
-	sourcegroupResp, _ := suite.sourcearrayGroupService.GetGroups(filter)
+	sourcearrayGroupService := srcgroupService.GetGroupService()
+	sourcegroupResp, _ := sourcearrayGroupService.GetGroups(filter)
 	sourcegroupName := *sourcegroupResp[0].Name
 	sourcegroupArrayName := *sourcegroupResp[0].MemberList[0]
 	groupResp, _ := suite.arraygroupService.GetGroups(filter)
@@ -112,13 +111,13 @@ func (suite *GroupPoolWorkflowSuite) TestUpdateGroupProperties() {
 	groupResp, _ := suite.arraygroupService.GetGroups(filter)
 	groupID := *groupResp[0].ID
 	currentVersion := *groupResp[0].VersionCurrent
-	currentVersion = strings.Split(currentVersion, "")[0]
-	fmt.Printf("currentVersion: %v\n", currentVersion)
+	currentVersion = strings.Split(strings.TrimSpace(currentVersion), "-")[0]
+	currentVersionSplitlist := strings.Split(currentVersion, ".")[:2]
 	var newDefaultIscsiTargetScope *nimbleos.NsTargetScope
 	var newDefaultVolumeLimit int64 = 98
-
 	// Array version below 5.1 does not support group target scope
-	arrayVersion, _ := strconv.ParseFloat(currentVersion, 8)
+	arrayVersion, _ := strconv.ParseFloat(strings.Join(currentVersionSplitlist, "."), 8)
+	fmt.Printf("arrayVersion: %v\n", arrayVersion)
 	var updateDefaultTargetScope *nimbleos.Group
 	if arrayVersion < 5.1 {
 		updateDefaultTargetScope = &nimbleos.Group{
@@ -209,13 +208,13 @@ func (suite *GroupPoolWorkflowSuite) TestMergePool() {
 func (suite *GroupPoolWorkflowSuite) TestModifyPoolArray() {
 	// defaultPool, _ := suite.poolService.GetPoolByName("default")
 	defaultPool := suite.GetPoolDetail("default")
-	exisitingPoolArrayList := defaultPool.ArrayList
+	existingPoolArrayList := defaultPool.ArrayList
 	defaultPoolID := *defaultPool.ID
 	arrayCount := int(*defaultPool.ArrayCount)
 	fmt.Printf("Default Pool Array Count %+v\n", arrayCount)
 
 	// Get one arrayId to retain in pool. Others Arrays will be unassigned from pool
-	arrayID := *exisitingPoolArrayList[0].ID
+	arrayID := *existingPoolArrayList[0].ID
 	arraylist := &nimbleos.NsArrayDetail{
 		ID:      param.NewString(arrayID),
 		ArrayId: param.NewString(arrayID),
@@ -254,17 +253,17 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 	groupMemberList := groupResp[0].MemberList
 	fmt.Printf("Group memeber array list %+v\n", groupMemberList)
 	arrayCount := int(*defaultPool.ArrayCount)
-	var exisitingPoolArrayList []string
+	var existingPoolArrayList []string
 	for i := 0; i < arrayCount; i++ {
-		exisitingPoolArrayList = append(exisitingPoolArrayList, *defaultPool.ArrayList[i].Name)
+		existingPoolArrayList = append(existingPoolArrayList, *defaultPool.ArrayList[i].Name)
 	}
-	fmt.Printf("Array(s) Assigned to default pool %+v\n", exisitingPoolArrayList)
+	fmt.Printf("Array(s) Assigned to default pool %+v\n", existingPoolArrayList)
 
 	// Get an Array name which is not assigned to default Pool
 	var unassignedArrayName string
 	fmt.Printf("initiated Unassigned array name %+v\n", unassignedArrayName)
 	for i := 0; i < len(groupMemberList); i++ {
-		_, contains := contains(exisitingPoolArrayList, *groupMemberList[i])
+		_, contains := contains(existingPoolArrayList, *groupMemberList[i])
 		if !contains {
 			unassignedArrayName = *groupMemberList[i]
 			break

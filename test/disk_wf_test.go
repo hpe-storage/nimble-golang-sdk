@@ -49,6 +49,7 @@ func (suite *DiskWorkflowSuite) TestAddRemoveDisk() {
 			break
 		}
 	}
+	assert.NotEmpty(suite.T(), diskID, "No Disk found which are 'in-use'")
 
 	// Remove Disk
 	removeDisk := &nimbleos.Disk{
@@ -58,20 +59,20 @@ func (suite *DiskWorkflowSuite) TestAddRemoveDisk() {
 	assert.Nilf(suite.T(), err, "Failed to Remove Disk")
 	getDiskResp, err := suite.diskService.GetDiskById(diskID)
 	assert.Nilf(suite.T(), err, "Failed to Get Disk details")
-	assert.Equal(suite.T(), nimbleos.NsDiskState("removed"), *getDiskResp.State, "In-correct User Role")
+	assert.Equal(suite.T(), nimbleos.NsDiskState("removed"), *getDiskResp.State, "Failed to Remove Disk")
 
 	// Add Disk
 	addDisk := &nimbleos.Disk{
 		DiskOp: nimbleos.NsDiskOpAdd,
 	}
 	_, err = suite.diskService.UpdateDisk(diskID, addDisk)
-	assert.Nilf(suite.T(), err, "Failed to Remove Disk")
+	assert.Nilf(suite.T(), err, "Failed to Add Disk")
 	getDiskResp, err = suite.diskService.GetDiskById(diskID)
 
 	// Wait till the state changes from 'valid' to 'in use'
 	time.Sleep(2 * time.Second)
 	assert.Nilf(suite.T(), err, "Failed to Get Disk details")
-	assert.Equal(suite.T(), nimbleos.NsDiskState("in use"), *getDiskResp.State, "In-correct User Role")
+	assert.Equal(suite.T(), nimbleos.NsDiskState("in use"), *getDiskResp.State, "Failed to Add Disk")
 
 }
 
