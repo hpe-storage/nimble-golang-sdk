@@ -9,6 +9,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param/pagination"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )
@@ -16,7 +17,7 @@ import (
 type VolumeServiceTestSuite struct {
 	suite.Suite
 	groupService              *NsGroupService
-	volumeService             *VolumeService
+	volumeService             sdkprovider.VolumeService
 	performancePolicyService  *PerformancePolicyService
 	volumeCollectionService   *VolumeCollectionService
 	snapshotCollectionService *SnapshotCollectionService
