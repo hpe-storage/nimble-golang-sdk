@@ -8,8 +8,6 @@ Chap User tests
       It should fail, validate error message
   5. Remove iqns from chap user & delete chap user
   6. Delete initiator group
-Note: Password change is not supported through ansible module
-Note: Step 3, 4, 5 application for versions greater than fiji only
 */
 
 package test

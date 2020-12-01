@@ -14,8 +14,6 @@ Create/Modify/Delete Snapshot tests:
  7. Delete snapshot1 which has cloned volume
          It should fail
  8. Delete the cloned volume
- 9. Delete online snapshot for the volume
-         - API allows to delete online volume
  10. Delete offline snapshot from the volume
  11. Delete the volume
 */
