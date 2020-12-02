@@ -30,6 +30,7 @@ type VolumeService interface {
 // PoolService defines the interface to Pool related operations
 type PoolService interface {
 	GetPools(params *param.GetParams) ([]*nimbleos.Pool, error)
+	CreatePool(obj *nimbleos.Pool) (*nimbleos.Pool, error)
 	UpdatePool(id string, obj *nimbleos.Pool) (*nimbleos.Pool, error)
 	GetPoolById(id string) (*nimbleos.Pool, error)
 	GetPoolByName(name string) (*nimbleos.Pool, error)
