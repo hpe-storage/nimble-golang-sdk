@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 /*
 Chap User tests
 ---------------
@@ -22,7 +24,9 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-const chapUserName = "testchapuser"
+const chapUserName string = "testchapuser"
+const chapUserPassword string = "password_25-24"
+const initiatorGroupNameChap string = "TestChapIGIscsi"
 
 type ChapuserWorkflowSuite struct {
 	suite.Suite
@@ -34,54 +38,52 @@ type ChapuserWorkflowSuite struct {
 
 func (suite *ChapuserWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Could not connect to array")
+	assert.Nilf(suite.T(), err, "Could not connect to array %v", arrayIP)
 	suite.groupService = groupService
 	suite.chapuserService = groupService.GetChapUserService()
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
 }
 
-func (suite *ChapuserWorkflowSuite) CreateIGIscsiInitiators(iqnLable string, iqn string, ipAddress string) string {
+func (suite *ChapuserWorkflowSuite) CreateIGIscsiInitiators(iqnLabel string, iqn string, ipAddress string) string {
 	iscsiInitiator := &nimbleos.NsISCSIInitiator{
-		Label:     param.NewString(iqnLable),
-		Iqn:       param.NewString(iqn),
-		IpAddress: param.NewString(ipAddress),
+		Label:     &iqnLabel,
+		Iqn:       &iqn,
+		IpAddress: &ipAddress,
 	}
 	var initiatorList []*nimbleos.NsISCSIInitiator
 	initiatorList = append(initiatorList, iscsiInitiator)
 	newIG := &nimbleos.InitiatorGroup{
-		Name:            param.NewString("TestChapIGIscsi"),
-		Description:     param.NewString("Workflow initiator group"),
+		Name:            param.NewString(initiatorGroupNameChap),
 		AccessProtocol:  nimbleos.NsAccessProtocolIscsi,
 		IscsiInitiators: initiatorList,
 	}
 	igResp, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	assert.Nilf(suite.T(), err, "Unable to create initiator group, err: %v", err)
+	assert.Nilf(suite.T(), err, "Initiator group creation failed: %v", initiatorGroupNameChap)
 	return *igResp.ID
 }
 
 func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
-	chapUserPassword := "password_25-24"
-	chapUserescription := "Chap User created by SDK module for testing"
+	chapUserDescription := "Chap User created by SDK module for testing"
 	// Create chapuser without initiator
 	newChapUser := &nimbleos.ChapUser{
 		Name:        param.NewString(chapUserName),
 		Password:    param.NewString(chapUserPassword),
-		Description: param.NewString(chapUserescription),
+		Description: &chapUserDescription,
 	}
 	_, err := suite.chapuserService.CreateChapUser(newChapUser)
-	assert.Nilf(suite.T(), err, "Chap User creation failed")
+	assert.Nilf(suite.T(), err, "Chap User %v creation failed", chapUserName)
 	chapuserResp, err := suite.chapuserService.GetChapUserByName(chapUserName)
-	assert.Nilf(suite.T(), err, "Failed to get chap user by name")
-	assert.Equal(suite.T(), chapUserescription, *chapuserResp.Description, "In-correct Description for Chap user")
+	assert.Nilf(suite.T(), err, "Failed to get chap user by name %v", chapUserName)
+	assert.Equal(suite.T(), chapUserDescription, *chapuserResp.Description, "In-correct Description for Chap user")
 	chapuserID := *chapuserResp.ID
 
 	// Update chapuser with initiators
-	iqnLable := "chapiqn1"
+	iqnLabel := "chapiqn1"
 	iqn := "iqn.1994-05.com.redhat:48e040d53bf6"
 	ipAddress := "22.2.2.2"
-	igID := suite.CreateIGIscsiInitiators(iqnLable, iqn, ipAddress)
+	igID := suite.CreateIGIscsiInitiators(iqnLabel, iqn, ipAddress)
 	iscsiInitiator := &nimbleos.NsISCSIIQN{
-		Name: param.NewString(iqn),
+		Name: &iqn,
 	}
 	var initiatorList []*nimbleos.NsISCSIIQN
 	initiatorList = append(initiatorList, iscsiInitiator)
@@ -89,21 +91,21 @@ func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
 		InitiatorIqns: initiatorList,
 	}
 	_, err = suite.chapuserService.UpdateChapUser(chapuserID, updateChapUser)
-	assert.Nilf(suite.T(), err, "Chap User creation failed")
+	assert.Nilf(suite.T(), err, "Failed to update chap user: %v", chapUserName)
 	_, err = suite.chapuserService.GetChapUserByName(chapUserName)
-	assert.Nilf(suite.T(), err, "Failed to get chap user by name")
+	assert.Nilf(suite.T(), err, "Failed to get chap user by name: %v", chapUserName)
 
 	// Delete Chap user with initiators associated
 	err = suite.chapuserService.DeleteChapUser(chapuserID)
-	assert.NotNilf(suite.T(), err, "Failed to delete chap user")
+	assert.NotNilf(suite.T(), err, "Deleted chap user %v with initiators", chapUserName)
 
 	// Delete Initiatorgroup
 	err = suite.initiatorGrpService.DeleteInitiatorGroup(igID)
-	assert.Nilf(suite.T(), err, "Failed to delete initiator group")
+	assert.Nilf(suite.T(), err, "Failed to delete initiator group: %v", initiatorGroupNameChap)
 
 	// Delete Chap user
 	err = suite.chapuserService.DeleteChapUser(chapuserID)
-	assert.Nilf(suite.T(), err, "Failed to delete chap user")
+	assert.Nilf(suite.T(), err, "Failed to delete chap user: %v", chapUserName)
 
 }
 
