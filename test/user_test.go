@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 // User Create/Delete tests:
 // --------------------
 // 1. Create a poweruser
@@ -18,6 +20,7 @@ import (
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -30,7 +33,7 @@ type UserWorkflowSuite struct {
 	suite.Suite
 	groupService      *service.NsGroupService
 	userService       *service.UserService
-	volumeService     *service.VolumeService
+	volumeService     sdkprovider.VolumeService
 	userPolicyService *service.UserPolicyService
 }
 
@@ -88,7 +91,7 @@ func (suite *UserWorkflowSuite) TestCreateModifyDeletePowerUser() {
 
 	// Create a volume using power user
 	volumeName := "poweruser-testvol"
-	powerusergroupService := suite.connectArray(arrayIP, powerUserName, powerUserPassword)
+	powerusergroupService := suite.connectArray(*arrayIP, powerUserName, powerUserPassword)
 	poweruserVolumeService := powerusergroupService.GetVolumeService()
 	var sizeField int64 = 5120
 	newVolume := &nimbleos.Volume{

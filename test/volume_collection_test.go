@@ -5,6 +5,7 @@ package test
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -17,7 +18,7 @@ type VolCollWorkflowSuite struct {
 	suite.Suite
 	groupService   *service.NsGroupService
 	volcollService *service.VolumeCollectionService
-	volService     *service.VolumeService
+	volService     sdkprovider.VolumeService
 }
 
 func (suite *VolCollWorkflowSuite) SetupSuite() {
@@ -26,7 +27,8 @@ func (suite *VolCollWorkflowSuite) SetupSuite() {
 	suite.groupService = groupService
 	suite.volcollService = groupService.GetVolumeCollectionService()
 	suite.volService = groupService.GetVolumeService()
-	createDefaultVolume(suite.volService)
+	_, err = createDefaultVolume(suite.volService)
+	assert.Nilf(suite.T(), err, "Unable to create default volume, err: %v", err)
 	suite.createVolColl(volcollName)
 }
 
