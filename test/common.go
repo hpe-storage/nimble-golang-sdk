@@ -3,25 +3,30 @@
 package test
 
 import (
+	"flag"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 )
 
 const defaultVolumeName = "DefaultVolumeTest"
 const defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
 const defaultVolCollName = "DefaultVolCollTest"
-const arrayIP = "1.1.1.1"
-const arrayUsername = "xxx"
-const arrayPassword = "xxx"
+
+var arrayIP = flag.String("arrayIP", "1.1.1.1", "Array IP")
+
+var arrayUsername = flag.String("arrayUsername", "xxx", "Array Username")
+
+var arrayPassword = flag.String("arrayPassword", "xxx", "Array Password")
 
 // Required for group merge test
-const sourceArrayIP = "1.1.1.1"
+const sourceArrayIP = "1.1.1.2"
 const sourceArrayusername = "xxx"
 const sourceArraypassword = "xxx"
 
 func config() (*service.NsGroupService, error) {
-	groupService, err := service.NewNsGroupService(arrayIP, arrayUsername, arrayPassword, "v1", true)
+	groupService, err := service.NewNsGroupService(*arrayIP, *arrayUsername, *arrayPassword, "v1", true)
 	if err != nil {
 		return groupService, err
 	}
@@ -30,7 +35,7 @@ func config() (*service.NsGroupService, error) {
 	return groupService, err
 }
 
-func createDefaultVolume(volSvc *service.VolumeService) (*nimbleos.Volume, error) {
+func createDefaultVolume(volSvc sdkprovider.VolumeService) (*nimbleos.Volume, error) {
 	var sizeField int64 = 5120
 	newVolume := &nimbleos.Volume{
 		Name: param.NewString(defaultVolumeName),
@@ -56,8 +61,12 @@ func createDefaultVolColl(volcollService *service.VolumeCollectionService) (*nim
 	return volcollService.CreateVolumeCollection(newVolColl)
 }
 
-func deleteDefaultVolume(volSvc *service.VolumeService) error {
+func deleteDefaultVolume(volSvc sdkprovider.VolumeService) error {
 	volObj, err := volSvc.GetVolumeByName(defaultVolumeName)
+	if err != nil {
+		return err
+	}
+	_, err = volSvc.OfflineVolume(*volObj.ID, true)
 	if err != nil {
 		return err
 	}

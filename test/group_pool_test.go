@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 // Group tests
 // ------------
 //    1. Get group info
@@ -22,6 +24,7 @@ package test
 
 import (
 	"fmt"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"strconv"
 	"strings"
 	"testing"
@@ -38,8 +41,8 @@ type GroupPoolWorkflowSuite struct {
 	suite.Suite
 	groupService      *service.NsGroupService
 	arraygroupService *service.GroupService
-	volumeService     *service.VolumeService
-	poolService       *service.PoolService
+	volumeService     sdkprovider.VolumeService
+	poolService       sdkprovider.PoolService
 	arrayService      *service.ArrayService
 }
 
@@ -251,7 +254,7 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 	defaultPool := suite.GetPoolDetail("default")
 	fmt.Printf("Pool array list %+v\n", defaultPool.ArrayList)
 	groupMemberList := groupResp[0].MemberList
-	fmt.Printf("Group memeber array list %+v\n", groupMemberList)
+	fmt.Printf("Group member array list %+v\n", groupMemberList)
 	arrayCount := int(*defaultPool.ArrayCount)
 	var existingPoolArrayList []string
 	for i := 0; i < arrayCount; i++ {

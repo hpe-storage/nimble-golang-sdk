@@ -5,6 +5,7 @@ package test
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -16,7 +17,7 @@ const volumeName = "VolumeTest"
 type VolumeWorkflowSuite struct {
 	suite.Suite
 	groupService        *service.NsGroupService
-	volumeService       *service.VolumeService
+	volumeService       sdkprovider.VolumeService
 	snapshotService     *service.SnapshotService
 	volcollService      *service.VolumeCollectionService
 	initiatorGrpService *service.InitiatorGroupService
@@ -30,8 +31,11 @@ func (suite *VolumeWorkflowSuite) SetupSuite() {
 	suite.snapshotService = groupService.GetSnapshotService()
 	suite.volcollService = groupService.GetVolumeCollectionService()
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
-	createDefaultInitiatorGrp(suite.initiatorGrpService)
-	createDefaultVolColl(suite.volcollService)
+	_, err = createDefaultInitiatorGrp(suite.initiatorGrpService)
+	assert.Nilf(suite.T(), err, "Unable to create default initiator group, err: %v", err)
+	_, err = createDefaultVolColl(suite.volcollService)
+	assert.Nilf(suite.T(), err, "Unable to create default volume collection, err: %v", err)
+	suite.createVolume()
 }
 
 func (suite *VolumeWorkflowSuite) TearDownSuite() {
@@ -45,21 +49,15 @@ func (suite *VolumeWorkflowSuite) TearDownSuite() {
 
 func (suite *VolumeWorkflowSuite) deleteVolume(volumeName string) {
 	volObj, _ := suite.volumeService.GetVolumeByName(volumeName)
+	_, err := suite.volumeService.OfflineVolume(*volObj.ID, true)
+	assert.Nilf(suite.T(), err, "Unable to offline volume, err: %v", err)
 	if volObj != nil {
 		err := suite.volumeService.DeleteVolume(*volObj.ID)
 		assert.Nilf(suite.T(), err, "Unable to delete volume, err: %v", volumeName)
 	}
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeCreateWithMissParams() {
-	newVolume := &nimbleos.Volume{
-		Name: param.NewString(volumeName),
-	}
-	_, err := suite.volumeService.CreateVolume(newVolume)
-	assert.NotNil(suite.T(), err, "Volume creation should have failed")
-}
-
-func (suite *VolumeWorkflowSuite) TestVolumeCreate() {
+func (suite *VolumeWorkflowSuite) createVolume() {
 	var sizeField int64 = 5120
 	newVolume := &nimbleos.Volume{
 		Name: param.NewString(volumeName),
@@ -69,6 +67,14 @@ func (suite *VolumeWorkflowSuite) TestVolumeCreate() {
 	assert.Nilf(suite.T(), err, "Volume creation failed with error: %v", err)
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)
 	assert.Equal(suite.T(), sizeField, *vol.Size, "Size was not set correctly")
+}
+
+func (suite *VolumeWorkflowSuite) TestVolumeCreateWithMissParams() {
+	newVolume := &nimbleos.Volume{
+		Name: param.NewString(volumeName),
+	}
+	_, err := suite.volumeService.CreateVolume(newVolume)
+	assert.NotNil(suite.T(), err, "Volume creation should have failed")
 }
 
 func (suite *VolumeWorkflowSuite) TestVolumeCreateDuplicate() {
@@ -98,7 +104,10 @@ func (suite *VolumeWorkflowSuite) TestCreateVolumeByCloning() {
 		assert.Nilf(suite.T(), err, "Unable to clone volume, err: %v", err)
 		cloneVol, _ := suite.volumeService.GetVolumeByName("TestClone")
 		assert.NotNil(suite.T(), cloneVol, "TestClone should have been present")
-		suite.volumeService.DeleteVolume(*cloneVol.ID)
+		_, err = suite.volumeService.OfflineVolume(*cloneVol.ID, true)
+		assert.Nilf(suite.T(), err, "Unable to offline volume, err: %v", err)
+		err = suite.volumeService.DeleteVolume(*cloneVol.ID)
+		assert.Nilf(suite.T(), err, "Unable to delete volume, err: %v", err)
 	}
 }
 

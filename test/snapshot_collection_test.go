@@ -5,6 +5,7 @@ package test
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -17,7 +18,7 @@ type SnapCollWorkflowSuite struct {
 	suite.Suite
 	groupService              *service.NsGroupService
 	snapcollService           *service.SnapshotCollectionService
-	volumeService             *service.VolumeService
+	volumeService             sdkprovider.VolumeService
 	volcollService            *service.VolumeCollectionService
 	protectionScheduleService *service.ProtectionScheduleService
 }

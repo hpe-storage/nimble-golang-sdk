@@ -5,6 +5,7 @@ package test
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -17,7 +18,7 @@ type IGWorkflowSuite struct {
 	suite.Suite
 	groupService        *service.NsGroupService
 	initiatorGrpService *service.InitiatorGroupService
-	volumeService       *service.VolumeService
+	volumeService       sdkprovider.VolumeService
 }
 
 func (suite *IGWorkflowSuite) SetupSuite() {
@@ -26,7 +27,8 @@ func (suite *IGWorkflowSuite) SetupSuite() {
 	suite.groupService = groupService
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
 	suite.volumeService = groupService.GetVolumeService()
-	createDefaultVolume(suite.volumeService)
+	_, err = createDefaultVolume(suite.volumeService)
+	assert.Nilf(suite.T(), err, "Unable to create default volume, err: %v", err)
 }
 
 func (suite *IGWorkflowSuite) TearDownSuite() {

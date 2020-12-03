@@ -1,3 +1,5 @@
+// Copyright 2020 Hewlett Packard Enterprise Development LP
+
 // Disk tests
 // -----------
 //   1. Get Disk info from array

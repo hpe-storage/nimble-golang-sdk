@@ -4,6 +4,7 @@ package test
 
 import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -14,7 +15,7 @@ type ACRWorkflowSuite struct {
 	suite.Suite
 	acr           *nimbleos.AccessControlRecord
 	groupService  *service.NsGroupService
-	volumeService *service.VolumeService
+	volumeService sdkprovider.VolumeService
 	igService     *service.InitiatorGroupService
 	acrService    *service.AccessControlRecordService
 }
@@ -26,8 +27,11 @@ func (suite *ACRWorkflowSuite) SetupSuite() {
 	suite.volumeService = groupService.GetVolumeService()
 	suite.igService = groupService.GetInitiatorGroupService()
 	suite.acrService = groupService.GetAccessControlRecordService()
-	createDefaultVolume(suite.volumeService)
-	createDefaultInitiatorGrp(suite.igService)
+	_, err = createDefaultVolume(suite.volumeService)
+	assert.Nilf(suite.T(), err, "Unable to create default volume, err: %v", err)
+	_, err = createDefaultInitiatorGrp(suite.igService)
+	assert.Nilf(suite.T(), err, "Unable to create default initiator group, err: %v", err)
+	suite.createACR()
 }
 
 func (suite *ACRWorkflowSuite) TearDownSuite() {
@@ -42,7 +46,7 @@ func (suite *ACRWorkflowSuite) TearDownSuite() {
 	suite.groupService.LogoutService()
 }
 
-func (suite *ACRWorkflowSuite) TestCreateACR() {
+func (suite *ACRWorkflowSuite) createACR() {
 	vol, _ := suite.volumeService.GetVolumeByName(defaultVolumeName)
 	ig, _ := suite.igService.GetInitiatorGroupByName(defaultInitiatorGrpName)
 	newACR := &nimbleos.AccessControlRecord{
