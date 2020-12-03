@@ -93,7 +93,7 @@ func (gs *NsGroupService) LogoutService() error {
 		},
 	}
 	tokenList, err := tokenService.GetTokens(sFilter)
-	if err != nil {
+	if err != nil || len(tokenList) == 0 {
 		return err
 	}
 	return tokenService.DeleteToken(*tokenList[0].ID)
