@@ -87,7 +87,7 @@ func (suite *SnapshotWorkflowSuite) TestCreateUpdateSnapshot() {
 	assert.Nilf(suite.T(), err, "Failed to create snapshot: %v", offlineSnapshotName)
 
 	getSnapResp, err := suite.snapshotService.GetSnapshotByName(volumeName)
-	assert.Nilf(suite.T(), err, "Failed to get snapshot by name: %v", offlineSnapshotName)
+	assert.Nilf(suite.T(), err, "Failed to get snapshot(s) by volume name: %v", volumeName)
 
 	err = suite.snapshotService.DeleteSnapshot(*getSnapResp[0].ID)
 	assert.Nilf(suite.T(), err, "Failed to delete snapshot: %v", offlineSnapshotName)
