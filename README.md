@@ -63,7 +63,13 @@ Service types may be found in [pkg/service](pkg/service) and it's recommended to
 
 # Requirements
 
-The SDK require NimbleOS 5.0 or later and Go version 1.13 or later.
+The SDK require Go version 1.13 or later. The SDK is coupled to the following NimbleOS version span.
+
+|          | Minimum version | Maximum version |
+| -------- | --------------- | --------------- |
+| NimbleOS | 5.0.10          | 5.3.1           |
+
+As future versions of NimbleOS and new endpoint services become available, the SDK will be updated.
 
 # Contributing
 
