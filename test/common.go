@@ -8,6 +8,8 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"strconv"
+	"strings"
 )
 
 const defaultVolumeName = "DefaultVolumeTest"
@@ -20,10 +22,14 @@ var arrayUsername = flag.String("arrayUsername", "xxx", "Array Username")
 
 var arrayPassword = flag.String("arrayPassword", "xxx", "Array Password")
 
+var downstreamArrayIP = flag.String("downstream", "", "Array IP to be used as downstream")
+
 // Required for group merge test
-const sourceArrayIP = "1.1.1.2"
-const sourceArrayusername = "xxx"
-const sourceArraypassword = "xxx"
+var sourceArrayIP = flag.String("sourceArrayIP", "1.1.1.2", "Source array IP for group tests")
+
+var sourceArrayusername = flag.String("sourceArrayusername", "xxx", "Source array username")
+
+var sourceArraypassword = flag.String("sourceArraypassword", "xxx", "Source array password")
 
 func config() (*service.NsGroupService, error) {
 	groupService, err := service.NewNsGroupService(*arrayIP, *arrayUsername, *arrayPassword, "v1", true)
@@ -87,4 +93,28 @@ func deleteDefaultVolColl(volcollService *service.VolumeCollectionService) error
 		return err
 	}
 	return volcollService.DeleteVolumeCollection(*volcoll.ID)
+}
+
+func isFCEnabled(arrayGroupService *service.GroupService) bool {
+	filter := &param.GetParams{}
+	groups, _ := arrayGroupService.GetGroups(filter)
+	group := groups[0]
+	return *group.FcEnabled
+}
+
+func isIscsiEnabled(arrayGroupService *service.GroupService) bool {
+	filter := &param.GetParams{}
+	groups, _ := arrayGroupService.GetGroups(filter)
+	group := groups[0]
+	return *group.IscsiEnabled
+}
+
+func getArrayVersion(groupService *service.GroupService) float64 {
+	filter := &param.GetParams{}
+	groupResp, _ := groupService.GetGroups(filter)
+	currentVersion := *groupResp[0].VersionCurrent
+	currentVersion = strings.Split(strings.TrimSpace(currentVersion), "-")[0]
+	currentVersionSplitlist := strings.Split(currentVersion, ".")[:2]
+	arrayVersion, _ := strconv.ParseFloat(strings.Join(currentVersionSplitlist, "."), 8)
+	return arrayVersion
 }

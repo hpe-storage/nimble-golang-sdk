@@ -50,6 +50,10 @@ func (suite *SnapshotWorkflowSuite) SetupSuite() {
 	suite.volumeService = groupService.GetVolumeService()
 }
 
+func (suite *SnapshotWorkflowSuite) TearDownSuite() {
+	suite.groupService.LogoutService()
+}
+
 // Create a volume/clone volume
 func (suite *SnapshotWorkflowSuite) createVolume(volumeName string, baseSnapshotID string) string {
 
