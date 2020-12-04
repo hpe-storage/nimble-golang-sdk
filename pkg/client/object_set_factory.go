@@ -156,13 +156,6 @@ func (client *GroupMgmtClient) GetKeyManagerObjectSet() *KeyManagerObjectSet {
 	}
 }
 
-// LdapDomainObjectSet returns a reference to the LdapDomain object set
-func (client *GroupMgmtClient) GetLdapDomainObjectSet() *LdapDomainObjectSet {
-	return &LdapDomainObjectSet{
-		Client: client,
-	}
-}
-
 // MasterKeyObjectSet returns a reference to the MasterKey object set
 func (client *GroupMgmtClient) GetMasterKeyObjectSet() *MasterKeyObjectSet {
 	return &MasterKeyObjectSet{
@@ -264,20 +257,6 @@ func (client *GroupMgmtClient) GetSpaceDomainObjectSet() *SpaceDomainObjectSet {
 // SubnetObjectSet returns a reference to the Subnet object set
 func (client *GroupMgmtClient) GetSubnetObjectSet() *SubnetObjectSet {
 	return &SubnetObjectSet{
-		Client: client,
-	}
-}
-
-// SubscriberObjectSet returns a reference to the Subscriber object set
-func (client *GroupMgmtClient) GetSubscriberObjectSet() *SubscriberObjectSet {
-	return &SubscriberObjectSet{
-		Client: client,
-	}
-}
-
-// SubscriptionObjectSet returns a reference to the Subscription object set
-func (client *GroupMgmtClient) GetSubscriptionObjectSet() *SubscriptionObjectSet {
-	return &SubscriptionObjectSet{
 		Client: client,
 	}
 }

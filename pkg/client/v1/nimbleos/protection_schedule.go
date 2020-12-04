@@ -21,24 +21,22 @@ func init() {
 	LastReplicatedSnapcollIdfield := "last_replicated_snapcoll_id"
 	SchedOwnerIdfield := "sched_owner_id"
 	SchedOwnerNamefield := "sched_owner_name"
-	CurrentlyReplicatingSnapcollNamefield := "currently_replicating_snapcoll_name"
 
 	ProtectionScheduleFields = &ProtectionSchedule{
-		ID:                               &IDfield,
-		Name:                             &Namefield,
-		Description:                      &Descriptionfield,
-		VolcollOrProttmplId:              &VolcollOrProttmplIdfield,
-		Days:                             &Daysfield,
-		DownstreamPartner:                &DownstreamPartnerfield,
-		DownstreamPartnerName:            &DownstreamPartnerNamefield,
-		DownstreamPartnerId:              &DownstreamPartnerIdfield,
-		UpstreamPartnerName:              &UpstreamPartnerNamefield,
-		UpstreamPartnerId:                &UpstreamPartnerIdfield,
-		LastReplicatedSnapcollName:       &LastReplicatedSnapcollNamefield,
-		LastReplicatedSnapcollId:         &LastReplicatedSnapcollIdfield,
-		SchedOwnerId:                     &SchedOwnerIdfield,
-		SchedOwnerName:                   &SchedOwnerNamefield,
-		CurrentlyReplicatingSnapcollName: &CurrentlyReplicatingSnapcollNamefield,
+		ID:                         &IDfield,
+		Name:                       &Namefield,
+		Description:                &Descriptionfield,
+		VolcollOrProttmplId:        &VolcollOrProttmplIdfield,
+		Days:                       &Daysfield,
+		DownstreamPartner:          &DownstreamPartnerfield,
+		DownstreamPartnerName:      &DownstreamPartnerNamefield,
+		DownstreamPartnerId:        &DownstreamPartnerIdfield,
+		UpstreamPartnerName:        &UpstreamPartnerNamefield,
+		UpstreamPartnerId:          &UpstreamPartnerIdfield,
+		LastReplicatedSnapcollName: &LastReplicatedSnapcollNamefield,
+		LastReplicatedSnapcollId:   &LastReplicatedSnapcollIdfield,
+		SchedOwnerId:               &SchedOwnerIdfield,
+		SchedOwnerName:             &SchedOwnerNamefield,
 	}
 }
 
@@ -117,8 +115,6 @@ type ProtectionSchedule struct {
 	SchedOwnerName *string `json:"sched_owner_name,omitempty"`
 	// LastConfigChangeTime - The last timing configutation changed.
 	LastConfigChangeTime *int64 `json:"last_config_change_time,omitempty"`
-	// CurrentlyReplicatingSnapcollName - The name of the currently replicating snapshot collection if one exists, the empty string otherwise.
-	CurrentlyReplicatingSnapcollName *string `json:"currently_replicating_snapcoll_name,omitempty"`
 	// VolStatusList - The list of the replication status of volumes undergoing replication.
 	VolStatusList []*NsReplVolStatus `json:"vol_status_list,omitempty"`
 	// SyncReplVolStatusList - A list of the replication status of volumes undergoing synchronous replication.
