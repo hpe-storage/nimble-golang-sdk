@@ -37,7 +37,7 @@ type HcClusterConfig struct {
 	Username *string `json:"username,omitempty"`
 	// Password - HC component password.
 	Password *string `json:"password,omitempty"`
-	// Type - HCI config type ({node|block|cluster|switch}).
+	// Type - HCI config type ({invalid|node|block|cluster}).
 	Type *NsHCIConfigType `json:"type,omitempty"`
 	// Metadata - Key-value pairs that augment a HC cluster config's attributes.
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`

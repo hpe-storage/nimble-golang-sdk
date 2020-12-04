@@ -6,40 +6,32 @@ package nimbleos
 type NsHCIConfigType string
 
 const (
-	cNsHCIConfigTypeNode    NsHCIConfigType = "node"
 	cNsHCIConfigTypeCluster NsHCIConfigType = "cluster"
+	cNsHCIConfigTypeNode    NsHCIConfigType = "node"
 	cNsHCIConfigTypeBlock   NsHCIConfigType = "block"
-	cNsHCIConfigTypeSwitch  NsHCIConfigType = "switch"
 )
 
-var pNsHCIConfigTypeNode NsHCIConfigType
 var pNsHCIConfigTypeCluster NsHCIConfigType
+var pNsHCIConfigTypeNode NsHCIConfigType
 var pNsHCIConfigTypeBlock NsHCIConfigType
-var pNsHCIConfigTypeSwitch NsHCIConfigType
-
-// NsHCIConfigTypeNode enum exports
-var NsHCIConfigTypeNode *NsHCIConfigType
 
 // NsHCIConfigTypeCluster enum exports
 var NsHCIConfigTypeCluster *NsHCIConfigType
 
+// NsHCIConfigTypeNode enum exports
+var NsHCIConfigTypeNode *NsHCIConfigType
+
 // NsHCIConfigTypeBlock enum exports
 var NsHCIConfigTypeBlock *NsHCIConfigType
 
-// NsHCIConfigTypeSwitch enum exports
-var NsHCIConfigTypeSwitch *NsHCIConfigType
-
 func init() {
-	pNsHCIConfigTypeNode = cNsHCIConfigTypeNode
-	NsHCIConfigTypeNode = &pNsHCIConfigTypeNode
-
 	pNsHCIConfigTypeCluster = cNsHCIConfigTypeCluster
 	NsHCIConfigTypeCluster = &pNsHCIConfigTypeCluster
 
+	pNsHCIConfigTypeNode = cNsHCIConfigTypeNode
+	NsHCIConfigTypeNode = &pNsHCIConfigTypeNode
+
 	pNsHCIConfigTypeBlock = cNsHCIConfigTypeBlock
 	NsHCIConfigTypeBlock = &pNsHCIConfigTypeBlock
-
-	pNsHCIConfigTypeSwitch = cNsHCIConfigTypeSwitch
-	NsHCIConfigTypeSwitch = &pNsHCIConfigTypeSwitch
 
 }

@@ -13,7 +13,6 @@ const (
 	cNsErrorSmAppserverNotFound                           NsError = "SM_appserver_not_found"
 	cNsErrorSmFolderReplPartner                           NsError = "SM_folder_repl_partner"
 	cNsErrorSmArrayPoolMember                             NsError = "SM_array_pool_member"
-	cNsErrorSmErrInvalidArg                               NsError = "SM_err_invalid_arg"
 	cNsErrorSmErrShelfCreateRfail                         NsError = "SM_err_shelf_create_rfail"
 	cNsErrorSmStarterVolCreate                            NsError = "SM_starter_vol_create"
 	cNsErrorSmInvalidNetconfigName                        NsError = "SM_invalid_netconfig_name"
@@ -41,7 +40,6 @@ const (
 	cNsErrorSmFolderUsageLimitOverPoolCapacity            NsError = "SM_folder_usage_limit_over_pool_capacity"
 	cNsErrorSmEnomem                                      NsError = "SM_enomem"
 	cNsErrorSmErrShelfNotInuse                            NsError = "SM_err_shelf_not_inuse"
-	cNsErrorSmErrLdapAdConflict                           NsError = "SM_err_ldap_ad_conflict"
 	cNsErrorSmErrShelfPreactivationMfrErr                 NsError = "SM_err_shelf_preactivation_mfr_err"
 	cNsErrorSmUpdateBusy                                  NsError = "SM_update_busy"
 	cNsErrorSmProtpolInvalidAppSync                       NsError = "SM_protpol_invalid_app_sync"
@@ -57,7 +55,6 @@ const (
 	cNsErrorSmArrayNotReachable                           NsError = "SM_array_not_reachable"
 	cNsErrorSmErrGroupMergeEventsPending                  NsError = "SM_err_group_merge_events_pending"
 	cNsErrorSmSrepNameConflictVols                        NsError = "SM_srep_name_conflict_vols"
-	cNsErrorSmErrLdapAlreadyExists                        NsError = "SM_err_ldap_already_exists"
 	cNsErrorSmPoolPartnerResumeUnsup                      NsError = "SM_pool_partner_resume_unsup"
 	cNsErrorSmNoIscsiHardware                             NsError = "SM_no_iscsi_hardware"
 	cNsErrorSmArrayNotFound                               NsError = "SM_array_not_found"
@@ -161,7 +158,6 @@ const (
 	cNsErrorSmEmptyVol                                    NsError = "SM_empty_vol"
 	cNsErrorSmNoActionFound                               NsError = "SM_no_action_found"
 	cNsErrorSmSyncReplUnconfigureInProgress               NsError = "SM_sync_repl_unconfigure_in_progress"
-	cNsErrorSmErrMissingArg                               NsError = "SM_err_missing_arg"
 	cNsErrorSmVolThickProvMoveInvalid                     NsError = "SM_vol_thick_prov_move_invalid"
 	cNsErrorSmMissingAdvancedCriteriaConstructor          NsError = "SM_missing_advanced_criteria_constructor"
 	cNsErrorSmPoolUnknown                                 NsError = "SM_pool_unknown"
@@ -252,7 +248,6 @@ const (
 	cNsErrorSmInvalidDataIp                               NsError = "SM_invalid_data_ip"
 	cNsErrorSmVolHasOnlineSnap                            NsError = "SM_vol_has_online_snap"
 	cNsErrorSmPoolVolmvEinprog                            NsError = "SM_pool_volmv_einprog"
-	cNsErrorSmErrLdapBindPasswordNoUser                   NsError = "SM_err_ldap_bind_password_no_user"
 	cNsErrorSmNoDataIpOnMgmtPlusData                      NsError = "SM_no_data_ip_on_mgmt_plus_data"
 	cNsErrorSmConflictingAclLun                           NsError = "SM_conflicting_acl_lun"
 	cNsErrorSmVpCreatedIgrp                               NsError = "SM_vp_created_igrp"
@@ -486,7 +481,6 @@ const (
 	cNsErrorSmInvalidFolder                               NsError = "SM_invalid_folder"
 	cNsErrorSmSrvUpdatePrecheckArray                      NsError = "SM_srv_update_precheck_array"
 	cNsErrorSmGatewayNotInSubnets                         NsError = "SM_gateway_not_in_subnets"
-	cNsErrorSmErrLdapBindUserNoPassword                   NsError = "SM_err_ldap_bind_user_no_password"
 	cNsErrorSmDeprecatedPerfpol                           NsError = "SM_deprecated_perfpol"
 	cNsErrorSmTakeoverSplitBrain                          NsError = "SM_takeover_split_brain"
 	cNsErrorSmPeIgroupProtocolMismatched                  NsError = "SM_pe_igroup_protocol_mismatched"
@@ -525,7 +519,6 @@ var pNsErrorSmExtTrigSchedNotPresent NsError
 var pNsErrorSmAppserverNotFound NsError
 var pNsErrorSmFolderReplPartner NsError
 var pNsErrorSmArrayPoolMember NsError
-var pNsErrorSmErrInvalidArg NsError
 var pNsErrorSmErrShelfCreateRfail NsError
 var pNsErrorSmStarterVolCreate NsError
 var pNsErrorSmInvalidNetconfigName NsError
@@ -553,7 +546,6 @@ var pNsErrorSmSrepNameConflictVol NsError
 var pNsErrorSmFolderUsageLimitOverPoolCapacity NsError
 var pNsErrorSmEnomem NsError
 var pNsErrorSmErrShelfNotInuse NsError
-var pNsErrorSmErrLdapAdConflict NsError
 var pNsErrorSmErrShelfPreactivationMfrErr NsError
 var pNsErrorSmUpdateBusy NsError
 var pNsErrorSmProtpolInvalidAppSync NsError
@@ -569,7 +561,6 @@ var pNsErrorSmKeymgrRemove NsError
 var pNsErrorSmArrayNotReachable NsError
 var pNsErrorSmErrGroupMergeEventsPending NsError
 var pNsErrorSmSrepNameConflictVols NsError
-var pNsErrorSmErrLdapAlreadyExists NsError
 var pNsErrorSmPoolPartnerResumeUnsup NsError
 var pNsErrorSmNoIscsiHardware NsError
 var pNsErrorSmArrayNotFound NsError
@@ -673,7 +664,6 @@ var pNsErrorSmZeroVlanIdForTaggedAssignment NsError
 var pNsErrorSmEmptyVol NsError
 var pNsErrorSmNoActionFound NsError
 var pNsErrorSmSyncReplUnconfigureInProgress NsError
-var pNsErrorSmErrMissingArg NsError
 var pNsErrorSmVolThickProvMoveInvalid NsError
 var pNsErrorSmMissingAdvancedCriteriaConstructor NsError
 var pNsErrorSmPoolUnknown NsError
@@ -764,7 +754,6 @@ var pNsErrorSmPoolUpdateInvalArrays NsError
 var pNsErrorSmInvalidDataIp NsError
 var pNsErrorSmVolHasOnlineSnap NsError
 var pNsErrorSmPoolVolmvEinprog NsError
-var pNsErrorSmErrLdapBindPasswordNoUser NsError
 var pNsErrorSmNoDataIpOnMgmtPlusData NsError
 var pNsErrorSmConflictingAclLun NsError
 var pNsErrorSmVpCreatedIgrp NsError
@@ -998,7 +987,6 @@ var pNsErrorSmReplPartnerNameMismatch NsError
 var pNsErrorSmInvalidFolder NsError
 var pNsErrorSmSrvUpdatePrecheckArray NsError
 var pNsErrorSmGatewayNotInSubnets NsError
-var pNsErrorSmErrLdapBindUserNoPassword NsError
 var pNsErrorSmDeprecatedPerfpol NsError
 var pNsErrorSmTakeoverSplitBrain NsError
 var pNsErrorSmPeIgroupProtocolMismatched NsError
@@ -1049,9 +1037,6 @@ var NsErrorSmFolderReplPartner *NsError
 
 // NsErrorSmArrayPoolMember enum exports
 var NsErrorSmArrayPoolMember *NsError
-
-// NsErrorSmErrInvalidArg enum exports
-var NsErrorSmErrInvalidArg *NsError
 
 // NsErrorSmErrShelfCreateRfail enum exports
 var NsErrorSmErrShelfCreateRfail *NsError
@@ -1134,9 +1119,6 @@ var NsErrorSmEnomem *NsError
 // NsErrorSmErrShelfNotInuse enum exports
 var NsErrorSmErrShelfNotInuse *NsError
 
-// NsErrorSmErrLdapAdConflict enum exports
-var NsErrorSmErrLdapAdConflict *NsError
-
 // NsErrorSmErrShelfPreactivationMfrErr enum exports
 var NsErrorSmErrShelfPreactivationMfrErr *NsError
 
@@ -1181,9 +1163,6 @@ var NsErrorSmErrGroupMergeEventsPending *NsError
 
 // NsErrorSmSrepNameConflictVols enum exports
 var NsErrorSmSrepNameConflictVols *NsError
-
-// NsErrorSmErrLdapAlreadyExists enum exports
-var NsErrorSmErrLdapAlreadyExists *NsError
 
 // NsErrorSmPoolPartnerResumeUnsup enum exports
 var NsErrorSmPoolPartnerResumeUnsup *NsError
@@ -1494,9 +1473,6 @@ var NsErrorSmNoActionFound *NsError
 // NsErrorSmSyncReplUnconfigureInProgress enum exports
 var NsErrorSmSyncReplUnconfigureInProgress *NsError
 
-// NsErrorSmErrMissingArg enum exports
-var NsErrorSmErrMissingArg *NsError
-
 // NsErrorSmVolThickProvMoveInvalid enum exports
 var NsErrorSmVolThickProvMoveInvalid *NsError
 
@@ -1766,9 +1742,6 @@ var NsErrorSmVolHasOnlineSnap *NsError
 
 // NsErrorSmPoolVolmvEinprog enum exports
 var NsErrorSmPoolVolmvEinprog *NsError
-
-// NsErrorSmErrLdapBindPasswordNoUser enum exports
-var NsErrorSmErrLdapBindPasswordNoUser *NsError
 
 // NsErrorSmNoDataIpOnMgmtPlusData enum exports
 var NsErrorSmNoDataIpOnMgmtPlusData *NsError
@@ -2469,9 +2442,6 @@ var NsErrorSmSrvUpdatePrecheckArray *NsError
 // NsErrorSmGatewayNotInSubnets enum exports
 var NsErrorSmGatewayNotInSubnets *NsError
 
-// NsErrorSmErrLdapBindUserNoPassword enum exports
-var NsErrorSmErrLdapBindUserNoPassword *NsError
-
 // NsErrorSmDeprecatedPerfpol enum exports
 var NsErrorSmDeprecatedPerfpol *NsError
 
@@ -2581,9 +2551,6 @@ func init() {
 	pNsErrorSmArrayPoolMember = cNsErrorSmArrayPoolMember
 	NsErrorSmArrayPoolMember = &pNsErrorSmArrayPoolMember
 
-	pNsErrorSmErrInvalidArg = cNsErrorSmErrInvalidArg
-	NsErrorSmErrInvalidArg = &pNsErrorSmErrInvalidArg
-
 	pNsErrorSmErrShelfCreateRfail = cNsErrorSmErrShelfCreateRfail
 	NsErrorSmErrShelfCreateRfail = &pNsErrorSmErrShelfCreateRfail
 
@@ -2665,9 +2632,6 @@ func init() {
 	pNsErrorSmErrShelfNotInuse = cNsErrorSmErrShelfNotInuse
 	NsErrorSmErrShelfNotInuse = &pNsErrorSmErrShelfNotInuse
 
-	pNsErrorSmErrLdapAdConflict = cNsErrorSmErrLdapAdConflict
-	NsErrorSmErrLdapAdConflict = &pNsErrorSmErrLdapAdConflict
-
 	pNsErrorSmErrShelfPreactivationMfrErr = cNsErrorSmErrShelfPreactivationMfrErr
 	NsErrorSmErrShelfPreactivationMfrErr = &pNsErrorSmErrShelfPreactivationMfrErr
 
@@ -2712,9 +2676,6 @@ func init() {
 
 	pNsErrorSmSrepNameConflictVols = cNsErrorSmSrepNameConflictVols
 	NsErrorSmSrepNameConflictVols = &pNsErrorSmSrepNameConflictVols
-
-	pNsErrorSmErrLdapAlreadyExists = cNsErrorSmErrLdapAlreadyExists
-	NsErrorSmErrLdapAlreadyExists = &pNsErrorSmErrLdapAlreadyExists
 
 	pNsErrorSmPoolPartnerResumeUnsup = cNsErrorSmPoolPartnerResumeUnsup
 	NsErrorSmPoolPartnerResumeUnsup = &pNsErrorSmPoolPartnerResumeUnsup
@@ -3025,9 +2986,6 @@ func init() {
 	pNsErrorSmSyncReplUnconfigureInProgress = cNsErrorSmSyncReplUnconfigureInProgress
 	NsErrorSmSyncReplUnconfigureInProgress = &pNsErrorSmSyncReplUnconfigureInProgress
 
-	pNsErrorSmErrMissingArg = cNsErrorSmErrMissingArg
-	NsErrorSmErrMissingArg = &pNsErrorSmErrMissingArg
-
 	pNsErrorSmVolThickProvMoveInvalid = cNsErrorSmVolThickProvMoveInvalid
 	NsErrorSmVolThickProvMoveInvalid = &pNsErrorSmVolThickProvMoveInvalid
 
@@ -3297,9 +3255,6 @@ func init() {
 
 	pNsErrorSmPoolVolmvEinprog = cNsErrorSmPoolVolmvEinprog
 	NsErrorSmPoolVolmvEinprog = &pNsErrorSmPoolVolmvEinprog
-
-	pNsErrorSmErrLdapBindPasswordNoUser = cNsErrorSmErrLdapBindPasswordNoUser
-	NsErrorSmErrLdapBindPasswordNoUser = &pNsErrorSmErrLdapBindPasswordNoUser
 
 	pNsErrorSmNoDataIpOnMgmtPlusData = cNsErrorSmNoDataIpOnMgmtPlusData
 	NsErrorSmNoDataIpOnMgmtPlusData = &pNsErrorSmNoDataIpOnMgmtPlusData
@@ -3999,9 +3954,6 @@ func init() {
 
 	pNsErrorSmGatewayNotInSubnets = cNsErrorSmGatewayNotInSubnets
 	NsErrorSmGatewayNotInSubnets = &pNsErrorSmGatewayNotInSubnets
-
-	pNsErrorSmErrLdapBindUserNoPassword = cNsErrorSmErrLdapBindUserNoPassword
-	NsErrorSmErrLdapBindUserNoPassword = &pNsErrorSmErrLdapBindUserNoPassword
 
 	pNsErrorSmDeprecatedPerfpol = cNsErrorSmDeprecatedPerfpol
 	NsErrorSmDeprecatedPerfpol = &pNsErrorSmDeprecatedPerfpol

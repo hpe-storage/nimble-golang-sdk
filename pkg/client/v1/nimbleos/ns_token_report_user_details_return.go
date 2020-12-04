@@ -23,11 +23,11 @@ func init() {
 type NsTokenReportUserDetailsReturn struct {
 	// UserName - User name for the session.
 	UserName *string `json:"user_name,omitempty"`
-	// PrimaryGroupId - The ID of the primary directory service user group the user belongs to. RBAC is granted based on this group.
+	// PrimaryGroupId - The ID of the primary Active Directory user group the user belongs to. RBAC is granted based on this group.
 	PrimaryGroupId *string `json:"primary_group_id,omitempty"`
-	// PrimaryGroupName - The primary directory user group the user belongs to. RBAC is granted based on this group.
+	// PrimaryGroupName - The primary Active Directory user group the user belongs to. RBAC is granted based on this group.
 	PrimaryGroupName *string `json:"primary_group_name,omitempty"`
-	// GroupCount - The number of directory service user groups the user belongs to.
+	// GroupCount - The number of Active Directory user groups the user belongs to.
 	GroupCount *int64 `json:"group_count,omitempty"`
 	// Role - Role of the user.
 	Role *NsUserRoles `json:"role,omitempty"`
@@ -35,8 +35,6 @@ type NsTokenReportUserDetailsReturn struct {
 	InactivityTimeout *int64 `json:"inactivity_timeout,omitempty"`
 	// UserId - Global ID of the user.
 	UserId *string `json:"user_id,omitempty"`
-	// DomainType - Connected directory service type. Either 'ad, 'ldap' or 'local'.
-	DomainType *NsDomainType `json:"domain_type,omitempty"`
-	// Groups - The list of directory service groups the user belongs to.
+	// Groups - The list of Active Directory groups the user belongs to.
 	Groups []*string `json:"groups,omitempty"`
 }

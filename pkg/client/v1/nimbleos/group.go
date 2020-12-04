@@ -159,8 +159,6 @@ type Group struct {
 	SyslogdServer *string `json:"syslogd_server,omitempty"`
 	// SyslogdPort - Port number for syslogd server.
 	SyslogdPort *int64 `json:"syslogd_port,omitempty"`
-	// SyslogdServers - Hostname and/or port of the syslogd servers.
-	SyslogdServers []*NsFqdnOrIpAndPortObject `json:"syslogd_servers,omitempty"`
 	// VvolEnabled - Are vvols enabled on this group.
 	VvolEnabled *bool `json:"vvol_enabled,omitempty"`
 	// IscsiEnabled - Whether iSCSI is enabled on this group.
