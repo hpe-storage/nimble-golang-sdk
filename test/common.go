@@ -16,16 +16,16 @@ const defaultVolumeName = "DefaultVolumeTest"
 const defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
 const defaultVolCollName = "DefaultVolCollTest"
 
-var arrayIP = flag.String("arrayIP", "1.1.1.1", "Array IP")
+var arrayIP = flag.String("arrayIP", "", "Array IP")
 
 var arrayUsername = flag.String("arrayUsername", "xxx", "Array Username")
 
 var arrayPassword = flag.String("arrayPassword", "xxx", "Array Password")
 
-var downstreamArrayIP = flag.String("downstream", "", "Array IP to be used as downstream")
+var downstreamArrayIP = flag.String("downstream", "", "IP address of an array to be used as a downstream replica. Pass this IP to execute replication partner test cases.")
 
 // Required for group merge test
-var sourceArrayIP = flag.String("sourceArrayIP", "1.1.1.2", "Source array IP for group tests")
+var sourceArrayIP = flag.String("sourceArrayIP", "", "IP address of source array, used for group and merge test cases.")
 
 var sourceArrayusername = flag.String("sourceArrayusername", "xxx", "Source array username")
 
@@ -99,14 +99,20 @@ func isFCEnabled(arrayGroupService *service.GroupService) bool {
 	filter := &param.GetParams{}
 	groups, _ := arrayGroupService.GetGroups(filter)
 	group := groups[0]
-	return *group.FcEnabled
+	if group != nil {
+		return *group.FcEnabled
+	}
+	return false
 }
 
 func isIscsiEnabled(arrayGroupService *service.GroupService) bool {
 	filter := &param.GetParams{}
 	groups, _ := arrayGroupService.GetGroups(filter)
 	group := groups[0]
-	return *group.IscsiEnabled
+	if group != nil {
+		return *group.IscsiEnabled
+	}
+	return false
 }
 
 func getArrayVersion(groupService *service.GroupService) float64 {

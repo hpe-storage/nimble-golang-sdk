@@ -20,8 +20,6 @@ type IGWorkflowSuite struct {
 	initiatorGrpService *service.InitiatorGroupService
 	volumeService       sdkprovider.VolumeService
 	arrayGroupService   *service.GroupService
-	fcEnabled           bool
-	iscsiEnabled        bool
 }
 
 func (suite *IGWorkflowSuite) SetupSuite() {
@@ -75,9 +73,8 @@ func (suite *IGWorkflowSuite) TestCreateIG() {
 	updateIG := &nimbleos.InitiatorGroup{
 		Description: newDesc,
 	}
-	if ig != nil {
-		suite.initiatorGrpService.UpdateInitiatorGroup(*ig.ID, updateIG)
-	}
+	_, err = suite.initiatorGrpService.UpdateInitiatorGroup(*ig.ID, updateIG)
+	assert.Nilf(suite.T(), err, "Unable to update initiator group, err: %v", err)
 	ig, _ = suite.initiatorGrpService.GetInitiatorGroupByName(initiatorGroupName)
 	assert.Equal(suite.T(), *newDesc, *ig.Description, "Unable to update Initiator Group")
 
@@ -114,9 +111,9 @@ func (suite *IGWorkflowSuite) TestCreateIGIscsiInitiators() {
 	_, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
 	assert.Nilf(suite.T(), err, "Unable to create initiator group, err: %v", err)
 	// Update initiator group
-	var ipAdd *string = param.NewString("10.1.0.0")
+	ipAdd := "10.1.0.0"
 	updateIscsiInitiator := &nimbleos.NsISCSIInitiator{
-		IpAddress: ipAdd,
+		IpAddress: &ipAdd,
 		Label:     param.NewString("NewLabel"),
 	}
 	var updatedInitiatorList []*nimbleos.NsISCSIInitiator
@@ -127,7 +124,7 @@ func (suite *IGWorkflowSuite) TestCreateIGIscsiInitiators() {
 	currentIG, _ := suite.initiatorGrpService.GetInitiatorGroupByName("TestIGIscsi")
 	_, err = suite.initiatorGrpService.UpdateInitiatorGroup(*currentIG.ID, updateIG)
 	assert.Nilf(suite.T(), err, "Modifying IP address of initiator failed: %v", err)
-	assert.Equal(suite.T(), *ipAdd, *updateIG.IscsiInitiators[0].IpAddress, "Updating iscsi initiators failed")
+	assert.Equal(suite.T(), ipAdd, *updateIG.IscsiInitiators[0].IpAddress, "Updating iscsi initiators failed")
 	// Clean up
 	suite.deleteInitiatorGroup("TestIGIscsi")
 }
