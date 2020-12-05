@@ -32,15 +32,19 @@ type DiskWorkflowSuite struct {
 
 func (suite *DiskWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Could not connect to array")
+	assert.Nilf(suite.T(), err, "Could not connect to array: %v", arrayIP)
 	suite.groupService = groupService
 	suite.diskService = groupService.GetDiskService()
+}
+
+func (suite *DiskWorkflowSuite) TearDownSuite() {
+	suite.groupService.LogoutService()
 }
 
 func (suite *DiskWorkflowSuite) TestAddRemoveDisk() {
 	filter := &param.GetParams{}
 	diskResp, err := suite.diskService.GetDisks(filter)
-	assert.Nilf(suite.T(), err, "Failed to get disk details")
+	assert.Nil(suite.T(), err, "Failed to get disk details")
 	fmt.Print(*diskResp[0].State)
 
 	// Get a disk which is in use
@@ -58,9 +62,9 @@ func (suite *DiskWorkflowSuite) TestAddRemoveDisk() {
 		DiskOp: nimbleos.NsDiskOpRemove,
 	}
 	_, err = suite.diskService.UpdateDisk(diskID, removeDisk)
-	assert.Nilf(suite.T(), err, "Failed to Remove Disk")
+	assert.Nil(suite.T(), err, "Failed to Remove Disk")
 	getDiskResp, err := suite.diskService.GetDiskById(diskID)
-	assert.Nilf(suite.T(), err, "Failed to Get Disk details")
+	assert.Nil(suite.T(), err, "Failed to Get Disk details")
 	assert.Equal(suite.T(), nimbleos.NsDiskState("removed"), *getDiskResp.State, "Failed to Remove Disk")
 
 	// Add Disk
@@ -68,12 +72,12 @@ func (suite *DiskWorkflowSuite) TestAddRemoveDisk() {
 		DiskOp: nimbleos.NsDiskOpAdd,
 	}
 	_, err = suite.diskService.UpdateDisk(diskID, addDisk)
-	assert.Nilf(suite.T(), err, "Failed to Add Disk")
-	getDiskResp, err = suite.diskService.GetDiskById(diskID)
+	assert.Nil(suite.T(), err, "Failed to Add Disk")
 
 	// Wait till the state changes from 'valid' to 'in use'
 	time.Sleep(2 * time.Second)
-	assert.Nilf(suite.T(), err, "Failed to Get Disk details")
+	getDiskResp, err = suite.diskService.GetDiskById(diskID)
+	assert.Nil(suite.T(), err, "Failed to Get Disk details")
 	assert.Equal(suite.T(), nimbleos.NsDiskState("in use"), *getDiskResp.State, "Failed to Add Disk")
 
 }

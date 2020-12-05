@@ -35,6 +35,7 @@ type UserWorkflowSuite struct {
 	userService       *service.UserService
 	volumeService     sdkprovider.VolumeService
 	userPolicyService *service.UserPolicyService
+	arrayGroupService *service.GroupService
 }
 
 func (suite *UserWorkflowSuite) SetupSuite() {
@@ -43,6 +44,11 @@ func (suite *UserWorkflowSuite) SetupSuite() {
 	suite.groupService = groupService
 	suite.userService = groupService.GetUserService()
 	suite.userPolicyService = groupService.GetUserPolicyService()
+	suite.arrayGroupService = groupService.GetGroupService()
+}
+
+func (suite *UserWorkflowSuite) TearDownSuite() {
+	suite.groupService.LogoutService()
 }
 
 // Delete User
@@ -155,6 +161,10 @@ func (suite *UserWorkflowSuite) TestCreateDeleteGuestUser() {
 }
 
 func (suite *UserWorkflowSuite) TestUpdateUserPolicy() {
+	arrayVersion := getArrayVersion(suite.arrayGroupService)
+	if arrayVersion < 5.1 {
+		suite.T().Skip()
+	}
 	var allowedAttempts int64 = 10
 	var minLength int64 = 9
 	var upperCaseCount int64 = 3

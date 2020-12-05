@@ -24,11 +24,10 @@ package test
 
 import (
 	"fmt"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
-	"strconv"
-	"strings"
 	"testing"
 	"time"
+
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -48,7 +47,7 @@ type GroupPoolWorkflowSuite struct {
 
 func (suite *GroupPoolWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Could not connect to array")
+	assert.Nilf(suite.T(), err, "Could not connect to array: %v", arrayIP)
 	suite.groupService = groupService
 	suite.arraygroupService = groupService.GetGroupService()
 	suite.poolService = groupService.GetPoolService()
@@ -56,9 +55,13 @@ func (suite *GroupPoolWorkflowSuite) SetupSuite() {
 	suite.volumeService = groupService.GetVolumeService()
 }
 
+func (suite *GroupPoolWorkflowSuite) TearDownSuite() {
+	suite.groupService.LogoutService()
+}
+
 func (suite *GroupPoolWorkflowSuite) connectSourceArray() *service.NsGroupService {
-	srcgroupService, err := service.NewNsGroupService(sourceArrayIP, sourceArrayusername, sourceArraypassword, "v1", true)
-	assert.Nilf(suite.T(), err, "Could not connect to array")
+	srcgroupService, err := service.NewNsGroupService(*sourceArrayIP, *sourceArrayUsername, *sourceArraypassword, "v1", true)
+	assert.Nilf(suite.T(), err, "Could not connect to array: %v", sourceArrayIP)
 	srcgroupService.SetDebug()
 	return srcgroupService
 }
@@ -69,9 +72,9 @@ func (suite *GroupPoolWorkflowSuite) TestGetGroupDetailsLeaderArray() {
 	groupResp, err := suite.arraygroupService.GetGroups(filter)
 	groupName := *groupResp[0].Name
 	fmt.Printf("source array group name %+v\n", groupName)
-	assert.Nilf(suite.T(), err, "Get Group failed")
+	assert.Nil(suite.T(), err, "Failed to get group details")
 	_, err = suite.arraygroupService.GetGroupByName(groupName)
-	assert.Nilf(suite.T(), err, "Get Group by name failed")
+	assert.Nilf(suite.T(), err, "Failed to get group by name: %v", groupName)
 }
 
 // Validate & Performe Group Merge
@@ -87,11 +90,11 @@ func (suite *GroupPoolWorkflowSuite) TestGroupMerge() {
 	fmt.Printf("sourcegroup ID %+v\n", groupID)
 
 	// Validate Group Merge
-	_, err := suite.arraygroupService.ValidateMergeGroup(groupID, sourcegroupName, sourceArrayIP, sourceArrayusername, sourceArraypassword, nil, nil)
-	assert.Nilf(suite.T(), err, "Group Merge Validate failed")
+	_, err := suite.arraygroupService.ValidateMergeGroup(groupID, sourcegroupName, *sourceArrayIP, *sourceArrayUsername, *sourceArraypassword, nil, nil)
+	assert.Nil(suite.T(), err, "Group Merge Validate failed")
 
 	// Perform group merge
-	_, err = suite.arraygroupService.MergeGroup(groupID, sourcegroupName, sourceArrayIP, sourceArrayusername, sourceArraypassword, nil, nil, nil)
+	_, err = suite.arraygroupService.MergeGroup(groupID, sourcegroupName, *sourceArrayIP, *sourceArrayUsername, *sourceArraypassword, nil, nil, nil)
 	fmt.Printf("Wait 2 mins for group merge")
 	time.Sleep(120 * time.Second)
 
@@ -113,13 +116,9 @@ func (suite *GroupPoolWorkflowSuite) TestUpdateGroupProperties() {
 	filter := &param.GetParams{}
 	groupResp, _ := suite.arraygroupService.GetGroups(filter)
 	groupID := *groupResp[0].ID
-	currentVersion := *groupResp[0].VersionCurrent
-	currentVersion = strings.Split(strings.TrimSpace(currentVersion), "-")[0]
-	currentVersionSplitlist := strings.Split(currentVersion, ".")[:2]
 	var newDefaultIscsiTargetScope *nimbleos.NsTargetScope
 	var newDefaultVolumeLimit int64 = 98
-	// Array version below 5.1 does not support group target scope
-	arrayVersion, _ := strconv.ParseFloat(strings.Join(currentVersionSplitlist, "."), 8)
+	arrayVersion := getArrayVersion(suite.arraygroupService)
 	fmt.Printf("arrayVersion: %v\n", arrayVersion)
 	var updateDefaultTargetScope *nimbleos.Group
 	if arrayVersion < 5.1 {
@@ -139,7 +138,7 @@ func (suite *GroupPoolWorkflowSuite) TestUpdateGroupProperties() {
 		}
 	}
 	_, err := suite.arraygroupService.UpdateGroup(groupID, updateDefaultTargetScope)
-	assert.Nilf(suite.T(), err, "Default iscsi target update failed")
+	assert.Nil(suite.T(), err, "Default iscsi target update failed")
 	groupResponse, _ := suite.arraygroupService.GetGroupById(groupID)
 	assert.Equal(suite.T(), newDefaultVolumeLimit, *groupResponse.DefaultVolumeLimit, "Default Volume Limit not updated")
 	if arrayVersion >= 5.1 {
@@ -204,7 +203,7 @@ func (suite *GroupPoolWorkflowSuite) TestMergePool() {
 
 	// Pool Merge - Merge pool to 'default' pool
 	_, err := suite.poolService.MergePool(nonDefaulPoolID, defaultPoolID, nil)
-	assert.Nilf(suite.T(), err, "Pool Merge failed")
+	assert.Nil(suite.T(), err, "Pool Merge failed")
 }
 
 // Edit Pool - remove array from pool
@@ -230,7 +229,7 @@ func (suite *GroupPoolWorkflowSuite) TestModifyPoolArray() {
 		ArrayList: updateArrayList,
 	}
 	_, err := suite.poolService.UpdatePool(defaultPoolID, updatePoolInput)
-	assert.Nilf(suite.T(), err, "Pool Array list update failed")
+	assert.Nil(suite.T(), err, "Pool Array list update failed")
 	fmt.Printf("Updated pool array list\n")
 	time.Sleep(5 * time.Second)
 }
@@ -291,7 +290,7 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 		Description: param.NewString(newPooolDesription),
 	}
 	createpoolResp, err := suite.poolService.CreatePool(createPoolInput)
-	assert.Nilf(suite.T(), err, "Pool Creation failed")
+	assert.Nilf(suite.T(), err, "Failed to create Pool: %v", newPoolName)
 	newPoolID := *createpoolResp.ID
 	assert.Equal(suite.T(), newPooolDesription, *createpoolResp.Description, "Pool description does not match")
 
@@ -303,7 +302,7 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 		Description: param.NewString(newDescription),
 	}
 	_, err = suite.poolService.UpdatePool(newPoolID, updatePoolInput)
-	assert.Nilf(suite.T(), err, "Pool Update failed")
+	assert.Nilf(suite.T(), err, "Failed to update Pool: %v", newPoolName)
 	poolResp := suite.GetPoolDetail(newPoolName)
 	assert.Equal(suite.T(), newPoolName, *poolResp.Name, "Pool name nnot updated")
 	assert.Equal(suite.T(), newDescription, *poolResp.Description, "Pool description not updated")
@@ -322,7 +321,7 @@ func (suite *GroupPoolWorkflowSuite) TestNewPoolCreateModifyDelete() {
 
 	// Delete Pool
 	err = suite.poolService.DeletePool(newPoolID)
-	assert.Nilf(suite.T(), err, "Pool Deletion failed")
+	assert.Nilf(suite.T(), err, "Failed to delete Pool: %v", newPoolName)
 }
 
 func TestGroupPoolWorkflowSuite(t *testing.T) {

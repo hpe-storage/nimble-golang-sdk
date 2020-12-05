@@ -34,6 +34,7 @@ type ChapuserWorkflowSuite struct {
 	userService         *service.UserService
 	chapuserService     *service.ChapUserService
 	initiatorGrpService *service.InitiatorGroupService
+	arrayGroupService   *service.GroupService
 }
 
 func (suite *ChapuserWorkflowSuite) SetupSuite() {
@@ -42,6 +43,11 @@ func (suite *ChapuserWorkflowSuite) SetupSuite() {
 	suite.groupService = groupService
 	suite.chapuserService = groupService.GetChapUserService()
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
+	suite.arrayGroupService = groupService.GetGroupService()
+}
+
+func (suite *ChapuserWorkflowSuite) TearDownSuite() {
+	suite.groupService.LogoutService()
 }
 
 func (suite *ChapuserWorkflowSuite) CreateIGIscsiInitiators(iqnLabel string, iqn string, ipAddress string) string {
@@ -63,6 +69,10 @@ func (suite *ChapuserWorkflowSuite) CreateIGIscsiInitiators(iqnLabel string, iqn
 }
 
 func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
+	// Skipping for FC array, test with iscsi initiators
+	if isFCEnabled(suite.arrayGroupService) {
+		suite.T().Skip()
+	}
 	chapUserDescription := "Chap User created by SDK module for testing"
 	// Create chapuser without initiator
 	newChapUser := &nimbleos.ChapUser{
@@ -77,31 +87,34 @@ func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
 	assert.Equal(suite.T(), chapUserDescription, *chapuserResp.Description, "In-correct Description for Chap user")
 	chapuserID := *chapuserResp.ID
 
-	// Update chapuser with initiators
-	iqnLabel := "chapiqn1"
-	iqn := "iqn.1994-05.com.redhat:48e040d53bf6"
-	ipAddress := "22.2.2.2"
-	igID := suite.CreateIGIscsiInitiators(iqnLabel, iqn, ipAddress)
-	iscsiInitiator := &nimbleos.NsISCSIIQN{
-		Name: &iqn,
-	}
-	var initiatorList []*nimbleos.NsISCSIIQN
-	initiatorList = append(initiatorList, iscsiInitiator)
-	updateChapUser := &nimbleos.ChapUser{
-		InitiatorIqns: initiatorList,
-	}
-	_, err = suite.chapuserService.UpdateChapUser(chapuserID, updateChapUser)
-	assert.Nilf(suite.T(), err, "Failed to update chap user: %v", chapUserName)
-	_, err = suite.chapuserService.GetChapUserByName(chapUserName)
-	assert.Nilf(suite.T(), err, "Failed to get chap user by name: %v", chapUserName)
+	arrayVersion := getArrayVersion(suite.arrayGroupService)
+	if arrayVersion > 5.1 {
+		// Update chapuser with initiators
+		iqnLabel := "chapiqn1"
+		iqn := "iqn.1994-05.com.redhat:48e040d53bf6"
+		ipAddress := "22.2.2.2"
+		igID := suite.CreateIGIscsiInitiators(iqnLabel, iqn, ipAddress)
+		iscsiInitiator := &nimbleos.NsISCSIIQN{
+			Name: &iqn,
+		}
+		var initiatorList []*nimbleos.NsISCSIIQN
+		initiatorList = append(initiatorList, iscsiInitiator)
+		updateChapUser := &nimbleos.ChapUser{
+			InitiatorIqns: initiatorList,
+		}
+		_, err = suite.chapuserService.UpdateChapUser(chapuserID, updateChapUser)
+		assert.Nilf(suite.T(), err, "Failed to update chap user: %v", chapUserName)
+		_, err = suite.chapuserService.GetChapUserByName(chapUserName)
+		assert.Nilf(suite.T(), err, "Failed to get chap user by name: %v", chapUserName)
 
-	// Delete Chap user with initiators associated
-	err = suite.chapuserService.DeleteChapUser(chapuserID)
-	assert.NotNilf(suite.T(), err, "Deleted chap user %v with initiators", chapUserName)
+		// Delete Chap user with initiators associated
+		err = suite.chapuserService.DeleteChapUser(chapuserID)
+		assert.NotNilf(suite.T(), err, "Deleted chap user %v with initiators", chapUserName)
 
-	// Delete Initiatorgroup
-	err = suite.initiatorGrpService.DeleteInitiatorGroup(igID)
-	assert.Nilf(suite.T(), err, "Failed to delete initiator group: %v", initiatorGroupNameChap)
+		// Delete Initiatorgroup
+		err = suite.initiatorGrpService.DeleteInitiatorGroup(igID)
+		assert.Nilf(suite.T(), err, "Failed to delete initiator group: %v", initiatorGroupNameChap)
+	}
 
 	// Delete Chap user
 	err = suite.chapuserService.DeleteChapUser(chapuserID)
