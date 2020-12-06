@@ -12,7 +12,7 @@ import (
 )
 
 const repPartner = "ReplcationPartnerTest"
-const repPassphrase = "Nim123Boli"
+const repPassphrase = "Passphrase123"
 
 type ReplicationPartnerWorkflowSuite struct {
 	suite.Suite
