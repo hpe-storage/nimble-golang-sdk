@@ -8,22 +8,28 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"strconv"
+	"strings"
 )
 
 const defaultVolumeName = "DefaultVolumeTest"
 const defaultInitiatorGrpName = "DefaultInitiatorgrpTest"
 const defaultVolCollName = "DefaultVolCollTest"
 
-var arrayIP = flag.String("arrayIP", "1.1.1.1", "Array IP")
+var arrayIP = flag.String("arrayIP", "", "Array IP")
 
 var arrayUsername = flag.String("arrayUsername", "xxx", "Array Username")
 
 var arrayPassword = flag.String("arrayPassword", "xxx", "Array Password")
 
+var downstreamArrayIP = flag.String("downstream", "", "IP address of an array to be used as a downstream replica. Pass this IP to execute replication partner test cases.")
+
 // Required for group merge test
-const sourceArrayIP = "1.1.1.2"
-const sourceArrayusername = "xxx"
-const sourceArraypassword = "xxx"
+var sourceArrayIP = flag.String("sourceArrayIP", "", "IP address of source array, used for group and merge test cases.")
+
+var sourceArrayusername = flag.String("sourceArrayusername", "xxx", "Source array username")
+
+var sourceArraypassword = flag.String("sourceArraypassword", "xxx", "Source array password")
 
 func config() (*service.NsGroupService, error) {
 	groupService, err := service.NewNsGroupService(*arrayIP, *arrayUsername, *arrayPassword, "v1", true)
@@ -87,4 +93,34 @@ func deleteDefaultVolColl(volcollService *service.VolumeCollectionService) error
 		return err
 	}
 	return volcollService.DeleteVolumeCollection(*volcoll.ID)
+}
+
+func isFCEnabled(arrayGroupService *service.GroupService) bool {
+	filter := &param.GetParams{}
+	groups, _ := arrayGroupService.GetGroups(filter)
+	group := groups[0]
+	if group != nil {
+		return *group.FcEnabled
+	}
+	return false
+}
+
+func isIscsiEnabled(arrayGroupService *service.GroupService) bool {
+	filter := &param.GetParams{}
+	groups, _ := arrayGroupService.GetGroups(filter)
+	group := groups[0]
+	if group != nil {
+		return *group.IscsiEnabled
+	}
+	return false
+}
+
+func getArrayVersion(groupService *service.GroupService) float64 {
+	filter := &param.GetParams{}
+	groupResp, _ := groupService.GetGroups(filter)
+	currentVersion := *groupResp[0].VersionCurrent
+	currentVersion = strings.Split(strings.TrimSpace(currentVersion), "-")[0]
+	currentVersionSplitlist := strings.Split(currentVersion, ".")[:2]
+	arrayVersion, _ := strconv.ParseFloat(strings.Join(currentVersionSplitlist, "."), 8)
+	return arrayVersion
 }

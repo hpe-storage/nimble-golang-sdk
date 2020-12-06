@@ -39,6 +39,10 @@ func (suite *NetworkWorkflowSuite) SetupSuite() {
 	suite.networkConfigService = groupService.GetNetworkConfigService()
 }
 
+func (suite *NetworkWorkflowSuite) TearDownSuite() {
+	suite.groupService.LogoutService()
+}
+
 func (suite *NetworkWorkflowSuite) TestCreateUpdateDeleteDraft() {
 	filter := &param.GetParams{}
 	getNetworkResp, err := suite.networkConfigService.GetNetworkConfigs(filter)
