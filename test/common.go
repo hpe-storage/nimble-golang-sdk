@@ -27,9 +27,9 @@ var downstreamArrayIP = flag.String("downstream", "", "IP address of an array to
 // Required for group merge test
 var sourceArrayIP = flag.String("sourceArrayIP", "", "IP address of source array, used for group and merge test cases.")
 
-var sourceArrayusername = flag.String("sourceArrayusername", "xxx", "Source array username")
+var sourceArrayUsername = flag.String("sourceArrayUsername", "xxx", "Source array username")
 
-var sourceArraypassword = flag.String("sourceArraypassword", "xxx", "Source array password")
+var sourceArrayPassword = flag.String("sourceArrayPassword", "xxx", "Source array password")
 
 func config() (*service.NsGroupService, error) {
 	groupService, err := service.NewNsGroupService(*arrayIP, *arrayUsername, *arrayPassword, "v1", true)

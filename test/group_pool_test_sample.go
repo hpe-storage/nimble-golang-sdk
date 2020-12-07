@@ -60,7 +60,7 @@ func (suite *GroupPoolWorkflowSuite) TearDownSuite() {
 }
 
 func (suite *GroupPoolWorkflowSuite) connectSourceArray() *service.NsGroupService {
-	srcgroupService, err := service.NewNsGroupService(*sourceArrayIP, *sourceArrayUsername, *sourceArraypassword, "v1", true)
+	srcgroupService, err := service.NewNsGroupService(*sourceArrayIP, *sourceArrayUsername, *sourceArrayPassword, "v1", true)
 	assert.Nilf(suite.T(), err, "Could not connect to array: %v", sourceArrayIP)
 	srcgroupService.SetDebug()
 	return srcgroupService
@@ -90,11 +90,11 @@ func (suite *GroupPoolWorkflowSuite) TestGroupMerge() {
 	fmt.Printf("sourcegroup ID %+v\n", groupID)
 
 	// Validate Group Merge
-	_, err := suite.arraygroupService.ValidateMergeGroup(groupID, sourcegroupName, *sourceArrayIP, *sourceArrayUsername, *sourceArraypassword, nil, nil)
+	_, err := suite.arraygroupService.ValidateMergeGroup(groupID, sourcegroupName, *sourceArrayIP, *sourceArrayUsername, *sourceArrayPassword, nil, nil)
 	assert.Nil(suite.T(), err, "Group Merge Validate failed")
 
 	// Perform group merge
-	_, err = suite.arraygroupService.MergeGroup(groupID, sourcegroupName, *sourceArrayIP, *sourceArrayUsername, *sourceArraypassword, nil, nil, nil)
+	_, err = suite.arraygroupService.MergeGroup(groupID, sourcegroupName, *sourceArrayIP, *sourceArrayUsername, *sourceArrayPassword, nil, nil, nil)
 	fmt.Printf("Wait 2 mins for group merge")
 	time.Sleep(120 * time.Second)
 
