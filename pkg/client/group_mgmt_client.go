@@ -417,7 +417,7 @@ func waitForJobResult(jobId string, client *GroupMgmtClient) (interface{}, error
 
 			job, err := client.GetJobObjectSet().GetObject(jobId)
 			if err != nil {
-				fmt.Printf("Warning : failed to %s jobId info, err : %s", jobId, err.Error())
+				fmt.Printf("Warning : failed to get %s jobId info, err : %s\n", jobId, err.Error())
 			} else {
 				var objectId = *job.ObjectId
 				if string(*job.State) == string(*nimbleos.NsJobStatusDone) {
