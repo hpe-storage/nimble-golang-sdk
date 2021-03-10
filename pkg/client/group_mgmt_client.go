@@ -393,7 +393,7 @@ func processAsyncResponse(client *GroupMgmtClient, body []byte) (interface{}, er
 			}
 		}
 		if len(jobId) == 0 {
-			return nil, fmt.Errorf("http response error: status (202), but no job ID returned, messages: %v",errResp)
+			return nil, fmt.Errorf("http response error: status (202), but no job ID returned, messages: %v", errResp)
 		}
 
 		id, err := waitForJobResult(jobId, client)
