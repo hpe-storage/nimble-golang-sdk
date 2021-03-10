@@ -71,6 +71,10 @@ The SDK require Go version 1.13 or later. The SDK is coupled to the following Ni
 
 As future versions of NimbleOS and new endpoint services become available, the SDK will be updated.
 
+# Support
+
+HPE Nimble Storage SDK for Go is supported by HPE when used with HPE Nimble Storage arrays on valid support contracts. Please send an email to [support@nimblestorage.com](mailto:support@nimblestorage.com) to get started with any issue you might need assistance with. Engage with your HPE representative for other means on how to get in touch with Nimble support directly.
+
 # Contributing
 
 Contributing guidelines are available in [CONTRIBUTING](CONTRIBUTING.md)
