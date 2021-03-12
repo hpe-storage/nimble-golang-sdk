@@ -268,7 +268,7 @@ type Volume struct {
 	// PreFilter - Pre-filtering criteria.
 	PreFilter *string `json:"pre_filter,omitempty"`
 	// AvgStatsLast5mins - Average statistics in last 5 minutes.
-	AvgStatsLast5mins *NsAverageStats `json:"avg_stats_last_5mins,omitempty"`
+	AvgStatsLast5mins *NsAverageStats `json:"avg_stats_last5mins,omitempty"`
 	// SrepLastSync - Time when synchronously replicated volume was last synchronized.
 	SrepLastSync *int64 `json:"srep_last_sync,omitempty"`
 	// SrepResyncPercent - Percentage of resync progress for synchronously replicated volume.
