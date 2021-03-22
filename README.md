@@ -67,7 +67,7 @@ The SDK require Go version 1.13 or later. The SDK is coupled to the following Ni
 
 |          | Minimum version | Maximum version |
 | -------- | --------------- | --------------- |
-| NimbleOS | 5.0.10          | 5.3.1           |
+| NimbleOS | 5.0.10          | 5.3.2           |
 
 As future versions of NimbleOS and new endpoint services become available, the SDK will be updated.
 
