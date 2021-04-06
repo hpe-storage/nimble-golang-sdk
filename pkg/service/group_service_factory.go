@@ -57,6 +57,7 @@ type NsGroupService struct {
 	subscriberService                 *SubscriberService
 	subscriptionService               *SubscriptionService
 	tokenService                      *TokenService
+	trustedOauthIssuerService         *TrustedOauthIssuerService
 	userGroupService                  *UserGroupService
 	userPolicyService                 *UserPolicyService
 	userService                       *UserService
@@ -429,6 +430,14 @@ func (gs *NsGroupService) GetTokenService() (vs *TokenService) {
 		gs.tokenService = NewTokenService(gs)
 	}
 	return gs.tokenService
+}
+
+// GetTrustedOauthIssuerService - returns service of a type *TrustedOauthIssuerService
+func (gs *NsGroupService) GetTrustedOauthIssuerService() (vs *TrustedOauthIssuerService) {
+	if gs.trustedOauthIssuerService == nil {
+		gs.trustedOauthIssuerService = NewTrustedOauthIssuerService(gs)
+	}
+	return gs.trustedOauthIssuerService
 }
 
 // GetUserGroupService - returns service of a type *UserGroupService

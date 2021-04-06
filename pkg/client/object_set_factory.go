@@ -289,6 +289,13 @@ func (client *GroupMgmtClient) GetTokenObjectSet() *TokenObjectSet {
 	}
 }
 
+// TrustedOauthIssuerObjectSet returns a reference to the TrustedOauthIssuer object set
+func (client *GroupMgmtClient) GetTrustedOauthIssuerObjectSet() *TrustedOauthIssuerObjectSet {
+	return &TrustedOauthIssuerObjectSet{
+		Client: client,
+	}
+}
+
 // UserGroupObjectSet returns a reference to the UserGroup object set
 func (client *GroupMgmtClient) GetUserGroupObjectSet() *UserGroupObjectSet {
 	return &UserGroupObjectSet{

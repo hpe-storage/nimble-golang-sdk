@@ -47,4 +47,6 @@ type UninitializedArray struct {
 	CountOfFcPorts *int64 `json:"count_of_fc_ports,omitempty"`
 	// AllFlash - True if it is an All-Flash array, False otherwise.
 	AllFlash *bool `json:"all_flash,omitempty"`
+	// DedupeConfigurable - True if it is a hybrid array that is capable of updating data deduplication setting, False otherwise.
+	DedupeConfigurable *bool `json:"dedupe_configurable,omitempty"`
 }

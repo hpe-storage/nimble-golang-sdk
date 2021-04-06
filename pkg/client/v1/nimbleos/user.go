@@ -16,6 +16,8 @@ func init() {
 	AuthPasswordfield := "auth_password"
 	FullNamefield := "full_name"
 	EmailAddrfield := "email_addr"
+	TenantIdfield := "tenant_id"
+	TenantKeyfield := "tenant_key"
 
 	UserFields = &User{
 		ID:           &IDfield,
@@ -27,6 +29,8 @@ func init() {
 		AuthPassword: &AuthPasswordfield,
 		FullName:     &FullNamefield,
 		EmailAddr:    &EmailAddrfield,
+		TenantId:     &TenantIdfield,
+		TenantKey:    &TenantKeyfield,
 	}
 }
 
@@ -57,6 +61,10 @@ type User struct {
 	FullName *string `json:"full_name,omitempty"`
 	// EmailAddr - Email address of the user.
 	EmailAddr *string `json:"email_addr,omitempty"`
+	// TenantId - Identifier for the tenant.
+	TenantId *string `json:"tenant_id,omitempty"`
+	// TenantKey - Tenant secret key for encrypting the password.
+	TenantKey *string `json:"tenant_key,omitempty"`
 	// Disabled - User is currently disabled.
 	Disabled *bool `json:"disabled,omitempty"`
 	// AuthLock - User was locked due to failed logins.

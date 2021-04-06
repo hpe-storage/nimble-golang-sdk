@@ -76,6 +76,7 @@ const (
 	cNsErrorSmErrPassphraseAuth                           NsError = "SM_err_passphrase_auth"
 	cNsErrorSmDisableLastProtocol                         NsError = "SM_disable_last_protocol"
 	cNsErrorSmReplEexist                                  NsError = "SM_repl_eexist"
+	cNsErrorSmArrayAddExistingPoolDedupeNotConfigurable   NsError = "SM_array_add_existing_pool_dedupe_not_configurable"
 	cNsErrorSmSecondUntaggedAssignment                    NsError = "SM_second_untagged_assignment"
 	cNsErrorSmPoolHasPe                                   NsError = "SM_pool_has_pe"
 	cNsErrorSmErrShelfInvalidCount                        NsError = "SM_err_shelf_invalid_count"
@@ -243,6 +244,7 @@ const (
 	cNsErrorSmFolderOverdraftLimitNeedsUsageLimit         NsError = "SM_folder_overdraft_limit_needs_usage_limit"
 	cNsErrorSmSrepAgentTypeMismatchDownstreamVols         NsError = "SM_srep_agent_type_mismatch_downstream_vols"
 	cNsErrorSmEncryptionMasterKeyMissing                  NsError = "SM_encryption_master_key_missing"
+	cNsErrorSmArrayModelNotDedupeConfigurable             NsError = "SM_array_model_not_dedupe_configurable"
 	cNsErrorSmErrVolNotOfflineOnRestore                   NsError = "SM_err_vol_not_offline_on_restore"
 	cNsErrorSmReplHandoverBusy                            NsError = "SM_repl_handover_busy"
 	cNsErrorSmNotOwner                                    NsError = "SM_not_owner"
@@ -327,6 +329,7 @@ const (
 	cNsErrorSmHttpConflict                                NsError = "SM_http_conflict"
 	cNsErrorSmVvolFolderNoAppsrvr                         NsError = "SM_vvol_folder_no_appsrvr"
 	cNsErrorSmVolDedupeEncryptionInvalid                  NsError = "SM_vol_dedupe_encryption_invalid"
+	cNsErrorSmVolDedupeNotEnoughCache                     NsError = "SM_vol_dedupe_not_enough_cache"
 	cNsErrorSmArrayRenameInNetconfigFailed                NsError = "SM_array_rename_in_netconfig_failed"
 	cNsErrorSmInvalidInitiatorIp                          NsError = "SM_invalid_initiator_ip"
 	cNsErrorSmDuplicateVol                                NsError = "SM_duplicate_vol"
@@ -440,6 +443,7 @@ const (
 	cNsErrorSmPoolCachePinNotsupp                         NsError = "SM_pool_cache_pin_notsupp"
 	cNsErrorSmUsageUnavailable                            NsError = "SM_usage_unavailable"
 	cNsErrorSmReplAgentTypeUnsup                          NsError = "SM_repl_agent_type_unsup"
+	cNsErrorSmPoolDedupeInvalidFdr                        NsError = "SM_pool_dedupe_invalid_fdr"
 	cNsErrorSmReplFanoutMaximumPartnersExceeded           NsError = "SM_repl_fanout_maximum_partners_exceeded"
 	cNsErrorSmAsupPingfromCtrlraError                     NsError = "SM_asup_pingfrom_ctrlrA_error"
 	cNsErrorSmSyncReplConfigure                           NsError = "SM_sync_repl_configure"
@@ -452,6 +456,7 @@ const (
 	cNsErrorSmErrShelfLocOrder                            NsError = "SM_err_shelf_loc_order"
 	cNsErrorSmFolderEnospace                              NsError = "SM_folder_enospace"
 	cNsErrorSmErrPoolHasGroupPartners                     NsError = "SM_err_pool_has_group_partners"
+	cNsErrorSmPoolDedupeInvalidCap                        NsError = "SM_pool_dedupe_invalid_cap"
 	cNsErrorSmProtpolNotSpecified                         NsError = "SM_protpol_not_specified"
 	cNsErrorSmUnexpectedQueryParam                        NsError = "SM_unexpected_query_param"
 	cNsErrorSmFcIntfAlreadyInState                        NsError = "SM_fc_intf_already_in_state"
@@ -473,6 +478,7 @@ const (
 	cNsErrorSmNoDataIpSpecified                           NsError = "SM_no_data_ip_specified"
 	cNsErrorSmInvalidVolAssoc                             NsError = "SM_invalid_vol_assoc"
 	cNsErrorSmReplObjectBusy                              NsError = "SM_repl_object_busy"
+	cNsErrorSmPoolDedupeData                              NsError = "SM_pool_dedupe_data"
 	cNsErrorSmVolcollOwner                                NsError = "SM_volcoll_owner"
 	cNsErrorSmVvolsnapOnline                              NsError = "SM_vvolsnap_online"
 	cNsErrorSmReservedUsername                            NsError = "SM_reserved_username"
@@ -588,6 +594,7 @@ var pNsErrorSmDefaultGatewayNotInMgmtSubnet NsError
 var pNsErrorSmErrPassphraseAuth NsError
 var pNsErrorSmDisableLastProtocol NsError
 var pNsErrorSmReplEexist NsError
+var pNsErrorSmArrayAddExistingPoolDedupeNotConfigurable NsError
 var pNsErrorSmSecondUntaggedAssignment NsError
 var pNsErrorSmPoolHasPe NsError
 var pNsErrorSmErrShelfInvalidCount NsError
@@ -755,6 +762,7 @@ var pNsErrorSmShelfSsdDegraded NsError
 var pNsErrorSmFolderOverdraftLimitNeedsUsageLimit NsError
 var pNsErrorSmSrepAgentTypeMismatchDownstreamVols NsError
 var pNsErrorSmEncryptionMasterKeyMissing NsError
+var pNsErrorSmArrayModelNotDedupeConfigurable NsError
 var pNsErrorSmErrVolNotOfflineOnRestore NsError
 var pNsErrorSmReplHandoverBusy NsError
 var pNsErrorSmNotOwner NsError
@@ -839,6 +847,7 @@ var pNsErrorSmSrvUpdatePrecheck NsError
 var pNsErrorSmHttpConflict NsError
 var pNsErrorSmVvolFolderNoAppsrvr NsError
 var pNsErrorSmVolDedupeEncryptionInvalid NsError
+var pNsErrorSmVolDedupeNotEnoughCache NsError
 var pNsErrorSmArrayRenameInNetconfigFailed NsError
 var pNsErrorSmInvalidInitiatorIp NsError
 var pNsErrorSmDuplicateVol NsError
@@ -952,6 +961,7 @@ var pNsErrorSmExtraneousArrayNetconfig NsError
 var pNsErrorSmPoolCachePinNotsupp NsError
 var pNsErrorSmUsageUnavailable NsError
 var pNsErrorSmReplAgentTypeUnsup NsError
+var pNsErrorSmPoolDedupeInvalidFdr NsError
 var pNsErrorSmReplFanoutMaximumPartnersExceeded NsError
 var pNsErrorSmAsupPingfromCtrlraError NsError
 var pNsErrorSmSyncReplConfigure NsError
@@ -964,6 +974,7 @@ var pNsErrorSmPartnerSubnetDoesNotExist NsError
 var pNsErrorSmErrShelfLocOrder NsError
 var pNsErrorSmFolderEnospace NsError
 var pNsErrorSmErrPoolHasGroupPartners NsError
+var pNsErrorSmPoolDedupeInvalidCap NsError
 var pNsErrorSmProtpolNotSpecified NsError
 var pNsErrorSmUnexpectedQueryParam NsError
 var pNsErrorSmFcIntfAlreadyInState NsError
@@ -985,6 +996,7 @@ var pNsErrorSmExtTrigSchedAlreadyPresent NsError
 var pNsErrorSmNoDataIpSpecified NsError
 var pNsErrorSmInvalidVolAssoc NsError
 var pNsErrorSmReplObjectBusy NsError
+var pNsErrorSmPoolDedupeData NsError
 var pNsErrorSmVolcollOwner NsError
 var pNsErrorSmVvolsnapOnline NsError
 var pNsErrorSmReservedUsername NsError
@@ -1238,6 +1250,9 @@ var NsErrorSmDisableLastProtocol *NsError
 
 // NsErrorSmReplEexist enum exports
 var NsErrorSmReplEexist *NsError
+
+// NsErrorSmArrayAddExistingPoolDedupeNotConfigurable enum exports
+var NsErrorSmArrayAddExistingPoolDedupeNotConfigurable *NsError
 
 // NsErrorSmSecondUntaggedAssignment enum exports
 var NsErrorSmSecondUntaggedAssignment *NsError
@@ -1740,6 +1755,9 @@ var NsErrorSmSrepAgentTypeMismatchDownstreamVols *NsError
 // NsErrorSmEncryptionMasterKeyMissing enum exports
 var NsErrorSmEncryptionMasterKeyMissing *NsError
 
+// NsErrorSmArrayModelNotDedupeConfigurable enum exports
+var NsErrorSmArrayModelNotDedupeConfigurable *NsError
+
 // NsErrorSmErrVolNotOfflineOnRestore enum exports
 var NsErrorSmErrVolNotOfflineOnRestore *NsError
 
@@ -1991,6 +2009,9 @@ var NsErrorSmVvolFolderNoAppsrvr *NsError
 
 // NsErrorSmVolDedupeEncryptionInvalid enum exports
 var NsErrorSmVolDedupeEncryptionInvalid *NsError
+
+// NsErrorSmVolDedupeNotEnoughCache enum exports
+var NsErrorSmVolDedupeNotEnoughCache *NsError
 
 // NsErrorSmArrayRenameInNetconfigFailed enum exports
 var NsErrorSmArrayRenameInNetconfigFailed *NsError
@@ -2331,6 +2352,9 @@ var NsErrorSmUsageUnavailable *NsError
 // NsErrorSmReplAgentTypeUnsup enum exports
 var NsErrorSmReplAgentTypeUnsup *NsError
 
+// NsErrorSmPoolDedupeInvalidFdr enum exports
+var NsErrorSmPoolDedupeInvalidFdr *NsError
+
 // NsErrorSmReplFanoutMaximumPartnersExceeded enum exports
 var NsErrorSmReplFanoutMaximumPartnersExceeded *NsError
 
@@ -2366,6 +2390,9 @@ var NsErrorSmFolderEnospace *NsError
 
 // NsErrorSmErrPoolHasGroupPartners enum exports
 var NsErrorSmErrPoolHasGroupPartners *NsError
+
+// NsErrorSmPoolDedupeInvalidCap enum exports
+var NsErrorSmPoolDedupeInvalidCap *NsError
 
 // NsErrorSmProtpolNotSpecified enum exports
 var NsErrorSmProtpolNotSpecified *NsError
@@ -2429,6 +2456,9 @@ var NsErrorSmInvalidVolAssoc *NsError
 
 // NsErrorSmReplObjectBusy enum exports
 var NsErrorSmReplObjectBusy *NsError
+
+// NsErrorSmPoolDedupeData enum exports
+var NsErrorSmPoolDedupeData *NsError
 
 // NsErrorSmVolcollOwner enum exports
 var NsErrorSmVolcollOwner *NsError
@@ -2769,6 +2799,9 @@ func init() {
 
 	pNsErrorSmReplEexist = cNsErrorSmReplEexist
 	NsErrorSmReplEexist = &pNsErrorSmReplEexist
+
+	pNsErrorSmArrayAddExistingPoolDedupeNotConfigurable = cNsErrorSmArrayAddExistingPoolDedupeNotConfigurable
+	NsErrorSmArrayAddExistingPoolDedupeNotConfigurable = &pNsErrorSmArrayAddExistingPoolDedupeNotConfigurable
 
 	pNsErrorSmSecondUntaggedAssignment = cNsErrorSmSecondUntaggedAssignment
 	NsErrorSmSecondUntaggedAssignment = &pNsErrorSmSecondUntaggedAssignment
@@ -3271,6 +3304,9 @@ func init() {
 	pNsErrorSmEncryptionMasterKeyMissing = cNsErrorSmEncryptionMasterKeyMissing
 	NsErrorSmEncryptionMasterKeyMissing = &pNsErrorSmEncryptionMasterKeyMissing
 
+	pNsErrorSmArrayModelNotDedupeConfigurable = cNsErrorSmArrayModelNotDedupeConfigurable
+	NsErrorSmArrayModelNotDedupeConfigurable = &pNsErrorSmArrayModelNotDedupeConfigurable
+
 	pNsErrorSmErrVolNotOfflineOnRestore = cNsErrorSmErrVolNotOfflineOnRestore
 	NsErrorSmErrVolNotOfflineOnRestore = &pNsErrorSmErrVolNotOfflineOnRestore
 
@@ -3522,6 +3558,9 @@ func init() {
 
 	pNsErrorSmVolDedupeEncryptionInvalid = cNsErrorSmVolDedupeEncryptionInvalid
 	NsErrorSmVolDedupeEncryptionInvalid = &pNsErrorSmVolDedupeEncryptionInvalid
+
+	pNsErrorSmVolDedupeNotEnoughCache = cNsErrorSmVolDedupeNotEnoughCache
+	NsErrorSmVolDedupeNotEnoughCache = &pNsErrorSmVolDedupeNotEnoughCache
 
 	pNsErrorSmArrayRenameInNetconfigFailed = cNsErrorSmArrayRenameInNetconfigFailed
 	NsErrorSmArrayRenameInNetconfigFailed = &pNsErrorSmArrayRenameInNetconfigFailed
@@ -3862,6 +3901,9 @@ func init() {
 	pNsErrorSmReplAgentTypeUnsup = cNsErrorSmReplAgentTypeUnsup
 	NsErrorSmReplAgentTypeUnsup = &pNsErrorSmReplAgentTypeUnsup
 
+	pNsErrorSmPoolDedupeInvalidFdr = cNsErrorSmPoolDedupeInvalidFdr
+	NsErrorSmPoolDedupeInvalidFdr = &pNsErrorSmPoolDedupeInvalidFdr
+
 	pNsErrorSmReplFanoutMaximumPartnersExceeded = cNsErrorSmReplFanoutMaximumPartnersExceeded
 	NsErrorSmReplFanoutMaximumPartnersExceeded = &pNsErrorSmReplFanoutMaximumPartnersExceeded
 
@@ -3897,6 +3939,9 @@ func init() {
 
 	pNsErrorSmErrPoolHasGroupPartners = cNsErrorSmErrPoolHasGroupPartners
 	NsErrorSmErrPoolHasGroupPartners = &pNsErrorSmErrPoolHasGroupPartners
+
+	pNsErrorSmPoolDedupeInvalidCap = cNsErrorSmPoolDedupeInvalidCap
+	NsErrorSmPoolDedupeInvalidCap = &pNsErrorSmPoolDedupeInvalidCap
 
 	pNsErrorSmProtpolNotSpecified = cNsErrorSmProtpolNotSpecified
 	NsErrorSmProtpolNotSpecified = &pNsErrorSmProtpolNotSpecified
@@ -3960,6 +4005,9 @@ func init() {
 
 	pNsErrorSmReplObjectBusy = cNsErrorSmReplObjectBusy
 	NsErrorSmReplObjectBusy = &pNsErrorSmReplObjectBusy
+
+	pNsErrorSmPoolDedupeData = cNsErrorSmPoolDedupeData
+	NsErrorSmPoolDedupeData = &pNsErrorSmPoolDedupeData
 
 	pNsErrorSmVolcollOwner = cNsErrorSmVolcollOwner
 	NsErrorSmVolcollOwner = &pNsErrorSmVolcollOwner

@@ -13,6 +13,7 @@ func init() {
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
 	Passwordfield := "password"
+	TenantIdfield := "tenant_id"
 
 	ChapUserFields = &ChapUser{
 		ID:          &IDfield,
@@ -21,6 +22,7 @@ func init() {
 		SearchName:  &SearchNamefield,
 		Description: &Descriptionfield,
 		Password:    &Passwordfield,
+		TenantId:    &TenantIdfield,
 	}
 }
 
@@ -39,6 +41,8 @@ type ChapUser struct {
 	Password *string `json:"password,omitempty"`
 	// InitiatorIqns - List of iSCSI initiators. To be configured with this CHAP user for iSCSI Group Target CHAP authentication. This attribute cannot be modified at the same time with other attributes. If any specified initiator is already associated with another CHAP user, it will be replaced by this CHAP user for future CHAP authentication.
 	InitiatorIqns []*NsISCSIIQN `json:"initiator_iqns,omitempty"`
+	// TenantId - Identifier for the tenant.
+	TenantId *string `json:"tenant_id,omitempty"`
 	// CreationTime - Time when this CHAP user was created.
 	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this CHAP user was last modified.

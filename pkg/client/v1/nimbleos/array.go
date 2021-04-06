@@ -115,6 +115,8 @@ type Array struct {
 	DedupeUsageBytes *int64 `json:"dedupe_usage_bytes,omitempty"`
 	// IsFullyDedupeCapable - Is array fully capable to dedupe its usable capacity.
 	IsFullyDedupeCapable *bool `json:"is_fully_dedupe_capable,omitempty"`
+	// DedupeDisabled - Is data deduplication disabled for this array.
+	DedupeDisabled *bool `json:"dedupe_disabled,omitempty"`
 	// ExtendedModel - Extended model of the array.
 	ExtendedModel *string `json:"extended_model,omitempty"`
 	// IsSupportedHwConfig - Whether it is a supported hardware config.
