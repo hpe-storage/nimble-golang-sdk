@@ -31,6 +31,8 @@ var sourceArrayUsername = flag.String("sourceArrayUsername", "xxx", "Source arra
 
 var sourceArrayPassword = flag.String("sourceArrayPassword", "xxx", "Source array password")
 
+var pushResultToDB = true
+
 func config() (*service.NsGroupService, error) {
 	groupService, err := service.NewNsGroupService(*arrayIP, *arrayUsername, *arrayPassword, "v1", true)
 	if err != nil {
