@@ -61,21 +61,28 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-// NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
-	// Create GroupMgmt Client
-	client := resty.New()
-	client.SetTLSClientConfig(&tls.Config{
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) *GroupMgmtClient {
+	// Get new resty()
+	restyClient := resty.New()
+	restyClient.SetTLSClientConfig(&tls.Config{
 		InsecureSkipVerify: true,
 	})
+
+	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
 		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
-		Client:    client,
+		Client:    restyClient,
 		WaitOnJob: waitOnJobs,
 		Username:  username,
 		Password:  password,
 	}
+	return groupMgmtClient
+}
 
+// NewClient instantiates a new client to communicate with the Nimble group
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
+	// Get resty client
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs)
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)
 	if err != nil {
@@ -83,24 +90,34 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 	}
 	groupMgmtClient.SessionToken = sessionToken
 
+	// Login retry counter
+	loginRetry := 0
 	// Add retryCondition
 	groupMgmtClient.Client.
-		SetRetryCount(maxOpsRetries).
 		AddRetryCondition(
 			func(resp *resty.Response, err error) bool {
+
 				if err == nil && resp.StatusCode() == 401 {
 					// login again and refreh the session token
-					sessionToken, err = groupMgmtClient.login(username, password)
-					if err != nil {
+					loginRetry++
+					if loginRetry == maxLoginRetries {
+						// exhausted the login attempt. backoff now .
 						return false
 					}
+					newGroupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs)
+					sessionToken, err = newGroupMgmtClient.login(username, password)
+					if err != nil {
+						// returning true would retry the login again with new instance of group mgmt client
+						return true
+					}
+					// replace the original client session token with new session token
 					groupMgmtClient.SessionToken = sessionToken
 					resp.Request.SetHeader("X-Auth-Token", groupMgmtClient.SessionToken)
-					return true
+					return false
 				}
 				return false
 			},
-		)
+		).SetRetryCount(1)
 	return groupMgmtClient, nil
 }
 
