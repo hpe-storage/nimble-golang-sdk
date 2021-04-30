@@ -21,7 +21,6 @@ const (
 	jobTimeout      = time.Second * 300 // 5 Minute
 	jobPollInterval = 5 * time.Second   // Second
 	smAsyncJobId    = "SM_async_job_id"
-	maxOpsRetries   = 2
 )
 
 // GroupMgmtClient :
