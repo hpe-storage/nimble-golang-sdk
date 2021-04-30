@@ -17,11 +17,10 @@ import (
 const (
 	groupURIFmt     = "https://%s:5392/%s"
 	clientTimeout   = time.Second * 60 // 1 Minute
-	maxLoginRetries = 5
+	maxLoginRetries = 1
 	jobTimeout      = time.Second * 300 // 5 Minute
 	jobPollInterval = 5 * time.Second   // Second
 	smAsyncJobId    = "SM_async_job_id"
-	maxOpsRetries   = 2
 )
 
 // GroupMgmtClient :
@@ -61,21 +60,28 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-// NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
-	// Create GroupMgmt Client
-	client := resty.New()
-	client.SetTLSClientConfig(&tls.Config{
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) *GroupMgmtClient {
+	// Get new resty()
+	restyClient := resty.New()
+	restyClient.SetTLSClientConfig(&tls.Config{
 		InsecureSkipVerify: true,
 	})
+
+	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
 		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
-		Client:    client,
+		Client:    restyClient,
 		WaitOnJob: waitOnJobs,
 		Username:  username,
 		Password:  password,
 	}
+	return groupMgmtClient
+}
 
+// NewClient instantiates a new client to communicate with the Nimble group
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
+	// Get resty client
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs)
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)
 	if err != nil {
@@ -84,23 +90,30 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 	groupMgmtClient.SessionToken = sessionToken
 
 	// Add retryCondition
+	// This flag is set during a relogin attempt to prevent retry recursion
+	reloginInProgress := false
+
+	// Add a retry condition to perform a relogin if the session has expired
 	groupMgmtClient.Client.
-		SetRetryCount(maxOpsRetries).
 		AddRetryCondition(
 			func(resp *resty.Response, err error) bool {
-				if err == nil && resp.StatusCode() == 401 {
-					// login again and refreh the session token
+				// Attempt relogin on an authorization error if relogin is not already in progress
+				if err == nil && resp.StatusCode() == 401 && !reloginInProgress {
+					reloginInProgress = true
 					sessionToken, err = groupMgmtClient.login(username, password)
+					reloginInProgress = false
 					if err != nil {
 						return false
 					}
+
+					// replace the original client session token with new session token
 					groupMgmtClient.SessionToken = sessionToken
 					resp.Request.SetHeader("X-Auth-Token", groupMgmtClient.SessionToken)
 					return true
 				}
 				return false
 			},
-		)
+		).SetRetryCount(maxLoginRetries)
 	return groupMgmtClient, nil
 }
 
