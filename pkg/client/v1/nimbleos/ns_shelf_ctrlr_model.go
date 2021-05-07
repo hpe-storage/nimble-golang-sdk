@@ -11,6 +11,7 @@ const (
 	cNsShelfCtrlrModelHeadGen52u NsShelfCtrlrModel = "head_gen5_2u"
 	cNsShelfCtrlrModelEs24u      NsShelfCtrlrModel = "es2_4u"
 	cNsShelfCtrlrModelHeadVmware NsShelfCtrlrModel = "head_vmware"
+	cNsShelfCtrlrModelHeadGen6   NsShelfCtrlrModel = "head_gen6"
 	cNsShelfCtrlrModelEs13u      NsShelfCtrlrModel = "es1_3u"
 	cNsShelfCtrlrModelHeadX92u   NsShelfCtrlrModel = "head_x9_2u"
 	cNsShelfCtrlrModelHeadX10    NsShelfCtrlrModel = "head_x10"
@@ -24,6 +25,7 @@ var pNsShelfCtrlrModelHeadX8 NsShelfCtrlrModel
 var pNsShelfCtrlrModelHeadGen52u NsShelfCtrlrModel
 var pNsShelfCtrlrModelEs24u NsShelfCtrlrModel
 var pNsShelfCtrlrModelHeadVmware NsShelfCtrlrModel
+var pNsShelfCtrlrModelHeadGen6 NsShelfCtrlrModel
 var pNsShelfCtrlrModelEs13u NsShelfCtrlrModel
 var pNsShelfCtrlrModelHeadX92u NsShelfCtrlrModel
 var pNsShelfCtrlrModelHeadX10 NsShelfCtrlrModel
@@ -45,6 +47,9 @@ var NsShelfCtrlrModelEs24u *NsShelfCtrlrModel
 
 // NsShelfCtrlrModelHeadVmware enum exports
 var NsShelfCtrlrModelHeadVmware *NsShelfCtrlrModel
+
+// NsShelfCtrlrModelHeadGen6 enum exports
+var NsShelfCtrlrModelHeadGen6 *NsShelfCtrlrModel
 
 // NsShelfCtrlrModelEs13u enum exports
 var NsShelfCtrlrModelEs13u *NsShelfCtrlrModel
@@ -79,6 +84,9 @@ func init() {
 
 	pNsShelfCtrlrModelHeadVmware = cNsShelfCtrlrModelHeadVmware
 	NsShelfCtrlrModelHeadVmware = &pNsShelfCtrlrModelHeadVmware
+
+	pNsShelfCtrlrModelHeadGen6 = cNsShelfCtrlrModelHeadGen6
+	NsShelfCtrlrModelHeadGen6 = &pNsShelfCtrlrModelHeadGen6
 
 	pNsShelfCtrlrModelEs13u = cNsShelfCtrlrModelEs13u
 	NsShelfCtrlrModelEs13u = &pNsShelfCtrlrModelEs13u

@@ -53,6 +53,7 @@ const (
 	cNsObjectTypeVol                   NsObjectType = "vol"
 	cNsObjectTypeFcInitiatorAlias      NsObjectType = "fc_initiator_alias"
 	cNsObjectTypeArray                 NsObjectType = "array"
+	cNsObjectTypeTrustedOauthIssuer    NsObjectType = "trusted_oauth_issuer"
 	cNsObjectTypeAlarm                 NsObjectType = "alarm"
 	cNsObjectTypeFcPort                NsObjectType = "fc_port"
 	cNsObjectTypeProtocolEndpoint      NsObjectType = "protocol_endpoint"
@@ -115,6 +116,7 @@ var pNsObjectTypeNetconfig NsObjectType
 var pNsObjectTypeVol NsObjectType
 var pNsObjectTypeFcInitiatorAlias NsObjectType
 var pNsObjectTypeArray NsObjectType
+var pNsObjectTypeTrustedOauthIssuer NsObjectType
 var pNsObjectTypeAlarm NsObjectType
 var pNsObjectTypeFcPort NsObjectType
 var pNsObjectTypeProtocolEndpoint NsObjectType
@@ -269,6 +271,9 @@ var NsObjectTypeFcInitiatorAlias *NsObjectType
 
 // NsObjectTypeArray enum exports
 var NsObjectTypeArray *NsObjectType
+
+// NsObjectTypeTrustedOauthIssuer enum exports
+var NsObjectTypeTrustedOauthIssuer *NsObjectType
 
 // NsObjectTypeAlarm enum exports
 var NsObjectTypeAlarm *NsObjectType
@@ -450,6 +455,9 @@ func init() {
 
 	pNsObjectTypeArray = cNsObjectTypeArray
 	NsObjectTypeArray = &pNsObjectTypeArray
+
+	pNsObjectTypeTrustedOauthIssuer = cNsObjectTypeTrustedOauthIssuer
+	NsObjectTypeTrustedOauthIssuer = &pNsObjectTypeTrustedOauthIssuer
 
 	pNsObjectTypeAlarm = cNsObjectTypeAlarm
 	NsObjectTypeAlarm = &pNsObjectTypeAlarm

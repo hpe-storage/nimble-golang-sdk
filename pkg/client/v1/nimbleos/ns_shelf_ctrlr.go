@@ -39,6 +39,8 @@ type NsShelfCtrlr struct {
 	FanOverallStatus *NsShelfSensorState `json:"fan_overall_status,omitempty"`
 	// TempOverallStatus - The overall status for the temperature of this controller.
 	TempOverallStatus *NsShelfSensorState `json:"temp_overall_status,omitempty"`
+	// PsuOverallStatus - The overall status for the PSU on this controller.
+	PsuOverallStatus *NsShelfSensorState `json:"psu_overall_status,omitempty"`
 	// CtrlrHwModel - Controller hardware model.
 	CtrlrHwModel *NsShelfCtrlrModel `json:"ctrlr_hw_model,omitempty"`
 	// PortInfo - Port info for each SAS port.

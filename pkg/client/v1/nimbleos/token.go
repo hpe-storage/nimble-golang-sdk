@@ -15,6 +15,8 @@ func init() {
 	SdkNamefield := "sdk_name"
 	SourceIpfield := "source_ip"
 	ServerUuidfield := "server_uuid"
+	GrantTypefield := "grant_type"
+	Assertionfield := "assertion"
 
 	TokenFields = &Token{
 		ID:           &IDfield,
@@ -25,6 +27,8 @@ func init() {
 		SdkName:      &SdkNamefield,
 		SourceIp:     &SourceIpfield,
 		ServerUuid:   &ServerUuidfield,
+		GrantType:    &GrantTypefield,
+		Assertion:    &Assertionfield,
 	}
 }
 
@@ -51,4 +55,8 @@ type Token struct {
 	ExpiryTime *int64 `json:"expiry_time,omitempty"`
 	// ServerUuid - Non mandatory 36 character uuid returned by the server. Currently only the witness REST server returns one.
 	ServerUuid *string `json:"server_uuid,omitempty"`
+	// GrantType - OAuth grant type, currently only support 'urn:ietf:params:oauth:grant-type:jwt-bearer'.
+	GrantType *string `json:"grant_type,omitempty"`
+	// Assertion - OAuth assertion, currently expecting a JWT token.
+	Assertion *string `json:"assertion,omitempty"`
 }

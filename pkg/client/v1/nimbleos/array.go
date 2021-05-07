@@ -17,6 +17,8 @@ func init() {
 	Serialfield := "serial"
 	Versionfield := "version"
 	ExtendedModelfield := "extended_model"
+	Oemfield := "oem"
+	Brandfield := "brand"
 	PoolDescriptionfield := "pool_description"
 	CtrlrASupportIpfield := "ctrlr_a_support_ip"
 	CtrlrBSupportIpfield := "ctrlr_b_support_ip"
@@ -34,6 +36,8 @@ func init() {
 		Serial:          &Serialfield,
 		Version:         &Versionfield,
 		ExtendedModel:   &ExtendedModelfield,
+		Oem:             &Oemfield,
+		Brand:           &Brandfield,
 		PoolDescription: &PoolDescriptionfield,
 		CtrlrASupportIp: &CtrlrASupportIpfield,
 		CtrlrBSupportIp: &CtrlrBSupportIpfield,
@@ -115,8 +119,14 @@ type Array struct {
 	DedupeUsageBytes *int64 `json:"dedupe_usage_bytes,omitempty"`
 	// IsFullyDedupeCapable - Is array fully capable to dedupe its usable capacity.
 	IsFullyDedupeCapable *bool `json:"is_fully_dedupe_capable,omitempty"`
+	// DedupeDisabled - Is data deduplication disabled for this array.
+	DedupeDisabled *bool `json:"dedupe_disabled,omitempty"`
 	// ExtendedModel - Extended model of the array.
 	ExtendedModel *string `json:"extended_model,omitempty"`
+	// Oem - OEM brand of the array.
+	Oem *string `json:"oem,omitempty"`
+	// Brand - Brand of the array.
+	Brand *string `json:"brand,omitempty"`
 	// IsSupportedHwConfig - Whether it is a supported hardware config.
 	IsSupportedHwConfig *bool `json:"is_supported_hw_config,omitempty"`
 	// GigNicPortCount - Count of 1G NIC Ports installed on the array.
