@@ -201,6 +201,8 @@ type Group struct {
 	VssValidationTimeout *int64 `json:"vss_validation_timeout,omitempty"`
 	// AutoSwitchoverEnabled - Whether automatic switchover of Group management services feature is enabled.
 	AutoSwitchoverEnabled *bool `json:"auto_switchover_enabled,omitempty"`
+	// SoftwareSubscriptionEnabled - Whether software subscription of Group management services feature is enabled.
+	SoftwareSubscriptionEnabled *bool `json:"software_subscription_enabled,omitempty"`
 	// AutoSwitchoverMessages - List of validation messages for automatic switchover of Group Management. This will be empty when there are no conflicts found.
 	AutoSwitchoverMessages []*NsErrorWithArguments `json:"auto_switchover_messages,omitempty"`
 	// MergeState - State of group merge.

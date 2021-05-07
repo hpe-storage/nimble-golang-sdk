@@ -10,6 +10,7 @@ const (
 	cNsEventCategoryVolume        NsEventCategory = "volume"
 	cNsEventCategorySecurity      NsEventCategory = "security"
 	cNsEventCategoryTest          NsEventCategory = "test"
+	cNsEventCategoryCloudConsole  NsEventCategory = "cloud_console"
 	cNsEventCategoryConfiguration NsEventCategory = "configuration"
 	cNsEventCategoryService       NsEventCategory = "service"
 	cNsEventCategoryUpdate        NsEventCategory = "update"
@@ -22,6 +23,7 @@ var pNsEventCategoryReplication NsEventCategory
 var pNsEventCategoryVolume NsEventCategory
 var pNsEventCategorySecurity NsEventCategory
 var pNsEventCategoryTest NsEventCategory
+var pNsEventCategoryCloudConsole NsEventCategory
 var pNsEventCategoryConfiguration NsEventCategory
 var pNsEventCategoryService NsEventCategory
 var pNsEventCategoryUpdate NsEventCategory
@@ -40,6 +42,9 @@ var NsEventCategorySecurity *NsEventCategory
 
 // NsEventCategoryTest enum exports
 var NsEventCategoryTest *NsEventCategory
+
+// NsEventCategoryCloudConsole enum exports
+var NsEventCategoryCloudConsole *NsEventCategory
 
 // NsEventCategoryConfiguration enum exports
 var NsEventCategoryConfiguration *NsEventCategory
@@ -71,6 +76,9 @@ func init() {
 
 	pNsEventCategoryTest = cNsEventCategoryTest
 	NsEventCategoryTest = &pNsEventCategoryTest
+
+	pNsEventCategoryCloudConsole = cNsEventCategoryCloudConsole
+	NsEventCategoryCloudConsole = &pNsEventCategoryCloudConsole
 
 	pNsEventCategoryConfiguration = cNsEventCategoryConfiguration
 	NsEventCategoryConfiguration = &pNsEventCategoryConfiguration
