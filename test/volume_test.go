@@ -14,8 +14,7 @@ import (
 )
 
 const volumeName = "VolumeTest"
-var testResult = "PASS"
-var result ="PASS"
+
 
 type VolumeWorkflowSuite struct {
 	suite.Suite
@@ -25,15 +24,7 @@ type VolumeWorkflowSuite struct {
 	volcollService      *service.VolumeCollectionService
 	initiatorGrpService *service.InitiatorGroupService
 }
-func (suite *VolumeWorkflowSuite) SetupTest() {
-    fmt.Println("SetupTest")
-	if testResult == "PASS" && result == "PASS" {
-	testResult = "PASS"	
-	} else {
-		testResult = "FAIL"
-	}
-	fmt.Println(testResult)    
-}
+
 func (suite *VolumeWorkflowSuite) SetupSuite() {
 	fmt.Printf("setting up suite\n")
 	groupService, err := config()
@@ -53,18 +44,22 @@ func (suite *VolumeWorkflowSuite) SetupSuite() {
 
 
 func (suite *VolumeWorkflowSuite) TearDownSuite() {
-	
-	if testResult == "PASS" && result == "PASS" {
-		testResult = "PASS"	
+			
+	var volumeTestResult string		
+	if len(testStarted) == len(testCompleted){
+		volumeTestResult ="PASS"
 	} else {
-			testResult = "FAIL"
+		volumeTestResult = "FAIL"
 	}
-	fmt.Println("teardo testResult")
-	fmt.Println(testResult)
-	if pushResultToDB == true {
-	pushResultToDashboard(testResult,"C545072","Volume workflow")
+	fmt.Println("Volume Test Result")
+	fmt.Println(volumeTestResult)
+	if postResultToDashboard == true {
+	pushResultToDashboard(volumeTestResult,"C545072","Volume workflow")
 	}
-	fmt.Printf("tear down up suite\n")
+	//cleanup test result
+	testStarted = testStarted[:0]
+	testCompleted = testCompleted[:0]
+	fmt.Printf("Tear down suite\n")
 	suite.deleteVolume(volumeName)
 	err := deleteDefaultInitiatorGroup(suite.initiatorGrpService)
 	require.Nilf(suite.T(), err, "Unable to delete default initiator group, err: %v", err)
@@ -95,30 +90,30 @@ func (suite *VolumeWorkflowSuite) createVolume() {
 	require.Equal(suite.T(), sizeField, *vol.Size, "Size was not set correctly")
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeCreateWithMissParams() {
-	result ="FAIL"
+func (suite *VolumeWorkflowSuite) TestVolumeCreateWithMissParams() {	
+	testStarted = append(testStarted,true)
 	newVolume := &nimbleos.Volume{
 		Name: param.NewString(volumeName),
 	}
 	_, err := suite.volumeService.CreateVolume(newVolume)
-	require.NotNil(suite.T(), err, "Volume creation should have failed")
-	result = "PASS"
+	require.NotNil(suite.T(), err, "Volume creation should have failed")	
+	testCompleted = append(testCompleted,true)
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeCreateDuplicate() {
-	result ="FAIL"
+func (suite *VolumeWorkflowSuite) TestVolumeCreateDuplicate() {	
+	testStarted = append(testStarted,true)
 	var sizeField int64 = 5120
 	newVolume := &nimbleos.Volume{
 		Name: param.NewString(volumeName),
 		Size: &sizeField,
 	}
 	_, err := suite.volumeService.CreateVolume(newVolume)
-	require.NotNil(suite.T(), err, "Creating duplicate volume should have failed")
-	result = "PASS"
+	require.NotNil(suite.T(), err, "Creating duplicate volume should have failed")	
+	testCompleted = append(testCompleted,true)
 }
 
-func (suite *VolumeWorkflowSuite) TestCreateVolumeByCloning() {
-	result ="FAIL"
+func (suite *VolumeWorkflowSuite) TestCreateVolumeByCloning() {	
+	testStarted = append(testStarted,true)
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if vol != nil {
 		newSnapshot := &nimbleos.Snapshot{
@@ -139,13 +134,13 @@ func (suite *VolumeWorkflowSuite) TestCreateVolumeByCloning() {
 		_, err = suite.volumeService.OfflineVolume(*cloneVol.ID, true)
 		require.Nilf(suite.T(), err, "Unable to offline volume, err: %v", err)
 		err = suite.volumeService.DeleteVolume(*cloneVol.ID)
-		require.Nilf(suite.T(), err, "Unable to delete volume, err: %v", err)
-		result = "PASS"
+		require.Nilf(suite.T(), err, "Unable to delete volume, err: %v", err)		
+		testCompleted = append(testCompleted,true)
 	}
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeUpdateSize() {
-	result ="FAIL"
+func (suite *VolumeWorkflowSuite) TestVolumeUpdateSize() {	
+	testStarted = append(testStarted,true)
 	var sizeIncField int64 = 10240
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
@@ -168,20 +163,20 @@ func (suite *VolumeWorkflowSuite) TestVolumeUpdateSize() {
 	}
 	if vol != nil {
 		_, err := suite.volumeService.UpdateVolume(*vol.ID, newVolume)
-		require.NotNil(suite.T(), err, "Decreasing volume size without force should have failed")
-		result = "PASS"
+		require.NotNil(suite.T(), err, "Decreasing volume size without force should have failed")		
+		testCompleted = append(testCompleted,true)
 	}
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeUpdateOfflineVolume() {		
-	result = "FAIL"
+func (suite *VolumeWorkflowSuite) TestVolumeUpdateOfflineVolume() {			
+	testStarted = append(testStarted,true)
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)	
 	if vol != nil {
 		_, err := suite.volumeService.OfflineVolume(*vol.ID, false)		
 		require.Nilf(suite.T(), err, "Unable to set volume offline, err: %v", err)
 		vol, _ = suite.volumeService.GetVolumeByName(volumeName)
-		require.Equal(suite.T(),*vol.VolState, *nimbleos.NsVolStatusOffline, "Volume did not go offline")		
-		result = "PASS" 
+		require.Equal(suite.T(),*vol.VolState, *nimbleos.NsVolStatusOffline, "Volume did not go offline")				 
+		testCompleted = append(testCompleted,true)
 	} else {
 		suite.T().Errorf("Could not find the volume")		
 	}	
@@ -189,8 +184,7 @@ func (suite *VolumeWorkflowSuite) TestVolumeUpdateOfflineVolume() {
 }
 
 func (suite *VolumeWorkflowSuite) TestVolumeUpdateOnlineVolume() {
-	
-	result = "FAIL"
+	testStarted = append(testStarted,true)		
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)
 	if vol != nil {
 		_, err := suite.volumeService.OnlineVolume(*vol.ID, false)
@@ -198,8 +192,8 @@ func (suite *VolumeWorkflowSuite) TestVolumeUpdateOnlineVolume() {
 		require.Nilf(suite.T(), err, "Unable to set volume online, error: %v", err)
 		vol, _ = suite.volumeService.GetVolumeByName(volumeName)
 		fmt.Println(*vol.VolState)
-		require.Equal(suite.T(),*vol.VolState, *nimbleos.NsVolStatusOnline, "Volume did not come online")
-		result = "PASS"
+		require.Equal(suite.T(),*vol.VolState, *nimbleos.NsVolStatusOnline, "Volume did not come online")		
+		testCompleted = append(testCompleted,true)
 		
 	} else {		
 		suite.T().Error("Could not find volume")
@@ -207,15 +201,15 @@ func (suite *VolumeWorkflowSuite) TestVolumeUpdateOnlineVolume() {
 	}	
 }
 
-func (suite *VolumeWorkflowSuite) TestVolumeVolCollAssociate() {
-	result ="FAIL"
+func (suite *VolumeWorkflowSuite) TestVolumeVolCollAssociate() {	
+	testStarted = append(testStarted,true)
 	vol, _ := suite.volumeService.GetVolumeByName(volumeName)
 	volcoll, _ := suite.volcollService.GetVolumeCollectionByName(defaultVolCollName)
 	err := suite.volumeService.AssociateVolume(*vol.ID, *volcoll.ID)
 	require.Nilf(suite.T(), err, "Associating volume to a volume collection failed: %v", err)
 	err = suite.volumeService.DisassociateVolume(*vol.ID)
-	require.Nilf(suite.T(), err, "Disassociating volume to a volume collection failed: %v", err)
-	result = "PASS"
+	require.Nilf(suite.T(), err, "Disassociating volume to a volume collection failed: %v", err)	
+	testCompleted = append(testCompleted,true)
 }
 
 func TestVolumeWorkflowSuite(t *testing.T) {
