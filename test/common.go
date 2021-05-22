@@ -4,12 +4,13 @@ package test
 
 import (
 	"flag"
+	"strconv"
+	"strings"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"strconv"
-	"strings"
 )
 
 const defaultVolumeName = "DefaultVolumeTest"
@@ -31,7 +32,11 @@ var sourceArrayUsername = flag.String("sourceArrayUsername", "xxx", "Source arra
 
 var sourceArrayPassword = flag.String("sourceArrayPassword", "xxx", "Source array password")
 
-var postResultToDashboard = true
+//  Dashboard
+var postResultToDashboard = flag.String("postResultToDashboard", "xxx", "Dashboard flag")
+var dashboardUsername = flag.String("dashboardUsername", "xxx", "Dashboard username")
+var dashboardPassword = flag.String("dashboardPassword", "xxx", "Dashboard password")
+var dashboardURL = flag.String("dashboardURL", "xxx", "Dashboard Url")
 var testStarted []bool
 var testCompleted []bool
 

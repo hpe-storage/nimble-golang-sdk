@@ -15,18 +15,21 @@ var jar *cookiejar.Jar
 var runId string
 var postDataClient *http.Client
 
-func loginDashboard() *http.Client {	
+func loginDashboard() *http.Client {
 	jar, _ := cookiejar.New(nil)
 	client := &http.Client{
 		Jar: jar,
 	}
-	var jsonStr = []byte(`{"username":"test","password":"test"}`)
-	req, _ := http.NewRequest("POST", "https://dcsdashboard.eng.nimblestorage.com:8080/apilogin", bytes.NewBuffer(jsonStr))
-	req.Header.Add("Content-Type", "application/json")	
-	resp, err := client.Do(req)	
+	username := *dashboardUsername
+	password := *dashboardPassword
+	var jsonStr = []byte("{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}")
+	url := *dashboardURL + "/apilogin"
+	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
+	req.Header.Add("Content-Type", "application/json")
+	resp, err := client.Do(req)
 	if err != nil {
 		panic(err)
-	} else {		
+	} else {
 		resp.Body.Close()
 	}
 	return client
@@ -36,8 +39,6 @@ func generateRunid() *http.Client {
 
 	postDataClient := loginDashboard()
 	if runId != "" {
-		fmt.Println("Run Id already generated")
-		fmt.Println(runId)
 		return postDataClient
 	}
 	newBuild := "true"
@@ -59,15 +60,15 @@ func generateRunid() *http.Client {
 		"\"SuiteName\": \"Golang SDK\"," +
 		"\"JenkinsJob\": \"\"" +
 		"}}"
-	fmt.Println(json_string)
 	var testData = []byte(json_string)
-	req, _ := http.NewRequest("POST", "https://dcsdashboard.eng.nimblestorage.com:8080/testcasevalues", bytes.NewBuffer(testData))
+	url := *dashboardURL + "/testcasevalues"
+	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(testData))
 	req.Header.Add("Content-Type", "application/json")
 	resp, err := postDataClient.Do(req)
 	if err != nil {
 		fmt.Println(err)
 
-	}else {
+	} else {
 		body, _ := ioutil.ReadAll(resp.Body)
 		var data map[string]interface{}
 		error := json.Unmarshal([]byte(string(body)), &data)
@@ -107,14 +108,14 @@ func pushResultToDashboard(result string, testId string, testName string) {
 		"\"JenkinsJob\": \"\"," +
 		"\"RunId\": \"" + runId + "\"" +
 		"}}"
-	fmt.Println(json_string)
 	var testData = []byte(json_string)
-	req, _ := http.NewRequest("POST", "https://dcsdashboard.eng.nimblestorage.com:8080/testcasevalues", bytes.NewBuffer(testData))
+	url := *dashboardURL + "/testcasevalues"
+	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(testData))
 	req.Header.Add("Content-Type", "application/json")
-	resp, err := postDataClient.Do(req)	
+	resp, err := postDataClient.Do(req)
 	if err != nil {
 		fmt.Println(err)
-	} else {		
+	} else {
 		resp.Body.Close()
 	}
 
