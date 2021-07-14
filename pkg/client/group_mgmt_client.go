@@ -15,12 +15,13 @@ import (
 )
 
 const (
-	groupURIFmt     = "https://%s:5392/%s"
-	clientTimeout   = time.Second * 60 // 1 Minute
-	maxLoginRetries = 1
-	jobTimeout      = time.Second * 300 // 5 Minute
-	jobPollInterval = 5 * time.Second   // Second
-	smAsyncJobId    = "SM_async_job_id"
+	groupURIFmtTenant    = "https://%s:443/api/tenant/%s"
+	groupURIFmtNonTenant = "https://%s:5392/%s"
+	clientTimeout        = time.Second * 60 // 1 Minute
+	maxLoginRetries      = 1
+	jobTimeout           = time.Second * 300 // 5 Minute
+	jobPollInterval      = 5 * time.Second   // Second
+	smAsyncJobId         = "SM_async_job_id"
 )
 
 // GroupMgmtClient :
@@ -31,6 +32,7 @@ type GroupMgmtClient struct {
 	WaitOnJob    bool
 	Username     string
 	Password     string
+	TenantAware  bool
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -60,28 +62,34 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) *GroupMgmtClient {
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, tenantAware bool) *GroupMgmtClient {
 	// Get new resty()
 	restyClient := resty.New()
 	restyClient.SetTLSClientConfig(&tls.Config{
 		InsecureSkipVerify: true,
 	})
 
+	url := fmt.Sprintf(groupURIFmtNonTenant, ipAddress, apiVersion)
+	if tenantAware {
+		url = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
+	}
+
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
-		Client:    restyClient,
-		WaitOnJob: waitOnJobs,
-		Username:  username,
-		Password:  password,
+		URL:         url,
+		Client:      restyClient,
+		WaitOnJob:   waitOnJobs,
+		Username:    username,
+		Password:    password,
+		TenantAware: tenantAware,
 	}
 	return groupMgmtClient
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, tenantAware bool) (*GroupMgmtClient, error) {
 	// Get resty client
-	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs)
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, tenantAware)
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)
 	if err != nil {
