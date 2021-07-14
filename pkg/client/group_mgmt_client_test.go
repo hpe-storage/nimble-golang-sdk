@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -20,7 +21,7 @@ func TestNewClient(t *testing.T) {
 
 	// Create client
 	var err error
-	client, err = NewClient("10.234.48.245", "admin", "admin", "v1")
+	client, err = NewClient("x.x.x.x", "xxx", "xxx", "v1", true)
 	if err != nil {
 		t.Errorf("NewClient(): Unable to create client, err: %v", err.Error())
 		return
@@ -28,10 +29,11 @@ func TestNewClient(t *testing.T) {
 	fmt.Println("Session Token: ", client.SessionToken)
 
 	tokenObjectSet := client.GetTokenObjectSet()
-
+	user := "admin"
+	pass := "admin"
 	payload := &nimbleos.Token{
-		Username: "admin",
-		Password: "admin",
+		Username: &user,
+		Password: &pass,
 	}
 
 	// Create Token
@@ -42,7 +44,7 @@ func TestNewClient(t *testing.T) {
 	}
 
 	// Get Token
-	token, err = tokenObjectSet.GetObject(token.ID)
+	token, err = tokenObjectSet.GetObject(*token.ID)
 	if err != nil {
 		t.Errorf("Tokens:getObject(): Failed to get object, err: %v", err.Error())
 		return
@@ -58,14 +60,14 @@ func TestNewClient(t *testing.T) {
 	jsonutil.PrintPrettyJSONToConsole(tokens)
 
 	// Delete Token
-	err = tokenObjectSet.DeleteObject(token.ID)
+	err = tokenObjectSet.DeleteObject(*token.ID)
 	if err != nil {
 		t.Errorf("Tokens:deleteObject(): Failed to delete object, err: %v", err.Error())
 		return
 	}
 
 	// Get Token again
-	token, err = tokenObjectSet.GetObject(token.ID)
+	token, err = tokenObjectSet.GetObject(*token.ID)
 	if err != nil {
 		t.Errorf("Tokens:getObject(): Token still exists")
 		return
@@ -75,7 +77,7 @@ func TestNewClient(t *testing.T) {
 func TestListGetOrPost(t *testing.T) {
 	// Create GMD client
 	var err error
-	client, err := NewClient("gcostea-array2.rtpvlab.nimblestorage.com", "admin", "admin", "v1")
+	client, err := NewClient("x.x.x.x", "xxx", "xxx", "v1",true)
 	if err != nil {
 		t.Errorf("NewGmdClient(): Unable to create GMD client, err: %v", err.Error())
 		return
@@ -107,4 +109,41 @@ func TestListGetOrPost(t *testing.T) {
 	}
 
 	// List Volumes with SearchFilter
+}
+func TestVolumeAvgStatLast5mins(t *testing.T) {
+        respHolder := &nimbleos.Volume{}
+        body := []byte(`
+         {
+                "data": {
+                   "id": "0644aeb604d6b5e7c6000000000000000000000002",
+                   "name": "hiqa-win25-ESX-Host-sjc-array2094-datastore-for-VMs",
+                   "pool_name": "default",
+                   "size": 7340032,
+                   "usage_valid": true,
+                   "vol_usage_mapped_bytes": 301340909568,
+                   "reserve": 0,
+                   "snap_usage_uncompressed_bytes": 0,
+                   "avg_stats_last_5mins": {
+                          "combined_iops": 192,
+                          "combined_latency": 69,
+                          "combined_throughput": 2974470,
+                          "read_iops": 10,
+                          "read_latency": 155,
+                          "read_throughput": 1529765,
+                          "write_iops": 180,
+                          "write_latency": 70,
+                          "write_throughput": 1444702
+                   }
+                }
+         }`)
+
+        dataIntf, totalRows, err := unwrapData(body, respHolder)
+
+        assert.Nil(t, err)
+        assert.Nil(t, totalRows)
+        assert.NotNil(t, dataIntf)
+		volume := dataIntf.(*nimbleos.Volume)
+		assert.NotNil(t, volume)
+        assert.NotNil(t, volume.AvgStatsLast5mins)
+        assert.Equal(t, int64(10), *volume.AvgStatsLast5mins.ReadIops)
 }
