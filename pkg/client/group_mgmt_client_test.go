@@ -7,10 +7,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"github.com/stretchr/testify/assert"
 )
 
 var (
@@ -77,7 +77,7 @@ func TestNewClient(t *testing.T) {
 func TestListGetOrPost(t *testing.T) {
 	// Create GMD client
 	var err error
-	client, err := NewClient("x.x.x.x", "xxx", "xxx", "v1",true)
+	client, err := NewClient("x.x.x.x", "xxx", "xxx", "v1", true)
 	if err != nil {
 		t.Errorf("NewGmdClient(): Unable to create GMD client, err: %v", err.Error())
 		return
@@ -111,8 +111,8 @@ func TestListGetOrPost(t *testing.T) {
 	// List Volumes with SearchFilter
 }
 func TestVolumeAvgStatLast5mins(t *testing.T) {
-        respHolder := &nimbleos.Volume{}
-        body := []byte(`
+	respHolder := &nimbleos.Volume{}
+	body := []byte(`
          {
                 "data": {
                    "id": "0644aeb604d6b5e7c6000000000000000000000002",
@@ -137,13 +137,13 @@ func TestVolumeAvgStatLast5mins(t *testing.T) {
                 }
          }`)
 
-        dataIntf, totalRows, err := unwrapData(body, respHolder)
+	dataIntf, totalRows, err := unwrapData(body, respHolder)
 
-        assert.Nil(t, err)
-        assert.Nil(t, totalRows)
-        assert.NotNil(t, dataIntf)
-		volume := dataIntf.(*nimbleos.Volume)
-		assert.NotNil(t, volume)
-        assert.NotNil(t, volume.AvgStatsLast5mins)
-        assert.Equal(t, int64(10), *volume.AvgStatsLast5mins.ReadIops)
+	assert.Nil(t, err)
+	assert.Nil(t, totalRows)
+	assert.NotNil(t, dataIntf)
+	volume := dataIntf.(*nimbleos.Volume)
+	assert.NotNil(t, volume)
+	assert.NotNil(t, volume.AvgStatsLast5mins)
+	assert.Equal(t, int64(10), *volume.AvgStatsLast5mins.ReadIops)
 }
