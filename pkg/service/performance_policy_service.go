@@ -7,100 +7,100 @@ package service
 // compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 
 import (
-	"fmt"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+    "fmt"
+    "github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+    "github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+    "github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 // PerformancePolicyService type
 type PerformancePolicyService struct {
-	objectSet *client.PerformancePolicyObjectSet
+    objectSet *client.PerformancePolicyObjectSet
 }
 
 // NewPerformancePolicyService - method to initialize "PerformancePolicyService"
-func NewPerformancePolicyService(gs *NsGroupService) *PerformancePolicyService {
-	objectSet := gs.client.GetPerformancePolicyObjectSet()
-	return &PerformancePolicyService{objectSet: objectSet}
+func NewPerformancePolicyService(gs *NsGroupService) (*PerformancePolicyService) {
+    objectSet := gs.client.GetPerformancePolicyObjectSet()
+    return &PerformancePolicyService{objectSet: objectSet}
 }
 
 // GetPerformancePolicies - method returns a array of pointers of type "PerformancePolicies"
 func (svc *PerformancePolicyService) GetPerformancePolicies(params *param.GetParams) ([]*nimbleos.PerformancePolicy, error) {
-	performancePolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
-	if err != nil {
-		return nil, err
-	}
-	return performancePolicyResp, nil
+    performancePolicyResp,err := svc.objectSet.GetObjectListFromParams(params)
+    if err !=nil {
+        return nil,err
+    }
+    return performancePolicyResp,nil
 }
 
 // CreatePerformancePolicy - method creates a "PerformancePolicy"
 func (svc *PerformancePolicyService) CreatePerformancePolicy(obj *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	if obj == nil {
-		return nil, fmt.Errorf("CreatePerformancePolicy: invalid parameter specified, %v", obj)
-	}
+    if obj == nil {
+        return nil,fmt.Errorf("CreatePerformancePolicy: invalid parameter specified, %v",obj)
+    }
 
-	performancePolicyResp, err := svc.objectSet.CreateObject(obj)
-	if err != nil {
-		return nil, err
-	}
-	return performancePolicyResp, nil
+    performancePolicyResp,err := svc.objectSet.CreateObject(obj)
+    if err !=nil {
+        return nil,err
+    }
+    return performancePolicyResp,nil
 }
 
 // UpdatePerformancePolicy - method modifies  the "PerformancePolicy"
 func (svc *PerformancePolicyService) UpdatePerformancePolicy(id string, obj *nimbleos.PerformancePolicy) (*nimbleos.PerformancePolicy, error) {
-	if obj == nil {
-		return nil, fmt.Errorf("UpdatePerformancePolicy: invalid parameter specified, %v", obj)
-	}
+    if obj == nil {
+        return nil,fmt.Errorf("UpdatePerformancePolicy: invalid parameter specified, %v",obj)
+    }
 
-	performancePolicyResp, err := svc.objectSet.UpdateObject(id, obj)
-	if err != nil {
-		return nil, err
-	}
-	return performancePolicyResp, nil
+    performancePolicyResp,err :=svc.objectSet.UpdateObject(id, obj)
+    if err !=nil {
+        return nil,err
+    }
+    return performancePolicyResp,nil
 }
 
 // GetPerformancePolicyById - method returns a pointer to "PerformancePolicy"
 func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*nimbleos.PerformancePolicy, error) {
-	if len(id) == 0 {
-		return nil, fmt.Errorf("GetPerformancePolicyById: invalid parameter specified, %v", id)
-	}
+    if len(id) == 0 {
+        return nil,fmt.Errorf("GetPerformancePolicyById: invalid parameter specified, %v",id)
+    }
 
-	performancePolicyResp, err := svc.objectSet.GetObject(id)
-	if err != nil {
-		return nil, err
-	}
-	return performancePolicyResp, nil
+    performancePolicyResp, err := svc.objectSet.GetObject(id)
+    if err != nil {
+        return nil,err
+    }
+    return performancePolicyResp,nil
 }
 
 // GetPerformancePolicyByName - method returns a pointer "PerformancePolicy"
 func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*nimbleos.PerformancePolicy, error) {
-	params := &param.GetParams{
-		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
-			Operator:  param.EQUALS.String(),
-			Value:     name,
-		},
-	}
-	performancePolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
-	if err != nil {
-		return nil, err
-	}
+    params := &param.GetParams{
+        Filter: &param.SearchFilter{
+            FieldName: nimbleos.VolumeFields.Name,
+            Operator:  param.EQUALS.String(),
+            Value:     name,
+        },
+    }
+    performancePolicyResp, err := svc.objectSet.GetObjectListFromParams(params)
+    if err != nil {
+        return nil, err
+    }
 
-	if len(performancePolicyResp) == 0 {
-		return nil, nil
-	}
+    if len(performancePolicyResp) == 0 {
+        return nil, nil
+    }
 
-	return performancePolicyResp[0], nil
+    return performancePolicyResp[0],nil
 }
-
 // DeletePerformancePolicy - deletes the "PerformancePolicy"
 func (svc *PerformancePolicyService) DeletePerformancePolicy(id string) error {
-	if len(id) == 0 {
-		return fmt.Errorf("DeletePerformancePolicy: invalid parameter specified, %s", id)
-	}
-	err := svc.objectSet.DeleteObject(id)
-	if err != nil {
-		return err
-	}
-	return nil
+    if len(id) == 0 {
+        return fmt.Errorf("DeletePerformancePolicy: invalid parameter specified, %s",id)
+    }
+    err := svc.objectSet.DeleteObject(id)
+    if err != nil {
+        return err
+    }
+    return nil
 }
+

@@ -6,11 +6,11 @@ package nimbleos
 type NsAgentType string
 
 const (
-	cNsAgentTypeSmis        NsAgentType = "smis"
-	cNsAgentTypeVvol        NsAgentType = "vvol"
-	cNsAgentTypeOpenstack   NsAgentType = "openstack"
-	cNsAgentTypeOpenstackv2 NsAgentType = "openstackv2"
-	cNsAgentTypeNone        NsAgentType = "none"
+ cNsAgentTypeSmis NsAgentType = "smis"
+ cNsAgentTypeVvol NsAgentType = "vvol"
+ cNsAgentTypeOpenstack NsAgentType = "openstack"
+ cNsAgentTypeOpenstackv2 NsAgentType = "openstackv2"
+ cNsAgentTypeNone NsAgentType = "none"
 )
 
 var pNsAgentTypeSmis NsAgentType
@@ -35,19 +35,20 @@ var NsAgentTypeOpenstackv2 *NsAgentType
 var NsAgentTypeNone *NsAgentType
 
 func init() {
-	pNsAgentTypeSmis = cNsAgentTypeSmis
-	NsAgentTypeSmis = &pNsAgentTypeSmis
+ pNsAgentTypeSmis = cNsAgentTypeSmis
+ NsAgentTypeSmis = &pNsAgentTypeSmis
 
-	pNsAgentTypeVvol = cNsAgentTypeVvol
-	NsAgentTypeVvol = &pNsAgentTypeVvol
+ pNsAgentTypeVvol = cNsAgentTypeVvol
+ NsAgentTypeVvol = &pNsAgentTypeVvol
 
-	pNsAgentTypeOpenstack = cNsAgentTypeOpenstack
-	NsAgentTypeOpenstack = &pNsAgentTypeOpenstack
+ pNsAgentTypeOpenstack = cNsAgentTypeOpenstack
+ NsAgentTypeOpenstack = &pNsAgentTypeOpenstack
 
-	pNsAgentTypeOpenstackv2 = cNsAgentTypeOpenstackv2
-	NsAgentTypeOpenstackv2 = &pNsAgentTypeOpenstackv2
+ pNsAgentTypeOpenstackv2 = cNsAgentTypeOpenstackv2
+ NsAgentTypeOpenstackv2 = &pNsAgentTypeOpenstackv2
 
-	pNsAgentTypeNone = cNsAgentTypeNone
-	NsAgentTypeNone = &pNsAgentTypeNone
+ pNsAgentTypeNone = cNsAgentTypeNone
+ NsAgentTypeNone = &pNsAgentTypeNone
 
 }
+

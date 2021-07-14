@@ -6,11 +6,11 @@ package nimbleos
 type NsApiSeverityLevel string
 
 const (
-	cNsApiSeverityLevelWarn  NsApiSeverityLevel = "warn"
-	cNsApiSeverityLevelDebug NsApiSeverityLevel = "debug"
-	cNsApiSeverityLevelError NsApiSeverityLevel = "error"
-	cNsApiSeverityLevelFatal NsApiSeverityLevel = "fatal"
-	cNsApiSeverityLevelInfo  NsApiSeverityLevel = "info"
+ cNsApiSeverityLevelWarn NsApiSeverityLevel = "warn"
+ cNsApiSeverityLevelDebug NsApiSeverityLevel = "debug"
+ cNsApiSeverityLevelError NsApiSeverityLevel = "error"
+ cNsApiSeverityLevelFatal NsApiSeverityLevel = "fatal"
+ cNsApiSeverityLevelInfo NsApiSeverityLevel = "info"
 )
 
 var pNsApiSeverityLevelWarn NsApiSeverityLevel
@@ -35,19 +35,20 @@ var NsApiSeverityLevelFatal *NsApiSeverityLevel
 var NsApiSeverityLevelInfo *NsApiSeverityLevel
 
 func init() {
-	pNsApiSeverityLevelWarn = cNsApiSeverityLevelWarn
-	NsApiSeverityLevelWarn = &pNsApiSeverityLevelWarn
+ pNsApiSeverityLevelWarn = cNsApiSeverityLevelWarn
+ NsApiSeverityLevelWarn = &pNsApiSeverityLevelWarn
 
-	pNsApiSeverityLevelDebug = cNsApiSeverityLevelDebug
-	NsApiSeverityLevelDebug = &pNsApiSeverityLevelDebug
+ pNsApiSeverityLevelDebug = cNsApiSeverityLevelDebug
+ NsApiSeverityLevelDebug = &pNsApiSeverityLevelDebug
 
-	pNsApiSeverityLevelError = cNsApiSeverityLevelError
-	NsApiSeverityLevelError = &pNsApiSeverityLevelError
+ pNsApiSeverityLevelError = cNsApiSeverityLevelError
+ NsApiSeverityLevelError = &pNsApiSeverityLevelError
 
-	pNsApiSeverityLevelFatal = cNsApiSeverityLevelFatal
-	NsApiSeverityLevelFatal = &pNsApiSeverityLevelFatal
+ pNsApiSeverityLevelFatal = cNsApiSeverityLevelFatal
+ NsApiSeverityLevelFatal = &pNsApiSeverityLevelFatal
 
-	pNsApiSeverityLevelInfo = cNsApiSeverityLevelInfo
-	NsApiSeverityLevelInfo = &pNsApiSeverityLevelInfo
+ pNsApiSeverityLevelInfo = cNsApiSeverityLevelInfo
+ NsApiSeverityLevelInfo = &pNsApiSeverityLevelInfo
 
 }
+

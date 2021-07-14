@@ -6,10 +6,10 @@ package nimbleos
 type NsOperationStatus string
 
 const (
-	cNsOperationStatusInprogress NsOperationStatus = "inprogress"
-	cNsOperationStatusFailed     NsOperationStatus = "failed"
-	cNsOperationStatusUnknown    NsOperationStatus = "unknown"
-	cNsOperationStatusSucceeded  NsOperationStatus = "succeeded"
+ cNsOperationStatusInprogress NsOperationStatus = "inprogress"
+ cNsOperationStatusFailed NsOperationStatus = "failed"
+ cNsOperationStatusUnknown NsOperationStatus = "unknown"
+ cNsOperationStatusSucceeded NsOperationStatus = "succeeded"
 )
 
 var pNsOperationStatusInprogress NsOperationStatus
@@ -30,16 +30,17 @@ var NsOperationStatusUnknown *NsOperationStatus
 var NsOperationStatusSucceeded *NsOperationStatus
 
 func init() {
-	pNsOperationStatusInprogress = cNsOperationStatusInprogress
-	NsOperationStatusInprogress = &pNsOperationStatusInprogress
+ pNsOperationStatusInprogress = cNsOperationStatusInprogress
+ NsOperationStatusInprogress = &pNsOperationStatusInprogress
 
-	pNsOperationStatusFailed = cNsOperationStatusFailed
-	NsOperationStatusFailed = &pNsOperationStatusFailed
+ pNsOperationStatusFailed = cNsOperationStatusFailed
+ NsOperationStatusFailed = &pNsOperationStatusFailed
 
-	pNsOperationStatusUnknown = cNsOperationStatusUnknown
-	NsOperationStatusUnknown = &pNsOperationStatusUnknown
+ pNsOperationStatusUnknown = cNsOperationStatusUnknown
+ NsOperationStatusUnknown = &pNsOperationStatusUnknown
 
-	pNsOperationStatusSucceeded = cNsOperationStatusSucceeded
-	NsOperationStatusSucceeded = &pNsOperationStatusSucceeded
+ pNsOperationStatusSucceeded = cNsOperationStatusSucceeded
+ NsOperationStatusSucceeded = &pNsOperationStatusSucceeded
 
 }
+

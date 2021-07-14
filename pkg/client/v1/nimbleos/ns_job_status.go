@@ -6,10 +6,10 @@ package nimbleos
 type NsJobStatus string
 
 const (
-	cNsJobStatusCanceled   NsJobStatus = "canceled"
-	cNsJobStatusPending    NsJobStatus = "pending"
-	cNsJobStatusInprogress NsJobStatus = "inprogress"
-	cNsJobStatusDone       NsJobStatus = "done"
+ cNsJobStatusCanceled NsJobStatus = "canceled"
+ cNsJobStatusPending NsJobStatus = "pending"
+ cNsJobStatusInprogress NsJobStatus = "inprogress"
+ cNsJobStatusDone NsJobStatus = "done"
 )
 
 var pNsJobStatusCanceled NsJobStatus
@@ -30,16 +30,17 @@ var NsJobStatusInprogress *NsJobStatus
 var NsJobStatusDone *NsJobStatus
 
 func init() {
-	pNsJobStatusCanceled = cNsJobStatusCanceled
-	NsJobStatusCanceled = &pNsJobStatusCanceled
+ pNsJobStatusCanceled = cNsJobStatusCanceled
+ NsJobStatusCanceled = &pNsJobStatusCanceled
 
-	pNsJobStatusPending = cNsJobStatusPending
-	NsJobStatusPending = &pNsJobStatusPending
+ pNsJobStatusPending = cNsJobStatusPending
+ NsJobStatusPending = &pNsJobStatusPending
 
-	pNsJobStatusInprogress = cNsJobStatusInprogress
-	NsJobStatusInprogress = &pNsJobStatusInprogress
+ pNsJobStatusInprogress = cNsJobStatusInprogress
+ NsJobStatusInprogress = &pNsJobStatusInprogress
 
-	pNsJobStatusDone = cNsJobStatusDone
-	NsJobStatusDone = &pNsJobStatusDone
+ pNsJobStatusDone = cNsJobStatusDone
+ NsJobStatusDone = &pNsJobStatusDone
 
 }
+

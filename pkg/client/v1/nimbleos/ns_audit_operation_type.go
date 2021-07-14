@@ -6,11 +6,11 @@ package nimbleos
 type NsAuditOperationType string
 
 const (
-	cNsAuditOperationTypeOther  NsAuditOperationType = "other"
-	cNsAuditOperationTypeRead   NsAuditOperationType = "read"
-	cNsAuditOperationTypeCreate NsAuditOperationType = "create"
-	cNsAuditOperationTypeUpdate NsAuditOperationType = "update"
-	cNsAuditOperationTypeDelete NsAuditOperationType = "delete"
+ cNsAuditOperationTypeOther NsAuditOperationType = "other"
+ cNsAuditOperationTypeRead NsAuditOperationType = "read"
+ cNsAuditOperationTypeCreate NsAuditOperationType = "create"
+ cNsAuditOperationTypeUpdate NsAuditOperationType = "update"
+ cNsAuditOperationTypeDelete NsAuditOperationType = "delete"
 )
 
 var pNsAuditOperationTypeOther NsAuditOperationType
@@ -35,19 +35,20 @@ var NsAuditOperationTypeUpdate *NsAuditOperationType
 var NsAuditOperationTypeDelete *NsAuditOperationType
 
 func init() {
-	pNsAuditOperationTypeOther = cNsAuditOperationTypeOther
-	NsAuditOperationTypeOther = &pNsAuditOperationTypeOther
+ pNsAuditOperationTypeOther = cNsAuditOperationTypeOther
+ NsAuditOperationTypeOther = &pNsAuditOperationTypeOther
 
-	pNsAuditOperationTypeRead = cNsAuditOperationTypeRead
-	NsAuditOperationTypeRead = &pNsAuditOperationTypeRead
+ pNsAuditOperationTypeRead = cNsAuditOperationTypeRead
+ NsAuditOperationTypeRead = &pNsAuditOperationTypeRead
 
-	pNsAuditOperationTypeCreate = cNsAuditOperationTypeCreate
-	NsAuditOperationTypeCreate = &pNsAuditOperationTypeCreate
+ pNsAuditOperationTypeCreate = cNsAuditOperationTypeCreate
+ NsAuditOperationTypeCreate = &pNsAuditOperationTypeCreate
 
-	pNsAuditOperationTypeUpdate = cNsAuditOperationTypeUpdate
-	NsAuditOperationTypeUpdate = &pNsAuditOperationTypeUpdate
+ pNsAuditOperationTypeUpdate = cNsAuditOperationTypeUpdate
+ NsAuditOperationTypeUpdate = &pNsAuditOperationTypeUpdate
 
-	pNsAuditOperationTypeDelete = cNsAuditOperationTypeDelete
-	NsAuditOperationTypeDelete = &pNsAuditOperationTypeDelete
+ pNsAuditOperationTypeDelete = cNsAuditOperationTypeDelete
+ NsAuditOperationTypeDelete = &pNsAuditOperationTypeDelete
 
 }
+

@@ -6,10 +6,10 @@ package nimbleos
 type NsShelfSesMasterHwState string
 
 const (
-	cNsShelfSesMasterHwStateNotMaster NsShelfSesMasterHwState = "not master"
-	cNsShelfSesMasterHwStateFailed    NsShelfSesMasterHwState = "failed"
-	cNsShelfSesMasterHwStateUnknown   NsShelfSesMasterHwState = "unknown"
-	cNsShelfSesMasterHwStateMaster    NsShelfSesMasterHwState = "master"
+ cNsShelfSesMasterHwStateNotMaster NsShelfSesMasterHwState = "not master"
+ cNsShelfSesMasterHwStateFailed NsShelfSesMasterHwState = "failed"
+ cNsShelfSesMasterHwStateUnknown NsShelfSesMasterHwState = "unknown"
+ cNsShelfSesMasterHwStateMaster NsShelfSesMasterHwState = "master"
 )
 
 var pNsShelfSesMasterHwStateNotMaster NsShelfSesMasterHwState
@@ -30,16 +30,17 @@ var NsShelfSesMasterHwStateUnknown *NsShelfSesMasterHwState
 var NsShelfSesMasterHwStateMaster *NsShelfSesMasterHwState
 
 func init() {
-	pNsShelfSesMasterHwStateNotMaster = cNsShelfSesMasterHwStateNotMaster
-	NsShelfSesMasterHwStateNotMaster = &pNsShelfSesMasterHwStateNotMaster
+ pNsShelfSesMasterHwStateNotMaster = cNsShelfSesMasterHwStateNotMaster
+ NsShelfSesMasterHwStateNotMaster = &pNsShelfSesMasterHwStateNotMaster
 
-	pNsShelfSesMasterHwStateFailed = cNsShelfSesMasterHwStateFailed
-	NsShelfSesMasterHwStateFailed = &pNsShelfSesMasterHwStateFailed
+ pNsShelfSesMasterHwStateFailed = cNsShelfSesMasterHwStateFailed
+ NsShelfSesMasterHwStateFailed = &pNsShelfSesMasterHwStateFailed
 
-	pNsShelfSesMasterHwStateUnknown = cNsShelfSesMasterHwStateUnknown
-	NsShelfSesMasterHwStateUnknown = &pNsShelfSesMasterHwStateUnknown
+ pNsShelfSesMasterHwStateUnknown = cNsShelfSesMasterHwStateUnknown
+ NsShelfSesMasterHwStateUnknown = &pNsShelfSesMasterHwStateUnknown
 
-	pNsShelfSesMasterHwStateMaster = cNsShelfSesMasterHwStateMaster
-	NsShelfSesMasterHwStateMaster = &pNsShelfSesMasterHwStateMaster
+ pNsShelfSesMasterHwStateMaster = cNsShelfSesMasterHwStateMaster
+ NsShelfSesMasterHwStateMaster = &pNsShelfSesMasterHwStateMaster
 
 }
+

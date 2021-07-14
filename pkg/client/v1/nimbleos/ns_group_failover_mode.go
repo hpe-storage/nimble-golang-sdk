@@ -6,8 +6,8 @@ package nimbleos
 type NsGroupFailoverMode string
 
 const (
-	cNsGroupFailoverModeManual    NsGroupFailoverMode = "Manual"
-	cNsGroupFailoverModeAutomatic NsGroupFailoverMode = "Automatic"
+ cNsGroupFailoverModeManual NsGroupFailoverMode = "Manual"
+ cNsGroupFailoverModeAutomatic NsGroupFailoverMode = "Automatic"
 )
 
 var pNsGroupFailoverModeManual NsGroupFailoverMode
@@ -20,10 +20,11 @@ var NsGroupFailoverModeManual *NsGroupFailoverMode
 var NsGroupFailoverModeAutomatic *NsGroupFailoverMode
 
 func init() {
-	pNsGroupFailoverModeManual = cNsGroupFailoverModeManual
-	NsGroupFailoverModeManual = &pNsGroupFailoverModeManual
+ pNsGroupFailoverModeManual = cNsGroupFailoverModeManual
+ NsGroupFailoverModeManual = &pNsGroupFailoverModeManual
 
-	pNsGroupFailoverModeAutomatic = cNsGroupFailoverModeAutomatic
-	NsGroupFailoverModeAutomatic = &pNsGroupFailoverModeAutomatic
+ pNsGroupFailoverModeAutomatic = cNsGroupFailoverModeAutomatic
+ NsGroupFailoverModeAutomatic = &pNsGroupFailoverModeAutomatic
 
 }
+

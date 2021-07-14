@@ -6,9 +6,9 @@ package nimbleos
 type NsControllerId string
 
 const (
-	cNsControllerIdA           NsControllerId = "A"
-	cNsControllerIdB           NsControllerId = "B"
-	cNsControllerIdIndependent NsControllerId = "independent"
+ cNsControllerIdA NsControllerId = "A"
+ cNsControllerIdB NsControllerId = "B"
+ cNsControllerIdIndependent NsControllerId = "independent"
 )
 
 var pNsControllerIdA NsControllerId
@@ -25,13 +25,14 @@ var NsControllerIdB *NsControllerId
 var NsControllerIdIndependent *NsControllerId
 
 func init() {
-	pNsControllerIdA = cNsControllerIdA
-	NsControllerIdA = &pNsControllerIdA
+ pNsControllerIdA = cNsControllerIdA
+ NsControllerIdA = &pNsControllerIdA
 
-	pNsControllerIdB = cNsControllerIdB
-	NsControllerIdB = &pNsControllerIdB
+ pNsControllerIdB = cNsControllerIdB
+ NsControllerIdB = &pNsControllerIdB
 
-	pNsControllerIdIndependent = cNsControllerIdIndependent
-	NsControllerIdIndependent = &pNsControllerIdIndependent
+ pNsControllerIdIndependent = cNsControllerIdIndependent
+ NsControllerIdIndependent = &pNsControllerIdIndependent
 
 }
+

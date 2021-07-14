@@ -6,14 +6,14 @@ package nimbleos
 type NsSnapStatus string
 
 const (
-	cNsSnapStatusOkay           NsSnapStatus = "okay"
-	cNsSnapStatusDeleted        NsSnapStatus = "deleted"
-	cNsSnapStatusDeferredDelete NsSnapStatus = "deferred_delete"
-	cNsSnapStatusFailedDelete   NsSnapStatus = "failed_delete"
-	cNsSnapStatusForceDelete    NsSnapStatus = "force_delete"
-	cNsSnapStatusCreateRetry    NsSnapStatus = "create_retry"
-	cNsSnapStatusInvalid        NsSnapStatus = "invalid"
-	cNsSnapStatusCreating       NsSnapStatus = "creating"
+ cNsSnapStatusOkay NsSnapStatus = "okay"
+ cNsSnapStatusDeleted NsSnapStatus = "deleted"
+ cNsSnapStatusDeferredDelete NsSnapStatus = "deferred_delete"
+ cNsSnapStatusFailedDelete NsSnapStatus = "failed_delete"
+ cNsSnapStatusForceDelete NsSnapStatus = "force_delete"
+ cNsSnapStatusCreateRetry NsSnapStatus = "create_retry"
+ cNsSnapStatusInvalid NsSnapStatus = "invalid"
+ cNsSnapStatusCreating NsSnapStatus = "creating"
 )
 
 var pNsSnapStatusOkay NsSnapStatus
@@ -50,28 +50,29 @@ var NsSnapStatusInvalid *NsSnapStatus
 var NsSnapStatusCreating *NsSnapStatus
 
 func init() {
-	pNsSnapStatusOkay = cNsSnapStatusOkay
-	NsSnapStatusOkay = &pNsSnapStatusOkay
+ pNsSnapStatusOkay = cNsSnapStatusOkay
+ NsSnapStatusOkay = &pNsSnapStatusOkay
 
-	pNsSnapStatusDeleted = cNsSnapStatusDeleted
-	NsSnapStatusDeleted = &pNsSnapStatusDeleted
+ pNsSnapStatusDeleted = cNsSnapStatusDeleted
+ NsSnapStatusDeleted = &pNsSnapStatusDeleted
 
-	pNsSnapStatusDeferredDelete = cNsSnapStatusDeferredDelete
-	NsSnapStatusDeferredDelete = &pNsSnapStatusDeferredDelete
+ pNsSnapStatusDeferredDelete = cNsSnapStatusDeferredDelete
+ NsSnapStatusDeferredDelete = &pNsSnapStatusDeferredDelete
 
-	pNsSnapStatusFailedDelete = cNsSnapStatusFailedDelete
-	NsSnapStatusFailedDelete = &pNsSnapStatusFailedDelete
+ pNsSnapStatusFailedDelete = cNsSnapStatusFailedDelete
+ NsSnapStatusFailedDelete = &pNsSnapStatusFailedDelete
 
-	pNsSnapStatusForceDelete = cNsSnapStatusForceDelete
-	NsSnapStatusForceDelete = &pNsSnapStatusForceDelete
+ pNsSnapStatusForceDelete = cNsSnapStatusForceDelete
+ NsSnapStatusForceDelete = &pNsSnapStatusForceDelete
 
-	pNsSnapStatusCreateRetry = cNsSnapStatusCreateRetry
-	NsSnapStatusCreateRetry = &pNsSnapStatusCreateRetry
+ pNsSnapStatusCreateRetry = cNsSnapStatusCreateRetry
+ NsSnapStatusCreateRetry = &pNsSnapStatusCreateRetry
 
-	pNsSnapStatusInvalid = cNsSnapStatusInvalid
-	NsSnapStatusInvalid = &pNsSnapStatusInvalid
+ pNsSnapStatusInvalid = cNsSnapStatusInvalid
+ NsSnapStatusInvalid = &pNsSnapStatusInvalid
 
-	pNsSnapStatusCreating = cNsSnapStatusCreating
-	NsSnapStatusCreating = &pNsSnapStatusCreating
+ pNsSnapStatusCreating = cNsSnapStatusCreating
+ NsSnapStatusCreating = &pNsSnapStatusCreating
 
 }
+

@@ -6,11 +6,11 @@ package nimbleos
 type NsDiskRemoveType string
 
 const (
-	cNsDiskRemoveTypeTempFail   NsDiskRemoveType = "temp_fail"
-	cNsDiskRemoveTypeLdrRemove  NsDiskRemoveType = "ldr_remove"
-	cNsDiskRemoveTypePermFail   NsDiskRemoveType = "perm_fail"
-	cNsDiskRemoveTypeRemove     NsDiskRemoveType = "remove"
-	cNsDiskRemoveTypeDiagRemove NsDiskRemoveType = "diag_remove"
+ cNsDiskRemoveTypeTempFail NsDiskRemoveType = "temp_fail"
+ cNsDiskRemoveTypeLdrRemove NsDiskRemoveType = "ldr_remove"
+ cNsDiskRemoveTypePermFail NsDiskRemoveType = "perm_fail"
+ cNsDiskRemoveTypeRemove NsDiskRemoveType = "remove"
+ cNsDiskRemoveTypeDiagRemove NsDiskRemoveType = "diag_remove"
 )
 
 var pNsDiskRemoveTypeTempFail NsDiskRemoveType
@@ -35,19 +35,20 @@ var NsDiskRemoveTypeRemove *NsDiskRemoveType
 var NsDiskRemoveTypeDiagRemove *NsDiskRemoveType
 
 func init() {
-	pNsDiskRemoveTypeTempFail = cNsDiskRemoveTypeTempFail
-	NsDiskRemoveTypeTempFail = &pNsDiskRemoveTypeTempFail
+ pNsDiskRemoveTypeTempFail = cNsDiskRemoveTypeTempFail
+ NsDiskRemoveTypeTempFail = &pNsDiskRemoveTypeTempFail
 
-	pNsDiskRemoveTypeLdrRemove = cNsDiskRemoveTypeLdrRemove
-	NsDiskRemoveTypeLdrRemove = &pNsDiskRemoveTypeLdrRemove
+ pNsDiskRemoveTypeLdrRemove = cNsDiskRemoveTypeLdrRemove
+ NsDiskRemoveTypeLdrRemove = &pNsDiskRemoveTypeLdrRemove
 
-	pNsDiskRemoveTypePermFail = cNsDiskRemoveTypePermFail
-	NsDiskRemoveTypePermFail = &pNsDiskRemoveTypePermFail
+ pNsDiskRemoveTypePermFail = cNsDiskRemoveTypePermFail
+ NsDiskRemoveTypePermFail = &pNsDiskRemoveTypePermFail
 
-	pNsDiskRemoveTypeRemove = cNsDiskRemoveTypeRemove
-	NsDiskRemoveTypeRemove = &pNsDiskRemoveTypeRemove
+ pNsDiskRemoveTypeRemove = cNsDiskRemoveTypeRemove
+ NsDiskRemoveTypeRemove = &pNsDiskRemoveTypeRemove
 
-	pNsDiskRemoveTypeDiagRemove = cNsDiskRemoveTypeDiagRemove
-	NsDiskRemoveTypeDiagRemove = &pNsDiskRemoveTypeDiagRemove
+ pNsDiskRemoveTypeDiagRemove = cNsDiskRemoveTypeDiagRemove
+ NsDiskRemoveTypeDiagRemove = &pNsDiskRemoveTypeDiagRemove
 
 }
+

@@ -6,16 +6,16 @@ package nimbleos
 type NsAppIdType string
 
 const (
-	cNsAppIdTypeExchangeDag NsAppIdType = "exchange_dag"
-	cNsAppIdTypeSql2012     NsAppIdType = "sql2012"
-	cNsAppIdTypeSql2014     NsAppIdType = "sql2014"
-	cNsAppIdTypeInval       NsAppIdType = "inval"
-	cNsAppIdTypeSql2005     NsAppIdType = "sql2005"
-	cNsAppIdTypeSql2016     NsAppIdType = "sql2016"
-	cNsAppIdTypeExchange    NsAppIdType = "exchange"
-	cNsAppIdTypeSql2017     NsAppIdType = "sql2017"
-	cNsAppIdTypeSql2008     NsAppIdType = "sql2008"
-	cNsAppIdTypeHyperv      NsAppIdType = "hyperv"
+ cNsAppIdTypeExchangeDag NsAppIdType = "exchange_dag"
+ cNsAppIdTypeSql2012 NsAppIdType = "sql2012"
+ cNsAppIdTypeSql2014 NsAppIdType = "sql2014"
+ cNsAppIdTypeInval NsAppIdType = "inval"
+ cNsAppIdTypeSql2005 NsAppIdType = "sql2005"
+ cNsAppIdTypeSql2016 NsAppIdType = "sql2016"
+ cNsAppIdTypeExchange NsAppIdType = "exchange"
+ cNsAppIdTypeSql2017 NsAppIdType = "sql2017"
+ cNsAppIdTypeSql2008 NsAppIdType = "sql2008"
+ cNsAppIdTypeHyperv NsAppIdType = "hyperv"
 )
 
 var pNsAppIdTypeExchangeDag NsAppIdType
@@ -60,34 +60,35 @@ var NsAppIdTypeSql2008 *NsAppIdType
 var NsAppIdTypeHyperv *NsAppIdType
 
 func init() {
-	pNsAppIdTypeExchangeDag = cNsAppIdTypeExchangeDag
-	NsAppIdTypeExchangeDag = &pNsAppIdTypeExchangeDag
+ pNsAppIdTypeExchangeDag = cNsAppIdTypeExchangeDag
+ NsAppIdTypeExchangeDag = &pNsAppIdTypeExchangeDag
 
-	pNsAppIdTypeSql2012 = cNsAppIdTypeSql2012
-	NsAppIdTypeSql2012 = &pNsAppIdTypeSql2012
+ pNsAppIdTypeSql2012 = cNsAppIdTypeSql2012
+ NsAppIdTypeSql2012 = &pNsAppIdTypeSql2012
 
-	pNsAppIdTypeSql2014 = cNsAppIdTypeSql2014
-	NsAppIdTypeSql2014 = &pNsAppIdTypeSql2014
+ pNsAppIdTypeSql2014 = cNsAppIdTypeSql2014
+ NsAppIdTypeSql2014 = &pNsAppIdTypeSql2014
 
-	pNsAppIdTypeInval = cNsAppIdTypeInval
-	NsAppIdTypeInval = &pNsAppIdTypeInval
+ pNsAppIdTypeInval = cNsAppIdTypeInval
+ NsAppIdTypeInval = &pNsAppIdTypeInval
 
-	pNsAppIdTypeSql2005 = cNsAppIdTypeSql2005
-	NsAppIdTypeSql2005 = &pNsAppIdTypeSql2005
+ pNsAppIdTypeSql2005 = cNsAppIdTypeSql2005
+ NsAppIdTypeSql2005 = &pNsAppIdTypeSql2005
 
-	pNsAppIdTypeSql2016 = cNsAppIdTypeSql2016
-	NsAppIdTypeSql2016 = &pNsAppIdTypeSql2016
+ pNsAppIdTypeSql2016 = cNsAppIdTypeSql2016
+ NsAppIdTypeSql2016 = &pNsAppIdTypeSql2016
 
-	pNsAppIdTypeExchange = cNsAppIdTypeExchange
-	NsAppIdTypeExchange = &pNsAppIdTypeExchange
+ pNsAppIdTypeExchange = cNsAppIdTypeExchange
+ NsAppIdTypeExchange = &pNsAppIdTypeExchange
 
-	pNsAppIdTypeSql2017 = cNsAppIdTypeSql2017
-	NsAppIdTypeSql2017 = &pNsAppIdTypeSql2017
+ pNsAppIdTypeSql2017 = cNsAppIdTypeSql2017
+ NsAppIdTypeSql2017 = &pNsAppIdTypeSql2017
 
-	pNsAppIdTypeSql2008 = cNsAppIdTypeSql2008
-	NsAppIdTypeSql2008 = &pNsAppIdTypeSql2008
+ pNsAppIdTypeSql2008 = cNsAppIdTypeSql2008
+ NsAppIdTypeSql2008 = &pNsAppIdTypeSql2008
 
-	pNsAppIdTypeHyperv = cNsAppIdTypeHyperv
-	NsAppIdTypeHyperv = &pNsAppIdTypeHyperv
+ pNsAppIdTypeHyperv = cNsAppIdTypeHyperv
+ NsAppIdTypeHyperv = &pNsAppIdTypeHyperv
 
 }
+

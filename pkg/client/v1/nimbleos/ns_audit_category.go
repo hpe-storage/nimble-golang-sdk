@@ -6,12 +6,12 @@ package nimbleos
 type NsAuditCategory string
 
 const (
-	cNsAuditCategoryDataProtection      NsAuditCategory = "data_protection"
-	cNsAuditCategorySystemConfiguration NsAuditCategory = "system_configuration"
-	cNsAuditCategorySoftwareUpdate      NsAuditCategory = "software_update"
-	cNsAuditCategoryUserAccess          NsAuditCategory = "user_access"
-	cNsAuditCategoryDataAccess          NsAuditCategory = "data_access"
-	cNsAuditCategoryDataProvisioning    NsAuditCategory = "data_provisioning"
+ cNsAuditCategoryDataProtection NsAuditCategory = "data_protection"
+ cNsAuditCategorySystemConfiguration NsAuditCategory = "system_configuration"
+ cNsAuditCategorySoftwareUpdate NsAuditCategory = "software_update"
+ cNsAuditCategoryUserAccess NsAuditCategory = "user_access"
+ cNsAuditCategoryDataAccess NsAuditCategory = "data_access"
+ cNsAuditCategoryDataProvisioning NsAuditCategory = "data_provisioning"
 )
 
 var pNsAuditCategoryDataProtection NsAuditCategory
@@ -40,22 +40,23 @@ var NsAuditCategoryDataAccess *NsAuditCategory
 var NsAuditCategoryDataProvisioning *NsAuditCategory
 
 func init() {
-	pNsAuditCategoryDataProtection = cNsAuditCategoryDataProtection
-	NsAuditCategoryDataProtection = &pNsAuditCategoryDataProtection
+ pNsAuditCategoryDataProtection = cNsAuditCategoryDataProtection
+ NsAuditCategoryDataProtection = &pNsAuditCategoryDataProtection
 
-	pNsAuditCategorySystemConfiguration = cNsAuditCategorySystemConfiguration
-	NsAuditCategorySystemConfiguration = &pNsAuditCategorySystemConfiguration
+ pNsAuditCategorySystemConfiguration = cNsAuditCategorySystemConfiguration
+ NsAuditCategorySystemConfiguration = &pNsAuditCategorySystemConfiguration
 
-	pNsAuditCategorySoftwareUpdate = cNsAuditCategorySoftwareUpdate
-	NsAuditCategorySoftwareUpdate = &pNsAuditCategorySoftwareUpdate
+ pNsAuditCategorySoftwareUpdate = cNsAuditCategorySoftwareUpdate
+ NsAuditCategorySoftwareUpdate = &pNsAuditCategorySoftwareUpdate
 
-	pNsAuditCategoryUserAccess = cNsAuditCategoryUserAccess
-	NsAuditCategoryUserAccess = &pNsAuditCategoryUserAccess
+ pNsAuditCategoryUserAccess = cNsAuditCategoryUserAccess
+ NsAuditCategoryUserAccess = &pNsAuditCategoryUserAccess
 
-	pNsAuditCategoryDataAccess = cNsAuditCategoryDataAccess
-	NsAuditCategoryDataAccess = &pNsAuditCategoryDataAccess
+ pNsAuditCategoryDataAccess = cNsAuditCategoryDataAccess
+ NsAuditCategoryDataAccess = &pNsAuditCategoryDataAccess
 
-	pNsAuditCategoryDataProvisioning = cNsAuditCategoryDataProvisioning
-	NsAuditCategoryDataProvisioning = &pNsAuditCategoryDataProvisioning
+ pNsAuditCategoryDataProvisioning = cNsAuditCategoryDataProvisioning
+ NsAuditCategoryDataProvisioning = &pNsAuditCategoryDataProvisioning
 
 }
+

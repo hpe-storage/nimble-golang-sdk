@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
+	groupService, err := service.NewNsGroupService("1.1.1.1", "xxxx", "xxxx", "v1", true, true)
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return

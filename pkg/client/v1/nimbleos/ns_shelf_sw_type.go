@@ -6,10 +6,10 @@ package nimbleos
 type NsShelfSwType string
 
 const (
-	cNsShelfSwTypeDiskShelf                NsShelfSwType = "Disk Shelf"
-	cNsShelfSwTypeUnknownShelfSoftwareType NsShelfSwType = "unknown shelf software type"
-	cNsShelfSwTypeAllFlashShelf            NsShelfSwType = "All Flash Shelf"
-	cNsShelfSwTypeHeadShelf                NsShelfSwType = "Head Shelf"
+ cNsShelfSwTypeDiskShelf NsShelfSwType = "Disk Shelf"
+ cNsShelfSwTypeUnknownShelfSoftwareType NsShelfSwType = "unknown shelf software type"
+ cNsShelfSwTypeAllFlashShelf NsShelfSwType = "All Flash Shelf"
+ cNsShelfSwTypeHeadShelf NsShelfSwType = "Head Shelf"
 )
 
 var pNsShelfSwTypeDiskShelf NsShelfSwType
@@ -30,16 +30,17 @@ var NsShelfSwTypeAllFlashShelf *NsShelfSwType
 var NsShelfSwTypeHeadShelf *NsShelfSwType
 
 func init() {
-	pNsShelfSwTypeDiskShelf = cNsShelfSwTypeDiskShelf
-	NsShelfSwTypeDiskShelf = &pNsShelfSwTypeDiskShelf
+ pNsShelfSwTypeDiskShelf = cNsShelfSwTypeDiskShelf
+ NsShelfSwTypeDiskShelf = &pNsShelfSwTypeDiskShelf
 
-	pNsShelfSwTypeUnknownShelfSoftwareType = cNsShelfSwTypeUnknownShelfSoftwareType
-	NsShelfSwTypeUnknownShelfSoftwareType = &pNsShelfSwTypeUnknownShelfSoftwareType
+ pNsShelfSwTypeUnknownShelfSoftwareType = cNsShelfSwTypeUnknownShelfSoftwareType
+ NsShelfSwTypeUnknownShelfSoftwareType = &pNsShelfSwTypeUnknownShelfSoftwareType
 
-	pNsShelfSwTypeAllFlashShelf = cNsShelfSwTypeAllFlashShelf
-	NsShelfSwTypeAllFlashShelf = &pNsShelfSwTypeAllFlashShelf
+ pNsShelfSwTypeAllFlashShelf = cNsShelfSwTypeAllFlashShelf
+ NsShelfSwTypeAllFlashShelf = &pNsShelfSwTypeAllFlashShelf
 
-	pNsShelfSwTypeHeadShelf = cNsShelfSwTypeHeadShelf
-	NsShelfSwTypeHeadShelf = &pNsShelfSwTypeHeadShelf
+ pNsShelfSwTypeHeadShelf = cNsShelfSwTypeHeadShelf
+ NsShelfSwTypeHeadShelf = &pNsShelfSwTypeHeadShelf
 
 }
+

@@ -6,10 +6,10 @@ package nimbleos
 type NsShelfSensorType string
 
 const (
-	cNsShelfSensorTypeFan         NsShelfSensorType = "fan"
-	cNsShelfSensorTypeNvram       NsShelfSensorType = "nvram"
-	cNsShelfSensorTypeTemperature NsShelfSensorType = "temperature"
-	cNsShelfSensorTypePowerSupply NsShelfSensorType = "power supply"
+ cNsShelfSensorTypeFan NsShelfSensorType = "fan"
+ cNsShelfSensorTypeNvram NsShelfSensorType = "nvram"
+ cNsShelfSensorTypeTemperature NsShelfSensorType = "temperature"
+ cNsShelfSensorTypePowerSupply NsShelfSensorType = "power supply"
 )
 
 var pNsShelfSensorTypeFan NsShelfSensorType
@@ -30,16 +30,17 @@ var NsShelfSensorTypeTemperature *NsShelfSensorType
 var NsShelfSensorTypePowerSupply *NsShelfSensorType
 
 func init() {
-	pNsShelfSensorTypeFan = cNsShelfSensorTypeFan
-	NsShelfSensorTypeFan = &pNsShelfSensorTypeFan
+ pNsShelfSensorTypeFan = cNsShelfSensorTypeFan
+ NsShelfSensorTypeFan = &pNsShelfSensorTypeFan
 
-	pNsShelfSensorTypeNvram = cNsShelfSensorTypeNvram
-	NsShelfSensorTypeNvram = &pNsShelfSensorTypeNvram
+ pNsShelfSensorTypeNvram = cNsShelfSensorTypeNvram
+ NsShelfSensorTypeNvram = &pNsShelfSensorTypeNvram
 
-	pNsShelfSensorTypeTemperature = cNsShelfSensorTypeTemperature
-	NsShelfSensorTypeTemperature = &pNsShelfSensorTypeTemperature
+ pNsShelfSensorTypeTemperature = cNsShelfSensorTypeTemperature
+ NsShelfSensorTypeTemperature = &pNsShelfSensorTypeTemperature
 
-	pNsShelfSensorTypePowerSupply = cNsShelfSensorTypePowerSupply
-	NsShelfSensorTypePowerSupply = &pNsShelfSensorTypePowerSupply
+ pNsShelfSensorTypePowerSupply = cNsShelfSensorTypePowerSupply
+ NsShelfSensorTypePowerSupply = &pNsShelfSensorTypePowerSupply
 
 }
+

@@ -6,8 +6,8 @@ package nimbleos
 type NsEulaFormat string
 
 const (
-	cNsEulaFormatHtml NsEulaFormat = "html"
-	cNsEulaFormatText NsEulaFormat = "text"
+ cNsEulaFormatHtml NsEulaFormat = "html"
+ cNsEulaFormatText NsEulaFormat = "text"
 )
 
 var pNsEulaFormatHtml NsEulaFormat
@@ -20,10 +20,11 @@ var NsEulaFormatHtml *NsEulaFormat
 var NsEulaFormatText *NsEulaFormat
 
 func init() {
-	pNsEulaFormatHtml = cNsEulaFormatHtml
-	NsEulaFormatHtml = &pNsEulaFormatHtml
+ pNsEulaFormatHtml = cNsEulaFormatHtml
+ NsEulaFormatHtml = &pNsEulaFormatHtml
 
-	pNsEulaFormatText = cNsEulaFormatText
-	NsEulaFormatText = &pNsEulaFormatText
+ pNsEulaFormatText = cNsEulaFormatText
+ NsEulaFormatText = &pNsEulaFormatText
 
 }
+

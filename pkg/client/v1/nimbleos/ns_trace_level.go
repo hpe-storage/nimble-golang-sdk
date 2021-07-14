@@ -6,11 +6,11 @@ package nimbleos
 type NsTraceLevel string
 
 const (
-	cNsTraceLevelNote     NsTraceLevel = "note"
-	cNsTraceLevelWarn     NsTraceLevel = "warn"
-	cNsTraceLevelCritical NsTraceLevel = "critical"
-	cNsTraceLevelError    NsTraceLevel = "error"
-	cNsTraceLevelInfo     NsTraceLevel = "info"
+ cNsTraceLevelNote NsTraceLevel = "note"
+ cNsTraceLevelWarn NsTraceLevel = "warn"
+ cNsTraceLevelCritical NsTraceLevel = "critical"
+ cNsTraceLevelError NsTraceLevel = "error"
+ cNsTraceLevelInfo NsTraceLevel = "info"
 )
 
 var pNsTraceLevelNote NsTraceLevel
@@ -35,19 +35,20 @@ var NsTraceLevelError *NsTraceLevel
 var NsTraceLevelInfo *NsTraceLevel
 
 func init() {
-	pNsTraceLevelNote = cNsTraceLevelNote
-	NsTraceLevelNote = &pNsTraceLevelNote
+ pNsTraceLevelNote = cNsTraceLevelNote
+ NsTraceLevelNote = &pNsTraceLevelNote
 
-	pNsTraceLevelWarn = cNsTraceLevelWarn
-	NsTraceLevelWarn = &pNsTraceLevelWarn
+ pNsTraceLevelWarn = cNsTraceLevelWarn
+ NsTraceLevelWarn = &pNsTraceLevelWarn
 
-	pNsTraceLevelCritical = cNsTraceLevelCritical
-	NsTraceLevelCritical = &pNsTraceLevelCritical
+ pNsTraceLevelCritical = cNsTraceLevelCritical
+ NsTraceLevelCritical = &pNsTraceLevelCritical
 
-	pNsTraceLevelError = cNsTraceLevelError
-	NsTraceLevelError = &pNsTraceLevelError
+ pNsTraceLevelError = cNsTraceLevelError
+ NsTraceLevelError = &pNsTraceLevelError
 
-	pNsTraceLevelInfo = cNsTraceLevelInfo
-	NsTraceLevelInfo = &pNsTraceLevelInfo
+ pNsTraceLevelInfo = cNsTraceLevelInfo
+ NsTraceLevelInfo = &pNsTraceLevelInfo
 
 }
+

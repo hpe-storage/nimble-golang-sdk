@@ -6,14 +6,14 @@ package nimbleos
 type NsPlatFcLinkSpeed string
 
 const (
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed32g     NsPlatFcLinkSpeed = "plat_fc_link_speed_32G"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed10g     NsPlatFcLinkSpeed = "plat_fc_link_speed_10G"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed2g      NsPlatFcLinkSpeed = "plat_fc_link_speed_2G"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown NsPlatFcLinkSpeed = "plat_fc_link_speed_unknown"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed16g     NsPlatFcLinkSpeed = "plat_fc_link_speed_16G"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed8g      NsPlatFcLinkSpeed = "plat_fc_link_speed_8G"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed4g      NsPlatFcLinkSpeed = "plat_fc_link_speed_4G"
-	cNsPlatFcLinkSpeedPlatFcLinkSpeed40g     NsPlatFcLinkSpeed = "plat_fc_link_speed_40G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed32g NsPlatFcLinkSpeed = "plat_fc_link_speed_32G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed10g NsPlatFcLinkSpeed = "plat_fc_link_speed_10G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed2g NsPlatFcLinkSpeed = "plat_fc_link_speed_2G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown NsPlatFcLinkSpeed = "plat_fc_link_speed_unknown"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed16g NsPlatFcLinkSpeed = "plat_fc_link_speed_16G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed8g NsPlatFcLinkSpeed = "plat_fc_link_speed_8G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed4g NsPlatFcLinkSpeed = "plat_fc_link_speed_4G"
+ cNsPlatFcLinkSpeedPlatFcLinkSpeed40g NsPlatFcLinkSpeed = "plat_fc_link_speed_40G"
 )
 
 var pNsPlatFcLinkSpeedPlatFcLinkSpeed32g NsPlatFcLinkSpeed
@@ -50,28 +50,29 @@ var NsPlatFcLinkSpeedPlatFcLinkSpeed4g *NsPlatFcLinkSpeed
 var NsPlatFcLinkSpeedPlatFcLinkSpeed40g *NsPlatFcLinkSpeed
 
 func init() {
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed32g = cNsPlatFcLinkSpeedPlatFcLinkSpeed32g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed32g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed32g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed32g = cNsPlatFcLinkSpeedPlatFcLinkSpeed32g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed32g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed32g
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed10g = cNsPlatFcLinkSpeedPlatFcLinkSpeed10g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed10g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed10g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed10g = cNsPlatFcLinkSpeedPlatFcLinkSpeed10g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed10g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed10g
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed2g = cNsPlatFcLinkSpeedPlatFcLinkSpeed2g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed2g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed2g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed2g = cNsPlatFcLinkSpeedPlatFcLinkSpeed2g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed2g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed2g
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown = cNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown
-	NsPlatFcLinkSpeedPlatFcLinkSpeedUnknown = &pNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown
+ pNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown = cNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown
+ NsPlatFcLinkSpeedPlatFcLinkSpeedUnknown = &pNsPlatFcLinkSpeedPlatFcLinkSpeedUnknown
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed16g = cNsPlatFcLinkSpeedPlatFcLinkSpeed16g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed16g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed16g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed16g = cNsPlatFcLinkSpeedPlatFcLinkSpeed16g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed16g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed16g
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed8g = cNsPlatFcLinkSpeedPlatFcLinkSpeed8g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed8g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed8g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed8g = cNsPlatFcLinkSpeedPlatFcLinkSpeed8g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed8g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed8g
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed4g = cNsPlatFcLinkSpeedPlatFcLinkSpeed4g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed4g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed4g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed4g = cNsPlatFcLinkSpeedPlatFcLinkSpeed4g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed4g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed4g
 
-	pNsPlatFcLinkSpeedPlatFcLinkSpeed40g = cNsPlatFcLinkSpeedPlatFcLinkSpeed40g
-	NsPlatFcLinkSpeedPlatFcLinkSpeed40g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed40g
+ pNsPlatFcLinkSpeedPlatFcLinkSpeed40g = cNsPlatFcLinkSpeedPlatFcLinkSpeed40g
+ NsPlatFcLinkSpeedPlatFcLinkSpeed40g = &pNsPlatFcLinkSpeedPlatFcLinkSpeed40g
 
 }
+

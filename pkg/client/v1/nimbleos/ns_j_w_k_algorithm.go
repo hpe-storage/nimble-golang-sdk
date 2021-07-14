@@ -6,7 +6,7 @@ package nimbleos
 type NsJWKAlgorithm string
 
 const (
-	cNsJWKAlgorithmRs256 NsJWKAlgorithm = "RS256"
+ cNsJWKAlgorithmRs256 NsJWKAlgorithm = "RS256"
 )
 
 var pNsJWKAlgorithmRs256 NsJWKAlgorithm
@@ -15,7 +15,8 @@ var pNsJWKAlgorithmRs256 NsJWKAlgorithm
 var NsJWKAlgorithmRs256 *NsJWKAlgorithm
 
 func init() {
-	pNsJWKAlgorithmRs256 = cNsJWKAlgorithmRs256
-	NsJWKAlgorithmRs256 = &pNsJWKAlgorithmRs256
+ pNsJWKAlgorithmRs256 = cNsJWKAlgorithmRs256
+ NsJWKAlgorithmRs256 = &pNsJWKAlgorithmRs256
 
 }
+

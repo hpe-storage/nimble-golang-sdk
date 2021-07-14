@@ -6,8 +6,8 @@ package nimbleos
 type NsLdapSchemaType string
 
 const (
-	cNsLdapSchemaTypeOpenldap NsLdapSchemaType = "OpenLDAP"
-	cNsLdapSchemaTypeAd       NsLdapSchemaType = "AD"
+ cNsLdapSchemaTypeOpenldap NsLdapSchemaType = "OpenLDAP"
+ cNsLdapSchemaTypeAd NsLdapSchemaType = "AD"
 )
 
 var pNsLdapSchemaTypeOpenldap NsLdapSchemaType
@@ -20,10 +20,11 @@ var NsLdapSchemaTypeOpenldap *NsLdapSchemaType
 var NsLdapSchemaTypeAd *NsLdapSchemaType
 
 func init() {
-	pNsLdapSchemaTypeOpenldap = cNsLdapSchemaTypeOpenldap
-	NsLdapSchemaTypeOpenldap = &pNsLdapSchemaTypeOpenldap
+ pNsLdapSchemaTypeOpenldap = cNsLdapSchemaTypeOpenldap
+ NsLdapSchemaTypeOpenldap = &pNsLdapSchemaTypeOpenldap
 
-	pNsLdapSchemaTypeAd = cNsLdapSchemaTypeAd
-	NsLdapSchemaTypeAd = &pNsLdapSchemaTypeAd
+ pNsLdapSchemaTypeAd = cNsLdapSchemaTypeAd
+ NsLdapSchemaTypeAd = &pNsLdapSchemaTypeAd
 
 }
+

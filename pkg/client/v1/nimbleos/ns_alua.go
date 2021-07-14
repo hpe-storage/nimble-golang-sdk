@@ -6,14 +6,14 @@ package nimbleos
 type NsALUA string
 
 const (
-	cNsALUALogicalBlockDependent NsALUA = "logical_block_dependent"
-	cNsALUAOffline               NsALUA = "offline"
-	cNsALUAActiveOptimized       NsALUA = "active_optimized"
-	cNsALUAStandby               NsALUA = "standby"
-	cNsALUATransitioning         NsALUA = "transitioning"
-	cNsALUAUnavailable           NsALUA = "unavailable"
-	cNsALUAInvalid               NsALUA = "invalid"
-	cNsALUAActiveNonOptimized    NsALUA = "active_non_optimized"
+ cNsALUALogicalBlockDependent NsALUA = "logical_block_dependent"
+ cNsALUAOffline NsALUA = "offline"
+ cNsALUAActiveOptimized NsALUA = "active_optimized"
+ cNsALUAStandby NsALUA = "standby"
+ cNsALUATransitioning NsALUA = "transitioning"
+ cNsALUAUnavailable NsALUA = "unavailable"
+ cNsALUAInvalid NsALUA = "invalid"
+ cNsALUAActiveNonOptimized NsALUA = "active_non_optimized"
 )
 
 var pNsALUALogicalBlockDependent NsALUA
@@ -50,28 +50,29 @@ var NsALUAInvalid *NsALUA
 var NsALUAActiveNonOptimized *NsALUA
 
 func init() {
-	pNsALUALogicalBlockDependent = cNsALUALogicalBlockDependent
-	NsALUALogicalBlockDependent = &pNsALUALogicalBlockDependent
+ pNsALUALogicalBlockDependent = cNsALUALogicalBlockDependent
+ NsALUALogicalBlockDependent = &pNsALUALogicalBlockDependent
 
-	pNsALUAOffline = cNsALUAOffline
-	NsALUAOffline = &pNsALUAOffline
+ pNsALUAOffline = cNsALUAOffline
+ NsALUAOffline = &pNsALUAOffline
 
-	pNsALUAActiveOptimized = cNsALUAActiveOptimized
-	NsALUAActiveOptimized = &pNsALUAActiveOptimized
+ pNsALUAActiveOptimized = cNsALUAActiveOptimized
+ NsALUAActiveOptimized = &pNsALUAActiveOptimized
 
-	pNsALUAStandby = cNsALUAStandby
-	NsALUAStandby = &pNsALUAStandby
+ pNsALUAStandby = cNsALUAStandby
+ NsALUAStandby = &pNsALUAStandby
 
-	pNsALUATransitioning = cNsALUATransitioning
-	NsALUATransitioning = &pNsALUATransitioning
+ pNsALUATransitioning = cNsALUATransitioning
+ NsALUATransitioning = &pNsALUATransitioning
 
-	pNsALUAUnavailable = cNsALUAUnavailable
-	NsALUAUnavailable = &pNsALUAUnavailable
+ pNsALUAUnavailable = cNsALUAUnavailable
+ NsALUAUnavailable = &pNsALUAUnavailable
 
-	pNsALUAInvalid = cNsALUAInvalid
-	NsALUAInvalid = &pNsALUAInvalid
+ pNsALUAInvalid = cNsALUAInvalid
+ NsALUAInvalid = &pNsALUAInvalid
 
-	pNsALUAActiveNonOptimized = cNsALUAActiveNonOptimized
-	NsALUAActiveNonOptimized = &pNsALUAActiveNonOptimized
+ pNsALUAActiveNonOptimized = cNsALUAActiveNonOptimized
+ NsALUAActiveNonOptimized = &pNsALUAActiveNonOptimized
 
 }
+

@@ -6,8 +6,8 @@ package nimbleos
 type NsEncryptionKeyManager string
 
 const (
-	cNsEncryptionKeyManagerExternal NsEncryptionKeyManager = "external"
-	cNsEncryptionKeyManagerLocal    NsEncryptionKeyManager = "local"
+ cNsEncryptionKeyManagerExternal NsEncryptionKeyManager = "external"
+ cNsEncryptionKeyManagerLocal NsEncryptionKeyManager = "local"
 )
 
 var pNsEncryptionKeyManagerExternal NsEncryptionKeyManager
@@ -20,10 +20,11 @@ var NsEncryptionKeyManagerExternal *NsEncryptionKeyManager
 var NsEncryptionKeyManagerLocal *NsEncryptionKeyManager
 
 func init() {
-	pNsEncryptionKeyManagerExternal = cNsEncryptionKeyManagerExternal
-	NsEncryptionKeyManagerExternal = &pNsEncryptionKeyManagerExternal
+ pNsEncryptionKeyManagerExternal = cNsEncryptionKeyManagerExternal
+ NsEncryptionKeyManagerExternal = &pNsEncryptionKeyManagerExternal
 
-	pNsEncryptionKeyManagerLocal = cNsEncryptionKeyManagerLocal
-	NsEncryptionKeyManagerLocal = &pNsEncryptionKeyManagerLocal
+ pNsEncryptionKeyManagerLocal = cNsEncryptionKeyManagerLocal
+ NsEncryptionKeyManagerLocal = &pNsEncryptionKeyManagerLocal
 
 }
+

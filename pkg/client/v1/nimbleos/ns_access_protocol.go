@@ -6,8 +6,8 @@ package nimbleos
 type NsAccessProtocol string
 
 const (
-	cNsAccessProtocolIscsi NsAccessProtocol = "iscsi"
-	cNsAccessProtocolFc    NsAccessProtocol = "fc"
+ cNsAccessProtocolIscsi NsAccessProtocol = "iscsi"
+ cNsAccessProtocolFc NsAccessProtocol = "fc"
 )
 
 var pNsAccessProtocolIscsi NsAccessProtocol
@@ -20,10 +20,11 @@ var NsAccessProtocolIscsi *NsAccessProtocol
 var NsAccessProtocolFc *NsAccessProtocol
 
 func init() {
-	pNsAccessProtocolIscsi = cNsAccessProtocolIscsi
-	NsAccessProtocolIscsi = &pNsAccessProtocolIscsi
+ pNsAccessProtocolIscsi = cNsAccessProtocolIscsi
+ NsAccessProtocolIscsi = &pNsAccessProtocolIscsi
 
-	pNsAccessProtocolFc = cNsAccessProtocolFc
-	NsAccessProtocolFc = &pNsAccessProtocolFc
+ pNsAccessProtocolFc = cNsAccessProtocolFc
+ NsAccessProtocolFc = &pNsAccessProtocolFc
 
 }
+

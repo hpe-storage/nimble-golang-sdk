@@ -6,7 +6,7 @@ package nimbleos
 type NsEulaLocale string
 
 const (
-	cNsEulaLocaleEn NsEulaLocale = "en"
+ cNsEulaLocaleEn NsEulaLocale = "en"
 )
 
 var pNsEulaLocaleEn NsEulaLocale
@@ -15,7 +15,8 @@ var pNsEulaLocaleEn NsEulaLocale
 var NsEulaLocaleEn *NsEulaLocale
 
 func init() {
-	pNsEulaLocaleEn = cNsEulaLocaleEn
-	NsEulaLocaleEn = &pNsEulaLocaleEn
+ pNsEulaLocaleEn = cNsEulaLocaleEn
+ NsEulaLocaleEn = &pNsEulaLocaleEn
 
 }
+

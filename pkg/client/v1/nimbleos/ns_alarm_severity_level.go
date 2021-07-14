@@ -6,8 +6,8 @@ package nimbleos
 type NsAlarmSeverityLevel string
 
 const (
-	cNsAlarmSeverityLevelCritical NsAlarmSeverityLevel = "critical"
-	cNsAlarmSeverityLevelWarning  NsAlarmSeverityLevel = "warning"
+ cNsAlarmSeverityLevelCritical NsAlarmSeverityLevel = "critical"
+ cNsAlarmSeverityLevelWarning NsAlarmSeverityLevel = "warning"
 )
 
 var pNsAlarmSeverityLevelCritical NsAlarmSeverityLevel
@@ -20,10 +20,11 @@ var NsAlarmSeverityLevelCritical *NsAlarmSeverityLevel
 var NsAlarmSeverityLevelWarning *NsAlarmSeverityLevel
 
 func init() {
-	pNsAlarmSeverityLevelCritical = cNsAlarmSeverityLevelCritical
-	NsAlarmSeverityLevelCritical = &pNsAlarmSeverityLevelCritical
+ pNsAlarmSeverityLevelCritical = cNsAlarmSeverityLevelCritical
+ NsAlarmSeverityLevelCritical = &pNsAlarmSeverityLevelCritical
 
-	pNsAlarmSeverityLevelWarning = cNsAlarmSeverityLevelWarning
-	NsAlarmSeverityLevelWarning = &pNsAlarmSeverityLevelWarning
+ pNsAlarmSeverityLevelWarning = cNsAlarmSeverityLevelWarning
+ NsAlarmSeverityLevelWarning = &pNsAlarmSeverityLevelWarning
 
 }
+

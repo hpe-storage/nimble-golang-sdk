@@ -6,10 +6,10 @@ package nimbleos
 type NsSynchronousReplicationState string
 
 const (
-	cNsSynchronousReplicationStateInSync        NsSynchronousReplicationState = "in_sync"
-	cNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState = "not_applicable"
-	cNsSynchronousReplicationStateOutOfSync     NsSynchronousReplicationState = "out_of_sync"
-	cNsSynchronousReplicationStateUnknown       NsSynchronousReplicationState = "unknown"
+ cNsSynchronousReplicationStateInSync NsSynchronousReplicationState = "in_sync"
+ cNsSynchronousReplicationStateNotApplicable NsSynchronousReplicationState = "not_applicable"
+ cNsSynchronousReplicationStateOutOfSync NsSynchronousReplicationState = "out_of_sync"
+ cNsSynchronousReplicationStateUnknown NsSynchronousReplicationState = "unknown"
 )
 
 var pNsSynchronousReplicationStateInSync NsSynchronousReplicationState
@@ -30,16 +30,17 @@ var NsSynchronousReplicationStateOutOfSync *NsSynchronousReplicationState
 var NsSynchronousReplicationStateUnknown *NsSynchronousReplicationState
 
 func init() {
-	pNsSynchronousReplicationStateInSync = cNsSynchronousReplicationStateInSync
-	NsSynchronousReplicationStateInSync = &pNsSynchronousReplicationStateInSync
+ pNsSynchronousReplicationStateInSync = cNsSynchronousReplicationStateInSync
+ NsSynchronousReplicationStateInSync = &pNsSynchronousReplicationStateInSync
 
-	pNsSynchronousReplicationStateNotApplicable = cNsSynchronousReplicationStateNotApplicable
-	NsSynchronousReplicationStateNotApplicable = &pNsSynchronousReplicationStateNotApplicable
+ pNsSynchronousReplicationStateNotApplicable = cNsSynchronousReplicationStateNotApplicable
+ NsSynchronousReplicationStateNotApplicable = &pNsSynchronousReplicationStateNotApplicable
 
-	pNsSynchronousReplicationStateOutOfSync = cNsSynchronousReplicationStateOutOfSync
-	NsSynchronousReplicationStateOutOfSync = &pNsSynchronousReplicationStateOutOfSync
+ pNsSynchronousReplicationStateOutOfSync = cNsSynchronousReplicationStateOutOfSync
+ NsSynchronousReplicationStateOutOfSync = &pNsSynchronousReplicationStateOutOfSync
 
-	pNsSynchronousReplicationStateUnknown = cNsSynchronousReplicationStateUnknown
-	NsSynchronousReplicationStateUnknown = &pNsSynchronousReplicationStateUnknown
+ pNsSynchronousReplicationStateUnknown = cNsSynchronousReplicationStateUnknown
+ NsSynchronousReplicationStateUnknown = &pNsSynchronousReplicationStateUnknown
 
 }
+

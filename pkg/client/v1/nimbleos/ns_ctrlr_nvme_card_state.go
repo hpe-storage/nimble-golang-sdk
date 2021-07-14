@@ -6,9 +6,9 @@ package nimbleos
 type NsCtrlrNvmeCardState string
 
 const (
-	cNsCtrlrNvmeCardStateValid  NsCtrlrNvmeCardState = "valid"
-	cNsCtrlrNvmeCardStateInUse  NsCtrlrNvmeCardState = "in use"
-	cNsCtrlrNvmeCardStateFailed NsCtrlrNvmeCardState = "failed"
+ cNsCtrlrNvmeCardStateValid NsCtrlrNvmeCardState = "valid"
+ cNsCtrlrNvmeCardStateInUse NsCtrlrNvmeCardState = "in use"
+ cNsCtrlrNvmeCardStateFailed NsCtrlrNvmeCardState = "failed"
 )
 
 var pNsCtrlrNvmeCardStateValid NsCtrlrNvmeCardState
@@ -25,13 +25,14 @@ var NsCtrlrNvmeCardStateInUse *NsCtrlrNvmeCardState
 var NsCtrlrNvmeCardStateFailed *NsCtrlrNvmeCardState
 
 func init() {
-	pNsCtrlrNvmeCardStateValid = cNsCtrlrNvmeCardStateValid
-	NsCtrlrNvmeCardStateValid = &pNsCtrlrNvmeCardStateValid
+ pNsCtrlrNvmeCardStateValid = cNsCtrlrNvmeCardStateValid
+ NsCtrlrNvmeCardStateValid = &pNsCtrlrNvmeCardStateValid
 
-	pNsCtrlrNvmeCardStateInUse = cNsCtrlrNvmeCardStateInUse
-	NsCtrlrNvmeCardStateInUse = &pNsCtrlrNvmeCardStateInUse
+ pNsCtrlrNvmeCardStateInUse = cNsCtrlrNvmeCardStateInUse
+ NsCtrlrNvmeCardStateInUse = &pNsCtrlrNvmeCardStateInUse
 
-	pNsCtrlrNvmeCardStateFailed = cNsCtrlrNvmeCardStateFailed
-	NsCtrlrNvmeCardStateFailed = &pNsCtrlrNvmeCardStateFailed
+ pNsCtrlrNvmeCardStateFailed = cNsCtrlrNvmeCardStateFailed
+ NsCtrlrNvmeCardStateFailed = &pNsCtrlrNvmeCardStateFailed
 
 }
+

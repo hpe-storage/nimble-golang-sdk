@@ -6,9 +6,9 @@ package nimbleos
 type NsProtectionType string
 
 const (
-	cNsProtectionTypeUnprotected NsProtectionType = "unprotected"
-	cNsProtectionTypeRemote      NsProtectionType = "remote"
-	cNsProtectionTypeLocal       NsProtectionType = "local"
+ cNsProtectionTypeUnprotected NsProtectionType = "unprotected"
+ cNsProtectionTypeRemote NsProtectionType = "remote"
+ cNsProtectionTypeLocal NsProtectionType = "local"
 )
 
 var pNsProtectionTypeUnprotected NsProtectionType
@@ -25,13 +25,14 @@ var NsProtectionTypeRemote *NsProtectionType
 var NsProtectionTypeLocal *NsProtectionType
 
 func init() {
-	pNsProtectionTypeUnprotected = cNsProtectionTypeUnprotected
-	NsProtectionTypeUnprotected = &pNsProtectionTypeUnprotected
+ pNsProtectionTypeUnprotected = cNsProtectionTypeUnprotected
+ NsProtectionTypeUnprotected = &pNsProtectionTypeUnprotected
 
-	pNsProtectionTypeRemote = cNsProtectionTypeRemote
-	NsProtectionTypeRemote = &pNsProtectionTypeRemote
+ pNsProtectionTypeRemote = cNsProtectionTypeRemote
+ NsProtectionTypeRemote = &pNsProtectionTypeRemote
 
-	pNsProtectionTypeLocal = cNsProtectionTypeLocal
-	NsProtectionTypeLocal = &pNsProtectionTypeLocal
+ pNsProtectionTypeLocal = cNsProtectionTypeLocal
+ NsProtectionTypeLocal = &pNsProtectionTypeLocal
 
 }
+

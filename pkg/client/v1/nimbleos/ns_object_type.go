@@ -6,67 +6,68 @@ package nimbleos
 type NsObjectType string
 
 const (
-	cNsObjectTypeArrayNetconfig        NsObjectType = "array_netconfig"
-	cNsObjectTypeUserPolicy            NsObjectType = "user_policy"
-	cNsObjectTypeSubnet                NsObjectType = "subnet"
-	cNsObjectTypeEncryptKey            NsObjectType = "encrypt_key"
-	cNsObjectTypeInitiator             NsObjectType = "initiator"
-	cNsObjectTypeKeymanager            NsObjectType = "keymanager"
-	cNsObjectTypeNic                   NsObjectType = "nic"
-	cNsObjectTypeBranch                NsObjectType = "branch"
-	cNsObjectTypeFcTargetPortGroup     NsObjectType = "fc_target_port_group"
-	cNsObjectTypeProttmpl              NsObjectType = "prottmpl"
-	cNsObjectTypeProtpol               NsObjectType = "protpol"
-	cNsObjectTypeSshkey                NsObjectType = "sshkey"
-	cNsObjectTypeFcInterfaceCollection NsObjectType = "fc_interface_collection"
-	cNsObjectTypeVolcoll               NsObjectType = "volcoll"
-	cNsObjectTypeInitiatorgrpSubnet    NsObjectType = "initiatorgrp_subnet"
-	cNsObjectTypePeAcl                 NsObjectType = "pe_acl"
-	cNsObjectTypeVvolAcl               NsObjectType = "vvol_acl"
-	cNsObjectTypeChapuser              NsObjectType = "chapuser"
-	cNsObjectTypeEvents                NsObjectType = "events"
-	cNsObjectTypeApplicationServer     NsObjectType = "application_server"
-	cNsObjectTypeGroup                 NsObjectType = "group"
-	cNsObjectTypePool                  NsObjectType = "pool"
-	cNsObjectTypeVvol                  NsObjectType = "vvol"
-	cNsObjectTypeActiveDirectory       NsObjectType = "active_directory"
-	cNsObjectTypeShelf                 NsObjectType = "shelf"
-	cNsObjectTypeDisk                  NsObjectType = "disk"
-	cNsObjectTypeRoute                 NsObjectType = "route"
-	cNsObjectTypeFolder                NsObjectType = "folder"
-	cNsObjectTypeIpAddress             NsObjectType = "ip address"
-	cNsObjectTypeFc                    NsObjectType = "fc"
-	cNsObjectTypeSupport               NsObjectType = "support"
-	cNsObjectTypeSnapshot              NsObjectType = "snapshot"
-	cNsObjectTypeThrottle              NsObjectType = "throttle"
-	cNsObjectTypeRole                  NsObjectType = "role"
-	cNsObjectTypeSnapcoll              NsObjectType = "snapcoll"
-	cNsObjectTypeSession               NsObjectType = "session"
-	cNsObjectTypeAsyncJob              NsObjectType = "async_job"
-	cNsObjectTypeInitiatorgrp          NsObjectType = "initiatorgrp"
-	cNsObjectTypePerfpolicy            NsObjectType = "perfpolicy"
-	cNsObjectTypePrivilege             NsObjectType = "privilege"
-	cNsObjectTypeSyslog                NsObjectType = "syslog"
-	cNsObjectTypeUserGroup             NsObjectType = "user group"
-	cNsObjectTypeProtsched             NsObjectType = "protsched"
-	cNsObjectTypeNetconfig             NsObjectType = "netconfig"
-	cNsObjectTypeVol                   NsObjectType = "vol"
-	cNsObjectTypeFcInitiatorAlias      NsObjectType = "fc_initiator_alias"
-	cNsObjectTypeArray                 NsObjectType = "array"
-	cNsObjectTypeTrustedOauthIssuer    NsObjectType = "trusted_oauth_issuer"
-	cNsObjectTypeAlarm                 NsObjectType = "alarm"
-	cNsObjectTypeFcPort                NsObjectType = "fc_port"
-	cNsObjectTypeProtocolEndpoint      NsObjectType = "protocol_endpoint"
-	cNsObjectTypeFolset                NsObjectType = "folset"
-	cNsObjectTypeAuditLog              NsObjectType = "audit_log"
-	cNsObjectTypeHcClusterConfig       NsObjectType = "hc_cluster_config"
-	cNsObjectTypeEncryptConfig         NsObjectType = "encrypt_config"
-	cNsObjectTypeWitness               NsObjectType = "witness"
-	cNsObjectTypePartner               NsObjectType = "partner"
-	cNsObjectTypeSnapshotLun           NsObjectType = "snapshot_lun"
-	cNsObjectTypeEventDipatcher        NsObjectType = "event_dipatcher"
-	cNsObjectTypeVolacl                NsObjectType = "volacl"
-	cNsObjectTypeUser                  NsObjectType = "user"
+ cNsObjectTypeArrayNetconfig NsObjectType = "array_netconfig"
+ cNsObjectTypeUserPolicy NsObjectType = "user_policy"
+ cNsObjectTypeSubnet NsObjectType = "subnet"
+ cNsObjectTypeEncryptKey NsObjectType = "encrypt_key"
+ cNsObjectTypeInitiator NsObjectType = "initiator"
+ cNsObjectTypeKeymanager NsObjectType = "keymanager"
+ cNsObjectTypeNic NsObjectType = "nic"
+ cNsObjectTypeBranch NsObjectType = "branch"
+ cNsObjectTypeFcTargetPortGroup NsObjectType = "fc_target_port_group"
+ cNsObjectTypeProttmpl NsObjectType = "prottmpl"
+ cNsObjectTypeProtpol NsObjectType = "protpol"
+ cNsObjectTypeSshkey NsObjectType = "sshkey"
+ cNsObjectTypeFcInterfaceCollection NsObjectType = "fc_interface_collection"
+ cNsObjectTypeVolcoll NsObjectType = "volcoll"
+ cNsObjectTypeInitiatorgrpSubnet NsObjectType = "initiatorgrp_subnet"
+ cNsObjectTypePeAcl NsObjectType = "pe_acl"
+ cNsObjectTypeVvolAcl NsObjectType = "vvol_acl"
+ cNsObjectTypeChapuser NsObjectType = "chapuser"
+ cNsObjectTypeEvents NsObjectType = "events"
+ cNsObjectTypeApplicationServer NsObjectType = "application_server"
+ cNsObjectTypeGroup NsObjectType = "group"
+ cNsObjectTypePool NsObjectType = "pool"
+ cNsObjectTypeVvol NsObjectType = "vvol"
+ cNsObjectTypeActiveDirectory NsObjectType = "active_directory"
+ cNsObjectTypeShelf NsObjectType = "shelf"
+ cNsObjectTypeDisk NsObjectType = "disk"
+ cNsObjectTypeRoute NsObjectType = "route"
+ cNsObjectTypeFolder NsObjectType = "folder"
+ cNsObjectTypeIpAddress NsObjectType = "ip address"
+ cNsObjectTypeFc NsObjectType = "fc"
+ cNsObjectTypeSupport NsObjectType = "support"
+ cNsObjectTypeSnapshot NsObjectType = "snapshot"
+ cNsObjectTypeThrottle NsObjectType = "throttle"
+ cNsObjectTypeRole NsObjectType = "role"
+ cNsObjectTypeSnapcoll NsObjectType = "snapcoll"
+ cNsObjectTypeSession NsObjectType = "session"
+ cNsObjectTypeAsyncJob NsObjectType = "async_job"
+ cNsObjectTypeInitiatorgrp NsObjectType = "initiatorgrp"
+ cNsObjectTypePerfpolicy NsObjectType = "perfpolicy"
+ cNsObjectTypePrivilege NsObjectType = "privilege"
+ cNsObjectTypeSyslog NsObjectType = "syslog"
+ cNsObjectTypeUserGroup NsObjectType = "user group"
+ cNsObjectTypeProtsched NsObjectType = "protsched"
+ cNsObjectTypeNetconfig NsObjectType = "netconfig"
+ cNsObjectTypeVol NsObjectType = "vol"
+ cNsObjectTypeFcInitiatorAlias NsObjectType = "fc_initiator_alias"
+ cNsObjectTypeArray NsObjectType = "array"
+ cNsObjectTypeTrustedOauthIssuer NsObjectType = "trusted_oauth_issuer"
+ cNsObjectTypeAlarm NsObjectType = "alarm"
+ cNsObjectTypeFcPort NsObjectType = "fc_port"
+ cNsObjectTypeProtocolEndpoint NsObjectType = "protocol_endpoint"
+ cNsObjectTypeFolset NsObjectType = "folset"
+ cNsObjectTypeAuditLog NsObjectType = "audit_log"
+ cNsObjectTypeHcClusterConfig NsObjectType = "hc_cluster_config"
+ cNsObjectTypeEncryptConfig NsObjectType = "encrypt_config"
+ cNsObjectTypeClientCredential NsObjectType = "client_credential"
+ cNsObjectTypeWitness NsObjectType = "witness"
+ cNsObjectTypePartner NsObjectType = "partner"
+ cNsObjectTypeSnapshotLun NsObjectType = "snapshot_lun"
+ cNsObjectTypeEventDipatcher NsObjectType = "event_dipatcher"
+ cNsObjectTypeVolacl NsObjectType = "volacl"
+ cNsObjectTypeUser NsObjectType = "user"
 )
 
 var pNsObjectTypeArrayNetconfig NsObjectType
@@ -124,6 +125,7 @@ var pNsObjectTypeFolset NsObjectType
 var pNsObjectTypeAuditLog NsObjectType
 var pNsObjectTypeHcClusterConfig NsObjectType
 var pNsObjectTypeEncryptConfig NsObjectType
+var pNsObjectTypeClientCredential NsObjectType
 var pNsObjectTypeWitness NsObjectType
 var pNsObjectTypePartner NsObjectType
 var pNsObjectTypeSnapshotLun NsObjectType
@@ -296,6 +298,9 @@ var NsObjectTypeHcClusterConfig *NsObjectType
 // NsObjectTypeEncryptConfig enum exports
 var NsObjectTypeEncryptConfig *NsObjectType
 
+// NsObjectTypeClientCredential enum exports
+var NsObjectTypeClientCredential *NsObjectType
+
 // NsObjectTypeWitness enum exports
 var NsObjectTypeWitness *NsObjectType
 
@@ -315,187 +320,191 @@ var NsObjectTypeVolacl *NsObjectType
 var NsObjectTypeUser *NsObjectType
 
 func init() {
-	pNsObjectTypeArrayNetconfig = cNsObjectTypeArrayNetconfig
-	NsObjectTypeArrayNetconfig = &pNsObjectTypeArrayNetconfig
+ pNsObjectTypeArrayNetconfig = cNsObjectTypeArrayNetconfig
+ NsObjectTypeArrayNetconfig = &pNsObjectTypeArrayNetconfig
 
-	pNsObjectTypeUserPolicy = cNsObjectTypeUserPolicy
-	NsObjectTypeUserPolicy = &pNsObjectTypeUserPolicy
+ pNsObjectTypeUserPolicy = cNsObjectTypeUserPolicy
+ NsObjectTypeUserPolicy = &pNsObjectTypeUserPolicy
 
-	pNsObjectTypeSubnet = cNsObjectTypeSubnet
-	NsObjectTypeSubnet = &pNsObjectTypeSubnet
+ pNsObjectTypeSubnet = cNsObjectTypeSubnet
+ NsObjectTypeSubnet = &pNsObjectTypeSubnet
 
-	pNsObjectTypeEncryptKey = cNsObjectTypeEncryptKey
-	NsObjectTypeEncryptKey = &pNsObjectTypeEncryptKey
+ pNsObjectTypeEncryptKey = cNsObjectTypeEncryptKey
+ NsObjectTypeEncryptKey = &pNsObjectTypeEncryptKey
 
-	pNsObjectTypeInitiator = cNsObjectTypeInitiator
-	NsObjectTypeInitiator = &pNsObjectTypeInitiator
+ pNsObjectTypeInitiator = cNsObjectTypeInitiator
+ NsObjectTypeInitiator = &pNsObjectTypeInitiator
 
-	pNsObjectTypeKeymanager = cNsObjectTypeKeymanager
-	NsObjectTypeKeymanager = &pNsObjectTypeKeymanager
+ pNsObjectTypeKeymanager = cNsObjectTypeKeymanager
+ NsObjectTypeKeymanager = &pNsObjectTypeKeymanager
 
-	pNsObjectTypeNic = cNsObjectTypeNic
-	NsObjectTypeNic = &pNsObjectTypeNic
+ pNsObjectTypeNic = cNsObjectTypeNic
+ NsObjectTypeNic = &pNsObjectTypeNic
 
-	pNsObjectTypeBranch = cNsObjectTypeBranch
-	NsObjectTypeBranch = &pNsObjectTypeBranch
+ pNsObjectTypeBranch = cNsObjectTypeBranch
+ NsObjectTypeBranch = &pNsObjectTypeBranch
 
-	pNsObjectTypeFcTargetPortGroup = cNsObjectTypeFcTargetPortGroup
-	NsObjectTypeFcTargetPortGroup = &pNsObjectTypeFcTargetPortGroup
+ pNsObjectTypeFcTargetPortGroup = cNsObjectTypeFcTargetPortGroup
+ NsObjectTypeFcTargetPortGroup = &pNsObjectTypeFcTargetPortGroup
 
-	pNsObjectTypeProttmpl = cNsObjectTypeProttmpl
-	NsObjectTypeProttmpl = &pNsObjectTypeProttmpl
+ pNsObjectTypeProttmpl = cNsObjectTypeProttmpl
+ NsObjectTypeProttmpl = &pNsObjectTypeProttmpl
 
-	pNsObjectTypeProtpol = cNsObjectTypeProtpol
-	NsObjectTypeProtpol = &pNsObjectTypeProtpol
+ pNsObjectTypeProtpol = cNsObjectTypeProtpol
+ NsObjectTypeProtpol = &pNsObjectTypeProtpol
 
-	pNsObjectTypeSshkey = cNsObjectTypeSshkey
-	NsObjectTypeSshkey = &pNsObjectTypeSshkey
+ pNsObjectTypeSshkey = cNsObjectTypeSshkey
+ NsObjectTypeSshkey = &pNsObjectTypeSshkey
 
-	pNsObjectTypeFcInterfaceCollection = cNsObjectTypeFcInterfaceCollection
-	NsObjectTypeFcInterfaceCollection = &pNsObjectTypeFcInterfaceCollection
+ pNsObjectTypeFcInterfaceCollection = cNsObjectTypeFcInterfaceCollection
+ NsObjectTypeFcInterfaceCollection = &pNsObjectTypeFcInterfaceCollection
 
-	pNsObjectTypeVolcoll = cNsObjectTypeVolcoll
-	NsObjectTypeVolcoll = &pNsObjectTypeVolcoll
+ pNsObjectTypeVolcoll = cNsObjectTypeVolcoll
+ NsObjectTypeVolcoll = &pNsObjectTypeVolcoll
 
-	pNsObjectTypeInitiatorgrpSubnet = cNsObjectTypeInitiatorgrpSubnet
-	NsObjectTypeInitiatorgrpSubnet = &pNsObjectTypeInitiatorgrpSubnet
+ pNsObjectTypeInitiatorgrpSubnet = cNsObjectTypeInitiatorgrpSubnet
+ NsObjectTypeInitiatorgrpSubnet = &pNsObjectTypeInitiatorgrpSubnet
 
-	pNsObjectTypePeAcl = cNsObjectTypePeAcl
-	NsObjectTypePeAcl = &pNsObjectTypePeAcl
+ pNsObjectTypePeAcl = cNsObjectTypePeAcl
+ NsObjectTypePeAcl = &pNsObjectTypePeAcl
 
-	pNsObjectTypeVvolAcl = cNsObjectTypeVvolAcl
-	NsObjectTypeVvolAcl = &pNsObjectTypeVvolAcl
+ pNsObjectTypeVvolAcl = cNsObjectTypeVvolAcl
+ NsObjectTypeVvolAcl = &pNsObjectTypeVvolAcl
 
-	pNsObjectTypeChapuser = cNsObjectTypeChapuser
-	NsObjectTypeChapuser = &pNsObjectTypeChapuser
+ pNsObjectTypeChapuser = cNsObjectTypeChapuser
+ NsObjectTypeChapuser = &pNsObjectTypeChapuser
 
-	pNsObjectTypeEvents = cNsObjectTypeEvents
-	NsObjectTypeEvents = &pNsObjectTypeEvents
+ pNsObjectTypeEvents = cNsObjectTypeEvents
+ NsObjectTypeEvents = &pNsObjectTypeEvents
 
-	pNsObjectTypeApplicationServer = cNsObjectTypeApplicationServer
-	NsObjectTypeApplicationServer = &pNsObjectTypeApplicationServer
+ pNsObjectTypeApplicationServer = cNsObjectTypeApplicationServer
+ NsObjectTypeApplicationServer = &pNsObjectTypeApplicationServer
 
-	pNsObjectTypeGroup = cNsObjectTypeGroup
-	NsObjectTypeGroup = &pNsObjectTypeGroup
+ pNsObjectTypeGroup = cNsObjectTypeGroup
+ NsObjectTypeGroup = &pNsObjectTypeGroup
 
-	pNsObjectTypePool = cNsObjectTypePool
-	NsObjectTypePool = &pNsObjectTypePool
+ pNsObjectTypePool = cNsObjectTypePool
+ NsObjectTypePool = &pNsObjectTypePool
 
-	pNsObjectTypeVvol = cNsObjectTypeVvol
-	NsObjectTypeVvol = &pNsObjectTypeVvol
+ pNsObjectTypeVvol = cNsObjectTypeVvol
+ NsObjectTypeVvol = &pNsObjectTypeVvol
 
-	pNsObjectTypeActiveDirectory = cNsObjectTypeActiveDirectory
-	NsObjectTypeActiveDirectory = &pNsObjectTypeActiveDirectory
+ pNsObjectTypeActiveDirectory = cNsObjectTypeActiveDirectory
+ NsObjectTypeActiveDirectory = &pNsObjectTypeActiveDirectory
 
-	pNsObjectTypeShelf = cNsObjectTypeShelf
-	NsObjectTypeShelf = &pNsObjectTypeShelf
+ pNsObjectTypeShelf = cNsObjectTypeShelf
+ NsObjectTypeShelf = &pNsObjectTypeShelf
 
-	pNsObjectTypeDisk = cNsObjectTypeDisk
-	NsObjectTypeDisk = &pNsObjectTypeDisk
+ pNsObjectTypeDisk = cNsObjectTypeDisk
+ NsObjectTypeDisk = &pNsObjectTypeDisk
 
-	pNsObjectTypeRoute = cNsObjectTypeRoute
-	NsObjectTypeRoute = &pNsObjectTypeRoute
+ pNsObjectTypeRoute = cNsObjectTypeRoute
+ NsObjectTypeRoute = &pNsObjectTypeRoute
 
-	pNsObjectTypeFolder = cNsObjectTypeFolder
-	NsObjectTypeFolder = &pNsObjectTypeFolder
+ pNsObjectTypeFolder = cNsObjectTypeFolder
+ NsObjectTypeFolder = &pNsObjectTypeFolder
 
-	pNsObjectTypeIpAddress = cNsObjectTypeIpAddress
-	NsObjectTypeIpAddress = &pNsObjectTypeIpAddress
+ pNsObjectTypeIpAddress = cNsObjectTypeIpAddress
+ NsObjectTypeIpAddress = &pNsObjectTypeIpAddress
 
-	pNsObjectTypeFc = cNsObjectTypeFc
-	NsObjectTypeFc = &pNsObjectTypeFc
+ pNsObjectTypeFc = cNsObjectTypeFc
+ NsObjectTypeFc = &pNsObjectTypeFc
 
-	pNsObjectTypeSupport = cNsObjectTypeSupport
-	NsObjectTypeSupport = &pNsObjectTypeSupport
+ pNsObjectTypeSupport = cNsObjectTypeSupport
+ NsObjectTypeSupport = &pNsObjectTypeSupport
 
-	pNsObjectTypeSnapshot = cNsObjectTypeSnapshot
-	NsObjectTypeSnapshot = &pNsObjectTypeSnapshot
+ pNsObjectTypeSnapshot = cNsObjectTypeSnapshot
+ NsObjectTypeSnapshot = &pNsObjectTypeSnapshot
 
-	pNsObjectTypeThrottle = cNsObjectTypeThrottle
-	NsObjectTypeThrottle = &pNsObjectTypeThrottle
+ pNsObjectTypeThrottle = cNsObjectTypeThrottle
+ NsObjectTypeThrottle = &pNsObjectTypeThrottle
 
-	pNsObjectTypeRole = cNsObjectTypeRole
-	NsObjectTypeRole = &pNsObjectTypeRole
+ pNsObjectTypeRole = cNsObjectTypeRole
+ NsObjectTypeRole = &pNsObjectTypeRole
 
-	pNsObjectTypeSnapcoll = cNsObjectTypeSnapcoll
-	NsObjectTypeSnapcoll = &pNsObjectTypeSnapcoll
+ pNsObjectTypeSnapcoll = cNsObjectTypeSnapcoll
+ NsObjectTypeSnapcoll = &pNsObjectTypeSnapcoll
 
-	pNsObjectTypeSession = cNsObjectTypeSession
-	NsObjectTypeSession = &pNsObjectTypeSession
+ pNsObjectTypeSession = cNsObjectTypeSession
+ NsObjectTypeSession = &pNsObjectTypeSession
 
-	pNsObjectTypeAsyncJob = cNsObjectTypeAsyncJob
-	NsObjectTypeAsyncJob = &pNsObjectTypeAsyncJob
+ pNsObjectTypeAsyncJob = cNsObjectTypeAsyncJob
+ NsObjectTypeAsyncJob = &pNsObjectTypeAsyncJob
 
-	pNsObjectTypeInitiatorgrp = cNsObjectTypeInitiatorgrp
-	NsObjectTypeInitiatorgrp = &pNsObjectTypeInitiatorgrp
+ pNsObjectTypeInitiatorgrp = cNsObjectTypeInitiatorgrp
+ NsObjectTypeInitiatorgrp = &pNsObjectTypeInitiatorgrp
 
-	pNsObjectTypePerfpolicy = cNsObjectTypePerfpolicy
-	NsObjectTypePerfpolicy = &pNsObjectTypePerfpolicy
+ pNsObjectTypePerfpolicy = cNsObjectTypePerfpolicy
+ NsObjectTypePerfpolicy = &pNsObjectTypePerfpolicy
 
-	pNsObjectTypePrivilege = cNsObjectTypePrivilege
-	NsObjectTypePrivilege = &pNsObjectTypePrivilege
+ pNsObjectTypePrivilege = cNsObjectTypePrivilege
+ NsObjectTypePrivilege = &pNsObjectTypePrivilege
 
-	pNsObjectTypeSyslog = cNsObjectTypeSyslog
-	NsObjectTypeSyslog = &pNsObjectTypeSyslog
+ pNsObjectTypeSyslog = cNsObjectTypeSyslog
+ NsObjectTypeSyslog = &pNsObjectTypeSyslog
 
-	pNsObjectTypeUserGroup = cNsObjectTypeUserGroup
-	NsObjectTypeUserGroup = &pNsObjectTypeUserGroup
+ pNsObjectTypeUserGroup = cNsObjectTypeUserGroup
+ NsObjectTypeUserGroup = &pNsObjectTypeUserGroup
 
-	pNsObjectTypeProtsched = cNsObjectTypeProtsched
-	NsObjectTypeProtsched = &pNsObjectTypeProtsched
+ pNsObjectTypeProtsched = cNsObjectTypeProtsched
+ NsObjectTypeProtsched = &pNsObjectTypeProtsched
 
-	pNsObjectTypeNetconfig = cNsObjectTypeNetconfig
-	NsObjectTypeNetconfig = &pNsObjectTypeNetconfig
+ pNsObjectTypeNetconfig = cNsObjectTypeNetconfig
+ NsObjectTypeNetconfig = &pNsObjectTypeNetconfig
 
-	pNsObjectTypeVol = cNsObjectTypeVol
-	NsObjectTypeVol = &pNsObjectTypeVol
+ pNsObjectTypeVol = cNsObjectTypeVol
+ NsObjectTypeVol = &pNsObjectTypeVol
 
-	pNsObjectTypeFcInitiatorAlias = cNsObjectTypeFcInitiatorAlias
-	NsObjectTypeFcInitiatorAlias = &pNsObjectTypeFcInitiatorAlias
+ pNsObjectTypeFcInitiatorAlias = cNsObjectTypeFcInitiatorAlias
+ NsObjectTypeFcInitiatorAlias = &pNsObjectTypeFcInitiatorAlias
 
-	pNsObjectTypeArray = cNsObjectTypeArray
-	NsObjectTypeArray = &pNsObjectTypeArray
+ pNsObjectTypeArray = cNsObjectTypeArray
+ NsObjectTypeArray = &pNsObjectTypeArray
 
-	pNsObjectTypeTrustedOauthIssuer = cNsObjectTypeTrustedOauthIssuer
-	NsObjectTypeTrustedOauthIssuer = &pNsObjectTypeTrustedOauthIssuer
+ pNsObjectTypeTrustedOauthIssuer = cNsObjectTypeTrustedOauthIssuer
+ NsObjectTypeTrustedOauthIssuer = &pNsObjectTypeTrustedOauthIssuer
 
-	pNsObjectTypeAlarm = cNsObjectTypeAlarm
-	NsObjectTypeAlarm = &pNsObjectTypeAlarm
+ pNsObjectTypeAlarm = cNsObjectTypeAlarm
+ NsObjectTypeAlarm = &pNsObjectTypeAlarm
 
-	pNsObjectTypeFcPort = cNsObjectTypeFcPort
-	NsObjectTypeFcPort = &pNsObjectTypeFcPort
+ pNsObjectTypeFcPort = cNsObjectTypeFcPort
+ NsObjectTypeFcPort = &pNsObjectTypeFcPort
 
-	pNsObjectTypeProtocolEndpoint = cNsObjectTypeProtocolEndpoint
-	NsObjectTypeProtocolEndpoint = &pNsObjectTypeProtocolEndpoint
+ pNsObjectTypeProtocolEndpoint = cNsObjectTypeProtocolEndpoint
+ NsObjectTypeProtocolEndpoint = &pNsObjectTypeProtocolEndpoint
 
-	pNsObjectTypeFolset = cNsObjectTypeFolset
-	NsObjectTypeFolset = &pNsObjectTypeFolset
+ pNsObjectTypeFolset = cNsObjectTypeFolset
+ NsObjectTypeFolset = &pNsObjectTypeFolset
 
-	pNsObjectTypeAuditLog = cNsObjectTypeAuditLog
-	NsObjectTypeAuditLog = &pNsObjectTypeAuditLog
+ pNsObjectTypeAuditLog = cNsObjectTypeAuditLog
+ NsObjectTypeAuditLog = &pNsObjectTypeAuditLog
 
-	pNsObjectTypeHcClusterConfig = cNsObjectTypeHcClusterConfig
-	NsObjectTypeHcClusterConfig = &pNsObjectTypeHcClusterConfig
+ pNsObjectTypeHcClusterConfig = cNsObjectTypeHcClusterConfig
+ NsObjectTypeHcClusterConfig = &pNsObjectTypeHcClusterConfig
 
-	pNsObjectTypeEncryptConfig = cNsObjectTypeEncryptConfig
-	NsObjectTypeEncryptConfig = &pNsObjectTypeEncryptConfig
+ pNsObjectTypeEncryptConfig = cNsObjectTypeEncryptConfig
+ NsObjectTypeEncryptConfig = &pNsObjectTypeEncryptConfig
 
-	pNsObjectTypeWitness = cNsObjectTypeWitness
-	NsObjectTypeWitness = &pNsObjectTypeWitness
+ pNsObjectTypeClientCredential = cNsObjectTypeClientCredential
+ NsObjectTypeClientCredential = &pNsObjectTypeClientCredential
 
-	pNsObjectTypePartner = cNsObjectTypePartner
-	NsObjectTypePartner = &pNsObjectTypePartner
+ pNsObjectTypeWitness = cNsObjectTypeWitness
+ NsObjectTypeWitness = &pNsObjectTypeWitness
 
-	pNsObjectTypeSnapshotLun = cNsObjectTypeSnapshotLun
-	NsObjectTypeSnapshotLun = &pNsObjectTypeSnapshotLun
+ pNsObjectTypePartner = cNsObjectTypePartner
+ NsObjectTypePartner = &pNsObjectTypePartner
 
-	pNsObjectTypeEventDipatcher = cNsObjectTypeEventDipatcher
-	NsObjectTypeEventDipatcher = &pNsObjectTypeEventDipatcher
+ pNsObjectTypeSnapshotLun = cNsObjectTypeSnapshotLun
+ NsObjectTypeSnapshotLun = &pNsObjectTypeSnapshotLun
 
-	pNsObjectTypeVolacl = cNsObjectTypeVolacl
-	NsObjectTypeVolacl = &pNsObjectTypeVolacl
+ pNsObjectTypeEventDipatcher = cNsObjectTypeEventDipatcher
+ NsObjectTypeEventDipatcher = &pNsObjectTypeEventDipatcher
 
-	pNsObjectTypeUser = cNsObjectTypeUser
-	NsObjectTypeUser = &pNsObjectTypeUser
+ pNsObjectTypeVolacl = cNsObjectTypeVolacl
+ NsObjectTypeVolacl = &pNsObjectTypeVolacl
+
+ pNsObjectTypeUser = cNsObjectTypeUser
+ NsObjectTypeUser = &pNsObjectTypeUser
 
 }
+

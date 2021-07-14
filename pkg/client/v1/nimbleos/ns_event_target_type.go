@@ -6,28 +6,28 @@ package nimbleos
 type NsEventTargetType string
 
 const (
-	cNsEventTargetTypeAnon           NsEventTargetType = "anon"
-	cNsEventTargetTypeController     NsEventTargetType = "controller"
-	cNsEventTargetTypeTest           NsEventTargetType = "test"
-	cNsEventTargetTypeProtectionSet  NsEventTargetType = "protection_set"
-	cNsEventTargetTypePool           NsEventTargetType = "pool"
-	cNsEventTargetTypeNic            NsEventTargetType = "nic"
-	cNsEventTargetTypeShelf          NsEventTargetType = "shelf"
-	cNsEventTargetTypeVolume         NsEventTargetType = "volume"
-	cNsEventTargetTypeDisk           NsEventTargetType = "disk"
-	cNsEventTargetTypeFan            NsEventTargetType = "fan"
-	cNsEventTargetTypeIscsi          NsEventTargetType = "iscsi"
-	cNsEventTargetTypeNvram          NsEventTargetType = "nvram"
-	cNsEventTargetTypePowerSupply    NsEventTargetType = "power_supply"
-	cNsEventTargetTypePartner        NsEventTargetType = "partner"
-	cNsEventTargetTypeArray          NsEventTargetType = "array"
-	cNsEventTargetTypeService        NsEventTargetType = "service"
-	cNsEventTargetTypeTemperature    NsEventTargetType = "temperature"
-	cNsEventTargetTypeNtb            NsEventTargetType = "ntb"
-	cNsEventTargetTypeFc             NsEventTargetType = "fc"
-	cNsEventTargetTypeInitiatorGroup NsEventTargetType = "initiator_group"
-	cNsEventTargetTypeRaid           NsEventTargetType = "raid"
-	cNsEventTargetTypeGroup          NsEventTargetType = "group"
+ cNsEventTargetTypeAnon NsEventTargetType = "anon"
+ cNsEventTargetTypeController NsEventTargetType = "controller"
+ cNsEventTargetTypeTest NsEventTargetType = "test"
+ cNsEventTargetTypeProtectionSet NsEventTargetType = "protection_set"
+ cNsEventTargetTypePool NsEventTargetType = "pool"
+ cNsEventTargetTypeNic NsEventTargetType = "nic"
+ cNsEventTargetTypeShelf NsEventTargetType = "shelf"
+ cNsEventTargetTypeVolume NsEventTargetType = "volume"
+ cNsEventTargetTypeDisk NsEventTargetType = "disk"
+ cNsEventTargetTypeFan NsEventTargetType = "fan"
+ cNsEventTargetTypeIscsi NsEventTargetType = "iscsi"
+ cNsEventTargetTypeNvram NsEventTargetType = "nvram"
+ cNsEventTargetTypePowerSupply NsEventTargetType = "power_supply"
+ cNsEventTargetTypePartner NsEventTargetType = "partner"
+ cNsEventTargetTypeArray NsEventTargetType = "array"
+ cNsEventTargetTypeService NsEventTargetType = "service"
+ cNsEventTargetTypeTemperature NsEventTargetType = "temperature"
+ cNsEventTargetTypeNtb NsEventTargetType = "ntb"
+ cNsEventTargetTypeFc NsEventTargetType = "fc"
+ cNsEventTargetTypeInitiatorGroup NsEventTargetType = "initiator_group"
+ cNsEventTargetTypeRaid NsEventTargetType = "raid"
+ cNsEventTargetTypeGroup NsEventTargetType = "group"
 )
 
 var pNsEventTargetTypeAnon NsEventTargetType
@@ -120,70 +120,71 @@ var NsEventTargetTypeRaid *NsEventTargetType
 var NsEventTargetTypeGroup *NsEventTargetType
 
 func init() {
-	pNsEventTargetTypeAnon = cNsEventTargetTypeAnon
-	NsEventTargetTypeAnon = &pNsEventTargetTypeAnon
+ pNsEventTargetTypeAnon = cNsEventTargetTypeAnon
+ NsEventTargetTypeAnon = &pNsEventTargetTypeAnon
 
-	pNsEventTargetTypeController = cNsEventTargetTypeController
-	NsEventTargetTypeController = &pNsEventTargetTypeController
+ pNsEventTargetTypeController = cNsEventTargetTypeController
+ NsEventTargetTypeController = &pNsEventTargetTypeController
 
-	pNsEventTargetTypeTest = cNsEventTargetTypeTest
-	NsEventTargetTypeTest = &pNsEventTargetTypeTest
+ pNsEventTargetTypeTest = cNsEventTargetTypeTest
+ NsEventTargetTypeTest = &pNsEventTargetTypeTest
 
-	pNsEventTargetTypeProtectionSet = cNsEventTargetTypeProtectionSet
-	NsEventTargetTypeProtectionSet = &pNsEventTargetTypeProtectionSet
+ pNsEventTargetTypeProtectionSet = cNsEventTargetTypeProtectionSet
+ NsEventTargetTypeProtectionSet = &pNsEventTargetTypeProtectionSet
 
-	pNsEventTargetTypePool = cNsEventTargetTypePool
-	NsEventTargetTypePool = &pNsEventTargetTypePool
+ pNsEventTargetTypePool = cNsEventTargetTypePool
+ NsEventTargetTypePool = &pNsEventTargetTypePool
 
-	pNsEventTargetTypeNic = cNsEventTargetTypeNic
-	NsEventTargetTypeNic = &pNsEventTargetTypeNic
+ pNsEventTargetTypeNic = cNsEventTargetTypeNic
+ NsEventTargetTypeNic = &pNsEventTargetTypeNic
 
-	pNsEventTargetTypeShelf = cNsEventTargetTypeShelf
-	NsEventTargetTypeShelf = &pNsEventTargetTypeShelf
+ pNsEventTargetTypeShelf = cNsEventTargetTypeShelf
+ NsEventTargetTypeShelf = &pNsEventTargetTypeShelf
 
-	pNsEventTargetTypeVolume = cNsEventTargetTypeVolume
-	NsEventTargetTypeVolume = &pNsEventTargetTypeVolume
+ pNsEventTargetTypeVolume = cNsEventTargetTypeVolume
+ NsEventTargetTypeVolume = &pNsEventTargetTypeVolume
 
-	pNsEventTargetTypeDisk = cNsEventTargetTypeDisk
-	NsEventTargetTypeDisk = &pNsEventTargetTypeDisk
+ pNsEventTargetTypeDisk = cNsEventTargetTypeDisk
+ NsEventTargetTypeDisk = &pNsEventTargetTypeDisk
 
-	pNsEventTargetTypeFan = cNsEventTargetTypeFan
-	NsEventTargetTypeFan = &pNsEventTargetTypeFan
+ pNsEventTargetTypeFan = cNsEventTargetTypeFan
+ NsEventTargetTypeFan = &pNsEventTargetTypeFan
 
-	pNsEventTargetTypeIscsi = cNsEventTargetTypeIscsi
-	NsEventTargetTypeIscsi = &pNsEventTargetTypeIscsi
+ pNsEventTargetTypeIscsi = cNsEventTargetTypeIscsi
+ NsEventTargetTypeIscsi = &pNsEventTargetTypeIscsi
 
-	pNsEventTargetTypeNvram = cNsEventTargetTypeNvram
-	NsEventTargetTypeNvram = &pNsEventTargetTypeNvram
+ pNsEventTargetTypeNvram = cNsEventTargetTypeNvram
+ NsEventTargetTypeNvram = &pNsEventTargetTypeNvram
 
-	pNsEventTargetTypePowerSupply = cNsEventTargetTypePowerSupply
-	NsEventTargetTypePowerSupply = &pNsEventTargetTypePowerSupply
+ pNsEventTargetTypePowerSupply = cNsEventTargetTypePowerSupply
+ NsEventTargetTypePowerSupply = &pNsEventTargetTypePowerSupply
 
-	pNsEventTargetTypePartner = cNsEventTargetTypePartner
-	NsEventTargetTypePartner = &pNsEventTargetTypePartner
+ pNsEventTargetTypePartner = cNsEventTargetTypePartner
+ NsEventTargetTypePartner = &pNsEventTargetTypePartner
 
-	pNsEventTargetTypeArray = cNsEventTargetTypeArray
-	NsEventTargetTypeArray = &pNsEventTargetTypeArray
+ pNsEventTargetTypeArray = cNsEventTargetTypeArray
+ NsEventTargetTypeArray = &pNsEventTargetTypeArray
 
-	pNsEventTargetTypeService = cNsEventTargetTypeService
-	NsEventTargetTypeService = &pNsEventTargetTypeService
+ pNsEventTargetTypeService = cNsEventTargetTypeService
+ NsEventTargetTypeService = &pNsEventTargetTypeService
 
-	pNsEventTargetTypeTemperature = cNsEventTargetTypeTemperature
-	NsEventTargetTypeTemperature = &pNsEventTargetTypeTemperature
+ pNsEventTargetTypeTemperature = cNsEventTargetTypeTemperature
+ NsEventTargetTypeTemperature = &pNsEventTargetTypeTemperature
 
-	pNsEventTargetTypeNtb = cNsEventTargetTypeNtb
-	NsEventTargetTypeNtb = &pNsEventTargetTypeNtb
+ pNsEventTargetTypeNtb = cNsEventTargetTypeNtb
+ NsEventTargetTypeNtb = &pNsEventTargetTypeNtb
 
-	pNsEventTargetTypeFc = cNsEventTargetTypeFc
-	NsEventTargetTypeFc = &pNsEventTargetTypeFc
+ pNsEventTargetTypeFc = cNsEventTargetTypeFc
+ NsEventTargetTypeFc = &pNsEventTargetTypeFc
 
-	pNsEventTargetTypeInitiatorGroup = cNsEventTargetTypeInitiatorGroup
-	NsEventTargetTypeInitiatorGroup = &pNsEventTargetTypeInitiatorGroup
+ pNsEventTargetTypeInitiatorGroup = cNsEventTargetTypeInitiatorGroup
+ NsEventTargetTypeInitiatorGroup = &pNsEventTargetTypeInitiatorGroup
 
-	pNsEventTargetTypeRaid = cNsEventTargetTypeRaid
-	NsEventTargetTypeRaid = &pNsEventTargetTypeRaid
+ pNsEventTargetTypeRaid = cNsEventTargetTypeRaid
+ NsEventTargetTypeRaid = &pNsEventTargetTypeRaid
 
-	pNsEventTargetTypeGroup = cNsEventTargetTypeGroup
-	NsEventTargetTypeGroup = &pNsEventTargetTypeGroup
+ pNsEventTargetTypeGroup = cNsEventTargetTypeGroup
+ NsEventTargetTypeGroup = &pNsEventTargetTypeGroup
 
 }
+

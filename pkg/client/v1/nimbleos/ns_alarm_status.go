@@ -6,8 +6,8 @@ package nimbleos
 type NsAlarmStatus string
 
 const (
-	cNsAlarmStatusAcknowledged NsAlarmStatus = "acknowledged"
-	cNsAlarmStatusOpen         NsAlarmStatus = "open"
+ cNsAlarmStatusAcknowledged NsAlarmStatus = "acknowledged"
+ cNsAlarmStatusOpen NsAlarmStatus = "open"
 )
 
 var pNsAlarmStatusAcknowledged NsAlarmStatus
@@ -20,10 +20,11 @@ var NsAlarmStatusAcknowledged *NsAlarmStatus
 var NsAlarmStatusOpen *NsAlarmStatus
 
 func init() {
-	pNsAlarmStatusAcknowledged = cNsAlarmStatusAcknowledged
-	NsAlarmStatusAcknowledged = &pNsAlarmStatusAcknowledged
+ pNsAlarmStatusAcknowledged = cNsAlarmStatusAcknowledged
+ NsAlarmStatusAcknowledged = &pNsAlarmStatusAcknowledged
 
-	pNsAlarmStatusOpen = cNsAlarmStatusOpen
-	NsAlarmStatusOpen = &pNsAlarmStatusOpen
+ pNsAlarmStatusOpen = cNsAlarmStatusOpen
+ NsAlarmStatusOpen = &pNsAlarmStatusOpen
 
 }
+

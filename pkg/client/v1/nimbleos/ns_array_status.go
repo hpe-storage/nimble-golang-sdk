@@ -6,8 +6,8 @@ package nimbleos
 type NsArrayStatus string
 
 const (
-	cNsArrayStatusUnreachable NsArrayStatus = "unreachable"
-	cNsArrayStatusReachable   NsArrayStatus = "reachable"
+ cNsArrayStatusUnreachable NsArrayStatus = "unreachable"
+ cNsArrayStatusReachable NsArrayStatus = "reachable"
 )
 
 var pNsArrayStatusUnreachable NsArrayStatus
@@ -20,10 +20,11 @@ var NsArrayStatusUnreachable *NsArrayStatus
 var NsArrayStatusReachable *NsArrayStatus
 
 func init() {
-	pNsArrayStatusUnreachable = cNsArrayStatusUnreachable
-	NsArrayStatusUnreachable = &pNsArrayStatusUnreachable
+ pNsArrayStatusUnreachable = cNsArrayStatusUnreachable
+ NsArrayStatusUnreachable = &pNsArrayStatusUnreachable
 
-	pNsArrayStatusReachable = cNsArrayStatusReachable
-	NsArrayStatusReachable = &pNsArrayStatusReachable
+ pNsArrayStatusReachable = cNsArrayStatusReachable
+ NsArrayStatusReachable = &pNsArrayStatusReachable
 
 }
+

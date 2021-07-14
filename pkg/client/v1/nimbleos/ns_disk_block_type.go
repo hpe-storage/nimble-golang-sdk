@@ -6,10 +6,10 @@ package nimbleos
 type NsDiskBlockType string
 
 const (
-	cNsDiskBlockTypeBlock512e NsDiskBlockType = "block_512e"
-	cNsDiskBlockTypeBlock4kn  NsDiskBlockType = "block_4Kn"
-	cNsDiskBlockTypeBlockNone NsDiskBlockType = "block_none"
-	cNsDiskBlockTypeBlock512n NsDiskBlockType = "block_512n"
+ cNsDiskBlockTypeBlock512e NsDiskBlockType = "block_512e"
+ cNsDiskBlockTypeBlock4kn NsDiskBlockType = "block_4Kn"
+ cNsDiskBlockTypeBlockNone NsDiskBlockType = "block_none"
+ cNsDiskBlockTypeBlock512n NsDiskBlockType = "block_512n"
 )
 
 var pNsDiskBlockTypeBlock512e NsDiskBlockType
@@ -30,16 +30,17 @@ var NsDiskBlockTypeBlockNone *NsDiskBlockType
 var NsDiskBlockTypeBlock512n *NsDiskBlockType
 
 func init() {
-	pNsDiskBlockTypeBlock512e = cNsDiskBlockTypeBlock512e
-	NsDiskBlockTypeBlock512e = &pNsDiskBlockTypeBlock512e
+ pNsDiskBlockTypeBlock512e = cNsDiskBlockTypeBlock512e
+ NsDiskBlockTypeBlock512e = &pNsDiskBlockTypeBlock512e
 
-	pNsDiskBlockTypeBlock4kn = cNsDiskBlockTypeBlock4kn
-	NsDiskBlockTypeBlock4kn = &pNsDiskBlockTypeBlock4kn
+ pNsDiskBlockTypeBlock4kn = cNsDiskBlockTypeBlock4kn
+ NsDiskBlockTypeBlock4kn = &pNsDiskBlockTypeBlock4kn
 
-	pNsDiskBlockTypeBlockNone = cNsDiskBlockTypeBlockNone
-	NsDiskBlockTypeBlockNone = &pNsDiskBlockTypeBlockNone
+ pNsDiskBlockTypeBlockNone = cNsDiskBlockTypeBlockNone
+ NsDiskBlockTypeBlockNone = &pNsDiskBlockTypeBlockNone
 
-	pNsDiskBlockTypeBlock512n = cNsDiskBlockTypeBlock512n
-	NsDiskBlockTypeBlock512n = &pNsDiskBlockTypeBlock512n
+ pNsDiskBlockTypeBlock512n = cNsDiskBlockTypeBlock512n
+ NsDiskBlockTypeBlock512n = &pNsDiskBlockTypeBlock512n
 
 }
+

@@ -6,8 +6,8 @@ package nimbleos
 type NsPlatOrientation string
 
 const (
-	cNsPlatOrientationRightToLeft NsPlatOrientation = "right_to_left"
-	cNsPlatOrientationLeftToRight NsPlatOrientation = "left_to_right"
+ cNsPlatOrientationRightToLeft NsPlatOrientation = "right_to_left"
+ cNsPlatOrientationLeftToRight NsPlatOrientation = "left_to_right"
 )
 
 var pNsPlatOrientationRightToLeft NsPlatOrientation
@@ -20,10 +20,11 @@ var NsPlatOrientationRightToLeft *NsPlatOrientation
 var NsPlatOrientationLeftToRight *NsPlatOrientation
 
 func init() {
-	pNsPlatOrientationRightToLeft = cNsPlatOrientationRightToLeft
-	NsPlatOrientationRightToLeft = &pNsPlatOrientationRightToLeft
+ pNsPlatOrientationRightToLeft = cNsPlatOrientationRightToLeft
+ NsPlatOrientationRightToLeft = &pNsPlatOrientationRightToLeft
 
-	pNsPlatOrientationLeftToRight = cNsPlatOrientationLeftToRight
-	NsPlatOrientationLeftToRight = &pNsPlatOrientationLeftToRight
+ pNsPlatOrientationLeftToRight = cNsPlatOrientationLeftToRight
+ NsPlatOrientationLeftToRight = &pNsPlatOrientationLeftToRight
 
 }
+

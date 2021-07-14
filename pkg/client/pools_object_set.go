@@ -1,121 +1,123 @@
 // Copyright 2020 Hewlett Packard Enterprise Development LP
 
+
 package client
 
 import (
-	"github.com/hpe-storage/common-host-libs/jsonutil"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
-	"reflect"
+
+        "github.com/hpe-storage/common-host-libs/jsonutil"
+        "reflect"
+    "github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
+    "github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+
 )
 
 // Manage pools. Pools are an aggregation of arrays.
 const (
-	poolPath = "pools"
+    poolPath = "pools"
 )
 
 // PoolObjectSet
 type PoolObjectSet struct {
-	Client *GroupMgmtClient
+    Client *GroupMgmtClient
 }
 
 // CreateObject creates a new Pool object
 func (objectSet *PoolObjectSet) CreateObject(payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.Post(poolPath, payload, &nimbleos.Pool{})
-	if err != nil {
-		return nil, err
-	}
+    resp, err := objectSet.Client.Post(poolPath, payload, &nimbleos.Pool{})
+    if err != nil {
+        return nil, err
+    }
 
-	return resp.(*nimbleos.Pool), err
+    return resp.(*nimbleos.Pool), err
 }
 
 // UpdateObject Modify existing Pool object
 func (objectSet *PoolObjectSet) UpdateObject(id string, payload *nimbleos.Pool) (*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.Put(poolPath, id, payload, &nimbleos.Pool{})
-	if err != nil {
-		return nil, err
-	}
+    resp, err:= objectSet.Client.Put(poolPath, id, payload, &nimbleos.Pool{})
+    if err != nil {
+        return nil, err
+    }
 
-	return resp.(*nimbleos.Pool), err
+    return resp.(*nimbleos.Pool), err
 }
 
 // DeleteObject deletes the Pool object with the specified ID
 func (objectSet *PoolObjectSet) DeleteObject(id string) error {
-	err := objectSet.Client.Delete(poolPath, id)
-	if err != nil {
-		return err
-	}
-	return nil
+    err := objectSet.Client.Delete(poolPath, id)
+    if err != nil {
+        return err
+    }
+    return nil
 }
 
 // GetObject returns a Pool object with the given ID
 func (objectSet *PoolObjectSet) GetObject(id string) (*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.Get(poolPath, id, &nimbleos.Pool{})
-	if err != nil {
-		return nil, err
-	}
+    resp, err:= objectSet.Client.Get(poolPath, id, &nimbleos.Pool{})
+    if err != nil {
+        return nil, err
+    }
 
-	// null check
-	if resp == nil {
-		return nil, nil
-	}
-	return resp.(*nimbleos.Pool), err
+    // null check
+    if resp == nil {
+        return nil, nil
+    }
+    return resp.(*nimbleos.Pool), err
 }
 
 // GetObjectList returns the list of Pool objects
 func (objectSet *PoolObjectSet) GetObjectList() ([]*nimbleos.Pool, error) {
-	resp, err := objectSet.Client.List(poolPath)
-	if err != nil {
-		return nil, err
-	}
-	return buildPoolObjectSet(resp), err
+    resp, err:= objectSet.Client.List(poolPath)
+    if err != nil {
+        return nil, err
+    }
+    return buildPoolObjectSet(resp), err
 }
 
 // GetObjectListFromParams returns the list of Pool objects using the given params query info
 func (objectSet *PoolObjectSet) GetObjectListFromParams(params *param.GetParams) ([]*nimbleos.Pool, error) {
-	poolObjectSetResp, err := objectSet.Client.ListFromParams(poolPath, params)
-	if err != nil {
-		return nil, err
-	}
-	return buildPoolObjectSet(poolObjectSetResp), err
+    poolObjectSetResp,err:= objectSet.Client.ListFromParams(poolPath, params)
+    if err != nil {
+        return nil, err
+    }
+    return buildPoolObjectSet(poolObjectSetResp), err
 }
-
 // generated function to build the appropriate response types
-func buildPoolObjectSet(response interface{}) []*nimbleos.Pool {
-	values := reflect.ValueOf(response)
-	results := make([]*nimbleos.Pool, values.Len())
+func buildPoolObjectSet(response interface{}) ([]*nimbleos.Pool) {
+    values := reflect.ValueOf(response)
+    results := make([]*nimbleos.Pool, values.Len())
 
-	for i := 0; i < values.Len(); i++ {
-		value := &nimbleos.Pool{}
-		jsonutil.Decode(values.Index(i).Interface(), value)
-		results[i] = value
-	}
+    for i := 0; i < values.Len(); i++ {
+        value := &nimbleos.Pool{}
+        jsonutil.Decode(values.Index(i).Interface(), value)
+        results[i] = value
+    }
 
-	return results
+    return results
 }
 
 // List of supported actions on object sets
 
 // Merge - Merge the specified pool into the target pool. All volumes on the specified pool are moved to the target pool and the specified pool is then deleted. All the arrays in the pool are assigned to the target pool.
-func (objectSet *PoolObjectSet) Merge(id *string, targetPoolId *string, force *bool) (*nimbleos.NsPoolMergeReturn, error) {
-	mergeUri := poolPath
-	mergeUri = mergeUri + "/" + *id
-	mergeUri = mergeUri + "/actions/" + "merge"
+func (objectSet *PoolObjectSet) Merge ( id *string , targetPoolId *string , force *bool )( *nimbleos.NsPoolMergeReturn , error) {
+     mergeUri := poolPath
+     mergeUri = mergeUri + "/" + *id
+     mergeUri = mergeUri + "/actions/" + "merge"
 
-	payload := &struct {
-		Id           *string `json:"id,omitempty"`
-		TargetPoolId *string `json:"target_pool_id,omitempty"`
-		Force        *bool   `json:"force,omitempty"`
-	}{
-		id,
-		targetPoolId,
-		force,
-	}
+     payload := &struct {
+                Id *string `json:"id,omitempty"`
+                TargetPoolId *string `json:"target_pool_id,omitempty"`
+                Force *bool `json:"force,omitempty"`
+     }{
+            id,
+            targetPoolId,
+            force,
+     }
 
-	resp, err := objectSet.Client.Post(mergeUri, payload, &nimbleos.NsPoolMergeReturn{})
-	if err != nil {
-		return nil, err
-	}
+            resp, err := objectSet.Client.Post(mergeUri, payload, &nimbleos.NsPoolMergeReturn{})
+         if err != nil {
+            return nil, err
+         }
 
-	return resp.(*nimbleos.NsPoolMergeReturn), err
+            return resp.(*nimbleos.NsPoolMergeReturn), err
 }

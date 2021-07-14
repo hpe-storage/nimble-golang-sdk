@@ -6,9 +6,9 @@ package nimbleos
 type NsJobType string
 
 const (
-	cNsJobTypeBulkChild  NsJobType = "bulk_child"
-	cNsJobTypeBulkParent NsJobType = "bulk_parent"
-	cNsJobTypeSimple     NsJobType = "simple"
+ cNsJobTypeBulkChild NsJobType = "bulk_child"
+ cNsJobTypeBulkParent NsJobType = "bulk_parent"
+ cNsJobTypeSimple NsJobType = "simple"
 )
 
 var pNsJobTypeBulkChild NsJobType
@@ -25,13 +25,14 @@ var NsJobTypeBulkParent *NsJobType
 var NsJobTypeSimple *NsJobType
 
 func init() {
-	pNsJobTypeBulkChild = cNsJobTypeBulkChild
-	NsJobTypeBulkChild = &pNsJobTypeBulkChild
+ pNsJobTypeBulkChild = cNsJobTypeBulkChild
+ NsJobTypeBulkChild = &pNsJobTypeBulkChild
 
-	pNsJobTypeBulkParent = cNsJobTypeBulkParent
-	NsJobTypeBulkParent = &pNsJobTypeBulkParent
+ pNsJobTypeBulkParent = cNsJobTypeBulkParent
+ NsJobTypeBulkParent = &pNsJobTypeBulkParent
 
-	pNsJobTypeSimple = cNsJobTypeSimple
-	NsJobTypeSimple = &pNsJobTypeSimple
+ pNsJobTypeSimple = cNsJobTypeSimple
+ NsJobTypeSimple = &pNsJobTypeSimple
 
 }
+

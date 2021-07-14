@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/fakeservice"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
-	"fmt"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 )
 
 func getFakeService(ip, username, password, apiVersion string, synchronous bool) (sdkprovider.NsGroupService, error) {
@@ -16,8 +16,8 @@ func getFakeService(ip, username, password, apiVersion string, synchronous bool)
 	return grpSvc, err
 }
 
-func getRealService(ip, username, password, apiVersion string, synchronous bool) (sdkprovider.NsGroupService, error) {
-	grpSvc, err := service.NewNsGroupService(ip, username, password, apiVersion, synchronous)
+func getRealService(ip, username, password, apiVersion string, synchronous, tenantAware bool) (sdkprovider.NsGroupService, error) {
+	grpSvc, err := service.NewNsGroupService(ip, username, password, apiVersion, synchronous, tenantAware)
 	return grpSvc, err
 }
 
@@ -27,8 +27,8 @@ func main() {
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
-	p,_:=groupService.GetPoolService().GetPools(arg)
-	fmt.Printf("Fake Pools %+v \n",p )
+	p, _ := groupService.GetPoolService().GetPools(arg)
+	fmt.Printf("Fake Pools %+v \n", p)
 
 	// volume operations
 	var sizeField int64 = 5120
@@ -37,7 +37,7 @@ func main() {
 	var limitMbpsField int64 = 1
 
 	newVolume := &nimbleos.Volume{
-		Name:			param.NewString("fake-test-vol1"),
+		Name:           param.NewString("fake-test-vol1"),
 		Size:           &sizeField,
 		Description:    &descriptionField,
 		Online:         param.NewBool(true),
@@ -47,20 +47,20 @@ func main() {
 		AgentType:      nimbleos.NsAgentTypeNone,
 	}
 
-	vol,_ := groupService.GetVolumeService().CreateVolume(newVolume)
+	vol, _ := groupService.GetVolumeService().CreateVolume(newVolume)
 	fmt.Printf("Fake volume %+v \n", vol)
 
 	// Get real service
-	groupService, _  = getRealService("10.21.4.79", "admin", "admin", "v1", true)
+	groupService, _ = getRealService("1.1.1.1", "xxxx", "xxxx", "v1", true, true)
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
-	p,_ = groupService.GetPoolService().GetPools(arg)
-	fmt.Printf("Real Pools %+v \n",p )
+	p, _ = groupService.GetPoolService().GetPools(arg)
+	fmt.Printf("Real Pools %+v \n", p)
 	// reset id
 	newVolume.ID = nil
-	vol,_ = groupService.GetVolumeService().CreateVolume(newVolume)
+	vol, _ = groupService.GetVolumeService().CreateVolume(newVolume)
 	fmt.Printf("Real volume %+v \n", vol)
 
 	groupService.GetVolumeService().DestroyVolume(*vol.ID)

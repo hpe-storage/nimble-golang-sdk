@@ -6,10 +6,10 @@ package nimbleos
 type NsShelfPortStatus string
 
 const (
-	cNsShelfPortStatusConnected    NsShelfPortStatus = "connected"
-	cNsShelfPortStatusDisconnected NsShelfPortStatus = "disconnected"
-	cNsShelfPortStatusDisabled     NsShelfPortStatus = "disabled"
-	cNsShelfPortStatusUnknown      NsShelfPortStatus = "unknown"
+ cNsShelfPortStatusConnected NsShelfPortStatus = "connected"
+ cNsShelfPortStatusDisconnected NsShelfPortStatus = "disconnected"
+ cNsShelfPortStatusDisabled NsShelfPortStatus = "disabled"
+ cNsShelfPortStatusUnknown NsShelfPortStatus = "unknown"
 )
 
 var pNsShelfPortStatusConnected NsShelfPortStatus
@@ -30,16 +30,17 @@ var NsShelfPortStatusDisabled *NsShelfPortStatus
 var NsShelfPortStatusUnknown *NsShelfPortStatus
 
 func init() {
-	pNsShelfPortStatusConnected = cNsShelfPortStatusConnected
-	NsShelfPortStatusConnected = &pNsShelfPortStatusConnected
+ pNsShelfPortStatusConnected = cNsShelfPortStatusConnected
+ NsShelfPortStatusConnected = &pNsShelfPortStatusConnected
 
-	pNsShelfPortStatusDisconnected = cNsShelfPortStatusDisconnected
-	NsShelfPortStatusDisconnected = &pNsShelfPortStatusDisconnected
+ pNsShelfPortStatusDisconnected = cNsShelfPortStatusDisconnected
+ NsShelfPortStatusDisconnected = &pNsShelfPortStatusDisconnected
 
-	pNsShelfPortStatusDisabled = cNsShelfPortStatusDisabled
-	NsShelfPortStatusDisabled = &pNsShelfPortStatusDisabled
+ pNsShelfPortStatusDisabled = cNsShelfPortStatusDisabled
+ NsShelfPortStatusDisabled = &pNsShelfPortStatusDisabled
 
-	pNsShelfPortStatusUnknown = cNsShelfPortStatusUnknown
-	NsShelfPortStatusUnknown = &pNsShelfPortStatusUnknown
+ pNsShelfPortStatusUnknown = cNsShelfPortStatusUnknown
+ NsShelfPortStatusUnknown = &pNsShelfPortStatusUnknown
 
 }
+

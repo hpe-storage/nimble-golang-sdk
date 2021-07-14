@@ -6,10 +6,10 @@ package nimbleos
 type NsTemperatureStatus string
 
 const (
-	cNsTemperatureStatusTemperatureUnknown NsTemperatureStatus = "temperature_unknown"
-	cNsTemperatureStatusTemperatureAlerted NsTemperatureStatus = "temperature_alerted"
-	cNsTemperatureStatusTemperatureOkay    NsTemperatureStatus = "temperature_okay"
-	cNsTemperatureStatusTemperatureFail    NsTemperatureStatus = "temperature_fail"
+ cNsTemperatureStatusTemperatureUnknown NsTemperatureStatus = "temperature_unknown"
+ cNsTemperatureStatusTemperatureAlerted NsTemperatureStatus = "temperature_alerted"
+ cNsTemperatureStatusTemperatureOkay NsTemperatureStatus = "temperature_okay"
+ cNsTemperatureStatusTemperatureFail NsTemperatureStatus = "temperature_fail"
 )
 
 var pNsTemperatureStatusTemperatureUnknown NsTemperatureStatus
@@ -30,16 +30,17 @@ var NsTemperatureStatusTemperatureOkay *NsTemperatureStatus
 var NsTemperatureStatusTemperatureFail *NsTemperatureStatus
 
 func init() {
-	pNsTemperatureStatusTemperatureUnknown = cNsTemperatureStatusTemperatureUnknown
-	NsTemperatureStatusTemperatureUnknown = &pNsTemperatureStatusTemperatureUnknown
+ pNsTemperatureStatusTemperatureUnknown = cNsTemperatureStatusTemperatureUnknown
+ NsTemperatureStatusTemperatureUnknown = &pNsTemperatureStatusTemperatureUnknown
 
-	pNsTemperatureStatusTemperatureAlerted = cNsTemperatureStatusTemperatureAlerted
-	NsTemperatureStatusTemperatureAlerted = &pNsTemperatureStatusTemperatureAlerted
+ pNsTemperatureStatusTemperatureAlerted = cNsTemperatureStatusTemperatureAlerted
+ NsTemperatureStatusTemperatureAlerted = &pNsTemperatureStatusTemperatureAlerted
 
-	pNsTemperatureStatusTemperatureOkay = cNsTemperatureStatusTemperatureOkay
-	NsTemperatureStatusTemperatureOkay = &pNsTemperatureStatusTemperatureOkay
+ pNsTemperatureStatusTemperatureOkay = cNsTemperatureStatusTemperatureOkay
+ NsTemperatureStatusTemperatureOkay = &pNsTemperatureStatusTemperatureOkay
 
-	pNsTemperatureStatusTemperatureFail = cNsTemperatureStatusTemperatureFail
-	NsTemperatureStatusTemperatureFail = &pNsTemperatureStatusTemperatureFail
+ pNsTemperatureStatusTemperatureFail = cNsTemperatureStatusTemperatureFail
+ NsTemperatureStatusTemperatureFail = &pNsTemperatureStatusTemperatureFail
 
 }
+

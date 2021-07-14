@@ -6,11 +6,11 @@ package nimbleos
 type NsShelfHwState string
 
 const (
-	cNsShelfHwStateDiscovering  NsShelfHwState = "discovering"
-	cNsShelfHwStateDisconnected NsShelfHwState = "disconnected"
-	cNsShelfHwStateVoid         NsShelfHwState = "void"
-	cNsShelfHwStateReady        NsShelfHwState = "ready"
-	cNsShelfHwStateFaulty       NsShelfHwState = "faulty"
+ cNsShelfHwStateDiscovering NsShelfHwState = "discovering"
+ cNsShelfHwStateDisconnected NsShelfHwState = "disconnected"
+ cNsShelfHwStateVoid NsShelfHwState = "void"
+ cNsShelfHwStateReady NsShelfHwState = "ready"
+ cNsShelfHwStateFaulty NsShelfHwState = "faulty"
 )
 
 var pNsShelfHwStateDiscovering NsShelfHwState
@@ -35,19 +35,20 @@ var NsShelfHwStateReady *NsShelfHwState
 var NsShelfHwStateFaulty *NsShelfHwState
 
 func init() {
-	pNsShelfHwStateDiscovering = cNsShelfHwStateDiscovering
-	NsShelfHwStateDiscovering = &pNsShelfHwStateDiscovering
+ pNsShelfHwStateDiscovering = cNsShelfHwStateDiscovering
+ NsShelfHwStateDiscovering = &pNsShelfHwStateDiscovering
 
-	pNsShelfHwStateDisconnected = cNsShelfHwStateDisconnected
-	NsShelfHwStateDisconnected = &pNsShelfHwStateDisconnected
+ pNsShelfHwStateDisconnected = cNsShelfHwStateDisconnected
+ NsShelfHwStateDisconnected = &pNsShelfHwStateDisconnected
 
-	pNsShelfHwStateVoid = cNsShelfHwStateVoid
-	NsShelfHwStateVoid = &pNsShelfHwStateVoid
+ pNsShelfHwStateVoid = cNsShelfHwStateVoid
+ NsShelfHwStateVoid = &pNsShelfHwStateVoid
 
-	pNsShelfHwStateReady = cNsShelfHwStateReady
-	NsShelfHwStateReady = &pNsShelfHwStateReady
+ pNsShelfHwStateReady = cNsShelfHwStateReady
+ NsShelfHwStateReady = &pNsShelfHwStateReady
 
-	pNsShelfHwStateFaulty = cNsShelfHwStateFaulty
-	NsShelfHwStateFaulty = &pNsShelfHwStateFaulty
+ pNsShelfHwStateFaulty = cNsShelfHwStateFaulty
+ NsShelfHwStateFaulty = &pNsShelfHwStateFaulty
 
 }
+

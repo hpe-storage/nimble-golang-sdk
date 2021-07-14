@@ -6,10 +6,10 @@ package nimbleos
 type NsShelfSensorState string
 
 const (
-	cNsShelfSensorStateMissing NsShelfSensorState = "Missing"
-	cNsShelfSensorStateFailed  NsShelfSensorState = "Failed"
-	cNsShelfSensorStateOk      NsShelfSensorState = "OK"
-	cNsShelfSensorStateAlerted NsShelfSensorState = "Alerted"
+ cNsShelfSensorStateMissing NsShelfSensorState = "Missing"
+ cNsShelfSensorStateFailed NsShelfSensorState = "Failed"
+ cNsShelfSensorStateOk NsShelfSensorState = "OK"
+ cNsShelfSensorStateAlerted NsShelfSensorState = "Alerted"
 )
 
 var pNsShelfSensorStateMissing NsShelfSensorState
@@ -30,16 +30,17 @@ var NsShelfSensorStateOk *NsShelfSensorState
 var NsShelfSensorStateAlerted *NsShelfSensorState
 
 func init() {
-	pNsShelfSensorStateMissing = cNsShelfSensorStateMissing
-	NsShelfSensorStateMissing = &pNsShelfSensorStateMissing
+ pNsShelfSensorStateMissing = cNsShelfSensorStateMissing
+ NsShelfSensorStateMissing = &pNsShelfSensorStateMissing
 
-	pNsShelfSensorStateFailed = cNsShelfSensorStateFailed
-	NsShelfSensorStateFailed = &pNsShelfSensorStateFailed
+ pNsShelfSensorStateFailed = cNsShelfSensorStateFailed
+ NsShelfSensorStateFailed = &pNsShelfSensorStateFailed
 
-	pNsShelfSensorStateOk = cNsShelfSensorStateOk
-	NsShelfSensorStateOk = &pNsShelfSensorStateOk
+ pNsShelfSensorStateOk = cNsShelfSensorStateOk
+ NsShelfSensorStateOk = &pNsShelfSensorStateOk
 
-	pNsShelfSensorStateAlerted = cNsShelfSensorStateAlerted
-	NsShelfSensorStateAlerted = &pNsShelfSensorStateAlerted
+ pNsShelfSensorStateAlerted = cNsShelfSensorStateAlerted
+ NsShelfSensorStateAlerted = &pNsShelfSensorStateAlerted
 
 }
+

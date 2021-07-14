@@ -6,11 +6,11 @@ package nimbleos
 type NsAppServerType string
 
 const (
-	cNsAppServerTypeVss           NsAppServerType = "vss"
-	cNsAppServerTypeVmware        NsAppServerType = "vmware"
-	cNsAppServerTypeCisco         NsAppServerType = "cisco"
-	cNsAppServerTypeContainerNode NsAppServerType = "container_node"
-	cNsAppServerTypeStackVision   NsAppServerType = "stack_vision"
+ cNsAppServerTypeVss NsAppServerType = "vss"
+ cNsAppServerTypeVmware NsAppServerType = "vmware"
+ cNsAppServerTypeCisco NsAppServerType = "cisco"
+ cNsAppServerTypeContainerNode NsAppServerType = "container_node"
+ cNsAppServerTypeStackVision NsAppServerType = "stack_vision"
 )
 
 var pNsAppServerTypeVss NsAppServerType
@@ -35,19 +35,20 @@ var NsAppServerTypeContainerNode *NsAppServerType
 var NsAppServerTypeStackVision *NsAppServerType
 
 func init() {
-	pNsAppServerTypeVss = cNsAppServerTypeVss
-	NsAppServerTypeVss = &pNsAppServerTypeVss
+ pNsAppServerTypeVss = cNsAppServerTypeVss
+ NsAppServerTypeVss = &pNsAppServerTypeVss
 
-	pNsAppServerTypeVmware = cNsAppServerTypeVmware
-	NsAppServerTypeVmware = &pNsAppServerTypeVmware
+ pNsAppServerTypeVmware = cNsAppServerTypeVmware
+ NsAppServerTypeVmware = &pNsAppServerTypeVmware
 
-	pNsAppServerTypeCisco = cNsAppServerTypeCisco
-	NsAppServerTypeCisco = &pNsAppServerTypeCisco
+ pNsAppServerTypeCisco = cNsAppServerTypeCisco
+ NsAppServerTypeCisco = &pNsAppServerTypeCisco
 
-	pNsAppServerTypeContainerNode = cNsAppServerTypeContainerNode
-	NsAppServerTypeContainerNode = &pNsAppServerTypeContainerNode
+ pNsAppServerTypeContainerNode = cNsAppServerTypeContainerNode
+ NsAppServerTypeContainerNode = &pNsAppServerTypeContainerNode
 
-	pNsAppServerTypeStackVision = cNsAppServerTypeStackVision
-	NsAppServerTypeStackVision = &pNsAppServerTypeStackVision
+ pNsAppServerTypeStackVision = cNsAppServerTypeStackVision
+ NsAppServerTypeStackVision = &pNsAppServerTypeStackVision
 
 }
+

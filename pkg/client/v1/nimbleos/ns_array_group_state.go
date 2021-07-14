@@ -6,10 +6,10 @@ package nimbleos
 type NsArrayGroupState string
 
 const (
-	cNsArrayGroupStateInvalid     NsArrayGroupState = "invalid"
-	cNsArrayGroupStateInitialized NsArrayGroupState = "initialized"
-	cNsArrayGroupStateUnused      NsArrayGroupState = "unused"
-	cNsArrayGroupStateRemoving    NsArrayGroupState = "removing"
+ cNsArrayGroupStateInvalid NsArrayGroupState = "invalid"
+ cNsArrayGroupStateInitialized NsArrayGroupState = "initialized"
+ cNsArrayGroupStateUnused NsArrayGroupState = "unused"
+ cNsArrayGroupStateRemoving NsArrayGroupState = "removing"
 )
 
 var pNsArrayGroupStateInvalid NsArrayGroupState
@@ -30,16 +30,17 @@ var NsArrayGroupStateUnused *NsArrayGroupState
 var NsArrayGroupStateRemoving *NsArrayGroupState
 
 func init() {
-	pNsArrayGroupStateInvalid = cNsArrayGroupStateInvalid
-	NsArrayGroupStateInvalid = &pNsArrayGroupStateInvalid
+ pNsArrayGroupStateInvalid = cNsArrayGroupStateInvalid
+ NsArrayGroupStateInvalid = &pNsArrayGroupStateInvalid
 
-	pNsArrayGroupStateInitialized = cNsArrayGroupStateInitialized
-	NsArrayGroupStateInitialized = &pNsArrayGroupStateInitialized
+ pNsArrayGroupStateInitialized = cNsArrayGroupStateInitialized
+ NsArrayGroupStateInitialized = &pNsArrayGroupStateInitialized
 
-	pNsArrayGroupStateUnused = cNsArrayGroupStateUnused
-	NsArrayGroupStateUnused = &pNsArrayGroupStateUnused
+ pNsArrayGroupStateUnused = cNsArrayGroupStateUnused
+ NsArrayGroupStateUnused = &pNsArrayGroupStateUnused
 
-	pNsArrayGroupStateRemoving = cNsArrayGroupStateRemoving
-	NsArrayGroupStateRemoving = &pNsArrayGroupStateRemoving
+ pNsArrayGroupStateRemoving = cNsArrayGroupStateRemoving
+ NsArrayGroupStateRemoving = &pNsArrayGroupStateRemoving
 
 }
+

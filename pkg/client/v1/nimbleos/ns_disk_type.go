@@ -6,8 +6,8 @@ package nimbleos
 type NsDiskType string
 
 const (
-	cNsDiskTypeSsd NsDiskType = "ssd"
-	cNsDiskTypeHdd NsDiskType = "hdd"
+ cNsDiskTypeSsd NsDiskType = "ssd"
+ cNsDiskTypeHdd NsDiskType = "hdd"
 )
 
 var pNsDiskTypeSsd NsDiskType
@@ -20,10 +20,11 @@ var NsDiskTypeSsd *NsDiskType
 var NsDiskTypeHdd *NsDiskType
 
 func init() {
-	pNsDiskTypeSsd = cNsDiskTypeSsd
-	NsDiskTypeSsd = &pNsDiskTypeSsd
+ pNsDiskTypeSsd = cNsDiskTypeSsd
+ NsDiskTypeSsd = &pNsDiskTypeSsd
 
-	pNsDiskTypeHdd = cNsDiskTypeHdd
-	NsDiskTypeHdd = &pNsDiskTypeHdd
+ pNsDiskTypeHdd = cNsDiskTypeHdd
+ NsDiskTypeHdd = &pNsDiskTypeHdd
 
 }
+

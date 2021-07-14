@@ -6,10 +6,10 @@ package nimbleos
 type NsReplDirection string
 
 const (
-	cNsReplDirectionUpstream      NsReplDirection = "upstream"
-	cNsReplDirectionDownstream    NsReplDirection = "downstream"
-	cNsReplDirectionNone          NsReplDirection = "none"
-	cNsReplDirectionBiDirectional NsReplDirection = "bi_directional"
+ cNsReplDirectionUpstream NsReplDirection = "upstream"
+ cNsReplDirectionDownstream NsReplDirection = "downstream"
+ cNsReplDirectionNone NsReplDirection = "none"
+ cNsReplDirectionBiDirectional NsReplDirection = "bi_directional"
 )
 
 var pNsReplDirectionUpstream NsReplDirection
@@ -30,16 +30,17 @@ var NsReplDirectionNone *NsReplDirection
 var NsReplDirectionBiDirectional *NsReplDirection
 
 func init() {
-	pNsReplDirectionUpstream = cNsReplDirectionUpstream
-	NsReplDirectionUpstream = &pNsReplDirectionUpstream
+ pNsReplDirectionUpstream = cNsReplDirectionUpstream
+ NsReplDirectionUpstream = &pNsReplDirectionUpstream
 
-	pNsReplDirectionDownstream = cNsReplDirectionDownstream
-	NsReplDirectionDownstream = &pNsReplDirectionDownstream
+ pNsReplDirectionDownstream = cNsReplDirectionDownstream
+ NsReplDirectionDownstream = &pNsReplDirectionDownstream
 
-	pNsReplDirectionNone = cNsReplDirectionNone
-	NsReplDirectionNone = &pNsReplDirectionNone
+ pNsReplDirectionNone = cNsReplDirectionNone
+ NsReplDirectionNone = &pNsReplDirectionNone
 
-	pNsReplDirectionBiDirectional = cNsReplDirectionBiDirectional
-	NsReplDirectionBiDirectional = &pNsReplDirectionBiDirectional
+ pNsReplDirectionBiDirectional = cNsReplDirectionBiDirectional
+ NsReplDirectionBiDirectional = &pNsReplDirectionBiDirectional
 
 }
+

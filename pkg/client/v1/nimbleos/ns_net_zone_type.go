@@ -6,10 +6,10 @@ package nimbleos
 type NsNetZoneType string
 
 const (
-	cNsNetZoneTypeSingle  NsNetZoneType = "single"
-	cNsNetZoneTypeEvenodd NsNetZoneType = "evenodd"
-	cNsNetZoneTypeBisect  NsNetZoneType = "bisect"
-	cNsNetZoneTypeNone    NsNetZoneType = "none"
+ cNsNetZoneTypeSingle NsNetZoneType = "single"
+ cNsNetZoneTypeEvenodd NsNetZoneType = "evenodd"
+ cNsNetZoneTypeBisect NsNetZoneType = "bisect"
+ cNsNetZoneTypeNone NsNetZoneType = "none"
 )
 
 var pNsNetZoneTypeSingle NsNetZoneType
@@ -30,16 +30,17 @@ var NsNetZoneTypeBisect *NsNetZoneType
 var NsNetZoneTypeNone *NsNetZoneType
 
 func init() {
-	pNsNetZoneTypeSingle = cNsNetZoneTypeSingle
-	NsNetZoneTypeSingle = &pNsNetZoneTypeSingle
+ pNsNetZoneTypeSingle = cNsNetZoneTypeSingle
+ NsNetZoneTypeSingle = &pNsNetZoneTypeSingle
 
-	pNsNetZoneTypeEvenodd = cNsNetZoneTypeEvenodd
-	NsNetZoneTypeEvenodd = &pNsNetZoneTypeEvenodd
+ pNsNetZoneTypeEvenodd = cNsNetZoneTypeEvenodd
+ NsNetZoneTypeEvenodd = &pNsNetZoneTypeEvenodd
 
-	pNsNetZoneTypeBisect = cNsNetZoneTypeBisect
-	NsNetZoneTypeBisect = &pNsNetZoneTypeBisect
+ pNsNetZoneTypeBisect = cNsNetZoneTypeBisect
+ NsNetZoneTypeBisect = &pNsNetZoneTypeBisect
 
-	pNsNetZoneTypeNone = cNsNetZoneTypeNone
-	NsNetZoneTypeNone = &pNsNetZoneTypeNone
+ pNsNetZoneTypeNone = cNsNetZoneTypeNone
+ NsNetZoneTypeNone = &pNsNetZoneTypeNone
 
 }
+

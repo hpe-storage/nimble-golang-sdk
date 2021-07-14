@@ -6,9 +6,9 @@ package nimbleos
 type NsArrayUpgradeType string
 
 const (
-	cNsArrayUpgradeTypeOffline NsArrayUpgradeType = "offline"
-	cNsArrayUpgradeTypeInvalid NsArrayUpgradeType = "invalid"
-	cNsArrayUpgradeTypeOnline  NsArrayUpgradeType = "online"
+ cNsArrayUpgradeTypeOffline NsArrayUpgradeType = "offline"
+ cNsArrayUpgradeTypeInvalid NsArrayUpgradeType = "invalid"
+ cNsArrayUpgradeTypeOnline NsArrayUpgradeType = "online"
 )
 
 var pNsArrayUpgradeTypeOffline NsArrayUpgradeType
@@ -25,13 +25,14 @@ var NsArrayUpgradeTypeInvalid *NsArrayUpgradeType
 var NsArrayUpgradeTypeOnline *NsArrayUpgradeType
 
 func init() {
-	pNsArrayUpgradeTypeOffline = cNsArrayUpgradeTypeOffline
-	NsArrayUpgradeTypeOffline = &pNsArrayUpgradeTypeOffline
+ pNsArrayUpgradeTypeOffline = cNsArrayUpgradeTypeOffline
+ NsArrayUpgradeTypeOffline = &pNsArrayUpgradeTypeOffline
 
-	pNsArrayUpgradeTypeInvalid = cNsArrayUpgradeTypeInvalid
-	NsArrayUpgradeTypeInvalid = &pNsArrayUpgradeTypeInvalid
+ pNsArrayUpgradeTypeInvalid = cNsArrayUpgradeTypeInvalid
+ NsArrayUpgradeTypeInvalid = &pNsArrayUpgradeTypeInvalid
 
-	pNsArrayUpgradeTypeOnline = cNsArrayUpgradeTypeOnline
-	NsArrayUpgradeTypeOnline = &pNsArrayUpgradeTypeOnline
+ pNsArrayUpgradeTypeOnline = cNsArrayUpgradeTypeOnline
+ NsArrayUpgradeTypeOnline = &pNsArrayUpgradeTypeOnline
 
 }
+

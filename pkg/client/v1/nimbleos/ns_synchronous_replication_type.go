@@ -6,8 +6,8 @@ package nimbleos
 type NsSynchronousReplicationType string
 
 const (
-	cNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType = "soft_available"
-	cNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType = "not_applicable"
+ cNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType = "soft_available"
+ cNsSynchronousReplicationTypeNotApplicable NsSynchronousReplicationType = "not_applicable"
 )
 
 var pNsSynchronousReplicationTypeSoftAvailable NsSynchronousReplicationType
@@ -20,10 +20,11 @@ var NsSynchronousReplicationTypeSoftAvailable *NsSynchronousReplicationType
 var NsSynchronousReplicationTypeNotApplicable *NsSynchronousReplicationType
 
 func init() {
-	pNsSynchronousReplicationTypeSoftAvailable = cNsSynchronousReplicationTypeSoftAvailable
-	NsSynchronousReplicationTypeSoftAvailable = &pNsSynchronousReplicationTypeSoftAvailable
+ pNsSynchronousReplicationTypeSoftAvailable = cNsSynchronousReplicationTypeSoftAvailable
+ NsSynchronousReplicationTypeSoftAvailable = &pNsSynchronousReplicationTypeSoftAvailable
 
-	pNsSynchronousReplicationTypeNotApplicable = cNsSynchronousReplicationTypeNotApplicable
-	NsSynchronousReplicationTypeNotApplicable = &pNsSynchronousReplicationTypeNotApplicable
+ pNsSynchronousReplicationTypeNotApplicable = cNsSynchronousReplicationTypeNotApplicable
+ NsSynchronousReplicationTypeNotApplicable = &pNsSynchronousReplicationTypeNotApplicable
 
 }
+

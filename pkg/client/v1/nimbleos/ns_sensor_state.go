@@ -6,11 +6,11 @@ package nimbleos
 type NsSensorState string
 
 const (
-	cNsSensorStateSensorOk             NsSensorState = "sensor_ok"
-	cNsSensorStateSensorAlertCond      NsSensorState = "sensor_alert_cond"
-	cNsSensorStateSensorMissing        NsSensorState = "sensor_missing"
-	cNsSensorStateSensorReadingUnavail NsSensorState = "sensor_reading_unavail"
-	cNsSensorStateSensorFailed         NsSensorState = "sensor_failed"
+ cNsSensorStateSensorOk NsSensorState = "sensor_ok"
+ cNsSensorStateSensorAlertCond NsSensorState = "sensor_alert_cond"
+ cNsSensorStateSensorMissing NsSensorState = "sensor_missing"
+ cNsSensorStateSensorReadingUnavail NsSensorState = "sensor_reading_unavail"
+ cNsSensorStateSensorFailed NsSensorState = "sensor_failed"
 )
 
 var pNsSensorStateSensorOk NsSensorState
@@ -35,19 +35,20 @@ var NsSensorStateSensorReadingUnavail *NsSensorState
 var NsSensorStateSensorFailed *NsSensorState
 
 func init() {
-	pNsSensorStateSensorOk = cNsSensorStateSensorOk
-	NsSensorStateSensorOk = &pNsSensorStateSensorOk
+ pNsSensorStateSensorOk = cNsSensorStateSensorOk
+ NsSensorStateSensorOk = &pNsSensorStateSensorOk
 
-	pNsSensorStateSensorAlertCond = cNsSensorStateSensorAlertCond
-	NsSensorStateSensorAlertCond = &pNsSensorStateSensorAlertCond
+ pNsSensorStateSensorAlertCond = cNsSensorStateSensorAlertCond
+ NsSensorStateSensorAlertCond = &pNsSensorStateSensorAlertCond
 
-	pNsSensorStateSensorMissing = cNsSensorStateSensorMissing
-	NsSensorStateSensorMissing = &pNsSensorStateSensorMissing
+ pNsSensorStateSensorMissing = cNsSensorStateSensorMissing
+ NsSensorStateSensorMissing = &pNsSensorStateSensorMissing
 
-	pNsSensorStateSensorReadingUnavail = cNsSensorStateSensorReadingUnavail
-	NsSensorStateSensorReadingUnavail = &pNsSensorStateSensorReadingUnavail
+ pNsSensorStateSensorReadingUnavail = cNsSensorStateSensorReadingUnavail
+ NsSensorStateSensorReadingUnavail = &pNsSensorStateSensorReadingUnavail
 
-	pNsSensorStateSensorFailed = cNsSensorStateSensorFailed
-	NsSensorStateSensorFailed = &pNsSensorStateSensorFailed
+ pNsSensorStateSensorFailed = cNsSensorStateSensorFailed
+ NsSensorStateSensorFailed = &pNsSensorStateSensorFailed
 
 }
+

@@ -6,9 +6,9 @@ package nimbleos
 type NsPoolMigrate string
 
 const (
-	cNsPoolMigrateIn   NsPoolMigrate = "in"
-	cNsPoolMigrateNone NsPoolMigrate = "none"
-	cNsPoolMigrateOut  NsPoolMigrate = "out"
+ cNsPoolMigrateIn NsPoolMigrate = "in"
+ cNsPoolMigrateNone NsPoolMigrate = "none"
+ cNsPoolMigrateOut NsPoolMigrate = "out"
 )
 
 var pNsPoolMigrateIn NsPoolMigrate
@@ -25,13 +25,14 @@ var NsPoolMigrateNone *NsPoolMigrate
 var NsPoolMigrateOut *NsPoolMigrate
 
 func init() {
-	pNsPoolMigrateIn = cNsPoolMigrateIn
-	NsPoolMigrateIn = &pNsPoolMigrateIn
+ pNsPoolMigrateIn = cNsPoolMigrateIn
+ NsPoolMigrateIn = &pNsPoolMigrateIn
 
-	pNsPoolMigrateNone = cNsPoolMigrateNone
-	NsPoolMigrateNone = &pNsPoolMigrateNone
+ pNsPoolMigrateNone = cNsPoolMigrateNone
+ NsPoolMigrateNone = &pNsPoolMigrateNone
 
-	pNsPoolMigrateOut = cNsPoolMigrateOut
-	NsPoolMigrateOut = &pNsPoolMigrateOut
+ pNsPoolMigrateOut = cNsPoolMigrateOut
+ NsPoolMigrateOut = &pNsPoolMigrateOut
 
 }
+

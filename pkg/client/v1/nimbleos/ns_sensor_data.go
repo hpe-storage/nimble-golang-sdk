@@ -2,21 +2,23 @@
 
 package nimbleos
 
+
 // NsSensorData - A list of samples (in order of sample time) for a sensor.
 // Export NsSensorDataFields for advance operations like search filter etc.
 var NsSensorDataFields *NsSensorData
 
-func init() {
-	Sensorfield := "sensor"
+func init(){
+ Sensorfield:= "sensor"
 
-	NsSensorDataFields = &NsSensorData{
-		Sensor: &Sensorfield,
-	}
+ NsSensorDataFields= &NsSensorData{
+  Sensor: &Sensorfield,
+ }
 }
 
+
 type NsSensorData struct {
-	// Sensor - Sensor name.
-	Sensor *string `json:"sensor,omitempty"`
-	// Samples - A list of samples for the sensor.
-	Samples []*uint64 `json:"samples,omitempty"`
+ // Sensor - Sensor name.
+  Sensor *string `json:"sensor,omitempty"`
+ // Samples - A list of samples for the sensor.
+    Samples []*uint64 `json:"samples,omitempty"`
 }

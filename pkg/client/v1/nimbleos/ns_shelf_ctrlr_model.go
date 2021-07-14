@@ -6,18 +6,18 @@ package nimbleos
 type NsShelfCtrlrModel string
 
 const (
-	cNsShelfCtrlrModelHeadX9     NsShelfCtrlrModel = "head_x9"
-	cNsShelfCtrlrModelHeadX8     NsShelfCtrlrModel = "head_x8"
-	cNsShelfCtrlrModelHeadGen52u NsShelfCtrlrModel = "head_gen5_2u"
-	cNsShelfCtrlrModelEs24u      NsShelfCtrlrModel = "es2_4u"
-	cNsShelfCtrlrModelHeadVmware NsShelfCtrlrModel = "head_vmware"
-	cNsShelfCtrlrModelHeadGen6   NsShelfCtrlrModel = "head_gen6"
-	cNsShelfCtrlrModelEs13u      NsShelfCtrlrModel = "es1_3u"
-	cNsShelfCtrlrModelHeadX92u   NsShelfCtrlrModel = "head_x9_2u"
-	cNsShelfCtrlrModelHeadX10    NsShelfCtrlrModel = "head_x10"
-	cNsShelfCtrlrModelHeadGen5   NsShelfCtrlrModel = "head_gen5"
-	cNsShelfCtrlrModelEs34u      NsShelfCtrlrModel = "es3_4u"
-	cNsShelfCtrlrModelUnknown    NsShelfCtrlrModel = "unknown"
+ cNsShelfCtrlrModelHeadX9 NsShelfCtrlrModel = "head_x9"
+ cNsShelfCtrlrModelHeadX8 NsShelfCtrlrModel = "head_x8"
+ cNsShelfCtrlrModelHeadGen52u NsShelfCtrlrModel = "head_gen5_2u"
+ cNsShelfCtrlrModelEs24u NsShelfCtrlrModel = "es2_4u"
+ cNsShelfCtrlrModelHeadVmware NsShelfCtrlrModel = "head_vmware"
+ cNsShelfCtrlrModelHeadGen6 NsShelfCtrlrModel = "head_gen6"
+ cNsShelfCtrlrModelEs13u NsShelfCtrlrModel = "es1_3u"
+ cNsShelfCtrlrModelHeadX92u NsShelfCtrlrModel = "head_x9_2u"
+ cNsShelfCtrlrModelHeadX10 NsShelfCtrlrModel = "head_x10"
+ cNsShelfCtrlrModelHeadGen5 NsShelfCtrlrModel = "head_gen5"
+ cNsShelfCtrlrModelEs34u NsShelfCtrlrModel = "es3_4u"
+ cNsShelfCtrlrModelUnknown NsShelfCtrlrModel = "unknown"
 )
 
 var pNsShelfCtrlrModelHeadX9 NsShelfCtrlrModel
@@ -70,40 +70,41 @@ var NsShelfCtrlrModelEs34u *NsShelfCtrlrModel
 var NsShelfCtrlrModelUnknown *NsShelfCtrlrModel
 
 func init() {
-	pNsShelfCtrlrModelHeadX9 = cNsShelfCtrlrModelHeadX9
-	NsShelfCtrlrModelHeadX9 = &pNsShelfCtrlrModelHeadX9
+ pNsShelfCtrlrModelHeadX9 = cNsShelfCtrlrModelHeadX9
+ NsShelfCtrlrModelHeadX9 = &pNsShelfCtrlrModelHeadX9
 
-	pNsShelfCtrlrModelHeadX8 = cNsShelfCtrlrModelHeadX8
-	NsShelfCtrlrModelHeadX8 = &pNsShelfCtrlrModelHeadX8
+ pNsShelfCtrlrModelHeadX8 = cNsShelfCtrlrModelHeadX8
+ NsShelfCtrlrModelHeadX8 = &pNsShelfCtrlrModelHeadX8
 
-	pNsShelfCtrlrModelHeadGen52u = cNsShelfCtrlrModelHeadGen52u
-	NsShelfCtrlrModelHeadGen52u = &pNsShelfCtrlrModelHeadGen52u
+ pNsShelfCtrlrModelHeadGen52u = cNsShelfCtrlrModelHeadGen52u
+ NsShelfCtrlrModelHeadGen52u = &pNsShelfCtrlrModelHeadGen52u
 
-	pNsShelfCtrlrModelEs24u = cNsShelfCtrlrModelEs24u
-	NsShelfCtrlrModelEs24u = &pNsShelfCtrlrModelEs24u
+ pNsShelfCtrlrModelEs24u = cNsShelfCtrlrModelEs24u
+ NsShelfCtrlrModelEs24u = &pNsShelfCtrlrModelEs24u
 
-	pNsShelfCtrlrModelHeadVmware = cNsShelfCtrlrModelHeadVmware
-	NsShelfCtrlrModelHeadVmware = &pNsShelfCtrlrModelHeadVmware
+ pNsShelfCtrlrModelHeadVmware = cNsShelfCtrlrModelHeadVmware
+ NsShelfCtrlrModelHeadVmware = &pNsShelfCtrlrModelHeadVmware
 
-	pNsShelfCtrlrModelHeadGen6 = cNsShelfCtrlrModelHeadGen6
-	NsShelfCtrlrModelHeadGen6 = &pNsShelfCtrlrModelHeadGen6
+ pNsShelfCtrlrModelHeadGen6 = cNsShelfCtrlrModelHeadGen6
+ NsShelfCtrlrModelHeadGen6 = &pNsShelfCtrlrModelHeadGen6
 
-	pNsShelfCtrlrModelEs13u = cNsShelfCtrlrModelEs13u
-	NsShelfCtrlrModelEs13u = &pNsShelfCtrlrModelEs13u
+ pNsShelfCtrlrModelEs13u = cNsShelfCtrlrModelEs13u
+ NsShelfCtrlrModelEs13u = &pNsShelfCtrlrModelEs13u
 
-	pNsShelfCtrlrModelHeadX92u = cNsShelfCtrlrModelHeadX92u
-	NsShelfCtrlrModelHeadX92u = &pNsShelfCtrlrModelHeadX92u
+ pNsShelfCtrlrModelHeadX92u = cNsShelfCtrlrModelHeadX92u
+ NsShelfCtrlrModelHeadX92u = &pNsShelfCtrlrModelHeadX92u
 
-	pNsShelfCtrlrModelHeadX10 = cNsShelfCtrlrModelHeadX10
-	NsShelfCtrlrModelHeadX10 = &pNsShelfCtrlrModelHeadX10
+ pNsShelfCtrlrModelHeadX10 = cNsShelfCtrlrModelHeadX10
+ NsShelfCtrlrModelHeadX10 = &pNsShelfCtrlrModelHeadX10
 
-	pNsShelfCtrlrModelHeadGen5 = cNsShelfCtrlrModelHeadGen5
-	NsShelfCtrlrModelHeadGen5 = &pNsShelfCtrlrModelHeadGen5
+ pNsShelfCtrlrModelHeadGen5 = cNsShelfCtrlrModelHeadGen5
+ NsShelfCtrlrModelHeadGen5 = &pNsShelfCtrlrModelHeadGen5
 
-	pNsShelfCtrlrModelEs34u = cNsShelfCtrlrModelEs34u
-	NsShelfCtrlrModelEs34u = &pNsShelfCtrlrModelEs34u
+ pNsShelfCtrlrModelEs34u = cNsShelfCtrlrModelEs34u
+ NsShelfCtrlrModelEs34u = &pNsShelfCtrlrModelEs34u
 
-	pNsShelfCtrlrModelUnknown = cNsShelfCtrlrModelUnknown
-	NsShelfCtrlrModelUnknown = &pNsShelfCtrlrModelUnknown
+ pNsShelfCtrlrModelUnknown = cNsShelfCtrlrModelUnknown
+ NsShelfCtrlrModelUnknown = &pNsShelfCtrlrModelUnknown
 
 }
+

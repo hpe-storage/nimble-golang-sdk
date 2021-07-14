@@ -6,17 +6,17 @@ package nimbleos
 type NsEventCategory string
 
 const (
-	cNsEventCategoryReplication   NsEventCategory = "replication"
-	cNsEventCategoryVolume        NsEventCategory = "volume"
-	cNsEventCategorySecurity      NsEventCategory = "security"
-	cNsEventCategoryTest          NsEventCategory = "test"
-	cNsEventCategoryCloudConsole  NsEventCategory = "cloud_console"
-	cNsEventCategoryConfiguration NsEventCategory = "configuration"
-	cNsEventCategoryService       NsEventCategory = "service"
-	cNsEventCategoryUpdate        NsEventCategory = "update"
-	cNsEventCategoryArrayUpgrade  NsEventCategory = "array_upgrade"
-	cNsEventCategoryUnknown       NsEventCategory = "unknown"
-	cNsEventCategoryHardware      NsEventCategory = "hardware"
+ cNsEventCategoryReplication NsEventCategory = "replication"
+ cNsEventCategoryVolume NsEventCategory = "volume"
+ cNsEventCategorySecurity NsEventCategory = "security"
+ cNsEventCategoryTest NsEventCategory = "test"
+ cNsEventCategoryCloudConsole NsEventCategory = "cloud_console"
+ cNsEventCategoryConfiguration NsEventCategory = "configuration"
+ cNsEventCategoryService NsEventCategory = "service"
+ cNsEventCategoryUpdate NsEventCategory = "update"
+ cNsEventCategoryArrayUpgrade NsEventCategory = "array_upgrade"
+ cNsEventCategoryUnknown NsEventCategory = "unknown"
+ cNsEventCategoryHardware NsEventCategory = "hardware"
 )
 
 var pNsEventCategoryReplication NsEventCategory
@@ -65,37 +65,38 @@ var NsEventCategoryUnknown *NsEventCategory
 var NsEventCategoryHardware *NsEventCategory
 
 func init() {
-	pNsEventCategoryReplication = cNsEventCategoryReplication
-	NsEventCategoryReplication = &pNsEventCategoryReplication
+ pNsEventCategoryReplication = cNsEventCategoryReplication
+ NsEventCategoryReplication = &pNsEventCategoryReplication
 
-	pNsEventCategoryVolume = cNsEventCategoryVolume
-	NsEventCategoryVolume = &pNsEventCategoryVolume
+ pNsEventCategoryVolume = cNsEventCategoryVolume
+ NsEventCategoryVolume = &pNsEventCategoryVolume
 
-	pNsEventCategorySecurity = cNsEventCategorySecurity
-	NsEventCategorySecurity = &pNsEventCategorySecurity
+ pNsEventCategorySecurity = cNsEventCategorySecurity
+ NsEventCategorySecurity = &pNsEventCategorySecurity
 
-	pNsEventCategoryTest = cNsEventCategoryTest
-	NsEventCategoryTest = &pNsEventCategoryTest
+ pNsEventCategoryTest = cNsEventCategoryTest
+ NsEventCategoryTest = &pNsEventCategoryTest
 
-	pNsEventCategoryCloudConsole = cNsEventCategoryCloudConsole
-	NsEventCategoryCloudConsole = &pNsEventCategoryCloudConsole
+ pNsEventCategoryCloudConsole = cNsEventCategoryCloudConsole
+ NsEventCategoryCloudConsole = &pNsEventCategoryCloudConsole
 
-	pNsEventCategoryConfiguration = cNsEventCategoryConfiguration
-	NsEventCategoryConfiguration = &pNsEventCategoryConfiguration
+ pNsEventCategoryConfiguration = cNsEventCategoryConfiguration
+ NsEventCategoryConfiguration = &pNsEventCategoryConfiguration
 
-	pNsEventCategoryService = cNsEventCategoryService
-	NsEventCategoryService = &pNsEventCategoryService
+ pNsEventCategoryService = cNsEventCategoryService
+ NsEventCategoryService = &pNsEventCategoryService
 
-	pNsEventCategoryUpdate = cNsEventCategoryUpdate
-	NsEventCategoryUpdate = &pNsEventCategoryUpdate
+ pNsEventCategoryUpdate = cNsEventCategoryUpdate
+ NsEventCategoryUpdate = &pNsEventCategoryUpdate
 
-	pNsEventCategoryArrayUpgrade = cNsEventCategoryArrayUpgrade
-	NsEventCategoryArrayUpgrade = &pNsEventCategoryArrayUpgrade
+ pNsEventCategoryArrayUpgrade = cNsEventCategoryArrayUpgrade
+ NsEventCategoryArrayUpgrade = &pNsEventCategoryArrayUpgrade
 
-	pNsEventCategoryUnknown = cNsEventCategoryUnknown
-	NsEventCategoryUnknown = &pNsEventCategoryUnknown
+ pNsEventCategoryUnknown = cNsEventCategoryUnknown
+ NsEventCategoryUnknown = &pNsEventCategoryUnknown
 
-	pNsEventCategoryHardware = cNsEventCategoryHardware
-	NsEventCategoryHardware = &pNsEventCategoryHardware
+ pNsEventCategoryHardware = cNsEventCategoryHardware
+ NsEventCategoryHardware = &pNsEventCategoryHardware
 
 }
+

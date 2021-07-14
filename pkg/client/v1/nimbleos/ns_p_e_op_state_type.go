@@ -6,8 +6,8 @@ package nimbleos
 type NsPEOpStateType string
 
 const (
-	cNsPEOpStateTypeNormal     NsPEOpStateType = "normal"
-	cNsPEOpStateTypeDeprecated NsPEOpStateType = "deprecated"
+ cNsPEOpStateTypeNormal NsPEOpStateType = "normal"
+ cNsPEOpStateTypeDeprecated NsPEOpStateType = "deprecated"
 )
 
 var pNsPEOpStateTypeNormal NsPEOpStateType
@@ -20,10 +20,11 @@ var NsPEOpStateTypeNormal *NsPEOpStateType
 var NsPEOpStateTypeDeprecated *NsPEOpStateType
 
 func init() {
-	pNsPEOpStateTypeNormal = cNsPEOpStateTypeNormal
-	NsPEOpStateTypeNormal = &pNsPEOpStateTypeNormal
+ pNsPEOpStateTypeNormal = cNsPEOpStateTypeNormal
+ NsPEOpStateTypeNormal = &pNsPEOpStateTypeNormal
 
-	pNsPEOpStateTypeDeprecated = cNsPEOpStateTypeDeprecated
-	NsPEOpStateTypeDeprecated = &pNsPEOpStateTypeDeprecated
+ pNsPEOpStateTypeDeprecated = cNsPEOpStateTypeDeprecated
+ NsPEOpStateTypeDeprecated = &pNsPEOpStateTypeDeprecated
 
 }
+

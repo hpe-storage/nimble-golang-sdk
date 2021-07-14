@@ -6,9 +6,9 @@ package nimbleos
 type NsSpaceUsageLevel string
 
 const (
-	cNsSpaceUsageLevelNormal   NsSpaceUsageLevel = "normal"
-	cNsSpaceUsageLevelCritical NsSpaceUsageLevel = "critical"
-	cNsSpaceUsageLevelWarning  NsSpaceUsageLevel = "warning"
+ cNsSpaceUsageLevelNormal NsSpaceUsageLevel = "normal"
+ cNsSpaceUsageLevelCritical NsSpaceUsageLevel = "critical"
+ cNsSpaceUsageLevelWarning NsSpaceUsageLevel = "warning"
 )
 
 var pNsSpaceUsageLevelNormal NsSpaceUsageLevel
@@ -25,13 +25,14 @@ var NsSpaceUsageLevelCritical *NsSpaceUsageLevel
 var NsSpaceUsageLevelWarning *NsSpaceUsageLevel
 
 func init() {
-	pNsSpaceUsageLevelNormal = cNsSpaceUsageLevelNormal
-	NsSpaceUsageLevelNormal = &pNsSpaceUsageLevelNormal
+ pNsSpaceUsageLevelNormal = cNsSpaceUsageLevelNormal
+ NsSpaceUsageLevelNormal = &pNsSpaceUsageLevelNormal
 
-	pNsSpaceUsageLevelCritical = cNsSpaceUsageLevelCritical
-	NsSpaceUsageLevelCritical = &pNsSpaceUsageLevelCritical
+ pNsSpaceUsageLevelCritical = cNsSpaceUsageLevelCritical
+ NsSpaceUsageLevelCritical = &pNsSpaceUsageLevelCritical
 
-	pNsSpaceUsageLevelWarning = cNsSpaceUsageLevelWarning
-	NsSpaceUsageLevelWarning = &pNsSpaceUsageLevelWarning
+ pNsSpaceUsageLevelWarning = cNsSpaceUsageLevelWarning
+ NsSpaceUsageLevelWarning = &pNsSpaceUsageLevelWarning
 
 }
+

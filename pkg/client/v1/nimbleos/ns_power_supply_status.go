@@ -6,10 +6,10 @@ package nimbleos
 type NsPowerSupplyStatus string
 
 const (
-	cNsPowerSupplyStatusPsAlerted NsPowerSupplyStatus = "ps_alerted"
-	cNsPowerSupplyStatusPsOkay    NsPowerSupplyStatus = "ps_okay"
-	cNsPowerSupplyStatusPsFailed  NsPowerSupplyStatus = "ps_failed"
-	cNsPowerSupplyStatusPsUnknown NsPowerSupplyStatus = "ps_unknown"
+ cNsPowerSupplyStatusPsAlerted NsPowerSupplyStatus = "ps_alerted"
+ cNsPowerSupplyStatusPsOkay NsPowerSupplyStatus = "ps_okay"
+ cNsPowerSupplyStatusPsFailed NsPowerSupplyStatus = "ps_failed"
+ cNsPowerSupplyStatusPsUnknown NsPowerSupplyStatus = "ps_unknown"
 )
 
 var pNsPowerSupplyStatusPsAlerted NsPowerSupplyStatus
@@ -30,16 +30,17 @@ var NsPowerSupplyStatusPsFailed *NsPowerSupplyStatus
 var NsPowerSupplyStatusPsUnknown *NsPowerSupplyStatus
 
 func init() {
-	pNsPowerSupplyStatusPsAlerted = cNsPowerSupplyStatusPsAlerted
-	NsPowerSupplyStatusPsAlerted = &pNsPowerSupplyStatusPsAlerted
+ pNsPowerSupplyStatusPsAlerted = cNsPowerSupplyStatusPsAlerted
+ NsPowerSupplyStatusPsAlerted = &pNsPowerSupplyStatusPsAlerted
 
-	pNsPowerSupplyStatusPsOkay = cNsPowerSupplyStatusPsOkay
-	NsPowerSupplyStatusPsOkay = &pNsPowerSupplyStatusPsOkay
+ pNsPowerSupplyStatusPsOkay = cNsPowerSupplyStatusPsOkay
+ NsPowerSupplyStatusPsOkay = &pNsPowerSupplyStatusPsOkay
 
-	pNsPowerSupplyStatusPsFailed = cNsPowerSupplyStatusPsFailed
-	NsPowerSupplyStatusPsFailed = &pNsPowerSupplyStatusPsFailed
+ pNsPowerSupplyStatusPsFailed = cNsPowerSupplyStatusPsFailed
+ NsPowerSupplyStatusPsFailed = &pNsPowerSupplyStatusPsFailed
 
-	pNsPowerSupplyStatusPsUnknown = cNsPowerSupplyStatusPsUnknown
-	NsPowerSupplyStatusPsUnknown = &pNsPowerSupplyStatusPsUnknown
+ pNsPowerSupplyStatusPsUnknown = cNsPowerSupplyStatusPsUnknown
+ NsPowerSupplyStatusPsUnknown = &pNsPowerSupplyStatusPsUnknown
 
 }
+

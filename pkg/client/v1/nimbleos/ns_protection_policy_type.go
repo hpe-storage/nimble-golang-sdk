@@ -6,8 +6,8 @@ package nimbleos
 type NsProtectionPolicyType string
 
 const (
-	cNsProtectionPolicyTypeProtectionTemplate NsProtectionPolicyType = "protection_template"
-	cNsProtectionPolicyTypeVolumeCollection   NsProtectionPolicyType = "volume_collection"
+ cNsProtectionPolicyTypeProtectionTemplate NsProtectionPolicyType = "protection_template"
+ cNsProtectionPolicyTypeVolumeCollection NsProtectionPolicyType = "volume_collection"
 )
 
 var pNsProtectionPolicyTypeProtectionTemplate NsProtectionPolicyType
@@ -20,10 +20,11 @@ var NsProtectionPolicyTypeProtectionTemplate *NsProtectionPolicyType
 var NsProtectionPolicyTypeVolumeCollection *NsProtectionPolicyType
 
 func init() {
-	pNsProtectionPolicyTypeProtectionTemplate = cNsProtectionPolicyTypeProtectionTemplate
-	NsProtectionPolicyTypeProtectionTemplate = &pNsProtectionPolicyTypeProtectionTemplate
+ pNsProtectionPolicyTypeProtectionTemplate = cNsProtectionPolicyTypeProtectionTemplate
+ NsProtectionPolicyTypeProtectionTemplate = &pNsProtectionPolicyTypeProtectionTemplate
 
-	pNsProtectionPolicyTypeVolumeCollection = cNsProtectionPolicyTypeVolumeCollection
-	NsProtectionPolicyTypeVolumeCollection = &pNsProtectionPolicyTypeVolumeCollection
+ pNsProtectionPolicyTypeVolumeCollection = cNsProtectionPolicyTypeVolumeCollection
+ NsProtectionPolicyTypeVolumeCollection = &pNsProtectionPolicyTypeVolumeCollection
 
 }
+

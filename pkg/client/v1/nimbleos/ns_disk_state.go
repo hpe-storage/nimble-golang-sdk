@@ -6,14 +6,14 @@ package nimbleos
 type NsDiskState string
 
 const (
-	cNsDiskStateValid   NsDiskState = "valid"
-	cNsDiskStateVoid    NsDiskState = "void"
-	cNsDiskStateRemoved NsDiskState = "removed"
-	cNsDiskStateTFail   NsDiskState = "t_fail"
-	cNsDiskStateInUse   NsDiskState = "in use"
-	cNsDiskStateAbsent  NsDiskState = "absent"
-	cNsDiskStateFailed  NsDiskState = "failed"
-	cNsDiskStateForeign NsDiskState = "foreign"
+ cNsDiskStateValid NsDiskState = "valid"
+ cNsDiskStateVoid NsDiskState = "void"
+ cNsDiskStateRemoved NsDiskState = "removed"
+ cNsDiskStateTFail NsDiskState = "t_fail"
+ cNsDiskStateInUse NsDiskState = "in use"
+ cNsDiskStateAbsent NsDiskState = "absent"
+ cNsDiskStateFailed NsDiskState = "failed"
+ cNsDiskStateForeign NsDiskState = "foreign"
 )
 
 var pNsDiskStateValid NsDiskState
@@ -50,28 +50,29 @@ var NsDiskStateFailed *NsDiskState
 var NsDiskStateForeign *NsDiskState
 
 func init() {
-	pNsDiskStateValid = cNsDiskStateValid
-	NsDiskStateValid = &pNsDiskStateValid
+ pNsDiskStateValid = cNsDiskStateValid
+ NsDiskStateValid = &pNsDiskStateValid
 
-	pNsDiskStateVoid = cNsDiskStateVoid
-	NsDiskStateVoid = &pNsDiskStateVoid
+ pNsDiskStateVoid = cNsDiskStateVoid
+ NsDiskStateVoid = &pNsDiskStateVoid
 
-	pNsDiskStateRemoved = cNsDiskStateRemoved
-	NsDiskStateRemoved = &pNsDiskStateRemoved
+ pNsDiskStateRemoved = cNsDiskStateRemoved
+ NsDiskStateRemoved = &pNsDiskStateRemoved
 
-	pNsDiskStateTFail = cNsDiskStateTFail
-	NsDiskStateTFail = &pNsDiskStateTFail
+ pNsDiskStateTFail = cNsDiskStateTFail
+ NsDiskStateTFail = &pNsDiskStateTFail
 
-	pNsDiskStateInUse = cNsDiskStateInUse
-	NsDiskStateInUse = &pNsDiskStateInUse
+ pNsDiskStateInUse = cNsDiskStateInUse
+ NsDiskStateInUse = &pNsDiskStateInUse
 
-	pNsDiskStateAbsent = cNsDiskStateAbsent
-	NsDiskStateAbsent = &pNsDiskStateAbsent
+ pNsDiskStateAbsent = cNsDiskStateAbsent
+ NsDiskStateAbsent = &pNsDiskStateAbsent
 
-	pNsDiskStateFailed = cNsDiskStateFailed
-	NsDiskStateFailed = &pNsDiskStateFailed
+ pNsDiskStateFailed = cNsDiskStateFailed
+ NsDiskStateFailed = &pNsDiskStateFailed
 
-	pNsDiskStateForeign = cNsDiskStateForeign
-	NsDiskStateForeign = &pNsDiskStateForeign
+ pNsDiskStateForeign = cNsDiskStateForeign
+ NsDiskStateForeign = &pNsDiskStateForeign
 
 }
+

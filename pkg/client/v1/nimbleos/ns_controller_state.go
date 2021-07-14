@@ -6,13 +6,13 @@ package nimbleos
 type NsControllerState string
 
 const (
-	cNsControllerStateStartActive  NsControllerState = "start_active"
-	cNsControllerStateStartStandby NsControllerState = "start_standby"
-	cNsControllerStateStale        NsControllerState = "stale"
-	cNsControllerStateStandby      NsControllerState = "standby"
-	cNsControllerStateActive       NsControllerState = "active"
-	cNsControllerStateSolo         NsControllerState = "solo"
-	cNsControllerStateNone         NsControllerState = "none"
+ cNsControllerStateStartActive NsControllerState = "start_active"
+ cNsControllerStateStartStandby NsControllerState = "start_standby"
+ cNsControllerStateStale NsControllerState = "stale"
+ cNsControllerStateStandby NsControllerState = "standby"
+ cNsControllerStateActive NsControllerState = "active"
+ cNsControllerStateSolo NsControllerState = "solo"
+ cNsControllerStateNone NsControllerState = "none"
 )
 
 var pNsControllerStateStartActive NsControllerState
@@ -45,25 +45,26 @@ var NsControllerStateSolo *NsControllerState
 var NsControllerStateNone *NsControllerState
 
 func init() {
-	pNsControllerStateStartActive = cNsControllerStateStartActive
-	NsControllerStateStartActive = &pNsControllerStateStartActive
+ pNsControllerStateStartActive = cNsControllerStateStartActive
+ NsControllerStateStartActive = &pNsControllerStateStartActive
 
-	pNsControllerStateStartStandby = cNsControllerStateStartStandby
-	NsControllerStateStartStandby = &pNsControllerStateStartStandby
+ pNsControllerStateStartStandby = cNsControllerStateStartStandby
+ NsControllerStateStartStandby = &pNsControllerStateStartStandby
 
-	pNsControllerStateStale = cNsControllerStateStale
-	NsControllerStateStale = &pNsControllerStateStale
+ pNsControllerStateStale = cNsControllerStateStale
+ NsControllerStateStale = &pNsControllerStateStale
 
-	pNsControllerStateStandby = cNsControllerStateStandby
-	NsControllerStateStandby = &pNsControllerStateStandby
+ pNsControllerStateStandby = cNsControllerStateStandby
+ NsControllerStateStandby = &pNsControllerStateStandby
 
-	pNsControllerStateActive = cNsControllerStateActive
-	NsControllerStateActive = &pNsControllerStateActive
+ pNsControllerStateActive = cNsControllerStateActive
+ NsControllerStateActive = &pNsControllerStateActive
 
-	pNsControllerStateSolo = cNsControllerStateSolo
-	NsControllerStateSolo = &pNsControllerStateSolo
+ pNsControllerStateSolo = cNsControllerStateSolo
+ NsControllerStateSolo = &pNsControllerStateSolo
 
-	pNsControllerStateNone = cNsControllerStateNone
-	NsControllerStateNone = &pNsControllerStateNone
+ pNsControllerStateNone = cNsControllerStateNone
+ NsControllerStateNone = &pNsControllerStateNone
 
 }
+

@@ -6,11 +6,11 @@ package nimbleos
 type NsSubnetType string
 
 const (
-	cNsSubnetTypeMgmt         NsSubnetType = "mgmt"
-	cNsSubnetTypeUnconfigured NsSubnetType = "unconfigured"
-	cNsSubnetTypeData         NsSubnetType = "data"
-	cNsSubnetTypeMgmtData     NsSubnetType = "mgmt_data"
-	cNsSubnetTypeInvalid      NsSubnetType = "invalid"
+ cNsSubnetTypeMgmt NsSubnetType = "mgmt"
+ cNsSubnetTypeUnconfigured NsSubnetType = "unconfigured"
+ cNsSubnetTypeData NsSubnetType = "data"
+ cNsSubnetTypeMgmtData NsSubnetType = "mgmt_data"
+ cNsSubnetTypeInvalid NsSubnetType = "invalid"
 )
 
 var pNsSubnetTypeMgmt NsSubnetType
@@ -35,19 +35,20 @@ var NsSubnetTypeMgmtData *NsSubnetType
 var NsSubnetTypeInvalid *NsSubnetType
 
 func init() {
-	pNsSubnetTypeMgmt = cNsSubnetTypeMgmt
-	NsSubnetTypeMgmt = &pNsSubnetTypeMgmt
+ pNsSubnetTypeMgmt = cNsSubnetTypeMgmt
+ NsSubnetTypeMgmt = &pNsSubnetTypeMgmt
 
-	pNsSubnetTypeUnconfigured = cNsSubnetTypeUnconfigured
-	NsSubnetTypeUnconfigured = &pNsSubnetTypeUnconfigured
+ pNsSubnetTypeUnconfigured = cNsSubnetTypeUnconfigured
+ NsSubnetTypeUnconfigured = &pNsSubnetTypeUnconfigured
 
-	pNsSubnetTypeData = cNsSubnetTypeData
-	NsSubnetTypeData = &pNsSubnetTypeData
+ pNsSubnetTypeData = cNsSubnetTypeData
+ NsSubnetTypeData = &pNsSubnetTypeData
 
-	pNsSubnetTypeMgmtData = cNsSubnetTypeMgmtData
-	NsSubnetTypeMgmtData = &pNsSubnetTypeMgmtData
+ pNsSubnetTypeMgmtData = cNsSubnetTypeMgmtData
+ NsSubnetTypeMgmtData = &pNsSubnetTypeMgmtData
 
-	pNsSubnetTypeInvalid = cNsSubnetTypeInvalid
-	NsSubnetTypeInvalid = &pNsSubnetTypeInvalid
+ pNsSubnetTypeInvalid = cNsSubnetTypeInvalid
+ NsSubnetTypeInvalid = &pNsSubnetTypeInvalid
 
 }
+

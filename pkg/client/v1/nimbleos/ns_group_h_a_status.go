@@ -6,14 +6,14 @@ package nimbleos
 type NsGroupHAStatus string
 
 const (
-	cNsGroupHAStatusInSync            NsGroupHAStatus = "in_sync"
-	cNsGroupHAStatusRemoveInProgress  NsGroupHAStatus = "remove_in_progress"
-	cNsGroupHAStatusYetToSetup        NsGroupHAStatus = "yet_to_setup"
-	cNsGroupHAStatusUnsetupInProgress NsGroupHAStatus = "unsetup_in_progress"
-	cNsGroupHAStatusSetupInProgress   NsGroupHAStatus = "setup_in_progress"
-	cNsGroupHAStatusOutOfSync         NsGroupHAStatus = "out_of_sync"
-	cNsGroupHAStatusAddInProgress     NsGroupHAStatus = "add_in_progress"
-	cNsGroupHAStatusSetupFailed       NsGroupHAStatus = "setup_failed"
+ cNsGroupHAStatusInSync NsGroupHAStatus = "in_sync"
+ cNsGroupHAStatusRemoveInProgress NsGroupHAStatus = "remove_in_progress"
+ cNsGroupHAStatusYetToSetup NsGroupHAStatus = "yet_to_setup"
+ cNsGroupHAStatusUnsetupInProgress NsGroupHAStatus = "unsetup_in_progress"
+ cNsGroupHAStatusSetupInProgress NsGroupHAStatus = "setup_in_progress"
+ cNsGroupHAStatusOutOfSync NsGroupHAStatus = "out_of_sync"
+ cNsGroupHAStatusAddInProgress NsGroupHAStatus = "add_in_progress"
+ cNsGroupHAStatusSetupFailed NsGroupHAStatus = "setup_failed"
 )
 
 var pNsGroupHAStatusInSync NsGroupHAStatus
@@ -50,28 +50,29 @@ var NsGroupHAStatusAddInProgress *NsGroupHAStatus
 var NsGroupHAStatusSetupFailed *NsGroupHAStatus
 
 func init() {
-	pNsGroupHAStatusInSync = cNsGroupHAStatusInSync
-	NsGroupHAStatusInSync = &pNsGroupHAStatusInSync
+ pNsGroupHAStatusInSync = cNsGroupHAStatusInSync
+ NsGroupHAStatusInSync = &pNsGroupHAStatusInSync
 
-	pNsGroupHAStatusRemoveInProgress = cNsGroupHAStatusRemoveInProgress
-	NsGroupHAStatusRemoveInProgress = &pNsGroupHAStatusRemoveInProgress
+ pNsGroupHAStatusRemoveInProgress = cNsGroupHAStatusRemoveInProgress
+ NsGroupHAStatusRemoveInProgress = &pNsGroupHAStatusRemoveInProgress
 
-	pNsGroupHAStatusYetToSetup = cNsGroupHAStatusYetToSetup
-	NsGroupHAStatusYetToSetup = &pNsGroupHAStatusYetToSetup
+ pNsGroupHAStatusYetToSetup = cNsGroupHAStatusYetToSetup
+ NsGroupHAStatusYetToSetup = &pNsGroupHAStatusYetToSetup
 
-	pNsGroupHAStatusUnsetupInProgress = cNsGroupHAStatusUnsetupInProgress
-	NsGroupHAStatusUnsetupInProgress = &pNsGroupHAStatusUnsetupInProgress
+ pNsGroupHAStatusUnsetupInProgress = cNsGroupHAStatusUnsetupInProgress
+ NsGroupHAStatusUnsetupInProgress = &pNsGroupHAStatusUnsetupInProgress
 
-	pNsGroupHAStatusSetupInProgress = cNsGroupHAStatusSetupInProgress
-	NsGroupHAStatusSetupInProgress = &pNsGroupHAStatusSetupInProgress
+ pNsGroupHAStatusSetupInProgress = cNsGroupHAStatusSetupInProgress
+ NsGroupHAStatusSetupInProgress = &pNsGroupHAStatusSetupInProgress
 
-	pNsGroupHAStatusOutOfSync = cNsGroupHAStatusOutOfSync
-	NsGroupHAStatusOutOfSync = &pNsGroupHAStatusOutOfSync
+ pNsGroupHAStatusOutOfSync = cNsGroupHAStatusOutOfSync
+ NsGroupHAStatusOutOfSync = &pNsGroupHAStatusOutOfSync
 
-	pNsGroupHAStatusAddInProgress = cNsGroupHAStatusAddInProgress
-	NsGroupHAStatusAddInProgress = &pNsGroupHAStatusAddInProgress
+ pNsGroupHAStatusAddInProgress = cNsGroupHAStatusAddInProgress
+ NsGroupHAStatusAddInProgress = &pNsGroupHAStatusAddInProgress
 
-	pNsGroupHAStatusSetupFailed = cNsGroupHAStatusSetupFailed
-	NsGroupHAStatusSetupFailed = &pNsGroupHAStatusSetupFailed
+ pNsGroupHAStatusSetupFailed = cNsGroupHAStatusSetupFailed
+ NsGroupHAStatusSetupFailed = &pNsGroupHAStatusSetupFailed
 
 }
+

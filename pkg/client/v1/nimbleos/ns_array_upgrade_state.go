@@ -6,17 +6,17 @@ package nimbleos
 type NsArrayUpgradeState string
 
 const (
-	cNsArrayUpgradeStateAbortFailed       NsArrayUpgradeState = "abort_failed"
-	cNsArrayUpgradeStatePrecheck          NsArrayUpgradeState = "precheck"
-	cNsArrayUpgradeStateInProgress        NsArrayUpgradeState = "in_progress"
-	cNsArrayUpgradeStatePaused            NsArrayUpgradeState = "paused"
-	cNsArrayUpgradeStateAborted           NsArrayUpgradeState = "aborted"
-	cNsArrayUpgradeStateAborting          NsArrayUpgradeState = "aborting"
-	cNsArrayUpgradeStateStarted           NsArrayUpgradeState = "started"
-	cNsArrayUpgradeStateNone              NsArrayUpgradeState = "none"
-	cNsArrayUpgradeStateFailed            NsArrayUpgradeState = "failed"
-	cNsArrayUpgradeStateAwaitingNextStage NsArrayUpgradeState = "awaiting_next_stage"
-	cNsArrayUpgradeStateComplete          NsArrayUpgradeState = "complete"
+ cNsArrayUpgradeStateAbortFailed NsArrayUpgradeState = "abort_failed"
+ cNsArrayUpgradeStatePrecheck NsArrayUpgradeState = "precheck"
+ cNsArrayUpgradeStateInProgress NsArrayUpgradeState = "in_progress"
+ cNsArrayUpgradeStatePaused NsArrayUpgradeState = "paused"
+ cNsArrayUpgradeStateAborted NsArrayUpgradeState = "aborted"
+ cNsArrayUpgradeStateAborting NsArrayUpgradeState = "aborting"
+ cNsArrayUpgradeStateStarted NsArrayUpgradeState = "started"
+ cNsArrayUpgradeStateNone NsArrayUpgradeState = "none"
+ cNsArrayUpgradeStateFailed NsArrayUpgradeState = "failed"
+ cNsArrayUpgradeStateAwaitingNextStage NsArrayUpgradeState = "awaiting_next_stage"
+ cNsArrayUpgradeStateComplete NsArrayUpgradeState = "complete"
 )
 
 var pNsArrayUpgradeStateAbortFailed NsArrayUpgradeState
@@ -65,37 +65,38 @@ var NsArrayUpgradeStateAwaitingNextStage *NsArrayUpgradeState
 var NsArrayUpgradeStateComplete *NsArrayUpgradeState
 
 func init() {
-	pNsArrayUpgradeStateAbortFailed = cNsArrayUpgradeStateAbortFailed
-	NsArrayUpgradeStateAbortFailed = &pNsArrayUpgradeStateAbortFailed
+ pNsArrayUpgradeStateAbortFailed = cNsArrayUpgradeStateAbortFailed
+ NsArrayUpgradeStateAbortFailed = &pNsArrayUpgradeStateAbortFailed
 
-	pNsArrayUpgradeStatePrecheck = cNsArrayUpgradeStatePrecheck
-	NsArrayUpgradeStatePrecheck = &pNsArrayUpgradeStatePrecheck
+ pNsArrayUpgradeStatePrecheck = cNsArrayUpgradeStatePrecheck
+ NsArrayUpgradeStatePrecheck = &pNsArrayUpgradeStatePrecheck
 
-	pNsArrayUpgradeStateInProgress = cNsArrayUpgradeStateInProgress
-	NsArrayUpgradeStateInProgress = &pNsArrayUpgradeStateInProgress
+ pNsArrayUpgradeStateInProgress = cNsArrayUpgradeStateInProgress
+ NsArrayUpgradeStateInProgress = &pNsArrayUpgradeStateInProgress
 
-	pNsArrayUpgradeStatePaused = cNsArrayUpgradeStatePaused
-	NsArrayUpgradeStatePaused = &pNsArrayUpgradeStatePaused
+ pNsArrayUpgradeStatePaused = cNsArrayUpgradeStatePaused
+ NsArrayUpgradeStatePaused = &pNsArrayUpgradeStatePaused
 
-	pNsArrayUpgradeStateAborted = cNsArrayUpgradeStateAborted
-	NsArrayUpgradeStateAborted = &pNsArrayUpgradeStateAborted
+ pNsArrayUpgradeStateAborted = cNsArrayUpgradeStateAborted
+ NsArrayUpgradeStateAborted = &pNsArrayUpgradeStateAborted
 
-	pNsArrayUpgradeStateAborting = cNsArrayUpgradeStateAborting
-	NsArrayUpgradeStateAborting = &pNsArrayUpgradeStateAborting
+ pNsArrayUpgradeStateAborting = cNsArrayUpgradeStateAborting
+ NsArrayUpgradeStateAborting = &pNsArrayUpgradeStateAborting
 
-	pNsArrayUpgradeStateStarted = cNsArrayUpgradeStateStarted
-	NsArrayUpgradeStateStarted = &pNsArrayUpgradeStateStarted
+ pNsArrayUpgradeStateStarted = cNsArrayUpgradeStateStarted
+ NsArrayUpgradeStateStarted = &pNsArrayUpgradeStateStarted
 
-	pNsArrayUpgradeStateNone = cNsArrayUpgradeStateNone
-	NsArrayUpgradeStateNone = &pNsArrayUpgradeStateNone
+ pNsArrayUpgradeStateNone = cNsArrayUpgradeStateNone
+ NsArrayUpgradeStateNone = &pNsArrayUpgradeStateNone
 
-	pNsArrayUpgradeStateFailed = cNsArrayUpgradeStateFailed
-	NsArrayUpgradeStateFailed = &pNsArrayUpgradeStateFailed
+ pNsArrayUpgradeStateFailed = cNsArrayUpgradeStateFailed
+ NsArrayUpgradeStateFailed = &pNsArrayUpgradeStateFailed
 
-	pNsArrayUpgradeStateAwaitingNextStage = cNsArrayUpgradeStateAwaitingNextStage
-	NsArrayUpgradeStateAwaitingNextStage = &pNsArrayUpgradeStateAwaitingNextStage
+ pNsArrayUpgradeStateAwaitingNextStage = cNsArrayUpgradeStateAwaitingNextStage
+ NsArrayUpgradeStateAwaitingNextStage = &pNsArrayUpgradeStateAwaitingNextStage
 
-	pNsArrayUpgradeStateComplete = cNsArrayUpgradeStateComplete
-	NsArrayUpgradeStateComplete = &pNsArrayUpgradeStateComplete
+ pNsArrayUpgradeStateComplete = cNsArrayUpgradeStateComplete
+ NsArrayUpgradeStateComplete = &pNsArrayUpgradeStateComplete
 
 }
+

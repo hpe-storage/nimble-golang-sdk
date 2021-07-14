@@ -6,8 +6,8 @@ package nimbleos
 type NsReplPriorityType string
 
 const (
-	cNsReplPriorityTypeNormal NsReplPriorityType = "normal"
-	cNsReplPriorityTypeHigh   NsReplPriorityType = "high"
+ cNsReplPriorityTypeNormal NsReplPriorityType = "normal"
+ cNsReplPriorityTypeHigh NsReplPriorityType = "high"
 )
 
 var pNsReplPriorityTypeNormal NsReplPriorityType
@@ -20,10 +20,11 @@ var NsReplPriorityTypeNormal *NsReplPriorityType
 var NsReplPriorityTypeHigh *NsReplPriorityType
 
 func init() {
-	pNsReplPriorityTypeNormal = cNsReplPriorityTypeNormal
-	NsReplPriorityTypeNormal = &pNsReplPriorityTypeNormal
+ pNsReplPriorityTypeNormal = cNsReplPriorityTypeNormal
+ NsReplPriorityTypeNormal = &pNsReplPriorityTypeNormal
 
-	pNsReplPriorityTypeHigh = cNsReplPriorityTypeHigh
-	NsReplPriorityTypeHigh = &pNsReplPriorityTypeHigh
+ pNsReplPriorityTypeHigh = cNsReplPriorityTypeHigh
+ NsReplPriorityTypeHigh = &pNsReplPriorityTypeHigh
 
 }
+

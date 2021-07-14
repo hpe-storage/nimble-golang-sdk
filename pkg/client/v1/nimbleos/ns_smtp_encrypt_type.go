@@ -6,9 +6,9 @@ package nimbleos
 type NsSmtpEncryptType string
 
 const (
-	cNsSmtpEncryptTypeStarttls NsSmtpEncryptType = "starttls"
-	cNsSmtpEncryptTypeNone     NsSmtpEncryptType = "none"
-	cNsSmtpEncryptTypeSsl      NsSmtpEncryptType = "ssl"
+ cNsSmtpEncryptTypeStarttls NsSmtpEncryptType = "starttls"
+ cNsSmtpEncryptTypeNone NsSmtpEncryptType = "none"
+ cNsSmtpEncryptTypeSsl NsSmtpEncryptType = "ssl"
 )
 
 var pNsSmtpEncryptTypeStarttls NsSmtpEncryptType
@@ -25,13 +25,14 @@ var NsSmtpEncryptTypeNone *NsSmtpEncryptType
 var NsSmtpEncryptTypeSsl *NsSmtpEncryptType
 
 func init() {
-	pNsSmtpEncryptTypeStarttls = cNsSmtpEncryptTypeStarttls
-	NsSmtpEncryptTypeStarttls = &pNsSmtpEncryptTypeStarttls
+ pNsSmtpEncryptTypeStarttls = cNsSmtpEncryptTypeStarttls
+ NsSmtpEncryptTypeStarttls = &pNsSmtpEncryptTypeStarttls
 
-	pNsSmtpEncryptTypeNone = cNsSmtpEncryptTypeNone
-	NsSmtpEncryptTypeNone = &pNsSmtpEncryptTypeNone
+ pNsSmtpEncryptTypeNone = cNsSmtpEncryptTypeNone
+ NsSmtpEncryptTypeNone = &pNsSmtpEncryptTypeNone
 
-	pNsSmtpEncryptTypeSsl = cNsSmtpEncryptTypeSsl
-	NsSmtpEncryptTypeSsl = &pNsSmtpEncryptTypeSsl
+ pNsSmtpEncryptTypeSsl = cNsSmtpEncryptTypeSsl
+ NsSmtpEncryptTypeSsl = &pNsSmtpEncryptTypeSsl
 
 }
+

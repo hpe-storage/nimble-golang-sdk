@@ -6,15 +6,15 @@ package nimbleos
 type NsPlatLinkSpeed string
 
 const (
-	cNsPlatLinkSpeedLinkSpeed100000m NsPlatLinkSpeed = "link_speed_100000M"
-	cNsPlatLinkSpeedLinkSpeed10000m  NsPlatLinkSpeed = "link_speed_10000M"
-	cNsPlatLinkSpeedLinkSpeed10m     NsPlatLinkSpeed = "link_speed_10M"
-	cNsPlatLinkSpeedLinkSpeed25000m  NsPlatLinkSpeed = "link_speed_25000M"
-	cNsPlatLinkSpeedLinkSpeed50000m  NsPlatLinkSpeed = "link_speed_50000M"
-	cNsPlatLinkSpeedLinkSpeedUnknown NsPlatLinkSpeed = "link_speed_unknown"
-	cNsPlatLinkSpeedLinkSpeed1000m   NsPlatLinkSpeed = "link_speed_1000M"
-	cNsPlatLinkSpeedLinkSpeed100m    NsPlatLinkSpeed = "link_speed_100M"
-	cNsPlatLinkSpeedLinkSpeed40000m  NsPlatLinkSpeed = "link_speed_40000M"
+ cNsPlatLinkSpeedLinkSpeed100000m NsPlatLinkSpeed = "link_speed_100000M"
+ cNsPlatLinkSpeedLinkSpeed10000m NsPlatLinkSpeed = "link_speed_10000M"
+ cNsPlatLinkSpeedLinkSpeed10m NsPlatLinkSpeed = "link_speed_10M"
+ cNsPlatLinkSpeedLinkSpeed25000m NsPlatLinkSpeed = "link_speed_25000M"
+ cNsPlatLinkSpeedLinkSpeed50000m NsPlatLinkSpeed = "link_speed_50000M"
+ cNsPlatLinkSpeedLinkSpeedUnknown NsPlatLinkSpeed = "link_speed_unknown"
+ cNsPlatLinkSpeedLinkSpeed1000m NsPlatLinkSpeed = "link_speed_1000M"
+ cNsPlatLinkSpeedLinkSpeed100m NsPlatLinkSpeed = "link_speed_100M"
+ cNsPlatLinkSpeedLinkSpeed40000m NsPlatLinkSpeed = "link_speed_40000M"
 )
 
 var pNsPlatLinkSpeedLinkSpeed100000m NsPlatLinkSpeed
@@ -55,31 +55,32 @@ var NsPlatLinkSpeedLinkSpeed100m *NsPlatLinkSpeed
 var NsPlatLinkSpeedLinkSpeed40000m *NsPlatLinkSpeed
 
 func init() {
-	pNsPlatLinkSpeedLinkSpeed100000m = cNsPlatLinkSpeedLinkSpeed100000m
-	NsPlatLinkSpeedLinkSpeed100000m = &pNsPlatLinkSpeedLinkSpeed100000m
+ pNsPlatLinkSpeedLinkSpeed100000m = cNsPlatLinkSpeedLinkSpeed100000m
+ NsPlatLinkSpeedLinkSpeed100000m = &pNsPlatLinkSpeedLinkSpeed100000m
 
-	pNsPlatLinkSpeedLinkSpeed10000m = cNsPlatLinkSpeedLinkSpeed10000m
-	NsPlatLinkSpeedLinkSpeed10000m = &pNsPlatLinkSpeedLinkSpeed10000m
+ pNsPlatLinkSpeedLinkSpeed10000m = cNsPlatLinkSpeedLinkSpeed10000m
+ NsPlatLinkSpeedLinkSpeed10000m = &pNsPlatLinkSpeedLinkSpeed10000m
 
-	pNsPlatLinkSpeedLinkSpeed10m = cNsPlatLinkSpeedLinkSpeed10m
-	NsPlatLinkSpeedLinkSpeed10m = &pNsPlatLinkSpeedLinkSpeed10m
+ pNsPlatLinkSpeedLinkSpeed10m = cNsPlatLinkSpeedLinkSpeed10m
+ NsPlatLinkSpeedLinkSpeed10m = &pNsPlatLinkSpeedLinkSpeed10m
 
-	pNsPlatLinkSpeedLinkSpeed25000m = cNsPlatLinkSpeedLinkSpeed25000m
-	NsPlatLinkSpeedLinkSpeed25000m = &pNsPlatLinkSpeedLinkSpeed25000m
+ pNsPlatLinkSpeedLinkSpeed25000m = cNsPlatLinkSpeedLinkSpeed25000m
+ NsPlatLinkSpeedLinkSpeed25000m = &pNsPlatLinkSpeedLinkSpeed25000m
 
-	pNsPlatLinkSpeedLinkSpeed50000m = cNsPlatLinkSpeedLinkSpeed50000m
-	NsPlatLinkSpeedLinkSpeed50000m = &pNsPlatLinkSpeedLinkSpeed50000m
+ pNsPlatLinkSpeedLinkSpeed50000m = cNsPlatLinkSpeedLinkSpeed50000m
+ NsPlatLinkSpeedLinkSpeed50000m = &pNsPlatLinkSpeedLinkSpeed50000m
 
-	pNsPlatLinkSpeedLinkSpeedUnknown = cNsPlatLinkSpeedLinkSpeedUnknown
-	NsPlatLinkSpeedLinkSpeedUnknown = &pNsPlatLinkSpeedLinkSpeedUnknown
+ pNsPlatLinkSpeedLinkSpeedUnknown = cNsPlatLinkSpeedLinkSpeedUnknown
+ NsPlatLinkSpeedLinkSpeedUnknown = &pNsPlatLinkSpeedLinkSpeedUnknown
 
-	pNsPlatLinkSpeedLinkSpeed1000m = cNsPlatLinkSpeedLinkSpeed1000m
-	NsPlatLinkSpeedLinkSpeed1000m = &pNsPlatLinkSpeedLinkSpeed1000m
+ pNsPlatLinkSpeedLinkSpeed1000m = cNsPlatLinkSpeedLinkSpeed1000m
+ NsPlatLinkSpeedLinkSpeed1000m = &pNsPlatLinkSpeedLinkSpeed1000m
 
-	pNsPlatLinkSpeedLinkSpeed100m = cNsPlatLinkSpeedLinkSpeed100m
-	NsPlatLinkSpeedLinkSpeed100m = &pNsPlatLinkSpeedLinkSpeed100m
+ pNsPlatLinkSpeedLinkSpeed100m = cNsPlatLinkSpeedLinkSpeed100m
+ NsPlatLinkSpeedLinkSpeed100m = &pNsPlatLinkSpeedLinkSpeed100m
 
-	pNsPlatLinkSpeedLinkSpeed40000m = cNsPlatLinkSpeedLinkSpeed40000m
-	NsPlatLinkSpeedLinkSpeed40000m = &pNsPlatLinkSpeedLinkSpeed40000m
+ pNsPlatLinkSpeedLinkSpeed40000m = cNsPlatLinkSpeedLinkSpeed40000m
+ NsPlatLinkSpeedLinkSpeed40000m = &pNsPlatLinkSpeedLinkSpeed40000m
 
 }
+

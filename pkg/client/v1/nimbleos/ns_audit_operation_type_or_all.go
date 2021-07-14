@@ -6,12 +6,12 @@ package nimbleos
 type NsAuditOperationTypeOrAll string
 
 const (
-	cNsAuditOperationTypeOrAllAll    NsAuditOperationTypeOrAll = "all"
-	cNsAuditOperationTypeOrAllOther  NsAuditOperationTypeOrAll = "other"
-	cNsAuditOperationTypeOrAllRead   NsAuditOperationTypeOrAll = "read"
-	cNsAuditOperationTypeOrAllCreate NsAuditOperationTypeOrAll = "create"
-	cNsAuditOperationTypeOrAllUpdate NsAuditOperationTypeOrAll = "update"
-	cNsAuditOperationTypeOrAllDelete NsAuditOperationTypeOrAll = "delete"
+ cNsAuditOperationTypeOrAllAll NsAuditOperationTypeOrAll = "all"
+ cNsAuditOperationTypeOrAllOther NsAuditOperationTypeOrAll = "other"
+ cNsAuditOperationTypeOrAllRead NsAuditOperationTypeOrAll = "read"
+ cNsAuditOperationTypeOrAllCreate NsAuditOperationTypeOrAll = "create"
+ cNsAuditOperationTypeOrAllUpdate NsAuditOperationTypeOrAll = "update"
+ cNsAuditOperationTypeOrAllDelete NsAuditOperationTypeOrAll = "delete"
 )
 
 var pNsAuditOperationTypeOrAllAll NsAuditOperationTypeOrAll
@@ -40,22 +40,23 @@ var NsAuditOperationTypeOrAllUpdate *NsAuditOperationTypeOrAll
 var NsAuditOperationTypeOrAllDelete *NsAuditOperationTypeOrAll
 
 func init() {
-	pNsAuditOperationTypeOrAllAll = cNsAuditOperationTypeOrAllAll
-	NsAuditOperationTypeOrAllAll = &pNsAuditOperationTypeOrAllAll
+ pNsAuditOperationTypeOrAllAll = cNsAuditOperationTypeOrAllAll
+ NsAuditOperationTypeOrAllAll = &pNsAuditOperationTypeOrAllAll
 
-	pNsAuditOperationTypeOrAllOther = cNsAuditOperationTypeOrAllOther
-	NsAuditOperationTypeOrAllOther = &pNsAuditOperationTypeOrAllOther
+ pNsAuditOperationTypeOrAllOther = cNsAuditOperationTypeOrAllOther
+ NsAuditOperationTypeOrAllOther = &pNsAuditOperationTypeOrAllOther
 
-	pNsAuditOperationTypeOrAllRead = cNsAuditOperationTypeOrAllRead
-	NsAuditOperationTypeOrAllRead = &pNsAuditOperationTypeOrAllRead
+ pNsAuditOperationTypeOrAllRead = cNsAuditOperationTypeOrAllRead
+ NsAuditOperationTypeOrAllRead = &pNsAuditOperationTypeOrAllRead
 
-	pNsAuditOperationTypeOrAllCreate = cNsAuditOperationTypeOrAllCreate
-	NsAuditOperationTypeOrAllCreate = &pNsAuditOperationTypeOrAllCreate
+ pNsAuditOperationTypeOrAllCreate = cNsAuditOperationTypeOrAllCreate
+ NsAuditOperationTypeOrAllCreate = &pNsAuditOperationTypeOrAllCreate
 
-	pNsAuditOperationTypeOrAllUpdate = cNsAuditOperationTypeOrAllUpdate
-	NsAuditOperationTypeOrAllUpdate = &pNsAuditOperationTypeOrAllUpdate
+ pNsAuditOperationTypeOrAllUpdate = cNsAuditOperationTypeOrAllUpdate
+ NsAuditOperationTypeOrAllUpdate = &pNsAuditOperationTypeOrAllUpdate
 
-	pNsAuditOperationTypeOrAllDelete = cNsAuditOperationTypeOrAllDelete
-	NsAuditOperationTypeOrAllDelete = &pNsAuditOperationTypeOrAllDelete
+ pNsAuditOperationTypeOrAllDelete = cNsAuditOperationTypeOrAllDelete
+ NsAuditOperationTypeOrAllDelete = &pNsAuditOperationTypeOrAllDelete
 
 }
+

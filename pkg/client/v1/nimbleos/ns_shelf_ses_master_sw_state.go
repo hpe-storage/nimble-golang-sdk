@@ -6,11 +6,11 @@ package nimbleos
 type NsShelfSesMasterSwState string
 
 const (
-	cNsShelfSesMasterSwStateWantMaster    NsShelfSesMasterSwState = "want master"
-	cNsShelfSesMasterSwStateReleaseMaster NsShelfSesMasterSwState = "release master"
-	cNsShelfSesMasterSwStateNotMaster     NsShelfSesMasterSwState = "not master"
-	cNsShelfSesMasterSwStateUnknown       NsShelfSesMasterSwState = "unknown"
-	cNsShelfSesMasterSwStateMaster        NsShelfSesMasterSwState = "master"
+ cNsShelfSesMasterSwStateWantMaster NsShelfSesMasterSwState = "want master"
+ cNsShelfSesMasterSwStateReleaseMaster NsShelfSesMasterSwState = "release master"
+ cNsShelfSesMasterSwStateNotMaster NsShelfSesMasterSwState = "not master"
+ cNsShelfSesMasterSwStateUnknown NsShelfSesMasterSwState = "unknown"
+ cNsShelfSesMasterSwStateMaster NsShelfSesMasterSwState = "master"
 )
 
 var pNsShelfSesMasterSwStateWantMaster NsShelfSesMasterSwState
@@ -35,19 +35,20 @@ var NsShelfSesMasterSwStateUnknown *NsShelfSesMasterSwState
 var NsShelfSesMasterSwStateMaster *NsShelfSesMasterSwState
 
 func init() {
-	pNsShelfSesMasterSwStateWantMaster = cNsShelfSesMasterSwStateWantMaster
-	NsShelfSesMasterSwStateWantMaster = &pNsShelfSesMasterSwStateWantMaster
+ pNsShelfSesMasterSwStateWantMaster = cNsShelfSesMasterSwStateWantMaster
+ NsShelfSesMasterSwStateWantMaster = &pNsShelfSesMasterSwStateWantMaster
 
-	pNsShelfSesMasterSwStateReleaseMaster = cNsShelfSesMasterSwStateReleaseMaster
-	NsShelfSesMasterSwStateReleaseMaster = &pNsShelfSesMasterSwStateReleaseMaster
+ pNsShelfSesMasterSwStateReleaseMaster = cNsShelfSesMasterSwStateReleaseMaster
+ NsShelfSesMasterSwStateReleaseMaster = &pNsShelfSesMasterSwStateReleaseMaster
 
-	pNsShelfSesMasterSwStateNotMaster = cNsShelfSesMasterSwStateNotMaster
-	NsShelfSesMasterSwStateNotMaster = &pNsShelfSesMasterSwStateNotMaster
+ pNsShelfSesMasterSwStateNotMaster = cNsShelfSesMasterSwStateNotMaster
+ NsShelfSesMasterSwStateNotMaster = &pNsShelfSesMasterSwStateNotMaster
 
-	pNsShelfSesMasterSwStateUnknown = cNsShelfSesMasterSwStateUnknown
-	NsShelfSesMasterSwStateUnknown = &pNsShelfSesMasterSwStateUnknown
+ pNsShelfSesMasterSwStateUnknown = cNsShelfSesMasterSwStateUnknown
+ NsShelfSesMasterSwStateUnknown = &pNsShelfSesMasterSwStateUnknown
 
-	pNsShelfSesMasterSwStateMaster = cNsShelfSesMasterSwStateMaster
-	NsShelfSesMasterSwStateMaster = &pNsShelfSesMasterSwStateMaster
+ pNsShelfSesMasterSwStateMaster = cNsShelfSesMasterSwStateMaster
+ NsShelfSesMasterSwStateMaster = &pNsShelfSesMasterSwStateMaster
 
 }
+

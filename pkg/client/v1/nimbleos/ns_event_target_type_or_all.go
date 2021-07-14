@@ -6,29 +6,29 @@ package nimbleos
 type NsEventTargetTypeOrAll string
 
 const (
-	cNsEventTargetTypeOrAllAll            NsEventTargetTypeOrAll = "all"
-	cNsEventTargetTypeOrAllAnon           NsEventTargetTypeOrAll = "anon"
-	cNsEventTargetTypeOrAllController     NsEventTargetTypeOrAll = "controller"
-	cNsEventTargetTypeOrAllTest           NsEventTargetTypeOrAll = "test"
-	cNsEventTargetTypeOrAllProtectionSet  NsEventTargetTypeOrAll = "protection_set"
-	cNsEventTargetTypeOrAllPool           NsEventTargetTypeOrAll = "pool"
-	cNsEventTargetTypeOrAllNic            NsEventTargetTypeOrAll = "nic"
-	cNsEventTargetTypeOrAllShelf          NsEventTargetTypeOrAll = "shelf"
-	cNsEventTargetTypeOrAllVolume         NsEventTargetTypeOrAll = "volume"
-	cNsEventTargetTypeOrAllDisk           NsEventTargetTypeOrAll = "disk"
-	cNsEventTargetTypeOrAllFan            NsEventTargetTypeOrAll = "fan"
-	cNsEventTargetTypeOrAllIscsi          NsEventTargetTypeOrAll = "iscsi"
-	cNsEventTargetTypeOrAllNvram          NsEventTargetTypeOrAll = "nvram"
-	cNsEventTargetTypeOrAllPowerSupply    NsEventTargetTypeOrAll = "power_supply"
-	cNsEventTargetTypeOrAllPartner        NsEventTargetTypeOrAll = "partner"
-	cNsEventTargetTypeOrAllArray          NsEventTargetTypeOrAll = "array"
-	cNsEventTargetTypeOrAllService        NsEventTargetTypeOrAll = "service"
-	cNsEventTargetTypeOrAllTemperature    NsEventTargetTypeOrAll = "temperature"
-	cNsEventTargetTypeOrAllNtb            NsEventTargetTypeOrAll = "ntb"
-	cNsEventTargetTypeOrAllFc             NsEventTargetTypeOrAll = "fc"
-	cNsEventTargetTypeOrAllInitiatorGroup NsEventTargetTypeOrAll = "initiator_group"
-	cNsEventTargetTypeOrAllRaid           NsEventTargetTypeOrAll = "raid"
-	cNsEventTargetTypeOrAllGroup          NsEventTargetTypeOrAll = "group"
+ cNsEventTargetTypeOrAllAll NsEventTargetTypeOrAll = "all"
+ cNsEventTargetTypeOrAllAnon NsEventTargetTypeOrAll = "anon"
+ cNsEventTargetTypeOrAllController NsEventTargetTypeOrAll = "controller"
+ cNsEventTargetTypeOrAllTest NsEventTargetTypeOrAll = "test"
+ cNsEventTargetTypeOrAllProtectionSet NsEventTargetTypeOrAll = "protection_set"
+ cNsEventTargetTypeOrAllPool NsEventTargetTypeOrAll = "pool"
+ cNsEventTargetTypeOrAllNic NsEventTargetTypeOrAll = "nic"
+ cNsEventTargetTypeOrAllShelf NsEventTargetTypeOrAll = "shelf"
+ cNsEventTargetTypeOrAllVolume NsEventTargetTypeOrAll = "volume"
+ cNsEventTargetTypeOrAllDisk NsEventTargetTypeOrAll = "disk"
+ cNsEventTargetTypeOrAllFan NsEventTargetTypeOrAll = "fan"
+ cNsEventTargetTypeOrAllIscsi NsEventTargetTypeOrAll = "iscsi"
+ cNsEventTargetTypeOrAllNvram NsEventTargetTypeOrAll = "nvram"
+ cNsEventTargetTypeOrAllPowerSupply NsEventTargetTypeOrAll = "power_supply"
+ cNsEventTargetTypeOrAllPartner NsEventTargetTypeOrAll = "partner"
+ cNsEventTargetTypeOrAllArray NsEventTargetTypeOrAll = "array"
+ cNsEventTargetTypeOrAllService NsEventTargetTypeOrAll = "service"
+ cNsEventTargetTypeOrAllTemperature NsEventTargetTypeOrAll = "temperature"
+ cNsEventTargetTypeOrAllNtb NsEventTargetTypeOrAll = "ntb"
+ cNsEventTargetTypeOrAllFc NsEventTargetTypeOrAll = "fc"
+ cNsEventTargetTypeOrAllInitiatorGroup NsEventTargetTypeOrAll = "initiator_group"
+ cNsEventTargetTypeOrAllRaid NsEventTargetTypeOrAll = "raid"
+ cNsEventTargetTypeOrAllGroup NsEventTargetTypeOrAll = "group"
 )
 
 var pNsEventTargetTypeOrAllAll NsEventTargetTypeOrAll
@@ -125,73 +125,74 @@ var NsEventTargetTypeOrAllRaid *NsEventTargetTypeOrAll
 var NsEventTargetTypeOrAllGroup *NsEventTargetTypeOrAll
 
 func init() {
-	pNsEventTargetTypeOrAllAll = cNsEventTargetTypeOrAllAll
-	NsEventTargetTypeOrAllAll = &pNsEventTargetTypeOrAllAll
+ pNsEventTargetTypeOrAllAll = cNsEventTargetTypeOrAllAll
+ NsEventTargetTypeOrAllAll = &pNsEventTargetTypeOrAllAll
 
-	pNsEventTargetTypeOrAllAnon = cNsEventTargetTypeOrAllAnon
-	NsEventTargetTypeOrAllAnon = &pNsEventTargetTypeOrAllAnon
+ pNsEventTargetTypeOrAllAnon = cNsEventTargetTypeOrAllAnon
+ NsEventTargetTypeOrAllAnon = &pNsEventTargetTypeOrAllAnon
 
-	pNsEventTargetTypeOrAllController = cNsEventTargetTypeOrAllController
-	NsEventTargetTypeOrAllController = &pNsEventTargetTypeOrAllController
+ pNsEventTargetTypeOrAllController = cNsEventTargetTypeOrAllController
+ NsEventTargetTypeOrAllController = &pNsEventTargetTypeOrAllController
 
-	pNsEventTargetTypeOrAllTest = cNsEventTargetTypeOrAllTest
-	NsEventTargetTypeOrAllTest = &pNsEventTargetTypeOrAllTest
+ pNsEventTargetTypeOrAllTest = cNsEventTargetTypeOrAllTest
+ NsEventTargetTypeOrAllTest = &pNsEventTargetTypeOrAllTest
 
-	pNsEventTargetTypeOrAllProtectionSet = cNsEventTargetTypeOrAllProtectionSet
-	NsEventTargetTypeOrAllProtectionSet = &pNsEventTargetTypeOrAllProtectionSet
+ pNsEventTargetTypeOrAllProtectionSet = cNsEventTargetTypeOrAllProtectionSet
+ NsEventTargetTypeOrAllProtectionSet = &pNsEventTargetTypeOrAllProtectionSet
 
-	pNsEventTargetTypeOrAllPool = cNsEventTargetTypeOrAllPool
-	NsEventTargetTypeOrAllPool = &pNsEventTargetTypeOrAllPool
+ pNsEventTargetTypeOrAllPool = cNsEventTargetTypeOrAllPool
+ NsEventTargetTypeOrAllPool = &pNsEventTargetTypeOrAllPool
 
-	pNsEventTargetTypeOrAllNic = cNsEventTargetTypeOrAllNic
-	NsEventTargetTypeOrAllNic = &pNsEventTargetTypeOrAllNic
+ pNsEventTargetTypeOrAllNic = cNsEventTargetTypeOrAllNic
+ NsEventTargetTypeOrAllNic = &pNsEventTargetTypeOrAllNic
 
-	pNsEventTargetTypeOrAllShelf = cNsEventTargetTypeOrAllShelf
-	NsEventTargetTypeOrAllShelf = &pNsEventTargetTypeOrAllShelf
+ pNsEventTargetTypeOrAllShelf = cNsEventTargetTypeOrAllShelf
+ NsEventTargetTypeOrAllShelf = &pNsEventTargetTypeOrAllShelf
 
-	pNsEventTargetTypeOrAllVolume = cNsEventTargetTypeOrAllVolume
-	NsEventTargetTypeOrAllVolume = &pNsEventTargetTypeOrAllVolume
+ pNsEventTargetTypeOrAllVolume = cNsEventTargetTypeOrAllVolume
+ NsEventTargetTypeOrAllVolume = &pNsEventTargetTypeOrAllVolume
 
-	pNsEventTargetTypeOrAllDisk = cNsEventTargetTypeOrAllDisk
-	NsEventTargetTypeOrAllDisk = &pNsEventTargetTypeOrAllDisk
+ pNsEventTargetTypeOrAllDisk = cNsEventTargetTypeOrAllDisk
+ NsEventTargetTypeOrAllDisk = &pNsEventTargetTypeOrAllDisk
 
-	pNsEventTargetTypeOrAllFan = cNsEventTargetTypeOrAllFan
-	NsEventTargetTypeOrAllFan = &pNsEventTargetTypeOrAllFan
+ pNsEventTargetTypeOrAllFan = cNsEventTargetTypeOrAllFan
+ NsEventTargetTypeOrAllFan = &pNsEventTargetTypeOrAllFan
 
-	pNsEventTargetTypeOrAllIscsi = cNsEventTargetTypeOrAllIscsi
-	NsEventTargetTypeOrAllIscsi = &pNsEventTargetTypeOrAllIscsi
+ pNsEventTargetTypeOrAllIscsi = cNsEventTargetTypeOrAllIscsi
+ NsEventTargetTypeOrAllIscsi = &pNsEventTargetTypeOrAllIscsi
 
-	pNsEventTargetTypeOrAllNvram = cNsEventTargetTypeOrAllNvram
-	NsEventTargetTypeOrAllNvram = &pNsEventTargetTypeOrAllNvram
+ pNsEventTargetTypeOrAllNvram = cNsEventTargetTypeOrAllNvram
+ NsEventTargetTypeOrAllNvram = &pNsEventTargetTypeOrAllNvram
 
-	pNsEventTargetTypeOrAllPowerSupply = cNsEventTargetTypeOrAllPowerSupply
-	NsEventTargetTypeOrAllPowerSupply = &pNsEventTargetTypeOrAllPowerSupply
+ pNsEventTargetTypeOrAllPowerSupply = cNsEventTargetTypeOrAllPowerSupply
+ NsEventTargetTypeOrAllPowerSupply = &pNsEventTargetTypeOrAllPowerSupply
 
-	pNsEventTargetTypeOrAllPartner = cNsEventTargetTypeOrAllPartner
-	NsEventTargetTypeOrAllPartner = &pNsEventTargetTypeOrAllPartner
+ pNsEventTargetTypeOrAllPartner = cNsEventTargetTypeOrAllPartner
+ NsEventTargetTypeOrAllPartner = &pNsEventTargetTypeOrAllPartner
 
-	pNsEventTargetTypeOrAllArray = cNsEventTargetTypeOrAllArray
-	NsEventTargetTypeOrAllArray = &pNsEventTargetTypeOrAllArray
+ pNsEventTargetTypeOrAllArray = cNsEventTargetTypeOrAllArray
+ NsEventTargetTypeOrAllArray = &pNsEventTargetTypeOrAllArray
 
-	pNsEventTargetTypeOrAllService = cNsEventTargetTypeOrAllService
-	NsEventTargetTypeOrAllService = &pNsEventTargetTypeOrAllService
+ pNsEventTargetTypeOrAllService = cNsEventTargetTypeOrAllService
+ NsEventTargetTypeOrAllService = &pNsEventTargetTypeOrAllService
 
-	pNsEventTargetTypeOrAllTemperature = cNsEventTargetTypeOrAllTemperature
-	NsEventTargetTypeOrAllTemperature = &pNsEventTargetTypeOrAllTemperature
+ pNsEventTargetTypeOrAllTemperature = cNsEventTargetTypeOrAllTemperature
+ NsEventTargetTypeOrAllTemperature = &pNsEventTargetTypeOrAllTemperature
 
-	pNsEventTargetTypeOrAllNtb = cNsEventTargetTypeOrAllNtb
-	NsEventTargetTypeOrAllNtb = &pNsEventTargetTypeOrAllNtb
+ pNsEventTargetTypeOrAllNtb = cNsEventTargetTypeOrAllNtb
+ NsEventTargetTypeOrAllNtb = &pNsEventTargetTypeOrAllNtb
 
-	pNsEventTargetTypeOrAllFc = cNsEventTargetTypeOrAllFc
-	NsEventTargetTypeOrAllFc = &pNsEventTargetTypeOrAllFc
+ pNsEventTargetTypeOrAllFc = cNsEventTargetTypeOrAllFc
+ NsEventTargetTypeOrAllFc = &pNsEventTargetTypeOrAllFc
 
-	pNsEventTargetTypeOrAllInitiatorGroup = cNsEventTargetTypeOrAllInitiatorGroup
-	NsEventTargetTypeOrAllInitiatorGroup = &pNsEventTargetTypeOrAllInitiatorGroup
+ pNsEventTargetTypeOrAllInitiatorGroup = cNsEventTargetTypeOrAllInitiatorGroup
+ NsEventTargetTypeOrAllInitiatorGroup = &pNsEventTargetTypeOrAllInitiatorGroup
 
-	pNsEventTargetTypeOrAllRaid = cNsEventTargetTypeOrAllRaid
-	NsEventTargetTypeOrAllRaid = &pNsEventTargetTypeOrAllRaid
+ pNsEventTargetTypeOrAllRaid = cNsEventTargetTypeOrAllRaid
+ NsEventTargetTypeOrAllRaid = &pNsEventTargetTypeOrAllRaid
 
-	pNsEventTargetTypeOrAllGroup = cNsEventTargetTypeOrAllGroup
-	NsEventTargetTypeOrAllGroup = &pNsEventTargetTypeOrAllGroup
+ pNsEventTargetTypeOrAllGroup = cNsEventTargetTypeOrAllGroup
+ NsEventTargetTypeOrAllGroup = &pNsEventTargetTypeOrAllGroup
 
 }
+

@@ -6,19 +6,19 @@ package nimbleos
 type NsReplVolPartnerStatus string
 
 const (
-	cNsReplVolPartnerStatusDataTransferTerminated             NsReplVolPartnerStatus = "Data transfer terminated"
-	cNsReplVolPartnerStatusInitiatingContentBasedReplication  NsReplVolPartnerStatus = "Initiating content based replication"
-	cNsReplVolPartnerStatusContentBasedReplicationComplete    NsReplVolPartnerStatus = "Content based replication complete"
-	cNsReplVolPartnerStatusDataTransferComplete               NsReplVolPartnerStatus = "Data transfer complete"
-	cNsReplVolPartnerStatusCreatingSnapshotOnPartner          NsReplVolPartnerStatus = "Creating snapshot on partner"
-	cNsReplVolPartnerStatusSynchronizingPartnerConfiguration  NsReplVolPartnerStatus = "Synchronizing partner configuration"
-	cNsReplVolPartnerStatusDataTransferInProgress             NsReplVolPartnerStatus = "Data transfer in progress"
-	cNsReplVolPartnerStatusIdle                               NsReplVolPartnerStatus = "Idle"
-	cNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner NsReplVolPartnerStatus = "Identifying common ancestry on partner"
-	cNsReplVolPartnerStatusContentBasedReplicationInProgress  NsReplVolPartnerStatus = "Content based replication in progress"
-	cNsReplVolPartnerStatusTerminatingDataTransfer            NsReplVolPartnerStatus = "Terminating data transfer"
-	cNsReplVolPartnerStatusPaused                             NsReplVolPartnerStatus = "Paused"
-	cNsReplVolPartnerStatusInitiatingDataTransfer             NsReplVolPartnerStatus = "Initiating data transfer"
+ cNsReplVolPartnerStatusDataTransferTerminated NsReplVolPartnerStatus = "Data transfer terminated"
+ cNsReplVolPartnerStatusInitiatingContentBasedReplication NsReplVolPartnerStatus = "Initiating content based replication"
+ cNsReplVolPartnerStatusContentBasedReplicationComplete NsReplVolPartnerStatus = "Content based replication complete"
+ cNsReplVolPartnerStatusDataTransferComplete NsReplVolPartnerStatus = "Data transfer complete"
+ cNsReplVolPartnerStatusCreatingSnapshotOnPartner NsReplVolPartnerStatus = "Creating snapshot on partner"
+ cNsReplVolPartnerStatusSynchronizingPartnerConfiguration NsReplVolPartnerStatus = "Synchronizing partner configuration"
+ cNsReplVolPartnerStatusDataTransferInProgress NsReplVolPartnerStatus = "Data transfer in progress"
+ cNsReplVolPartnerStatusIdle NsReplVolPartnerStatus = "Idle"
+ cNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner NsReplVolPartnerStatus = "Identifying common ancestry on partner"
+ cNsReplVolPartnerStatusContentBasedReplicationInProgress NsReplVolPartnerStatus = "Content based replication in progress"
+ cNsReplVolPartnerStatusTerminatingDataTransfer NsReplVolPartnerStatus = "Terminating data transfer"
+ cNsReplVolPartnerStatusPaused NsReplVolPartnerStatus = "Paused"
+ cNsReplVolPartnerStatusInitiatingDataTransfer NsReplVolPartnerStatus = "Initiating data transfer"
 )
 
 var pNsReplVolPartnerStatusDataTransferTerminated NsReplVolPartnerStatus
@@ -75,43 +75,44 @@ var NsReplVolPartnerStatusPaused *NsReplVolPartnerStatus
 var NsReplVolPartnerStatusInitiatingDataTransfer *NsReplVolPartnerStatus
 
 func init() {
-	pNsReplVolPartnerStatusDataTransferTerminated = cNsReplVolPartnerStatusDataTransferTerminated
-	NsReplVolPartnerStatusDataTransferTerminated = &pNsReplVolPartnerStatusDataTransferTerminated
+ pNsReplVolPartnerStatusDataTransferTerminated = cNsReplVolPartnerStatusDataTransferTerminated
+ NsReplVolPartnerStatusDataTransferTerminated = &pNsReplVolPartnerStatusDataTransferTerminated
 
-	pNsReplVolPartnerStatusInitiatingContentBasedReplication = cNsReplVolPartnerStatusInitiatingContentBasedReplication
-	NsReplVolPartnerStatusInitiatingContentBasedReplication = &pNsReplVolPartnerStatusInitiatingContentBasedReplication
+ pNsReplVolPartnerStatusInitiatingContentBasedReplication = cNsReplVolPartnerStatusInitiatingContentBasedReplication
+ NsReplVolPartnerStatusInitiatingContentBasedReplication = &pNsReplVolPartnerStatusInitiatingContentBasedReplication
 
-	pNsReplVolPartnerStatusContentBasedReplicationComplete = cNsReplVolPartnerStatusContentBasedReplicationComplete
-	NsReplVolPartnerStatusContentBasedReplicationComplete = &pNsReplVolPartnerStatusContentBasedReplicationComplete
+ pNsReplVolPartnerStatusContentBasedReplicationComplete = cNsReplVolPartnerStatusContentBasedReplicationComplete
+ NsReplVolPartnerStatusContentBasedReplicationComplete = &pNsReplVolPartnerStatusContentBasedReplicationComplete
 
-	pNsReplVolPartnerStatusDataTransferComplete = cNsReplVolPartnerStatusDataTransferComplete
-	NsReplVolPartnerStatusDataTransferComplete = &pNsReplVolPartnerStatusDataTransferComplete
+ pNsReplVolPartnerStatusDataTransferComplete = cNsReplVolPartnerStatusDataTransferComplete
+ NsReplVolPartnerStatusDataTransferComplete = &pNsReplVolPartnerStatusDataTransferComplete
 
-	pNsReplVolPartnerStatusCreatingSnapshotOnPartner = cNsReplVolPartnerStatusCreatingSnapshotOnPartner
-	NsReplVolPartnerStatusCreatingSnapshotOnPartner = &pNsReplVolPartnerStatusCreatingSnapshotOnPartner
+ pNsReplVolPartnerStatusCreatingSnapshotOnPartner = cNsReplVolPartnerStatusCreatingSnapshotOnPartner
+ NsReplVolPartnerStatusCreatingSnapshotOnPartner = &pNsReplVolPartnerStatusCreatingSnapshotOnPartner
 
-	pNsReplVolPartnerStatusSynchronizingPartnerConfiguration = cNsReplVolPartnerStatusSynchronizingPartnerConfiguration
-	NsReplVolPartnerStatusSynchronizingPartnerConfiguration = &pNsReplVolPartnerStatusSynchronizingPartnerConfiguration
+ pNsReplVolPartnerStatusSynchronizingPartnerConfiguration = cNsReplVolPartnerStatusSynchronizingPartnerConfiguration
+ NsReplVolPartnerStatusSynchronizingPartnerConfiguration = &pNsReplVolPartnerStatusSynchronizingPartnerConfiguration
 
-	pNsReplVolPartnerStatusDataTransferInProgress = cNsReplVolPartnerStatusDataTransferInProgress
-	NsReplVolPartnerStatusDataTransferInProgress = &pNsReplVolPartnerStatusDataTransferInProgress
+ pNsReplVolPartnerStatusDataTransferInProgress = cNsReplVolPartnerStatusDataTransferInProgress
+ NsReplVolPartnerStatusDataTransferInProgress = &pNsReplVolPartnerStatusDataTransferInProgress
 
-	pNsReplVolPartnerStatusIdle = cNsReplVolPartnerStatusIdle
-	NsReplVolPartnerStatusIdle = &pNsReplVolPartnerStatusIdle
+ pNsReplVolPartnerStatusIdle = cNsReplVolPartnerStatusIdle
+ NsReplVolPartnerStatusIdle = &pNsReplVolPartnerStatusIdle
 
-	pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner = cNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner
-	NsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner = &pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner
+ pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner = cNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner
+ NsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner = &pNsReplVolPartnerStatusIdentifyingCommonAncestryOnPartner
 
-	pNsReplVolPartnerStatusContentBasedReplicationInProgress = cNsReplVolPartnerStatusContentBasedReplicationInProgress
-	NsReplVolPartnerStatusContentBasedReplicationInProgress = &pNsReplVolPartnerStatusContentBasedReplicationInProgress
+ pNsReplVolPartnerStatusContentBasedReplicationInProgress = cNsReplVolPartnerStatusContentBasedReplicationInProgress
+ NsReplVolPartnerStatusContentBasedReplicationInProgress = &pNsReplVolPartnerStatusContentBasedReplicationInProgress
 
-	pNsReplVolPartnerStatusTerminatingDataTransfer = cNsReplVolPartnerStatusTerminatingDataTransfer
-	NsReplVolPartnerStatusTerminatingDataTransfer = &pNsReplVolPartnerStatusTerminatingDataTransfer
+ pNsReplVolPartnerStatusTerminatingDataTransfer = cNsReplVolPartnerStatusTerminatingDataTransfer
+ NsReplVolPartnerStatusTerminatingDataTransfer = &pNsReplVolPartnerStatusTerminatingDataTransfer
 
-	pNsReplVolPartnerStatusPaused = cNsReplVolPartnerStatusPaused
-	NsReplVolPartnerStatusPaused = &pNsReplVolPartnerStatusPaused
+ pNsReplVolPartnerStatusPaused = cNsReplVolPartnerStatusPaused
+ NsReplVolPartnerStatusPaused = &pNsReplVolPartnerStatusPaused
 
-	pNsReplVolPartnerStatusInitiatingDataTransfer = cNsReplVolPartnerStatusInitiatingDataTransfer
-	NsReplVolPartnerStatusInitiatingDataTransfer = &pNsReplVolPartnerStatusInitiatingDataTransfer
+ pNsReplVolPartnerStatusInitiatingDataTransfer = cNsReplVolPartnerStatusInitiatingDataTransfer
+ NsReplVolPartnerStatusInitiatingDataTransfer = &pNsReplVolPartnerStatusInitiatingDataTransfer
 
 }
+

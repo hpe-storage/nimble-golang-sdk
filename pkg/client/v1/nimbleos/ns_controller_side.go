@@ -6,8 +6,8 @@ package nimbleos
 type NsControllerSide string
 
 const (
-	cNsControllerSideA NsControllerSide = "A"
-	cNsControllerSideB NsControllerSide = "B"
+ cNsControllerSideA NsControllerSide = "A"
+ cNsControllerSideB NsControllerSide = "B"
 )
 
 var pNsControllerSideA NsControllerSide
@@ -20,10 +20,11 @@ var NsControllerSideA *NsControllerSide
 var NsControllerSideB *NsControllerSide
 
 func init() {
-	pNsControllerSideA = cNsControllerSideA
-	NsControllerSideA = &pNsControllerSideA
+ pNsControllerSideA = cNsControllerSideA
+ NsControllerSideA = &pNsControllerSideA
 
-	pNsControllerSideB = cNsControllerSideB
-	NsControllerSideB = &pNsControllerSideB
+ pNsControllerSideB = cNsControllerSideB
+ NsControllerSideB = &pNsControllerSideB
 
 }
+

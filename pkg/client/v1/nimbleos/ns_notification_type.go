@@ -6,8 +6,8 @@ package nimbleos
 type NsNotificationType string
 
 const (
-	cNsNotificationTypeAlerts    NsNotificationType = "alerts"
-	cNsNotificationTypeAuditlogs NsNotificationType = "auditlogs"
+ cNsNotificationTypeAlerts NsNotificationType = "alerts"
+ cNsNotificationTypeAuditlogs NsNotificationType = "auditlogs"
 )
 
 var pNsNotificationTypeAlerts NsNotificationType
@@ -20,10 +20,11 @@ var NsNotificationTypeAlerts *NsNotificationType
 var NsNotificationTypeAuditlogs *NsNotificationType
 
 func init() {
-	pNsNotificationTypeAlerts = cNsNotificationTypeAlerts
-	NsNotificationTypeAlerts = &pNsNotificationTypeAlerts
+ pNsNotificationTypeAlerts = cNsNotificationTypeAlerts
+ NsNotificationTypeAlerts = &pNsNotificationTypeAlerts
 
-	pNsNotificationTypeAuditlogs = cNsNotificationTypeAuditlogs
-	NsNotificationTypeAuditlogs = &pNsNotificationTypeAuditlogs
+ pNsNotificationTypeAuditlogs = cNsNotificationTypeAuditlogs
+ NsNotificationTypeAuditlogs = &pNsNotificationTypeAuditlogs
 
 }
+

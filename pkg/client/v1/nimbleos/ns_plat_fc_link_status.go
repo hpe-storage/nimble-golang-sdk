@@ -6,12 +6,12 @@ package nimbleos
 type NsPlatFcLinkStatus string
 
 const (
-	cNsPlatFcLinkStatusPlatFcLinkStatusReset        NsPlatFcLinkStatus = "plat_fc_link_status_reset"
-	cNsPlatFcLinkStatusPlatFcLinkStatusDown         NsPlatFcLinkStatus = "plat_fc_link_status_down"
-	cNsPlatFcLinkStatusPlatFcLinkStatusUp           NsPlatFcLinkStatus = "plat_fc_link_status_up"
-	cNsPlatFcLinkStatusPlatFcLinkStatusError        NsPlatFcLinkStatus = "plat_fc_link_status_error"
-	cNsPlatFcLinkStatusPlatFcLinkStatusUnknown      NsPlatFcLinkStatus = "plat_fc_link_status_unknown"
-	cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus = "plat_fc_link_status_not_connected"
+ cNsPlatFcLinkStatusPlatFcLinkStatusReset NsPlatFcLinkStatus = "plat_fc_link_status_reset"
+ cNsPlatFcLinkStatusPlatFcLinkStatusDown NsPlatFcLinkStatus = "plat_fc_link_status_down"
+ cNsPlatFcLinkStatusPlatFcLinkStatusUp NsPlatFcLinkStatus = "plat_fc_link_status_up"
+ cNsPlatFcLinkStatusPlatFcLinkStatusError NsPlatFcLinkStatus = "plat_fc_link_status_error"
+ cNsPlatFcLinkStatusPlatFcLinkStatusUnknown NsPlatFcLinkStatus = "plat_fc_link_status_unknown"
+ cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected NsPlatFcLinkStatus = "plat_fc_link_status_not_connected"
 )
 
 var pNsPlatFcLinkStatusPlatFcLinkStatusReset NsPlatFcLinkStatus
@@ -40,22 +40,23 @@ var NsPlatFcLinkStatusPlatFcLinkStatusUnknown *NsPlatFcLinkStatus
 var NsPlatFcLinkStatusPlatFcLinkStatusNotConnected *NsPlatFcLinkStatus
 
 func init() {
-	pNsPlatFcLinkStatusPlatFcLinkStatusReset = cNsPlatFcLinkStatusPlatFcLinkStatusReset
-	NsPlatFcLinkStatusPlatFcLinkStatusReset = &pNsPlatFcLinkStatusPlatFcLinkStatusReset
+ pNsPlatFcLinkStatusPlatFcLinkStatusReset = cNsPlatFcLinkStatusPlatFcLinkStatusReset
+ NsPlatFcLinkStatusPlatFcLinkStatusReset = &pNsPlatFcLinkStatusPlatFcLinkStatusReset
 
-	pNsPlatFcLinkStatusPlatFcLinkStatusDown = cNsPlatFcLinkStatusPlatFcLinkStatusDown
-	NsPlatFcLinkStatusPlatFcLinkStatusDown = &pNsPlatFcLinkStatusPlatFcLinkStatusDown
+ pNsPlatFcLinkStatusPlatFcLinkStatusDown = cNsPlatFcLinkStatusPlatFcLinkStatusDown
+ NsPlatFcLinkStatusPlatFcLinkStatusDown = &pNsPlatFcLinkStatusPlatFcLinkStatusDown
 
-	pNsPlatFcLinkStatusPlatFcLinkStatusUp = cNsPlatFcLinkStatusPlatFcLinkStatusUp
-	NsPlatFcLinkStatusPlatFcLinkStatusUp = &pNsPlatFcLinkStatusPlatFcLinkStatusUp
+ pNsPlatFcLinkStatusPlatFcLinkStatusUp = cNsPlatFcLinkStatusPlatFcLinkStatusUp
+ NsPlatFcLinkStatusPlatFcLinkStatusUp = &pNsPlatFcLinkStatusPlatFcLinkStatusUp
 
-	pNsPlatFcLinkStatusPlatFcLinkStatusError = cNsPlatFcLinkStatusPlatFcLinkStatusError
-	NsPlatFcLinkStatusPlatFcLinkStatusError = &pNsPlatFcLinkStatusPlatFcLinkStatusError
+ pNsPlatFcLinkStatusPlatFcLinkStatusError = cNsPlatFcLinkStatusPlatFcLinkStatusError
+ NsPlatFcLinkStatusPlatFcLinkStatusError = &pNsPlatFcLinkStatusPlatFcLinkStatusError
 
-	pNsPlatFcLinkStatusPlatFcLinkStatusUnknown = cNsPlatFcLinkStatusPlatFcLinkStatusUnknown
-	NsPlatFcLinkStatusPlatFcLinkStatusUnknown = &pNsPlatFcLinkStatusPlatFcLinkStatusUnknown
+ pNsPlatFcLinkStatusPlatFcLinkStatusUnknown = cNsPlatFcLinkStatusPlatFcLinkStatusUnknown
+ NsPlatFcLinkStatusPlatFcLinkStatusUnknown = &pNsPlatFcLinkStatusPlatFcLinkStatusUnknown
 
-	pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected = cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
-	NsPlatFcLinkStatusPlatFcLinkStatusNotConnected = &pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
+ pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected = cNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
+ NsPlatFcLinkStatusPlatFcLinkStatusNotConnected = &pNsPlatFcLinkStatusPlatFcLinkStatusNotConnected
 
 }
+

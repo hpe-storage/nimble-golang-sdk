@@ -6,8 +6,8 @@ package nimbleos
 type NsReplicationType string
 
 const (
-	cNsReplicationTypeSynchronous      NsReplicationType = "synchronous"
-	cNsReplicationTypePeriodicSnapshot NsReplicationType = "periodic_snapshot"
+ cNsReplicationTypeSynchronous NsReplicationType = "synchronous"
+ cNsReplicationTypePeriodicSnapshot NsReplicationType = "periodic_snapshot"
 )
 
 var pNsReplicationTypeSynchronous NsReplicationType
@@ -20,10 +20,11 @@ var NsReplicationTypeSynchronous *NsReplicationType
 var NsReplicationTypePeriodicSnapshot *NsReplicationType
 
 func init() {
-	pNsReplicationTypeSynchronous = cNsReplicationTypeSynchronous
-	NsReplicationTypeSynchronous = &pNsReplicationTypeSynchronous
+ pNsReplicationTypeSynchronous = cNsReplicationTypeSynchronous
+ NsReplicationTypeSynchronous = &pNsReplicationTypeSynchronous
 
-	pNsReplicationTypePeriodicSnapshot = cNsReplicationTypePeriodicSnapshot
-	NsReplicationTypePeriodicSnapshot = &pNsReplicationTypePeriodicSnapshot
+ pNsReplicationTypePeriodicSnapshot = cNsReplicationTypePeriodicSnapshot
+ NsReplicationTypePeriodicSnapshot = &pNsReplicationTypePeriodicSnapshot
 
 }
+

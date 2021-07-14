@@ -6,10 +6,10 @@ package nimbleos
 type NsPartnerType string
 
 const (
-	cNsPartnerTypeTunnelEndpoint  NsPartnerType = "tunnel_endpoint"
-	cNsPartnerTypePool            NsPartnerType = "pool"
-	cNsPartnerTypeTunnelInitiator NsPartnerType = "tunnel_initiator"
-	cNsPartnerTypeGroup           NsPartnerType = "group"
+ cNsPartnerTypeTunnelEndpoint NsPartnerType = "tunnel_endpoint"
+ cNsPartnerTypePool NsPartnerType = "pool"
+ cNsPartnerTypeTunnelInitiator NsPartnerType = "tunnel_initiator"
+ cNsPartnerTypeGroup NsPartnerType = "group"
 )
 
 var pNsPartnerTypeTunnelEndpoint NsPartnerType
@@ -30,16 +30,17 @@ var NsPartnerTypeTunnelInitiator *NsPartnerType
 var NsPartnerTypeGroup *NsPartnerType
 
 func init() {
-	pNsPartnerTypeTunnelEndpoint = cNsPartnerTypeTunnelEndpoint
-	NsPartnerTypeTunnelEndpoint = &pNsPartnerTypeTunnelEndpoint
+ pNsPartnerTypeTunnelEndpoint = cNsPartnerTypeTunnelEndpoint
+ NsPartnerTypeTunnelEndpoint = &pNsPartnerTypeTunnelEndpoint
 
-	pNsPartnerTypePool = cNsPartnerTypePool
-	NsPartnerTypePool = &pNsPartnerTypePool
+ pNsPartnerTypePool = cNsPartnerTypePool
+ NsPartnerTypePool = &pNsPartnerTypePool
 
-	pNsPartnerTypeTunnelInitiator = cNsPartnerTypeTunnelInitiator
-	NsPartnerTypeTunnelInitiator = &pNsPartnerTypeTunnelInitiator
+ pNsPartnerTypeTunnelInitiator = cNsPartnerTypeTunnelInitiator
+ NsPartnerTypeTunnelInitiator = &pNsPartnerTypeTunnelInitiator
 
-	pNsPartnerTypeGroup = cNsPartnerTypeGroup
-	NsPartnerTypeGroup = &pNsPartnerTypeGroup
+ pNsPartnerTypeGroup = cNsPartnerTypeGroup
+ NsPartnerTypeGroup = &pNsPartnerTypeGroup
 
 }
+

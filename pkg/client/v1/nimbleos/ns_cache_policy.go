@@ -6,11 +6,11 @@ package nimbleos
 type NsCachePolicy string
 
 const (
-	cNsCachePolicyNormal                NsCachePolicy = "normal"
-	cNsCachePolicyNoWrite               NsCachePolicy = "no_write"
-	cNsCachePolicyAggressiveReadNoWrite NsCachePolicy = "aggressive_read_no_write"
-	cNsCachePolicyDisabled              NsCachePolicy = "disabled"
-	cNsCachePolicyAggressive            NsCachePolicy = "aggressive"
+ cNsCachePolicyNormal NsCachePolicy = "normal"
+ cNsCachePolicyNoWrite NsCachePolicy = "no_write"
+ cNsCachePolicyAggressiveReadNoWrite NsCachePolicy = "aggressive_read_no_write"
+ cNsCachePolicyDisabled NsCachePolicy = "disabled"
+ cNsCachePolicyAggressive NsCachePolicy = "aggressive"
 )
 
 var pNsCachePolicyNormal NsCachePolicy
@@ -35,19 +35,20 @@ var NsCachePolicyDisabled *NsCachePolicy
 var NsCachePolicyAggressive *NsCachePolicy
 
 func init() {
-	pNsCachePolicyNormal = cNsCachePolicyNormal
-	NsCachePolicyNormal = &pNsCachePolicyNormal
+ pNsCachePolicyNormal = cNsCachePolicyNormal
+ NsCachePolicyNormal = &pNsCachePolicyNormal
 
-	pNsCachePolicyNoWrite = cNsCachePolicyNoWrite
-	NsCachePolicyNoWrite = &pNsCachePolicyNoWrite
+ pNsCachePolicyNoWrite = cNsCachePolicyNoWrite
+ NsCachePolicyNoWrite = &pNsCachePolicyNoWrite
 
-	pNsCachePolicyAggressiveReadNoWrite = cNsCachePolicyAggressiveReadNoWrite
-	NsCachePolicyAggressiveReadNoWrite = &pNsCachePolicyAggressiveReadNoWrite
+ pNsCachePolicyAggressiveReadNoWrite = cNsCachePolicyAggressiveReadNoWrite
+ NsCachePolicyAggressiveReadNoWrite = &pNsCachePolicyAggressiveReadNoWrite
 
-	pNsCachePolicyDisabled = cNsCachePolicyDisabled
-	NsCachePolicyDisabled = &pNsCachePolicyDisabled
+ pNsCachePolicyDisabled = cNsCachePolicyDisabled
+ NsCachePolicyDisabled = &pNsCachePolicyDisabled
 
-	pNsCachePolicyAggressive = cNsCachePolicyAggressive
-	NsCachePolicyAggressive = &pNsCachePolicyAggressive
+ pNsCachePolicyAggressive = cNsCachePolicyAggressive
+ NsCachePolicyAggressive = &pNsCachePolicyAggressive
 
 }
+

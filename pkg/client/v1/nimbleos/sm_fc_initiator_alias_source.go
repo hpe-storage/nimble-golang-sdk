@@ -6,9 +6,9 @@ package nimbleos
 type SmFcInitiatorAliasSource string
 
 const (
-	cSmFcInitiatorAliasSourceFabric  SmFcInitiatorAliasSource = "fabric"
-	cSmFcInitiatorAliasSourceInvalid SmFcInitiatorAliasSource = "invalid"
-	cSmFcInitiatorAliasSourceUser    SmFcInitiatorAliasSource = "user"
+ cSmFcInitiatorAliasSourceFabric SmFcInitiatorAliasSource = "fabric"
+ cSmFcInitiatorAliasSourceInvalid SmFcInitiatorAliasSource = "invalid"
+ cSmFcInitiatorAliasSourceUser SmFcInitiatorAliasSource = "user"
 )
 
 var pSmFcInitiatorAliasSourceFabric SmFcInitiatorAliasSource
@@ -25,13 +25,14 @@ var SmFcInitiatorAliasSourceInvalid *SmFcInitiatorAliasSource
 var SmFcInitiatorAliasSourceUser *SmFcInitiatorAliasSource
 
 func init() {
-	pSmFcInitiatorAliasSourceFabric = cSmFcInitiatorAliasSourceFabric
-	SmFcInitiatorAliasSourceFabric = &pSmFcInitiatorAliasSourceFabric
+ pSmFcInitiatorAliasSourceFabric = cSmFcInitiatorAliasSourceFabric
+ SmFcInitiatorAliasSourceFabric = &pSmFcInitiatorAliasSourceFabric
 
-	pSmFcInitiatorAliasSourceInvalid = cSmFcInitiatorAliasSourceInvalid
-	SmFcInitiatorAliasSourceInvalid = &pSmFcInitiatorAliasSourceInvalid
+ pSmFcInitiatorAliasSourceInvalid = cSmFcInitiatorAliasSourceInvalid
+ SmFcInitiatorAliasSourceInvalid = &pSmFcInitiatorAliasSourceInvalid
 
-	pSmFcInitiatorAliasSourceUser = cSmFcInitiatorAliasSourceUser
-	SmFcInitiatorAliasSourceUser = &pSmFcInitiatorAliasSourceUser
+ pSmFcInitiatorAliasSourceUser = cSmFcInitiatorAliasSourceUser
+ SmFcInitiatorAliasSourceUser = &pSmFcInitiatorAliasSourceUser
 
 }
+

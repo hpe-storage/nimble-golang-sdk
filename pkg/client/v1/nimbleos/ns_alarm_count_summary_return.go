@@ -2,16 +2,19 @@
 
 package nimbleos
 
+
 // NsAlarmCountSummaryReturn - List of alarm count for each category.
 // Export NsAlarmCountSummaryReturnFields for advance operations like search filter etc.
 var NsAlarmCountSummaryReturnFields *NsAlarmCountSummaryReturn
 
-func init() {
+func init(){
 
-	NsAlarmCountSummaryReturnFields = &NsAlarmCountSummaryReturn{}
+ NsAlarmCountSummaryReturnFields= &NsAlarmCountSummaryReturn{
+ }
 }
 
+
 type NsAlarmCountSummaryReturn struct {
-	// AlarmSummary - List of alarm count for each category.
-	AlarmSummary []*NsAlarmCount `json:"alarm_summary,omitempty"`
+ // AlarmSummary - List of alarm count for each category.
+    AlarmSummary []*NsAlarmCount `json:"alarm_summary,omitempty"`
 }

@@ -6,9 +6,9 @@ package nimbleos
 type NsPlatLinkStatus string
 
 const (
-	cNsPlatLinkStatusLinkStatusDown    NsPlatLinkStatus = "link_status_down"
-	cNsPlatLinkStatusLinkStatusUp      NsPlatLinkStatus = "link_status_up"
-	cNsPlatLinkStatusLinkStatusUnknown NsPlatLinkStatus = "link_status_unknown"
+ cNsPlatLinkStatusLinkStatusDown NsPlatLinkStatus = "link_status_down"
+ cNsPlatLinkStatusLinkStatusUp NsPlatLinkStatus = "link_status_up"
+ cNsPlatLinkStatusLinkStatusUnknown NsPlatLinkStatus = "link_status_unknown"
 )
 
 var pNsPlatLinkStatusLinkStatusDown NsPlatLinkStatus
@@ -25,13 +25,14 @@ var NsPlatLinkStatusLinkStatusUp *NsPlatLinkStatus
 var NsPlatLinkStatusLinkStatusUnknown *NsPlatLinkStatus
 
 func init() {
-	pNsPlatLinkStatusLinkStatusDown = cNsPlatLinkStatusLinkStatusDown
-	NsPlatLinkStatusLinkStatusDown = &pNsPlatLinkStatusLinkStatusDown
+ pNsPlatLinkStatusLinkStatusDown = cNsPlatLinkStatusLinkStatusDown
+ NsPlatLinkStatusLinkStatusDown = &pNsPlatLinkStatusLinkStatusDown
 
-	pNsPlatLinkStatusLinkStatusUp = cNsPlatLinkStatusLinkStatusUp
-	NsPlatLinkStatusLinkStatusUp = &pNsPlatLinkStatusLinkStatusUp
+ pNsPlatLinkStatusLinkStatusUp = cNsPlatLinkStatusLinkStatusUp
+ NsPlatLinkStatusLinkStatusUp = &pNsPlatLinkStatusLinkStatusUp
 
-	pNsPlatLinkStatusLinkStatusUnknown = cNsPlatLinkStatusLinkStatusUnknown
-	NsPlatLinkStatusLinkStatusUnknown = &pNsPlatLinkStatusLinkStatusUnknown
+ pNsPlatLinkStatusLinkStatusUnknown = cNsPlatLinkStatusLinkStatusUnknown
+ NsPlatLinkStatusLinkStatusUnknown = &pNsPlatLinkStatusLinkStatusUnknown
 
 }
+

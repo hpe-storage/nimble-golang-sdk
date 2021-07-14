@@ -6,19 +6,19 @@ package nimbleos
 type NsMergeState string
 
 const (
-	cNsMergeStateDestDbDone          NsMergeState = "dest_db_done"
-	cNsMergeStateDestDb              NsMergeState = "dest_db"
-	cNsMergeStateDestReassigned      NsMergeState = "dest_reassigned"
-	cNsMergeStateSrcQuiesced         NsMergeState = "src_quiesced"
-	cNsMergeStateNone                NsMergeState = "none"
-	cNsMergeStateDestRelinquish      NsMergeState = "dest_relinquish"
-	cNsMergeStateSrcReassigned       NsMergeState = "src_reassigned"
-	cNsMergeStateDestStart           NsMergeState = "dest_start"
-	cNsMergeStateSrcStart            NsMergeState = "src_start"
-	cNsMergeStateSrcQuiesceFailed    NsMergeState = "src_quiesce_failed"
-	cNsMergeStateDestMergeValidation NsMergeState = "dest_merge_validation"
-	cNsMergeStateSrcReassignFailed   NsMergeState = "src_reassign_failed"
-	cNsMergeStateDestDbFailed        NsMergeState = "dest_db_failed"
+ cNsMergeStateDestDbDone NsMergeState = "dest_db_done"
+ cNsMergeStateDestDb NsMergeState = "dest_db"
+ cNsMergeStateDestReassigned NsMergeState = "dest_reassigned"
+ cNsMergeStateSrcQuiesced NsMergeState = "src_quiesced"
+ cNsMergeStateNone NsMergeState = "none"
+ cNsMergeStateDestRelinquish NsMergeState = "dest_relinquish"
+ cNsMergeStateSrcReassigned NsMergeState = "src_reassigned"
+ cNsMergeStateDestStart NsMergeState = "dest_start"
+ cNsMergeStateSrcStart NsMergeState = "src_start"
+ cNsMergeStateSrcQuiesceFailed NsMergeState = "src_quiesce_failed"
+ cNsMergeStateDestMergeValidation NsMergeState = "dest_merge_validation"
+ cNsMergeStateSrcReassignFailed NsMergeState = "src_reassign_failed"
+ cNsMergeStateDestDbFailed NsMergeState = "dest_db_failed"
 )
 
 var pNsMergeStateDestDbDone NsMergeState
@@ -75,43 +75,44 @@ var NsMergeStateSrcReassignFailed *NsMergeState
 var NsMergeStateDestDbFailed *NsMergeState
 
 func init() {
-	pNsMergeStateDestDbDone = cNsMergeStateDestDbDone
-	NsMergeStateDestDbDone = &pNsMergeStateDestDbDone
+ pNsMergeStateDestDbDone = cNsMergeStateDestDbDone
+ NsMergeStateDestDbDone = &pNsMergeStateDestDbDone
 
-	pNsMergeStateDestDb = cNsMergeStateDestDb
-	NsMergeStateDestDb = &pNsMergeStateDestDb
+ pNsMergeStateDestDb = cNsMergeStateDestDb
+ NsMergeStateDestDb = &pNsMergeStateDestDb
 
-	pNsMergeStateDestReassigned = cNsMergeStateDestReassigned
-	NsMergeStateDestReassigned = &pNsMergeStateDestReassigned
+ pNsMergeStateDestReassigned = cNsMergeStateDestReassigned
+ NsMergeStateDestReassigned = &pNsMergeStateDestReassigned
 
-	pNsMergeStateSrcQuiesced = cNsMergeStateSrcQuiesced
-	NsMergeStateSrcQuiesced = &pNsMergeStateSrcQuiesced
+ pNsMergeStateSrcQuiesced = cNsMergeStateSrcQuiesced
+ NsMergeStateSrcQuiesced = &pNsMergeStateSrcQuiesced
 
-	pNsMergeStateNone = cNsMergeStateNone
-	NsMergeStateNone = &pNsMergeStateNone
+ pNsMergeStateNone = cNsMergeStateNone
+ NsMergeStateNone = &pNsMergeStateNone
 
-	pNsMergeStateDestRelinquish = cNsMergeStateDestRelinquish
-	NsMergeStateDestRelinquish = &pNsMergeStateDestRelinquish
+ pNsMergeStateDestRelinquish = cNsMergeStateDestRelinquish
+ NsMergeStateDestRelinquish = &pNsMergeStateDestRelinquish
 
-	pNsMergeStateSrcReassigned = cNsMergeStateSrcReassigned
-	NsMergeStateSrcReassigned = &pNsMergeStateSrcReassigned
+ pNsMergeStateSrcReassigned = cNsMergeStateSrcReassigned
+ NsMergeStateSrcReassigned = &pNsMergeStateSrcReassigned
 
-	pNsMergeStateDestStart = cNsMergeStateDestStart
-	NsMergeStateDestStart = &pNsMergeStateDestStart
+ pNsMergeStateDestStart = cNsMergeStateDestStart
+ NsMergeStateDestStart = &pNsMergeStateDestStart
 
-	pNsMergeStateSrcStart = cNsMergeStateSrcStart
-	NsMergeStateSrcStart = &pNsMergeStateSrcStart
+ pNsMergeStateSrcStart = cNsMergeStateSrcStart
+ NsMergeStateSrcStart = &pNsMergeStateSrcStart
 
-	pNsMergeStateSrcQuiesceFailed = cNsMergeStateSrcQuiesceFailed
-	NsMergeStateSrcQuiesceFailed = &pNsMergeStateSrcQuiesceFailed
+ pNsMergeStateSrcQuiesceFailed = cNsMergeStateSrcQuiesceFailed
+ NsMergeStateSrcQuiesceFailed = &pNsMergeStateSrcQuiesceFailed
 
-	pNsMergeStateDestMergeValidation = cNsMergeStateDestMergeValidation
-	NsMergeStateDestMergeValidation = &pNsMergeStateDestMergeValidation
+ pNsMergeStateDestMergeValidation = cNsMergeStateDestMergeValidation
+ NsMergeStateDestMergeValidation = &pNsMergeStateDestMergeValidation
 
-	pNsMergeStateSrcReassignFailed = cNsMergeStateSrcReassignFailed
-	NsMergeStateSrcReassignFailed = &pNsMergeStateSrcReassignFailed
+ pNsMergeStateSrcReassignFailed = cNsMergeStateSrcReassignFailed
+ NsMergeStateSrcReassignFailed = &pNsMergeStateSrcReassignFailed
 
-	pNsMergeStateDestDbFailed = cNsMergeStateDestDbFailed
-	NsMergeStateDestDbFailed = &pNsMergeStateDestDbFailed
+ pNsMergeStateDestDbFailed = cNsMergeStateDestDbFailed
+ NsMergeStateDestDbFailed = &pNsMergeStateDestDbFailed
 
 }
+

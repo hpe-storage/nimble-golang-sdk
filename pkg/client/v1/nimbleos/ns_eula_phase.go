@@ -6,8 +6,8 @@ package nimbleos
 type NsEulaPhase string
 
 const (
-	cNsEulaPhaseSoftware NsEulaPhase = "software"
-	cNsEulaPhaseSetup    NsEulaPhase = "setup"
+ cNsEulaPhaseSoftware NsEulaPhase = "software"
+ cNsEulaPhaseSetup NsEulaPhase = "setup"
 )
 
 var pNsEulaPhaseSoftware NsEulaPhase
@@ -20,10 +20,11 @@ var NsEulaPhaseSoftware *NsEulaPhase
 var NsEulaPhaseSetup *NsEulaPhase
 
 func init() {
-	pNsEulaPhaseSoftware = cNsEulaPhaseSoftware
-	NsEulaPhaseSoftware = &pNsEulaPhaseSoftware
+ pNsEulaPhaseSoftware = cNsEulaPhaseSoftware
+ NsEulaPhaseSoftware = &pNsEulaPhaseSoftware
 
-	pNsEulaPhaseSetup = cNsEulaPhaseSetup
-	NsEulaPhaseSetup = &pNsEulaPhaseSetup
+ pNsEulaPhaseSetup = cNsEulaPhaseSetup
+ NsEulaPhaseSetup = &pNsEulaPhaseSetup
 
 }
+

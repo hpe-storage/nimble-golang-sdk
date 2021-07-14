@@ -2,16 +2,19 @@
 
 package nimbleos
 
+
 // NsSnapVolListReturn - Object returned after creating snapshot collection.
 // Export NsSnapVolListReturnFields for advance operations like search filter etc.
 var NsSnapVolListReturnFields *NsSnapVolListReturn
 
-func init() {
+func init(){
 
-	NsSnapVolListReturnFields = &NsSnapVolListReturn{}
+ NsSnapVolListReturnFields= &NsSnapVolListReturn{
+ }
 }
 
+
 type NsSnapVolListReturn struct {
-	// SnapIds - A list of snapshot ids.
-	SnapIds []*NsObjectIDKV `json:"snap_ids,omitempty"`
+ // SnapIds - A list of snapshot ids.
+    SnapIds []*NsObjectIDKV `json:"snap_ids,omitempty"`
 }

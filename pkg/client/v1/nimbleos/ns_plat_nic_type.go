@@ -6,9 +6,9 @@ package nimbleos
 type NsPlatNicType string
 
 const (
-	cNsPlatNicTypeNicTypeUnknown NsPlatNicType = "nic_type_unknown"
-	cNsPlatNicTypeNicTypeTp      NsPlatNicType = "nic_type_tp"
-	cNsPlatNicTypeNicTypeSfp     NsPlatNicType = "nic_type_sfp"
+ cNsPlatNicTypeNicTypeUnknown NsPlatNicType = "nic_type_unknown"
+ cNsPlatNicTypeNicTypeTp NsPlatNicType = "nic_type_tp"
+ cNsPlatNicTypeNicTypeSfp NsPlatNicType = "nic_type_sfp"
 )
 
 var pNsPlatNicTypeNicTypeUnknown NsPlatNicType
@@ -25,13 +25,14 @@ var NsPlatNicTypeNicTypeTp *NsPlatNicType
 var NsPlatNicTypeNicTypeSfp *NsPlatNicType
 
 func init() {
-	pNsPlatNicTypeNicTypeUnknown = cNsPlatNicTypeNicTypeUnknown
-	NsPlatNicTypeNicTypeUnknown = &pNsPlatNicTypeNicTypeUnknown
+ pNsPlatNicTypeNicTypeUnknown = cNsPlatNicTypeNicTypeUnknown
+ NsPlatNicTypeNicTypeUnknown = &pNsPlatNicTypeNicTypeUnknown
 
-	pNsPlatNicTypeNicTypeTp = cNsPlatNicTypeNicTypeTp
-	NsPlatNicTypeNicTypeTp = &pNsPlatNicTypeNicTypeTp
+ pNsPlatNicTypeNicTypeTp = cNsPlatNicTypeNicTypeTp
+ NsPlatNicTypeNicTypeTp = &pNsPlatNicTypeNicTypeTp
 
-	pNsPlatNicTypeNicTypeSfp = cNsPlatNicTypeNicTypeSfp
-	NsPlatNicTypeNicTypeSfp = &pNsPlatNicTypeNicTypeSfp
+ pNsPlatNicTypeNicTypeSfp = cNsPlatNicTypeNicTypeSfp
+ NsPlatNicTypeNicTypeSfp = &pNsPlatNicTypeNicTypeSfp
 
 }
+

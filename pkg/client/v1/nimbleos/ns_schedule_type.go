@@ -6,8 +6,8 @@ package nimbleos
 type NsScheduleType string
 
 const (
-	cNsScheduleTypeExternalTrigger NsScheduleType = "external_trigger"
-	cNsScheduleTypeRegular         NsScheduleType = "regular"
+ cNsScheduleTypeExternalTrigger NsScheduleType = "external_trigger"
+ cNsScheduleTypeRegular NsScheduleType = "regular"
 )
 
 var pNsScheduleTypeExternalTrigger NsScheduleType
@@ -20,10 +20,11 @@ var NsScheduleTypeExternalTrigger *NsScheduleType
 var NsScheduleTypeRegular *NsScheduleType
 
 func init() {
-	pNsScheduleTypeExternalTrigger = cNsScheduleTypeExternalTrigger
-	NsScheduleTypeExternalTrigger = &pNsScheduleTypeExternalTrigger
+ pNsScheduleTypeExternalTrigger = cNsScheduleTypeExternalTrigger
+ NsScheduleTypeExternalTrigger = &pNsScheduleTypeExternalTrigger
 
-	pNsScheduleTypeRegular = cNsScheduleTypeRegular
-	NsScheduleTypeRegular = &pNsScheduleTypeRegular
+ pNsScheduleTypeRegular = cNsScheduleTypeRegular
+ NsScheduleTypeRegular = &pNsScheduleTypeRegular
 
 }
+

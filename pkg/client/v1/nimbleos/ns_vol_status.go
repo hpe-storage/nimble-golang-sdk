@@ -6,11 +6,11 @@ package nimbleos
 type NsVolStatus string
 
 const (
-	cNsVolStatusOffline     NsVolStatus = "offline"
-	cNsVolStatusLoginOnly   NsVolStatus = "login_only"
-	cNsVolStatusNonWritable NsVolStatus = "non_writable"
-	cNsVolStatusReadOnly    NsVolStatus = "read_only"
-	cNsVolStatusOnline      NsVolStatus = "online"
+ cNsVolStatusOffline NsVolStatus = "offline"
+ cNsVolStatusLoginOnly NsVolStatus = "login_only"
+ cNsVolStatusNonWritable NsVolStatus = "non_writable"
+ cNsVolStatusReadOnly NsVolStatus = "read_only"
+ cNsVolStatusOnline NsVolStatus = "online"
 )
 
 var pNsVolStatusOffline NsVolStatus
@@ -35,19 +35,20 @@ var NsVolStatusReadOnly *NsVolStatus
 var NsVolStatusOnline *NsVolStatus
 
 func init() {
-	pNsVolStatusOffline = cNsVolStatusOffline
-	NsVolStatusOffline = &pNsVolStatusOffline
+ pNsVolStatusOffline = cNsVolStatusOffline
+ NsVolStatusOffline = &pNsVolStatusOffline
 
-	pNsVolStatusLoginOnly = cNsVolStatusLoginOnly
-	NsVolStatusLoginOnly = &pNsVolStatusLoginOnly
+ pNsVolStatusLoginOnly = cNsVolStatusLoginOnly
+ NsVolStatusLoginOnly = &pNsVolStatusLoginOnly
 
-	pNsVolStatusNonWritable = cNsVolStatusNonWritable
-	NsVolStatusNonWritable = &pNsVolStatusNonWritable
+ pNsVolStatusNonWritable = cNsVolStatusNonWritable
+ NsVolStatusNonWritable = &pNsVolStatusNonWritable
 
-	pNsVolStatusReadOnly = cNsVolStatusReadOnly
-	NsVolStatusReadOnly = &pNsVolStatusReadOnly
+ pNsVolStatusReadOnly = cNsVolStatusReadOnly
+ NsVolStatusReadOnly = &pNsVolStatusReadOnly
 
-	pNsVolStatusOnline = cNsVolStatusOnline
-	NsVolStatusOnline = &pNsVolStatusOnline
+ pNsVolStatusOnline = cNsVolStatusOnline
+ NsVolStatusOnline = &pNsVolStatusOnline
 
 }
+

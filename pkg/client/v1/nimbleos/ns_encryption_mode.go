@@ -6,9 +6,9 @@ package nimbleos
 type NsEncryptionMode string
 
 const (
-	cNsEncryptionModeAvailable NsEncryptionMode = "available"
-	cNsEncryptionModeNone      NsEncryptionMode = "none"
-	cNsEncryptionModeSecure    NsEncryptionMode = "secure"
+ cNsEncryptionModeAvailable NsEncryptionMode = "available"
+ cNsEncryptionModeNone NsEncryptionMode = "none"
+ cNsEncryptionModeSecure NsEncryptionMode = "secure"
 )
 
 var pNsEncryptionModeAvailable NsEncryptionMode
@@ -25,13 +25,14 @@ var NsEncryptionModeNone *NsEncryptionMode
 var NsEncryptionModeSecure *NsEncryptionMode
 
 func init() {
-	pNsEncryptionModeAvailable = cNsEncryptionModeAvailable
-	NsEncryptionModeAvailable = &pNsEncryptionModeAvailable
+ pNsEncryptionModeAvailable = cNsEncryptionModeAvailable
+ NsEncryptionModeAvailable = &pNsEncryptionModeAvailable
 
-	pNsEncryptionModeNone = cNsEncryptionModeNone
-	NsEncryptionModeNone = &pNsEncryptionModeNone
+ pNsEncryptionModeNone = cNsEncryptionModeNone
+ NsEncryptionModeNone = &pNsEncryptionModeNone
 
-	pNsEncryptionModeSecure = cNsEncryptionModeSecure
-	NsEncryptionModeSecure = &pNsEncryptionModeSecure
+ pNsEncryptionModeSecure = cNsEncryptionModeSecure
+ NsEncryptionModeSecure = &pNsEncryptionModeSecure
 
 }
+

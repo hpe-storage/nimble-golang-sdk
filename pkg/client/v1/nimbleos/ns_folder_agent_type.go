@@ -6,10 +6,10 @@ package nimbleos
 type NsFolderAgentType string
 
 const (
-	cNsFolderAgentTypeSmis      NsFolderAgentType = "smis"
-	cNsFolderAgentTypeVvol      NsFolderAgentType = "vvol"
-	cNsFolderAgentTypeOpenstack NsFolderAgentType = "openstack"
-	cNsFolderAgentTypeNone      NsFolderAgentType = "none"
+ cNsFolderAgentTypeSmis NsFolderAgentType = "smis"
+ cNsFolderAgentTypeVvol NsFolderAgentType = "vvol"
+ cNsFolderAgentTypeOpenstack NsFolderAgentType = "openstack"
+ cNsFolderAgentTypeNone NsFolderAgentType = "none"
 )
 
 var pNsFolderAgentTypeSmis NsFolderAgentType
@@ -30,16 +30,17 @@ var NsFolderAgentTypeOpenstack *NsFolderAgentType
 var NsFolderAgentTypeNone *NsFolderAgentType
 
 func init() {
-	pNsFolderAgentTypeSmis = cNsFolderAgentTypeSmis
-	NsFolderAgentTypeSmis = &pNsFolderAgentTypeSmis
+ pNsFolderAgentTypeSmis = cNsFolderAgentTypeSmis
+ NsFolderAgentTypeSmis = &pNsFolderAgentTypeSmis
 
-	pNsFolderAgentTypeVvol = cNsFolderAgentTypeVvol
-	NsFolderAgentTypeVvol = &pNsFolderAgentTypeVvol
+ pNsFolderAgentTypeVvol = cNsFolderAgentTypeVvol
+ NsFolderAgentTypeVvol = &pNsFolderAgentTypeVvol
 
-	pNsFolderAgentTypeOpenstack = cNsFolderAgentTypeOpenstack
-	NsFolderAgentTypeOpenstack = &pNsFolderAgentTypeOpenstack
+ pNsFolderAgentTypeOpenstack = cNsFolderAgentTypeOpenstack
+ NsFolderAgentTypeOpenstack = &pNsFolderAgentTypeOpenstack
 
-	pNsFolderAgentTypeNone = cNsFolderAgentTypeNone
-	NsFolderAgentTypeNone = &pNsFolderAgentTypeNone
+ pNsFolderAgentTypeNone = cNsFolderAgentTypeNone
+ NsFolderAgentTypeNone = &pNsFolderAgentTypeNone
 
 }
+

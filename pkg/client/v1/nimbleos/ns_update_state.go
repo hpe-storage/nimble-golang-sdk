@@ -6,12 +6,12 @@ package nimbleos
 type NsUpdateState string
 
 const (
-	cNsUpdateStateNormal   NsUpdateState = "normal"
-	cNsUpdateStatePaused   NsUpdateState = "paused"
-	cNsUpdateStateUpdating NsUpdateState = "updating"
-	cNsUpdateStateInvalid  NsUpdateState = "invalid"
-	cNsUpdateStateTimedOut NsUpdateState = "timed_out"
-	cNsUpdateStateFailed   NsUpdateState = "failed"
+ cNsUpdateStateNormal NsUpdateState = "normal"
+ cNsUpdateStatePaused NsUpdateState = "paused"
+ cNsUpdateStateUpdating NsUpdateState = "updating"
+ cNsUpdateStateInvalid NsUpdateState = "invalid"
+ cNsUpdateStateTimedOut NsUpdateState = "timed_out"
+ cNsUpdateStateFailed NsUpdateState = "failed"
 )
 
 var pNsUpdateStateNormal NsUpdateState
@@ -40,22 +40,23 @@ var NsUpdateStateTimedOut *NsUpdateState
 var NsUpdateStateFailed *NsUpdateState
 
 func init() {
-	pNsUpdateStateNormal = cNsUpdateStateNormal
-	NsUpdateStateNormal = &pNsUpdateStateNormal
+ pNsUpdateStateNormal = cNsUpdateStateNormal
+ NsUpdateStateNormal = &pNsUpdateStateNormal
 
-	pNsUpdateStatePaused = cNsUpdateStatePaused
-	NsUpdateStatePaused = &pNsUpdateStatePaused
+ pNsUpdateStatePaused = cNsUpdateStatePaused
+ NsUpdateStatePaused = &pNsUpdateStatePaused
 
-	pNsUpdateStateUpdating = cNsUpdateStateUpdating
-	NsUpdateStateUpdating = &pNsUpdateStateUpdating
+ pNsUpdateStateUpdating = cNsUpdateStateUpdating
+ NsUpdateStateUpdating = &pNsUpdateStateUpdating
 
-	pNsUpdateStateInvalid = cNsUpdateStateInvalid
-	NsUpdateStateInvalid = &pNsUpdateStateInvalid
+ pNsUpdateStateInvalid = cNsUpdateStateInvalid
+ NsUpdateStateInvalid = &pNsUpdateStateInvalid
 
-	pNsUpdateStateTimedOut = cNsUpdateStateTimedOut
-	NsUpdateStateTimedOut = &pNsUpdateStateTimedOut
+ pNsUpdateStateTimedOut = cNsUpdateStateTimedOut
+ NsUpdateStateTimedOut = &pNsUpdateStateTimedOut
 
-	pNsUpdateStateFailed = cNsUpdateStateFailed
-	NsUpdateStateFailed = &pNsUpdateStateFailed
+ pNsUpdateStateFailed = cNsUpdateStateFailed
+ NsUpdateStateFailed = &pNsUpdateStateFailed
 
 }
+

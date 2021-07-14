@@ -6,15 +6,15 @@ package nimbleos
 type NsArrayUpgradeStage string
 
 const (
-	cNsArrayUpgradeStagePrepare         NsArrayUpgradeStage = "prepare"
-	cNsArrayUpgradeStageMixedGeneration NsArrayUpgradeStage = "mixed_generation"
-	cNsArrayUpgradeStageFinalUpgrade    NsArrayUpgradeStage = "final_upgrade"
-	cNsArrayUpgradeStageDisableMirror   NsArrayUpgradeStage = "disable_mirror"
-	cNsArrayUpgradeStageDriveMigration  NsArrayUpgradeStage = "drive_migration"
-	cNsArrayUpgradeStageEnableMirror    NsArrayUpgradeStage = "enable_mirror"
-	cNsArrayUpgradeStageFinish          NsArrayUpgradeStage = "finish"
-	cNsArrayUpgradeStageNone            NsArrayUpgradeStage = "none"
-	cNsArrayUpgradeStageNewGeneration   NsArrayUpgradeStage = "new_generation"
+ cNsArrayUpgradeStagePrepare NsArrayUpgradeStage = "prepare"
+ cNsArrayUpgradeStageMixedGeneration NsArrayUpgradeStage = "mixed_generation"
+ cNsArrayUpgradeStageFinalUpgrade NsArrayUpgradeStage = "final_upgrade"
+ cNsArrayUpgradeStageDisableMirror NsArrayUpgradeStage = "disable_mirror"
+ cNsArrayUpgradeStageDriveMigration NsArrayUpgradeStage = "drive_migration"
+ cNsArrayUpgradeStageEnableMirror NsArrayUpgradeStage = "enable_mirror"
+ cNsArrayUpgradeStageFinish NsArrayUpgradeStage = "finish"
+ cNsArrayUpgradeStageNone NsArrayUpgradeStage = "none"
+ cNsArrayUpgradeStageNewGeneration NsArrayUpgradeStage = "new_generation"
 )
 
 var pNsArrayUpgradeStagePrepare NsArrayUpgradeStage
@@ -55,31 +55,32 @@ var NsArrayUpgradeStageNone *NsArrayUpgradeStage
 var NsArrayUpgradeStageNewGeneration *NsArrayUpgradeStage
 
 func init() {
-	pNsArrayUpgradeStagePrepare = cNsArrayUpgradeStagePrepare
-	NsArrayUpgradeStagePrepare = &pNsArrayUpgradeStagePrepare
+ pNsArrayUpgradeStagePrepare = cNsArrayUpgradeStagePrepare
+ NsArrayUpgradeStagePrepare = &pNsArrayUpgradeStagePrepare
 
-	pNsArrayUpgradeStageMixedGeneration = cNsArrayUpgradeStageMixedGeneration
-	NsArrayUpgradeStageMixedGeneration = &pNsArrayUpgradeStageMixedGeneration
+ pNsArrayUpgradeStageMixedGeneration = cNsArrayUpgradeStageMixedGeneration
+ NsArrayUpgradeStageMixedGeneration = &pNsArrayUpgradeStageMixedGeneration
 
-	pNsArrayUpgradeStageFinalUpgrade = cNsArrayUpgradeStageFinalUpgrade
-	NsArrayUpgradeStageFinalUpgrade = &pNsArrayUpgradeStageFinalUpgrade
+ pNsArrayUpgradeStageFinalUpgrade = cNsArrayUpgradeStageFinalUpgrade
+ NsArrayUpgradeStageFinalUpgrade = &pNsArrayUpgradeStageFinalUpgrade
 
-	pNsArrayUpgradeStageDisableMirror = cNsArrayUpgradeStageDisableMirror
-	NsArrayUpgradeStageDisableMirror = &pNsArrayUpgradeStageDisableMirror
+ pNsArrayUpgradeStageDisableMirror = cNsArrayUpgradeStageDisableMirror
+ NsArrayUpgradeStageDisableMirror = &pNsArrayUpgradeStageDisableMirror
 
-	pNsArrayUpgradeStageDriveMigration = cNsArrayUpgradeStageDriveMigration
-	NsArrayUpgradeStageDriveMigration = &pNsArrayUpgradeStageDriveMigration
+ pNsArrayUpgradeStageDriveMigration = cNsArrayUpgradeStageDriveMigration
+ NsArrayUpgradeStageDriveMigration = &pNsArrayUpgradeStageDriveMigration
 
-	pNsArrayUpgradeStageEnableMirror = cNsArrayUpgradeStageEnableMirror
-	NsArrayUpgradeStageEnableMirror = &pNsArrayUpgradeStageEnableMirror
+ pNsArrayUpgradeStageEnableMirror = cNsArrayUpgradeStageEnableMirror
+ NsArrayUpgradeStageEnableMirror = &pNsArrayUpgradeStageEnableMirror
 
-	pNsArrayUpgradeStageFinish = cNsArrayUpgradeStageFinish
-	NsArrayUpgradeStageFinish = &pNsArrayUpgradeStageFinish
+ pNsArrayUpgradeStageFinish = cNsArrayUpgradeStageFinish
+ NsArrayUpgradeStageFinish = &pNsArrayUpgradeStageFinish
 
-	pNsArrayUpgradeStageNone = cNsArrayUpgradeStageNone
-	NsArrayUpgradeStageNone = &pNsArrayUpgradeStageNone
+ pNsArrayUpgradeStageNone = cNsArrayUpgradeStageNone
+ NsArrayUpgradeStageNone = &pNsArrayUpgradeStageNone
 
-	pNsArrayUpgradeStageNewGeneration = cNsArrayUpgradeStageNewGeneration
-	NsArrayUpgradeStageNewGeneration = &pNsArrayUpgradeStageNewGeneration
+ pNsArrayUpgradeStageNewGeneration = cNsArrayUpgradeStageNewGeneration
+ NsArrayUpgradeStageNewGeneration = &pNsArrayUpgradeStageNewGeneration
 
 }
+

@@ -6,11 +6,11 @@ package nimbleos
 type NsDiskRaidState string
 
 const (
-	cNsDiskRaidStateOkay            NsDiskRaidState = "okay"
-	cNsDiskRaidStateNA              NsDiskRaidState = "N/A"
-	cNsDiskRaidStateResynchronizing NsDiskRaidState = "resynchronizing"
-	cNsDiskRaidStateFaulty          NsDiskRaidState = "faulty"
-	cNsDiskRaidStateSpare           NsDiskRaidState = "spare"
+ cNsDiskRaidStateOkay NsDiskRaidState = "okay"
+ cNsDiskRaidStateNA NsDiskRaidState = "N/A"
+ cNsDiskRaidStateResynchronizing NsDiskRaidState = "resynchronizing"
+ cNsDiskRaidStateFaulty NsDiskRaidState = "faulty"
+ cNsDiskRaidStateSpare NsDiskRaidState = "spare"
 )
 
 var pNsDiskRaidStateOkay NsDiskRaidState
@@ -35,19 +35,20 @@ var NsDiskRaidStateFaulty *NsDiskRaidState
 var NsDiskRaidStateSpare *NsDiskRaidState
 
 func init() {
-	pNsDiskRaidStateOkay = cNsDiskRaidStateOkay
-	NsDiskRaidStateOkay = &pNsDiskRaidStateOkay
+ pNsDiskRaidStateOkay = cNsDiskRaidStateOkay
+ NsDiskRaidStateOkay = &pNsDiskRaidStateOkay
 
-	pNsDiskRaidStateNA = cNsDiskRaidStateNA
-	NsDiskRaidStateNA = &pNsDiskRaidStateNA
+ pNsDiskRaidStateNA = cNsDiskRaidStateNA
+ NsDiskRaidStateNA = &pNsDiskRaidStateNA
 
-	pNsDiskRaidStateResynchronizing = cNsDiskRaidStateResynchronizing
-	NsDiskRaidStateResynchronizing = &pNsDiskRaidStateResynchronizing
+ pNsDiskRaidStateResynchronizing = cNsDiskRaidStateResynchronizing
+ NsDiskRaidStateResynchronizing = &pNsDiskRaidStateResynchronizing
 
-	pNsDiskRaidStateFaulty = cNsDiskRaidStateFaulty
-	NsDiskRaidStateFaulty = &pNsDiskRaidStateFaulty
+ pNsDiskRaidStateFaulty = cNsDiskRaidStateFaulty
+ NsDiskRaidStateFaulty = &pNsDiskRaidStateFaulty
 
-	pNsDiskRaidStateSpare = cNsDiskRaidStateSpare
-	NsDiskRaidStateSpare = &pNsDiskRaidStateSpare
+ pNsDiskRaidStateSpare = cNsDiskRaidStateSpare
+ NsDiskRaidStateSpare = &pNsDiskRaidStateSpare
 
 }
+

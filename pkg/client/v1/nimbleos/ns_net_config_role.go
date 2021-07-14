@@ -6,9 +6,9 @@ package nimbleos
 type NsNetConfigRole string
 
 const (
-	cNsNetConfigRoleBackup NsNetConfigRole = "backup"
-	cNsNetConfigRoleDraft  NsNetConfigRole = "draft"
-	cNsNetConfigRoleActive NsNetConfigRole = "active"
+ cNsNetConfigRoleBackup NsNetConfigRole = "backup"
+ cNsNetConfigRoleDraft NsNetConfigRole = "draft"
+ cNsNetConfigRoleActive NsNetConfigRole = "active"
 )
 
 var pNsNetConfigRoleBackup NsNetConfigRole
@@ -25,13 +25,14 @@ var NsNetConfigRoleDraft *NsNetConfigRole
 var NsNetConfigRoleActive *NsNetConfigRole
 
 func init() {
-	pNsNetConfigRoleBackup = cNsNetConfigRoleBackup
-	NsNetConfigRoleBackup = &pNsNetConfigRoleBackup
+ pNsNetConfigRoleBackup = cNsNetConfigRoleBackup
+ NsNetConfigRoleBackup = &pNsNetConfigRoleBackup
 
-	pNsNetConfigRoleDraft = cNsNetConfigRoleDraft
-	NsNetConfigRoleDraft = &pNsNetConfigRoleDraft
+ pNsNetConfigRoleDraft = cNsNetConfigRoleDraft
+ NsNetConfigRoleDraft = &pNsNetConfigRoleDraft
 
-	pNsNetConfigRoleActive = cNsNetConfigRoleActive
-	NsNetConfigRoleActive = &pNsNetConfigRoleActive
+ pNsNetConfigRoleActive = cNsNetConfigRoleActive
+ NsNetConfigRoleActive = &pNsNetConfigRoleActive
 
 }
+

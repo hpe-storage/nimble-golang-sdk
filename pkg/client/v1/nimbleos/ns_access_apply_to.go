@@ -6,12 +6,12 @@ package nimbleos
 type NsAccessApplyTo string
 
 const (
-	cNsAccessApplyToVolume       NsAccessApplyTo = "volume"
-	cNsAccessApplyToPe           NsAccessApplyTo = "pe"
-	cNsAccessApplyToVvolVolume   NsAccessApplyTo = "vvol_volume"
-	cNsAccessApplyToVvolSnapshot NsAccessApplyTo = "vvol_snapshot"
-	cNsAccessApplyToSnapshot     NsAccessApplyTo = "snapshot"
-	cNsAccessApplyToBoth         NsAccessApplyTo = "both"
+ cNsAccessApplyToVolume NsAccessApplyTo = "volume"
+ cNsAccessApplyToPe NsAccessApplyTo = "pe"
+ cNsAccessApplyToVvolVolume NsAccessApplyTo = "vvol_volume"
+ cNsAccessApplyToVvolSnapshot NsAccessApplyTo = "vvol_snapshot"
+ cNsAccessApplyToSnapshot NsAccessApplyTo = "snapshot"
+ cNsAccessApplyToBoth NsAccessApplyTo = "both"
 )
 
 var pNsAccessApplyToVolume NsAccessApplyTo
@@ -40,22 +40,23 @@ var NsAccessApplyToSnapshot *NsAccessApplyTo
 var NsAccessApplyToBoth *NsAccessApplyTo
 
 func init() {
-	pNsAccessApplyToVolume = cNsAccessApplyToVolume
-	NsAccessApplyToVolume = &pNsAccessApplyToVolume
+ pNsAccessApplyToVolume = cNsAccessApplyToVolume
+ NsAccessApplyToVolume = &pNsAccessApplyToVolume
 
-	pNsAccessApplyToPe = cNsAccessApplyToPe
-	NsAccessApplyToPe = &pNsAccessApplyToPe
+ pNsAccessApplyToPe = cNsAccessApplyToPe
+ NsAccessApplyToPe = &pNsAccessApplyToPe
 
-	pNsAccessApplyToVvolVolume = cNsAccessApplyToVvolVolume
-	NsAccessApplyToVvolVolume = &pNsAccessApplyToVvolVolume
+ pNsAccessApplyToVvolVolume = cNsAccessApplyToVvolVolume
+ NsAccessApplyToVvolVolume = &pNsAccessApplyToVvolVolume
 
-	pNsAccessApplyToVvolSnapshot = cNsAccessApplyToVvolSnapshot
-	NsAccessApplyToVvolSnapshot = &pNsAccessApplyToVvolSnapshot
+ pNsAccessApplyToVvolSnapshot = cNsAccessApplyToVvolSnapshot
+ NsAccessApplyToVvolSnapshot = &pNsAccessApplyToVvolSnapshot
 
-	pNsAccessApplyToSnapshot = cNsAccessApplyToSnapshot
-	NsAccessApplyToSnapshot = &pNsAccessApplyToSnapshot
+ pNsAccessApplyToSnapshot = cNsAccessApplyToSnapshot
+ NsAccessApplyToSnapshot = &pNsAccessApplyToSnapshot
 
-	pNsAccessApplyToBoth = cNsAccessApplyToBoth
-	NsAccessApplyToBoth = &pNsAccessApplyToBoth
+ pNsAccessApplyToBoth = cNsAccessApplyToBoth
+ NsAccessApplyToBoth = &pNsAccessApplyToBoth
 
 }
+

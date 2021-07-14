@@ -6,23 +6,23 @@ package nimbleos
 type NsOfflineReason string
 
 const (
-	cNsOfflineReasonReplica                  NsOfflineReason = "replica"
-	cNsOfflineReasonRecovery                 NsOfflineReason = "recovery"
-	cNsOfflineReasonNvramLossRecovery        NsOfflineReason = "nvram_loss_recovery"
-	cNsOfflineReasonSerialNumberCollision    NsOfflineReason = "serial_number_collision"
-	cNsOfflineReasonEncryptionKeyDeleted     NsOfflineReason = "encryption_key_deleted"
-	cNsOfflineReasonOverVolumeUsageLimit     NsOfflineReason = "over_volume_usage_limit"
-	cNsOfflineReasonOverFolderOverdraftLimit NsOfflineReason = "over_folder_overdraft_limit"
-	cNsOfflineReasonCacheUnpinInProgress     NsOfflineReason = "cache_unpin_in_progress"
-	cNsOfflineReasonVvolUnbind               NsOfflineReason = "vvol_unbind"
-	cNsOfflineReasonOverVolumeLimit          NsOfflineReason = "over_volume_limit"
-	cNsOfflineReasonOverSnapshotLimit        NsOfflineReason = "over_snapshot_limit"
-	cNsOfflineReasonEncryptionInactive       NsOfflineReason = "encryption_inactive"
-	cNsOfflineReasonPoolFreeSpaceExhausted   NsOfflineReason = "pool_free_space_exhausted"
-	cNsOfflineReasonSrepUnconfigured         NsOfflineReason = "srep_unconfigured"
-	cNsOfflineReasonUser                     NsOfflineReason = "user"
-	cNsOfflineReasonOverVolumeReserve        NsOfflineReason = "over_volume_reserve"
-	cNsOfflineReasonOverSnapshotReserve      NsOfflineReason = "over_snapshot_reserve"
+ cNsOfflineReasonReplica NsOfflineReason = "replica"
+ cNsOfflineReasonRecovery NsOfflineReason = "recovery"
+ cNsOfflineReasonNvramLossRecovery NsOfflineReason = "nvram_loss_recovery"
+ cNsOfflineReasonSerialNumberCollision NsOfflineReason = "serial_number_collision"
+ cNsOfflineReasonEncryptionKeyDeleted NsOfflineReason = "encryption_key_deleted"
+ cNsOfflineReasonOverVolumeUsageLimit NsOfflineReason = "over_volume_usage_limit"
+ cNsOfflineReasonOverFolderOverdraftLimit NsOfflineReason = "over_folder_overdraft_limit"
+ cNsOfflineReasonCacheUnpinInProgress NsOfflineReason = "cache_unpin_in_progress"
+ cNsOfflineReasonVvolUnbind NsOfflineReason = "vvol_unbind"
+ cNsOfflineReasonOverVolumeLimit NsOfflineReason = "over_volume_limit"
+ cNsOfflineReasonOverSnapshotLimit NsOfflineReason = "over_snapshot_limit"
+ cNsOfflineReasonEncryptionInactive NsOfflineReason = "encryption_inactive"
+ cNsOfflineReasonPoolFreeSpaceExhausted NsOfflineReason = "pool_free_space_exhausted"
+ cNsOfflineReasonSrepUnconfigured NsOfflineReason = "srep_unconfigured"
+ cNsOfflineReasonUser NsOfflineReason = "user"
+ cNsOfflineReasonOverVolumeReserve NsOfflineReason = "over_volume_reserve"
+ cNsOfflineReasonOverSnapshotReserve NsOfflineReason = "over_snapshot_reserve"
 )
 
 var pNsOfflineReasonReplica NsOfflineReason
@@ -95,55 +95,56 @@ var NsOfflineReasonOverVolumeReserve *NsOfflineReason
 var NsOfflineReasonOverSnapshotReserve *NsOfflineReason
 
 func init() {
-	pNsOfflineReasonReplica = cNsOfflineReasonReplica
-	NsOfflineReasonReplica = &pNsOfflineReasonReplica
+ pNsOfflineReasonReplica = cNsOfflineReasonReplica
+ NsOfflineReasonReplica = &pNsOfflineReasonReplica
 
-	pNsOfflineReasonRecovery = cNsOfflineReasonRecovery
-	NsOfflineReasonRecovery = &pNsOfflineReasonRecovery
+ pNsOfflineReasonRecovery = cNsOfflineReasonRecovery
+ NsOfflineReasonRecovery = &pNsOfflineReasonRecovery
 
-	pNsOfflineReasonNvramLossRecovery = cNsOfflineReasonNvramLossRecovery
-	NsOfflineReasonNvramLossRecovery = &pNsOfflineReasonNvramLossRecovery
+ pNsOfflineReasonNvramLossRecovery = cNsOfflineReasonNvramLossRecovery
+ NsOfflineReasonNvramLossRecovery = &pNsOfflineReasonNvramLossRecovery
 
-	pNsOfflineReasonSerialNumberCollision = cNsOfflineReasonSerialNumberCollision
-	NsOfflineReasonSerialNumberCollision = &pNsOfflineReasonSerialNumberCollision
+ pNsOfflineReasonSerialNumberCollision = cNsOfflineReasonSerialNumberCollision
+ NsOfflineReasonSerialNumberCollision = &pNsOfflineReasonSerialNumberCollision
 
-	pNsOfflineReasonEncryptionKeyDeleted = cNsOfflineReasonEncryptionKeyDeleted
-	NsOfflineReasonEncryptionKeyDeleted = &pNsOfflineReasonEncryptionKeyDeleted
+ pNsOfflineReasonEncryptionKeyDeleted = cNsOfflineReasonEncryptionKeyDeleted
+ NsOfflineReasonEncryptionKeyDeleted = &pNsOfflineReasonEncryptionKeyDeleted
 
-	pNsOfflineReasonOverVolumeUsageLimit = cNsOfflineReasonOverVolumeUsageLimit
-	NsOfflineReasonOverVolumeUsageLimit = &pNsOfflineReasonOverVolumeUsageLimit
+ pNsOfflineReasonOverVolumeUsageLimit = cNsOfflineReasonOverVolumeUsageLimit
+ NsOfflineReasonOverVolumeUsageLimit = &pNsOfflineReasonOverVolumeUsageLimit
 
-	pNsOfflineReasonOverFolderOverdraftLimit = cNsOfflineReasonOverFolderOverdraftLimit
-	NsOfflineReasonOverFolderOverdraftLimit = &pNsOfflineReasonOverFolderOverdraftLimit
+ pNsOfflineReasonOverFolderOverdraftLimit = cNsOfflineReasonOverFolderOverdraftLimit
+ NsOfflineReasonOverFolderOverdraftLimit = &pNsOfflineReasonOverFolderOverdraftLimit
 
-	pNsOfflineReasonCacheUnpinInProgress = cNsOfflineReasonCacheUnpinInProgress
-	NsOfflineReasonCacheUnpinInProgress = &pNsOfflineReasonCacheUnpinInProgress
+ pNsOfflineReasonCacheUnpinInProgress = cNsOfflineReasonCacheUnpinInProgress
+ NsOfflineReasonCacheUnpinInProgress = &pNsOfflineReasonCacheUnpinInProgress
 
-	pNsOfflineReasonVvolUnbind = cNsOfflineReasonVvolUnbind
-	NsOfflineReasonVvolUnbind = &pNsOfflineReasonVvolUnbind
+ pNsOfflineReasonVvolUnbind = cNsOfflineReasonVvolUnbind
+ NsOfflineReasonVvolUnbind = &pNsOfflineReasonVvolUnbind
 
-	pNsOfflineReasonOverVolumeLimit = cNsOfflineReasonOverVolumeLimit
-	NsOfflineReasonOverVolumeLimit = &pNsOfflineReasonOverVolumeLimit
+ pNsOfflineReasonOverVolumeLimit = cNsOfflineReasonOverVolumeLimit
+ NsOfflineReasonOverVolumeLimit = &pNsOfflineReasonOverVolumeLimit
 
-	pNsOfflineReasonOverSnapshotLimit = cNsOfflineReasonOverSnapshotLimit
-	NsOfflineReasonOverSnapshotLimit = &pNsOfflineReasonOverSnapshotLimit
+ pNsOfflineReasonOverSnapshotLimit = cNsOfflineReasonOverSnapshotLimit
+ NsOfflineReasonOverSnapshotLimit = &pNsOfflineReasonOverSnapshotLimit
 
-	pNsOfflineReasonEncryptionInactive = cNsOfflineReasonEncryptionInactive
-	NsOfflineReasonEncryptionInactive = &pNsOfflineReasonEncryptionInactive
+ pNsOfflineReasonEncryptionInactive = cNsOfflineReasonEncryptionInactive
+ NsOfflineReasonEncryptionInactive = &pNsOfflineReasonEncryptionInactive
 
-	pNsOfflineReasonPoolFreeSpaceExhausted = cNsOfflineReasonPoolFreeSpaceExhausted
-	NsOfflineReasonPoolFreeSpaceExhausted = &pNsOfflineReasonPoolFreeSpaceExhausted
+ pNsOfflineReasonPoolFreeSpaceExhausted = cNsOfflineReasonPoolFreeSpaceExhausted
+ NsOfflineReasonPoolFreeSpaceExhausted = &pNsOfflineReasonPoolFreeSpaceExhausted
 
-	pNsOfflineReasonSrepUnconfigured = cNsOfflineReasonSrepUnconfigured
-	NsOfflineReasonSrepUnconfigured = &pNsOfflineReasonSrepUnconfigured
+ pNsOfflineReasonSrepUnconfigured = cNsOfflineReasonSrepUnconfigured
+ NsOfflineReasonSrepUnconfigured = &pNsOfflineReasonSrepUnconfigured
 
-	pNsOfflineReasonUser = cNsOfflineReasonUser
-	NsOfflineReasonUser = &pNsOfflineReasonUser
+ pNsOfflineReasonUser = cNsOfflineReasonUser
+ NsOfflineReasonUser = &pNsOfflineReasonUser
 
-	pNsOfflineReasonOverVolumeReserve = cNsOfflineReasonOverVolumeReserve
-	NsOfflineReasonOverVolumeReserve = &pNsOfflineReasonOverVolumeReserve
+ pNsOfflineReasonOverVolumeReserve = cNsOfflineReasonOverVolumeReserve
+ NsOfflineReasonOverVolumeReserve = &pNsOfflineReasonOverVolumeReserve
 
-	pNsOfflineReasonOverSnapshotReserve = cNsOfflineReasonOverSnapshotReserve
-	NsOfflineReasonOverSnapshotReserve = &pNsOfflineReasonOverSnapshotReserve
+ pNsOfflineReasonOverSnapshotReserve = cNsOfflineReasonOverSnapshotReserve
+ NsOfflineReasonOverSnapshotReserve = &pNsOfflineReasonOverSnapshotReserve
 
 }
+

@@ -6,10 +6,10 @@ package nimbleos
 type NsSeverityLevel string
 
 const (
-	cNsSeverityLevelCritical NsSeverityLevel = "critical"
-	cNsSeverityLevelWarning  NsSeverityLevel = "warning"
-	cNsSeverityLevelInfo     NsSeverityLevel = "info"
-	cNsSeverityLevelNotice   NsSeverityLevel = "notice"
+ cNsSeverityLevelCritical NsSeverityLevel = "critical"
+ cNsSeverityLevelWarning NsSeverityLevel = "warning"
+ cNsSeverityLevelInfo NsSeverityLevel = "info"
+ cNsSeverityLevelNotice NsSeverityLevel = "notice"
 )
 
 var pNsSeverityLevelCritical NsSeverityLevel
@@ -30,16 +30,17 @@ var NsSeverityLevelInfo *NsSeverityLevel
 var NsSeverityLevelNotice *NsSeverityLevel
 
 func init() {
-	pNsSeverityLevelCritical = cNsSeverityLevelCritical
-	NsSeverityLevelCritical = &pNsSeverityLevelCritical
+ pNsSeverityLevelCritical = cNsSeverityLevelCritical
+ NsSeverityLevelCritical = &pNsSeverityLevelCritical
 
-	pNsSeverityLevelWarning = cNsSeverityLevelWarning
-	NsSeverityLevelWarning = &pNsSeverityLevelWarning
+ pNsSeverityLevelWarning = cNsSeverityLevelWarning
+ NsSeverityLevelWarning = &pNsSeverityLevelWarning
 
-	pNsSeverityLevelInfo = cNsSeverityLevelInfo
-	NsSeverityLevelInfo = &pNsSeverityLevelInfo
+ pNsSeverityLevelInfo = cNsSeverityLevelInfo
+ NsSeverityLevelInfo = &pNsSeverityLevelInfo
 
-	pNsSeverityLevelNotice = cNsSeverityLevelNotice
-	NsSeverityLevelNotice = &pNsSeverityLevelNotice
+ pNsSeverityLevelNotice = cNsSeverityLevelNotice
+ NsSeverityLevelNotice = &pNsSeverityLevelNotice
 
 }
+

@@ -6,9 +6,9 @@ package nimbleos
 type NsHcfScope string
 
 const (
-	cNsHcfScopeController NsHcfScope = "controller"
-	cNsHcfScopeArray      NsHcfScope = "array"
-	cNsHcfScopeGroup      NsHcfScope = "group"
+ cNsHcfScopeController NsHcfScope = "controller"
+ cNsHcfScopeArray NsHcfScope = "array"
+ cNsHcfScopeGroup NsHcfScope = "group"
 )
 
 var pNsHcfScopeController NsHcfScope
@@ -25,13 +25,14 @@ var NsHcfScopeArray *NsHcfScope
 var NsHcfScopeGroup *NsHcfScope
 
 func init() {
-	pNsHcfScopeController = cNsHcfScopeController
-	NsHcfScopeController = &pNsHcfScopeController
+ pNsHcfScopeController = cNsHcfScopeController
+ NsHcfScopeController = &pNsHcfScopeController
 
-	pNsHcfScopeArray = cNsHcfScopeArray
-	NsHcfScopeArray = &pNsHcfScopeArray
+ pNsHcfScopeArray = cNsHcfScopeArray
+ NsHcfScopeArray = &pNsHcfScopeArray
 
-	pNsHcfScopeGroup = cNsHcfScopeGroup
-	NsHcfScopeGroup = &pNsHcfScopeGroup
+ pNsHcfScopeGroup = cNsHcfScopeGroup
+ NsHcfScopeGroup = &pNsHcfScopeGroup
 
 }
+

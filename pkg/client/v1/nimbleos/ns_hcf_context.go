@@ -6,9 +6,9 @@ package nimbleos
 type NsHcfContext string
 
 const (
-	cNsHcfContextAll      NsHcfContext = "all"
-	cNsHcfContextFailover NsHcfContext = "failover"
-	cNsHcfContextSwUpdate NsHcfContext = "sw_update"
+ cNsHcfContextAll NsHcfContext = "all"
+ cNsHcfContextFailover NsHcfContext = "failover"
+ cNsHcfContextSwUpdate NsHcfContext = "sw_update"
 )
 
 var pNsHcfContextAll NsHcfContext
@@ -25,13 +25,14 @@ var NsHcfContextFailover *NsHcfContext
 var NsHcfContextSwUpdate *NsHcfContext
 
 func init() {
-	pNsHcfContextAll = cNsHcfContextAll
-	NsHcfContextAll = &pNsHcfContextAll
+ pNsHcfContextAll = cNsHcfContextAll
+ NsHcfContextAll = &pNsHcfContextAll
 
-	pNsHcfContextFailover = cNsHcfContextFailover
-	NsHcfContextFailover = &pNsHcfContextFailover
+ pNsHcfContextFailover = cNsHcfContextFailover
+ NsHcfContextFailover = &pNsHcfContextFailover
 
-	pNsHcfContextSwUpdate = cNsHcfContextSwUpdate
-	NsHcfContextSwUpdate = &pNsHcfContextSwUpdate
+ pNsHcfContextSwUpdate = cNsHcfContextSwUpdate
+ NsHcfContextSwUpdate = &pNsHcfContextSwUpdate
 
 }
+

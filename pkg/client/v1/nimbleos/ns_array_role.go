@@ -6,12 +6,12 @@ package nimbleos
 type NsArrayRole string
 
 const (
-	cNsArrayRoleLeader       NsArrayRole = "leader"
-	cNsArrayRoleNonMember    NsArrayRole = "non_member"
-	cNsArrayRoleInvalid      NsArrayRole = "invalid"
-	cNsArrayRoleBackupLeader NsArrayRole = "backup_leader"
-	cNsArrayRoleMember       NsArrayRole = "member"
-	cNsArrayRoleFailed       NsArrayRole = "failed"
+ cNsArrayRoleLeader NsArrayRole = "leader"
+ cNsArrayRoleNonMember NsArrayRole = "non_member"
+ cNsArrayRoleInvalid NsArrayRole = "invalid"
+ cNsArrayRoleBackupLeader NsArrayRole = "backup_leader"
+ cNsArrayRoleMember NsArrayRole = "member"
+ cNsArrayRoleFailed NsArrayRole = "failed"
 )
 
 var pNsArrayRoleLeader NsArrayRole
@@ -40,22 +40,23 @@ var NsArrayRoleMember *NsArrayRole
 var NsArrayRoleFailed *NsArrayRole
 
 func init() {
-	pNsArrayRoleLeader = cNsArrayRoleLeader
-	NsArrayRoleLeader = &pNsArrayRoleLeader
+ pNsArrayRoleLeader = cNsArrayRoleLeader
+ NsArrayRoleLeader = &pNsArrayRoleLeader
 
-	pNsArrayRoleNonMember = cNsArrayRoleNonMember
-	NsArrayRoleNonMember = &pNsArrayRoleNonMember
+ pNsArrayRoleNonMember = cNsArrayRoleNonMember
+ NsArrayRoleNonMember = &pNsArrayRoleNonMember
 
-	pNsArrayRoleInvalid = cNsArrayRoleInvalid
-	NsArrayRoleInvalid = &pNsArrayRoleInvalid
+ pNsArrayRoleInvalid = cNsArrayRoleInvalid
+ NsArrayRoleInvalid = &pNsArrayRoleInvalid
 
-	pNsArrayRoleBackupLeader = cNsArrayRoleBackupLeader
-	NsArrayRoleBackupLeader = &pNsArrayRoleBackupLeader
+ pNsArrayRoleBackupLeader = cNsArrayRoleBackupLeader
+ NsArrayRoleBackupLeader = &pNsArrayRoleBackupLeader
 
-	pNsArrayRoleMember = cNsArrayRoleMember
-	NsArrayRoleMember = &pNsArrayRoleMember
+ pNsArrayRoleMember = cNsArrayRoleMember
+ NsArrayRoleMember = &pNsArrayRoleMember
 
-	pNsArrayRoleFailed = cNsArrayRoleFailed
-	NsArrayRoleFailed = &pNsArrayRoleFailed
+ pNsArrayRoleFailed = cNsArrayRoleFailed
+ NsArrayRoleFailed = &pNsArrayRoleFailed
 
 }
+
