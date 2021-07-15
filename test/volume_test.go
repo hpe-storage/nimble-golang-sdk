@@ -53,8 +53,8 @@ func (suite *VolumeWorkflowSuite) TearDownSuite() {
 		pushResultToDashboard(volumeTestResult, "C545072", "Volume workflow")
 	}
 	//cleanup test result
-	testStarted = testStarted[:0]
-	testCompleted = testCompleted[:0]
+	testStarted = nil
+	testCompleted = nil
 	suite.deleteVolume(volumeName)
 	err := deleteDefaultInitiatorGroup(suite.initiatorGrpService)
 	require.Nilf(suite.T(), err, "Unable to delete default initiator group, err: %v", err)

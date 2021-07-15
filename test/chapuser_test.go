@@ -20,7 +20,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -39,7 +39,7 @@ type ChapuserWorkflowSuite struct {
 
 func (suite *ChapuserWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Could not connect to array %v", arrayIP)
+	require.Nilf(suite.T(), err, "Could not connect to array %v", arrayIP)
 	suite.groupService = groupService
 	suite.chapuserService = groupService.GetChapUserService()
 	suite.initiatorGrpService = groupService.GetInitiatorGroupService()
@@ -47,6 +47,19 @@ func (suite *ChapuserWorkflowSuite) SetupSuite() {
 }
 
 func (suite *ChapuserWorkflowSuite) TearDownSuite() {
+	var chapTestResult string
+	if len(testStarted) == len(testCompleted) {
+		chapTestResult = "PASS"
+	} else {
+		chapTestResult = "FAIL"
+	}
+	var postResult = *postResultToDashboard
+	if postResult == "true" {
+		pushResultToDashboard(chapTestResult, "C545226", "Chapuser workflow")
+	}
+	//cleanup test result
+	testStarted = nil
+	testCompleted = nil
 	suite.groupService.LogoutService()
 }
 
@@ -64,11 +77,12 @@ func (suite *ChapuserWorkflowSuite) CreateIGIscsiInitiators(iqnLabel string, iqn
 		IscsiInitiators: initiatorList,
 	}
 	igResp, err := suite.initiatorGrpService.CreateInitiatorGroup(newIG)
-	assert.Nilf(suite.T(), err, "Initiator group creation failed: %v", initiatorGroupNameChap)
+	require.Nilf(suite.T(), err, "Initiator group creation failed: %v", initiatorGroupNameChap)
 	return *igResp.ID
 }
 
 func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
+	testStarted = append(testStarted, true)
 	// Skipping for FC array, test with iscsi initiators
 	if isFCEnabled(suite.arrayGroupService) {
 		suite.T().Skip()
@@ -81,10 +95,10 @@ func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
 		Description: &chapUserDescription,
 	}
 	_, err := suite.chapuserService.CreateChapUser(newChapUser)
-	assert.Nilf(suite.T(), err, "Chap User %v creation failed", chapUserName)
+	require.Nilf(suite.T(), err, "Chap User %v creation failed", chapUserName)
 	chapuserResp, err := suite.chapuserService.GetChapUserByName(chapUserName)
-	assert.Nilf(suite.T(), err, "Failed to get chap user by name %v", chapUserName)
-	assert.Equal(suite.T(), chapUserDescription, *chapuserResp.Description, "In-correct Description for Chap user")
+	require.Nilf(suite.T(), err, "Failed to get chap user by name %v", chapUserName)
+	require.Equal(suite.T(), chapUserDescription, *chapuserResp.Description, "In-correct Description for Chap user")
 	chapuserID := *chapuserResp.ID
 
 	arrayVersion := getArrayVersion(suite.arrayGroupService)
@@ -103,22 +117,23 @@ func (suite *ChapuserWorkflowSuite) TestCreateModifyDeleteChapuser() {
 			InitiatorIqns: initiatorList,
 		}
 		_, err = suite.chapuserService.UpdateChapUser(chapuserID, updateChapUser)
-		assert.Nilf(suite.T(), err, "Failed to update chap user: %v", chapUserName)
+		require.Nilf(suite.T(), err, "Failed to update chap user: %v", chapUserName)
 		_, err = suite.chapuserService.GetChapUserByName(chapUserName)
-		assert.Nilf(suite.T(), err, "Failed to get chap user by name: %v", chapUserName)
+		require.Nilf(suite.T(), err, "Failed to get chap user by name: %v", chapUserName)
 
 		// Delete Chap user with initiators associated
 		err = suite.chapuserService.DeleteChapUser(chapuserID)
-		assert.NotNilf(suite.T(), err, "Deleted chap user %v with initiators", chapUserName)
+		require.NotNilf(suite.T(), err, "Deleted chap user %v with initiators", chapUserName)
 
 		// Delete Initiatorgroup
 		err = suite.initiatorGrpService.DeleteInitiatorGroup(igID)
-		assert.Nilf(suite.T(), err, "Failed to delete initiator group: %v", initiatorGroupNameChap)
+		require.Nilf(suite.T(), err, "Failed to delete initiator group: %v", initiatorGroupNameChap)
 	}
 
 	// Delete Chap user
 	err = suite.chapuserService.DeleteChapUser(chapuserID)
-	assert.Nilf(suite.T(), err, "Failed to delete chap user: %v", chapUserName)
+	require.Nilf(suite.T(), err, "Failed to delete chap user: %v", chapUserName)
+	testCompleted = append(testCompleted, true)
 
 }
 

@@ -22,7 +22,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -40,7 +40,7 @@ type UserWorkflowSuite struct {
 
 func (suite *UserWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Could not connect to array")
+	require.Nilf(suite.T(), err, "Could not connect to array")
 	suite.groupService = groupService
 	suite.userService = groupService.GetUserService()
 	suite.userPolicyService = groupService.GetUserPolicyService()
@@ -48,13 +48,26 @@ func (suite *UserWorkflowSuite) SetupSuite() {
 }
 
 func (suite *UserWorkflowSuite) TearDownSuite() {
+	var userTestResult string
+	if len(testStarted) == len(testCompleted) {
+		userTestResult = "PASS"
+	} else {
+		userTestResult = "FAIL"
+	}
+	var postResult = *postResultToDashboard
+	if postResult == "true" {
+		pushResultToDashboard(userTestResult, "C545232", "User workflow")
+	}
+	//cleanup test result
+	testStarted = nil
+	testCompleted = nil
 	suite.groupService.LogoutService()
 }
 
 // Delete User
 func (suite *UserWorkflowSuite) deleteUser(userName string) error {
 	userObj, err := suite.userService.GetUserByName(userName)
-	assert.NotNilf(suite.T(), userObj, "Failed to get user details")
+	require.NotNilf(suite.T(), userObj, "Failed to get user details")
 	err = suite.userService.DeleteUser(*userObj.ID)
 	return err
 }
@@ -62,13 +75,14 @@ func (suite *UserWorkflowSuite) deleteUser(userName string) error {
 // Connect to array with different user
 func (suite *UserWorkflowSuite) connectArray(arrayIP string, username string, password string) *service.NsGroupService {
 	srcgroupService, err := service.NewNsGroupService(arrayIP, username, password, "v1", true)
-	assert.Nilf(suite.T(), err, "Could not connect to array")
+	require.Nilf(suite.T(), err, "Could not connect to array")
 	srcgroupService.SetDebug()
 	return srcgroupService
 }
 
 // Create Power User
 func (suite *UserWorkflowSuite) TestCreateModifyDeletePowerUser() {
+	testStarted = append(testStarted, true)
 	powerUserPassword := "testpowerauth"
 	powerUserRole := nimbleos.NsUserRolesPoweruser
 	powerUserFullName := "Test Power User"
@@ -85,14 +99,14 @@ func (suite *UserWorkflowSuite) TestCreateModifyDeletePowerUser() {
 		InactivityTimeout: param.NewInt64(powerUserInactivityTimeout),
 	}
 	_, err := suite.userService.CreateUser(newPowerUser)
-	assert.Nilf(suite.T(), err, "Power User creation failed")
+	require.Nilf(suite.T(), err, "Power User creation failed")
 	userResp, err := suite.userService.GetUserByName(powerUserName)
-	assert.Nilf(suite.T(), err, "Get user detail failed")
-	assert.Equal(suite.T(), nimbleos.NsUserRoles("poweruser"), *userResp.Role, "User created with in-correct Role")
-	assert.Equal(suite.T(), powerUserDescription, *userResp.Description, "Description not updated for Power user")
-	assert.Equal(suite.T(), powerUserEmailAddr, *userResp.EmailAddr, "EmailAddr not updated for Power user")
-	assert.Equal(suite.T(), powerUserFullName, *userResp.FullName, "FullName not updated for Power user")
-	assert.Equal(suite.T(), powerUserInactivityTimeout, *userResp.InactivityTimeout, "Inactive timeoue not updated for Power user")
+	require.Nilf(suite.T(), err, "Get user detail failed")
+	require.Equal(suite.T(), nimbleos.NsUserRoles("poweruser"), *userResp.Role, "User created with in-correct Role")
+	require.Equal(suite.T(), powerUserDescription, *userResp.Description, "Description not updated for Power user")
+	require.Equal(suite.T(), powerUserEmailAddr, *userResp.EmailAddr, "EmailAddr not updated for Power user")
+	require.Equal(suite.T(), powerUserFullName, *userResp.FullName, "FullName not updated for Power user")
+	require.Equal(suite.T(), powerUserInactivityTimeout, *userResp.InactivityTimeout, "Inactive timeoue not updated for Power user")
 	powerUserID := *userResp.ID
 
 	// Create a volume using power user
@@ -106,13 +120,13 @@ func (suite *UserWorkflowSuite) TestCreateModifyDeletePowerUser() {
 		Online: param.NewBool(false),
 	}
 	_, err = poweruserVolumeService.CreateVolume(newVolume)
-	assert.Nilf(suite.T(), err, "Unable to create volume %v using power user", volumeName)
+	require.Nilf(suite.T(), err, "Unable to create volume %v using power user", volumeName)
 
 	// Delete volume
 	volObj, _ := poweruserVolumeService.GetVolumeByName(volumeName)
 	fmt.Printf("%v", volObj)
 	err = poweruserVolumeService.DeleteVolume(*volObj.ID)
-	assert.Nilf(suite.T(), err, "Failed to delete volume")
+	require.Nilf(suite.T(), err, "Failed to delete volume")
 
 	// Modify Power user role to Guest user
 	guestUserRole := nimbleos.NsUserRolesGuest
@@ -120,15 +134,17 @@ func (suite *UserWorkflowSuite) TestCreateModifyDeletePowerUser() {
 		Role: guestUserRole,
 	}
 	userResp, err = suite.userService.UpdateUser(powerUserID, updateGuestUser)
-	assert.Nilf(suite.T(), err, "Unable to modify user role")
-	assert.Equal(suite.T(), nimbleos.NsUserRoles("guest"), *userResp.Role, "User Role not updated")
+	require.Nilf(suite.T(), err, "Unable to modify user role")
+	require.Equal(suite.T(), nimbleos.NsUserRoles("guest"), *userResp.Role, "User Role not updated")
 
 	// Delete User
 	err = suite.deleteUser(powerUserName)
-	assert.Nilf(suite.T(), err, "Unable to delete User %v", powerUserName)
+	require.Nilf(suite.T(), err, "Unable to delete User %v", powerUserName)
+	testCompleted = append(testCompleted, true)
 }
 
 func (suite *UserWorkflowSuite) TestCreateDeleteGuestUser() {
+	testStarted = append(testStarted, true)
 	guestUserName := "testguestuser"
 	guestUserPassword := "testguestauth"
 	guestUserRole := nimbleos.NsUserRolesGuest
@@ -146,21 +162,23 @@ func (suite *UserWorkflowSuite) TestCreateDeleteGuestUser() {
 		InactivityTimeout: param.NewInt64(guestUserInactivityTimeout),
 	}
 	_, err := suite.userService.CreateUser(newguestUser)
-	assert.Nilf(suite.T(), err, "Guest User creation failed")
+	require.Nilf(suite.T(), err, "Guest User creation failed")
 	userResp, err := suite.userService.GetUserByName(guestUserName)
-	assert.Nilf(suite.T(), err, "Get user detail failed")
-	assert.Equal(suite.T(), nimbleos.NsUserRoles("guest"), *userResp.Role, "In-correct User Role")
-	assert.Equal(suite.T(), guestUserDescription, *userResp.Description, "Description not updated for Guest user")
-	assert.Equal(suite.T(), guestUserEmailAddr, *userResp.EmailAddr, "EmailAddr not updated for Guest user")
-	assert.Equal(suite.T(), guestUserFullName, *userResp.FullName, "FullName not updated for Guest user")
-	assert.Equal(suite.T(), guestUserInactivityTimeout, *userResp.InactivityTimeout, "Inactivity timeout not updated for Guest user")
+	require.Nilf(suite.T(), err, "Get user detail failed")
+	require.Equal(suite.T(), nimbleos.NsUserRoles("guest"), *userResp.Role, "In-correct User Role")
+	require.Equal(suite.T(), guestUserDescription, *userResp.Description, "Description not updated for Guest user")
+	require.Equal(suite.T(), guestUserEmailAddr, *userResp.EmailAddr, "EmailAddr not updated for Guest user")
+	require.Equal(suite.T(), guestUserFullName, *userResp.FullName, "FullName not updated for Guest user")
+	require.Equal(suite.T(), guestUserInactivityTimeout, *userResp.InactivityTimeout, "Inactivity timeout not updated for Guest user")
 
 	// Delete User
 	err = suite.deleteUser(guestUserName)
-	assert.Nilf(suite.T(), err, "Unable to Guest delete User %v", guestUserName)
+	require.Nilf(suite.T(), err, "Unable to Guest delete User %v", guestUserName)
+	testCompleted = append(testCompleted, true)
 }
 
 func (suite *UserWorkflowSuite) TestUpdateUserPolicy() {
+	testStarted = append(testStarted, true)
 	arrayVersion := getArrayVersion(suite.arrayGroupService)
 	if arrayVersion < 5.1 {
 		suite.T().Skip()
@@ -184,15 +202,16 @@ func (suite *UserWorkflowSuite) TestUpdateUserPolicy() {
 	userPolicyResp, err := suite.userPolicyService.GetUserPolicies(filter)
 	userPolicyID := *userPolicyResp[0].ID
 	_, err = suite.userPolicyService.UpdateUserPolicy(userPolicyID, updateUserPolicy)
-	assert.Nilf(suite.T(), err, "Failed to create userpolicy")
+	require.Nilf(suite.T(), err, "Failed to create userpolicy")
 	userPolicyResp, err = suite.userPolicyService.GetUserPolicies(filter)
-	assert.Nilf(suite.T(), err, "Get user policy detail failed")
-	assert.Equal(suite.T(), allowedAttempts, *userPolicyResp[0].AllowedAttempts, "Wrong allowedAttempts count")
-	assert.Equal(suite.T(), minLength, *userPolicyResp[0].MinLength, "Wrong minLength count")
-	assert.Equal(suite.T(), upperCaseCount, *userPolicyResp[0].Upper, "Wrong upperCaseCount count")
-	assert.Equal(suite.T(), lowerCaseCount, *userPolicyResp[0].Lower, "Wrong lowerCaseCount count")
-	assert.Equal(suite.T(), digitCount, *userPolicyResp[0].Digit, "Wrong digitCount count")
-	assert.Equal(suite.T(), specialCharCount, *userPolicyResp[0].Special, "Wrong specialCharCount count")
+	require.Nilf(suite.T(), err, "Get user policy detail failed")
+	require.Equal(suite.T(), allowedAttempts, *userPolicyResp[0].AllowedAttempts, "Wrong allowedAttempts count")
+	require.Equal(suite.T(), minLength, *userPolicyResp[0].MinLength, "Wrong minLength count")
+	require.Equal(suite.T(), upperCaseCount, *userPolicyResp[0].Upper, "Wrong upperCaseCount count")
+	require.Equal(suite.T(), lowerCaseCount, *userPolicyResp[0].Lower, "Wrong lowerCaseCount count")
+	require.Equal(suite.T(), digitCount, *userPolicyResp[0].Digit, "Wrong digitCount count")
+	require.Equal(suite.T(), specialCharCount, *userPolicyResp[0].Special, "Wrong specialCharCount count")
+	testCompleted = append(testCompleted, true)
 }
 
 func TestUserWorkflowSuite(t *testing.T) {

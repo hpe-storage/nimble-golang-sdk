@@ -29,7 +29,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -51,6 +51,19 @@ func (suite *SnapshotWorkflowSuite) SetupSuite() {
 }
 
 func (suite *SnapshotWorkflowSuite) TearDownSuite() {
+	var snapshotTestResult string
+	if len(testStarted) == len(testCompleted) {
+		snapshotTestResult = "PASS"
+	} else {
+		snapshotTestResult = "FAIL"
+	}
+	var postResult = *postResultToDashboard
+	if postResult == "true" {
+		pushResultToDashboard(snapshotTestResult, "C560653", "Snapshot workflow")
+	}
+	//cleanup test result
+	testStarted = nil
+	testCompleted = nil
 	suite.groupService.LogoutService()
 }
 
@@ -68,7 +81,7 @@ func (suite *SnapshotWorkflowSuite) createVolume(volumeName string, baseSnapshot
 		newVolume.Clone = param.NewBool(true)
 	}
 	volResp, err := suite.volumeService.CreateVolume(newVolume)
-	assert.Nilf(suite.T(), err, "Unable to create volume: %v", volumeName)
+	require.Nilf(suite.T(), err, "Unable to create volume: %v", volumeName)
 	return *volResp.ID
 }
 
@@ -79,6 +92,7 @@ func (suite *SnapshotWorkflowSuite) deleteVolume(volumeID string) error {
 
 // Creat an offline/online snapshot for the volume. Delete volume
 func (suite *SnapshotWorkflowSuite) TestCreateUpdateSnapshot() {
+	testStarted = append(testStarted, true)
 	// Create, Get, Delete Offline Snapshot
 	volumeName := "testvolumesnap1"
 	volumeID := suite.createVolume(volumeName, "")
@@ -88,13 +102,13 @@ func (suite *SnapshotWorkflowSuite) TestCreateUpdateSnapshot() {
 		VolId: &volumeID,
 	}
 	_, err := suite.snapshotService.CreateSnapshot(newOfflineSnapshot)
-	assert.Nilf(suite.T(), err, "Failed to create snapshot: %v", offlineSnapshotName)
+	require.Nilf(suite.T(), err, "Failed to create snapshot: %v", offlineSnapshotName)
 
 	getSnapResp, err := suite.snapshotService.GetSnapshotByName(volumeName)
-	assert.Nilf(suite.T(), err, "Failed to get snapshot(s) by volume name: %v", volumeName)
+	require.Nilf(suite.T(), err, "Failed to get snapshot(s) by volume name: %v", volumeName)
 
 	err = suite.snapshotService.DeleteSnapshot(*getSnapResp[0].ID)
-	assert.Nilf(suite.T(), err, "Failed to delete snapshot: %v", offlineSnapshotName)
+	require.Nilf(suite.T(), err, "Failed to delete snapshot: %v", offlineSnapshotName)
 
 	// Create Online Snapshot
 	onlineSnapshotName := "snaponline"
@@ -105,12 +119,12 @@ func (suite *SnapshotWorkflowSuite) TestCreateUpdateSnapshot() {
 		Writable: param.NewBool(true),
 	}
 	snapResp, err := suite.snapshotService.CreateSnapshot(newOnlineSnapshot)
-	assert.Nilf(suite.T(), err, "Failed to create snapshot: %v", newOnlineSnapshot)
+	require.Nilf(suite.T(), err, "Failed to create snapshot: %v", newOnlineSnapshot)
 	onlineSnapshotID := *snapResp.ID
 
 	// Delete Volume with online snapshot
 	err = suite.deleteVolume(volumeID)
-	assert.NotNil(suite.T(), err, "Volume deletion expected to throw error, as there are online snapshots")
+	require.NotNil(suite.T(), err, "Volume deletion expected to throw error, as there are online snapshots")
 
 	// Offline the Snapshot & update name, description
 	newOnlineSnapshotName := "updatesnaponline"
@@ -121,20 +135,22 @@ func (suite *SnapshotWorkflowSuite) TestCreateUpdateSnapshot() {
 		Description: &newSnapshotDescription,
 	}
 	_, err = suite.snapshotService.UpdateSnapshot(onlineSnapshotID, updateSnapshot)
-	assert.Nil(suite.T(), err, "Failed to update snapshot")
+	require.Nil(suite.T(), err, "Failed to update snapshot")
 
 	getSnapIDResp, err := suite.snapshotService.GetSnapshotById(onlineSnapshotID)
-	assert.Nil(suite.T(), err, "Failed to get snapshot by ID")
-	assert.Equal(suite.T(), newSnapshotDescription, *getSnapIDResp.Description, "In-correct Description for Snapshot")
-	assert.Equal(suite.T(), newOnlineSnapshotName, *getSnapIDResp.Name, "Name not updated")
-	assert.Equal(suite.T(), false, *getSnapIDResp.Online, "Name not updated")
+	require.Nil(suite.T(), err, "Failed to get snapshot by ID")
+	require.Equal(suite.T(), newSnapshotDescription, *getSnapIDResp.Description, "In-correct Description for Snapshot")
+	require.Equal(suite.T(), newOnlineSnapshotName, *getSnapIDResp.Name, "Name not updated")
+	require.Equal(suite.T(), false, *getSnapIDResp.Online, "Name not updated")
 
 	err = suite.deleteVolume(volumeID)
-	assert.Nilf(suite.T(), err, "Failed to delete volume: %v", volumeName)
+	require.Nilf(suite.T(), err, "Failed to delete volume: %v", volumeName)
+	testCompleted = append(testCompleted, true)
 }
 
 // Snapshot Clone Volume test
 func (suite *SnapshotWorkflowSuite) TestCloneVolumeSnapshot() {
+	testStarted = append(testStarted, true)
 	volumeName := "testvolumesnap2"
 	parentVolumeID := suite.createVolume(volumeName, "")
 	baseSnapshotName := "snapoffline"
@@ -144,7 +160,7 @@ func (suite *SnapshotWorkflowSuite) TestCloneVolumeSnapshot() {
 		Online: param.NewBool(true),
 	}
 	snapResp, err := suite.snapshotService.CreateSnapshot(newOfflineSnapshot)
-	assert.Nil(suite.T(), err, "Failed to create snapshot")
+	require.Nil(suite.T(), err, "Failed to create snapshot")
 	baseSnapshotID := *snapResp.ID
 
 	// Create clone volume
@@ -153,19 +169,20 @@ func (suite *SnapshotWorkflowSuite) TestCloneVolumeSnapshot() {
 
 	// Delete Snapshot with Clone Volume
 	err = suite.snapshotService.DeleteSnapshot(baseSnapshotID)
-	assert.NotNil(suite.T(), err, "Snapshot deletion should have thrown error")
+	require.NotNil(suite.T(), err, "Snapshot deletion should have thrown error")
 
 	// Delete clone volume
 	err = suite.deleteVolume(cloneVolumeID)
-	assert.Nil(suite.T(), err, "Failed to delete volume")
+	require.Nil(suite.T(), err, "Failed to delete volume")
 
 	// Delete Snapshot after deleting Clone Volume
 	err = suite.snapshotService.DeleteSnapshot(baseSnapshotID)
-	assert.Nil(suite.T(), err, "Failed to delete snapshot")
+	require.Nil(suite.T(), err, "Failed to delete snapshot")
 
 	// Delete parent volume
 	err = suite.deleteVolume(parentVolumeID)
-	assert.Nil(suite.T(), err, "Failed to delete volume")
+	require.Nil(suite.T(), err, "Failed to delete volume")
+	testCompleted = append(testCompleted, true)
 
 }
 
