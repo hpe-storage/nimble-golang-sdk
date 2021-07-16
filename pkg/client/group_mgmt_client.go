@@ -32,7 +32,7 @@ type GroupMgmtClient struct {
 	WaitOnJob    bool
 	Username     string
 	Password     string
-	TenantAware  bool
+	isTenant     bool
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -62,7 +62,7 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, tenantAware bool) *GroupMgmtClient {
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) *GroupMgmtClient {
 	// Get new resty()
 	restyClient := resty.New()
 	restyClient.SetTLSClientConfig(&tls.Config{
@@ -70,18 +70,18 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 	})
 
 	url := fmt.Sprintf(groupURIFmtNonTenant, ipAddress, apiVersion)
-	if tenantAware {
+	if isTenant {
 		url = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
 	}
 
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		URL:         url,
-		Client:      restyClient,
-		WaitOnJob:   waitOnJobs,
-		Username:    username,
-		Password:    password,
-		TenantAware: tenantAware,
+		URL:       url,
+		Client:    restyClient,
+		WaitOnJob: waitOnJobs,
+		Username:  username,
+		Password:  password,
+		isTenant:  isTenant,
 	}
 	return groupMgmtClient
 }

@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2021 Hewlett Packard Enterprise Development LP
 
 package nimbleos
 
@@ -51,6 +51,10 @@ type User struct {
 	Password *string `json:"password,omitempty"`
 	// AuthPassword - Authorization password for changing password.
 	AuthPassword *string `json:"auth_password,omitempty"`
+	// OtpType - Type of One Time Password authentication in use.
+	OtpType *NsOTPType `json:"otp_type,omitempty"`
+	// OtpReset - When sent as true, this causes a reset of the One Time Password secret for the user.
+	OtpReset *bool `json:"otp_reset,omitempty"`
 	// InactivityTimeout - The amount of time that the user session is inactive before timing out. A value of 0 indicates that the timeout is taken from the group setting.
 	InactivityTimeout *int64 `json:"inactivity_timeout,omitempty"`
 	// CreationTime - Time when this user was created.

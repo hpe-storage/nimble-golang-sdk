@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2021 Hewlett Packard Enterprise Development LP
 
 package nimbleos
 
@@ -101,7 +101,7 @@ type Group struct {
 	SmtpEncryptType *NsSmtpEncryptType `json:"smtp_encrypt_type,omitempty"`
 	// AutosupportEnabled - Whether to send autosupport.
 	AutosupportEnabled *bool `json:"autosupport_enabled,omitempty"`
-	// AllowAnalyticsGui - Specify whether to allow HPE Nimble Storage to use Google Analytics in the GUI.  HPE Nimble Storage uses Google Analytics to gather data related to GUI usage.  The data gathered is used to evaluate and improve the product.
+	// AllowAnalyticsGui - Specify whether to use Google Analytics in the GUI. HPE Storage uses Google Analytics to gather data related to GUI usage. The data gathered is used to evaluate and improve the product.
 	AllowAnalyticsGui *bool `json:"allow_analytics_gui,omitempty"`
 	// AllowSupportTunnel - Whether to allow support tunnel.
 	AllowSupportTunnel *bool `json:"allow_support_tunnel,omitempty"`

@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2021 Hewlett Packard Enterprise Development LP
 
 package client
 
@@ -110,4 +110,19 @@ func (objectSet *TokenObjectSet) ReportUserDetails(id *string) (*nimbleos.NsToke
 	}
 
 	return resp.(*nimbleos.NsTokenReportUserDetailsReturn), err
+}
+
+// ValidateOtp - Validate a supplied OTP authentication code.
+func (objectSet *TokenObjectSet) ValidateOtp(otpCode *string) error {
+	validateOtpUri := tokenPath
+	validateOtpUri = validateOtpUri + "/actions/" + "validate_otp"
+
+	payload := &struct {
+		OtpCode *string `json:"otp_code,omitempty"`
+	}{
+		otpCode,
+	}
+
+	_, err := objectSet.Client.Post(validateOtpUri, payload, &nimbleos.Token{})
+	return err
 }

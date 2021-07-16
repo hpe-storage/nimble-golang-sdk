@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2021 Hewlett Packard Enterprise Development LP
 package nimbleos
 
 // Golang package for NsObjectType Enum.
@@ -61,6 +61,7 @@ const (
 	cNsObjectTypeAuditLog              NsObjectType = "audit_log"
 	cNsObjectTypeHcClusterConfig       NsObjectType = "hc_cluster_config"
 	cNsObjectTypeEncryptConfig         NsObjectType = "encrypt_config"
+	cNsObjectTypeClientCredential      NsObjectType = "client_credential"
 	cNsObjectTypeWitness               NsObjectType = "witness"
 	cNsObjectTypePartner               NsObjectType = "partner"
 	cNsObjectTypeSnapshotLun           NsObjectType = "snapshot_lun"
@@ -124,6 +125,7 @@ var pNsObjectTypeFolset NsObjectType
 var pNsObjectTypeAuditLog NsObjectType
 var pNsObjectTypeHcClusterConfig NsObjectType
 var pNsObjectTypeEncryptConfig NsObjectType
+var pNsObjectTypeClientCredential NsObjectType
 var pNsObjectTypeWitness NsObjectType
 var pNsObjectTypePartner NsObjectType
 var pNsObjectTypeSnapshotLun NsObjectType
@@ -295,6 +297,9 @@ var NsObjectTypeHcClusterConfig *NsObjectType
 
 // NsObjectTypeEncryptConfig enum exports
 var NsObjectTypeEncryptConfig *NsObjectType
+
+// NsObjectTypeClientCredential enum exports
+var NsObjectTypeClientCredential *NsObjectType
 
 // NsObjectTypeWitness enum exports
 var NsObjectTypeWitness *NsObjectType
@@ -479,6 +484,9 @@ func init() {
 
 	pNsObjectTypeEncryptConfig = cNsObjectTypeEncryptConfig
 	NsObjectTypeEncryptConfig = &pNsObjectTypeEncryptConfig
+
+	pNsObjectTypeClientCredential = cNsObjectTypeClientCredential
+	NsObjectTypeClientCredential = &pNsObjectTypeClientCredential
 
 	pNsObjectTypeWitness = cNsObjectTypeWitness
 	NsObjectTypeWitness = &pNsObjectTypeWitness
