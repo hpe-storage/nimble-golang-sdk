@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/fakeservice"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
 func getFakeService(ip, username, password, apiVersion string, synchronous bool) (sdkprovider.NsGroupService, error) {
@@ -13,8 +16,8 @@ func getFakeService(ip, username, password, apiVersion string, synchronous bool)
 	return grpSvc, err
 }
 
-func getRealService(ip, username, password, apiVersion string, synchronous, isTenant bool) (sdkprovider.NsGroupService, error) {
-	grpSvc, err := service.NewNsGroupService(ip, username, password, apiVersion, synchronous, isTenant)
+func getRealService(ip, username, password, apiVersion string, synchronous bool, clientOpts ...client.ClientOption) (sdkprovider.NsGroupService, error) {
+	grpSvc, err := service.NewNsGroupService(ip, username, password, apiVersion, synchronous, clientOpts...)
 	return grpSvc, err
 }
 
