@@ -15,13 +15,13 @@ import (
 )
 
 const (
-	groupURIFmtTenant    = "https://%s:443/api/tenant/%s"
-	groupURIFmtNonTenant = "https://%s:5392/%s"
-	clientTimeout        = time.Second * 60 // 1 Minute
-	maxLoginRetries      = 1
-	jobTimeout           = time.Second * 300 // 5 Minute
-	jobPollInterval      = 5 * time.Second   // Second
-	smAsyncJobId         = "SM_async_job_id"
+	groupURIFmtTenant = "https://%s:443/api/tenant/%s"
+	groupURIFmt       = "https://%s:5392/%s"
+	clientTimeout     = time.Second * 60 // 1 Minute
+	maxLoginRetries   = 1
+	jobTimeout        = time.Second * 300 // 5 Minute
+	jobPollInterval   = 5 * time.Second   // Second
+	smAsyncJobId      = "SM_async_job_id"
 )
 
 // GroupMgmtClient :
@@ -79,7 +79,7 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		URL:       fmt.Sprintf(groupURIFmtNonTenant, ipAddress, apiVersion),
+		URL:       fmt.Sprintf(groupURIFmt, ipAddress, apiVersion),
 		Client:    restyClient,
 		WaitOnJob: waitOnJobs,
 		Username:  username,
