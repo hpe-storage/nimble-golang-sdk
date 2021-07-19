@@ -64,7 +64,7 @@ type Argument struct {
 
 type ClientOption func(*GroupMgmtClient)
 
-func isTenant() ClientOption {
+func IsTenant() ClientOption {
 	return func(groupMgmtClient *GroupMgmtClient) {
 		groupMgmtClient.isTenant = true
 	}
