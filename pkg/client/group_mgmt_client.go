@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package client
 
@@ -62,34 +62,46 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) *GroupMgmtClient {
+type ClientOption func(*GroupMgmtClient)
+
+func isTenant() ClientOption {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.isTenant = true
+	}
+}
+
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs bool, clientOpts ...ClientOption) *GroupMgmtClient {
 	// Get new resty()
 	restyClient := resty.New()
 	restyClient.SetTLSClientConfig(&tls.Config{
 		InsecureSkipVerify: true,
 	})
 
-	url := fmt.Sprintf(groupURIFmtNonTenant, ipAddress, apiVersion)
-	if isTenant {
-		url = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
-	}
-
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		URL:       url,
+		URL:       fmt.Sprintf(groupURIFmtNonTenant, ipAddress, apiVersion),
 		Client:    restyClient,
 		WaitOnJob: waitOnJobs,
 		Username:  username,
 		Password:  password,
-		isTenant:  isTenant,
+		isTenant:  false, //the default value. Unless otherwise specified in clientOpts
 	}
+
+	for _, opt := range clientOpts {
+		opt(groupMgmtClient)
+	}
+
+	if groupMgmtClient.isTenant {
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
+	}
+
 	return groupMgmtClient
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, tenantAware bool) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool, clientOpts ...ClientOption) (*GroupMgmtClient, error) {
 	// Get resty client
-	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, tenantAware)
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, clientOpts...)
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)
 	if err != nil {

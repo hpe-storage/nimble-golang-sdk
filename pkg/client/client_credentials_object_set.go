@@ -1,12 +1,12 @@
-// Copyright 2021 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package client
 
 import (
-	"reflect"
 	"github.com/hpe-storage/common-host-libs/jsonutil"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
+	"reflect"
 )
 
 // Credential that this device will trust.

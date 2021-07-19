@@ -3,14 +3,14 @@ package main
 
 import (
 	"fmt"
-
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 )
 
 func main() {
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true, false)
+	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true, client.IsTenant())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return

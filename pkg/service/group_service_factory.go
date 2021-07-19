@@ -1,4 +1,4 @@
-// Copyright 2021 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package service
 
@@ -69,11 +69,11 @@ type NsGroupService struct {
 }
 
 // NewNsGroupService - initializes NsGroupService
-func NewNsGroupService(ip, username, password, apiVersion string, synchronous, isTenant bool) (gs *NsGroupService, err error) {
+func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool, clientOpts ...client.ClientOption) (gs *NsGroupService, err error) {
 	if apiVersion != "v1" {
 		return nil, fmt.Errorf("NewNsGroupService: unsupported %s sdk API version", apiVersion)
 	}
-	client, err := client.NewClient(ip, username, password, apiVersion, synchronous, isTenant)
+	client, err := client.NewClient(ip, username, password, apiVersion, synchronous, clientOpts...)
 	if err != nil {
 		return nil, err
 	}
