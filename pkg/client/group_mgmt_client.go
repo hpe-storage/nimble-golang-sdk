@@ -71,11 +71,11 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		Client:     restyClient,
-		WaitOnJob:  waitOnJobs,
-		Username:   username,
-		Password:   password,
-		isTenant:   isTenant,
+		Client:    restyClient,
+		WaitOnJob: waitOnJobs,
+		Username:  username,
+		Password:  password,
+		isTenant:  isTenant,
 	}
 
 	if groupMgmtClient.isTenant {
