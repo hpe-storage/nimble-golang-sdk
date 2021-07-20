@@ -17,16 +17,15 @@ import (
 const (
 	groupURIFmtTenant = "https://%s:443/api/tenant/%s"
 	groupURIFmt       = "https://%s:5392/%s"
-	clientTimeout     = time.Second * 60 // 1 Minute
+	clientTimeout     = time.Minute
 	maxLoginRetries   = 1
-	jobTimeout        = time.Second * 300 // 5 Minute
+	jobTimeout        = time.Minute * 5
 	jobPollInterval   = 5 * time.Second   // Second
 	smAsyncJobId      = "SM_async_job_id"
 )
 
 // GroupMgmtClient :
 type GroupMgmtClient struct {
-	Host         string
 	URL          string
 	Client       *resty.Client
 	SessionToken string
@@ -34,7 +33,6 @@ type GroupMgmtClient struct {
 	Username     string
 	Password     string
 	isTenant     bool
-	ApiVersion   string
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -64,53 +62,7 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-type ClientOption func(*GroupMgmtClient)
-
-func WithHost(host string) func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.Host = host
-	}
-}
-
-func WithUser(username string) func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.Username = username
-		groupMgmtClient.isTenant = false
-	}
-}
-
-func WithTenantUser(username string) func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.Username = username
-		groupMgmtClient.isTenant = true
-	}
-}
-
-func WithPassword(password string) func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.Password = password
-	}
-}
-
-func WithApiVersion(version string) func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.ApiVersion = version
-	}
-}
-
-func WithWaitForAsyncJobs() func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.WaitOnJob = true
-	}
-}
-
-func WithoutWaitForAsyncJobs() func(*GroupMgmtClient) {
-	return func(groupMgmtClient *GroupMgmtClient) {
-		groupMgmtClient.WaitOnJob = false
-	}
-}
-
-func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs bool, clientOpts ...ClientOption) *GroupMgmtClient {
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) *GroupMgmtClient {
 	// Get new resty()
 	restyClient := resty.New()
 	restyClient.SetTLSClientConfig(&tls.Config{
@@ -123,30 +75,29 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 		WaitOnJob:  waitOnJobs,
 		Username:   username,
 		Password:   password,
-		isTenant:   false,
-		Host:       ipAddress,
-		ApiVersion: apiVersion,
-	}
-
-	for _, opt := range clientOpts {
-		opt(groupMgmtClient)
+		isTenant:   isTenant,
 	}
 
 	if groupMgmtClient.isTenant {
-		groupMgmtClient.URL = fmt.Sprintf(groupURIFmtTenant, groupMgmtClient.Host, groupMgmtClient.ApiVersion)
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
 	} else {
-		groupMgmtClient.URL = fmt.Sprintf(groupURIFmt, groupMgmtClient.Host, groupMgmtClient.ApiVersion)
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmt, ipAddress, apiVersion)
 	}
 
 	return groupMgmtClient
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool, clientOpts ...ClientOption) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) (*GroupMgmtClient, error) {
 	// Get resty client
-	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, clientOpts...)
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, isTenant)
+
+	if apiVersion != "v1" {
+		return nil, fmt.Errorf("NewNimbleGroupService: unsupported %s sdk API version", apiVersion)
+	}
+
 	// Get session token
-	sessionToken, err := groupMgmtClient.login(groupMgmtClient.Username, groupMgmtClient.Password)
+	sessionToken, err := groupMgmtClient.login(username, password)
 	if err != nil {
 		return nil, err
 	}

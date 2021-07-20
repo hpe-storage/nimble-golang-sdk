@@ -3,7 +3,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -68,28 +67,88 @@ type NsGroupService struct {
 	networkConfigService              *NetworkConfigService
 }
 
+// groupServiceOption :
+type groupServiceOption struct {
+	Host         string
+	WaitOnJob    bool
+	Username     string
+	Password     string
+	isTenant     bool
+	ApiVersion   string
+}
+
+type ServiceOptions func(*groupServiceOption)
+
+func WithHost(host string) func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.Host = host
+	}
+}
+
+func WithUser(username string) func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.Username = username
+		groupService.isTenant = false
+	}
+}
+
+func WithTenantUser(username string) func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.Username = username
+		groupService.isTenant = true
+	}
+}
+
+func WithPassword(password string) func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.Password = password
+	}
+}
+
+func WithApiVersion(version string) func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.ApiVersion = version
+	}
+}
+
+func WithWaitForAsyncJobs() func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.WaitOnJob = true
+	}
+}
+
+func WithoutWaitForAsyncJobs() func(*groupServiceOption) {
+	return func(groupService *groupServiceOption) {
+		groupService.WaitOnJob = false
+	}
+}
+
 // NewNsGroupService - initializes NsGroupService
 // This function is depreciated. Call NewNimbleGroupService() to initialize a group service
-func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool, clientOpts ...client.ClientOption) (gs *NsGroupService, err error) {
-	if apiVersion != "v1" {
-		return nil, fmt.Errorf("NewNsGroupService: unsupported %s sdk API version", apiVersion)
-	}
-	client, err := client.NewClient(ip, username, password, apiVersion, synchronous, clientOpts...)
+func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool) (gs *NsGroupService, err error) {
+	client, err := client.NewClient(ip, username, password, apiVersion, synchronous, false)
 	if err != nil {
 		return nil, err
 	}
 	return &NsGroupService{ip: ip, client: client}, nil
 }
 
-func NewNimbleGroupService(clientOpts ...client.ClientOption) (gs *NsGroupService, err error) {
-	groupMgmtClient, err := client.NewClient("", "", "", "", false, clientOpts...)
+func NewNimbleGroupService(serviceOpts ...ServiceOptions) (gs *NsGroupService, err error) {
+	// Initialize with default options
+	gso := &groupServiceOption{
+		WaitOnJob:  true,
+		ApiVersion: "v1",
+	}
+
+	for _, opt := range serviceOpts {
+		opt(gso)
+	}
+
+	groupMgmtClient, err := client.NewClient(gso.Host, gso.Username, gso.Password, gso.ApiVersion, gso.WaitOnJob, gso.isTenant)
 	if err != nil {
 		return nil, err
 	}
-	if groupMgmtClient.ApiVersion != "v1" {
-		return nil, fmt.Errorf("NewNimbleGroupService: unsupported %s sdk API version", groupMgmtClient.ApiVersion)
-	}
-	return &NsGroupService{ip: groupMgmtClient.Host, client: groupMgmtClient}, nil
+	return &NsGroupService{ip: gso.Host, client: groupMgmtClient}, nil
 }
 
 // LogoutService - delete the session token
