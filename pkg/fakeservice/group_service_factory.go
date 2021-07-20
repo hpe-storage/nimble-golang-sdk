@@ -5,7 +5,7 @@ package fakeservice
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 )
 
@@ -28,13 +28,14 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 	return &NsGroupService{ip: ip}, nil
 }
 
-func NewNimbleGroupService(clientOpts ...client.ClientOption) (gs *NsGroupService, err error) {
-	fakeGroupMgmtClient := &client.GroupMgmtClient{}
-	for _, opt := range clientOpts {
-		opt(fakeGroupMgmtClient)
+func NewNimbleGroupService(serviceOpts ...service.ServiceOptions) (gs *NsGroupService, err error) {
+	fakeGroupServiceOption := &service.GroupServiceOption{}
+
+	for _, opt := range serviceOpts {
+		opt(fakeGroupServiceOption)
 	}
 
-	return &NsGroupService{ip: fakeGroupMgmtClient.Host}, nil
+	return &NsGroupService{ip: fakeGroupServiceOption.Host}, nil
 }
 
 // SetDebug - enable debugging

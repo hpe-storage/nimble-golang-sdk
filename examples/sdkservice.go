@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/fakeservice"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
@@ -10,21 +9,21 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
-func getFakeService(clientOpts ...client.ClientOption) (sdkprovider.NsGroupService, error) {
+func getFakeService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := fakeservice.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
 }
 
-func getRealService(clientOpts ...client.ClientOption) (sdkprovider.NsGroupService, error) {
+func getRealService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := service.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
 }
 
 func main() {
 	arg := &param.GetParams{}
-	groupService, _ := getFakeService(client.WithHost("1.1.1.1"),
-					client.WithTenantUser("xxx"), client.WithPassword("xxx"),
-					client.WithApiVersion("v1"), client.WithoutWaitForAsyncJobs())
+	groupService, _ := getFakeService(service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"), service.WithPassword("xxx"),
+		service.WithoutWaitForAsyncJobs())
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
@@ -52,9 +51,9 @@ func main() {
 	fmt.Printf("Fake volume %+v \n", vol)
 
 	// Get real service
-	groupService, _ = getRealService(client.WithHost("1.1.1.1"),
-					client.WithTenantUser("xxx"), client.WithPassword("xxx"),
-					client.WithApiVersion("v1"), client.WithoutWaitForAsyncJobs())
+	groupService, _ = getRealService(service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"), service.WithPassword("xxx"),
+		service.WithoutWaitForAsyncJobs())
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()

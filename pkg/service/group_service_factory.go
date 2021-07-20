@@ -68,7 +68,7 @@ type NsGroupService struct {
 }
 
 // groupServiceOption :
-type groupServiceOption struct {
+type GroupServiceOption struct {
 	Host         string
 	WaitOnJob    bool
 	Username     string
@@ -77,48 +77,48 @@ type groupServiceOption struct {
 	ApiVersion   string
 }
 
-type ServiceOptions func(*groupServiceOption)
+type ServiceOptions func(*GroupServiceOption)
 
-func WithHost(host string) func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithHost(host string) func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.Host = host
 	}
 }
 
-func WithUser(username string) func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithUser(username string) func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.Username = username
 		groupService.isTenant = false
 	}
 }
 
-func WithTenantUser(username string) func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithTenantUser(username string) func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.Username = username
 		groupService.isTenant = true
 	}
 }
 
-func WithPassword(password string) func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithPassword(password string) func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.Password = password
 	}
 }
 
-func WithApiVersion(version string) func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithApiVersion(version string) func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.ApiVersion = version
 	}
 }
 
-func WithWaitForAsyncJobs() func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithWaitForAsyncJobs() func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.WaitOnJob = true
 	}
 }
 
-func WithoutWaitForAsyncJobs() func(*groupServiceOption) {
-	return func(groupService *groupServiceOption) {
+func WithoutWaitForAsyncJobs() func(*GroupServiceOption) {
+	return func(groupService *GroupServiceOption) {
 		groupService.WaitOnJob = false
 	}
 }
@@ -135,7 +135,7 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 
 func NewNimbleGroupService(serviceOpts ...ServiceOptions) (gs *NsGroupService, err error) {
 	// Initialize with default options
-	gso := &groupServiceOption{
+	gso := &GroupServiceOption{
 		WaitOnJob:  true,
 		ApiVersion: "v1",
 	}
