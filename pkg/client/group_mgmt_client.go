@@ -26,6 +26,7 @@ const (
 
 // GroupMgmtClient :
 type GroupMgmtClient struct {
+	Host         string
 	URL          string
 	Client       *resty.Client
 	SessionToken string
@@ -33,6 +34,7 @@ type GroupMgmtClient struct {
 	Username     string
 	Password     string
 	isTenant     bool
+	ApiVersion   string
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -64,9 +66,47 @@ type Argument struct {
 
 type ClientOption func(*GroupMgmtClient)
 
-func IsTenant() ClientOption {
+func WithHost(host string) func(*GroupMgmtClient) {
 	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.Host = host
+	}
+}
+
+func WithUser(username string) func(*GroupMgmtClient) {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.Username = username
+		groupMgmtClient.isTenant = false
+	}
+}
+
+func WithTenantUser(username string) func(*GroupMgmtClient) {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.Username = username
 		groupMgmtClient.isTenant = true
+	}
+}
+
+func WithPassword(password string) func(*GroupMgmtClient) {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.Password = password
+	}
+}
+
+func WithApiVersion(version string) func(*GroupMgmtClient) {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.ApiVersion = version
+	}
+}
+
+func WithWaitForAsyncJobs() func(*GroupMgmtClient) {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.WaitOnJob = true
+	}
+}
+
+func WithoutWaitForAsyncJobs() func(*GroupMgmtClient) {
+	return func(groupMgmtClient *GroupMgmtClient) {
+		groupMgmtClient.WaitOnJob = false
 	}
 }
 
@@ -79,12 +119,13 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		URL:       fmt.Sprintf(groupURIFmt, ipAddress, apiVersion),
-		Client:    restyClient,
-		WaitOnJob: waitOnJobs,
-		Username:  username,
-		Password:  password,
-		isTenant:  false, //the default value. Unless otherwise specified in clientOpts
+		Client:     restyClient,
+		WaitOnJob:  waitOnJobs,
+		Username:   username,
+		Password:   password,
+		isTenant:   false,
+		Host:       ipAddress,
+		ApiVersion: apiVersion,
 	}
 
 	for _, opt := range clientOpts {
@@ -92,7 +133,9 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 	}
 
 	if groupMgmtClient.isTenant {
-		groupMgmtClient.URL = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmtTenant, groupMgmtClient.Host, groupMgmtClient.ApiVersion)
+	} else {
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmt, groupMgmtClient.Host, groupMgmtClient.ApiVersion)
 	}
 
 	return groupMgmtClient
@@ -103,7 +146,7 @@ func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool
 	// Get resty client
 	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, clientOpts...)
 	// Get session token
-	sessionToken, err := groupMgmtClient.login(username, password)
+	sessionToken, err := groupMgmtClient.login(groupMgmtClient.Username, groupMgmtClient.Password)
 	if err != nil {
 		return nil, err
 	}

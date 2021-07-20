@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true, client.IsTenant())
+	groupService, err := service.NewNimbleGroupService(client.WithHost("1.1.1.1"), client.WithUser("xxx"), client.WithPassword("xxx"), client.WithApiVersion("v1"), client.WithoutWaitForAsyncJobs())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return

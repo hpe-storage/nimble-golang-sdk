@@ -69,6 +69,7 @@ type NsGroupService struct {
 }
 
 // NewNsGroupService - initializes NsGroupService
+// This function is depreciated. Call NewNimbleGroupService() to initialize a group service
 func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool, clientOpts ...client.ClientOption) (gs *NsGroupService, err error) {
 	if apiVersion != "v1" {
 		return nil, fmt.Errorf("NewNsGroupService: unsupported %s sdk API version", apiVersion)
@@ -78,6 +79,17 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 		return nil, err
 	}
 	return &NsGroupService{ip: ip, client: client}, nil
+}
+
+func NewNimbleGroupService(clientOpts ...client.ClientOption) (gs *NsGroupService, err error) {
+	groupMgmtClient, err := client.NewClient("", "", "", "", false, clientOpts...)
+	if err != nil {
+		return nil, err
+	}
+	if groupMgmtClient.ApiVersion != "v1" {
+		return nil, fmt.Errorf("NewNimbleGroupService: unsupported %s sdk API version", groupMgmtClient.ApiVersion)
+	}
+	return &NsGroupService{ip: groupMgmtClient.Host, client: groupMgmtClient}, nil
 }
 
 // LogoutService - delete the session token
