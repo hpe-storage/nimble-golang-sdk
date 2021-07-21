@@ -23,8 +23,8 @@ type NsGroupService struct {
 }
 
 // NewNsGroupService - initializes NsGroupService
+// This function is deprecated. Use NewNimbleGroupService() to instantiate a new service
 func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool) (gs *NsGroupService, err error) {
-
 	return &NsGroupService{ip: ip}, nil
 }
 
