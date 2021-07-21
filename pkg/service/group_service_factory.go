@@ -73,7 +73,7 @@ type GroupServiceOptions struct {
 	WaitOnJob  bool
 	Username   string
 	Password   string
-	isTenant   bool
+	IsTenant   bool
 	ApiVersion string
 }
 
@@ -88,14 +88,14 @@ func WithHost(host string) func(*GroupServiceOptions) {
 func WithUser(username string) func(*GroupServiceOptions) {
 	return func(groupService *GroupServiceOptions) {
 		groupService.Username = username
-		groupService.isTenant = false
+		groupService.IsTenant = false
 	}
 }
 
 func WithTenantUser(username string) func(*GroupServiceOptions) {
 	return func(groupService *GroupServiceOptions) {
 		groupService.Username = username
-		groupService.isTenant = true
+		groupService.IsTenant = true
 	}
 }
 
@@ -144,7 +144,7 @@ func NewNimbleGroupService(serviceOpts ...ServiceOptions) (gs *NsGroupService, e
 		opt(gso)
 	}
 
-	groupMgmtClient, err := client.NewClient(gso.Host, gso.Username, gso.Password, gso.ApiVersion, gso.WaitOnJob, gso.isTenant)
+	groupMgmtClient, err := client.NewClient(gso.Host, gso.Username, gso.Password, gso.ApiVersion, gso.WaitOnJob, gso.IsTenant)
 	if err != nil {
 		return nil, err
 	}

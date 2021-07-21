@@ -19,8 +19,8 @@ const (
 	groupURIFmt       = "https://%s:5392/%s"
 	clientTimeout     = time.Minute
 	maxLoginRetries   = 1
-	jobTimeout        = time.Minute * 5
-	jobPollInterval   = 5 * time.Second // Second
+	jobTimeout        = 5 * time.Minute
+	jobPollInterval   = 5 * time.Second
 	smAsyncJobId      = "SM_async_job_id"
 )
 
