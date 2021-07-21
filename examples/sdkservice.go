@@ -22,8 +22,7 @@ func getRealService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupSe
 func main() {
 	arg := &param.GetParams{}
 	groupService, _ := getFakeService(service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"), service.WithPassword("xxx"),
-		service.WithoutWaitForAsyncJobs())
+		service.WithUser("xxx"), service.WithPassword("xxx"))
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
@@ -52,8 +51,7 @@ func main() {
 
 	// Get real service
 	groupService, _ = getRealService(service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"), service.WithPassword("xxx"),
-		service.WithoutWaitForAsyncJobs())
+		service.WithUser("xxx"), service.WithPassword("xxx"))
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()
