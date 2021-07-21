@@ -5,7 +5,6 @@ package service
 import (
 	"os"
 	"testing"
-	"fmt"
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -320,14 +319,18 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 		AccessProtocol:  nimbleos.NsAccessProtocolIscsi,
 		IscsiInitiators: initiatorList,
 	}
-	igroup, _ = suite.igroupService.CreateInitiatorGroup(igroup)
-	assert.NotNil(suite.T(), igroup)
+
+	ig, _ := suite.igroupService.GetInitiatorGroupByName("sdkigroup")
+	if ig == nil {
+		ig, _ = suite.igroupService.CreateInitiatorGroup(igroup)
+	}
+	assert.NotNil(suite.T(), ig)
 
 	// create new volume and add ACL to to.
 	volume := suite.createVolume("TestAclVolume")
 	if volume != nil {
 		acl := &nimbleos.AccessControlRecord{
-			InitiatorGroupId: igroup.ID,
+			InitiatorGroupId: ig.ID,
 			VolId:            volume.ID,
 		}
 		// create acl
@@ -337,7 +340,7 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 
 		}
 		suite.deleteVolume("TestAclVolume")
-		suite.igroupService.DeleteInitiatorGroup(*igroup.ID)
+		suite.igroupService.DeleteInitiatorGroup(*ig.ID)
 	}
 }
 
