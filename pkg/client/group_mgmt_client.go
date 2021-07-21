@@ -20,7 +20,7 @@ const (
 	clientTimeout     = time.Minute
 	maxLoginRetries   = 1
 	jobTimeout        = time.Minute * 5
-	jobPollInterval   = 5 * time.Second   // Second
+	jobPollInterval   = 5 * time.Second // Second
 	smAsyncJobId      = "SM_async_job_id"
 )
 
@@ -89,12 +89,12 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 
 // NewClient instantiates a new client to communicate with the Nimble group
 func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) (*GroupMgmtClient, error) {
-	// Get resty client
-	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, isTenant)
-
 	if apiVersion != "v1" {
 		return nil, fmt.Errorf("NewNimbleGroupService: unsupported %s sdk API version", apiVersion)
 	}
+
+	// Get resty client
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, isTenant)
 
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)
