@@ -5,6 +5,7 @@ package service
 import (
 	"os"
 	"testing"
+	"fmt"
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -27,7 +28,9 @@ type VolumeServiceTestSuite struct {
 
 func (suite *VolumeServiceTestSuite) config() *NsGroupService {
 
-	groupService, err := NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", true)
+	groupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
+	WithUser("xxx"), WithPassword("xxx"))
+
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return nil

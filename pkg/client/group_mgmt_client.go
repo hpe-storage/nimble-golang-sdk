@@ -90,7 +90,7 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 // NewClient instantiates a new client to communicate with the Nimble group
 func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) (*GroupMgmtClient, error) {
 	if apiVersion != "v1" {
-		return nil, fmt.Errorf("NewNimbleGroupService: unsupported %s sdk API version", apiVersion)
+		return nil, fmt.Errorf("API version \"%s\" is not recognized", apiVersion)
 	}
 
 	// Get resty client
