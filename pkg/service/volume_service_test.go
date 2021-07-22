@@ -16,69 +16,130 @@ import (
 
 type VolumeServiceTestSuite struct {
 	suite.Suite
-	groupService              *NsGroupService
-	volumeService             sdkprovider.VolumeService
-	performancePolicyService  *PerformancePolicyService
-	volumeCollectionService   *VolumeCollectionService
-	snapshotCollectionService *SnapshotCollectionService
-	igroupService             *InitiatorGroupService
-	aclService                *AccessControlRecordService
+	nonTenantGroupService              *NsGroupService
+	nonTenantVolumeService             sdkprovider.VolumeService
+	nonTenantPerformancePolicyService  *PerformancePolicyService
+	nonTenantVolumeCollectionService   *VolumeCollectionService
+	nonTenantSnapshotCollectionService *SnapshotCollectionService
+	nonTenantIgroupService             *InitiatorGroupService
+	nonTenantAclService                *AccessControlRecordService
+	nonTenantFolderService			   *FolderService
+	nonTenantPoolService			   sdkprovider.PoolService
+
+	tenantGroupService       	        *NsGroupService
+	tenantVolumeService      	        sdkprovider.VolumeService
+	tenantPerformancePolicyService  	*PerformancePolicyService
+	tenantVolumeCollectionService  	 	*VolumeCollectionService
+	tenantSnapshotCollectionService		*SnapshotCollectionService
+	tenantIgroupService             	*InitiatorGroupService
+	tenantAclService                	*AccessControlRecordService
+	tenantFolderService			  		*FolderService
 }
 
-func (suite *VolumeServiceTestSuite) config() *NsGroupService {
+func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
-	groupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-	WithUser("xxx"), WithPassword("xxx"))
+	nonTenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+		WithUser("admin"), WithPassword("admin"))
 
 	if err != nil {
-		suite.T().Errorf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
-		return nil
+		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
+		return nil, nil
 	}
+
+	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+		WithTenantUser("raunak"), WithPassword("Nim123Boli"))
+
+	if err != nil {
+		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
+		return nil, nil
+	}
+
 	// set debug
 	//groupService.SetDebug()
-	return groupService
+	return nonTenantGroupService, tenantGroupService
 }
 
 func (suite *VolumeServiceTestSuite) SetupTest() {
-	groupService := suite.config()
-	if groupService == nil {
-		suite.T().Errorf("Failed to initialized suite.")
+	nonTenantGroupService, tenantGroupService := suite.config()
+	if nonTenantGroupService == nil {
+		suite.T().Errorf("Failed to initialized non-tenant suite.")
 		os.Exit(1)
 		return
 	}
-	suite.groupService = groupService
-	suite.volumeService = groupService.GetVolumeService()
-	suite.performancePolicyService = groupService.GetPerformancePolicyService()
-	suite.volumeCollectionService = groupService.GetVolumeCollectionService()
-	suite.snapshotCollectionService = groupService.GetSnapshotCollectionService()
-	suite.igroupService = groupService.GetInitiatorGroupService()
-	suite.aclService = groupService.GetAccessControlRecordService()
-	suite.createVolume("GetVolume")
-	suite.createVolume("DeleteVolume")
-	suite.createVolume("DestroyVolume")
+
+	if tenantGroupService == nil {
+		suite.T().Errorf("Failed to initialized tenant suite.")
+		os.Exit(1)
+		return
+	}
+
+	suite.nonTenantGroupService = nonTenantGroupService
+	suite.nonTenantVolumeService = nonTenantGroupService.GetVolumeService()
+	suite.nonTenantPerformancePolicyService = nonTenantGroupService.GetPerformancePolicyService()
+	suite.nonTenantVolumeCollectionService = nonTenantGroupService.GetVolumeCollectionService()
+	suite.nonTenantSnapshotCollectionService = nonTenantGroupService.GetSnapshotCollectionService()
+	suite.nonTenantIgroupService = nonTenantGroupService.GetInitiatorGroupService()
+	suite.nonTenantAclService = nonTenantGroupService.GetAccessControlRecordService()
+	suite.nonTenantFolderService = nonTenantGroupService.GetFolderService()
+	suite.nonTenantPoolService = nonTenantGroupService.GetPoolService()
+
+	suite.tenantGroupService = tenantGroupService
+	suite.tenantVolumeService = tenantGroupService.GetVolumeService()
+	suite.tenantPerformancePolicyService = tenantGroupService.GetPerformancePolicyService()
+	suite.tenantVolumeCollectionService = tenantGroupService.GetVolumeCollectionService()
+	suite.tenantSnapshotCollectionService = tenantGroupService.GetSnapshotCollectionService()
+	suite.tenantIgroupService = tenantGroupService.GetInitiatorGroupService()
+	suite.tenantAclService = tenantGroupService.GetAccessControlRecordService()
+	suite.tenantFolderService = tenantGroupService.GetFolderService()
+
+	suite.nonTenantCreateVolume("GetVolume")
+	suite.nonTenantCreateVolume("DeleteVolume")
+	suite.nonTenantCreateVolume("DestroyVolume")
+
+	suite.tenantCreateVolume("GetVolume")
+	suite.tenantCreateVolume("DeleteVolume")
+	suite.tenantCreateVolume("DestroyVolume")
 	//volcoll
-	suite.createVolColl("TestVolColl")
+	suite.nonTenantCreateVolColl("TestVolColl")
+	suite.tenantCreateVolColl("TestVolColl")
 }
 
 func (suite *VolumeServiceTestSuite) TearDownTest() {
 
-	suite.deleteVolume("DestroyVolume")
-	suite.deleteVolume("DeleteVolume")
-	suite.deleteVolume("GetVolume")
-	suite.deleteVollColl("TestVolColl")
+	suite.nonTenantDeleteVolume("DestroyVolume")
+	suite.nonTenantDeleteVolume("DeleteVolume")
+	suite.nonTenantDeleteVolume("GetVolume")
+
+	suite.tenantDeleteVolume("DestroyVolume")
+	suite.tenantDeleteVolume("DeleteVolume")
+	suite.tenantDeleteVolume("GetVolume")
+
+	suite.nonTenantDeleteVollColl("TestVolColl")
+	suite.tenantDeleteVollColl("TestVolColl")
 
 	//Logout Group service
-	suite.groupService.LogoutService()
+	suite.nonTenantGroupService.LogoutService()
+	suite.tenantGroupService.LogoutService()
 
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
-	perfPolicy, _ := suite.performancePolicyService.GetPerformancePolicyByName("default")
+	perfPolicy, _ := suite.nonTenantPerformancePolicyService.GetPerformancePolicyByName("default")
 	// Initialize volume attributes
 	var sizeField int64 = 5120
 	descriptionField := "This volume was created as part of a unit test"
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
+	folder, _ := suite.nonTenantFolderService.GetFolderByName("default")
+	pool, _ := suite.nonTenantPoolService.GetPoolByName("default")
+
+	if folder == nil {
+		folderParams := &nimbleos.Folder{
+			Name: param.NewString("default"),
+			PoolId:pool.ID,
+		}
+		folder, _ = suite.nonTenantFolderService.CreateFolder(folderParams)
+	}
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
@@ -89,53 +150,109 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 		LimitMbps:      &limitMbpsField,
 		MultiInitiator: param.NewBool(true),
 		AgentType:      nimbleos.NsAgentTypeNone,
+		FolderId:		folder.ID,
 	}
 	return newVolume
 }
 
-func (suite *VolumeServiceTestSuite) createVolume(volumeName string) *nimbleos.Volume {
-	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
+func (suite *VolumeServiceTestSuite) nonTenantCreateVolume(volumeName string) *nimbleos.Volume {
+	// Create a volume for nont enant
+	volume, _ := suite.nonTenantVolumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()
 		volume.Name = &volumeName
-		volume, _ = suite.volumeService.CreateVolume(volume)
+		volume, _ = suite.nonTenantVolumeService.CreateVolume(volume)
 	}
 	return volume
 }
 
-func (suite *VolumeServiceTestSuite) deleteVolume(volumeName string) {
-	volume, _ := suite.volumeService.GetVolumeByName(volumeName)
+func (suite *VolumeServiceTestSuite) tenantCreateVolume(volumeName string) *nimbleos.Volume {
+	// Create a volume for nont enant
+	volume, _ := suite.tenantVolumeService.GetVolumeByName(volumeName)
+	if volume == nil {
+		volume = suite.getDefaultVolumeOptions()
+		volume.Name = &volumeName
+		volume, err := suite.tenantVolumeService.CreateVolume(volume)
+		if err != nil {
+			suite.T().Errorf("volume=%v, error=%v", volume, err.Error())
+		}
+	}
+	return volume
+}
+
+func (suite *VolumeServiceTestSuite) nonTenantDeleteVolume(volumeName string) {
+	volume, _ := suite.nonTenantVolumeService.GetVolumeByName(volumeName)
 	if volume != nil {
-		suite.volumeService.DestroyVolume(*volume.ID)
-		volume, _ = suite.volumeService.GetVolumeByName(volumeName)
+		suite.nonTenantVolumeService.DestroyVolume(*volume.ID)
+		volume, _ = suite.nonTenantVolumeService.GetVolumeByName(volumeName)
 	}
 
 	if volume != nil {
 		suite.T().Fatalf("deleteVolume: Failed to delete volume %s", volumeName)
 	}
 }
-func (suite *VolumeServiceTestSuite) deleteVollColl(name string) {
-	volcoll, _ := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
-	suite.volumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
+
+func (suite *VolumeServiceTestSuite) tenantDeleteVolume(volumeName string) {
+	volume, _ := suite.tenantVolumeService.GetVolumeByName(volumeName)
+	if volume != nil {
+		suite.tenantVolumeService.DestroyVolume(*volume.ID)
+		volume, _ = suite.tenantVolumeService.GetVolumeByName(volumeName)
+	}
+
+	if volume != nil {
+		suite.T().Fatalf("deleteVolume: Failed to delete volume %s", volumeName)
+	}
 }
 
-func (suite *VolumeServiceTestSuite) createVolColl(name string) {
+func (suite *VolumeServiceTestSuite) nonTenantDeleteVollColl(name string) {
+	volcoll, _ := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+	suite.nonTenantVolumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
+}
+
+func (suite *VolumeServiceTestSuite) nonTenantCreateVolColl(name string) {
 	volcoll := &nimbleos.VolumeCollection{
 		Name: param.NewString(name),
 	}
-	suite.volumeCollectionService.CreateVolumeCollection(volcoll)
+	suite.nonTenantVolumeCollectionService.CreateVolumeCollection(volcoll)
+}
+
+func (suite *VolumeServiceTestSuite) tenantDeleteVollColl(name string) {
+	volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+	suite.tenantVolumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
+}
+
+func (suite *VolumeServiceTestSuite) tenantCreateVolColl(name string) {
+	volcoll := &nimbleos.VolumeCollection{
+		Name: param.NewString(name),
+	}
+	suite.tenantVolumeCollectionService.CreateVolumeCollection(volcoll)
 }
 
 func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 
-	volume, err := suite.volumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
+	// Test non tenant
+	volume, err := suite.nonTenantVolumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to ge non-existent volume, err: %v", err.Error())
 		return
 	}
 	assert.Nil(suite.T(), volume)
 
-	volume, err = suite.volumeService.GetVolumeById("badf0rmat")
+	volume, err = suite.nonTenantVolumeService.GetVolumeById("badf0rmat")
+	if err == nil {
+		suite.T().Errorf("TestGetNonExistentVolumeByID(): Expected error")
+		return
+	}
+
+	// Test tenant
+	volume, err = suite.tenantVolumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
+	if err != nil {
+		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to ge non-existent volume, err: %v", err.Error())
+		return
+	}
+	assert.Nil(suite.T(), volume)
+
+	volume, err = suite.tenantVolumeService.GetVolumeById("badf0rmat")
 	if err == nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Expected error")
 		return
@@ -151,9 +268,11 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 	pagination.SetPageSize(2)
 
 	arg.Page = pagination
+
+	// Test non tenant
 	// fetch only 2 volumes
 	for hasNextPage := true; hasNextPage; hasNextPage = arg.Page.NextPage() {
-		volumes, err := suite.volumeService.GetVolumes(arg)
+		volumes, err := suite.nonTenantVolumeService.GetVolumes(arg)
 		if err != nil {
 			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
 			return
@@ -165,11 +284,34 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 		}
 	}
 
+	// // Test tenant
+	// arg_tenant := new(param.GetParams)
+	// //arg.Page = new(pagination.Page)
+	// pagination_tenant := new(pagination.Page)
+	// // set batch size
+	// pagination_tenant.SetPageSize(2)
+
+	// arg_tenant.Page = pagination_tenant
+	// // fetch only 2 volumes
+	// for hasNextPage := true; hasNextPage; hasNextPage = arg_tenant.Page.NextPage() {
+	// 	volumes, err := suite.tenantVolumeService.GetVolumes(arg_tenant)
+	// 	if err != nil {
+	// 		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
+	// 		return
+	// 	}
+
+	// 	if len(volumes) > 2 {
+	// 		suite.T().Errorf("TestGetVolumesPagination(): Returned volumes are more than the requested page size")
+	// 		return
+	// 	}
+	// }
+
 	// dont set batch size, should return all the volumes
 	narg := new(param.GetParams)
 
+	// Test non tenant
 	// fetch all volumes
-	vols, err := suite.volumeService.GetVolumes(narg)
+	vols, err := suite.nonTenantVolumeService.GetVolumes(narg)
 	if err != nil {
 		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all volumes, err: %v", err.Error())
 		return
@@ -179,29 +321,56 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 		return
 	}
 
+	// Test tenant
+	vols, err = suite.tenantVolumeService.GetVolumes(narg)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all volumes, err: %v", err.Error())
+		return
+	}
+	if len(vols) < 3 {
+		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch all the volumes, len: %v", len(vols))
+		return
+	}
+
 }
 func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 
-	volume, _ := suite.volumeService.GetVolumeByName("GetVolume")
+	// Test non tenant
+	volume, _ := suite.nonTenantVolumeService.GetVolumeByName("GetVolume")
 	if volume != nil {
 		var volList [1]*string
 		volList[0] = volume.ID
-		err := suite.volumeService.BulkSetOnlineAndOfflineVolumes(volList[:], false)
+		err := suite.nonTenantVolumeService.BulkSetOnlineAndOfflineVolumes(volList[:], false)
 		if err != nil {
 			suite.T().Fatalf("BulkOnlineVolumes: Failed to set volumes %v online", volList)
 		}
 
 	}
-	suite.volumeService.DestroyVolume(*volume.ID)
+	suite.nonTenantVolumeService.DestroyVolume(*volume.ID)
+
+	// Test tenant
+	volume, _ = suite.tenantVolumeService.GetVolumeByName("GetVolume")
+	if volume != nil {
+		var volList [1]*string
+		volList[0] = volume.ID
+		err := suite.tenantVolumeService.BulkSetOnlineAndOfflineVolumes(volList[:], false)
+		if err != nil {
+			suite.T().Fatalf("BulkOnlineVolumes: Failed to set volumes %v online", volList)
+		}
+
+	}
+	suite.tenantVolumeService.DestroyVolume(*volume.ID)
 }
 
 func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 
-	volume := suite.createVolume("TestAddVolVolcoll")
+	volume := suite.nonTenantCreateVolume("TestAddVolVolcoll")
+
+	// Test non tenant
 	if volume != nil {
-		volcoll, _ := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		volcoll, _ := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
 		// add volume to volcoll
-		err := suite.volumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		err := suite.nonTenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
 			suite.T().Fatalf("Failed to add a %s volume to %s volume collection", *volume.ID, *volcoll.ID)
 			return
@@ -209,97 +378,189 @@ func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 
 	}
 	// remove volume from volcoll
-	err := suite.volumeService.DisassociateVolume(*volume.ID)
+	err := suite.nonTenantVolumeService.DisassociateVolume(*volume.ID)
 	if err != nil {
 		suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
 		return
 	}
-	suite.deleteVolume("TestAddVolVolcoll")
+
+	volume = suite.tenantCreateVolume("TestAddVolVolcoll")
+	// Test tenant
+	if volume != nil {
+		volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		// add volume to volcoll
+		err := suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to add a %s volume to %s volume collection", *volume.ID, *volcoll.ID)
+			return
+		}
+
+	}
+	// remove volume from volcoll
+	err = suite.tenantVolumeService.DisassociateVolume(*volume.ID)
+	if err != nil {
+		suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
+		return
+	}
+	suite.nonTenantDeleteVollColl("TestAddVolVolcoll")
+	suite.tenantDeleteVollColl("TestAddVolVolcoll")
 }
 
 func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
 
-	volume := suite.createVolume("RestoreVolume")
+	volume := suite.nonTenantCreateVolume("RestoreVolume")
+
 	if volume != nil {
-		volcoll, err := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		volcoll, err := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
 		if err != nil {
 			suite.T().Fatalf("Failed to get volume collection")
 			return
 		}
-		// add volume to volume collection
-		err = suite.volumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		// Test non-tenant: add volume to volume collection
+		err = suite.nonTenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
 			suite.T().Fatalf("Failed to associate RestoreVolume to volcoll ")
 			return
 		}
-		// create a snapshot collection
-		snapColl, _ := suite.snapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+		// Test non-tenant: create a snapshot collection
+		snapColl, _ := suite.nonTenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
 			Name:      param.NewString("RestoreSnapColl"),
 			VolcollId: volcoll.ID,
 		})
-		// set the volume offline before restore
-		suite.volumeService.OfflineVolume(*volume.ID, true)
-		//restore volume to snapcoll
-		err = suite.volumeService.RestoreVolume(*volume.ID, *snapColl.SnapshotsList[0].SnapId)
+		// Test non-tenant: set the volume offline before restore
+		suite.nonTenantVolumeService.OfflineVolume(*volume.ID, true)
+		// Test non-tenant: restore volume to snapcoll
+		err = suite.nonTenantVolumeService.RestoreVolume(*volume.ID, *snapColl.SnapshotsList[0].SnapId)
 
 		if err != nil {
 			suite.T().Fatalf("Failed to restore volume")
 
 		}
-		// disassociate volume from volume collection
-		err = suite.volumeService.DisassociateVolume(*volume.ID)
+		// Test non-tenant: disassociate volume from volume collection
+		err = suite.nonTenantVolumeService.DisassociateVolume(*volume.ID)
 		if err != nil {
 			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
 			return
 		}
-		suite.deleteVolume("RestoreVolume")
+		suite.nonTenantDeleteVolume("RestoreVolume")
+	}
+
+	volume = suite.tenantCreateVolume("RestoreVolume")
+	if volume != nil {
+		volcoll, err := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		// Test tenant: add volume to volume collection
+		err = suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to associate RestoreVolume to volcoll ")
+			return
+		}
+		// Test tenant: create a snapshot collection
+		snapColl, _ := suite.tenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+			Name:      param.NewString("RestoreSnapColl"),
+			VolcollId: volcoll.ID,
+		})
+		// Test tenant: set the volume offline before restore
+		suite.tenantVolumeService.OfflineVolume(*volume.ID, true)
+		// Test tenant: restore volume to snapcoll
+		err = suite.tenantVolumeService.RestoreVolume(*volume.ID, *snapColl.SnapshotsList[0].SnapId)
+
+		if err != nil {
+			suite.T().Fatalf("Failed to restore volume")
+
+		}
+		// Test tenant: disassociate volume from volume collection
+		err = suite.tenantVolumeService.DisassociateVolume(*volume.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
+			return
+		}
+		suite.tenantDeleteVolume("RestoreVolume")
 	}
 }
 
 func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 
-	volume := suite.createVolume("CloneVolume")
+	volume := suite.nonTenantCreateVolume("CloneVolume")
 	if volume != nil {
-		volcoll, err := suite.volumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		volcoll, err := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
 		if err != nil {
 			suite.T().Fatalf("Failed to get volume collection")
 			return
 		}
-		// add volume to volume collection
-		err = suite.volumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		// Test non-tenant: add volume to volume collection
+		err = suite.nonTenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
 			suite.T().Fatalf("Failed to associate CloneVolume to volcoll ")
 			return
 		}
-		// create a snapshot collection
-		snapColl, _ := suite.snapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+		// Test non-tenant: create a snapshot collection
+		snapColl, _ := suite.nonTenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
 			Name:      param.NewString("CloneSnapColl"),
 			VolcollId: volcoll.ID,
 		})
 
-		// update the properties of clone volume
+		// Test non-tenant: update the properties of clone volume
 		cloneVolume := &nimbleos.Volume{
 			Clone:      param.NewBool(true),
 			BaseSnapId: snapColl.SnapshotsList[0].SnapId,
 			Name:       param.NewString("TestCloneVolume"),
 		}
-		//restore volume to snapcoll
-		_, err = suite.volumeService.CreateVolume(cloneVolume)
+		// Test non-tenant: restore volume to snapcoll
+		_, err = suite.nonTenantVolumeService.CreateVolume(cloneVolume)
 
 		if err != nil {
 			suite.T().Fatalf("Failed to clone a volume, id %s", *volume.ID)
 
 		}
-		// disassociate volume from volume collection
-		err = suite.volumeService.DisassociateVolume(*volume.ID)
+		// Test non-tenant: disassociate volume from volume collection
+		err = suite.nonTenantVolumeService.DisassociateVolume(*volume.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
+			return
+		}
+
+		//delete clone first
+		suite.nonTenantDeleteVolume("TestCloneVolume")
+		suite.nonTenantDeleteVolume("CloneVolume")
+	}
+
+	volume = suite.nonTenantCreateVolume("CloneVolume")
+	if volume != nil {
+		volcoll, err := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		// Test tenant: add volume to volume collection
+		err = suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
+		if err != nil {
+			suite.T().Fatalf("Failed to associate CloneVolume to volcoll ")
+			return
+		}
+		// Test tenant: create a snapshot collection
+		snapColl, _ := suite.tenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+			Name:      param.NewString("CloneSnapColl"),
+			VolcollId: volcoll.ID,
+		})
+
+		// Test tenant: update the properties of clone volume
+		cloneVolume := &nimbleos.Volume{
+			Clone:      param.NewBool(true),
+			BaseSnapId: snapColl.SnapshotsList[0].SnapId,
+			Name:       param.NewString("TestCloneVolume"),
+		}
+		// Test tenant: restore volume to snapcoll
+		_, err = suite.tenantVolumeService.CreateVolume(cloneVolume)
+
+		if err != nil {
+			suite.T().Fatalf("Failed to clone a volume, id %s", *volume.ID)
+
+		}
+		// Test tenant: disassociate volume from volume collection
+		err = suite.tenantVolumeService.DisassociateVolume(*volume.ID)
 		if err != nil {
 			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
 			return
 		}
 		//delete clone first
-		suite.deleteVolume("TestCloneVolume")
-		suite.deleteVolume("CloneVolume")
-
+		suite.tenantDeleteVolume("TestCloneVolume")
+		suite.tenantDeleteVolume("CloneVolume")
 	}
 }
 func (suite *VolumeServiceTestSuite) TestACLVolume() {
@@ -320,47 +581,75 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 		IscsiInitiators: initiatorList,
 	}
 
-	ig, _ := suite.igroupService.GetInitiatorGroupByName("sdkigroup")
+	ig, _ := suite.nonTenantIgroupService.GetInitiatorGroupByName("sdkigroup")
 	if ig == nil {
-		ig, _ = suite.igroupService.CreateInitiatorGroup(igroup)
+		ig, _ = suite.nonTenantIgroupService.CreateInitiatorGroup(igroup)
 	}
 	assert.NotNil(suite.T(), ig)
 
 	// create new volume and add ACL to to.
-	volume := suite.createVolume("TestAclVolume")
+	volume := suite.nonTenantCreateVolume("TestAclVolume")
 	if volume != nil {
 		acl := &nimbleos.AccessControlRecord{
 			InitiatorGroupId: ig.ID,
 			VolId:            volume.ID,
 		}
-		// create acl
-		acl, err := suite.aclService.CreateAccessControlRecord(acl)
+		// NonTenant: create acl
+		acl, err := suite.nonTenantAclService.CreateAccessControlRecord(acl)
+		if err != nil {
+			suite.T().Fatalf("Failed to create access control record, err %v", err)
+		}
+		suite.nonTenantDeleteVolume("TestAclVolume")
+		suite.nonTenantIgroupService.DeleteInitiatorGroup(*ig.ID)
+	}
+	volume = suite.tenantCreateVolume("TestAclVolume")
+	if volume != nil {
+		acl := &nimbleos.AccessControlRecord{
+			InitiatorGroupId: ig.ID,
+			VolId:            volume.ID,
+		}
+		// TenantL create acl
+		acl, err := suite.tenantAclService.CreateAccessControlRecord(acl)
 		if err != nil {
 			suite.T().Fatalf("Failed to create access control record, err %v", err)
 
 		}
-		suite.deleteVolume("TestAclVolume")
-		suite.igroupService.DeleteInitiatorGroup(*ig.ID)
+
+		suite.tenantDeleteVolume("TestAclVolume")
+		suite.tenantIgroupService.DeleteInitiatorGroup(*ig.ID)
 	}
 }
 
 func (suite *VolumeServiceTestSuite) TestExpiredToken() {
-
-	volume := suite.createVolume("TestExpiredToken")
+	volume := suite.nonTenantCreateVolume("TestExpiredToken")
 	if volume != nil {
 		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
-		suite.groupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
-		suite.deleteVolume("TestExpiredToken")
+		suite.nonTenantGroupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
+		suite.nonTenantDeleteVolume("TestExpiredToken")
+	}
+
+	volume = suite.tenantCreateVolume("TestExpiredToken")
+	if volume != nil {
+		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
+		suite.tenantGroupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
+		suite.tenantDeleteVolume("TestExpiredToken")
 	}
 }
 func (suite *VolumeServiceTestSuite) TestGetVolumes() {
 
-	volumes, err := suite.volumeService.GetVolumes(nil)
+	// Test non-tenant
+	volumes, err := suite.nonTenantVolumeService.GetVolumes(nil)
 	if err != nil || len(volumes) == 0 {
 		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
 		return
 	}
 
+	// Test tenant
+	volumes, err = suite.tenantVolumeService.GetVolumes(nil)
+	if err != nil || len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
+		return
+	}
 }
 func (suite *VolumeServiceTestSuite) TestVolumeSortFilters() {
 	// sort unit test
@@ -372,7 +661,16 @@ func (suite *VolumeServiceTestSuite) TestVolumeSortFilters() {
 	})
 
 	sfilter.WithSortBy(sortOrderList)
-	volumes, err := suite.volumeService.GetVolumes(sfilter)
+
+	// Test nonTenant
+	volumes, err := suite.nonTenantVolumeService.GetVolumes(sfilter)
+	if err != nil || len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
+		return
+	}
+
+	// Test Tenant
+	volumes, err = suite.tenantVolumeService.GetVolumes(sfilter)
 	if err != nil || len(volumes) == 0 {
 		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes, err: %v", err.Error())
 		return
@@ -390,7 +688,16 @@ func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
 	}
 
 	sfilter.WithSearchFilter(sf)
-	volumes, _ := suite.volumeService.GetVolumes(sfilter)
+
+	// Test Non-tenant
+	volumes, _ := suite.nonTenantVolumeService.GetVolumes(sfilter)
+	if len(volumes) == 0 {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes")
+		return
+	}
+
+	// Test tenant
+	volumes, _ = suite.tenantVolumeService.GetVolumes(sfilter)
 	if len(volumes) == 0 {
 		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes")
 		return
@@ -422,7 +729,15 @@ func (suite *VolumeServiceTestSuite) TestVolumeMultiSearchFilters() {
 	}
 	filters.WithSearchFilter(compoundFilter)
 
-	_, err := suite.volumeService.GetVolumes(filters)
+	// Test non-tenant
+	_, err := suite.nonTenantVolumeService.GetVolumes(filters)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volume, err: %v", err.Error())
+		return
+	}
+
+	// Test tenant
+	_, err = suite.tenantVolumeService.GetVolumes(filters)
 	if err != nil {
 		suite.T().Errorf("TestGetVolumes(): Unable to fetch volume, err: %v", err.Error())
 		return
@@ -447,7 +762,15 @@ func (suite *VolumeServiceTestSuite) TestVolumeFields() {
 	}
 	filter.WithSearchFilter(sf)
 
-	_, err := suite.volumeService.GetVolumes(filter)
+	// Test non tenant
+	_, err := suite.nonTenantVolumeService.GetVolumes(filter)
+	if err != nil {
+		suite.T().Errorf("TestGetVolumes(): Unable to fetch volume")
+		return
+	}
+
+	// Test tenant
+	_, err = suite.tenantVolumeService.GetVolumes(filter)
 	if err != nil {
 		suite.T().Errorf("TestGetVolumes(): Unable to fetch volume")
 		return
