@@ -37,23 +37,31 @@ type VolumeServiceTestSuite struct {
 	tenantFolderService			  		*FolderService
 }
 
-func (suite *VolumeServiceTestSuite) config() (*NsGroupService) {
+func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
 	nonTenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
 		WithUser("admin"), WithPassword("admin"))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
-		return nil
+		return nil, nil
+	}
+
+	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+		WithTenantUser("raunak"), WithPassword("Nim123Boli"))
+
+	if err != nil {
+		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
+		return nil, nil
 	}
 
 	// set debug
 	//groupService.SetDebug()
-	return nonTenantGroupService
+	return nonTenantGroupService, tenantGroupService
 }
 
 func (suite *VolumeServiceTestSuite) SetupTest() {
-	nonTenantGroupService := suite.config()
+	nonTenantGroupService, tenantGroupService := suite.config()
 	if nonTenantGroupService == nil {
 		suite.T().Errorf("Failed to initialized non-tenant suite.")
 		os.Exit(1)
@@ -70,67 +78,6 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.nonTenantFolderService = nonTenantGroupService.GetFolderService()
 	suite.nonTenantPoolService = nonTenantGroupService.GetPoolService()
 	suite.nonTenantUserService = nonTenantGroupService.GetUserService()
-
-	/**
-	commenting everything out for now
-	*/
-	// create folder
-	// folder, _ := suite.nonTenantFolderService.GetFolderByName("tenant3")
-	// pool, _ := suite.nonTenantPoolService.GetPoolByName("default")
-
-	// if folder == nil {
-	// 	folderParams := &nimbleos.Folder{
-	// 		Name: param.NewString("tenant3"),
-	// 		PoolId:pool.ID,
-	// 	}
-	// 	folder, _ = suite.nonTenantFolderService.CreateFolder(folderParams)
-	// }
-
-	// create tenant
-	// user, _ := suite.nonTenantUserService.GetUserByName("testtenant")
-	// if user == nil {
-	// 	user_param := &nimbleos.User{
-	// 		Name: param.NewString("testtenant"),
-	// 		Password: param.NewString("TestP4ssW0rd"),
-	// 		Folders: folder,
-	// 	}
-	// 	user, err := suite.nonTenantUserService.CreateUser(user_param)
-	// 	if err != nil {
-	// 		suite.T().Errorf("Error creating a tenant user %v, message: %v", user, err.Error())
-	// 	}
-	// }
-
-	// // TODO: delete later -- debugging
-	// tenantId := *user.ID
-	// admin, err := suite.nonTenantUserService.GetUserByName("admin")
-	// adminId := *admin.ID
-	// fmt.Println(tenantId, adminId, err)
-	// tenantOnFolder, _:= suite.nonTenantUserService.GetUserById("2f1687ff771a5ea819000000000000000000000004")
-	// fmt.Println((tenantOnFolder))
-
-	// // try 1: assign folder's tenant id to user's tenant id.
-	// userObj := &nimbleos.User{
-	// 	TenantId: folder.TenantId,
-	// }
-	// user, _ = suite.nonTenantUserService.UpdateUser(tenantId, userObj)
-	// fmt.Println(*user.TenantId)
-
-	// // why is password NIL
-	// // how to assign folder to user..?
-	// tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
-	// 	WithTenantUser(*user.Name), WithPassword(*user.Password))
-
-	// if err != nil {
-	// 	suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
-	// }
-
-	// update folder with tenant id
-
-	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
-		WithTenantUser("raunak"), WithPassword("Nim123Boli"))
-	if err != nil {
-		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
-	}
 
 	suite.tenantGroupService = tenantGroupService
 	suite.tenantVolumeService = tenantGroupService.GetVolumeService()
