@@ -39,16 +39,16 @@ type VolumeServiceTestSuite struct {
 
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
-	nonTenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
-		WithUser("admin"), WithPassword("admin"))
+	nonTenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
+		WithUser("xxx"), WithPassword("xxx"))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
 		return nil, nil
 	}
 
-	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
-		WithTenantUser("raunak"), WithPassword("Nim123Boli"))
+	tenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
+		WithTenantUser("xxx"), WithPassword("xxx"))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
@@ -126,7 +126,10 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	descriptionField := "This volume was created as part of a unit test"
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
-	folder, _ := suite.nonTenantFolderService.GetFolderByName("tenant1")
+
+	// TODO: replace <foldername> with your folder's name (owned by both admin and tenant)
+	// to make the test work
+	folder, _ := suite.nonTenantFolderService.GetFolderByName("<foldername>")
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
