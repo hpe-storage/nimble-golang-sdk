@@ -1,10 +1,11 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2020 - 2021 Hewlett Packard Enterprise Development LP
 
 package service
 
 import (
 	"os"
 	"testing"
+	"fmt"
 
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -71,41 +72,66 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.nonTenantPoolService = nonTenantGroupService.GetPoolService()
 	suite.nonTenantUserService = nonTenantGroupService.GetUserService()
 
+	/**
+	commenting everything out for now
+	*/
 	// create folder
-	folder, _ := suite.nonTenantFolderService.GetFolderByName("default")
-	pool, _ := suite.nonTenantPoolService.GetPoolByName("default")
+	// folder, _ := suite.nonTenantFolderService.GetFolderByName("tenant3")
+	// pool, _ := suite.nonTenantPoolService.GetPoolByName("default")
 
-	if folder == nil {
-		folderParams := &nimbleos.Folder{
-			Name: param.NewString("default"),
-			PoolId:pool.ID,
-		}
-		folder, _ = suite.nonTenantFolderService.CreateFolder(folderParams)
-	}
+	// if folder == nil {
+	// 	folderParams := &nimbleos.Folder{
+	// 		Name: param.NewString("tenant3"),
+	// 		PoolId:pool.ID,
+	// 	}
+	// 	folder, _ = suite.nonTenantFolderService.CreateFolder(folderParams)
+	// }
 
 	// create tenant
-	user := suite.nonTenantUserService.GetUserByName(testtenant)
-	if user == nil {
-		user_param := &nimbleos.User{
-			Name: param.NewString("testtenant"),
-			Password: param.NewString("TestP4ssW0rd"),
-		}
-		user, err := suite.nonTenantUserService.CreateUser(user_param)
-		if err != nil {
-			suite.T().Errorf("Error creating a tenant user, message: %v", err.Error())
-		}
-	}
+	// user, _ := suite.nonTenantUserService.GetUserByName("testtenant")
+	// if user == nil {
+	// 	user_param := &nimbleos.User{
+	// 		Name: param.NewString("testtenant"),
+	// 		Password: param.NewString("TestP4ssW0rd"),
+	// 		Folders: folder,
+	// 	}
+	// 	user, err := suite.nonTenantUserService.CreateUser(user_param)
+	// 	if err != nil {
+	// 		suite.T().Errorf("Error creating a tenant user %v, message: %v", user, err.Error())
+	// 	}
+	// }
 
-	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
-		WithTenantUser(*user.Name), WithPassword(*user.Password))
+	// // TODO: delete later -- debugging
+	// tenantId := *user.ID
+	// admin, err := suite.nonTenantUserService.GetUserByName("admin")
+	// adminId := *admin.ID
+	// fmt.Println(tenantId, adminId, err)
+	// tenantOnFolder, _:= suite.nonTenantUserService.GetUserById("2f1687ff771a5ea819000000000000000000000004")
+	// fmt.Println((tenantOnFolder))
 
-	if err != nil {
-		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
-	}
+	// // try 1: assign folder's tenant id to user's tenant id.
+	// userObj := &nimbleos.User{
+	// 	TenantId: folder.TenantId,
+	// }
+	// user, _ = suite.nonTenantUserService.UpdateUser(tenantId, userObj)
+	// fmt.Println(*user.TenantId)
+
+	// // why is password NIL
+	// // how to assign folder to user..?
+	// tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+	// 	WithTenantUser(*user.Name), WithPassword(*user.Password))
+
+	// if err != nil {
+	// 	suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
+	// }
 
 	// update folder with tenant id
 
-
+	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+		WithTenantUser("raunak"), WithPassword("Nim123Boli"))
+	if err != nil {
+		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
+	}
 
 	suite.tenantGroupService = tenantGroupService
 	suite.tenantVolumeService = tenantGroupService.GetVolumeService()
@@ -125,7 +151,7 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.tenantCreateVolume("DestroyVolume")
 	//volcoll
 	suite.nonTenantCreateVolColl("TestVolColl")
-	suite.tenantCreateVolColl("TestVolColl")
+	suite.tenantCreateVolColl("TestVolColl1")
 }
 
 func (suite *VolumeServiceTestSuite) TearDownTest() {
@@ -139,7 +165,7 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 	suite.tenantDeleteVolume("GetVolume")
 
 	suite.nonTenantDeleteVollColl("TestVolColl")
-	suite.tenantDeleteVollColl("TestVolColl")
+	suite.tenantDeleteVollColl("TestVolColl1")
 
 	//Logout Group service
 	suite.nonTenantGroupService.LogoutService()
@@ -154,7 +180,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	descriptionField := "This volume was created as part of a unit test"
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
-	folder, _ := suite.nonTenantFolderService.GetFolderByName("default")
+	folder, _ := suite.nonTenantFolderService.GetFolderByName("tenant1")
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
@@ -171,7 +197,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 }
 
 func (suite *VolumeServiceTestSuite) nonTenantCreateVolume(volumeName string) *nimbleos.Volume {
-	// Create a volume for nont enant
+	// Create a volume for non tenant
 	volume, _ := suite.nonTenantVolumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()
@@ -182,7 +208,7 @@ func (suite *VolumeServiceTestSuite) nonTenantCreateVolume(volumeName string) *n
 }
 
 func (suite *VolumeServiceTestSuite) tenantCreateVolume(volumeName string) *nimbleos.Volume {
-	// Create a volume for nont enant
+	// Create a volume for tenant
 	volume, _ := suite.tenantVolumeService.GetVolumeByName(volumeName)
 	if volume == nil {
 		volume = suite.getDefaultVolumeOptions()
@@ -220,7 +246,7 @@ func (suite *VolumeServiceTestSuite) tenantDeleteVolume(volumeName string) {
 }
 
 func (suite *VolumeServiceTestSuite) nonTenantDeleteVollColl(name string) {
-	volcoll, _ := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+	volcoll, _ := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName(name)
 	suite.nonTenantVolumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
 }
 
@@ -232,7 +258,7 @@ func (suite *VolumeServiceTestSuite) nonTenantCreateVolColl(name string) {
 }
 
 func (suite *VolumeServiceTestSuite) tenantDeleteVollColl(name string) {
-	volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+	volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName(name)
 	suite.tenantVolumeCollectionService.DeleteVolumeCollection(*volcoll.ID)
 }
 
@@ -260,6 +286,10 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 	}
 
 	// Test tenant
+	// debugging
+	all_volumes, _ := suite.tenantVolumeService.GetVolumes(new(param.GetParams))
+	fmt.Println(all_volumes)
+
 	volume, err = suite.tenantVolumeService.GetVolumeById("06aaaaaaaaaaaaaaaa000000000000000000000000")
 	if err != nil {
 		suite.T().Errorf("TestGetNonExistentVolumeByID(): Unable to ge non-existent volume, err: %v", err.Error())
@@ -277,12 +307,11 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 
 	arg := new(param.GetParams)
-	//arg.Page = new(pagination.Page)
-	pagination := new(pagination.Page)
+	admin_pagination := new(pagination.Page)
 	// set batch size
-	pagination.SetPageSize(2)
+	admin_pagination.SetPageSize(2)
 
-	arg.Page = pagination
+	arg.Page = admin_pagination
 
 	// Test non tenant
 	// fetch only 2 volumes
@@ -299,27 +328,26 @@ func (suite *VolumeServiceTestSuite) TestGetVolumesPagination() {
 		}
 	}
 
-	// // Test tenant
-	// arg_tenant := new(param.GetParams)
-	// //arg.Page = new(pagination.Page)
-	// pagination_tenant := new(pagination.Page)
-	// // set batch size
-	// pagination_tenant.SetPageSize(2)
+	// Test tenant
+	arg_tenant := new(param.GetParams)
+	pagination_tenant := new(pagination.Page)
+	// set batch size
+	pagination_tenant.SetPageSize(2)
 
-	// arg_tenant.Page = pagination_tenant
-	// // fetch only 2 volumes
-	// for hasNextPage := true; hasNextPage; hasNextPage = arg_tenant.Page.NextPage() {
-	// 	volumes, err := suite.tenantVolumeService.GetVolumes(arg_tenant)
-	// 	if err != nil {
-	// 		suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
-	// 		return
-	// 	}
+	arg_tenant.Page = pagination_tenant
+	// fetch only 2 volumes
+	for hasNextPage := true; hasNextPage; hasNextPage = arg_tenant.Page.NextPage() {
+		volumes, err := suite.tenantVolumeService.GetVolumes(arg_tenant)
+		if err != nil {
+			suite.T().Errorf("TestGetVolumesPagination(): Unable to fetch volumes, err: %v", err.Error())
+			return
+		}
 
-	// 	if len(volumes) > 2 {
-	// 		suite.T().Errorf("TestGetVolumesPagination(): Returned volumes are more than the requested page size")
-	// 		return
-	// 	}
-	// }
+		if len(volumes) > 2 {
+			suite.T().Errorf("TestGetVolumesPagination(): Returned volumes are more than the requested page size")
+			return
+		}
+	}
 
 	// dont set batch size, should return all the volumes
 	narg := new(param.GetParams)
@@ -361,7 +389,6 @@ func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 		}
 
 	}
-	suite.nonTenantVolumeService.DestroyVolume(*volume.ID)
 
 	// Test tenant
 	volume, _ = suite.tenantVolumeService.GetVolumeByName("GetVolume")
@@ -370,11 +397,11 @@ func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 		volList[0] = volume.ID
 		err := suite.tenantVolumeService.BulkSetOnlineAndOfflineVolumes(volList[:], false)
 		if err != nil {
+			fmt.Println(err)
 			suite.T().Fatalf("BulkOnlineVolumes: Failed to set volumes %v online", volList)
 		}
 
 	}
-	suite.tenantVolumeService.DestroyVolume(*volume.ID)
 }
 
 func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
@@ -399,10 +426,10 @@ func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 		return
 	}
 
-	volume = suite.tenantCreateVolume("TestAddVolVolcoll")
+	volume = suite.tenantCreateVolume("TestAddVolVolcoll1")
 	// Test tenant
 	if volume != nil {
-		volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl1")
 		// add volume to volcoll
 		err := suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
@@ -417,8 +444,8 @@ func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 		suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
 		return
 	}
-	suite.nonTenantDeleteVollColl("TestAddVolVolcoll")
-	suite.tenantDeleteVollColl("TestAddVolVolcoll")
+	suite.nonTenantDeleteVolume("TestAddVolVolcoll")
+	suite.tenantDeleteVolume("TestAddVolVolcoll1")
 }
 
 func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
@@ -460,41 +487,10 @@ func (suite *VolumeServiceTestSuite) TestRestoreVolume() {
 		suite.nonTenantDeleteVolume("RestoreVolume")
 	}
 
-	volume = suite.tenantCreateVolume("RestoreVolume")
-	if volume != nil {
-		volcoll, err := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
-		// Test tenant: add volume to volume collection
-		err = suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
-		if err != nil {
-			suite.T().Fatalf("Failed to associate RestoreVolume to volcoll ")
-			return
-		}
-		// Test tenant: create a snapshot collection
-		snapColl, _ := suite.tenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
-			Name:      param.NewString("RestoreSnapColl"),
-			VolcollId: volcoll.ID,
-		})
-		// Test tenant: set the volume offline before restore
-		suite.tenantVolumeService.OfflineVolume(*volume.ID, true)
-		// Test tenant: restore volume to snapcoll
-		err = suite.tenantVolumeService.RestoreVolume(*volume.ID, *snapColl.SnapshotsList[0].SnapId)
-
-		if err != nil {
-			suite.T().Fatalf("Failed to restore volume")
-
-		}
-		// Test tenant: disassociate volume from volume collection
-		err = suite.tenantVolumeService.DisassociateVolume(*volume.ID)
-		if err != nil {
-			suite.T().Fatalf("Failed to remove %s volume from volume collection", *volume.ID)
-			return
-		}
-		suite.tenantDeleteVolume("RestoreVolume")
-	}
+	// Tenant is not authorized to restore volume, no need to test.
 }
 
 func (suite *VolumeServiceTestSuite) TestCloneVolume() {
-
 	volume := suite.nonTenantCreateVolume("CloneVolume")
 	if volume != nil {
 		volcoll, err := suite.nonTenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
@@ -509,10 +505,13 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 			return
 		}
 		// Test non-tenant: create a snapshot collection
-		snapColl, _ := suite.nonTenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
-			Name:      param.NewString("CloneSnapColl"),
-			VolcollId: volcoll.ID,
-		})
+		snapColl, _ := suite.nonTenantSnapshotCollectionService.GetSnapshotCollectionByName("CloneSnapColl")
+		if snapColl == nil {
+			snapColl, _ = suite.nonTenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+				Name:      param.NewString("CloneSnapColl"),
+				VolcollId: volcoll.ID,
+			})
+		}
 
 		// Test non-tenant: update the properties of clone volume
 		cloneVolume := &nimbleos.Volume{
@@ -541,7 +540,7 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 
 	volume = suite.nonTenantCreateVolume("CloneVolume")
 	if volume != nil {
-		volcoll, err := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl")
+		volcoll, err := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl1")
 		// Test tenant: add volume to volume collection
 		err = suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
@@ -549,23 +548,26 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 			return
 		}
 		// Test tenant: create a snapshot collection
-		snapColl, _ := suite.tenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
-			Name:      param.NewString("CloneSnapColl"),
-			VolcollId: volcoll.ID,
-		})
+		snapColl, _ := suite.nonTenantSnapshotCollectionService.GetSnapshotCollectionByName("CloneSnapColl1")
+		if snapColl == nil {
+			snapColl, _ = suite.tenantSnapshotCollectionService.CreateSnapshotCollection(&nimbleos.SnapshotCollection{
+				Name:      param.NewString("CloneSnapColl"),
+				VolcollId: volcoll.ID,
+			})
+		}
 
 		// Test tenant: update the properties of clone volume
 		cloneVolume := &nimbleos.Volume{
 			Clone:      param.NewBool(true),
 			BaseSnapId: snapColl.SnapshotsList[0].SnapId,
 			Name:       param.NewString("TestCloneVolume"),
+			FolderId: 	volume.FolderId,
 		}
 		// Test tenant: restore volume to snapcoll
 		_, err = suite.tenantVolumeService.CreateVolume(cloneVolume)
 
 		if err != nil {
-			suite.T().Fatalf("Failed to clone a volume, id %s", *volume.ID)
-
+			suite.T().Fatalf("Failed to clone a volume, id %s. err=%s", *volume.ID, err.Error())
 		}
 		// Test tenant: disassociate volume from volume collection
 		err = suite.tenantVolumeService.DisassociateVolume(*volume.ID)
@@ -617,20 +619,33 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 		suite.nonTenantDeleteVolume("TestAclVolume")
 		suite.nonTenantIgroupService.DeleteInitiatorGroup(*ig.ID)
 	}
-	volume = suite.tenantCreateVolume("TestAclVolume")
+
+	igroup_tenant := &nimbleos.InitiatorGroup{
+		Name:            param.NewString("sdkigrouptenant"),
+		AccessProtocol:  nimbleos.NsAccessProtocolIscsi,
+		IscsiInitiators: initiatorList,
+	}
+
+	ig_tenant, _ := suite.nonTenantIgroupService.GetInitiatorGroupByName("sdkigrouptenant")
+	if ig_tenant == nil {
+		ig_tenant, _ = suite.nonTenantIgroupService.CreateInitiatorGroup(igroup_tenant)
+	}
+	assert.NotNil(suite.T(), ig_tenant)
+
+	volume = suite.tenantCreateVolume("TestAclVolume1")
 	if volume != nil {
 		acl := &nimbleos.AccessControlRecord{
-			InitiatorGroupId: ig.ID,
+			InitiatorGroupId: ig_tenant.ID,
 			VolId:            volume.ID,
 		}
-		// TenantL create acl
+		// Tenant: create acl
 		acl, err := suite.tenantAclService.CreateAccessControlRecord(acl)
 		if err != nil {
 			suite.T().Fatalf("Failed to create access control record, err %v", err)
 
 		}
 
-		suite.tenantDeleteVolume("TestAclVolume")
+		suite.tenantDeleteVolume("TestAclVolume1")
 		suite.tenantIgroupService.DeleteInitiatorGroup(*ig.ID)
 	}
 }
@@ -643,11 +658,11 @@ func (suite *VolumeServiceTestSuite) TestExpiredToken() {
 		suite.nonTenantDeleteVolume("TestExpiredToken")
 	}
 
-	volume = suite.tenantCreateVolume("TestExpiredToken")
+	volume = suite.tenantCreateVolume("TestExpiredToken1")
 	if volume != nil {
 		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
 		suite.tenantGroupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
-		suite.tenantDeleteVolume("TestExpiredToken")
+		suite.tenantDeleteVolume("TestExpiredToken1")
 	}
 }
 func (suite *VolumeServiceTestSuite) TestGetVolumes() {
