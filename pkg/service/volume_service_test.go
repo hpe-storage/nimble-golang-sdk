@@ -1,4 +1,4 @@
-// Copyright 2020 - 2021 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package service
 
@@ -37,6 +37,11 @@ type VolumeServiceTestSuite struct {
 	tenantFolderService			  		*FolderService
 }
 
+/**
+ * This function returns 2 group services:
+ * The first return value is a group service for non-tenant
+ * The second return value is a group service for tenant
+ */
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
 	nonTenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
@@ -243,7 +248,7 @@ func (suite *VolumeServiceTestSuite) TestGetNonExistentVolumeByID() {
 	}
 	/** Ideally, volume should be NIL (i.e. API returns HTTP 404 NOT FOUND)
 	 * But for some reason, it's returning HTTP 200, body = {}
-	 * So right not we test it by asserting volume.ID = nil.
+	 * So right now we test it by asserting volume.ID = nil.
 	 * TODO: Change this to assert.Nil(suite.T(), volume) once the bug is fixed
 	 */
 
