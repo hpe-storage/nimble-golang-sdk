@@ -152,25 +152,22 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 
 func (suite *VolumeServiceTestSuite) nonTenantCreateVolume(volumeName string) *nimbleos.Volume {
 	// Create a volume for non tenant
-	volume, _ := suite.nonTenantVolumeService.GetVolumeByName(volumeName)
-	if volume == nil {
-		volume = suite.getDefaultVolumeOptions()
-		volume.Name = &volumeName
-		volume, _ = suite.nonTenantVolumeService.CreateVolume(volume)
+	volume := suite.getDefaultVolumeOptions()
+	volume.Name = &volumeName
+	volume, err := suite.nonTenantVolumeService.CreateVolume(volume)
+	if err != nil {
+		suite.T().Errorf("volume=%v, error=%v", volume, err.Error())
 	}
 	return volume
 }
 
 func (suite *VolumeServiceTestSuite) tenantCreateVolume(volumeName string) *nimbleos.Volume {
 	// Create a volume for tenant
-	volume, _ := suite.tenantVolumeService.GetVolumeByName(volumeName)
-	if volume == nil {
-		volume = suite.getDefaultVolumeOptions()
-		volume.Name = &volumeName
-		volume, err := suite.tenantVolumeService.CreateVolume(volume)
-		if err != nil {
-			suite.T().Errorf("volume=%v, error=%v", volume, err.Error())
-		}
+	volume := suite.getDefaultVolumeOptions()
+	volume.Name = &volumeName
+	volume, err := suite.tenantVolumeService.CreateVolume(volume)
+	if err != nil {
+		suite.T().Errorf("volume=%v, error=%v", volume, err.Error())
 	}
 	return volume
 }
@@ -622,14 +619,19 @@ func (suite *VolumeServiceTestSuite) TestACLVolume() {
 }
 
 func (suite *VolumeServiceTestSuite) TestExpiredToken() {
-	volume := suite.nonTenantCreateVolume("TestExpiredToken")
+	volume, _ := suite.nonTenantVolumeService.GetVolumeByName("TestExpiredToken")
+	if volume == nil {
+		volume = suite.getDefaultVolumeOptions()
+		volume.Name = param.NewString("TestExpiredToken")
+		volume, _ = suite.tenantVolumeService.CreateVolume(volume)
+	}
+
 	if volume != nil {
 		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
 		suite.nonTenantGroupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
 		suite.nonTenantDeleteVolume("TestExpiredToken")
 	}
 
-	volume = suite.tenantCreateVolume("TestExpiredToken1")
 	if volume != nil {
 		//Set invalid session Token 9d255b36c700ec8b56e2064e67f01c45
 		suite.tenantGroupService.client.SessionToken = "9d255b36c700ec8b56e2064e67f01c45"
