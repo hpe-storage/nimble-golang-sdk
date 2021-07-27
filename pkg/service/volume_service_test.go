@@ -44,16 +44,16 @@ type VolumeServiceTestSuite struct {
  */
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
-	nonTenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-		WithUser("xxx"), WithPassword("xxx"))
+	nonTenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+		WithUser("admin"), WithPassword("admin"))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
 		return nil, nil
 	}
 
-	tenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-		WithTenantUser("xxx"), WithPassword("xxx"))
+	tenantGroupService, err := NewNimbleGroupService(WithHost("10.157.82.90"),
+		WithTenantUser("raunak"), WithPassword("Nim123Boli"))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
@@ -97,9 +97,9 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.nonTenantCreateVolume("DeleteVolume")
 	suite.nonTenantCreateVolume("DestroyVolume")
 
-	suite.tenantCreateVolume("GetVolume")
-	suite.tenantCreateVolume("DeleteVolume")
-	suite.tenantCreateVolume("DestroyVolume")
+	suite.tenantCreateVolume("GetVolume1")
+	suite.tenantCreateVolume("DeleteVolume1")
+	suite.tenantCreateVolume("DestroyVolume1")
 	//volcoll
 	suite.nonTenantCreateVolColl("TestVolColl")
 	suite.tenantCreateVolColl("TestVolColl1")
@@ -111,9 +111,9 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 	suite.nonTenantDeleteVolume("DeleteVolume")
 	suite.nonTenantDeleteVolume("GetVolume")
 
-	suite.tenantDeleteVolume("DestroyVolume")
-	suite.tenantDeleteVolume("DeleteVolume")
-	suite.tenantDeleteVolume("GetVolume")
+	suite.tenantDeleteVolume("DestroyVolume1")
+	suite.tenantDeleteVolume("DeleteVolume1")
+	suite.tenantDeleteVolume("GetVolume1")
 
 	suite.nonTenantDeleteVollColl("TestVolColl")
 	suite.tenantDeleteVollColl("TestVolColl1")
@@ -134,7 +134,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 
 	// TODO: replace <foldername> with your folder's name (owned by both admin and tenant)
 	// to make the test work
-	folder, _ := suite.nonTenantFolderService.GetFolderByName("<foldername>")
+	folder, _ := suite.nonTenantFolderService.GetFolderByName("tenant1")
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
@@ -361,7 +361,7 @@ func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 	*/
 
 	// Test tenant
-	// volume, _ = suite.tenantVolumeService.GetVolumeByName("GetVolume")
+	// volume, _ = suite.tenantVolumeService.GetVolumeByName("GetVolume1")
 	// if volume != nil {
 	// 	var volList [1]*string
 	// 	volList[0] = volume.ID
@@ -401,7 +401,6 @@ func (suite *VolumeServiceTestSuite) TestAddVolumeVolcoll() {
 	if volume != nil {
 		volcoll, _ := suite.tenantVolumeCollectionService.GetVolumeCollectionByName("TestVolColl1")
 		// add volume to volcoll
-		suite.tenantVolumeService.DisassociateVolume(*volume.ID)
 		err := suite.tenantVolumeService.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
 			suite.T().Fatalf("Failed to add a %s volume to %s volume collection", *volume.ID, *volcoll.ID)
@@ -704,6 +703,12 @@ func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
 	}
 
 	// Test tenant
+	sf = &param.SearchFilter{
+		FieldName: nimbleos.VolumeFields.Name,
+		Operator:  param.EQUALS.String(),
+		Value:     "GetVolume1",
+	}
+
 	volumes, _ = suite.tenantVolumeService.GetVolumes(sfilter)
 	if len(volumes) == 0 {
 		suite.T().Errorf("TestGetVolumes(): Unable to fetch volumes")
