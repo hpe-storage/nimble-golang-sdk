@@ -23,18 +23,18 @@ type VolumeServiceTestSuite struct {
 	nonTenantSnapshotCollectionService *SnapshotCollectionService
 	nonTenantIgroupService             *InitiatorGroupService
 	nonTenantAclService                *AccessControlRecordService
-	nonTenantFolderService			   *FolderService
-	nonTenantPoolService			   sdkprovider.PoolService
-	nonTenantUserService			   *UserService
+	nonTenantFolderService             *FolderService
+	nonTenantPoolService               sdkprovider.PoolService
+	nonTenantUserService               *UserService
 
-	tenantGroupService       	        *NsGroupService
-	tenantVolumeService      	        sdkprovider.VolumeService
-	tenantPerformancePolicyService  	*PerformancePolicyService
-	tenantVolumeCollectionService  	 	*VolumeCollectionService
-	tenantSnapshotCollectionService		*SnapshotCollectionService
-	tenantIgroupService             	*InitiatorGroupService
-	tenantAclService                	*AccessControlRecordService
-	tenantFolderService			  		*FolderService
+	tenantGroupService              *NsGroupService
+	tenantVolumeService             sdkprovider.VolumeService
+	tenantPerformancePolicyService  *PerformancePolicyService
+	tenantVolumeCollectionService   *VolumeCollectionService
+	tenantSnapshotCollectionService *SnapshotCollectionService
+	tenantIgroupService             *InitiatorGroupService
+	tenantAclService                *AccessControlRecordService
+	tenantFolderService             *FolderService
 }
 
 /**
@@ -145,7 +145,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 		LimitMbps:      &limitMbpsField,
 		MultiInitiator: param.NewBool(true),
 		AgentType:      nimbleos.NsAgentTypeNone,
-		FolderId:		folder.ID,
+		FolderId:       folder.ID,
 	}
 	return newVolume
 }
@@ -355,7 +355,7 @@ func (suite *VolumeServiceTestSuite) TestOnlineBulkVolumes() {
 	* v1/volumes/actions/bulk_set_online_and_offline
 	* doesn't work for tenant
 	* TODO: remove comments once the bug is fixed
-	*/
+	 */
 
 	// Test tenant
 	// volume, _ = suite.tenantVolumeService.GetVolumeByName("GetVolume1")
@@ -529,7 +529,7 @@ func (suite *VolumeServiceTestSuite) TestCloneVolume() {
 			Clone:      param.NewBool(true),
 			BaseSnapId: snapColl.SnapshotsList[0].SnapId,
 			Name:       param.NewString("TestCloneVolume"),
-			FolderId: 	volume.FolderId,
+			FolderId:   volume.FolderId,
 		}
 		// Test tenant: restore volume to snapcoll
 		_, err = suite.tenantVolumeService.CreateVolume(cloneVolume)
