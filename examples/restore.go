@@ -12,7 +12,11 @@ import (
 func main() {
 
 	// login to Array, get groupService instance
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", false)
+	groupService, err := service.NewNimbleGroupService(
+		service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"),
+		service.WithoutWaitForAsyncJobs())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return

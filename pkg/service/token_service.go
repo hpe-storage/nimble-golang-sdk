@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package service
 
@@ -94,4 +94,18 @@ func (svc *TokenService) ReportUserDetailsToken(id string) (*nimbleos.NsTokenRep
 
 	resp, err := svc.objectSet.ReportUserDetails(&id)
 	return resp, err
+}
+
+// ValidateOtpToken - validate a supplied OTP authentication code.
+//   Required parameters:
+//       otpCode - Authenticator code to be verified.
+
+func (svc *TokenService) ValidateOtpToken(otpCode string) error {
+
+	if len(otpCode) == 0 {
+		return fmt.Errorf("ValidateOtpToken: invalid parameter specified otpCode: %v ", otpCode)
+	}
+
+	err := svc.objectSet.ValidateOtp(&otpCode)
+	return err
 }

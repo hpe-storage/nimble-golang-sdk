@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package nimbleos
 
@@ -11,6 +11,7 @@ func init() {
 	SessionTokenfield := "session_token"
 	Usernamefield := "username"
 	Passwordfield := "password"
+	OtpCodefield := "otp_code"
 	AppNamefield := "app_name"
 	SdkNamefield := "sdk_name"
 	SourceIpfield := "source_ip"
@@ -23,6 +24,7 @@ func init() {
 		SessionToken: &SessionTokenfield,
 		Username:     &Usernamefield,
 		Password:     &Passwordfield,
+		OtpCode:      &OtpCodefield,
 		AppName:      &AppNamefield,
 		SdkName:      &SdkNamefield,
 		SourceIp:     &SourceIpfield,
@@ -41,6 +43,8 @@ type Token struct {
 	Username *string `json:"username,omitempty"`
 	// Password - Password for the user. A password is required for creating a token.
 	Password *string `json:"password,omitempty"`
+	// OtpCode - One time password code.
+	OtpCode *string `json:"otp_code,omitempty"`
 	// AppName - Application name.
 	AppName *string `json:"app_name,omitempty"`
 	// SdkName - SDK name.

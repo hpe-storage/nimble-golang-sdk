@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package nimbleos
 
@@ -26,6 +26,7 @@ func init() {
 	NtpServerfield := "ntp_server"
 	Timezonefield := "timezone"
 	SyslogdServerfield := "syslogd_server"
+	SetupProgressfield := "setup_progress"
 	TdzPrefixfield := "tdz_prefix"
 	GroupTargetNamefield := "group_target_name"
 	MergeGroupNamefield := "merge_group_name"
@@ -63,6 +64,7 @@ func init() {
 		NtpServer:                        &NtpServerfield,
 		Timezone:                         &Timezonefield,
 		SyslogdServer:                    &SyslogdServerfield,
+		SetupProgress:                    &SetupProgressfield,
 		TdzPrefix:                        &TdzPrefixfield,
 		GroupTargetName:                  &GroupTargetNamefield,
 		MergeGroupName:                   &MergeGroupNamefield,
@@ -101,7 +103,7 @@ type Group struct {
 	SmtpEncryptType *NsSmtpEncryptType `json:"smtp_encrypt_type,omitempty"`
 	// AutosupportEnabled - Whether to send autosupport.
 	AutosupportEnabled *bool `json:"autosupport_enabled,omitempty"`
-	// AllowAnalyticsGui - Specify whether to allow HPE Nimble Storage to use Google Analytics in the GUI.  HPE Nimble Storage uses Google Analytics to gather data related to GUI usage.  The data gathered is used to evaluate and improve the product.
+	// AllowAnalyticsGui - Specify whether to use Google Analytics in the GUI. HPE Storage uses Google Analytics to gather data related to GUI usage. The data gathered is used to evaluate and improve the product.
 	AllowAnalyticsGui *bool `json:"allow_analytics_gui,omitempty"`
 	// AllowSupportTunnel - Whether to allow support tunnel.
 	AllowSupportTunnel *bool `json:"allow_support_tunnel,omitempty"`
@@ -163,6 +165,8 @@ type Group struct {
 	SyslogdServers []*NsFqdnOrIpAndPortObject `json:"syslogd_servers,omitempty"`
 	// VvolEnabled - Are vvols enabled on this group.
 	VvolEnabled *bool `json:"vvol_enabled,omitempty"`
+	// SetupProgress - Progress indicator of complete setup operation.
+	SetupProgress *string `json:"setup_progress,omitempty"`
 	// IscsiEnabled - Whether iSCSI is enabled on this group.
 	IscsiEnabled *bool `json:"iscsi_enabled,omitempty"`
 	// FcEnabled - Whether FC is enabled on this group.
@@ -213,6 +217,8 @@ type Group struct {
 	Tlsv1Enabled *bool `json:"tlsv1_enabled,omitempty"`
 	// CcModeEnabled - Enable or disable Common Criteria mode.
 	CcModeEnabled *bool `json:"cc_mode_enabled,omitempty"`
+	// CertIpsIncluded - Whether to include IPs in group certificate.
+	CertIpsIncluded *bool `json:"cert_ips_included,omitempty"`
 	// GroupSnapshotTtl - Snapshot Time-to-live(TTL) configured at group level for automatic deletion of unmanaged snapshots. Value 0 indicates unlimited TTL.
 	GroupSnapshotTtl *int64 `json:"group_snapshot_ttl,omitempty"`
 	// AutocleanUnmanagedSnapshotsTtlUnit - Unit for unmanaged snapshot time to live.

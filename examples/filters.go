@@ -3,7 +3,6 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
@@ -12,7 +11,10 @@ import (
 func main() {
 
 	// login to Array, get groupService instance
-	groupService, err := service.NewNsGroupService("1.1.1.1", "xxx", "xxx", "v1", false)
+	groupService, err := service.NewNimbleGroupService(
+		service.WithHost("1.1.1.1"),
+		service.WithTenantUser("xxx"),
+		service.WithPassword("xxx"))
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 	}

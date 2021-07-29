@@ -5,6 +5,7 @@ package fakeservice
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 )
 
@@ -22,9 +23,19 @@ type NsGroupService struct {
 }
 
 // NewNsGroupService - initializes NsGroupService
+// This function is deprecated. Use NewNimbleGroupService() to instantiate a new service
 func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool) (gs *NsGroupService, err error) {
-
 	return &NsGroupService{ip: ip}, nil
+}
+
+func NewNimbleGroupService(serviceOpts ...service.ServiceOptions) (gs *NsGroupService, err error) {
+	fakeGroupServiceOption := &service.GroupServiceOption{}
+
+	for _, opt := range serviceOpts {
+		opt(fakeGroupServiceOption)
+	}
+
+	return &NsGroupService{ip: fakeGroupServiceOption.Host}, nil
 }
 
 // SetDebug - enable debugging

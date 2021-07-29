@@ -1,4 +1,4 @@
-// Copyright 2020 Hewlett Packard Enterprise Development LP
+// Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 
 package client
 
@@ -15,12 +15,13 @@ import (
 )
 
 const (
-	groupURIFmt     = "https://%s:5392/%s"
-	clientTimeout   = time.Second * 60 // 1 Minute
-	maxLoginRetries = 1
-	jobTimeout      = time.Second * 300 // 5 Minute
-	jobPollInterval = 5 * time.Second   // Second
-	smAsyncJobId    = "SM_async_job_id"
+	groupURIFmtTenant = "https://%s:443/api/tenant/%s"
+	groupURIFmt       = "https://%s:5392/%s"
+	clientTimeout     = time.Minute
+	maxLoginRetries   = 1
+	jobTimeout        = 5 * time.Minute
+	jobPollInterval   = 5 * time.Second
+	smAsyncJobId      = "SM_async_job_id"
 )
 
 // GroupMgmtClient :
@@ -31,6 +32,7 @@ type GroupMgmtClient struct {
 	WaitOnJob    bool
 	Username     string
 	Password     string
+	isTenant     bool
 }
 
 // DataWrapper is used to represent a generic JSON API payload
@@ -60,7 +62,7 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) *GroupMgmtClient {
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) *GroupMgmtClient {
 	// Get new resty()
 	restyClient := resty.New()
 	restyClient.SetTLSClientConfig(&tls.Config{
@@ -69,19 +71,31 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
-		URL:       fmt.Sprintf("https://%s:5392/%s", ipAddress, apiVersion),
 		Client:    restyClient,
 		WaitOnJob: waitOnJobs,
 		Username:  username,
 		Password:  password,
+		isTenant:  isTenant,
 	}
+
+	if groupMgmtClient.isTenant {
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmtTenant, ipAddress, apiVersion)
+	} else {
+		groupMgmtClient.URL = fmt.Sprintf(groupURIFmt, ipAddress, apiVersion)
+	}
+
 	return groupMgmtClient
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs bool) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) (*GroupMgmtClient, error) {
+	if apiVersion != "v1" {
+		return nil, fmt.Errorf("API version \"%s\" is not recognized", apiVersion)
+	}
+
 	// Get resty client
-	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs)
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, isTenant)
+
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)
 	if err != nil {

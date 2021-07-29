@@ -21,7 +21,7 @@ func TestNewClient(t *testing.T) {
 
 	// Create client
 	var err error
-	client, err = NewClient("x.x.x.x", "xxx", "xxx", "v1", true)
+	client, err = NewClient("x.x.x.x", "xxx", "xxx", "v1", true, false)
 	if err != nil {
 		t.Errorf("NewClient(): Unable to create client, err: %v", err.Error())
 		return
@@ -77,7 +77,7 @@ func TestNewClient(t *testing.T) {
 func TestListGetOrPost(t *testing.T) {
 	// Create GMD client
 	var err error
-	client, err := NewClient("x.x.x.x", "xxx", "xxx", "v1", true)
+	client, err := NewClient("x.x.x.x", "xxx", "xxx", "v1", true, false)
 	if err != nil {
 		t.Errorf("NewGmdClient(): Unable to create GMD client, err: %v", err.Error())
 		return
