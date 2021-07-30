@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsFcConfigRegenerateReturn - Return values of Fibre channel config regeneration.
-// Export NsFcConfigRegenerateReturnFields for advance operations like search filter etc.
+
+// Export NsFcConfigRegenerateReturnFields provides field names to use in filter parameters, for example.
 var NsFcConfigRegenerateReturnFields *NsFcConfigRegenerateReturnStringFields
 
 func init() {
-	ArrayListfield := "array_list"
-	GroupLeaderArrayfield := "group_leader_array"
-	IDfield := "id"
+	fieldArrayList := "array_list"
+	fieldGroupLeaderArray := "group_leader_array"
+	fieldID := "id"
 
 	NsFcConfigRegenerateReturnFields = &NsFcConfigRegenerateReturnStringFields{
-		ArrayList:        &ArrayListfield,
-		GroupLeaderArray: &GroupLeaderArrayfield,
-		ID:               &IDfield,
+		ArrayList:        &fieldArrayList,
+		GroupLeaderArray: &fieldGroupLeaderArray,
+		ID:               &fieldID,
 	}
 }
 

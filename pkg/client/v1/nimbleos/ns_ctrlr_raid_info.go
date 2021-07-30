@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsCtrlrRaidInfo - Information about a controller's raid configuration.
-// Export NsCtrlrRaidInfoFields for advance operations like search filter etc.
+
+// Export NsCtrlrRaidInfoFields provides field names to use in filter parameters, for example.
 var NsCtrlrRaidInfoFields *NsCtrlrRaidInfoStringFields
 
 func init() {
-	RaidIdfield := "raid_id"
-	RaidTypefield := "raid_type"
-	MaxCopiesfield := "max_copies"
-	CurCopiesfield := "cur_copies"
-	IsResyncingfield := "is_resyncing"
+	fieldRaidId := "raid_id"
+	fieldRaidType := "raid_type"
+	fieldMaxCopies := "max_copies"
+	fieldCurCopies := "cur_copies"
+	fieldIsResyncing := "is_resyncing"
 
 	NsCtrlrRaidInfoFields = &NsCtrlrRaidInfoStringFields{
-		RaidId:      &RaidIdfield,
-		RaidType:    &RaidTypefield,
-		MaxCopies:   &MaxCopiesfield,
-		CurCopies:   &CurCopiesfield,
-		IsResyncing: &IsResyncingfield,
+		RaidId:      &fieldRaidId,
+		RaidType:    &fieldRaidType,
+		MaxCopies:   &fieldMaxCopies,
+		CurCopies:   &fieldCurCopies,
+		IsResyncing: &fieldIsResyncing,
 	}
 }
 

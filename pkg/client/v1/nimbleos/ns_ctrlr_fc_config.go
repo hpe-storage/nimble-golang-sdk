@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsCtrlrFcConfig - Controller Fibre Channel configuration.
-// Export NsCtrlrFcConfigFields for advance operations like search filter etc.
+
+// Export NsCtrlrFcConfigFields provides field names to use in filter parameters, for example.
 var NsCtrlrFcConfigFields *NsCtrlrFcConfigStringFields
 
 func init() {
-	FcPortListfield := "fc_port_list"
-	FcInterfaceListfield := "fc_interface_list"
+	fieldFcPortList := "fc_port_list"
+	fieldFcInterfaceList := "fc_interface_list"
 
 	NsCtrlrFcConfigFields = &NsCtrlrFcConfigStringFields{
-		FcPortList:      &FcPortListfield,
-		FcInterfaceList: &FcInterfaceListfield,
+		FcPortList:      &fieldFcPortList,
+		FcInterfaceList: &fieldFcInterfaceList,
 	}
 }
 

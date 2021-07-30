@@ -3,28 +3,29 @@
 package nimbleos
 
 // NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
-// Export NsFcSessionInitiatorFields for advance operations like search filter etc.
+
+// Export NsFcSessionInitiatorFields provides field names to use in filter parameters, for example.
 var NsFcSessionInitiatorFields *NsFcSessionInitiatorStringFields
 
 func init() {
-	InitiatorAliasfield := "initiator_alias"
-	InitiatorWwpnfield := "initiator_wwpn"
-	InitiatorWwnnfield := "initiator_wwnn"
-	InitiatorSwitchNamefield := "initiator_switch_name"
-	InitiatorSwitchPortfield := "initiator_switch_port"
-	InitiatorSymbolicPortnamefield := "initiator_symbolic_portname"
-	InitiatorSymbolicNodenamefield := "initiator_symbolic_nodename"
-	InitiatorFcidfield := "initiator_fcid"
+	fieldInitiatorAlias := "initiator_alias"
+	fieldInitiatorWwpn := "initiator_wwpn"
+	fieldInitiatorWwnn := "initiator_wwnn"
+	fieldInitiatorSwitchName := "initiator_switch_name"
+	fieldInitiatorSwitchPort := "initiator_switch_port"
+	fieldInitiatorSymbolicPortname := "initiator_symbolic_portname"
+	fieldInitiatorSymbolicNodename := "initiator_symbolic_nodename"
+	fieldInitiatorFcid := "initiator_fcid"
 
 	NsFcSessionInitiatorFields = &NsFcSessionInitiatorStringFields{
-		InitiatorAlias:            &InitiatorAliasfield,
-		InitiatorWwpn:             &InitiatorWwpnfield,
-		InitiatorWwnn:             &InitiatorWwnnfield,
-		InitiatorSwitchName:       &InitiatorSwitchNamefield,
-		InitiatorSwitchPort:       &InitiatorSwitchPortfield,
-		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-		InitiatorFcid:             &InitiatorFcidfield,
+		InitiatorAlias:            &fieldInitiatorAlias,
+		InitiatorWwpn:             &fieldInitiatorWwpn,
+		InitiatorWwnn:             &fieldInitiatorWwnn,
+		InitiatorSwitchName:       &fieldInitiatorSwitchName,
+		InitiatorSwitchPort:       &fieldInitiatorSwitchPort,
+		InitiatorSymbolicPortname: &fieldInitiatorSymbolicPortname,
+		InitiatorSymbolicNodename: &fieldInitiatorSymbolicNodename,
+		InitiatorFcid:             &fieldInitiatorFcid,
 	}
 }
 

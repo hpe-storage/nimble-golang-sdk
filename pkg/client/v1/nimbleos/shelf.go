@@ -3,52 +3,53 @@
 package nimbleos
 
 // Shelf - Disk shelf and head unit houses disks and controller.
-// Export ShelfFields for advance operations like search filter etc.
+
+// Export ShelfFields provides field names to use in filter parameters, for example.
 var ShelfFields *ShelfStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayNamefield := "array_name"
-	ArrayIdfield := "array_id"
-	PartialResponseOkfield := "partial_response_ok"
-	ChassisTypefield := "chassis_type"
-	Ctrlrsfield := "ctrlrs"
-	Serialfield := "serial"
-	Modelfield := "model"
-	ModelExtfield := "model_ext"
-	ChassisSensorsfield := "chassis_sensors"
-	PsuOverallStatusfield := "psu_overall_status"
-	FanOverallStatusfield := "fan_overall_status"
-	TempOverallStatusfield := "temp_overall_status"
-	DiskSetsfield := "disk_sets"
-	Activatedfield := "activated"
-	Drivesetfield := "driveset"
-	Forcefield := "force"
-	AcceptForeignfield := "accept_foreign"
-	AcceptDedupeImpactfield := "accept_dedupe_impact"
-	LastRequestfield := "last_request"
+	fieldID := "id"
+	fieldArrayName := "array_name"
+	fieldArrayId := "array_id"
+	fieldPartialResponseOk := "partial_response_ok"
+	fieldChassisType := "chassis_type"
+	fieldCtrlrs := "ctrlrs"
+	fieldSerial := "serial"
+	fieldModel := "model"
+	fieldModelExt := "model_ext"
+	fieldChassisSensors := "chassis_sensors"
+	fieldPsuOverallStatus := "psu_overall_status"
+	fieldFanOverallStatus := "fan_overall_status"
+	fieldTempOverallStatus := "temp_overall_status"
+	fieldDiskSets := "disk_sets"
+	fieldActivated := "activated"
+	fieldDriveset := "driveset"
+	fieldForce := "force"
+	fieldAcceptForeign := "accept_foreign"
+	fieldAcceptDedupeImpact := "accept_dedupe_impact"
+	fieldLastRequest := "last_request"
 
 	ShelfFields = &ShelfStringFields{
-		ID:                 &IDfield,
-		ArrayName:          &ArrayNamefield,
-		ArrayId:            &ArrayIdfield,
-		PartialResponseOk:  &PartialResponseOkfield,
-		ChassisType:        &ChassisTypefield,
-		Ctrlrs:             &Ctrlrsfield,
-		Serial:             &Serialfield,
-		Model:              &Modelfield,
-		ModelExt:           &ModelExtfield,
-		ChassisSensors:     &ChassisSensorsfield,
-		PsuOverallStatus:   &PsuOverallStatusfield,
-		FanOverallStatus:   &FanOverallStatusfield,
-		TempOverallStatus:  &TempOverallStatusfield,
-		DiskSets:           &DiskSetsfield,
-		Activated:          &Activatedfield,
-		Driveset:           &Drivesetfield,
-		Force:              &Forcefield,
-		AcceptForeign:      &AcceptForeignfield,
-		AcceptDedupeImpact: &AcceptDedupeImpactfield,
-		LastRequest:        &LastRequestfield,
+		ID:                 &fieldID,
+		ArrayName:          &fieldArrayName,
+		ArrayId:            &fieldArrayId,
+		PartialResponseOk:  &fieldPartialResponseOk,
+		ChassisType:        &fieldChassisType,
+		Ctrlrs:             &fieldCtrlrs,
+		Serial:             &fieldSerial,
+		Model:              &fieldModel,
+		ModelExt:           &fieldModelExt,
+		ChassisSensors:     &fieldChassisSensors,
+		PsuOverallStatus:   &fieldPsuOverallStatus,
+		FanOverallStatus:   &fieldFanOverallStatus,
+		TempOverallStatus:  &fieldTempOverallStatus,
+		DiskSets:           &fieldDiskSets,
+		Activated:          &fieldActivated,
+		Driveset:           &fieldDriveset,
+		Force:              &fieldForce,
+		AcceptForeign:      &fieldAcceptForeign,
+		AcceptDedupeImpact: &fieldAcceptDedupeImpact,
+		LastRequest:        &fieldLastRequest,
 	}
 }
 

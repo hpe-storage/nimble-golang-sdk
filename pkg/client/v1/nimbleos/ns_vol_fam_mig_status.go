@@ -3,34 +3,35 @@
 package nimbleos
 
 // NsVolFamMigStatus - Data migration status for a group of related volumes.
-// Export NsVolFamMigStatusFields for advance operations like search filter etc.
+
+// Export NsVolFamMigStatusFields provides field names to use in filter parameters, for example.
 var NsVolFamMigStatusFields *NsVolFamMigStatusStringFields
 
 func init() {
-	RootVolIdfield := "root_vol_id"
-	RootVolNamefield := "root_vol_name"
-	SourcePoolIdfield := "source_pool_id"
-	SourcePoolNamefield := "source_pool_name"
-	DestPoolIdfield := "dest_pool_id"
-	DestPoolNamefield := "dest_pool_name"
-	MoveBytesMigratedfield := "move_bytes_migrated"
-	MoveBytesRemainingfield := "move_bytes_remaining"
-	MoveStartTimefield := "move_start_time"
-	MoveEstComplTimefield := "move_est_compl_time"
-	ArrayListfield := "array_list"
+	fieldRootVolId := "root_vol_id"
+	fieldRootVolName := "root_vol_name"
+	fieldSourcePoolId := "source_pool_id"
+	fieldSourcePoolName := "source_pool_name"
+	fieldDestPoolId := "dest_pool_id"
+	fieldDestPoolName := "dest_pool_name"
+	fieldMoveBytesMigrated := "move_bytes_migrated"
+	fieldMoveBytesRemaining := "move_bytes_remaining"
+	fieldMoveStartTime := "move_start_time"
+	fieldMoveEstComplTime := "move_est_compl_time"
+	fieldArrayList := "array_list"
 
 	NsVolFamMigStatusFields = &NsVolFamMigStatusStringFields{
-		RootVolId:          &RootVolIdfield,
-		RootVolName:        &RootVolNamefield,
-		SourcePoolId:       &SourcePoolIdfield,
-		SourcePoolName:     &SourcePoolNamefield,
-		DestPoolId:         &DestPoolIdfield,
-		DestPoolName:       &DestPoolNamefield,
-		MoveBytesMigrated:  &MoveBytesMigratedfield,
-		MoveBytesRemaining: &MoveBytesRemainingfield,
-		MoveStartTime:      &MoveStartTimefield,
-		MoveEstComplTime:   &MoveEstComplTimefield,
-		ArrayList:          &ArrayListfield,
+		RootVolId:          &fieldRootVolId,
+		RootVolName:        &fieldRootVolName,
+		SourcePoolId:       &fieldSourcePoolId,
+		SourcePoolName:     &fieldSourcePoolName,
+		DestPoolId:         &fieldDestPoolId,
+		DestPoolName:       &fieldDestPoolName,
+		MoveBytesMigrated:  &fieldMoveBytesMigrated,
+		MoveBytesRemaining: &fieldMoveBytesRemaining,
+		MoveStartTime:      &fieldMoveStartTime,
+		MoveEstComplTime:   &fieldMoveEstComplTime,
+		ArrayList:          &fieldArrayList,
 	}
 }
 

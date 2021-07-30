@@ -3,70 +3,71 @@
 package nimbleos
 
 // NsGroupMergeReturn - Response of group merge validation.
-// Export NsGroupMergeReturnFields for advance operations like search filter etc.
+
+// Export NsGroupMergeReturnFields provides field names to use in filter parameters, for example.
 var NsGroupMergeReturnFields *NsGroupMergeReturnStringFields
 
 func init() {
-	OnlineVolsfield := "online_vols"
-	OnlineSnapsfield := "online_snaps"
-	ActivePartnersfield := "active_partners"
-	DstNatPartnersfield := "dst_nat_partners"
-	SrcThrottlesfield := "src_throttles"
-	DstThrottlesfield := "dst_throttles"
-	ReplObjsfield := "repl_objs"
-	NameConflictsfield := "name_conflicts"
-	NameConflictsManualResolvefield := "name_conflicts_manual_resolve"
-	SerialConflictsfield := "serial_conflicts"
-	AppUuidConflictsfield := "app_uuid_conflicts"
-	NameConflictsAndOwnersfield := "name_conflicts_and_owners"
-	LimitViolationsfield := "limit_violations"
-	SnapRetainLimitViolationsfield := "snap_retain_limit_violations"
-	NetworkErrorListfield := "network_error_list"
-	AutoSwitchoverConflictsfield := "auto_switchover_conflicts"
-	ErrorListfield := "error_list"
-	AliasConflictsfield := "alias_conflicts"
-	OnlineFcIntfsfield := "online_fc_intfs"
-	LunConflictsfield := "lun_conflicts"
-	SrcSidfield := "src_sid"
-	SrcGroupNamefield := "src_group_name"
-	DstGroupNamefield := "dst_group_name"
-	DstGroupSwversionfield := "dst_group_swversion"
-	HtypeNameConflictsfield := "htype_name_conflicts"
-	HostTypeConflictsfield := "host_type_conflicts"
-	ValidationErrorfield := "validation_error"
-	ValidationErrorMsgfield := "validation_error_msg"
-	WarningListfield := "warning_list"
+	fieldOnlineVols := "online_vols"
+	fieldOnlineSnaps := "online_snaps"
+	fieldActivePartners := "active_partners"
+	fieldDstNatPartners := "dst_nat_partners"
+	fieldSrcThrottles := "src_throttles"
+	fieldDstThrottles := "dst_throttles"
+	fieldReplObjs := "repl_objs"
+	fieldNameConflicts := "name_conflicts"
+	fieldNameConflictsManualResolve := "name_conflicts_manual_resolve"
+	fieldSerialConflicts := "serial_conflicts"
+	fieldAppUuidConflicts := "app_uuid_conflicts"
+	fieldNameConflictsAndOwners := "name_conflicts_and_owners"
+	fieldLimitViolations := "limit_violations"
+	fieldSnapRetainLimitViolations := "snap_retain_limit_violations"
+	fieldNetworkErrorList := "network_error_list"
+	fieldAutoSwitchoverConflicts := "auto_switchover_conflicts"
+	fieldErrorList := "error_list"
+	fieldAliasConflicts := "alias_conflicts"
+	fieldOnlineFcIntfs := "online_fc_intfs"
+	fieldLunConflicts := "lun_conflicts"
+	fieldSrcSid := "src_sid"
+	fieldSrcGroupName := "src_group_name"
+	fieldDstGroupName := "dst_group_name"
+	fieldDstGroupSwversion := "dst_group_swversion"
+	fieldHtypeNameConflicts := "htype_name_conflicts"
+	fieldHostTypeConflicts := "host_type_conflicts"
+	fieldValidationError := "validation_error"
+	fieldValidationErrorMsg := "validation_error_msg"
+	fieldWarningList := "warning_list"
 
 	NsGroupMergeReturnFields = &NsGroupMergeReturnStringFields{
-		OnlineVols:                 &OnlineVolsfield,
-		OnlineSnaps:                &OnlineSnapsfield,
-		ActivePartners:             &ActivePartnersfield,
-		DstNatPartners:             &DstNatPartnersfield,
-		SrcThrottles:               &SrcThrottlesfield,
-		DstThrottles:               &DstThrottlesfield,
-		ReplObjs:                   &ReplObjsfield,
-		NameConflicts:              &NameConflictsfield,
-		NameConflictsManualResolve: &NameConflictsManualResolvefield,
-		SerialConflicts:            &SerialConflictsfield,
-		AppUuidConflicts:           &AppUuidConflictsfield,
-		NameConflictsAndOwners:     &NameConflictsAndOwnersfield,
-		LimitViolations:            &LimitViolationsfield,
-		SnapRetainLimitViolations:  &SnapRetainLimitViolationsfield,
-		NetworkErrorList:           &NetworkErrorListfield,
-		AutoSwitchoverConflicts:    &AutoSwitchoverConflictsfield,
-		ErrorList:                  &ErrorListfield,
-		AliasConflicts:             &AliasConflictsfield,
-		OnlineFcIntfs:              &OnlineFcIntfsfield,
-		LunConflicts:               &LunConflictsfield,
-		SrcSid:                     &SrcSidfield,
-		SrcGroupName:               &SrcGroupNamefield,
-		DstGroupName:               &DstGroupNamefield,
-		DstGroupSwversion:          &DstGroupSwversionfield,
-		HtypeNameConflicts:         &HtypeNameConflictsfield,
-		HostTypeConflicts:          &HostTypeConflictsfield,
-		ValidationError:            &ValidationErrorfield,
-		ValidationErrorMsg:         &ValidationErrorMsgfield,
-		WarningList:                &WarningListfield,
+		OnlineVols:                 &fieldOnlineVols,
+		OnlineSnaps:                &fieldOnlineSnaps,
+		ActivePartners:             &fieldActivePartners,
+		DstNatPartners:             &fieldDstNatPartners,
+		SrcThrottles:               &fieldSrcThrottles,
+		DstThrottles:               &fieldDstThrottles,
+		ReplObjs:                   &fieldReplObjs,
+		NameConflicts:              &fieldNameConflicts,
+		NameConflictsManualResolve: &fieldNameConflictsManualResolve,
+		SerialConflicts:            &fieldSerialConflicts,
+		AppUuidConflicts:           &fieldAppUuidConflicts,
+		NameConflictsAndOwners:     &fieldNameConflictsAndOwners,
+		LimitViolations:            &fieldLimitViolations,
+		SnapRetainLimitViolations:  &fieldSnapRetainLimitViolations,
+		NetworkErrorList:           &fieldNetworkErrorList,
+		AutoSwitchoverConflicts:    &fieldAutoSwitchoverConflicts,
+		ErrorList:                  &fieldErrorList,
+		AliasConflicts:             &fieldAliasConflicts,
+		OnlineFcIntfs:              &fieldOnlineFcIntfs,
+		LunConflicts:               &fieldLunConflicts,
+		SrcSid:                     &fieldSrcSid,
+		SrcGroupName:               &fieldSrcGroupName,
+		DstGroupName:               &fieldDstGroupName,
+		DstGroupSwversion:          &fieldDstGroupSwversion,
+		HtypeNameConflicts:         &fieldHtypeNameConflicts,
+		HostTypeConflicts:          &fieldHostTypeConflicts,
+		ValidationError:            &fieldValidationError,
+		ValidationErrorMsg:         &fieldValidationErrorMsg,
+		WarningList:                &fieldWarningList,
 	}
 }
 

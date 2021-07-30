@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsCtrlrNvmeCard - NVMe accelerator card.
-// Export NsCtrlrNvmeCardFields for advance operations like search filter etc.
+
+// Export NsCtrlrNvmeCardFields provides field names to use in filter parameters, for example.
 var NsCtrlrNvmeCardFields *NsCtrlrNvmeCardStringFields
 
 func init() {
-	SerialNumberfield := "serial_number"
-	Sizefield := "size"
-	Statefield := "state"
+	fieldSerialNumber := "serial_number"
+	fieldSize := "size"
+	fieldState := "state"
 
 	NsCtrlrNvmeCardFields = &NsCtrlrNvmeCardStringFields{
-		SerialNumber: &SerialNumberfield,
-		Size:         &Sizefield,
-		State:        &Statefield,
+		SerialNumber: &fieldSerialNumber,
+		Size:         &fieldSize,
+		State:        &fieldState,
 	}
 }
 

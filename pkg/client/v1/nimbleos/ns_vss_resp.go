@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsVssResp - Response from VSS app server.
-// Export NsVssRespFields for advance operations like search filter etc.
+
+// Export NsVssRespFields provides field names to use in filter parameters, for example.
 var NsVssRespFields *NsVssRespStringFields
 
 func init() {
-	VssErrorfield := "vss_error"
-	VssErrorMessagefield := "vss_error_message"
+	fieldVssError := "vss_error"
+	fieldVssErrorMessage := "vss_error_message"
 
 	NsVssRespFields = &NsVssRespStringFields{
-		VssError:        &VssErrorfield,
-		VssErrorMessage: &VssErrorMessagefield,
+		VssError:        &fieldVssError,
+		VssErrorMessage: &fieldVssErrorMessage,
 	}
 }
 

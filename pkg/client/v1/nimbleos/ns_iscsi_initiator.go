@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsISCSIInitiator - ISCSI initiator.
-// Export NsISCSIInitiatorFields for advance operations like search filter etc.
+
+// Export NsISCSIInitiatorFields provides field names to use in filter parameters, for example.
 var NsISCSIInitiatorFields *NsISCSIInitiatorStringFields
 
 func init() {
-	IDfield := "id"
-	InitiatorIdfield := "initiator_id"
-	Labelfield := "label"
-	Iqnfield := "iqn"
-	IpAddressfield := "ip_address"
+	fieldID := "id"
+	fieldInitiatorId := "initiator_id"
+	fieldLabel := "label"
+	fieldIqn := "iqn"
+	fieldIpAddress := "ip_address"
 
 	NsISCSIInitiatorFields = &NsISCSIInitiatorStringFields{
-		ID:          &IDfield,
-		InitiatorId: &InitiatorIdfield,
-		Label:       &Labelfield,
-		Iqn:         &Iqnfield,
-		IpAddress:   &IpAddressfield,
+		ID:          &fieldID,
+		InitiatorId: &fieldInitiatorId,
+		Label:       &fieldLabel,
+		Iqn:         &fieldIqn,
+		IpAddress:   &fieldIpAddress,
 	}
 }
 

@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsFqdnOrIpAndPortObject - Object wrapper of Fqdn/IP Address and Port numbers.
-// Export NsFqdnOrIpAndPortObjectFields for advance operations like search filter etc.
+
+// Export NsFqdnOrIpAndPortObjectFields provides field names to use in filter parameters, for example.
 var NsFqdnOrIpAndPortObjectFields *NsFqdnOrIpAndPortObjectStringFields
 
 func init() {
-	SyslogServerfield := "syslog_server"
-	SyslogPortfield := "syslog_port"
+	fieldSyslogServer := "syslog_server"
+	fieldSyslogPort := "syslog_port"
 
 	NsFqdnOrIpAndPortObjectFields = &NsFqdnOrIpAndPortObjectStringFields{
-		SyslogServer: &SyslogServerfield,
-		SyslogPort:   &SyslogPortfield,
+		SyslogServer: &fieldSyslogServer,
+		SyslogPort:   &fieldSyslogPort,
 	}
 }
 

@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsAssignedIP - IP address assignment details to network interface.
-// Export NsAssignedIPFields for advance operations like search filter etc.
+
+// Export NsAssignedIPFields provides field names to use in filter parameters, for example.
 var NsAssignedIPFields *NsAssignedIPStringFields
 
 func init() {
-	VlanIdfield := "vlan_id"
-	Ipfield := "ip"
+	fieldVlanId := "vlan_id"
+	fieldIp := "ip"
 
 	NsAssignedIPFields = &NsAssignedIPStringFields{
-		VlanId: &VlanIdfield,
-		Ip:     &Ipfield,
+		VlanId: &fieldVlanId,
+		Ip:     &fieldIp,
 	}
 }
 

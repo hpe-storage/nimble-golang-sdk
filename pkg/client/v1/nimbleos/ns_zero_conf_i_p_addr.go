@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsZeroConfIPAddr - Zero Conf of array.
-// Export NsZeroConfIPAddrFields for advance operations like search filter etc.
+
+// Export NsZeroConfIPAddrFields provides field names to use in filter parameters, for example.
 var NsZeroConfIPAddrFields *NsZeroConfIPAddrStringFields
 
 func init() {
-	Nicfield := "nic"
-	LocalIpaddrfield := "local_ipaddr"
-	RemoteIpaddrfield := "remote_ipaddr"
+	fieldNic := "nic"
+	fieldLocalIpaddr := "local_ipaddr"
+	fieldRemoteIpaddr := "remote_ipaddr"
 
 	NsZeroConfIPAddrFields = &NsZeroConfIPAddrStringFields{
-		Nic:          &Nicfield,
-		LocalIpaddr:  &LocalIpaddrfield,
-		RemoteIpaddr: &RemoteIpaddrfield,
+		Nic:          &fieldNic,
+		LocalIpaddr:  &fieldLocalIpaddr,
+		RemoteIpaddr: &fieldRemoteIpaddr,
 	}
 }
 

@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsReplPairListWithObjectType - Replicated objects of the specified type.
-// Export NsReplPairListWithObjectTypeFields for advance operations like search filter etc.
+
+// Export NsReplPairListWithObjectTypeFields provides field names to use in filter parameters, for example.
 var NsReplPairListWithObjectTypeFields *NsReplPairListWithObjectTypeStringFields
 
 func init() {
-	ObjTypefield := "obj_type"
-	ReplListfield := "repl_list"
+	fieldObjType := "obj_type"
+	fieldReplList := "repl_list"
 
 	NsReplPairListWithObjectTypeFields = &NsReplPairListWithObjectTypeStringFields{
-		ObjType:  &ObjTypefield,
-		ReplList: &ReplListfield,
+		ObjType:  &fieldObjType,
+		ReplList: &fieldReplList,
 	}
 }
 

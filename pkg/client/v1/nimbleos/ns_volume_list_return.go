@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsVolumeListReturn - Object containing a list of volume names and IDs.
-// Export NsVolumeListReturnFields for advance operations like search filter etc.
+
+// Export NsVolumeListReturnFields provides field names to use in filter parameters, for example.
 var NsVolumeListReturnFields *NsVolumeListReturnStringFields
 
 func init() {
-	VolListfield := "vol_list"
+	fieldVolList := "vol_list"
 
 	NsVolumeListReturnFields = &NsVolumeListReturnStringFields{
-		VolList: &VolListfield,
+		VolList: &fieldVolList,
 	}
 }
 

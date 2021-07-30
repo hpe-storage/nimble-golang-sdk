@@ -3,40 +3,41 @@
 package nimbleos
 
 // Event - View events.
-// Export EventFields for advance operations like search filter etc.
+
+// Export EventFields provides field names to use in filter parameters, for example.
 var EventFields *EventStringFields
 
 func init() {
-	IDfield := "id"
-	Typefield := "type"
-	Namefield := "name"
-	Scopefield := "scope"
-	Targetfield := "target"
-	TargetTypefield := "target_type"
-	Timestampfield := "timestamp"
-	Categoryfield := "category"
-	Severityfield := "severity"
-	Summaryfield := "summary"
-	Activityfield := "activity"
-	AlarmIdfield := "alarm_id"
-	Paramsfield := "params"
-	TenantIdfield := "tenant_id"
+	fieldID := "id"
+	fieldType := "type"
+	fieldName := "name"
+	fieldScope := "scope"
+	fieldTarget := "target"
+	fieldTargetType := "target_type"
+	fieldTimestamp := "timestamp"
+	fieldCategory := "category"
+	fieldSeverity := "severity"
+	fieldSummary := "summary"
+	fieldActivity := "activity"
+	fieldAlarmId := "alarm_id"
+	fieldParams := "params"
+	fieldTenantId := "tenant_id"
 
 	EventFields = &EventStringFields{
-		ID:         &IDfield,
-		Type:       &Typefield,
-		Name:       &Namefield,
-		Scope:      &Scopefield,
-		Target:     &Targetfield,
-		TargetType: &TargetTypefield,
-		Timestamp:  &Timestampfield,
-		Category:   &Categoryfield,
-		Severity:   &Severityfield,
-		Summary:    &Summaryfield,
-		Activity:   &Activityfield,
-		AlarmId:    &AlarmIdfield,
-		Params:     &Paramsfield,
-		TenantId:   &TenantIdfield,
+		ID:         &fieldID,
+		Type:       &fieldType,
+		Name:       &fieldName,
+		Scope:      &fieldScope,
+		Target:     &fieldTarget,
+		TargetType: &fieldTargetType,
+		Timestamp:  &fieldTimestamp,
+		Category:   &fieldCategory,
+		Severity:   &fieldSeverity,
+		Summary:    &fieldSummary,
+		Activity:   &fieldActivity,
+		AlarmId:    &fieldAlarmId,
+		Params:     &fieldParams,
+		TenantId:   &fieldTenantId,
 	}
 }
 

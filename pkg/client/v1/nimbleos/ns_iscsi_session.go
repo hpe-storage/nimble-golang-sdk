@@ -3,30 +3,31 @@
 package nimbleos
 
 // NsISCSISession - ISCSI initiator session information.
-// Export NsISCSISessionFields for advance operations like search filter etc.
+
+// Export NsISCSISessionFields provides field names to use in filter parameters, for example.
 var NsISCSISessionFields *NsISCSISessionStringFields
 
 func init() {
-	IDfield := "id"
-	SessionIdfield := "session_id"
-	InitiatorNamefield := "initiator_name"
-	NumConnectionsfield := "num_connections"
-	PrKeyfield := "pr_key"
-	InitiatorIpAddrfield := "initiator_ip_addr"
-	TargetIpAddrfield := "target_ip_addr"
-	HeaderDigestEnabledfield := "header_digest_enabled"
-	DataDigestEnabledfield := "data_digest_enabled"
+	fieldID := "id"
+	fieldSessionId := "session_id"
+	fieldInitiatorName := "initiator_name"
+	fieldNumConnections := "num_connections"
+	fieldPrKey := "pr_key"
+	fieldInitiatorIpAddr := "initiator_ip_addr"
+	fieldTargetIpAddr := "target_ip_addr"
+	fieldHeaderDigestEnabled := "header_digest_enabled"
+	fieldDataDigestEnabled := "data_digest_enabled"
 
 	NsISCSISessionFields = &NsISCSISessionStringFields{
-		ID:                  &IDfield,
-		SessionId:           &SessionIdfield,
-		InitiatorName:       &InitiatorNamefield,
-		NumConnections:      &NumConnectionsfield,
-		PrKey:               &PrKeyfield,
-		InitiatorIpAddr:     &InitiatorIpAddrfield,
-		TargetIpAddr:        &TargetIpAddrfield,
-		HeaderDigestEnabled: &HeaderDigestEnabledfield,
-		DataDigestEnabled:   &DataDigestEnabledfield,
+		ID:                  &fieldID,
+		SessionId:           &fieldSessionId,
+		InitiatorName:       &fieldInitiatorName,
+		NumConnections:      &fieldNumConnections,
+		PrKey:               &fieldPrKey,
+		InitiatorIpAddr:     &fieldInitiatorIpAddr,
+		TargetIpAddr:        &fieldTargetIpAddr,
+		HeaderDigestEnabled: &fieldHeaderDigestEnabled,
+		DataDigestEnabled:   &fieldDataDigestEnabled,
 	}
 }
 

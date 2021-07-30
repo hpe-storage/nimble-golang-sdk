@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsFolderSummary - Select fields containing folder info.
-// Export NsFolderSummaryFields for advance operations like search filter etc.
+
+// Export NsFolderSummaryFields provides field names to use in filter parameters, for example.
 var NsFolderSummaryFields *NsFolderSummaryStringFields
 
 func init() {
-	IDfield := "id"
-	Fqnfield := "fqn"
+	fieldID := "id"
+	fieldFqn := "fqn"
 
 	NsFolderSummaryFields = &NsFolderSummaryStringFields{
-		ID:  &IDfield,
-		Fqn: &Fqnfield,
+		ID:  &fieldID,
+		Fqn: &fieldFqn,
 	}
 }
 

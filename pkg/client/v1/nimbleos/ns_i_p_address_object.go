@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsIPAddressObject - Object wrapper of IP Address.
-// Export NsIPAddressObjectFields for advance operations like search filter etc.
+
+// Export NsIPAddressObjectFields provides field names to use in filter parameters, for example.
 var NsIPAddressObjectFields *NsIPAddressObjectStringFields
 
 func init() {
-	IpAddrfield := "ip_addr"
+	fieldIpAddr := "ip_addr"
 
 	NsIPAddressObjectFields = &NsIPAddressObjectStringFields{
-		IpAddr: &IpAddrfield,
+		IpAddr: &fieldIpAddr,
 	}
 }
 

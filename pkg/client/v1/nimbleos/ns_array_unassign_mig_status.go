@@ -3,26 +3,27 @@
 package nimbleos
 
 // NsArrayUnassignMigStatus - Data migration status for array being unassigned from its pool.
-// Export NsArrayUnassignMigStatusFields for advance operations like search filter etc.
+
+// Export NsArrayUnassignMigStatusFields provides field names to use in filter parameters, for example.
 var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	DestinationArraysfield := "destination_arrays"
-	BytesMigratedfield := "bytes_migrated"
-	BytesRemainingfield := "bytes_remaining"
-	StartTimefield := "start_time"
-	EstimatedCompletionTimefield := "estimated_completion_time"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDestinationArrays := "destination_arrays"
+	fieldBytesMigrated := "bytes_migrated"
+	fieldBytesRemaining := "bytes_remaining"
+	fieldStartTime := "start_time"
+	fieldEstimatedCompletionTime := "estimated_completion_time"
 
 	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatusStringFields{
-		ID:                      &IDfield,
-		Name:                    &Namefield,
-		DestinationArrays:       &DestinationArraysfield,
-		BytesMigrated:           &BytesMigratedfield,
-		BytesRemaining:          &BytesRemainingfield,
-		StartTime:               &StartTimefield,
-		EstimatedCompletionTime: &EstimatedCompletionTimefield,
+		ID:                      &fieldID,
+		Name:                    &fieldName,
+		DestinationArrays:       &fieldDestinationArrays,
+		BytesMigrated:           &fieldBytesMigrated,
+		BytesRemaining:          &fieldBytesRemaining,
+		StartTime:               &fieldStartTime,
+		EstimatedCompletionTime: &fieldEstimatedCompletionTime,
 	}
 }
 

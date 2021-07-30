@@ -3,30 +3,31 @@
 package nimbleos
 
 // Role - Retrieve roles and privileges for role-based access control.
-// Export RoleFields for advance operations like search filter etc.
+
+// Export RoleFields provides field names to use in filter parameters, for example.
 var RoleFields *RoleStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	Descriptionfield := "description"
-	PrivilegeListfield := "privilege_list"
-	ExtendedPrivilegeListfield := "extended_privilege_list"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	Hiddenfield := "hidden"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldDescription := "description"
+	fieldPrivilegeList := "privilege_list"
+	fieldExtendedPrivilegeList := "extended_privilege_list"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldHidden := "hidden"
 
 	RoleFields = &RoleStringFields{
-		ID:                    &IDfield,
-		Name:                  &Namefield,
-		FullName:              &FullNamefield,
-		Description:           &Descriptionfield,
-		PrivilegeList:         &PrivilegeListfield,
-		ExtendedPrivilegeList: &ExtendedPrivilegeListfield,
-		CreationTime:          &CreationTimefield,
-		LastModified:          &LastModifiedfield,
-		Hidden:                &Hiddenfield,
+		ID:                    &fieldID,
+		Name:                  &fieldName,
+		FullName:              &fieldFullName,
+		Description:           &fieldDescription,
+		PrivilegeList:         &fieldPrivilegeList,
+		ExtendedPrivilegeList: &fieldExtendedPrivilegeList,
+		CreationTime:          &fieldCreationTime,
+		LastModified:          &fieldLastModified,
+		Hidden:                &fieldHidden,
 	}
 }
 

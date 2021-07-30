@@ -3,54 +3,55 @@
 package nimbleos
 
 // NsSchedule - Protection schedule associated with a volume collection or protection template.
-// Export NsScheduleFields for advance operations like search filter etc.
+
+// Export NsScheduleFields provides field names to use in filter parameters, for example.
 var NsScheduleFields *NsScheduleStringFields
 
 func init() {
-	IDfield := "id"
-	ScheduleIdfield := "schedule_id"
-	Namefield := "name"
-	ScheduleNamefield := "schedule_name"
-	Periodfield := "period"
-	PeriodUnitfield := "period_unit"
-	AtTimefield := "at_time"
-	UntilTimefield := "until_time"
-	Daysfield := "days"
-	NumRetainfield := "num_retain"
-	DownstreamPartnerfield := "downstream_partner"
-	DownstreamPartnerIdfield := "downstream_partner_id"
-	DownstreamPartnerNamefield := "downstream_partner_name"
-	ReplicateEveryfield := "replicate_every"
-	NumRetainReplicafield := "num_retain_replica"
-	ReplAlertThresfield := "repl_alert_thres"
-	SnapVerifyfield := "snap_verify"
-	SkipDbConsistencyCheckfield := "skip_db_consistency_check"
-	DisableAppsyncfield := "disable_appsync"
-	ScheduleTypefield := "schedule_type"
-	Activefield := "active"
+	fieldID := "id"
+	fieldScheduleId := "schedule_id"
+	fieldName := "name"
+	fieldScheduleName := "schedule_name"
+	fieldPeriod := "period"
+	fieldPeriodUnit := "period_unit"
+	fieldAtTime := "at_time"
+	fieldUntilTime := "until_time"
+	fieldDays := "days"
+	fieldNumRetain := "num_retain"
+	fieldDownstreamPartner := "downstream_partner"
+	fieldDownstreamPartnerId := "downstream_partner_id"
+	fieldDownstreamPartnerName := "downstream_partner_name"
+	fieldReplicateEvery := "replicate_every"
+	fieldNumRetainReplica := "num_retain_replica"
+	fieldReplAlertThres := "repl_alert_thres"
+	fieldSnapVerify := "snap_verify"
+	fieldSkipDbConsistencyCheck := "skip_db_consistency_check"
+	fieldDisableAppsync := "disable_appsync"
+	fieldScheduleType := "schedule_type"
+	fieldActive := "active"
 
 	NsScheduleFields = &NsScheduleStringFields{
-		ID:                     &IDfield,
-		ScheduleId:             &ScheduleIdfield,
-		Name:                   &Namefield,
-		ScheduleName:           &ScheduleNamefield,
-		Period:                 &Periodfield,
-		PeriodUnit:             &PeriodUnitfield,
-		AtTime:                 &AtTimefield,
-		UntilTime:              &UntilTimefield,
-		Days:                   &Daysfield,
-		NumRetain:              &NumRetainfield,
-		DownstreamPartner:      &DownstreamPartnerfield,
-		DownstreamPartnerId:    &DownstreamPartnerIdfield,
-		DownstreamPartnerName:  &DownstreamPartnerNamefield,
-		ReplicateEvery:         &ReplicateEveryfield,
-		NumRetainReplica:       &NumRetainReplicafield,
-		ReplAlertThres:         &ReplAlertThresfield,
-		SnapVerify:             &SnapVerifyfield,
-		SkipDbConsistencyCheck: &SkipDbConsistencyCheckfield,
-		DisableAppsync:         &DisableAppsyncfield,
-		ScheduleType:           &ScheduleTypefield,
-		Active:                 &Activefield,
+		ID:                     &fieldID,
+		ScheduleId:             &fieldScheduleId,
+		Name:                   &fieldName,
+		ScheduleName:           &fieldScheduleName,
+		Period:                 &fieldPeriod,
+		PeriodUnit:             &fieldPeriodUnit,
+		AtTime:                 &fieldAtTime,
+		UntilTime:              &fieldUntilTime,
+		Days:                   &fieldDays,
+		NumRetain:              &fieldNumRetain,
+		DownstreamPartner:      &fieldDownstreamPartner,
+		DownstreamPartnerId:    &fieldDownstreamPartnerId,
+		DownstreamPartnerName:  &fieldDownstreamPartnerName,
+		ReplicateEvery:         &fieldReplicateEvery,
+		NumRetainReplica:       &fieldNumRetainReplica,
+		ReplAlertThres:         &fieldReplAlertThres,
+		SnapVerify:             &fieldSnapVerify,
+		SkipDbConsistencyCheck: &fieldSkipDbConsistencyCheck,
+		DisableAppsync:         &fieldDisableAppsync,
+		ScheduleType:           &fieldScheduleType,
+		Active:                 &fieldActive,
 	}
 }
 

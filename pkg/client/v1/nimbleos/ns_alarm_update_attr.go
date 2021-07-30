@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsAlarmUpdateAttr - Alarm object used for updating alarms.
-// Export NsAlarmUpdateAttrFields for advance operations like search filter etc.
+
+// Export NsAlarmUpdateAttrFields provides field names to use in filter parameters, for example.
 var NsAlarmUpdateAttrFields *NsAlarmUpdateAttrStringFields
 
 func init() {
-	IDfield := "id"
-	RemindEveryfield := "remind_every"
-	RemindEveryUnitfield := "remind_every_unit"
+	fieldID := "id"
+	fieldRemindEvery := "remind_every"
+	fieldRemindEveryUnit := "remind_every_unit"
 
 	NsAlarmUpdateAttrFields = &NsAlarmUpdateAttrStringFields{
-		ID:              &IDfield,
-		RemindEvery:     &RemindEveryfield,
-		RemindEveryUnit: &RemindEveryUnitfield,
+		ID:              &fieldID,
+		RemindEvery:     &fieldRemindEvery,
+		RemindEveryUnit: &fieldRemindEveryUnit,
 	}
 }
 

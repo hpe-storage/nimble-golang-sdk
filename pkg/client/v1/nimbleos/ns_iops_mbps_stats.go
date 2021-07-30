@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsIopsMbpsStats - Average and maximum iops and mbps statistics in last 24 hours.
-// Export NsIopsMbpsStatsFields for advance operations like search filter etc.
+
+// Export NsIopsMbpsStatsFields provides field names to use in filter parameters, for example.
 var NsIopsMbpsStatsFields *NsIopsMbpsStatsStringFields
 
 func init() {
-	AvgIopsfield := "avg_iops"
-	MaxIopsfield := "max_iops"
-	AvgMbpsfield := "avg_mbps"
-	MaxMbpsfield := "max_mbps"
+	fieldAvgIops := "avg_iops"
+	fieldMaxIops := "max_iops"
+	fieldAvgMbps := "avg_mbps"
+	fieldMaxMbps := "max_mbps"
 
 	NsIopsMbpsStatsFields = &NsIopsMbpsStatsStringFields{
-		AvgIops: &AvgIopsfield,
-		MaxIops: &MaxIopsfield,
-		AvgMbps: &AvgMbpsfield,
-		MaxMbps: &MaxMbpsfield,
+		AvgIops: &fieldAvgIops,
+		MaxIops: &fieldMaxIops,
+		AvgMbps: &fieldAvgMbps,
+		MaxMbps: &fieldMaxMbps,
 	}
 }
 

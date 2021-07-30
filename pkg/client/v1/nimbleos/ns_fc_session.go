@@ -3,48 +3,49 @@
 package nimbleos
 
 // NsFCSession - Fibre Channel initiator session information.
-// Export NsFCSessionFields for advance operations like search filter etc.
+
+// Export NsFCSessionFields provides field names to use in filter parameters, for example.
 var NsFCSessionFields *NsFCSessionStringFields
 
 func init() {
-	IDfield := "id"
-	SessionIdfield := "session_id"
-	Aluafield := "alua"
-	PrKeyfield := "pr_key"
-	InitiatorAliasfield := "initiator_alias"
-	InitiatorWwpnfield := "initiator_wwpn"
-	InitiatorWwnnfield := "initiator_wwnn"
-	InitiatorSwitchNamefield := "initiator_switch_name"
-	InitiatorSwitchPortfield := "initiator_switch_port"
-	InitiatorSymbolicPortnamefield := "initiator_symbolic_portname"
-	InitiatorSymbolicNodenamefield := "initiator_symbolic_nodename"
-	InitiatorFcidfield := "initiator_fcid"
-	TargetPortArrayNamefield := "target_port_array_name"
-	TargetPortCtrlrIdfield := "target_port_ctrlr_id"
-	TargetPortInterfaceNamefield := "target_port_interface_name"
-	TargetWwnnfield := "target_wwnn"
-	TargetWwpnfield := "target_wwpn"
-	TargetFcidfield := "target_fcid"
+	fieldID := "id"
+	fieldSessionId := "session_id"
+	fieldAlua := "alua"
+	fieldPrKey := "pr_key"
+	fieldInitiatorAlias := "initiator_alias"
+	fieldInitiatorWwpn := "initiator_wwpn"
+	fieldInitiatorWwnn := "initiator_wwnn"
+	fieldInitiatorSwitchName := "initiator_switch_name"
+	fieldInitiatorSwitchPort := "initiator_switch_port"
+	fieldInitiatorSymbolicPortname := "initiator_symbolic_portname"
+	fieldInitiatorSymbolicNodename := "initiator_symbolic_nodename"
+	fieldInitiatorFcid := "initiator_fcid"
+	fieldTargetPortArrayName := "target_port_array_name"
+	fieldTargetPortCtrlrId := "target_port_ctrlr_id"
+	fieldTargetPortInterfaceName := "target_port_interface_name"
+	fieldTargetWwnn := "target_wwnn"
+	fieldTargetWwpn := "target_wwpn"
+	fieldTargetFcid := "target_fcid"
 
 	NsFCSessionFields = &NsFCSessionStringFields{
-		ID:                        &IDfield,
-		SessionId:                 &SessionIdfield,
-		Alua:                      &Aluafield,
-		PrKey:                     &PrKeyfield,
-		InitiatorAlias:            &InitiatorAliasfield,
-		InitiatorWwpn:             &InitiatorWwpnfield,
-		InitiatorWwnn:             &InitiatorWwnnfield,
-		InitiatorSwitchName:       &InitiatorSwitchNamefield,
-		InitiatorSwitchPort:       &InitiatorSwitchPortfield,
-		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-		InitiatorFcid:             &InitiatorFcidfield,
-		TargetPortArrayName:       &TargetPortArrayNamefield,
-		TargetPortCtrlrId:         &TargetPortCtrlrIdfield,
-		TargetPortInterfaceName:   &TargetPortInterfaceNamefield,
-		TargetWwnn:                &TargetWwnnfield,
-		TargetWwpn:                &TargetWwpnfield,
-		TargetFcid:                &TargetFcidfield,
+		ID:                        &fieldID,
+		SessionId:                 &fieldSessionId,
+		Alua:                      &fieldAlua,
+		PrKey:                     &fieldPrKey,
+		InitiatorAlias:            &fieldInitiatorAlias,
+		InitiatorWwpn:             &fieldInitiatorWwpn,
+		InitiatorWwnn:             &fieldInitiatorWwnn,
+		InitiatorSwitchName:       &fieldInitiatorSwitchName,
+		InitiatorSwitchPort:       &fieldInitiatorSwitchPort,
+		InitiatorSymbolicPortname: &fieldInitiatorSymbolicPortname,
+		InitiatorSymbolicNodename: &fieldInitiatorSymbolicNodename,
+		InitiatorFcid:             &fieldInitiatorFcid,
+		TargetPortArrayName:       &fieldTargetPortArrayName,
+		TargetPortCtrlrId:         &fieldTargetPortCtrlrId,
+		TargetPortInterfaceName:   &fieldTargetPortInterfaceName,
+		TargetWwnn:                &fieldTargetWwnn,
+		TargetWwpn:                &fieldTargetWwpn,
+		TargetFcid:                &fieldTargetFcid,
 	}
 }
 

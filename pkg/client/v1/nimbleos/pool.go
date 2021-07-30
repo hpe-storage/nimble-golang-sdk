@@ -3,106 +3,107 @@
 package nimbleos
 
 // Pool - Manage pools. Pools are an aggregation of arrays.
-// Export PoolFields for advance operations like search filter etc.
+
+// Export PoolFields provides field names to use in filter parameters, for example.
 var PoolFields *PoolStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	Capacityfield := "capacity"
-	Usagefield := "usage"
-	Savingsfield := "savings"
-	SavingsDataReductionfield := "savings_data_reduction"
-	SavingsCompressionfield := "savings_compression"
-	SavingsDedupefield := "savings_dedupe"
-	SavingsClonefield := "savings_clone"
-	SavingsVolThinProvisioningfield := "savings_vol_thin_provisioning"
-	Reservefield := "reserve"
-	UnusedReservefield := "unused_reserve"
-	FreeSpacefield := "free_space"
-	CacheCapacityfield := "cache_capacity"
-	PinnableCacheCapacityfield := "pinnable_cache_capacity"
-	PinnedCacheCapacityfield := "pinned_cache_capacity"
-	DedupeCapacityBytesfield := "dedupe_capacity_bytes"
-	DedupeUsageBytesfield := "dedupe_usage_bytes"
-	SavingsRatiofield := "savings_ratio"
-	DataReductionRatiofield := "data_reduction_ratio"
-	CompressionRatiofield := "compression_ratio"
-	DedupeRatiofield := "dedupe_ratio"
-	CloneRatiofield := "clone_ratio"
-	VolThinProvisioningRatiofield := "vol_thin_provisioning_ratio"
-	SnapcollCountfield := "snapcoll_count"
-	SnapCountfield := "snap_count"
-	ArrayCountfield := "array_count"
-	VolCountfield := "vol_count"
-	ArrayListfield := "array_list"
-	UnassignedArrayListfield := "unassigned_array_list"
-	VolListfield := "vol_list"
-	PinnedVolListfield := "pinned_vol_list"
-	FolderListfield := "folder_list"
-	Forcefield := "force"
-	UsageValidfield := "usage_valid"
-	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
-	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
-	AllFlashfield := "all_flash"
-	DedupeCapablefield := "dedupe_capable"
-	DedupeAllVolumesCapablefield := "dedupe_all_volumes_capable"
-	DedupeAllVolumesfield := "dedupe_all_volumes"
-	IsDefaultfield := "is_default"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldCapacity := "capacity"
+	fieldUsage := "usage"
+	fieldSavings := "savings"
+	fieldSavingsDataReduction := "savings_data_reduction"
+	fieldSavingsCompression := "savings_compression"
+	fieldSavingsDedupe := "savings_dedupe"
+	fieldSavingsClone := "savings_clone"
+	fieldSavingsVolThinProvisioning := "savings_vol_thin_provisioning"
+	fieldReserve := "reserve"
+	fieldUnusedReserve := "unused_reserve"
+	fieldFreeSpace := "free_space"
+	fieldCacheCapacity := "cache_capacity"
+	fieldPinnableCacheCapacity := "pinnable_cache_capacity"
+	fieldPinnedCacheCapacity := "pinned_cache_capacity"
+	fieldDedupeCapacityBytes := "dedupe_capacity_bytes"
+	fieldDedupeUsageBytes := "dedupe_usage_bytes"
+	fieldSavingsRatio := "savings_ratio"
+	fieldDataReductionRatio := "data_reduction_ratio"
+	fieldCompressionRatio := "compression_ratio"
+	fieldDedupeRatio := "dedupe_ratio"
+	fieldCloneRatio := "clone_ratio"
+	fieldVolThinProvisioningRatio := "vol_thin_provisioning_ratio"
+	fieldSnapcollCount := "snapcoll_count"
+	fieldSnapCount := "snap_count"
+	fieldArrayCount := "array_count"
+	fieldVolCount := "vol_count"
+	fieldArrayList := "array_list"
+	fieldUnassignedArrayList := "unassigned_array_list"
+	fieldVolList := "vol_list"
+	fieldPinnedVolList := "pinned_vol_list"
+	fieldFolderList := "folder_list"
+	fieldForce := "force"
+	fieldUsageValid := "usage_valid"
+	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
+	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
+	fieldAllFlash := "all_flash"
+	fieldDedupeCapable := "dedupe_capable"
+	fieldDedupeAllVolumesCapable := "dedupe_all_volumes_capable"
+	fieldDedupeAllVolumes := "dedupe_all_volumes"
+	fieldIsDefault := "is_default"
 
 	PoolFields = &PoolStringFields{
-		ID:                         &IDfield,
-		Name:                       &Namefield,
-		FullName:                   &FullNamefield,
-		SearchName:                 &SearchNamefield,
-		Description:                &Descriptionfield,
-		CreationTime:               &CreationTimefield,
-		LastModified:               &LastModifiedfield,
-		Capacity:                   &Capacityfield,
-		Usage:                      &Usagefield,
-		Savings:                    &Savingsfield,
-		SavingsDataReduction:       &SavingsDataReductionfield,
-		SavingsCompression:         &SavingsCompressionfield,
-		SavingsDedupe:              &SavingsDedupefield,
-		SavingsClone:               &SavingsClonefield,
-		SavingsVolThinProvisioning: &SavingsVolThinProvisioningfield,
-		Reserve:                    &Reservefield,
-		UnusedReserve:              &UnusedReservefield,
-		FreeSpace:                  &FreeSpacefield,
-		CacheCapacity:              &CacheCapacityfield,
-		PinnableCacheCapacity:      &PinnableCacheCapacityfield,
-		PinnedCacheCapacity:        &PinnedCacheCapacityfield,
-		DedupeCapacityBytes:        &DedupeCapacityBytesfield,
-		DedupeUsageBytes:           &DedupeUsageBytesfield,
-		SavingsRatio:               &SavingsRatiofield,
-		DataReductionRatio:         &DataReductionRatiofield,
-		CompressionRatio:           &CompressionRatiofield,
-		DedupeRatio:                &DedupeRatiofield,
-		CloneRatio:                 &CloneRatiofield,
-		VolThinProvisioningRatio:   &VolThinProvisioningRatiofield,
-		SnapcollCount:              &SnapcollCountfield,
-		SnapCount:                  &SnapCountfield,
-		ArrayCount:                 &ArrayCountfield,
-		VolCount:                   &VolCountfield,
-		ArrayList:                  &ArrayListfield,
-		UnassignedArrayList:        &UnassignedArrayListfield,
-		VolList:                    &VolListfield,
-		PinnedVolList:              &PinnedVolListfield,
-		FolderList:                 &FolderListfield,
-		Force:                      &Forcefield,
-		UsageValid:                 &UsageValidfield,
-		UncompressedVolUsageBytes:  &UncompressedVolUsageBytesfield,
-		UncompressedSnapUsageBytes: &UncompressedSnapUsageBytesfield,
-		AllFlash:                   &AllFlashfield,
-		DedupeCapable:              &DedupeCapablefield,
-		DedupeAllVolumesCapable:    &DedupeAllVolumesCapablefield,
-		DedupeAllVolumes:           &DedupeAllVolumesfield,
-		IsDefault:                  &IsDefaultfield,
+		ID:                         &fieldID,
+		Name:                       &fieldName,
+		FullName:                   &fieldFullName,
+		SearchName:                 &fieldSearchName,
+		Description:                &fieldDescription,
+		CreationTime:               &fieldCreationTime,
+		LastModified:               &fieldLastModified,
+		Capacity:                   &fieldCapacity,
+		Usage:                      &fieldUsage,
+		Savings:                    &fieldSavings,
+		SavingsDataReduction:       &fieldSavingsDataReduction,
+		SavingsCompression:         &fieldSavingsCompression,
+		SavingsDedupe:              &fieldSavingsDedupe,
+		SavingsClone:               &fieldSavingsClone,
+		SavingsVolThinProvisioning: &fieldSavingsVolThinProvisioning,
+		Reserve:                    &fieldReserve,
+		UnusedReserve:              &fieldUnusedReserve,
+		FreeSpace:                  &fieldFreeSpace,
+		CacheCapacity:              &fieldCacheCapacity,
+		PinnableCacheCapacity:      &fieldPinnableCacheCapacity,
+		PinnedCacheCapacity:        &fieldPinnedCacheCapacity,
+		DedupeCapacityBytes:        &fieldDedupeCapacityBytes,
+		DedupeUsageBytes:           &fieldDedupeUsageBytes,
+		SavingsRatio:               &fieldSavingsRatio,
+		DataReductionRatio:         &fieldDataReductionRatio,
+		CompressionRatio:           &fieldCompressionRatio,
+		DedupeRatio:                &fieldDedupeRatio,
+		CloneRatio:                 &fieldCloneRatio,
+		VolThinProvisioningRatio:   &fieldVolThinProvisioningRatio,
+		SnapcollCount:              &fieldSnapcollCount,
+		SnapCount:                  &fieldSnapCount,
+		ArrayCount:                 &fieldArrayCount,
+		VolCount:                   &fieldVolCount,
+		ArrayList:                  &fieldArrayList,
+		UnassignedArrayList:        &fieldUnassignedArrayList,
+		VolList:                    &fieldVolList,
+		PinnedVolList:              &fieldPinnedVolList,
+		FolderList:                 &fieldFolderList,
+		Force:                      &fieldForce,
+		UsageValid:                 &fieldUsageValid,
+		UncompressedVolUsageBytes:  &fieldUncompressedVolUsageBytes,
+		UncompressedSnapUsageBytes: &fieldUncompressedSnapUsageBytes,
+		AllFlash:                   &fieldAllFlash,
+		DedupeCapable:              &fieldDedupeCapable,
+		DedupeAllVolumesCapable:    &fieldDedupeAllVolumesCapable,
+		DedupeAllVolumes:           &fieldDedupeAllVolumes,
+		IsDefault:                  &fieldIsDefault,
 	}
 }
 

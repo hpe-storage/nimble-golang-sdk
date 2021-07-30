@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsObject - Arbitrary object.
-// Export NsObjectFields for advance operations like search filter etc.
+
+// Export NsObjectFields provides field names to use in filter parameters, for example.
 var NsObjectFields *NsObjectStringFields
 
 func init() {
-	IDfield := "id"
+	fieldID := "id"
 
 	NsObjectFields = &NsObjectStringFields{
-		ID: &IDfield,
+		ID: &fieldID,
 	}
 }
 

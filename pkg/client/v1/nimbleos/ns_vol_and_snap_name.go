@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsVolAndSnapName - Snapshot name and the belonging volume name.
-// Export NsVolAndSnapNameFields for advance operations like search filter etc.
+
+// Export NsVolAndSnapNameFields provides field names to use in filter parameters, for example.
 var NsVolAndSnapNameFields *NsVolAndSnapNameStringFields
 
 func init() {
-	VolNamefield := "vol_name"
-	SnapNamefield := "snap_name"
+	fieldVolName := "vol_name"
+	fieldSnapName := "snap_name"
 
 	NsVolAndSnapNameFields = &NsVolAndSnapNameStringFields{
-		VolName:  &VolNamefield,
-		SnapName: &SnapNamefield,
+		VolName:  &fieldVolName,
+		SnapName: &fieldSnapName,
 	}
 }
 

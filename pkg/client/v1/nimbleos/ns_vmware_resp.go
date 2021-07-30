@@ -3,28 +3,29 @@
 package nimbleos
 
 // NsVmwareResp - Response from Vmware app server.
-// Export NsVmwareRespFields for advance operations like search filter etc.
+
+// Export NsVmwareRespFields provides field names to use in filter parameters, for example.
 var NsVmwareRespFields *NsVmwareRespStringFields
 
 func init() {
-	VmwareErrorfield := "vmware_error"
-	VmwareErrorMessagefield := "vmware_error_message"
-	ConnStatusOkfield := "conn_status_ok"
-	ConnMessagefield := "conn_message"
-	UserRolePermissionOkfield := "user_role_permission_ok"
-	VolcollHasVmfield := "volcoll_has_vm"
-	NumVmsForVolcollfield := "num_vms_for_volcoll"
-	WarningVmToolsStatusfield := "warning_vm_tools_status"
+	fieldVmwareError := "vmware_error"
+	fieldVmwareErrorMessage := "vmware_error_message"
+	fieldConnStatusOk := "conn_status_ok"
+	fieldConnMessage := "conn_message"
+	fieldUserRolePermissionOk := "user_role_permission_ok"
+	fieldVolcollHasVm := "volcoll_has_vm"
+	fieldNumVmsForVolcoll := "num_vms_for_volcoll"
+	fieldWarningVmToolsStatus := "warning_vm_tools_status"
 
 	NsVmwareRespFields = &NsVmwareRespStringFields{
-		VmwareError:          &VmwareErrorfield,
-		VmwareErrorMessage:   &VmwareErrorMessagefield,
-		ConnStatusOk:         &ConnStatusOkfield,
-		ConnMessage:          &ConnMessagefield,
-		UserRolePermissionOk: &UserRolePermissionOkfield,
-		VolcollHasVm:         &VolcollHasVmfield,
-		NumVmsForVolcoll:     &NumVmsForVolcollfield,
-		WarningVmToolsStatus: &WarningVmToolsStatusfield,
+		VmwareError:          &fieldVmwareError,
+		VmwareErrorMessage:   &fieldVmwareErrorMessage,
+		ConnStatusOk:         &fieldConnStatusOk,
+		ConnMessage:          &fieldConnMessage,
+		UserRolePermissionOk: &fieldUserRolePermissionOk,
+		VolcollHasVm:         &fieldVolcollHasVm,
+		NumVmsForVolcoll:     &fieldNumVmsForVolcoll,
+		WarningVmToolsStatus: &fieldWarningVmToolsStatus,
 	}
 }
 

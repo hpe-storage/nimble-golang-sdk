@@ -3,48 +3,49 @@
 package nimbleos
 
 // InitiatorGroup - Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
-// Export InitiatorGroupFields for advance operations like search filter etc.
+
+// Export InitiatorGroupFields provides field names to use in filter parameters, for example.
 var InitiatorGroupFields *InitiatorGroupStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	AccessProtocolfield := "access_protocol"
-	HostTypefield := "host_type"
-	FcTdzPortsfield := "fc_tdz_ports"
-	TargetSubnetsfield := "target_subnets"
-	IscsiInitiatorsfield := "iscsi_initiators"
-	FcInitiatorsfield := "fc_initiators"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	AppUuidfield := "app_uuid"
-	VolumeCountfield := "volume_count"
-	VolumeListfield := "volume_list"
-	NumConnectionsfield := "num_connections"
-	Metadatafield := "metadata"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldAccessProtocol := "access_protocol"
+	fieldHostType := "host_type"
+	fieldFcTdzPorts := "fc_tdz_ports"
+	fieldTargetSubnets := "target_subnets"
+	fieldIscsiInitiators := "iscsi_initiators"
+	fieldFcInitiators := "fc_initiators"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldAppUuid := "app_uuid"
+	fieldVolumeCount := "volume_count"
+	fieldVolumeList := "volume_list"
+	fieldNumConnections := "num_connections"
+	fieldMetadata := "metadata"
 
 	InitiatorGroupFields = &InitiatorGroupStringFields{
-		ID:              &IDfield,
-		Name:            &Namefield,
-		FullName:        &FullNamefield,
-		SearchName:      &SearchNamefield,
-		Description:     &Descriptionfield,
-		AccessProtocol:  &AccessProtocolfield,
-		HostType:        &HostTypefield,
-		FcTdzPorts:      &FcTdzPortsfield,
-		TargetSubnets:   &TargetSubnetsfield,
-		IscsiInitiators: &IscsiInitiatorsfield,
-		FcInitiators:    &FcInitiatorsfield,
-		CreationTime:    &CreationTimefield,
-		LastModified:    &LastModifiedfield,
-		AppUuid:         &AppUuidfield,
-		VolumeCount:     &VolumeCountfield,
-		VolumeList:      &VolumeListfield,
-		NumConnections:  &NumConnectionsfield,
-		Metadata:        &Metadatafield,
+		ID:              &fieldID,
+		Name:            &fieldName,
+		FullName:        &fieldFullName,
+		SearchName:      &fieldSearchName,
+		Description:     &fieldDescription,
+		AccessProtocol:  &fieldAccessProtocol,
+		HostType:        &fieldHostType,
+		FcTdzPorts:      &fieldFcTdzPorts,
+		TargetSubnets:   &fieldTargetSubnets,
+		IscsiInitiators: &fieldIscsiInitiators,
+		FcInitiators:    &fieldFcInitiators,
+		CreationTime:    &fieldCreationTime,
+		LastModified:    &fieldLastModified,
+		AppUuid:         &fieldAppUuid,
+		VolumeCount:     &fieldVolumeCount,
+		VolumeList:      &fieldVolumeList,
+		NumConnections:  &fieldNumConnections,
+		Metadata:        &fieldMetadata,
 	}
 }
 

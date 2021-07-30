@@ -3,26 +3,27 @@
 package nimbleos
 
 // HealthCheck - View the health of the group of arrays.
-// Export HealthCheckFields for advance operations like search filter etc.
+
+// Export HealthCheckFields provides field names to use in filter parameters, for example.
 var HealthCheckFields *HealthCheckStringFields
 
 func init() {
-	IDfield := "id"
-	Scopefield := "scope"
-	Contextfield := "context"
-	OnDemandfield := "on_demand"
-	ArrayIdfield := "array_id"
-	CtrlrIdfield := "ctrlr_id"
-	ElementResultfield := "element_result"
+	fieldID := "id"
+	fieldScope := "scope"
+	fieldContext := "context"
+	fieldOnDemand := "on_demand"
+	fieldArrayId := "array_id"
+	fieldCtrlrId := "ctrlr_id"
+	fieldElementResult := "element_result"
 
 	HealthCheckFields = &HealthCheckStringFields{
-		ID:            &IDfield,
-		Scope:         &Scopefield,
-		Context:       &Contextfield,
-		OnDemand:      &OnDemandfield,
-		ArrayId:       &ArrayIdfield,
-		CtrlrId:       &CtrlrIdfield,
-		ElementResult: &ElementResultfield,
+		ID:            &fieldID,
+		Scope:         &fieldScope,
+		Context:       &fieldContext,
+		OnDemand:      &fieldOnDemand,
+		ArrayId:       &fieldArrayId,
+		CtrlrId:       &fieldCtrlrId,
+		ElementResult: &fieldElementResult,
 	}
 }
 

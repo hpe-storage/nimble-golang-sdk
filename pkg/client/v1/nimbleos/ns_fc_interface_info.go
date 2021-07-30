@@ -3,26 +3,27 @@
 package nimbleos
 
 // NsFcInterfaceInfo - Fibre Channel interface information.
-// Export NsFcInterfaceInfoFields for advance operations like search filter etc.
+
+// Export NsFcInterfaceInfoFields provides field names to use in filter parameters, for example.
 var NsFcInterfaceInfoFields *NsFcInterfaceInfoStringFields
 
 func init() {
-	Namefield := "name"
-	Wwnnfield := "wwnn"
-	Wwpnfield := "wwpn"
-	Onlinefield := "online"
-	BusLocationfield := "bus_location"
-	Slotfield := "slot"
-	Portfield := "port"
+	fieldName := "name"
+	fieldWwnn := "wwnn"
+	fieldWwpn := "wwpn"
+	fieldOnline := "online"
+	fieldBusLocation := "bus_location"
+	fieldSlot := "slot"
+	fieldPort := "port"
 
 	NsFcInterfaceInfoFields = &NsFcInterfaceInfoStringFields{
-		Name:        &Namefield,
-		Wwnn:        &Wwnnfield,
-		Wwpn:        &Wwpnfield,
-		Online:      &Onlinefield,
-		BusLocation: &BusLocationfield,
-		Slot:        &Slotfield,
-		Port:        &Portfield,
+		Name:        &fieldName,
+		Wwnn:        &fieldWwnn,
+		Wwpn:        &fieldWwpn,
+		Online:      &fieldOnline,
+		BusLocation: &fieldBusLocation,
+		Slot:        &fieldSlot,
+		Port:        &fieldPort,
 	}
 }
 

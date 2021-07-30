@@ -3,32 +3,33 @@
 package nimbleos
 
 // UserPolicy - Manages the password policies configured for the group.
-// Export UserPolicyFields for advance operations like search filter etc.
+
+// Export UserPolicyFields provides field names to use in filter parameters, for example.
 var UserPolicyFields *UserPolicyStringFields
 
 func init() {
-	IDfield := "id"
-	AllowedAttemptsfield := "allowed_attempts"
-	MinLengthfield := "min_length"
-	Upperfield := "upper"
-	Lowerfield := "lower"
-	Digitfield := "digit"
-	Specialfield := "special"
-	PreviousDifffield := "previous_diff"
-	NoReusefield := "no_reuse"
-	MaxSessionsfield := "max_sessions"
+	fieldID := "id"
+	fieldAllowedAttempts := "allowed_attempts"
+	fieldMinLength := "min_length"
+	fieldUpper := "upper"
+	fieldLower := "lower"
+	fieldDigit := "digit"
+	fieldSpecial := "special"
+	fieldPreviousDiff := "previous_diff"
+	fieldNoReuse := "no_reuse"
+	fieldMaxSessions := "max_sessions"
 
 	UserPolicyFields = &UserPolicyStringFields{
-		ID:              &IDfield,
-		AllowedAttempts: &AllowedAttemptsfield,
-		MinLength:       &MinLengthfield,
-		Upper:           &Upperfield,
-		Lower:           &Lowerfield,
-		Digit:           &Digitfield,
-		Special:         &Specialfield,
-		PreviousDiff:    &PreviousDifffield,
-		NoReuse:         &NoReusefield,
-		MaxSessions:     &MaxSessionsfield,
+		ID:              &fieldID,
+		AllowedAttempts: &fieldAllowedAttempts,
+		MinLength:       &fieldMinLength,
+		Upper:           &fieldUpper,
+		Lower:           &fieldLower,
+		Digit:           &fieldDigit,
+		Special:         &fieldSpecial,
+		PreviousDiff:    &fieldPreviousDiff,
+		NoReuse:         &fieldNoReuse,
+		MaxSessions:     &fieldMaxSessions,
 	}
 }
 

@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsHcfResult - Results from health check of a single element.
-// Export NsHcfResultFields for advance operations like search filter etc.
+
+// Export NsHcfResultFields provides field names to use in filter parameters, for example.
 var NsHcfResultFields *NsHcfResultStringFields
 
 func init() {
-	ElementNamefield := "element_name"
-	ErrorListfield := "error_list"
-	Messagesfield := "messages"
+	fieldElementName := "element_name"
+	fieldErrorList := "error_list"
+	fieldMessages := "messages"
 
 	NsHcfResultFields = &NsHcfResultStringFields{
-		ElementName: &ElementNamefield,
-		ErrorList:   &ErrorListfield,
-		Messages:    &Messagesfield,
+		ElementName: &fieldElementName,
+		ErrorList:   &fieldErrorList,
+		Messages:    &fieldMessages,
 	}
 }
 

@@ -3,46 +3,47 @@
 package nimbleos
 
 // NsShelfCtrlr - A shelf controller information.
-// Export NsShelfCtrlrFields for advance operations like search filter etc.
+
+// Export NsShelfCtrlrFields provides field names to use in filter parameters, for example.
 var NsShelfCtrlrFields *NsShelfCtrlrStringFields
 
 func init() {
-	ExpSasAddrfield := "exp_sas_addr"
-	CtrlrSidefield := "ctrlr_side"
-	EncLocIdfield := "enc_loc_id"
-	CachedSerialfield := "cached_serial"
-	CtrlrSensorLastRunfield := "ctrlr_sensor_last_run"
-	HwMshipFailurefield := "hw_mship_failure"
-	HwMasterStatefield := "hw_master_state"
-	SwMasterStatefield := "sw_master_state"
-	CtrlrSensorsfield := "ctrlr_sensors"
-	FanOverallStatusfield := "fan_overall_status"
-	TempOverallStatusfield := "temp_overall_status"
-	PsuOverallStatusfield := "psu_overall_status"
-	CtrlrHwModelfield := "ctrlr_hw_model"
-	PortInfofield := "port_info"
-	ExtraAttributesfield := "extra_attributes"
-	CtrlrAttrsetListfield := "ctrlr_attrset_list"
-	IDentifyStatusfield := "identify_status"
+	fieldExpSasAddr := "exp_sas_addr"
+	fieldCtrlrSide := "ctrlr_side"
+	fieldEncLocId := "enc_loc_id"
+	fieldCachedSerial := "cached_serial"
+	fieldCtrlrSensorLastRun := "ctrlr_sensor_last_run"
+	fieldHwMshipFailure := "hw_mship_failure"
+	fieldHwMasterState := "hw_master_state"
+	fieldSwMasterState := "sw_master_state"
+	fieldCtrlrSensors := "ctrlr_sensors"
+	fieldFanOverallStatus := "fan_overall_status"
+	fieldTempOverallStatus := "temp_overall_status"
+	fieldPsuOverallStatus := "psu_overall_status"
+	fieldCtrlrHwModel := "ctrlr_hw_model"
+	fieldPortInfo := "port_info"
+	fieldExtraAttributes := "extra_attributes"
+	fieldCtrlrAttrsetList := "ctrlr_attrset_list"
+	fieldIDentifyStatus := "identify_status"
 
 	NsShelfCtrlrFields = &NsShelfCtrlrStringFields{
-		ExpSasAddr:         &ExpSasAddrfield,
-		CtrlrSide:          &CtrlrSidefield,
-		EncLocId:           &EncLocIdfield,
-		CachedSerial:       &CachedSerialfield,
-		CtrlrSensorLastRun: &CtrlrSensorLastRunfield,
-		HwMshipFailure:     &HwMshipFailurefield,
-		HwMasterState:      &HwMasterStatefield,
-		SwMasterState:      &SwMasterStatefield,
-		CtrlrSensors:       &CtrlrSensorsfield,
-		FanOverallStatus:   &FanOverallStatusfield,
-		TempOverallStatus:  &TempOverallStatusfield,
-		PsuOverallStatus:   &PsuOverallStatusfield,
-		CtrlrHwModel:       &CtrlrHwModelfield,
-		PortInfo:           &PortInfofield,
-		ExtraAttributes:    &ExtraAttributesfield,
-		CtrlrAttrsetList:   &CtrlrAttrsetListfield,
-		IDentifyStatus:     &IDentifyStatusfield,
+		ExpSasAddr:         &fieldExpSasAddr,
+		CtrlrSide:          &fieldCtrlrSide,
+		EncLocId:           &fieldEncLocId,
+		CachedSerial:       &fieldCachedSerial,
+		CtrlrSensorLastRun: &fieldCtrlrSensorLastRun,
+		HwMshipFailure:     &fieldHwMshipFailure,
+		HwMasterState:      &fieldHwMasterState,
+		SwMasterState:      &fieldSwMasterState,
+		CtrlrSensors:       &fieldCtrlrSensors,
+		FanOverallStatus:   &fieldFanOverallStatus,
+		TempOverallStatus:  &fieldTempOverallStatus,
+		PsuOverallStatus:   &fieldPsuOverallStatus,
+		CtrlrHwModel:       &fieldCtrlrHwModel,
+		PortInfo:           &fieldPortInfo,
+		ExtraAttributes:    &fieldExtraAttributes,
+		CtrlrAttrsetList:   &fieldCtrlrAttrsetList,
+		IDentifyStatus:     &fieldIDentifyStatus,
 	}
 }
 

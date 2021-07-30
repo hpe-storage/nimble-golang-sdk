@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsReplPair - Replicated objects (vol/snap/snapcoll), their UIDs are the same.
-// Export NsReplPairFields for advance operations like search filter etc.
+
+// Export NsReplPairFields provides field names to use in filter parameters, for example.
 var NsReplPairFields *NsReplPairStringFields
 
 func init() {
-	SrcNamefield := "src_name"
-	DstNamefield := "dst_name"
+	fieldSrcName := "src_name"
+	fieldDstName := "dst_name"
 
 	NsReplPairFields = &NsReplPairStringFields{
-		SrcName: &SrcNamefield,
-		DstName: &DstNamefield,
+		SrcName: &fieldSrcName,
+		DstName: &fieldDstName,
 	}
 }
 

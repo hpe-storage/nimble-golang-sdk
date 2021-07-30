@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsWitnessTestResponse - Results of witness connection test.
-// Export NsWitnessTestResponseFields for advance operations like search filter etc.
+
+// Export NsWitnessTestResponseFields provides field names to use in filter parameters, for example.
 var NsWitnessTestResponseFields *NsWitnessTestResponseStringFields
 
 func init() {
-	ArrayNamefield := "array_name"
-	Rolefield := "role"
-	WitnessConnectivityStatefield := "witness_connectivity_state"
-	WitnessConnectivityMessagefield := "witness_connectivity_message"
+	fieldArrayName := "array_name"
+	fieldRole := "role"
+	fieldWitnessConnectivityState := "witness_connectivity_state"
+	fieldWitnessConnectivityMessage := "witness_connectivity_message"
 
 	NsWitnessTestResponseFields = &NsWitnessTestResponseStringFields{
-		ArrayName:                  &ArrayNamefield,
-		Role:                       &Rolefield,
-		WitnessConnectivityState:   &WitnessConnectivityStatefield,
-		WitnessConnectivityMessage: &WitnessConnectivityMessagefield,
+		ArrayName:                  &fieldArrayName,
+		Role:                       &fieldRole,
+		WitnessConnectivityState:   &fieldWitnessConnectivityState,
+		WitnessConnectivityMessage: &fieldWitnessConnectivityMessage,
 	}
 }
 

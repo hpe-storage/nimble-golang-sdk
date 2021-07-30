@@ -3,52 +3,53 @@
 package nimbleos
 
 // AccessControlRecord - Manage access control records for volumes.
-// Export AccessControlRecordFields for advance operations like search filter etc.
+
+// Export AccessControlRecordFields provides field names to use in filter parameters, for example.
 var AccessControlRecordFields *AccessControlRecordStringFields
 
 func init() {
-	IDfield := "id"
-	ApplyTofield := "apply_to"
-	ChapUserIdfield := "chap_user_id"
-	ChapUserNamefield := "chap_user_name"
-	InitiatorGroupIdfield := "initiator_group_id"
-	InitiatorGroupNamefield := "initiator_group_name"
-	Lunfield := "lun"
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	VolAgentTypefield := "vol_agent_type"
-	PeIdfield := "pe_id"
-	PeNamefield := "pe_name"
-	PeLunfield := "pe_lun"
-	SnapIdfield := "snap_id"
-	SnapNamefield := "snap_name"
-	PeIdsfield := "pe_ids"
-	Snaplunsfield := "snapluns"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	AccessProtocolfield := "access_protocol"
+	fieldID := "id"
+	fieldApplyTo := "apply_to"
+	fieldChapUserId := "chap_user_id"
+	fieldChapUserName := "chap_user_name"
+	fieldInitiatorGroupId := "initiator_group_id"
+	fieldInitiatorGroupName := "initiator_group_name"
+	fieldLun := "lun"
+	fieldVolId := "vol_id"
+	fieldVolName := "vol_name"
+	fieldVolAgentType := "vol_agent_type"
+	fieldPeId := "pe_id"
+	fieldPeName := "pe_name"
+	fieldPeLun := "pe_lun"
+	fieldSnapId := "snap_id"
+	fieldSnapName := "snap_name"
+	fieldPeIds := "pe_ids"
+	fieldSnapluns := "snapluns"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldAccessProtocol := "access_protocol"
 
 	AccessControlRecordFields = &AccessControlRecordStringFields{
-		ID:                 &IDfield,
-		ApplyTo:            &ApplyTofield,
-		ChapUserId:         &ChapUserIdfield,
-		ChapUserName:       &ChapUserNamefield,
-		InitiatorGroupId:   &InitiatorGroupIdfield,
-		InitiatorGroupName: &InitiatorGroupNamefield,
-		Lun:                &Lunfield,
-		VolId:              &VolIdfield,
-		VolName:            &VolNamefield,
-		VolAgentType:       &VolAgentTypefield,
-		PeId:               &PeIdfield,
-		PeName:             &PeNamefield,
-		PeLun:              &PeLunfield,
-		SnapId:             &SnapIdfield,
-		SnapName:           &SnapNamefield,
-		PeIds:              &PeIdsfield,
-		Snapluns:           &Snaplunsfield,
-		CreationTime:       &CreationTimefield,
-		LastModified:       &LastModifiedfield,
-		AccessProtocol:     &AccessProtocolfield,
+		ID:                 &fieldID,
+		ApplyTo:            &fieldApplyTo,
+		ChapUserId:         &fieldChapUserId,
+		ChapUserName:       &fieldChapUserName,
+		InitiatorGroupId:   &fieldInitiatorGroupId,
+		InitiatorGroupName: &fieldInitiatorGroupName,
+		Lun:                &fieldLun,
+		VolId:              &fieldVolId,
+		VolName:            &fieldVolName,
+		VolAgentType:       &fieldVolAgentType,
+		PeId:               &fieldPeId,
+		PeName:             &fieldPeName,
+		PeLun:              &fieldPeLun,
+		SnapId:             &fieldSnapId,
+		SnapName:           &fieldSnapName,
+		PeIds:              &fieldPeIds,
+		Snapluns:           &fieldSnapluns,
+		CreationTime:       &fieldCreationTime,
+		LastModified:       &fieldLastModified,
+		AccessProtocol:     &fieldAccessProtocol,
 	}
 }
 

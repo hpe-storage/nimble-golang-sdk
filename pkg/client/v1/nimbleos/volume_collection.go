@@ -3,102 +3,103 @@
 package nimbleos
 
 // VolumeCollection - Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
-// Export VolumeCollectionFields for advance operations like search filter etc.
+
+// Export VolumeCollectionFields provides field names to use in filter parameters, for example.
 var VolumeCollectionFields *VolumeCollectionStringFields
 
 func init() {
-	IDfield := "id"
-	ProttmplIdfield := "prottmpl_id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	ReplPriorityfield := "repl_priority"
-	PolOwnerNamefield := "pol_owner_name"
-	ReplicationTypefield := "replication_type"
-	SynchronousReplicationTypefield := "synchronous_replication_type"
-	SynchronousReplicationStatefield := "synchronous_replication_state"
-	AppSyncfield := "app_sync"
-	AppServerfield := "app_server"
-	AppIdfield := "app_id"
-	AppClusterNamefield := "app_cluster_name"
-	AppServiceNamefield := "app_service_name"
-	VcenterHostnamefield := "vcenter_hostname"
-	VcenterUsernamefield := "vcenter_username"
-	VcenterPasswordfield := "vcenter_password"
-	AgentHostnamefield := "agent_hostname"
-	AgentUsernamefield := "agent_username"
-	AgentPasswordfield := "agent_password"
-	CreationTimefield := "creation_time"
-	LastModifiedTimefield := "last_modified_time"
-	VolumeListfield := "volume_list"
-	DownstreamVolumeListfield := "downstream_volume_list"
-	UpstreamVolumeListfield := "upstream_volume_list"
-	VolumeCountfield := "volume_count"
-	CachePinnedVolumeListfield := "cache_pinned_volume_list"
-	LastSnapcollfield := "last_snapcoll"
-	SnapcollCountfield := "snapcoll_count"
-	ScheduleListfield := "schedule_list"
-	ReplicationPartnerfield := "replication_partner"
-	LastReplicatedSnapcollfield := "last_replicated_snapcoll"
-	LastReplicatedSnapcollListfield := "last_replicated_snapcoll_list"
-	ProtectionTypefield := "protection_type"
-	LagTimefield := "lag_time"
-	IsStandaloneVolcollfield := "is_standalone_volcoll"
-	TotalReplBytesfield := "total_repl_bytes"
-	ReplBytesTransferredfield := "repl_bytes_transferred"
-	IsHandingOverfield := "is_handing_over"
-	HandoverReplicationPartnerfield := "handover_replication_partner"
-	Metadatafield := "metadata"
-	SrepLastSyncfield := "srep_last_sync"
-	SrepResyncPercentfield := "srep_resync_percent"
+	fieldID := "id"
+	fieldProttmplId := "prottmpl_id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldReplPriority := "repl_priority"
+	fieldPolOwnerName := "pol_owner_name"
+	fieldReplicationType := "replication_type"
+	fieldSynchronousReplicationType := "synchronous_replication_type"
+	fieldSynchronousReplicationState := "synchronous_replication_state"
+	fieldAppSync := "app_sync"
+	fieldAppServer := "app_server"
+	fieldAppId := "app_id"
+	fieldAppClusterName := "app_cluster_name"
+	fieldAppServiceName := "app_service_name"
+	fieldVcenterHostname := "vcenter_hostname"
+	fieldVcenterUsername := "vcenter_username"
+	fieldVcenterPassword := "vcenter_password"
+	fieldAgentHostname := "agent_hostname"
+	fieldAgentUsername := "agent_username"
+	fieldAgentPassword := "agent_password"
+	fieldCreationTime := "creation_time"
+	fieldLastModifiedTime := "last_modified_time"
+	fieldVolumeList := "volume_list"
+	fieldDownstreamVolumeList := "downstream_volume_list"
+	fieldUpstreamVolumeList := "upstream_volume_list"
+	fieldVolumeCount := "volume_count"
+	fieldCachePinnedVolumeList := "cache_pinned_volume_list"
+	fieldLastSnapcoll := "last_snapcoll"
+	fieldSnapcollCount := "snapcoll_count"
+	fieldScheduleList := "schedule_list"
+	fieldReplicationPartner := "replication_partner"
+	fieldLastReplicatedSnapcoll := "last_replicated_snapcoll"
+	fieldLastReplicatedSnapcollList := "last_replicated_snapcoll_list"
+	fieldProtectionType := "protection_type"
+	fieldLagTime := "lag_time"
+	fieldIsStandaloneVolcoll := "is_standalone_volcoll"
+	fieldTotalReplBytes := "total_repl_bytes"
+	fieldReplBytesTransferred := "repl_bytes_transferred"
+	fieldIsHandingOver := "is_handing_over"
+	fieldHandoverReplicationPartner := "handover_replication_partner"
+	fieldMetadata := "metadata"
+	fieldSrepLastSync := "srep_last_sync"
+	fieldSrepResyncPercent := "srep_resync_percent"
 
 	VolumeCollectionFields = &VolumeCollectionStringFields{
-		ID:                          &IDfield,
-		ProttmplId:                  &ProttmplIdfield,
-		Name:                        &Namefield,
-		FullName:                    &FullNamefield,
-		SearchName:                  &SearchNamefield,
-		Description:                 &Descriptionfield,
-		ReplPriority:                &ReplPriorityfield,
-		PolOwnerName:                &PolOwnerNamefield,
-		ReplicationType:             &ReplicationTypefield,
-		SynchronousReplicationType:  &SynchronousReplicationTypefield,
-		SynchronousReplicationState: &SynchronousReplicationStatefield,
-		AppSync:                     &AppSyncfield,
-		AppServer:                   &AppServerfield,
-		AppId:                       &AppIdfield,
-		AppClusterName:              &AppClusterNamefield,
-		AppServiceName:              &AppServiceNamefield,
-		VcenterHostname:             &VcenterHostnamefield,
-		VcenterUsername:             &VcenterUsernamefield,
-		VcenterPassword:             &VcenterPasswordfield,
-		AgentHostname:               &AgentHostnamefield,
-		AgentUsername:               &AgentUsernamefield,
-		AgentPassword:               &AgentPasswordfield,
-		CreationTime:                &CreationTimefield,
-		LastModifiedTime:            &LastModifiedTimefield,
-		VolumeList:                  &VolumeListfield,
-		DownstreamVolumeList:        &DownstreamVolumeListfield,
-		UpstreamVolumeList:          &UpstreamVolumeListfield,
-		VolumeCount:                 &VolumeCountfield,
-		CachePinnedVolumeList:       &CachePinnedVolumeListfield,
-		LastSnapcoll:                &LastSnapcollfield,
-		SnapcollCount:               &SnapcollCountfield,
-		ScheduleList:                &ScheduleListfield,
-		ReplicationPartner:          &ReplicationPartnerfield,
-		LastReplicatedSnapcoll:      &LastReplicatedSnapcollfield,
-		LastReplicatedSnapcollList:  &LastReplicatedSnapcollListfield,
-		ProtectionType:              &ProtectionTypefield,
-		LagTime:                     &LagTimefield,
-		IsStandaloneVolcoll:         &IsStandaloneVolcollfield,
-		TotalReplBytes:              &TotalReplBytesfield,
-		ReplBytesTransferred:        &ReplBytesTransferredfield,
-		IsHandingOver:               &IsHandingOverfield,
-		HandoverReplicationPartner:  &HandoverReplicationPartnerfield,
-		Metadata:                    &Metadatafield,
-		SrepLastSync:                &SrepLastSyncfield,
-		SrepResyncPercent:           &SrepResyncPercentfield,
+		ID:                          &fieldID,
+		ProttmplId:                  &fieldProttmplId,
+		Name:                        &fieldName,
+		FullName:                    &fieldFullName,
+		SearchName:                  &fieldSearchName,
+		Description:                 &fieldDescription,
+		ReplPriority:                &fieldReplPriority,
+		PolOwnerName:                &fieldPolOwnerName,
+		ReplicationType:             &fieldReplicationType,
+		SynchronousReplicationType:  &fieldSynchronousReplicationType,
+		SynchronousReplicationState: &fieldSynchronousReplicationState,
+		AppSync:                     &fieldAppSync,
+		AppServer:                   &fieldAppServer,
+		AppId:                       &fieldAppId,
+		AppClusterName:              &fieldAppClusterName,
+		AppServiceName:              &fieldAppServiceName,
+		VcenterHostname:             &fieldVcenterHostname,
+		VcenterUsername:             &fieldVcenterUsername,
+		VcenterPassword:             &fieldVcenterPassword,
+		AgentHostname:               &fieldAgentHostname,
+		AgentUsername:               &fieldAgentUsername,
+		AgentPassword:               &fieldAgentPassword,
+		CreationTime:                &fieldCreationTime,
+		LastModifiedTime:            &fieldLastModifiedTime,
+		VolumeList:                  &fieldVolumeList,
+		DownstreamVolumeList:        &fieldDownstreamVolumeList,
+		UpstreamVolumeList:          &fieldUpstreamVolumeList,
+		VolumeCount:                 &fieldVolumeCount,
+		CachePinnedVolumeList:       &fieldCachePinnedVolumeList,
+		LastSnapcoll:                &fieldLastSnapcoll,
+		SnapcollCount:               &fieldSnapcollCount,
+		ScheduleList:                &fieldScheduleList,
+		ReplicationPartner:          &fieldReplicationPartner,
+		LastReplicatedSnapcoll:      &fieldLastReplicatedSnapcoll,
+		LastReplicatedSnapcollList:  &fieldLastReplicatedSnapcollList,
+		ProtectionType:              &fieldProtectionType,
+		LagTime:                     &fieldLagTime,
+		IsStandaloneVolcoll:         &fieldIsStandaloneVolcoll,
+		TotalReplBytes:              &fieldTotalReplBytes,
+		ReplBytesTransferred:        &fieldReplBytesTransferred,
+		IsHandingOver:               &fieldIsHandingOver,
+		HandoverReplicationPartner:  &fieldHandoverReplicationPartner,
+		Metadata:                    &fieldMetadata,
+		SrepLastSync:                &fieldSrepLastSync,
+		SrepResyncPercent:           &fieldSrepResyncPercent,
 	}
 }
 

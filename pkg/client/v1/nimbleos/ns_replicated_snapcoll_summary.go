@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsReplicatedSnapcollSummary - Select fields containing snapshot collection information for replicated snapshot collections.
-// Export NsReplicatedSnapcollSummaryFields for advance operations like search filter etc.
+
+// Export NsReplicatedSnapcollSummaryFields provides field names to use in filter parameters, for example.
 var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummaryStringFields
 
 func init() {
-	SnapcollIdfield := "snapcoll_id"
-	SnapcollNamefield := "snapcoll_name"
-	SnapcollCreationTimefield := "snapcoll_creation_time"
-	DownstreamPartnerNamefield := "downstream_partner_name"
-	VolIdsfield := "vol_ids"
+	fieldSnapcollId := "snapcoll_id"
+	fieldSnapcollName := "snapcoll_name"
+	fieldSnapcollCreationTime := "snapcoll_creation_time"
+	fieldDownstreamPartnerName := "downstream_partner_name"
+	fieldVolIds := "vol_ids"
 
 	NsReplicatedSnapcollSummaryFields = &NsReplicatedSnapcollSummaryStringFields{
-		SnapcollId:            &SnapcollIdfield,
-		SnapcollName:          &SnapcollNamefield,
-		SnapcollCreationTime:  &SnapcollCreationTimefield,
-		DownstreamPartnerName: &DownstreamPartnerNamefield,
-		VolIds:                &VolIdsfield,
+		SnapcollId:            &fieldSnapcollId,
+		SnapcollName:          &fieldSnapcollName,
+		SnapcollCreationTime:  &fieldSnapcollCreationTime,
+		DownstreamPartnerName: &fieldDownstreamPartnerName,
+		VolIds:                &fieldVolIds,
 	}
 }
 

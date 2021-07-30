@@ -3,26 +3,27 @@
 package nimbleos
 
 // Subscriber - Subscribers are websocket based notification clients that can subscribe to interesting operations and events and recieve notifications whenever the subscribed to operations and events happen on the array.
-// Export SubscriberFields for advance operations like search filter etc.
+
+// Export SubscriberFields provides field names to use in filter parameters, for example.
 var SubscriberFields *SubscriberStringFields
 
 func init() {
-	IDfield := "id"
-	Typefield := "type"
-	RenewIntervalfield := "renew_interval"
-	RenewResponseTimeoutfield := "renew_response_timeout"
-	IsConnectedfield := "is_connected"
-	NotificationCountfield := "notification_count"
-	Forcefield := "force"
+	fieldID := "id"
+	fieldType := "type"
+	fieldRenewInterval := "renew_interval"
+	fieldRenewResponseTimeout := "renew_response_timeout"
+	fieldIsConnected := "is_connected"
+	fieldNotificationCount := "notification_count"
+	fieldForce := "force"
 
 	SubscriberFields = &SubscriberStringFields{
-		ID:                   &IDfield,
-		Type:                 &Typefield,
-		RenewInterval:        &RenewIntervalfield,
-		RenewResponseTimeout: &RenewResponseTimeoutfield,
-		IsConnected:          &IsConnectedfield,
-		NotificationCount:    &NotificationCountfield,
-		Force:                &Forcefield,
+		ID:                   &fieldID,
+		Type:                 &fieldType,
+		RenewInterval:        &fieldRenewInterval,
+		RenewResponseTimeout: &fieldRenewResponseTimeout,
+		IsConnected:          &fieldIsConnected,
+		NotificationCount:    &fieldNotificationCount,
+		Force:                &fieldForce,
 	}
 }
 

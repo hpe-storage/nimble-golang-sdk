@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsObjectOwnerPairWithType - List of objects of a given type along with their owners.
-// Export NsObjectOwnerPairWithTypeFields for advance operations like search filter etc.
+
+// Export NsObjectOwnerPairWithTypeFields provides field names to use in filter parameters, for example.
 var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithTypeStringFields
 
 func init() {
-	ObjTypefield := "obj_type"
-	ObjOwnerPairListfield := "obj_owner_pair_list"
+	fieldObjType := "obj_type"
+	fieldObjOwnerPairList := "obj_owner_pair_list"
 
 	NsObjectOwnerPairWithTypeFields = &NsObjectOwnerPairWithTypeStringFields{
-		ObjType:          &ObjTypefield,
-		ObjOwnerPairList: &ObjOwnerPairListfield,
+		ObjType:          &fieldObjType,
+		ObjOwnerPairList: &fieldObjOwnerPairList,
 	}
 }
 

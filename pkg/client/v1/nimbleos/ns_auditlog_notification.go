@@ -3,26 +3,27 @@
 package nimbleos
 
 // NsAuditlogNotification - Represents an auditlog notification message.
-// Export NsAuditlogNotificationFields for advance operations like search filter etc.
+
+// Export NsAuditlogNotificationFields provides field names to use in filter parameters, for example.
 var NsAuditlogNotificationFields *NsAuditlogNotificationStringFields
 
 func init() {
-	SequenceNumberfield := "sequence_number"
-	NotificationTypefield := "notification_type"
-	Activityfield := "activity"
-	ObjectTypefield := "object_type"
-	ObjectIdfield := "object_id"
-	ObjectNamefield := "object_name"
-	Timestampfield := "timestamp"
+	fieldSequenceNumber := "sequence_number"
+	fieldNotificationType := "notification_type"
+	fieldActivity := "activity"
+	fieldObjectType := "object_type"
+	fieldObjectId := "object_id"
+	fieldObjectName := "object_name"
+	fieldTimestamp := "timestamp"
 
 	NsAuditlogNotificationFields = &NsAuditlogNotificationStringFields{
-		SequenceNumber:   &SequenceNumberfield,
-		NotificationType: &NotificationTypefield,
-		Activity:         &Activityfield,
-		ObjectType:       &ObjectTypefield,
-		ObjectId:         &ObjectIdfield,
-		ObjectName:       &ObjectNamefield,
-		Timestamp:        &Timestampfield,
+		SequenceNumber:   &fieldSequenceNumber,
+		NotificationType: &fieldNotificationType,
+		Activity:         &fieldActivity,
+		ObjectType:       &fieldObjectType,
+		ObjectId:         &fieldObjectId,
+		ObjectName:       &fieldObjectName,
+		Timestamp:        &fieldTimestamp,
 	}
 }
 

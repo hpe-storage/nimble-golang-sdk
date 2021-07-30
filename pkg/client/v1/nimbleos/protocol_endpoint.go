@@ -3,48 +3,49 @@
 package nimbleos
 
 // ProtocolEndpoint - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
-// Export ProtocolEndpointFields for advance operations like search filter etc.
+
+// Export ProtocolEndpointFields provides field names to use in filter parameters, for example.
 var ProtocolEndpointFields *ProtocolEndpointStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	Statefield := "state"
-	SerialNumberfield := "serial_number"
-	TargetNamefield := "target_name"
-	GroupSpecificIdsfield := "group_specific_ids"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	NumConnectionsfield := "num_connections"
-	NumIscsiConnectionsfield := "num_iscsi_connections"
-	NumFcConnectionsfield := "num_fc_connections"
-	AccessControlRecordsfield := "access_control_records"
-	IscsiSessionsfield := "iscsi_sessions"
-	FcSessionsfield := "fc_sessions"
-	AccessProtocolfield := "access_protocol"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldPoolName := "pool_name"
+	fieldPoolId := "pool_id"
+	fieldState := "state"
+	fieldSerialNumber := "serial_number"
+	fieldTargetName := "target_name"
+	fieldGroupSpecificIds := "group_specific_ids"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldNumConnections := "num_connections"
+	fieldNumIscsiConnections := "num_iscsi_connections"
+	fieldNumFcConnections := "num_fc_connections"
+	fieldAccessControlRecords := "access_control_records"
+	fieldIscsiSessions := "iscsi_sessions"
+	fieldFcSessions := "fc_sessions"
+	fieldAccessProtocol := "access_protocol"
 
 	ProtocolEndpointFields = &ProtocolEndpointStringFields{
-		ID:                   &IDfield,
-		Name:                 &Namefield,
-		Description:          &Descriptionfield,
-		PoolName:             &PoolNamefield,
-		PoolId:               &PoolIdfield,
-		State:                &Statefield,
-		SerialNumber:         &SerialNumberfield,
-		TargetName:           &TargetNamefield,
-		GroupSpecificIds:     &GroupSpecificIdsfield,
-		CreationTime:         &CreationTimefield,
-		LastModified:         &LastModifiedfield,
-		NumConnections:       &NumConnectionsfield,
-		NumIscsiConnections:  &NumIscsiConnectionsfield,
-		NumFcConnections:     &NumFcConnectionsfield,
-		AccessControlRecords: &AccessControlRecordsfield,
-		IscsiSessions:        &IscsiSessionsfield,
-		FcSessions:           &FcSessionsfield,
-		AccessProtocol:       &AccessProtocolfield,
+		ID:                   &fieldID,
+		Name:                 &fieldName,
+		Description:          &fieldDescription,
+		PoolName:             &fieldPoolName,
+		PoolId:               &fieldPoolId,
+		State:                &fieldState,
+		SerialNumber:         &fieldSerialNumber,
+		TargetName:           &fieldTargetName,
+		GroupSpecificIds:     &fieldGroupSpecificIds,
+		CreationTime:         &fieldCreationTime,
+		LastModified:         &fieldLastModified,
+		NumConnections:       &fieldNumConnections,
+		NumIscsiConnections:  &fieldNumIscsiConnections,
+		NumFcConnections:     &fieldNumFcConnections,
+		AccessControlRecords: &fieldAccessControlRecords,
+		IscsiSessions:        &fieldIscsiSessions,
+		FcSessions:           &fieldFcSessions,
+		AccessProtocol:       &fieldAccessProtocol,
 	}
 }
 

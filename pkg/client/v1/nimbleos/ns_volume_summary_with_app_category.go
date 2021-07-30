@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsVolumeSummaryWithAppCategory - Select fields containing volume info.
-// Export NsVolumeSummaryWithAppCategoryFields for advance operations like search filter etc.
+
+// Export NsVolumeSummaryWithAppCategoryFields provides field names to use in filter parameters, for example.
 var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	AppCategoryfield := "app_category"
-	FullNamefield := "full_name"
-	Lunfield := "lun"
+	fieldID := "id"
+	fieldName := "name"
+	fieldAppCategory := "app_category"
+	fieldFullName := "full_name"
+	fieldLun := "lun"
 
 	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategoryStringFields{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		AppCategory: &AppCategoryfield,
-		FullName:    &FullNamefield,
-		Lun:         &Lunfield,
+		ID:          &fieldID,
+		Name:        &fieldName,
+		AppCategory: &fieldAppCategory,
+		FullName:    &fieldFullName,
+		Lun:         &fieldLun,
 	}
 }
 

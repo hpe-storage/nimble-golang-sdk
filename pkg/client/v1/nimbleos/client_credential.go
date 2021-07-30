@@ -3,26 +3,27 @@
 package nimbleos
 
 // ClientCredential - Credential that this device will trust.
-// Export ClientCredentialFields for advance operations like search filter etc.
+
+// Export ClientCredentialFields provides field names to use in filter parameters, for example.
 var ClientCredentialFields *ClientCredentialStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	ClientIdfield := "client_id"
-	Secretfield := "secret"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	Descriptionfield := "description"
+	fieldID := "id"
+	fieldName := "name"
+	fieldClientId := "client_id"
+	fieldSecret := "secret"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldDescription := "description"
 
 	ClientCredentialFields = &ClientCredentialStringFields{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		ClientId:     &ClientIdfield,
-		Secret:       &Secretfield,
-		CreationTime: &CreationTimefield,
-		LastModified: &LastModifiedfield,
-		Description:  &Descriptionfield,
+		ID:           &fieldID,
+		Name:         &fieldName,
+		ClientId:     &fieldClientId,
+		Secret:       &fieldSecret,
+		CreationTime: &fieldCreationTime,
+		LastModified: &fieldLastModified,
+		Description:  &fieldDescription,
 	}
 }
 

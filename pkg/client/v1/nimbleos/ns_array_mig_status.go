@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsArrayMigStatus - Data migration status for an array.
-// Export NsArrayMigStatusFields for advance operations like search filter etc.
+
+// Export NsArrayMigStatusFields provides field names to use in filter parameters, for example.
 var NsArrayMigStatusFields *NsArrayMigStatusStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	IsDataSourcefield := "is_data_source"
-	SpaceUtilizationfield := "space_utilization"
+	fieldID := "id"
+	fieldName := "name"
+	fieldIsDataSource := "is_data_source"
+	fieldSpaceUtilization := "space_utilization"
 
 	NsArrayMigStatusFields = &NsArrayMigStatusStringFields{
-		ID:               &IDfield,
-		Name:             &Namefield,
-		IsDataSource:     &IsDataSourcefield,
-		SpaceUtilization: &SpaceUtilizationfield,
+		ID:               &fieldID,
+		Name:             &fieldName,
+		IsDataSource:     &fieldIsDataSource,
+		SpaceUtilization: &fieldSpaceUtilization,
 	}
 }
 

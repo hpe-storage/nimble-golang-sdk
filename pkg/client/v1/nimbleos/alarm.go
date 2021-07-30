@@ -3,50 +3,51 @@
 package nimbleos
 
 // Alarm - View alarms.
-// Export AlarmFields for advance operations like search filter etc.
+
+// Export AlarmFields provides field names to use in filter parameters, for example.
 var AlarmFields *AlarmStringFields
 
 func init() {
-	IDfield := "id"
-	Typefield := "type"
-	Arrayfield := "array"
-	CurrOnsetEventIdfield := "curr_onset_event_id"
-	ObjectIdfield := "object_id"
-	ObjectNamefield := "object_name"
-	ObjectTypefield := "object_type"
-	OnsetTimefield := "onset_time"
-	AckTimefield := "ack_time"
-	Statusfield := "status"
-	UserIdfield := "user_id"
-	UserNamefield := "user_name"
-	UserFullNamefield := "user_full_name"
-	Categoryfield := "category"
-	Severityfield := "severity"
-	RemindEveryfield := "remind_every"
-	RemindEveryUnitfield := "remind_every_unit"
-	Activityfield := "activity"
-	NextNotificationTimefield := "next_notification_time"
+	fieldID := "id"
+	fieldType := "type"
+	fieldArray := "array"
+	fieldCurrOnsetEventId := "curr_onset_event_id"
+	fieldObjectId := "object_id"
+	fieldObjectName := "object_name"
+	fieldObjectType := "object_type"
+	fieldOnsetTime := "onset_time"
+	fieldAckTime := "ack_time"
+	fieldStatus := "status"
+	fieldUserId := "user_id"
+	fieldUserName := "user_name"
+	fieldUserFullName := "user_full_name"
+	fieldCategory := "category"
+	fieldSeverity := "severity"
+	fieldRemindEvery := "remind_every"
+	fieldRemindEveryUnit := "remind_every_unit"
+	fieldActivity := "activity"
+	fieldNextNotificationTime := "next_notification_time"
 
 	AlarmFields = &AlarmStringFields{
-		ID:                   &IDfield,
-		Type:                 &Typefield,
-		Array:                &Arrayfield,
-		CurrOnsetEventId:     &CurrOnsetEventIdfield,
-		ObjectId:             &ObjectIdfield,
-		ObjectName:           &ObjectNamefield,
-		ObjectType:           &ObjectTypefield,
-		OnsetTime:            &OnsetTimefield,
-		AckTime:              &AckTimefield,
-		Status:               &Statusfield,
-		UserId:               &UserIdfield,
-		UserName:             &UserNamefield,
-		UserFullName:         &UserFullNamefield,
-		Category:             &Categoryfield,
-		Severity:             &Severityfield,
-		RemindEvery:          &RemindEveryfield,
-		RemindEveryUnit:      &RemindEveryUnitfield,
-		Activity:             &Activityfield,
-		NextNotificationTime: &NextNotificationTimefield,
+		ID:                   &fieldID,
+		Type:                 &fieldType,
+		Array:                &fieldArray,
+		CurrOnsetEventId:     &fieldCurrOnsetEventId,
+		ObjectId:             &fieldObjectId,
+		ObjectName:           &fieldObjectName,
+		ObjectType:           &fieldObjectType,
+		OnsetTime:            &fieldOnsetTime,
+		AckTime:              &fieldAckTime,
+		Status:               &fieldStatus,
+		UserId:               &fieldUserId,
+		UserName:             &fieldUserName,
+		UserFullName:         &fieldUserFullName,
+		Category:             &fieldCategory,
+		Severity:             &fieldSeverity,
+		RemindEvery:          &fieldRemindEvery,
+		RemindEveryUnit:      &fieldRemindEveryUnit,
+		Activity:             &fieldActivity,
+		NextNotificationTime: &fieldNextNotificationTime,
 	}
 }
 

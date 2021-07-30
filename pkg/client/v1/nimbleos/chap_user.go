@@ -3,36 +3,37 @@
 package nimbleos
 
 // ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
-// Export ChapUserFields for advance operations like search filter etc.
+
+// Export ChapUserFields provides field names to use in filter parameters, for example.
 var ChapUserFields *ChapUserStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	Passwordfield := "password"
-	InitiatorIqnsfield := "initiator_iqns"
-	TenantIdfield := "tenant_id"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	VolListfield := "vol_list"
-	VolCountfield := "vol_count"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldPassword := "password"
+	fieldInitiatorIqns := "initiator_iqns"
+	fieldTenantId := "tenant_id"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldVolList := "vol_list"
+	fieldVolCount := "vol_count"
 
 	ChapUserFields = &ChapUserStringFields{
-		ID:            &IDfield,
-		Name:          &Namefield,
-		FullName:      &FullNamefield,
-		SearchName:    &SearchNamefield,
-		Description:   &Descriptionfield,
-		Password:      &Passwordfield,
-		InitiatorIqns: &InitiatorIqnsfield,
-		TenantId:      &TenantIdfield,
-		CreationTime:  &CreationTimefield,
-		LastModified:  &LastModifiedfield,
-		VolList:       &VolListfield,
-		VolCount:      &VolCountfield,
+		ID:            &fieldID,
+		Name:          &fieldName,
+		FullName:      &fieldFullName,
+		SearchName:    &fieldSearchName,
+		Description:   &fieldDescription,
+		Password:      &fieldPassword,
+		InitiatorIqns: &fieldInitiatorIqns,
+		TenantId:      &fieldTenantId,
+		CreationTime:  &fieldCreationTime,
+		LastModified:  &fieldLastModified,
+		VolList:       &fieldVolList,
+		VolCount:      &fieldVolCount,
 	}
 }
 

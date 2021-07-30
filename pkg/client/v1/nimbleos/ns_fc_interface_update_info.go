@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsFcInterfaceUpdateInfo - Fibre Channel interface information to update.
-// Export NsFcInterfaceUpdateInfoFields for advance operations like search filter etc.
+
+// Export NsFcInterfaceUpdateInfoFields provides field names to use in filter parameters, for example.
 var NsFcInterfaceUpdateInfoFields *NsFcInterfaceUpdateInfoStringFields
 
 func init() {
-	IDfield := "id"
-	Onlinefield := "online"
+	fieldID := "id"
+	fieldOnline := "online"
 
 	NsFcInterfaceUpdateInfoFields = &NsFcInterfaceUpdateInfoStringFields{
-		ID:     &IDfield,
-		Online: &Onlinefield,
+		ID:     &fieldID,
+		Online: &fieldOnline,
 	}
 }
 

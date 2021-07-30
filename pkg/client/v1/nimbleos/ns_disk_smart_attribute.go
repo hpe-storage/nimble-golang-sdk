@@ -3,28 +3,29 @@
 package nimbleos
 
 // NsDiskSmartAttribute - One Smart attribute of a disk.
-// Export NsDiskSmartAttributeFields for advance operations like search filter etc.
+
+// Export NsDiskSmartAttributeFields provides field names to use in filter parameters, for example.
 var NsDiskSmartAttributeFields *NsDiskSmartAttributeStringFields
 
 func init() {
-	Namefield := "name"
-	SmartIdfield := "smart_id"
-	CurValuefield := "cur_value"
-	WorstValuefield := "worst_value"
-	Thresholdfield := "threshold"
-	Flagsfield := "flags"
-	RawValuefield := "raw_value"
-	LastUpdatedEpochSecsfield := "last_updated_epoch_secs"
+	fieldName := "name"
+	fieldSmartId := "smart_id"
+	fieldCurValue := "cur_value"
+	fieldWorstValue := "worst_value"
+	fieldThreshold := "threshold"
+	fieldFlags := "flags"
+	fieldRawValue := "raw_value"
+	fieldLastUpdatedEpochSecs := "last_updated_epoch_secs"
 
 	NsDiskSmartAttributeFields = &NsDiskSmartAttributeStringFields{
-		Name:                 &Namefield,
-		SmartId:              &SmartIdfield,
-		CurValue:             &CurValuefield,
-		WorstValue:           &WorstValuefield,
-		Threshold:            &Thresholdfield,
-		Flags:                &Flagsfield,
-		RawValue:             &RawValuefield,
-		LastUpdatedEpochSecs: &LastUpdatedEpochSecsfield,
+		Name:                 &fieldName,
+		SmartId:              &fieldSmartId,
+		CurValue:             &fieldCurValue,
+		WorstValue:           &fieldWorstValue,
+		Threshold:            &fieldThreshold,
+		Flags:                &fieldFlags,
+		RawValue:             &fieldRawValue,
+		LastUpdatedEpochSecs: &fieldLastUpdatedEpochSecs,
 	}
 }
 

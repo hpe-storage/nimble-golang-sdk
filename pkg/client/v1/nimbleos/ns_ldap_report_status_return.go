@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsLdapReportStatusReturn - A report of the current LDAP status for the group.
-// Export NsLdapReportStatusReturnFields for advance operations like search filter etc.
+
+// Export NsLdapReportStatusReturnFields provides field names to use in filter parameters, for example.
 var NsLdapReportStatusReturnFields *NsLdapReportStatusReturnStringFields
 
 func init() {
-	Enabledfield := "enabled"
-	LocalServiceStatusGoodfield := "local_service_status_good"
-	RemoteServiceStatusGoodfield := "remote_service_status_good"
-	RemoteServiceStatusfield := "remote_service_status"
+	fieldEnabled := "enabled"
+	fieldLocalServiceStatusGood := "local_service_status_good"
+	fieldRemoteServiceStatusGood := "remote_service_status_good"
+	fieldRemoteServiceStatus := "remote_service_status"
 
 	NsLdapReportStatusReturnFields = &NsLdapReportStatusReturnStringFields{
-		Enabled:                 &Enabledfield,
-		LocalServiceStatusGood:  &LocalServiceStatusGoodfield,
-		RemoteServiceStatusGood: &RemoteServiceStatusGoodfield,
-		RemoteServiceStatus:     &RemoteServiceStatusfield,
+		Enabled:                 &fieldEnabled,
+		LocalServiceStatusGood:  &fieldLocalServiceStatusGood,
+		RemoteServiceStatusGood: &fieldRemoteServiceStatusGood,
+		RemoteServiceStatus:     &fieldRemoteServiceStatus,
 	}
 }
 

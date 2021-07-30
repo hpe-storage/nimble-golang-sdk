@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsAlarmCountSummaryReturn - List of alarm count for each category.
-// Export NsAlarmCountSummaryReturnFields for advance operations like search filter etc.
+
+// Export NsAlarmCountSummaryReturnFields provides field names to use in filter parameters, for example.
 var NsAlarmCountSummaryReturnFields *NsAlarmCountSummaryReturnStringFields
 
 func init() {
-	AlarmSummaryfield := "alarm_summary"
+	fieldAlarmSummary := "alarm_summary"
 
 	NsAlarmCountSummaryReturnFields = &NsAlarmCountSummaryReturnStringFields{
-		AlarmSummary: &AlarmSummaryfield,
+		AlarmSummary: &fieldAlarmSummary,
 	}
 }
 

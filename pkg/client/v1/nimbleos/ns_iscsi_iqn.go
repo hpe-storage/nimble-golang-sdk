@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsISCSIIQN - ISCSI IQN.
-// Export NsISCSIIQNFields for advance operations like search filter etc.
+
+// Export NsISCSIIQNFields provides field names to use in filter parameters, for example.
 var NsISCSIIQNFields *NsISCSIIQNStringFields
 
 func init() {
-	Namefield := "name"
+	fieldName := "name"
 
 	NsISCSIIQNFields = &NsISCSIIQNStringFields{
-		Name: &Namefield,
+		Name: &fieldName,
 	}
 }
 

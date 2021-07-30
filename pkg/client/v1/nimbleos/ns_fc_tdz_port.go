@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsFcTdzPort - Fibre Channel Target port.
-// Export NsFcTdzPortFields for advance operations like search filter etc.
+
+// Export NsFcTdzPortFields provides field names to use in filter parameters, for example.
 var NsFcTdzPortFields *NsFcTdzPortStringFields
 
 func init() {
-	ArrayNamefield := "array_name"
-	FcNamefield := "fc_name"
+	fieldArrayName := "array_name"
+	fieldFcName := "fc_name"
 
 	NsFcTdzPortFields = &NsFcTdzPortStringFields{
-		ArrayName: &ArrayNamefield,
-		FcName:    &FcNamefield,
+		ArrayName: &fieldArrayName,
+		FcName:    &fieldFcName,
 	}
 }
 

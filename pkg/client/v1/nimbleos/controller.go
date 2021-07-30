@@ -3,58 +3,59 @@
 package nimbleos
 
 // Controller - Controller is a redundant collection of hardware capable of running the array software.
-// Export ControllerFields for advance operations like search filter etc.
+
+// Export ControllerFields provides field names to use in filter parameters, for example.
 var ControllerFields *ControllerStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	ArrayNamefield := "array_name"
-	ArrayIdfield := "array_id"
-	PartialResponseOkfield := "partial_response_ok"
-	Serialfield := "serial"
-	Modelfield := "model"
-	Hostnamefield := "hostname"
-	SupportAddressfield := "support_address"
-	SupportNetmaskfield := "support_netmask"
-	SupportNicfield := "support_nic"
-	PowerStatusfield := "power_status"
-	FanStatusfield := "fan_status"
-	TemperatureStatusfield := "temperature_status"
-	PowerSuppliesfield := "power_supplies"
-	Fansfield := "fans"
-	TemperatureSensorsfield := "temperature_sensors"
-	PartitionStatusfield := "partition_status"
-	CtrlrSidefield := "ctrlr_side"
-	Statefield := "state"
-	NvmeCardsEnabledfield := "nvme_cards_enabled"
-	NvmeCardsfield := "nvme_cards"
-	AsupTimefield := "asup_time"
+	fieldID := "id"
+	fieldName := "name"
+	fieldArrayName := "array_name"
+	fieldArrayId := "array_id"
+	fieldPartialResponseOk := "partial_response_ok"
+	fieldSerial := "serial"
+	fieldModel := "model"
+	fieldHostname := "hostname"
+	fieldSupportAddress := "support_address"
+	fieldSupportNetmask := "support_netmask"
+	fieldSupportNic := "support_nic"
+	fieldPowerStatus := "power_status"
+	fieldFanStatus := "fan_status"
+	fieldTemperatureStatus := "temperature_status"
+	fieldPowerSupplies := "power_supplies"
+	fieldFans := "fans"
+	fieldTemperatureSensors := "temperature_sensors"
+	fieldPartitionStatus := "partition_status"
+	fieldCtrlrSide := "ctrlr_side"
+	fieldState := "state"
+	fieldNvmeCardsEnabled := "nvme_cards_enabled"
+	fieldNvmeCards := "nvme_cards"
+	fieldAsupTime := "asup_time"
 
 	ControllerFields = &ControllerStringFields{
-		ID:                 &IDfield,
-		Name:               &Namefield,
-		ArrayName:          &ArrayNamefield,
-		ArrayId:            &ArrayIdfield,
-		PartialResponseOk:  &PartialResponseOkfield,
-		Serial:             &Serialfield,
-		Model:              &Modelfield,
-		Hostname:           &Hostnamefield,
-		SupportAddress:     &SupportAddressfield,
-		SupportNetmask:     &SupportNetmaskfield,
-		SupportNic:         &SupportNicfield,
-		PowerStatus:        &PowerStatusfield,
-		FanStatus:          &FanStatusfield,
-		TemperatureStatus:  &TemperatureStatusfield,
-		PowerSupplies:      &PowerSuppliesfield,
-		Fans:               &Fansfield,
-		TemperatureSensors: &TemperatureSensorsfield,
-		PartitionStatus:    &PartitionStatusfield,
-		CtrlrSide:          &CtrlrSidefield,
-		State:              &Statefield,
-		NvmeCardsEnabled:   &NvmeCardsEnabledfield,
-		NvmeCards:          &NvmeCardsfield,
-		AsupTime:           &AsupTimefield,
+		ID:                 &fieldID,
+		Name:               &fieldName,
+		ArrayName:          &fieldArrayName,
+		ArrayId:            &fieldArrayId,
+		PartialResponseOk:  &fieldPartialResponseOk,
+		Serial:             &fieldSerial,
+		Model:              &fieldModel,
+		Hostname:           &fieldHostname,
+		SupportAddress:     &fieldSupportAddress,
+		SupportNetmask:     &fieldSupportNetmask,
+		SupportNic:         &fieldSupportNic,
+		PowerStatus:        &fieldPowerStatus,
+		FanStatus:          &fieldFanStatus,
+		TemperatureStatus:  &fieldTemperatureStatus,
+		PowerSupplies:      &fieldPowerSupplies,
+		Fans:               &fieldFans,
+		TemperatureSensors: &fieldTemperatureSensors,
+		PartitionStatus:    &fieldPartitionStatus,
+		CtrlrSide:          &fieldCtrlrSide,
+		State:              &fieldState,
+		NvmeCardsEnabled:   &fieldNvmeCardsEnabled,
+		NvmeCards:          &fieldNvmeCards,
+		AsupTime:           &fieldAsupTime,
 	}
 }
 

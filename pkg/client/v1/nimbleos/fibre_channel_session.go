@@ -3,18 +3,19 @@
 package nimbleos
 
 // FibreChannelSession - Fibre Channel session is created when Fibre Channel initiator connects to this group.
-// Export FibreChannelSessionFields for advance operations like search filter etc.
+
+// Export FibreChannelSessionFields provides field names to use in filter parameters, for example.
 var FibreChannelSessionFields *FibreChannelSessionStringFields
 
 func init() {
-	IDfield := "id"
-	InitiatorInfofield := "initiator_info"
-	TargetInfofield := "target_info"
+	fieldID := "id"
+	fieldInitiatorInfo := "initiator_info"
+	fieldTargetInfo := "target_info"
 
 	FibreChannelSessionFields = &FibreChannelSessionStringFields{
-		ID:            &IDfield,
-		InitiatorInfo: &InitiatorInfofield,
-		TargetInfo:    &TargetInfofield,
+		ID:            &fieldID,
+		InitiatorInfo: &fieldInitiatorInfo,
+		TargetInfo:    &fieldTargetInfo,
 	}
 }
 

@@ -3,38 +3,39 @@
 package nimbleos
 
 // NsThrottle - A single throttle for the partner.
-// Export NsThrottleFields for advance operations like search filter etc.
+
+// Export NsThrottleFields provides field names to use in filter parameters, for example.
 var NsThrottleFields *NsThrottleStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	ThrPartnerIdfield := "thr_partner_id"
-	ThrDayMaskfield := "thr_day_mask"
-	Daysfield := "days"
-	ThrAtTimefield := "thr_at_time"
-	ThrUntilTimefield := "thr_until_time"
-	ThrBandwidthfield := "thr_bandwidth"
-	ThrBandwidthKbpsfield := "thr_bandwidth_kbps"
-	ThrBandwidthLimitKbpsfield := "thr_bandwidth_limit_kbps"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldThrPartnerId := "thr_partner_id"
+	fieldThrDayMask := "thr_day_mask"
+	fieldDays := "days"
+	fieldThrAtTime := "thr_at_time"
+	fieldThrUntilTime := "thr_until_time"
+	fieldThrBandwidth := "thr_bandwidth"
+	fieldThrBandwidthKbps := "thr_bandwidth_kbps"
+	fieldThrBandwidthLimitKbps := "thr_bandwidth_limit_kbps"
 
 	NsThrottleFields = &NsThrottleStringFields{
-		ID:                    &IDfield,
-		Name:                  &Namefield,
-		Description:           &Descriptionfield,
-		CreationTime:          &CreationTimefield,
-		LastModified:          &LastModifiedfield,
-		ThrPartnerId:          &ThrPartnerIdfield,
-		ThrDayMask:            &ThrDayMaskfield,
-		Days:                  &Daysfield,
-		ThrAtTime:             &ThrAtTimefield,
-		ThrUntilTime:          &ThrUntilTimefield,
-		ThrBandwidth:          &ThrBandwidthfield,
-		ThrBandwidthKbps:      &ThrBandwidthKbpsfield,
-		ThrBandwidthLimitKbps: &ThrBandwidthLimitKbpsfield,
+		ID:                    &fieldID,
+		Name:                  &fieldName,
+		Description:           &fieldDescription,
+		CreationTime:          &fieldCreationTime,
+		LastModified:          &fieldLastModified,
+		ThrPartnerId:          &fieldThrPartnerId,
+		ThrDayMask:            &fieldThrDayMask,
+		Days:                  &fieldDays,
+		ThrAtTime:             &fieldThrAtTime,
+		ThrUntilTime:          &fieldThrUntilTime,
+		ThrBandwidth:          &fieldThrBandwidth,
+		ThrBandwidthKbps:      &fieldThrBandwidthKbps,
+		ThrBandwidthLimitKbps: &fieldThrBandwidthLimitKbps,
 	}
 }
 

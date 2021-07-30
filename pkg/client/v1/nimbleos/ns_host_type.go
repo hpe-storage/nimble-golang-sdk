@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsHostType - Host type attribute.
-// Export NsHostTypeFields for advance operations like search filter etc.
+
+// Export NsHostTypeFields provides field names to use in filter parameters, for example.
 var NsHostTypeFields *NsHostTypeStringFields
 
 func init() {
-	InitiatorNamefield := "initiator_name"
-	SourceInitiatorGroupfield := "source_initiator_group"
-	SourceHostTypefield := "source_host_type"
-	DestinationInitiatorGroupfield := "destination_initiator_group"
-	DestinationHostTypefield := "destination_host_type"
+	fieldInitiatorName := "initiator_name"
+	fieldSourceInitiatorGroup := "source_initiator_group"
+	fieldSourceHostType := "source_host_type"
+	fieldDestinationInitiatorGroup := "destination_initiator_group"
+	fieldDestinationHostType := "destination_host_type"
 
 	NsHostTypeFields = &NsHostTypeStringFields{
-		InitiatorName:             &InitiatorNamefield,
-		SourceInitiatorGroup:      &SourceInitiatorGroupfield,
-		SourceHostType:            &SourceHostTypefield,
-		DestinationInitiatorGroup: &DestinationInitiatorGroupfield,
-		DestinationHostType:       &DestinationHostTypefield,
+		InitiatorName:             &fieldInitiatorName,
+		SourceInitiatorGroup:      &fieldSourceInitiatorGroup,
+		SourceHostType:            &fieldSourceHostType,
+		DestinationInitiatorGroup: &fieldDestinationInitiatorGroup,
+		DestinationHostType:       &fieldDestinationHostType,
 	}
 }
 

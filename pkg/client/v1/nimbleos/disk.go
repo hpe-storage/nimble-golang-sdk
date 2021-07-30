@@ -3,76 +3,77 @@
 package nimbleos
 
 // Disk - Disks are used for storing user data.
-// Export DiskFields for advance operations like search filter etc.
+
+// Export DiskFields provides field names to use in filter parameters, for example.
 var DiskFields *DiskStringFields
 
 func init() {
-	IDfield := "id"
-	IsDfcfield := "is_dfc"
-	Serialfield := "serial"
-	Pathfield := "path"
-	ShelfSerialfield := "shelf_serial"
-	ShelfLocationfield := "shelf_location"
-	ShelfIdfield := "shelf_id"
-	ShelfLocationIdfield := "shelf_location_id"
-	VshelfIdfield := "vshelf_id"
-	Slotfield := "slot"
-	Bankfield := "bank"
-	Modelfield := "model"
-	Vendorfield := "vendor"
-	FirmwareVersionfield := "firmware_version"
-	Hbafield := "hba"
-	Portfield := "port"
-	Sizefield := "size"
-	Statefield := "state"
-	Typefield := "type"
-	BlockTypefield := "block_type"
-	RaidIdfield := "raid_id"
-	RaidResyncPercentfield := "raid_resync_percent"
-	RaidResyncCurrentSpeedfield := "raid_resync_current_speed"
-	RaidResyncAverageSpeedfield := "raid_resync_average_speed"
-	RaidStatefield := "raid_state"
-	DiskInternalStat1field := "disk_internal_stat1"
-	SmartAttributeListfield := "smart_attribute_list"
-	DiskOpfield := "disk_op"
-	Forcefield := "force"
-	ArrayNamefield := "array_name"
-	ArrayIdfield := "array_id"
-	PartialResponseOkfield := "partial_response_ok"
+	fieldID := "id"
+	fieldIsDfc := "is_dfc"
+	fieldSerial := "serial"
+	fieldPath := "path"
+	fieldShelfSerial := "shelf_serial"
+	fieldShelfLocation := "shelf_location"
+	fieldShelfId := "shelf_id"
+	fieldShelfLocationId := "shelf_location_id"
+	fieldVshelfId := "vshelf_id"
+	fieldSlot := "slot"
+	fieldBank := "bank"
+	fieldModel := "model"
+	fieldVendor := "vendor"
+	fieldFirmwareVersion := "firmware_version"
+	fieldHba := "hba"
+	fieldPort := "port"
+	fieldSize := "size"
+	fieldState := "state"
+	fieldType := "type"
+	fieldBlockType := "block_type"
+	fieldRaidId := "raid_id"
+	fieldRaidResyncPercent := "raid_resync_percent"
+	fieldRaidResyncCurrentSpeed := "raid_resync_current_speed"
+	fieldRaidResyncAverageSpeed := "raid_resync_average_speed"
+	fieldRaidState := "raid_state"
+	fieldDiskInternalStat1 := "disk_internal_stat1"
+	fieldSmartAttributeList := "smart_attribute_list"
+	fieldDiskOp := "disk_op"
+	fieldForce := "force"
+	fieldArrayName := "array_name"
+	fieldArrayId := "array_id"
+	fieldPartialResponseOk := "partial_response_ok"
 
 	DiskFields = &DiskStringFields{
-		ID:                     &IDfield,
-		IsDfc:                  &IsDfcfield,
-		Serial:                 &Serialfield,
-		Path:                   &Pathfield,
-		ShelfSerial:            &ShelfSerialfield,
-		ShelfLocation:          &ShelfLocationfield,
-		ShelfId:                &ShelfIdfield,
-		ShelfLocationId:        &ShelfLocationIdfield,
-		VshelfId:               &VshelfIdfield,
-		Slot:                   &Slotfield,
-		Bank:                   &Bankfield,
-		Model:                  &Modelfield,
-		Vendor:                 &Vendorfield,
-		FirmwareVersion:        &FirmwareVersionfield,
-		Hba:                    &Hbafield,
-		Port:                   &Portfield,
-		Size:                   &Sizefield,
-		State:                  &Statefield,
-		Type:                   &Typefield,
-		BlockType:              &BlockTypefield,
-		RaidId:                 &RaidIdfield,
-		RaidResyncPercent:      &RaidResyncPercentfield,
-		RaidResyncCurrentSpeed: &RaidResyncCurrentSpeedfield,
-		RaidResyncAverageSpeed: &RaidResyncAverageSpeedfield,
-		RaidState:              &RaidStatefield,
-		DiskInternalStat1:      &DiskInternalStat1field,
-		SmartAttributeList:     &SmartAttributeListfield,
-		DiskOp:                 &DiskOpfield,
-		Force:                  &Forcefield,
-		ArrayName:              &ArrayNamefield,
-		ArrayId:                &ArrayIdfield,
-		PartialResponseOk:      &PartialResponseOkfield,
+		ID:                     &fieldID,
+		IsDfc:                  &fieldIsDfc,
+		Serial:                 &fieldSerial,
+		Path:                   &fieldPath,
+		ShelfSerial:            &fieldShelfSerial,
+		ShelfLocation:          &fieldShelfLocation,
+		ShelfId:                &fieldShelfId,
+		ShelfLocationId:        &fieldShelfLocationId,
+		VshelfId:               &fieldVshelfId,
+		Slot:                   &fieldSlot,
+		Bank:                   &fieldBank,
+		Model:                  &fieldModel,
+		Vendor:                 &fieldVendor,
+		FirmwareVersion:        &fieldFirmwareVersion,
+		Hba:                    &fieldHba,
+		Port:                   &fieldPort,
+		Size:                   &fieldSize,
+		State:                  &fieldState,
+		Type:                   &fieldType,
+		BlockType:              &fieldBlockType,
+		RaidId:                 &fieldRaidId,
+		RaidResyncPercent:      &fieldRaidResyncPercent,
+		RaidResyncCurrentSpeed: &fieldRaidResyncCurrentSpeed,
+		RaidResyncAverageSpeed: &fieldRaidResyncAverageSpeed,
+		RaidState:              &fieldRaidState,
+		DiskInternalStat1:      &fieldDiskInternalStat1,
+		SmartAttributeList:     &fieldSmartAttributeList,
+		DiskOp:                 &fieldDiskOp,
+		Force:                  &fieldForce,
+		ArrayName:              &fieldArrayName,
+		ArrayId:                &fieldArrayId,
+		PartialResponseOk:      &fieldPartialResponseOk,
 	}
 }
 

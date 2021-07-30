@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsSupportPasswordArray - Support password blobs for an array.
-// Export NsSupportPasswordArrayFields for advance operations like search filter etc.
+
+// Export NsSupportPasswordArrayFields provides field names to use in filter parameters, for example.
 var NsSupportPasswordArrayFields *NsSupportPasswordArrayStringFields
 
 func init() {
-	ArrayNamefield := "array_name"
-	ArraySnfield := "array_sn"
-	Modelfield := "model"
-	BlobCountfield := "blob_count"
-	BlobListfield := "blob_list"
+	fieldArrayName := "array_name"
+	fieldArraySn := "array_sn"
+	fieldModel := "model"
+	fieldBlobCount := "blob_count"
+	fieldBlobList := "blob_list"
 
 	NsSupportPasswordArrayFields = &NsSupportPasswordArrayStringFields{
-		ArrayName: &ArrayNamefield,
-		ArraySn:   &ArraySnfield,
-		Model:     &Modelfield,
-		BlobCount: &BlobCountfield,
-		BlobList:  &BlobListfield,
+		ArrayName: &fieldArrayName,
+		ArraySn:   &fieldArraySn,
+		Model:     &fieldModel,
+		BlobCount: &fieldBlobCount,
+		BlobList:  &fieldBlobList,
 	}
 }
 

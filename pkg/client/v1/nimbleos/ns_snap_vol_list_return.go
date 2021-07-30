@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsSnapVolListReturn - Object returned after creating snapshot collection.
-// Export NsSnapVolListReturnFields for advance operations like search filter etc.
+
+// Export NsSnapVolListReturnFields provides field names to use in filter parameters, for example.
 var NsSnapVolListReturnFields *NsSnapVolListReturnStringFields
 
 func init() {
-	SnapIdsfield := "snap_ids"
+	fieldSnapIds := "snap_ids"
 
 	NsSnapVolListReturnFields = &NsSnapVolListReturnStringFields{
-		SnapIds: &SnapIdsfield,
+		SnapIds: &fieldSnapIds,
 	}
 }
 

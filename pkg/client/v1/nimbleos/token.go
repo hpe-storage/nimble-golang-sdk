@@ -3,40 +3,41 @@
 package nimbleos
 
 // Token - Manage user's session information.
-// Export TokenFields for advance operations like search filter etc.
+
+// Export TokenFields provides field names to use in filter parameters, for example.
 var TokenFields *TokenStringFields
 
 func init() {
-	IDfield := "id"
-	SessionTokenfield := "session_token"
-	Usernamefield := "username"
-	Passwordfield := "password"
-	OtpCodefield := "otp_code"
-	AppNamefield := "app_name"
-	SdkNamefield := "sdk_name"
-	SourceIpfield := "source_ip"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	ExpiryTimefield := "expiry_time"
-	ServerUuidfield := "server_uuid"
-	GrantTypefield := "grant_type"
-	Assertionfield := "assertion"
+	fieldID := "id"
+	fieldSessionToken := "session_token"
+	fieldUsername := "username"
+	fieldPassword := "password"
+	fieldOtpCode := "otp_code"
+	fieldAppName := "app_name"
+	fieldSdkName := "sdk_name"
+	fieldSourceIp := "source_ip"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldExpiryTime := "expiry_time"
+	fieldServerUuid := "server_uuid"
+	fieldGrantType := "grant_type"
+	fieldAssertion := "assertion"
 
 	TokenFields = &TokenStringFields{
-		ID:           &IDfield,
-		SessionToken: &SessionTokenfield,
-		Username:     &Usernamefield,
-		Password:     &Passwordfield,
-		OtpCode:      &OtpCodefield,
-		AppName:      &AppNamefield,
-		SdkName:      &SdkNamefield,
-		SourceIp:     &SourceIpfield,
-		CreationTime: &CreationTimefield,
-		LastModified: &LastModifiedfield,
-		ExpiryTime:   &ExpiryTimefield,
-		ServerUuid:   &ServerUuidfield,
-		GrantType:    &GrantTypefield,
-		Assertion:    &Assertionfield,
+		ID:           &fieldID,
+		SessionToken: &fieldSessionToken,
+		Username:     &fieldUsername,
+		Password:     &fieldPassword,
+		OtpCode:      &fieldOtpCode,
+		AppName:      &fieldAppName,
+		SdkName:      &fieldSdkName,
+		SourceIp:     &fieldSourceIp,
+		CreationTime: &fieldCreationTime,
+		LastModified: &fieldLastModified,
+		ExpiryTime:   &fieldExpiryTime,
+		ServerUuid:   &fieldServerUuid,
+		GrantType:    &fieldGrantType,
+		Assertion:    &fieldAssertion,
 	}
 }
 

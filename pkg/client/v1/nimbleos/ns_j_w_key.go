@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsJWKey - Javascript Web Key.
-// Export NsJWKeyFields for advance operations like search filter etc.
+
+// Export NsJWKeyFields provides field names to use in filter parameters, for example.
 var NsJWKeyFields *NsJWKeyStringFields
 
 func init() {
-	Kidfield := "kid"
-	Algorithmfield := "algorithm"
-	Keyfield := "key"
+	fieldKid := "kid"
+	fieldAlgorithm := "algorithm"
+	fieldKey := "key"
 
 	NsJWKeyFields = &NsJWKeyStringFields{
-		Kid:       &Kidfield,
-		Algorithm: &Algorithmfield,
-		Key:       &Keyfield,
+		Kid:       &fieldKid,
+		Algorithm: &fieldAlgorithm,
+		Key:       &fieldKey,
 	}
 }
 

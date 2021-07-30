@@ -3,44 +3,45 @@
 package nimbleos
 
 // NetworkConfig - Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
-// Export NetworkConfigFields for advance operations like search filter etc.
+
+// Export NetworkConfigFields provides field names to use in filter parameters, for example.
 var NetworkConfigFields *NetworkConfigStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	MgmtIpfield := "mgmt_ip"
-	SecondaryMgmtIpfield := "secondary_mgmt_ip"
-	Rolefield := "role"
-	IscsiAutomaticConnectionMethodfield := "iscsi_automatic_connection_method"
-	IscsiConnectionRebalancingfield := "iscsi_connection_rebalancing"
-	RouteListfield := "route_list"
-	SubnetListfield := "subnet_list"
-	ArrayListfield := "array_list"
-	GroupLeaderArrayfield := "group_leader_array"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	ActiveSincefield := "active_since"
-	LastActivefield := "last_active"
-	IgnoreValidationMaskfield := "ignore_validation_mask"
+	fieldID := "id"
+	fieldName := "name"
+	fieldMgmtIp := "mgmt_ip"
+	fieldSecondaryMgmtIp := "secondary_mgmt_ip"
+	fieldRole := "role"
+	fieldIscsiAutomaticConnectionMethod := "iscsi_automatic_connection_method"
+	fieldIscsiConnectionRebalancing := "iscsi_connection_rebalancing"
+	fieldRouteList := "route_list"
+	fieldSubnetList := "subnet_list"
+	fieldArrayList := "array_list"
+	fieldGroupLeaderArray := "group_leader_array"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldActiveSince := "active_since"
+	fieldLastActive := "last_active"
+	fieldIgnoreValidationMask := "ignore_validation_mask"
 
 	NetworkConfigFields = &NetworkConfigStringFields{
-		ID:                             &IDfield,
-		Name:                           &Namefield,
-		MgmtIp:                         &MgmtIpfield,
-		SecondaryMgmtIp:                &SecondaryMgmtIpfield,
-		Role:                           &Rolefield,
-		IscsiAutomaticConnectionMethod: &IscsiAutomaticConnectionMethodfield,
-		IscsiConnectionRebalancing:     &IscsiConnectionRebalancingfield,
-		RouteList:                      &RouteListfield,
-		SubnetList:                     &SubnetListfield,
-		ArrayList:                      &ArrayListfield,
-		GroupLeaderArray:               &GroupLeaderArrayfield,
-		CreationTime:                   &CreationTimefield,
-		LastModified:                   &LastModifiedfield,
-		ActiveSince:                    &ActiveSincefield,
-		LastActive:                     &LastActivefield,
-		IgnoreValidationMask:           &IgnoreValidationMaskfield,
+		ID:                             &fieldID,
+		Name:                           &fieldName,
+		MgmtIp:                         &fieldMgmtIp,
+		SecondaryMgmtIp:                &fieldSecondaryMgmtIp,
+		Role:                           &fieldRole,
+		IscsiAutomaticConnectionMethod: &fieldIscsiAutomaticConnectionMethod,
+		IscsiConnectionRebalancing:     &fieldIscsiConnectionRebalancing,
+		RouteList:                      &fieldRouteList,
+		SubnetList:                     &fieldSubnetList,
+		ArrayList:                      &fieldArrayList,
+		GroupLeaderArray:               &fieldGroupLeaderArray,
+		CreationTime:                   &fieldCreationTime,
+		LastModified:                   &fieldLastModified,
+		ActiveSince:                    &fieldActiveSince,
+		LastActive:                     &fieldLastActive,
+		IgnoreValidationMask:           &fieldIgnoreValidationMask,
 	}
 }
 

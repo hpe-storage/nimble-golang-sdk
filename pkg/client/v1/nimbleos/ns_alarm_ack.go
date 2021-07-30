@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsAlarmAck - Arguments acknowledge alarm.
-// Export NsAlarmAckFields for advance operations like search filter etc.
+
+// Export NsAlarmAckFields provides field names to use in filter parameters, for example.
 var NsAlarmAckFields *NsAlarmAckStringFields
 
 func init() {
-	IDfield := "id"
-	RemindEveryfield := "remind_every"
-	RemindEveryUnitfield := "remind_every_unit"
+	fieldID := "id"
+	fieldRemindEvery := "remind_every"
+	fieldRemindEveryUnit := "remind_every_unit"
 
 	NsAlarmAckFields = &NsAlarmAckStringFields{
-		ID:              &IDfield,
-		RemindEvery:     &RemindEveryfield,
-		RemindEveryUnit: &RemindEveryUnitfield,
+		ID:              &fieldID,
+		RemindEvery:     &fieldRemindEvery,
+		RemindEveryUnit: &fieldRemindEveryUnit,
 	}
 }
 

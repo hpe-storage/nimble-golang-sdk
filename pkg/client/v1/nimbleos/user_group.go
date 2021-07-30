@@ -3,36 +3,37 @@
 package nimbleos
 
 // UserGroup - Represents Active Directory groups configured to manage the system.
-// Export UserGroupFields for advance operations like search filter etc.
+
+// Export UserGroupFields provides field names to use in filter parameters, for example.
 var UserGroupFields *UserGroupStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	RoleIdfield := "role_id"
-	Rolefield := "role"
-	InactivityTimeoutfield := "inactivity_timeout"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	Disabledfield := "disabled"
-	ExternalIdfield := "external_id"
-	DomainIdfield := "domain_id"
-	DomainNamefield := "domain_name"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldRoleId := "role_id"
+	fieldRole := "role"
+	fieldInactivityTimeout := "inactivity_timeout"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldDisabled := "disabled"
+	fieldExternalId := "external_id"
+	fieldDomainId := "domain_id"
+	fieldDomainName := "domain_name"
 
 	UserGroupFields = &UserGroupStringFields{
-		ID:                &IDfield,
-		Name:              &Namefield,
-		Description:       &Descriptionfield,
-		RoleId:            &RoleIdfield,
-		Role:              &Rolefield,
-		InactivityTimeout: &InactivityTimeoutfield,
-		CreationTime:      &CreationTimefield,
-		LastModified:      &LastModifiedfield,
-		Disabled:          &Disabledfield,
-		ExternalId:        &ExternalIdfield,
-		DomainId:          &DomainIdfield,
-		DomainName:        &DomainNamefield,
+		ID:                &fieldID,
+		Name:              &fieldName,
+		Description:       &fieldDescription,
+		RoleId:            &fieldRoleId,
+		Role:              &fieldRole,
+		InactivityTimeout: &fieldInactivityTimeout,
+		CreationTime:      &fieldCreationTime,
+		LastModified:      &fieldLastModified,
+		Disabled:          &fieldDisabled,
+		ExternalId:        &fieldExternalId,
+		DomainId:          &fieldDomainId,
+		DomainName:        &fieldDomainName,
 	}
 }
 

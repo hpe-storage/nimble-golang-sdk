@@ -3,34 +3,35 @@
 package nimbleos
 
 // NsCompleteSetupNetconfig - Information includes group, array and network configuration in complete setup.
-// Export NsCompleteSetupNetconfigFields for advance operations like search filter etc.
+
+// Export NsCompleteSetupNetconfigFields provides field names to use in filter parameters, for example.
 var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfigStringFields
 
 func init() {
-	Namefield := "name"
-	DiscoveryIpfield := "discovery_ip"
-	DiscoveryNetmaskfield := "discovery_netmask"
-	MgmtIpfield := "mgmt_ip"
-	SecondaryMgmtIpfield := "secondary_mgmt_ip"
-	MgmtNetmaskfield := "mgmt_netmask"
-	IscsiAutomaticConnectionMethodfield := "iscsi_automatic_connection_method"
-	IscsiConnectionRebalancingfield := "iscsi_connection_rebalancing"
-	RouteListfield := "route_list"
-	SubnetListfield := "subnet_list"
-	ArrayListfield := "array_list"
+	fieldName := "name"
+	fieldDiscoveryIp := "discovery_ip"
+	fieldDiscoveryNetmask := "discovery_netmask"
+	fieldMgmtIp := "mgmt_ip"
+	fieldSecondaryMgmtIp := "secondary_mgmt_ip"
+	fieldMgmtNetmask := "mgmt_netmask"
+	fieldIscsiAutomaticConnectionMethod := "iscsi_automatic_connection_method"
+	fieldIscsiConnectionRebalancing := "iscsi_connection_rebalancing"
+	fieldRouteList := "route_list"
+	fieldSubnetList := "subnet_list"
+	fieldArrayList := "array_list"
 
 	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfigStringFields{
-		Name:                           &Namefield,
-		DiscoveryIp:                    &DiscoveryIpfield,
-		DiscoveryNetmask:               &DiscoveryNetmaskfield,
-		MgmtIp:                         &MgmtIpfield,
-		SecondaryMgmtIp:                &SecondaryMgmtIpfield,
-		MgmtNetmask:                    &MgmtNetmaskfield,
-		IscsiAutomaticConnectionMethod: &IscsiAutomaticConnectionMethodfield,
-		IscsiConnectionRebalancing:     &IscsiConnectionRebalancingfield,
-		RouteList:                      &RouteListfield,
-		SubnetList:                     &SubnetListfield,
-		ArrayList:                      &ArrayListfield,
+		Name:                           &fieldName,
+		DiscoveryIp:                    &fieldDiscoveryIp,
+		DiscoveryNetmask:               &fieldDiscoveryNetmask,
+		MgmtIp:                         &fieldMgmtIp,
+		SecondaryMgmtIp:                &fieldSecondaryMgmtIp,
+		MgmtNetmask:                    &fieldMgmtNetmask,
+		IscsiAutomaticConnectionMethod: &fieldIscsiAutomaticConnectionMethod,
+		IscsiConnectionRebalancing:     &fieldIscsiConnectionRebalancing,
+		RouteList:                      &fieldRouteList,
+		SubnetList:                     &fieldSubnetList,
+		ArrayList:                      &fieldArrayList,
 	}
 }
 

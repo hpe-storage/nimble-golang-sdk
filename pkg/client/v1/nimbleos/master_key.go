@@ -3,26 +3,27 @@
 package nimbleos
 
 // MasterKey - Manage the master key. Data encryption keys for volumes are encrypted by using a master key that must be initialized before encrypted volumes can be created. The master key in turn is protected by a passphrase that is set when the master key is created. The passphrase may have to be entered to enable the master key when it is not available, for example, after an array reboot.
-// Export MasterKeyFields for advance operations like search filter etc.
+
+// Export MasterKeyFields provides field names to use in filter parameters, for example.
 var MasterKeyFields *MasterKeyStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Passphrasefield := "passphrase"
-	Halfkeyfield := "halfkey"
-	NewPassphrasefield := "new_passphrase"
-	Activefield := "active"
-	PurgeAgefield := "purge_age"
+	fieldID := "id"
+	fieldName := "name"
+	fieldPassphrase := "passphrase"
+	fieldHalfkey := "halfkey"
+	fieldNewPassphrase := "new_passphrase"
+	fieldActive := "active"
+	fieldPurgeAge := "purge_age"
 
 	MasterKeyFields = &MasterKeyStringFields{
-		ID:            &IDfield,
-		Name:          &Namefield,
-		Passphrase:    &Passphrasefield,
-		Halfkey:       &Halfkeyfield,
-		NewPassphrase: &NewPassphrasefield,
-		Active:        &Activefield,
-		PurgeAge:      &PurgeAgefield,
+		ID:            &fieldID,
+		Name:          &fieldName,
+		Passphrase:    &fieldPassphrase,
+		Halfkey:       &fieldHalfkey,
+		NewPassphrase: &fieldNewPassphrase,
+		Active:        &fieldActive,
+		PurgeAge:      &fieldPurgeAge,
 	}
 }
 

@@ -3,26 +3,27 @@
 package nimbleos
 
 // Witness - Manage witness host configuration.
-// Export WitnessFields for advance operations like search filter etc.
+
+// Export WitnessFields provides field names to use in filter parameters, for example.
 var WitnessFields *WitnessStringFields
 
 func init() {
-	IDfield := "id"
-	Usernamefield := "username"
-	Passwordfield := "password"
-	Hostfield := "host"
-	Portfield := "port"
-	SecureModefield := "secure_mode"
-	AutoSwitchoverMessagesfield := "auto_switchover_messages"
+	fieldID := "id"
+	fieldUsername := "username"
+	fieldPassword := "password"
+	fieldHost := "host"
+	fieldPort := "port"
+	fieldSecureMode := "secure_mode"
+	fieldAutoSwitchoverMessages := "auto_switchover_messages"
 
 	WitnessFields = &WitnessStringFields{
-		ID:                     &IDfield,
-		Username:               &Usernamefield,
-		Password:               &Passwordfield,
-		Host:                   &Hostfield,
-		Port:                   &Portfield,
-		SecureMode:             &SecureModefield,
-		AutoSwitchoverMessages: &AutoSwitchoverMessagesfield,
+		ID:                     &fieldID,
+		Username:               &fieldUsername,
+		Password:               &fieldPassword,
+		Host:                   &fieldHost,
+		Port:                   &fieldPort,
+		SecureMode:             &fieldSecureMode,
+		AutoSwitchoverMessages: &fieldAutoSwitchoverMessages,
 	}
 }
 

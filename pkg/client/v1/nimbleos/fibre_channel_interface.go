@@ -3,50 +3,51 @@
 package nimbleos
 
 // FibreChannelInterface - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
-// Export FibreChannelInterfaceFields for advance operations like search filter etc.
+
+// Export FibreChannelInterfaceFields provides field names to use in filter parameters, for example.
 var FibreChannelInterfaceFields *FibreChannelInterfaceStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayNameOrSerialfield := "array_name_or_serial"
-	PartialResponseOkfield := "partial_response_ok"
-	ControllerNamefield := "controller_name"
-	FcPortIdfield := "fc_port_id"
-	Namefield := "name"
-	Wwnnfield := "wwnn"
-	Wwpnfield := "wwpn"
-	Peerzonefield := "peerzone"
-	Onlinefield := "online"
-	FirmwareVersionfield := "firmware_version"
-	LogicalPortNumberfield := "logical_port_number"
-	FcPortNamefield := "fc_port_name"
-	BusLocationfield := "bus_location"
-	Slotfield := "slot"
-	Orientationfield := "orientation"
-	Portfield := "port"
-	LinkInfofield := "link_info"
-	FabricInfofield := "fabric_info"
+	fieldID := "id"
+	fieldArrayNameOrSerial := "array_name_or_serial"
+	fieldPartialResponseOk := "partial_response_ok"
+	fieldControllerName := "controller_name"
+	fieldFcPortId := "fc_port_id"
+	fieldName := "name"
+	fieldWwnn := "wwnn"
+	fieldWwpn := "wwpn"
+	fieldPeerzone := "peerzone"
+	fieldOnline := "online"
+	fieldFirmwareVersion := "firmware_version"
+	fieldLogicalPortNumber := "logical_port_number"
+	fieldFcPortName := "fc_port_name"
+	fieldBusLocation := "bus_location"
+	fieldSlot := "slot"
+	fieldOrientation := "orientation"
+	fieldPort := "port"
+	fieldLinkInfo := "link_info"
+	fieldFabricInfo := "fabric_info"
 
 	FibreChannelInterfaceFields = &FibreChannelInterfaceStringFields{
-		ID:                &IDfield,
-		ArrayNameOrSerial: &ArrayNameOrSerialfield,
-		PartialResponseOk: &PartialResponseOkfield,
-		ControllerName:    &ControllerNamefield,
-		FcPortId:          &FcPortIdfield,
-		Name:              &Namefield,
-		Wwnn:              &Wwnnfield,
-		Wwpn:              &Wwpnfield,
-		Peerzone:          &Peerzonefield,
-		Online:            &Onlinefield,
-		FirmwareVersion:   &FirmwareVersionfield,
-		LogicalPortNumber: &LogicalPortNumberfield,
-		FcPortName:        &FcPortNamefield,
-		BusLocation:       &BusLocationfield,
-		Slot:              &Slotfield,
-		Orientation:       &Orientationfield,
-		Port:              &Portfield,
-		LinkInfo:          &LinkInfofield,
-		FabricInfo:        &FabricInfofield,
+		ID:                &fieldID,
+		ArrayNameOrSerial: &fieldArrayNameOrSerial,
+		PartialResponseOk: &fieldPartialResponseOk,
+		ControllerName:    &fieldControllerName,
+		FcPortId:          &fieldFcPortId,
+		Name:              &fieldName,
+		Wwnn:              &fieldWwnn,
+		Wwpn:              &fieldWwpn,
+		Peerzone:          &fieldPeerzone,
+		Online:            &fieldOnline,
+		FirmwareVersion:   &fieldFirmwareVersion,
+		LogicalPortNumber: &fieldLogicalPortNumber,
+		FcPortName:        &fieldFcPortName,
+		BusLocation:       &fieldBusLocation,
+		Slot:              &fieldSlot,
+		Orientation:       &fieldOrientation,
+		Port:              &fieldPort,
+		LinkInfo:          &fieldLinkInfo,
+		FabricInfo:        &fieldFabricInfo,
 	}
 }
 

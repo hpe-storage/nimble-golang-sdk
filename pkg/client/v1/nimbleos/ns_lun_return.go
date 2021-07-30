@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsLunReturn - Return LU number.
-// Export NsLunReturnFields for advance operations like search filter etc.
+
+// Export NsLunReturnFields provides field names to use in filter parameters, for example.
 var NsLunReturnFields *NsLunReturnStringFields
 
 func init() {
-	Lunfield := "lun"
-	LuNumberfield := "lu_number"
+	fieldLun := "lun"
+	fieldLuNumber := "lu_number"
 
 	NsLunReturnFields = &NsLunReturnStringFields{
-		Lun:      &Lunfield,
-		LuNumber: &LuNumberfield,
+		Lun:      &fieldLun,
+		LuNumber: &fieldLuNumber,
 	}
 }
 

@@ -3,52 +3,53 @@
 package nimbleos
 
 // ProtectionTemplate - Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom protection templates as needed.
-// Export ProtectionTemplateFields for advance operations like search filter etc.
+
+// Export ProtectionTemplateFields provides field names to use in filter parameters, for example.
 var ProtectionTemplateFields *ProtectionTemplateStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	ReplPriorityfield := "repl_priority"
-	AppSyncfield := "app_sync"
-	AppServerfield := "app_server"
-	AppIdfield := "app_id"
-	AppClusterNamefield := "app_cluster_name"
-	AppServiceNamefield := "app_service_name"
-	VcenterHostnamefield := "vcenter_hostname"
-	VcenterUsernamefield := "vcenter_username"
-	VcenterPasswordfield := "vcenter_password"
-	AgentHostnamefield := "agent_hostname"
-	AgentUsernamefield := "agent_username"
-	AgentPasswordfield := "agent_password"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	ScheduleListfield := "schedule_list"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldReplPriority := "repl_priority"
+	fieldAppSync := "app_sync"
+	fieldAppServer := "app_server"
+	fieldAppId := "app_id"
+	fieldAppClusterName := "app_cluster_name"
+	fieldAppServiceName := "app_service_name"
+	fieldVcenterHostname := "vcenter_hostname"
+	fieldVcenterUsername := "vcenter_username"
+	fieldVcenterPassword := "vcenter_password"
+	fieldAgentHostname := "agent_hostname"
+	fieldAgentUsername := "agent_username"
+	fieldAgentPassword := "agent_password"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldScheduleList := "schedule_list"
 
 	ProtectionTemplateFields = &ProtectionTemplateStringFields{
-		ID:              &IDfield,
-		Name:            &Namefield,
-		FullName:        &FullNamefield,
-		SearchName:      &SearchNamefield,
-		Description:     &Descriptionfield,
-		ReplPriority:    &ReplPriorityfield,
-		AppSync:         &AppSyncfield,
-		AppServer:       &AppServerfield,
-		AppId:           &AppIdfield,
-		AppClusterName:  &AppClusterNamefield,
-		AppServiceName:  &AppServiceNamefield,
-		VcenterHostname: &VcenterHostnamefield,
-		VcenterUsername: &VcenterUsernamefield,
-		VcenterPassword: &VcenterPasswordfield,
-		AgentHostname:   &AgentHostnamefield,
-		AgentUsername:   &AgentUsernamefield,
-		AgentPassword:   &AgentPasswordfield,
-		CreationTime:    &CreationTimefield,
-		LastModified:    &LastModifiedfield,
-		ScheduleList:    &ScheduleListfield,
+		ID:              &fieldID,
+		Name:            &fieldName,
+		FullName:        &fieldFullName,
+		SearchName:      &fieldSearchName,
+		Description:     &fieldDescription,
+		ReplPriority:    &fieldReplPriority,
+		AppSync:         &fieldAppSync,
+		AppServer:       &fieldAppServer,
+		AppId:           &fieldAppId,
+		AppClusterName:  &fieldAppClusterName,
+		AppServiceName:  &fieldAppServiceName,
+		VcenterHostname: &fieldVcenterHostname,
+		VcenterUsername: &fieldVcenterUsername,
+		VcenterPassword: &fieldVcenterPassword,
+		AgentHostname:   &fieldAgentHostname,
+		AgentUsername:   &fieldAgentUsername,
+		AgentPassword:   &fieldAgentPassword,
+		CreationTime:    &fieldCreationTime,
+		LastModified:    &fieldLastModified,
+		ScheduleList:    &fieldScheduleList,
 	}
 }
 

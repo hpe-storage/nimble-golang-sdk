@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsShelfCtrlrAttrSet - A shelf logical controller attributes.
-// Export NsShelfCtrlrAttrSetFields for advance operations like search filter etc.
+
+// Export NsShelfCtrlrAttrSetFields provides field names to use in filter parameters, for example.
 var NsShelfCtrlrAttrSetFields *NsShelfCtrlrAttrSetStringFields
 
 func init() {
-	SessionSerialfield := "session_serial"
-	CachedSerialfield := "cached_serial"
-	HwStatefield := "hw_state"
-	SwTypefield := "sw_type"
-	DiskSerialsfield := "disk_serials"
-	DiskTypesfield := "disk_types"
+	fieldSessionSerial := "session_serial"
+	fieldCachedSerial := "cached_serial"
+	fieldHwState := "hw_state"
+	fieldSwType := "sw_type"
+	fieldDiskSerials := "disk_serials"
+	fieldDiskTypes := "disk_types"
 
 	NsShelfCtrlrAttrSetFields = &NsShelfCtrlrAttrSetStringFields{
-		SessionSerial: &SessionSerialfield,
-		CachedSerial:  &CachedSerialfield,
-		HwState:       &HwStatefield,
-		SwType:        &SwTypefield,
-		DiskSerials:   &DiskSerialsfield,
-		DiskTypes:     &DiskTypesfield,
+		SessionSerial: &fieldSessionSerial,
+		CachedSerial:  &fieldCachedSerial,
+		HwState:       &fieldHwState,
+		SwType:        &fieldSwType,
+		DiskSerials:   &fieldDiskSerials,
+		DiskTypes:     &fieldDiskTypes,
 	}
 }
 

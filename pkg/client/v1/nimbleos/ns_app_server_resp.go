@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsAppServerResp - Response from app server.
-// Export NsAppServerRespFields for advance operations like search filter etc.
+
+// Export NsAppServerRespFields provides field names to use in filter parameters, for example.
 var NsAppServerRespFields *NsAppServerRespStringFields
 
 func init() {
-	GeneralErrorfield := "general_error"
-	AppSyncfield := "app_sync"
-	HasAssocVolsfield := "has_assoc_vols"
-	VssResponsefield := "vss_response"
-	VmwResponsefield := "vmw_response"
-	GenericResponsefield := "generic_response"
+	fieldGeneralError := "general_error"
+	fieldAppSync := "app_sync"
+	fieldHasAssocVols := "has_assoc_vols"
+	fieldVssResponse := "vss_response"
+	fieldVmwResponse := "vmw_response"
+	fieldGenericResponse := "generic_response"
 
 	NsAppServerRespFields = &NsAppServerRespStringFields{
-		GeneralError:    &GeneralErrorfield,
-		AppSync:         &AppSyncfield,
-		HasAssocVols:    &HasAssocVolsfield,
-		VssResponse:     &VssResponsefield,
-		VmwResponse:     &VmwResponsefield,
-		GenericResponse: &GenericResponsefield,
+		GeneralError:    &fieldGeneralError,
+		AppSync:         &fieldAppSync,
+		HasAssocVols:    &fieldHasAssocVols,
+		VssResponse:     &fieldVssResponse,
+		VmwResponse:     &fieldVmwResponse,
+		GenericResponse: &fieldGenericResponse,
 	}
 }
 

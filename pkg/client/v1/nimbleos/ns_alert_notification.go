@@ -3,28 +3,29 @@
 package nimbleos
 
 // NsAlertNotification - Represents an Alert notification message.
-// Export NsAlertNotificationFields for advance operations like search filter etc.
+
+// Export NsAlertNotificationFields provides field names to use in filter parameters, for example.
 var NsAlertNotificationFields *NsAlertNotificationStringFields
 
 func init() {
-	SequenceNumberfield := "sequence_number"
-	NotificationTypefield := "notification_type"
-	Activityfield := "activity"
-	EventTargetfield := "event_target"
-	Categoryfield := "category"
-	Severityfield := "severity"
-	AlertTypefield := "alert_type"
-	Timestampfield := "timestamp"
+	fieldSequenceNumber := "sequence_number"
+	fieldNotificationType := "notification_type"
+	fieldActivity := "activity"
+	fieldEventTarget := "event_target"
+	fieldCategory := "category"
+	fieldSeverity := "severity"
+	fieldAlertType := "alert_type"
+	fieldTimestamp := "timestamp"
 
 	NsAlertNotificationFields = &NsAlertNotificationStringFields{
-		SequenceNumber:   &SequenceNumberfield,
-		NotificationType: &NotificationTypefield,
-		Activity:         &Activityfield,
-		EventTarget:      &EventTargetfield,
-		Category:         &Categoryfield,
-		Severity:         &Severityfield,
-		AlertType:        &AlertTypefield,
-		Timestamp:        &Timestampfield,
+		SequenceNumber:   &fieldSequenceNumber,
+		NotificationType: &fieldNotificationType,
+		Activity:         &fieldActivity,
+		EventTarget:      &fieldEventTarget,
+		Category:         &fieldCategory,
+		Severity:         &fieldSeverity,
+		AlertType:        &fieldAlertType,
+		Timestamp:        &fieldTimestamp,
 	}
 }
 

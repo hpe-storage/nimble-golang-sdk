@@ -3,30 +3,31 @@
 package nimbleos
 
 // NsDiscoveredGroupInfo - Discovered group details.
-// Export NsDiscoveredGroupInfoFields for advance operations like search filter etc.
+
+// Export NsDiscoveredGroupInfoFields provides field names to use in filter parameters, for example.
 var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfoStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	VersionCurrentfield := "version_current"
-	CountOfMembersfield := "count_of_members"
-	ManagementIpfield := "management_ip"
-	DiscoveryIpfield := "discovery_ip"
-	IscsiEnabledfield := "iscsi_enabled"
-	FcEnabledfield := "fc_enabled"
-	ArrayMemberListfield := "array_member_list"
+	fieldID := "id"
+	fieldName := "name"
+	fieldVersionCurrent := "version_current"
+	fieldCountOfMembers := "count_of_members"
+	fieldManagementIp := "management_ip"
+	fieldDiscoveryIp := "discovery_ip"
+	fieldIscsiEnabled := "iscsi_enabled"
+	fieldFcEnabled := "fc_enabled"
+	fieldArrayMemberList := "array_member_list"
 
 	NsDiscoveredGroupInfoFields = &NsDiscoveredGroupInfoStringFields{
-		ID:              &IDfield,
-		Name:            &Namefield,
-		VersionCurrent:  &VersionCurrentfield,
-		CountOfMembers:  &CountOfMembersfield,
-		ManagementIp:    &ManagementIpfield,
-		DiscoveryIp:     &DiscoveryIpfield,
-		IscsiEnabled:    &IscsiEnabledfield,
-		FcEnabled:       &FcEnabledfield,
-		ArrayMemberList: &ArrayMemberListfield,
+		ID:              &fieldID,
+		Name:            &fieldName,
+		VersionCurrent:  &fieldVersionCurrent,
+		CountOfMembers:  &fieldCountOfMembers,
+		ManagementIp:    &fieldManagementIp,
+		DiscoveryIp:     &fieldDiscoveryIp,
+		IscsiEnabled:    &fieldIscsiEnabled,
+		FcEnabled:       &fieldFcEnabled,
+		ArrayMemberList: &fieldArrayMemberList,
 	}
 }
 

@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsSyncReplVolStatus - The sync replication status of a volume in volume collection.
-// Export NsSyncReplVolStatusFields for advance operations like search filter etc.
+
+// Export NsSyncReplVolStatusFields provides field names to use in filter parameters, for example.
 var NsSyncReplVolStatusFields *NsSyncReplVolStatusStringFields
 
 func init() {
-	ResyncActivefield := "resync_active"
-	ResyncBytesDonefield := "resync_bytes_done"
-	ResyncBytesTotalfield := "resync_bytes_total"
+	fieldResyncActive := "resync_active"
+	fieldResyncBytesDone := "resync_bytes_done"
+	fieldResyncBytesTotal := "resync_bytes_total"
 
 	NsSyncReplVolStatusFields = &NsSyncReplVolStatusStringFields{
-		ResyncActive:     &ResyncActivefield,
-		ResyncBytesDone:  &ResyncBytesDonefield,
-		ResyncBytesTotal: &ResyncBytesTotalfield,
+		ResyncActive:     &fieldResyncActive,
+		ResyncBytesDone:  &fieldResyncBytesDone,
+		ResyncBytesTotal: &fieldResyncBytesTotal,
 	}
 }
 

@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsCertData - Detailed certificate information for an installed certificate.
-// Export NsCertDataFields for advance operations like search filter etc.
+
+// Export NsCertDataFields provides field names to use in filter parameters, for example.
 var NsCertDataFields *NsCertDataStringFields
 
 func init() {
-	Descriptionfield := "description"
-	Subjectfield := "subject"
-	Dnslistfield := "dnslist"
-	Iplistfield := "iplist"
-	Trustedfield := "trusted"
-	PemTextfield := "pem_text"
+	fieldDescription := "description"
+	fieldSubject := "subject"
+	fieldDnslist := "dnslist"
+	fieldIplist := "iplist"
+	fieldTrusted := "trusted"
+	fieldPemText := "pem_text"
 
 	NsCertDataFields = &NsCertDataStringFields{
-		Description: &Descriptionfield,
-		Subject:     &Subjectfield,
-		Dnslist:     &Dnslistfield,
-		Iplist:      &Iplistfield,
-		Trusted:     &Trustedfield,
-		PemText:     &PemTextfield,
+		Description: &fieldDescription,
+		Subject:     &fieldSubject,
+		Dnslist:     &fieldDnslist,
+		Iplist:      &fieldIplist,
+		Trusted:     &fieldTrusted,
+		PemText:     &fieldPemText,
 	}
 }
 

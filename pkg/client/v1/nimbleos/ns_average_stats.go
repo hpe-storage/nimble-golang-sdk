@@ -3,30 +3,31 @@
 package nimbleos
 
 // NsAverageStats - Average statistics.
-// Export NsAverageStatsFields for advance operations like search filter etc.
+
+// Export NsAverageStatsFields provides field names to use in filter parameters, for example.
 var NsAverageStatsFields *NsAverageStatsStringFields
 
 func init() {
-	ReadIopsfield := "read_iops"
-	ReadThroughputfield := "read_throughput"
-	ReadLatencyfield := "read_latency"
-	WriteIopsfield := "write_iops"
-	WriteThroughputfield := "write_throughput"
-	WriteLatencyfield := "write_latency"
-	CombinedIopsfield := "combined_iops"
-	CombinedThroughputfield := "combined_throughput"
-	CombinedLatencyfield := "combined_latency"
+	fieldReadIops := "read_iops"
+	fieldReadThroughput := "read_throughput"
+	fieldReadLatency := "read_latency"
+	fieldWriteIops := "write_iops"
+	fieldWriteThroughput := "write_throughput"
+	fieldWriteLatency := "write_latency"
+	fieldCombinedIops := "combined_iops"
+	fieldCombinedThroughput := "combined_throughput"
+	fieldCombinedLatency := "combined_latency"
 
 	NsAverageStatsFields = &NsAverageStatsStringFields{
-		ReadIops:           &ReadIopsfield,
-		ReadThroughput:     &ReadThroughputfield,
-		ReadLatency:        &ReadLatencyfield,
-		WriteIops:          &WriteIopsfield,
-		WriteThroughput:    &WriteThroughputfield,
-		WriteLatency:       &WriteLatencyfield,
-		CombinedIops:       &CombinedIopsfield,
-		CombinedThroughput: &CombinedThroughputfield,
-		CombinedLatency:    &CombinedLatencyfield,
+		ReadIops:           &fieldReadIops,
+		ReadThroughput:     &fieldReadThroughput,
+		ReadLatency:        &fieldReadLatency,
+		WriteIops:          &fieldWriteIops,
+		WriteThroughput:    &fieldWriteThroughput,
+		WriteLatency:       &fieldWriteLatency,
+		CombinedIops:       &fieldCombinedIops,
+		CombinedThroughput: &fieldCombinedThroughput,
+		CombinedLatency:    &fieldCombinedLatency,
 	}
 }
 

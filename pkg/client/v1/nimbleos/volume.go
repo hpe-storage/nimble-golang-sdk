@@ -3,212 +3,213 @@
 package nimbleos
 
 // Volume - Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
-// Export VolumeFields for advance operations like search filter etc.
+
+// Export VolumeFields provides field names to use in filter parameters, for example.
 var VolumeFields *VolumeStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Sizefield := "size"
-	Descriptionfield := "description"
-	PerfpolicyNamefield := "perfpolicy_name"
-	PerfpolicyIdfield := "perfpolicy_id"
-	Reservefield := "reserve"
-	WarnLevelfield := "warn_level"
-	Limitfield := "limit"
-	SnapReservefield := "snap_reserve"
-	SnapWarnLevelfield := "snap_warn_level"
-	SnapLimitfield := "snap_limit"
-	SnapLimitPercentfield := "snap_limit_percent"
-	NumSnapsfield := "num_snaps"
-	ProjectedNumSnapsfield := "projected_num_snaps"
-	Onlinefield := "online"
-	OwnedByGroupfield := "owned_by_group"
-	OwnedByGroupIdfield := "owned_by_group_id"
-	MultiInitiatorfield := "multi_initiator"
-	IscsiTargetScopefield := "iscsi_target_scope"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	ReadOnlyfield := "read_only"
-	SerialNumberfield := "serial_number"
-	SecondarySerialNumberfield := "secondary_serial_number"
-	TargetNamefield := "target_name"
-	BlockSizefield := "block_size"
-	OfflineReasonfield := "offline_reason"
-	Clonefield := "clone"
-	ParentVolNamefield := "parent_vol_name"
-	ParentVolIdfield := "parent_vol_id"
-	BaseSnapNamefield := "base_snap_name"
-	BaseSnapIdfield := "base_snap_id"
-	ReplicationRolefield := "replication_role"
-	VolcollNamefield := "volcoll_name"
-	VolcollIdfield := "volcoll_id"
-	AgentTypefield := "agent_type"
-	Forcefield := "force"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	ProtectionTypefield := "protection_type"
-	LastSnapfield := "last_snap"
-	LastReplicatedSnapfield := "last_replicated_snap"
-	DestPoolNamefield := "dest_pool_name"
-	DestPoolIdfield := "dest_pool_id"
-	MoveStartTimefield := "move_start_time"
-	MoveAbortingfield := "move_aborting"
-	MoveBytesMigratedfield := "move_bytes_migrated"
-	MoveBytesRemainingfield := "move_bytes_remaining"
-	MoveEstComplTimefield := "move_est_compl_time"
-	UsageValidfield := "usage_valid"
-	SpaceUsageLevelfield := "space_usage_level"
-	TotalUsageBytesfield := "total_usage_bytes"
-	VolUsageCompressedBytesfield := "vol_usage_compressed_bytes"
-	VolUsageUncompressedBytesfield := "vol_usage_uncompressed_bytes"
-	VolUsageMappedBytesfield := "vol_usage_mapped_bytes"
-	SnapUsageCompressedBytesfield := "snap_usage_compressed_bytes"
-	SnapUsageUncompressedBytesfield := "snap_usage_uncompressed_bytes"
-	SnapUsagePopulatedBytesfield := "snap_usage_populated_bytes"
-	CachePinnedfield := "cache_pinned"
-	PinnedCacheSizefield := "pinned_cache_size"
-	CacheNeededForPinfield := "cache_needed_for_pin"
-	UpstreamCachePinnedfield := "upstream_cache_pinned"
-	CachePolicyfield := "cache_policy"
-	ThinlyProvisionedfield := "thinly_provisioned"
-	VolStatefield := "vol_state"
-	OnlineSnapsfield := "online_snaps"
-	NumConnectionsfield := "num_connections"
-	NumIscsiConnectionsfield := "num_iscsi_connections"
-	NumFcConnectionsfield := "num_fc_connections"
-	AccessControlRecordsfield := "access_control_records"
-	InheritAclfield := "inherit_acl"
-	EncryptionCipherfield := "encryption_cipher"
-	AppUuidfield := "app_uuid"
-	FolderIdfield := "folder_id"
-	FolderNamefield := "folder_name"
-	Metadatafield := "metadata"
-	IscsiSessionsfield := "iscsi_sessions"
-	FcSessionsfield := "fc_sessions"
-	CachingEnabledfield := "caching_enabled"
-	PreviouslyDedupedfield := "previously_deduped"
-	DedupeEnabledfield := "dedupe_enabled"
-	VpdT10field := "vpd_t10"
-	VpdIeee0field := "vpd_ieee0"
-	VpdIeee1field := "vpd_ieee1"
-	AppCategoryfield := "app_category"
-	LimitIopsfield := "limit_iops"
-	LimitMbpsfield := "limit_mbps"
-	NeedsContentReplfield := "needs_content_repl"
-	ContentReplErrorsFoundfield := "content_repl_errors_found"
-	LastContentSnapBrCgUidfield := "last_content_snap_br_cg_uid"
-	LastContentSnapBrGidfield := "last_content_snap_br_gid"
-	LastContentSnapIdfield := "last_content_snap_id"
-	CksumLastVerifiedfield := "cksum_last_verified"
-	PreFilterfield := "pre_filter"
-	AvgStatsLast5minsfield := "avg_stats_last_5mins"
-	SrepLastSyncfield := "srep_last_sync"
-	SrepResyncPercentfield := "srep_resync_percent"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldSize := "size"
+	fieldDescription := "description"
+	fieldPerfpolicyName := "perfpolicy_name"
+	fieldPerfpolicyId := "perfpolicy_id"
+	fieldReserve := "reserve"
+	fieldWarnLevel := "warn_level"
+	fieldLimit := "limit"
+	fieldSnapReserve := "snap_reserve"
+	fieldSnapWarnLevel := "snap_warn_level"
+	fieldSnapLimit := "snap_limit"
+	fieldSnapLimitPercent := "snap_limit_percent"
+	fieldNumSnaps := "num_snaps"
+	fieldProjectedNumSnaps := "projected_num_snaps"
+	fieldOnline := "online"
+	fieldOwnedByGroup := "owned_by_group"
+	fieldOwnedByGroupId := "owned_by_group_id"
+	fieldMultiInitiator := "multi_initiator"
+	fieldIscsiTargetScope := "iscsi_target_scope"
+	fieldPoolName := "pool_name"
+	fieldPoolId := "pool_id"
+	fieldReadOnly := "read_only"
+	fieldSerialNumber := "serial_number"
+	fieldSecondarySerialNumber := "secondary_serial_number"
+	fieldTargetName := "target_name"
+	fieldBlockSize := "block_size"
+	fieldOfflineReason := "offline_reason"
+	fieldClone := "clone"
+	fieldParentVolName := "parent_vol_name"
+	fieldParentVolId := "parent_vol_id"
+	fieldBaseSnapName := "base_snap_name"
+	fieldBaseSnapId := "base_snap_id"
+	fieldReplicationRole := "replication_role"
+	fieldVolcollName := "volcoll_name"
+	fieldVolcollId := "volcoll_id"
+	fieldAgentType := "agent_type"
+	fieldForce := "force"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldProtectionType := "protection_type"
+	fieldLastSnap := "last_snap"
+	fieldLastReplicatedSnap := "last_replicated_snap"
+	fieldDestPoolName := "dest_pool_name"
+	fieldDestPoolId := "dest_pool_id"
+	fieldMoveStartTime := "move_start_time"
+	fieldMoveAborting := "move_aborting"
+	fieldMoveBytesMigrated := "move_bytes_migrated"
+	fieldMoveBytesRemaining := "move_bytes_remaining"
+	fieldMoveEstComplTime := "move_est_compl_time"
+	fieldUsageValid := "usage_valid"
+	fieldSpaceUsageLevel := "space_usage_level"
+	fieldTotalUsageBytes := "total_usage_bytes"
+	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
+	fieldVolUsageUncompressedBytes := "vol_usage_uncompressed_bytes"
+	fieldVolUsageMappedBytes := "vol_usage_mapped_bytes"
+	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
+	fieldSnapUsageUncompressedBytes := "snap_usage_uncompressed_bytes"
+	fieldSnapUsagePopulatedBytes := "snap_usage_populated_bytes"
+	fieldCachePinned := "cache_pinned"
+	fieldPinnedCacheSize := "pinned_cache_size"
+	fieldCacheNeededForPin := "cache_needed_for_pin"
+	fieldUpstreamCachePinned := "upstream_cache_pinned"
+	fieldCachePolicy := "cache_policy"
+	fieldThinlyProvisioned := "thinly_provisioned"
+	fieldVolState := "vol_state"
+	fieldOnlineSnaps := "online_snaps"
+	fieldNumConnections := "num_connections"
+	fieldNumIscsiConnections := "num_iscsi_connections"
+	fieldNumFcConnections := "num_fc_connections"
+	fieldAccessControlRecords := "access_control_records"
+	fieldInheritAcl := "inherit_acl"
+	fieldEncryptionCipher := "encryption_cipher"
+	fieldAppUuid := "app_uuid"
+	fieldFolderId := "folder_id"
+	fieldFolderName := "folder_name"
+	fieldMetadata := "metadata"
+	fieldIscsiSessions := "iscsi_sessions"
+	fieldFcSessions := "fc_sessions"
+	fieldCachingEnabled := "caching_enabled"
+	fieldPreviouslyDeduped := "previously_deduped"
+	fieldDedupeEnabled := "dedupe_enabled"
+	fieldVpdT10 := "vpd_t10"
+	fieldVpdIeee0 := "vpd_ieee0"
+	fieldVpdIeee1 := "vpd_ieee1"
+	fieldAppCategory := "app_category"
+	fieldLimitIops := "limit_iops"
+	fieldLimitMbps := "limit_mbps"
+	fieldNeedsContentRepl := "needs_content_repl"
+	fieldContentReplErrorsFound := "content_repl_errors_found"
+	fieldLastContentSnapBrCgUid := "last_content_snap_br_cg_uid"
+	fieldLastContentSnapBrGid := "last_content_snap_br_gid"
+	fieldLastContentSnapId := "last_content_snap_id"
+	fieldCksumLastVerified := "cksum_last_verified"
+	fieldPreFilter := "pre_filter"
+	fieldAvgStatsLast5mins := "avg_stats_last_5mins"
+	fieldSrepLastSync := "srep_last_sync"
+	fieldSrepResyncPercent := "srep_resync_percent"
 
 	VolumeFields = &VolumeStringFields{
-		ID:                         &IDfield,
-		Name:                       &Namefield,
-		FullName:                   &FullNamefield,
-		SearchName:                 &SearchNamefield,
-		Size:                       &Sizefield,
-		Description:                &Descriptionfield,
-		PerfpolicyName:             &PerfpolicyNamefield,
-		PerfpolicyId:               &PerfpolicyIdfield,
-		Reserve:                    &Reservefield,
-		WarnLevel:                  &WarnLevelfield,
-		Limit:                      &Limitfield,
-		SnapReserve:                &SnapReservefield,
-		SnapWarnLevel:              &SnapWarnLevelfield,
-		SnapLimit:                  &SnapLimitfield,
-		SnapLimitPercent:           &SnapLimitPercentfield,
-		NumSnaps:                   &NumSnapsfield,
-		ProjectedNumSnaps:          &ProjectedNumSnapsfield,
-		Online:                     &Onlinefield,
-		OwnedByGroup:               &OwnedByGroupfield,
-		OwnedByGroupId:             &OwnedByGroupIdfield,
-		MultiInitiator:             &MultiInitiatorfield,
-		IscsiTargetScope:           &IscsiTargetScopefield,
-		PoolName:                   &PoolNamefield,
-		PoolId:                     &PoolIdfield,
-		ReadOnly:                   &ReadOnlyfield,
-		SerialNumber:               &SerialNumberfield,
-		SecondarySerialNumber:      &SecondarySerialNumberfield,
-		TargetName:                 &TargetNamefield,
-		BlockSize:                  &BlockSizefield,
-		OfflineReason:              &OfflineReasonfield,
-		Clone:                      &Clonefield,
-		ParentVolName:              &ParentVolNamefield,
-		ParentVolId:                &ParentVolIdfield,
-		BaseSnapName:               &BaseSnapNamefield,
-		BaseSnapId:                 &BaseSnapIdfield,
-		ReplicationRole:            &ReplicationRolefield,
-		VolcollName:                &VolcollNamefield,
-		VolcollId:                  &VolcollIdfield,
-		AgentType:                  &AgentTypefield,
-		Force:                      &Forcefield,
-		CreationTime:               &CreationTimefield,
-		LastModified:               &LastModifiedfield,
-		ProtectionType:             &ProtectionTypefield,
-		LastSnap:                   &LastSnapfield,
-		LastReplicatedSnap:         &LastReplicatedSnapfield,
-		DestPoolName:               &DestPoolNamefield,
-		DestPoolId:                 &DestPoolIdfield,
-		MoveStartTime:              &MoveStartTimefield,
-		MoveAborting:               &MoveAbortingfield,
-		MoveBytesMigrated:          &MoveBytesMigratedfield,
-		MoveBytesRemaining:         &MoveBytesRemainingfield,
-		MoveEstComplTime:           &MoveEstComplTimefield,
-		UsageValid:                 &UsageValidfield,
-		SpaceUsageLevel:            &SpaceUsageLevelfield,
-		TotalUsageBytes:            &TotalUsageBytesfield,
-		VolUsageCompressedBytes:    &VolUsageCompressedBytesfield,
-		VolUsageUncompressedBytes:  &VolUsageUncompressedBytesfield,
-		VolUsageMappedBytes:        &VolUsageMappedBytesfield,
-		SnapUsageCompressedBytes:   &SnapUsageCompressedBytesfield,
-		SnapUsageUncompressedBytes: &SnapUsageUncompressedBytesfield,
-		SnapUsagePopulatedBytes:    &SnapUsagePopulatedBytesfield,
-		CachePinned:                &CachePinnedfield,
-		PinnedCacheSize:            &PinnedCacheSizefield,
-		CacheNeededForPin:          &CacheNeededForPinfield,
-		UpstreamCachePinned:        &UpstreamCachePinnedfield,
-		CachePolicy:                &CachePolicyfield,
-		ThinlyProvisioned:          &ThinlyProvisionedfield,
-		VolState:                   &VolStatefield,
-		OnlineSnaps:                &OnlineSnapsfield,
-		NumConnections:             &NumConnectionsfield,
-		NumIscsiConnections:        &NumIscsiConnectionsfield,
-		NumFcConnections:           &NumFcConnectionsfield,
-		AccessControlRecords:       &AccessControlRecordsfield,
-		InheritAcl:                 &InheritAclfield,
-		EncryptionCipher:           &EncryptionCipherfield,
-		AppUuid:                    &AppUuidfield,
-		FolderId:                   &FolderIdfield,
-		FolderName:                 &FolderNamefield,
-		Metadata:                   &Metadatafield,
-		IscsiSessions:              &IscsiSessionsfield,
-		FcSessions:                 &FcSessionsfield,
-		CachingEnabled:             &CachingEnabledfield,
-		PreviouslyDeduped:          &PreviouslyDedupedfield,
-		DedupeEnabled:              &DedupeEnabledfield,
-		VpdT10:                     &VpdT10field,
-		VpdIeee0:                   &VpdIeee0field,
-		VpdIeee1:                   &VpdIeee1field,
-		AppCategory:                &AppCategoryfield,
-		LimitIops:                  &LimitIopsfield,
-		LimitMbps:                  &LimitMbpsfield,
-		NeedsContentRepl:           &NeedsContentReplfield,
-		ContentReplErrorsFound:     &ContentReplErrorsFoundfield,
-		LastContentSnapBrCgUid:     &LastContentSnapBrCgUidfield,
-		LastContentSnapBrGid:       &LastContentSnapBrGidfield,
-		LastContentSnapId:          &LastContentSnapIdfield,
-		CksumLastVerified:          &CksumLastVerifiedfield,
-		PreFilter:                  &PreFilterfield,
-		AvgStatsLast5mins:          &AvgStatsLast5minsfield,
-		SrepLastSync:               &SrepLastSyncfield,
-		SrepResyncPercent:          &SrepResyncPercentfield,
+		ID:                         &fieldID,
+		Name:                       &fieldName,
+		FullName:                   &fieldFullName,
+		SearchName:                 &fieldSearchName,
+		Size:                       &fieldSize,
+		Description:                &fieldDescription,
+		PerfpolicyName:             &fieldPerfpolicyName,
+		PerfpolicyId:               &fieldPerfpolicyId,
+		Reserve:                    &fieldReserve,
+		WarnLevel:                  &fieldWarnLevel,
+		Limit:                      &fieldLimit,
+		SnapReserve:                &fieldSnapReserve,
+		SnapWarnLevel:              &fieldSnapWarnLevel,
+		SnapLimit:                  &fieldSnapLimit,
+		SnapLimitPercent:           &fieldSnapLimitPercent,
+		NumSnaps:                   &fieldNumSnaps,
+		ProjectedNumSnaps:          &fieldProjectedNumSnaps,
+		Online:                     &fieldOnline,
+		OwnedByGroup:               &fieldOwnedByGroup,
+		OwnedByGroupId:             &fieldOwnedByGroupId,
+		MultiInitiator:             &fieldMultiInitiator,
+		IscsiTargetScope:           &fieldIscsiTargetScope,
+		PoolName:                   &fieldPoolName,
+		PoolId:                     &fieldPoolId,
+		ReadOnly:                   &fieldReadOnly,
+		SerialNumber:               &fieldSerialNumber,
+		SecondarySerialNumber:      &fieldSecondarySerialNumber,
+		TargetName:                 &fieldTargetName,
+		BlockSize:                  &fieldBlockSize,
+		OfflineReason:              &fieldOfflineReason,
+		Clone:                      &fieldClone,
+		ParentVolName:              &fieldParentVolName,
+		ParentVolId:                &fieldParentVolId,
+		BaseSnapName:               &fieldBaseSnapName,
+		BaseSnapId:                 &fieldBaseSnapId,
+		ReplicationRole:            &fieldReplicationRole,
+		VolcollName:                &fieldVolcollName,
+		VolcollId:                  &fieldVolcollId,
+		AgentType:                  &fieldAgentType,
+		Force:                      &fieldForce,
+		CreationTime:               &fieldCreationTime,
+		LastModified:               &fieldLastModified,
+		ProtectionType:             &fieldProtectionType,
+		LastSnap:                   &fieldLastSnap,
+		LastReplicatedSnap:         &fieldLastReplicatedSnap,
+		DestPoolName:               &fieldDestPoolName,
+		DestPoolId:                 &fieldDestPoolId,
+		MoveStartTime:              &fieldMoveStartTime,
+		MoveAborting:               &fieldMoveAborting,
+		MoveBytesMigrated:          &fieldMoveBytesMigrated,
+		MoveBytesRemaining:         &fieldMoveBytesRemaining,
+		MoveEstComplTime:           &fieldMoveEstComplTime,
+		UsageValid:                 &fieldUsageValid,
+		SpaceUsageLevel:            &fieldSpaceUsageLevel,
+		TotalUsageBytes:            &fieldTotalUsageBytes,
+		VolUsageCompressedBytes:    &fieldVolUsageCompressedBytes,
+		VolUsageUncompressedBytes:  &fieldVolUsageUncompressedBytes,
+		VolUsageMappedBytes:        &fieldVolUsageMappedBytes,
+		SnapUsageCompressedBytes:   &fieldSnapUsageCompressedBytes,
+		SnapUsageUncompressedBytes: &fieldSnapUsageUncompressedBytes,
+		SnapUsagePopulatedBytes:    &fieldSnapUsagePopulatedBytes,
+		CachePinned:                &fieldCachePinned,
+		PinnedCacheSize:            &fieldPinnedCacheSize,
+		CacheNeededForPin:          &fieldCacheNeededForPin,
+		UpstreamCachePinned:        &fieldUpstreamCachePinned,
+		CachePolicy:                &fieldCachePolicy,
+		ThinlyProvisioned:          &fieldThinlyProvisioned,
+		VolState:                   &fieldVolState,
+		OnlineSnaps:                &fieldOnlineSnaps,
+		NumConnections:             &fieldNumConnections,
+		NumIscsiConnections:        &fieldNumIscsiConnections,
+		NumFcConnections:           &fieldNumFcConnections,
+		AccessControlRecords:       &fieldAccessControlRecords,
+		InheritAcl:                 &fieldInheritAcl,
+		EncryptionCipher:           &fieldEncryptionCipher,
+		AppUuid:                    &fieldAppUuid,
+		FolderId:                   &fieldFolderId,
+		FolderName:                 &fieldFolderName,
+		Metadata:                   &fieldMetadata,
+		IscsiSessions:              &fieldIscsiSessions,
+		FcSessions:                 &fieldFcSessions,
+		CachingEnabled:             &fieldCachingEnabled,
+		PreviouslyDeduped:          &fieldPreviouslyDeduped,
+		DedupeEnabled:              &fieldDedupeEnabled,
+		VpdT10:                     &fieldVpdT10,
+		VpdIeee0:                   &fieldVpdIeee0,
+		VpdIeee1:                   &fieldVpdIeee1,
+		AppCategory:                &fieldAppCategory,
+		LimitIops:                  &fieldLimitIops,
+		LimitMbps:                  &fieldLimitMbps,
+		NeedsContentRepl:           &fieldNeedsContentRepl,
+		ContentReplErrorsFound:     &fieldContentReplErrorsFound,
+		LastContentSnapBrCgUid:     &fieldLastContentSnapBrCgUid,
+		LastContentSnapBrGid:       &fieldLastContentSnapBrGid,
+		LastContentSnapId:          &fieldLastContentSnapId,
+		CksumLastVerified:          &fieldCksumLastVerified,
+		PreFilter:                  &fieldPreFilter,
+		AvgStatsLast5mins:          &fieldAvgStatsLast5mins,
+		SrepLastSync:               &fieldSrepLastSync,
+		SrepResyncPercent:          &fieldSrepResyncPercent,
 	}
 }
 

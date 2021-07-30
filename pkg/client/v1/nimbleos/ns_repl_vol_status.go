@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsReplVolStatus - The replication status of a volume undergoing replication.
-// Export NsReplVolStatusFields for advance operations like search filter etc.
+
+// Export NsReplVolStatusFields provides field names to use in filter parameters, for example.
 var NsReplVolStatusFields *NsReplVolStatusStringFields
 
 func init() {
-	Namefield := "name"
-	SnapNamefield := "snap_name"
-	Statusfield := "status"
-	InternalStatusfield := "internal_status"
-	ReplBytesDonefield := "repl_bytes_done"
-	ReplBytesTotalfield := "repl_bytes_total"
+	fieldName := "name"
+	fieldSnapName := "snap_name"
+	fieldStatus := "status"
+	fieldInternalStatus := "internal_status"
+	fieldReplBytesDone := "repl_bytes_done"
+	fieldReplBytesTotal := "repl_bytes_total"
 
 	NsReplVolStatusFields = &NsReplVolStatusStringFields{
-		Name:           &Namefield,
-		SnapName:       &SnapNamefield,
-		Status:         &Statusfield,
-		InternalStatus: &InternalStatusfield,
-		ReplBytesDone:  &ReplBytesDonefield,
-		ReplBytesTotal: &ReplBytesTotalfield,
+		Name:           &fieldName,
+		SnapName:       &fieldSnapName,
+		Status:         &fieldStatus,
+		InternalStatus: &fieldInternalStatus,
+		ReplBytesDone:  &fieldReplBytesDone,
+		ReplBytesTotal: &fieldReplBytesTotal,
 	}
 }
 

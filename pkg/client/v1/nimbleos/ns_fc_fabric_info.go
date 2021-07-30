@@ -3,26 +3,27 @@
 package nimbleos
 
 // NsFcFabricInfo - Fibre Channel fabric information.
-// Export NsFcFabricInfoFields for advance operations like search filter etc.
+
+// Export NsFcFabricInfoFields provides field names to use in filter parameters, for example.
 var NsFcFabricInfoFields *NsFcFabricInfoStringFields
 
 func init() {
-	FabricSwitchNamefield := "fabric_switch_name"
-	FabricSwitchPortfield := "fabric_switch_port"
-	FabricSwitchWwnnfield := "fabric_switch_wwnn"
-	FabricSwitchWwpnfield := "fabric_switch_wwpn"
-	FabricWwnfield := "fabric_wwn"
-	FcIdfield := "fc_id"
-	LoggedInfield := "logged_in"
+	fieldFabricSwitchName := "fabric_switch_name"
+	fieldFabricSwitchPort := "fabric_switch_port"
+	fieldFabricSwitchWwnn := "fabric_switch_wwnn"
+	fieldFabricSwitchWwpn := "fabric_switch_wwpn"
+	fieldFabricWwn := "fabric_wwn"
+	fieldFcId := "fc_id"
+	fieldLoggedIn := "logged_in"
 
 	NsFcFabricInfoFields = &NsFcFabricInfoStringFields{
-		FabricSwitchName: &FabricSwitchNamefield,
-		FabricSwitchPort: &FabricSwitchPortfield,
-		FabricSwitchWwnn: &FabricSwitchWwnnfield,
-		FabricSwitchWwpn: &FabricSwitchWwpnfield,
-		FabricWwn:        &FabricWwnfield,
-		FcId:             &FcIdfield,
-		LoggedIn:         &LoggedInfield,
+		FabricSwitchName: &fieldFabricSwitchName,
+		FabricSwitchPort: &fieldFabricSwitchPort,
+		FabricSwitchWwnn: &fieldFabricSwitchWwnn,
+		FabricSwitchWwpn: &fieldFabricSwitchWwpn,
+		FabricWwn:        &fieldFabricWwn,
+		FcId:             &fieldFcId,
+		LoggedIn:         &fieldLoggedIn,
 	}
 }
 

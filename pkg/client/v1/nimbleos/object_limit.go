@@ -3,28 +3,29 @@
 package nimbleos
 
 // ObjectLimit - List the maximum limits and warning thresholds for number of objects in the storage group.
-// Export ObjectLimitFields for advance operations like search filter etc.
+
+// Export ObjectLimitFields provides field names to use in filter parameters, for example.
 var ObjectLimitFields *ObjectLimitStringFields
 
 func init() {
-	IDfield := "id"
-	ObjectTypefield := "object_type"
-	ObjectTypeNamefield := "object_type_name"
-	ScopeTypefield := "scope_type"
-	ScopeTypeNamefield := "scope_type_name"
-	WarningThresholdfield := "warning_threshold"
-	MaxLimitfield := "max_limit"
-	ObjectCountsfield := "object_counts"
+	fieldID := "id"
+	fieldObjectType := "object_type"
+	fieldObjectTypeName := "object_type_name"
+	fieldScopeType := "scope_type"
+	fieldScopeTypeName := "scope_type_name"
+	fieldWarningThreshold := "warning_threshold"
+	fieldMaxLimit := "max_limit"
+	fieldObjectCounts := "object_counts"
 
 	ObjectLimitFields = &ObjectLimitStringFields{
-		ID:               &IDfield,
-		ObjectType:       &ObjectTypefield,
-		ObjectTypeName:   &ObjectTypeNamefield,
-		ScopeType:        &ScopeTypefield,
-		ScopeTypeName:    &ScopeTypeNamefield,
-		WarningThreshold: &WarningThresholdfield,
-		MaxLimit:         &MaxLimitfield,
-		ObjectCounts:     &ObjectCountsfield,
+		ID:               &fieldID,
+		ObjectType:       &fieldObjectType,
+		ObjectTypeName:   &fieldObjectTypeName,
+		ScopeType:        &fieldScopeType,
+		ScopeTypeName:    &fieldScopeTypeName,
+		WarningThreshold: &fieldWarningThreshold,
+		MaxLimit:         &fieldMaxLimit,
+		ObjectCounts:     &fieldObjectCounts,
 	}
 }
 

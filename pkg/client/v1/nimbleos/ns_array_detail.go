@@ -3,36 +3,37 @@
 package nimbleos
 
 // NsArrayDetail - Detailed array information.
-// Export NsArrayDetailFields for advance operations like search filter etc.
+
+// Export NsArrayDetailFields provides field names to use in filter parameters, for example.
 var NsArrayDetailFields *NsArrayDetailStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayIdfield := "array_id"
-	Namefield := "name"
-	ArrayNamefield := "array_name"
-	EvacTimefield := "evac_time"
-	EvacUsagefield := "evac_usage"
-	UsableCapacityfield := "usable_capacity"
-	Usagefield := "usage"
-	VolUsageCompressedBytesfield := "vol_usage_compressed_bytes"
-	SnapUsageCompressedBytesfield := "snap_usage_compressed_bytes"
-	UsageValidfield := "usage_valid"
-	Migratefield := "migrate"
+	fieldID := "id"
+	fieldArrayId := "array_id"
+	fieldName := "name"
+	fieldArrayName := "array_name"
+	fieldEvacTime := "evac_time"
+	fieldEvacUsage := "evac_usage"
+	fieldUsableCapacity := "usable_capacity"
+	fieldUsage := "usage"
+	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
+	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
+	fieldUsageValid := "usage_valid"
+	fieldMigrate := "migrate"
 
 	NsArrayDetailFields = &NsArrayDetailStringFields{
-		ID:                       &IDfield,
-		ArrayId:                  &ArrayIdfield,
-		Name:                     &Namefield,
-		ArrayName:                &ArrayNamefield,
-		EvacTime:                 &EvacTimefield,
-		EvacUsage:                &EvacUsagefield,
-		UsableCapacity:           &UsableCapacityfield,
-		Usage:                    &Usagefield,
-		VolUsageCompressedBytes:  &VolUsageCompressedBytesfield,
-		SnapUsageCompressedBytes: &SnapUsageCompressedBytesfield,
-		UsageValid:               &UsageValidfield,
-		Migrate:                  &Migratefield,
+		ID:                       &fieldID,
+		ArrayId:                  &fieldArrayId,
+		Name:                     &fieldName,
+		ArrayName:                &fieldArrayName,
+		EvacTime:                 &fieldEvacTime,
+		EvacUsage:                &fieldEvacUsage,
+		UsableCapacity:           &fieldUsableCapacity,
+		Usage:                    &fieldUsage,
+		VolUsageCompressedBytes:  &fieldVolUsageCompressedBytes,
+		SnapUsageCompressedBytes: &fieldSnapUsageCompressedBytes,
+		UsageValid:               &fieldUsageValid,
+		Migrate:                  &fieldMigrate,
 	}
 }
 

@@ -3,102 +3,103 @@
 package nimbleos
 
 // Folder - Folders are a way to group volumes, as well as a way to apply space constraints to them.
-// Export FolderFields for advance operations like search filter etc.
+
+// Export FolderFields provides field names to use in filter parameters, for example.
 var FolderFields *FolderStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Fqnfield := "fqn"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	LimitBytesSpecifiedfield := "limit_bytes_specified"
-	LimitBytesfield := "limit_bytes"
-	LimitSizeBytesfield := "limit_size_bytes"
-	ProvisionedLimitSizeBytesfield := "provisioned_limit_size_bytes"
-	OverdraftLimitPctfield := "overdraft_limit_pct"
-	CapacityBytesfield := "capacity_bytes"
-	FreeSpaceBytesfield := "free_space_bytes"
-	ProvisionedBytesfield := "provisioned_bytes"
-	UsageBytesfield := "usage_bytes"
-	VolumeMappedBytesfield := "volume_mapped_bytes"
-	UsageValidfield := "usage_valid"
-	AgentTypefield := "agent_type"
-	InheritedVolPerfpolIdfield := "inherited_vol_perfpol_id"
-	InheritedVolPerfpolNamefield := "inherited_vol_perfpol_name"
-	UnusedReserveBytesfield := "unused_reserve_bytes"
-	UnusedSnapReserveBytesfield := "unused_snap_reserve_bytes"
-	CompressedVolUsageBytesfield := "compressed_vol_usage_bytes"
-	CompressedSnapUsageBytesfield := "compressed_snap_usage_bytes"
-	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
-	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
-	VolCompressionRatiofield := "vol_compression_ratio"
-	SnapCompressionRatiofield := "snap_compression_ratio"
-	CompressionRatiofield := "compression_ratio"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	NumSnapsfield := "num_snaps"
-	NumSnapcollsfield := "num_snapcolls"
-	AppUuidfield := "app_uuid"
-	VolumeListfield := "volume_list"
-	AppserverIdfield := "appserver_id"
-	AppserverNamefield := "appserver_name"
-	FolsetIdfield := "folset_id"
-	FolsetNamefield := "folset_name"
-	LimitIopsfield := "limit_iops"
-	LimitMbpsfield := "limit_mbps"
-	AccessProtocolfield := "access_protocol"
-	TenantIdfield := "tenant_id"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFqn := "fqn"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldPoolName := "pool_name"
+	fieldPoolId := "pool_id"
+	fieldLimitBytesSpecified := "limit_bytes_specified"
+	fieldLimitBytes := "limit_bytes"
+	fieldLimitSizeBytes := "limit_size_bytes"
+	fieldProvisionedLimitSizeBytes := "provisioned_limit_size_bytes"
+	fieldOverdraftLimitPct := "overdraft_limit_pct"
+	fieldCapacityBytes := "capacity_bytes"
+	fieldFreeSpaceBytes := "free_space_bytes"
+	fieldProvisionedBytes := "provisioned_bytes"
+	fieldUsageBytes := "usage_bytes"
+	fieldVolumeMappedBytes := "volume_mapped_bytes"
+	fieldUsageValid := "usage_valid"
+	fieldAgentType := "agent_type"
+	fieldInheritedVolPerfpolId := "inherited_vol_perfpol_id"
+	fieldInheritedVolPerfpolName := "inherited_vol_perfpol_name"
+	fieldUnusedReserveBytes := "unused_reserve_bytes"
+	fieldUnusedSnapReserveBytes := "unused_snap_reserve_bytes"
+	fieldCompressedVolUsageBytes := "compressed_vol_usage_bytes"
+	fieldCompressedSnapUsageBytes := "compressed_snap_usage_bytes"
+	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
+	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
+	fieldVolCompressionRatio := "vol_compression_ratio"
+	fieldSnapCompressionRatio := "snap_compression_ratio"
+	fieldCompressionRatio := "compression_ratio"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldNumSnaps := "num_snaps"
+	fieldNumSnapcolls := "num_snapcolls"
+	fieldAppUuid := "app_uuid"
+	fieldVolumeList := "volume_list"
+	fieldAppserverId := "appserver_id"
+	fieldAppserverName := "appserver_name"
+	fieldFolsetId := "folset_id"
+	fieldFolsetName := "folset_name"
+	fieldLimitIops := "limit_iops"
+	fieldLimitMbps := "limit_mbps"
+	fieldAccessProtocol := "access_protocol"
+	fieldTenantId := "tenant_id"
 
 	FolderFields = &FolderStringFields{
-		ID:                         &IDfield,
-		Name:                       &Namefield,
-		Fqn:                        &Fqnfield,
-		FullName:                   &FullNamefield,
-		SearchName:                 &SearchNamefield,
-		Description:                &Descriptionfield,
-		PoolName:                   &PoolNamefield,
-		PoolId:                     &PoolIdfield,
-		LimitBytesSpecified:        &LimitBytesSpecifiedfield,
-		LimitBytes:                 &LimitBytesfield,
-		LimitSizeBytes:             &LimitSizeBytesfield,
-		ProvisionedLimitSizeBytes:  &ProvisionedLimitSizeBytesfield,
-		OverdraftLimitPct:          &OverdraftLimitPctfield,
-		CapacityBytes:              &CapacityBytesfield,
-		FreeSpaceBytes:             &FreeSpaceBytesfield,
-		ProvisionedBytes:           &ProvisionedBytesfield,
-		UsageBytes:                 &UsageBytesfield,
-		VolumeMappedBytes:          &VolumeMappedBytesfield,
-		UsageValid:                 &UsageValidfield,
-		AgentType:                  &AgentTypefield,
-		InheritedVolPerfpolId:      &InheritedVolPerfpolIdfield,
-		InheritedVolPerfpolName:    &InheritedVolPerfpolNamefield,
-		UnusedReserveBytes:         &UnusedReserveBytesfield,
-		UnusedSnapReserveBytes:     &UnusedSnapReserveBytesfield,
-		CompressedVolUsageBytes:    &CompressedVolUsageBytesfield,
-		CompressedSnapUsageBytes:   &CompressedSnapUsageBytesfield,
-		UncompressedVolUsageBytes:  &UncompressedVolUsageBytesfield,
-		UncompressedSnapUsageBytes: &UncompressedSnapUsageBytesfield,
-		VolCompressionRatio:        &VolCompressionRatiofield,
-		SnapCompressionRatio:       &SnapCompressionRatiofield,
-		CompressionRatio:           &CompressionRatiofield,
-		CreationTime:               &CreationTimefield,
-		LastModified:               &LastModifiedfield,
-		NumSnaps:                   &NumSnapsfield,
-		NumSnapcolls:               &NumSnapcollsfield,
-		AppUuid:                    &AppUuidfield,
-		VolumeList:                 &VolumeListfield,
-		AppserverId:                &AppserverIdfield,
-		AppserverName:              &AppserverNamefield,
-		FolsetId:                   &FolsetIdfield,
-		FolsetName:                 &FolsetNamefield,
-		LimitIops:                  &LimitIopsfield,
-		LimitMbps:                  &LimitMbpsfield,
-		AccessProtocol:             &AccessProtocolfield,
-		TenantId:                   &TenantIdfield,
+		ID:                         &fieldID,
+		Name:                       &fieldName,
+		Fqn:                        &fieldFqn,
+		FullName:                   &fieldFullName,
+		SearchName:                 &fieldSearchName,
+		Description:                &fieldDescription,
+		PoolName:                   &fieldPoolName,
+		PoolId:                     &fieldPoolId,
+		LimitBytesSpecified:        &fieldLimitBytesSpecified,
+		LimitBytes:                 &fieldLimitBytes,
+		LimitSizeBytes:             &fieldLimitSizeBytes,
+		ProvisionedLimitSizeBytes:  &fieldProvisionedLimitSizeBytes,
+		OverdraftLimitPct:          &fieldOverdraftLimitPct,
+		CapacityBytes:              &fieldCapacityBytes,
+		FreeSpaceBytes:             &fieldFreeSpaceBytes,
+		ProvisionedBytes:           &fieldProvisionedBytes,
+		UsageBytes:                 &fieldUsageBytes,
+		VolumeMappedBytes:          &fieldVolumeMappedBytes,
+		UsageValid:                 &fieldUsageValid,
+		AgentType:                  &fieldAgentType,
+		InheritedVolPerfpolId:      &fieldInheritedVolPerfpolId,
+		InheritedVolPerfpolName:    &fieldInheritedVolPerfpolName,
+		UnusedReserveBytes:         &fieldUnusedReserveBytes,
+		UnusedSnapReserveBytes:     &fieldUnusedSnapReserveBytes,
+		CompressedVolUsageBytes:    &fieldCompressedVolUsageBytes,
+		CompressedSnapUsageBytes:   &fieldCompressedSnapUsageBytes,
+		UncompressedVolUsageBytes:  &fieldUncompressedVolUsageBytes,
+		UncompressedSnapUsageBytes: &fieldUncompressedSnapUsageBytes,
+		VolCompressionRatio:        &fieldVolCompressionRatio,
+		SnapCompressionRatio:       &fieldSnapCompressionRatio,
+		CompressionRatio:           &fieldCompressionRatio,
+		CreationTime:               &fieldCreationTime,
+		LastModified:               &fieldLastModified,
+		NumSnaps:                   &fieldNumSnaps,
+		NumSnapcolls:               &fieldNumSnapcolls,
+		AppUuid:                    &fieldAppUuid,
+		VolumeList:                 &fieldVolumeList,
+		AppserverId:                &fieldAppserverId,
+		AppserverName:              &fieldAppserverName,
+		FolsetId:                   &fieldFolsetId,
+		FolsetName:                 &fieldFolsetName,
+		LimitIops:                  &fieldLimitIops,
+		LimitMbps:                  &fieldLimitMbps,
+		AccessProtocol:             &fieldAccessProtocol,
+		TenantId:                   &fieldTenantId,
 	}
 }
 

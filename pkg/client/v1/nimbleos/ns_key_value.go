@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsKeyValue - Key-value pair.
-// Export NsKeyValueFields for advance operations like search filter etc.
+
+// Export NsKeyValueFields provides field names to use in filter parameters, for example.
 var NsKeyValueFields *NsKeyValueStringFields
 
 func init() {
-	Keyfield := "key"
-	Valuefield := "value"
+	fieldKey := "key"
+	fieldValue := "value"
 
 	NsKeyValueFields = &NsKeyValueStringFields{
-		Key:   &Keyfield,
-		Value: &Valuefield,
+		Key:   &fieldKey,
+		Value: &fieldValue,
 	}
 }
 

@@ -3,16 +3,17 @@
 package nimbleos
 
 // Version - Show the API version.
-// Export VersionFields for advance operations like search filter etc.
+
+// Export VersionFields provides field names to use in filter parameters, for example.
 var VersionFields *VersionStringFields
 
 func init() {
-	Namefield := "name"
-	SoftwareVersionfield := "software_version"
+	fieldName := "name"
+	fieldSoftwareVersion := "software_version"
 
 	VersionFields = &VersionStringFields{
-		Name:            &Namefield,
-		SoftwareVersion: &SoftwareVersionfield,
+		Name:            &fieldName,
+		SoftwareVersion: &fieldSoftwareVersion,
 	}
 }
 

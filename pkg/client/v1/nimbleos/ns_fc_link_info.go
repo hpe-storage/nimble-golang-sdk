@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsFcLinkInfo - Fibre Channel link information.
-// Export NsFcLinkInfoFields for advance operations like search filter etc.
+
+// Export NsFcLinkInfoFields provides field names to use in filter parameters, for example.
 var NsFcLinkInfoFields *NsFcLinkInfoStringFields
 
 func init() {
-	LinkSpeedfield := "link_speed"
-	MaxLinkSpeedfield := "max_link_speed"
-	LinkStatusfield := "link_status"
-	OperationalStatusfield := "operational_status"
+	fieldLinkSpeed := "link_speed"
+	fieldMaxLinkSpeed := "max_link_speed"
+	fieldLinkStatus := "link_status"
+	fieldOperationalStatus := "operational_status"
 
 	NsFcLinkInfoFields = &NsFcLinkInfoStringFields{
-		LinkSpeed:         &LinkSpeedfield,
-		MaxLinkSpeed:      &MaxLinkSpeedfield,
-		LinkStatus:        &LinkStatusfield,
-		OperationalStatus: &OperationalStatusfield,
+		LinkSpeed:         &fieldLinkSpeed,
+		MaxLinkSpeed:      &fieldMaxLinkSpeed,
+		LinkStatus:        &fieldLinkStatus,
+		OperationalStatus: &fieldOperationalStatus,
 	}
 }
 

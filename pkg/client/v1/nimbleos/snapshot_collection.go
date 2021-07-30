@@ -3,90 +3,91 @@
 package nimbleos
 
 // SnapshotCollection - Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
-// Export SnapshotCollectionFields for advance operations like search filter etc.
+
+// Export SnapshotCollectionFields provides field names to use in filter parameters, for example.
 var SnapshotCollectionFields *SnapshotCollectionStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	VolcollNamefield := "volcoll_name"
-	VolcollIdfield := "volcoll_id"
-	OriginNamefield := "origin_name"
-	IsReplicafield := "is_replica"
-	SrepOwnerNamefield := "srep_owner_name"
-	SrepOwnerIdfield := "srep_owner_id"
-	PeerSnapcollIdfield := "peer_snapcoll_id"
-	NumSnapsfield := "num_snaps"
-	IsCompletefield := "is_complete"
-	IsManualfield := "is_manual"
-	IsExternalTriggerfield := "is_external_trigger"
-	IsUnmanagedfield := "is_unmanaged"
-	IsManuallyManagedfield := "is_manually_managed"
-	ReplStatusfield := "repl_status"
-	ReplStartTimefield := "repl_start_time"
-	ReplCompleteTimefield := "repl_complete_time"
-	ReplBytesTransferredfield := "repl_bytes_transferred"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	OnlineStatusfield := "online_status"
-	VolSnapAttrListfield := "vol_snap_attr_list"
-	SnapshotsListfield := "snapshots_list"
-	Replicatefield := "replicate"
-	ReplicateTofield := "replicate_to"
-	StartOnlinefield := "start_online"
-	AllowWritesfield := "allow_writes"
-	DisableAppsyncfield := "disable_appsync"
-	SnapVerifyfield := "snap_verify"
-	SkipDbConsistencyCheckfield := "skip_db_consistency_check"
-	SchedIdfield := "sched_id"
-	SchedNamefield := "sched_name"
-	InvokeOnUpstreamPartnerfield := "invoke_on_upstream_partner"
-	AgentTypefield := "agent_type"
-	ExpiryAfterfield := "expiry_after"
-	Metadatafield := "metadata"
-	Forcefield := "force"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldVolcollName := "volcoll_name"
+	fieldVolcollId := "volcoll_id"
+	fieldOriginName := "origin_name"
+	fieldIsReplica := "is_replica"
+	fieldSrepOwnerName := "srep_owner_name"
+	fieldSrepOwnerId := "srep_owner_id"
+	fieldPeerSnapcollId := "peer_snapcoll_id"
+	fieldNumSnaps := "num_snaps"
+	fieldIsComplete := "is_complete"
+	fieldIsManual := "is_manual"
+	fieldIsExternalTrigger := "is_external_trigger"
+	fieldIsUnmanaged := "is_unmanaged"
+	fieldIsManuallyManaged := "is_manually_managed"
+	fieldReplStatus := "repl_status"
+	fieldReplStartTime := "repl_start_time"
+	fieldReplCompleteTime := "repl_complete_time"
+	fieldReplBytesTransferred := "repl_bytes_transferred"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldOnlineStatus := "online_status"
+	fieldVolSnapAttrList := "vol_snap_attr_list"
+	fieldSnapshotsList := "snapshots_list"
+	fieldReplicate := "replicate"
+	fieldReplicateTo := "replicate_to"
+	fieldStartOnline := "start_online"
+	fieldAllowWrites := "allow_writes"
+	fieldDisableAppsync := "disable_appsync"
+	fieldSnapVerify := "snap_verify"
+	fieldSkipDbConsistencyCheck := "skip_db_consistency_check"
+	fieldSchedId := "sched_id"
+	fieldSchedName := "sched_name"
+	fieldInvokeOnUpstreamPartner := "invoke_on_upstream_partner"
+	fieldAgentType := "agent_type"
+	fieldExpiryAfter := "expiry_after"
+	fieldMetadata := "metadata"
+	fieldForce := "force"
 
 	SnapshotCollectionFields = &SnapshotCollectionStringFields{
-		ID:                      &IDfield,
-		Name:                    &Namefield,
-		Description:             &Descriptionfield,
-		VolcollName:             &VolcollNamefield,
-		VolcollId:               &VolcollIdfield,
-		OriginName:              &OriginNamefield,
-		IsReplica:               &IsReplicafield,
-		SrepOwnerName:           &SrepOwnerNamefield,
-		SrepOwnerId:             &SrepOwnerIdfield,
-		PeerSnapcollId:          &PeerSnapcollIdfield,
-		NumSnaps:                &NumSnapsfield,
-		IsComplete:              &IsCompletefield,
-		IsManual:                &IsManualfield,
-		IsExternalTrigger:       &IsExternalTriggerfield,
-		IsUnmanaged:             &IsUnmanagedfield,
-		IsManuallyManaged:       &IsManuallyManagedfield,
-		ReplStatus:              &ReplStatusfield,
-		ReplStartTime:           &ReplStartTimefield,
-		ReplCompleteTime:        &ReplCompleteTimefield,
-		ReplBytesTransferred:    &ReplBytesTransferredfield,
-		CreationTime:            &CreationTimefield,
-		LastModified:            &LastModifiedfield,
-		OnlineStatus:            &OnlineStatusfield,
-		VolSnapAttrList:         &VolSnapAttrListfield,
-		SnapshotsList:           &SnapshotsListfield,
-		Replicate:               &Replicatefield,
-		ReplicateTo:             &ReplicateTofield,
-		StartOnline:             &StartOnlinefield,
-		AllowWrites:             &AllowWritesfield,
-		DisableAppsync:          &DisableAppsyncfield,
-		SnapVerify:              &SnapVerifyfield,
-		SkipDbConsistencyCheck:  &SkipDbConsistencyCheckfield,
-		SchedId:                 &SchedIdfield,
-		SchedName:               &SchedNamefield,
-		InvokeOnUpstreamPartner: &InvokeOnUpstreamPartnerfield,
-		AgentType:               &AgentTypefield,
-		ExpiryAfter:             &ExpiryAfterfield,
-		Metadata:                &Metadatafield,
-		Force:                   &Forcefield,
+		ID:                      &fieldID,
+		Name:                    &fieldName,
+		Description:             &fieldDescription,
+		VolcollName:             &fieldVolcollName,
+		VolcollId:               &fieldVolcollId,
+		OriginName:              &fieldOriginName,
+		IsReplica:               &fieldIsReplica,
+		SrepOwnerName:           &fieldSrepOwnerName,
+		SrepOwnerId:             &fieldSrepOwnerId,
+		PeerSnapcollId:          &fieldPeerSnapcollId,
+		NumSnaps:                &fieldNumSnaps,
+		IsComplete:              &fieldIsComplete,
+		IsManual:                &fieldIsManual,
+		IsExternalTrigger:       &fieldIsExternalTrigger,
+		IsUnmanaged:             &fieldIsUnmanaged,
+		IsManuallyManaged:       &fieldIsManuallyManaged,
+		ReplStatus:              &fieldReplStatus,
+		ReplStartTime:           &fieldReplStartTime,
+		ReplCompleteTime:        &fieldReplCompleteTime,
+		ReplBytesTransferred:    &fieldReplBytesTransferred,
+		CreationTime:            &fieldCreationTime,
+		LastModified:            &fieldLastModified,
+		OnlineStatus:            &fieldOnlineStatus,
+		VolSnapAttrList:         &fieldVolSnapAttrList,
+		SnapshotsList:           &fieldSnapshotsList,
+		Replicate:               &fieldReplicate,
+		ReplicateTo:             &fieldReplicateTo,
+		StartOnline:             &fieldStartOnline,
+		AllowWrites:             &fieldAllowWrites,
+		DisableAppsync:          &fieldDisableAppsync,
+		SnapVerify:              &fieldSnapVerify,
+		SkipDbConsistencyCheck:  &fieldSkipDbConsistencyCheck,
+		SchedId:                 &fieldSchedId,
+		SchedName:               &fieldSchedName,
+		InvokeOnUpstreamPartner: &fieldInvokeOnUpstreamPartner,
+		AgentType:               &fieldAgentType,
+		ExpiryAfter:             &fieldExpiryAfter,
+		Metadata:                &fieldMetadata,
+		Force:                   &fieldForce,
 	}
 }
 

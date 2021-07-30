@@ -3,22 +3,23 @@
 package nimbleos
 
 // ApplicationCategory - Provides the list of application categories that are available, to classify volumes depending on the applications that use them.
-// Export ApplicationCategoryFields for advance operations like search filter etc.
+
+// Export ApplicationCategoryFields provides field names to use in filter parameters, for example.
 var ApplicationCategoryFields *ApplicationCategoryStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	DedupeEnabledfield := "dedupe_enabled"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDedupeEnabled := "dedupe_enabled"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
 
 	ApplicationCategoryFields = &ApplicationCategoryStringFields{
-		ID:            &IDfield,
-		Name:          &Namefield,
-		DedupeEnabled: &DedupeEnabledfield,
-		CreationTime:  &CreationTimefield,
-		LastModified:  &LastModifiedfield,
+		ID:            &fieldID,
+		Name:          &fieldName,
+		DedupeEnabled: &fieldDedupeEnabled,
+		CreationTime:  &fieldCreationTime,
+		LastModified:  &fieldLastModified,
 	}
 }
 

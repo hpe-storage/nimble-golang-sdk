@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsVolumeSummary - Select fields containing volume info.
-// Export NsVolumeSummaryFields for advance operations like search filter etc.
+
+// Export NsVolumeSummaryFields provides field names to use in filter parameters, for example.
 var NsVolumeSummaryFields *NsVolumeSummaryStringFields
 
 func init() {
-	IDfield := "id"
-	VolIdfield := "vol_id"
-	Namefield := "name"
-	VolNamefield := "vol_name"
+	fieldID := "id"
+	fieldVolId := "vol_id"
+	fieldName := "name"
+	fieldVolName := "vol_name"
 
 	NsVolumeSummaryFields = &NsVolumeSummaryStringFields{
-		ID:      &IDfield,
-		VolId:   &VolIdfield,
-		Name:    &Namefield,
-		VolName: &VolNamefield,
+		ID:      &fieldID,
+		VolId:   &fieldVolId,
+		Name:    &fieldName,
+		VolName: &fieldVolName,
 	}
 }
 

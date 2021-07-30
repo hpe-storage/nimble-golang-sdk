@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsObjectLimit - Limits (Max total number of objects) for object of a given type.
-// Export NsObjectLimitFields for advance operations like search filter etc.
+
+// Export NsObjectLimitFields provides field names to use in filter parameters, for example.
 var NsObjectLimitFields *NsObjectLimitStringFields
 
 func init() {
-	ObjTypefield := "obj_type"
-	ObjLimitfield := "obj_limit"
-	ObjNumfield := "obj_num"
+	fieldObjType := "obj_type"
+	fieldObjLimit := "obj_limit"
+	fieldObjNum := "obj_num"
 
 	NsObjectLimitFields = &NsObjectLimitStringFields{
-		ObjType:  &ObjTypefield,
-		ObjLimit: &ObjLimitfield,
-		ObjNum:   &ObjNumfield,
+		ObjType:  &fieldObjType,
+		ObjLimit: &fieldObjLimit,
+		ObjNum:   &fieldObjNum,
 	}
 }
 

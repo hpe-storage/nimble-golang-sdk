@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsSnapshotFromVolumes - Snapshot as presented in volumes object set.
-// Export NsSnapshotFromVolumesFields for advance operations like search filter etc.
+
+// Export NsSnapshotFromVolumesFields provides field names to use in filter parameters, for example.
 var NsSnapshotFromVolumesFields *NsSnapshotFromVolumesStringFields
 
 func init() {
-	IDfield := "id"
-	SnapIdfield := "snap_id"
-	Namefield := "name"
-	SnapNamefield := "snap_name"
+	fieldID := "id"
+	fieldSnapId := "snap_id"
+	fieldName := "name"
+	fieldSnapName := "snap_name"
 
 	NsSnapshotFromVolumesFields = &NsSnapshotFromVolumesStringFields{
-		ID:       &IDfield,
-		SnapId:   &SnapIdfield,
-		Name:     &Namefield,
-		SnapName: &SnapNamefield,
+		ID:       &fieldID,
+		SnapId:   &fieldSnapId,
+		Name:     &fieldName,
+		SnapName: &fieldSnapName,
 	}
 }
 

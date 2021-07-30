@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsExtendedPrivilege - Extended privilege info.
-// Export NsExtendedPrivilegeFields for advance operations like search filter etc.
+
+// Export NsExtendedPrivilegeFields provides field names to use in filter parameters, for example.
 var NsExtendedPrivilegeFields *NsExtendedPrivilegeStringFields
 
 func init() {
-	ObjectTypefield := "object_type"
-	Operationfield := "operation"
-	Allowfield := "allow"
+	fieldObjectType := "object_type"
+	fieldOperation := "operation"
+	fieldAllow := "allow"
 
 	NsExtendedPrivilegeFields = &NsExtendedPrivilegeStringFields{
-		ObjectType: &ObjectTypefield,
-		Operation:  &Operationfield,
-		Allow:      &Allowfield,
+		ObjectType: &fieldObjectType,
+		Operation:  &fieldOperation,
+		Allow:      &fieldAllow,
 	}
 }
 

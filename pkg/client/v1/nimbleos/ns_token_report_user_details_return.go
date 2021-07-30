@@ -3,30 +3,31 @@
 package nimbleos
 
 // NsTokenReportUserDetailsReturn - Return values of token reporting user details.
-// Export NsTokenReportUserDetailsReturnFields for advance operations like search filter etc.
+
+// Export NsTokenReportUserDetailsReturnFields provides field names to use in filter parameters, for example.
 var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnStringFields
 
 func init() {
-	UserNamefield := "user_name"
-	PrimaryGroupIdfield := "primary_group_id"
-	PrimaryGroupNamefield := "primary_group_name"
-	GroupCountfield := "group_count"
-	Rolefield := "role"
-	InactivityTimeoutfield := "inactivity_timeout"
-	UserIdfield := "user_id"
-	DomainTypefield := "domain_type"
-	Groupsfield := "groups"
+	fieldUserName := "user_name"
+	fieldPrimaryGroupId := "primary_group_id"
+	fieldPrimaryGroupName := "primary_group_name"
+	fieldGroupCount := "group_count"
+	fieldRole := "role"
+	fieldInactivityTimeout := "inactivity_timeout"
+	fieldUserId := "user_id"
+	fieldDomainType := "domain_type"
+	fieldGroups := "groups"
 
 	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturnStringFields{
-		UserName:          &UserNamefield,
-		PrimaryGroupId:    &PrimaryGroupIdfield,
-		PrimaryGroupName:  &PrimaryGroupNamefield,
-		GroupCount:        &GroupCountfield,
-		Role:              &Rolefield,
-		InactivityTimeout: &InactivityTimeoutfield,
-		UserId:            &UserIdfield,
-		DomainType:        &DomainTypefield,
-		Groups:            &Groupsfield,
+		UserName:          &fieldUserName,
+		PrimaryGroupId:    &fieldPrimaryGroupId,
+		PrimaryGroupName:  &fieldPrimaryGroupName,
+		GroupCount:        &fieldGroupCount,
+		Role:              &fieldRole,
+		InactivityTimeout: &fieldInactivityTimeout,
+		UserId:            &fieldUserId,
+		DomainType:        &fieldDomainType,
+		Groups:            &fieldGroups,
 	}
 }
 

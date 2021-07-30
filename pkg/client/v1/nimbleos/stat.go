@@ -3,40 +3,41 @@
 package nimbleos
 
 // Stat - Access generic stats interface via REST for internal testing.
-// Export StatFields for advance operations like search filter etc.
+
+// Export StatFields provides field names to use in filter parameters, for example.
 var StatFields *StatStringFields
 
 func init() {
-	Scopefield := "scope"
-	DomainIdfield := "domain_id"
-	SetIdfield := "set_id"
-	VolIdsfield := "vol_ids"
-	Sensorsfield := "sensors"
-	Starttimefield := "starttime"
-	Endtimefield := "endtime"
-	Intervalfield := "interval"
-	Cumulativefield := "cumulative"
-	PoolIdfield := "pool_id"
-	ArrayNamefield := "array_name"
-	SensorDatafield := "sensor_data"
-	SensorCumulativeDatafield := "sensor_cumulative_data"
-	VolIdfield := "vol_id"
+	fieldScope := "scope"
+	fieldDomainId := "domain_id"
+	fieldSetId := "set_id"
+	fieldVolIds := "vol_ids"
+	fieldSensors := "sensors"
+	fieldStarttime := "starttime"
+	fieldEndtime := "endtime"
+	fieldInterval := "interval"
+	fieldCumulative := "cumulative"
+	fieldPoolId := "pool_id"
+	fieldArrayName := "array_name"
+	fieldSensorData := "sensor_data"
+	fieldSensorCumulativeData := "sensor_cumulative_data"
+	fieldVolId := "vol_id"
 
 	StatFields = &StatStringFields{
-		Scope:                &Scopefield,
-		DomainId:             &DomainIdfield,
-		SetId:                &SetIdfield,
-		VolIds:               &VolIdsfield,
-		Sensors:              &Sensorsfield,
-		Starttime:            &Starttimefield,
-		Endtime:              &Endtimefield,
-		Interval:             &Intervalfield,
-		Cumulative:           &Cumulativefield,
-		PoolId:               &PoolIdfield,
-		ArrayName:            &ArrayNamefield,
-		SensorData:           &SensorDatafield,
-		SensorCumulativeData: &SensorCumulativeDatafield,
-		VolId:                &VolIdfield,
+		Scope:                &fieldScope,
+		DomainId:             &fieldDomainId,
+		SetId:                &fieldSetId,
+		VolIds:               &fieldVolIds,
+		Sensors:              &fieldSensors,
+		Starttime:            &fieldStarttime,
+		Endtime:              &fieldEndtime,
+		Interval:             &fieldInterval,
+		Cumulative:           &fieldCumulative,
+		PoolId:               &fieldPoolId,
+		ArrayName:            &fieldArrayName,
+		SensorData:           &fieldSensorData,
+		SensorCumulativeData: &fieldSensorCumulativeData,
+		VolId:                &fieldVolId,
 	}
 }
 

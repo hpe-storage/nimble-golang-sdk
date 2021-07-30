@@ -3,36 +3,37 @@
 package nimbleos
 
 // NsSubnet - A subnet configuration.
-// Export NsSubnetFields for advance operations like search filter etc.
+
+// Export NsSubnetFields provides field names to use in filter parameters, for example.
 var NsSubnetFields *NsSubnetStringFields
 
 func init() {
-	Labelfield := "label"
-	Networkfield := "network"
-	Netmaskfield := "netmask"
-	NetzoneTypefield := "netzone_type"
-	Typefield := "type"
-	AllowIscsifield := "allow_iscsi"
-	AllowGroupfield := "allow_group"
-	DiscoveryIpfield := "discovery_ip"
-	Mtufield := "mtu"
-	VlanIdfield := "vlan_id"
-	Failoverfield := "failover"
-	FailoverEnableTimefield := "failover_enable_time"
+	fieldLabel := "label"
+	fieldNetwork := "network"
+	fieldNetmask := "netmask"
+	fieldNetzoneType := "netzone_type"
+	fieldType := "type"
+	fieldAllowIscsi := "allow_iscsi"
+	fieldAllowGroup := "allow_group"
+	fieldDiscoveryIp := "discovery_ip"
+	fieldMtu := "mtu"
+	fieldVlanId := "vlan_id"
+	fieldFailover := "failover"
+	fieldFailoverEnableTime := "failover_enable_time"
 
 	NsSubnetFields = &NsSubnetStringFields{
-		Label:              &Labelfield,
-		Network:            &Networkfield,
-		Netmask:            &Netmaskfield,
-		NetzoneType:        &NetzoneTypefield,
-		Type:               &Typefield,
-		AllowIscsi:         &AllowIscsifield,
-		AllowGroup:         &AllowGroupfield,
-		DiscoveryIp:        &DiscoveryIpfield,
-		Mtu:                &Mtufield,
-		VlanId:             &VlanIdfield,
-		Failover:           &Failoverfield,
-		FailoverEnableTime: &FailoverEnableTimefield,
+		Label:              &fieldLabel,
+		Network:            &fieldNetwork,
+		Netmask:            &fieldNetmask,
+		NetzoneType:        &fieldNetzoneType,
+		Type:               &fieldType,
+		AllowIscsi:         &fieldAllowIscsi,
+		AllowGroup:         &fieldAllowGroup,
+		DiscoveryIp:        &fieldDiscoveryIp,
+		Mtu:                &fieldMtu,
+		VlanId:             &fieldVlanId,
+		Failover:           &fieldFailover,
+		FailoverEnableTime: &fieldFailoverEnableTime,
 	}
 }
 

@@ -3,82 +3,83 @@
 package nimbleos
 
 // NsPoolMergeReturn - Return values of pool merge.
-// Export NsPoolMergeReturnFields for advance operations like search filter etc.
+
+// Export NsPoolMergeReturnFields provides field names to use in filter parameters, for example.
 var NsPoolMergeReturnFields *NsPoolMergeReturnStringFields
 
 func init() {
-	SnapcollCountfield := "snapcoll_count"
-	ArrayListfield := "array_list"
-	ArrayCountfield := "array_count"
-	UnassignedArrayListfield := "unassigned_array_list"
-	AllFlashfield := "all_flash"
-	CacheCapacityfield := "cache_capacity"
-	Capacityfield := "capacity"
-	CompressedSnapUsageBytesfield := "compressed_snap_usage_bytes"
-	CompressedVolUsageBytesfield := "compressed_vol_usage_bytes"
-	CompressionRatiofield := "compression_ratio"
-	CreationTimefield := "creation_time"
-	DedupeRatiofield := "dedupe_ratio"
-	Descriptionfield := "description"
-	FreeSpacefield := "free_space"
-	FullNamefield := "full_name"
-	IDfield := "id"
-	DedupeEnabledfield := "dedupe_enabled"
-	LastModifiedfield := "last_modified"
-	Namefield := "name"
-	PinnableCacheCapacityfield := "pinnable_cache_capacity"
-	PinnedCacheCapacityfield := "pinned_cache_capacity"
-	PinnedVolListfield := "pinned_vol_list"
-	SavingsCompressionfield := "savings_compression"
-	SavingsDedupefield := "savings_dedupe"
-	SearchNamefield := "search_name"
-	SnapCompressionRatiofield := "snap_compression_ratio"
-	SnapCountfield := "snap_count"
-	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
-	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
-	UnusedReservefield := "unused_reserve"
-	Usagefield := "usage"
-	UsageValidfield := "usage_valid"
-	VolCompressionRatiofield := "vol_compression_ratio"
-	VolCountfield := "vol_count"
-	VolListfield := "vol_list"
+	fieldSnapcollCount := "snapcoll_count"
+	fieldArrayList := "array_list"
+	fieldArrayCount := "array_count"
+	fieldUnassignedArrayList := "unassigned_array_list"
+	fieldAllFlash := "all_flash"
+	fieldCacheCapacity := "cache_capacity"
+	fieldCapacity := "capacity"
+	fieldCompressedSnapUsageBytes := "compressed_snap_usage_bytes"
+	fieldCompressedVolUsageBytes := "compressed_vol_usage_bytes"
+	fieldCompressionRatio := "compression_ratio"
+	fieldCreationTime := "creation_time"
+	fieldDedupeRatio := "dedupe_ratio"
+	fieldDescription := "description"
+	fieldFreeSpace := "free_space"
+	fieldFullName := "full_name"
+	fieldID := "id"
+	fieldDedupeEnabled := "dedupe_enabled"
+	fieldLastModified := "last_modified"
+	fieldName := "name"
+	fieldPinnableCacheCapacity := "pinnable_cache_capacity"
+	fieldPinnedCacheCapacity := "pinned_cache_capacity"
+	fieldPinnedVolList := "pinned_vol_list"
+	fieldSavingsCompression := "savings_compression"
+	fieldSavingsDedupe := "savings_dedupe"
+	fieldSearchName := "search_name"
+	fieldSnapCompressionRatio := "snap_compression_ratio"
+	fieldSnapCount := "snap_count"
+	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
+	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
+	fieldUnusedReserve := "unused_reserve"
+	fieldUsage := "usage"
+	fieldUsageValid := "usage_valid"
+	fieldVolCompressionRatio := "vol_compression_ratio"
+	fieldVolCount := "vol_count"
+	fieldVolList := "vol_list"
 
 	NsPoolMergeReturnFields = &NsPoolMergeReturnStringFields{
-		SnapcollCount:              &SnapcollCountfield,
-		ArrayList:                  &ArrayListfield,
-		ArrayCount:                 &ArrayCountfield,
-		UnassignedArrayList:        &UnassignedArrayListfield,
-		AllFlash:                   &AllFlashfield,
-		CacheCapacity:              &CacheCapacityfield,
-		Capacity:                   &Capacityfield,
-		CompressedSnapUsageBytes:   &CompressedSnapUsageBytesfield,
-		CompressedVolUsageBytes:    &CompressedVolUsageBytesfield,
-		CompressionRatio:           &CompressionRatiofield,
-		CreationTime:               &CreationTimefield,
-		DedupeRatio:                &DedupeRatiofield,
-		Description:                &Descriptionfield,
-		FreeSpace:                  &FreeSpacefield,
-		FullName:                   &FullNamefield,
-		ID:                         &IDfield,
-		DedupeEnabled:              &DedupeEnabledfield,
-		LastModified:               &LastModifiedfield,
-		Name:                       &Namefield,
-		PinnableCacheCapacity:      &PinnableCacheCapacityfield,
-		PinnedCacheCapacity:        &PinnedCacheCapacityfield,
-		PinnedVolList:              &PinnedVolListfield,
-		SavingsCompression:         &SavingsCompressionfield,
-		SavingsDedupe:              &SavingsDedupefield,
-		SearchName:                 &SearchNamefield,
-		SnapCompressionRatio:       &SnapCompressionRatiofield,
-		SnapCount:                  &SnapCountfield,
-		UncompressedSnapUsageBytes: &UncompressedSnapUsageBytesfield,
-		UncompressedVolUsageBytes:  &UncompressedVolUsageBytesfield,
-		UnusedReserve:              &UnusedReservefield,
-		Usage:                      &Usagefield,
-		UsageValid:                 &UsageValidfield,
-		VolCompressionRatio:        &VolCompressionRatiofield,
-		VolCount:                   &VolCountfield,
-		VolList:                    &VolListfield,
+		SnapcollCount:              &fieldSnapcollCount,
+		ArrayList:                  &fieldArrayList,
+		ArrayCount:                 &fieldArrayCount,
+		UnassignedArrayList:        &fieldUnassignedArrayList,
+		AllFlash:                   &fieldAllFlash,
+		CacheCapacity:              &fieldCacheCapacity,
+		Capacity:                   &fieldCapacity,
+		CompressedSnapUsageBytes:   &fieldCompressedSnapUsageBytes,
+		CompressedVolUsageBytes:    &fieldCompressedVolUsageBytes,
+		CompressionRatio:           &fieldCompressionRatio,
+		CreationTime:               &fieldCreationTime,
+		DedupeRatio:                &fieldDedupeRatio,
+		Description:                &fieldDescription,
+		FreeSpace:                  &fieldFreeSpace,
+		FullName:                   &fieldFullName,
+		ID:                         &fieldID,
+		DedupeEnabled:              &fieldDedupeEnabled,
+		LastModified:               &fieldLastModified,
+		Name:                       &fieldName,
+		PinnableCacheCapacity:      &fieldPinnableCacheCapacity,
+		PinnedCacheCapacity:        &fieldPinnedCacheCapacity,
+		PinnedVolList:              &fieldPinnedVolList,
+		SavingsCompression:         &fieldSavingsCompression,
+		SavingsDedupe:              &fieldSavingsDedupe,
+		SearchName:                 &fieldSearchName,
+		SnapCompressionRatio:       &fieldSnapCompressionRatio,
+		SnapCount:                  &fieldSnapCount,
+		UncompressedSnapUsageBytes: &fieldUncompressedSnapUsageBytes,
+		UncompressedVolUsageBytes:  &fieldUncompressedVolUsageBytes,
+		UnusedReserve:              &fieldUnusedReserve,
+		Usage:                      &fieldUsage,
+		UsageValid:                 &fieldUsageValid,
+		VolCompressionRatio:        &fieldVolCompressionRatio,
+		VolCount:                   &fieldVolCount,
+		VolList:                    &fieldVolList,
 	}
 }
 

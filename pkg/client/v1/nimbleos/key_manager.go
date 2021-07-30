@@ -3,34 +3,35 @@
 package nimbleos
 
 // KeyManager - Key Manager stores encryption keys for the array volumes / dedupe domains.
-// Export KeyManagerFields for advance operations like search filter etc.
+
+// Export KeyManagerFields provides field names to use in filter parameters, for example.
 var KeyManagerFields *KeyManagerStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	Hostnamefield := "hostname"
-	Portfield := "port"
-	Protocolfield := "protocol"
-	Usernamefield := "username"
-	Passwordfield := "password"
-	Activefield := "active"
-	Statusfield := "status"
-	Vendorfield := "vendor"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldHostname := "hostname"
+	fieldPort := "port"
+	fieldProtocol := "protocol"
+	fieldUsername := "username"
+	fieldPassword := "password"
+	fieldActive := "active"
+	fieldStatus := "status"
+	fieldVendor := "vendor"
 
 	KeyManagerFields = &KeyManagerStringFields{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Description: &Descriptionfield,
-		Hostname:    &Hostnamefield,
-		Port:        &Portfield,
-		Protocol:    &Protocolfield,
-		Username:    &Usernamefield,
-		Password:    &Passwordfield,
-		Active:      &Activefield,
-		Status:      &Statusfield,
-		Vendor:      &Vendorfield,
+		ID:          &fieldID,
+		Name:        &fieldName,
+		Description: &fieldDescription,
+		Hostname:    &fieldHostname,
+		Port:        &fieldPort,
+		Protocol:    &fieldProtocol,
+		Username:    &fieldUsername,
+		Password:    &fieldPassword,
+		Active:      &fieldActive,
+		Status:      &fieldStatus,
+		Vendor:      &fieldVendor,
 	}
 }
 

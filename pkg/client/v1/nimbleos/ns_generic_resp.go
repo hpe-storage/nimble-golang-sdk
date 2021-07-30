@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsGenericResp - Response from generic app server.
-// Export NsGenericRespFields for advance operations like search filter etc.
+
+// Export NsGenericRespFields provides field names to use in filter parameters, for example.
 var NsGenericRespFields *NsGenericRespStringFields
 
 func init() {
-	GenericErrorfield := "generic_error"
-	GenericErrorMessagefield := "generic_error_message"
-	ConnStatusOkfield := "conn_status_ok"
-	ConnMessagefield := "conn_message"
+	fieldGenericError := "generic_error"
+	fieldGenericErrorMessage := "generic_error_message"
+	fieldConnStatusOk := "conn_status_ok"
+	fieldConnMessage := "conn_message"
 
 	NsGenericRespFields = &NsGenericRespStringFields{
-		GenericError:        &GenericErrorfield,
-		GenericErrorMessage: &GenericErrorMessagefield,
-		ConnStatusOk:        &ConnStatusOkfield,
-		ConnMessage:         &ConnMessagefield,
+		GenericError:        &fieldGenericError,
+		GenericErrorMessage: &fieldGenericErrorMessage,
+		ConnStatusOk:        &fieldConnStatusOk,
+		ConnMessage:         &fieldConnMessage,
 	}
 }
 

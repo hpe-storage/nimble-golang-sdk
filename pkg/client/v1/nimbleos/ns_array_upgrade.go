@@ -3,26 +3,27 @@
 package nimbleos
 
 // NsArrayUpgrade - Array upgrade attributes.
-// Export NsArrayUpgradeFields for advance operations like search filter etc.
+
+// Export NsArrayUpgradeFields provides field names to use in filter parameters, for example.
 var NsArrayUpgradeFields *NsArrayUpgradeStringFields
 
 func init() {
-	Typefield := "type"
-	Statefield := "state"
-	Stagefield := "stage"
-	CtrlrAPortListfield := "ctrlr_a_port_list"
-	CtrlrBPortListfield := "ctrlr_b_port_list"
-	Messagesfield := "messages"
-	Metadatafield := "metadata"
+	fieldType := "type"
+	fieldState := "state"
+	fieldStage := "stage"
+	fieldCtrlrAPortList := "ctrlr_a_port_list"
+	fieldCtrlrBPortList := "ctrlr_b_port_list"
+	fieldMessages := "messages"
+	fieldMetadata := "metadata"
 
 	NsArrayUpgradeFields = &NsArrayUpgradeStringFields{
-		Type:           &Typefield,
-		State:          &Statefield,
-		Stage:          &Stagefield,
-		CtrlrAPortList: &CtrlrAPortListfield,
-		CtrlrBPortList: &CtrlrBPortListfield,
-		Messages:       &Messagesfield,
-		Metadata:       &Metadatafield,
+		Type:           &fieldType,
+		State:          &fieldState,
+		Stage:          &fieldStage,
+		CtrlrAPortList: &fieldCtrlrAPortList,
+		CtrlrBPortList: &fieldCtrlrBPortList,
+		Messages:       &fieldMessages,
+		Metadata:       &fieldMetadata,
 	}
 }
 

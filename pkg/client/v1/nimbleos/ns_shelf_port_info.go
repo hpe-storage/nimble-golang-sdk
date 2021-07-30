@@ -3,32 +3,33 @@
 package nimbleos
 
 // NsShelfPortInfo - A shelf sas port information.
-// Export NsShelfPortInfoFields for advance operations like search filter etc.
+
+// Export NsShelfPortInfoFields provides field names to use in filter parameters, for example.
 var NsShelfPortInfoFields *NsShelfPortInfoStringFields
 
 func init() {
-	PortIdxfield := "port_idx"
-	PortNamefield := "port_name"
-	PortTypefield := "port_type"
-	PortStatusfield := "port_status"
-	PortErrorsfield := "port_errors"
-	RemoteSasAddrfield := "remote_sas_addr"
-	RemoteSasPhyIdfield := "remote_sas_phy_id"
-	RemoteSasDomainfield := "remote_sas_domain"
-	RemoteLocIdfield := "remote_loc_id"
-	RemotePortIdfield := "remote_port_id"
+	fieldPortIdx := "port_idx"
+	fieldPortName := "port_name"
+	fieldPortType := "port_type"
+	fieldPortStatus := "port_status"
+	fieldPortErrors := "port_errors"
+	fieldRemoteSasAddr := "remote_sas_addr"
+	fieldRemoteSasPhyId := "remote_sas_phy_id"
+	fieldRemoteSasDomain := "remote_sas_domain"
+	fieldRemoteLocId := "remote_loc_id"
+	fieldRemotePortId := "remote_port_id"
 
 	NsShelfPortInfoFields = &NsShelfPortInfoStringFields{
-		PortIdx:         &PortIdxfield,
-		PortName:        &PortNamefield,
-		PortType:        &PortTypefield,
-		PortStatus:      &PortStatusfield,
-		PortErrors:      &PortErrorsfield,
-		RemoteSasAddr:   &RemoteSasAddrfield,
-		RemoteSasPhyId:  &RemoteSasPhyIdfield,
-		RemoteSasDomain: &RemoteSasDomainfield,
-		RemoteLocId:     &RemoteLocIdfield,
-		RemotePortId:    &RemotePortIdfield,
+		PortIdx:         &fieldPortIdx,
+		PortName:        &fieldPortName,
+		PortType:        &fieldPortType,
+		PortStatus:      &fieldPortStatus,
+		PortErrors:      &fieldPortErrors,
+		RemoteSasAddr:   &fieldRemoteSasAddr,
+		RemoteSasPhyId:  &fieldRemoteSasPhyId,
+		RemoteSasDomain: &fieldRemoteSasDomain,
+		RemoteLocId:     &fieldRemoteLocId,
+		RemotePortId:    &fieldRemotePortId,
 	}
 }
 

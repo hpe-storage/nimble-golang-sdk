@@ -3,28 +3,29 @@
 package nimbleos
 
 // Subscription - Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
-// Export SubscriptionFields for advance operations like search filter etc.
+
+// Export SubscriptionFields provides field names to use in filter parameters, for example.
 var SubscriptionFields *SubscriptionStringFields
 
 func init() {
-	IDfield := "id"
-	SubscriberIdfield := "subscriber_id"
-	NotificationTypefield := "notification_type"
-	ObjectTypefield := "object_type"
-	ObjectIdfield := "object_id"
-	Operationfield := "operation"
-	EventTargetTypefield := "event_target_type"
-	EventSeverityfield := "event_severity"
+	fieldID := "id"
+	fieldSubscriberId := "subscriber_id"
+	fieldNotificationType := "notification_type"
+	fieldObjectType := "object_type"
+	fieldObjectId := "object_id"
+	fieldOperation := "operation"
+	fieldEventTargetType := "event_target_type"
+	fieldEventSeverity := "event_severity"
 
 	SubscriptionFields = &SubscriptionStringFields{
-		ID:               &IDfield,
-		SubscriberId:     &SubscriberIdfield,
-		NotificationType: &NotificationTypefield,
-		ObjectType:       &ObjectTypefield,
-		ObjectId:         &ObjectIdfield,
-		Operation:        &Operationfield,
-		EventTargetType:  &EventTargetTypefield,
-		EventSeverity:    &EventSeverityfield,
+		ID:               &fieldID,
+		SubscriberId:     &fieldSubscriberId,
+		NotificationType: &fieldNotificationType,
+		ObjectType:       &fieldObjectType,
+		ObjectId:         &fieldObjectId,
+		Operation:        &fieldOperation,
+		EventTargetType:  &fieldEventTargetType,
+		EventSeverity:    &fieldEventSeverity,
 	}
 }
 

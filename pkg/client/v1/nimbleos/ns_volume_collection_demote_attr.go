@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsVolumeCollectionDemoteAttr - Arguments to demote a volume collection.
-// Export NsVolumeCollectionDemoteAttrFields for advance operations like search filter etc.
+
+// Export NsVolumeCollectionDemoteAttrFields provides field names to use in filter parameters, for example.
 var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttrStringFields
 
 func init() {
-	IDfield := "id"
-	ReplicationPartnerIdfield := "replication_partner_id"
+	fieldID := "id"
+	fieldReplicationPartnerId := "replication_partner_id"
 
 	NsVolumeCollectionDemoteAttrFields = &NsVolumeCollectionDemoteAttrStringFields{
-		ID:                   &IDfield,
-		ReplicationPartnerId: &ReplicationPartnerIdfield,
+		ID:                   &fieldID,
+		ReplicationPartnerId: &fieldReplicationPartnerId,
 	}
 }
 

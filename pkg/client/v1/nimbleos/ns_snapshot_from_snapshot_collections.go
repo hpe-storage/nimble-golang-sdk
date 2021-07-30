@@ -3,34 +3,35 @@
 package nimbleos
 
 // NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
-// Export NsSnapshotFromSnapshotCollectionsFields for advance operations like search filter etc.
+
+// Export NsSnapshotFromSnapshotCollectionsFields provides field names to use in filter parameters, for example.
 var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollectionsStringFields
 
 func init() {
-	IDfield := "id"
-	SnapcollIdfield := "snapcoll_id"
-	Namefield := "name"
-	SnapcollNamefield := "snapcoll_name"
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	SnapIdfield := "snap_id"
-	SnapNamefield := "snap_name"
-	ScheduleIdfield := "schedule_id"
-	ScheduleNamefield := "schedule_name"
-	ExpiryTimefield := "expiry_time"
+	fieldID := "id"
+	fieldSnapcollId := "snapcoll_id"
+	fieldName := "name"
+	fieldSnapcollName := "snapcoll_name"
+	fieldVolId := "vol_id"
+	fieldVolName := "vol_name"
+	fieldSnapId := "snap_id"
+	fieldSnapName := "snap_name"
+	fieldScheduleId := "schedule_id"
+	fieldScheduleName := "schedule_name"
+	fieldExpiryTime := "expiry_time"
 
 	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollectionsStringFields{
-		ID:           &IDfield,
-		SnapcollId:   &SnapcollIdfield,
-		Name:         &Namefield,
-		SnapcollName: &SnapcollNamefield,
-		VolId:        &VolIdfield,
-		VolName:      &VolNamefield,
-		SnapId:       &SnapIdfield,
-		SnapName:     &SnapNamefield,
-		ScheduleId:   &ScheduleIdfield,
-		ScheduleName: &ScheduleNamefield,
-		ExpiryTime:   &ExpiryTimefield,
+		ID:           &fieldID,
+		SnapcollId:   &fieldSnapcollId,
+		Name:         &fieldName,
+		SnapcollName: &fieldSnapcollName,
+		VolId:        &fieldVolId,
+		VolName:      &fieldVolName,
+		SnapId:       &fieldSnapId,
+		SnapName:     &fieldSnapName,
+		ScheduleId:   &fieldScheduleId,
+		ScheduleName: &fieldScheduleName,
+		ExpiryTime:   &fieldExpiryTime,
 	}
 }
 

@@ -3,32 +3,33 @@
 package nimbleos
 
 // ActiveDirectoryMembership - Manages the storage array's membership with the Active Directory.
-// Export ActiveDirectoryMembershipFields for advance operations like search filter etc.
+
+// Export ActiveDirectoryMembershipFields provides field names to use in filter parameters, for example.
 var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipStringFields
 
 func init() {
-	IDfield := "id"
-	Descriptionfield := "description"
-	Namefield := "name"
-	Netbiosfield := "netbios"
-	ServerListfield := "server_list"
-	ComputerNamefield := "computer_name"
-	OrganizationalUnitfield := "organizational_unit"
-	Userfield := "user"
-	Passwordfield := "password"
-	Enabledfield := "enabled"
+	fieldID := "id"
+	fieldDescription := "description"
+	fieldName := "name"
+	fieldNetbios := "netbios"
+	fieldServerList := "server_list"
+	fieldComputerName := "computer_name"
+	fieldOrganizationalUnit := "organizational_unit"
+	fieldUser := "user"
+	fieldPassword := "password"
+	fieldEnabled := "enabled"
 
 	ActiveDirectoryMembershipFields = &ActiveDirectoryMembershipStringFields{
-		ID:                 &IDfield,
-		Description:        &Descriptionfield,
-		Name:               &Namefield,
-		Netbios:            &Netbiosfield,
-		ServerList:         &ServerListfield,
-		ComputerName:       &ComputerNamefield,
-		OrganizationalUnit: &OrganizationalUnitfield,
-		User:               &Userfield,
-		Password:           &Passwordfield,
-		Enabled:            &Enabledfield,
+		ID:                 &fieldID,
+		Description:        &fieldDescription,
+		Name:               &fieldName,
+		Netbios:            &fieldNetbios,
+		ServerList:         &fieldServerList,
+		ComputerName:       &fieldComputerName,
+		OrganizationalUnit: &fieldOrganizationalUnit,
+		User:               &fieldUser,
+		Password:           &fieldPassword,
+		Enabled:            &fieldEnabled,
 	}
 }
 

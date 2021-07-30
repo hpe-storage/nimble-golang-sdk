@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsObjectNameListWithType - List of objects of a given type.
-// Export NsObjectNameListWithTypeFields for advance operations like search filter etc.
+
+// Export NsObjectNameListWithTypeFields provides field names to use in filter parameters, for example.
 var NsObjectNameListWithTypeFields *NsObjectNameListWithTypeStringFields
 
 func init() {
-	ObjTypefield := "obj_type"
-	ObjNameListfield := "obj_name_list"
+	fieldObjType := "obj_type"
+	fieldObjNameList := "obj_name_list"
 
 	NsObjectNameListWithTypeFields = &NsObjectNameListWithTypeStringFields{
-		ObjType:     &ObjTypefield,
-		ObjNameList: &ObjNameListfield,
+		ObjType:     &fieldObjType,
+		ObjNameList: &fieldObjNameList,
 	}
 }
 

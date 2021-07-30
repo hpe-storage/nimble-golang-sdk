@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsVolumePoolInfo - Volume information along with the pool to which it belongs to.
-// Export NsVolumePoolInfoFields for advance operations like search filter etc.
+
+// Export NsVolumePoolInfoFields provides field names to use in filter parameters, for example.
 var NsVolumePoolInfoFields *NsVolumePoolInfoStringFields
 
 func init() {
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	PoolIdfield := "pool_id"
-	PoolNamefield := "pool_name"
+	fieldVolId := "vol_id"
+	fieldVolName := "vol_name"
+	fieldPoolId := "pool_id"
+	fieldPoolName := "pool_name"
 
 	NsVolumePoolInfoFields = &NsVolumePoolInfoStringFields{
-		VolId:    &VolIdfield,
-		VolName:  &VolNamefield,
-		PoolId:   &PoolIdfield,
-		PoolName: &PoolNamefield,
+		VolId:    &fieldVolId,
+		VolName:  &fieldVolName,
+		PoolId:   &fieldPoolId,
+		PoolName: &fieldPoolName,
 	}
 }
 

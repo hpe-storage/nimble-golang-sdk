@@ -3,38 +3,39 @@
 package nimbleos
 
 // Initiator - Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
-// Export InitiatorFields for advance operations like search filter etc.
+
+// Export InitiatorFields provides field names to use in filter parameters, for example.
 var InitiatorFields *InitiatorStringFields
 
 func init() {
-	IDfield := "id"
-	AccessProtocolfield := "access_protocol"
-	InitiatorGroupIdfield := "initiator_group_id"
-	InitiatorGroupNamefield := "initiator_group_name"
-	Labelfield := "label"
-	Iqnfield := "iqn"
-	IpAddressfield := "ip_address"
-	Aliasfield := "alias"
-	ChapuserIdfield := "chapuser_id"
-	Wwpnfield := "wwpn"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	OverrideExistingAliasfield := "override_existing_alias"
+	fieldID := "id"
+	fieldAccessProtocol := "access_protocol"
+	fieldInitiatorGroupId := "initiator_group_id"
+	fieldInitiatorGroupName := "initiator_group_name"
+	fieldLabel := "label"
+	fieldIqn := "iqn"
+	fieldIpAddress := "ip_address"
+	fieldAlias := "alias"
+	fieldChapuserId := "chapuser_id"
+	fieldWwpn := "wwpn"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldOverrideExistingAlias := "override_existing_alias"
 
 	InitiatorFields = &InitiatorStringFields{
-		ID:                    &IDfield,
-		AccessProtocol:        &AccessProtocolfield,
-		InitiatorGroupId:      &InitiatorGroupIdfield,
-		InitiatorGroupName:    &InitiatorGroupNamefield,
-		Label:                 &Labelfield,
-		Iqn:                   &Iqnfield,
-		IpAddress:             &IpAddressfield,
-		Alias:                 &Aliasfield,
-		ChapuserId:            &ChapuserIdfield,
-		Wwpn:                  &Wwpnfield,
-		CreationTime:          &CreationTimefield,
-		LastModified:          &LastModifiedfield,
-		OverrideExistingAlias: &OverrideExistingAliasfield,
+		ID:                    &fieldID,
+		AccessProtocol:        &fieldAccessProtocol,
+		InitiatorGroupId:      &fieldInitiatorGroupId,
+		InitiatorGroupName:    &fieldInitiatorGroupName,
+		Label:                 &fieldLabel,
+		Iqn:                   &fieldIqn,
+		IpAddress:             &fieldIpAddress,
+		Alias:                 &fieldAlias,
+		ChapuserId:            &fieldChapuserId,
+		Wwpn:                  &fieldWwpn,
+		CreationTime:          &fieldCreationTime,
+		LastModified:          &fieldLastModified,
+		OverrideExistingAlias: &fieldOverrideExistingAlias,
 	}
 }
 

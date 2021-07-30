@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsRoute - Route configuration.
-// Export NsRouteFields for advance operations like search filter etc.
+
+// Export NsRouteFields provides field names to use in filter parameters, for example.
 var NsRouteFields *NsRouteStringFields
 
 func init() {
-	TgtNetworkfield := "tgt_network"
-	TgtNetmaskfield := "tgt_netmask"
-	Gatewayfield := "gateway"
+	fieldTgtNetwork := "tgt_network"
+	fieldTgtNetmask := "tgt_netmask"
+	fieldGateway := "gateway"
 
 	NsRouteFields = &NsRouteStringFields{
-		TgtNetwork: &TgtNetworkfield,
-		TgtNetmask: &TgtNetmaskfield,
-		Gateway:    &Gatewayfield,
+		TgtNetwork: &fieldTgtNetwork,
+		TgtNetmask: &fieldTgtNetmask,
+		Gateway:    &fieldGateway,
 	}
 }
 

@@ -3,34 +3,35 @@
 package nimbleos
 
 // SoftwareVersion - Show the software version.
-// Export SoftwareVersionFields for advance operations like search filter etc.
+
+// Export SoftwareVersionFields provides field names to use in filter parameters, for example.
 var SoftwareVersionFields *SoftwareVersionStringFields
 
 func init() {
-	Versionfield := "version"
-	Signaturefield := "signature"
-	Namefield := "name"
-	Statusfield := "status"
-	TotalBytesfield := "total_bytes"
-	DownloadedBytesfield := "downloaded_bytes"
-	BlacklistReasonfield := "blacklist_reason"
-	ReleaseDatefield := "release_date"
-	IsManuallyDownloadedfield := "is_manually_downloaded"
-	ReleaseStatusfield := "release_status"
-	NoPartialResponsefield := "no_partial_response"
+	fieldVersion := "version"
+	fieldSignature := "signature"
+	fieldName := "name"
+	fieldStatus := "status"
+	fieldTotalBytes := "total_bytes"
+	fieldDownloadedBytes := "downloaded_bytes"
+	fieldBlacklistReason := "blacklist_reason"
+	fieldReleaseDate := "release_date"
+	fieldIsManuallyDownloaded := "is_manually_downloaded"
+	fieldReleaseStatus := "release_status"
+	fieldNoPartialResponse := "no_partial_response"
 
 	SoftwareVersionFields = &SoftwareVersionStringFields{
-		Version:              &Versionfield,
-		Signature:            &Signaturefield,
-		Name:                 &Namefield,
-		Status:               &Statusfield,
-		TotalBytes:           &TotalBytesfield,
-		DownloadedBytes:      &DownloadedBytesfield,
-		BlacklistReason:      &BlacklistReasonfield,
-		ReleaseDate:          &ReleaseDatefield,
-		IsManuallyDownloaded: &IsManuallyDownloadedfield,
-		ReleaseStatus:        &ReleaseStatusfield,
-		NoPartialResponse:    &NoPartialResponsefield,
+		Version:              &fieldVersion,
+		Signature:            &fieldSignature,
+		Name:                 &fieldName,
+		Status:               &fieldStatus,
+		TotalBytes:           &fieldTotalBytes,
+		DownloadedBytes:      &fieldDownloadedBytes,
+		BlacklistReason:      &fieldBlacklistReason,
+		ReleaseDate:          &fieldReleaseDate,
+		IsManuallyDownloaded: &fieldIsManuallyDownloaded,
+		ReleaseStatus:        &fieldReleaseStatus,
+		NoPartialResponse:    &fieldNoPartialResponse,
 	}
 }
 

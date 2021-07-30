@@ -3,124 +3,125 @@
 package nimbleos
 
 // Array - Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
-// Export ArrayFields for advance operations like search filter etc.
+
+// Export ArrayFields provides field names to use in filter parameters, for example.
 var ArrayFields *ArrayStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Forcefield := "force"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Statusfield := "status"
-	Rolefield := "role"
-	GroupStatefield := "group_state"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	Modelfield := "model"
-	Serialfield := "serial"
-	Versionfield := "version"
-	IsSfafield := "is_sfa"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	UsageValidfield := "usage_valid"
-	UsableCapacityBytesfield := "usable_capacity_bytes"
-	UsableCacheCapacityBytesfield := "usable_cache_capacity_bytes"
-	RawCapacityBytesfield := "raw_capacity_bytes"
-	VolUsageBytesfield := "vol_usage_bytes"
-	VolUsageUncompressedBytesfield := "vol_usage_uncompressed_bytes"
-	VolCompressionfield := "vol_compression"
-	VolSavedBytesfield := "vol_saved_bytes"
-	SnapUsageBytesfield := "snap_usage_bytes"
-	SnapUsageUncompressedBytesfield := "snap_usage_uncompressed_bytes"
-	SnapCompressionfield := "snap_compression"
-	SnapSpaceReductionfield := "snap_space_reduction"
-	SnapSavedBytesfield := "snap_saved_bytes"
-	PendingDeleteBytesfield := "pending_delete_bytes"
-	AvailableBytesfield := "available_bytes"
-	Usagefield := "usage"
-	AllFlashfield := "all_flash"
-	DedupeCapacityBytesfield := "dedupe_capacity_bytes"
-	DedupeUsageBytesfield := "dedupe_usage_bytes"
-	IsFullyDedupeCapablefield := "is_fully_dedupe_capable"
-	DedupeDisabledfield := "dedupe_disabled"
-	ExtendedModelfield := "extended_model"
-	Oemfield := "oem"
-	Brandfield := "brand"
-	IsSupportedHwConfigfield := "is_supported_hw_config"
-	GigNicPortCountfield := "gig_nic_port_count"
-	TenGigSfpNicPortCountfield := "ten_gig_sfp_nic_port_count"
-	TenGigTNicPortCountfield := "ten_gig_t_nic_port_count"
-	FcPortCountfield := "fc_port_count"
-	PublicKeyfield := "public_key"
-	Upgradefield := "upgrade"
-	CreatePoolfield := "create_pool"
-	PoolDescriptionfield := "pool_description"
-	AllowLowerLimitsfield := "allow_lower_limits"
-	CtrlrASupportIpfield := "ctrlr_a_support_ip"
-	CtrlrBSupportIpfield := "ctrlr_b_support_ip"
-	NicListfield := "nic_list"
-	ModelSubTypefield := "model_sub_type"
-	ZconfIpaddrsfield := "zconf_ipaddrs"
-	SecondaryMgmtIpfield := "secondary_mgmt_ip"
+	fieldID := "id"
+	fieldName := "name"
+	fieldForce := "force"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldStatus := "status"
+	fieldRole := "role"
+	fieldGroupState := "group_state"
+	fieldPoolName := "pool_name"
+	fieldPoolId := "pool_id"
+	fieldModel := "model"
+	fieldSerial := "serial"
+	fieldVersion := "version"
+	fieldIsSfa := "is_sfa"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldUsageValid := "usage_valid"
+	fieldUsableCapacityBytes := "usable_capacity_bytes"
+	fieldUsableCacheCapacityBytes := "usable_cache_capacity_bytes"
+	fieldRawCapacityBytes := "raw_capacity_bytes"
+	fieldVolUsageBytes := "vol_usage_bytes"
+	fieldVolUsageUncompressedBytes := "vol_usage_uncompressed_bytes"
+	fieldVolCompression := "vol_compression"
+	fieldVolSavedBytes := "vol_saved_bytes"
+	fieldSnapUsageBytes := "snap_usage_bytes"
+	fieldSnapUsageUncompressedBytes := "snap_usage_uncompressed_bytes"
+	fieldSnapCompression := "snap_compression"
+	fieldSnapSpaceReduction := "snap_space_reduction"
+	fieldSnapSavedBytes := "snap_saved_bytes"
+	fieldPendingDeleteBytes := "pending_delete_bytes"
+	fieldAvailableBytes := "available_bytes"
+	fieldUsage := "usage"
+	fieldAllFlash := "all_flash"
+	fieldDedupeCapacityBytes := "dedupe_capacity_bytes"
+	fieldDedupeUsageBytes := "dedupe_usage_bytes"
+	fieldIsFullyDedupeCapable := "is_fully_dedupe_capable"
+	fieldDedupeDisabled := "dedupe_disabled"
+	fieldExtendedModel := "extended_model"
+	fieldOem := "oem"
+	fieldBrand := "brand"
+	fieldIsSupportedHwConfig := "is_supported_hw_config"
+	fieldGigNicPortCount := "gig_nic_port_count"
+	fieldTenGigSfpNicPortCount := "ten_gig_sfp_nic_port_count"
+	fieldTenGigTNicPortCount := "ten_gig_t_nic_port_count"
+	fieldFcPortCount := "fc_port_count"
+	fieldPublicKey := "public_key"
+	fieldUpgrade := "upgrade"
+	fieldCreatePool := "create_pool"
+	fieldPoolDescription := "pool_description"
+	fieldAllowLowerLimits := "allow_lower_limits"
+	fieldCtrlrASupportIp := "ctrlr_a_support_ip"
+	fieldCtrlrBSupportIp := "ctrlr_b_support_ip"
+	fieldNicList := "nic_list"
+	fieldModelSubType := "model_sub_type"
+	fieldZconfIpaddrs := "zconf_ipaddrs"
+	fieldSecondaryMgmtIp := "secondary_mgmt_ip"
 
 	ArrayFields = &ArrayStringFields{
-		ID:                         &IDfield,
-		Name:                       &Namefield,
-		Force:                      &Forcefield,
-		FullName:                   &FullNamefield,
-		SearchName:                 &SearchNamefield,
-		Status:                     &Statusfield,
-		Role:                       &Rolefield,
-		GroupState:                 &GroupStatefield,
-		PoolName:                   &PoolNamefield,
-		PoolId:                     &PoolIdfield,
-		Model:                      &Modelfield,
-		Serial:                     &Serialfield,
-		Version:                    &Versionfield,
-		IsSfa:                      &IsSfafield,
-		CreationTime:               &CreationTimefield,
-		LastModified:               &LastModifiedfield,
-		UsageValid:                 &UsageValidfield,
-		UsableCapacityBytes:        &UsableCapacityBytesfield,
-		UsableCacheCapacityBytes:   &UsableCacheCapacityBytesfield,
-		RawCapacityBytes:           &RawCapacityBytesfield,
-		VolUsageBytes:              &VolUsageBytesfield,
-		VolUsageUncompressedBytes:  &VolUsageUncompressedBytesfield,
-		VolCompression:             &VolCompressionfield,
-		VolSavedBytes:              &VolSavedBytesfield,
-		SnapUsageBytes:             &SnapUsageBytesfield,
-		SnapUsageUncompressedBytes: &SnapUsageUncompressedBytesfield,
-		SnapCompression:            &SnapCompressionfield,
-		SnapSpaceReduction:         &SnapSpaceReductionfield,
-		SnapSavedBytes:             &SnapSavedBytesfield,
-		PendingDeleteBytes:         &PendingDeleteBytesfield,
-		AvailableBytes:             &AvailableBytesfield,
-		Usage:                      &Usagefield,
-		AllFlash:                   &AllFlashfield,
-		DedupeCapacityBytes:        &DedupeCapacityBytesfield,
-		DedupeUsageBytes:           &DedupeUsageBytesfield,
-		IsFullyDedupeCapable:       &IsFullyDedupeCapablefield,
-		DedupeDisabled:             &DedupeDisabledfield,
-		ExtendedModel:              &ExtendedModelfield,
-		Oem:                        &Oemfield,
-		Brand:                      &Brandfield,
-		IsSupportedHwConfig:        &IsSupportedHwConfigfield,
-		GigNicPortCount:            &GigNicPortCountfield,
-		TenGigSfpNicPortCount:      &TenGigSfpNicPortCountfield,
-		TenGigTNicPortCount:        &TenGigTNicPortCountfield,
-		FcPortCount:                &FcPortCountfield,
-		PublicKey:                  &PublicKeyfield,
-		Upgrade:                    &Upgradefield,
-		CreatePool:                 &CreatePoolfield,
-		PoolDescription:            &PoolDescriptionfield,
-		AllowLowerLimits:           &AllowLowerLimitsfield,
-		CtrlrASupportIp:            &CtrlrASupportIpfield,
-		CtrlrBSupportIp:            &CtrlrBSupportIpfield,
-		NicList:                    &NicListfield,
-		ModelSubType:               &ModelSubTypefield,
-		ZconfIpaddrs:               &ZconfIpaddrsfield,
-		SecondaryMgmtIp:            &SecondaryMgmtIpfield,
+		ID:                         &fieldID,
+		Name:                       &fieldName,
+		Force:                      &fieldForce,
+		FullName:                   &fieldFullName,
+		SearchName:                 &fieldSearchName,
+		Status:                     &fieldStatus,
+		Role:                       &fieldRole,
+		GroupState:                 &fieldGroupState,
+		PoolName:                   &fieldPoolName,
+		PoolId:                     &fieldPoolId,
+		Model:                      &fieldModel,
+		Serial:                     &fieldSerial,
+		Version:                    &fieldVersion,
+		IsSfa:                      &fieldIsSfa,
+		CreationTime:               &fieldCreationTime,
+		LastModified:               &fieldLastModified,
+		UsageValid:                 &fieldUsageValid,
+		UsableCapacityBytes:        &fieldUsableCapacityBytes,
+		UsableCacheCapacityBytes:   &fieldUsableCacheCapacityBytes,
+		RawCapacityBytes:           &fieldRawCapacityBytes,
+		VolUsageBytes:              &fieldVolUsageBytes,
+		VolUsageUncompressedBytes:  &fieldVolUsageUncompressedBytes,
+		VolCompression:             &fieldVolCompression,
+		VolSavedBytes:              &fieldVolSavedBytes,
+		SnapUsageBytes:             &fieldSnapUsageBytes,
+		SnapUsageUncompressedBytes: &fieldSnapUsageUncompressedBytes,
+		SnapCompression:            &fieldSnapCompression,
+		SnapSpaceReduction:         &fieldSnapSpaceReduction,
+		SnapSavedBytes:             &fieldSnapSavedBytes,
+		PendingDeleteBytes:         &fieldPendingDeleteBytes,
+		AvailableBytes:             &fieldAvailableBytes,
+		Usage:                      &fieldUsage,
+		AllFlash:                   &fieldAllFlash,
+		DedupeCapacityBytes:        &fieldDedupeCapacityBytes,
+		DedupeUsageBytes:           &fieldDedupeUsageBytes,
+		IsFullyDedupeCapable:       &fieldIsFullyDedupeCapable,
+		DedupeDisabled:             &fieldDedupeDisabled,
+		ExtendedModel:              &fieldExtendedModel,
+		Oem:                        &fieldOem,
+		Brand:                      &fieldBrand,
+		IsSupportedHwConfig:        &fieldIsSupportedHwConfig,
+		GigNicPortCount:            &fieldGigNicPortCount,
+		TenGigSfpNicPortCount:      &fieldTenGigSfpNicPortCount,
+		TenGigTNicPortCount:        &fieldTenGigTNicPortCount,
+		FcPortCount:                &fieldFcPortCount,
+		PublicKey:                  &fieldPublicKey,
+		Upgrade:                    &fieldUpgrade,
+		CreatePool:                 &fieldCreatePool,
+		PoolDescription:            &fieldPoolDescription,
+		AllowLowerLimits:           &fieldAllowLowerLimits,
+		CtrlrASupportIp:            &fieldCtrlrASupportIp,
+		CtrlrBSupportIp:            &fieldCtrlrBSupportIp,
+		NicList:                    &fieldNicList,
+		ModelSubType:               &fieldModelSubType,
+		ZconfIpaddrs:               &fieldZconfIpaddrs,
+		SecondaryMgmtIp:            &fieldSecondaryMgmtIp,
 	}
 }
 

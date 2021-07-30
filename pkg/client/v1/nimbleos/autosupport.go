@@ -3,22 +3,23 @@
 package nimbleos
 
 // Autosupport - Get status of autosupport.
-// Export AutosupportFields for advance operations like search filter etc.
+
+// Export AutosupportFields provides field names to use in filter parameters, for example.
 var AutosupportFields *AutosupportStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayListfield := "array_list"
-	ArrayCountfield := "array_count"
-	GroupIdfield := "group_id"
-	GroupNamefield := "group_name"
+	fieldID := "id"
+	fieldArrayList := "array_list"
+	fieldArrayCount := "array_count"
+	fieldGroupId := "group_id"
+	fieldGroupName := "group_name"
 
 	AutosupportFields = &AutosupportStringFields{
-		ID:         &IDfield,
-		ArrayList:  &ArrayListfield,
-		ArrayCount: &ArrayCountfield,
-		GroupId:    &GroupIdfield,
-		GroupName:  &GroupNamefield,
+		ID:         &fieldID,
+		ArrayList:  &fieldArrayList,
+		ArrayCount: &fieldArrayCount,
+		GroupId:    &fieldGroupId,
+		GroupName:  &fieldGroupName,
 	}
 }
 

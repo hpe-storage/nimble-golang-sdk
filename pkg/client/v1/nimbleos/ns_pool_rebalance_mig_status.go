@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsPoolRebalanceMigStatus - Status of data rebalance operations in a pool.
-// Export NsPoolRebalanceMigStatusFields for advance operations like search filter etc.
+
+// Export NsPoolRebalanceMigStatusFields provides field names to use in filter parameters, for example.
 var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatusStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	PoolAvgSpaceUtilizationfield := "pool_avg_space_utilization"
-	ArrayDataMigrationStatusfield := "array_data_migration_status"
+	fieldID := "id"
+	fieldName := "name"
+	fieldPoolAvgSpaceUtilization := "pool_avg_space_utilization"
+	fieldArrayDataMigrationStatus := "array_data_migration_status"
 
 	NsPoolRebalanceMigStatusFields = &NsPoolRebalanceMigStatusStringFields{
-		ID:                       &IDfield,
-		Name:                     &Namefield,
-		PoolAvgSpaceUtilization:  &PoolAvgSpaceUtilizationfield,
-		ArrayDataMigrationStatus: &ArrayDataMigrationStatusfield,
+		ID:                       &fieldID,
+		Name:                     &fieldName,
+		PoolAvgSpaceUtilization:  &fieldPoolAvgSpaceUtilization,
+		ArrayDataMigrationStatus: &fieldArrayDataMigrationStatus,
 	}
 }
 

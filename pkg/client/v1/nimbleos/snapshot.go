@@ -3,84 +3,85 @@
 package nimbleos
 
 // Snapshot - Snapshots are point-in-time copies of a volume. Snapshots are managed the same way you manage volumes. In reality, snapshots are volumes: they can be accessed by initiators, are subject to the same controls, can be modified, and have the same restrictions as volumes. Snapshots can be cloned and replicated. The initial snapshot uses no space: it shares the original data with the source volume. Each successive snapshot captures the changes that have occurred on the volume. The changed blocks are compressed.
-// Export SnapshotFields for advance operations like search filter etc.
+
+// Export SnapshotFields provides field names to use in filter parameters, for example.
 var SnapshotFields *SnapshotStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	Sizefield := "size"
-	VolNamefield := "vol_name"
-	PoolNamefield := "pool_name"
-	VolIdfield := "vol_id"
-	SnapCollectionNamefield := "snap_collection_name"
-	SnapCollectionIdfield := "snap_collection_id"
-	Onlinefield := "online"
-	Writablefield := "writable"
-	OfflineReasonfield := "offline_reason"
-	ExpiryTimefield := "expiry_time"
-	ExpiryAfterfield := "expiry_after"
-	OriginNamefield := "origin_name"
-	IsReplicafield := "is_replica"
-	IsUnmanagedfield := "is_unmanaged"
-	IsManuallyManagedfield := "is_manually_managed"
-	ReplicationStatusfield := "replication_status"
-	AccessControlRecordsfield := "access_control_records"
-	SerialNumberfield := "serial_number"
-	TargetNamefield := "target_name"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	ScheduleNamefield := "schedule_name"
-	ScheduleIdfield := "schedule_id"
-	AppUuidfield := "app_uuid"
-	Metadatafield := "metadata"
-	NewDataValidfield := "new_data_valid"
-	NewDataCompressedBytesfield := "new_data_compressed_bytes"
-	NewDataUncompressedBytesfield := "new_data_uncompressed_bytes"
-	AgentTypefield := "agent_type"
-	VpdT10field := "vpd_t10"
-	VpdIeee0field := "vpd_ieee0"
-	VpdIeee1field := "vpd_ieee1"
-	Forcefield := "force"
+	fieldID := "id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldSize := "size"
+	fieldVolName := "vol_name"
+	fieldPoolName := "pool_name"
+	fieldVolId := "vol_id"
+	fieldSnapCollectionName := "snap_collection_name"
+	fieldSnapCollectionId := "snap_collection_id"
+	fieldOnline := "online"
+	fieldWritable := "writable"
+	fieldOfflineReason := "offline_reason"
+	fieldExpiryTime := "expiry_time"
+	fieldExpiryAfter := "expiry_after"
+	fieldOriginName := "origin_name"
+	fieldIsReplica := "is_replica"
+	fieldIsUnmanaged := "is_unmanaged"
+	fieldIsManuallyManaged := "is_manually_managed"
+	fieldReplicationStatus := "replication_status"
+	fieldAccessControlRecords := "access_control_records"
+	fieldSerialNumber := "serial_number"
+	fieldTargetName := "target_name"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldScheduleName := "schedule_name"
+	fieldScheduleId := "schedule_id"
+	fieldAppUuid := "app_uuid"
+	fieldMetadata := "metadata"
+	fieldNewDataValid := "new_data_valid"
+	fieldNewDataCompressedBytes := "new_data_compressed_bytes"
+	fieldNewDataUncompressedBytes := "new_data_uncompressed_bytes"
+	fieldAgentType := "agent_type"
+	fieldVpdT10 := "vpd_t10"
+	fieldVpdIeee0 := "vpd_ieee0"
+	fieldVpdIeee1 := "vpd_ieee1"
+	fieldForce := "force"
 
 	SnapshotFields = &SnapshotStringFields{
-		ID:                       &IDfield,
-		Name:                     &Namefield,
-		Description:              &Descriptionfield,
-		Size:                     &Sizefield,
-		VolName:                  &VolNamefield,
-		PoolName:                 &PoolNamefield,
-		VolId:                    &VolIdfield,
-		SnapCollectionName:       &SnapCollectionNamefield,
-		SnapCollectionId:         &SnapCollectionIdfield,
-		Online:                   &Onlinefield,
-		Writable:                 &Writablefield,
-		OfflineReason:            &OfflineReasonfield,
-		ExpiryTime:               &ExpiryTimefield,
-		ExpiryAfter:              &ExpiryAfterfield,
-		OriginName:               &OriginNamefield,
-		IsReplica:                &IsReplicafield,
-		IsUnmanaged:              &IsUnmanagedfield,
-		IsManuallyManaged:        &IsManuallyManagedfield,
-		ReplicationStatus:        &ReplicationStatusfield,
-		AccessControlRecords:     &AccessControlRecordsfield,
-		SerialNumber:             &SerialNumberfield,
-		TargetName:               &TargetNamefield,
-		CreationTime:             &CreationTimefield,
-		LastModified:             &LastModifiedfield,
-		ScheduleName:             &ScheduleNamefield,
-		ScheduleId:               &ScheduleIdfield,
-		AppUuid:                  &AppUuidfield,
-		Metadata:                 &Metadatafield,
-		NewDataValid:             &NewDataValidfield,
-		NewDataCompressedBytes:   &NewDataCompressedBytesfield,
-		NewDataUncompressedBytes: &NewDataUncompressedBytesfield,
-		AgentType:                &AgentTypefield,
-		VpdT10:                   &VpdT10field,
-		VpdIeee0:                 &VpdIeee0field,
-		VpdIeee1:                 &VpdIeee1field,
-		Force:                    &Forcefield,
+		ID:                       &fieldID,
+		Name:                     &fieldName,
+		Description:              &fieldDescription,
+		Size:                     &fieldSize,
+		VolName:                  &fieldVolName,
+		PoolName:                 &fieldPoolName,
+		VolId:                    &fieldVolId,
+		SnapCollectionName:       &fieldSnapCollectionName,
+		SnapCollectionId:         &fieldSnapCollectionId,
+		Online:                   &fieldOnline,
+		Writable:                 &fieldWritable,
+		OfflineReason:            &fieldOfflineReason,
+		ExpiryTime:               &fieldExpiryTime,
+		ExpiryAfter:              &fieldExpiryAfter,
+		OriginName:               &fieldOriginName,
+		IsReplica:                &fieldIsReplica,
+		IsUnmanaged:              &fieldIsUnmanaged,
+		IsManuallyManaged:        &fieldIsManuallyManaged,
+		ReplicationStatus:        &fieldReplicationStatus,
+		AccessControlRecords:     &fieldAccessControlRecords,
+		SerialNumber:             &fieldSerialNumber,
+		TargetName:               &fieldTargetName,
+		CreationTime:             &fieldCreationTime,
+		LastModified:             &fieldLastModified,
+		ScheduleName:             &fieldScheduleName,
+		ScheduleId:               &fieldScheduleId,
+		AppUuid:                  &fieldAppUuid,
+		Metadata:                 &fieldMetadata,
+		NewDataValid:             &fieldNewDataValid,
+		NewDataCompressedBytes:   &fieldNewDataCompressedBytes,
+		NewDataUncompressedBytes: &fieldNewDataUncompressedBytes,
+		AgentType:                &fieldAgentType,
+		VpdT10:                   &fieldVpdT10,
+		VpdIeee0:                 &fieldVpdIeee0,
+		VpdIeee1:                 &fieldVpdIeee1,
+		Force:                    &fieldForce,
 	}
 }
 

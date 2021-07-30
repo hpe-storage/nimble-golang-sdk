@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsArraySoftwareUpdateError - Software update error for specific controller.
-// Export NsArraySoftwareUpdateErrorFields for advance operations like search filter etc.
+
+// Export NsArraySoftwareUpdateErrorFields provides field names to use in filter parameters, for example.
 var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateErrorStringFields
 
 func init() {
-	Errorfield := "error"
+	fieldError := "error"
 
 	NsArraySoftwareUpdateErrorFields = &NsArraySoftwareUpdateErrorStringFields{
-		Error: &Errorfield,
+		Error: &fieldError,
 	}
 }
 

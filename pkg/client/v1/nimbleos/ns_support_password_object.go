@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsSupportPasswordObject - Support password blob for a user.
-// Export NsSupportPasswordObjectFields for advance operations like search filter etc.
+
+// Export NsSupportPasswordObjectFields provides field names to use in filter parameters, for example.
 var NsSupportPasswordObjectFields *NsSupportPasswordObjectStringFields
 
 func init() {
-	Usernamefield := "username"
-	Blobfield := "blob"
+	fieldUsername := "username"
+	fieldBlob := "blob"
 
 	NsSupportPasswordObjectFields = &NsSupportPasswordObjectStringFields{
-		Username: &Usernamefield,
-		Blob:     &Blobfield,
+		Username: &fieldUsername,
+		Blob:     &fieldBlob,
 	}
 }
 

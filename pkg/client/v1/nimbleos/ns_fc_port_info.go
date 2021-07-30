@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsFcPortInfo - Fibre Channel port information.
-// Export NsFcPortInfoFields for advance operations like search filter etc.
+
+// Export NsFcPortInfoFields provides field names to use in filter parameters, for example.
 var NsFcPortInfoFields *NsFcPortInfoStringFields
 
 func init() {
-	Namefield := "name"
-	BusLocationfield := "bus_location"
-	Portfield := "port"
-	Slotfield := "slot"
+	fieldName := "name"
+	fieldBusLocation := "bus_location"
+	fieldPort := "port"
+	fieldSlot := "slot"
 
 	NsFcPortInfoFields = &NsFcPortInfoStringFields{
-		Name:        &Namefield,
-		BusLocation: &BusLocationfield,
-		Port:        &Portfield,
-		Slot:        &Slotfield,
+		Name:        &fieldName,
+		BusLocation: &fieldBusLocation,
+		Port:        &fieldPort,
+		Slot:        &fieldSlot,
 	}
 }
 

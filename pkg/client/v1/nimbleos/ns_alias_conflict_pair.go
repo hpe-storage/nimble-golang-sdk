@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsAliasConflictPair - Alias conflict (same initiator WWPN, but different aliases).
-// Export NsAliasConflictPairFields for advance operations like search filter etc.
+
+// Export NsAliasConflictPairFields provides field names to use in filter parameters, for example.
 var NsAliasConflictPairFields *NsAliasConflictPairStringFields
 
 func init() {
-	InitiatorWwpnfield := "initiator_wwpn"
-	DstAliasNamefield := "dst_alias_name"
-	SrcAliasNamefield := "src_alias_name"
+	fieldInitiatorWwpn := "initiator_wwpn"
+	fieldDstAliasName := "dst_alias_name"
+	fieldSrcAliasName := "src_alias_name"
 
 	NsAliasConflictPairFields = &NsAliasConflictPairStringFields{
-		InitiatorWwpn: &InitiatorWwpnfield,
-		DstAliasName:  &DstAliasNamefield,
-		SrcAliasName:  &SrcAliasNamefield,
+		InitiatorWwpn: &fieldInitiatorWwpn,
+		DstAliasName:  &fieldDstAliasName,
+		SrcAliasName:  &fieldSrcAliasName,
 	}
 }
 

@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsPerfPolicySummary - Select fields containing performance policy.
-// Export NsPerfPolicySummaryFields for advance operations like search filter etc.
+
+// Export NsPerfPolicySummaryFields provides field names to use in filter parameters, for example.
 var NsPerfPolicySummaryFields *NsPerfPolicySummaryStringFields
 
 func init() {
-	Namefield := "name"
+	fieldName := "name"
 
 	NsPerfPolicySummaryFields = &NsPerfPolicySummaryStringFields{
-		Name: &Namefield,
+		Name: &fieldName,
 	}
 }
 

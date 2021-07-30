@@ -3,34 +3,35 @@
 package nimbleos
 
 // FibreChannelPort - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
-// Export FibreChannelPortFields for advance operations like search filter etc.
+
+// Export FibreChannelPortFields provides field names to use in filter parameters, for example.
 var FibreChannelPortFields *FibreChannelPortStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayNameOrSerialfield := "array_name_or_serial"
-	ControllerNamefield := "controller_name"
-	FcPortNamefield := "fc_port_name"
-	BusLocationfield := "bus_location"
-	Portfield := "port"
-	Slotfield := "slot"
-	Orientationfield := "orientation"
-	LinkInfofield := "link_info"
-	RxPowerfield := "rx_power"
-	TxPowerfield := "tx_power"
+	fieldID := "id"
+	fieldArrayNameOrSerial := "array_name_or_serial"
+	fieldControllerName := "controller_name"
+	fieldFcPortName := "fc_port_name"
+	fieldBusLocation := "bus_location"
+	fieldPort := "port"
+	fieldSlot := "slot"
+	fieldOrientation := "orientation"
+	fieldLinkInfo := "link_info"
+	fieldRxPower := "rx_power"
+	fieldTxPower := "tx_power"
 
 	FibreChannelPortFields = &FibreChannelPortStringFields{
-		ID:                &IDfield,
-		ArrayNameOrSerial: &ArrayNameOrSerialfield,
-		ControllerName:    &ControllerNamefield,
-		FcPortName:        &FcPortNamefield,
-		BusLocation:       &BusLocationfield,
-		Port:              &Portfield,
-		Slot:              &Slotfield,
-		Orientation:       &Orientationfield,
-		LinkInfo:          &LinkInfofield,
-		RxPower:           &RxPowerfield,
-		TxPower:           &TxPowerfield,
+		ID:                &fieldID,
+		ArrayNameOrSerial: &fieldArrayNameOrSerial,
+		ControllerName:    &fieldControllerName,
+		FcPortName:        &fieldFcPortName,
+		BusLocation:       &fieldBusLocation,
+		Port:              &fieldPort,
+		Slot:              &fieldSlot,
+		Orientation:       &fieldOrientation,
+		LinkInfo:          &fieldLinkInfo,
+		RxPower:           &fieldRxPower,
+		TxPower:           &fieldTxPower,
 	}
 }
 

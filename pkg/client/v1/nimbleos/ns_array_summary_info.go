@@ -3,28 +3,29 @@
 package nimbleos
 
 // NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
-// Export NsArraySummaryInfoFields for advance operations like search filter etc.
+
+// Export NsArraySummaryInfoFields provides field names to use in filter parameters, for example.
 var NsArraySummaryInfoFields *NsArraySummaryInfoStringFields
 
 func init() {
-	Namefield := "name"
-	Versionfield := "version"
-	Serialfield := "serial"
-	Modelfield := "model"
-	ZconfIpaddrsfield := "zconf_ipaddrs"
-	Statusfield := "status"
-	CountOfFcPortsfield := "count_of_fc_ports"
-	AllFlashfield := "all_flash"
+	fieldName := "name"
+	fieldVersion := "version"
+	fieldSerial := "serial"
+	fieldModel := "model"
+	fieldZconfIpaddrs := "zconf_ipaddrs"
+	fieldStatus := "status"
+	fieldCountOfFcPorts := "count_of_fc_ports"
+	fieldAllFlash := "all_flash"
 
 	NsArraySummaryInfoFields = &NsArraySummaryInfoStringFields{
-		Name:           &Namefield,
-		Version:        &Versionfield,
-		Serial:         &Serialfield,
-		Model:          &Modelfield,
-		ZconfIpaddrs:   &ZconfIpaddrsfield,
-		Status:         &Statusfield,
-		CountOfFcPorts: &CountOfFcPortsfield,
-		AllFlash:       &AllFlashfield,
+		Name:           &fieldName,
+		Version:        &fieldVersion,
+		Serial:         &fieldSerial,
+		Model:          &fieldModel,
+		ZconfIpaddrs:   &fieldZconfIpaddrs,
+		Status:         &fieldStatus,
+		CountOfFcPorts: &fieldCountOfFcPorts,
+		AllFlash:       &fieldAllFlash,
 	}
 }
 

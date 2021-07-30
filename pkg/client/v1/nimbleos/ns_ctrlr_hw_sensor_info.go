@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsCtrlrHwSensorInfo - Information on a controller hardware sensor.
-// Export NsCtrlrHwSensorInfoFields for advance operations like search filter etc.
+
+// Export NsCtrlrHwSensorInfoFields provides field names to use in filter parameters, for example.
 var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfoStringFields
 
 func init() {
-	Namefield := "name"
-	DisplayNamefield := "display_name"
-	Locationfield := "location"
-	CtrlrOwnerfield := "ctrlr_owner"
-	Statefield := "state"
-	CurrentReadingfield := "current_reading"
+	fieldName := "name"
+	fieldDisplayName := "display_name"
+	fieldLocation := "location"
+	fieldCtrlrOwner := "ctrlr_owner"
+	fieldState := "state"
+	fieldCurrentReading := "current_reading"
 
 	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfoStringFields{
-		Name:           &Namefield,
-		DisplayName:    &DisplayNamefield,
-		Location:       &Locationfield,
-		CtrlrOwner:     &CtrlrOwnerfield,
-		State:          &Statefield,
-		CurrentReading: &CurrentReadingfield,
+		Name:           &fieldName,
+		DisplayName:    &fieldDisplayName,
+		Location:       &fieldLocation,
+		CtrlrOwner:     &fieldCtrlrOwner,
+		State:          &fieldState,
+		CurrentReading: &fieldCurrentReading,
 	}
 }
 

@@ -3,38 +3,39 @@
 package nimbleos
 
 // NsDiskSetAttr - A shelf logical attributes.
-// Export NsDiskSetAttrFields for advance operations like search filter etc.
+
+// Export NsDiskSetAttrFields provides field names to use in filter parameters, for example.
 var NsDiskSetAttrFields *NsDiskSetAttrStringFields
 
 func init() {
-	Drivesetfield := "driveset"
-	SwStatefield := "sw_state"
-	IsFlashShelffield := "is_flash_shelf"
-	IsCapacityValidfield := "is_capacity_valid"
-	UsableCapacityfield := "usable_capacity"
-	RawCapacityfield := "raw_capacity"
-	UsableCacheCapacityfield := "usable_cache_capacity"
-	RawCacheCapacityfield := "raw_cache_capacity"
-	AveMbPsfield := "ave_mb_ps"
-	AveSegmentPsfield := "ave_segment_ps"
-	AveTtcfield := "ave_ttc"
-	PctCompletionfield := "pct_completion"
-	PauseStatefield := "pause_state"
+	fieldDriveset := "driveset"
+	fieldSwState := "sw_state"
+	fieldIsFlashShelf := "is_flash_shelf"
+	fieldIsCapacityValid := "is_capacity_valid"
+	fieldUsableCapacity := "usable_capacity"
+	fieldRawCapacity := "raw_capacity"
+	fieldUsableCacheCapacity := "usable_cache_capacity"
+	fieldRawCacheCapacity := "raw_cache_capacity"
+	fieldAveMbPs := "ave_mb_ps"
+	fieldAveSegmentPs := "ave_segment_ps"
+	fieldAveTtc := "ave_ttc"
+	fieldPctCompletion := "pct_completion"
+	fieldPauseState := "pause_state"
 
 	NsDiskSetAttrFields = &NsDiskSetAttrStringFields{
-		Driveset:            &Drivesetfield,
-		SwState:             &SwStatefield,
-		IsFlashShelf:        &IsFlashShelffield,
-		IsCapacityValid:     &IsCapacityValidfield,
-		UsableCapacity:      &UsableCapacityfield,
-		RawCapacity:         &RawCapacityfield,
-		UsableCacheCapacity: &UsableCacheCapacityfield,
-		RawCacheCapacity:    &RawCacheCapacityfield,
-		AveMbPs:             &AveMbPsfield,
-		AveSegmentPs:        &AveSegmentPsfield,
-		AveTtc:              &AveTtcfield,
-		PctCompletion:       &PctCompletionfield,
-		PauseState:          &PauseStatefield,
+		Driveset:            &fieldDriveset,
+		SwState:             &fieldSwState,
+		IsFlashShelf:        &fieldIsFlashShelf,
+		IsCapacityValid:     &fieldIsCapacityValid,
+		UsableCapacity:      &fieldUsableCapacity,
+		RawCapacity:         &fieldRawCapacity,
+		UsableCacheCapacity: &fieldUsableCacheCapacity,
+		RawCacheCapacity:    &fieldRawCacheCapacity,
+		AveMbPs:             &fieldAveMbPs,
+		AveSegmentPs:        &fieldAveSegmentPs,
+		AveTtc:              &fieldAveTtc,
+		PctCompletion:       &fieldPctCompletion,
+		PauseState:          &fieldPauseState,
 	}
 }
 

@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsPoolSummary - Object containing pool ID and name.
-// Export NsPoolSummaryFields for advance operations like search filter etc.
+
+// Export NsPoolSummaryFields provides field names to use in filter parameters, for example.
 var NsPoolSummaryFields *NsPoolSummaryStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
+	fieldID := "id"
+	fieldName := "name"
 
 	NsPoolSummaryFields = &NsPoolSummaryStringFields{
-		ID:   &IDfield,
-		Name: &Namefield,
+		ID:   &fieldID,
+		Name: &fieldName,
 	}
 }
 

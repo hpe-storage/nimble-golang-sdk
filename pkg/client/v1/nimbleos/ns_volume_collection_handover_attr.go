@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsVolumeCollectionHandoverAttr - Arguments to handover a volume collection.
-// Export NsVolumeCollectionHandoverAttrFields for advance operations like search filter etc.
+
+// Export NsVolumeCollectionHandoverAttrFields provides field names to use in filter parameters, for example.
 var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttrStringFields
 
 func init() {
-	IDfield := "id"
-	ReplicationPartnerIdfield := "replication_partner_id"
-	NoReversefield := "no_reverse"
+	fieldID := "id"
+	fieldReplicationPartnerId := "replication_partner_id"
+	fieldNoReverse := "no_reverse"
 
 	NsVolumeCollectionHandoverAttrFields = &NsVolumeCollectionHandoverAttrStringFields{
-		ID:                   &IDfield,
-		ReplicationPartnerId: &ReplicationPartnerIdfield,
-		NoReverse:            &NoReversefield,
+		ID:                   &fieldID,
+		ReplicationPartnerId: &fieldReplicationPartnerId,
+		NoReverse:            &fieldNoReverse,
 	}
 }
 

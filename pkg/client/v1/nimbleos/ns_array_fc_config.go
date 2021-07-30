@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsArrayFcConfig - Array Fibre Channel configuration.
-// Export NsArrayFcConfigFields for advance operations like search filter etc.
+
+// Export NsArrayFcConfigFields provides field names to use in filter parameters, for example.
 var NsArrayFcConfigFields *NsArrayFcConfigStringFields
 
 func init() {
-	Namefield := "name"
-	ArrayNamefield := "array_name"
-	IDfield := "id"
-	ArrayIdfield := "array_id"
-	CtrlrAFcConfigfield := "ctrlr_a_fc_config"
-	CtrlrBFcConfigfield := "ctrlr_b_fc_config"
+	fieldName := "name"
+	fieldArrayName := "array_name"
+	fieldID := "id"
+	fieldArrayId := "array_id"
+	fieldCtrlrAFcConfig := "ctrlr_a_fc_config"
+	fieldCtrlrBFcConfig := "ctrlr_b_fc_config"
 
 	NsArrayFcConfigFields = &NsArrayFcConfigStringFields{
-		Name:           &Namefield,
-		ArrayName:      &ArrayNamefield,
-		ID:             &IDfield,
-		ArrayId:        &ArrayIdfield,
-		CtrlrAFcConfig: &CtrlrAFcConfigfield,
-		CtrlrBFcConfig: &CtrlrBFcConfigfield,
+		Name:           &fieldName,
+		ArrayName:      &fieldArrayName,
+		ID:             &fieldID,
+		ArrayId:        &fieldArrayId,
+		CtrlrAFcConfig: &fieldCtrlrAFcConfig,
+		CtrlrBFcConfig: &fieldCtrlrBFcConfig,
 	}
 }
 

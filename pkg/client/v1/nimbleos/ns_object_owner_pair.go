@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsObjectOwnerPair - Objects and their owners.
-// Export NsObjectOwnerPairFields for advance operations like search filter etc.
+
+// Export NsObjectOwnerPairFields provides field names to use in filter parameters, for example.
 var NsObjectOwnerPairFields *NsObjectOwnerPairStringFields
 
 func init() {
-	ObjNamefield := "obj_name"
-	SrcOwnerfield := "src_owner"
-	DstOwnerfield := "dst_owner"
+	fieldObjName := "obj_name"
+	fieldSrcOwner := "src_owner"
+	fieldDstOwner := "dst_owner"
 
 	NsObjectOwnerPairFields = &NsObjectOwnerPairStringFields{
-		ObjName:  &ObjNamefield,
-		SrcOwner: &SrcOwnerfield,
-		DstOwner: &DstOwnerfield,
+		ObjName:  &fieldObjName,
+		SrcOwner: &fieldSrcOwner,
+		DstOwner: &fieldDstOwner,
 	}
 }
 

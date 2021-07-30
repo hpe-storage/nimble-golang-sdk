@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsSshKey - SSH key.
-// Export NsSshKeyFields for advance operations like search filter etc.
+
+// Export NsSshKeyFields provides field names to use in filter parameters, for example.
 var NsSshKeyFields *NsSshKeyStringFields
 
 func init() {
-	KeyNamefield := "key_name"
-	KeyTypefield := "key_type"
-	Keyfield := "key"
+	fieldKeyName := "key_name"
+	fieldKeyType := "key_type"
+	fieldKey := "key"
 
 	NsSshKeyFields = &NsSshKeyStringFields{
-		KeyName: &KeyNamefield,
-		KeyType: &KeyTypefield,
-		Key:     &Keyfield,
+		KeyName: &fieldKeyName,
+		KeyType: &fieldKeyType,
+		Key:     &fieldKey,
 	}
 }
 

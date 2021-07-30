@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsArraySoftwareUpdateStatus - List of software update errors for a specific array.
-// Export NsArraySoftwareUpdateStatusFields for advance operations like search filter etc.
+
+// Export NsArraySoftwareUpdateStatusFields provides field names to use in filter parameters, for example.
 var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatusStringFields
 
 func init() {
-	ArrayNamefield := "array_name"
-	Errorfield := "error"
-	CtrlrErrorMaskfield := "ctrlr_error_mask"
-	CtrlrAErrsfield := "ctrlr_a_errs"
-	CtrlrBErrsfield := "ctrlr_b_errs"
+	fieldArrayName := "array_name"
+	fieldError := "error"
+	fieldCtrlrErrorMask := "ctrlr_error_mask"
+	fieldCtrlrAErrs := "ctrlr_a_errs"
+	fieldCtrlrBErrs := "ctrlr_b_errs"
 
 	NsArraySoftwareUpdateStatusFields = &NsArraySoftwareUpdateStatusStringFields{
-		ArrayName:      &ArrayNamefield,
-		Error:          &Errorfield,
-		CtrlrErrorMask: &CtrlrErrorMaskfield,
-		CtrlrAErrs:     &CtrlrAErrsfield,
-		CtrlrBErrs:     &CtrlrBErrsfield,
+		ArrayName:      &fieldArrayName,
+		Error:          &fieldError,
+		CtrlrErrorMask: &fieldCtrlrErrorMask,
+		CtrlrAErrs:     &fieldCtrlrAErrs,
+		CtrlrBErrs:     &fieldCtrlrBErrs,
 	}
 }
 

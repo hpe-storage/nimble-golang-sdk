@@ -3,28 +3,29 @@
 package nimbleos
 
 // VolumeFamily - A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
-// Export VolumeFamilyFields for advance operations like search filter etc.
+
+// Export VolumeFamilyFields provides field names to use in filter parameters, for example.
 var VolumeFamilyFields *VolumeFamilyStringFields
 
 func init() {
-	IDfield := "id"
-	PoolIdfield := "pool_id"
-	PoolNamefield := "pool_name"
-	Blocksizefield := "blocksize"
-	RootVolNamefield := "root_vol_name"
-	Volumesfield := "volumes"
-	VolUsageCompressedBytesfield := "vol_usage_compressed_bytes"
-	SnapUsageCompressedBytesfield := "snap_usage_compressed_bytes"
+	fieldID := "id"
+	fieldPoolId := "pool_id"
+	fieldPoolName := "pool_name"
+	fieldBlocksize := "blocksize"
+	fieldRootVolName := "root_vol_name"
+	fieldVolumes := "volumes"
+	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
+	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
 
 	VolumeFamilyFields = &VolumeFamilyStringFields{
-		ID:                       &IDfield,
-		PoolId:                   &PoolIdfield,
-		PoolName:                 &PoolNamefield,
-		Blocksize:                &Blocksizefield,
-		RootVolName:              &RootVolNamefield,
-		Volumes:                  &Volumesfield,
-		VolUsageCompressedBytes:  &VolUsageCompressedBytesfield,
-		SnapUsageCompressedBytes: &SnapUsageCompressedBytesfield,
+		ID:                       &fieldID,
+		PoolId:                   &fieldPoolId,
+		PoolName:                 &fieldPoolName,
+		Blocksize:                &fieldBlocksize,
+		RootVolName:              &fieldRootVolName,
+		Volumes:                  &fieldVolumes,
+		VolUsageCompressedBytes:  &fieldVolUsageCompressedBytes,
+		SnapUsageCompressedBytes: &fieldSnapUsageCompressedBytes,
 	}
 }
 

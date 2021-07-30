@@ -3,26 +3,27 @@
 package nimbleos
 
 // NsSnapshotCreateAttr - Select fields containing volume info.
-// Export NsSnapshotCreateAttrFields for advance operations like search filter etc.
+
+// Export NsSnapshotCreateAttrFields provides field names to use in filter parameters, for example.
 var NsSnapshotCreateAttrFields *NsSnapshotCreateAttrStringFields
 
 func init() {
-	VolIdfield := "vol_id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	Onlinefield := "online"
-	Writablefield := "writable"
-	AgentTypefield := "agent_type"
-	Metadatafield := "metadata"
+	fieldVolId := "vol_id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldOnline := "online"
+	fieldWritable := "writable"
+	fieldAgentType := "agent_type"
+	fieldMetadata := "metadata"
 
 	NsSnapshotCreateAttrFields = &NsSnapshotCreateAttrStringFields{
-		VolId:       &VolIdfield,
-		Name:        &Namefield,
-		Description: &Descriptionfield,
-		Online:      &Onlinefield,
-		Writable:    &Writablefield,
-		AgentType:   &AgentTypefield,
-		Metadata:    &Metadatafield,
+		VolId:       &fieldVolId,
+		Name:        &fieldName,
+		Description: &fieldDescription,
+		Online:      &fieldOnline,
+		Writable:    &fieldWritable,
+		AgentType:   &fieldAgentType,
+		Metadata:    &fieldMetadata,
 	}
 }
 

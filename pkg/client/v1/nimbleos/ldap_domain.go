@@ -3,38 +3,39 @@
 package nimbleos
 
 // LdapDomain - Manages the storage array's membership with LDAP servers.
-// Export LdapDomainFields for advance operations like search filter etc.
+
+// Export LdapDomainFields provides field names to use in filter parameters, for example.
 var LdapDomainFields *LdapDomainStringFields
 
 func init() {
-	IDfield := "id"
-	DomainNamefield := "domain_name"
-	DomainDescriptionfield := "domain_description"
-	DomainEnabledfield := "domain_enabled"
-	ServerUriListfield := "server_uri_list"
-	BindUserfield := "bind_user"
-	BindPasswordfield := "bind_password"
-	BaseDnfield := "base_dn"
-	UserSearchFilterfield := "user_search_filter"
-	UserSearchBaseListfield := "user_search_base_list"
-	GroupSearchFilterfield := "group_search_filter"
-	GroupSearchBaseListfield := "group_search_base_list"
-	SchemaTypefield := "schema_type"
+	fieldID := "id"
+	fieldDomainName := "domain_name"
+	fieldDomainDescription := "domain_description"
+	fieldDomainEnabled := "domain_enabled"
+	fieldServerUriList := "server_uri_list"
+	fieldBindUser := "bind_user"
+	fieldBindPassword := "bind_password"
+	fieldBaseDn := "base_dn"
+	fieldUserSearchFilter := "user_search_filter"
+	fieldUserSearchBaseList := "user_search_base_list"
+	fieldGroupSearchFilter := "group_search_filter"
+	fieldGroupSearchBaseList := "group_search_base_list"
+	fieldSchemaType := "schema_type"
 
 	LdapDomainFields = &LdapDomainStringFields{
-		ID:                  &IDfield,
-		DomainName:          &DomainNamefield,
-		DomainDescription:   &DomainDescriptionfield,
-		DomainEnabled:       &DomainEnabledfield,
-		ServerUriList:       &ServerUriListfield,
-		BindUser:            &BindUserfield,
-		BindPassword:        &BindPasswordfield,
-		BaseDn:              &BaseDnfield,
-		UserSearchFilter:    &UserSearchFilterfield,
-		UserSearchBaseList:  &UserSearchBaseListfield,
-		GroupSearchFilter:   &GroupSearchFilterfield,
-		GroupSearchBaseList: &GroupSearchBaseListfield,
-		SchemaType:          &SchemaTypefield,
+		ID:                  &fieldID,
+		DomainName:          &fieldDomainName,
+		DomainDescription:   &fieldDomainDescription,
+		DomainEnabled:       &fieldDomainEnabled,
+		ServerUriList:       &fieldServerUriList,
+		BindUser:            &fieldBindUser,
+		BindPassword:        &fieldBindPassword,
+		BaseDn:              &fieldBaseDn,
+		UserSearchFilter:    &fieldUserSearchFilter,
+		UserSearchBaseList:  &fieldUserSearchBaseList,
+		GroupSearchFilter:   &fieldGroupSearchFilter,
+		GroupSearchBaseList: &fieldGroupSearchBaseList,
+		SchemaType:          &fieldSchemaType,
 	}
 }
 

@@ -3,42 +3,43 @@
 package nimbleos
 
 // Subnet - Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
-// Export SubnetFields for advance operations like search filter etc.
+
+// Export SubnetFields provides field names to use in filter parameters, for example.
 var SubnetFields *SubnetStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Networkfield := "network"
-	Netmaskfield := "netmask"
-	Typefield := "type"
-	AllowIscsifield := "allow_iscsi"
-	AllowGroupfield := "allow_group"
-	DiscoveryIpfield := "discovery_ip"
-	Mtufield := "mtu"
-	NetzoneTypefield := "netzone_type"
-	VlanIdfield := "vlan_id"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	Failoverfield := "failover"
-	FailoverEnableTimefield := "failover_enable_time"
+	fieldID := "id"
+	fieldName := "name"
+	fieldNetwork := "network"
+	fieldNetmask := "netmask"
+	fieldType := "type"
+	fieldAllowIscsi := "allow_iscsi"
+	fieldAllowGroup := "allow_group"
+	fieldDiscoveryIp := "discovery_ip"
+	fieldMtu := "mtu"
+	fieldNetzoneType := "netzone_type"
+	fieldVlanId := "vlan_id"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldFailover := "failover"
+	fieldFailoverEnableTime := "failover_enable_time"
 
 	SubnetFields = &SubnetStringFields{
-		ID:                 &IDfield,
-		Name:               &Namefield,
-		Network:            &Networkfield,
-		Netmask:            &Netmaskfield,
-		Type:               &Typefield,
-		AllowIscsi:         &AllowIscsifield,
-		AllowGroup:         &AllowGroupfield,
-		DiscoveryIp:        &DiscoveryIpfield,
-		Mtu:                &Mtufield,
-		NetzoneType:        &NetzoneTypefield,
-		VlanId:             &VlanIdfield,
-		CreationTime:       &CreationTimefield,
-		LastModified:       &LastModifiedfield,
-		Failover:           &Failoverfield,
-		FailoverEnableTime: &FailoverEnableTimefield,
+		ID:                 &fieldID,
+		Name:               &fieldName,
+		Network:            &fieldNetwork,
+		Netmask:            &fieldNetmask,
+		Type:               &fieldType,
+		AllowIscsi:         &fieldAllowIscsi,
+		AllowGroup:         &fieldAllowGroup,
+		DiscoveryIp:        &fieldDiscoveryIp,
+		Mtu:                &fieldMtu,
+		NetzoneType:        &fieldNetzoneType,
+		VlanId:             &fieldVlanId,
+		CreationTime:       &fieldCreationTime,
+		LastModified:       &fieldLastModified,
+		Failover:           &fieldFailover,
+		FailoverEnableTime: &fieldFailoverEnableTime,
 	}
 }
 

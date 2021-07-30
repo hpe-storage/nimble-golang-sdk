@@ -3,54 +3,55 @@
 package nimbleos
 
 // AuditLog - View audit log.
-// Export AuditLogFields for advance operations like search filter etc.
+
+// Export AuditLogFields provides field names to use in filter parameters, for example.
 var AuditLogFields *AuditLogStringFields
 
 func init() {
-	IDfield := "id"
-	Typefield := "type"
-	ObjectIdfield := "object_id"
-	ObjectNamefield := "object_name"
-	ObjectTypefield := "object_type"
-	Scopefield := "scope"
-	Timefield := "time"
-	Statusfield := "status"
-	ErrorCodefield := "error_code"
-	UserIdfield := "user_id"
-	UserNamefield := "user_name"
-	UserFullNamefield := "user_full_name"
-	SourceIpfield := "source_ip"
-	ExtUserIdfield := "ext_user_id"
-	ExtUserGroupIdfield := "ext_user_group_id"
-	ExtUserGroupNamefield := "ext_user_group_name"
-	AppNamefield := "app_name"
-	AccessTypefield := "access_type"
-	Categoryfield := "category"
-	ActivityTypefield := "activity_type"
-	Activityfield := "activity"
+	fieldID := "id"
+	fieldType := "type"
+	fieldObjectId := "object_id"
+	fieldObjectName := "object_name"
+	fieldObjectType := "object_type"
+	fieldScope := "scope"
+	fieldTime := "time"
+	fieldStatus := "status"
+	fieldErrorCode := "error_code"
+	fieldUserId := "user_id"
+	fieldUserName := "user_name"
+	fieldUserFullName := "user_full_name"
+	fieldSourceIp := "source_ip"
+	fieldExtUserId := "ext_user_id"
+	fieldExtUserGroupId := "ext_user_group_id"
+	fieldExtUserGroupName := "ext_user_group_name"
+	fieldAppName := "app_name"
+	fieldAccessType := "access_type"
+	fieldCategory := "category"
+	fieldActivityType := "activity_type"
+	fieldActivity := "activity"
 
 	AuditLogFields = &AuditLogStringFields{
-		ID:               &IDfield,
-		Type:             &Typefield,
-		ObjectId:         &ObjectIdfield,
-		ObjectName:       &ObjectNamefield,
-		ObjectType:       &ObjectTypefield,
-		Scope:            &Scopefield,
-		Time:             &Timefield,
-		Status:           &Statusfield,
-		ErrorCode:        &ErrorCodefield,
-		UserId:           &UserIdfield,
-		UserName:         &UserNamefield,
-		UserFullName:     &UserFullNamefield,
-		SourceIp:         &SourceIpfield,
-		ExtUserId:        &ExtUserIdfield,
-		ExtUserGroupId:   &ExtUserGroupIdfield,
-		ExtUserGroupName: &ExtUserGroupNamefield,
-		AppName:          &AppNamefield,
-		AccessType:       &AccessTypefield,
-		Category:         &Categoryfield,
-		ActivityType:     &ActivityTypefield,
-		Activity:         &Activityfield,
+		ID:               &fieldID,
+		Type:             &fieldType,
+		ObjectId:         &fieldObjectId,
+		ObjectName:       &fieldObjectName,
+		ObjectType:       &fieldObjectType,
+		Scope:            &fieldScope,
+		Time:             &fieldTime,
+		Status:           &fieldStatus,
+		ErrorCode:        &fieldErrorCode,
+		UserId:           &fieldUserId,
+		UserName:         &fieldUserName,
+		UserFullName:     &fieldUserFullName,
+		SourceIp:         &fieldSourceIp,
+		ExtUserId:        &fieldExtUserId,
+		ExtUserGroupId:   &fieldExtUserGroupId,
+		ExtUserGroupName: &fieldExtUserGroupName,
+		AppName:          &fieldAppName,
+		AccessType:       &fieldAccessType,
+		Category:         &fieldCategory,
+		ActivityType:     &fieldActivityType,
+		Activity:         &fieldActivity,
 	}
 }
 

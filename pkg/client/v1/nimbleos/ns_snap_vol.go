@@ -3,30 +3,31 @@
 package nimbleos
 
 // NsSnapVol - Select fields containing volume info.
-// Export NsSnapVolFields for advance operations like search filter etc.
+
+// Export NsSnapVolFields provides field names to use in filter parameters, for example.
 var NsSnapVolFields *NsSnapVolStringFields
 
 func init() {
-	VolIdfield := "vol_id"
-	SnapNamefield := "snap_name"
-	SnapDescriptionfield := "snap_description"
-	Cookiefield := "cookie"
-	Onlinefield := "online"
-	Writablefield := "writable"
-	AppUuidfield := "app_uuid"
-	AgentTypefield := "agent_type"
-	Metadatafield := "metadata"
+	fieldVolId := "vol_id"
+	fieldSnapName := "snap_name"
+	fieldSnapDescription := "snap_description"
+	fieldCookie := "cookie"
+	fieldOnline := "online"
+	fieldWritable := "writable"
+	fieldAppUuid := "app_uuid"
+	fieldAgentType := "agent_type"
+	fieldMetadata := "metadata"
 
 	NsSnapVolFields = &NsSnapVolStringFields{
-		VolId:           &VolIdfield,
-		SnapName:        &SnapNamefield,
-		SnapDescription: &SnapDescriptionfield,
-		Cookie:          &Cookiefield,
-		Online:          &Onlinefield,
-		Writable:        &Writablefield,
-		AppUuid:         &AppUuidfield,
-		AgentType:       &AgentTypefield,
-		Metadata:        &Metadatafield,
+		VolId:           &fieldVolId,
+		SnapName:        &fieldSnapName,
+		SnapDescription: &fieldSnapDescription,
+		Cookie:          &fieldCookie,
+		Online:          &fieldOnline,
+		Writable:        &fieldWritable,
+		AppUuid:         &fieldAppUuid,
+		AgentType:       &fieldAgentType,
+		Metadata:        &fieldMetadata,
 	}
 }
 

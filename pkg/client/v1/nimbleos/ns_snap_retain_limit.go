@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsSnapRetainLimit - Limit for scheduled snapshot retainment params.
-// Export NsSnapRetainLimitFields for advance operations like search filter etc.
+
+// Export NsSnapRetainLimitFields provides field names to use in filter parameters, for example.
 var NsSnapRetainLimitFields *NsSnapRetainLimitStringFields
 
 func init() {
-	ObjTypefield := "obj_type"
-	RetainLimitfield := "retain_limit"
-	RetainNumfield := "retain_num"
+	fieldObjType := "obj_type"
+	fieldRetainLimit := "retain_limit"
+	fieldRetainNum := "retain_num"
 
 	NsSnapRetainLimitFields = &NsSnapRetainLimitStringFields{
-		ObjType:     &ObjTypefield,
-		RetainLimit: &RetainLimitfield,
-		RetainNum:   &RetainNumfield,
+		ObjType:     &fieldObjType,
+		RetainLimit: &fieldRetainLimit,
+		RetainNum:   &fieldRetainNum,
 	}
 }
 

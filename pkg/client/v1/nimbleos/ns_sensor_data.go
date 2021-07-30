@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsSensorData - A list of samples (in order of sample time) for a sensor.
-// Export NsSensorDataFields for advance operations like search filter etc.
+
+// Export NsSensorDataFields provides field names to use in filter parameters, for example.
 var NsSensorDataFields *NsSensorDataStringFields
 
 func init() {
-	Sensorfield := "sensor"
-	Samplesfield := "samples"
+	fieldSensor := "sensor"
+	fieldSamples := "samples"
 
 	NsSensorDataFields = &NsSensorDataStringFields{
-		Sensor:  &Sensorfield,
-		Samples: &Samplesfield,
+		Sensor:  &fieldSensor,
+		Samples: &fieldSamples,
 	}
 }
 

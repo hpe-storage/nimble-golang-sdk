@@ -3,24 +3,25 @@
 package nimbleos
 
 // Dna - Get list of DNAs.
-// Export DnaFields for advance operations like search filter etc.
+
+// Export DnaFields provides field names to use in filter parameters, for example.
 var DnaFields *DnaStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayNamefield := "array_name"
-	CreationTimefield := "creation_time"
-	FileSizefield := "file_size"
-	DnaNamefield := "dna_name"
-	ControllerNamefield := "controller_name"
+	fieldID := "id"
+	fieldArrayName := "array_name"
+	fieldCreationTime := "creation_time"
+	fieldFileSize := "file_size"
+	fieldDnaName := "dna_name"
+	fieldControllerName := "controller_name"
 
 	DnaFields = &DnaStringFields{
-		ID:             &IDfield,
-		ArrayName:      &ArrayNamefield,
-		CreationTime:   &CreationTimefield,
-		FileSize:       &FileSizefield,
-		DnaName:        &DnaNamefield,
-		ControllerName: &ControllerNamefield,
+		ID:             &fieldID,
+		ArrayName:      &fieldArrayName,
+		CreationTime:   &fieldCreationTime,
+		FileSize:       &fieldFileSize,
+		DnaName:        &fieldDnaName,
+		ControllerName: &fieldControllerName,
 	}
 }
 

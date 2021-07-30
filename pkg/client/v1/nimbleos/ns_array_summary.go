@@ -3,20 +3,21 @@
 package nimbleos
 
 // NsArraySummary - Array summary information.
-// Export NsArraySummaryFields for advance operations like search filter etc.
+
+// Export NsArraySummaryFields provides field names to use in filter parameters, for example.
 var NsArraySummaryFields *NsArraySummaryStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayIdfield := "array_id"
-	Namefield := "name"
-	ArrayNamefield := "array_name"
+	fieldID := "id"
+	fieldArrayId := "array_id"
+	fieldName := "name"
+	fieldArrayName := "array_name"
 
 	NsArraySummaryFields = &NsArraySummaryStringFields{
-		ID:        &IDfield,
-		ArrayId:   &ArrayIdfield,
-		Name:      &Namefield,
-		ArrayName: &ArrayNamefield,
+		ID:        &fieldID,
+		ArrayId:   &fieldArrayId,
+		Name:      &fieldName,
+		ArrayName: &fieldArrayName,
 	}
 }
 

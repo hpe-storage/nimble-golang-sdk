@@ -3,34 +3,35 @@
 package nimbleos
 
 // ApplicationServer - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
-// Export ApplicationServerFields for advance operations like search filter etc.
+
+// Export ApplicationServerFields provides field names to use in filter parameters, for example.
 var ApplicationServerFields *ApplicationServerStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Hostnamefield := "hostname"
-	Portfield := "port"
-	Usernamefield := "username"
-	Descriptionfield := "description"
-	Passwordfield := "password"
-	ServerTypefield := "server_type"
-	Metadatafield := "metadata"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
+	fieldID := "id"
+	fieldName := "name"
+	fieldHostname := "hostname"
+	fieldPort := "port"
+	fieldUsername := "username"
+	fieldDescription := "description"
+	fieldPassword := "password"
+	fieldServerType := "server_type"
+	fieldMetadata := "metadata"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
 
 	ApplicationServerFields = &ApplicationServerStringFields{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		Hostname:     &Hostnamefield,
-		Port:         &Portfield,
-		Username:     &Usernamefield,
-		Description:  &Descriptionfield,
-		Password:     &Passwordfield,
-		ServerType:   &ServerTypefield,
-		Metadata:     &Metadatafield,
-		CreationTime: &CreationTimefield,
-		LastModified: &LastModifiedfield,
+		ID:           &fieldID,
+		Name:         &fieldName,
+		Hostname:     &fieldHostname,
+		Port:         &fieldPort,
+		Username:     &fieldUsername,
+		Description:  &fieldDescription,
+		Password:     &fieldPassword,
+		ServerType:   &fieldServerType,
+		Metadata:     &fieldMetadata,
+		CreationTime: &fieldCreationTime,
+		LastModified: &fieldLastModified,
 	}
 }
 

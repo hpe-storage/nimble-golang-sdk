@@ -3,34 +3,35 @@
 package nimbleos
 
 // FolderSet - Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
-// Export FolderSetFields for advance operations like search filter etc.
+
+// Export FolderSetFields provides field names to use in filter parameters, for example.
 var FolderSetFields *FolderSetStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	AppUuidfield := "app_uuid"
-	FolderListfield := "folder_list"
-	AppserverIdfield := "appserver_id"
-	AppserverNamefield := "appserver_name"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldAppUuid := "app_uuid"
+	fieldFolderList := "folder_list"
+	fieldAppserverId := "appserver_id"
+	fieldAppserverName := "appserver_name"
 
 	FolderSetFields = &FolderSetStringFields{
-		ID:            &IDfield,
-		Name:          &Namefield,
-		FullName:      &FullNamefield,
-		SearchName:    &SearchNamefield,
-		Description:   &Descriptionfield,
-		CreationTime:  &CreationTimefield,
-		LastModified:  &LastModifiedfield,
-		AppUuid:       &AppUuidfield,
-		FolderList:    &FolderListfield,
-		AppserverId:   &AppserverIdfield,
-		AppserverName: &AppserverNamefield,
+		ID:            &fieldID,
+		Name:          &fieldName,
+		FullName:      &fieldFullName,
+		SearchName:    &fieldSearchName,
+		Description:   &fieldDescription,
+		CreationTime:  &fieldCreationTime,
+		LastModified:  &fieldLastModified,
+		AppUuid:       &fieldAppUuid,
+		FolderList:    &fieldFolderList,
+		AppserverId:   &fieldAppserverId,
+		AppserverName: &fieldAppserverName,
 	}
 }
 

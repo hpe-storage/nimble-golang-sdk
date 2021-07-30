@@ -3,50 +3,51 @@
 package nimbleos
 
 // PerformancePolicy - Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
-// Export PerformancePolicyFields for advance operations like search filter etc.
+
+// Export PerformancePolicyFields provides field names to use in filter parameters, for example.
 var PerformancePolicyFields *PerformancePolicyStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	BlockSizefield := "block_size"
-	Compressfield := "compress"
-	Cachefield := "cache"
-	CachePolicyfield := "cache_policy"
-	SpacePolicyfield := "space_policy"
-	AppCategoryfield := "app_category"
-	DedupeEnabledfield := "dedupe_enabled"
-	Deprecatedfield := "deprecated"
-	Predefinedfield := "predefined"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	SampleRatefield := "sample_rate"
-	VolumeCountfield := "volume_count"
-	DedupeOverridePoolsfield := "dedupe_override_pools"
+	fieldID := "id"
+	fieldName := "name"
+	fieldFullName := "full_name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldBlockSize := "block_size"
+	fieldCompress := "compress"
+	fieldCache := "cache"
+	fieldCachePolicy := "cache_policy"
+	fieldSpacePolicy := "space_policy"
+	fieldAppCategory := "app_category"
+	fieldDedupeEnabled := "dedupe_enabled"
+	fieldDeprecated := "deprecated"
+	fieldPredefined := "predefined"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldSampleRate := "sample_rate"
+	fieldVolumeCount := "volume_count"
+	fieldDedupeOverridePools := "dedupe_override_pools"
 
 	PerformancePolicyFields = &PerformancePolicyStringFields{
-		ID:                  &IDfield,
-		Name:                &Namefield,
-		FullName:            &FullNamefield,
-		SearchName:          &SearchNamefield,
-		Description:         &Descriptionfield,
-		BlockSize:           &BlockSizefield,
-		Compress:            &Compressfield,
-		Cache:               &Cachefield,
-		CachePolicy:         &CachePolicyfield,
-		SpacePolicy:         &SpacePolicyfield,
-		AppCategory:         &AppCategoryfield,
-		DedupeEnabled:       &DedupeEnabledfield,
-		Deprecated:          &Deprecatedfield,
-		Predefined:          &Predefinedfield,
-		CreationTime:        &CreationTimefield,
-		LastModified:        &LastModifiedfield,
-		SampleRate:          &SampleRatefield,
-		VolumeCount:         &VolumeCountfield,
-		DedupeOverridePools: &DedupeOverridePoolsfield,
+		ID:                  &fieldID,
+		Name:                &fieldName,
+		FullName:            &fieldFullName,
+		SearchName:          &fieldSearchName,
+		Description:         &fieldDescription,
+		BlockSize:           &fieldBlockSize,
+		Compress:            &fieldCompress,
+		Cache:               &fieldCache,
+		CachePolicy:         &fieldCachePolicy,
+		SpacePolicy:         &fieldSpacePolicy,
+		AppCategory:         &fieldAppCategory,
+		DedupeEnabled:       &fieldDedupeEnabled,
+		Deprecated:          &fieldDeprecated,
+		Predefined:          &fieldPredefined,
+		CreationTime:        &fieldCreationTime,
+		LastModified:        &fieldLastModified,
+		SampleRate:          &fieldSampleRate,
+		VolumeCount:         &fieldVolumeCount,
+		DedupeOverridePools: &fieldDedupeOverridePools,
 	}
 }
 

@@ -3,48 +3,49 @@
 package nimbleos
 
 // Certificate - Manage certificates used by SSL/TLS.
-// Export CertificateFields for advance operations like search filter etc.
+
+// Export CertificateFields provides field names to use in filter parameters, for example.
 var CertificateFields *CertificateStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Subjectfield := "subject"
-	Dnslistfield := "dnslist"
-	Iplistfield := "iplist"
-	CertListfield := "cert_list"
-	Csrfield := "csr"
-	ValidDaysfield := "valid_days"
-	Inputfield := "input"
-	Passwordfield := "password"
-	Httpsfield := "https"
-	Apisfield := "apis"
-	Forcefield := "force"
-	Checkfield := "check"
-	Pkcs12field := "pkcs12"
-	Trustedfield := "trusted"
-	ReloadHttpsfield := "reload_https"
-	ReloadApisfield := "reload_apis"
+	fieldID := "id"
+	fieldName := "name"
+	fieldSubject := "subject"
+	fieldDnslist := "dnslist"
+	fieldIplist := "iplist"
+	fieldCertList := "cert_list"
+	fieldCsr := "csr"
+	fieldValidDays := "valid_days"
+	fieldInput := "input"
+	fieldPassword := "password"
+	fieldHttps := "https"
+	fieldApis := "apis"
+	fieldForce := "force"
+	fieldCheck := "check"
+	fieldPkcs12 := "pkcs12"
+	fieldTrusted := "trusted"
+	fieldReloadHttps := "reload_https"
+	fieldReloadApis := "reload_apis"
 
 	CertificateFields = &CertificateStringFields{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Subject:     &Subjectfield,
-		Dnslist:     &Dnslistfield,
-		Iplist:      &Iplistfield,
-		CertList:    &CertListfield,
-		Csr:         &Csrfield,
-		ValidDays:   &ValidDaysfield,
-		Input:       &Inputfield,
-		Password:    &Passwordfield,
-		Https:       &Httpsfield,
-		Apis:        &Apisfield,
-		Force:       &Forcefield,
-		Check:       &Checkfield,
-		Pkcs12:      &Pkcs12field,
-		Trusted:     &Trustedfield,
-		ReloadHttps: &ReloadHttpsfield,
-		ReloadApis:  &ReloadApisfield,
+		ID:          &fieldID,
+		Name:        &fieldName,
+		Subject:     &fieldSubject,
+		Dnslist:     &fieldDnslist,
+		Iplist:      &fieldIplist,
+		CertList:    &fieldCertList,
+		Csr:         &fieldCsr,
+		ValidDays:   &fieldValidDays,
+		Input:       &fieldInput,
+		Password:    &fieldPassword,
+		Https:       &fieldHttps,
+		Apis:        &fieldApis,
+		Force:       &fieldForce,
+		Check:       &fieldCheck,
+		Pkcs12:      &fieldPkcs12,
+		Trusted:     &fieldTrusted,
+		ReloadHttps: &fieldReloadHttps,
+		ReloadApis:  &fieldReloadApis,
 	}
 }
 

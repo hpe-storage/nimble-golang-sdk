@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsAlarmCount - List of alarm count for each category.
-// Export NsAlarmCountFields for advance operations like search filter etc.
+
+// Export NsAlarmCountFields provides field names to use in filter parameters, for example.
 var NsAlarmCountFields *NsAlarmCountStringFields
 
 func init() {
-	Categoryfield := "category"
-	Criticalfield := "critical"
-	Warningfield := "warning"
+	fieldCategory := "category"
+	fieldCritical := "critical"
+	fieldWarning := "warning"
 
 	NsAlarmCountFields = &NsAlarmCountStringFields{
-		Category: &Categoryfield,
-		Critical: &Criticalfield,
-		Warning:  &Warningfield,
+		Category: &fieldCategory,
+		Critical: &fieldCritical,
+		Warning:  &fieldWarning,
 	}
 }
 

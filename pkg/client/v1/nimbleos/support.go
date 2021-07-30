@@ -3,20 +3,21 @@
 package nimbleos
 
 // Support - View and alter support-based parameters.
-// Export SupportFields for advance operations like search filter etc.
+
+// Export SupportFields provides field names to use in filter parameters, for example.
 var SupportFields *SupportStringFields
 
 func init() {
-	IDfield := "id"
-	PasswordModefield := "password_mode"
-	ArrayCountfield := "array_count"
-	ArrayListfield := "array_list"
+	fieldID := "id"
+	fieldPasswordMode := "password_mode"
+	fieldArrayCount := "array_count"
+	fieldArrayList := "array_list"
 
 	SupportFields = &SupportStringFields{
-		ID:           &IDfield,
-		PasswordMode: &PasswordModefield,
-		ArrayCount:   &ArrayCountfield,
-		ArrayList:    &ArrayListfield,
+		ID:           &fieldID,
+		PasswordMode: &fieldPasswordMode,
+		ArrayCount:   &fieldArrayCount,
+		ArrayList:    &fieldArrayList,
 	}
 }
 

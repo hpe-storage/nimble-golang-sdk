@@ -3,56 +3,57 @@
 package nimbleos
 
 // User - Represents users configured to manage the system.
-// Export UserFields for advance operations like search filter etc.
+
+// Export UserFields provides field names to use in filter parameters, for example.
 var UserFields *UserStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	RoleIdfield := "role_id"
-	Rolefield := "role"
-	Passwordfield := "password"
-	AuthPasswordfield := "auth_password"
-	OtpTypefield := "otp_type"
-	OtpResetfield := "otp_reset"
-	InactivityTimeoutfield := "inactivity_timeout"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
-	FullNamefield := "full_name"
-	EmailAddrfield := "email_addr"
-	TenantIdfield := "tenant_id"
-	TenantKeyfield := "tenant_key"
-	Disabledfield := "disabled"
-	AuthLockfield := "auth_lock"
-	LastLoginfield := "last_login"
-	LastLogoutfield := "last_logout"
-	LoggedInfield := "logged_in"
+	fieldID := "id"
+	fieldName := "name"
+	fieldSearchName := "search_name"
+	fieldDescription := "description"
+	fieldRoleId := "role_id"
+	fieldRole := "role"
+	fieldPassword := "password"
+	fieldAuthPassword := "auth_password"
+	fieldOtpType := "otp_type"
+	fieldOtpReset := "otp_reset"
+	fieldInactivityTimeout := "inactivity_timeout"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
+	fieldFullName := "full_name"
+	fieldEmailAddr := "email_addr"
+	fieldTenantId := "tenant_id"
+	fieldTenantKey := "tenant_key"
+	fieldDisabled := "disabled"
+	fieldAuthLock := "auth_lock"
+	fieldLastLogin := "last_login"
+	fieldLastLogout := "last_logout"
+	fieldLoggedIn := "logged_in"
 
 	UserFields = &UserStringFields{
-		ID:                &IDfield,
-		Name:              &Namefield,
-		SearchName:        &SearchNamefield,
-		Description:       &Descriptionfield,
-		RoleId:            &RoleIdfield,
-		Role:              &Rolefield,
-		Password:          &Passwordfield,
-		AuthPassword:      &AuthPasswordfield,
-		OtpType:           &OtpTypefield,
-		OtpReset:          &OtpResetfield,
-		InactivityTimeout: &InactivityTimeoutfield,
-		CreationTime:      &CreationTimefield,
-		LastModified:      &LastModifiedfield,
-		FullName:          &FullNamefield,
-		EmailAddr:         &EmailAddrfield,
-		TenantId:          &TenantIdfield,
-		TenantKey:         &TenantKeyfield,
-		Disabled:          &Disabledfield,
-		AuthLock:          &AuthLockfield,
-		LastLogin:         &LastLoginfield,
-		LastLogout:        &LastLogoutfield,
-		LoggedIn:          &LoggedInfield,
+		ID:                &fieldID,
+		Name:              &fieldName,
+		SearchName:        &fieldSearchName,
+		Description:       &fieldDescription,
+		RoleId:            &fieldRoleId,
+		Role:              &fieldRole,
+		Password:          &fieldPassword,
+		AuthPassword:      &fieldAuthPassword,
+		OtpType:           &fieldOtpType,
+		OtpReset:          &fieldOtpReset,
+		InactivityTimeout: &fieldInactivityTimeout,
+		CreationTime:      &fieldCreationTime,
+		LastModified:      &fieldLastModified,
+		FullName:          &fieldFullName,
+		EmailAddr:         &fieldEmailAddr,
+		TenantId:          &fieldTenantId,
+		TenantKey:         &fieldTenantKey,
+		Disabled:          &fieldDisabled,
+		AuthLock:          &fieldAuthLock,
+		LastLogin:         &fieldLastLogin,
+		LastLogout:        &fieldLastLogout,
+		LoggedIn:          &fieldLoggedIn,
 	}
 }
 

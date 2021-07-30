@@ -3,24 +3,25 @@
 package nimbleos
 
 // NsEncryptionSettings - Group encryption settings.
-// Export NsEncryptionSettingsFields for advance operations like search filter etc.
+
+// Export NsEncryptionSettingsFields provides field names to use in filter parameters, for example.
 var NsEncryptionSettingsFields *NsEncryptionSettingsStringFields
 
 func init() {
-	MasterKeySetfield := "master_key_set"
-	Modefield := "mode"
-	Scopefield := "scope"
-	Cipherfield := "cipher"
-	EncryptionActivefield := "encryption_active"
-	EncryptionKeyManagerfield := "encryption_key_manager"
+	fieldMasterKeySet := "master_key_set"
+	fieldMode := "mode"
+	fieldScope := "scope"
+	fieldCipher := "cipher"
+	fieldEncryptionActive := "encryption_active"
+	fieldEncryptionKeyManager := "encryption_key_manager"
 
 	NsEncryptionSettingsFields = &NsEncryptionSettingsStringFields{
-		MasterKeySet:         &MasterKeySetfield,
-		Mode:                 &Modefield,
-		Scope:                &Scopefield,
-		Cipher:               &Cipherfield,
-		EncryptionActive:     &EncryptionActivefield,
-		EncryptionKeyManager: &EncryptionKeyManagerfield,
+		MasterKeySet:         &fieldMasterKeySet,
+		Mode:                 &fieldMode,
+		Scope:                &fieldScope,
+		Cipher:               &fieldCipher,
+		EncryptionActive:     &fieldEncryptionActive,
+		EncryptionKeyManager: &fieldEncryptionKeyManager,
 	}
 }
 

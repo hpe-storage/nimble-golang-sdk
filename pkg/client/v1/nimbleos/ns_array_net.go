@@ -3,22 +3,23 @@
 package nimbleos
 
 // NsArrayNet - Array network config.
-// Export NsArrayNetFields for advance operations like search filter etc.
+
+// Export NsArrayNetFields provides field names to use in filter parameters, for example.
 var NsArrayNetFields *NsArrayNetStringFields
 
 func init() {
-	Namefield := "name"
-	MemberGidfield := "member_gid"
-	CtrlrASupportIpfield := "ctrlr_a_support_ip"
-	CtrlrBSupportIpfield := "ctrlr_b_support_ip"
-	NicListfield := "nic_list"
+	fieldName := "name"
+	fieldMemberGid := "member_gid"
+	fieldCtrlrASupportIp := "ctrlr_a_support_ip"
+	fieldCtrlrBSupportIp := "ctrlr_b_support_ip"
+	fieldNicList := "nic_list"
 
 	NsArrayNetFields = &NsArrayNetStringFields{
-		Name:            &Namefield,
-		MemberGid:       &MemberGidfield,
-		CtrlrASupportIp: &CtrlrASupportIpfield,
-		CtrlrBSupportIp: &CtrlrBSupportIpfield,
-		NicList:         &NicListfield,
+		Name:            &fieldName,
+		MemberGid:       &fieldMemberGid,
+		CtrlrASupportIp: &fieldCtrlrASupportIp,
+		CtrlrBSupportIp: &fieldCtrlrBSupportIp,
+		NicList:         &fieldNicList,
 	}
 }
 

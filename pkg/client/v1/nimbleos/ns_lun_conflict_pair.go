@@ -3,34 +3,35 @@
 package nimbleos
 
 // NsLunConflictPair - LUN number conflict.
-// Export NsLunConflictPairFields for advance operations like search filter etc.
+
+// Export NsLunConflictPairFields provides field names to use in filter parameters, for example.
 var NsLunConflictPairFields *NsLunConflictPairStringFields
 
 func init() {
-	InitiatorWwpnfield := "initiator_wwpn"
-	InitiatorAliasfield := "initiator_alias"
-	DstIgrpNamefield := "dst_igrp_name"
-	DstVolNamefield := "dst_vol_name"
-	DstSnapNamefield := "dst_snap_name"
-	DstPeNamefield := "dst_pe_name"
-	DstLunfield := "dst_lun"
-	SrcIgrpNamefield := "src_igrp_name"
-	SrcVolNamefield := "src_vol_name"
-	SrcSnapNamefield := "src_snap_name"
-	SrcLunfield := "src_lun"
+	fieldInitiatorWwpn := "initiator_wwpn"
+	fieldInitiatorAlias := "initiator_alias"
+	fieldDstIgrpName := "dst_igrp_name"
+	fieldDstVolName := "dst_vol_name"
+	fieldDstSnapName := "dst_snap_name"
+	fieldDstPeName := "dst_pe_name"
+	fieldDstLun := "dst_lun"
+	fieldSrcIgrpName := "src_igrp_name"
+	fieldSrcVolName := "src_vol_name"
+	fieldSrcSnapName := "src_snap_name"
+	fieldSrcLun := "src_lun"
 
 	NsLunConflictPairFields = &NsLunConflictPairStringFields{
-		InitiatorWwpn:  &InitiatorWwpnfield,
-		InitiatorAlias: &InitiatorAliasfield,
-		DstIgrpName:    &DstIgrpNamefield,
-		DstVolName:     &DstVolNamefield,
-		DstSnapName:    &DstSnapNamefield,
-		DstPeName:      &DstPeNamefield,
-		DstLun:         &DstLunfield,
-		SrcIgrpName:    &SrcIgrpNamefield,
-		SrcVolName:     &SrcVolNamefield,
-		SrcSnapName:    &SrcSnapNamefield,
-		SrcLun:         &SrcLunfield,
+		InitiatorWwpn:  &fieldInitiatorWwpn,
+		InitiatorAlias: &fieldInitiatorAlias,
+		DstIgrpName:    &fieldDstIgrpName,
+		DstVolName:     &fieldDstVolName,
+		DstSnapName:    &fieldDstSnapName,
+		DstPeName:      &fieldDstPeName,
+		DstLun:         &fieldDstLun,
+		SrcIgrpName:    &fieldSrcIgrpName,
+		SrcVolName:     &fieldSrcVolName,
+		SrcSnapName:    &fieldSrcSnapName,
+		SrcLun:         &fieldSrcLun,
 	}
 }
 

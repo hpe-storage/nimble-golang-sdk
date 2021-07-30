@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsObjectWithID - An object with an ID.
-// Export NsObjectWithIDFields for advance operations like search filter etc.
+
+// Export NsObjectWithIDFields provides field names to use in filter parameters, for example.
 var NsObjectWithIDFields *NsObjectWithIDStringFields
 
 func init() {
-	IDfield := "id"
+	fieldID := "id"
 
 	NsObjectWithIDFields = &NsObjectWithIDStringFields{
-		ID: &IDfield,
+		ID: &fieldID,
 	}
 }
 

@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsAuthenticateChapUserReturn - Response of chap user authentication.
-// Export NsAuthenticateChapUserReturnFields for advance operations like search filter etc.
+
+// Export NsAuthenticateChapUserReturnFields provides field names to use in filter parameters, for example.
 var NsAuthenticateChapUserReturnFields *NsAuthenticateChapUserReturnStringFields
 
 func init() {
-	IsValidfield := "is_valid"
+	fieldIsValid := "is_valid"
 
 	NsAuthenticateChapUserReturnFields = &NsAuthenticateChapUserReturnStringFields{
-		IsValid: &IsValidfield,
+		IsValid: &fieldIsValid,
 	}
 }
 

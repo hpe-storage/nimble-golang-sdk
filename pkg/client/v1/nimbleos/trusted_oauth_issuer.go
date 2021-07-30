@@ -3,20 +3,21 @@
 package nimbleos
 
 // TrustedOauthIssuer - Oauth Credential Issuers that this device will trust.
-// Export TrustedOauthIssuerFields for advance operations like search filter etc.
+
+// Export TrustedOauthIssuerFields provides field names to use in filter parameters, for example.
 var TrustedOauthIssuerFields *TrustedOauthIssuerStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	JwksUrlfield := "jwks_url"
-	KeySetfield := "key_set"
+	fieldID := "id"
+	fieldName := "name"
+	fieldJwksUrl := "jwks_url"
+	fieldKeySet := "key_set"
 
 	TrustedOauthIssuerFields = &TrustedOauthIssuerStringFields{
-		ID:      &IDfield,
-		Name:    &Namefield,
-		JwksUrl: &JwksUrlfield,
-		KeySet:  &KeySetfield,
+		ID:      &fieldID,
+		Name:    &fieldName,
+		JwksUrl: &fieldJwksUrl,
+		KeySet:  &fieldKeySet,
 	}
 }
 

@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsChksumReturn - Return computed checksum.
-// Export NsChksumReturnFields for advance operations like search filter etc.
+
+// Export NsChksumReturnFields provides field names to use in filter parameters, for example.
 var NsChksumReturnFields *NsChksumReturnStringFields
 
 func init() {
-	Cksumfield := "cksum"
+	fieldCksum := "cksum"
 
 	NsChksumReturnFields = &NsChksumReturnStringFields{
-		Cksum: &Cksumfield,
+		Cksum: &fieldCksum,
 	}
 }
 

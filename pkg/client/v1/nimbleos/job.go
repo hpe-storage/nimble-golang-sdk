@@ -3,48 +3,49 @@
 package nimbleos
 
 // Job - Jobs are operations in progress in the system.
-// Export JobFields for advance operations like search filter etc.
+
+// Export JobFields provides field names to use in filter parameters, for example.
 var JobFields *JobStringFields
 
 func init() {
-	CompletionTimefield := "completion_time"
-	CreationTimefield := "creation_time"
-	CurrentPhasefield := "current_phase"
-	CurrentPhaseDescriptionfield := "current_phase_description"
-	Descriptionfield := "description"
-	IDfield := "id"
-	Namefield := "name"
-	LastModifiedfield := "last_modified"
-	ObjectIdfield := "object_id"
-	OpTypefield := "op_type"
-	Typefield := "type"
-	ParentJobIdfield := "parent_job_id"
-	PercentCompletefield := "percent_complete"
-	Requestfield := "request"
-	Responsefield := "response"
-	Statefield := "state"
-	Resultfield := "result"
-	TotalPhasesfield := "total_phases"
+	fieldCompletionTime := "completion_time"
+	fieldCreationTime := "creation_time"
+	fieldCurrentPhase := "current_phase"
+	fieldCurrentPhaseDescription := "current_phase_description"
+	fieldDescription := "description"
+	fieldID := "id"
+	fieldName := "name"
+	fieldLastModified := "last_modified"
+	fieldObjectId := "object_id"
+	fieldOpType := "op_type"
+	fieldType := "type"
+	fieldParentJobId := "parent_job_id"
+	fieldPercentComplete := "percent_complete"
+	fieldRequest := "request"
+	fieldResponse := "response"
+	fieldState := "state"
+	fieldResult := "result"
+	fieldTotalPhases := "total_phases"
 
 	JobFields = &JobStringFields{
-		CompletionTime:          &CompletionTimefield,
-		CreationTime:            &CreationTimefield,
-		CurrentPhase:            &CurrentPhasefield,
-		CurrentPhaseDescription: &CurrentPhaseDescriptionfield,
-		Description:             &Descriptionfield,
-		ID:                      &IDfield,
-		Name:                    &Namefield,
-		LastModified:            &LastModifiedfield,
-		ObjectId:                &ObjectIdfield,
-		OpType:                  &OpTypefield,
-		Type:                    &Typefield,
-		ParentJobId:             &ParentJobIdfield,
-		PercentComplete:         &PercentCompletefield,
-		Request:                 &Requestfield,
-		Response:                &Responsefield,
-		State:                   &Statefield,
-		Result:                  &Resultfield,
-		TotalPhases:             &TotalPhasesfield,
+		CompletionTime:          &fieldCompletionTime,
+		CreationTime:            &fieldCreationTime,
+		CurrentPhase:            &fieldCurrentPhase,
+		CurrentPhaseDescription: &fieldCurrentPhaseDescription,
+		Description:             &fieldDescription,
+		ID:                      &fieldID,
+		Name:                    &fieldName,
+		LastModified:            &fieldLastModified,
+		ObjectId:                &fieldObjectId,
+		OpType:                  &fieldOpType,
+		Type:                    &fieldType,
+		ParentJobId:             &fieldParentJobId,
+		PercentComplete:         &fieldPercentComplete,
+		Request:                 &fieldRequest,
+		Response:                &fieldResponse,
+		State:                   &fieldState,
+		Result:                  &fieldResult,
+		TotalPhases:             &fieldTotalPhases,
 	}
 }
 

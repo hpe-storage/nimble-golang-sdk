@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsTargetSubnet - List of subnet labels.
-// Export NsTargetSubnetFields for advance operations like search filter etc.
+
+// Export NsTargetSubnetFields provides field names to use in filter parameters, for example.
 var NsTargetSubnetFields *NsTargetSubnetStringFields
 
 func init() {
-	IDfield := "id"
-	Labelfield := "label"
+	fieldID := "id"
+	fieldLabel := "label"
 
 	NsTargetSubnetFields = &NsTargetSubnetStringFields{
-		ID:    &IDfield,
-		Label: &Labelfield,
+		ID:    &fieldID,
+		Label: &fieldLabel,
 	}
 }
 

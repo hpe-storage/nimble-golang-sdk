@@ -3,32 +3,33 @@
 package nimbleos
 
 // HcClusterConfig - Configuration information for virtual appliance that provides highly available storage and compute.
-// Export HcClusterConfigFields for advance operations like search filter etc.
+
+// Export HcClusterConfigFields provides field names to use in filter parameters, for example.
 var HcClusterConfigFields *HcClusterConfigStringFields
 
 func init() {
-	IDfield := "id"
-	UniqueIdfield := "unique_id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	Usernamefield := "username"
-	Passwordfield := "password"
-	Typefield := "type"
-	Metadatafield := "metadata"
-	CreationTimefield := "creation_time"
-	LastModifiedfield := "last_modified"
+	fieldID := "id"
+	fieldUniqueId := "unique_id"
+	fieldName := "name"
+	fieldDescription := "description"
+	fieldUsername := "username"
+	fieldPassword := "password"
+	fieldType := "type"
+	fieldMetadata := "metadata"
+	fieldCreationTime := "creation_time"
+	fieldLastModified := "last_modified"
 
 	HcClusterConfigFields = &HcClusterConfigStringFields{
-		ID:           &IDfield,
-		UniqueId:     &UniqueIdfield,
-		Name:         &Namefield,
-		Description:  &Descriptionfield,
-		Username:     &Usernamefield,
-		Password:     &Passwordfield,
-		Type:         &Typefield,
-		Metadata:     &Metadatafield,
-		CreationTime: &CreationTimefield,
-		LastModified: &LastModifiedfield,
+		ID:           &fieldID,
+		UniqueId:     &fieldUniqueId,
+		Name:         &fieldName,
+		Description:  &fieldDescription,
+		Username:     &fieldUsername,
+		Password:     &fieldPassword,
+		Type:         &fieldType,
+		Metadata:     &fieldMetadata,
+		CreationTime: &fieldCreationTime,
+		LastModified: &fieldLastModified,
 	}
 }
 

@@ -3,16 +3,17 @@
 package nimbleos
 
 // NsPrivilege - Privilege info.
-// Export NsPrivilegeFields for advance operations like search filter etc.
+
+// Export NsPrivilegeFields provides field names to use in filter parameters, for example.
 var NsPrivilegeFields *NsPrivilegeStringFields
 
 func init() {
-	ObjectTypefield := "object_type"
-	Operationsfield := "operations"
+	fieldObjectType := "object_type"
+	fieldOperations := "operations"
 
 	NsPrivilegeFields = &NsPrivilegeStringFields{
-		ObjectType: &ObjectTypefield,
-		Operations: &Operationsfield,
+		ObjectType: &fieldObjectType,
+		Operations: &fieldOperations,
 	}
 }
 

@@ -3,28 +3,29 @@
 package nimbleos
 
 // NsArrayAsupDetail - Detailed array asup information.
-// Export NsArrayAsupDetailFields for advance operations like search filter etc.
+
+// Export NsArrayAsupDetailFields provides field names to use in filter parameters, for example.
 var NsArrayAsupDetailFields *NsArrayAsupDetailStringFields
 
 func init() {
-	ArrayNamefield := "array_name"
-	AsupValidatefield := "asup_validate"
-	NameResolutionfield := "name_resolution"
-	PingfromMgmtipfield := "pingfrom_mgmtip"
-	PingfromCtrlrafield := "pingfrom_ctrlra"
-	PingfromCtrlrbfield := "pingfrom_ctrlrb"
-	Heartbeatfield := "heartbeat"
-	Messagesfield := "messages"
+	fieldArrayName := "array_name"
+	fieldAsupValidate := "asup_validate"
+	fieldNameResolution := "name_resolution"
+	fieldPingfromMgmtip := "pingfrom_mgmtip"
+	fieldPingfromCtrlra := "pingfrom_ctrlra"
+	fieldPingfromCtrlrb := "pingfrom_ctrlrb"
+	fieldHeartbeat := "heartbeat"
+	fieldMessages := "messages"
 
 	NsArrayAsupDetailFields = &NsArrayAsupDetailStringFields{
-		ArrayName:      &ArrayNamefield,
-		AsupValidate:   &AsupValidatefield,
-		NameResolution: &NameResolutionfield,
-		PingfromMgmtip: &PingfromMgmtipfield,
-		PingfromCtrlra: &PingfromCtrlrafield,
-		PingfromCtrlrb: &PingfromCtrlrbfield,
-		Heartbeat:      &Heartbeatfield,
-		Messages:       &Messagesfield,
+		ArrayName:      &fieldArrayName,
+		AsupValidate:   &fieldAsupValidate,
+		NameResolution: &fieldNameResolution,
+		PingfromMgmtip: &fieldPingfromMgmtip,
+		PingfromCtrlra: &fieldPingfromCtrlra,
+		PingfromCtrlrb: &fieldPingfromCtrlrb,
+		Heartbeat:      &fieldHeartbeat,
+		Messages:       &fieldMessages,
 	}
 }
 

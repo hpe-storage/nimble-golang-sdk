@@ -3,14 +3,15 @@
 package nimbleos
 
 // NsBulkVolSettingReturn - Return codes for setting an attribute to a list of items.
-// Export NsBulkVolSettingReturnFields for advance operations like search filter etc.
+
+// Export NsBulkVolSettingReturnFields provides field names to use in filter parameters, for example.
 var NsBulkVolSettingReturnFields *NsBulkVolSettingReturnStringFields
 
 func init() {
-	ErrorCodesfield := "error_codes"
+	fieldErrorCodes := "error_codes"
 
 	NsBulkVolSettingReturnFields = &NsBulkVolSettingReturnStringFields{
-		ErrorCodes: &ErrorCodesfield,
+		ErrorCodes: &fieldErrorCodes,
 	}
 }
 

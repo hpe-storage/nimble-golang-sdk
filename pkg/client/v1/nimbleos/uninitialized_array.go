@@ -3,34 +3,35 @@
 package nimbleos
 
 // UninitializedArray - Lists discovered arrays that are not members of any group and are in the same subnet.
-// Export UninitializedArrayFields for advance operations like search filter etc.
+
+// Export UninitializedArrayFields provides field names to use in filter parameters, for example.
 var UninitializedArrayFields *UninitializedArrayStringFields
 
 func init() {
-	IDfield := "id"
-	Serialfield := "serial"
-	ArrayNamefield := "array_name"
-	Modelfield := "model"
-	ModelStrfield := "model_str"
-	Versionfield := "version"
-	IpAddressfield := "ip_address"
-	ZconfIpaddrsfield := "zconf_ipaddrs"
-	CountOfFcPortsfield := "count_of_fc_ports"
-	AllFlashfield := "all_flash"
-	DedupeConfigurablefield := "dedupe_configurable"
+	fieldID := "id"
+	fieldSerial := "serial"
+	fieldArrayName := "array_name"
+	fieldModel := "model"
+	fieldModelStr := "model_str"
+	fieldVersion := "version"
+	fieldIpAddress := "ip_address"
+	fieldZconfIpaddrs := "zconf_ipaddrs"
+	fieldCountOfFcPorts := "count_of_fc_ports"
+	fieldAllFlash := "all_flash"
+	fieldDedupeConfigurable := "dedupe_configurable"
 
 	UninitializedArrayFields = &UninitializedArrayStringFields{
-		ID:                 &IDfield,
-		Serial:             &Serialfield,
-		ArrayName:          &ArrayNamefield,
-		Model:              &Modelfield,
-		ModelStr:           &ModelStrfield,
-		Version:            &Versionfield,
-		IpAddress:          &IpAddressfield,
-		ZconfIpaddrs:       &ZconfIpaddrsfield,
-		CountOfFcPorts:     &CountOfFcPortsfield,
-		AllFlash:           &AllFlashfield,
-		DedupeConfigurable: &DedupeConfigurablefield,
+		ID:                 &fieldID,
+		Serial:             &fieldSerial,
+		ArrayName:          &fieldArrayName,
+		Model:              &fieldModel,
+		ModelStr:           &fieldModelStr,
+		Version:            &fieldVersion,
+		IpAddress:          &fieldIpAddress,
+		ZconfIpaddrs:       &fieldZconfIpaddrs,
+		CountOfFcPorts:     &fieldCountOfFcPorts,
+		AllFlash:           &fieldAllFlash,
+		DedupeConfigurable: &fieldDedupeConfigurable,
 	}
 }
 

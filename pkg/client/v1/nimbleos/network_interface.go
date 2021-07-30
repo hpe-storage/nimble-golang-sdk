@@ -3,46 +3,47 @@
 package nimbleos
 
 // NetworkInterface - Manage per array network interface configuration.
-// Export NetworkInterfaceFields for advance operations like search filter etc.
+
+// Export NetworkInterfaceFields provides field names to use in filter parameters, for example.
 var NetworkInterfaceFields *NetworkInterfaceStringFields
 
 func init() {
-	IDfield := "id"
-	ArrayNameOrSerialfield := "array_name_or_serial"
-	PartialResponseOkfield := "partial_response_ok"
-	ArrayIdfield := "array_id"
-	ControllerNamefield := "controller_name"
-	ControllerIdfield := "controller_id"
-	Namefield := "name"
-	Macfield := "mac"
-	IsPresentfield := "is_present"
-	LinkSpeedfield := "link_speed"
-	LinkStatusfield := "link_status"
-	Mtufield := "mtu"
-	Portfield := "port"
-	Slotfield := "slot"
-	MaxLinkSpeedfield := "max_link_speed"
-	NicTypefield := "nic_type"
-	IpListfield := "ip_list"
+	fieldID := "id"
+	fieldArrayNameOrSerial := "array_name_or_serial"
+	fieldPartialResponseOk := "partial_response_ok"
+	fieldArrayId := "array_id"
+	fieldControllerName := "controller_name"
+	fieldControllerId := "controller_id"
+	fieldName := "name"
+	fieldMac := "mac"
+	fieldIsPresent := "is_present"
+	fieldLinkSpeed := "link_speed"
+	fieldLinkStatus := "link_status"
+	fieldMtu := "mtu"
+	fieldPort := "port"
+	fieldSlot := "slot"
+	fieldMaxLinkSpeed := "max_link_speed"
+	fieldNicType := "nic_type"
+	fieldIpList := "ip_list"
 
 	NetworkInterfaceFields = &NetworkInterfaceStringFields{
-		ID:                &IDfield,
-		ArrayNameOrSerial: &ArrayNameOrSerialfield,
-		PartialResponseOk: &PartialResponseOkfield,
-		ArrayId:           &ArrayIdfield,
-		ControllerName:    &ControllerNamefield,
-		ControllerId:      &ControllerIdfield,
-		Name:              &Namefield,
-		Mac:               &Macfield,
-		IsPresent:         &IsPresentfield,
-		LinkSpeed:         &LinkSpeedfield,
-		LinkStatus:        &LinkStatusfield,
-		Mtu:               &Mtufield,
-		Port:              &Portfield,
-		Slot:              &Slotfield,
-		MaxLinkSpeed:      &MaxLinkSpeedfield,
-		NicType:           &NicTypefield,
-		IpList:            &IpListfield,
+		ID:                &fieldID,
+		ArrayNameOrSerial: &fieldArrayNameOrSerial,
+		PartialResponseOk: &fieldPartialResponseOk,
+		ArrayId:           &fieldArrayId,
+		ControllerName:    &fieldControllerName,
+		ControllerId:      &fieldControllerId,
+		Name:              &fieldName,
+		Mac:               &fieldMac,
+		IsPresent:         &fieldIsPresent,
+		LinkSpeed:         &fieldLinkSpeed,
+		LinkStatus:        &fieldLinkStatus,
+		Mtu:               &fieldMtu,
+		Port:              &fieldPort,
+		Slot:              &fieldSlot,
+		MaxLinkSpeed:      &fieldMaxLinkSpeed,
+		NicType:           &fieldNicType,
+		IpList:            &fieldIpList,
 	}
 }
 

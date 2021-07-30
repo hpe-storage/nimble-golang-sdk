@@ -3,18 +3,19 @@
 package nimbleos
 
 // NsSnapLunInfo - Snapshot LUN information as presented in the access_control_records object set. This information is only available for Fibre Channel.
-// Export NsSnapLunInfoFields for advance operations like search filter etc.
+
+// Export NsSnapLunInfoFields provides field names to use in filter parameters, for example.
 var NsSnapLunInfoFields *NsSnapLunInfoStringFields
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Lunfield := "lun"
+	fieldID := "id"
+	fieldName := "name"
+	fieldLun := "lun"
 
 	NsSnapLunInfoFields = &NsSnapLunInfoStringFields{
-		ID:   &IDfield,
-		Name: &Namefield,
-		Lun:  &Lunfield,
+		ID:   &fieldID,
+		Name: &fieldName,
+		Lun:  &fieldLun,
 	}
 }
 

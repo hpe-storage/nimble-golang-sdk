@@ -3,20 +3,21 @@
 package nimbleos
 
 // FibreChannelInitiatorAlias - This API provides the alias information for Fibre Channel initiators.
-// Export FibreChannelInitiatorAliasFields for advance operations like search filter etc.
+
+// Export FibreChannelInitiatorAliasFields provides field names to use in filter parameters, for example.
 var FibreChannelInitiatorAliasFields *FibreChannelInitiatorAliasStringFields
 
 func init() {
-	IDfield := "id"
-	Aliasfield := "alias"
-	Wwpnfield := "wwpn"
-	Sourcefield := "source"
+	fieldID := "id"
+	fieldAlias := "alias"
+	fieldWwpn := "wwpn"
+	fieldSource := "source"
 
 	FibreChannelInitiatorAliasFields = &FibreChannelInitiatorAliasStringFields{
-		ID:     &IDfield,
-		Alias:  &Aliasfield,
-		Wwpn:   &Wwpnfield,
-		Source: &Sourcefield,
+		ID:     &fieldID,
+		Alias:  &fieldAlias,
+		Wwpn:   &fieldWwpn,
+		Source: &fieldSource,
 	}
 }
 
