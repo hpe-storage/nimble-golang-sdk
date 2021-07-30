@@ -4,15 +4,19 @@ package nimbleos
 
 // NsFcPortInfo - Fibre Channel port information.
 // Export NsFcPortInfoFields for advance operations like search filter etc.
-var NsFcPortInfoFields *NsFcPortInfo
+var NsFcPortInfoFields *NsFcPortInfoStringFields
 
 func init() {
 	Namefield := "name"
 	BusLocationfield := "bus_location"
+	Portfield := "port"
+	Slotfield := "slot"
 
-	NsFcPortInfoFields = &NsFcPortInfo{
+	NsFcPortInfoFields = &NsFcPortInfoStringFields{
 		Name:        &Namefield,
 		BusLocation: &BusLocationfield,
+		Port:        &Portfield,
+		Slot:        &Slotfield,
 	}
 }
 
@@ -25,4 +29,12 @@ type NsFcPortInfo struct {
 	Port *int64 `json:"port,omitempty"`
 	// Slot - HBA slot number for this Fibre Channel port.
 	Slot *int64 `json:"slot,omitempty"`
+}
+
+// Struct for NsFcPortInfoFields
+type NsFcPortInfoStringFields struct {
+	Name        *string
+	BusLocation *string
+	Port        *string
+	Slot        *string
 }

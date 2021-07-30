@@ -4,10 +4,11 @@ package nimbleos
 
 // Initiator - Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 // Export InitiatorFields for advance operations like search filter etc.
-var InitiatorFields *Initiator
+var InitiatorFields *InitiatorStringFields
 
 func init() {
 	IDfield := "id"
+	AccessProtocolfield := "access_protocol"
 	InitiatorGroupIdfield := "initiator_group_id"
 	InitiatorGroupNamefield := "initiator_group_name"
 	Labelfield := "label"
@@ -16,17 +17,24 @@ func init() {
 	Aliasfield := "alias"
 	ChapuserIdfield := "chapuser_id"
 	Wwpnfield := "wwpn"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	OverrideExistingAliasfield := "override_existing_alias"
 
-	InitiatorFields = &Initiator{
-		ID:                 &IDfield,
-		InitiatorGroupId:   &InitiatorGroupIdfield,
-		InitiatorGroupName: &InitiatorGroupNamefield,
-		Label:              &Labelfield,
-		Iqn:                &Iqnfield,
-		IpAddress:          &IpAddressfield,
-		Alias:              &Aliasfield,
-		ChapuserId:         &ChapuserIdfield,
-		Wwpn:               &Wwpnfield,
+	InitiatorFields = &InitiatorStringFields{
+		ID:                    &IDfield,
+		AccessProtocol:        &AccessProtocolfield,
+		InitiatorGroupId:      &InitiatorGroupIdfield,
+		InitiatorGroupName:    &InitiatorGroupNamefield,
+		Label:                 &Labelfield,
+		Iqn:                   &Iqnfield,
+		IpAddress:             &IpAddressfield,
+		Alias:                 &Aliasfield,
+		ChapuserId:            &ChapuserIdfield,
+		Wwpn:                  &Wwpnfield,
+		CreationTime:          &CreationTimefield,
+		LastModified:          &LastModifiedfield,
+		OverrideExistingAlias: &OverrideExistingAliasfield,
 	}
 }
 
@@ -57,4 +65,21 @@ type Initiator struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// OverrideExistingAlias - Forcibly add Fibre Channel initiator to initiator group by updating or removing conflicting Fibre Channel initiator aliases.
 	OverrideExistingAlias *bool `json:"override_existing_alias,omitempty"`
+}
+
+// Struct for InitiatorFields
+type InitiatorStringFields struct {
+	ID                    *string
+	AccessProtocol        *string
+	InitiatorGroupId      *string
+	InitiatorGroupName    *string
+	Label                 *string
+	Iqn                   *string
+	IpAddress             *string
+	Alias                 *string
+	ChapuserId            *string
+	Wwpn                  *string
+	CreationTime          *string
+	LastModified          *string
+	OverrideExistingAlias *string
 }

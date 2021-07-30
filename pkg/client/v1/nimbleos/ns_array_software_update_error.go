@@ -4,12 +4,12 @@ package nimbleos
 
 // NsArraySoftwareUpdateError - Software update error for specific controller.
 // Export NsArraySoftwareUpdateErrorFields for advance operations like search filter etc.
-var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateError
+var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateErrorStringFields
 
 func init() {
 	Errorfield := "error"
 
-	NsArraySoftwareUpdateErrorFields = &NsArraySoftwareUpdateError{
+	NsArraySoftwareUpdateErrorFields = &NsArraySoftwareUpdateErrorStringFields{
 		Error: &Errorfield,
 	}
 }
@@ -17,4 +17,9 @@ func init() {
 type NsArraySoftwareUpdateError struct {
 	// Error - Error code from software update.
 	Error *string `json:"error,omitempty"`
+}
+
+// Struct for NsArraySoftwareUpdateErrorFields
+type NsArraySoftwareUpdateErrorStringFields struct {
+	Error *string
 }

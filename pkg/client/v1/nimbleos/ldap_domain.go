@@ -4,27 +4,37 @@ package nimbleos
 
 // LdapDomain - Manages the storage array's membership with LDAP servers.
 // Export LdapDomainFields for advance operations like search filter etc.
-var LdapDomainFields *LdapDomain
+var LdapDomainFields *LdapDomainStringFields
 
 func init() {
 	IDfield := "id"
 	DomainNamefield := "domain_name"
 	DomainDescriptionfield := "domain_description"
+	DomainEnabledfield := "domain_enabled"
+	ServerUriListfield := "server_uri_list"
 	BindUserfield := "bind_user"
 	BindPasswordfield := "bind_password"
 	BaseDnfield := "base_dn"
 	UserSearchFilterfield := "user_search_filter"
+	UserSearchBaseListfield := "user_search_base_list"
 	GroupSearchFilterfield := "group_search_filter"
+	GroupSearchBaseListfield := "group_search_base_list"
+	SchemaTypefield := "schema_type"
 
-	LdapDomainFields = &LdapDomain{
-		ID:                &IDfield,
-		DomainName:        &DomainNamefield,
-		DomainDescription: &DomainDescriptionfield,
-		BindUser:          &BindUserfield,
-		BindPassword:      &BindPasswordfield,
-		BaseDn:            &BaseDnfield,
-		UserSearchFilter:  &UserSearchFilterfield,
-		GroupSearchFilter: &GroupSearchFilterfield,
+	LdapDomainFields = &LdapDomainStringFields{
+		ID:                  &IDfield,
+		DomainName:          &DomainNamefield,
+		DomainDescription:   &DomainDescriptionfield,
+		DomainEnabled:       &DomainEnabledfield,
+		ServerUriList:       &ServerUriListfield,
+		BindUser:            &BindUserfield,
+		BindPassword:        &BindPasswordfield,
+		BaseDn:              &BaseDnfield,
+		UserSearchFilter:    &UserSearchFilterfield,
+		UserSearchBaseList:  &UserSearchBaseListfield,
+		GroupSearchFilter:   &GroupSearchFilterfield,
+		GroupSearchBaseList: &GroupSearchBaseListfield,
+		SchemaType:          &SchemaTypefield,
 	}
 }
 
@@ -55,4 +65,21 @@ type LdapDomain struct {
 	GroupSearchBaseList []*string `json:"group_search_base_list,omitempty"`
 	// SchemaType - Enum values are OpenLDAP or AD.
 	SchemaType *NsLdapSchemaType `json:"schema_type,omitempty"`
+}
+
+// Struct for LdapDomainFields
+type LdapDomainStringFields struct {
+	ID                  *string
+	DomainName          *string
+	DomainDescription   *string
+	DomainEnabled       *string
+	ServerUriList       *string
+	BindUser            *string
+	BindPassword        *string
+	BaseDn              *string
+	UserSearchFilter    *string
+	UserSearchBaseList  *string
+	GroupSearchFilter   *string
+	GroupSearchBaseList *string
+	SchemaType          *string
 }

@@ -4,20 +4,22 @@ package nimbleos
 
 // NsCertData - Detailed certificate information for an installed certificate.
 // Export NsCertDataFields for advance operations like search filter etc.
-var NsCertDataFields *NsCertData
+var NsCertDataFields *NsCertDataStringFields
 
 func init() {
 	Descriptionfield := "description"
 	Subjectfield := "subject"
 	Dnslistfield := "dnslist"
 	Iplistfield := "iplist"
+	Trustedfield := "trusted"
 	PemTextfield := "pem_text"
 
-	NsCertDataFields = &NsCertData{
+	NsCertDataFields = &NsCertDataStringFields{
 		Description: &Descriptionfield,
 		Subject:     &Subjectfield,
 		Dnslist:     &Dnslistfield,
 		Iplist:      &Iplistfield,
+		Trusted:     &Trustedfield,
 		PemText:     &PemTextfield,
 	}
 }
@@ -35,4 +37,14 @@ type NsCertData struct {
 	Trusted *bool `json:"trusted,omitempty"`
 	// PemText - PEM text of the actual certificate.
 	PemText *string `json:"pem_text,omitempty"`
+}
+
+// Struct for NsCertDataFields
+type NsCertDataStringFields struct {
+	Description *string
+	Subject     *string
+	Dnslist     *string
+	Iplist      *string
+	Trusted     *string
+	PemText     *string
 }

@@ -4,7 +4,7 @@ package nimbleos
 
 // NsLunConflictPair - LUN number conflict.
 // Export NsLunConflictPairFields for advance operations like search filter etc.
-var NsLunConflictPairFields *NsLunConflictPair
+var NsLunConflictPairFields *NsLunConflictPairStringFields
 
 func init() {
 	InitiatorWwpnfield := "initiator_wwpn"
@@ -13,20 +13,24 @@ func init() {
 	DstVolNamefield := "dst_vol_name"
 	DstSnapNamefield := "dst_snap_name"
 	DstPeNamefield := "dst_pe_name"
+	DstLunfield := "dst_lun"
 	SrcIgrpNamefield := "src_igrp_name"
 	SrcVolNamefield := "src_vol_name"
 	SrcSnapNamefield := "src_snap_name"
+	SrcLunfield := "src_lun"
 
-	NsLunConflictPairFields = &NsLunConflictPair{
+	NsLunConflictPairFields = &NsLunConflictPairStringFields{
 		InitiatorWwpn:  &InitiatorWwpnfield,
 		InitiatorAlias: &InitiatorAliasfield,
 		DstIgrpName:    &DstIgrpNamefield,
 		DstVolName:     &DstVolNamefield,
 		DstSnapName:    &DstSnapNamefield,
 		DstPeName:      &DstPeNamefield,
+		DstLun:         &DstLunfield,
 		SrcIgrpName:    &SrcIgrpNamefield,
 		SrcVolName:     &SrcVolNamefield,
 		SrcSnapName:    &SrcSnapNamefield,
+		SrcLun:         &SrcLunfield,
 	}
 }
 
@@ -53,4 +57,19 @@ type NsLunConflictPair struct {
 	SrcSnapName *string `json:"src_snap_name,omitempty"`
 	// SrcLun - LUN number on the source group.
 	SrcLun *int64 `json:"src_lun,omitempty"`
+}
+
+// Struct for NsLunConflictPairFields
+type NsLunConflictPairStringFields struct {
+	InitiatorWwpn  *string
+	InitiatorAlias *string
+	DstIgrpName    *string
+	DstVolName     *string
+	DstSnapName    *string
+	DstPeName      *string
+	DstLun         *string
+	SrcIgrpName    *string
+	SrcVolName     *string
+	SrcSnapName    *string
+	SrcLun         *string
 }

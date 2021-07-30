@@ -4,7 +4,7 @@ package nimbleos
 
 // Stat - Access generic stats interface via REST for internal testing.
 // Export StatFields for advance operations like search filter etc.
-var StatFields *Stat
+var StatFields *StatStringFields
 
 func init() {
 	Scopefield := "scope"
@@ -12,19 +12,31 @@ func init() {
 	SetIdfield := "set_id"
 	VolIdsfield := "vol_ids"
 	Sensorsfield := "sensors"
+	Starttimefield := "starttime"
+	Endtimefield := "endtime"
+	Intervalfield := "interval"
+	Cumulativefield := "cumulative"
 	PoolIdfield := "pool_id"
 	ArrayNamefield := "array_name"
+	SensorDatafield := "sensor_data"
+	SensorCumulativeDatafield := "sensor_cumulative_data"
 	VolIdfield := "vol_id"
 
-	StatFields = &Stat{
-		Scope:     &Scopefield,
-		DomainId:  &DomainIdfield,
-		SetId:     &SetIdfield,
-		VolIds:    &VolIdsfield,
-		Sensors:   &Sensorsfield,
-		PoolId:    &PoolIdfield,
-		ArrayName: &ArrayNamefield,
-		VolId:     &VolIdfield,
+	StatFields = &StatStringFields{
+		Scope:                &Scopefield,
+		DomainId:             &DomainIdfield,
+		SetId:                &SetIdfield,
+		VolIds:               &VolIdsfield,
+		Sensors:              &Sensorsfield,
+		Starttime:            &Starttimefield,
+		Endtime:              &Endtimefield,
+		Interval:             &Intervalfield,
+		Cumulative:           &Cumulativefield,
+		PoolId:               &PoolIdfield,
+		ArrayName:            &ArrayNamefield,
+		SensorData:           &SensorDatafield,
+		SensorCumulativeData: &SensorCumulativeDatafield,
+		VolId:                &VolIdfield,
 	}
 }
 
@@ -57,4 +69,22 @@ type Stat struct {
 	SensorCumulativeData []*NsSensorCumulativeData `json:"sensor_cumulative_data,omitempty"`
 	// VolId - The REST ID of a volume.
 	VolId *string `json:"vol_id,omitempty"`
+}
+
+// Struct for StatFields
+type StatStringFields struct {
+	Scope                *string
+	DomainId             *string
+	SetId                *string
+	VolIds               *string
+	Sensors              *string
+	Starttime            *string
+	Endtime              *string
+	Interval             *string
+	Cumulative           *string
+	PoolId               *string
+	ArrayName            *string
+	SensorData           *string
+	SensorCumulativeData *string
+	VolId                *string
 }

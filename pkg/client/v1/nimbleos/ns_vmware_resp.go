@@ -4,17 +4,27 @@ package nimbleos
 
 // NsVmwareResp - Response from Vmware app server.
 // Export NsVmwareRespFields for advance operations like search filter etc.
-var NsVmwareRespFields *NsVmwareResp
+var NsVmwareRespFields *NsVmwareRespStringFields
 
 func init() {
 	VmwareErrorfield := "vmware_error"
 	VmwareErrorMessagefield := "vmware_error_message"
+	ConnStatusOkfield := "conn_status_ok"
 	ConnMessagefield := "conn_message"
+	UserRolePermissionOkfield := "user_role_permission_ok"
+	VolcollHasVmfield := "volcoll_has_vm"
+	NumVmsForVolcollfield := "num_vms_for_volcoll"
+	WarningVmToolsStatusfield := "warning_vm_tools_status"
 
-	NsVmwareRespFields = &NsVmwareResp{
-		VmwareError:        &VmwareErrorfield,
-		VmwareErrorMessage: &VmwareErrorMessagefield,
-		ConnMessage:        &ConnMessagefield,
+	NsVmwareRespFields = &NsVmwareRespStringFields{
+		VmwareError:          &VmwareErrorfield,
+		VmwareErrorMessage:   &VmwareErrorMessagefield,
+		ConnStatusOk:         &ConnStatusOkfield,
+		ConnMessage:          &ConnMessagefield,
+		UserRolePermissionOk: &UserRolePermissionOkfield,
+		VolcollHasVm:         &VolcollHasVmfield,
+		NumVmsForVolcoll:     &NumVmsForVolcollfield,
+		WarningVmToolsStatus: &WarningVmToolsStatusfield,
 	}
 }
 
@@ -35,4 +45,16 @@ type NsVmwareResp struct {
 	NumVmsForVolcoll *int64 `json:"num_vms_for_volcoll,omitempty"`
 	// WarningVmToolsStatus - List of status messages one per VM.
 	WarningVmToolsStatus []*string `json:"warning_vm_tools_status,omitempty"`
+}
+
+// Struct for NsVmwareRespFields
+type NsVmwareRespStringFields struct {
+	VmwareError          *string
+	VmwareErrorMessage   *string
+	ConnStatusOk         *string
+	ConnMessage          *string
+	UserRolePermissionOk *string
+	VolcollHasVm         *string
+	NumVmsForVolcoll     *string
+	WarningVmToolsStatus *string
 }

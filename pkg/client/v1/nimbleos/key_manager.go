@@ -4,25 +4,31 @@ package nimbleos
 
 // KeyManager - Key Manager stores encryption keys for the array volumes / dedupe domains.
 // Export KeyManagerFields for advance operations like search filter etc.
-var KeyManagerFields *KeyManager
+var KeyManagerFields *KeyManagerStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	Descriptionfield := "description"
 	Hostnamefield := "hostname"
+	Portfield := "port"
+	Protocolfield := "protocol"
 	Usernamefield := "username"
 	Passwordfield := "password"
+	Activefield := "active"
 	Statusfield := "status"
 	Vendorfield := "vendor"
 
-	KeyManagerFields = &KeyManager{
+	KeyManagerFields = &KeyManagerStringFields{
 		ID:          &IDfield,
 		Name:        &Namefield,
 		Description: &Descriptionfield,
 		Hostname:    &Hostnamefield,
+		Port:        &Portfield,
+		Protocol:    &Protocolfield,
 		Username:    &Usernamefield,
 		Password:    &Passwordfield,
+		Active:      &Activefield,
 		Status:      &Statusfield,
 		Vendor:      &Vendorfield,
 	}
@@ -51,4 +57,19 @@ type KeyManager struct {
 	Status *string `json:"status,omitempty"`
 	// Vendor - KMIP vendor name.
 	Vendor *string `json:"vendor,omitempty"`
+}
+
+// Struct for KeyManagerFields
+type KeyManagerStringFields struct {
+	ID          *string
+	Name        *string
+	Description *string
+	Hostname    *string
+	Port        *string
+	Protocol    *string
+	Username    *string
+	Password    *string
+	Active      *string
+	Status      *string
+	Vendor      *string
 }

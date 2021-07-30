@@ -4,7 +4,7 @@ package nimbleos
 
 // Certificate - Manage certificates used by SSL/TLS.
 // Export CertificateFields for advance operations like search filter etc.
-var CertificateFields *Certificate
+var CertificateFields *CertificateStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,17 +12,39 @@ func init() {
 	Subjectfield := "subject"
 	Dnslistfield := "dnslist"
 	Iplistfield := "iplist"
+	CertListfield := "cert_list"
+	Csrfield := "csr"
+	ValidDaysfield := "valid_days"
 	Inputfield := "input"
 	Passwordfield := "password"
+	Httpsfield := "https"
+	Apisfield := "apis"
+	Forcefield := "force"
+	Checkfield := "check"
+	Pkcs12field := "pkcs12"
+	Trustedfield := "trusted"
+	ReloadHttpsfield := "reload_https"
+	ReloadApisfield := "reload_apis"
 
-	CertificateFields = &Certificate{
-		ID:       &IDfield,
-		Name:     &Namefield,
-		Subject:  &Subjectfield,
-		Dnslist:  &Dnslistfield,
-		Iplist:   &Iplistfield,
-		Input:    &Inputfield,
-		Password: &Passwordfield,
+	CertificateFields = &CertificateStringFields{
+		ID:          &IDfield,
+		Name:        &Namefield,
+		Subject:     &Subjectfield,
+		Dnslist:     &Dnslistfield,
+		Iplist:      &Iplistfield,
+		CertList:    &CertListfield,
+		Csr:         &Csrfield,
+		ValidDays:   &ValidDaysfield,
+		Input:       &Inputfield,
+		Password:    &Passwordfield,
+		Https:       &Httpsfield,
+		Apis:        &Apisfield,
+		Force:       &Forcefield,
+		Check:       &Checkfield,
+		Pkcs12:      &Pkcs12field,
+		Trusted:     &Trustedfield,
+		ReloadHttps: &ReloadHttpsfield,
+		ReloadApis:  &ReloadApisfield,
 	}
 }
 
@@ -63,4 +85,26 @@ type Certificate struct {
 	ReloadHttps *bool `json:"reload_https,omitempty"`
 	// ReloadApis - API certificate changed, so needs to be reloaded.
 	ReloadApis *bool `json:"reload_apis,omitempty"`
+}
+
+// Struct for CertificateFields
+type CertificateStringFields struct {
+	ID          *string
+	Name        *string
+	Subject     *string
+	Dnslist     *string
+	Iplist      *string
+	CertList    *string
+	Csr         *string
+	ValidDays   *string
+	Input       *string
+	Password    *string
+	Https       *string
+	Apis        *string
+	Force       *string
+	Check       *string
+	Pkcs12      *string
+	Trusted     *string
+	ReloadHttps *string
+	ReloadApis  *string
 }

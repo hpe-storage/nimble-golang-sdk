@@ -4,7 +4,7 @@ package nimbleos
 
 // FibreChannelPort - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
 // Export FibreChannelPortFields for advance operations like search filter etc.
-var FibreChannelPortFields *FibreChannelPort
+var FibreChannelPortFields *FibreChannelPortStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,13 +12,25 @@ func init() {
 	ControllerNamefield := "controller_name"
 	FcPortNamefield := "fc_port_name"
 	BusLocationfield := "bus_location"
+	Portfield := "port"
+	Slotfield := "slot"
+	Orientationfield := "orientation"
+	LinkInfofield := "link_info"
+	RxPowerfield := "rx_power"
+	TxPowerfield := "tx_power"
 
-	FibreChannelPortFields = &FibreChannelPort{
+	FibreChannelPortFields = &FibreChannelPortStringFields{
 		ID:                &IDfield,
 		ArrayNameOrSerial: &ArrayNameOrSerialfield,
 		ControllerName:    &ControllerNamefield,
 		FcPortName:        &FcPortNamefield,
 		BusLocation:       &BusLocationfield,
+		Port:              &Portfield,
+		Slot:              &Slotfield,
+		Orientation:       &Orientationfield,
+		LinkInfo:          &LinkInfofield,
+		RxPower:           &RxPowerfield,
+		TxPower:           &TxPowerfield,
 	}
 }
 
@@ -45,4 +57,19 @@ type FibreChannelPort struct {
 	RxPower *int64 `json:"rx_power,omitempty"`
 	// TxPower - SFP TX power in uW.
 	TxPower *int64 `json:"tx_power,omitempty"`
+}
+
+// Struct for FibreChannelPortFields
+type FibreChannelPortStringFields struct {
+	ID                *string
+	ArrayNameOrSerial *string
+	ControllerName    *string
+	FcPortName        *string
+	BusLocation       *string
+	Port              *string
+	Slot              *string
+	Orientation       *string
+	LinkInfo          *string
+	RxPower           *string
+	TxPower           *string
 }

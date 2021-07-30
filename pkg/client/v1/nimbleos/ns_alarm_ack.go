@@ -4,13 +4,17 @@ package nimbleos
 
 // NsAlarmAck - Arguments acknowledge alarm.
 // Export NsAlarmAckFields for advance operations like search filter etc.
-var NsAlarmAckFields *NsAlarmAck
+var NsAlarmAckFields *NsAlarmAckStringFields
 
 func init() {
 	IDfield := "id"
+	RemindEveryfield := "remind_every"
+	RemindEveryUnitfield := "remind_every_unit"
 
-	NsAlarmAckFields = &NsAlarmAck{
-		ID: &IDfield,
+	NsAlarmAckFields = &NsAlarmAckStringFields{
+		ID:              &IDfield,
+		RemindEvery:     &RemindEveryfield,
+		RemindEveryUnit: &RemindEveryUnitfield,
 	}
 }
 
@@ -21,4 +25,11 @@ type NsAlarmAck struct {
 	RemindEvery *int64 `json:"remind_every,omitempty"`
 	// RemindEveryUnit - Period unit.
 	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
+}
+
+// Struct for NsAlarmAckFields
+type NsAlarmAckStringFields struct {
+	ID              *string
+	RemindEvery     *string
+	RemindEveryUnit *string
 }

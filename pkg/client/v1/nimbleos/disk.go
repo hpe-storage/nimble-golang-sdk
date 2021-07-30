@@ -4,35 +4,75 @@ package nimbleos
 
 // Disk - Disks are used for storing user data.
 // Export DiskFields for advance operations like search filter etc.
-var DiskFields *Disk
+var DiskFields *DiskStringFields
 
 func init() {
 	IDfield := "id"
+	IsDfcfield := "is_dfc"
 	Serialfield := "serial"
 	Pathfield := "path"
 	ShelfSerialfield := "shelf_serial"
 	ShelfLocationfield := "shelf_location"
 	ShelfIdfield := "shelf_id"
+	ShelfLocationIdfield := "shelf_location_id"
+	VshelfIdfield := "vshelf_id"
+	Slotfield := "slot"
+	Bankfield := "bank"
 	Modelfield := "model"
 	Vendorfield := "vendor"
 	FirmwareVersionfield := "firmware_version"
+	Hbafield := "hba"
+	Portfield := "port"
+	Sizefield := "size"
+	Statefield := "state"
+	Typefield := "type"
+	BlockTypefield := "block_type"
+	RaidIdfield := "raid_id"
+	RaidResyncPercentfield := "raid_resync_percent"
+	RaidResyncCurrentSpeedfield := "raid_resync_current_speed"
+	RaidResyncAverageSpeedfield := "raid_resync_average_speed"
+	RaidStatefield := "raid_state"
 	DiskInternalStat1field := "disk_internal_stat1"
+	SmartAttributeListfield := "smart_attribute_list"
+	DiskOpfield := "disk_op"
+	Forcefield := "force"
 	ArrayNamefield := "array_name"
 	ArrayIdfield := "array_id"
+	PartialResponseOkfield := "partial_response_ok"
 
-	DiskFields = &Disk{
-		ID:                &IDfield,
-		Serial:            &Serialfield,
-		Path:              &Pathfield,
-		ShelfSerial:       &ShelfSerialfield,
-		ShelfLocation:     &ShelfLocationfield,
-		ShelfId:           &ShelfIdfield,
-		Model:             &Modelfield,
-		Vendor:            &Vendorfield,
-		FirmwareVersion:   &FirmwareVersionfield,
-		DiskInternalStat1: &DiskInternalStat1field,
-		ArrayName:         &ArrayNamefield,
-		ArrayId:           &ArrayIdfield,
+	DiskFields = &DiskStringFields{
+		ID:                     &IDfield,
+		IsDfc:                  &IsDfcfield,
+		Serial:                 &Serialfield,
+		Path:                   &Pathfield,
+		ShelfSerial:            &ShelfSerialfield,
+		ShelfLocation:          &ShelfLocationfield,
+		ShelfId:                &ShelfIdfield,
+		ShelfLocationId:        &ShelfLocationIdfield,
+		VshelfId:               &VshelfIdfield,
+		Slot:                   &Slotfield,
+		Bank:                   &Bankfield,
+		Model:                  &Modelfield,
+		Vendor:                 &Vendorfield,
+		FirmwareVersion:        &FirmwareVersionfield,
+		Hba:                    &Hbafield,
+		Port:                   &Portfield,
+		Size:                   &Sizefield,
+		State:                  &Statefield,
+		Type:                   &Typefield,
+		BlockType:              &BlockTypefield,
+		RaidId:                 &RaidIdfield,
+		RaidResyncPercent:      &RaidResyncPercentfield,
+		RaidResyncCurrentSpeed: &RaidResyncCurrentSpeedfield,
+		RaidResyncAverageSpeed: &RaidResyncAverageSpeedfield,
+		RaidState:              &RaidStatefield,
+		DiskInternalStat1:      &DiskInternalStat1field,
+		SmartAttributeList:     &SmartAttributeListfield,
+		DiskOp:                 &DiskOpfield,
+		Force:                  &Forcefield,
+		ArrayName:              &ArrayNamefield,
+		ArrayId:                &ArrayIdfield,
+		PartialResponseOk:      &PartialResponseOkfield,
 	}
 }
 
@@ -101,4 +141,40 @@ type Disk struct {
 	ArrayId *string `json:"array_id,omitempty"`
 	// PartialResponseOk - Indicate that it is okay to provide partially available response.
 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
+}
+
+// Struct for DiskFields
+type DiskStringFields struct {
+	ID                     *string
+	IsDfc                  *string
+	Serial                 *string
+	Path                   *string
+	ShelfSerial            *string
+	ShelfLocation          *string
+	ShelfId                *string
+	ShelfLocationId        *string
+	VshelfId               *string
+	Slot                   *string
+	Bank                   *string
+	Model                  *string
+	Vendor                 *string
+	FirmwareVersion        *string
+	Hba                    *string
+	Port                   *string
+	Size                   *string
+	State                  *string
+	Type                   *string
+	BlockType              *string
+	RaidId                 *string
+	RaidResyncPercent      *string
+	RaidResyncCurrentSpeed *string
+	RaidResyncAverageSpeed *string
+	RaidState              *string
+	DiskInternalStat1      *string
+	SmartAttributeList     *string
+	DiskOp                 *string
+	Force                  *string
+	ArrayName              *string
+	ArrayId                *string
+	PartialResponseOk      *string
 }

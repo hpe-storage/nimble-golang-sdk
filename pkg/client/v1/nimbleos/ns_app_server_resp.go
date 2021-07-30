@@ -4,13 +4,23 @@ package nimbleos
 
 // NsAppServerResp - Response from app server.
 // Export NsAppServerRespFields for advance operations like search filter etc.
-var NsAppServerRespFields *NsAppServerResp
+var NsAppServerRespFields *NsAppServerRespStringFields
 
 func init() {
 	GeneralErrorfield := "general_error"
+	AppSyncfield := "app_sync"
+	HasAssocVolsfield := "has_assoc_vols"
+	VssResponsefield := "vss_response"
+	VmwResponsefield := "vmw_response"
+	GenericResponsefield := "generic_response"
 
-	NsAppServerRespFields = &NsAppServerResp{
-		GeneralError: &GeneralErrorfield,
+	NsAppServerRespFields = &NsAppServerRespStringFields{
+		GeneralError:    &GeneralErrorfield,
+		AppSync:         &AppSyncfield,
+		HasAssocVols:    &HasAssocVolsfield,
+		VssResponse:     &VssResponsefield,
+		VmwResponse:     &VmwResponsefield,
+		GenericResponse: &GenericResponsefield,
 	}
 }
 
@@ -27,4 +37,14 @@ type NsAppServerResp struct {
 	VmwResponse *NsVmwareResp `json:"vmw_response,omitempty"`
 	// GenericResponse - Response from generic app server.
 	GenericResponse *NsGenericResp `json:"generic_response,omitempty"`
+}
+
+// Struct for NsAppServerRespFields
+type NsAppServerRespStringFields struct {
+	GeneralError    *string
+	AppSync         *string
+	HasAssocVols    *string
+	VssResponse     *string
+	VmwResponse     *string
+	GenericResponse *string
 }

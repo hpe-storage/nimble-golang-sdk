@@ -4,11 +4,13 @@ package nimbleos
 
 // NsFCSession - Fibre Channel initiator session information.
 // Export NsFCSessionFields for advance operations like search filter etc.
-var NsFCSessionFields *NsFCSession
+var NsFCSessionFields *NsFCSessionStringFields
 
 func init() {
 	IDfield := "id"
 	SessionIdfield := "session_id"
+	Aluafield := "alua"
+	PrKeyfield := "pr_key"
 	InitiatorAliasfield := "initiator_alias"
 	InitiatorWwpnfield := "initiator_wwpn"
 	InitiatorWwnnfield := "initiator_wwnn"
@@ -16,14 +18,19 @@ func init() {
 	InitiatorSwitchPortfield := "initiator_switch_port"
 	InitiatorSymbolicPortnamefield := "initiator_symbolic_portname"
 	InitiatorSymbolicNodenamefield := "initiator_symbolic_nodename"
+	InitiatorFcidfield := "initiator_fcid"
 	TargetPortArrayNamefield := "target_port_array_name"
+	TargetPortCtrlrIdfield := "target_port_ctrlr_id"
 	TargetPortInterfaceNamefield := "target_port_interface_name"
 	TargetWwnnfield := "target_wwnn"
 	TargetWwpnfield := "target_wwpn"
+	TargetFcidfield := "target_fcid"
 
-	NsFCSessionFields = &NsFCSession{
+	NsFCSessionFields = &NsFCSessionStringFields{
 		ID:                        &IDfield,
 		SessionId:                 &SessionIdfield,
+		Alua:                      &Aluafield,
+		PrKey:                     &PrKeyfield,
 		InitiatorAlias:            &InitiatorAliasfield,
 		InitiatorWwpn:             &InitiatorWwpnfield,
 		InitiatorWwnn:             &InitiatorWwnnfield,
@@ -31,10 +38,13 @@ func init() {
 		InitiatorSwitchPort:       &InitiatorSwitchPortfield,
 		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
 		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
+		InitiatorFcid:             &InitiatorFcidfield,
 		TargetPortArrayName:       &TargetPortArrayNamefield,
+		TargetPortCtrlrId:         &TargetPortCtrlrIdfield,
 		TargetPortInterfaceName:   &TargetPortInterfaceNamefield,
 		TargetWwnn:                &TargetWwnnfield,
 		TargetWwpn:                &TargetWwpnfield,
+		TargetFcid:                &TargetFcidfield,
 	}
 }
 
@@ -75,4 +85,26 @@ type NsFCSession struct {
 	TargetWwpn *string `json:"target_wwpn,omitempty"`
 	// TargetFcid - FCID assigned to the Fibre Channel target port.
 	TargetFcid *int64 `json:"target_fcid,omitempty"`
+}
+
+// Struct for NsFCSessionFields
+type NsFCSessionStringFields struct {
+	ID                        *string
+	SessionId                 *string
+	Alua                      *string
+	PrKey                     *string
+	InitiatorAlias            *string
+	InitiatorWwpn             *string
+	InitiatorWwnn             *string
+	InitiatorSwitchName       *string
+	InitiatorSwitchPort       *string
+	InitiatorSymbolicPortname *string
+	InitiatorSymbolicNodename *string
+	InitiatorFcid             *string
+	TargetPortArrayName       *string
+	TargetPortCtrlrId         *string
+	TargetPortInterfaceName   *string
+	TargetWwnn                *string
+	TargetWwpn                *string
+	TargetFcid                *string
 }

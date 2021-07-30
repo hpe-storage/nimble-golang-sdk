@@ -4,19 +4,29 @@ package nimbleos
 
 // NsTokenReportUserDetailsReturn - Return values of token reporting user details.
 // Export NsTokenReportUserDetailsReturnFields for advance operations like search filter etc.
-var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturn
+var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnStringFields
 
 func init() {
 	UserNamefield := "user_name"
 	PrimaryGroupIdfield := "primary_group_id"
 	PrimaryGroupNamefield := "primary_group_name"
+	GroupCountfield := "group_count"
+	Rolefield := "role"
+	InactivityTimeoutfield := "inactivity_timeout"
 	UserIdfield := "user_id"
+	DomainTypefield := "domain_type"
+	Groupsfield := "groups"
 
-	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturn{
-		UserName:         &UserNamefield,
-		PrimaryGroupId:   &PrimaryGroupIdfield,
-		PrimaryGroupName: &PrimaryGroupNamefield,
-		UserId:           &UserIdfield,
+	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturnStringFields{
+		UserName:          &UserNamefield,
+		PrimaryGroupId:    &PrimaryGroupIdfield,
+		PrimaryGroupName:  &PrimaryGroupNamefield,
+		GroupCount:        &GroupCountfield,
+		Role:              &Rolefield,
+		InactivityTimeout: &InactivityTimeoutfield,
+		UserId:            &UserIdfield,
+		DomainType:        &DomainTypefield,
+		Groups:            &Groupsfield,
 	}
 }
 
@@ -39,4 +49,17 @@ type NsTokenReportUserDetailsReturn struct {
 	DomainType *NsDomainType `json:"domain_type,omitempty"`
 	// Groups - The list of directory service groups the user belongs to.
 	Groups []*string `json:"groups,omitempty"`
+}
+
+// Struct for NsTokenReportUserDetailsReturnFields
+type NsTokenReportUserDetailsReturnStringFields struct {
+	UserName          *string
+	PrimaryGroupId    *string
+	PrimaryGroupName  *string
+	GroupCount        *string
+	Role              *string
+	InactivityTimeout *string
+	UserId            *string
+	DomainType        *string
+	Groups            *string
 }

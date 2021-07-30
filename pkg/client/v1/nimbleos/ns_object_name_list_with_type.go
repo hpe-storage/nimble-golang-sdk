@@ -4,11 +4,16 @@ package nimbleos
 
 // NsObjectNameListWithType - List of objects of a given type.
 // Export NsObjectNameListWithTypeFields for advance operations like search filter etc.
-var NsObjectNameListWithTypeFields *NsObjectNameListWithType
+var NsObjectNameListWithTypeFields *NsObjectNameListWithTypeStringFields
 
 func init() {
+	ObjTypefield := "obj_type"
+	ObjNameListfield := "obj_name_list"
 
-	NsObjectNameListWithTypeFields = &NsObjectNameListWithType{}
+	NsObjectNameListWithTypeFields = &NsObjectNameListWithTypeStringFields{
+		ObjType:     &ObjTypefield,
+		ObjNameList: &ObjNameListfield,
+	}
 }
 
 type NsObjectNameListWithType struct {
@@ -16,4 +21,10 @@ type NsObjectNameListWithType struct {
 	ObjType *NsObjectType `json:"obj_type,omitempty"`
 	// ObjNameList - List of object names.
 	ObjNameList []*string `json:"obj_name_list,omitempty"`
+}
+
+// Struct for NsObjectNameListWithTypeFields
+type NsObjectNameListWithTypeStringFields struct {
+	ObjType     *string
+	ObjNameList *string
 }

@@ -4,7 +4,7 @@ package nimbleos
 
 // User - Represents users configured to manage the system.
 // Export UserFields for advance operations like search filter etc.
-var UserFields *User
+var UserFields *UserStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,25 +12,47 @@ func init() {
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
 	RoleIdfield := "role_id"
+	Rolefield := "role"
 	Passwordfield := "password"
 	AuthPasswordfield := "auth_password"
+	OtpTypefield := "otp_type"
+	OtpResetfield := "otp_reset"
+	InactivityTimeoutfield := "inactivity_timeout"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
 	FullNamefield := "full_name"
 	EmailAddrfield := "email_addr"
 	TenantIdfield := "tenant_id"
 	TenantKeyfield := "tenant_key"
+	Disabledfield := "disabled"
+	AuthLockfield := "auth_lock"
+	LastLoginfield := "last_login"
+	LastLogoutfield := "last_logout"
+	LoggedInfield := "logged_in"
 
-	UserFields = &User{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		SearchName:   &SearchNamefield,
-		Description:  &Descriptionfield,
-		RoleId:       &RoleIdfield,
-		Password:     &Passwordfield,
-		AuthPassword: &AuthPasswordfield,
-		FullName:     &FullNamefield,
-		EmailAddr:    &EmailAddrfield,
-		TenantId:     &TenantIdfield,
-		TenantKey:    &TenantKeyfield,
+	UserFields = &UserStringFields{
+		ID:                &IDfield,
+		Name:              &Namefield,
+		SearchName:        &SearchNamefield,
+		Description:       &Descriptionfield,
+		RoleId:            &RoleIdfield,
+		Role:              &Rolefield,
+		Password:          &Passwordfield,
+		AuthPassword:      &AuthPasswordfield,
+		OtpType:           &OtpTypefield,
+		OtpReset:          &OtpResetfield,
+		InactivityTimeout: &InactivityTimeoutfield,
+		CreationTime:      &CreationTimefield,
+		LastModified:      &LastModifiedfield,
+		FullName:          &FullNamefield,
+		EmailAddr:         &EmailAddrfield,
+		TenantId:          &TenantIdfield,
+		TenantKey:         &TenantKeyfield,
+		Disabled:          &Disabledfield,
+		AuthLock:          &AuthLockfield,
+		LastLogin:         &LastLoginfield,
+		LastLogout:        &LastLogoutfield,
+		LoggedIn:          &LoggedInfield,
 	}
 }
 
@@ -79,4 +101,30 @@ type User struct {
 	LastLogout *int64 `json:"last_logout,omitempty"`
 	// LoggedIn - User is currently logged in.
 	LoggedIn *bool `json:"logged_in,omitempty"`
+}
+
+// Struct for UserFields
+type UserStringFields struct {
+	ID                *string
+	Name              *string
+	SearchName        *string
+	Description       *string
+	RoleId            *string
+	Role              *string
+	Password          *string
+	AuthPassword      *string
+	OtpType           *string
+	OtpReset          *string
+	InactivityTimeout *string
+	CreationTime      *string
+	LastModified      *string
+	FullName          *string
+	EmailAddr         *string
+	TenantId          *string
+	TenantKey         *string
+	Disabled          *string
+	AuthLock          *string
+	LastLogin         *string
+	LastLogout        *string
+	LoggedIn          *string
 }

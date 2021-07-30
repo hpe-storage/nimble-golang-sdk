@@ -4,19 +4,29 @@ package nimbleos
 
 // Role - Retrieve roles and privileges for role-based access control.
 // Export RoleFields for advance operations like search filter etc.
-var RoleFields *Role
+var RoleFields *RoleStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	FullNamefield := "full_name"
 	Descriptionfield := "description"
+	PrivilegeListfield := "privilege_list"
+	ExtendedPrivilegeListfield := "extended_privilege_list"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	Hiddenfield := "hidden"
 
-	RoleFields = &Role{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		Description: &Descriptionfield,
+	RoleFields = &RoleStringFields{
+		ID:                    &IDfield,
+		Name:                  &Namefield,
+		FullName:              &FullNamefield,
+		Description:           &Descriptionfield,
+		PrivilegeList:         &PrivilegeListfield,
+		ExtendedPrivilegeList: &ExtendedPrivilegeListfield,
+		CreationTime:          &CreationTimefield,
+		LastModified:          &LastModifiedfield,
+		Hidden:                &Hiddenfield,
 	}
 }
 
@@ -39,4 +49,17 @@ type Role struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// Hidden - Indicate whether the role is hidden.
 	Hidden *bool `json:"hidden,omitempty"`
+}
+
+// Struct for RoleFields
+type RoleStringFields struct {
+	ID                    *string
+	Name                  *string
+	FullName              *string
+	Description           *string
+	PrivilegeList         *string
+	ExtendedPrivilegeList *string
+	CreationTime          *string
+	LastModified          *string
+	Hidden                *string
 }

@@ -4,15 +4,45 @@ package nimbleos
 
 // NsShelfCtrlr - A shelf controller information.
 // Export NsShelfCtrlrFields for advance operations like search filter etc.
-var NsShelfCtrlrFields *NsShelfCtrlr
+var NsShelfCtrlrFields *NsShelfCtrlrStringFields
 
 func init() {
 	ExpSasAddrfield := "exp_sas_addr"
+	CtrlrSidefield := "ctrlr_side"
+	EncLocIdfield := "enc_loc_id"
 	CachedSerialfield := "cached_serial"
+	CtrlrSensorLastRunfield := "ctrlr_sensor_last_run"
+	HwMshipFailurefield := "hw_mship_failure"
+	HwMasterStatefield := "hw_master_state"
+	SwMasterStatefield := "sw_master_state"
+	CtrlrSensorsfield := "ctrlr_sensors"
+	FanOverallStatusfield := "fan_overall_status"
+	TempOverallStatusfield := "temp_overall_status"
+	PsuOverallStatusfield := "psu_overall_status"
+	CtrlrHwModelfield := "ctrlr_hw_model"
+	PortInfofield := "port_info"
+	ExtraAttributesfield := "extra_attributes"
+	CtrlrAttrsetListfield := "ctrlr_attrset_list"
+	IDentifyStatusfield := "identify_status"
 
-	NsShelfCtrlrFields = &NsShelfCtrlr{
-		ExpSasAddr:   &ExpSasAddrfield,
-		CachedSerial: &CachedSerialfield,
+	NsShelfCtrlrFields = &NsShelfCtrlrStringFields{
+		ExpSasAddr:         &ExpSasAddrfield,
+		CtrlrSide:          &CtrlrSidefield,
+		EncLocId:           &EncLocIdfield,
+		CachedSerial:       &CachedSerialfield,
+		CtrlrSensorLastRun: &CtrlrSensorLastRunfield,
+		HwMshipFailure:     &HwMshipFailurefield,
+		HwMasterState:      &HwMasterStatefield,
+		SwMasterState:      &SwMasterStatefield,
+		CtrlrSensors:       &CtrlrSensorsfield,
+		FanOverallStatus:   &FanOverallStatusfield,
+		TempOverallStatus:  &TempOverallStatusfield,
+		PsuOverallStatus:   &PsuOverallStatusfield,
+		CtrlrHwModel:       &CtrlrHwModelfield,
+		PortInfo:           &PortInfofield,
+		ExtraAttributes:    &ExtraAttributesfield,
+		CtrlrAttrsetList:   &CtrlrAttrsetListfield,
+		IDentifyStatus:     &IDentifyStatusfield,
 	}
 }
 
@@ -51,4 +81,25 @@ type NsShelfCtrlr struct {
 	CtrlrAttrsetList []*NsShelfCtrlrAttrSet `json:"ctrlr_attrset_list,omitempty"`
 	// IDentifyStatus - Status of chassis identifier.
 	IDentifyStatus *bool `json:"identify_status,omitempty"`
+}
+
+// Struct for NsShelfCtrlrFields
+type NsShelfCtrlrStringFields struct {
+	ExpSasAddr         *string
+	CtrlrSide          *string
+	EncLocId           *string
+	CachedSerial       *string
+	CtrlrSensorLastRun *string
+	HwMshipFailure     *string
+	HwMasterState      *string
+	SwMasterState      *string
+	CtrlrSensors       *string
+	FanOverallStatus   *string
+	TempOverallStatus  *string
+	PsuOverallStatus   *string
+	CtrlrHwModel       *string
+	PortInfo           *string
+	ExtraAttributes    *string
+	CtrlrAttrsetList   *string
+	IDentifyStatus     *string
 }

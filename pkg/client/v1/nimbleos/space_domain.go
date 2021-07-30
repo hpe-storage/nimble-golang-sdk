@@ -4,7 +4,7 @@ package nimbleos
 
 // SpaceDomain - A space domain is created for each application category and block size for each each pool.
 // Export SpaceDomainFields for advance operations like search filter etc.
-var SpaceDomainFields *SpaceDomain
+var SpaceDomainFields *SpaceDomainStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,13 +12,57 @@ func init() {
 	PoolNamefield := "pool_name"
 	AppCategoryIdfield := "app_category_id"
 	AppCategoryNamefield := "app_category_name"
+	PerfPolicyNamesfield := "perf_policy_names"
+	SampleRatefield := "sample_rate"
+	VolumeCountfield := "volume_count"
+	DedupedVolumeCountfield := "deduped_volume_count"
+	Volumesfield := "volumes"
+	BlockSizefield := "block_size"
+	Dedupedfield := "deduped"
+	Encryptedfield := "encrypted"
+	Usagefield := "usage"
+	VolLogicalUsagefield := "vol_logical_usage"
+	SnapLogicalUsagefield := "snap_logical_usage"
+	VolMappedUsagefield := "vol_mapped_usage"
+	LogicalDedupeUsagefield := "logical_dedupe_usage"
+	PhysicalDedupeUsagefield := "physical_dedupe_usage"
+	SavingsCompressionfield := "savings_compression"
+	SavingsDedupefield := "savings_dedupe"
+	SavingsClonefield := "savings_clone"
+	CompressedUsageBytesfield := "compressed_usage_bytes"
+	UncompressedUsageBytesfield := "uncompressed_usage_bytes"
+	CompressionRatiofield := "compression_ratio"
+	DedupeRatiofield := "dedupe_ratio"
+	CloneRatiofield := "clone_ratio"
 
-	SpaceDomainFields = &SpaceDomain{
-		ID:              &IDfield,
-		PoolId:          &PoolIdfield,
-		PoolName:        &PoolNamefield,
-		AppCategoryId:   &AppCategoryIdfield,
-		AppCategoryName: &AppCategoryNamefield,
+	SpaceDomainFields = &SpaceDomainStringFields{
+		ID:                     &IDfield,
+		PoolId:                 &PoolIdfield,
+		PoolName:               &PoolNamefield,
+		AppCategoryId:          &AppCategoryIdfield,
+		AppCategoryName:        &AppCategoryNamefield,
+		PerfPolicyNames:        &PerfPolicyNamesfield,
+		SampleRate:             &SampleRatefield,
+		VolumeCount:            &VolumeCountfield,
+		DedupedVolumeCount:     &DedupedVolumeCountfield,
+		Volumes:                &Volumesfield,
+		BlockSize:              &BlockSizefield,
+		Deduped:                &Dedupedfield,
+		Encrypted:              &Encryptedfield,
+		Usage:                  &Usagefield,
+		VolLogicalUsage:        &VolLogicalUsagefield,
+		SnapLogicalUsage:       &SnapLogicalUsagefield,
+		VolMappedUsage:         &VolMappedUsagefield,
+		LogicalDedupeUsage:     &LogicalDedupeUsagefield,
+		PhysicalDedupeUsage:    &PhysicalDedupeUsagefield,
+		SavingsCompression:     &SavingsCompressionfield,
+		SavingsDedupe:          &SavingsDedupefield,
+		SavingsClone:           &SavingsClonefield,
+		CompressedUsageBytes:   &CompressedUsageBytesfield,
+		UncompressedUsageBytes: &UncompressedUsageBytesfield,
+		CompressionRatio:       &CompressionRatiofield,
+		DedupeRatio:            &DedupeRatiofield,
+		CloneRatio:             &CloneRatiofield,
 	}
 }
 
@@ -77,4 +121,35 @@ type SpaceDomain struct {
 	DedupeRatio *float64 `json:"dedupe_ratio,omitempty"`
 	// CloneRatio - Clone savings for the space domain expressed as ratio.
 	CloneRatio *float64 `json:"clone_ratio,omitempty"`
+}
+
+// Struct for SpaceDomainFields
+type SpaceDomainStringFields struct {
+	ID                     *string
+	PoolId                 *string
+	PoolName               *string
+	AppCategoryId          *string
+	AppCategoryName        *string
+	PerfPolicyNames        *string
+	SampleRate             *string
+	VolumeCount            *string
+	DedupedVolumeCount     *string
+	Volumes                *string
+	BlockSize              *string
+	Deduped                *string
+	Encrypted              *string
+	Usage                  *string
+	VolLogicalUsage        *string
+	SnapLogicalUsage       *string
+	VolMappedUsage         *string
+	LogicalDedupeUsage     *string
+	PhysicalDedupeUsage    *string
+	SavingsCompression     *string
+	SavingsDedupe          *string
+	SavingsClone           *string
+	CompressedUsageBytes   *string
+	UncompressedUsageBytes *string
+	CompressionRatio       *string
+	DedupeRatio            *string
+	CloneRatio             *string
 }

@@ -4,21 +4,41 @@ package nimbleos
 
 // Subnet - Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
 // Export SubnetFields for advance operations like search filter etc.
-var SubnetFields *Subnet
+var SubnetFields *SubnetStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	Networkfield := "network"
 	Netmaskfield := "netmask"
+	Typefield := "type"
+	AllowIscsifield := "allow_iscsi"
+	AllowGroupfield := "allow_group"
 	DiscoveryIpfield := "discovery_ip"
+	Mtufield := "mtu"
+	NetzoneTypefield := "netzone_type"
+	VlanIdfield := "vlan_id"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	Failoverfield := "failover"
+	FailoverEnableTimefield := "failover_enable_time"
 
-	SubnetFields = &Subnet{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Network:     &Networkfield,
-		Netmask:     &Netmaskfield,
-		DiscoveryIp: &DiscoveryIpfield,
+	SubnetFields = &SubnetStringFields{
+		ID:                 &IDfield,
+		Name:               &Namefield,
+		Network:            &Networkfield,
+		Netmask:            &Netmaskfield,
+		Type:               &Typefield,
+		AllowIscsi:         &AllowIscsifield,
+		AllowGroup:         &AllowGroupfield,
+		DiscoveryIp:        &DiscoveryIpfield,
+		Mtu:                &Mtufield,
+		NetzoneType:        &NetzoneTypefield,
+		VlanId:             &VlanIdfield,
+		CreationTime:       &CreationTimefield,
+		LastModified:       &LastModifiedfield,
+		Failover:           &Failoverfield,
+		FailoverEnableTime: &FailoverEnableTimefield,
 	}
 }
 
@@ -53,4 +73,23 @@ type Subnet struct {
 	Failover *bool `json:"failover,omitempty"`
 	// FailoverEnableTime - Failover for this subnet will be enabled again at the time specified by failover_enable_time.
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
+}
+
+// Struct for SubnetFields
+type SubnetStringFields struct {
+	ID                 *string
+	Name               *string
+	Network            *string
+	Netmask            *string
+	Type               *string
+	AllowIscsi         *string
+	AllowGroup         *string
+	DiscoveryIp        *string
+	Mtu                *string
+	NetzoneType        *string
+	VlanId             *string
+	CreationTime       *string
+	LastModified       *string
+	Failover           *string
+	FailoverEnableTime *string
 }

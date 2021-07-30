@@ -4,11 +4,22 @@ package nimbleos
 
 // NsADReportStatusReturn - Status of the Active Directory domain.
 // Export NsADReportStatusReturnFields for advance operations like search filter etc.
-var NsADReportStatusReturnFields *NsADReportStatusReturn
+var NsADReportStatusReturnFields *NsADReportStatusReturnStringFields
 
 func init() {
+	Joinedfield := "joined"
+	Enabledfield := "enabled"
+	LocalServiceStatusfield := "local_service_status"
+	RemoteServiceStatusfield := "remote_service_status"
+	TrustValidfield := "trust_valid"
 
-	NsADReportStatusReturnFields = &NsADReportStatusReturn{}
+	NsADReportStatusReturnFields = &NsADReportStatusReturnStringFields{
+		Joined:              &Joinedfield,
+		Enabled:             &Enabledfield,
+		LocalServiceStatus:  &LocalServiceStatusfield,
+		RemoteServiceStatus: &RemoteServiceStatusfield,
+		TrustValid:          &TrustValidfield,
+	}
 }
 
 type NsADReportStatusReturn struct {
@@ -22,4 +33,13 @@ type NsADReportStatusReturn struct {
 	RemoteServiceStatus *bool `json:"remote_service_status,omitempty"`
 	// TrustValid - Trust is valid.
 	TrustValid *bool `json:"trust_valid,omitempty"`
+}
+
+// Struct for NsADReportStatusReturnFields
+type NsADReportStatusReturnStringFields struct {
+	Joined              *string
+	Enabled             *string
+	LocalServiceStatus  *string
+	RemoteServiceStatus *string
+	TrustValid          *string
 }

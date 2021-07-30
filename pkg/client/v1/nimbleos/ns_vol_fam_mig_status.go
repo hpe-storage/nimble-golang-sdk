@@ -4,7 +4,7 @@ package nimbleos
 
 // NsVolFamMigStatus - Data migration status for a group of related volumes.
 // Export NsVolFamMigStatusFields for advance operations like search filter etc.
-var NsVolFamMigStatusFields *NsVolFamMigStatus
+var NsVolFamMigStatusFields *NsVolFamMigStatusStringFields
 
 func init() {
 	RootVolIdfield := "root_vol_id"
@@ -13,14 +13,24 @@ func init() {
 	SourcePoolNamefield := "source_pool_name"
 	DestPoolIdfield := "dest_pool_id"
 	DestPoolNamefield := "dest_pool_name"
+	MoveBytesMigratedfield := "move_bytes_migrated"
+	MoveBytesRemainingfield := "move_bytes_remaining"
+	MoveStartTimefield := "move_start_time"
+	MoveEstComplTimefield := "move_est_compl_time"
+	ArrayListfield := "array_list"
 
-	NsVolFamMigStatusFields = &NsVolFamMigStatus{
-		RootVolId:      &RootVolIdfield,
-		RootVolName:    &RootVolNamefield,
-		SourcePoolId:   &SourcePoolIdfield,
-		SourcePoolName: &SourcePoolNamefield,
-		DestPoolId:     &DestPoolIdfield,
-		DestPoolName:   &DestPoolNamefield,
+	NsVolFamMigStatusFields = &NsVolFamMigStatusStringFields{
+		RootVolId:          &RootVolIdfield,
+		RootVolName:        &RootVolNamefield,
+		SourcePoolId:       &SourcePoolIdfield,
+		SourcePoolName:     &SourcePoolNamefield,
+		DestPoolId:         &DestPoolIdfield,
+		DestPoolName:       &DestPoolNamefield,
+		MoveBytesMigrated:  &MoveBytesMigratedfield,
+		MoveBytesRemaining: &MoveBytesRemainingfield,
+		MoveStartTime:      &MoveStartTimefield,
+		MoveEstComplTime:   &MoveEstComplTimefield,
+		ArrayList:          &ArrayListfield,
 	}
 }
 
@@ -47,4 +57,19 @@ type NsVolFamMigStatus struct {
 	MoveEstComplTime *int64 `json:"move_est_compl_time,omitempty"`
 	// ArrayList - Data migration status for the arrays that store the volumes.
 	ArrayList []*NsArrayMigStatus `json:"array_list,omitempty"`
+}
+
+// Struct for NsVolFamMigStatusFields
+type NsVolFamMigStatusStringFields struct {
+	RootVolId          *string
+	RootVolName        *string
+	SourcePoolId       *string
+	SourcePoolName     *string
+	DestPoolId         *string
+	DestPoolName       *string
+	MoveBytesMigrated  *string
+	MoveBytesRemaining *string
+	MoveStartTime      *string
+	MoveEstComplTime   *string
+	ArrayList          *string
 }

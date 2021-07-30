@@ -4,7 +4,7 @@ package nimbleos
 
 // NsAccessControlRecord - An access control record associated with a volume or snapshot or protocol endpoint.
 // Export NsAccessControlRecordFields for advance operations like search filter etc.
-var NsAccessControlRecordFields *NsAccessControlRecord
+var NsAccessControlRecordFields *NsAccessControlRecordStringFields
 
 func init() {
 	IDfield := "id"
@@ -13,22 +13,32 @@ func init() {
 	InitiatorGroupNamefield := "initiator_group_name"
 	ChapUserIdfield := "chap_user_id"
 	ChapUserNamefield := "chap_user_name"
+	ApplyTofield := "apply_to"
+	Lunfield := "lun"
+	AccessProtocolfield := "access_protocol"
+	Snaplunsfield := "snapluns"
 	PeIdfield := "pe_id"
 	PeNamefield := "pe_name"
+	PeLunfield := "pe_lun"
 	VolIdfield := "vol_id"
 	VolNamefield := "vol_name"
 	SnapIdfield := "snap_id"
 	SnapNamefield := "snap_name"
 
-	NsAccessControlRecordFields = &NsAccessControlRecord{
+	NsAccessControlRecordFields = &NsAccessControlRecordStringFields{
 		ID:                 &IDfield,
 		AclId:              &AclIdfield,
 		InitiatorGroupId:   &InitiatorGroupIdfield,
 		InitiatorGroupName: &InitiatorGroupNamefield,
 		ChapUserId:         &ChapUserIdfield,
 		ChapUserName:       &ChapUserNamefield,
+		ApplyTo:            &ApplyTofield,
+		Lun:                &Lunfield,
+		AccessProtocol:     &AccessProtocolfield,
+		Snapluns:           &Snaplunsfield,
 		PeId:               &PeIdfield,
 		PeName:             &PeNamefield,
+		PeLun:              &PeLunfield,
 		VolId:              &VolIdfield,
 		VolName:            &VolNamefield,
 		SnapId:             &SnapIdfield,
@@ -71,4 +81,25 @@ type NsAccessControlRecord struct {
 	SnapId *string `json:"snap_id,omitempty"`
 	// SnapName - Name of snapshot.
 	SnapName *string `json:"snap_name,omitempty"`
+}
+
+// Struct for NsAccessControlRecordFields
+type NsAccessControlRecordStringFields struct {
+	ID                 *string
+	AclId              *string
+	InitiatorGroupId   *string
+	InitiatorGroupName *string
+	ChapUserId         *string
+	ChapUserName       *string
+	ApplyTo            *string
+	Lun                *string
+	AccessProtocol     *string
+	Snapluns           *string
+	PeId               *string
+	PeName             *string
+	PeLun              *string
+	VolId              *string
+	VolName            *string
+	SnapId             *string
+	SnapName           *string
 }

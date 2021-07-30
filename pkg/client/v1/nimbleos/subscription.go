@@ -4,17 +4,27 @@ package nimbleos
 
 // Subscription - Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
 // Export SubscriptionFields for advance operations like search filter etc.
-var SubscriptionFields *Subscription
+var SubscriptionFields *SubscriptionStringFields
 
 func init() {
 	IDfield := "id"
 	SubscriberIdfield := "subscriber_id"
+	NotificationTypefield := "notification_type"
+	ObjectTypefield := "object_type"
 	ObjectIdfield := "object_id"
+	Operationfield := "operation"
+	EventTargetTypefield := "event_target_type"
+	EventSeverityfield := "event_severity"
 
-	SubscriptionFields = &Subscription{
-		ID:           &IDfield,
-		SubscriberId: &SubscriberIdfield,
-		ObjectId:     &ObjectIdfield,
+	SubscriptionFields = &SubscriptionStringFields{
+		ID:               &IDfield,
+		SubscriberId:     &SubscriberIdfield,
+		NotificationType: &NotificationTypefield,
+		ObjectType:       &ObjectTypefield,
+		ObjectId:         &ObjectIdfield,
+		Operation:        &Operationfield,
+		EventTargetType:  &EventTargetTypefield,
+		EventSeverity:    &EventSeverityfield,
 	}
 }
 
@@ -35,4 +45,16 @@ type Subscription struct {
 	EventTargetType *NsEventTargetTypeOrAll `json:"event_target_type,omitempty"`
 	// EventSeverity - The severity of events that the notification subscriber is interested in. Applies only to events based notifications.
 	EventSeverity *NsSeverityLevel `json:"event_severity,omitempty"`
+}
+
+// Struct for SubscriptionFields
+type SubscriptionStringFields struct {
+	ID               *string
+	SubscriberId     *string
+	NotificationType *string
+	ObjectType       *string
+	ObjectId         *string
+	Operation        *string
+	EventTargetType  *string
+	EventSeverity    *string
 }

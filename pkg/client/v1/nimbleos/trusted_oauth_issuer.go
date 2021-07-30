@@ -4,17 +4,19 @@ package nimbleos
 
 // TrustedOauthIssuer - Oauth Credential Issuers that this device will trust.
 // Export TrustedOauthIssuerFields for advance operations like search filter etc.
-var TrustedOauthIssuerFields *TrustedOauthIssuer
+var TrustedOauthIssuerFields *TrustedOauthIssuerStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	JwksUrlfield := "jwks_url"
+	KeySetfield := "key_set"
 
-	TrustedOauthIssuerFields = &TrustedOauthIssuer{
+	TrustedOauthIssuerFields = &TrustedOauthIssuerStringFields{
 		ID:      &IDfield,
 		Name:    &Namefield,
 		JwksUrl: &JwksUrlfield,
+		KeySet:  &KeySetfield,
 	}
 }
 
@@ -27,4 +29,12 @@ type TrustedOauthIssuer struct {
 	JwksUrl *string `json:"jwks_url,omitempty"`
 	// KeySet - List of public keys for verifying signatures.
 	KeySet []*NsJWKey `json:"key_set,omitempty"`
+}
+
+// Struct for TrustedOauthIssuerFields
+type TrustedOauthIssuerStringFields struct {
+	ID      *string
+	Name    *string
+	JwksUrl *string
+	KeySet  *string
 }

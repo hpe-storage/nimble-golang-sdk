@@ -4,21 +4,37 @@ package nimbleos
 
 // NsThrottle - A single throttle for the partner.
 // Export NsThrottleFields for advance operations like search filter etc.
-var NsThrottleFields *NsThrottle
+var NsThrottleFields *NsThrottleStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	Descriptionfield := "description"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
 	ThrPartnerIdfield := "thr_partner_id"
+	ThrDayMaskfield := "thr_day_mask"
 	Daysfield := "days"
+	ThrAtTimefield := "thr_at_time"
+	ThrUntilTimefield := "thr_until_time"
+	ThrBandwidthfield := "thr_bandwidth"
+	ThrBandwidthKbpsfield := "thr_bandwidth_kbps"
+	ThrBandwidthLimitKbpsfield := "thr_bandwidth_limit_kbps"
 
-	NsThrottleFields = &NsThrottle{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		Description:  &Descriptionfield,
-		ThrPartnerId: &ThrPartnerIdfield,
-		Days:         &Daysfield,
+	NsThrottleFields = &NsThrottleStringFields{
+		ID:                    &IDfield,
+		Name:                  &Namefield,
+		Description:           &Descriptionfield,
+		CreationTime:          &CreationTimefield,
+		LastModified:          &LastModifiedfield,
+		ThrPartnerId:          &ThrPartnerIdfield,
+		ThrDayMask:            &ThrDayMaskfield,
+		Days:                  &Daysfield,
+		ThrAtTime:             &ThrAtTimefield,
+		ThrUntilTime:          &ThrUntilTimefield,
+		ThrBandwidth:          &ThrBandwidthfield,
+		ThrBandwidthKbps:      &ThrBandwidthKbpsfield,
+		ThrBandwidthLimitKbps: &ThrBandwidthLimitKbpsfield,
 	}
 }
 
@@ -49,4 +65,21 @@ type NsThrottle struct {
 	ThrBandwidthKbps *int64 `json:"thr_bandwidth_kbps,omitempty"`
 	// ThrBandwidthLimitKbps - Bandwidth set for the throttle in kilobits per second or -1 to indicate that there is no limit.
 	ThrBandwidthLimitKbps *int64 `json:"thr_bandwidth_limit_kbps,omitempty"`
+}
+
+// Struct for NsThrottleFields
+type NsThrottleStringFields struct {
+	ID                    *string
+	Name                  *string
+	Description           *string
+	CreationTime          *string
+	LastModified          *string
+	ThrPartnerId          *string
+	ThrDayMask            *string
+	Days                  *string
+	ThrAtTime             *string
+	ThrUntilTime          *string
+	ThrBandwidth          *string
+	ThrBandwidthKbps      *string
+	ThrBandwidthLimitKbps *string
 }

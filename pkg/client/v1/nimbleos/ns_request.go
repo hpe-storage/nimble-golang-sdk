@@ -4,13 +4,17 @@ package nimbleos
 
 // NsRequest - May contain anything that any REST API request can contain.
 // Export NsRequestFields for advance operations like search filter etc.
-var NsRequestFields *NsRequest
+var NsRequestFields *NsRequestStringFields
 
 func init() {
+	Datafield := "data"
+	Methodfield := "method"
 	Pathfield := "path"
 
-	NsRequestFields = &NsRequest{
-		Path: &Pathfield,
+	NsRequestFields = &NsRequestStringFields{
+		Data:   &Datafield,
+		Method: &Methodfield,
+		Path:   &Pathfield,
 	}
 }
 
@@ -21,4 +25,11 @@ type NsRequest struct {
 	Method *int64 `json:"method,omitempty"`
 	// Path - Path which identifies the target resource.
 	Path *string `json:"path,omitempty"`
+}
+
+// Struct for NsRequestFields
+type NsRequestStringFields struct {
+	Data   *string
+	Method *string
+	Path   *string
 }

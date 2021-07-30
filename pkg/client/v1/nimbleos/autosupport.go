@@ -4,17 +4,21 @@ package nimbleos
 
 // Autosupport - Get status of autosupport.
 // Export AutosupportFields for advance operations like search filter etc.
-var AutosupportFields *Autosupport
+var AutosupportFields *AutosupportStringFields
 
 func init() {
 	IDfield := "id"
+	ArrayListfield := "array_list"
+	ArrayCountfield := "array_count"
 	GroupIdfield := "group_id"
 	GroupNamefield := "group_name"
 
-	AutosupportFields = &Autosupport{
-		ID:        &IDfield,
-		GroupId:   &GroupIdfield,
-		GroupName: &GroupNamefield,
+	AutosupportFields = &AutosupportStringFields{
+		ID:         &IDfield,
+		ArrayList:  &ArrayListfield,
+		ArrayCount: &ArrayCountfield,
+		GroupId:    &GroupIdfield,
+		GroupName:  &GroupNamefield,
 	}
 }
 
@@ -29,4 +33,13 @@ type Autosupport struct {
 	GroupId *string `json:"group_id,omitempty"`
 	// GroupName - Name of the group.
 	GroupName *string `json:"group_name,omitempty"`
+}
+
+// Struct for AutosupportFields
+type AutosupportStringFields struct {
+	ID         *string
+	ArrayList  *string
+	ArrayCount *string
+	GroupId    *string
+	GroupName  *string
 }

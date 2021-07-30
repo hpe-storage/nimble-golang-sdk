@@ -4,7 +4,7 @@ package nimbleos
 
 // UninitializedArray - Lists discovered arrays that are not members of any group and are in the same subnet.
 // Export UninitializedArrayFields for advance operations like search filter etc.
-var UninitializedArrayFields *UninitializedArray
+var UninitializedArrayFields *UninitializedArrayStringFields
 
 func init() {
 	IDfield := "id"
@@ -14,15 +14,23 @@ func init() {
 	ModelStrfield := "model_str"
 	Versionfield := "version"
 	IpAddressfield := "ip_address"
+	ZconfIpaddrsfield := "zconf_ipaddrs"
+	CountOfFcPortsfield := "count_of_fc_ports"
+	AllFlashfield := "all_flash"
+	DedupeConfigurablefield := "dedupe_configurable"
 
-	UninitializedArrayFields = &UninitializedArray{
-		ID:        &IDfield,
-		Serial:    &Serialfield,
-		ArrayName: &ArrayNamefield,
-		Model:     &Modelfield,
-		ModelStr:  &ModelStrfield,
-		Version:   &Versionfield,
-		IpAddress: &IpAddressfield,
+	UninitializedArrayFields = &UninitializedArrayStringFields{
+		ID:                 &IDfield,
+		Serial:             &Serialfield,
+		ArrayName:          &ArrayNamefield,
+		Model:              &Modelfield,
+		ModelStr:           &ModelStrfield,
+		Version:            &Versionfield,
+		IpAddress:          &IpAddressfield,
+		ZconfIpaddrs:       &ZconfIpaddrsfield,
+		CountOfFcPorts:     &CountOfFcPortsfield,
+		AllFlash:           &AllFlashfield,
+		DedupeConfigurable: &DedupeConfigurablefield,
 	}
 }
 
@@ -49,4 +57,19 @@ type UninitializedArray struct {
 	AllFlash *bool `json:"all_flash,omitempty"`
 	// DedupeConfigurable - True if it is a hybrid array that is capable of updating data deduplication setting, False otherwise.
 	DedupeConfigurable *bool `json:"dedupe_configurable,omitempty"`
+}
+
+// Struct for UninitializedArrayFields
+type UninitializedArrayStringFields struct {
+	ID                 *string
+	Serial             *string
+	ArrayName          *string
+	Model              *string
+	ModelStr           *string
+	Version            *string
+	IpAddress          *string
+	ZconfIpaddrs       *string
+	CountOfFcPorts     *string
+	AllFlash           *string
+	DedupeConfigurable *string
 }

@@ -4,13 +4,17 @@ package nimbleos
 
 // AuditLog - View audit log.
 // Export AuditLogFields for advance operations like search filter etc.
-var AuditLogFields *AuditLog
+var AuditLogFields *AuditLogStringFields
 
 func init() {
 	IDfield := "id"
+	Typefield := "type"
 	ObjectIdfield := "object_id"
 	ObjectNamefield := "object_name"
+	ObjectTypefield := "object_type"
 	Scopefield := "scope"
+	Timefield := "time"
+	Statusfield := "status"
 	ErrorCodefield := "error_code"
 	UserIdfield := "user_id"
 	UserNamefield := "user_name"
@@ -21,13 +25,19 @@ func init() {
 	ExtUserGroupNamefield := "ext_user_group_name"
 	AppNamefield := "app_name"
 	AccessTypefield := "access_type"
+	Categoryfield := "category"
+	ActivityTypefield := "activity_type"
 	Activityfield := "activity"
 
-	AuditLogFields = &AuditLog{
+	AuditLogFields = &AuditLogStringFields{
 		ID:               &IDfield,
+		Type:             &Typefield,
 		ObjectId:         &ObjectIdfield,
 		ObjectName:       &ObjectNamefield,
+		ObjectType:       &ObjectTypefield,
 		Scope:            &Scopefield,
+		Time:             &Timefield,
+		Status:           &Statusfield,
 		ErrorCode:        &ErrorCodefield,
 		UserId:           &UserIdfield,
 		UserName:         &UserNamefield,
@@ -38,6 +48,8 @@ func init() {
 		ExtUserGroupName: &ExtUserGroupNamefield,
 		AppName:          &AppNamefield,
 		AccessType:       &AccessTypefield,
+		Category:         &Categoryfield,
+		ActivityType:     &ActivityTypefield,
 		Activity:         &Activityfield,
 	}
 }
@@ -85,4 +97,29 @@ type AuditLog struct {
 	ActivityType *NsAuditOperationType `json:"activity_type,omitempty"`
 	// Activity - Description of activity performed and recorded in audit log.
 	Activity *string `json:"activity,omitempty"`
+}
+
+// Struct for AuditLogFields
+type AuditLogStringFields struct {
+	ID               *string
+	Type             *string
+	ObjectId         *string
+	ObjectName       *string
+	ObjectType       *string
+	Scope            *string
+	Time             *string
+	Status           *string
+	ErrorCode        *string
+	UserId           *string
+	UserName         *string
+	UserFullName     *string
+	SourceIp         *string
+	ExtUserId        *string
+	ExtUserGroupId   *string
+	ExtUserGroupName *string
+	AppName          *string
+	AccessType       *string
+	Category         *string
+	ActivityType     *string
+	Activity         *string
 }

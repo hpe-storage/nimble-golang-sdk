@@ -4,41 +4,93 @@ package nimbleos
 
 // ProtectionSchedule - Manage protection schedules used in protection templates.
 // Export ProtectionScheduleFields for advance operations like search filter etc.
-var ProtectionScheduleFields *ProtectionSchedule
+var ProtectionScheduleFields *ProtectionScheduleStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	Descriptionfield := "description"
+	VolcollOrProttmplTypefield := "volcoll_or_prottmpl_type"
 	VolcollOrProttmplIdfield := "volcoll_or_prottmpl_id"
+	Periodfield := "period"
+	PeriodUnitfield := "period_unit"
+	AtTimefield := "at_time"
+	UntilTimefield := "until_time"
 	Daysfield := "days"
+	NumRetainfield := "num_retain"
 	DownstreamPartnerfield := "downstream_partner"
 	DownstreamPartnerNamefield := "downstream_partner_name"
 	DownstreamPartnerIdfield := "downstream_partner_id"
 	UpstreamPartnerNamefield := "upstream_partner_name"
 	UpstreamPartnerIdfield := "upstream_partner_id"
+	ReplicateEveryfield := "replicate_every"
+	NumRetainReplicafield := "num_retain_replica"
+	ReplAlertThresfield := "repl_alert_thres"
+	SnapVerifyfield := "snap_verify"
+	SkipDbConsistencyCheckfield := "skip_db_consistency_check"
+	DisableAppsyncfield := "disable_appsync"
+	ScheduleTypefield := "schedule_type"
+	Activefield := "active"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	LastModSchedTimefield := "last_mod_sched_time"
 	LastReplicatedSnapcollNamefield := "last_replicated_snapcoll_name"
 	LastReplicatedSnapcollIdfield := "last_replicated_snapcoll_id"
+	LastReplicatedAtTimefield := "last_replicated_at_time"
+	LastSnapTimefield := "last_snap_time"
+	NextSnapTimefield := "next_snap_time"
+	NextReplSnapTimefield := "next_repl_snap_time"
+	SnapCounterfield := "snap_counter"
 	SchedOwnerIdfield := "sched_owner_id"
 	SchedOwnerNamefield := "sched_owner_name"
+	LastConfigChangeTimefield := "last_config_change_time"
 	CurrentlyReplicatingSnapcollNamefield := "currently_replicating_snapcoll_name"
+	VolStatusListfield := "vol_status_list"
+	SyncReplVolStatusListfield := "sync_repl_vol_status_list"
+	UseDownstreamForDrfield := "use_downstream_for_dr"
 
-	ProtectionScheduleFields = &ProtectionSchedule{
+	ProtectionScheduleFields = &ProtectionScheduleStringFields{
 		ID:                               &IDfield,
 		Name:                             &Namefield,
 		Description:                      &Descriptionfield,
+		VolcollOrProttmplType:            &VolcollOrProttmplTypefield,
 		VolcollOrProttmplId:              &VolcollOrProttmplIdfield,
+		Period:                           &Periodfield,
+		PeriodUnit:                       &PeriodUnitfield,
+		AtTime:                           &AtTimefield,
+		UntilTime:                        &UntilTimefield,
 		Days:                             &Daysfield,
+		NumRetain:                        &NumRetainfield,
 		DownstreamPartner:                &DownstreamPartnerfield,
 		DownstreamPartnerName:            &DownstreamPartnerNamefield,
 		DownstreamPartnerId:              &DownstreamPartnerIdfield,
 		UpstreamPartnerName:              &UpstreamPartnerNamefield,
 		UpstreamPartnerId:                &UpstreamPartnerIdfield,
+		ReplicateEvery:                   &ReplicateEveryfield,
+		NumRetainReplica:                 &NumRetainReplicafield,
+		ReplAlertThres:                   &ReplAlertThresfield,
+		SnapVerify:                       &SnapVerifyfield,
+		SkipDbConsistencyCheck:           &SkipDbConsistencyCheckfield,
+		DisableAppsync:                   &DisableAppsyncfield,
+		ScheduleType:                     &ScheduleTypefield,
+		Active:                           &Activefield,
+		CreationTime:                     &CreationTimefield,
+		LastModified:                     &LastModifiedfield,
+		LastModSchedTime:                 &LastModSchedTimefield,
 		LastReplicatedSnapcollName:       &LastReplicatedSnapcollNamefield,
 		LastReplicatedSnapcollId:         &LastReplicatedSnapcollIdfield,
+		LastReplicatedAtTime:             &LastReplicatedAtTimefield,
+		LastSnapTime:                     &LastSnapTimefield,
+		NextSnapTime:                     &NextSnapTimefield,
+		NextReplSnapTime:                 &NextReplSnapTimefield,
+		SnapCounter:                      &SnapCounterfield,
 		SchedOwnerId:                     &SchedOwnerIdfield,
 		SchedOwnerName:                   &SchedOwnerNamefield,
+		LastConfigChangeTime:             &LastConfigChangeTimefield,
 		CurrentlyReplicatingSnapcollName: &CurrentlyReplicatingSnapcollNamefield,
+		VolStatusList:                    &VolStatusListfield,
+		SyncReplVolStatusList:            &SyncReplVolStatusListfield,
+		UseDownstreamForDr:               &UseDownstreamForDrfield,
 	}
 }
 
@@ -125,4 +177,49 @@ type ProtectionSchedule struct {
 	SyncReplVolStatusList []*NsSyncReplVolStatus `json:"sync_repl_vol_status_list,omitempty"`
 	// UseDownstreamForDr - Break synchronous replication for the specified volume collection and present downstream volumes to host(s). Downstream volumes in the volume collection will be set to online and presented to the host(s) using new serial and LUN numbers. No changes will be made to the upstream volumes, their serial and LUN numbers, and their online state. The existing ACLs on the upstream volumes will be copied to the downstream volumes. Use this in conjunction with an empty downstream_partner_id. This unconfigures synchronous replication when the partner is removed from the last replicating schedule in the specified volume collection and presents the downstream volumes to host(s). Host(s) will need to be configured to access the new volumes with the newly assigned serial and LUN numbers. Use this option to expose downstream volumes in a synchronously replicated volume collection to host(s) only when the upstream partner is confirmed to be down and there is no communication between partners. Do not execute this operation if a previous Group Management Service takeover has been performed on a different array. Do not perform a subsequent Group Management Service takeover on a different array as it will lead to irreconcilable conflicts. This limitation is cleared once the Group management service backup array has successfully synchronized after reconnection.
 	UseDownstreamForDr *bool `json:"use_downstream_for_dr,omitempty"`
+}
+
+// Struct for ProtectionScheduleFields
+type ProtectionScheduleStringFields struct {
+	ID                               *string
+	Name                             *string
+	Description                      *string
+	VolcollOrProttmplType            *string
+	VolcollOrProttmplId              *string
+	Period                           *string
+	PeriodUnit                       *string
+	AtTime                           *string
+	UntilTime                        *string
+	Days                             *string
+	NumRetain                        *string
+	DownstreamPartner                *string
+	DownstreamPartnerName            *string
+	DownstreamPartnerId              *string
+	UpstreamPartnerName              *string
+	UpstreamPartnerId                *string
+	ReplicateEvery                   *string
+	NumRetainReplica                 *string
+	ReplAlertThres                   *string
+	SnapVerify                       *string
+	SkipDbConsistencyCheck           *string
+	DisableAppsync                   *string
+	ScheduleType                     *string
+	Active                           *string
+	CreationTime                     *string
+	LastModified                     *string
+	LastModSchedTime                 *string
+	LastReplicatedSnapcollName       *string
+	LastReplicatedSnapcollId         *string
+	LastReplicatedAtTime             *string
+	LastSnapTime                     *string
+	NextSnapTime                     *string
+	NextReplSnapTime                 *string
+	SnapCounter                      *string
+	SchedOwnerId                     *string
+	SchedOwnerName                   *string
+	LastConfigChangeTime             *string
+	CurrentlyReplicatingSnapcollName *string
+	VolStatusList                    *string
+	SyncReplVolStatusList            *string
+	UseDownstreamForDr               *string
 }

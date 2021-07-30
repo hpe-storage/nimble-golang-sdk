@@ -4,15 +4,17 @@ package nimbleos
 
 // NsSnapSummary - Select fields containing snapshot information.
 // Export NsSnapSummaryFields for advance operations like search filter etc.
-var NsSnapSummaryFields *NsSnapSummary
+var NsSnapSummaryFields *NsSnapSummaryStringFields
 
 func init() {
 	SnapIdfield := "snap_id"
 	SnapNamefield := "snap_name"
+	SnapCreationTimefield := "snap_creation_time"
 
-	NsSnapSummaryFields = &NsSnapSummary{
-		SnapId:   &SnapIdfield,
-		SnapName: &SnapNamefield,
+	NsSnapSummaryFields = &NsSnapSummaryStringFields{
+		SnapId:           &SnapIdfield,
+		SnapName:         &SnapNamefield,
+		SnapCreationTime: &SnapCreationTimefield,
 	}
 }
 
@@ -23,4 +25,11 @@ type NsSnapSummary struct {
 	SnapName *string `json:"snap_name,omitempty"`
 	// SnapCreationTime - Creation time of snapshot.
 	SnapCreationTime *int64 `json:"snap_creation_time,omitempty"`
+}
+
+// Struct for NsSnapSummaryFields
+type NsSnapSummaryStringFields struct {
+	SnapId           *string
+	SnapName         *string
+	SnapCreationTime *string
 }

@@ -4,19 +4,35 @@ package nimbleos
 
 // NsArrayDetail - Detailed array information.
 // Export NsArrayDetailFields for advance operations like search filter etc.
-var NsArrayDetailFields *NsArrayDetail
+var NsArrayDetailFields *NsArrayDetailStringFields
 
 func init() {
 	IDfield := "id"
 	ArrayIdfield := "array_id"
 	Namefield := "name"
 	ArrayNamefield := "array_name"
+	EvacTimefield := "evac_time"
+	EvacUsagefield := "evac_usage"
+	UsableCapacityfield := "usable_capacity"
+	Usagefield := "usage"
+	VolUsageCompressedBytesfield := "vol_usage_compressed_bytes"
+	SnapUsageCompressedBytesfield := "snap_usage_compressed_bytes"
+	UsageValidfield := "usage_valid"
+	Migratefield := "migrate"
 
-	NsArrayDetailFields = &NsArrayDetail{
-		ID:        &IDfield,
-		ArrayId:   &ArrayIdfield,
-		Name:      &Namefield,
-		ArrayName: &ArrayNamefield,
+	NsArrayDetailFields = &NsArrayDetailStringFields{
+		ID:                       &IDfield,
+		ArrayId:                  &ArrayIdfield,
+		Name:                     &Namefield,
+		ArrayName:                &ArrayNamefield,
+		EvacTime:                 &EvacTimefield,
+		EvacUsage:                &EvacUsagefield,
+		UsableCapacity:           &UsableCapacityfield,
+		Usage:                    &Usagefield,
+		VolUsageCompressedBytes:  &VolUsageCompressedBytesfield,
+		SnapUsageCompressedBytes: &SnapUsageCompressedBytesfield,
+		UsageValid:               &UsageValidfield,
+		Migrate:                  &Migratefield,
 	}
 }
 
@@ -45,4 +61,20 @@ type NsArrayDetail struct {
 	UsageValid *bool `json:"usage_valid,omitempty"`
 	// Migrate - Migrate status of array.
 	Migrate *NsPoolMigrate `json:"migrate,omitempty"`
+}
+
+// Struct for NsArrayDetailFields
+type NsArrayDetailStringFields struct {
+	ID                       *string
+	ArrayId                  *string
+	Name                     *string
+	ArrayName                *string
+	EvacTime                 *string
+	EvacUsage                *string
+	UsableCapacity           *string
+	Usage                    *string
+	VolUsageCompressedBytes  *string
+	SnapUsageCompressedBytes *string
+	UsageValid               *string
+	Migrate                  *string
 }

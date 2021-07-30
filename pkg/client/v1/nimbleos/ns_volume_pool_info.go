@@ -4,7 +4,7 @@ package nimbleos
 
 // NsVolumePoolInfo - Volume information along with the pool to which it belongs to.
 // Export NsVolumePoolInfoFields for advance operations like search filter etc.
-var NsVolumePoolInfoFields *NsVolumePoolInfo
+var NsVolumePoolInfoFields *NsVolumePoolInfoStringFields
 
 func init() {
 	VolIdfield := "vol_id"
@@ -12,7 +12,7 @@ func init() {
 	PoolIdfield := "pool_id"
 	PoolNamefield := "pool_name"
 
-	NsVolumePoolInfoFields = &NsVolumePoolInfo{
+	NsVolumePoolInfoFields = &NsVolumePoolInfoStringFields{
 		VolId:    &VolIdfield,
 		VolName:  &VolNamefield,
 		PoolId:   &PoolIdfield,
@@ -29,4 +29,12 @@ type NsVolumePoolInfo struct {
 	PoolId *string `json:"pool_id,omitempty"`
 	// PoolName - Name of the pool to which volume belongs to.
 	PoolName *string `json:"pool_name,omitempty"`
+}
+
+// Struct for NsVolumePoolInfoFields
+type NsVolumePoolInfoStringFields struct {
+	VolId    *string
+	VolName  *string
+	PoolId   *string
+	PoolName *string
 }

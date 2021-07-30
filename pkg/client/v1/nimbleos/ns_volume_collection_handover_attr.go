@@ -4,15 +4,17 @@ package nimbleos
 
 // NsVolumeCollectionHandoverAttr - Arguments to handover a volume collection.
 // Export NsVolumeCollectionHandoverAttrFields for advance operations like search filter etc.
-var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttr
+var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttrStringFields
 
 func init() {
 	IDfield := "id"
 	ReplicationPartnerIdfield := "replication_partner_id"
+	NoReversefield := "no_reverse"
 
-	NsVolumeCollectionHandoverAttrFields = &NsVolumeCollectionHandoverAttr{
+	NsVolumeCollectionHandoverAttrFields = &NsVolumeCollectionHandoverAttrStringFields{
 		ID:                   &IDfield,
 		ReplicationPartnerId: &ReplicationPartnerIdfield,
+		NoReverse:            &NoReversefield,
 	}
 }
 
@@ -23,4 +25,11 @@ type NsVolumeCollectionHandoverAttr struct {
 	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
 	// NoReverse - Do not automatically reverse direction of replication. Using this argument will prevent the new owner from automatically replicating the volume collection to this node when the handover completes. The default behavior is to enable replication back to this node. Default: 'false'.
 	NoReverse *bool `json:"no_reverse,omitempty"`
+}
+
+// Struct for NsVolumeCollectionHandoverAttrFields
+type NsVolumeCollectionHandoverAttrStringFields struct {
+	ID                   *string
+	ReplicationPartnerId *string
+	NoReverse            *string
 }

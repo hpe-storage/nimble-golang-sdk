@@ -4,19 +4,35 @@ package nimbleos
 
 // NsSubnet - A subnet configuration.
 // Export NsSubnetFields for advance operations like search filter etc.
-var NsSubnetFields *NsSubnet
+var NsSubnetFields *NsSubnetStringFields
 
 func init() {
 	Labelfield := "label"
 	Networkfield := "network"
 	Netmaskfield := "netmask"
+	NetzoneTypefield := "netzone_type"
+	Typefield := "type"
+	AllowIscsifield := "allow_iscsi"
+	AllowGroupfield := "allow_group"
 	DiscoveryIpfield := "discovery_ip"
+	Mtufield := "mtu"
+	VlanIdfield := "vlan_id"
+	Failoverfield := "failover"
+	FailoverEnableTimefield := "failover_enable_time"
 
-	NsSubnetFields = &NsSubnet{
-		Label:       &Labelfield,
-		Network:     &Networkfield,
-		Netmask:     &Netmaskfield,
-		DiscoveryIp: &DiscoveryIpfield,
+	NsSubnetFields = &NsSubnetStringFields{
+		Label:              &Labelfield,
+		Network:            &Networkfield,
+		Netmask:            &Netmaskfield,
+		NetzoneType:        &NetzoneTypefield,
+		Type:               &Typefield,
+		AllowIscsi:         &AllowIscsifield,
+		AllowGroup:         &AllowGroupfield,
+		DiscoveryIp:        &DiscoveryIpfield,
+		Mtu:                &Mtufield,
+		VlanId:             &VlanIdfield,
+		Failover:           &Failoverfield,
+		FailoverEnableTime: &FailoverEnableTimefield,
 	}
 }
 
@@ -45,4 +61,20 @@ type NsSubnet struct {
 	Failover *bool `json:"failover,omitempty"`
 	// FailoverEnableTime - Failover for this subnet will be enabled again at the time specified by failover_enable_time.
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
+}
+
+// Struct for NsSubnetFields
+type NsSubnetStringFields struct {
+	Label              *string
+	Network            *string
+	Netmask            *string
+	NetzoneType        *string
+	Type               *string
+	AllowIscsi         *string
+	AllowGroup         *string
+	DiscoveryIp        *string
+	Mtu                *string
+	VlanId             *string
+	Failover           *string
+	FailoverEnableTime *string
 }

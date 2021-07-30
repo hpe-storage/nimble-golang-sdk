@@ -4,23 +4,33 @@ package nimbleos
 
 // ApplicationServer - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 // Export ApplicationServerFields for advance operations like search filter etc.
-var ApplicationServerFields *ApplicationServer
+var ApplicationServerFields *ApplicationServerStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	Hostnamefield := "hostname"
+	Portfield := "port"
 	Usernamefield := "username"
 	Descriptionfield := "description"
 	Passwordfield := "password"
+	ServerTypefield := "server_type"
+	Metadatafield := "metadata"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
 
-	ApplicationServerFields = &ApplicationServer{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Hostname:    &Hostnamefield,
-		Username:    &Usernamefield,
-		Description: &Descriptionfield,
-		Password:    &Passwordfield,
+	ApplicationServerFields = &ApplicationServerStringFields{
+		ID:           &IDfield,
+		Name:         &Namefield,
+		Hostname:     &Hostnamefield,
+		Port:         &Portfield,
+		Username:     &Usernamefield,
+		Description:  &Descriptionfield,
+		Password:     &Passwordfield,
+		ServerType:   &ServerTypefield,
+		Metadata:     &Metadatafield,
+		CreationTime: &CreationTimefield,
+		LastModified: &LastModifiedfield,
 	}
 }
 
@@ -47,4 +57,19 @@ type ApplicationServer struct {
 	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this application server was last modified.
 	LastModified *int64 `json:"last_modified,omitempty"`
+}
+
+// Struct for ApplicationServerFields
+type ApplicationServerStringFields struct {
+	ID           *string
+	Name         *string
+	Hostname     *string
+	Port         *string
+	Username     *string
+	Description  *string
+	Password     *string
+	ServerType   *string
+	Metadata     *string
+	CreationTime *string
+	LastModified *string
 }

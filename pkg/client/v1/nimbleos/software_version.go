@@ -4,23 +4,33 @@ package nimbleos
 
 // SoftwareVersion - Show the software version.
 // Export SoftwareVersionFields for advance operations like search filter etc.
-var SoftwareVersionFields *SoftwareVersion
+var SoftwareVersionFields *SoftwareVersionStringFields
 
 func init() {
 	Versionfield := "version"
 	Signaturefield := "signature"
 	Namefield := "name"
 	Statusfield := "status"
+	TotalBytesfield := "total_bytes"
+	DownloadedBytesfield := "downloaded_bytes"
 	BlacklistReasonfield := "blacklist_reason"
+	ReleaseDatefield := "release_date"
+	IsManuallyDownloadedfield := "is_manually_downloaded"
 	ReleaseStatusfield := "release_status"
+	NoPartialResponsefield := "no_partial_response"
 
-	SoftwareVersionFields = &SoftwareVersion{
-		Version:         &Versionfield,
-		Signature:       &Signaturefield,
-		Name:            &Namefield,
-		Status:          &Statusfield,
-		BlacklistReason: &BlacklistReasonfield,
-		ReleaseStatus:   &ReleaseStatusfield,
+	SoftwareVersionFields = &SoftwareVersionStringFields{
+		Version:              &Versionfield,
+		Signature:            &Signaturefield,
+		Name:                 &Namefield,
+		Status:               &Statusfield,
+		TotalBytes:           &TotalBytesfield,
+		DownloadedBytes:      &DownloadedBytesfield,
+		BlacklistReason:      &BlacklistReasonfield,
+		ReleaseDate:          &ReleaseDatefield,
+		IsManuallyDownloaded: &IsManuallyDownloadedfield,
+		ReleaseStatus:        &ReleaseStatusfield,
+		NoPartialResponse:    &NoPartialResponsefield,
 	}
 }
 
@@ -47,4 +57,19 @@ type SoftwareVersion struct {
 	ReleaseStatus *string `json:"release_status,omitempty"`
 	// NoPartialResponse - Indicate that it is not ok to provide partially available response.
 	NoPartialResponse *bool `json:"no_partial_response,omitempty"`
+}
+
+// Struct for SoftwareVersionFields
+type SoftwareVersionStringFields struct {
+	Version              *string
+	Signature            *string
+	Name                 *string
+	Status               *string
+	TotalBytes           *string
+	DownloadedBytes      *string
+	BlacklistReason      *string
+	ReleaseDate          *string
+	IsManuallyDownloaded *string
+	ReleaseStatus        *string
+	NoPartialResponse    *string
 }

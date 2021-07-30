@@ -4,15 +4,25 @@ package nimbleos
 
 // NsArrayUpgrade - Array upgrade attributes.
 // Export NsArrayUpgradeFields for advance operations like search filter etc.
-var NsArrayUpgradeFields *NsArrayUpgrade
+var NsArrayUpgradeFields *NsArrayUpgradeStringFields
 
 func init() {
+	Typefield := "type"
+	Statefield := "state"
+	Stagefield := "stage"
 	CtrlrAPortListfield := "ctrlr_a_port_list"
 	CtrlrBPortListfield := "ctrlr_b_port_list"
+	Messagesfield := "messages"
+	Metadatafield := "metadata"
 
-	NsArrayUpgradeFields = &NsArrayUpgrade{
+	NsArrayUpgradeFields = &NsArrayUpgradeStringFields{
+		Type:           &Typefield,
+		State:          &Statefield,
+		Stage:          &Stagefield,
 		CtrlrAPortList: &CtrlrAPortListfield,
 		CtrlrBPortList: &CtrlrBPortListfield,
+		Messages:       &Messagesfield,
+		Metadata:       &Metadatafield,
 	}
 }
 
@@ -31,4 +41,15 @@ type NsArrayUpgrade struct {
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 	// Metadata - Key-value pairs that augment an array upgrade attributes.
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
+}
+
+// Struct for NsArrayUpgradeFields
+type NsArrayUpgradeStringFields struct {
+	Type           *string
+	State          *string
+	Stage          *string
+	CtrlrAPortList *string
+	CtrlrBPortList *string
+	Messages       *string
+	Metadata       *string
 }

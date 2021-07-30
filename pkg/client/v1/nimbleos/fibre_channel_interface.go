@@ -4,33 +4,49 @@ package nimbleos
 
 // FibreChannelInterface - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
 // Export FibreChannelInterfaceFields for advance operations like search filter etc.
-var FibreChannelInterfaceFields *FibreChannelInterface
+var FibreChannelInterfaceFields *FibreChannelInterfaceStringFields
 
 func init() {
 	IDfield := "id"
 	ArrayNameOrSerialfield := "array_name_or_serial"
+	PartialResponseOkfield := "partial_response_ok"
 	ControllerNamefield := "controller_name"
 	FcPortIdfield := "fc_port_id"
 	Namefield := "name"
 	Wwnnfield := "wwnn"
 	Wwpnfield := "wwpn"
 	Peerzonefield := "peerzone"
+	Onlinefield := "online"
 	FirmwareVersionfield := "firmware_version"
+	LogicalPortNumberfield := "logical_port_number"
 	FcPortNamefield := "fc_port_name"
 	BusLocationfield := "bus_location"
+	Slotfield := "slot"
+	Orientationfield := "orientation"
+	Portfield := "port"
+	LinkInfofield := "link_info"
+	FabricInfofield := "fabric_info"
 
-	FibreChannelInterfaceFields = &FibreChannelInterface{
+	FibreChannelInterfaceFields = &FibreChannelInterfaceStringFields{
 		ID:                &IDfield,
 		ArrayNameOrSerial: &ArrayNameOrSerialfield,
+		PartialResponseOk: &PartialResponseOkfield,
 		ControllerName:    &ControllerNamefield,
 		FcPortId:          &FcPortIdfield,
 		Name:              &Namefield,
 		Wwnn:              &Wwnnfield,
 		Wwpn:              &Wwpnfield,
 		Peerzone:          &Peerzonefield,
+		Online:            &Onlinefield,
 		FirmwareVersion:   &FirmwareVersionfield,
+		LogicalPortNumber: &LogicalPortNumberfield,
 		FcPortName:        &FcPortNamefield,
 		BusLocation:       &BusLocationfield,
+		Slot:              &Slotfield,
+		Orientation:       &Orientationfield,
+		Port:              &Portfield,
+		LinkInfo:          &LinkInfofield,
+		FabricInfo:        &FabricInfofield,
 	}
 }
 
@@ -73,4 +89,27 @@ type FibreChannelInterface struct {
 	LinkInfo *NsFcLinkInfo `json:"link_info,omitempty"`
 	// FabricInfo - Fibre Channel fabric information.
 	FabricInfo *NsFcFabricInfo `json:"fabric_info,omitempty"`
+}
+
+// Struct for FibreChannelInterfaceFields
+type FibreChannelInterfaceStringFields struct {
+	ID                *string
+	ArrayNameOrSerial *string
+	PartialResponseOk *string
+	ControllerName    *string
+	FcPortId          *string
+	Name              *string
+	Wwnn              *string
+	Wwpn              *string
+	Peerzone          *string
+	Online            *string
+	FirmwareVersion   *string
+	LogicalPortNumber *string
+	FcPortName        *string
+	BusLocation       *string
+	Slot              *string
+	Orientation       *string
+	Port              *string
+	LinkInfo          *string
+	FabricInfo        *string
 }

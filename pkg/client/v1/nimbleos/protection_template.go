@@ -4,7 +4,7 @@ package nimbleos
 
 // ProtectionTemplate - Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom protection templates as needed.
 // Export ProtectionTemplateFields for advance operations like search filter etc.
-var ProtectionTemplateFields *ProtectionTemplate
+var ProtectionTemplateFields *ProtectionTemplateStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,7 +12,10 @@ func init() {
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
+	ReplPriorityfield := "repl_priority"
+	AppSyncfield := "app_sync"
 	AppServerfield := "app_server"
+	AppIdfield := "app_id"
 	AppClusterNamefield := "app_cluster_name"
 	AppServiceNamefield := "app_service_name"
 	VcenterHostnamefield := "vcenter_hostname"
@@ -21,14 +24,20 @@ func init() {
 	AgentHostnamefield := "agent_hostname"
 	AgentUsernamefield := "agent_username"
 	AgentPasswordfield := "agent_password"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	ScheduleListfield := "schedule_list"
 
-	ProtectionTemplateFields = &ProtectionTemplate{
+	ProtectionTemplateFields = &ProtectionTemplateStringFields{
 		ID:              &IDfield,
 		Name:            &Namefield,
 		FullName:        &FullNamefield,
 		SearchName:      &SearchNamefield,
 		Description:     &Descriptionfield,
+		ReplPriority:    &ReplPriorityfield,
+		AppSync:         &AppSyncfield,
 		AppServer:       &AppServerfield,
+		AppId:           &AppIdfield,
 		AppClusterName:  &AppClusterNamefield,
 		AppServiceName:  &AppServiceNamefield,
 		VcenterHostname: &VcenterHostnamefield,
@@ -37,6 +46,9 @@ func init() {
 		AgentHostname:   &AgentHostnamefield,
 		AgentUsername:   &AgentUsernamefield,
 		AgentPassword:   &AgentPasswordfield,
+		CreationTime:    &CreationTimefield,
+		LastModified:    &LastModifiedfield,
+		ScheduleList:    &ScheduleListfield,
 	}
 }
 
@@ -81,4 +93,28 @@ type ProtectionTemplate struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// ScheduleList - List of schedules for this protection policy.
 	ScheduleList []*NsSchedule `json:"schedule_list,omitempty"`
+}
+
+// Struct for ProtectionTemplateFields
+type ProtectionTemplateStringFields struct {
+	ID              *string
+	Name            *string
+	FullName        *string
+	SearchName      *string
+	Description     *string
+	ReplPriority    *string
+	AppSync         *string
+	AppServer       *string
+	AppId           *string
+	AppClusterName  *string
+	AppServiceName  *string
+	VcenterHostname *string
+	VcenterUsername *string
+	VcenterPassword *string
+	AgentHostname   *string
+	AgentUsername   *string
+	AgentPassword   *string
+	CreationTime    *string
+	LastModified    *string
+	ScheduleList    *string
 }

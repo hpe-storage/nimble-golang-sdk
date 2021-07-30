@@ -4,7 +4,7 @@ package nimbleos
 
 // NsSnapshotFromVolumes - Snapshot as presented in volumes object set.
 // Export NsSnapshotFromVolumesFields for advance operations like search filter etc.
-var NsSnapshotFromVolumesFields *NsSnapshotFromVolumes
+var NsSnapshotFromVolumesFields *NsSnapshotFromVolumesStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,7 +12,7 @@ func init() {
 	Namefield := "name"
 	SnapNamefield := "snap_name"
 
-	NsSnapshotFromVolumesFields = &NsSnapshotFromVolumes{
+	NsSnapshotFromVolumesFields = &NsSnapshotFromVolumesStringFields{
 		ID:       &IDfield,
 		SnapId:   &SnapIdfield,
 		Name:     &Namefield,
@@ -29,4 +29,12 @@ type NsSnapshotFromVolumes struct {
 	Name *string `json:"name,omitempty"`
 	// SnapName - Snapshot name.
 	SnapName *string `json:"snap_name,omitempty"`
+}
+
+// Struct for NsSnapshotFromVolumesFields
+type NsSnapshotFromVolumesStringFields struct {
+	ID       *string
+	SnapId   *string
+	Name     *string
+	SnapName *string
 }

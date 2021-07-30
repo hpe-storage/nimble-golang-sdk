@@ -4,7 +4,7 @@ package nimbleos
 
 // NsFcSessionTarget - Information of the Fibre Channel session target.
 // Export NsFcSessionTargetFields for advance operations like search filter etc.
-var NsFcSessionTargetFields *NsFcSessionTarget
+var NsFcSessionTargetFields *NsFcSessionTargetStringFields
 
 func init() {
 	TargetPortArrayNamefield := "target_port_array_name"
@@ -14,7 +14,7 @@ func init() {
 	TargetWwpnfield := "target_wwpn"
 	TargetFcidfield := "target_fcid"
 
-	NsFcSessionTargetFields = &NsFcSessionTarget{
+	NsFcSessionTargetFields = &NsFcSessionTargetStringFields{
 		TargetPortArrayName:     &TargetPortArrayNamefield,
 		TargetPortCtrlrName:     &TargetPortCtrlrNamefield,
 		TargetPortInterfaceName: &TargetPortInterfaceNamefield,
@@ -37,4 +37,14 @@ type NsFcSessionTarget struct {
 	TargetWwpn *string `json:"target_wwpn,omitempty"`
 	// TargetFcid - FCID assigned to the Fibre Channel target port.
 	TargetFcid *string `json:"target_fcid,omitempty"`
+}
+
+// Struct for NsFcSessionTargetFields
+type NsFcSessionTargetStringFields struct {
+	TargetPortArrayName     *string
+	TargetPortCtrlrName     *string
+	TargetPortInterfaceName *string
+	TargetWwnn              *string
+	TargetWwpn              *string
+	TargetFcid              *string
 }

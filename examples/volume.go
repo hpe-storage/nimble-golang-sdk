@@ -51,6 +51,22 @@ func main() {
 		return
 	}
 	fmt.Println(volume)
+	// get volume with params
+ 	requestParams := new(param.GetParams)
+ 	fieldList := []string{
+ 		*nimbleos.VolumeFields.ID,
+ 		*nimbleos.VolumeFields.Name,
+ 		*nimbleos.VolumeFields.Size,
+ 		*nimbleos.VolumeFields.LimitMbps,
+ 	}
+ 	requestParams.WithFields(fieldList)
+ 	volumeList, err := volSvc.GetVolumes(requestParams)
+
+	if err != nil{
+		fmt.Println("Error: get volume with params. Message: %s", err)
+	}
+	fmt.Println(volumeList)
+
 	// delete volume, cleanup
 	volSvc.DeleteVolume(*volume.ID)
 }

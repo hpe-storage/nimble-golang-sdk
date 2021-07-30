@@ -4,7 +4,7 @@ package nimbleos
 
 // ActiveDirectoryMembership - Manages the storage array's membership with the Active Directory.
 // Export ActiveDirectoryMembershipFields for advance operations like search filter etc.
-var ActiveDirectoryMembershipFields *ActiveDirectoryMembership
+var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipStringFields
 
 func init() {
 	IDfield := "id"
@@ -16,8 +16,9 @@ func init() {
 	OrganizationalUnitfield := "organizational_unit"
 	Userfield := "user"
 	Passwordfield := "password"
+	Enabledfield := "enabled"
 
-	ActiveDirectoryMembershipFields = &ActiveDirectoryMembership{
+	ActiveDirectoryMembershipFields = &ActiveDirectoryMembershipStringFields{
 		ID:                 &IDfield,
 		Description:        &Descriptionfield,
 		Name:               &Namefield,
@@ -27,6 +28,7 @@ func init() {
 		OrganizationalUnit: &OrganizationalUnitfield,
 		User:               &Userfield,
 		Password:           &Passwordfield,
+		Enabled:            &Enabledfield,
 	}
 }
 
@@ -51,4 +53,18 @@ type ActiveDirectoryMembership struct {
 	Password *string `json:"password,omitempty"`
 	// Enabled - Active Directory authentication is currently enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+}
+
+// Struct for ActiveDirectoryMembershipFields
+type ActiveDirectoryMembershipStringFields struct {
+	ID                 *string
+	Description        *string
+	Name               *string
+	Netbios            *string
+	ServerList         *string
+	ComputerName       *string
+	OrganizationalUnit *string
+	User               *string
+	Password           *string
+	Enabled            *string
 }

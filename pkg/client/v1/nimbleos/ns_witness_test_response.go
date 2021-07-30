@@ -4,15 +4,17 @@ package nimbleos
 
 // NsWitnessTestResponse - Results of witness connection test.
 // Export NsWitnessTestResponseFields for advance operations like search filter etc.
-var NsWitnessTestResponseFields *NsWitnessTestResponse
+var NsWitnessTestResponseFields *NsWitnessTestResponseStringFields
 
 func init() {
 	ArrayNamefield := "array_name"
+	Rolefield := "role"
 	WitnessConnectivityStatefield := "witness_connectivity_state"
 	WitnessConnectivityMessagefield := "witness_connectivity_message"
 
-	NsWitnessTestResponseFields = &NsWitnessTestResponse{
+	NsWitnessTestResponseFields = &NsWitnessTestResponseStringFields{
 		ArrayName:                  &ArrayNamefield,
+		Role:                       &Rolefield,
 		WitnessConnectivityState:   &WitnessConnectivityStatefield,
 		WitnessConnectivityMessage: &WitnessConnectivityMessagefield,
 	}
@@ -27,4 +29,12 @@ type NsWitnessTestResponse struct {
 	WitnessConnectivityState *string `json:"witness_connectivity_state,omitempty"`
 	// WitnessConnectivityMessage - Reachability message of the witness.
 	WitnessConnectivityMessage *string `json:"witness_connectivity_message,omitempty"`
+}
+
+// Struct for NsWitnessTestResponseFields
+type NsWitnessTestResponseStringFields struct {
+	ArrayName                  *string
+	Role                       *string
+	WitnessConnectivityState   *string
+	WitnessConnectivityMessage *string
 }

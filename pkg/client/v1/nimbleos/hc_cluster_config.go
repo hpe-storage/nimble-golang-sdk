@@ -4,7 +4,7 @@ package nimbleos
 
 // HcClusterConfig - Configuration information for virtual appliance that provides highly available storage and compute.
 // Export HcClusterConfigFields for advance operations like search filter etc.
-var HcClusterConfigFields *HcClusterConfig
+var HcClusterConfigFields *HcClusterConfigStringFields
 
 func init() {
 	IDfield := "id"
@@ -13,14 +13,22 @@ func init() {
 	Descriptionfield := "description"
 	Usernamefield := "username"
 	Passwordfield := "password"
+	Typefield := "type"
+	Metadatafield := "metadata"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
 
-	HcClusterConfigFields = &HcClusterConfig{
-		ID:          &IDfield,
-		UniqueId:    &UniqueIdfield,
-		Name:        &Namefield,
-		Description: &Descriptionfield,
-		Username:    &Usernamefield,
-		Password:    &Passwordfield,
+	HcClusterConfigFields = &HcClusterConfigStringFields{
+		ID:           &IDfield,
+		UniqueId:     &UniqueIdfield,
+		Name:         &Namefield,
+		Description:  &Descriptionfield,
+		Username:     &Usernamefield,
+		Password:     &Passwordfield,
+		Type:         &Typefield,
+		Metadata:     &Metadatafield,
+		CreationTime: &CreationTimefield,
+		LastModified: &LastModifiedfield,
 	}
 }
 
@@ -45,4 +53,18 @@ type HcClusterConfig struct {
 	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this HC cluster configuration was last modified.
 	LastModified *int64 `json:"last_modified,omitempty"`
+}
+
+// Struct for HcClusterConfigFields
+type HcClusterConfigStringFields struct {
+	ID           *string
+	UniqueId     *string
+	Name         *string
+	Description  *string
+	Username     *string
+	Password     *string
+	Type         *string
+	Metadata     *string
+	CreationTime *string
+	LastModified *string
 }

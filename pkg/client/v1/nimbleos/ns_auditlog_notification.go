@@ -4,17 +4,25 @@ package nimbleos
 
 // NsAuditlogNotification - Represents an auditlog notification message.
 // Export NsAuditlogNotificationFields for advance operations like search filter etc.
-var NsAuditlogNotificationFields *NsAuditlogNotification
+var NsAuditlogNotificationFields *NsAuditlogNotificationStringFields
 
 func init() {
+	SequenceNumberfield := "sequence_number"
+	NotificationTypefield := "notification_type"
 	Activityfield := "activity"
+	ObjectTypefield := "object_type"
 	ObjectIdfield := "object_id"
 	ObjectNamefield := "object_name"
+	Timestampfield := "timestamp"
 
-	NsAuditlogNotificationFields = &NsAuditlogNotification{
-		Activity:   &Activityfield,
-		ObjectId:   &ObjectIdfield,
-		ObjectName: &ObjectNamefield,
+	NsAuditlogNotificationFields = &NsAuditlogNotificationStringFields{
+		SequenceNumber:   &SequenceNumberfield,
+		NotificationType: &NotificationTypefield,
+		Activity:         &Activityfield,
+		ObjectType:       &ObjectTypefield,
+		ObjectId:         &ObjectIdfield,
+		ObjectName:       &ObjectNamefield,
+		Timestamp:        &Timestampfield,
 	}
 }
 
@@ -33,4 +41,15 @@ type NsAuditlogNotification struct {
 	ObjectName *string `json:"object_name,omitempty"`
 	// Timestamp - The timestamp when the activity happened in seconds since last epoch.
 	Timestamp *int64 `json:"timestamp,omitempty"`
+}
+
+// Struct for NsAuditlogNotificationFields
+type NsAuditlogNotificationStringFields struct {
+	SequenceNumber   *string
+	NotificationType *string
+	Activity         *string
+	ObjectType       *string
+	ObjectId         *string
+	ObjectName       *string
+	Timestamp        *string
 }

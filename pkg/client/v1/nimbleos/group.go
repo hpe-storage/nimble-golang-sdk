@@ -4,83 +4,289 @@ package nimbleos
 
 // Group - Group is a collection of arrays operating together organized into storage pools.
 // Export GroupFields for advance operations like search filter etc.
-var GroupFields *Group
+var GroupFields *GroupStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	SmtpServerfield := "smtp_server"
+	SmtpPortfield := "smtp_port"
+	SmtpAuthEnabledfield := "smtp_auth_enabled"
 	SmtpAuthUsernamefield := "smtp_auth_username"
 	SmtpAuthPasswordfield := "smtp_auth_password"
+	SmtpEncryptTypefield := "smtp_encrypt_type"
+	AutosupportEnabledfield := "autosupport_enabled"
+	AllowAnalyticsGuifield := "allow_analytics_gui"
+	AllowSupportTunnelfield := "allow_support_tunnel"
 	ProxyServerfield := "proxy_server"
+	ProxyPortfield := "proxy_port"
 	ProxyUsernamefield := "proxy_username"
 	ProxyPasswordfield := "proxy_password"
 	AlertToEmailAddrsfield := "alert_to_email_addrs"
+	SendAlertToSupportfield := "send_alert_to_support"
 	AlertFromEmailAddrfield := "alert_from_email_addr"
+	AlertMinLevelfield := "alert_min_level"
+	IsnsEnabledfield := "isns_enabled"
 	IsnsServerfield := "isns_server"
+	IsnsPortfield := "isns_port"
+	SnmpTrapEnabledfield := "snmp_trap_enabled"
 	SnmpTrapHostfield := "snmp_trap_host"
+	SnmpTrapPortfield := "snmp_trap_port"
+	SnmpGetEnabledfield := "snmp_get_enabled"
 	SnmpCommunityfield := "snmp_community"
+	SnmpGetPortfield := "snmp_get_port"
 	SnmpSysContactfield := "snmp_sys_contact"
 	SnmpSysLocationfield := "snmp_sys_location"
 	DomainNamefield := "domain_name"
+	DnsServersfield := "dns_servers"
 	NtpServerfield := "ntp_server"
 	Timezonefield := "timezone"
+	UserInactivityTimeoutfield := "user_inactivity_timeout"
+	SyslogdEnabledfield := "syslogd_enabled"
 	SyslogdServerfield := "syslogd_server"
+	SyslogdPortfield := "syslogd_port"
+	SyslogdServersfield := "syslogd_servers"
+	VvolEnabledfield := "vvol_enabled"
 	SetupProgressfield := "setup_progress"
+	IscsiEnabledfield := "iscsi_enabled"
+	FcEnabledfield := "fc_enabled"
+	UniqueNameEnabledfield := "unique_name_enabled"
+	AccessProtocolListfield := "access_protocol_list"
+	GroupTargetEnabledfield := "group_target_enabled"
+	DefaultIscsiTargetScopefield := "default_iscsi_target_scope"
+	TdzEnabledfield := "tdz_enabled"
 	TdzPrefixfield := "tdz_prefix"
 	GroupTargetNamefield := "group_target_name"
+	DefaultVolumeReservefield := "default_volume_reserve"
+	DefaultVolumeWarnLevelfield := "default_volume_warn_level"
+	DefaultVolumeLimitfield := "default_volume_limit"
+	DefaultSnapReservefield := "default_snap_reserve"
+	DefaultSnapWarnLevelfield := "default_snap_warn_level"
+	DefaultSnapLimitfield := "default_snap_limit"
+	DefaultSnapLimitPercentfield := "default_snap_limit_percent"
+	AlarmsEnabledfield := "alarms_enabled"
+	VssValidationTimeoutfield := "vss_validation_timeout"
+	AutoSwitchoverEnabledfield := "auto_switchover_enabled"
+	SoftwareSubscriptionEnabledfield := "software_subscription_enabled"
+	AutoSwitchoverMessagesfield := "auto_switchover_messages"
+	MergeStatefield := "merge_state"
 	MergeGroupNamefield := "merge_group_name"
+	Tlsv1Enabledfield := "tlsv1_enabled"
+	CcModeEnabledfield := "cc_mode_enabled"
+	CertIpsIncludedfield := "cert_ips_included"
+	GroupSnapshotTtlfield := "group_snapshot_ttl"
+	AutocleanUnmanagedSnapshotsTtlUnitfield := "autoclean_unmanaged_snapshots_ttl_unit"
+	AutocleanUnmanagedSnapshotsEnabledfield := "autoclean_unmanaged_snapshots_enabled"
 	LeaderArrayNamefield := "leader_array_name"
 	LeaderArraySerialfield := "leader_array_serial"
 	ManagementServiceBackupArrayNamefield := "management_service_backup_array_name"
+	ManagementServiceBackupStatusfield := "management_service_backup_status"
+	FailoverModefield := "failover_mode"
+	WitnessStatusfield := "witness_status"
+	MemberListfield := "member_list"
+	CompressedVolUsageBytesfield := "compressed_vol_usage_bytes"
+	CompressedSnapUsageBytesfield := "compressed_snap_usage_bytes"
+	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
+	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
+	UsableCapacityBytesfield := "usable_capacity_bytes"
+	Usagefield := "usage"
+	RawCapacityfield := "raw_capacity"
+	UsableCacheCapacityfield := "usable_cache_capacity"
+	RawCacheCapacityfield := "raw_cache_capacity"
+	SnapUsagePopulatedfield := "snap_usage_populated"
+	PendingDeletesfield := "pending_deletes"
+	NumConnectionsfield := "num_connections"
+	VolCompressionRatiofield := "vol_compression_ratio"
+	SnapCompressionRatiofield := "snap_compression_ratio"
+	CompressionRatiofield := "compression_ratio"
+	DedupeRatiofield := "dedupe_ratio"
+	CloneRatiofield := "clone_ratio"
+	VolThinProvisioningRatiofield := "vol_thin_provisioning_ratio"
+	SavingsRatiofield := "savings_ratio"
+	DataReductionRatiofield := "data_reduction_ratio"
+	SavingsDedupefield := "savings_dedupe"
+	SavingsCompressionfield := "savings_compression"
+	SavingsClonefield := "savings_clone"
+	SavingsVolThinProvisioningfield := "savings_vol_thin_provisioning"
+	SavingsDataReductionfield := "savings_data_reduction"
+	Savingsfield := "savings"
+	FreeSpacefield := "free_space"
+	UnusedReserveBytesfield := "unused_reserve_bytes"
+	UsageValidfield := "usage_valid"
+	SpaceInfoValidfield := "space_info_valid"
 	VersionCurrentfield := "version_current"
 	VersionTargetfield := "version_target"
 	VersionRollbackfield := "version_rollback"
+	UpdateStatefield := "update_state"
+	UpdateStartTimefield := "update_start_time"
+	UpdateEndTimefield := "update_end_time"
 	UpdateArrayNamesfield := "update_array_names"
 	UpdateProgressMsgfield := "update_progress_msg"
 	UpdateErrorCodefield := "update_error_code"
+	UpdateDownloadingfield := "update_downloading"
 	UpdateDownloadErrorCodefield := "update_download_error_code"
+	UpdateDownloadStartTimefield := "update_download_start_time"
+	UpdateDownloadEndTimefield := "update_download_end_time"
+	IscsiAutomaticConnectionMethodfield := "iscsi_automatic_connection_method"
+	IscsiConnectionRebalancingfield := "iscsi_connection_rebalancing"
+	ReplThrottledBandwidthfield := "repl_throttled_bandwidth"
+	ReplThrottledBandwidthKbpsfield := "repl_throttled_bandwidth_kbps"
+	ReplThrottleListfield := "repl_throttle_list"
+	VolumeMigrationStatusfield := "volume_migration_status"
+	ArrayUnassignMigrationStatusfield := "array_unassign_migration_status"
+	DataRebalanceStatusfield := "data_rebalance_status"
 	ScsiVendorIdfield := "scsi_vendor_id"
+	EncryptionConfigfield := "encryption_config"
 	LastLoginfield := "last_login"
+	NumSnapsfield := "num_snaps"
+	NumSnapcollsfield := "num_snapcolls"
+	Datefield := "date"
 	LoginBannerMessagefield := "login_banner_message"
+	LoginBannerAfterAuthfield := "login_banner_after_auth"
+	LoginBannerResetfield := "login_banner_reset"
+	SnapRetnMeterHighfield := "snap_retn_meter_high"
+	SnapRetnMeterVeryHighfield := "snap_retn_meter_very_high"
 
-	GroupFields = &Group{
-		ID:                               &IDfield,
-		Name:                             &Namefield,
-		SmtpServer:                       &SmtpServerfield,
-		SmtpAuthUsername:                 &SmtpAuthUsernamefield,
-		SmtpAuthPassword:                 &SmtpAuthPasswordfield,
-		ProxyServer:                      &ProxyServerfield,
-		ProxyUsername:                    &ProxyUsernamefield,
-		ProxyPassword:                    &ProxyPasswordfield,
-		AlertToEmailAddrs:                &AlertToEmailAddrsfield,
-		AlertFromEmailAddr:               &AlertFromEmailAddrfield,
-		IsnsServer:                       &IsnsServerfield,
-		SnmpTrapHost:                     &SnmpTrapHostfield,
-		SnmpCommunity:                    &SnmpCommunityfield,
-		SnmpSysContact:                   &SnmpSysContactfield,
-		SnmpSysLocation:                  &SnmpSysLocationfield,
-		DomainName:                       &DomainNamefield,
-		NtpServer:                        &NtpServerfield,
-		Timezone:                         &Timezonefield,
-		SyslogdServer:                    &SyslogdServerfield,
-		SetupProgress:                    &SetupProgressfield,
-		TdzPrefix:                        &TdzPrefixfield,
-		GroupTargetName:                  &GroupTargetNamefield,
-		MergeGroupName:                   &MergeGroupNamefield,
-		LeaderArrayName:                  &LeaderArrayNamefield,
-		LeaderArraySerial:                &LeaderArraySerialfield,
-		ManagementServiceBackupArrayName: &ManagementServiceBackupArrayNamefield,
-		VersionCurrent:                   &VersionCurrentfield,
-		VersionTarget:                    &VersionTargetfield,
-		VersionRollback:                  &VersionRollbackfield,
-		UpdateArrayNames:                 &UpdateArrayNamesfield,
-		UpdateProgressMsg:                &UpdateProgressMsgfield,
-		UpdateErrorCode:                  &UpdateErrorCodefield,
-		UpdateDownloadErrorCode:          &UpdateDownloadErrorCodefield,
-		ScsiVendorId:                     &ScsiVendorIdfield,
-		LastLogin:                        &LastLoginfield,
-		LoginBannerMessage:               &LoginBannerMessagefield,
+	GroupFields = &GroupStringFields{
+		ID:                                 &IDfield,
+		Name:                               &Namefield,
+		SmtpServer:                         &SmtpServerfield,
+		SmtpPort:                           &SmtpPortfield,
+		SmtpAuthEnabled:                    &SmtpAuthEnabledfield,
+		SmtpAuthUsername:                   &SmtpAuthUsernamefield,
+		SmtpAuthPassword:                   &SmtpAuthPasswordfield,
+		SmtpEncryptType:                    &SmtpEncryptTypefield,
+		AutosupportEnabled:                 &AutosupportEnabledfield,
+		AllowAnalyticsGui:                  &AllowAnalyticsGuifield,
+		AllowSupportTunnel:                 &AllowSupportTunnelfield,
+		ProxyServer:                        &ProxyServerfield,
+		ProxyPort:                          &ProxyPortfield,
+		ProxyUsername:                      &ProxyUsernamefield,
+		ProxyPassword:                      &ProxyPasswordfield,
+		AlertToEmailAddrs:                  &AlertToEmailAddrsfield,
+		SendAlertToSupport:                 &SendAlertToSupportfield,
+		AlertFromEmailAddr:                 &AlertFromEmailAddrfield,
+		AlertMinLevel:                      &AlertMinLevelfield,
+		IsnsEnabled:                        &IsnsEnabledfield,
+		IsnsServer:                         &IsnsServerfield,
+		IsnsPort:                           &IsnsPortfield,
+		SnmpTrapEnabled:                    &SnmpTrapEnabledfield,
+		SnmpTrapHost:                       &SnmpTrapHostfield,
+		SnmpTrapPort:                       &SnmpTrapPortfield,
+		SnmpGetEnabled:                     &SnmpGetEnabledfield,
+		SnmpCommunity:                      &SnmpCommunityfield,
+		SnmpGetPort:                        &SnmpGetPortfield,
+		SnmpSysContact:                     &SnmpSysContactfield,
+		SnmpSysLocation:                    &SnmpSysLocationfield,
+		DomainName:                         &DomainNamefield,
+		DnsServers:                         &DnsServersfield,
+		NtpServer:                          &NtpServerfield,
+		Timezone:                           &Timezonefield,
+		UserInactivityTimeout:              &UserInactivityTimeoutfield,
+		SyslogdEnabled:                     &SyslogdEnabledfield,
+		SyslogdServer:                      &SyslogdServerfield,
+		SyslogdPort:                        &SyslogdPortfield,
+		SyslogdServers:                     &SyslogdServersfield,
+		VvolEnabled:                        &VvolEnabledfield,
+		SetupProgress:                      &SetupProgressfield,
+		IscsiEnabled:                       &IscsiEnabledfield,
+		FcEnabled:                          &FcEnabledfield,
+		UniqueNameEnabled:                  &UniqueNameEnabledfield,
+		AccessProtocolList:                 &AccessProtocolListfield,
+		GroupTargetEnabled:                 &GroupTargetEnabledfield,
+		DefaultIscsiTargetScope:            &DefaultIscsiTargetScopefield,
+		TdzEnabled:                         &TdzEnabledfield,
+		TdzPrefix:                          &TdzPrefixfield,
+		GroupTargetName:                    &GroupTargetNamefield,
+		DefaultVolumeReserve:               &DefaultVolumeReservefield,
+		DefaultVolumeWarnLevel:             &DefaultVolumeWarnLevelfield,
+		DefaultVolumeLimit:                 &DefaultVolumeLimitfield,
+		DefaultSnapReserve:                 &DefaultSnapReservefield,
+		DefaultSnapWarnLevel:               &DefaultSnapWarnLevelfield,
+		DefaultSnapLimit:                   &DefaultSnapLimitfield,
+		DefaultSnapLimitPercent:            &DefaultSnapLimitPercentfield,
+		AlarmsEnabled:                      &AlarmsEnabledfield,
+		VssValidationTimeout:               &VssValidationTimeoutfield,
+		AutoSwitchoverEnabled:              &AutoSwitchoverEnabledfield,
+		SoftwareSubscriptionEnabled:        &SoftwareSubscriptionEnabledfield,
+		AutoSwitchoverMessages:             &AutoSwitchoverMessagesfield,
+		MergeState:                         &MergeStatefield,
+		MergeGroupName:                     &MergeGroupNamefield,
+		Tlsv1Enabled:                       &Tlsv1Enabledfield,
+		CcModeEnabled:                      &CcModeEnabledfield,
+		CertIpsIncluded:                    &CertIpsIncludedfield,
+		GroupSnapshotTtl:                   &GroupSnapshotTtlfield,
+		AutocleanUnmanagedSnapshotsTtlUnit: &AutocleanUnmanagedSnapshotsTtlUnitfield,
+		AutocleanUnmanagedSnapshotsEnabled: &AutocleanUnmanagedSnapshotsEnabledfield,
+		LeaderArrayName:                    &LeaderArrayNamefield,
+		LeaderArraySerial:                  &LeaderArraySerialfield,
+		ManagementServiceBackupArrayName:   &ManagementServiceBackupArrayNamefield,
+		ManagementServiceBackupStatus:      &ManagementServiceBackupStatusfield,
+		FailoverMode:                       &FailoverModefield,
+		WitnessStatus:                      &WitnessStatusfield,
+		MemberList:                         &MemberListfield,
+		CompressedVolUsageBytes:            &CompressedVolUsageBytesfield,
+		CompressedSnapUsageBytes:           &CompressedSnapUsageBytesfield,
+		UncompressedVolUsageBytes:          &UncompressedVolUsageBytesfield,
+		UncompressedSnapUsageBytes:         &UncompressedSnapUsageBytesfield,
+		UsableCapacityBytes:                &UsableCapacityBytesfield,
+		Usage:                              &Usagefield,
+		RawCapacity:                        &RawCapacityfield,
+		UsableCacheCapacity:                &UsableCacheCapacityfield,
+		RawCacheCapacity:                   &RawCacheCapacityfield,
+		SnapUsagePopulated:                 &SnapUsagePopulatedfield,
+		PendingDeletes:                     &PendingDeletesfield,
+		NumConnections:                     &NumConnectionsfield,
+		VolCompressionRatio:                &VolCompressionRatiofield,
+		SnapCompressionRatio:               &SnapCompressionRatiofield,
+		CompressionRatio:                   &CompressionRatiofield,
+		DedupeRatio:                        &DedupeRatiofield,
+		CloneRatio:                         &CloneRatiofield,
+		VolThinProvisioningRatio:           &VolThinProvisioningRatiofield,
+		SavingsRatio:                       &SavingsRatiofield,
+		DataReductionRatio:                 &DataReductionRatiofield,
+		SavingsDedupe:                      &SavingsDedupefield,
+		SavingsCompression:                 &SavingsCompressionfield,
+		SavingsClone:                       &SavingsClonefield,
+		SavingsVolThinProvisioning:         &SavingsVolThinProvisioningfield,
+		SavingsDataReduction:               &SavingsDataReductionfield,
+		Savings:                            &Savingsfield,
+		FreeSpace:                          &FreeSpacefield,
+		UnusedReserveBytes:                 &UnusedReserveBytesfield,
+		UsageValid:                         &UsageValidfield,
+		SpaceInfoValid:                     &SpaceInfoValidfield,
+		VersionCurrent:                     &VersionCurrentfield,
+		VersionTarget:                      &VersionTargetfield,
+		VersionRollback:                    &VersionRollbackfield,
+		UpdateState:                        &UpdateStatefield,
+		UpdateStartTime:                    &UpdateStartTimefield,
+		UpdateEndTime:                      &UpdateEndTimefield,
+		UpdateArrayNames:                   &UpdateArrayNamesfield,
+		UpdateProgressMsg:                  &UpdateProgressMsgfield,
+		UpdateErrorCode:                    &UpdateErrorCodefield,
+		UpdateDownloading:                  &UpdateDownloadingfield,
+		UpdateDownloadErrorCode:            &UpdateDownloadErrorCodefield,
+		UpdateDownloadStartTime:            &UpdateDownloadStartTimefield,
+		UpdateDownloadEndTime:              &UpdateDownloadEndTimefield,
+		IscsiAutomaticConnectionMethod:     &IscsiAutomaticConnectionMethodfield,
+		IscsiConnectionRebalancing:         &IscsiConnectionRebalancingfield,
+		ReplThrottledBandwidth:             &ReplThrottledBandwidthfield,
+		ReplThrottledBandwidthKbps:         &ReplThrottledBandwidthKbpsfield,
+		ReplThrottleList:                   &ReplThrottleListfield,
+		VolumeMigrationStatus:              &VolumeMigrationStatusfield,
+		ArrayUnassignMigrationStatus:       &ArrayUnassignMigrationStatusfield,
+		DataRebalanceStatus:                &DataRebalanceStatusfield,
+		ScsiVendorId:                       &ScsiVendorIdfield,
+		EncryptionConfig:                   &EncryptionConfigfield,
+		LastLogin:                          &LastLoginfield,
+		NumSnaps:                           &NumSnapsfield,
+		NumSnapcolls:                       &NumSnapcollsfield,
+		Date:                               &Datefield,
+		LoginBannerMessage:                 &LoginBannerMessagefield,
+		LoginBannerAfterAuth:               &LoginBannerAfterAuthfield,
+		LoginBannerReset:                   &LoginBannerResetfield,
+		SnapRetnMeterHigh:                  &SnapRetnMeterHighfield,
+		SnapRetnMeterVeryHigh:              &SnapRetnMeterVeryHighfield,
 	}
 }
 
@@ -363,4 +569,147 @@ type Group struct {
 	SnapRetnMeterHigh *int64 `json:"snap_retn_meter_high,omitempty"`
 	// SnapRetnMeterVeryHigh - Threshold for considering a volume as very high retention.
 	SnapRetnMeterVeryHigh *int64 `json:"snap_retn_meter_very_high,omitempty"`
+}
+
+// Struct for GroupFields
+type GroupStringFields struct {
+	ID                                 *string
+	Name                               *string
+	SmtpServer                         *string
+	SmtpPort                           *string
+	SmtpAuthEnabled                    *string
+	SmtpAuthUsername                   *string
+	SmtpAuthPassword                   *string
+	SmtpEncryptType                    *string
+	AutosupportEnabled                 *string
+	AllowAnalyticsGui                  *string
+	AllowSupportTunnel                 *string
+	ProxyServer                        *string
+	ProxyPort                          *string
+	ProxyUsername                      *string
+	ProxyPassword                      *string
+	AlertToEmailAddrs                  *string
+	SendAlertToSupport                 *string
+	AlertFromEmailAddr                 *string
+	AlertMinLevel                      *string
+	IsnsEnabled                        *string
+	IsnsServer                         *string
+	IsnsPort                           *string
+	SnmpTrapEnabled                    *string
+	SnmpTrapHost                       *string
+	SnmpTrapPort                       *string
+	SnmpGetEnabled                     *string
+	SnmpCommunity                      *string
+	SnmpGetPort                        *string
+	SnmpSysContact                     *string
+	SnmpSysLocation                    *string
+	DomainName                         *string
+	DnsServers                         *string
+	NtpServer                          *string
+	Timezone                           *string
+	UserInactivityTimeout              *string
+	SyslogdEnabled                     *string
+	SyslogdServer                      *string
+	SyslogdPort                        *string
+	SyslogdServers                     *string
+	VvolEnabled                        *string
+	SetupProgress                      *string
+	IscsiEnabled                       *string
+	FcEnabled                          *string
+	UniqueNameEnabled                  *string
+	AccessProtocolList                 *string
+	GroupTargetEnabled                 *string
+	DefaultIscsiTargetScope            *string
+	TdzEnabled                         *string
+	TdzPrefix                          *string
+	GroupTargetName                    *string
+	DefaultVolumeReserve               *string
+	DefaultVolumeWarnLevel             *string
+	DefaultVolumeLimit                 *string
+	DefaultSnapReserve                 *string
+	DefaultSnapWarnLevel               *string
+	DefaultSnapLimit                   *string
+	DefaultSnapLimitPercent            *string
+	AlarmsEnabled                      *string
+	VssValidationTimeout               *string
+	AutoSwitchoverEnabled              *string
+	SoftwareSubscriptionEnabled        *string
+	AutoSwitchoverMessages             *string
+	MergeState                         *string
+	MergeGroupName                     *string
+	Tlsv1Enabled                       *string
+	CcModeEnabled                      *string
+	CertIpsIncluded                    *string
+	GroupSnapshotTtl                   *string
+	AutocleanUnmanagedSnapshotsTtlUnit *string
+	AutocleanUnmanagedSnapshotsEnabled *string
+	LeaderArrayName                    *string
+	LeaderArraySerial                  *string
+	ManagementServiceBackupArrayName   *string
+	ManagementServiceBackupStatus      *string
+	FailoverMode                       *string
+	WitnessStatus                      *string
+	MemberList                         *string
+	CompressedVolUsageBytes            *string
+	CompressedSnapUsageBytes           *string
+	UncompressedVolUsageBytes          *string
+	UncompressedSnapUsageBytes         *string
+	UsableCapacityBytes                *string
+	Usage                              *string
+	RawCapacity                        *string
+	UsableCacheCapacity                *string
+	RawCacheCapacity                   *string
+	SnapUsagePopulated                 *string
+	PendingDeletes                     *string
+	NumConnections                     *string
+	VolCompressionRatio                *string
+	SnapCompressionRatio               *string
+	CompressionRatio                   *string
+	DedupeRatio                        *string
+	CloneRatio                         *string
+	VolThinProvisioningRatio           *string
+	SavingsRatio                       *string
+	DataReductionRatio                 *string
+	SavingsDedupe                      *string
+	SavingsCompression                 *string
+	SavingsClone                       *string
+	SavingsVolThinProvisioning         *string
+	SavingsDataReduction               *string
+	Savings                            *string
+	FreeSpace                          *string
+	UnusedReserveBytes                 *string
+	UsageValid                         *string
+	SpaceInfoValid                     *string
+	VersionCurrent                     *string
+	VersionTarget                      *string
+	VersionRollback                    *string
+	UpdateState                        *string
+	UpdateStartTime                    *string
+	UpdateEndTime                      *string
+	UpdateArrayNames                   *string
+	UpdateProgressMsg                  *string
+	UpdateErrorCode                    *string
+	UpdateDownloading                  *string
+	UpdateDownloadErrorCode            *string
+	UpdateDownloadStartTime            *string
+	UpdateDownloadEndTime              *string
+	IscsiAutomaticConnectionMethod     *string
+	IscsiConnectionRebalancing         *string
+	ReplThrottledBandwidth             *string
+	ReplThrottledBandwidthKbps         *string
+	ReplThrottleList                   *string
+	VolumeMigrationStatus              *string
+	ArrayUnassignMigrationStatus       *string
+	DataRebalanceStatus                *string
+	ScsiVendorId                       *string
+	EncryptionConfig                   *string
+	LastLogin                          *string
+	NumSnaps                           *string
+	NumSnapcolls                       *string
+	Date                               *string
+	LoginBannerMessage                 *string
+	LoginBannerAfterAuth               *string
+	LoginBannerReset                   *string
+	SnapRetnMeterHigh                  *string
+	SnapRetnMeterVeryHigh              *string
 }

@@ -4,13 +4,19 @@ package nimbleos
 
 // Support - View and alter support-based parameters.
 // Export SupportFields for advance operations like search filter etc.
-var SupportFields *Support
+var SupportFields *SupportStringFields
 
 func init() {
 	IDfield := "id"
+	PasswordModefield := "password_mode"
+	ArrayCountfield := "array_count"
+	ArrayListfield := "array_list"
 
-	SupportFields = &Support{
-		ID: &IDfield,
+	SupportFields = &SupportStringFields{
+		ID:           &IDfield,
+		PasswordMode: &PasswordModefield,
+		ArrayCount:   &ArrayCountfield,
+		ArrayList:    &ArrayListfield,
 	}
 }
 
@@ -23,4 +29,12 @@ type Support struct {
 	ArrayCount *int64 `json:"array_count,omitempty"`
 	// ArrayList - Details of support passwords for arrays.
 	ArrayList []*NsSupportPasswordArray `json:"array_list,omitempty"`
+}
+
+// Struct for SupportFields
+type SupportStringFields struct {
+	ID           *string
+	PasswordMode *string
+	ArrayCount   *string
+	ArrayList    *string
 }

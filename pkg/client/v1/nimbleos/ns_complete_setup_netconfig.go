@@ -4,21 +4,33 @@ package nimbleos
 
 // NsCompleteSetupNetconfig - Information includes group, array and network configuration in complete setup.
 // Export NsCompleteSetupNetconfigFields for advance operations like search filter etc.
-var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfig
+var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfigStringFields
 
 func init() {
+	Namefield := "name"
 	DiscoveryIpfield := "discovery_ip"
 	DiscoveryNetmaskfield := "discovery_netmask"
 	MgmtIpfield := "mgmt_ip"
 	SecondaryMgmtIpfield := "secondary_mgmt_ip"
 	MgmtNetmaskfield := "mgmt_netmask"
+	IscsiAutomaticConnectionMethodfield := "iscsi_automatic_connection_method"
+	IscsiConnectionRebalancingfield := "iscsi_connection_rebalancing"
+	RouteListfield := "route_list"
+	SubnetListfield := "subnet_list"
+	ArrayListfield := "array_list"
 
-	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfig{
-		DiscoveryIp:      &DiscoveryIpfield,
-		DiscoveryNetmask: &DiscoveryNetmaskfield,
-		MgmtIp:           &MgmtIpfield,
-		SecondaryMgmtIp:  &SecondaryMgmtIpfield,
-		MgmtNetmask:      &MgmtNetmaskfield,
+	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfigStringFields{
+		Name:                           &Namefield,
+		DiscoveryIp:                    &DiscoveryIpfield,
+		DiscoveryNetmask:               &DiscoveryNetmaskfield,
+		MgmtIp:                         &MgmtIpfield,
+		SecondaryMgmtIp:                &SecondaryMgmtIpfield,
+		MgmtNetmask:                    &MgmtNetmaskfield,
+		IscsiAutomaticConnectionMethod: &IscsiAutomaticConnectionMethodfield,
+		IscsiConnectionRebalancing:     &IscsiConnectionRebalancingfield,
+		RouteList:                      &RouteListfield,
+		SubnetList:                     &SubnetListfield,
+		ArrayList:                      &ArrayListfield,
 	}
 }
 
@@ -45,4 +57,19 @@ type NsCompleteSetupNetconfig struct {
 	SubnetList []*NsSubnet `json:"subnet_list,omitempty"`
 	// ArrayList - Array list.
 	ArrayList []*NsArrayNet `json:"array_list,omitempty"`
+}
+
+// Struct for NsCompleteSetupNetconfigFields
+type NsCompleteSetupNetconfigStringFields struct {
+	Name                           *string
+	DiscoveryIp                    *string
+	DiscoveryNetmask               *string
+	MgmtIp                         *string
+	SecondaryMgmtIp                *string
+	MgmtNetmask                    *string
+	IscsiAutomaticConnectionMethod *string
+	IscsiConnectionRebalancing     *string
+	RouteList                      *string
+	SubnetList                     *string
+	ArrayList                      *string
 }

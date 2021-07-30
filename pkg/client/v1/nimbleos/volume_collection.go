@@ -4,7 +4,7 @@ package nimbleos
 
 // VolumeCollection - Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
 // Export VolumeCollectionFields for advance operations like search filter etc.
-var VolumeCollectionFields *VolumeCollection
+var VolumeCollectionFields *VolumeCollectionStringFields
 
 func init() {
 	IDfield := "id"
@@ -13,8 +13,14 @@ func init() {
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
+	ReplPriorityfield := "repl_priority"
 	PolOwnerNamefield := "pol_owner_name"
+	ReplicationTypefield := "replication_type"
+	SynchronousReplicationTypefield := "synchronous_replication_type"
+	SynchronousReplicationStatefield := "synchronous_replication_state"
+	AppSyncfield := "app_sync"
 	AppServerfield := "app_server"
+	AppIdfield := "app_id"
 	AppClusterNamefield := "app_cluster_name"
 	AppServiceNamefield := "app_service_name"
 	VcenterHostnamefield := "vcenter_hostname"
@@ -23,28 +29,76 @@ func init() {
 	AgentHostnamefield := "agent_hostname"
 	AgentUsernamefield := "agent_username"
 	AgentPasswordfield := "agent_password"
+	CreationTimefield := "creation_time"
+	LastModifiedTimefield := "last_modified_time"
+	VolumeListfield := "volume_list"
+	DownstreamVolumeListfield := "downstream_volume_list"
+	UpstreamVolumeListfield := "upstream_volume_list"
+	VolumeCountfield := "volume_count"
+	CachePinnedVolumeListfield := "cache_pinned_volume_list"
+	LastSnapcollfield := "last_snapcoll"
+	SnapcollCountfield := "snapcoll_count"
+	ScheduleListfield := "schedule_list"
 	ReplicationPartnerfield := "replication_partner"
+	LastReplicatedSnapcollfield := "last_replicated_snapcoll"
+	LastReplicatedSnapcollListfield := "last_replicated_snapcoll_list"
+	ProtectionTypefield := "protection_type"
+	LagTimefield := "lag_time"
+	IsStandaloneVolcollfield := "is_standalone_volcoll"
+	TotalReplBytesfield := "total_repl_bytes"
+	ReplBytesTransferredfield := "repl_bytes_transferred"
+	IsHandingOverfield := "is_handing_over"
 	HandoverReplicationPartnerfield := "handover_replication_partner"
+	Metadatafield := "metadata"
+	SrepLastSyncfield := "srep_last_sync"
+	SrepResyncPercentfield := "srep_resync_percent"
 
-	VolumeCollectionFields = &VolumeCollection{
-		ID:                         &IDfield,
-		ProttmplId:                 &ProttmplIdfield,
-		Name:                       &Namefield,
-		FullName:                   &FullNamefield,
-		SearchName:                 &SearchNamefield,
-		Description:                &Descriptionfield,
-		PolOwnerName:               &PolOwnerNamefield,
-		AppServer:                  &AppServerfield,
-		AppClusterName:             &AppClusterNamefield,
-		AppServiceName:             &AppServiceNamefield,
-		VcenterHostname:            &VcenterHostnamefield,
-		VcenterUsername:            &VcenterUsernamefield,
-		VcenterPassword:            &VcenterPasswordfield,
-		AgentHostname:              &AgentHostnamefield,
-		AgentUsername:              &AgentUsernamefield,
-		AgentPassword:              &AgentPasswordfield,
-		ReplicationPartner:         &ReplicationPartnerfield,
-		HandoverReplicationPartner: &HandoverReplicationPartnerfield,
+	VolumeCollectionFields = &VolumeCollectionStringFields{
+		ID:                          &IDfield,
+		ProttmplId:                  &ProttmplIdfield,
+		Name:                        &Namefield,
+		FullName:                    &FullNamefield,
+		SearchName:                  &SearchNamefield,
+		Description:                 &Descriptionfield,
+		ReplPriority:                &ReplPriorityfield,
+		PolOwnerName:                &PolOwnerNamefield,
+		ReplicationType:             &ReplicationTypefield,
+		SynchronousReplicationType:  &SynchronousReplicationTypefield,
+		SynchronousReplicationState: &SynchronousReplicationStatefield,
+		AppSync:                     &AppSyncfield,
+		AppServer:                   &AppServerfield,
+		AppId:                       &AppIdfield,
+		AppClusterName:              &AppClusterNamefield,
+		AppServiceName:              &AppServiceNamefield,
+		VcenterHostname:             &VcenterHostnamefield,
+		VcenterUsername:             &VcenterUsernamefield,
+		VcenterPassword:             &VcenterPasswordfield,
+		AgentHostname:               &AgentHostnamefield,
+		AgentUsername:               &AgentUsernamefield,
+		AgentPassword:               &AgentPasswordfield,
+		CreationTime:                &CreationTimefield,
+		LastModifiedTime:            &LastModifiedTimefield,
+		VolumeList:                  &VolumeListfield,
+		DownstreamVolumeList:        &DownstreamVolumeListfield,
+		UpstreamVolumeList:          &UpstreamVolumeListfield,
+		VolumeCount:                 &VolumeCountfield,
+		CachePinnedVolumeList:       &CachePinnedVolumeListfield,
+		LastSnapcoll:                &LastSnapcollfield,
+		SnapcollCount:               &SnapcollCountfield,
+		ScheduleList:                &ScheduleListfield,
+		ReplicationPartner:          &ReplicationPartnerfield,
+		LastReplicatedSnapcoll:      &LastReplicatedSnapcollfield,
+		LastReplicatedSnapcollList:  &LastReplicatedSnapcollListfield,
+		ProtectionType:              &ProtectionTypefield,
+		LagTime:                     &LagTimefield,
+		IsStandaloneVolcoll:         &IsStandaloneVolcollfield,
+		TotalReplBytes:              &TotalReplBytesfield,
+		ReplBytesTransferred:        &ReplBytesTransferredfield,
+		IsHandingOver:               &IsHandingOverfield,
+		HandoverReplicationPartner:  &HandoverReplicationPartnerfield,
+		Metadata:                    &Metadatafield,
+		SrepLastSync:                &SrepLastSyncfield,
+		SrepResyncPercent:           &SrepResyncPercentfield,
 	}
 }
 
@@ -139,4 +193,53 @@ type VolumeCollection struct {
 	SrepLastSync *int64 `json:"srep_last_sync,omitempty"`
 	// SrepResyncPercent - Percentage of the resync progress for a synchronously replicated volume collection.
 	SrepResyncPercent *int64 `json:"srep_resync_percent,omitempty"`
+}
+
+// Struct for VolumeCollectionFields
+type VolumeCollectionStringFields struct {
+	ID                          *string
+	ProttmplId                  *string
+	Name                        *string
+	FullName                    *string
+	SearchName                  *string
+	Description                 *string
+	ReplPriority                *string
+	PolOwnerName                *string
+	ReplicationType             *string
+	SynchronousReplicationType  *string
+	SynchronousReplicationState *string
+	AppSync                     *string
+	AppServer                   *string
+	AppId                       *string
+	AppClusterName              *string
+	AppServiceName              *string
+	VcenterHostname             *string
+	VcenterUsername             *string
+	VcenterPassword             *string
+	AgentHostname               *string
+	AgentUsername               *string
+	AgentPassword               *string
+	CreationTime                *string
+	LastModifiedTime            *string
+	VolumeList                  *string
+	DownstreamVolumeList        *string
+	UpstreamVolumeList          *string
+	VolumeCount                 *string
+	CachePinnedVolumeList       *string
+	LastSnapcoll                *string
+	SnapcollCount               *string
+	ScheduleList                *string
+	ReplicationPartner          *string
+	LastReplicatedSnapcoll      *string
+	LastReplicatedSnapcollList  *string
+	ProtectionType              *string
+	LagTime                     *string
+	IsStandaloneVolcoll         *string
+	TotalReplBytes              *string
+	ReplBytesTransferred        *string
+	IsHandingOver               *string
+	HandoverReplicationPartner  *string
+	Metadata                    *string
+	SrepLastSync                *string
+	SrepResyncPercent           *string
 }

@@ -4,31 +4,57 @@ package nimbleos
 
 // Controller - Controller is a redundant collection of hardware capable of running the array software.
 // Export ControllerFields for advance operations like search filter etc.
-var ControllerFields *Controller
+var ControllerFields *ControllerStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	ArrayNamefield := "array_name"
 	ArrayIdfield := "array_id"
+	PartialResponseOkfield := "partial_response_ok"
 	Serialfield := "serial"
 	Modelfield := "model"
 	Hostnamefield := "hostname"
 	SupportAddressfield := "support_address"
 	SupportNetmaskfield := "support_netmask"
 	SupportNicfield := "support_nic"
+	PowerStatusfield := "power_status"
+	FanStatusfield := "fan_status"
+	TemperatureStatusfield := "temperature_status"
+	PowerSuppliesfield := "power_supplies"
+	Fansfield := "fans"
+	TemperatureSensorsfield := "temperature_sensors"
+	PartitionStatusfield := "partition_status"
+	CtrlrSidefield := "ctrlr_side"
+	Statefield := "state"
+	NvmeCardsEnabledfield := "nvme_cards_enabled"
+	NvmeCardsfield := "nvme_cards"
+	AsupTimefield := "asup_time"
 
-	ControllerFields = &Controller{
-		ID:             &IDfield,
-		Name:           &Namefield,
-		ArrayName:      &ArrayNamefield,
-		ArrayId:        &ArrayIdfield,
-		Serial:         &Serialfield,
-		Model:          &Modelfield,
-		Hostname:       &Hostnamefield,
-		SupportAddress: &SupportAddressfield,
-		SupportNetmask: &SupportNetmaskfield,
-		SupportNic:     &SupportNicfield,
+	ControllerFields = &ControllerStringFields{
+		ID:                 &IDfield,
+		Name:               &Namefield,
+		ArrayName:          &ArrayNamefield,
+		ArrayId:            &ArrayIdfield,
+		PartialResponseOk:  &PartialResponseOkfield,
+		Serial:             &Serialfield,
+		Model:              &Modelfield,
+		Hostname:           &Hostnamefield,
+		SupportAddress:     &SupportAddressfield,
+		SupportNetmask:     &SupportNetmaskfield,
+		SupportNic:         &SupportNicfield,
+		PowerStatus:        &PowerStatusfield,
+		FanStatus:          &FanStatusfield,
+		TemperatureStatus:  &TemperatureStatusfield,
+		PowerSupplies:      &PowerSuppliesfield,
+		Fans:               &Fansfield,
+		TemperatureSensors: &TemperatureSensorsfield,
+		PartitionStatus:    &PartitionStatusfield,
+		CtrlrSide:          &CtrlrSidefield,
+		State:              &Statefield,
+		NvmeCardsEnabled:   &NvmeCardsEnabledfield,
+		NvmeCards:          &NvmeCardsfield,
+		AsupTime:           &AsupTimefield,
 	}
 }
 
@@ -79,4 +105,31 @@ type Controller struct {
 	NvmeCards []*NsCtrlrNvmeCard `json:"nvme_cards,omitempty"`
 	// AsupTime - Time of the last autosupport by the controller.
 	AsupTime *int64 `json:"asup_time,omitempty"`
+}
+
+// Struct for ControllerFields
+type ControllerStringFields struct {
+	ID                 *string
+	Name               *string
+	ArrayName          *string
+	ArrayId            *string
+	PartialResponseOk  *string
+	Serial             *string
+	Model              *string
+	Hostname           *string
+	SupportAddress     *string
+	SupportNetmask     *string
+	SupportNic         *string
+	PowerStatus        *string
+	FanStatus          *string
+	TemperatureStatus  *string
+	PowerSupplies      *string
+	Fans               *string
+	TemperatureSensors *string
+	PartitionStatus    *string
+	CtrlrSide          *string
+	State              *string
+	NvmeCardsEnabled   *string
+	NvmeCards          *string
+	AsupTime           *string
 }

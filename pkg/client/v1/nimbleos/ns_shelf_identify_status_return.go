@@ -4,14 +4,22 @@ package nimbleos
 
 // NsShelfIdentifyStatusReturn - Status of the shelf identifier.
 // Export NsShelfIdentifyStatusReturnFields for advance operations like search filter etc.
-var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturn
+var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturnStringFields
 
 func init() {
+	Enabledfield := "enabled"
 
-	NsShelfIdentifyStatusReturnFields = &NsShelfIdentifyStatusReturn{}
+	NsShelfIdentifyStatusReturnFields = &NsShelfIdentifyStatusReturnStringFields{
+		Enabled: &Enabledfield,
+	}
 }
 
 type NsShelfIdentifyStatusReturn struct {
 	// Enabled - Shelf identifier is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+}
+
+// Struct for NsShelfIdentifyStatusReturnFields
+type NsShelfIdentifyStatusReturnStringFields struct {
+	Enabled *string
 }

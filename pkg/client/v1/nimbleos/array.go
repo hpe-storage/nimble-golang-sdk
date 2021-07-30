@@ -4,45 +4,123 @@ package nimbleos
 
 // Array - Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
 // Export ArrayFields for advance operations like search filter etc.
-var ArrayFields *Array
+var ArrayFields *ArrayStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
+	Forcefield := "force"
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
+	Statusfield := "status"
+	Rolefield := "role"
+	GroupStatefield := "group_state"
 	PoolNamefield := "pool_name"
 	PoolIdfield := "pool_id"
 	Modelfield := "model"
 	Serialfield := "serial"
 	Versionfield := "version"
+	IsSfafield := "is_sfa"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	UsageValidfield := "usage_valid"
+	UsableCapacityBytesfield := "usable_capacity_bytes"
+	UsableCacheCapacityBytesfield := "usable_cache_capacity_bytes"
+	RawCapacityBytesfield := "raw_capacity_bytes"
+	VolUsageBytesfield := "vol_usage_bytes"
+	VolUsageUncompressedBytesfield := "vol_usage_uncompressed_bytes"
+	VolCompressionfield := "vol_compression"
+	VolSavedBytesfield := "vol_saved_bytes"
+	SnapUsageBytesfield := "snap_usage_bytes"
+	SnapUsageUncompressedBytesfield := "snap_usage_uncompressed_bytes"
+	SnapCompressionfield := "snap_compression"
+	SnapSpaceReductionfield := "snap_space_reduction"
+	SnapSavedBytesfield := "snap_saved_bytes"
+	PendingDeleteBytesfield := "pending_delete_bytes"
+	AvailableBytesfield := "available_bytes"
+	Usagefield := "usage"
+	AllFlashfield := "all_flash"
+	DedupeCapacityBytesfield := "dedupe_capacity_bytes"
+	DedupeUsageBytesfield := "dedupe_usage_bytes"
+	IsFullyDedupeCapablefield := "is_fully_dedupe_capable"
+	DedupeDisabledfield := "dedupe_disabled"
 	ExtendedModelfield := "extended_model"
 	Oemfield := "oem"
 	Brandfield := "brand"
+	IsSupportedHwConfigfield := "is_supported_hw_config"
+	GigNicPortCountfield := "gig_nic_port_count"
+	TenGigSfpNicPortCountfield := "ten_gig_sfp_nic_port_count"
+	TenGigTNicPortCountfield := "ten_gig_t_nic_port_count"
+	FcPortCountfield := "fc_port_count"
+	PublicKeyfield := "public_key"
+	Upgradefield := "upgrade"
+	CreatePoolfield := "create_pool"
 	PoolDescriptionfield := "pool_description"
+	AllowLowerLimitsfield := "allow_lower_limits"
 	CtrlrASupportIpfield := "ctrlr_a_support_ip"
 	CtrlrBSupportIpfield := "ctrlr_b_support_ip"
+	NicListfield := "nic_list"
 	ModelSubTypefield := "model_sub_type"
+	ZconfIpaddrsfield := "zconf_ipaddrs"
 	SecondaryMgmtIpfield := "secondary_mgmt_ip"
 
-	ArrayFields = &Array{
-		ID:              &IDfield,
-		Name:            &Namefield,
-		FullName:        &FullNamefield,
-		SearchName:      &SearchNamefield,
-		PoolName:        &PoolNamefield,
-		PoolId:          &PoolIdfield,
-		Model:           &Modelfield,
-		Serial:          &Serialfield,
-		Version:         &Versionfield,
-		ExtendedModel:   &ExtendedModelfield,
-		Oem:             &Oemfield,
-		Brand:           &Brandfield,
-		PoolDescription: &PoolDescriptionfield,
-		CtrlrASupportIp: &CtrlrASupportIpfield,
-		CtrlrBSupportIp: &CtrlrBSupportIpfield,
-		ModelSubType:    &ModelSubTypefield,
-		SecondaryMgmtIp: &SecondaryMgmtIpfield,
+	ArrayFields = &ArrayStringFields{
+		ID:                         &IDfield,
+		Name:                       &Namefield,
+		Force:                      &Forcefield,
+		FullName:                   &FullNamefield,
+		SearchName:                 &SearchNamefield,
+		Status:                     &Statusfield,
+		Role:                       &Rolefield,
+		GroupState:                 &GroupStatefield,
+		PoolName:                   &PoolNamefield,
+		PoolId:                     &PoolIdfield,
+		Model:                      &Modelfield,
+		Serial:                     &Serialfield,
+		Version:                    &Versionfield,
+		IsSfa:                      &IsSfafield,
+		CreationTime:               &CreationTimefield,
+		LastModified:               &LastModifiedfield,
+		UsageValid:                 &UsageValidfield,
+		UsableCapacityBytes:        &UsableCapacityBytesfield,
+		UsableCacheCapacityBytes:   &UsableCacheCapacityBytesfield,
+		RawCapacityBytes:           &RawCapacityBytesfield,
+		VolUsageBytes:              &VolUsageBytesfield,
+		VolUsageUncompressedBytes:  &VolUsageUncompressedBytesfield,
+		VolCompression:             &VolCompressionfield,
+		VolSavedBytes:              &VolSavedBytesfield,
+		SnapUsageBytes:             &SnapUsageBytesfield,
+		SnapUsageUncompressedBytes: &SnapUsageUncompressedBytesfield,
+		SnapCompression:            &SnapCompressionfield,
+		SnapSpaceReduction:         &SnapSpaceReductionfield,
+		SnapSavedBytes:             &SnapSavedBytesfield,
+		PendingDeleteBytes:         &PendingDeleteBytesfield,
+		AvailableBytes:             &AvailableBytesfield,
+		Usage:                      &Usagefield,
+		AllFlash:                   &AllFlashfield,
+		DedupeCapacityBytes:        &DedupeCapacityBytesfield,
+		DedupeUsageBytes:           &DedupeUsageBytesfield,
+		IsFullyDedupeCapable:       &IsFullyDedupeCapablefield,
+		DedupeDisabled:             &DedupeDisabledfield,
+		ExtendedModel:              &ExtendedModelfield,
+		Oem:                        &Oemfield,
+		Brand:                      &Brandfield,
+		IsSupportedHwConfig:        &IsSupportedHwConfigfield,
+		GigNicPortCount:            &GigNicPortCountfield,
+		TenGigSfpNicPortCount:      &TenGigSfpNicPortCountfield,
+		TenGigTNicPortCount:        &TenGigTNicPortCountfield,
+		FcPortCount:                &FcPortCountfield,
+		PublicKey:                  &PublicKeyfield,
+		Upgrade:                    &Upgradefield,
+		CreatePool:                 &CreatePoolfield,
+		PoolDescription:            &PoolDescriptionfield,
+		AllowLowerLimits:           &AllowLowerLimitsfield,
+		CtrlrASupportIp:            &CtrlrASupportIpfield,
+		CtrlrBSupportIp:            &CtrlrBSupportIpfield,
+		NicList:                    &NicListfield,
+		ModelSubType:               &ModelSubTypefield,
+		ZconfIpaddrs:               &ZconfIpaddrsfield,
+		SecondaryMgmtIp:            &SecondaryMgmtIpfield,
 	}
 }
 
@@ -159,4 +237,64 @@ type Array struct {
 	ZconfIpaddrs []*NsIPAddressObject `json:"zconf_ipaddrs,omitempty"`
 	// SecondaryMgmtIp - Secondary management IP address for the Group.
 	SecondaryMgmtIp *string `json:"secondary_mgmt_ip,omitempty"`
+}
+
+// Struct for ArrayFields
+type ArrayStringFields struct {
+	ID                         *string
+	Name                       *string
+	Force                      *string
+	FullName                   *string
+	SearchName                 *string
+	Status                     *string
+	Role                       *string
+	GroupState                 *string
+	PoolName                   *string
+	PoolId                     *string
+	Model                      *string
+	Serial                     *string
+	Version                    *string
+	IsSfa                      *string
+	CreationTime               *string
+	LastModified               *string
+	UsageValid                 *string
+	UsableCapacityBytes        *string
+	UsableCacheCapacityBytes   *string
+	RawCapacityBytes           *string
+	VolUsageBytes              *string
+	VolUsageUncompressedBytes  *string
+	VolCompression             *string
+	VolSavedBytes              *string
+	SnapUsageBytes             *string
+	SnapUsageUncompressedBytes *string
+	SnapCompression            *string
+	SnapSpaceReduction         *string
+	SnapSavedBytes             *string
+	PendingDeleteBytes         *string
+	AvailableBytes             *string
+	Usage                      *string
+	AllFlash                   *string
+	DedupeCapacityBytes        *string
+	DedupeUsageBytes           *string
+	IsFullyDedupeCapable       *string
+	DedupeDisabled             *string
+	ExtendedModel              *string
+	Oem                        *string
+	Brand                      *string
+	IsSupportedHwConfig        *string
+	GigNicPortCount            *string
+	TenGigSfpNicPortCount      *string
+	TenGigTNicPortCount        *string
+	FcPortCount                *string
+	PublicKey                  *string
+	Upgrade                    *string
+	CreatePool                 *string
+	PoolDescription            *string
+	AllowLowerLimits           *string
+	CtrlrASupportIp            *string
+	CtrlrBSupportIp            *string
+	NicList                    *string
+	ModelSubType               *string
+	ZconfIpaddrs               *string
+	SecondaryMgmtIp            *string
 }

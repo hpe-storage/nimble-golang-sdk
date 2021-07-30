@@ -4,17 +4,23 @@ package nimbleos
 
 // NsCtrlrHwSensorInfo - Information on a controller hardware sensor.
 // Export NsCtrlrHwSensorInfoFields for advance operations like search filter etc.
-var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfo
+var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfoStringFields
 
 func init() {
 	Namefield := "name"
 	DisplayNamefield := "display_name"
 	Locationfield := "location"
+	CtrlrOwnerfield := "ctrlr_owner"
+	Statefield := "state"
+	CurrentReadingfield := "current_reading"
 
-	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfo{
-		Name:        &Namefield,
-		DisplayName: &DisplayNamefield,
-		Location:    &Locationfield,
+	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfoStringFields{
+		Name:           &Namefield,
+		DisplayName:    &DisplayNamefield,
+		Location:       &Locationfield,
+		CtrlrOwner:     &CtrlrOwnerfield,
+		State:          &Statefield,
+		CurrentReading: &CurrentReadingfield,
 	}
 }
 
@@ -31,4 +37,14 @@ type NsCtrlrHwSensorInfo struct {
 	State *NsSensorState `json:"state,omitempty"`
 	// CurrentReading - A sensor type specific reading (RPM for fans, degrees celcius for temperature).
 	CurrentReading *int64 `json:"current_reading,omitempty"`
+}
+
+// Struct for NsCtrlrHwSensorInfoFields
+type NsCtrlrHwSensorInfoStringFields struct {
+	Name           *string
+	DisplayName    *string
+	Location       *string
+	CtrlrOwner     *string
+	State          *string
+	CurrentReading *string
 }

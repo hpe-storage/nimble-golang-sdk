@@ -4,25 +4,45 @@ package nimbleos
 
 // NetworkInterface - Manage per array network interface configuration.
 // Export NetworkInterfaceFields for advance operations like search filter etc.
-var NetworkInterfaceFields *NetworkInterface
+var NetworkInterfaceFields *NetworkInterfaceStringFields
 
 func init() {
 	IDfield := "id"
 	ArrayNameOrSerialfield := "array_name_or_serial"
+	PartialResponseOkfield := "partial_response_ok"
 	ArrayIdfield := "array_id"
 	ControllerNamefield := "controller_name"
 	ControllerIdfield := "controller_id"
 	Namefield := "name"
 	Macfield := "mac"
+	IsPresentfield := "is_present"
+	LinkSpeedfield := "link_speed"
+	LinkStatusfield := "link_status"
+	Mtufield := "mtu"
+	Portfield := "port"
+	Slotfield := "slot"
+	MaxLinkSpeedfield := "max_link_speed"
+	NicTypefield := "nic_type"
+	IpListfield := "ip_list"
 
-	NetworkInterfaceFields = &NetworkInterface{
+	NetworkInterfaceFields = &NetworkInterfaceStringFields{
 		ID:                &IDfield,
 		ArrayNameOrSerial: &ArrayNameOrSerialfield,
+		PartialResponseOk: &PartialResponseOkfield,
 		ArrayId:           &ArrayIdfield,
 		ControllerName:    &ControllerNamefield,
 		ControllerId:      &ControllerIdfield,
 		Name:              &Namefield,
 		Mac:               &Macfield,
+		IsPresent:         &IsPresentfield,
+		LinkSpeed:         &LinkSpeedfield,
+		LinkStatus:        &LinkStatusfield,
+		Mtu:               &Mtufield,
+		Port:              &Portfield,
+		Slot:              &Slotfield,
+		MaxLinkSpeed:      &MaxLinkSpeedfield,
+		NicType:           &NicTypefield,
+		IpList:            &IpListfield,
 	}
 }
 
@@ -61,4 +81,25 @@ type NetworkInterface struct {
 	NicType *NsPlatNicType `json:"nic_type,omitempty"`
 	// IpList - List of IP addresses assigned to this network interface.
 	IpList []*NsAssignedIP `json:"ip_list,omitempty"`
+}
+
+// Struct for NetworkInterfaceFields
+type NetworkInterfaceStringFields struct {
+	ID                *string
+	ArrayNameOrSerial *string
+	PartialResponseOk *string
+	ArrayId           *string
+	ControllerName    *string
+	ControllerId      *string
+	Name              *string
+	Mac               *string
+	IsPresent         *string
+	LinkSpeed         *string
+	LinkStatus        *string
+	Mtu               *string
+	Port              *string
+	Slot              *string
+	MaxLinkSpeed      *string
+	NicType           *string
+	IpList            *string
 }

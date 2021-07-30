@@ -4,7 +4,7 @@ package nimbleos
 
 // PerformancePolicy - Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 // Export PerformancePolicyFields for advance operations like search filter etc.
-var PerformancePolicyFields *PerformancePolicy
+var PerformancePolicyFields *PerformancePolicyStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,15 +12,41 @@ func init() {
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
+	BlockSizefield := "block_size"
+	Compressfield := "compress"
+	Cachefield := "cache"
+	CachePolicyfield := "cache_policy"
+	SpacePolicyfield := "space_policy"
 	AppCategoryfield := "app_category"
+	DedupeEnabledfield := "dedupe_enabled"
+	Deprecatedfield := "deprecated"
+	Predefinedfield := "predefined"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	SampleRatefield := "sample_rate"
+	VolumeCountfield := "volume_count"
+	DedupeOverridePoolsfield := "dedupe_override_pools"
 
-	PerformancePolicyFields = &PerformancePolicy{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
-		AppCategory: &AppCategoryfield,
+	PerformancePolicyFields = &PerformancePolicyStringFields{
+		ID:                  &IDfield,
+		Name:                &Namefield,
+		FullName:            &FullNamefield,
+		SearchName:          &SearchNamefield,
+		Description:         &Descriptionfield,
+		BlockSize:           &BlockSizefield,
+		Compress:            &Compressfield,
+		Cache:               &Cachefield,
+		CachePolicy:         &CachePolicyfield,
+		SpacePolicy:         &SpacePolicyfield,
+		AppCategory:         &AppCategoryfield,
+		DedupeEnabled:       &DedupeEnabledfield,
+		Deprecated:          &Deprecatedfield,
+		Predefined:          &Predefinedfield,
+		CreationTime:        &CreationTimefield,
+		LastModified:        &LastModifiedfield,
+		SampleRate:          &SampleRatefield,
+		VolumeCount:         &VolumeCountfield,
+		DedupeOverridePools: &DedupeOverridePoolsfield,
 	}
 }
 
@@ -63,4 +89,27 @@ type PerformancePolicy struct {
 	VolumeCount *int64 `json:"volume_count,omitempty"`
 	// DedupeOverridePools - List of pools that override performance policy's dedupe setting.
 	DedupeOverridePools []*NsPoolSummary `json:"dedupe_override_pools,omitempty"`
+}
+
+// Struct for PerformancePolicyFields
+type PerformancePolicyStringFields struct {
+	ID                  *string
+	Name                *string
+	FullName            *string
+	SearchName          *string
+	Description         *string
+	BlockSize           *string
+	Compress            *string
+	Cache               *string
+	CachePolicy         *string
+	SpacePolicy         *string
+	AppCategory         *string
+	DedupeEnabled       *string
+	Deprecated          *string
+	Predefined          *string
+	CreationTime        *string
+	LastModified        *string
+	SampleRate          *string
+	VolumeCount         *string
+	DedupeOverridePools *string
 }

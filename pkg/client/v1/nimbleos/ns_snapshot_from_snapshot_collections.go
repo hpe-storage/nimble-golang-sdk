@@ -4,7 +4,7 @@ package nimbleos
 
 // NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
 // Export NsSnapshotFromSnapshotCollectionsFields for advance operations like search filter etc.
-var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollections
+var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollectionsStringFields
 
 func init() {
 	IDfield := "id"
@@ -17,8 +17,9 @@ func init() {
 	SnapNamefield := "snap_name"
 	ScheduleIdfield := "schedule_id"
 	ScheduleNamefield := "schedule_name"
+	ExpiryTimefield := "expiry_time"
 
-	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollections{
+	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollectionsStringFields{
 		ID:           &IDfield,
 		SnapcollId:   &SnapcollIdfield,
 		Name:         &Namefield,
@@ -29,6 +30,7 @@ func init() {
 		SnapName:     &SnapNamefield,
 		ScheduleId:   &ScheduleIdfield,
 		ScheduleName: &ScheduleNamefield,
+		ExpiryTime:   &ExpiryTimefield,
 	}
 }
 
@@ -55,4 +57,19 @@ type NsSnapshotFromSnapshotCollections struct {
 	ScheduleName *string `json:"schedule_name,omitempty"`
 	// ExpiryTime - Unix timestamp indicating that the snapshot is considered expired by Snapshot Time-to-live(TTL). A value of 0 indicates that snapshot never expires.
 	ExpiryTime *int64 `json:"expiry_time,omitempty"`
+}
+
+// Struct for NsSnapshotFromSnapshotCollectionsFields
+type NsSnapshotFromSnapshotCollectionsStringFields struct {
+	ID           *string
+	SnapcollId   *string
+	Name         *string
+	SnapcollName *string
+	VolId        *string
+	VolName      *string
+	SnapId       *string
+	SnapName     *string
+	ScheduleId   *string
+	ScheduleName *string
+	ExpiryTime   *string
 }

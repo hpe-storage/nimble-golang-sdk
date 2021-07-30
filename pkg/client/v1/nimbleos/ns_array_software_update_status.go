@@ -4,15 +4,21 @@ package nimbleos
 
 // NsArraySoftwareUpdateStatus - List of software update errors for a specific array.
 // Export NsArraySoftwareUpdateStatusFields for advance operations like search filter etc.
-var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatus
+var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatusStringFields
 
 func init() {
 	ArrayNamefield := "array_name"
 	Errorfield := "error"
+	CtrlrErrorMaskfield := "ctrlr_error_mask"
+	CtrlrAErrsfield := "ctrlr_a_errs"
+	CtrlrBErrsfield := "ctrlr_b_errs"
 
-	NsArraySoftwareUpdateStatusFields = &NsArraySoftwareUpdateStatus{
-		ArrayName: &ArrayNamefield,
-		Error:     &Errorfield,
+	NsArraySoftwareUpdateStatusFields = &NsArraySoftwareUpdateStatusStringFields{
+		ArrayName:      &ArrayNamefield,
+		Error:          &Errorfield,
+		CtrlrErrorMask: &CtrlrErrorMaskfield,
+		CtrlrAErrs:     &CtrlrAErrsfield,
+		CtrlrBErrs:     &CtrlrBErrsfield,
 	}
 }
 
@@ -27,4 +33,13 @@ type NsArraySoftwareUpdateStatus struct {
 	CtrlrAErrs []*NsArraySoftwareUpdateError `json:"ctrlr_a_errs,omitempty"`
 	// CtrlrBErrs - List of software update errors for controller B. The key is always "error" and the value is the actual error code string.
 	CtrlrBErrs []*NsArraySoftwareUpdateError `json:"ctrlr_b_errs,omitempty"`
+}
+
+// Struct for NsArraySoftwareUpdateStatusFields
+type NsArraySoftwareUpdateStatusStringFields struct {
+	ArrayName      *string
+	Error          *string
+	CtrlrErrorMask *string
+	CtrlrAErrs     *string
+	CtrlrBErrs     *string
 }

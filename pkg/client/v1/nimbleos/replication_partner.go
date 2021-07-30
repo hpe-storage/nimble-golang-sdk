@@ -4,7 +4,7 @@ package nimbleos
 
 // ReplicationPartner - Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and use ports 4213 and 4214. Replication partners have the same name as the remote group. Replication partners can be reciprocal, upstream (the source of replicas), or downstream (the receiver of replicas) partners.
 // Export ReplicationPartnerFields for advance operations like search filter etc.
-var ReplicationPartnerFields *ReplicationPartner
+var ReplicationPartnerFields *ReplicationPartnerStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,45 +12,93 @@ func init() {
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
+	PartnerTypefield := "partner_type"
 	Aliasfield := "alias"
 	Secretfield := "secret"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	ControlPortfield := "control_port"
 	Hostnamefield := "hostname"
+	PortRangeStartfield := "port_range_start"
 	ProxyHostnamefield := "proxy_hostname"
 	ProxyUserfield := "proxy_user"
 	ReplHostnamefield := "repl_hostname"
+	DataPortfield := "data_port"
+	IsAlivefield := "is_alive"
+	PartnerGroupUidfield := "partner_group_uid"
 	LastKeepaliveErrorfield := "last_keepalive_error"
+	CfgSyncStatusfield := "cfg_sync_status"
 	LastSyncErrorfield := "last_sync_error"
 	ArraySerialfield := "array_serial"
+	Versionfield := "version"
 	PoolIdfield := "pool_id"
 	PoolNamefield := "pool_name"
 	FolderIdfield := "folder_id"
 	FolderNamefield := "folder_name"
+	MatchFolderfield := "match_folder"
+	Pausedfield := "paused"
+	UniqueNamefield := "unique_name"
 	SubnetLabelfield := "subnet_label"
+	SubnetTypefield := "subnet_type"
+	Throttlesfield := "throttles"
+	ThrottledBandwidthfield := "throttled_bandwidth"
+	ThrottledBandwidthCurrentfield := "throttled_bandwidth_current"
+	ThrottledBandwidthKbpsfield := "throttled_bandwidth_kbps"
+	ThrottledBandwidthCurrentKbpsfield := "throttled_bandwidth_current_kbps"
 	SubnetNetworkfield := "subnet_network"
 	SubnetNetmaskfield := "subnet_netmask"
+	VolumeCollectionListfield := "volume_collection_list"
+	VolumeCollectionListCountfield := "volume_collection_list_count"
+	VolumeListfield := "volume_list"
+	VolumeListCountfield := "volume_list_count"
+	ReplicationDirectionfield := "replication_direction"
 
-	ReplicationPartnerFields = &ReplicationPartner{
-		ID:                 &IDfield,
-		Name:               &Namefield,
-		FullName:           &FullNamefield,
-		SearchName:         &SearchNamefield,
-		Description:        &Descriptionfield,
-		Alias:              &Aliasfield,
-		Secret:             &Secretfield,
-		Hostname:           &Hostnamefield,
-		ProxyHostname:      &ProxyHostnamefield,
-		ProxyUser:          &ProxyUserfield,
-		ReplHostname:       &ReplHostnamefield,
-		LastKeepaliveError: &LastKeepaliveErrorfield,
-		LastSyncError:      &LastSyncErrorfield,
-		ArraySerial:        &ArraySerialfield,
-		PoolId:             &PoolIdfield,
-		PoolName:           &PoolNamefield,
-		FolderId:           &FolderIdfield,
-		FolderName:         &FolderNamefield,
-		SubnetLabel:        &SubnetLabelfield,
-		SubnetNetwork:      &SubnetNetworkfield,
-		SubnetNetmask:      &SubnetNetmaskfield,
+	ReplicationPartnerFields = &ReplicationPartnerStringFields{
+		ID:                            &IDfield,
+		Name:                          &Namefield,
+		FullName:                      &FullNamefield,
+		SearchName:                    &SearchNamefield,
+		Description:                   &Descriptionfield,
+		PartnerType:                   &PartnerTypefield,
+		Alias:                         &Aliasfield,
+		Secret:                        &Secretfield,
+		CreationTime:                  &CreationTimefield,
+		LastModified:                  &LastModifiedfield,
+		ControlPort:                   &ControlPortfield,
+		Hostname:                      &Hostnamefield,
+		PortRangeStart:                &PortRangeStartfield,
+		ProxyHostname:                 &ProxyHostnamefield,
+		ProxyUser:                     &ProxyUserfield,
+		ReplHostname:                  &ReplHostnamefield,
+		DataPort:                      &DataPortfield,
+		IsAlive:                       &IsAlivefield,
+		PartnerGroupUid:               &PartnerGroupUidfield,
+		LastKeepaliveError:            &LastKeepaliveErrorfield,
+		CfgSyncStatus:                 &CfgSyncStatusfield,
+		LastSyncError:                 &LastSyncErrorfield,
+		ArraySerial:                   &ArraySerialfield,
+		Version:                       &Versionfield,
+		PoolId:                        &PoolIdfield,
+		PoolName:                      &PoolNamefield,
+		FolderId:                      &FolderIdfield,
+		FolderName:                    &FolderNamefield,
+		MatchFolder:                   &MatchFolderfield,
+		Paused:                        &Pausedfield,
+		UniqueName:                    &UniqueNamefield,
+		SubnetLabel:                   &SubnetLabelfield,
+		SubnetType:                    &SubnetTypefield,
+		Throttles:                     &Throttlesfield,
+		ThrottledBandwidth:            &ThrottledBandwidthfield,
+		ThrottledBandwidthCurrent:     &ThrottledBandwidthCurrentfield,
+		ThrottledBandwidthKbps:        &ThrottledBandwidthKbpsfield,
+		ThrottledBandwidthCurrentKbps: &ThrottledBandwidthCurrentKbpsfield,
+		SubnetNetwork:                 &SubnetNetworkfield,
+		SubnetNetmask:                 &SubnetNetmaskfield,
+		VolumeCollectionList:          &VolumeCollectionListfield,
+		VolumeCollectionListCount:     &VolumeCollectionListCountfield,
+		VolumeList:                    &VolumeListfield,
+		VolumeListCount:               &VolumeListCountfield,
+		ReplicationDirection:          &ReplicationDirectionfield,
 	}
 }
 
@@ -145,4 +193,53 @@ type ReplicationPartner struct {
 	VolumeListCount *int64 `json:"volume_list_count,omitempty"`
 	// ReplicationDirection - Direction of replication configured with this partner.
 	ReplicationDirection *NsReplDirection `json:"replication_direction,omitempty"`
+}
+
+// Struct for ReplicationPartnerFields
+type ReplicationPartnerStringFields struct {
+	ID                            *string
+	Name                          *string
+	FullName                      *string
+	SearchName                    *string
+	Description                   *string
+	PartnerType                   *string
+	Alias                         *string
+	Secret                        *string
+	CreationTime                  *string
+	LastModified                  *string
+	ControlPort                   *string
+	Hostname                      *string
+	PortRangeStart                *string
+	ProxyHostname                 *string
+	ProxyUser                     *string
+	ReplHostname                  *string
+	DataPort                      *string
+	IsAlive                       *string
+	PartnerGroupUid               *string
+	LastKeepaliveError            *string
+	CfgSyncStatus                 *string
+	LastSyncError                 *string
+	ArraySerial                   *string
+	Version                       *string
+	PoolId                        *string
+	PoolName                      *string
+	FolderId                      *string
+	FolderName                    *string
+	MatchFolder                   *string
+	Paused                        *string
+	UniqueName                    *string
+	SubnetLabel                   *string
+	SubnetType                    *string
+	Throttles                     *string
+	ThrottledBandwidth            *string
+	ThrottledBandwidthCurrent     *string
+	ThrottledBandwidthKbps        *string
+	ThrottledBandwidthCurrentKbps *string
+	SubnetNetwork                 *string
+	SubnetNetmask                 *string
+	VolumeCollectionList          *string
+	VolumeCollectionListCount     *string
+	VolumeList                    *string
+	VolumeListCount               *string
+	ReplicationDirection          *string
 }

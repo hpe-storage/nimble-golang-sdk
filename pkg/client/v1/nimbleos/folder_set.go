@@ -4,7 +4,7 @@ package nimbleos
 
 // FolderSet - Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
 // Export FolderSetFields for advance operations like search filter etc.
-var FolderSetFields *FolderSet
+var FolderSetFields *FolderSetStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,17 +12,23 @@ func init() {
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
 	AppUuidfield := "app_uuid"
+	FolderListfield := "folder_list"
 	AppserverIdfield := "appserver_id"
 	AppserverNamefield := "appserver_name"
 
-	FolderSetFields = &FolderSet{
+	FolderSetFields = &FolderSetStringFields{
 		ID:            &IDfield,
 		Name:          &Namefield,
 		FullName:      &FullNamefield,
 		SearchName:    &SearchNamefield,
 		Description:   &Descriptionfield,
+		CreationTime:  &CreationTimefield,
+		LastModified:  &LastModifiedfield,
 		AppUuid:       &AppUuidfield,
+		FolderList:    &FolderListfield,
 		AppserverId:   &AppserverIdfield,
 		AppserverName: &AppserverNamefield,
 	}
@@ -51,4 +57,19 @@ type FolderSet struct {
 	AppserverId *string `json:"appserver_id,omitempty"`
 	// AppserverName - Name of the application server associated with the folder set and member folders.
 	AppserverName *string `json:"appserver_name,omitempty"`
+}
+
+// Struct for FolderSetFields
+type FolderSetStringFields struct {
+	ID            *string
+	Name          *string
+	FullName      *string
+	SearchName    *string
+	Description   *string
+	CreationTime  *string
+	LastModified  *string
+	AppUuid       *string
+	FolderList    *string
+	AppserverId   *string
+	AppserverName *string
 }

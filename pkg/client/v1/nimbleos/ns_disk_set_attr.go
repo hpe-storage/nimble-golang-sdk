@@ -4,11 +4,38 @@ package nimbleos
 
 // NsDiskSetAttr - A shelf logical attributes.
 // Export NsDiskSetAttrFields for advance operations like search filter etc.
-var NsDiskSetAttrFields *NsDiskSetAttr
+var NsDiskSetAttrFields *NsDiskSetAttrStringFields
 
 func init() {
+	Drivesetfield := "driveset"
+	SwStatefield := "sw_state"
+	IsFlashShelffield := "is_flash_shelf"
+	IsCapacityValidfield := "is_capacity_valid"
+	UsableCapacityfield := "usable_capacity"
+	RawCapacityfield := "raw_capacity"
+	UsableCacheCapacityfield := "usable_cache_capacity"
+	RawCacheCapacityfield := "raw_cache_capacity"
+	AveMbPsfield := "ave_mb_ps"
+	AveSegmentPsfield := "ave_segment_ps"
+	AveTtcfield := "ave_ttc"
+	PctCompletionfield := "pct_completion"
+	PauseStatefield := "pause_state"
 
-	NsDiskSetAttrFields = &NsDiskSetAttr{}
+	NsDiskSetAttrFields = &NsDiskSetAttrStringFields{
+		Driveset:            &Drivesetfield,
+		SwState:             &SwStatefield,
+		IsFlashShelf:        &IsFlashShelffield,
+		IsCapacityValid:     &IsCapacityValidfield,
+		UsableCapacity:      &UsableCapacityfield,
+		RawCapacity:         &RawCapacityfield,
+		UsableCacheCapacity: &UsableCacheCapacityfield,
+		RawCacheCapacity:    &RawCacheCapacityfield,
+		AveMbPs:             &AveMbPsfield,
+		AveSegmentPs:        &AveSegmentPsfield,
+		AveTtc:              &AveTtcfield,
+		PctCompletion:       &PctCompletionfield,
+		PauseState:          &PauseStatefield,
+	}
 }
 
 type NsDiskSetAttr struct {
@@ -38,4 +65,21 @@ type NsDiskSetAttr struct {
 	PctCompletion *int64 `json:"pct_completion,omitempty"`
 	// PauseState - State of evacuation, paused or in-progress; valid only when sw_state is evacuating, ie. evacuation is underway.
 	PauseState *int64 `json:"pause_state,omitempty"`
+}
+
+// Struct for NsDiskSetAttrFields
+type NsDiskSetAttrStringFields struct {
+	Driveset            *string
+	SwState             *string
+	IsFlashShelf        *string
+	IsCapacityValid     *string
+	UsableCapacity      *string
+	RawCapacity         *string
+	UsableCacheCapacity *string
+	RawCacheCapacity    *string
+	AveMbPs             *string
+	AveSegmentPs        *string
+	AveTtc              *string
+	PctCompletion       *string
+	PauseState          *string
 }

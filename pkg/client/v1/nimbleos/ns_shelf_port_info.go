@@ -4,19 +4,31 @@ package nimbleos
 
 // NsShelfPortInfo - A shelf sas port information.
 // Export NsShelfPortInfoFields for advance operations like search filter etc.
-var NsShelfPortInfoFields *NsShelfPortInfo
+var NsShelfPortInfoFields *NsShelfPortInfoStringFields
 
 func init() {
+	PortIdxfield := "port_idx"
 	PortNamefield := "port_name"
+	PortTypefield := "port_type"
+	PortStatusfield := "port_status"
 	PortErrorsfield := "port_errors"
 	RemoteSasAddrfield := "remote_sas_addr"
 	RemoteSasPhyIdfield := "remote_sas_phy_id"
+	RemoteSasDomainfield := "remote_sas_domain"
+	RemoteLocIdfield := "remote_loc_id"
+	RemotePortIdfield := "remote_port_id"
 
-	NsShelfPortInfoFields = &NsShelfPortInfo{
-		PortName:       &PortNamefield,
-		PortErrors:     &PortErrorsfield,
-		RemoteSasAddr:  &RemoteSasAddrfield,
-		RemoteSasPhyId: &RemoteSasPhyIdfield,
+	NsShelfPortInfoFields = &NsShelfPortInfoStringFields{
+		PortIdx:         &PortIdxfield,
+		PortName:        &PortNamefield,
+		PortType:        &PortTypefield,
+		PortStatus:      &PortStatusfield,
+		PortErrors:      &PortErrorsfield,
+		RemoteSasAddr:   &RemoteSasAddrfield,
+		RemoteSasPhyId:  &RemoteSasPhyIdfield,
+		RemoteSasDomain: &RemoteSasDomainfield,
+		RemoteLocId:     &RemoteLocIdfield,
+		RemotePortId:    &RemotePortIdfield,
 	}
 }
 
@@ -41,4 +53,18 @@ type NsShelfPortInfo struct {
 	RemoteLocId *int64 `json:"remote_loc_id,omitempty"`
 	// RemotePortId - The pord_id of the remote SAS port that connects to this port.
 	RemotePortId *int64 `json:"remote_port_id,omitempty"`
+}
+
+// Struct for NsShelfPortInfoFields
+type NsShelfPortInfoStringFields struct {
+	PortIdx         *string
+	PortName        *string
+	PortType        *string
+	PortStatus      *string
+	PortErrors      *string
+	RemoteSasAddr   *string
+	RemoteSasPhyId  *string
+	RemoteSasDomain *string
+	RemoteLocId     *string
+	RemotePortId    *string
 }

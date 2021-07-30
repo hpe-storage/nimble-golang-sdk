@@ -4,13 +4,13 @@ package nimbleos
 
 // NsReplPair - Replicated objects (vol/snap/snapcoll), their UIDs are the same.
 // Export NsReplPairFields for advance operations like search filter etc.
-var NsReplPairFields *NsReplPair
+var NsReplPairFields *NsReplPairStringFields
 
 func init() {
 	SrcNamefield := "src_name"
 	DstNamefield := "dst_name"
 
-	NsReplPairFields = &NsReplPair{
+	NsReplPairFields = &NsReplPairStringFields{
 		SrcName: &SrcNamefield,
 		DstName: &DstNamefield,
 	}
@@ -21,4 +21,10 @@ type NsReplPair struct {
 	SrcName *string `json:"src_name,omitempty"`
 	// DstName - Name of the replicated obj on the destination group.
 	DstName *string `json:"dst_name,omitempty"`
+}
+
+// Struct for NsReplPairFields
+type NsReplPairStringFields struct {
+	SrcName *string
+	DstName *string
 }

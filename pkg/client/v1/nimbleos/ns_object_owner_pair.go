@@ -4,14 +4,14 @@ package nimbleos
 
 // NsObjectOwnerPair - Objects and their owners.
 // Export NsObjectOwnerPairFields for advance operations like search filter etc.
-var NsObjectOwnerPairFields *NsObjectOwnerPair
+var NsObjectOwnerPairFields *NsObjectOwnerPairStringFields
 
 func init() {
 	ObjNamefield := "obj_name"
 	SrcOwnerfield := "src_owner"
 	DstOwnerfield := "dst_owner"
 
-	NsObjectOwnerPairFields = &NsObjectOwnerPair{
+	NsObjectOwnerPairFields = &NsObjectOwnerPairStringFields{
 		ObjName:  &ObjNamefield,
 		SrcOwner: &SrcOwnerfield,
 		DstOwner: &DstOwnerfield,
@@ -25,4 +25,11 @@ type NsObjectOwnerPair struct {
 	SrcOwner *string `json:"src_owner,omitempty"`
 	// DstOwner - Name of the owner on the destination group.
 	DstOwner *string `json:"dst_owner,omitempty"`
+}
+
+// Struct for NsObjectOwnerPairFields
+type NsObjectOwnerPairStringFields struct {
+	ObjName  *string
+	SrcOwner *string
+	DstOwner *string
 }

@@ -4,12 +4,12 @@ package nimbleos
 
 // NsObjectWithID - An object with an ID.
 // Export NsObjectWithIDFields for advance operations like search filter etc.
-var NsObjectWithIDFields *NsObjectWithID
+var NsObjectWithIDFields *NsObjectWithIDStringFields
 
 func init() {
 	IDfield := "id"
 
-	NsObjectWithIDFields = &NsObjectWithID{
+	NsObjectWithIDFields = &NsObjectWithIDStringFields{
 		ID: &IDfield,
 	}
 }
@@ -17,4 +17,9 @@ func init() {
 type NsObjectWithID struct {
 	// ID - ID of object.
 	ID *string `json:"id,omitempty"`
+}
+
+// Struct for NsObjectWithIDFields
+type NsObjectWithIDStringFields struct {
+	ID *string
 }

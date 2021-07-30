@@ -4,11 +4,16 @@ package nimbleos
 
 // NsLunReturn - Return LU number.
 // Export NsLunReturnFields for advance operations like search filter etc.
-var NsLunReturnFields *NsLunReturn
+var NsLunReturnFields *NsLunReturnStringFields
 
 func init() {
+	Lunfield := "lun"
+	LuNumberfield := "lu_number"
 
-	NsLunReturnFields = &NsLunReturn{}
+	NsLunReturnFields = &NsLunReturnStringFields{
+		Lun:      &Lunfield,
+		LuNumber: &LuNumberfield,
+	}
 }
 
 type NsLunReturn struct {
@@ -16,4 +21,10 @@ type NsLunReturn struct {
 	Lun *int64 `json:"lun,omitempty"`
 	// LuNumber - LU number in decimal.
 	LuNumber *int64 `json:"lu_number,omitempty"`
+}
+
+// Struct for NsLunReturnFields
+type NsLunReturnStringFields struct {
+	Lun      *string
+	LuNumber *string
 }

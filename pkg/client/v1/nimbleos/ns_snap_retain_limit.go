@@ -4,11 +4,18 @@ package nimbleos
 
 // NsSnapRetainLimit - Limit for scheduled snapshot retainment params.
 // Export NsSnapRetainLimitFields for advance operations like search filter etc.
-var NsSnapRetainLimitFields *NsSnapRetainLimit
+var NsSnapRetainLimitFields *NsSnapRetainLimitStringFields
 
 func init() {
+	ObjTypefield := "obj_type"
+	RetainLimitfield := "retain_limit"
+	RetainNumfield := "retain_num"
 
-	NsSnapRetainLimitFields = &NsSnapRetainLimit{}
+	NsSnapRetainLimitFields = &NsSnapRetainLimitStringFields{
+		ObjType:     &ObjTypefield,
+		RetainLimit: &RetainLimitfield,
+		RetainNum:   &RetainNumfield,
+	}
 }
 
 type NsSnapRetainLimit struct {
@@ -18,4 +25,11 @@ type NsSnapRetainLimit struct {
 	RetainLimit *int64 `json:"retain_limit,omitempty"`
 	// RetainNum - Number of objects after group merge.
 	RetainNum *int64 `json:"retain_num,omitempty"`
+}
+
+// Struct for NsSnapRetainLimitFields
+type NsSnapRetainLimitStringFields struct {
+	ObjType     *string
+	RetainLimit *string
+	RetainNum   *string
 }

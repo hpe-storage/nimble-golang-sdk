@@ -4,29 +4,49 @@ package nimbleos
 
 // Alarm - View alarms.
 // Export AlarmFields for advance operations like search filter etc.
-var AlarmFields *Alarm
+var AlarmFields *AlarmStringFields
 
 func init() {
 	IDfield := "id"
+	Typefield := "type"
 	Arrayfield := "array"
 	CurrOnsetEventIdfield := "curr_onset_event_id"
 	ObjectIdfield := "object_id"
 	ObjectNamefield := "object_name"
+	ObjectTypefield := "object_type"
+	OnsetTimefield := "onset_time"
+	AckTimefield := "ack_time"
+	Statusfield := "status"
 	UserIdfield := "user_id"
 	UserNamefield := "user_name"
 	UserFullNamefield := "user_full_name"
+	Categoryfield := "category"
+	Severityfield := "severity"
+	RemindEveryfield := "remind_every"
+	RemindEveryUnitfield := "remind_every_unit"
 	Activityfield := "activity"
+	NextNotificationTimefield := "next_notification_time"
 
-	AlarmFields = &Alarm{
-		ID:               &IDfield,
-		Array:            &Arrayfield,
-		CurrOnsetEventId: &CurrOnsetEventIdfield,
-		ObjectId:         &ObjectIdfield,
-		ObjectName:       &ObjectNamefield,
-		UserId:           &UserIdfield,
-		UserName:         &UserNamefield,
-		UserFullName:     &UserFullNamefield,
-		Activity:         &Activityfield,
+	AlarmFields = &AlarmStringFields{
+		ID:                   &IDfield,
+		Type:                 &Typefield,
+		Array:                &Arrayfield,
+		CurrOnsetEventId:     &CurrOnsetEventIdfield,
+		ObjectId:             &ObjectIdfield,
+		ObjectName:           &ObjectNamefield,
+		ObjectType:           &ObjectTypefield,
+		OnsetTime:            &OnsetTimefield,
+		AckTime:              &AckTimefield,
+		Status:               &Statusfield,
+		UserId:               &UserIdfield,
+		UserName:             &UserNamefield,
+		UserFullName:         &UserFullNamefield,
+		Category:             &Categoryfield,
+		Severity:             &Severityfield,
+		RemindEvery:          &RemindEveryfield,
+		RemindEveryUnit:      &RemindEveryUnitfield,
+		Activity:             &Activityfield,
+		NextNotificationTime: &NextNotificationTimefield,
 	}
 }
 
@@ -69,4 +89,27 @@ type Alarm struct {
 	Activity *string `json:"activity,omitempty"`
 	// NextNotificationTime - Time when next reminder for the alarm will be sent.
 	NextNotificationTime *int64 `json:"next_notification_time,omitempty"`
+}
+
+// Struct for AlarmFields
+type AlarmStringFields struct {
+	ID                   *string
+	Type                 *string
+	Array                *string
+	CurrOnsetEventId     *string
+	ObjectId             *string
+	ObjectName           *string
+	ObjectType           *string
+	OnsetTime            *string
+	AckTime              *string
+	Status               *string
+	UserId               *string
+	UserName             *string
+	UserFullName         *string
+	Category             *string
+	Severity             *string
+	RemindEvery          *string
+	RemindEveryUnit      *string
+	Activity             *string
+	NextNotificationTime *string
 }

@@ -4,19 +4,43 @@ package nimbleos
 
 // NetworkConfig - Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
 // Export NetworkConfigFields for advance operations like search filter etc.
-var NetworkConfigFields *NetworkConfig
+var NetworkConfigFields *NetworkConfigStringFields
 
 func init() {
 	IDfield := "id"
+	Namefield := "name"
 	MgmtIpfield := "mgmt_ip"
 	SecondaryMgmtIpfield := "secondary_mgmt_ip"
+	Rolefield := "role"
+	IscsiAutomaticConnectionMethodfield := "iscsi_automatic_connection_method"
+	IscsiConnectionRebalancingfield := "iscsi_connection_rebalancing"
+	RouteListfield := "route_list"
+	SubnetListfield := "subnet_list"
+	ArrayListfield := "array_list"
 	GroupLeaderArrayfield := "group_leader_array"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	ActiveSincefield := "active_since"
+	LastActivefield := "last_active"
+	IgnoreValidationMaskfield := "ignore_validation_mask"
 
-	NetworkConfigFields = &NetworkConfig{
-		ID:               &IDfield,
-		MgmtIp:           &MgmtIpfield,
-		SecondaryMgmtIp:  &SecondaryMgmtIpfield,
-		GroupLeaderArray: &GroupLeaderArrayfield,
+	NetworkConfigFields = &NetworkConfigStringFields{
+		ID:                             &IDfield,
+		Name:                           &Namefield,
+		MgmtIp:                         &MgmtIpfield,
+		SecondaryMgmtIp:                &SecondaryMgmtIpfield,
+		Role:                           &Rolefield,
+		IscsiAutomaticConnectionMethod: &IscsiAutomaticConnectionMethodfield,
+		IscsiConnectionRebalancing:     &IscsiConnectionRebalancingfield,
+		RouteList:                      &RouteListfield,
+		SubnetList:                     &SubnetListfield,
+		ArrayList:                      &ArrayListfield,
+		GroupLeaderArray:               &GroupLeaderArrayfield,
+		CreationTime:                   &CreationTimefield,
+		LastModified:                   &LastModifiedfield,
+		ActiveSince:                    &ActiveSincefield,
+		LastActive:                     &LastActivefield,
+		IgnoreValidationMask:           &IgnoreValidationMaskfield,
 	}
 }
 
@@ -53,4 +77,24 @@ type NetworkConfig struct {
 	LastActive *int64 `json:"last_active,omitempty"`
 	// IgnoreValidationMask - Indicates whether to ignore the validation.
 	IgnoreValidationMask *int64 `json:"ignore_validation_mask,omitempty"`
+}
+
+// Struct for NetworkConfigFields
+type NetworkConfigStringFields struct {
+	ID                             *string
+	Name                           *string
+	MgmtIp                         *string
+	SecondaryMgmtIp                *string
+	Role                           *string
+	IscsiAutomaticConnectionMethod *string
+	IscsiConnectionRebalancing     *string
+	RouteList                      *string
+	SubnetList                     *string
+	ArrayList                      *string
+	GroupLeaderArray               *string
+	CreationTime                   *string
+	LastModified                   *string
+	ActiveSince                    *string
+	LastActive                     *string
+	IgnoreValidationMask           *string
 }

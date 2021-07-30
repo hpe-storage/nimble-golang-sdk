@@ -4,21 +4,29 @@ package nimbleos
 
 // NsDiscoveredGroupInfo - Discovered group details.
 // Export NsDiscoveredGroupInfoFields for advance operations like search filter etc.
-var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfo
+var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfoStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	VersionCurrentfield := "version_current"
+	CountOfMembersfield := "count_of_members"
 	ManagementIpfield := "management_ip"
 	DiscoveryIpfield := "discovery_ip"
+	IscsiEnabledfield := "iscsi_enabled"
+	FcEnabledfield := "fc_enabled"
+	ArrayMemberListfield := "array_member_list"
 
-	NsDiscoveredGroupInfoFields = &NsDiscoveredGroupInfo{
-		ID:             &IDfield,
-		Name:           &Namefield,
-		VersionCurrent: &VersionCurrentfield,
-		ManagementIp:   &ManagementIpfield,
-		DiscoveryIp:    &DiscoveryIpfield,
+	NsDiscoveredGroupInfoFields = &NsDiscoveredGroupInfoStringFields{
+		ID:              &IDfield,
+		Name:            &Namefield,
+		VersionCurrent:  &VersionCurrentfield,
+		CountOfMembers:  &CountOfMembersfield,
+		ManagementIp:    &ManagementIpfield,
+		DiscoveryIp:     &DiscoveryIpfield,
+		IscsiEnabled:    &IscsiEnabledfield,
+		FcEnabled:       &FcEnabledfield,
+		ArrayMemberList: &ArrayMemberListfield,
 	}
 }
 
@@ -41,4 +49,17 @@ type NsDiscoveredGroupInfo struct {
 	FcEnabled *bool `json:"fc_enabled,omitempty"`
 	// ArrayMemberList - Members of this group.
 	ArrayMemberList []*NsArraySummaryInfo `json:"array_member_list,omitempty"`
+}
+
+// Struct for NsDiscoveredGroupInfoFields
+type NsDiscoveredGroupInfoStringFields struct {
+	ID              *string
+	Name            *string
+	VersionCurrent  *string
+	CountOfMembers  *string
+	ManagementIp    *string
+	DiscoveryIp     *string
+	IscsiEnabled    *string
+	FcEnabled       *string
+	ArrayMemberList *string
 }

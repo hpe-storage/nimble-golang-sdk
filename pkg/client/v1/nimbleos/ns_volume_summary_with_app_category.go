@@ -4,19 +4,21 @@ package nimbleos
 
 // NsVolumeSummaryWithAppCategory - Select fields containing volume info.
 // Export NsVolumeSummaryWithAppCategoryFields for advance operations like search filter etc.
-var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategory
+var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	AppCategoryfield := "app_category"
 	FullNamefield := "full_name"
+	Lunfield := "lun"
 
-	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategory{
+	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategoryStringFields{
 		ID:          &IDfield,
 		Name:        &Namefield,
 		AppCategory: &AppCategoryfield,
 		FullName:    &FullNamefield,
+		Lun:         &Lunfield,
 	}
 }
 
@@ -31,4 +33,13 @@ type NsVolumeSummaryWithAppCategory struct {
 	FullName *string `json:"full_name,omitempty"`
 	// Lun - LUN of volume. Secondary LUN if this is Virtual Volume.
 	Lun *int64 `json:"lun,omitempty"`
+}
+
+// Struct for NsVolumeSummaryWithAppCategoryFields
+type NsVolumeSummaryWithAppCategoryStringFields struct {
+	ID          *string
+	Name        *string
+	AppCategory *string
+	FullName    *string
+	Lun         *string
 }

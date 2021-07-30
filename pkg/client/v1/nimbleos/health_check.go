@@ -4,17 +4,25 @@ package nimbleos
 
 // HealthCheck - View the health of the group of arrays.
 // Export HealthCheckFields for advance operations like search filter etc.
-var HealthCheckFields *HealthCheck
+var HealthCheckFields *HealthCheckStringFields
 
 func init() {
 	IDfield := "id"
+	Scopefield := "scope"
+	Contextfield := "context"
+	OnDemandfield := "on_demand"
 	ArrayIdfield := "array_id"
 	CtrlrIdfield := "ctrlr_id"
+	ElementResultfield := "element_result"
 
-	HealthCheckFields = &HealthCheck{
-		ID:      &IDfield,
-		ArrayId: &ArrayIdfield,
-		CtrlrId: &CtrlrIdfield,
+	HealthCheckFields = &HealthCheckStringFields{
+		ID:            &IDfield,
+		Scope:         &Scopefield,
+		Context:       &Contextfield,
+		OnDemand:      &OnDemandfield,
+		ArrayId:       &ArrayIdfield,
+		CtrlrId:       &CtrlrIdfield,
+		ElementResult: &ElementResultfield,
 	}
 }
 
@@ -33,4 +41,15 @@ type HealthCheck struct {
 	CtrlrId *string `json:"ctrlr_id,omitempty"`
 	// ElementResult - List of health check errors for a particular element.
 	ElementResult *NsHcfResult `json:"element_result,omitempty"`
+}
+
+// Struct for HealthCheckFields
+type HealthCheckStringFields struct {
+	ID            *string
+	Scope         *string
+	Context       *string
+	OnDemand      *string
+	ArrayId       *string
+	CtrlrId       *string
+	ElementResult *string
 }

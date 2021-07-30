@@ -4,12 +4,12 @@ package nimbleos
 
 // NsChksumReturn - Return computed checksum.
 // Export NsChksumReturnFields for advance operations like search filter etc.
-var NsChksumReturnFields *NsChksumReturn
+var NsChksumReturnFields *NsChksumReturnStringFields
 
 func init() {
 	Cksumfield := "cksum"
 
-	NsChksumReturnFields = &NsChksumReturn{
+	NsChksumReturnFields = &NsChksumReturnStringFields{
 		Cksum: &Cksumfield,
 	}
 }
@@ -17,4 +17,9 @@ func init() {
 type NsChksumReturn struct {
 	// Cksum - Computed checksum.
 	Cksum *string `json:"cksum,omitempty"`
+}
+
+// Struct for NsChksumReturnFields
+type NsChksumReturnStringFields struct {
+	Cksum *string
 }

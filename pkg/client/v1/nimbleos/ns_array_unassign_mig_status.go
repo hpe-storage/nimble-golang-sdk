@@ -4,15 +4,25 @@ package nimbleos
 
 // NsArrayUnassignMigStatus - Data migration status for array being unassigned from its pool.
 // Export NsArrayUnassignMigStatusFields for advance operations like search filter etc.
-var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatus
+var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
+	DestinationArraysfield := "destination_arrays"
+	BytesMigratedfield := "bytes_migrated"
+	BytesRemainingfield := "bytes_remaining"
+	StartTimefield := "start_time"
+	EstimatedCompletionTimefield := "estimated_completion_time"
 
-	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatus{
-		ID:   &IDfield,
-		Name: &Namefield,
+	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatusStringFields{
+		ID:                      &IDfield,
+		Name:                    &Namefield,
+		DestinationArrays:       &DestinationArraysfield,
+		BytesMigrated:           &BytesMigratedfield,
+		BytesRemaining:          &BytesRemainingfield,
+		StartTime:               &StartTimefield,
+		EstimatedCompletionTime: &EstimatedCompletionTimefield,
 	}
 }
 
@@ -31,4 +41,15 @@ type NsArrayUnassignMigStatus struct {
 	StartTime *int64 `json:"start_time,omitempty"`
 	// EstimatedCompletionTime - Estimated completion time. 0 if unknown.
 	EstimatedCompletionTime *int64 `json:"estimated_completion_time,omitempty"`
+}
+
+// Struct for NsArrayUnassignMigStatusFields
+type NsArrayUnassignMigStatusStringFields struct {
+	ID                      *string
+	Name                    *string
+	DestinationArrays       *string
+	BytesMigrated           *string
+	BytesRemaining          *string
+	StartTime               *string
+	EstimatedCompletionTime *string
 }

@@ -4,7 +4,7 @@ package nimbleos
 
 // SnapshotCollection - Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
 // Export SnapshotCollectionFields for advance operations like search filter etc.
-var SnapshotCollectionFields *SnapshotCollection
+var SnapshotCollectionFields *SnapshotCollectionStringFields
 
 func init() {
 	IDfield := "id"
@@ -13,26 +13,80 @@ func init() {
 	VolcollNamefield := "volcoll_name"
 	VolcollIdfield := "volcoll_id"
 	OriginNamefield := "origin_name"
+	IsReplicafield := "is_replica"
 	SrepOwnerNamefield := "srep_owner_name"
 	SrepOwnerIdfield := "srep_owner_id"
 	PeerSnapcollIdfield := "peer_snapcoll_id"
+	NumSnapsfield := "num_snaps"
+	IsCompletefield := "is_complete"
+	IsManualfield := "is_manual"
+	IsExternalTriggerfield := "is_external_trigger"
+	IsUnmanagedfield := "is_unmanaged"
+	IsManuallyManagedfield := "is_manually_managed"
+	ReplStatusfield := "repl_status"
+	ReplStartTimefield := "repl_start_time"
+	ReplCompleteTimefield := "repl_complete_time"
+	ReplBytesTransferredfield := "repl_bytes_transferred"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	OnlineStatusfield := "online_status"
+	VolSnapAttrListfield := "vol_snap_attr_list"
+	SnapshotsListfield := "snapshots_list"
+	Replicatefield := "replicate"
 	ReplicateTofield := "replicate_to"
+	StartOnlinefield := "start_online"
+	AllowWritesfield := "allow_writes"
+	DisableAppsyncfield := "disable_appsync"
+	SnapVerifyfield := "snap_verify"
+	SkipDbConsistencyCheckfield := "skip_db_consistency_check"
 	SchedIdfield := "sched_id"
 	SchedNamefield := "sched_name"
+	InvokeOnUpstreamPartnerfield := "invoke_on_upstream_partner"
+	AgentTypefield := "agent_type"
+	ExpiryAfterfield := "expiry_after"
+	Metadatafield := "metadata"
+	Forcefield := "force"
 
-	SnapshotCollectionFields = &SnapshotCollection{
-		ID:             &IDfield,
-		Name:           &Namefield,
-		Description:    &Descriptionfield,
-		VolcollName:    &VolcollNamefield,
-		VolcollId:      &VolcollIdfield,
-		OriginName:     &OriginNamefield,
-		SrepOwnerName:  &SrepOwnerNamefield,
-		SrepOwnerId:    &SrepOwnerIdfield,
-		PeerSnapcollId: &PeerSnapcollIdfield,
-		ReplicateTo:    &ReplicateTofield,
-		SchedId:        &SchedIdfield,
-		SchedName:      &SchedNamefield,
+	SnapshotCollectionFields = &SnapshotCollectionStringFields{
+		ID:                      &IDfield,
+		Name:                    &Namefield,
+		Description:             &Descriptionfield,
+		VolcollName:             &VolcollNamefield,
+		VolcollId:               &VolcollIdfield,
+		OriginName:              &OriginNamefield,
+		IsReplica:               &IsReplicafield,
+		SrepOwnerName:           &SrepOwnerNamefield,
+		SrepOwnerId:             &SrepOwnerIdfield,
+		PeerSnapcollId:          &PeerSnapcollIdfield,
+		NumSnaps:                &NumSnapsfield,
+		IsComplete:              &IsCompletefield,
+		IsManual:                &IsManualfield,
+		IsExternalTrigger:       &IsExternalTriggerfield,
+		IsUnmanaged:             &IsUnmanagedfield,
+		IsManuallyManaged:       &IsManuallyManagedfield,
+		ReplStatus:              &ReplStatusfield,
+		ReplStartTime:           &ReplStartTimefield,
+		ReplCompleteTime:        &ReplCompleteTimefield,
+		ReplBytesTransferred:    &ReplBytesTransferredfield,
+		CreationTime:            &CreationTimefield,
+		LastModified:            &LastModifiedfield,
+		OnlineStatus:            &OnlineStatusfield,
+		VolSnapAttrList:         &VolSnapAttrListfield,
+		SnapshotsList:           &SnapshotsListfield,
+		Replicate:               &Replicatefield,
+		ReplicateTo:             &ReplicateTofield,
+		StartOnline:             &StartOnlinefield,
+		AllowWrites:             &AllowWritesfield,
+		DisableAppsync:          &DisableAppsyncfield,
+		SnapVerify:              &SnapVerifyfield,
+		SkipDbConsistencyCheck:  &SkipDbConsistencyCheckfield,
+		SchedId:                 &SchedIdfield,
+		SchedName:               &SchedNamefield,
+		InvokeOnUpstreamPartner: &InvokeOnUpstreamPartnerfield,
+		AgentType:               &AgentTypefield,
+		ExpiryAfter:             &ExpiryAfterfield,
+		Metadata:                &Metadatafield,
+		Force:                   &Forcefield,
 	}
 }
 
@@ -115,4 +169,47 @@ type SnapshotCollection struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 	// Force - Forcibly delete the specified snapshot collection even if it is the last replicated snapshot. Doing so could lead to full re-seeding at the next replication.
 	Force *bool `json:"force,omitempty"`
+}
+
+// Struct for SnapshotCollectionFields
+type SnapshotCollectionStringFields struct {
+	ID                      *string
+	Name                    *string
+	Description             *string
+	VolcollName             *string
+	VolcollId               *string
+	OriginName              *string
+	IsReplica               *string
+	SrepOwnerName           *string
+	SrepOwnerId             *string
+	PeerSnapcollId          *string
+	NumSnaps                *string
+	IsComplete              *string
+	IsManual                *string
+	IsExternalTrigger       *string
+	IsUnmanaged             *string
+	IsManuallyManaged       *string
+	ReplStatus              *string
+	ReplStartTime           *string
+	ReplCompleteTime        *string
+	ReplBytesTransferred    *string
+	CreationTime            *string
+	LastModified            *string
+	OnlineStatus            *string
+	VolSnapAttrList         *string
+	SnapshotsList           *string
+	Replicate               *string
+	ReplicateTo             *string
+	StartOnline             *string
+	AllowWrites             *string
+	DisableAppsync          *string
+	SnapVerify              *string
+	SkipDbConsistencyCheck  *string
+	SchedId                 *string
+	SchedName               *string
+	InvokeOnUpstreamPartner *string
+	AgentType               *string
+	ExpiryAfter             *string
+	Metadata                *string
+	Force                   *string
 }

@@ -4,21 +4,81 @@ package nimbleos
 
 // NsPoolMergeReturn - Return values of pool merge.
 // Export NsPoolMergeReturnFields for advance operations like search filter etc.
-var NsPoolMergeReturnFields *NsPoolMergeReturn
+var NsPoolMergeReturnFields *NsPoolMergeReturnStringFields
 
 func init() {
+	SnapcollCountfield := "snapcoll_count"
+	ArrayListfield := "array_list"
+	ArrayCountfield := "array_count"
+	UnassignedArrayListfield := "unassigned_array_list"
+	AllFlashfield := "all_flash"
+	CacheCapacityfield := "cache_capacity"
+	Capacityfield := "capacity"
+	CompressedSnapUsageBytesfield := "compressed_snap_usage_bytes"
+	CompressedVolUsageBytesfield := "compressed_vol_usage_bytes"
+	CompressionRatiofield := "compression_ratio"
+	CreationTimefield := "creation_time"
+	DedupeRatiofield := "dedupe_ratio"
 	Descriptionfield := "description"
+	FreeSpacefield := "free_space"
 	FullNamefield := "full_name"
 	IDfield := "id"
+	DedupeEnabledfield := "dedupe_enabled"
+	LastModifiedfield := "last_modified"
 	Namefield := "name"
+	PinnableCacheCapacityfield := "pinnable_cache_capacity"
+	PinnedCacheCapacityfield := "pinned_cache_capacity"
+	PinnedVolListfield := "pinned_vol_list"
+	SavingsCompressionfield := "savings_compression"
+	SavingsDedupefield := "savings_dedupe"
 	SearchNamefield := "search_name"
+	SnapCompressionRatiofield := "snap_compression_ratio"
+	SnapCountfield := "snap_count"
+	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
+	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
+	UnusedReservefield := "unused_reserve"
+	Usagefield := "usage"
+	UsageValidfield := "usage_valid"
+	VolCompressionRatiofield := "vol_compression_ratio"
+	VolCountfield := "vol_count"
+	VolListfield := "vol_list"
 
-	NsPoolMergeReturnFields = &NsPoolMergeReturn{
-		Description: &Descriptionfield,
-		FullName:    &FullNamefield,
-		ID:          &IDfield,
-		Name:        &Namefield,
-		SearchName:  &SearchNamefield,
+	NsPoolMergeReturnFields = &NsPoolMergeReturnStringFields{
+		SnapcollCount:              &SnapcollCountfield,
+		ArrayList:                  &ArrayListfield,
+		ArrayCount:                 &ArrayCountfield,
+		UnassignedArrayList:        &UnassignedArrayListfield,
+		AllFlash:                   &AllFlashfield,
+		CacheCapacity:              &CacheCapacityfield,
+		Capacity:                   &Capacityfield,
+		CompressedSnapUsageBytes:   &CompressedSnapUsageBytesfield,
+		CompressedVolUsageBytes:    &CompressedVolUsageBytesfield,
+		CompressionRatio:           &CompressionRatiofield,
+		CreationTime:               &CreationTimefield,
+		DedupeRatio:                &DedupeRatiofield,
+		Description:                &Descriptionfield,
+		FreeSpace:                  &FreeSpacefield,
+		FullName:                   &FullNamefield,
+		ID:                         &IDfield,
+		DedupeEnabled:              &DedupeEnabledfield,
+		LastModified:               &LastModifiedfield,
+		Name:                       &Namefield,
+		PinnableCacheCapacity:      &PinnableCacheCapacityfield,
+		PinnedCacheCapacity:        &PinnedCacheCapacityfield,
+		PinnedVolList:              &PinnedVolListfield,
+		SavingsCompression:         &SavingsCompressionfield,
+		SavingsDedupe:              &SavingsDedupefield,
+		SearchName:                 &SearchNamefield,
+		SnapCompressionRatio:       &SnapCompressionRatiofield,
+		SnapCount:                  &SnapCountfield,
+		UncompressedSnapUsageBytes: &UncompressedSnapUsageBytesfield,
+		UncompressedVolUsageBytes:  &UncompressedVolUsageBytesfield,
+		UnusedReserve:              &UnusedReservefield,
+		Usage:                      &Usagefield,
+		UsageValid:                 &UsageValidfield,
+		VolCompressionRatio:        &VolCompressionRatiofield,
+		VolCount:                   &VolCountfield,
+		VolList:                    &VolListfield,
 	}
 }
 
@@ -93,4 +153,43 @@ type NsPoolMergeReturn struct {
 	VolCount *int64 `json:"vol_count,omitempty"`
 	// VolList - The list of volumes in the pool.
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
+}
+
+// Struct for NsPoolMergeReturnFields
+type NsPoolMergeReturnStringFields struct {
+	SnapcollCount              *string
+	ArrayList                  *string
+	ArrayCount                 *string
+	UnassignedArrayList        *string
+	AllFlash                   *string
+	CacheCapacity              *string
+	Capacity                   *string
+	CompressedSnapUsageBytes   *string
+	CompressedVolUsageBytes    *string
+	CompressionRatio           *string
+	CreationTime               *string
+	DedupeRatio                *string
+	Description                *string
+	FreeSpace                  *string
+	FullName                   *string
+	ID                         *string
+	DedupeEnabled              *string
+	LastModified               *string
+	Name                       *string
+	PinnableCacheCapacity      *string
+	PinnedCacheCapacity        *string
+	PinnedVolList              *string
+	SavingsCompression         *string
+	SavingsDedupe              *string
+	SearchName                 *string
+	SnapCompressionRatio       *string
+	SnapCount                  *string
+	UncompressedSnapUsageBytes *string
+	UncompressedVolUsageBytes  *string
+	UnusedReserve              *string
+	Usage                      *string
+	UsageValid                 *string
+	VolCompressionRatio        *string
+	VolCount                   *string
+	VolList                    *string
 }

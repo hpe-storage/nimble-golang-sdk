@@ -4,12 +4,12 @@ package nimbleos
 
 // NsObject - Arbitrary object.
 // Export NsObjectFields for advance operations like search filter etc.
-var NsObjectFields *NsObject
+var NsObjectFields *NsObjectStringFields
 
 func init() {
 	IDfield := "id"
 
-	NsObjectFields = &NsObject{
+	NsObjectFields = &NsObjectStringFields{
 		ID: &IDfield,
 	}
 }
@@ -17,4 +17,9 @@ func init() {
 type NsObject struct {
 	// ID - ID of object.
 	ID *string `json:"id,omitempty"`
+}
+
+// Struct for NsObjectFields
+type NsObjectStringFields struct {
+	ID *string
 }

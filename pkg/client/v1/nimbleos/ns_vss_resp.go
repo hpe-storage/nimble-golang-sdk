@@ -4,13 +4,13 @@ package nimbleos
 
 // NsVssResp - Response from VSS app server.
 // Export NsVssRespFields for advance operations like search filter etc.
-var NsVssRespFields *NsVssResp
+var NsVssRespFields *NsVssRespStringFields
 
 func init() {
 	VssErrorfield := "vss_error"
 	VssErrorMessagefield := "vss_error_message"
 
-	NsVssRespFields = &NsVssResp{
+	NsVssRespFields = &NsVssRespStringFields{
 		VssError:        &VssErrorfield,
 		VssErrorMessage: &VssErrorMessagefield,
 	}
@@ -21,4 +21,10 @@ type NsVssResp struct {
 	VssError *string `json:"vss_error,omitempty"`
 	// VssErrorMessage - Detailed error message from VSS app server.
 	VssErrorMessage *string `json:"vss_error_message,omitempty"`
+}
+
+// Struct for NsVssRespFields
+type NsVssRespStringFields struct {
+	VssError        *string
+	VssErrorMessage *string
 }

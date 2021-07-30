@@ -4,7 +4,7 @@ package nimbleos
 
 // Pool - Manage pools. Pools are an aggregation of arrays.
 // Export PoolFields for advance operations like search filter etc.
-var PoolFields *Pool
+var PoolFields *PoolStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,13 +12,97 @@ func init() {
 	FullNamefield := "full_name"
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	Capacityfield := "capacity"
+	Usagefield := "usage"
+	Savingsfield := "savings"
+	SavingsDataReductionfield := "savings_data_reduction"
+	SavingsCompressionfield := "savings_compression"
+	SavingsDedupefield := "savings_dedupe"
+	SavingsClonefield := "savings_clone"
+	SavingsVolThinProvisioningfield := "savings_vol_thin_provisioning"
+	Reservefield := "reserve"
+	UnusedReservefield := "unused_reserve"
+	FreeSpacefield := "free_space"
+	CacheCapacityfield := "cache_capacity"
+	PinnableCacheCapacityfield := "pinnable_cache_capacity"
+	PinnedCacheCapacityfield := "pinned_cache_capacity"
+	DedupeCapacityBytesfield := "dedupe_capacity_bytes"
+	DedupeUsageBytesfield := "dedupe_usage_bytes"
+	SavingsRatiofield := "savings_ratio"
+	DataReductionRatiofield := "data_reduction_ratio"
+	CompressionRatiofield := "compression_ratio"
+	DedupeRatiofield := "dedupe_ratio"
+	CloneRatiofield := "clone_ratio"
+	VolThinProvisioningRatiofield := "vol_thin_provisioning_ratio"
+	SnapcollCountfield := "snapcoll_count"
+	SnapCountfield := "snap_count"
+	ArrayCountfield := "array_count"
+	VolCountfield := "vol_count"
+	ArrayListfield := "array_list"
+	UnassignedArrayListfield := "unassigned_array_list"
+	VolListfield := "vol_list"
+	PinnedVolListfield := "pinned_vol_list"
+	FolderListfield := "folder_list"
+	Forcefield := "force"
+	UsageValidfield := "usage_valid"
+	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
+	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
+	AllFlashfield := "all_flash"
+	DedupeCapablefield := "dedupe_capable"
+	DedupeAllVolumesCapablefield := "dedupe_all_volumes_capable"
+	DedupeAllVolumesfield := "dedupe_all_volumes"
+	IsDefaultfield := "is_default"
 
-	PoolFields = &Pool{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
+	PoolFields = &PoolStringFields{
+		ID:                         &IDfield,
+		Name:                       &Namefield,
+		FullName:                   &FullNamefield,
+		SearchName:                 &SearchNamefield,
+		Description:                &Descriptionfield,
+		CreationTime:               &CreationTimefield,
+		LastModified:               &LastModifiedfield,
+		Capacity:                   &Capacityfield,
+		Usage:                      &Usagefield,
+		Savings:                    &Savingsfield,
+		SavingsDataReduction:       &SavingsDataReductionfield,
+		SavingsCompression:         &SavingsCompressionfield,
+		SavingsDedupe:              &SavingsDedupefield,
+		SavingsClone:               &SavingsClonefield,
+		SavingsVolThinProvisioning: &SavingsVolThinProvisioningfield,
+		Reserve:                    &Reservefield,
+		UnusedReserve:              &UnusedReservefield,
+		FreeSpace:                  &FreeSpacefield,
+		CacheCapacity:              &CacheCapacityfield,
+		PinnableCacheCapacity:      &PinnableCacheCapacityfield,
+		PinnedCacheCapacity:        &PinnedCacheCapacityfield,
+		DedupeCapacityBytes:        &DedupeCapacityBytesfield,
+		DedupeUsageBytes:           &DedupeUsageBytesfield,
+		SavingsRatio:               &SavingsRatiofield,
+		DataReductionRatio:         &DataReductionRatiofield,
+		CompressionRatio:           &CompressionRatiofield,
+		DedupeRatio:                &DedupeRatiofield,
+		CloneRatio:                 &CloneRatiofield,
+		VolThinProvisioningRatio:   &VolThinProvisioningRatiofield,
+		SnapcollCount:              &SnapcollCountfield,
+		SnapCount:                  &SnapCountfield,
+		ArrayCount:                 &ArrayCountfield,
+		VolCount:                   &VolCountfield,
+		ArrayList:                  &ArrayListfield,
+		UnassignedArrayList:        &UnassignedArrayListfield,
+		VolList:                    &VolListfield,
+		PinnedVolList:              &PinnedVolListfield,
+		FolderList:                 &FolderListfield,
+		Force:                      &Forcefield,
+		UsageValid:                 &UsageValidfield,
+		UncompressedVolUsageBytes:  &UncompressedVolUsageBytesfield,
+		UncompressedSnapUsageBytes: &UncompressedSnapUsageBytesfield,
+		AllFlash:                   &AllFlashfield,
+		DedupeCapable:              &DedupeCapablefield,
+		DedupeAllVolumesCapable:    &DedupeAllVolumesCapablefield,
+		DedupeAllVolumes:           &DedupeAllVolumesfield,
+		IsDefault:                  &IsDefaultfield,
 	}
 }
 
@@ -117,4 +201,55 @@ type Pool struct {
 	DedupeAllVolumes *bool `json:"dedupe_all_volumes,omitempty"`
 	// IsDefault - Indicates if this is the default pool.
 	IsDefault *bool `json:"is_default,omitempty"`
+}
+
+// Struct for PoolFields
+type PoolStringFields struct {
+	ID                         *string
+	Name                       *string
+	FullName                   *string
+	SearchName                 *string
+	Description                *string
+	CreationTime               *string
+	LastModified               *string
+	Capacity                   *string
+	Usage                      *string
+	Savings                    *string
+	SavingsDataReduction       *string
+	SavingsCompression         *string
+	SavingsDedupe              *string
+	SavingsClone               *string
+	SavingsVolThinProvisioning *string
+	Reserve                    *string
+	UnusedReserve              *string
+	FreeSpace                  *string
+	CacheCapacity              *string
+	PinnableCacheCapacity      *string
+	PinnedCacheCapacity        *string
+	DedupeCapacityBytes        *string
+	DedupeUsageBytes           *string
+	SavingsRatio               *string
+	DataReductionRatio         *string
+	CompressionRatio           *string
+	DedupeRatio                *string
+	CloneRatio                 *string
+	VolThinProvisioningRatio   *string
+	SnapcollCount              *string
+	SnapCount                  *string
+	ArrayCount                 *string
+	VolCount                   *string
+	ArrayList                  *string
+	UnassignedArrayList        *string
+	VolList                    *string
+	PinnedVolList              *string
+	FolderList                 *string
+	Force                      *string
+	UsageValid                 *string
+	UncompressedVolUsageBytes  *string
+	UncompressedSnapUsageBytes *string
+	AllFlash                   *string
+	DedupeCapable              *string
+	DedupeAllVolumesCapable    *string
+	DedupeAllVolumes           *string
+	IsDefault                  *string
 }

@@ -4,11 +4,24 @@ package nimbleos
 
 // NsEncryptionSettings - Group encryption settings.
 // Export NsEncryptionSettingsFields for advance operations like search filter etc.
-var NsEncryptionSettingsFields *NsEncryptionSettings
+var NsEncryptionSettingsFields *NsEncryptionSettingsStringFields
 
 func init() {
+	MasterKeySetfield := "master_key_set"
+	Modefield := "mode"
+	Scopefield := "scope"
+	Cipherfield := "cipher"
+	EncryptionActivefield := "encryption_active"
+	EncryptionKeyManagerfield := "encryption_key_manager"
 
-	NsEncryptionSettingsFields = &NsEncryptionSettings{}
+	NsEncryptionSettingsFields = &NsEncryptionSettingsStringFields{
+		MasterKeySet:         &MasterKeySetfield,
+		Mode:                 &Modefield,
+		Scope:                &Scopefield,
+		Cipher:               &Cipherfield,
+		EncryptionActive:     &EncryptionActivefield,
+		EncryptionKeyManager: &EncryptionKeyManagerfield,
+	}
 }
 
 type NsEncryptionSettings struct {
@@ -24,4 +37,14 @@ type NsEncryptionSettings struct {
 	EncryptionActive *bool `json:"encryption_active,omitempty"`
 	// EncryptionKeyManager - Is the master key on local or external key manager (output only).
 	EncryptionKeyManager *NsEncryptionKeyManager `json:"encryption_key_manager,omitempty"`
+}
+
+// Struct for NsEncryptionSettingsFields
+type NsEncryptionSettingsStringFields struct {
+	MasterKeySet         *string
+	Mode                 *string
+	Scope                *string
+	Cipher               *string
+	EncryptionActive     *string
+	EncryptionKeyManager *string
 }

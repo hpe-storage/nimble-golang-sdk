@@ -4,13 +4,17 @@ package nimbleos
 
 // NsCtrlrNvmeCard - NVMe accelerator card.
 // Export NsCtrlrNvmeCardFields for advance operations like search filter etc.
-var NsCtrlrNvmeCardFields *NsCtrlrNvmeCard
+var NsCtrlrNvmeCardFields *NsCtrlrNvmeCardStringFields
 
 func init() {
 	SerialNumberfield := "serial_number"
+	Sizefield := "size"
+	Statefield := "state"
 
-	NsCtrlrNvmeCardFields = &NsCtrlrNvmeCard{
+	NsCtrlrNvmeCardFields = &NsCtrlrNvmeCardStringFields{
 		SerialNumber: &SerialNumberfield,
+		Size:         &Sizefield,
+		State:        &Statefield,
 	}
 }
 
@@ -21,4 +25,11 @@ type NsCtrlrNvmeCard struct {
 	Size *int64 `json:"size,omitempty"`
 	// State - Online state.
 	State *NsCtrlrNvmeCardState `json:"state,omitempty"`
+}
+
+// Struct for NsCtrlrNvmeCardFields
+type NsCtrlrNvmeCardStringFields struct {
+	SerialNumber *string
+	Size         *string
+	State        *string
 }

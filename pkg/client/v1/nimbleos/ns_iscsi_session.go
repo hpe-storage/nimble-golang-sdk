@@ -4,21 +4,29 @@ package nimbleos
 
 // NsISCSISession - ISCSI initiator session information.
 // Export NsISCSISessionFields for advance operations like search filter etc.
-var NsISCSISessionFields *NsISCSISession
+var NsISCSISessionFields *NsISCSISessionStringFields
 
 func init() {
 	IDfield := "id"
 	SessionIdfield := "session_id"
 	InitiatorNamefield := "initiator_name"
+	NumConnectionsfield := "num_connections"
+	PrKeyfield := "pr_key"
 	InitiatorIpAddrfield := "initiator_ip_addr"
 	TargetIpAddrfield := "target_ip_addr"
+	HeaderDigestEnabledfield := "header_digest_enabled"
+	DataDigestEnabledfield := "data_digest_enabled"
 
-	NsISCSISessionFields = &NsISCSISession{
-		ID:              &IDfield,
-		SessionId:       &SessionIdfield,
-		InitiatorName:   &InitiatorNamefield,
-		InitiatorIpAddr: &InitiatorIpAddrfield,
-		TargetIpAddr:    &TargetIpAddrfield,
+	NsISCSISessionFields = &NsISCSISessionStringFields{
+		ID:                  &IDfield,
+		SessionId:           &SessionIdfield,
+		InitiatorName:       &InitiatorNamefield,
+		NumConnections:      &NumConnectionsfield,
+		PrKey:               &PrKeyfield,
+		InitiatorIpAddr:     &InitiatorIpAddrfield,
+		TargetIpAddr:        &TargetIpAddrfield,
+		HeaderDigestEnabled: &HeaderDigestEnabledfield,
+		DataDigestEnabled:   &DataDigestEnabledfield,
 	}
 }
 
@@ -41,4 +49,17 @@ type NsISCSISession struct {
 	HeaderDigestEnabled *bool `json:"header_digest_enabled,omitempty"`
 	// DataDigestEnabled - Indicate whether data digest is enabled.
 	DataDigestEnabled *bool `json:"data_digest_enabled,omitempty"`
+}
+
+// Struct for NsISCSISessionFields
+type NsISCSISessionStringFields struct {
+	ID                  *string
+	SessionId           *string
+	InitiatorName       *string
+	NumConnections      *string
+	PrKey               *string
+	InitiatorIpAddr     *string
+	TargetIpAddr        *string
+	HeaderDigestEnabled *string
+	DataDigestEnabled   *string
 }

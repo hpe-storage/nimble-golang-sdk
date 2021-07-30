@@ -4,13 +4,15 @@ package nimbleos
 
 // NsFcInterfaceUpdateInfo - Fibre Channel interface information to update.
 // Export NsFcInterfaceUpdateInfoFields for advance operations like search filter etc.
-var NsFcInterfaceUpdateInfoFields *NsFcInterfaceUpdateInfo
+var NsFcInterfaceUpdateInfoFields *NsFcInterfaceUpdateInfoStringFields
 
 func init() {
 	IDfield := "id"
+	Onlinefield := "online"
 
-	NsFcInterfaceUpdateInfoFields = &NsFcInterfaceUpdateInfo{
-		ID: &IDfield,
+	NsFcInterfaceUpdateInfoFields = &NsFcInterfaceUpdateInfoStringFields{
+		ID:     &IDfield,
+		Online: &Onlinefield,
 	}
 }
 
@@ -19,4 +21,10 @@ type NsFcInterfaceUpdateInfo struct {
 	ID *string `json:"id,omitempty"`
 	// Online - Identify whether the Fibre Channel interface is online.
 	Online *bool `json:"online,omitempty"`
+}
+
+// Struct for NsFcInterfaceUpdateInfoFields
+type NsFcInterfaceUpdateInfoStringFields struct {
+	ID     *string
+	Online *string
 }

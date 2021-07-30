@@ -4,15 +4,19 @@ package nimbleos
 
 // NsPoolRebalanceMigStatus - Status of data rebalance operations in a pool.
 // Export NsPoolRebalanceMigStatusFields for advance operations like search filter etc.
-var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatus
+var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatusStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
+	PoolAvgSpaceUtilizationfield := "pool_avg_space_utilization"
+	ArrayDataMigrationStatusfield := "array_data_migration_status"
 
-	NsPoolRebalanceMigStatusFields = &NsPoolRebalanceMigStatus{
-		ID:   &IDfield,
-		Name: &Namefield,
+	NsPoolRebalanceMigStatusFields = &NsPoolRebalanceMigStatusStringFields{
+		ID:                       &IDfield,
+		Name:                     &Namefield,
+		PoolAvgSpaceUtilization:  &PoolAvgSpaceUtilizationfield,
+		ArrayDataMigrationStatus: &ArrayDataMigrationStatusfield,
 	}
 }
 
@@ -25,4 +29,12 @@ type NsPoolRebalanceMigStatus struct {
 	PoolAvgSpaceUtilization *int64 `json:"pool_avg_space_utilization,omitempty"`
 	// ArrayDataMigrationStatus - Data migration status for a list of arrays in the pool.
 	ArrayDataMigrationStatus []*NsArrayMigStatus `json:"array_data_migration_status,omitempty"`
+}
+
+// Struct for NsPoolRebalanceMigStatusFields
+type NsPoolRebalanceMigStatusStringFields struct {
+	ID                       *string
+	Name                     *string
+	PoolAvgSpaceUtilization  *string
+	ArrayDataMigrationStatus *string
 }

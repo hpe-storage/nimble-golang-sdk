@@ -4,15 +4,17 @@ package nimbleos
 
 // NsJWKey - Javascript Web Key.
 // Export NsJWKeyFields for advance operations like search filter etc.
-var NsJWKeyFields *NsJWKey
+var NsJWKeyFields *NsJWKeyStringFields
 
 func init() {
 	Kidfield := "kid"
+	Algorithmfield := "algorithm"
 	Keyfield := "key"
 
-	NsJWKeyFields = &NsJWKey{
-		Kid: &Kidfield,
-		Key: &Keyfield,
+	NsJWKeyFields = &NsJWKeyStringFields{
+		Kid:       &Kidfield,
+		Algorithm: &Algorithmfield,
+		Key:       &Keyfield,
 	}
 }
 
@@ -23,4 +25,11 @@ type NsJWKey struct {
 	Algorithm *NsJWKAlgorithm `json:"algorithm,omitempty"`
 	// Key - Public Key.
 	Key *string `json:"key,omitempty"`
+}
+
+// Struct for NsJWKeyFields
+type NsJWKeyStringFields struct {
+	Kid       *string
+	Algorithm *string
+	Key       *string
 }

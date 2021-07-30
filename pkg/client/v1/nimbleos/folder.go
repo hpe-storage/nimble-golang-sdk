@@ -4,7 +4,7 @@ package nimbleos
 
 // Folder - Folders are a way to group volumes, as well as a way to apply space constraints to them.
 // Export FolderFields for advance operations like search filter etc.
-var FolderFields *Folder
+var FolderFields *FolderStringFields
 
 func init() {
 	IDfield := "id"
@@ -15,32 +15,90 @@ func init() {
 	Descriptionfield := "description"
 	PoolNamefield := "pool_name"
 	PoolIdfield := "pool_id"
+	LimitBytesSpecifiedfield := "limit_bytes_specified"
+	LimitBytesfield := "limit_bytes"
+	LimitSizeBytesfield := "limit_size_bytes"
+	ProvisionedLimitSizeBytesfield := "provisioned_limit_size_bytes"
+	OverdraftLimitPctfield := "overdraft_limit_pct"
+	CapacityBytesfield := "capacity_bytes"
+	FreeSpaceBytesfield := "free_space_bytes"
+	ProvisionedBytesfield := "provisioned_bytes"
+	UsageBytesfield := "usage_bytes"
+	VolumeMappedBytesfield := "volume_mapped_bytes"
+	UsageValidfield := "usage_valid"
+	AgentTypefield := "agent_type"
 	InheritedVolPerfpolIdfield := "inherited_vol_perfpol_id"
 	InheritedVolPerfpolNamefield := "inherited_vol_perfpol_name"
+	UnusedReserveBytesfield := "unused_reserve_bytes"
+	UnusedSnapReserveBytesfield := "unused_snap_reserve_bytes"
+	CompressedVolUsageBytesfield := "compressed_vol_usage_bytes"
+	CompressedSnapUsageBytesfield := "compressed_snap_usage_bytes"
+	UncompressedVolUsageBytesfield := "uncompressed_vol_usage_bytes"
+	UncompressedSnapUsageBytesfield := "uncompressed_snap_usage_bytes"
+	VolCompressionRatiofield := "vol_compression_ratio"
+	SnapCompressionRatiofield := "snap_compression_ratio"
+	CompressionRatiofield := "compression_ratio"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	NumSnapsfield := "num_snaps"
+	NumSnapcollsfield := "num_snapcolls"
 	AppUuidfield := "app_uuid"
+	VolumeListfield := "volume_list"
 	AppserverIdfield := "appserver_id"
 	AppserverNamefield := "appserver_name"
 	FolsetIdfield := "folset_id"
 	FolsetNamefield := "folset_name"
+	LimitIopsfield := "limit_iops"
+	LimitMbpsfield := "limit_mbps"
+	AccessProtocolfield := "access_protocol"
 	TenantIdfield := "tenant_id"
 
-	FolderFields = &Folder{
-		ID:                      &IDfield,
-		Name:                    &Namefield,
-		Fqn:                     &Fqnfield,
-		FullName:                &FullNamefield,
-		SearchName:              &SearchNamefield,
-		Description:             &Descriptionfield,
-		PoolName:                &PoolNamefield,
-		PoolId:                  &PoolIdfield,
-		InheritedVolPerfpolId:   &InheritedVolPerfpolIdfield,
-		InheritedVolPerfpolName: &InheritedVolPerfpolNamefield,
-		AppUuid:                 &AppUuidfield,
-		AppserverId:             &AppserverIdfield,
-		AppserverName:           &AppserverNamefield,
-		FolsetId:                &FolsetIdfield,
-		FolsetName:              &FolsetNamefield,
-		TenantId:                &TenantIdfield,
+	FolderFields = &FolderStringFields{
+		ID:                         &IDfield,
+		Name:                       &Namefield,
+		Fqn:                        &Fqnfield,
+		FullName:                   &FullNamefield,
+		SearchName:                 &SearchNamefield,
+		Description:                &Descriptionfield,
+		PoolName:                   &PoolNamefield,
+		PoolId:                     &PoolIdfield,
+		LimitBytesSpecified:        &LimitBytesSpecifiedfield,
+		LimitBytes:                 &LimitBytesfield,
+		LimitSizeBytes:             &LimitSizeBytesfield,
+		ProvisionedLimitSizeBytes:  &ProvisionedLimitSizeBytesfield,
+		OverdraftLimitPct:          &OverdraftLimitPctfield,
+		CapacityBytes:              &CapacityBytesfield,
+		FreeSpaceBytes:             &FreeSpaceBytesfield,
+		ProvisionedBytes:           &ProvisionedBytesfield,
+		UsageBytes:                 &UsageBytesfield,
+		VolumeMappedBytes:          &VolumeMappedBytesfield,
+		UsageValid:                 &UsageValidfield,
+		AgentType:                  &AgentTypefield,
+		InheritedVolPerfpolId:      &InheritedVolPerfpolIdfield,
+		InheritedVolPerfpolName:    &InheritedVolPerfpolNamefield,
+		UnusedReserveBytes:         &UnusedReserveBytesfield,
+		UnusedSnapReserveBytes:     &UnusedSnapReserveBytesfield,
+		CompressedVolUsageBytes:    &CompressedVolUsageBytesfield,
+		CompressedSnapUsageBytes:   &CompressedSnapUsageBytesfield,
+		UncompressedVolUsageBytes:  &UncompressedVolUsageBytesfield,
+		UncompressedSnapUsageBytes: &UncompressedSnapUsageBytesfield,
+		VolCompressionRatio:        &VolCompressionRatiofield,
+		SnapCompressionRatio:       &SnapCompressionRatiofield,
+		CompressionRatio:           &CompressionRatiofield,
+		CreationTime:               &CreationTimefield,
+		LastModified:               &LastModifiedfield,
+		NumSnaps:                   &NumSnapsfield,
+		NumSnapcolls:               &NumSnapcollsfield,
+		AppUuid:                    &AppUuidfield,
+		VolumeList:                 &VolumeListfield,
+		AppserverId:                &AppserverIdfield,
+		AppserverName:              &AppserverNamefield,
+		FolsetId:                   &FolsetIdfield,
+		FolsetName:                 &FolsetNamefield,
+		LimitIops:                  &LimitIopsfield,
+		LimitMbps:                  &LimitMbpsfield,
+		AccessProtocol:             &AccessProtocolfield,
+		TenantId:                   &TenantIdfield,
 	}
 }
 
@@ -135,4 +193,53 @@ type Folder struct {
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
 	// TenantId - Tenant ID of the folder. This is used to determine what tenant context the folder belongs to.
 	TenantId *string `json:"tenant_id,omitempty"`
+}
+
+// Struct for FolderFields
+type FolderStringFields struct {
+	ID                         *string
+	Name                       *string
+	Fqn                        *string
+	FullName                   *string
+	SearchName                 *string
+	Description                *string
+	PoolName                   *string
+	PoolId                     *string
+	LimitBytesSpecified        *string
+	LimitBytes                 *string
+	LimitSizeBytes             *string
+	ProvisionedLimitSizeBytes  *string
+	OverdraftLimitPct          *string
+	CapacityBytes              *string
+	FreeSpaceBytes             *string
+	ProvisionedBytes           *string
+	UsageBytes                 *string
+	VolumeMappedBytes          *string
+	UsageValid                 *string
+	AgentType                  *string
+	InheritedVolPerfpolId      *string
+	InheritedVolPerfpolName    *string
+	UnusedReserveBytes         *string
+	UnusedSnapReserveBytes     *string
+	CompressedVolUsageBytes    *string
+	CompressedSnapUsageBytes   *string
+	UncompressedVolUsageBytes  *string
+	UncompressedSnapUsageBytes *string
+	VolCompressionRatio        *string
+	SnapCompressionRatio       *string
+	CompressionRatio           *string
+	CreationTime               *string
+	LastModified               *string
+	NumSnaps                   *string
+	NumSnapcolls               *string
+	AppUuid                    *string
+	VolumeList                 *string
+	AppserverId                *string
+	AppserverName              *string
+	FolsetId                   *string
+	FolsetName                 *string
+	LimitIops                  *string
+	LimitMbps                  *string
+	AccessProtocol             *string
+	TenantId                   *string
 }

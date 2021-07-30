@@ -29,7 +29,7 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 }
 
 func NewNimbleGroupService(serviceOpts ...service.ServiceOptions) (gs *NsGroupService, err error) {
-	fakeGroupServiceOption := &service.GroupServiceOption{}
+	fakeGroupServiceOption := &service.GroupServiceOptions{}
 
 	for _, opt := range serviceOpts {
 		opt(fakeGroupServiceOption)

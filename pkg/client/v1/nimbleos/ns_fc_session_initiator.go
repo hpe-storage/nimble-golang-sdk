@@ -4,7 +4,7 @@ package nimbleos
 
 // NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
 // Export NsFcSessionInitiatorFields for advance operations like search filter etc.
-var NsFcSessionInitiatorFields *NsFcSessionInitiator
+var NsFcSessionInitiatorFields *NsFcSessionInitiatorStringFields
 
 func init() {
 	InitiatorAliasfield := "initiator_alias"
@@ -16,7 +16,7 @@ func init() {
 	InitiatorSymbolicNodenamefield := "initiator_symbolic_nodename"
 	InitiatorFcidfield := "initiator_fcid"
 
-	NsFcSessionInitiatorFields = &NsFcSessionInitiator{
+	NsFcSessionInitiatorFields = &NsFcSessionInitiatorStringFields{
 		InitiatorAlias:            &InitiatorAliasfield,
 		InitiatorWwpn:             &InitiatorWwpnfield,
 		InitiatorWwnn:             &InitiatorWwnnfield,
@@ -45,4 +45,16 @@ type NsFcSessionInitiator struct {
 	InitiatorSymbolicNodename *string `json:"initiator_symbolic_nodename,omitempty"`
 	// InitiatorFcid - FCID assigned to the Fibre Channel initiator.
 	InitiatorFcid *string `json:"initiator_fcid,omitempty"`
+}
+
+// Struct for NsFcSessionInitiatorFields
+type NsFcSessionInitiatorStringFields struct {
+	InitiatorAlias            *string
+	InitiatorWwpn             *string
+	InitiatorWwnn             *string
+	InitiatorSwitchName       *string
+	InitiatorSwitchPort       *string
+	InitiatorSymbolicPortname *string
+	InitiatorSymbolicNodename *string
+	InitiatorFcid             *string
 }

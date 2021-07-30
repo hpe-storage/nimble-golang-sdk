@@ -4,19 +4,23 @@ package nimbleos
 
 // NsArrayFcConfig - Array Fibre Channel configuration.
 // Export NsArrayFcConfigFields for advance operations like search filter etc.
-var NsArrayFcConfigFields *NsArrayFcConfig
+var NsArrayFcConfigFields *NsArrayFcConfigStringFields
 
 func init() {
 	Namefield := "name"
 	ArrayNamefield := "array_name"
 	IDfield := "id"
 	ArrayIdfield := "array_id"
+	CtrlrAFcConfigfield := "ctrlr_a_fc_config"
+	CtrlrBFcConfigfield := "ctrlr_b_fc_config"
 
-	NsArrayFcConfigFields = &NsArrayFcConfig{
-		Name:      &Namefield,
-		ArrayName: &ArrayNamefield,
-		ID:        &IDfield,
-		ArrayId:   &ArrayIdfield,
+	NsArrayFcConfigFields = &NsArrayFcConfigStringFields{
+		Name:           &Namefield,
+		ArrayName:      &ArrayNamefield,
+		ID:             &IDfield,
+		ArrayId:        &ArrayIdfield,
+		CtrlrAFcConfig: &CtrlrAFcConfigfield,
+		CtrlrBFcConfig: &CtrlrBFcConfigfield,
 	}
 }
 
@@ -33,4 +37,14 @@ type NsArrayFcConfig struct {
 	CtrlrAFcConfig *NsCtrlrFcConfig `json:"ctrlr_a_fc_config,omitempty"`
 	// CtrlrBFcConfig - Controller B Fibre Channel configuration.
 	CtrlrBFcConfig *NsCtrlrFcConfig `json:"ctrlr_b_fc_config,omitempty"`
+}
+
+// Struct for NsArrayFcConfigFields
+type NsArrayFcConfigStringFields struct {
+	Name           *string
+	ArrayName      *string
+	ID             *string
+	ArrayId        *string
+	CtrlrAFcConfig *string
+	CtrlrBFcConfig *string
 }

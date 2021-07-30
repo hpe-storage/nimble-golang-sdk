@@ -4,25 +4,35 @@ package nimbleos
 
 // UserGroup - Represents Active Directory groups configured to manage the system.
 // Export UserGroupFields for advance operations like search filter etc.
-var UserGroupFields *UserGroup
+var UserGroupFields *UserGroupStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
 	Descriptionfield := "description"
 	RoleIdfield := "role_id"
+	Rolefield := "role"
+	InactivityTimeoutfield := "inactivity_timeout"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	Disabledfield := "disabled"
 	ExternalIdfield := "external_id"
 	DomainIdfield := "domain_id"
 	DomainNamefield := "domain_name"
 
-	UserGroupFields = &UserGroup{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Description: &Descriptionfield,
-		RoleId:      &RoleIdfield,
-		ExternalId:  &ExternalIdfield,
-		DomainId:    &DomainIdfield,
-		DomainName:  &DomainNamefield,
+	UserGroupFields = &UserGroupStringFields{
+		ID:                &IDfield,
+		Name:              &Namefield,
+		Description:       &Descriptionfield,
+		RoleId:            &RoleIdfield,
+		Role:              &Rolefield,
+		InactivityTimeout: &InactivityTimeoutfield,
+		CreationTime:      &CreationTimefield,
+		LastModified:      &LastModifiedfield,
+		Disabled:          &Disabledfield,
+		ExternalId:        &ExternalIdfield,
+		DomainId:          &DomainIdfield,
+		DomainName:        &DomainNamefield,
 	}
 }
 
@@ -51,4 +61,20 @@ type UserGroup struct {
 	DomainId *string `json:"domain_id,omitempty"`
 	// DomainName - Role of the user.
 	DomainName *string `json:"domain_name,omitempty"`
+}
+
+// Struct for UserGroupFields
+type UserGroupStringFields struct {
+	ID                *string
+	Name              *string
+	Description       *string
+	RoleId            *string
+	Role              *string
+	InactivityTimeout *string
+	CreationTime      *string
+	LastModified      *string
+	Disabled          *string
+	ExternalId        *string
+	DomainId          *string
+	DomainName        *string
 }

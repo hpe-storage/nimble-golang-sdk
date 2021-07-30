@@ -4,13 +4,13 @@ package nimbleos
 
 // NsFcTdzPort - Fibre Channel Target port.
 // Export NsFcTdzPortFields for advance operations like search filter etc.
-var NsFcTdzPortFields *NsFcTdzPort
+var NsFcTdzPortFields *NsFcTdzPortStringFields
 
 func init() {
 	ArrayNamefield := "array_name"
 	FcNamefield := "fc_name"
 
-	NsFcTdzPortFields = &NsFcTdzPort{
+	NsFcTdzPortFields = &NsFcTdzPortStringFields{
 		ArrayName: &ArrayNamefield,
 		FcName:    &FcNamefield,
 	}
@@ -21,4 +21,10 @@ type NsFcTdzPort struct {
 	ArrayName *string `json:"array_name,omitempty"`
 	// FcName - Target port interface name.
 	FcName *string `json:"fc_name,omitempty"`
+}
+
+// Struct for NsFcTdzPortFields
+type NsFcTdzPortStringFields struct {
+	ArrayName *string
+	FcName    *string
 }

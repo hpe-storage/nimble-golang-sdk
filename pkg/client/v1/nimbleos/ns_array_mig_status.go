@@ -4,15 +4,19 @@ package nimbleos
 
 // NsArrayMigStatus - Data migration status for an array.
 // Export NsArrayMigStatusFields for advance operations like search filter etc.
-var NsArrayMigStatusFields *NsArrayMigStatus
+var NsArrayMigStatusFields *NsArrayMigStatusStringFields
 
 func init() {
 	IDfield := "id"
 	Namefield := "name"
+	IsDataSourcefield := "is_data_source"
+	SpaceUtilizationfield := "space_utilization"
 
-	NsArrayMigStatusFields = &NsArrayMigStatus{
-		ID:   &IDfield,
-		Name: &Namefield,
+	NsArrayMigStatusFields = &NsArrayMigStatusStringFields{
+		ID:               &IDfield,
+		Name:             &Namefield,
+		IsDataSource:     &IsDataSourcefield,
+		SpaceUtilization: &SpaceUtilizationfield,
 	}
 }
 
@@ -25,4 +29,12 @@ type NsArrayMigStatus struct {
 	IsDataSource *bool `json:"is_data_source,omitempty"`
 	// SpaceUtilization - Space utilization as a percentage of array size.
 	SpaceUtilization *int64 `json:"space_utilization,omitempty"`
+}
+
+// Struct for NsArrayMigStatusFields
+type NsArrayMigStatusStringFields struct {
+	ID               *string
+	Name             *string
+	IsDataSource     *string
+	SpaceUtilization *string
 }

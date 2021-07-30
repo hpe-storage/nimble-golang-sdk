@@ -4,23 +4,47 @@ package nimbleos
 
 // Job - Jobs are operations in progress in the system.
 // Export JobFields for advance operations like search filter etc.
-var JobFields *Job
+var JobFields *JobStringFields
 
 func init() {
+	CompletionTimefield := "completion_time"
+	CreationTimefield := "creation_time"
+	CurrentPhasefield := "current_phase"
 	CurrentPhaseDescriptionfield := "current_phase_description"
 	Descriptionfield := "description"
 	IDfield := "id"
 	Namefield := "name"
+	LastModifiedfield := "last_modified"
 	ObjectIdfield := "object_id"
+	OpTypefield := "op_type"
+	Typefield := "type"
 	ParentJobIdfield := "parent_job_id"
+	PercentCompletefield := "percent_complete"
+	Requestfield := "request"
+	Responsefield := "response"
+	Statefield := "state"
+	Resultfield := "result"
+	TotalPhasesfield := "total_phases"
 
-	JobFields = &Job{
+	JobFields = &JobStringFields{
+		CompletionTime:          &CompletionTimefield,
+		CreationTime:            &CreationTimefield,
+		CurrentPhase:            &CurrentPhasefield,
 		CurrentPhaseDescription: &CurrentPhaseDescriptionfield,
 		Description:             &Descriptionfield,
 		ID:                      &IDfield,
 		Name:                    &Namefield,
+		LastModified:            &LastModifiedfield,
 		ObjectId:                &ObjectIdfield,
+		OpType:                  &OpTypefield,
+		Type:                    &Typefield,
 		ParentJobId:             &ParentJobIdfield,
+		PercentComplete:         &PercentCompletefield,
+		Request:                 &Requestfield,
+		Response:                &Responsefield,
+		State:                   &Statefield,
+		Result:                  &Resultfield,
+		TotalPhases:             &TotalPhasesfield,
 	}
 }
 
@@ -61,4 +85,26 @@ type Job struct {
 	Result *NsJobResult `json:"result,omitempty"`
 	// TotalPhases - Total number of phases of the job.
 	TotalPhases *int64 `json:"total_phases,omitempty"`
+}
+
+// Struct for JobFields
+type JobStringFields struct {
+	CompletionTime          *string
+	CreationTime            *string
+	CurrentPhase            *string
+	CurrentPhaseDescription *string
+	Description             *string
+	ID                      *string
+	Name                    *string
+	LastModified            *string
+	ObjectId                *string
+	OpType                  *string
+	Type                    *string
+	ParentJobId             *string
+	PercentComplete         *string
+	Request                 *string
+	Response                *string
+	State                   *string
+	Result                  *string
+	TotalPhases             *string
 }

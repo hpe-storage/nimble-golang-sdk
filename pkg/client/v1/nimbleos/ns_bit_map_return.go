@@ -4,12 +4,12 @@ package nimbleos
 
 // NsBitMapReturn - Return bitmap under certain request.
 // Export NsBitMapReturnFields for advance operations like search filter etc.
-var NsBitMapReturnFields *NsBitMapReturn
+var NsBitMapReturnFields *NsBitMapReturnStringFields
 
 func init() {
 	Bitmapfield := "bitmap"
 
-	NsBitMapReturnFields = &NsBitMapReturn{
+	NsBitMapReturnFields = &NsBitMapReturnStringFields{
 		Bitmap: &Bitmapfield,
 	}
 }
@@ -17,4 +17,9 @@ func init() {
 type NsBitMapReturn struct {
 	// Bitmap - Returned bitmap.
 	Bitmap *string `json:"bitmap,omitempty"`
+}
+
+// Struct for NsBitMapReturnFields
+type NsBitMapReturnStringFields struct {
+	Bitmap *string
 }

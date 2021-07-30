@@ -4,13 +4,13 @@ package nimbleos
 
 // NsVolAndSnapName - Snapshot name and the belonging volume name.
 // Export NsVolAndSnapNameFields for advance operations like search filter etc.
-var NsVolAndSnapNameFields *NsVolAndSnapName
+var NsVolAndSnapNameFields *NsVolAndSnapNameStringFields
 
 func init() {
 	VolNamefield := "vol_name"
 	SnapNamefield := "snap_name"
 
-	NsVolAndSnapNameFields = &NsVolAndSnapName{
+	NsVolAndSnapNameFields = &NsVolAndSnapNameStringFields{
 		VolName:  &VolNamefield,
 		SnapName: &SnapNamefield,
 	}
@@ -21,4 +21,10 @@ type NsVolAndSnapName struct {
 	VolName *string `json:"vol_name,omitempty"`
 	// SnapName - Snapshot name.
 	SnapName *string `json:"snap_name,omitempty"`
+}
+
+// Struct for NsVolAndSnapNameFields
+type NsVolAndSnapNameStringFields struct {
+	VolName  *string
+	SnapName *string
 }

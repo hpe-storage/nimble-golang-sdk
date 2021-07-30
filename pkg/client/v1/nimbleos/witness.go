@@ -4,19 +4,25 @@ package nimbleos
 
 // Witness - Manage witness host configuration.
 // Export WitnessFields for advance operations like search filter etc.
-var WitnessFields *Witness
+var WitnessFields *WitnessStringFields
 
 func init() {
 	IDfield := "id"
 	Usernamefield := "username"
 	Passwordfield := "password"
 	Hostfield := "host"
+	Portfield := "port"
+	SecureModefield := "secure_mode"
+	AutoSwitchoverMessagesfield := "auto_switchover_messages"
 
-	WitnessFields = &Witness{
-		ID:       &IDfield,
-		Username: &Usernamefield,
-		Password: &Passwordfield,
-		Host:     &Hostfield,
+	WitnessFields = &WitnessStringFields{
+		ID:                     &IDfield,
+		Username:               &Usernamefield,
+		Password:               &Passwordfield,
+		Host:                   &Hostfield,
+		Port:                   &Portfield,
+		SecureMode:             &SecureModefield,
+		AutoSwitchoverMessages: &AutoSwitchoverMessagesfield,
 	}
 }
 
@@ -35,4 +41,15 @@ type Witness struct {
 	SecureMode *bool `json:"secure_mode,omitempty"`
 	// AutoSwitchoverMessages - List of validation messages for automatic switchover of Group Management. This will be empty when there are no conflicts found.
 	AutoSwitchoverMessages []*NsErrorWithArguments `json:"auto_switchover_messages,omitempty"`
+}
+
+// Struct for WitnessFields
+type WitnessStringFields struct {
+	ID                     *string
+	Username               *string
+	Password               *string
+	Host                   *string
+	Port                   *string
+	SecureMode             *string
+	AutoSwitchoverMessages *string
 }

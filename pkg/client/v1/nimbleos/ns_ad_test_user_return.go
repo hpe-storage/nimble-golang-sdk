@@ -4,17 +4,23 @@ package nimbleos
 
 // NsADTestUserReturn - Active Directory user details.
 // Export NsADTestUserReturnFields for advance operations like search filter etc.
-var NsADTestUserReturnFields *NsADTestUserReturn
+var NsADTestUserReturnFields *NsADTestUserReturnStringFields
 
 func init() {
 	Usernamefield := "username"
 	PrimaryGroupNamefield := "primary_group_name"
 	PrimaryGroupIdfield := "primary_group_id"
+	GroupCountfield := "group_count"
+	Groupsfield := "groups"
+	Rolefield := "role"
 
-	NsADTestUserReturnFields = &NsADTestUserReturn{
+	NsADTestUserReturnFields = &NsADTestUserReturnStringFields{
 		Username:         &Usernamefield,
 		PrimaryGroupName: &PrimaryGroupNamefield,
 		PrimaryGroupId:   &PrimaryGroupIdfield,
+		GroupCount:       &GroupCountfield,
+		Groups:           &Groupsfield,
+		Role:             &Rolefield,
 	}
 }
 
@@ -31,4 +37,14 @@ type NsADTestUserReturn struct {
 	Groups []*string `json:"groups,omitempty"`
 	// Role - The role the user belongs to.
 	Role *NsUserRoles `json:"role,omitempty"`
+}
+
+// Struct for NsADTestUserReturnFields
+type NsADTestUserReturnStringFields struct {
+	Username         *string
+	PrimaryGroupName *string
+	PrimaryGroupId   *string
+	GroupCount       *string
+	Groups           *string
+	Role             *string
 }

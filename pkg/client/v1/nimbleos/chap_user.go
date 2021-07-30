@@ -4,7 +4,7 @@ package nimbleos
 
 // ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
 // Export ChapUserFields for advance operations like search filter etc.
-var ChapUserFields *ChapUser
+var ChapUserFields *ChapUserStringFields
 
 func init() {
 	IDfield := "id"
@@ -13,16 +13,26 @@ func init() {
 	SearchNamefield := "search_name"
 	Descriptionfield := "description"
 	Passwordfield := "password"
+	InitiatorIqnsfield := "initiator_iqns"
 	TenantIdfield := "tenant_id"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	VolListfield := "vol_list"
+	VolCountfield := "vol_count"
 
-	ChapUserFields = &ChapUser{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
-		Password:    &Passwordfield,
-		TenantId:    &TenantIdfield,
+	ChapUserFields = &ChapUserStringFields{
+		ID:            &IDfield,
+		Name:          &Namefield,
+		FullName:      &FullNamefield,
+		SearchName:    &SearchNamefield,
+		Description:   &Descriptionfield,
+		Password:      &Passwordfield,
+		InitiatorIqns: &InitiatorIqnsfield,
+		TenantId:      &TenantIdfield,
+		CreationTime:  &CreationTimefield,
+		LastModified:  &LastModifiedfield,
+		VolList:       &VolListfield,
+		VolCount:      &VolCountfield,
 	}
 }
 
@@ -51,4 +61,20 @@ type ChapUser struct {
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 	// VolCount - Count of volumes associated with this CHAP user.
 	VolCount *int64 `json:"vol_count,omitempty"`
+}
+
+// Struct for ChapUserFields
+type ChapUserStringFields struct {
+	ID            *string
+	Name          *string
+	FullName      *string
+	SearchName    *string
+	Description   *string
+	Password      *string
+	InitiatorIqns *string
+	TenantId      *string
+	CreationTime  *string
+	LastModified  *string
+	VolList       *string
+	VolCount      *string
 }

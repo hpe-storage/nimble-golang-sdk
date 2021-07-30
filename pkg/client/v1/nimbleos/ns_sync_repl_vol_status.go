@@ -4,11 +4,18 @@ package nimbleos
 
 // NsSyncReplVolStatus - The sync replication status of a volume in volume collection.
 // Export NsSyncReplVolStatusFields for advance operations like search filter etc.
-var NsSyncReplVolStatusFields *NsSyncReplVolStatus
+var NsSyncReplVolStatusFields *NsSyncReplVolStatusStringFields
 
 func init() {
+	ResyncActivefield := "resync_active"
+	ResyncBytesDonefield := "resync_bytes_done"
+	ResyncBytesTotalfield := "resync_bytes_total"
 
-	NsSyncReplVolStatusFields = &NsSyncReplVolStatus{}
+	NsSyncReplVolStatusFields = &NsSyncReplVolStatusStringFields{
+		ResyncActive:     &ResyncActivefield,
+		ResyncBytesDone:  &ResyncBytesDonefield,
+		ResyncBytesTotal: &ResyncBytesTotalfield,
+	}
 }
 
 type NsSyncReplVolStatus struct {
@@ -18,4 +25,11 @@ type NsSyncReplVolStatus struct {
 	ResyncBytesDone *int64 `json:"resync_bytes_done,omitempty"`
 	// ResyncBytesTotal - Total number of bytes to be transferred.
 	ResyncBytesTotal *int64 `json:"resync_bytes_total,omitempty"`
+}
+
+// Struct for NsSyncReplVolStatusFields
+type NsSyncReplVolStatusStringFields struct {
+	ResyncActive     *string
+	ResyncBytesDone  *string
+	ResyncBytesTotal *string
 }

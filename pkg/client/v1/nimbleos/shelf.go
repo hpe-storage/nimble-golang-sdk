@@ -4,23 +4,51 @@ package nimbleos
 
 // Shelf - Disk shelf and head unit houses disks and controller.
 // Export ShelfFields for advance operations like search filter etc.
-var ShelfFields *Shelf
+var ShelfFields *ShelfStringFields
 
 func init() {
 	IDfield := "id"
 	ArrayNamefield := "array_name"
 	ArrayIdfield := "array_id"
+	PartialResponseOkfield := "partial_response_ok"
+	ChassisTypefield := "chassis_type"
+	Ctrlrsfield := "ctrlrs"
 	Serialfield := "serial"
 	Modelfield := "model"
 	ModelExtfield := "model_ext"
+	ChassisSensorsfield := "chassis_sensors"
+	PsuOverallStatusfield := "psu_overall_status"
+	FanOverallStatusfield := "fan_overall_status"
+	TempOverallStatusfield := "temp_overall_status"
+	DiskSetsfield := "disk_sets"
+	Activatedfield := "activated"
+	Drivesetfield := "driveset"
+	Forcefield := "force"
+	AcceptForeignfield := "accept_foreign"
+	AcceptDedupeImpactfield := "accept_dedupe_impact"
+	LastRequestfield := "last_request"
 
-	ShelfFields = &Shelf{
-		ID:        &IDfield,
-		ArrayName: &ArrayNamefield,
-		ArrayId:   &ArrayIdfield,
-		Serial:    &Serialfield,
-		Model:     &Modelfield,
-		ModelExt:  &ModelExtfield,
+	ShelfFields = &ShelfStringFields{
+		ID:                 &IDfield,
+		ArrayName:          &ArrayNamefield,
+		ArrayId:            &ArrayIdfield,
+		PartialResponseOk:  &PartialResponseOkfield,
+		ChassisType:        &ChassisTypefield,
+		Ctrlrs:             &Ctrlrsfield,
+		Serial:             &Serialfield,
+		Model:              &Modelfield,
+		ModelExt:           &ModelExtfield,
+		ChassisSensors:     &ChassisSensorsfield,
+		PsuOverallStatus:   &PsuOverallStatusfield,
+		FanOverallStatus:   &FanOverallStatusfield,
+		TempOverallStatus:  &TempOverallStatusfield,
+		DiskSets:           &DiskSetsfield,
+		Activated:          &Activatedfield,
+		Driveset:           &Drivesetfield,
+		Force:              &Forcefield,
+		AcceptForeign:      &AcceptForeignfield,
+		AcceptDedupeImpact: &AcceptDedupeImpactfield,
+		LastRequest:        &LastRequestfield,
 	}
 }
 
@@ -65,4 +93,28 @@ type Shelf struct {
 	AcceptDedupeImpact *bool `json:"accept_dedupe_impact,omitempty"`
 	// LastRequest - Indicates this is the last request in a series of shelf add requests.
 	LastRequest *bool `json:"last_request,omitempty"`
+}
+
+// Struct for ShelfFields
+type ShelfStringFields struct {
+	ID                 *string
+	ArrayName          *string
+	ArrayId            *string
+	PartialResponseOk  *string
+	ChassisType        *string
+	Ctrlrs             *string
+	Serial             *string
+	Model              *string
+	ModelExt           *string
+	ChassisSensors     *string
+	PsuOverallStatus   *string
+	FanOverallStatus   *string
+	TempOverallStatus  *string
+	DiskSets           *string
+	Activated          *string
+	Driveset           *string
+	Force              *string
+	AcceptForeign      *string
+	AcceptDedupeImpact *string
+	LastRequest        *string
 }

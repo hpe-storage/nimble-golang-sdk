@@ -4,7 +4,7 @@ package nimbleos
 
 // Token - Manage user's session information.
 // Export TokenFields for advance operations like search filter etc.
-var TokenFields *Token
+var TokenFields *TokenStringFields
 
 func init() {
 	IDfield := "id"
@@ -15,11 +15,14 @@ func init() {
 	AppNamefield := "app_name"
 	SdkNamefield := "sdk_name"
 	SourceIpfield := "source_ip"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	ExpiryTimefield := "expiry_time"
 	ServerUuidfield := "server_uuid"
 	GrantTypefield := "grant_type"
 	Assertionfield := "assertion"
 
-	TokenFields = &Token{
+	TokenFields = &TokenStringFields{
 		ID:           &IDfield,
 		SessionToken: &SessionTokenfield,
 		Username:     &Usernamefield,
@@ -28,6 +31,9 @@ func init() {
 		AppName:      &AppNamefield,
 		SdkName:      &SdkNamefield,
 		SourceIp:     &SourceIpfield,
+		CreationTime: &CreationTimefield,
+		LastModified: &LastModifiedfield,
+		ExpiryTime:   &ExpiryTimefield,
 		ServerUuid:   &ServerUuidfield,
 		GrantType:    &GrantTypefield,
 		Assertion:    &Assertionfield,
@@ -63,4 +69,22 @@ type Token struct {
 	GrantType *string `json:"grant_type,omitempty"`
 	// Assertion - OAuth assertion, currently expecting a JWT token.
 	Assertion *string `json:"assertion,omitempty"`
+}
+
+// Struct for TokenFields
+type TokenStringFields struct {
+	ID           *string
+	SessionToken *string
+	Username     *string
+	Password     *string
+	OtpCode      *string
+	AppName      *string
+	SdkName      *string
+	SourceIp     *string
+	CreationTime *string
+	LastModified *string
+	ExpiryTime   *string
+	ServerUuid   *string
+	GrantType    *string
+	Assertion    *string
 }

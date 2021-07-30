@@ -4,33 +4,51 @@ package nimbleos
 
 // AccessControlRecord - Manage access control records for volumes.
 // Export AccessControlRecordFields for advance operations like search filter etc.
-var AccessControlRecordFields *AccessControlRecord
+var AccessControlRecordFields *AccessControlRecordStringFields
 
 func init() {
 	IDfield := "id"
+	ApplyTofield := "apply_to"
 	ChapUserIdfield := "chap_user_id"
 	ChapUserNamefield := "chap_user_name"
 	InitiatorGroupIdfield := "initiator_group_id"
 	InitiatorGroupNamefield := "initiator_group_name"
+	Lunfield := "lun"
 	VolIdfield := "vol_id"
 	VolNamefield := "vol_name"
+	VolAgentTypefield := "vol_agent_type"
 	PeIdfield := "pe_id"
 	PeNamefield := "pe_name"
+	PeLunfield := "pe_lun"
 	SnapIdfield := "snap_id"
 	SnapNamefield := "snap_name"
+	PeIdsfield := "pe_ids"
+	Snaplunsfield := "snapluns"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	AccessProtocolfield := "access_protocol"
 
-	AccessControlRecordFields = &AccessControlRecord{
+	AccessControlRecordFields = &AccessControlRecordStringFields{
 		ID:                 &IDfield,
+		ApplyTo:            &ApplyTofield,
 		ChapUserId:         &ChapUserIdfield,
 		ChapUserName:       &ChapUserNamefield,
 		InitiatorGroupId:   &InitiatorGroupIdfield,
 		InitiatorGroupName: &InitiatorGroupNamefield,
+		Lun:                &Lunfield,
 		VolId:              &VolIdfield,
 		VolName:            &VolNamefield,
+		VolAgentType:       &VolAgentTypefield,
 		PeId:               &PeIdfield,
 		PeName:             &PeNamefield,
+		PeLun:              &PeLunfield,
 		SnapId:             &SnapIdfield,
 		SnapName:           &SnapNamefield,
+		PeIds:              &PeIdsfield,
+		Snapluns:           &Snaplunsfield,
+		CreationTime:       &CreationTimefield,
+		LastModified:       &LastModifiedfield,
+		AccessProtocol:     &AccessProtocolfield,
 	}
 }
 
@@ -75,4 +93,28 @@ type AccessControlRecord struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// AccessProtocol - Access protocol of the volume.
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
+}
+
+// Struct for AccessControlRecordFields
+type AccessControlRecordStringFields struct {
+	ID                 *string
+	ApplyTo            *string
+	ChapUserId         *string
+	ChapUserName       *string
+	InitiatorGroupId   *string
+	InitiatorGroupName *string
+	Lun                *string
+	VolId              *string
+	VolName            *string
+	VolAgentType       *string
+	PeId               *string
+	PeName             *string
+	PeLun              *string
+	SnapId             *string
+	SnapName           *string
+	PeIds              *string
+	Snapluns           *string
+	CreationTime       *string
+	LastModified       *string
+	AccessProtocol     *string
 }

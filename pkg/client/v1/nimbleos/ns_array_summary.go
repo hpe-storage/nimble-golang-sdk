@@ -4,7 +4,7 @@ package nimbleos
 
 // NsArraySummary - Array summary information.
 // Export NsArraySummaryFields for advance operations like search filter etc.
-var NsArraySummaryFields *NsArraySummary
+var NsArraySummaryFields *NsArraySummaryStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,7 +12,7 @@ func init() {
 	Namefield := "name"
 	ArrayNamefield := "array_name"
 
-	NsArraySummaryFields = &NsArraySummary{
+	NsArraySummaryFields = &NsArraySummaryStringFields{
 		ID:        &IDfield,
 		ArrayId:   &ArrayIdfield,
 		Name:      &Namefield,
@@ -29,4 +29,12 @@ type NsArraySummary struct {
 	Name *string `json:"name,omitempty"`
 	// ArrayName - Unique name of array.
 	ArrayName *string `json:"array_name,omitempty"`
+}
+
+// Struct for NsArraySummaryFields
+type NsArraySummaryStringFields struct {
+	ID        *string
+	ArrayId   *string
+	Name      *string
+	ArrayName *string
 }

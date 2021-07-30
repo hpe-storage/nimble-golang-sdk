@@ -4,17 +4,23 @@ package nimbleos
 
 // Dna - Get list of DNAs.
 // Export DnaFields for advance operations like search filter etc.
-var DnaFields *Dna
+var DnaFields *DnaStringFields
 
 func init() {
 	IDfield := "id"
 	ArrayNamefield := "array_name"
+	CreationTimefield := "creation_time"
+	FileSizefield := "file_size"
 	DnaNamefield := "dna_name"
+	ControllerNamefield := "controller_name"
 
-	DnaFields = &Dna{
-		ID:        &IDfield,
-		ArrayName: &ArrayNamefield,
-		DnaName:   &DnaNamefield,
+	DnaFields = &DnaStringFields{
+		ID:             &IDfield,
+		ArrayName:      &ArrayNamefield,
+		CreationTime:   &CreationTimefield,
+		FileSize:       &FileSizefield,
+		DnaName:        &DnaNamefield,
+		ControllerName: &ControllerNamefield,
 	}
 }
 
@@ -31,4 +37,14 @@ type Dna struct {
 	DnaName *string `json:"dna_name,omitempty"`
 	// ControllerName - Name of the controller storing the DNA.
 	ControllerName *NsControllerSide `json:"controller_name,omitempty"`
+}
+
+// Struct for DnaFields
+type DnaStringFields struct {
+	ID             *string
+	ArrayName      *string
+	CreationTime   *string
+	FileSize       *string
+	DnaName        *string
+	ControllerName *string
 }

@@ -4,7 +4,7 @@ package nimbleos
 
 // ProtocolEndpoint - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
 // Export ProtocolEndpointFields for advance operations like search filter etc.
-var ProtocolEndpointFields *ProtocolEndpoint
+var ProtocolEndpointFields *ProtocolEndpointStringFields
 
 func init() {
 	IDfield := "id"
@@ -12,17 +12,39 @@ func init() {
 	Descriptionfield := "description"
 	PoolNamefield := "pool_name"
 	PoolIdfield := "pool_id"
+	Statefield := "state"
 	SerialNumberfield := "serial_number"
 	TargetNamefield := "target_name"
+	GroupSpecificIdsfield := "group_specific_ids"
+	CreationTimefield := "creation_time"
+	LastModifiedfield := "last_modified"
+	NumConnectionsfield := "num_connections"
+	NumIscsiConnectionsfield := "num_iscsi_connections"
+	NumFcConnectionsfield := "num_fc_connections"
+	AccessControlRecordsfield := "access_control_records"
+	IscsiSessionsfield := "iscsi_sessions"
+	FcSessionsfield := "fc_sessions"
+	AccessProtocolfield := "access_protocol"
 
-	ProtocolEndpointFields = &ProtocolEndpoint{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		Description:  &Descriptionfield,
-		PoolName:     &PoolNamefield,
-		PoolId:       &PoolIdfield,
-		SerialNumber: &SerialNumberfield,
-		TargetName:   &TargetNamefield,
+	ProtocolEndpointFields = &ProtocolEndpointStringFields{
+		ID:                   &IDfield,
+		Name:                 &Namefield,
+		Description:          &Descriptionfield,
+		PoolName:             &PoolNamefield,
+		PoolId:               &PoolIdfield,
+		State:                &Statefield,
+		SerialNumber:         &SerialNumberfield,
+		TargetName:           &TargetNamefield,
+		GroupSpecificIds:     &GroupSpecificIdsfield,
+		CreationTime:         &CreationTimefield,
+		LastModified:         &LastModifiedfield,
+		NumConnections:       &NumConnectionsfield,
+		NumIscsiConnections:  &NumIscsiConnectionsfield,
+		NumFcConnections:     &NumFcConnectionsfield,
+		AccessControlRecords: &AccessControlRecordsfield,
+		IscsiSessions:        &IscsiSessionsfield,
+		FcSessions:           &FcSessionsfield,
+		AccessProtocol:       &AccessProtocolfield,
 	}
 }
 
@@ -63,4 +85,26 @@ type ProtocolEndpoint struct {
 	FcSessions []*NsFCSession `json:"fc_sessions,omitempty"`
 	// AccessProtocol - Access protocol of the protocol endpoint. Only initiator groups with the same access protocol can access the protocol endpoint. If not specified in the creation request, it will be the access protocol supported by the group. If the group supports multiple protocols, the default will be Fibre Channel.
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
+}
+
+// Struct for ProtocolEndpointFields
+type ProtocolEndpointStringFields struct {
+	ID                   *string
+	Name                 *string
+	Description          *string
+	PoolName             *string
+	PoolId               *string
+	State                *string
+	SerialNumber         *string
+	TargetName           *string
+	GroupSpecificIds     *string
+	CreationTime         *string
+	LastModified         *string
+	NumConnections       *string
+	NumIscsiConnections  *string
+	NumFcConnections     *string
+	AccessControlRecords *string
+	IscsiSessions        *string
+	FcSessions           *string
+	AccessProtocol       *string
 }

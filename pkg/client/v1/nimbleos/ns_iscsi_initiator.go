@@ -4,7 +4,7 @@ package nimbleos
 
 // NsISCSIInitiator - ISCSI initiator.
 // Export NsISCSIInitiatorFields for advance operations like search filter etc.
-var NsISCSIInitiatorFields *NsISCSIInitiator
+var NsISCSIInitiatorFields *NsISCSIInitiatorStringFields
 
 func init() {
 	IDfield := "id"
@@ -13,7 +13,7 @@ func init() {
 	Iqnfield := "iqn"
 	IpAddressfield := "ip_address"
 
-	NsISCSIInitiatorFields = &NsISCSIInitiator{
+	NsISCSIInitiatorFields = &NsISCSIInitiatorStringFields{
 		ID:          &IDfield,
 		InitiatorId: &InitiatorIdfield,
 		Label:       &Labelfield,
@@ -33,4 +33,13 @@ type NsISCSIInitiator struct {
 	Iqn *string `json:"iqn,omitempty"`
 	// IpAddress - IP address of the iSCSI initiator.
 	IpAddress *string `json:"ip_address,omitempty"`
+}
+
+// Struct for NsISCSIInitiatorFields
+type NsISCSIInitiatorStringFields struct {
+	ID          *string
+	InitiatorId *string
+	Label       *string
+	Iqn         *string
+	IpAddress   *string
 }

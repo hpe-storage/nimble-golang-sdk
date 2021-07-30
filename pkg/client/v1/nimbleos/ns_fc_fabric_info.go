@@ -4,7 +4,7 @@ package nimbleos
 
 // NsFcFabricInfo - Fibre Channel fabric information.
 // Export NsFcFabricInfoFields for advance operations like search filter etc.
-var NsFcFabricInfoFields *NsFcFabricInfo
+var NsFcFabricInfoFields *NsFcFabricInfoStringFields
 
 func init() {
 	FabricSwitchNamefield := "fabric_switch_name"
@@ -13,14 +13,16 @@ func init() {
 	FabricSwitchWwpnfield := "fabric_switch_wwpn"
 	FabricWwnfield := "fabric_wwn"
 	FcIdfield := "fc_id"
+	LoggedInfield := "logged_in"
 
-	NsFcFabricInfoFields = &NsFcFabricInfo{
+	NsFcFabricInfoFields = &NsFcFabricInfoStringFields{
 		FabricSwitchName: &FabricSwitchNamefield,
 		FabricSwitchPort: &FabricSwitchPortfield,
 		FabricSwitchWwnn: &FabricSwitchWwnnfield,
 		FabricSwitchWwpn: &FabricSwitchWwpnfield,
 		FabricWwn:        &FabricWwnfield,
 		FcId:             &FcIdfield,
+		LoggedIn:         &LoggedInfield,
 	}
 }
 
@@ -39,4 +41,15 @@ type NsFcFabricInfo struct {
 	FcId *string `json:"fc_id,omitempty"`
 	// LoggedIn - Login information for interface. True if interface has logged in to the Fibre Channel fabric, else false.
 	LoggedIn *bool `json:"logged_in,omitempty"`
+}
+
+// Struct for NsFcFabricInfoFields
+type NsFcFabricInfoStringFields struct {
+	FabricSwitchName *string
+	FabricSwitchPort *string
+	FabricSwitchWwnn *string
+	FabricSwitchWwpn *string
+	FabricWwn        *string
+	FcId             *string
+	LoggedIn         *string
 }

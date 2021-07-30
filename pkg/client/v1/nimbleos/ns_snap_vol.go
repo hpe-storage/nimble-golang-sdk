@@ -4,21 +4,29 @@ package nimbleos
 
 // NsSnapVol - Select fields containing volume info.
 // Export NsSnapVolFields for advance operations like search filter etc.
-var NsSnapVolFields *NsSnapVol
+var NsSnapVolFields *NsSnapVolStringFields
 
 func init() {
 	VolIdfield := "vol_id"
 	SnapNamefield := "snap_name"
 	SnapDescriptionfield := "snap_description"
 	Cookiefield := "cookie"
+	Onlinefield := "online"
+	Writablefield := "writable"
 	AppUuidfield := "app_uuid"
+	AgentTypefield := "agent_type"
+	Metadatafield := "metadata"
 
-	NsSnapVolFields = &NsSnapVol{
+	NsSnapVolFields = &NsSnapVolStringFields{
 		VolId:           &VolIdfield,
 		SnapName:        &SnapNamefield,
 		SnapDescription: &SnapDescriptionfield,
 		Cookie:          &Cookiefield,
+		Online:          &Onlinefield,
+		Writable:        &Writablefield,
 		AppUuid:         &AppUuidfield,
+		AgentType:       &AgentTypefield,
+		Metadata:        &Metadatafield,
 	}
 }
 
@@ -41,4 +49,17 @@ type NsSnapVol struct {
 	AgentType *NsAgentType `json:"agent_type,omitempty"`
 	// Metadata - Key-value pairs that augment a snapshot's attributes.
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
+}
+
+// Struct for NsSnapVolFields
+type NsSnapVolStringFields struct {
+	VolId           *string
+	SnapName        *string
+	SnapDescription *string
+	Cookie          *string
+	Online          *string
+	Writable        *string
+	AppUuid         *string
+	AgentType       *string
+	Metadata        *string
 }

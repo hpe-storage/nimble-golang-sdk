@@ -4,14 +4,14 @@ package nimbleos
 
 // NsSshKey - SSH key.
 // Export NsSshKeyFields for advance operations like search filter etc.
-var NsSshKeyFields *NsSshKey
+var NsSshKeyFields *NsSshKeyStringFields
 
 func init() {
 	KeyNamefield := "key_name"
 	KeyTypefield := "key_type"
 	Keyfield := "key"
 
-	NsSshKeyFields = &NsSshKey{
+	NsSshKeyFields = &NsSshKeyStringFields{
 		KeyName: &KeyNamefield,
 		KeyType: &KeyTypefield,
 		Key:     &Keyfield,
@@ -25,4 +25,11 @@ type NsSshKey struct {
 	KeyType *string `json:"key_type,omitempty"`
 	// Key - The key.
 	Key *string `json:"key,omitempty"`
+}
+
+// Struct for NsSshKeyFields
+type NsSshKeyStringFields struct {
+	KeyName *string
+	KeyType *string
+	Key     *string
 }
