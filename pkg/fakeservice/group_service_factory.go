@@ -28,14 +28,14 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 	return &NsGroupService{ip: ip}, nil
 }
 
-func NewNimbleGroupService(serviceOpts ...service.ServiceOptions) (gs *NsGroupService, err error) {
-	fakeGroupServiceOption := &service.GroupServiceOptions{}
+func NewNimbleGroupService(serviceOpts ...service.ServiceOption) (gs *NsGroupService, err error) {
+	fakeGroupServiceOptions := &service.GroupServiceOptions{}
 
 	for _, opt := range serviceOpts {
-		opt(fakeGroupServiceOption)
+		opt(fakeGroupServiceOptions)
 	}
 
-	return &NsGroupService{ip: fakeGroupServiceOption.Host}, nil
+	return &NsGroupService{ip: fakeGroupServiceOptions.Host}, nil
 }
 
 // SetDebug - enable debugging

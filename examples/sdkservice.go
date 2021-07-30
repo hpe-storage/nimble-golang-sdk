@@ -9,12 +9,12 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
-func getFakeService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupService, error) {
+func getFakeService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := fakeservice.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
 }
 
-func getRealService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupService, error) {
+func getRealService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := service.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
 }
