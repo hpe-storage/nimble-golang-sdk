@@ -6,12 +6,9 @@ package nimbleos
 var NsReplPairFields *NsReplPairFieldHandles
 
 func init() {
-	fieldSrcName := "src_name"
-	fieldDstName := "dst_name"
-
 	NsReplPairFields = &NsReplPairFieldHandles{
-		SrcName: &fieldSrcName,
-		DstName: &fieldDstName,
+		SrcName: "src_name",
+		DstName: "dst_name",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsReplPair struct {
 
 // NsReplPairFieldHandles provides a string representation for each AccessControlRecord field.
 type NsReplPairFieldHandles struct {
-	SrcName *string
-	DstName *string
+	SrcName string
+	DstName string
 }

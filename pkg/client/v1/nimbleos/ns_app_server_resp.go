@@ -6,20 +6,13 @@ package nimbleos
 var NsAppServerRespFields *NsAppServerRespFieldHandles
 
 func init() {
-	fieldGeneralError := "general_error"
-	fieldAppSync := "app_sync"
-	fieldHasAssocVols := "has_assoc_vols"
-	fieldVssResponse := "vss_response"
-	fieldVmwResponse := "vmw_response"
-	fieldGenericResponse := "generic_response"
-
 	NsAppServerRespFields = &NsAppServerRespFieldHandles{
-		GeneralError:    &fieldGeneralError,
-		AppSync:         &fieldAppSync,
-		HasAssocVols:    &fieldHasAssocVols,
-		VssResponse:     &fieldVssResponse,
-		VmwResponse:     &fieldVmwResponse,
-		GenericResponse: &fieldGenericResponse,
+		GeneralError:    "general_error",
+		AppSync:         "app_sync",
+		HasAssocVols:    "has_assoc_vols",
+		VssResponse:     "vss_response",
+		VmwResponse:     "vmw_response",
+		GenericResponse: "generic_response",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsAppServerResp struct {
 
 // NsAppServerRespFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAppServerRespFieldHandles struct {
-	GeneralError    *string
-	AppSync         *string
-	HasAssocVols    *string
-	VssResponse     *string
-	VmwResponse     *string
-	GenericResponse *string
+	GeneralError    string
+	AppSync         string
+	HasAssocVols    string
+	VssResponse     string
+	VmwResponse     string
+	GenericResponse string
 }

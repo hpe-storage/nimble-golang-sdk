@@ -6,10 +6,8 @@ package nimbleos
 var NsObjectWithIDFields *NsObjectWithIDFieldHandles
 
 func init() {
-	fieldID := "id"
-
 	NsObjectWithIDFields = &NsObjectWithIDFieldHandles{
-		ID: &fieldID,
+		ID: "id",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsObjectWithID struct {
 
 // NsObjectWithIDFieldHandles provides a string representation for each AccessControlRecord field.
 type NsObjectWithIDFieldHandles struct {
-	ID *string
+	ID string
 }

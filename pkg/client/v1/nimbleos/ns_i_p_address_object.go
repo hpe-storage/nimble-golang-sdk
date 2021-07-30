@@ -6,10 +6,8 @@ package nimbleos
 var NsIPAddressObjectFields *NsIPAddressObjectFieldHandles
 
 func init() {
-	fieldIpAddr := "ip_addr"
-
 	NsIPAddressObjectFields = &NsIPAddressObjectFieldHandles{
-		IpAddr: &fieldIpAddr,
+		IpAddr: "ip_addr",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsIPAddressObject struct {
 
 // NsIPAddressObjectFieldHandles provides a string representation for each AccessControlRecord field.
 type NsIPAddressObjectFieldHandles struct {
-	IpAddr *string
+	IpAddr string
 }

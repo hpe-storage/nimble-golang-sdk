@@ -6,48 +6,27 @@ package nimbleos
 var ShelfFields *ShelfFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayName := "array_name"
-	fieldArrayId := "array_id"
-	fieldPartialResponseOk := "partial_response_ok"
-	fieldChassisType := "chassis_type"
-	fieldCtrlrs := "ctrlrs"
-	fieldSerial := "serial"
-	fieldModel := "model"
-	fieldModelExt := "model_ext"
-	fieldChassisSensors := "chassis_sensors"
-	fieldPsuOverallStatus := "psu_overall_status"
-	fieldFanOverallStatus := "fan_overall_status"
-	fieldTempOverallStatus := "temp_overall_status"
-	fieldDiskSets := "disk_sets"
-	fieldActivated := "activated"
-	fieldDriveset := "driveset"
-	fieldForce := "force"
-	fieldAcceptForeign := "accept_foreign"
-	fieldAcceptDedupeImpact := "accept_dedupe_impact"
-	fieldLastRequest := "last_request"
-
 	ShelfFields = &ShelfFieldHandles{
-		ID:                 &fieldID,
-		ArrayName:          &fieldArrayName,
-		ArrayId:            &fieldArrayId,
-		PartialResponseOk:  &fieldPartialResponseOk,
-		ChassisType:        &fieldChassisType,
-		Ctrlrs:             &fieldCtrlrs,
-		Serial:             &fieldSerial,
-		Model:              &fieldModel,
-		ModelExt:           &fieldModelExt,
-		ChassisSensors:     &fieldChassisSensors,
-		PsuOverallStatus:   &fieldPsuOverallStatus,
-		FanOverallStatus:   &fieldFanOverallStatus,
-		TempOverallStatus:  &fieldTempOverallStatus,
-		DiskSets:           &fieldDiskSets,
-		Activated:          &fieldActivated,
-		Driveset:           &fieldDriveset,
-		Force:              &fieldForce,
-		AcceptForeign:      &fieldAcceptForeign,
-		AcceptDedupeImpact: &fieldAcceptDedupeImpact,
-		LastRequest:        &fieldLastRequest,
+		ID:                 "id",
+		ArrayName:          "array_name",
+		ArrayId:            "array_id",
+		PartialResponseOk:  "partial_response_ok",
+		ChassisType:        "chassis_type",
+		Ctrlrs:             "ctrlrs",
+		Serial:             "serial",
+		Model:              "model",
+		ModelExt:           "model_ext",
+		ChassisSensors:     "chassis_sensors",
+		PsuOverallStatus:   "psu_overall_status",
+		FanOverallStatus:   "fan_overall_status",
+		TempOverallStatus:  "temp_overall_status",
+		DiskSets:           "disk_sets",
+		Activated:          "activated",
+		Driveset:           "driveset",
+		Force:              "force",
+		AcceptForeign:      "accept_foreign",
+		AcceptDedupeImpact: "accept_dedupe_impact",
+		LastRequest:        "last_request",
 	}
 }
 
@@ -97,24 +76,24 @@ type Shelf struct {
 
 // ShelfFieldHandles provides a string representation for each AccessControlRecord field.
 type ShelfFieldHandles struct {
-	ID                 *string
-	ArrayName          *string
-	ArrayId            *string
-	PartialResponseOk  *string
-	ChassisType        *string
-	Ctrlrs             *string
-	Serial             *string
-	Model              *string
-	ModelExt           *string
-	ChassisSensors     *string
-	PsuOverallStatus   *string
-	FanOverallStatus   *string
-	TempOverallStatus  *string
-	DiskSets           *string
-	Activated          *string
-	Driveset           *string
-	Force              *string
-	AcceptForeign      *string
-	AcceptDedupeImpact *string
-	LastRequest        *string
+	ID                 string
+	ArrayName          string
+	ArrayId            string
+	PartialResponseOk  string
+	ChassisType        string
+	Ctrlrs             string
+	Serial             string
+	Model              string
+	ModelExt           string
+	ChassisSensors     string
+	PsuOverallStatus   string
+	FanOverallStatus   string
+	TempOverallStatus  string
+	DiskSets           string
+	Activated          string
+	Driveset           string
+	Force              string
+	AcceptForeign      string
+	AcceptDedupeImpact string
+	LastRequest        string
 }

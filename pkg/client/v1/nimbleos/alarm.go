@@ -6,46 +6,26 @@ package nimbleos
 var AlarmFields *AlarmFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldType := "type"
-	fieldArray := "array"
-	fieldCurrOnsetEventId := "curr_onset_event_id"
-	fieldObjectId := "object_id"
-	fieldObjectName := "object_name"
-	fieldObjectType := "object_type"
-	fieldOnsetTime := "onset_time"
-	fieldAckTime := "ack_time"
-	fieldStatus := "status"
-	fieldUserId := "user_id"
-	fieldUserName := "user_name"
-	fieldUserFullName := "user_full_name"
-	fieldCategory := "category"
-	fieldSeverity := "severity"
-	fieldRemindEvery := "remind_every"
-	fieldRemindEveryUnit := "remind_every_unit"
-	fieldActivity := "activity"
-	fieldNextNotificationTime := "next_notification_time"
-
 	AlarmFields = &AlarmFieldHandles{
-		ID:                   &fieldID,
-		Type:                 &fieldType,
-		Array:                &fieldArray,
-		CurrOnsetEventId:     &fieldCurrOnsetEventId,
-		ObjectId:             &fieldObjectId,
-		ObjectName:           &fieldObjectName,
-		ObjectType:           &fieldObjectType,
-		OnsetTime:            &fieldOnsetTime,
-		AckTime:              &fieldAckTime,
-		Status:               &fieldStatus,
-		UserId:               &fieldUserId,
-		UserName:             &fieldUserName,
-		UserFullName:         &fieldUserFullName,
-		Category:             &fieldCategory,
-		Severity:             &fieldSeverity,
-		RemindEvery:          &fieldRemindEvery,
-		RemindEveryUnit:      &fieldRemindEveryUnit,
-		Activity:             &fieldActivity,
-		NextNotificationTime: &fieldNextNotificationTime,
+		ID:                   "id",
+		Type:                 "type",
+		Array:                "array",
+		CurrOnsetEventId:     "curr_onset_event_id",
+		ObjectId:             "object_id",
+		ObjectName:           "object_name",
+		ObjectType:           "object_type",
+		OnsetTime:            "onset_time",
+		AckTime:              "ack_time",
+		Status:               "status",
+		UserId:               "user_id",
+		UserName:             "user_name",
+		UserFullName:         "user_full_name",
+		Category:             "category",
+		Severity:             "severity",
+		RemindEvery:          "remind_every",
+		RemindEveryUnit:      "remind_every_unit",
+		Activity:             "activity",
+		NextNotificationTime: "next_notification_time",
 	}
 }
 
@@ -93,23 +73,23 @@ type Alarm struct {
 
 // AlarmFieldHandles provides a string representation for each AccessControlRecord field.
 type AlarmFieldHandles struct {
-	ID                   *string
-	Type                 *string
-	Array                *string
-	CurrOnsetEventId     *string
-	ObjectId             *string
-	ObjectName           *string
-	ObjectType           *string
-	OnsetTime            *string
-	AckTime              *string
-	Status               *string
-	UserId               *string
-	UserName             *string
-	UserFullName         *string
-	Category             *string
-	Severity             *string
-	RemindEvery          *string
-	RemindEveryUnit      *string
-	Activity             *string
-	NextNotificationTime *string
+	ID                   string
+	Type                 string
+	Array                string
+	CurrOnsetEventId     string
+	ObjectId             string
+	ObjectName           string
+	ObjectType           string
+	OnsetTime            string
+	AckTime              string
+	Status               string
+	UserId               string
+	UserName             string
+	UserFullName         string
+	Category             string
+	Severity             string
+	RemindEvery          string
+	RemindEveryUnit      string
+	Activity             string
+	NextNotificationTime string
 }

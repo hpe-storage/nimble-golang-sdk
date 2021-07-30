@@ -6,24 +6,15 @@ package nimbleos
 var NsAlertNotificationFields *NsAlertNotificationFieldHandles
 
 func init() {
-	fieldSequenceNumber := "sequence_number"
-	fieldNotificationType := "notification_type"
-	fieldActivity := "activity"
-	fieldEventTarget := "event_target"
-	fieldCategory := "category"
-	fieldSeverity := "severity"
-	fieldAlertType := "alert_type"
-	fieldTimestamp := "timestamp"
-
 	NsAlertNotificationFields = &NsAlertNotificationFieldHandles{
-		SequenceNumber:   &fieldSequenceNumber,
-		NotificationType: &fieldNotificationType,
-		Activity:         &fieldActivity,
-		EventTarget:      &fieldEventTarget,
-		Category:         &fieldCategory,
-		Severity:         &fieldSeverity,
-		AlertType:        &fieldAlertType,
-		Timestamp:        &fieldTimestamp,
+		SequenceNumber:   "sequence_number",
+		NotificationType: "notification_type",
+		Activity:         "activity",
+		EventTarget:      "event_target",
+		Category:         "category",
+		Severity:         "severity",
+		AlertType:        "alert_type",
+		Timestamp:        "timestamp",
 	}
 }
 
@@ -49,12 +40,12 @@ type NsAlertNotification struct {
 
 // NsAlertNotificationFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAlertNotificationFieldHandles struct {
-	SequenceNumber   *string
-	NotificationType *string
-	Activity         *string
-	EventTarget      *string
-	Category         *string
-	Severity         *string
-	AlertType        *string
-	Timestamp        *string
+	SequenceNumber   string
+	NotificationType string
+	Activity         string
+	EventTarget      string
+	Category         string
+	Severity         string
+	AlertType        string
+	Timestamp        string
 }

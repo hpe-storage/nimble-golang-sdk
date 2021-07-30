@@ -6,32 +6,19 @@ package nimbleos
 var NsSubnetFields *NsSubnetFieldHandles
 
 func init() {
-	fieldLabel := "label"
-	fieldNetwork := "network"
-	fieldNetmask := "netmask"
-	fieldNetzoneType := "netzone_type"
-	fieldType := "type"
-	fieldAllowIscsi := "allow_iscsi"
-	fieldAllowGroup := "allow_group"
-	fieldDiscoveryIp := "discovery_ip"
-	fieldMtu := "mtu"
-	fieldVlanId := "vlan_id"
-	fieldFailover := "failover"
-	fieldFailoverEnableTime := "failover_enable_time"
-
 	NsSubnetFields = &NsSubnetFieldHandles{
-		Label:              &fieldLabel,
-		Network:            &fieldNetwork,
-		Netmask:            &fieldNetmask,
-		NetzoneType:        &fieldNetzoneType,
-		Type:               &fieldType,
-		AllowIscsi:         &fieldAllowIscsi,
-		AllowGroup:         &fieldAllowGroup,
-		DiscoveryIp:        &fieldDiscoveryIp,
-		Mtu:                &fieldMtu,
-		VlanId:             &fieldVlanId,
-		Failover:           &fieldFailover,
-		FailoverEnableTime: &fieldFailoverEnableTime,
+		Label:              "label",
+		Network:            "network",
+		Netmask:            "netmask",
+		NetzoneType:        "netzone_type",
+		Type:               "type",
+		AllowIscsi:         "allow_iscsi",
+		AllowGroup:         "allow_group",
+		DiscoveryIp:        "discovery_ip",
+		Mtu:                "mtu",
+		VlanId:             "vlan_id",
+		Failover:           "failover",
+		FailoverEnableTime: "failover_enable_time",
 	}
 }
 
@@ -65,16 +52,16 @@ type NsSubnet struct {
 
 // NsSubnetFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSubnetFieldHandles struct {
-	Label              *string
-	Network            *string
-	Netmask            *string
-	NetzoneType        *string
-	Type               *string
-	AllowIscsi         *string
-	AllowGroup         *string
-	DiscoveryIp        *string
-	Mtu                *string
-	VlanId             *string
-	Failover           *string
-	FailoverEnableTime *string
+	Label              string
+	Network            string
+	Netmask            string
+	NetzoneType        string
+	Type               string
+	AllowIscsi         string
+	AllowGroup         string
+	DiscoveryIp        string
+	Mtu                string
+	VlanId             string
+	Failover           string
+	FailoverEnableTime string
 }

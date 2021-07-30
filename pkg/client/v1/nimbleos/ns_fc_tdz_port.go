@@ -6,12 +6,9 @@ package nimbleos
 var NsFcTdzPortFields *NsFcTdzPortFieldHandles
 
 func init() {
-	fieldArrayName := "array_name"
-	fieldFcName := "fc_name"
-
 	NsFcTdzPortFields = &NsFcTdzPortFieldHandles{
-		ArrayName: &fieldArrayName,
-		FcName:    &fieldFcName,
+		ArrayName: "array_name",
+		FcName:    "fc_name",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsFcTdzPort struct {
 
 // NsFcTdzPortFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcTdzPortFieldHandles struct {
-	ArrayName *string
-	FcName    *string
+	ArrayName string
+	FcName    string
 }

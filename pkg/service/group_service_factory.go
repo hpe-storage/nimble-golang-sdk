@@ -159,7 +159,7 @@ func (gs *NsGroupService) LogoutService() error {
 	// apply filter on session token
 	sFilter := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.TokenFields.SessionToken,
+			FieldName: param.NewString(nimbleos.TokenFields.SessionToken),
 			Operator:  param.EQUALS.String(),
 			Value:     sessionToken,
 		},

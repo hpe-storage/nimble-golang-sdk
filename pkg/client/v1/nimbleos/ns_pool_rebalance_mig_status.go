@@ -6,16 +6,11 @@ package nimbleos
 var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatusFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldPoolAvgSpaceUtilization := "pool_avg_space_utilization"
-	fieldArrayDataMigrationStatus := "array_data_migration_status"
-
 	NsPoolRebalanceMigStatusFields = &NsPoolRebalanceMigStatusFieldHandles{
-		ID:                       &fieldID,
-		Name:                     &fieldName,
-		PoolAvgSpaceUtilization:  &fieldPoolAvgSpaceUtilization,
-		ArrayDataMigrationStatus: &fieldArrayDataMigrationStatus,
+		ID:                       "id",
+		Name:                     "name",
+		PoolAvgSpaceUtilization:  "pool_avg_space_utilization",
+		ArrayDataMigrationStatus: "array_data_migration_status",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsPoolRebalanceMigStatus struct {
 
 // NsPoolRebalanceMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsPoolRebalanceMigStatusFieldHandles struct {
-	ID                       *string
-	Name                     *string
-	PoolAvgSpaceUtilization  *string
-	ArrayDataMigrationStatus *string
+	ID                       string
+	Name                     string
+	PoolAvgSpaceUtilization  string
+	ArrayDataMigrationStatus string
 }

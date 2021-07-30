@@ -6,16 +6,11 @@ package nimbleos
 var TrustedOauthIssuerFields *TrustedOauthIssuerFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldJwksUrl := "jwks_url"
-	fieldKeySet := "key_set"
-
 	TrustedOauthIssuerFields = &TrustedOauthIssuerFieldHandles{
-		ID:      &fieldID,
-		Name:    &fieldName,
-		JwksUrl: &fieldJwksUrl,
-		KeySet:  &fieldKeySet,
+		ID:      "id",
+		Name:    "name",
+		JwksUrl: "jwks_url",
+		KeySet:  "key_set",
 	}
 }
 
@@ -33,8 +28,8 @@ type TrustedOauthIssuer struct {
 
 // TrustedOauthIssuerFieldHandles provides a string representation for each AccessControlRecord field.
 type TrustedOauthIssuerFieldHandles struct {
-	ID      *string
-	Name    *string
-	JwksUrl *string
-	KeySet  *string
+	ID      string
+	Name    string
+	JwksUrl string
+	KeySet  string
 }

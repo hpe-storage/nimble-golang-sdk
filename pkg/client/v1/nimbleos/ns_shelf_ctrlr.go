@@ -6,42 +6,24 @@ package nimbleos
 var NsShelfCtrlrFields *NsShelfCtrlrFieldHandles
 
 func init() {
-	fieldExpSasAddr := "exp_sas_addr"
-	fieldCtrlrSide := "ctrlr_side"
-	fieldEncLocId := "enc_loc_id"
-	fieldCachedSerial := "cached_serial"
-	fieldCtrlrSensorLastRun := "ctrlr_sensor_last_run"
-	fieldHwMshipFailure := "hw_mship_failure"
-	fieldHwMasterState := "hw_master_state"
-	fieldSwMasterState := "sw_master_state"
-	fieldCtrlrSensors := "ctrlr_sensors"
-	fieldFanOverallStatus := "fan_overall_status"
-	fieldTempOverallStatus := "temp_overall_status"
-	fieldPsuOverallStatus := "psu_overall_status"
-	fieldCtrlrHwModel := "ctrlr_hw_model"
-	fieldPortInfo := "port_info"
-	fieldExtraAttributes := "extra_attributes"
-	fieldCtrlrAttrsetList := "ctrlr_attrset_list"
-	fieldIDentifyStatus := "identify_status"
-
 	NsShelfCtrlrFields = &NsShelfCtrlrFieldHandles{
-		ExpSasAddr:         &fieldExpSasAddr,
-		CtrlrSide:          &fieldCtrlrSide,
-		EncLocId:           &fieldEncLocId,
-		CachedSerial:       &fieldCachedSerial,
-		CtrlrSensorLastRun: &fieldCtrlrSensorLastRun,
-		HwMshipFailure:     &fieldHwMshipFailure,
-		HwMasterState:      &fieldHwMasterState,
-		SwMasterState:      &fieldSwMasterState,
-		CtrlrSensors:       &fieldCtrlrSensors,
-		FanOverallStatus:   &fieldFanOverallStatus,
-		TempOverallStatus:  &fieldTempOverallStatus,
-		PsuOverallStatus:   &fieldPsuOverallStatus,
-		CtrlrHwModel:       &fieldCtrlrHwModel,
-		PortInfo:           &fieldPortInfo,
-		ExtraAttributes:    &fieldExtraAttributes,
-		CtrlrAttrsetList:   &fieldCtrlrAttrsetList,
-		IDentifyStatus:     &fieldIDentifyStatus,
+		ExpSasAddr:         "exp_sas_addr",
+		CtrlrSide:          "ctrlr_side",
+		EncLocId:           "enc_loc_id",
+		CachedSerial:       "cached_serial",
+		CtrlrSensorLastRun: "ctrlr_sensor_last_run",
+		HwMshipFailure:     "hw_mship_failure",
+		HwMasterState:      "hw_master_state",
+		SwMasterState:      "sw_master_state",
+		CtrlrSensors:       "ctrlr_sensors",
+		FanOverallStatus:   "fan_overall_status",
+		TempOverallStatus:  "temp_overall_status",
+		PsuOverallStatus:   "psu_overall_status",
+		CtrlrHwModel:       "ctrlr_hw_model",
+		PortInfo:           "port_info",
+		ExtraAttributes:    "extra_attributes",
+		CtrlrAttrsetList:   "ctrlr_attrset_list",
+		IDentifyStatus:     "identify_status",
 	}
 }
 
@@ -85,21 +67,21 @@ type NsShelfCtrlr struct {
 
 // NsShelfCtrlrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsShelfCtrlrFieldHandles struct {
-	ExpSasAddr         *string
-	CtrlrSide          *string
-	EncLocId           *string
-	CachedSerial       *string
-	CtrlrSensorLastRun *string
-	HwMshipFailure     *string
-	HwMasterState      *string
-	SwMasterState      *string
-	CtrlrSensors       *string
-	FanOverallStatus   *string
-	TempOverallStatus  *string
-	PsuOverallStatus   *string
-	CtrlrHwModel       *string
-	PortInfo           *string
-	ExtraAttributes    *string
-	CtrlrAttrsetList   *string
-	IDentifyStatus     *string
+	ExpSasAddr         string
+	CtrlrSide          string
+	EncLocId           string
+	CachedSerial       string
+	CtrlrSensorLastRun string
+	HwMshipFailure     string
+	HwMasterState      string
+	SwMasterState      string
+	CtrlrSensors       string
+	FanOverallStatus   string
+	TempOverallStatus  string
+	PsuOverallStatus   string
+	CtrlrHwModel       string
+	PortInfo           string
+	ExtraAttributes    string
+	CtrlrAttrsetList   string
+	IDentifyStatus     string
 }

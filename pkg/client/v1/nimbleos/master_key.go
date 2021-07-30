@@ -6,22 +6,14 @@ package nimbleos
 var MasterKeyFields *MasterKeyFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldPassphrase := "passphrase"
-	fieldHalfkey := "halfkey"
-	fieldNewPassphrase := "new_passphrase"
-	fieldActive := "active"
-	fieldPurgeAge := "purge_age"
-
 	MasterKeyFields = &MasterKeyFieldHandles{
-		ID:            &fieldID,
-		Name:          &fieldName,
-		Passphrase:    &fieldPassphrase,
-		Halfkey:       &fieldHalfkey,
-		NewPassphrase: &fieldNewPassphrase,
-		Active:        &fieldActive,
-		PurgeAge:      &fieldPurgeAge,
+		ID:            "id",
+		Name:          "name",
+		Passphrase:    "passphrase",
+		Halfkey:       "halfkey",
+		NewPassphrase: "new_passphrase",
+		Active:        "active",
+		PurgeAge:      "purge_age",
 	}
 }
 
@@ -45,11 +37,11 @@ type MasterKey struct {
 
 // MasterKeyFieldHandles provides a string representation for each AccessControlRecord field.
 type MasterKeyFieldHandles struct {
-	ID            *string
-	Name          *string
-	Passphrase    *string
-	Halfkey       *string
-	NewPassphrase *string
-	Active        *string
-	PurgeAge      *string
+	ID            string
+	Name          string
+	Passphrase    string
+	Halfkey       string
+	NewPassphrase string
+	Active        string
+	PurgeAge      string
 }

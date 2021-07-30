@@ -6,22 +6,14 @@ package nimbleos
 var NsFcFabricInfoFields *NsFcFabricInfoFieldHandles
 
 func init() {
-	fieldFabricSwitchName := "fabric_switch_name"
-	fieldFabricSwitchPort := "fabric_switch_port"
-	fieldFabricSwitchWwnn := "fabric_switch_wwnn"
-	fieldFabricSwitchWwpn := "fabric_switch_wwpn"
-	fieldFabricWwn := "fabric_wwn"
-	fieldFcId := "fc_id"
-	fieldLoggedIn := "logged_in"
-
 	NsFcFabricInfoFields = &NsFcFabricInfoFieldHandles{
-		FabricSwitchName: &fieldFabricSwitchName,
-		FabricSwitchPort: &fieldFabricSwitchPort,
-		FabricSwitchWwnn: &fieldFabricSwitchWwnn,
-		FabricSwitchWwpn: &fieldFabricSwitchWwpn,
-		FabricWwn:        &fieldFabricWwn,
-		FcId:             &fieldFcId,
-		LoggedIn:         &fieldLoggedIn,
+		FabricSwitchName: "fabric_switch_name",
+		FabricSwitchPort: "fabric_switch_port",
+		FabricSwitchWwnn: "fabric_switch_wwnn",
+		FabricSwitchWwpn: "fabric_switch_wwpn",
+		FabricWwn:        "fabric_wwn",
+		FcId:             "fc_id",
+		LoggedIn:         "logged_in",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsFcFabricInfo struct {
 
 // NsFcFabricInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcFabricInfoFieldHandles struct {
-	FabricSwitchName *string
-	FabricSwitchPort *string
-	FabricSwitchWwnn *string
-	FabricSwitchWwpn *string
-	FabricWwn        *string
-	FcId             *string
-	LoggedIn         *string
+	FabricSwitchName string
+	FabricSwitchPort string
+	FabricSwitchWwnn string
+	FabricSwitchWwpn string
+	FabricWwn        string
+	FcId             string
+	LoggedIn         string
 }

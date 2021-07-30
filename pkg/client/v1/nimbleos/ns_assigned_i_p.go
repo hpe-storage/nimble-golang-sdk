@@ -6,12 +6,9 @@ package nimbleos
 var NsAssignedIPFields *NsAssignedIPFieldHandles
 
 func init() {
-	fieldVlanId := "vlan_id"
-	fieldIp := "ip"
-
 	NsAssignedIPFields = &NsAssignedIPFieldHandles{
-		VlanId: &fieldVlanId,
-		Ip:     &fieldIp,
+		VlanId: "vlan_id",
+		Ip:     "ip",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsAssignedIP struct {
 
 // NsAssignedIPFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAssignedIPFieldHandles struct {
-	VlanId *string
-	Ip     *string
+	VlanId string
+	Ip     string
 }

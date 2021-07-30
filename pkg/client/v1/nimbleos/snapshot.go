@@ -6,80 +6,43 @@ package nimbleos
 var SnapshotFields *SnapshotFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldSize := "size"
-	fieldVolName := "vol_name"
-	fieldPoolName := "pool_name"
-	fieldVolId := "vol_id"
-	fieldSnapCollectionName := "snap_collection_name"
-	fieldSnapCollectionId := "snap_collection_id"
-	fieldOnline := "online"
-	fieldWritable := "writable"
-	fieldOfflineReason := "offline_reason"
-	fieldExpiryTime := "expiry_time"
-	fieldExpiryAfter := "expiry_after"
-	fieldOriginName := "origin_name"
-	fieldIsReplica := "is_replica"
-	fieldIsUnmanaged := "is_unmanaged"
-	fieldIsManuallyManaged := "is_manually_managed"
-	fieldReplicationStatus := "replication_status"
-	fieldAccessControlRecords := "access_control_records"
-	fieldSerialNumber := "serial_number"
-	fieldTargetName := "target_name"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldScheduleName := "schedule_name"
-	fieldScheduleId := "schedule_id"
-	fieldAppUuid := "app_uuid"
-	fieldMetadata := "metadata"
-	fieldNewDataValid := "new_data_valid"
-	fieldNewDataCompressedBytes := "new_data_compressed_bytes"
-	fieldNewDataUncompressedBytes := "new_data_uncompressed_bytes"
-	fieldAgentType := "agent_type"
-	fieldVpdT10 := "vpd_t10"
-	fieldVpdIeee0 := "vpd_ieee0"
-	fieldVpdIeee1 := "vpd_ieee1"
-	fieldForce := "force"
-
 	SnapshotFields = &SnapshotFieldHandles{
-		ID:                       &fieldID,
-		Name:                     &fieldName,
-		Description:              &fieldDescription,
-		Size:                     &fieldSize,
-		VolName:                  &fieldVolName,
-		PoolName:                 &fieldPoolName,
-		VolId:                    &fieldVolId,
-		SnapCollectionName:       &fieldSnapCollectionName,
-		SnapCollectionId:         &fieldSnapCollectionId,
-		Online:                   &fieldOnline,
-		Writable:                 &fieldWritable,
-		OfflineReason:            &fieldOfflineReason,
-		ExpiryTime:               &fieldExpiryTime,
-		ExpiryAfter:              &fieldExpiryAfter,
-		OriginName:               &fieldOriginName,
-		IsReplica:                &fieldIsReplica,
-		IsUnmanaged:              &fieldIsUnmanaged,
-		IsManuallyManaged:        &fieldIsManuallyManaged,
-		ReplicationStatus:        &fieldReplicationStatus,
-		AccessControlRecords:     &fieldAccessControlRecords,
-		SerialNumber:             &fieldSerialNumber,
-		TargetName:               &fieldTargetName,
-		CreationTime:             &fieldCreationTime,
-		LastModified:             &fieldLastModified,
-		ScheduleName:             &fieldScheduleName,
-		ScheduleId:               &fieldScheduleId,
-		AppUuid:                  &fieldAppUuid,
-		Metadata:                 &fieldMetadata,
-		NewDataValid:             &fieldNewDataValid,
-		NewDataCompressedBytes:   &fieldNewDataCompressedBytes,
-		NewDataUncompressedBytes: &fieldNewDataUncompressedBytes,
-		AgentType:                &fieldAgentType,
-		VpdT10:                   &fieldVpdT10,
-		VpdIeee0:                 &fieldVpdIeee0,
-		VpdIeee1:                 &fieldVpdIeee1,
-		Force:                    &fieldForce,
+		ID:                       "id",
+		Name:                     "name",
+		Description:              "description",
+		Size:                     "size",
+		VolName:                  "vol_name",
+		PoolName:                 "pool_name",
+		VolId:                    "vol_id",
+		SnapCollectionName:       "snap_collection_name",
+		SnapCollectionId:         "snap_collection_id",
+		Online:                   "online",
+		Writable:                 "writable",
+		OfflineReason:            "offline_reason",
+		ExpiryTime:               "expiry_time",
+		ExpiryAfter:              "expiry_after",
+		OriginName:               "origin_name",
+		IsReplica:                "is_replica",
+		IsUnmanaged:              "is_unmanaged",
+		IsManuallyManaged:        "is_manually_managed",
+		ReplicationStatus:        "replication_status",
+		AccessControlRecords:     "access_control_records",
+		SerialNumber:             "serial_number",
+		TargetName:               "target_name",
+		CreationTime:             "creation_time",
+		LastModified:             "last_modified",
+		ScheduleName:             "schedule_name",
+		ScheduleId:               "schedule_id",
+		AppUuid:                  "app_uuid",
+		Metadata:                 "metadata",
+		NewDataValid:             "new_data_valid",
+		NewDataCompressedBytes:   "new_data_compressed_bytes",
+		NewDataUncompressedBytes: "new_data_uncompressed_bytes",
+		AgentType:                "agent_type",
+		VpdT10:                   "vpd_t10",
+		VpdIeee0:                 "vpd_ieee0",
+		VpdIeee1:                 "vpd_ieee1",
+		Force:                    "force",
 	}
 }
 
@@ -161,40 +124,40 @@ type Snapshot struct {
 
 // SnapshotFieldHandles provides a string representation for each AccessControlRecord field.
 type SnapshotFieldHandles struct {
-	ID                       *string
-	Name                     *string
-	Description              *string
-	Size                     *string
-	VolName                  *string
-	PoolName                 *string
-	VolId                    *string
-	SnapCollectionName       *string
-	SnapCollectionId         *string
-	Online                   *string
-	Writable                 *string
-	OfflineReason            *string
-	ExpiryTime               *string
-	ExpiryAfter              *string
-	OriginName               *string
-	IsReplica                *string
-	IsUnmanaged              *string
-	IsManuallyManaged        *string
-	ReplicationStatus        *string
-	AccessControlRecords     *string
-	SerialNumber             *string
-	TargetName               *string
-	CreationTime             *string
-	LastModified             *string
-	ScheduleName             *string
-	ScheduleId               *string
-	AppUuid                  *string
-	Metadata                 *string
-	NewDataValid             *string
-	NewDataCompressedBytes   *string
-	NewDataUncompressedBytes *string
-	AgentType                *string
-	VpdT10                   *string
-	VpdIeee0                 *string
-	VpdIeee1                 *string
-	Force                    *string
+	ID                       string
+	Name                     string
+	Description              string
+	Size                     string
+	VolName                  string
+	PoolName                 string
+	VolId                    string
+	SnapCollectionName       string
+	SnapCollectionId         string
+	Online                   string
+	Writable                 string
+	OfflineReason            string
+	ExpiryTime               string
+	ExpiryAfter              string
+	OriginName               string
+	IsReplica                string
+	IsUnmanaged              string
+	IsManuallyManaged        string
+	ReplicationStatus        string
+	AccessControlRecords     string
+	SerialNumber             string
+	TargetName               string
+	CreationTime             string
+	LastModified             string
+	ScheduleName             string
+	ScheduleId               string
+	AppUuid                  string
+	Metadata                 string
+	NewDataValid             string
+	NewDataCompressedBytes   string
+	NewDataUncompressedBytes string
+	AgentType                string
+	VpdT10                   string
+	VpdIeee0                 string
+	VpdIeee1                 string
+	Force                    string
 }

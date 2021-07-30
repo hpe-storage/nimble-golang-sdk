@@ -6,20 +6,13 @@ package nimbleos
 var NsReplVolStatusFields *NsReplVolStatusFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldSnapName := "snap_name"
-	fieldStatus := "status"
-	fieldInternalStatus := "internal_status"
-	fieldReplBytesDone := "repl_bytes_done"
-	fieldReplBytesTotal := "repl_bytes_total"
-
 	NsReplVolStatusFields = &NsReplVolStatusFieldHandles{
-		Name:           &fieldName,
-		SnapName:       &fieldSnapName,
-		Status:         &fieldStatus,
-		InternalStatus: &fieldInternalStatus,
-		ReplBytesDone:  &fieldReplBytesDone,
-		ReplBytesTotal: &fieldReplBytesTotal,
+		Name:           "name",
+		SnapName:       "snap_name",
+		Status:         "status",
+		InternalStatus: "internal_status",
+		ReplBytesDone:  "repl_bytes_done",
+		ReplBytesTotal: "repl_bytes_total",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsReplVolStatus struct {
 
 // NsReplVolStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsReplVolStatusFieldHandles struct {
-	Name           *string
-	SnapName       *string
-	Status         *string
-	InternalStatus *string
-	ReplBytesDone  *string
-	ReplBytesTotal *string
+	Name           string
+	SnapName       string
+	Status         string
+	InternalStatus string
+	ReplBytesDone  string
+	ReplBytesTotal string
 }

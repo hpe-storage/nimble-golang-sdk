@@ -6,34 +6,20 @@ package nimbleos
 var NsDiskSetAttrFields *NsDiskSetAttrFieldHandles
 
 func init() {
-	fieldDriveset := "driveset"
-	fieldSwState := "sw_state"
-	fieldIsFlashShelf := "is_flash_shelf"
-	fieldIsCapacityValid := "is_capacity_valid"
-	fieldUsableCapacity := "usable_capacity"
-	fieldRawCapacity := "raw_capacity"
-	fieldUsableCacheCapacity := "usable_cache_capacity"
-	fieldRawCacheCapacity := "raw_cache_capacity"
-	fieldAveMbPs := "ave_mb_ps"
-	fieldAveSegmentPs := "ave_segment_ps"
-	fieldAveTtc := "ave_ttc"
-	fieldPctCompletion := "pct_completion"
-	fieldPauseState := "pause_state"
-
 	NsDiskSetAttrFields = &NsDiskSetAttrFieldHandles{
-		Driveset:            &fieldDriveset,
-		SwState:             &fieldSwState,
-		IsFlashShelf:        &fieldIsFlashShelf,
-		IsCapacityValid:     &fieldIsCapacityValid,
-		UsableCapacity:      &fieldUsableCapacity,
-		RawCapacity:         &fieldRawCapacity,
-		UsableCacheCapacity: &fieldUsableCacheCapacity,
-		RawCacheCapacity:    &fieldRawCacheCapacity,
-		AveMbPs:             &fieldAveMbPs,
-		AveSegmentPs:        &fieldAveSegmentPs,
-		AveTtc:              &fieldAveTtc,
-		PctCompletion:       &fieldPctCompletion,
-		PauseState:          &fieldPauseState,
+		Driveset:            "driveset",
+		SwState:             "sw_state",
+		IsFlashShelf:        "is_flash_shelf",
+		IsCapacityValid:     "is_capacity_valid",
+		UsableCapacity:      "usable_capacity",
+		RawCapacity:         "raw_capacity",
+		UsableCacheCapacity: "usable_cache_capacity",
+		RawCacheCapacity:    "raw_cache_capacity",
+		AveMbPs:             "ave_mb_ps",
+		AveSegmentPs:        "ave_segment_ps",
+		AveTtc:              "ave_ttc",
+		PctCompletion:       "pct_completion",
+		PauseState:          "pause_state",
 	}
 }
 
@@ -69,17 +55,17 @@ type NsDiskSetAttr struct {
 
 // NsDiskSetAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsDiskSetAttrFieldHandles struct {
-	Driveset            *string
-	SwState             *string
-	IsFlashShelf        *string
-	IsCapacityValid     *string
-	UsableCapacity      *string
-	RawCapacity         *string
-	UsableCacheCapacity *string
-	RawCacheCapacity    *string
-	AveMbPs             *string
-	AveSegmentPs        *string
-	AveTtc              *string
-	PctCompletion       *string
-	PauseState          *string
+	Driveset            string
+	SwState             string
+	IsFlashShelf        string
+	IsCapacityValid     string
+	UsableCapacity      string
+	RawCapacity         string
+	UsableCacheCapacity string
+	RawCacheCapacity    string
+	AveMbPs             string
+	AveSegmentPs        string
+	AveTtc              string
+	PctCompletion       string
+	PauseState          string
 }

@@ -6,22 +6,14 @@ package nimbleos
 var ClientCredentialFields *ClientCredentialFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldClientId := "client_id"
-	fieldSecret := "secret"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldDescription := "description"
-
 	ClientCredentialFields = &ClientCredentialFieldHandles{
-		ID:           &fieldID,
-		Name:         &fieldName,
-		ClientId:     &fieldClientId,
-		Secret:       &fieldSecret,
-		CreationTime: &fieldCreationTime,
-		LastModified: &fieldLastModified,
-		Description:  &fieldDescription,
+		ID:           "id",
+		Name:         "name",
+		ClientId:     "client_id",
+		Secret:       "secret",
+		CreationTime: "creation_time",
+		LastModified: "last_modified",
+		Description:  "description",
 	}
 }
 
@@ -45,11 +37,11 @@ type ClientCredential struct {
 
 // ClientCredentialFieldHandles provides a string representation for each AccessControlRecord field.
 type ClientCredentialFieldHandles struct {
-	ID           *string
-	Name         *string
-	ClientId     *string
-	Secret       *string
-	CreationTime *string
-	LastModified *string
-	Description  *string
+	ID           string
+	Name         string
+	ClientId     string
+	Secret       string
+	CreationTime string
+	LastModified string
+	Description  string
 }

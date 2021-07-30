@@ -6,34 +6,20 @@ package nimbleos
 var InitiatorFields *InitiatorFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldAccessProtocol := "access_protocol"
-	fieldInitiatorGroupId := "initiator_group_id"
-	fieldInitiatorGroupName := "initiator_group_name"
-	fieldLabel := "label"
-	fieldIqn := "iqn"
-	fieldIpAddress := "ip_address"
-	fieldAlias := "alias"
-	fieldChapuserId := "chapuser_id"
-	fieldWwpn := "wwpn"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldOverrideExistingAlias := "override_existing_alias"
-
 	InitiatorFields = &InitiatorFieldHandles{
-		ID:                    &fieldID,
-		AccessProtocol:        &fieldAccessProtocol,
-		InitiatorGroupId:      &fieldInitiatorGroupId,
-		InitiatorGroupName:    &fieldInitiatorGroupName,
-		Label:                 &fieldLabel,
-		Iqn:                   &fieldIqn,
-		IpAddress:             &fieldIpAddress,
-		Alias:                 &fieldAlias,
-		ChapuserId:            &fieldChapuserId,
-		Wwpn:                  &fieldWwpn,
-		CreationTime:          &fieldCreationTime,
-		LastModified:          &fieldLastModified,
-		OverrideExistingAlias: &fieldOverrideExistingAlias,
+		ID:                    "id",
+		AccessProtocol:        "access_protocol",
+		InitiatorGroupId:      "initiator_group_id",
+		InitiatorGroupName:    "initiator_group_name",
+		Label:                 "label",
+		Iqn:                   "iqn",
+		IpAddress:             "ip_address",
+		Alias:                 "alias",
+		ChapuserId:            "chapuser_id",
+		Wwpn:                  "wwpn",
+		CreationTime:          "creation_time",
+		LastModified:          "last_modified",
+		OverrideExistingAlias: "override_existing_alias",
 	}
 }
 
@@ -69,17 +55,17 @@ type Initiator struct {
 
 // InitiatorFieldHandles provides a string representation for each AccessControlRecord field.
 type InitiatorFieldHandles struct {
-	ID                    *string
-	AccessProtocol        *string
-	InitiatorGroupId      *string
-	InitiatorGroupName    *string
-	Label                 *string
-	Iqn                   *string
-	IpAddress             *string
-	Alias                 *string
-	ChapuserId            *string
-	Wwpn                  *string
-	CreationTime          *string
-	LastModified          *string
-	OverrideExistingAlias *string
+	ID                    string
+	AccessProtocol        string
+	InitiatorGroupId      string
+	InitiatorGroupName    string
+	Label                 string
+	Iqn                   string
+	IpAddress             string
+	Alias                 string
+	ChapuserId            string
+	Wwpn                  string
+	CreationTime          string
+	LastModified          string
+	OverrideExistingAlias string
 }

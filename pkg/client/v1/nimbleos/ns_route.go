@@ -6,14 +6,10 @@ package nimbleos
 var NsRouteFields *NsRouteFieldHandles
 
 func init() {
-	fieldTgtNetwork := "tgt_network"
-	fieldTgtNetmask := "tgt_netmask"
-	fieldGateway := "gateway"
-
 	NsRouteFields = &NsRouteFieldHandles{
-		TgtNetwork: &fieldTgtNetwork,
-		TgtNetmask: &fieldTgtNetmask,
-		Gateway:    &fieldGateway,
+		TgtNetwork: "tgt_network",
+		TgtNetmask: "tgt_netmask",
+		Gateway:    "gateway",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsRoute struct {
 
 // NsRouteFieldHandles provides a string representation for each AccessControlRecord field.
 type NsRouteFieldHandles struct {
-	TgtNetwork *string
-	TgtNetmask *string
-	Gateway    *string
+	TgtNetwork string
+	TgtNetmask string
+	Gateway    string
 }

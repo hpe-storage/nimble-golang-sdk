@@ -6,12 +6,9 @@ package nimbleos
 var NsFolderCreateAttrFields *NsFolderCreateAttrFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldPoolId := "pool_id"
-
 	NsFolderCreateAttrFields = &NsFolderCreateAttrFieldHandles{
-		Name:   &fieldName,
-		PoolId: &fieldPoolId,
+		Name:   "name",
+		PoolId: "pool_id",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsFolderCreateAttr struct {
 
 // NsFolderCreateAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFolderCreateAttrFieldHandles struct {
-	Name   *string
-	PoolId *string
+	Name   string
+	PoolId string
 }

@@ -61,7 +61,7 @@ func (svc *SoftwareVersionService) UpdateSoftwareVersion(id string, obj *nimbleo
 func (svc *SoftwareVersionService) GetSoftwareVersionByName(name string) (*nimbleos.SoftwareVersion, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

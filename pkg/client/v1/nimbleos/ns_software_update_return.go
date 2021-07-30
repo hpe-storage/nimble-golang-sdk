@@ -6,12 +6,9 @@ package nimbleos
 var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturnFieldHandles
 
 func init() {
-	fieldError := "error"
-	fieldArrayResponseList := "array_response_list"
-
 	NsSoftwareUpdateReturnFields = &NsSoftwareUpdateReturnFieldHandles{
-		Error:             &fieldError,
-		ArrayResponseList: &fieldArrayResponseList,
+		Error:             "error",
+		ArrayResponseList: "array_response_list",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsSoftwareUpdateReturn struct {
 
 // NsSoftwareUpdateReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSoftwareUpdateReturnFieldHandles struct {
-	Error             *string
-	ArrayResponseList *string
+	Error             string
+	ArrayResponseList string
 }

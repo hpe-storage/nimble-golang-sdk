@@ -6,54 +6,30 @@ package nimbleos
 var ControllerFields *ControllerFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldArrayName := "array_name"
-	fieldArrayId := "array_id"
-	fieldPartialResponseOk := "partial_response_ok"
-	fieldSerial := "serial"
-	fieldModel := "model"
-	fieldHostname := "hostname"
-	fieldSupportAddress := "support_address"
-	fieldSupportNetmask := "support_netmask"
-	fieldSupportNic := "support_nic"
-	fieldPowerStatus := "power_status"
-	fieldFanStatus := "fan_status"
-	fieldTemperatureStatus := "temperature_status"
-	fieldPowerSupplies := "power_supplies"
-	fieldFans := "fans"
-	fieldTemperatureSensors := "temperature_sensors"
-	fieldPartitionStatus := "partition_status"
-	fieldCtrlrSide := "ctrlr_side"
-	fieldState := "state"
-	fieldNvmeCardsEnabled := "nvme_cards_enabled"
-	fieldNvmeCards := "nvme_cards"
-	fieldAsupTime := "asup_time"
-
 	ControllerFields = &ControllerFieldHandles{
-		ID:                 &fieldID,
-		Name:               &fieldName,
-		ArrayName:          &fieldArrayName,
-		ArrayId:            &fieldArrayId,
-		PartialResponseOk:  &fieldPartialResponseOk,
-		Serial:             &fieldSerial,
-		Model:              &fieldModel,
-		Hostname:           &fieldHostname,
-		SupportAddress:     &fieldSupportAddress,
-		SupportNetmask:     &fieldSupportNetmask,
-		SupportNic:         &fieldSupportNic,
-		PowerStatus:        &fieldPowerStatus,
-		FanStatus:          &fieldFanStatus,
-		TemperatureStatus:  &fieldTemperatureStatus,
-		PowerSupplies:      &fieldPowerSupplies,
-		Fans:               &fieldFans,
-		TemperatureSensors: &fieldTemperatureSensors,
-		PartitionStatus:    &fieldPartitionStatus,
-		CtrlrSide:          &fieldCtrlrSide,
-		State:              &fieldState,
-		NvmeCardsEnabled:   &fieldNvmeCardsEnabled,
-		NvmeCards:          &fieldNvmeCards,
-		AsupTime:           &fieldAsupTime,
+		ID:                 "id",
+		Name:               "name",
+		ArrayName:          "array_name",
+		ArrayId:            "array_id",
+		PartialResponseOk:  "partial_response_ok",
+		Serial:             "serial",
+		Model:              "model",
+		Hostname:           "hostname",
+		SupportAddress:     "support_address",
+		SupportNetmask:     "support_netmask",
+		SupportNic:         "support_nic",
+		PowerStatus:        "power_status",
+		FanStatus:          "fan_status",
+		TemperatureStatus:  "temperature_status",
+		PowerSupplies:      "power_supplies",
+		Fans:               "fans",
+		TemperatureSensors: "temperature_sensors",
+		PartitionStatus:    "partition_status",
+		CtrlrSide:          "ctrlr_side",
+		State:              "state",
+		NvmeCardsEnabled:   "nvme_cards_enabled",
+		NvmeCards:          "nvme_cards",
+		AsupTime:           "asup_time",
 	}
 }
 
@@ -109,27 +85,27 @@ type Controller struct {
 
 // ControllerFieldHandles provides a string representation for each AccessControlRecord field.
 type ControllerFieldHandles struct {
-	ID                 *string
-	Name               *string
-	ArrayName          *string
-	ArrayId            *string
-	PartialResponseOk  *string
-	Serial             *string
-	Model              *string
-	Hostname           *string
-	SupportAddress     *string
-	SupportNetmask     *string
-	SupportNic         *string
-	PowerStatus        *string
-	FanStatus          *string
-	TemperatureStatus  *string
-	PowerSupplies      *string
-	Fans               *string
-	TemperatureSensors *string
-	PartitionStatus    *string
-	CtrlrSide          *string
-	State              *string
-	NvmeCardsEnabled   *string
-	NvmeCards          *string
-	AsupTime           *string
+	ID                 string
+	Name               string
+	ArrayName          string
+	ArrayId            string
+	PartialResponseOk  string
+	Serial             string
+	Model              string
+	Hostname           string
+	SupportAddress     string
+	SupportNetmask     string
+	SupportNic         string
+	PowerStatus        string
+	FanStatus          string
+	TemperatureStatus  string
+	PowerSupplies      string
+	Fans               string
+	TemperatureSensors string
+	PartitionStatus    string
+	CtrlrSide          string
+	State              string
+	NvmeCardsEnabled   string
+	NvmeCards          string
+	AsupTime           string
 }

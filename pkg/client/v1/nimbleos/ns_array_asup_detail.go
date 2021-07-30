@@ -6,24 +6,15 @@ package nimbleos
 var NsArrayAsupDetailFields *NsArrayAsupDetailFieldHandles
 
 func init() {
-	fieldArrayName := "array_name"
-	fieldAsupValidate := "asup_validate"
-	fieldNameResolution := "name_resolution"
-	fieldPingfromMgmtip := "pingfrom_mgmtip"
-	fieldPingfromCtrlra := "pingfrom_ctrlra"
-	fieldPingfromCtrlrb := "pingfrom_ctrlrb"
-	fieldHeartbeat := "heartbeat"
-	fieldMessages := "messages"
-
 	NsArrayAsupDetailFields = &NsArrayAsupDetailFieldHandles{
-		ArrayName:      &fieldArrayName,
-		AsupValidate:   &fieldAsupValidate,
-		NameResolution: &fieldNameResolution,
-		PingfromMgmtip: &fieldPingfromMgmtip,
-		PingfromCtrlra: &fieldPingfromCtrlra,
-		PingfromCtrlrb: &fieldPingfromCtrlrb,
-		Heartbeat:      &fieldHeartbeat,
-		Messages:       &fieldMessages,
+		ArrayName:      "array_name",
+		AsupValidate:   "asup_validate",
+		NameResolution: "name_resolution",
+		PingfromMgmtip: "pingfrom_mgmtip",
+		PingfromCtrlra: "pingfrom_ctrlra",
+		PingfromCtrlrb: "pingfrom_ctrlrb",
+		Heartbeat:      "heartbeat",
+		Messages:       "messages",
 	}
 }
 
@@ -49,12 +40,12 @@ type NsArrayAsupDetail struct {
 
 // NsArrayAsupDetailFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayAsupDetailFieldHandles struct {
-	ArrayName      *string
-	AsupValidate   *string
-	NameResolution *string
-	PingfromMgmtip *string
-	PingfromCtrlra *string
-	PingfromCtrlrb *string
-	Heartbeat      *string
-	Messages       *string
+	ArrayName      string
+	AsupValidate   string
+	NameResolution string
+	PingfromMgmtip string
+	PingfromCtrlra string
+	PingfromCtrlrb string
+	Heartbeat      string
+	Messages       string
 }

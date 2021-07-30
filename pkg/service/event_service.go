@@ -74,7 +74,7 @@ func (svc *EventService) GetEventById(id string) (*nimbleos.Event, error) {
 func (svc *EventService) GetEventByName(name string) (*nimbleos.Event, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

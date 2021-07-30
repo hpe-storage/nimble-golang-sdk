@@ -6,10 +6,8 @@ package nimbleos
 var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateErrorFieldHandles
 
 func init() {
-	fieldError := "error"
-
 	NsArraySoftwareUpdateErrorFields = &NsArraySoftwareUpdateErrorFieldHandles{
-		Error: &fieldError,
+		Error: "error",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsArraySoftwareUpdateError struct {
 
 // NsArraySoftwareUpdateErrorFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArraySoftwareUpdateErrorFieldHandles struct {
-	Error *string
+	Error string
 }

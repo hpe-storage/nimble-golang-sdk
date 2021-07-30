@@ -6,14 +6,10 @@ package nimbleos
 var NsSnapSummaryFields *NsSnapSummaryFieldHandles
 
 func init() {
-	fieldSnapId := "snap_id"
-	fieldSnapName := "snap_name"
-	fieldSnapCreationTime := "snap_creation_time"
-
 	NsSnapSummaryFields = &NsSnapSummaryFieldHandles{
-		SnapId:           &fieldSnapId,
-		SnapName:         &fieldSnapName,
-		SnapCreationTime: &fieldSnapCreationTime,
+		SnapId:           "snap_id",
+		SnapName:         "snap_name",
+		SnapCreationTime: "snap_creation_time",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsSnapSummary struct {
 
 // NsSnapSummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapSummaryFieldHandles struct {
-	SnapId           *string
-	SnapName         *string
-	SnapCreationTime *string
+	SnapId           string
+	SnapName         string
+	SnapCreationTime string
 }

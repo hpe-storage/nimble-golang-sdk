@@ -6,16 +6,11 @@ package nimbleos
 var FibreChannelInitiatorAliasFields *FibreChannelInitiatorAliasFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldAlias := "alias"
-	fieldWwpn := "wwpn"
-	fieldSource := "source"
-
 	FibreChannelInitiatorAliasFields = &FibreChannelInitiatorAliasFieldHandles{
-		ID:     &fieldID,
-		Alias:  &fieldAlias,
-		Wwpn:   &fieldWwpn,
-		Source: &fieldSource,
+		ID:     "id",
+		Alias:  "alias",
+		Wwpn:   "wwpn",
+		Source: "source",
 	}
 }
 
@@ -33,8 +28,8 @@ type FibreChannelInitiatorAlias struct {
 
 // FibreChannelInitiatorAliasFieldHandles provides a string representation for each AccessControlRecord field.
 type FibreChannelInitiatorAliasFieldHandles struct {
-	ID     *string
-	Alias  *string
-	Wwpn   *string
-	Source *string
+	ID     string
+	Alias  string
+	Wwpn   string
+	Source string
 }

@@ -6,12 +6,9 @@ package nimbleos
 var NsVssRespFields *NsVssRespFieldHandles
 
 func init() {
-	fieldVssError := "vss_error"
-	fieldVssErrorMessage := "vss_error_message"
-
 	NsVssRespFields = &NsVssRespFieldHandles{
-		VssError:        &fieldVssError,
-		VssErrorMessage: &fieldVssErrorMessage,
+		VssError:        "vss_error",
+		VssErrorMessage: "vss_error_message",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsVssResp struct {
 
 // NsVssRespFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVssRespFieldHandles struct {
-	VssError        *string
-	VssErrorMessage *string
+	VssError        string
+	VssErrorMessage string
 }

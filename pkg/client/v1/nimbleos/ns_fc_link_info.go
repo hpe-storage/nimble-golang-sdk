@@ -6,16 +6,11 @@ package nimbleos
 var NsFcLinkInfoFields *NsFcLinkInfoFieldHandles
 
 func init() {
-	fieldLinkSpeed := "link_speed"
-	fieldMaxLinkSpeed := "max_link_speed"
-	fieldLinkStatus := "link_status"
-	fieldOperationalStatus := "operational_status"
-
 	NsFcLinkInfoFields = &NsFcLinkInfoFieldHandles{
-		LinkSpeed:         &fieldLinkSpeed,
-		MaxLinkSpeed:      &fieldMaxLinkSpeed,
-		LinkStatus:        &fieldLinkStatus,
-		OperationalStatus: &fieldOperationalStatus,
+		LinkSpeed:         "link_speed",
+		MaxLinkSpeed:      "max_link_speed",
+		LinkStatus:        "link_status",
+		OperationalStatus: "operational_status",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsFcLinkInfo struct {
 
 // NsFcLinkInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcLinkInfoFieldHandles struct {
-	LinkSpeed         *string
-	MaxLinkSpeed      *string
-	LinkStatus        *string
-	OperationalStatus *string
+	LinkSpeed         string
+	MaxLinkSpeed      string
+	LinkStatus        string
+	OperationalStatus string
 }

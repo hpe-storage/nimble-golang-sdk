@@ -6,86 +6,46 @@ package nimbleos
 var SnapshotCollectionFields *SnapshotCollectionFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldVolcollName := "volcoll_name"
-	fieldVolcollId := "volcoll_id"
-	fieldOriginName := "origin_name"
-	fieldIsReplica := "is_replica"
-	fieldSrepOwnerName := "srep_owner_name"
-	fieldSrepOwnerId := "srep_owner_id"
-	fieldPeerSnapcollId := "peer_snapcoll_id"
-	fieldNumSnaps := "num_snaps"
-	fieldIsComplete := "is_complete"
-	fieldIsManual := "is_manual"
-	fieldIsExternalTrigger := "is_external_trigger"
-	fieldIsUnmanaged := "is_unmanaged"
-	fieldIsManuallyManaged := "is_manually_managed"
-	fieldReplStatus := "repl_status"
-	fieldReplStartTime := "repl_start_time"
-	fieldReplCompleteTime := "repl_complete_time"
-	fieldReplBytesTransferred := "repl_bytes_transferred"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldOnlineStatus := "online_status"
-	fieldVolSnapAttrList := "vol_snap_attr_list"
-	fieldSnapshotsList := "snapshots_list"
-	fieldReplicate := "replicate"
-	fieldReplicateTo := "replicate_to"
-	fieldStartOnline := "start_online"
-	fieldAllowWrites := "allow_writes"
-	fieldDisableAppsync := "disable_appsync"
-	fieldSnapVerify := "snap_verify"
-	fieldSkipDbConsistencyCheck := "skip_db_consistency_check"
-	fieldSchedId := "sched_id"
-	fieldSchedName := "sched_name"
-	fieldInvokeOnUpstreamPartner := "invoke_on_upstream_partner"
-	fieldAgentType := "agent_type"
-	fieldExpiryAfter := "expiry_after"
-	fieldMetadata := "metadata"
-	fieldForce := "force"
-
 	SnapshotCollectionFields = &SnapshotCollectionFieldHandles{
-		ID:                      &fieldID,
-		Name:                    &fieldName,
-		Description:             &fieldDescription,
-		VolcollName:             &fieldVolcollName,
-		VolcollId:               &fieldVolcollId,
-		OriginName:              &fieldOriginName,
-		IsReplica:               &fieldIsReplica,
-		SrepOwnerName:           &fieldSrepOwnerName,
-		SrepOwnerId:             &fieldSrepOwnerId,
-		PeerSnapcollId:          &fieldPeerSnapcollId,
-		NumSnaps:                &fieldNumSnaps,
-		IsComplete:              &fieldIsComplete,
-		IsManual:                &fieldIsManual,
-		IsExternalTrigger:       &fieldIsExternalTrigger,
-		IsUnmanaged:             &fieldIsUnmanaged,
-		IsManuallyManaged:       &fieldIsManuallyManaged,
-		ReplStatus:              &fieldReplStatus,
-		ReplStartTime:           &fieldReplStartTime,
-		ReplCompleteTime:        &fieldReplCompleteTime,
-		ReplBytesTransferred:    &fieldReplBytesTransferred,
-		CreationTime:            &fieldCreationTime,
-		LastModified:            &fieldLastModified,
-		OnlineStatus:            &fieldOnlineStatus,
-		VolSnapAttrList:         &fieldVolSnapAttrList,
-		SnapshotsList:           &fieldSnapshotsList,
-		Replicate:               &fieldReplicate,
-		ReplicateTo:             &fieldReplicateTo,
-		StartOnline:             &fieldStartOnline,
-		AllowWrites:             &fieldAllowWrites,
-		DisableAppsync:          &fieldDisableAppsync,
-		SnapVerify:              &fieldSnapVerify,
-		SkipDbConsistencyCheck:  &fieldSkipDbConsistencyCheck,
-		SchedId:                 &fieldSchedId,
-		SchedName:               &fieldSchedName,
-		InvokeOnUpstreamPartner: &fieldInvokeOnUpstreamPartner,
-		AgentType:               &fieldAgentType,
-		ExpiryAfter:             &fieldExpiryAfter,
-		Metadata:                &fieldMetadata,
-		Force:                   &fieldForce,
+		ID:                      "id",
+		Name:                    "name",
+		Description:             "description",
+		VolcollName:             "volcoll_name",
+		VolcollId:               "volcoll_id",
+		OriginName:              "origin_name",
+		IsReplica:               "is_replica",
+		SrepOwnerName:           "srep_owner_name",
+		SrepOwnerId:             "srep_owner_id",
+		PeerSnapcollId:          "peer_snapcoll_id",
+		NumSnaps:                "num_snaps",
+		IsComplete:              "is_complete",
+		IsManual:                "is_manual",
+		IsExternalTrigger:       "is_external_trigger",
+		IsUnmanaged:             "is_unmanaged",
+		IsManuallyManaged:       "is_manually_managed",
+		ReplStatus:              "repl_status",
+		ReplStartTime:           "repl_start_time",
+		ReplCompleteTime:        "repl_complete_time",
+		ReplBytesTransferred:    "repl_bytes_transferred",
+		CreationTime:            "creation_time",
+		LastModified:            "last_modified",
+		OnlineStatus:            "online_status",
+		VolSnapAttrList:         "vol_snap_attr_list",
+		SnapshotsList:           "snapshots_list",
+		Replicate:               "replicate",
+		ReplicateTo:             "replicate_to",
+		StartOnline:             "start_online",
+		AllowWrites:             "allow_writes",
+		DisableAppsync:          "disable_appsync",
+		SnapVerify:              "snap_verify",
+		SkipDbConsistencyCheck:  "skip_db_consistency_check",
+		SchedId:                 "sched_id",
+		SchedName:               "sched_name",
+		InvokeOnUpstreamPartner: "invoke_on_upstream_partner",
+		AgentType:               "agent_type",
+		ExpiryAfter:             "expiry_after",
+		Metadata:                "metadata",
+		Force:                   "force",
 	}
 }
 
@@ -173,43 +133,43 @@ type SnapshotCollection struct {
 
 // SnapshotCollectionFieldHandles provides a string representation for each AccessControlRecord field.
 type SnapshotCollectionFieldHandles struct {
-	ID                      *string
-	Name                    *string
-	Description             *string
-	VolcollName             *string
-	VolcollId               *string
-	OriginName              *string
-	IsReplica               *string
-	SrepOwnerName           *string
-	SrepOwnerId             *string
-	PeerSnapcollId          *string
-	NumSnaps                *string
-	IsComplete              *string
-	IsManual                *string
-	IsExternalTrigger       *string
-	IsUnmanaged             *string
-	IsManuallyManaged       *string
-	ReplStatus              *string
-	ReplStartTime           *string
-	ReplCompleteTime        *string
-	ReplBytesTransferred    *string
-	CreationTime            *string
-	LastModified            *string
-	OnlineStatus            *string
-	VolSnapAttrList         *string
-	SnapshotsList           *string
-	Replicate               *string
-	ReplicateTo             *string
-	StartOnline             *string
-	AllowWrites             *string
-	DisableAppsync          *string
-	SnapVerify              *string
-	SkipDbConsistencyCheck  *string
-	SchedId                 *string
-	SchedName               *string
-	InvokeOnUpstreamPartner *string
-	AgentType               *string
-	ExpiryAfter             *string
-	Metadata                *string
-	Force                   *string
+	ID                      string
+	Name                    string
+	Description             string
+	VolcollName             string
+	VolcollId               string
+	OriginName              string
+	IsReplica               string
+	SrepOwnerName           string
+	SrepOwnerId             string
+	PeerSnapcollId          string
+	NumSnaps                string
+	IsComplete              string
+	IsManual                string
+	IsExternalTrigger       string
+	IsUnmanaged             string
+	IsManuallyManaged       string
+	ReplStatus              string
+	ReplStartTime           string
+	ReplCompleteTime        string
+	ReplBytesTransferred    string
+	CreationTime            string
+	LastModified            string
+	OnlineStatus            string
+	VolSnapAttrList         string
+	SnapshotsList           string
+	Replicate               string
+	ReplicateTo             string
+	StartOnline             string
+	AllowWrites             string
+	DisableAppsync          string
+	SnapVerify              string
+	SkipDbConsistencyCheck  string
+	SchedId                 string
+	SchedName               string
+	InvokeOnUpstreamPartner string
+	AgentType               string
+	ExpiryAfter             string
+	Metadata                string
+	Force                   string
 }

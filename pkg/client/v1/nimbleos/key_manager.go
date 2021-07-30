@@ -6,30 +6,18 @@ package nimbleos
 var KeyManagerFields *KeyManagerFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldHostname := "hostname"
-	fieldPort := "port"
-	fieldProtocol := "protocol"
-	fieldUsername := "username"
-	fieldPassword := "password"
-	fieldActive := "active"
-	fieldStatus := "status"
-	fieldVendor := "vendor"
-
 	KeyManagerFields = &KeyManagerFieldHandles{
-		ID:          &fieldID,
-		Name:        &fieldName,
-		Description: &fieldDescription,
-		Hostname:    &fieldHostname,
-		Port:        &fieldPort,
-		Protocol:    &fieldProtocol,
-		Username:    &fieldUsername,
-		Password:    &fieldPassword,
-		Active:      &fieldActive,
-		Status:      &fieldStatus,
-		Vendor:      &fieldVendor,
+		ID:          "id",
+		Name:        "name",
+		Description: "description",
+		Hostname:    "hostname",
+		Port:        "port",
+		Protocol:    "protocol",
+		Username:    "username",
+		Password:    "password",
+		Active:      "active",
+		Status:      "status",
+		Vendor:      "vendor",
 	}
 }
 
@@ -61,15 +49,15 @@ type KeyManager struct {
 
 // KeyManagerFieldHandles provides a string representation for each AccessControlRecord field.
 type KeyManagerFieldHandles struct {
-	ID          *string
-	Name        *string
-	Description *string
-	Hostname    *string
-	Port        *string
-	Protocol    *string
-	Username    *string
-	Password    *string
-	Active      *string
-	Status      *string
-	Vendor      *string
+	ID          string
+	Name        string
+	Description string
+	Hostname    string
+	Port        string
+	Protocol    string
+	Username    string
+	Password    string
+	Active      string
+	Status      string
+	Vendor      string
 }

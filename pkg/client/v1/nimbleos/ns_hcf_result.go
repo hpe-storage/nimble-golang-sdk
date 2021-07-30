@@ -6,14 +6,10 @@ package nimbleos
 var NsHcfResultFields *NsHcfResultFieldHandles
 
 func init() {
-	fieldElementName := "element_name"
-	fieldErrorList := "error_list"
-	fieldMessages := "messages"
-
 	NsHcfResultFields = &NsHcfResultFieldHandles{
-		ElementName: &fieldElementName,
-		ErrorList:   &fieldErrorList,
-		Messages:    &fieldMessages,
+		ElementName: "element_name",
+		ErrorList:   "error_list",
+		Messages:    "messages",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsHcfResult struct {
 
 // NsHcfResultFieldHandles provides a string representation for each AccessControlRecord field.
 type NsHcfResultFieldHandles struct {
-	ElementName *string
-	ErrorList   *string
-	Messages    *string
+	ElementName string
+	ErrorList   string
+	Messages    string
 }

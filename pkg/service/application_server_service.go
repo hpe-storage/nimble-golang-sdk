@@ -74,7 +74,7 @@ func (svc *ApplicationServerService) GetApplicationServerById(id string) (*nimbl
 func (svc *ApplicationServerService) GetApplicationServerByName(name string) (*nimbleos.ApplicationServer, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

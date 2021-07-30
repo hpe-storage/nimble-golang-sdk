@@ -6,40 +6,23 @@ package nimbleos
 var NetworkConfigFields *NetworkConfigFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldMgmtIp := "mgmt_ip"
-	fieldSecondaryMgmtIp := "secondary_mgmt_ip"
-	fieldRole := "role"
-	fieldIscsiAutomaticConnectionMethod := "iscsi_automatic_connection_method"
-	fieldIscsiConnectionRebalancing := "iscsi_connection_rebalancing"
-	fieldRouteList := "route_list"
-	fieldSubnetList := "subnet_list"
-	fieldArrayList := "array_list"
-	fieldGroupLeaderArray := "group_leader_array"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldActiveSince := "active_since"
-	fieldLastActive := "last_active"
-	fieldIgnoreValidationMask := "ignore_validation_mask"
-
 	NetworkConfigFields = &NetworkConfigFieldHandles{
-		ID:                             &fieldID,
-		Name:                           &fieldName,
-		MgmtIp:                         &fieldMgmtIp,
-		SecondaryMgmtIp:                &fieldSecondaryMgmtIp,
-		Role:                           &fieldRole,
-		IscsiAutomaticConnectionMethod: &fieldIscsiAutomaticConnectionMethod,
-		IscsiConnectionRebalancing:     &fieldIscsiConnectionRebalancing,
-		RouteList:                      &fieldRouteList,
-		SubnetList:                     &fieldSubnetList,
-		ArrayList:                      &fieldArrayList,
-		GroupLeaderArray:               &fieldGroupLeaderArray,
-		CreationTime:                   &fieldCreationTime,
-		LastModified:                   &fieldLastModified,
-		ActiveSince:                    &fieldActiveSince,
-		LastActive:                     &fieldLastActive,
-		IgnoreValidationMask:           &fieldIgnoreValidationMask,
+		ID:                             "id",
+		Name:                           "name",
+		MgmtIp:                         "mgmt_ip",
+		SecondaryMgmtIp:                "secondary_mgmt_ip",
+		Role:                           "role",
+		IscsiAutomaticConnectionMethod: "iscsi_automatic_connection_method",
+		IscsiConnectionRebalancing:     "iscsi_connection_rebalancing",
+		RouteList:                      "route_list",
+		SubnetList:                     "subnet_list",
+		ArrayList:                      "array_list",
+		GroupLeaderArray:               "group_leader_array",
+		CreationTime:                   "creation_time",
+		LastModified:                   "last_modified",
+		ActiveSince:                    "active_since",
+		LastActive:                     "last_active",
+		IgnoreValidationMask:           "ignore_validation_mask",
 	}
 }
 
@@ -81,20 +64,20 @@ type NetworkConfig struct {
 
 // NetworkConfigFieldHandles provides a string representation for each AccessControlRecord field.
 type NetworkConfigFieldHandles struct {
-	ID                             *string
-	Name                           *string
-	MgmtIp                         *string
-	SecondaryMgmtIp                *string
-	Role                           *string
-	IscsiAutomaticConnectionMethod *string
-	IscsiConnectionRebalancing     *string
-	RouteList                      *string
-	SubnetList                     *string
-	ArrayList                      *string
-	GroupLeaderArray               *string
-	CreationTime                   *string
-	LastModified                   *string
-	ActiveSince                    *string
-	LastActive                     *string
-	IgnoreValidationMask           *string
+	ID                             string
+	Name                           string
+	MgmtIp                         string
+	SecondaryMgmtIp                string
+	Role                           string
+	IscsiAutomaticConnectionMethod string
+	IscsiConnectionRebalancing     string
+	RouteList                      string
+	SubnetList                     string
+	ArrayList                      string
+	GroupLeaderArray               string
+	CreationTime                   string
+	LastModified                   string
+	ActiveSince                    string
+	LastActive                     string
+	IgnoreValidationMask           string
 }

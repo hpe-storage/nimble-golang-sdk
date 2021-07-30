@@ -6,14 +6,10 @@ package nimbleos
 var NsRequestFields *NsRequestFieldHandles
 
 func init() {
-	fieldData := "data"
-	fieldMethod := "method"
-	fieldPath := "path"
-
 	NsRequestFields = &NsRequestFieldHandles{
-		Data:   &fieldData,
-		Method: &fieldMethod,
-		Path:   &fieldPath,
+		Data:   "data",
+		Method: "method",
+		Path:   "path",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsRequest struct {
 
 // NsRequestFieldHandles provides a string representation for each AccessControlRecord field.
 type NsRequestFieldHandles struct {
-	Data   *string
-	Method *string
-	Path   *string
+	Data   string
+	Method string
+	Path   string
 }

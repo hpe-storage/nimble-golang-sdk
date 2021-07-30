@@ -6,44 +6,25 @@ package nimbleos
 var CertificateFields *CertificateFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldSubject := "subject"
-	fieldDnslist := "dnslist"
-	fieldIplist := "iplist"
-	fieldCertList := "cert_list"
-	fieldCsr := "csr"
-	fieldValidDays := "valid_days"
-	fieldInput := "input"
-	fieldPassword := "password"
-	fieldHttps := "https"
-	fieldApis := "apis"
-	fieldForce := "force"
-	fieldCheck := "check"
-	fieldPkcs12 := "pkcs12"
-	fieldTrusted := "trusted"
-	fieldReloadHttps := "reload_https"
-	fieldReloadApis := "reload_apis"
-
 	CertificateFields = &CertificateFieldHandles{
-		ID:          &fieldID,
-		Name:        &fieldName,
-		Subject:     &fieldSubject,
-		Dnslist:     &fieldDnslist,
-		Iplist:      &fieldIplist,
-		CertList:    &fieldCertList,
-		Csr:         &fieldCsr,
-		ValidDays:   &fieldValidDays,
-		Input:       &fieldInput,
-		Password:    &fieldPassword,
-		Https:       &fieldHttps,
-		Apis:        &fieldApis,
-		Force:       &fieldForce,
-		Check:       &fieldCheck,
-		Pkcs12:      &fieldPkcs12,
-		Trusted:     &fieldTrusted,
-		ReloadHttps: &fieldReloadHttps,
-		ReloadApis:  &fieldReloadApis,
+		ID:          "id",
+		Name:        "name",
+		Subject:     "subject",
+		Dnslist:     "dnslist",
+		Iplist:      "iplist",
+		CertList:    "cert_list",
+		Csr:         "csr",
+		ValidDays:   "valid_days",
+		Input:       "input",
+		Password:    "password",
+		Https:       "https",
+		Apis:        "apis",
+		Force:       "force",
+		Check:       "check",
+		Pkcs12:      "pkcs12",
+		Trusted:     "trusted",
+		ReloadHttps: "reload_https",
+		ReloadApis:  "reload_apis",
 	}
 }
 
@@ -89,22 +70,22 @@ type Certificate struct {
 
 // CertificateFieldHandles provides a string representation for each AccessControlRecord field.
 type CertificateFieldHandles struct {
-	ID          *string
-	Name        *string
-	Subject     *string
-	Dnslist     *string
-	Iplist      *string
-	CertList    *string
-	Csr         *string
-	ValidDays   *string
-	Input       *string
-	Password    *string
-	Https       *string
-	Apis        *string
-	Force       *string
-	Check       *string
-	Pkcs12      *string
-	Trusted     *string
-	ReloadHttps *string
-	ReloadApis  *string
+	ID          string
+	Name        string
+	Subject     string
+	Dnslist     string
+	Iplist      string
+	CertList    string
+	Csr         string
+	ValidDays   string
+	Input       string
+	Password    string
+	Https       string
+	Apis        string
+	Force       string
+	Check       string
+	Pkcs12      string
+	Trusted     string
+	ReloadHttps string
+	ReloadApis  string
 }

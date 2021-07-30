@@ -6,22 +6,14 @@ package nimbleos
 var NsShelfSensorFields *NsShelfSensorFieldHandles
 
 func init() {
-	fieldType := "type"
-	fieldName := "name"
-	fieldDisplayName := "display_name"
-	fieldLocation := "location"
-	fieldCid := "cid"
-	fieldValue := "value"
-	fieldStatus := "status"
-
 	NsShelfSensorFields = &NsShelfSensorFieldHandles{
-		Type:        &fieldType,
-		Name:        &fieldName,
-		DisplayName: &fieldDisplayName,
-		Location:    &fieldLocation,
-		Cid:         &fieldCid,
-		Value:       &fieldValue,
-		Status:      &fieldStatus,
+		Type:        "type",
+		Name:        "name",
+		DisplayName: "display_name",
+		Location:    "location",
+		Cid:         "cid",
+		Value:       "value",
+		Status:      "status",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsShelfSensor struct {
 
 // NsShelfSensorFieldHandles provides a string representation for each AccessControlRecord field.
 type NsShelfSensorFieldHandles struct {
-	Type        *string
-	Name        *string
-	DisplayName *string
-	Location    *string
-	Cid         *string
-	Value       *string
-	Status      *string
+	Type        string
+	Name        string
+	DisplayName string
+	Location    string
+	Cid         string
+	Value       string
+	Status      string
 }

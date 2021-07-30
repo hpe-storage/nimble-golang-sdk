@@ -6,12 +6,9 @@ package nimbleos
 var NsVolAndSnapNameFields *NsVolAndSnapNameFieldHandles
 
 func init() {
-	fieldVolName := "vol_name"
-	fieldSnapName := "snap_name"
-
 	NsVolAndSnapNameFields = &NsVolAndSnapNameFieldHandles{
-		VolName:  &fieldVolName,
-		SnapName: &fieldSnapName,
+		VolName:  "vol_name",
+		SnapName: "snap_name",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsVolAndSnapName struct {
 
 // NsVolAndSnapNameFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolAndSnapNameFieldHandles struct {
-	VolName  *string
-	SnapName *string
+	VolName  string
+	SnapName string
 }

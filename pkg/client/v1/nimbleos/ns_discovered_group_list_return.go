@@ -6,10 +6,8 @@ package nimbleos
 var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturnFieldHandles
 
 func init() {
-	fieldDiscoveredGroupList := "discovered_group_list"
-
 	NsDiscoveredGroupListReturnFields = &NsDiscoveredGroupListReturnFieldHandles{
-		DiscoveredGroupList: &fieldDiscoveredGroupList,
+		DiscoveredGroupList: "discovered_group_list",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsDiscoveredGroupListReturn struct {
 
 // NsDiscoveredGroupListReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsDiscoveredGroupListReturnFieldHandles struct {
-	DiscoveredGroupList *string
+	DiscoveredGroupList string
 }

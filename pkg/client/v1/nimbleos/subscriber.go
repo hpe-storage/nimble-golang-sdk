@@ -6,22 +6,14 @@ package nimbleos
 var SubscriberFields *SubscriberFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldType := "type"
-	fieldRenewInterval := "renew_interval"
-	fieldRenewResponseTimeout := "renew_response_timeout"
-	fieldIsConnected := "is_connected"
-	fieldNotificationCount := "notification_count"
-	fieldForce := "force"
-
 	SubscriberFields = &SubscriberFieldHandles{
-		ID:                   &fieldID,
-		Type:                 &fieldType,
-		RenewInterval:        &fieldRenewInterval,
-		RenewResponseTimeout: &fieldRenewResponseTimeout,
-		IsConnected:          &fieldIsConnected,
-		NotificationCount:    &fieldNotificationCount,
-		Force:                &fieldForce,
+		ID:                   "id",
+		Type:                 "type",
+		RenewInterval:        "renew_interval",
+		RenewResponseTimeout: "renew_response_timeout",
+		IsConnected:          "is_connected",
+		NotificationCount:    "notification_count",
+		Force:                "force",
 	}
 }
 
@@ -45,11 +37,11 @@ type Subscriber struct {
 
 // SubscriberFieldHandles provides a string representation for each AccessControlRecord field.
 type SubscriberFieldHandles struct {
-	ID                   *string
-	Type                 *string
-	RenewInterval        *string
-	RenewResponseTimeout *string
-	IsConnected          *string
-	NotificationCount    *string
-	Force                *string
+	ID                   string
+	Type                 string
+	RenewInterval        string
+	RenewResponseTimeout string
+	IsConnected          string
+	NotificationCount    string
+	Force                string
 }

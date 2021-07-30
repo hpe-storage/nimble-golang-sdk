@@ -6,12 +6,9 @@ package nimbleos
 var NsSupportPasswordObjectFields *NsSupportPasswordObjectFieldHandles
 
 func init() {
-	fieldUsername := "username"
-	fieldBlob := "blob"
-
 	NsSupportPasswordObjectFields = &NsSupportPasswordObjectFieldHandles{
-		Username: &fieldUsername,
-		Blob:     &fieldBlob,
+		Username: "username",
+		Blob:     "blob",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsSupportPasswordObject struct {
 
 // NsSupportPasswordObjectFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSupportPasswordObjectFieldHandles struct {
-	Username *string
-	Blob     *string
+	Username string
+	Blob     string
 }

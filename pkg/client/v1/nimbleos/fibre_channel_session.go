@@ -6,14 +6,10 @@ package nimbleos
 var FibreChannelSessionFields *FibreChannelSessionFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldInitiatorInfo := "initiator_info"
-	fieldTargetInfo := "target_info"
-
 	FibreChannelSessionFields = &FibreChannelSessionFieldHandles{
-		ID:            &fieldID,
-		InitiatorInfo: &fieldInitiatorInfo,
-		TargetInfo:    &fieldTargetInfo,
+		ID:            "id",
+		InitiatorInfo: "initiator_info",
+		TargetInfo:    "target_info",
 	}
 }
 
@@ -29,7 +25,7 @@ type FibreChannelSession struct {
 
 // FibreChannelSessionFieldHandles provides a string representation for each AccessControlRecord field.
 type FibreChannelSessionFieldHandles struct {
-	ID            *string
-	InitiatorInfo *string
-	TargetInfo    *string
+	ID            string
+	InitiatorInfo string
+	TargetInfo    string
 }

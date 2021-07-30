@@ -6,14 +6,10 @@ package nimbleos
 var NsSyncReplVolStatusFields *NsSyncReplVolStatusFieldHandles
 
 func init() {
-	fieldResyncActive := "resync_active"
-	fieldResyncBytesDone := "resync_bytes_done"
-	fieldResyncBytesTotal := "resync_bytes_total"
-
 	NsSyncReplVolStatusFields = &NsSyncReplVolStatusFieldHandles{
-		ResyncActive:     &fieldResyncActive,
-		ResyncBytesDone:  &fieldResyncBytesDone,
-		ResyncBytesTotal: &fieldResyncBytesTotal,
+		ResyncActive:     "resync_active",
+		ResyncBytesDone:  "resync_bytes_done",
+		ResyncBytesTotal: "resync_bytes_total",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsSyncReplVolStatus struct {
 
 // NsSyncReplVolStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSyncReplVolStatusFieldHandles struct {
-	ResyncActive     *string
-	ResyncBytesDone  *string
-	ResyncBytesTotal *string
+	ResyncActive     string
+	ResyncBytesDone  string
+	ResyncBytesTotal string
 }

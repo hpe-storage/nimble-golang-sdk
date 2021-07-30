@@ -6,30 +6,18 @@ package nimbleos
 var ApplicationServerFields *ApplicationServerFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldHostname := "hostname"
-	fieldPort := "port"
-	fieldUsername := "username"
-	fieldDescription := "description"
-	fieldPassword := "password"
-	fieldServerType := "server_type"
-	fieldMetadata := "metadata"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-
 	ApplicationServerFields = &ApplicationServerFieldHandles{
-		ID:           &fieldID,
-		Name:         &fieldName,
-		Hostname:     &fieldHostname,
-		Port:         &fieldPort,
-		Username:     &fieldUsername,
-		Description:  &fieldDescription,
-		Password:     &fieldPassword,
-		ServerType:   &fieldServerType,
-		Metadata:     &fieldMetadata,
-		CreationTime: &fieldCreationTime,
-		LastModified: &fieldLastModified,
+		ID:           "id",
+		Name:         "name",
+		Hostname:     "hostname",
+		Port:         "port",
+		Username:     "username",
+		Description:  "description",
+		Password:     "password",
+		ServerType:   "server_type",
+		Metadata:     "metadata",
+		CreationTime: "creation_time",
+		LastModified: "last_modified",
 	}
 }
 
@@ -61,15 +49,15 @@ type ApplicationServer struct {
 
 // ApplicationServerFieldHandles provides a string representation for each AccessControlRecord field.
 type ApplicationServerFieldHandles struct {
-	ID           *string
-	Name         *string
-	Hostname     *string
-	Port         *string
-	Username     *string
-	Description  *string
-	Password     *string
-	ServerType   *string
-	Metadata     *string
-	CreationTime *string
-	LastModified *string
+	ID           string
+	Name         string
+	Hostname     string
+	Port         string
+	Username     string
+	Description  string
+	Password     string
+	ServerType   string
+	Metadata     string
+	CreationTime string
+	LastModified string
 }

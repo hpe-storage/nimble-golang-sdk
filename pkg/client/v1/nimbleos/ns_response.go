@@ -6,12 +6,9 @@ package nimbleos
 var NsResponseFields *NsResponseFieldHandles
 
 func init() {
-	fieldData := "data"
-	fieldMessages := "messages"
-
 	NsResponseFields = &NsResponseFieldHandles{
-		Data:     &fieldData,
-		Messages: &fieldMessages,
+		Data:     "data",
+		Messages: "messages",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsResponse struct {
 
 // NsResponseFieldHandles provides a string representation for each AccessControlRecord field.
 type NsResponseFieldHandles struct {
-	Data     *string
-	Messages *string
+	Data     string
+	Messages string
 }

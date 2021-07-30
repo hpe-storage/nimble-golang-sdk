@@ -6,30 +6,18 @@ package nimbleos
 var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollectionsFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldSnapcollId := "snapcoll_id"
-	fieldName := "name"
-	fieldSnapcollName := "snapcoll_name"
-	fieldVolId := "vol_id"
-	fieldVolName := "vol_name"
-	fieldSnapId := "snap_id"
-	fieldSnapName := "snap_name"
-	fieldScheduleId := "schedule_id"
-	fieldScheduleName := "schedule_name"
-	fieldExpiryTime := "expiry_time"
-
 	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollectionsFieldHandles{
-		ID:           &fieldID,
-		SnapcollId:   &fieldSnapcollId,
-		Name:         &fieldName,
-		SnapcollName: &fieldSnapcollName,
-		VolId:        &fieldVolId,
-		VolName:      &fieldVolName,
-		SnapId:       &fieldSnapId,
-		SnapName:     &fieldSnapName,
-		ScheduleId:   &fieldScheduleId,
-		ScheduleName: &fieldScheduleName,
-		ExpiryTime:   &fieldExpiryTime,
+		ID:           "id",
+		SnapcollId:   "snapcoll_id",
+		Name:         "name",
+		SnapcollName: "snapcoll_name",
+		VolId:        "vol_id",
+		VolName:      "vol_name",
+		SnapId:       "snap_id",
+		SnapName:     "snap_name",
+		ScheduleId:   "schedule_id",
+		ScheduleName: "schedule_name",
+		ExpiryTime:   "expiry_time",
 	}
 }
 
@@ -61,15 +49,15 @@ type NsSnapshotFromSnapshotCollections struct {
 
 // NsSnapshotFromSnapshotCollectionsFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapshotFromSnapshotCollectionsFieldHandles struct {
-	ID           *string
-	SnapcollId   *string
-	Name         *string
-	SnapcollName *string
-	VolId        *string
-	VolName      *string
-	SnapId       *string
-	SnapName     *string
-	ScheduleId   *string
-	ScheduleName *string
-	ExpiryTime   *string
+	ID           string
+	SnapcollId   string
+	Name         string
+	SnapcollName string
+	VolId        string
+	VolName      string
+	SnapId       string
+	SnapName     string
+	ScheduleId   string
+	ScheduleName string
+	ExpiryTime   string
 }

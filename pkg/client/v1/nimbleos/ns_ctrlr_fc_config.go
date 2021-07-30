@@ -6,12 +6,9 @@ package nimbleos
 var NsCtrlrFcConfigFields *NsCtrlrFcConfigFieldHandles
 
 func init() {
-	fieldFcPortList := "fc_port_list"
-	fieldFcInterfaceList := "fc_interface_list"
-
 	NsCtrlrFcConfigFields = &NsCtrlrFcConfigFieldHandles{
-		FcPortList:      &fieldFcPortList,
-		FcInterfaceList: &fieldFcInterfaceList,
+		FcPortList:      "fc_port_list",
+		FcInterfaceList: "fc_interface_list",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsCtrlrFcConfig struct {
 
 // NsCtrlrFcConfigFieldHandles provides a string representation for each AccessControlRecord field.
 type NsCtrlrFcConfigFieldHandles struct {
-	FcPortList      *string
-	FcInterfaceList *string
+	FcPortList      string
+	FcInterfaceList string
 }

@@ -6,14 +6,10 @@ package nimbleos
 var NsObjectOwnerPairFields *NsObjectOwnerPairFieldHandles
 
 func init() {
-	fieldObjName := "obj_name"
-	fieldSrcOwner := "src_owner"
-	fieldDstOwner := "dst_owner"
-
 	NsObjectOwnerPairFields = &NsObjectOwnerPairFieldHandles{
-		ObjName:  &fieldObjName,
-		SrcOwner: &fieldSrcOwner,
-		DstOwner: &fieldDstOwner,
+		ObjName:  "obj_name",
+		SrcOwner: "src_owner",
+		DstOwner: "dst_owner",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsObjectOwnerPair struct {
 
 // NsObjectOwnerPairFieldHandles provides a string representation for each AccessControlRecord field.
 type NsObjectOwnerPairFieldHandles struct {
-	ObjName  *string
-	SrcOwner *string
-	DstOwner *string
+	ObjName  string
+	SrcOwner string
+	DstOwner string
 }

@@ -6,10 +6,8 @@ package nimbleos
 var NsBitMapReturnFields *NsBitMapReturnFieldHandles
 
 func init() {
-	fieldBitmap := "bitmap"
-
 	NsBitMapReturnFields = &NsBitMapReturnFieldHandles{
-		Bitmap: &fieldBitmap,
+		Bitmap: "bitmap",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsBitMapReturn struct {
 
 // NsBitMapReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsBitMapReturnFieldHandles struct {
-	Bitmap *string
+	Bitmap string
 }

@@ -6,26 +6,16 @@ package nimbleos
 var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfoFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldVersionCurrent := "version_current"
-	fieldCountOfMembers := "count_of_members"
-	fieldManagementIp := "management_ip"
-	fieldDiscoveryIp := "discovery_ip"
-	fieldIscsiEnabled := "iscsi_enabled"
-	fieldFcEnabled := "fc_enabled"
-	fieldArrayMemberList := "array_member_list"
-
 	NsDiscoveredGroupInfoFields = &NsDiscoveredGroupInfoFieldHandles{
-		ID:              &fieldID,
-		Name:            &fieldName,
-		VersionCurrent:  &fieldVersionCurrent,
-		CountOfMembers:  &fieldCountOfMembers,
-		ManagementIp:    &fieldManagementIp,
-		DiscoveryIp:     &fieldDiscoveryIp,
-		IscsiEnabled:    &fieldIscsiEnabled,
-		FcEnabled:       &fieldFcEnabled,
-		ArrayMemberList: &fieldArrayMemberList,
+		ID:              "id",
+		Name:            "name",
+		VersionCurrent:  "version_current",
+		CountOfMembers:  "count_of_members",
+		ManagementIp:    "management_ip",
+		DiscoveryIp:     "discovery_ip",
+		IscsiEnabled:    "iscsi_enabled",
+		FcEnabled:       "fc_enabled",
+		ArrayMemberList: "array_member_list",
 	}
 }
 
@@ -53,13 +43,13 @@ type NsDiscoveredGroupInfo struct {
 
 // NsDiscoveredGroupInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsDiscoveredGroupInfoFieldHandles struct {
-	ID              *string
-	Name            *string
-	VersionCurrent  *string
-	CountOfMembers  *string
-	ManagementIp    *string
-	DiscoveryIp     *string
-	IscsiEnabled    *string
-	FcEnabled       *string
-	ArrayMemberList *string
+	ID              string
+	Name            string
+	VersionCurrent  string
+	CountOfMembers  string
+	ManagementIp    string
+	DiscoveryIp     string
+	IscsiEnabled    string
+	FcEnabled       string
+	ArrayMemberList string
 }

@@ -6,12 +6,9 @@ package nimbleos
 var NsObjectIDKVFields *NsObjectIDKVFieldHandles
 
 func init() {
-	fieldKey := "key"
-	fieldID := "id"
-
 	NsObjectIDKVFields = &NsObjectIDKVFieldHandles{
-		Key: &fieldKey,
-		ID:  &fieldID,
+		Key: "key",
+		ID:  "id",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsObjectIDKV struct {
 
 // NsObjectIDKVFieldHandles provides a string representation for each AccessControlRecord field.
 type NsObjectIDKVFieldHandles struct {
-	Key *string
-	ID  *string
+	Key string
+	ID  string
 }

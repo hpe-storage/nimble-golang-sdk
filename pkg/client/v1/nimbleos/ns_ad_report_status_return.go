@@ -6,18 +6,12 @@ package nimbleos
 var NsADReportStatusReturnFields *NsADReportStatusReturnFieldHandles
 
 func init() {
-	fieldJoined := "joined"
-	fieldEnabled := "enabled"
-	fieldLocalServiceStatus := "local_service_status"
-	fieldRemoteServiceStatus := "remote_service_status"
-	fieldTrustValid := "trust_valid"
-
 	NsADReportStatusReturnFields = &NsADReportStatusReturnFieldHandles{
-		Joined:              &fieldJoined,
-		Enabled:             &fieldEnabled,
-		LocalServiceStatus:  &fieldLocalServiceStatus,
-		RemoteServiceStatus: &fieldRemoteServiceStatus,
-		TrustValid:          &fieldTrustValid,
+		Joined:              "joined",
+		Enabled:             "enabled",
+		LocalServiceStatus:  "local_service_status",
+		RemoteServiceStatus: "remote_service_status",
+		TrustValid:          "trust_valid",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsADReportStatusReturn struct {
 
 // NsADReportStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsADReportStatusReturnFieldHandles struct {
-	Joined              *string
-	Enabled             *string
-	LocalServiceStatus  *string
-	RemoteServiceStatus *string
-	TrustValid          *string
+	Joined              string
+	Enabled             string
+	LocalServiceStatus  string
+	RemoteServiceStatus string
+	TrustValid          string
 }

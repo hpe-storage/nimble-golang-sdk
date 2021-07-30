@@ -6,10 +6,8 @@ package nimbleos
 var NsSnapVolListReturnFields *NsSnapVolListReturnFieldHandles
 
 func init() {
-	fieldSnapIds := "snap_ids"
-
 	NsSnapVolListReturnFields = &NsSnapVolListReturnFieldHandles{
-		SnapIds: &fieldSnapIds,
+		SnapIds: "snap_ids",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsSnapVolListReturn struct {
 
 // NsSnapVolListReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapVolListReturnFieldHandles struct {
-	SnapIds *string
+	SnapIds string
 }

@@ -6,42 +6,24 @@ package nimbleos
 var NsAccessControlRecordFields *NsAccessControlRecordFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldAclId := "acl_id"
-	fieldInitiatorGroupId := "initiator_group_id"
-	fieldInitiatorGroupName := "initiator_group_name"
-	fieldChapUserId := "chap_user_id"
-	fieldChapUserName := "chap_user_name"
-	fieldApplyTo := "apply_to"
-	fieldLun := "lun"
-	fieldAccessProtocol := "access_protocol"
-	fieldSnapluns := "snapluns"
-	fieldPeId := "pe_id"
-	fieldPeName := "pe_name"
-	fieldPeLun := "pe_lun"
-	fieldVolId := "vol_id"
-	fieldVolName := "vol_name"
-	fieldSnapId := "snap_id"
-	fieldSnapName := "snap_name"
-
 	NsAccessControlRecordFields = &NsAccessControlRecordFieldHandles{
-		ID:                 &fieldID,
-		AclId:              &fieldAclId,
-		InitiatorGroupId:   &fieldInitiatorGroupId,
-		InitiatorGroupName: &fieldInitiatorGroupName,
-		ChapUserId:         &fieldChapUserId,
-		ChapUserName:       &fieldChapUserName,
-		ApplyTo:            &fieldApplyTo,
-		Lun:                &fieldLun,
-		AccessProtocol:     &fieldAccessProtocol,
-		Snapluns:           &fieldSnapluns,
-		PeId:               &fieldPeId,
-		PeName:             &fieldPeName,
-		PeLun:              &fieldPeLun,
-		VolId:              &fieldVolId,
-		VolName:            &fieldVolName,
-		SnapId:             &fieldSnapId,
-		SnapName:           &fieldSnapName,
+		ID:                 "id",
+		AclId:              "acl_id",
+		InitiatorGroupId:   "initiator_group_id",
+		InitiatorGroupName: "initiator_group_name",
+		ChapUserId:         "chap_user_id",
+		ChapUserName:       "chap_user_name",
+		ApplyTo:            "apply_to",
+		Lun:                "lun",
+		AccessProtocol:     "access_protocol",
+		Snapluns:           "snapluns",
+		PeId:               "pe_id",
+		PeName:             "pe_name",
+		PeLun:              "pe_lun",
+		VolId:              "vol_id",
+		VolName:            "vol_name",
+		SnapId:             "snap_id",
+		SnapName:           "snap_name",
 	}
 }
 
@@ -85,21 +67,21 @@ type NsAccessControlRecord struct {
 
 // NsAccessControlRecordFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAccessControlRecordFieldHandles struct {
-	ID                 *string
-	AclId              *string
-	InitiatorGroupId   *string
-	InitiatorGroupName *string
-	ChapUserId         *string
-	ChapUserName       *string
-	ApplyTo            *string
-	Lun                *string
-	AccessProtocol     *string
-	Snapluns           *string
-	PeId               *string
-	PeName             *string
-	PeLun              *string
-	VolId              *string
-	VolName            *string
-	SnapId             *string
-	SnapName           *string
+	ID                 string
+	AclId              string
+	InitiatorGroupId   string
+	InitiatorGroupName string
+	ChapUserId         string
+	ChapUserName       string
+	ApplyTo            string
+	Lun                string
+	AccessProtocol     string
+	Snapluns           string
+	PeId               string
+	PeName             string
+	PeLun              string
+	VolId              string
+	VolName            string
+	SnapId             string
+	SnapName           string
 }

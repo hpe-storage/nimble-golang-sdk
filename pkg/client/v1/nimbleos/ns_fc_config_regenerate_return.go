@@ -6,14 +6,10 @@ package nimbleos
 var NsFcConfigRegenerateReturnFields *NsFcConfigRegenerateReturnFieldHandles
 
 func init() {
-	fieldArrayList := "array_list"
-	fieldGroupLeaderArray := "group_leader_array"
-	fieldID := "id"
-
 	NsFcConfigRegenerateReturnFields = &NsFcConfigRegenerateReturnFieldHandles{
-		ArrayList:        &fieldArrayList,
-		GroupLeaderArray: &fieldGroupLeaderArray,
-		ID:               &fieldID,
+		ArrayList:        "array_list",
+		GroupLeaderArray: "group_leader_array",
+		ID:               "id",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsFcConfigRegenerateReturn struct {
 
 // NsFcConfigRegenerateReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcConfigRegenerateReturnFieldHandles struct {
-	ArrayList        *string
-	GroupLeaderArray *string
-	ID               *string
+	ArrayList        string
+	GroupLeaderArray string
+	ID               string
 }

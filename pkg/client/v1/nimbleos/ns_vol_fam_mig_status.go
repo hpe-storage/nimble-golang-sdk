@@ -6,30 +6,18 @@ package nimbleos
 var NsVolFamMigStatusFields *NsVolFamMigStatusFieldHandles
 
 func init() {
-	fieldRootVolId := "root_vol_id"
-	fieldRootVolName := "root_vol_name"
-	fieldSourcePoolId := "source_pool_id"
-	fieldSourcePoolName := "source_pool_name"
-	fieldDestPoolId := "dest_pool_id"
-	fieldDestPoolName := "dest_pool_name"
-	fieldMoveBytesMigrated := "move_bytes_migrated"
-	fieldMoveBytesRemaining := "move_bytes_remaining"
-	fieldMoveStartTime := "move_start_time"
-	fieldMoveEstComplTime := "move_est_compl_time"
-	fieldArrayList := "array_list"
-
 	NsVolFamMigStatusFields = &NsVolFamMigStatusFieldHandles{
-		RootVolId:          &fieldRootVolId,
-		RootVolName:        &fieldRootVolName,
-		SourcePoolId:       &fieldSourcePoolId,
-		SourcePoolName:     &fieldSourcePoolName,
-		DestPoolId:         &fieldDestPoolId,
-		DestPoolName:       &fieldDestPoolName,
-		MoveBytesMigrated:  &fieldMoveBytesMigrated,
-		MoveBytesRemaining: &fieldMoveBytesRemaining,
-		MoveStartTime:      &fieldMoveStartTime,
-		MoveEstComplTime:   &fieldMoveEstComplTime,
-		ArrayList:          &fieldArrayList,
+		RootVolId:          "root_vol_id",
+		RootVolName:        "root_vol_name",
+		SourcePoolId:       "source_pool_id",
+		SourcePoolName:     "source_pool_name",
+		DestPoolId:         "dest_pool_id",
+		DestPoolName:       "dest_pool_name",
+		MoveBytesMigrated:  "move_bytes_migrated",
+		MoveBytesRemaining: "move_bytes_remaining",
+		MoveStartTime:      "move_start_time",
+		MoveEstComplTime:   "move_est_compl_time",
+		ArrayList:          "array_list",
 	}
 }
 
@@ -61,15 +49,15 @@ type NsVolFamMigStatus struct {
 
 // NsVolFamMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolFamMigStatusFieldHandles struct {
-	RootVolId          *string
-	RootVolName        *string
-	SourcePoolId       *string
-	SourcePoolName     *string
-	DestPoolId         *string
-	DestPoolName       *string
-	MoveBytesMigrated  *string
-	MoveBytesRemaining *string
-	MoveStartTime      *string
-	MoveEstComplTime   *string
-	ArrayList          *string
+	RootVolId          string
+	RootVolName        string
+	SourcePoolId       string
+	SourcePoolName     string
+	DestPoolId         string
+	DestPoolName       string
+	MoveBytesMigrated  string
+	MoveBytesRemaining string
+	MoveStartTime      string
+	MoveEstComplTime   string
+	ArrayList          string
 }

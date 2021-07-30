@@ -6,18 +6,12 @@ package nimbleos
 var NsCtrlrRaidInfoFields *NsCtrlrRaidInfoFieldHandles
 
 func init() {
-	fieldRaidId := "raid_id"
-	fieldRaidType := "raid_type"
-	fieldMaxCopies := "max_copies"
-	fieldCurCopies := "cur_copies"
-	fieldIsResyncing := "is_resyncing"
-
 	NsCtrlrRaidInfoFields = &NsCtrlrRaidInfoFieldHandles{
-		RaidId:      &fieldRaidId,
-		RaidType:    &fieldRaidType,
-		MaxCopies:   &fieldMaxCopies,
-		CurCopies:   &fieldCurCopies,
-		IsResyncing: &fieldIsResyncing,
+		RaidId:      "raid_id",
+		RaidType:    "raid_type",
+		MaxCopies:   "max_copies",
+		CurCopies:   "cur_copies",
+		IsResyncing: "is_resyncing",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsCtrlrRaidInfo struct {
 
 // NsCtrlrRaidInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsCtrlrRaidInfoFieldHandles struct {
-	RaidId      *string
-	RaidType    *string
-	MaxCopies   *string
-	CurCopies   *string
-	IsResyncing *string
+	RaidId      string
+	RaidType    string
+	MaxCopies   string
+	CurCopies   string
+	IsResyncing string
 }

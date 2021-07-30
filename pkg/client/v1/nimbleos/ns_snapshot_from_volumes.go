@@ -6,16 +6,11 @@ package nimbleos
 var NsSnapshotFromVolumesFields *NsSnapshotFromVolumesFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldSnapId := "snap_id"
-	fieldName := "name"
-	fieldSnapName := "snap_name"
-
 	NsSnapshotFromVolumesFields = &NsSnapshotFromVolumesFieldHandles{
-		ID:       &fieldID,
-		SnapId:   &fieldSnapId,
-		Name:     &fieldName,
-		SnapName: &fieldSnapName,
+		ID:       "id",
+		SnapId:   "snap_id",
+		Name:     "name",
+		SnapName: "snap_name",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsSnapshotFromVolumes struct {
 
 // NsSnapshotFromVolumesFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapshotFromVolumesFieldHandles struct {
-	ID       *string
-	SnapId   *string
-	Name     *string
-	SnapName *string
+	ID       string
+	SnapId   string
+	Name     string
+	SnapName string
 }

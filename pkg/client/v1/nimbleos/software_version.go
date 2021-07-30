@@ -6,30 +6,18 @@ package nimbleos
 var SoftwareVersionFields *SoftwareVersionFieldHandles
 
 func init() {
-	fieldVersion := "version"
-	fieldSignature := "signature"
-	fieldName := "name"
-	fieldStatus := "status"
-	fieldTotalBytes := "total_bytes"
-	fieldDownloadedBytes := "downloaded_bytes"
-	fieldBlacklistReason := "blacklist_reason"
-	fieldReleaseDate := "release_date"
-	fieldIsManuallyDownloaded := "is_manually_downloaded"
-	fieldReleaseStatus := "release_status"
-	fieldNoPartialResponse := "no_partial_response"
-
 	SoftwareVersionFields = &SoftwareVersionFieldHandles{
-		Version:              &fieldVersion,
-		Signature:            &fieldSignature,
-		Name:                 &fieldName,
-		Status:               &fieldStatus,
-		TotalBytes:           &fieldTotalBytes,
-		DownloadedBytes:      &fieldDownloadedBytes,
-		BlacklistReason:      &fieldBlacklistReason,
-		ReleaseDate:          &fieldReleaseDate,
-		IsManuallyDownloaded: &fieldIsManuallyDownloaded,
-		ReleaseStatus:        &fieldReleaseStatus,
-		NoPartialResponse:    &fieldNoPartialResponse,
+		Version:              "version",
+		Signature:            "signature",
+		Name:                 "name",
+		Status:               "status",
+		TotalBytes:           "total_bytes",
+		DownloadedBytes:      "downloaded_bytes",
+		BlacklistReason:      "blacklist_reason",
+		ReleaseDate:          "release_date",
+		IsManuallyDownloaded: "is_manually_downloaded",
+		ReleaseStatus:        "release_status",
+		NoPartialResponse:    "no_partial_response",
 	}
 }
 
@@ -61,15 +49,15 @@ type SoftwareVersion struct {
 
 // SoftwareVersionFieldHandles provides a string representation for each AccessControlRecord field.
 type SoftwareVersionFieldHandles struct {
-	Version              *string
-	Signature            *string
-	Name                 *string
-	Status               *string
-	TotalBytes           *string
-	DownloadedBytes      *string
-	BlacklistReason      *string
-	ReleaseDate          *string
-	IsManuallyDownloaded *string
-	ReleaseStatus        *string
-	NoPartialResponse    *string
+	Version              string
+	Signature            string
+	Name                 string
+	Status               string
+	TotalBytes           string
+	DownloadedBytes      string
+	BlacklistReason      string
+	ReleaseDate          string
+	IsManuallyDownloaded string
+	ReleaseStatus        string
+	NoPartialResponse    string
 }

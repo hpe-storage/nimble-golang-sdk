@@ -6,10 +6,8 @@ package nimbleos
 var NsBulkVolSettingReturnFields *NsBulkVolSettingReturnFieldHandles
 
 func init() {
-	fieldErrorCodes := "error_codes"
-
 	NsBulkVolSettingReturnFields = &NsBulkVolSettingReturnFieldHandles{
-		ErrorCodes: &fieldErrorCodes,
+		ErrorCodes: "error_codes",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsBulkVolSettingReturn struct {
 
 // NsBulkVolSettingReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsBulkVolSettingReturnFieldHandles struct {
-	ErrorCodes *string
+	ErrorCodes string
 }

@@ -6,30 +6,18 @@ package nimbleos
 var FolderSetFields *FolderSetFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldAppUuid := "app_uuid"
-	fieldFolderList := "folder_list"
-	fieldAppserverId := "appserver_id"
-	fieldAppserverName := "appserver_name"
-
 	FolderSetFields = &FolderSetFieldHandles{
-		ID:            &fieldID,
-		Name:          &fieldName,
-		FullName:      &fieldFullName,
-		SearchName:    &fieldSearchName,
-		Description:   &fieldDescription,
-		CreationTime:  &fieldCreationTime,
-		LastModified:  &fieldLastModified,
-		AppUuid:       &fieldAppUuid,
-		FolderList:    &fieldFolderList,
-		AppserverId:   &fieldAppserverId,
-		AppserverName: &fieldAppserverName,
+		ID:            "id",
+		Name:          "name",
+		FullName:      "full_name",
+		SearchName:    "search_name",
+		Description:   "description",
+		CreationTime:  "creation_time",
+		LastModified:  "last_modified",
+		AppUuid:       "app_uuid",
+		FolderList:    "folder_list",
+		AppserverId:   "appserver_id",
+		AppserverName: "appserver_name",
 	}
 }
 
@@ -61,15 +49,15 @@ type FolderSet struct {
 
 // FolderSetFieldHandles provides a string representation for each AccessControlRecord field.
 type FolderSetFieldHandles struct {
-	ID            *string
-	Name          *string
-	FullName      *string
-	SearchName    *string
-	Description   *string
-	CreationTime  *string
-	LastModified  *string
-	AppUuid       *string
-	FolderList    *string
-	AppserverId   *string
-	AppserverName *string
+	ID            string
+	Name          string
+	FullName      string
+	SearchName    string
+	Description   string
+	CreationTime  string
+	LastModified  string
+	AppUuid       string
+	FolderList    string
+	AppserverId   string
+	AppserverName string
 }

@@ -6,52 +6,29 @@ package nimbleos
 var UserFields *UserFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldRoleId := "role_id"
-	fieldRole := "role"
-	fieldPassword := "password"
-	fieldAuthPassword := "auth_password"
-	fieldOtpType := "otp_type"
-	fieldOtpReset := "otp_reset"
-	fieldInactivityTimeout := "inactivity_timeout"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldFullName := "full_name"
-	fieldEmailAddr := "email_addr"
-	fieldTenantId := "tenant_id"
-	fieldTenantKey := "tenant_key"
-	fieldDisabled := "disabled"
-	fieldAuthLock := "auth_lock"
-	fieldLastLogin := "last_login"
-	fieldLastLogout := "last_logout"
-	fieldLoggedIn := "logged_in"
-
 	UserFields = &UserFieldHandles{
-		ID:                &fieldID,
-		Name:              &fieldName,
-		SearchName:        &fieldSearchName,
-		Description:       &fieldDescription,
-		RoleId:            &fieldRoleId,
-		Role:              &fieldRole,
-		Password:          &fieldPassword,
-		AuthPassword:      &fieldAuthPassword,
-		OtpType:           &fieldOtpType,
-		OtpReset:          &fieldOtpReset,
-		InactivityTimeout: &fieldInactivityTimeout,
-		CreationTime:      &fieldCreationTime,
-		LastModified:      &fieldLastModified,
-		FullName:          &fieldFullName,
-		EmailAddr:         &fieldEmailAddr,
-		TenantId:          &fieldTenantId,
-		TenantKey:         &fieldTenantKey,
-		Disabled:          &fieldDisabled,
-		AuthLock:          &fieldAuthLock,
-		LastLogin:         &fieldLastLogin,
-		LastLogout:        &fieldLastLogout,
-		LoggedIn:          &fieldLoggedIn,
+		ID:                "id",
+		Name:              "name",
+		SearchName:        "search_name",
+		Description:       "description",
+		RoleId:            "role_id",
+		Role:              "role",
+		Password:          "password",
+		AuthPassword:      "auth_password",
+		OtpType:           "otp_type",
+		OtpReset:          "otp_reset",
+		InactivityTimeout: "inactivity_timeout",
+		CreationTime:      "creation_time",
+		LastModified:      "last_modified",
+		FullName:          "full_name",
+		EmailAddr:         "email_addr",
+		TenantId:          "tenant_id",
+		TenantKey:         "tenant_key",
+		Disabled:          "disabled",
+		AuthLock:          "auth_lock",
+		LastLogin:         "last_login",
+		LastLogout:        "last_logout",
+		LoggedIn:          "logged_in",
 	}
 }
 
@@ -105,26 +82,26 @@ type User struct {
 
 // UserFieldHandles provides a string representation for each AccessControlRecord field.
 type UserFieldHandles struct {
-	ID                *string
-	Name              *string
-	SearchName        *string
-	Description       *string
-	RoleId            *string
-	Role              *string
-	Password          *string
-	AuthPassword      *string
-	OtpType           *string
-	OtpReset          *string
-	InactivityTimeout *string
-	CreationTime      *string
-	LastModified      *string
-	FullName          *string
-	EmailAddr         *string
-	TenantId          *string
-	TenantKey         *string
-	Disabled          *string
-	AuthLock          *string
-	LastLogin         *string
-	LastLogout        *string
-	LoggedIn          *string
+	ID                string
+	Name              string
+	SearchName        string
+	Description       string
+	RoleId            string
+	Role              string
+	Password          string
+	AuthPassword      string
+	OtpType           string
+	OtpReset          string
+	InactivityTimeout string
+	CreationTime      string
+	LastModified      string
+	FullName          string
+	EmailAddr         string
+	TenantId          string
+	TenantKey         string
+	Disabled          string
+	AuthLock          string
+	LastLogin         string
+	LastLogout        string
+	LoggedIn          string
 }

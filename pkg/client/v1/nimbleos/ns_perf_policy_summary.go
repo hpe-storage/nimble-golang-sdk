@@ -6,10 +6,8 @@ package nimbleos
 var NsPerfPolicySummaryFields *NsPerfPolicySummaryFieldHandles
 
 func init() {
-	fieldName := "name"
-
 	NsPerfPolicySummaryFields = &NsPerfPolicySummaryFieldHandles{
-		Name: &fieldName,
+		Name: "name",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsPerfPolicySummary struct {
 
 // NsPerfPolicySummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsPerfPolicySummaryFieldHandles struct {
-	Name *string
+	Name string
 }

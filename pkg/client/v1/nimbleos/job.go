@@ -6,44 +6,25 @@ package nimbleos
 var JobFields *JobFieldHandles
 
 func init() {
-	fieldCompletionTime := "completion_time"
-	fieldCreationTime := "creation_time"
-	fieldCurrentPhase := "current_phase"
-	fieldCurrentPhaseDescription := "current_phase_description"
-	fieldDescription := "description"
-	fieldID := "id"
-	fieldName := "name"
-	fieldLastModified := "last_modified"
-	fieldObjectId := "object_id"
-	fieldOpType := "op_type"
-	fieldType := "type"
-	fieldParentJobId := "parent_job_id"
-	fieldPercentComplete := "percent_complete"
-	fieldRequest := "request"
-	fieldResponse := "response"
-	fieldState := "state"
-	fieldResult := "result"
-	fieldTotalPhases := "total_phases"
-
 	JobFields = &JobFieldHandles{
-		CompletionTime:          &fieldCompletionTime,
-		CreationTime:            &fieldCreationTime,
-		CurrentPhase:            &fieldCurrentPhase,
-		CurrentPhaseDescription: &fieldCurrentPhaseDescription,
-		Description:             &fieldDescription,
-		ID:                      &fieldID,
-		Name:                    &fieldName,
-		LastModified:            &fieldLastModified,
-		ObjectId:                &fieldObjectId,
-		OpType:                  &fieldOpType,
-		Type:                    &fieldType,
-		ParentJobId:             &fieldParentJobId,
-		PercentComplete:         &fieldPercentComplete,
-		Request:                 &fieldRequest,
-		Response:                &fieldResponse,
-		State:                   &fieldState,
-		Result:                  &fieldResult,
-		TotalPhases:             &fieldTotalPhases,
+		CompletionTime:          "completion_time",
+		CreationTime:            "creation_time",
+		CurrentPhase:            "current_phase",
+		CurrentPhaseDescription: "current_phase_description",
+		Description:             "description",
+		ID:                      "id",
+		Name:                    "name",
+		LastModified:            "last_modified",
+		ObjectId:                "object_id",
+		OpType:                  "op_type",
+		Type:                    "type",
+		ParentJobId:             "parent_job_id",
+		PercentComplete:         "percent_complete",
+		Request:                 "request",
+		Response:                "response",
+		State:                   "state",
+		Result:                  "result",
+		TotalPhases:             "total_phases",
 	}
 }
 
@@ -89,22 +70,22 @@ type Job struct {
 
 // JobFieldHandles provides a string representation for each AccessControlRecord field.
 type JobFieldHandles struct {
-	CompletionTime          *string
-	CreationTime            *string
-	CurrentPhase            *string
-	CurrentPhaseDescription *string
-	Description             *string
-	ID                      *string
-	Name                    *string
-	LastModified            *string
-	ObjectId                *string
-	OpType                  *string
-	Type                    *string
-	ParentJobId             *string
-	PercentComplete         *string
-	Request                 *string
-	Response                *string
-	State                   *string
-	Result                  *string
-	TotalPhases             *string
+	CompletionTime          string
+	CreationTime            string
+	CurrentPhase            string
+	CurrentPhaseDescription string
+	Description             string
+	ID                      string
+	Name                    string
+	LastModified            string
+	ObjectId                string
+	OpType                  string
+	Type                    string
+	ParentJobId             string
+	PercentComplete         string
+	Request                 string
+	Response                string
+	State                   string
+	Result                  string
+	TotalPhases             string
 }

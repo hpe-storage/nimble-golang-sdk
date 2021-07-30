@@ -6,18 +6,12 @@ package nimbleos
 var ApplicationCategoryFields *ApplicationCategoryFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDedupeEnabled := "dedupe_enabled"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-
 	ApplicationCategoryFields = &ApplicationCategoryFieldHandles{
-		ID:            &fieldID,
-		Name:          &fieldName,
-		DedupeEnabled: &fieldDedupeEnabled,
-		CreationTime:  &fieldCreationTime,
-		LastModified:  &fieldLastModified,
+		ID:            "id",
+		Name:          "name",
+		DedupeEnabled: "dedupe_enabled",
+		CreationTime:  "creation_time",
+		LastModified:  "last_modified",
 	}
 }
 
@@ -37,9 +31,9 @@ type ApplicationCategory struct {
 
 // ApplicationCategoryFieldHandles provides a string representation for each AccessControlRecord field.
 type ApplicationCategoryFieldHandles struct {
-	ID            *string
-	Name          *string
-	DedupeEnabled *string
-	CreationTime  *string
-	LastModified  *string
+	ID            string
+	Name          string
+	DedupeEnabled string
+	CreationTime  string
+	LastModified  string
 }

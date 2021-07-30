@@ -6,36 +6,21 @@ package nimbleos
 var StatFields *StatFieldHandles
 
 func init() {
-	fieldScope := "scope"
-	fieldDomainId := "domain_id"
-	fieldSetId := "set_id"
-	fieldVolIds := "vol_ids"
-	fieldSensors := "sensors"
-	fieldStarttime := "starttime"
-	fieldEndtime := "endtime"
-	fieldInterval := "interval"
-	fieldCumulative := "cumulative"
-	fieldPoolId := "pool_id"
-	fieldArrayName := "array_name"
-	fieldSensorData := "sensor_data"
-	fieldSensorCumulativeData := "sensor_cumulative_data"
-	fieldVolId := "vol_id"
-
 	StatFields = &StatFieldHandles{
-		Scope:                &fieldScope,
-		DomainId:             &fieldDomainId,
-		SetId:                &fieldSetId,
-		VolIds:               &fieldVolIds,
-		Sensors:              &fieldSensors,
-		Starttime:            &fieldStarttime,
-		Endtime:              &fieldEndtime,
-		Interval:             &fieldInterval,
-		Cumulative:           &fieldCumulative,
-		PoolId:               &fieldPoolId,
-		ArrayName:            &fieldArrayName,
-		SensorData:           &fieldSensorData,
-		SensorCumulativeData: &fieldSensorCumulativeData,
-		VolId:                &fieldVolId,
+		Scope:                "scope",
+		DomainId:             "domain_id",
+		SetId:                "set_id",
+		VolIds:               "vol_ids",
+		Sensors:              "sensors",
+		Starttime:            "starttime",
+		Endtime:              "endtime",
+		Interval:             "interval",
+		Cumulative:           "cumulative",
+		PoolId:               "pool_id",
+		ArrayName:            "array_name",
+		SensorData:           "sensor_data",
+		SensorCumulativeData: "sensor_cumulative_data",
+		VolId:                "vol_id",
 	}
 }
 
@@ -73,18 +58,18 @@ type Stat struct {
 
 // StatFieldHandles provides a string representation for each AccessControlRecord field.
 type StatFieldHandles struct {
-	Scope                *string
-	DomainId             *string
-	SetId                *string
-	VolIds               *string
-	Sensors              *string
-	Starttime            *string
-	Endtime              *string
-	Interval             *string
-	Cumulative           *string
-	PoolId               *string
-	ArrayName            *string
-	SensorData           *string
-	SensorCumulativeData *string
-	VolId                *string
+	Scope                string
+	DomainId             string
+	SetId                string
+	VolIds               string
+	Sensors              string
+	Starttime            string
+	Endtime              string
+	Interval             string
+	Cumulative           string
+	PoolId               string
+	ArrayName            string
+	SensorData           string
+	SensorCumulativeData string
+	VolId                string
 }

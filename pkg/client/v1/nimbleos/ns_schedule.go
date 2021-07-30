@@ -6,50 +6,28 @@ package nimbleos
 var NsScheduleFields *NsScheduleFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldScheduleId := "schedule_id"
-	fieldName := "name"
-	fieldScheduleName := "schedule_name"
-	fieldPeriod := "period"
-	fieldPeriodUnit := "period_unit"
-	fieldAtTime := "at_time"
-	fieldUntilTime := "until_time"
-	fieldDays := "days"
-	fieldNumRetain := "num_retain"
-	fieldDownstreamPartner := "downstream_partner"
-	fieldDownstreamPartnerId := "downstream_partner_id"
-	fieldDownstreamPartnerName := "downstream_partner_name"
-	fieldReplicateEvery := "replicate_every"
-	fieldNumRetainReplica := "num_retain_replica"
-	fieldReplAlertThres := "repl_alert_thres"
-	fieldSnapVerify := "snap_verify"
-	fieldSkipDbConsistencyCheck := "skip_db_consistency_check"
-	fieldDisableAppsync := "disable_appsync"
-	fieldScheduleType := "schedule_type"
-	fieldActive := "active"
-
 	NsScheduleFields = &NsScheduleFieldHandles{
-		ID:                     &fieldID,
-		ScheduleId:             &fieldScheduleId,
-		Name:                   &fieldName,
-		ScheduleName:           &fieldScheduleName,
-		Period:                 &fieldPeriod,
-		PeriodUnit:             &fieldPeriodUnit,
-		AtTime:                 &fieldAtTime,
-		UntilTime:              &fieldUntilTime,
-		Days:                   &fieldDays,
-		NumRetain:              &fieldNumRetain,
-		DownstreamPartner:      &fieldDownstreamPartner,
-		DownstreamPartnerId:    &fieldDownstreamPartnerId,
-		DownstreamPartnerName:  &fieldDownstreamPartnerName,
-		ReplicateEvery:         &fieldReplicateEvery,
-		NumRetainReplica:       &fieldNumRetainReplica,
-		ReplAlertThres:         &fieldReplAlertThres,
-		SnapVerify:             &fieldSnapVerify,
-		SkipDbConsistencyCheck: &fieldSkipDbConsistencyCheck,
-		DisableAppsync:         &fieldDisableAppsync,
-		ScheduleType:           &fieldScheduleType,
-		Active:                 &fieldActive,
+		ID:                     "id",
+		ScheduleId:             "schedule_id",
+		Name:                   "name",
+		ScheduleName:           "schedule_name",
+		Period:                 "period",
+		PeriodUnit:             "period_unit",
+		AtTime:                 "at_time",
+		UntilTime:              "until_time",
+		Days:                   "days",
+		NumRetain:              "num_retain",
+		DownstreamPartner:      "downstream_partner",
+		DownstreamPartnerId:    "downstream_partner_id",
+		DownstreamPartnerName:  "downstream_partner_name",
+		ReplicateEvery:         "replicate_every",
+		NumRetainReplica:       "num_retain_replica",
+		ReplAlertThres:         "repl_alert_thres",
+		SnapVerify:             "snap_verify",
+		SkipDbConsistencyCheck: "skip_db_consistency_check",
+		DisableAppsync:         "disable_appsync",
+		ScheduleType:           "schedule_type",
+		Active:                 "active",
 	}
 }
 
@@ -101,25 +79,25 @@ type NsSchedule struct {
 
 // NsScheduleFieldHandles provides a string representation for each AccessControlRecord field.
 type NsScheduleFieldHandles struct {
-	ID                     *string
-	ScheduleId             *string
-	Name                   *string
-	ScheduleName           *string
-	Period                 *string
-	PeriodUnit             *string
-	AtTime                 *string
-	UntilTime              *string
-	Days                   *string
-	NumRetain              *string
-	DownstreamPartner      *string
-	DownstreamPartnerId    *string
-	DownstreamPartnerName  *string
-	ReplicateEvery         *string
-	NumRetainReplica       *string
-	ReplAlertThres         *string
-	SnapVerify             *string
-	SkipDbConsistencyCheck *string
-	DisableAppsync         *string
-	ScheduleType           *string
-	Active                 *string
+	ID                     string
+	ScheduleId             string
+	Name                   string
+	ScheduleName           string
+	Period                 string
+	PeriodUnit             string
+	AtTime                 string
+	UntilTime              string
+	Days                   string
+	NumRetain              string
+	DownstreamPartner      string
+	DownstreamPartnerId    string
+	DownstreamPartnerName  string
+	ReplicateEvery         string
+	NumRetainReplica       string
+	ReplAlertThres         string
+	SnapVerify             string
+	SkipDbConsistencyCheck string
+	DisableAppsync         string
+	ScheduleType           string
+	Active                 string
 }

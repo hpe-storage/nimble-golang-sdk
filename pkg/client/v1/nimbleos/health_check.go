@@ -6,22 +6,14 @@ package nimbleos
 var HealthCheckFields *HealthCheckFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldScope := "scope"
-	fieldContext := "context"
-	fieldOnDemand := "on_demand"
-	fieldArrayId := "array_id"
-	fieldCtrlrId := "ctrlr_id"
-	fieldElementResult := "element_result"
-
 	HealthCheckFields = &HealthCheckFieldHandles{
-		ID:            &fieldID,
-		Scope:         &fieldScope,
-		Context:       &fieldContext,
-		OnDemand:      &fieldOnDemand,
-		ArrayId:       &fieldArrayId,
-		CtrlrId:       &fieldCtrlrId,
-		ElementResult: &fieldElementResult,
+		ID:            "id",
+		Scope:         "scope",
+		Context:       "context",
+		OnDemand:      "on_demand",
+		ArrayId:       "array_id",
+		CtrlrId:       "ctrlr_id",
+		ElementResult: "element_result",
 	}
 }
 
@@ -45,11 +37,11 @@ type HealthCheck struct {
 
 // HealthCheckFieldHandles provides a string representation for each AccessControlRecord field.
 type HealthCheckFieldHandles struct {
-	ID            *string
-	Scope         *string
-	Context       *string
-	OnDemand      *string
-	ArrayId       *string
-	CtrlrId       *string
-	ElementResult *string
+	ID            string
+	Scope         string
+	Context       string
+	OnDemand      string
+	ArrayId       string
+	CtrlrId       string
+	ElementResult string
 }

@@ -6,18 +6,12 @@ package nimbleos
 var NsArrayNetFields *NsArrayNetFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldMemberGid := "member_gid"
-	fieldCtrlrASupportIp := "ctrlr_a_support_ip"
-	fieldCtrlrBSupportIp := "ctrlr_b_support_ip"
-	fieldNicList := "nic_list"
-
 	NsArrayNetFields = &NsArrayNetFieldHandles{
-		Name:            &fieldName,
-		MemberGid:       &fieldMemberGid,
-		CtrlrASupportIp: &fieldCtrlrASupportIp,
-		CtrlrBSupportIp: &fieldCtrlrBSupportIp,
-		NicList:         &fieldNicList,
+		Name:            "name",
+		MemberGid:       "member_gid",
+		CtrlrASupportIp: "ctrlr_a_support_ip",
+		CtrlrBSupportIp: "ctrlr_b_support_ip",
+		NicList:         "nic_list",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsArrayNet struct {
 
 // NsArrayNetFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayNetFieldHandles struct {
-	Name            *string
-	MemberGid       *string
-	CtrlrASupportIp *string
-	CtrlrBSupportIp *string
-	NicList         *string
+	Name            string
+	MemberGid       string
+	CtrlrASupportIp string
+	CtrlrBSupportIp string
+	NicList         string
 }

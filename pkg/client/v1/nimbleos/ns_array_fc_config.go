@@ -6,20 +6,13 @@ package nimbleos
 var NsArrayFcConfigFields *NsArrayFcConfigFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldArrayName := "array_name"
-	fieldID := "id"
-	fieldArrayId := "array_id"
-	fieldCtrlrAFcConfig := "ctrlr_a_fc_config"
-	fieldCtrlrBFcConfig := "ctrlr_b_fc_config"
-
 	NsArrayFcConfigFields = &NsArrayFcConfigFieldHandles{
-		Name:           &fieldName,
-		ArrayName:      &fieldArrayName,
-		ID:             &fieldID,
-		ArrayId:        &fieldArrayId,
-		CtrlrAFcConfig: &fieldCtrlrAFcConfig,
-		CtrlrBFcConfig: &fieldCtrlrBFcConfig,
+		Name:           "name",
+		ArrayName:      "array_name",
+		ID:             "id",
+		ArrayId:        "array_id",
+		CtrlrAFcConfig: "ctrlr_a_fc_config",
+		CtrlrBFcConfig: "ctrlr_b_fc_config",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsArrayFcConfig struct {
 
 // NsArrayFcConfigFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayFcConfigFieldHandles struct {
-	Name           *string
-	ArrayName      *string
-	ID             *string
-	ArrayId        *string
-	CtrlrAFcConfig *string
-	CtrlrBFcConfig *string
+	Name           string
+	ArrayName      string
+	ID             string
+	ArrayId        string
+	CtrlrAFcConfig string
+	CtrlrBFcConfig string
 }

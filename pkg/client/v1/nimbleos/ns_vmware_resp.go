@@ -6,24 +6,15 @@ package nimbleos
 var NsVmwareRespFields *NsVmwareRespFieldHandles
 
 func init() {
-	fieldVmwareError := "vmware_error"
-	fieldVmwareErrorMessage := "vmware_error_message"
-	fieldConnStatusOk := "conn_status_ok"
-	fieldConnMessage := "conn_message"
-	fieldUserRolePermissionOk := "user_role_permission_ok"
-	fieldVolcollHasVm := "volcoll_has_vm"
-	fieldNumVmsForVolcoll := "num_vms_for_volcoll"
-	fieldWarningVmToolsStatus := "warning_vm_tools_status"
-
 	NsVmwareRespFields = &NsVmwareRespFieldHandles{
-		VmwareError:          &fieldVmwareError,
-		VmwareErrorMessage:   &fieldVmwareErrorMessage,
-		ConnStatusOk:         &fieldConnStatusOk,
-		ConnMessage:          &fieldConnMessage,
-		UserRolePermissionOk: &fieldUserRolePermissionOk,
-		VolcollHasVm:         &fieldVolcollHasVm,
-		NumVmsForVolcoll:     &fieldNumVmsForVolcoll,
-		WarningVmToolsStatus: &fieldWarningVmToolsStatus,
+		VmwareError:          "vmware_error",
+		VmwareErrorMessage:   "vmware_error_message",
+		ConnStatusOk:         "conn_status_ok",
+		ConnMessage:          "conn_message",
+		UserRolePermissionOk: "user_role_permission_ok",
+		VolcollHasVm:         "volcoll_has_vm",
+		NumVmsForVolcoll:     "num_vms_for_volcoll",
+		WarningVmToolsStatus: "warning_vm_tools_status",
 	}
 }
 
@@ -49,12 +40,12 @@ type NsVmwareResp struct {
 
 // NsVmwareRespFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVmwareRespFieldHandles struct {
-	VmwareError          *string
-	VmwareErrorMessage   *string
-	ConnStatusOk         *string
-	ConnMessage          *string
-	UserRolePermissionOk *string
-	VolcollHasVm         *string
-	NumVmsForVolcoll     *string
-	WarningVmToolsStatus *string
+	VmwareError          string
+	VmwareErrorMessage   string
+	ConnStatusOk         string
+	ConnMessage          string
+	UserRolePermissionOk string
+	VolcollHasVm         string
+	NumVmsForVolcoll     string
+	WarningVmToolsStatus string
 }

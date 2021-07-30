@@ -6,32 +6,19 @@ package nimbleos
 var NsArrayDetailFields *NsArrayDetailFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayId := "array_id"
-	fieldName := "name"
-	fieldArrayName := "array_name"
-	fieldEvacTime := "evac_time"
-	fieldEvacUsage := "evac_usage"
-	fieldUsableCapacity := "usable_capacity"
-	fieldUsage := "usage"
-	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
-	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
-	fieldUsageValid := "usage_valid"
-	fieldMigrate := "migrate"
-
 	NsArrayDetailFields = &NsArrayDetailFieldHandles{
-		ID:                       &fieldID,
-		ArrayId:                  &fieldArrayId,
-		Name:                     &fieldName,
-		ArrayName:                &fieldArrayName,
-		EvacTime:                 &fieldEvacTime,
-		EvacUsage:                &fieldEvacUsage,
-		UsableCapacity:           &fieldUsableCapacity,
-		Usage:                    &fieldUsage,
-		VolUsageCompressedBytes:  &fieldVolUsageCompressedBytes,
-		SnapUsageCompressedBytes: &fieldSnapUsageCompressedBytes,
-		UsageValid:               &fieldUsageValid,
-		Migrate:                  &fieldMigrate,
+		ID:                       "id",
+		ArrayId:                  "array_id",
+		Name:                     "name",
+		ArrayName:                "array_name",
+		EvacTime:                 "evac_time",
+		EvacUsage:                "evac_usage",
+		UsableCapacity:           "usable_capacity",
+		Usage:                    "usage",
+		VolUsageCompressedBytes:  "vol_usage_compressed_bytes",
+		SnapUsageCompressedBytes: "snap_usage_compressed_bytes",
+		UsageValid:               "usage_valid",
+		Migrate:                  "migrate",
 	}
 }
 
@@ -65,16 +52,16 @@ type NsArrayDetail struct {
 
 // NsArrayDetailFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayDetailFieldHandles struct {
-	ID                       *string
-	ArrayId                  *string
-	Name                     *string
-	ArrayName                *string
-	EvacTime                 *string
-	EvacUsage                *string
-	UsableCapacity           *string
-	Usage                    *string
-	VolUsageCompressedBytes  *string
-	SnapUsageCompressedBytes *string
-	UsageValid               *string
-	Migrate                  *string
+	ID                       string
+	ArrayId                  string
+	Name                     string
+	ArrayName                string
+	EvacTime                 string
+	EvacUsage                string
+	UsableCapacity           string
+	Usage                    string
+	VolUsageCompressedBytes  string
+	SnapUsageCompressedBytes string
+	UsageValid               string
+	Migrate                  string
 }

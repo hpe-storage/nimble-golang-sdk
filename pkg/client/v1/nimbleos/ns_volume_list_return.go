@@ -6,10 +6,8 @@ package nimbleos
 var NsVolumeListReturnFields *NsVolumeListReturnFieldHandles
 
 func init() {
-	fieldVolList := "vol_list"
-
 	NsVolumeListReturnFields = &NsVolumeListReturnFieldHandles{
-		VolList: &fieldVolList,
+		VolList: "vol_list",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsVolumeListReturn struct {
 
 // NsVolumeListReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeListReturnFieldHandles struct {
-	VolList *string
+	VolList string
 }

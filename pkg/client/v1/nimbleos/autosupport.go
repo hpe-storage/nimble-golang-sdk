@@ -6,18 +6,12 @@ package nimbleos
 var AutosupportFields *AutosupportFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayList := "array_list"
-	fieldArrayCount := "array_count"
-	fieldGroupId := "group_id"
-	fieldGroupName := "group_name"
-
 	AutosupportFields = &AutosupportFieldHandles{
-		ID:         &fieldID,
-		ArrayList:  &fieldArrayList,
-		ArrayCount: &fieldArrayCount,
-		GroupId:    &fieldGroupId,
-		GroupName:  &fieldGroupName,
+		ID:         "id",
+		ArrayList:  "array_list",
+		ArrayCount: "array_count",
+		GroupId:    "group_id",
+		GroupName:  "group_name",
 	}
 }
 
@@ -37,9 +31,9 @@ type Autosupport struct {
 
 // AutosupportFieldHandles provides a string representation for each AccessControlRecord field.
 type AutosupportFieldHandles struct {
-	ID         *string
-	ArrayList  *string
-	ArrayCount *string
-	GroupId    *string
-	GroupName  *string
+	ID         string
+	ArrayList  string
+	ArrayCount string
+	GroupId    string
+	GroupName  string
 }

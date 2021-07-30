@@ -6,20 +6,13 @@ package nimbleos
 var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfoFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldDisplayName := "display_name"
-	fieldLocation := "location"
-	fieldCtrlrOwner := "ctrlr_owner"
-	fieldState := "state"
-	fieldCurrentReading := "current_reading"
-
 	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfoFieldHandles{
-		Name:           &fieldName,
-		DisplayName:    &fieldDisplayName,
-		Location:       &fieldLocation,
-		CtrlrOwner:     &fieldCtrlrOwner,
-		State:          &fieldState,
-		CurrentReading: &fieldCurrentReading,
+		Name:           "name",
+		DisplayName:    "display_name",
+		Location:       "location",
+		CtrlrOwner:     "ctrlr_owner",
+		State:          "state",
+		CurrentReading: "current_reading",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsCtrlrHwSensorInfo struct {
 
 // NsCtrlrHwSensorInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsCtrlrHwSensorInfoFieldHandles struct {
-	Name           *string
-	DisplayName    *string
-	Location       *string
-	CtrlrOwner     *string
-	State          *string
-	CurrentReading *string
+	Name           string
+	DisplayName    string
+	Location       string
+	CtrlrOwner     string
+	State          string
+	CurrentReading string
 }

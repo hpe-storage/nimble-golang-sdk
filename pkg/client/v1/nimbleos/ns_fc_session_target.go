@@ -6,20 +6,13 @@ package nimbleos
 var NsFcSessionTargetFields *NsFcSessionTargetFieldHandles
 
 func init() {
-	fieldTargetPortArrayName := "target_port_array_name"
-	fieldTargetPortCtrlrName := "target_port_ctrlr_name"
-	fieldTargetPortInterfaceName := "target_port_interface_name"
-	fieldTargetWwnn := "target_wwnn"
-	fieldTargetWwpn := "target_wwpn"
-	fieldTargetFcid := "target_fcid"
-
 	NsFcSessionTargetFields = &NsFcSessionTargetFieldHandles{
-		TargetPortArrayName:     &fieldTargetPortArrayName,
-		TargetPortCtrlrName:     &fieldTargetPortCtrlrName,
-		TargetPortInterfaceName: &fieldTargetPortInterfaceName,
-		TargetWwnn:              &fieldTargetWwnn,
-		TargetWwpn:              &fieldTargetWwpn,
-		TargetFcid:              &fieldTargetFcid,
+		TargetPortArrayName:     "target_port_array_name",
+		TargetPortCtrlrName:     "target_port_ctrlr_name",
+		TargetPortInterfaceName: "target_port_interface_name",
+		TargetWwnn:              "target_wwnn",
+		TargetWwpn:              "target_wwpn",
+		TargetFcid:              "target_fcid",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsFcSessionTarget struct {
 
 // NsFcSessionTargetFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcSessionTargetFieldHandles struct {
-	TargetPortArrayName     *string
-	TargetPortCtrlrName     *string
-	TargetPortInterfaceName *string
-	TargetWwnn              *string
-	TargetWwpn              *string
-	TargetFcid              *string
+	TargetPortArrayName     string
+	TargetPortCtrlrName     string
+	TargetPortInterfaceName string
+	TargetWwnn              string
+	TargetWwpn              string
+	TargetFcid              string
 }

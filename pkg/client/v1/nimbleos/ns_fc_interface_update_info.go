@@ -6,12 +6,9 @@ package nimbleos
 var NsFcInterfaceUpdateInfoFields *NsFcInterfaceUpdateInfoFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldOnline := "online"
-
 	NsFcInterfaceUpdateInfoFields = &NsFcInterfaceUpdateInfoFieldHandles{
-		ID:     &fieldID,
-		Online: &fieldOnline,
+		ID:     "id",
+		Online: "online",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsFcInterfaceUpdateInfo struct {
 
 // NsFcInterfaceUpdateInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcInterfaceUpdateInfoFieldHandles struct {
-	ID     *string
-	Online *string
+	ID     string
+	Online string
 }

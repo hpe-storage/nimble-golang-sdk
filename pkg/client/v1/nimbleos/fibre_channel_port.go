@@ -6,30 +6,18 @@ package nimbleos
 var FibreChannelPortFields *FibreChannelPortFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayNameOrSerial := "array_name_or_serial"
-	fieldControllerName := "controller_name"
-	fieldFcPortName := "fc_port_name"
-	fieldBusLocation := "bus_location"
-	fieldPort := "port"
-	fieldSlot := "slot"
-	fieldOrientation := "orientation"
-	fieldLinkInfo := "link_info"
-	fieldRxPower := "rx_power"
-	fieldTxPower := "tx_power"
-
 	FibreChannelPortFields = &FibreChannelPortFieldHandles{
-		ID:                &fieldID,
-		ArrayNameOrSerial: &fieldArrayNameOrSerial,
-		ControllerName:    &fieldControllerName,
-		FcPortName:        &fieldFcPortName,
-		BusLocation:       &fieldBusLocation,
-		Port:              &fieldPort,
-		Slot:              &fieldSlot,
-		Orientation:       &fieldOrientation,
-		LinkInfo:          &fieldLinkInfo,
-		RxPower:           &fieldRxPower,
-		TxPower:           &fieldTxPower,
+		ID:                "id",
+		ArrayNameOrSerial: "array_name_or_serial",
+		ControllerName:    "controller_name",
+		FcPortName:        "fc_port_name",
+		BusLocation:       "bus_location",
+		Port:              "port",
+		Slot:              "slot",
+		Orientation:       "orientation",
+		LinkInfo:          "link_info",
+		RxPower:           "rx_power",
+		TxPower:           "tx_power",
 	}
 }
 
@@ -61,15 +49,15 @@ type FibreChannelPort struct {
 
 // FibreChannelPortFieldHandles provides a string representation for each AccessControlRecord field.
 type FibreChannelPortFieldHandles struct {
-	ID                *string
-	ArrayNameOrSerial *string
-	ControllerName    *string
-	FcPortName        *string
-	BusLocation       *string
-	Port              *string
-	Slot              *string
-	Orientation       *string
-	LinkInfo          *string
-	RxPower           *string
-	TxPower           *string
+	ID                string
+	ArrayNameOrSerial string
+	ControllerName    string
+	FcPortName        string
+	BusLocation       string
+	Port              string
+	Slot              string
+	Orientation       string
+	LinkInfo          string
+	RxPower           string
+	TxPower           string
 }

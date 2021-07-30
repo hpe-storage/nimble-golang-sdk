@@ -6,14 +6,10 @@ package nimbleos
 var NsAlarmAckFields *NsAlarmAckFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldRemindEvery := "remind_every"
-	fieldRemindEveryUnit := "remind_every_unit"
-
 	NsAlarmAckFields = &NsAlarmAckFieldHandles{
-		ID:              &fieldID,
-		RemindEvery:     &fieldRemindEvery,
-		RemindEveryUnit: &fieldRemindEveryUnit,
+		ID:              "id",
+		RemindEvery:     "remind_every",
+		RemindEveryUnit: "remind_every_unit",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsAlarmAck struct {
 
 // NsAlarmAckFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAlarmAckFieldHandles struct {
-	ID              *string
-	RemindEvery     *string
-	RemindEveryUnit *string
+	ID              string
+	RemindEvery     string
+	RemindEveryUnit string
 }

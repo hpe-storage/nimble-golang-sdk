@@ -6,12 +6,9 @@ package nimbleos
 var NsFolderSummaryFields *NsFolderSummaryFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldFqn := "fqn"
-
 	NsFolderSummaryFields = &NsFolderSummaryFieldHandles{
-		ID:  &fieldID,
-		Fqn: &fieldFqn,
+		ID:  "id",
+		Fqn: "fqn",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsFolderSummary struct {
 
 // NsFolderSummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFolderSummaryFieldHandles struct {
-	ID  *string
-	Fqn *string
+	ID  string
+	Fqn string
 }

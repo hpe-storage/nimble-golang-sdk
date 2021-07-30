@@ -6,16 +6,11 @@ package nimbleos
 var NsArraySummaryFields *NsArraySummaryFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayId := "array_id"
-	fieldName := "name"
-	fieldArrayName := "array_name"
-
 	NsArraySummaryFields = &NsArraySummaryFieldHandles{
-		ID:        &fieldID,
-		ArrayId:   &fieldArrayId,
-		Name:      &fieldName,
-		ArrayName: &fieldArrayName,
+		ID:        "id",
+		ArrayId:   "array_id",
+		Name:      "name",
+		ArrayName: "array_name",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsArraySummary struct {
 
 // NsArraySummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArraySummaryFieldHandles struct {
-	ID        *string
-	ArrayId   *string
-	Name      *string
-	ArrayName *string
+	ID        string
+	ArrayId   string
+	Name      string
+	ArrayName string
 }

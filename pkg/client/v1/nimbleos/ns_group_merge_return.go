@@ -6,66 +6,36 @@ package nimbleos
 var NsGroupMergeReturnFields *NsGroupMergeReturnFieldHandles
 
 func init() {
-	fieldOnlineVols := "online_vols"
-	fieldOnlineSnaps := "online_snaps"
-	fieldActivePartners := "active_partners"
-	fieldDstNatPartners := "dst_nat_partners"
-	fieldSrcThrottles := "src_throttles"
-	fieldDstThrottles := "dst_throttles"
-	fieldReplObjs := "repl_objs"
-	fieldNameConflicts := "name_conflicts"
-	fieldNameConflictsManualResolve := "name_conflicts_manual_resolve"
-	fieldSerialConflicts := "serial_conflicts"
-	fieldAppUuidConflicts := "app_uuid_conflicts"
-	fieldNameConflictsAndOwners := "name_conflicts_and_owners"
-	fieldLimitViolations := "limit_violations"
-	fieldSnapRetainLimitViolations := "snap_retain_limit_violations"
-	fieldNetworkErrorList := "network_error_list"
-	fieldAutoSwitchoverConflicts := "auto_switchover_conflicts"
-	fieldErrorList := "error_list"
-	fieldAliasConflicts := "alias_conflicts"
-	fieldOnlineFcIntfs := "online_fc_intfs"
-	fieldLunConflicts := "lun_conflicts"
-	fieldSrcSid := "src_sid"
-	fieldSrcGroupName := "src_group_name"
-	fieldDstGroupName := "dst_group_name"
-	fieldDstGroupSwversion := "dst_group_swversion"
-	fieldHtypeNameConflicts := "htype_name_conflicts"
-	fieldHostTypeConflicts := "host_type_conflicts"
-	fieldValidationError := "validation_error"
-	fieldValidationErrorMsg := "validation_error_msg"
-	fieldWarningList := "warning_list"
-
 	NsGroupMergeReturnFields = &NsGroupMergeReturnFieldHandles{
-		OnlineVols:                 &fieldOnlineVols,
-		OnlineSnaps:                &fieldOnlineSnaps,
-		ActivePartners:             &fieldActivePartners,
-		DstNatPartners:             &fieldDstNatPartners,
-		SrcThrottles:               &fieldSrcThrottles,
-		DstThrottles:               &fieldDstThrottles,
-		ReplObjs:                   &fieldReplObjs,
-		NameConflicts:              &fieldNameConflicts,
-		NameConflictsManualResolve: &fieldNameConflictsManualResolve,
-		SerialConflicts:            &fieldSerialConflicts,
-		AppUuidConflicts:           &fieldAppUuidConflicts,
-		NameConflictsAndOwners:     &fieldNameConflictsAndOwners,
-		LimitViolations:            &fieldLimitViolations,
-		SnapRetainLimitViolations:  &fieldSnapRetainLimitViolations,
-		NetworkErrorList:           &fieldNetworkErrorList,
-		AutoSwitchoverConflicts:    &fieldAutoSwitchoverConflicts,
-		ErrorList:                  &fieldErrorList,
-		AliasConflicts:             &fieldAliasConflicts,
-		OnlineFcIntfs:              &fieldOnlineFcIntfs,
-		LunConflicts:               &fieldLunConflicts,
-		SrcSid:                     &fieldSrcSid,
-		SrcGroupName:               &fieldSrcGroupName,
-		DstGroupName:               &fieldDstGroupName,
-		DstGroupSwversion:          &fieldDstGroupSwversion,
-		HtypeNameConflicts:         &fieldHtypeNameConflicts,
-		HostTypeConflicts:          &fieldHostTypeConflicts,
-		ValidationError:            &fieldValidationError,
-		ValidationErrorMsg:         &fieldValidationErrorMsg,
-		WarningList:                &fieldWarningList,
+		OnlineVols:                 "online_vols",
+		OnlineSnaps:                "online_snaps",
+		ActivePartners:             "active_partners",
+		DstNatPartners:             "dst_nat_partners",
+		SrcThrottles:               "src_throttles",
+		DstThrottles:               "dst_throttles",
+		ReplObjs:                   "repl_objs",
+		NameConflicts:              "name_conflicts",
+		NameConflictsManualResolve: "name_conflicts_manual_resolve",
+		SerialConflicts:            "serial_conflicts",
+		AppUuidConflicts:           "app_uuid_conflicts",
+		NameConflictsAndOwners:     "name_conflicts_and_owners",
+		LimitViolations:            "limit_violations",
+		SnapRetainLimitViolations:  "snap_retain_limit_violations",
+		NetworkErrorList:           "network_error_list",
+		AutoSwitchoverConflicts:    "auto_switchover_conflicts",
+		ErrorList:                  "error_list",
+		AliasConflicts:             "alias_conflicts",
+		OnlineFcIntfs:              "online_fc_intfs",
+		LunConflicts:               "lun_conflicts",
+		SrcSid:                     "src_sid",
+		SrcGroupName:               "src_group_name",
+		DstGroupName:               "dst_group_name",
+		DstGroupSwversion:          "dst_group_swversion",
+		HtypeNameConflicts:         "htype_name_conflicts",
+		HostTypeConflicts:          "host_type_conflicts",
+		ValidationError:            "validation_error",
+		ValidationErrorMsg:         "validation_error_msg",
+		WarningList:                "warning_list",
 	}
 }
 
@@ -133,33 +103,33 @@ type NsGroupMergeReturn struct {
 
 // NsGroupMergeReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsGroupMergeReturnFieldHandles struct {
-	OnlineVols                 *string
-	OnlineSnaps                *string
-	ActivePartners             *string
-	DstNatPartners             *string
-	SrcThrottles               *string
-	DstThrottles               *string
-	ReplObjs                   *string
-	NameConflicts              *string
-	NameConflictsManualResolve *string
-	SerialConflicts            *string
-	AppUuidConflicts           *string
-	NameConflictsAndOwners     *string
-	LimitViolations            *string
-	SnapRetainLimitViolations  *string
-	NetworkErrorList           *string
-	AutoSwitchoverConflicts    *string
-	ErrorList                  *string
-	AliasConflicts             *string
-	OnlineFcIntfs              *string
-	LunConflicts               *string
-	SrcSid                     *string
-	SrcGroupName               *string
-	DstGroupName               *string
-	DstGroupSwversion          *string
-	HtypeNameConflicts         *string
-	HostTypeConflicts          *string
-	ValidationError            *string
-	ValidationErrorMsg         *string
-	WarningList                *string
+	OnlineVols                 string
+	OnlineSnaps                string
+	ActivePartners             string
+	DstNatPartners             string
+	SrcThrottles               string
+	DstThrottles               string
+	ReplObjs                   string
+	NameConflicts              string
+	NameConflictsManualResolve string
+	SerialConflicts            string
+	AppUuidConflicts           string
+	NameConflictsAndOwners     string
+	LimitViolations            string
+	SnapRetainLimitViolations  string
+	NetworkErrorList           string
+	AutoSwitchoverConflicts    string
+	ErrorList                  string
+	AliasConflicts             string
+	OnlineFcIntfs              string
+	LunConflicts               string
+	SrcSid                     string
+	SrcGroupName               string
+	DstGroupName               string
+	DstGroupSwversion          string
+	HtypeNameConflicts         string
+	HostTypeConflicts          string
+	ValidationError            string
+	ValidationErrorMsg         string
+	WarningList                string
 }

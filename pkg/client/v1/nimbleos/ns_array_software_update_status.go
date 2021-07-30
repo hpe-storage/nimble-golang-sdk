@@ -6,18 +6,12 @@ package nimbleos
 var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatusFieldHandles
 
 func init() {
-	fieldArrayName := "array_name"
-	fieldError := "error"
-	fieldCtrlrErrorMask := "ctrlr_error_mask"
-	fieldCtrlrAErrs := "ctrlr_a_errs"
-	fieldCtrlrBErrs := "ctrlr_b_errs"
-
 	NsArraySoftwareUpdateStatusFields = &NsArraySoftwareUpdateStatusFieldHandles{
-		ArrayName:      &fieldArrayName,
-		Error:          &fieldError,
-		CtrlrErrorMask: &fieldCtrlrErrorMask,
-		CtrlrAErrs:     &fieldCtrlrAErrs,
-		CtrlrBErrs:     &fieldCtrlrBErrs,
+		ArrayName:      "array_name",
+		Error:          "error",
+		CtrlrErrorMask: "ctrlr_error_mask",
+		CtrlrAErrs:     "ctrlr_a_errs",
+		CtrlrBErrs:     "ctrlr_b_errs",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsArraySoftwareUpdateStatus struct {
 
 // NsArraySoftwareUpdateStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArraySoftwareUpdateStatusFieldHandles struct {
-	ArrayName      *string
-	Error          *string
-	CtrlrErrorMask *string
-	CtrlrAErrs     *string
-	CtrlrBErrs     *string
+	ArrayName      string
+	Error          string
+	CtrlrErrorMask string
+	CtrlrAErrs     string
+	CtrlrBErrs     string
 }

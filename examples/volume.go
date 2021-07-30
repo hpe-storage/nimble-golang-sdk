@@ -53,10 +53,10 @@ func main() {
 	// get volume with params
  	requestParams := new(param.GetParams)
  	fieldList := []string{
- 		*nimbleos.VolumeFields.ID,
- 		*nimbleos.VolumeFields.Name,
- 		*nimbleos.VolumeFields.Size,
- 		*nimbleos.VolumeFields.LimitMbps,
+ 		nimbleos.VolumeFields.ID,
+ 		nimbleos.VolumeFields.Name,
+ 		nimbleos.VolumeFields.Size,
+ 		nimbleos.VolumeFields.LimitMbps,
  	}
  	requestParams.WithFields(fieldList)
  	volumeList, err := volSvc.GetVolumes(requestParams)

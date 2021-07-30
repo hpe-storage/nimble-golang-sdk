@@ -6,10 +6,8 @@ package nimbleos
 var NsEulaReturnFields *NsEulaReturnFieldHandles
 
 func init() {
-	fieldEula := "eula"
-
 	NsEulaReturnFields = &NsEulaReturnFieldHandles{
-		Eula: &fieldEula,
+		Eula: "eula",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsEulaReturn struct {
 
 // NsEulaReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsEulaReturnFieldHandles struct {
-	Eula *string
+	Eula string
 }

@@ -76,7 +76,7 @@ func (svc *MasterKeyService) GetMasterKeyById(id string) (*nimbleos.MasterKey, e
 func (svc *MasterKeyService) GetMasterKeyByName(name string) (*nimbleos.MasterKey, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

@@ -6,20 +6,13 @@ package nimbleos
 var NsLdapUserFields *NsLdapUserFieldHandles
 
 func init() {
-	fieldUser := "user"
-	fieldPrimaryGroupName := "primary_group_name"
-	fieldPrimaryGroupId := "primary_group_id"
-	fieldGroupCount := "group_count"
-	fieldGroups := "groups"
-	fieldRole := "role"
-
 	NsLdapUserFields = &NsLdapUserFieldHandles{
-		User:             &fieldUser,
-		PrimaryGroupName: &fieldPrimaryGroupName,
-		PrimaryGroupId:   &fieldPrimaryGroupId,
-		GroupCount:       &fieldGroupCount,
-		Groups:           &fieldGroups,
-		Role:             &fieldRole,
+		User:             "user",
+		PrimaryGroupName: "primary_group_name",
+		PrimaryGroupId:   "primary_group_id",
+		GroupCount:       "group_count",
+		Groups:           "groups",
+		Role:             "role",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsLdapUser struct {
 
 // NsLdapUserFieldHandles provides a string representation for each AccessControlRecord field.
 type NsLdapUserFieldHandles struct {
-	User             *string
-	PrimaryGroupName *string
-	PrimaryGroupId   *string
-	GroupCount       *string
-	Groups           *string
-	Role             *string
+	User             string
+	PrimaryGroupName string
+	PrimaryGroupId   string
+	GroupCount       string
+	Groups           string
+	Role             string
 }

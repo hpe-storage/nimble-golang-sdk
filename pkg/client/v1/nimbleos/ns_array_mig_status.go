@@ -6,16 +6,11 @@ package nimbleos
 var NsArrayMigStatusFields *NsArrayMigStatusFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldIsDataSource := "is_data_source"
-	fieldSpaceUtilization := "space_utilization"
-
 	NsArrayMigStatusFields = &NsArrayMigStatusFieldHandles{
-		ID:               &fieldID,
-		Name:             &fieldName,
-		IsDataSource:     &fieldIsDataSource,
-		SpaceUtilization: &fieldSpaceUtilization,
+		ID:               "id",
+		Name:             "name",
+		IsDataSource:     "is_data_source",
+		SpaceUtilization: "space_utilization",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsArrayMigStatus struct {
 
 // NsArrayMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayMigStatusFieldHandles struct {
-	ID               *string
-	Name             *string
-	IsDataSource     *string
-	SpaceUtilization *string
+	ID               string
+	Name             string
+	IsDataSource     string
+	SpaceUtilization string
 }

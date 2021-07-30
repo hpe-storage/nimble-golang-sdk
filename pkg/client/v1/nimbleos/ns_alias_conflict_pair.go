@@ -6,14 +6,10 @@ package nimbleos
 var NsAliasConflictPairFields *NsAliasConflictPairFieldHandles
 
 func init() {
-	fieldInitiatorWwpn := "initiator_wwpn"
-	fieldDstAliasName := "dst_alias_name"
-	fieldSrcAliasName := "src_alias_name"
-
 	NsAliasConflictPairFields = &NsAliasConflictPairFieldHandles{
-		InitiatorWwpn: &fieldInitiatorWwpn,
-		DstAliasName:  &fieldDstAliasName,
-		SrcAliasName:  &fieldSrcAliasName,
+		InitiatorWwpn: "initiator_wwpn",
+		DstAliasName:  "dst_alias_name",
+		SrcAliasName:  "src_alias_name",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsAliasConflictPair struct {
 
 // NsAliasConflictPairFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAliasConflictPairFieldHandles struct {
-	InitiatorWwpn *string
-	DstAliasName  *string
-	SrcAliasName  *string
+	InitiatorWwpn string
+	DstAliasName  string
+	SrcAliasName  string
 }

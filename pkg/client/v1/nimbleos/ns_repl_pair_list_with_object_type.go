@@ -6,12 +6,9 @@ package nimbleos
 var NsReplPairListWithObjectTypeFields *NsReplPairListWithObjectTypeFieldHandles
 
 func init() {
-	fieldObjType := "obj_type"
-	fieldReplList := "repl_list"
-
 	NsReplPairListWithObjectTypeFields = &NsReplPairListWithObjectTypeFieldHandles{
-		ObjType:  &fieldObjType,
-		ReplList: &fieldReplList,
+		ObjType:  "obj_type",
+		ReplList: "repl_list",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsReplPairListWithObjectType struct {
 
 // NsReplPairListWithObjectTypeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsReplPairListWithObjectTypeFieldHandles struct {
-	ObjType  *string
-	ReplList *string
+	ObjType  string
+	ReplList string
 }

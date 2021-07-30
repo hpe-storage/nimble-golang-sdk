@@ -6,44 +6,25 @@ package nimbleos
 var ProtocolEndpointFields *ProtocolEndpointFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldPoolName := "pool_name"
-	fieldPoolId := "pool_id"
-	fieldState := "state"
-	fieldSerialNumber := "serial_number"
-	fieldTargetName := "target_name"
-	fieldGroupSpecificIds := "group_specific_ids"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldNumConnections := "num_connections"
-	fieldNumIscsiConnections := "num_iscsi_connections"
-	fieldNumFcConnections := "num_fc_connections"
-	fieldAccessControlRecords := "access_control_records"
-	fieldIscsiSessions := "iscsi_sessions"
-	fieldFcSessions := "fc_sessions"
-	fieldAccessProtocol := "access_protocol"
-
 	ProtocolEndpointFields = &ProtocolEndpointFieldHandles{
-		ID:                   &fieldID,
-		Name:                 &fieldName,
-		Description:          &fieldDescription,
-		PoolName:             &fieldPoolName,
-		PoolId:               &fieldPoolId,
-		State:                &fieldState,
-		SerialNumber:         &fieldSerialNumber,
-		TargetName:           &fieldTargetName,
-		GroupSpecificIds:     &fieldGroupSpecificIds,
-		CreationTime:         &fieldCreationTime,
-		LastModified:         &fieldLastModified,
-		NumConnections:       &fieldNumConnections,
-		NumIscsiConnections:  &fieldNumIscsiConnections,
-		NumFcConnections:     &fieldNumFcConnections,
-		AccessControlRecords: &fieldAccessControlRecords,
-		IscsiSessions:        &fieldIscsiSessions,
-		FcSessions:           &fieldFcSessions,
-		AccessProtocol:       &fieldAccessProtocol,
+		ID:                   "id",
+		Name:                 "name",
+		Description:          "description",
+		PoolName:             "pool_name",
+		PoolId:               "pool_id",
+		State:                "state",
+		SerialNumber:         "serial_number",
+		TargetName:           "target_name",
+		GroupSpecificIds:     "group_specific_ids",
+		CreationTime:         "creation_time",
+		LastModified:         "last_modified",
+		NumConnections:       "num_connections",
+		NumIscsiConnections:  "num_iscsi_connections",
+		NumFcConnections:     "num_fc_connections",
+		AccessControlRecords: "access_control_records",
+		IscsiSessions:        "iscsi_sessions",
+		FcSessions:           "fc_sessions",
+		AccessProtocol:       "access_protocol",
 	}
 }
 
@@ -89,22 +70,22 @@ type ProtocolEndpoint struct {
 
 // ProtocolEndpointFieldHandles provides a string representation for each AccessControlRecord field.
 type ProtocolEndpointFieldHandles struct {
-	ID                   *string
-	Name                 *string
-	Description          *string
-	PoolName             *string
-	PoolId               *string
-	State                *string
-	SerialNumber         *string
-	TargetName           *string
-	GroupSpecificIds     *string
-	CreationTime         *string
-	LastModified         *string
-	NumConnections       *string
-	NumIscsiConnections  *string
-	NumFcConnections     *string
-	AccessControlRecords *string
-	IscsiSessions        *string
-	FcSessions           *string
-	AccessProtocol       *string
+	ID                   string
+	Name                 string
+	Description          string
+	PoolName             string
+	PoolId               string
+	State                string
+	SerialNumber         string
+	TargetName           string
+	GroupSpecificIds     string
+	CreationTime         string
+	LastModified         string
+	NumConnections       string
+	NumIscsiConnections  string
+	NumFcConnections     string
+	AccessControlRecords string
+	IscsiSessions        string
+	FcSessions           string
+	AccessProtocol       string
 }

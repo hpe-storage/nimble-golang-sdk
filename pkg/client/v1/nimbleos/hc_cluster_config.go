@@ -6,28 +6,17 @@ package nimbleos
 var HcClusterConfigFields *HcClusterConfigFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldUniqueId := "unique_id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldUsername := "username"
-	fieldPassword := "password"
-	fieldType := "type"
-	fieldMetadata := "metadata"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-
 	HcClusterConfigFields = &HcClusterConfigFieldHandles{
-		ID:           &fieldID,
-		UniqueId:     &fieldUniqueId,
-		Name:         &fieldName,
-		Description:  &fieldDescription,
-		Username:     &fieldUsername,
-		Password:     &fieldPassword,
-		Type:         &fieldType,
-		Metadata:     &fieldMetadata,
-		CreationTime: &fieldCreationTime,
-		LastModified: &fieldLastModified,
+		ID:           "id",
+		UniqueId:     "unique_id",
+		Name:         "name",
+		Description:  "description",
+		Username:     "username",
+		Password:     "password",
+		Type:         "type",
+		Metadata:     "metadata",
+		CreationTime: "creation_time",
+		LastModified: "last_modified",
 	}
 }
 
@@ -57,14 +46,14 @@ type HcClusterConfig struct {
 
 // HcClusterConfigFieldHandles provides a string representation for each AccessControlRecord field.
 type HcClusterConfigFieldHandles struct {
-	ID           *string
-	UniqueId     *string
-	Name         *string
-	Description  *string
-	Username     *string
-	Password     *string
-	Type         *string
-	Metadata     *string
-	CreationTime *string
-	LastModified *string
+	ID           string
+	UniqueId     string
+	Name         string
+	Description  string
+	Username     string
+	Password     string
+	Type         string
+	Metadata     string
+	CreationTime string
+	LastModified string
 }

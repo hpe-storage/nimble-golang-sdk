@@ -6,16 +6,11 @@ package nimbleos
 var NsNICFields *NsNICFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldSubnetLabel := "subnet_label"
-	fieldDataIp := "data_ip"
-	fieldTagged := "tagged"
-
 	NsNICFields = &NsNICFieldHandles{
-		Name:        &fieldName,
-		SubnetLabel: &fieldSubnetLabel,
-		DataIp:      &fieldDataIp,
-		Tagged:      &fieldTagged,
+		Name:        "name",
+		SubnetLabel: "subnet_label",
+		DataIp:      "data_ip",
+		Tagged:      "tagged",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsNIC struct {
 
 // NsNICFieldHandles provides a string representation for each AccessControlRecord field.
 type NsNICFieldHandles struct {
-	Name        *string
-	SubnetLabel *string
-	DataIp      *string
-	Tagged      *string
+	Name        string
+	SubnetLabel string
+	DataIp      string
+	Tagged      string
 }

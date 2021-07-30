@@ -6,14 +6,10 @@ package nimbleos
 var NsPinnedVolumeInfoFields *NsPinnedVolumeInfoFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldSizePinnedCacheBytes := "size_pinned_cache_bytes"
-
 	NsPinnedVolumeInfoFields = &NsPinnedVolumeInfoFieldHandles{
-		ID:                   &fieldID,
-		Name:                 &fieldName,
-		SizePinnedCacheBytes: &fieldSizePinnedCacheBytes,
+		ID:                   "id",
+		Name:                 "name",
+		SizePinnedCacheBytes: "size_pinned_cache_bytes",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsPinnedVolumeInfo struct {
 
 // NsPinnedVolumeInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsPinnedVolumeInfoFieldHandles struct {
-	ID                   *string
-	Name                 *string
-	SizePinnedCacheBytes *string
+	ID                   string
+	Name                 string
+	SizePinnedCacheBytes string
 }

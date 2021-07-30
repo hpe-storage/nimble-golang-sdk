@@ -6,14 +6,10 @@ package nimbleos
 var NsSnapLunInfoFields *NsSnapLunInfoFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldLun := "lun"
-
 	NsSnapLunInfoFields = &NsSnapLunInfoFieldHandles{
-		ID:   &fieldID,
-		Name: &fieldName,
-		Lun:  &fieldLun,
+		ID:   "id",
+		Name: "name",
+		Lun:  "lun",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsSnapLunInfo struct {
 
 // NsSnapLunInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapLunInfoFieldHandles struct {
-	ID   *string
-	Name *string
-	Lun  *string
+	ID   string
+	Name string
+	Lun  string
 }

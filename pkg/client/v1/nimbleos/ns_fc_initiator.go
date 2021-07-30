@@ -6,16 +6,11 @@ package nimbleos
 var NsFCInitiatorFields *NsFCInitiatorFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldInitiatorId := "initiator_id"
-	fieldWwpn := "wwpn"
-	fieldAlias := "alias"
-
 	NsFCInitiatorFields = &NsFCInitiatorFieldHandles{
-		ID:          &fieldID,
-		InitiatorId: &fieldInitiatorId,
-		Wwpn:        &fieldWwpn,
-		Alias:       &fieldAlias,
+		ID:          "id",
+		InitiatorId: "initiator_id",
+		Wwpn:        "wwpn",
+		Alias:       "alias",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsFCInitiator struct {
 
 // NsFCInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFCInitiatorFieldHandles struct {
-	ID          *string
-	InitiatorId *string
-	Wwpn        *string
-	Alias       *string
+	ID          string
+	InitiatorId string
+	Wwpn        string
+	Alias       string
 }

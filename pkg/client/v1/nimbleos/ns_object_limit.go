@@ -6,14 +6,10 @@ package nimbleos
 var NsObjectLimitFields *NsObjectLimitFieldHandles
 
 func init() {
-	fieldObjType := "obj_type"
-	fieldObjLimit := "obj_limit"
-	fieldObjNum := "obj_num"
-
 	NsObjectLimitFields = &NsObjectLimitFieldHandles{
-		ObjType:  &fieldObjType,
-		ObjLimit: &fieldObjLimit,
-		ObjNum:   &fieldObjNum,
+		ObjType:  "obj_type",
+		ObjLimit: "obj_limit",
+		ObjNum:   "obj_num",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsObjectLimit struct {
 
 // NsObjectLimitFieldHandles provides a string representation for each AccessControlRecord field.
 type NsObjectLimitFieldHandles struct {
-	ObjType  *string
-	ObjLimit *string
-	ObjNum   *string
+	ObjType  string
+	ObjLimit string
+	ObjNum   string
 }

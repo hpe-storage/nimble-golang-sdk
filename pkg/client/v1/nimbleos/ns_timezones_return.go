@@ -6,10 +6,8 @@ package nimbleos
 var NsTimezonesReturnFields *NsTimezonesReturnFieldHandles
 
 func init() {
-	fieldTimezones := "timezones"
-
 	NsTimezonesReturnFields = &NsTimezonesReturnFieldHandles{
-		Timezones: &fieldTimezones,
+		Timezones: "timezones",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsTimezonesReturn struct {
 
 // NsTimezonesReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsTimezonesReturnFieldHandles struct {
-	Timezones *string
+	Timezones string
 }

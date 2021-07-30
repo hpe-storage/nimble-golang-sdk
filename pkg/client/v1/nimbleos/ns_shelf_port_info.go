@@ -6,28 +6,17 @@ package nimbleos
 var NsShelfPortInfoFields *NsShelfPortInfoFieldHandles
 
 func init() {
-	fieldPortIdx := "port_idx"
-	fieldPortName := "port_name"
-	fieldPortType := "port_type"
-	fieldPortStatus := "port_status"
-	fieldPortErrors := "port_errors"
-	fieldRemoteSasAddr := "remote_sas_addr"
-	fieldRemoteSasPhyId := "remote_sas_phy_id"
-	fieldRemoteSasDomain := "remote_sas_domain"
-	fieldRemoteLocId := "remote_loc_id"
-	fieldRemotePortId := "remote_port_id"
-
 	NsShelfPortInfoFields = &NsShelfPortInfoFieldHandles{
-		PortIdx:         &fieldPortIdx,
-		PortName:        &fieldPortName,
-		PortType:        &fieldPortType,
-		PortStatus:      &fieldPortStatus,
-		PortErrors:      &fieldPortErrors,
-		RemoteSasAddr:   &fieldRemoteSasAddr,
-		RemoteSasPhyId:  &fieldRemoteSasPhyId,
-		RemoteSasDomain: &fieldRemoteSasDomain,
-		RemoteLocId:     &fieldRemoteLocId,
-		RemotePortId:    &fieldRemotePortId,
+		PortIdx:         "port_idx",
+		PortName:        "port_name",
+		PortType:        "port_type",
+		PortStatus:      "port_status",
+		PortErrors:      "port_errors",
+		RemoteSasAddr:   "remote_sas_addr",
+		RemoteSasPhyId:  "remote_sas_phy_id",
+		RemoteSasDomain: "remote_sas_domain",
+		RemoteLocId:     "remote_loc_id",
+		RemotePortId:    "remote_port_id",
 	}
 }
 
@@ -57,14 +46,14 @@ type NsShelfPortInfo struct {
 
 // NsShelfPortInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsShelfPortInfoFieldHandles struct {
-	PortIdx         *string
-	PortName        *string
-	PortType        *string
-	PortStatus      *string
-	PortErrors      *string
-	RemoteSasAddr   *string
-	RemoteSasPhyId  *string
-	RemoteSasDomain *string
-	RemoteLocId     *string
-	RemotePortId    *string
+	PortIdx         string
+	PortName        string
+	PortType        string
+	PortStatus      string
+	PortErrors      string
+	RemoteSasAddr   string
+	RemoteSasPhyId  string
+	RemoteSasDomain string
+	RemoteLocId     string
+	RemotePortId    string
 }

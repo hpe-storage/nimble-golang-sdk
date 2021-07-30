@@ -6,12 +6,9 @@ package nimbleos
 var NsPoolSummaryFields *NsPoolSummaryFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-
 	NsPoolSummaryFields = &NsPoolSummaryFieldHandles{
-		ID:   &fieldID,
-		Name: &fieldName,
+		ID:   "id",
+		Name: "name",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsPoolSummary struct {
 
 // NsPoolSummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsPoolSummaryFieldHandles struct {
-	ID   *string
-	Name *string
+	ID   string
+	Name string
 }

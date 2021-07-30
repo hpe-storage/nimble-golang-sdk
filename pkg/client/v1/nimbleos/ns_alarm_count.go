@@ -6,14 +6,10 @@ package nimbleos
 var NsAlarmCountFields *NsAlarmCountFieldHandles
 
 func init() {
-	fieldCategory := "category"
-	fieldCritical := "critical"
-	fieldWarning := "warning"
-
 	NsAlarmCountFields = &NsAlarmCountFieldHandles{
-		Category: &fieldCategory,
-		Critical: &fieldCritical,
-		Warning:  &fieldWarning,
+		Category: "category",
+		Critical: "critical",
+		Warning:  "warning",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsAlarmCount struct {
 
 // NsAlarmCountFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAlarmCountFieldHandles struct {
-	Category *string
-	Critical *string
-	Warning  *string
+	Category string
+	Critical string
+	Warning  string
 }

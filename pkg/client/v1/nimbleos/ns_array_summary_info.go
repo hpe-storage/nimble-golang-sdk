@@ -6,24 +6,15 @@ package nimbleos
 var NsArraySummaryInfoFields *NsArraySummaryInfoFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldVersion := "version"
-	fieldSerial := "serial"
-	fieldModel := "model"
-	fieldZconfIpaddrs := "zconf_ipaddrs"
-	fieldStatus := "status"
-	fieldCountOfFcPorts := "count_of_fc_ports"
-	fieldAllFlash := "all_flash"
-
 	NsArraySummaryInfoFields = &NsArraySummaryInfoFieldHandles{
-		Name:           &fieldName,
-		Version:        &fieldVersion,
-		Serial:         &fieldSerial,
-		Model:          &fieldModel,
-		ZconfIpaddrs:   &fieldZconfIpaddrs,
-		Status:         &fieldStatus,
-		CountOfFcPorts: &fieldCountOfFcPorts,
-		AllFlash:       &fieldAllFlash,
+		Name:           "name",
+		Version:        "version",
+		Serial:         "serial",
+		Model:          "model",
+		ZconfIpaddrs:   "zconf_ipaddrs",
+		Status:         "status",
+		CountOfFcPorts: "count_of_fc_ports",
+		AllFlash:       "all_flash",
 	}
 }
 
@@ -49,12 +40,12 @@ type NsArraySummaryInfo struct {
 
 // NsArraySummaryInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArraySummaryInfoFieldHandles struct {
-	Name           *string
-	Version        *string
-	Serial         *string
-	Model          *string
-	ZconfIpaddrs   *string
-	Status         *string
-	CountOfFcPorts *string
-	AllFlash       *string
+	Name           string
+	Version        string
+	Serial         string
+	Model          string
+	ZconfIpaddrs   string
+	Status         string
+	CountOfFcPorts string
+	AllFlash       string
 }

@@ -6,22 +6,14 @@ package nimbleos
 var NsArrayUpgradeFields *NsArrayUpgradeFieldHandles
 
 func init() {
-	fieldType := "type"
-	fieldState := "state"
-	fieldStage := "stage"
-	fieldCtrlrAPortList := "ctrlr_a_port_list"
-	fieldCtrlrBPortList := "ctrlr_b_port_list"
-	fieldMessages := "messages"
-	fieldMetadata := "metadata"
-
 	NsArrayUpgradeFields = &NsArrayUpgradeFieldHandles{
-		Type:           &fieldType,
-		State:          &fieldState,
-		Stage:          &fieldStage,
-		CtrlrAPortList: &fieldCtrlrAPortList,
-		CtrlrBPortList: &fieldCtrlrBPortList,
-		Messages:       &fieldMessages,
-		Metadata:       &fieldMetadata,
+		Type:           "type",
+		State:          "state",
+		Stage:          "stage",
+		CtrlrAPortList: "ctrlr_a_port_list",
+		CtrlrBPortList: "ctrlr_b_port_list",
+		Messages:       "messages",
+		Metadata:       "metadata",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsArrayUpgrade struct {
 
 // NsArrayUpgradeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayUpgradeFieldHandles struct {
-	Type           *string
-	State          *string
-	Stage          *string
-	CtrlrAPortList *string
-	CtrlrBPortList *string
-	Messages       *string
-	Metadata       *string
+	Type           string
+	State          string
+	Stage          string
+	CtrlrAPortList string
+	CtrlrBPortList string
+	Messages       string
+	Metadata       string
 }

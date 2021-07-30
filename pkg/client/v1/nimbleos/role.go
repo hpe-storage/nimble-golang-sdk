@@ -6,26 +6,16 @@ package nimbleos
 var RoleFields *RoleFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldDescription := "description"
-	fieldPrivilegeList := "privilege_list"
-	fieldExtendedPrivilegeList := "extended_privilege_list"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldHidden := "hidden"
-
 	RoleFields = &RoleFieldHandles{
-		ID:                    &fieldID,
-		Name:                  &fieldName,
-		FullName:              &fieldFullName,
-		Description:           &fieldDescription,
-		PrivilegeList:         &fieldPrivilegeList,
-		ExtendedPrivilegeList: &fieldExtendedPrivilegeList,
-		CreationTime:          &fieldCreationTime,
-		LastModified:          &fieldLastModified,
-		Hidden:                &fieldHidden,
+		ID:                    "id",
+		Name:                  "name",
+		FullName:              "full_name",
+		Description:           "description",
+		PrivilegeList:         "privilege_list",
+		ExtendedPrivilegeList: "extended_privilege_list",
+		CreationTime:          "creation_time",
+		LastModified:          "last_modified",
+		Hidden:                "hidden",
 	}
 }
 
@@ -53,13 +43,13 @@ type Role struct {
 
 // RoleFieldHandles provides a string representation for each AccessControlRecord field.
 type RoleFieldHandles struct {
-	ID                    *string
-	Name                  *string
-	FullName              *string
-	Description           *string
-	PrivilegeList         *string
-	ExtendedPrivilegeList *string
-	CreationTime          *string
-	LastModified          *string
-	Hidden                *string
+	ID                    string
+	Name                  string
+	FullName              string
+	Description           string
+	PrivilegeList         string
+	ExtendedPrivilegeList string
+	CreationTime          string
+	LastModified          string
+	Hidden                string
 }

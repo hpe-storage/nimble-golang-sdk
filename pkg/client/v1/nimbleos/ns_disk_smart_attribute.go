@@ -6,24 +6,15 @@ package nimbleos
 var NsDiskSmartAttributeFields *NsDiskSmartAttributeFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldSmartId := "smart_id"
-	fieldCurValue := "cur_value"
-	fieldWorstValue := "worst_value"
-	fieldThreshold := "threshold"
-	fieldFlags := "flags"
-	fieldRawValue := "raw_value"
-	fieldLastUpdatedEpochSecs := "last_updated_epoch_secs"
-
 	NsDiskSmartAttributeFields = &NsDiskSmartAttributeFieldHandles{
-		Name:                 &fieldName,
-		SmartId:              &fieldSmartId,
-		CurValue:             &fieldCurValue,
-		WorstValue:           &fieldWorstValue,
-		Threshold:            &fieldThreshold,
-		Flags:                &fieldFlags,
-		RawValue:             &fieldRawValue,
-		LastUpdatedEpochSecs: &fieldLastUpdatedEpochSecs,
+		Name:                 "name",
+		SmartId:              "smart_id",
+		CurValue:             "cur_value",
+		WorstValue:           "worst_value",
+		Threshold:            "threshold",
+		Flags:                "flags",
+		RawValue:             "raw_value",
+		LastUpdatedEpochSecs: "last_updated_epoch_secs",
 	}
 }
 
@@ -49,12 +40,12 @@ type NsDiskSmartAttribute struct {
 
 // NsDiskSmartAttributeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsDiskSmartAttributeFieldHandles struct {
-	Name                 *string
-	SmartId              *string
-	CurValue             *string
-	WorstValue           *string
-	Threshold            *string
-	Flags                *string
-	RawValue             *string
-	LastUpdatedEpochSecs *string
+	Name                 string
+	SmartId              string
+	CurValue             string
+	WorstValue           string
+	Threshold            string
+	Flags                string
+	RawValue             string
+	LastUpdatedEpochSecs string
 }

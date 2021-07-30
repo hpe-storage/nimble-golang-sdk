@@ -6,14 +6,10 @@ package nimbleos
 var NsSnapRetainLimitFields *NsSnapRetainLimitFieldHandles
 
 func init() {
-	fieldObjType := "obj_type"
-	fieldRetainLimit := "retain_limit"
-	fieldRetainNum := "retain_num"
-
 	NsSnapRetainLimitFields = &NsSnapRetainLimitFieldHandles{
-		ObjType:     &fieldObjType,
-		RetainLimit: &fieldRetainLimit,
-		RetainNum:   &fieldRetainNum,
+		ObjType:     "obj_type",
+		RetainLimit: "retain_limit",
+		RetainNum:   "retain_num",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsSnapRetainLimit struct {
 
 // NsSnapRetainLimitFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapRetainLimitFieldHandles struct {
-	ObjType     *string
-	RetainLimit *string
-	RetainNum   *string
+	ObjType     string
+	RetainLimit string
+	RetainNum   string
 }

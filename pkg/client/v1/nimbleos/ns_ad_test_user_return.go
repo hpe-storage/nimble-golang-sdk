@@ -6,20 +6,13 @@ package nimbleos
 var NsADTestUserReturnFields *NsADTestUserReturnFieldHandles
 
 func init() {
-	fieldUsername := "username"
-	fieldPrimaryGroupName := "primary_group_name"
-	fieldPrimaryGroupId := "primary_group_id"
-	fieldGroupCount := "group_count"
-	fieldGroups := "groups"
-	fieldRole := "role"
-
 	NsADTestUserReturnFields = &NsADTestUserReturnFieldHandles{
-		Username:         &fieldUsername,
-		PrimaryGroupName: &fieldPrimaryGroupName,
-		PrimaryGroupId:   &fieldPrimaryGroupId,
-		GroupCount:       &fieldGroupCount,
-		Groups:           &fieldGroups,
-		Role:             &fieldRole,
+		Username:         "username",
+		PrimaryGroupName: "primary_group_name",
+		PrimaryGroupId:   "primary_group_id",
+		GroupCount:       "group_count",
+		Groups:           "groups",
+		Role:             "role",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsADTestUserReturn struct {
 
 // NsADTestUserReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsADTestUserReturnFieldHandles struct {
-	Username         *string
-	PrimaryGroupName *string
-	PrimaryGroupId   *string
-	GroupCount       *string
-	Groups           *string
-	Role             *string
+	Username         string
+	PrimaryGroupName string
+	PrimaryGroupId   string
+	GroupCount       string
+	Groups           string
+	Role             string
 }

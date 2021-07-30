@@ -6,78 +6,42 @@ package nimbleos
 var NsPoolMergeReturnFields *NsPoolMergeReturnFieldHandles
 
 func init() {
-	fieldSnapcollCount := "snapcoll_count"
-	fieldArrayList := "array_list"
-	fieldArrayCount := "array_count"
-	fieldUnassignedArrayList := "unassigned_array_list"
-	fieldAllFlash := "all_flash"
-	fieldCacheCapacity := "cache_capacity"
-	fieldCapacity := "capacity"
-	fieldCompressedSnapUsageBytes := "compressed_snap_usage_bytes"
-	fieldCompressedVolUsageBytes := "compressed_vol_usage_bytes"
-	fieldCompressionRatio := "compression_ratio"
-	fieldCreationTime := "creation_time"
-	fieldDedupeRatio := "dedupe_ratio"
-	fieldDescription := "description"
-	fieldFreeSpace := "free_space"
-	fieldFullName := "full_name"
-	fieldID := "id"
-	fieldDedupeEnabled := "dedupe_enabled"
-	fieldLastModified := "last_modified"
-	fieldName := "name"
-	fieldPinnableCacheCapacity := "pinnable_cache_capacity"
-	fieldPinnedCacheCapacity := "pinned_cache_capacity"
-	fieldPinnedVolList := "pinned_vol_list"
-	fieldSavingsCompression := "savings_compression"
-	fieldSavingsDedupe := "savings_dedupe"
-	fieldSearchName := "search_name"
-	fieldSnapCompressionRatio := "snap_compression_ratio"
-	fieldSnapCount := "snap_count"
-	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
-	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
-	fieldUnusedReserve := "unused_reserve"
-	fieldUsage := "usage"
-	fieldUsageValid := "usage_valid"
-	fieldVolCompressionRatio := "vol_compression_ratio"
-	fieldVolCount := "vol_count"
-	fieldVolList := "vol_list"
-
 	NsPoolMergeReturnFields = &NsPoolMergeReturnFieldHandles{
-		SnapcollCount:              &fieldSnapcollCount,
-		ArrayList:                  &fieldArrayList,
-		ArrayCount:                 &fieldArrayCount,
-		UnassignedArrayList:        &fieldUnassignedArrayList,
-		AllFlash:                   &fieldAllFlash,
-		CacheCapacity:              &fieldCacheCapacity,
-		Capacity:                   &fieldCapacity,
-		CompressedSnapUsageBytes:   &fieldCompressedSnapUsageBytes,
-		CompressedVolUsageBytes:    &fieldCompressedVolUsageBytes,
-		CompressionRatio:           &fieldCompressionRatio,
-		CreationTime:               &fieldCreationTime,
-		DedupeRatio:                &fieldDedupeRatio,
-		Description:                &fieldDescription,
-		FreeSpace:                  &fieldFreeSpace,
-		FullName:                   &fieldFullName,
-		ID:                         &fieldID,
-		DedupeEnabled:              &fieldDedupeEnabled,
-		LastModified:               &fieldLastModified,
-		Name:                       &fieldName,
-		PinnableCacheCapacity:      &fieldPinnableCacheCapacity,
-		PinnedCacheCapacity:        &fieldPinnedCacheCapacity,
-		PinnedVolList:              &fieldPinnedVolList,
-		SavingsCompression:         &fieldSavingsCompression,
-		SavingsDedupe:              &fieldSavingsDedupe,
-		SearchName:                 &fieldSearchName,
-		SnapCompressionRatio:       &fieldSnapCompressionRatio,
-		SnapCount:                  &fieldSnapCount,
-		UncompressedSnapUsageBytes: &fieldUncompressedSnapUsageBytes,
-		UncompressedVolUsageBytes:  &fieldUncompressedVolUsageBytes,
-		UnusedReserve:              &fieldUnusedReserve,
-		Usage:                      &fieldUsage,
-		UsageValid:                 &fieldUsageValid,
-		VolCompressionRatio:        &fieldVolCompressionRatio,
-		VolCount:                   &fieldVolCount,
-		VolList:                    &fieldVolList,
+		SnapcollCount:              "snapcoll_count",
+		ArrayList:                  "array_list",
+		ArrayCount:                 "array_count",
+		UnassignedArrayList:        "unassigned_array_list",
+		AllFlash:                   "all_flash",
+		CacheCapacity:              "cache_capacity",
+		Capacity:                   "capacity",
+		CompressedSnapUsageBytes:   "compressed_snap_usage_bytes",
+		CompressedVolUsageBytes:    "compressed_vol_usage_bytes",
+		CompressionRatio:           "compression_ratio",
+		CreationTime:               "creation_time",
+		DedupeRatio:                "dedupe_ratio",
+		Description:                "description",
+		FreeSpace:                  "free_space",
+		FullName:                   "full_name",
+		ID:                         "id",
+		DedupeEnabled:              "dedupe_enabled",
+		LastModified:               "last_modified",
+		Name:                       "name",
+		PinnableCacheCapacity:      "pinnable_cache_capacity",
+		PinnedCacheCapacity:        "pinned_cache_capacity",
+		PinnedVolList:              "pinned_vol_list",
+		SavingsCompression:         "savings_compression",
+		SavingsDedupe:              "savings_dedupe",
+		SearchName:                 "search_name",
+		SnapCompressionRatio:       "snap_compression_ratio",
+		SnapCount:                  "snap_count",
+		UncompressedSnapUsageBytes: "uncompressed_snap_usage_bytes",
+		UncompressedVolUsageBytes:  "uncompressed_vol_usage_bytes",
+		UnusedReserve:              "unused_reserve",
+		Usage:                      "usage",
+		UsageValid:                 "usage_valid",
+		VolCompressionRatio:        "vol_compression_ratio",
+		VolCount:                   "vol_count",
+		VolList:                    "vol_list",
 	}
 }
 
@@ -157,39 +121,39 @@ type NsPoolMergeReturn struct {
 
 // NsPoolMergeReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsPoolMergeReturnFieldHandles struct {
-	SnapcollCount              *string
-	ArrayList                  *string
-	ArrayCount                 *string
-	UnassignedArrayList        *string
-	AllFlash                   *string
-	CacheCapacity              *string
-	Capacity                   *string
-	CompressedSnapUsageBytes   *string
-	CompressedVolUsageBytes    *string
-	CompressionRatio           *string
-	CreationTime               *string
-	DedupeRatio                *string
-	Description                *string
-	FreeSpace                  *string
-	FullName                   *string
-	ID                         *string
-	DedupeEnabled              *string
-	LastModified               *string
-	Name                       *string
-	PinnableCacheCapacity      *string
-	PinnedCacheCapacity        *string
-	PinnedVolList              *string
-	SavingsCompression         *string
-	SavingsDedupe              *string
-	SearchName                 *string
-	SnapCompressionRatio       *string
-	SnapCount                  *string
-	UncompressedSnapUsageBytes *string
-	UncompressedVolUsageBytes  *string
-	UnusedReserve              *string
-	Usage                      *string
-	UsageValid                 *string
-	VolCompressionRatio        *string
-	VolCount                   *string
-	VolList                    *string
+	SnapcollCount              string
+	ArrayList                  string
+	ArrayCount                 string
+	UnassignedArrayList        string
+	AllFlash                   string
+	CacheCapacity              string
+	Capacity                   string
+	CompressedSnapUsageBytes   string
+	CompressedVolUsageBytes    string
+	CompressionRatio           string
+	CreationTime               string
+	DedupeRatio                string
+	Description                string
+	FreeSpace                  string
+	FullName                   string
+	ID                         string
+	DedupeEnabled              string
+	LastModified               string
+	Name                       string
+	PinnableCacheCapacity      string
+	PinnedCacheCapacity        string
+	PinnedVolList              string
+	SavingsCompression         string
+	SavingsDedupe              string
+	SearchName                 string
+	SnapCompressionRatio       string
+	SnapCount                  string
+	UncompressedSnapUsageBytes string
+	UncompressedVolUsageBytes  string
+	UnusedReserve              string
+	Usage                      string
+	UsageValid                 string
+	VolCompressionRatio        string
+	VolCount                   string
+	VolList                    string
 }

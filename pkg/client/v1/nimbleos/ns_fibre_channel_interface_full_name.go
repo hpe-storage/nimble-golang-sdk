@@ -6,14 +6,10 @@ package nimbleos
 var NsFibreChannelInterfaceFullNameFields *NsFibreChannelInterfaceFullNameFieldHandles
 
 func init() {
-	fieldArrayName := "array_name"
-	fieldCtrlrName := "ctrlr_name"
-	fieldIntfName := "intf_name"
-
 	NsFibreChannelInterfaceFullNameFields = &NsFibreChannelInterfaceFullNameFieldHandles{
-		ArrayName: &fieldArrayName,
-		CtrlrName: &fieldCtrlrName,
-		IntfName:  &fieldIntfName,
+		ArrayName: "array_name",
+		CtrlrName: "ctrlr_name",
+		IntfName:  "intf_name",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsFibreChannelInterfaceFullName struct {
 
 // NsFibreChannelInterfaceFullNameFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFibreChannelInterfaceFullNameFieldHandles struct {
-	ArrayName *string
-	CtrlrName *string
-	IntfName  *string
+	ArrayName string
+	CtrlrName string
+	IntfName  string
 }

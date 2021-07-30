@@ -6,10 +6,8 @@ package nimbleos
 var NsISCSIIQNFields *NsISCSIIQNFieldHandles
 
 func init() {
-	fieldName := "name"
-
 	NsISCSIIQNFields = &NsISCSIIQNFieldHandles{
-		Name: &fieldName,
+		Name: "name",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsISCSIIQN struct {
 
 // NsISCSIIQNFieldHandles provides a string representation for each AccessControlRecord field.
 type NsISCSIIQNFieldHandles struct {
-	Name *string
+	Name string
 }

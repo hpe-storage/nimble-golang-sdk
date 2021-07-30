@@ -6,12 +6,9 @@ package nimbleos
 var NsSensorRateFields *NsSensorRateFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldRate := "rate"
-
 	NsSensorRateFields = &NsSensorRateFieldHandles{
-		Name: &fieldName,
-		Rate: &fieldRate,
+		Name: "name",
+		Rate: "rate",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsSensorRate struct {
 
 // NsSensorRateFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSensorRateFieldHandles struct {
-	Name *string
-	Rate *string
+	Name string
+	Rate string
 }

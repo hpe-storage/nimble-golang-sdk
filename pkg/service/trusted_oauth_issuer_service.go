@@ -74,7 +74,7 @@ func (svc *TrustedOauthIssuerService) GetTrustedOauthIssuerById(id string) (*nim
 func (svc *TrustedOauthIssuerService) GetTrustedOauthIssuerByName(name string) (*nimbleos.TrustedOauthIssuer, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

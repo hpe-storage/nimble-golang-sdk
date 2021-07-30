@@ -6,18 +6,12 @@ package nimbleos
 var NsSupportPasswordArrayFields *NsSupportPasswordArrayFieldHandles
 
 func init() {
-	fieldArrayName := "array_name"
-	fieldArraySn := "array_sn"
-	fieldModel := "model"
-	fieldBlobCount := "blob_count"
-	fieldBlobList := "blob_list"
-
 	NsSupportPasswordArrayFields = &NsSupportPasswordArrayFieldHandles{
-		ArrayName: &fieldArrayName,
-		ArraySn:   &fieldArraySn,
-		Model:     &fieldModel,
-		BlobCount: &fieldBlobCount,
-		BlobList:  &fieldBlobList,
+		ArrayName: "array_name",
+		ArraySn:   "array_sn",
+		Model:     "model",
+		BlobCount: "blob_count",
+		BlobList:  "blob_list",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsSupportPasswordArray struct {
 
 // NsSupportPasswordArrayFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSupportPasswordArrayFieldHandles struct {
-	ArrayName *string
-	ArraySn   *string
-	Model     *string
-	BlobCount *string
-	BlobList  *string
+	ArrayName string
+	ArraySn   string
+	Model     string
+	BlobCount string
+	BlobList  string
 }

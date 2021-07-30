@@ -6,18 +6,12 @@ package nimbleos
 var NsISCSIInitiatorFields *NsISCSIInitiatorFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldInitiatorId := "initiator_id"
-	fieldLabel := "label"
-	fieldIqn := "iqn"
-	fieldIpAddress := "ip_address"
-
 	NsISCSIInitiatorFields = &NsISCSIInitiatorFieldHandles{
-		ID:          &fieldID,
-		InitiatorId: &fieldInitiatorId,
-		Label:       &fieldLabel,
-		Iqn:         &fieldIqn,
-		IpAddress:   &fieldIpAddress,
+		ID:          "id",
+		InitiatorId: "initiator_id",
+		Label:       "label",
+		Iqn:         "iqn",
+		IpAddress:   "ip_address",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsISCSIInitiator struct {
 
 // NsISCSIInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
 type NsISCSIInitiatorFieldHandles struct {
-	ID          *string
-	InitiatorId *string
-	Label       *string
-	Iqn         *string
-	IpAddress   *string
+	ID          string
+	InitiatorId string
+	Label       string
+	Iqn         string
+	IpAddress   string
 }

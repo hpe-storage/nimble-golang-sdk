@@ -6,12 +6,9 @@ package nimbleos
 var NsFqdnOrIpAndPortObjectFields *NsFqdnOrIpAndPortObjectFieldHandles
 
 func init() {
-	fieldSyslogServer := "syslog_server"
-	fieldSyslogPort := "syslog_port"
-
 	NsFqdnOrIpAndPortObjectFields = &NsFqdnOrIpAndPortObjectFieldHandles{
-		SyslogServer: &fieldSyslogServer,
-		SyslogPort:   &fieldSyslogPort,
+		SyslogServer: "syslog_server",
+		SyslogPort:   "syslog_port",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsFqdnOrIpAndPortObject struct {
 
 // NsFqdnOrIpAndPortObjectFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFqdnOrIpAndPortObjectFieldHandles struct {
-	SyslogServer *string
-	SyslogPort   *string
+	SyslogServer string
+	SyslogPort   string
 }

@@ -74,7 +74,7 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointById(id string) (*nimbleo
 func (svc *ProtocolEndpointService) GetProtocolEndpointByName(name string) (*nimbleos.ProtocolEndpoint, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
@@ -95,7 +95,7 @@ func (svc *ProtocolEndpointService) GetProtocolEndpointByName(name string) (*nim
 func (svc *ProtocolEndpointService) GetProtocolEndpointBySerialNumber(serialNumber string) (*nimbleos.ProtocolEndpoint, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.ProtocolEndpointFields.SerialNumber,
+			FieldName: param.NewString(nimbleos.ProtocolEndpointFields.SerialNumber),
 			Operator:  param.EQUALS.String(),
 			Value:     serialNumber,
 		},

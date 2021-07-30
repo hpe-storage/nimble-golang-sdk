@@ -6,20 +6,13 @@ package nimbleos
 var DnaFields *DnaFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayName := "array_name"
-	fieldCreationTime := "creation_time"
-	fieldFileSize := "file_size"
-	fieldDnaName := "dna_name"
-	fieldControllerName := "controller_name"
-
 	DnaFields = &DnaFieldHandles{
-		ID:             &fieldID,
-		ArrayName:      &fieldArrayName,
-		CreationTime:   &fieldCreationTime,
-		FileSize:       &fieldFileSize,
-		DnaName:        &fieldDnaName,
-		ControllerName: &fieldControllerName,
+		ID:             "id",
+		ArrayName:      "array_name",
+		CreationTime:   "creation_time",
+		FileSize:       "file_size",
+		DnaName:        "dna_name",
+		ControllerName: "controller_name",
 	}
 }
 
@@ -41,10 +34,10 @@ type Dna struct {
 
 // DnaFieldHandles provides a string representation for each AccessControlRecord field.
 type DnaFieldHandles struct {
-	ID             *string
-	ArrayName      *string
-	CreationTime   *string
-	FileSize       *string
-	DnaName        *string
-	ControllerName *string
+	ID             string
+	ArrayName      string
+	CreationTime   string
+	FileSize       string
+	DnaName        string
+	ControllerName string
 }

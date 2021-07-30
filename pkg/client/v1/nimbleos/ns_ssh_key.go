@@ -6,14 +6,10 @@ package nimbleos
 var NsSshKeyFields *NsSshKeyFieldHandles
 
 func init() {
-	fieldKeyName := "key_name"
-	fieldKeyType := "key_type"
-	fieldKey := "key"
-
 	NsSshKeyFields = &NsSshKeyFieldHandles{
-		KeyName: &fieldKeyName,
-		KeyType: &fieldKeyType,
-		Key:     &fieldKey,
+		KeyName: "key_name",
+		KeyType: "key_type",
+		Key:     "key",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsSshKey struct {
 
 // NsSshKeyFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSshKeyFieldHandles struct {
-	KeyName *string
-	KeyType *string
-	Key     *string
+	KeyName string
+	KeyType string
+	Key     string
 }

@@ -6,34 +6,20 @@ package nimbleos
 var LdapDomainFields *LdapDomainFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldDomainName := "domain_name"
-	fieldDomainDescription := "domain_description"
-	fieldDomainEnabled := "domain_enabled"
-	fieldServerUriList := "server_uri_list"
-	fieldBindUser := "bind_user"
-	fieldBindPassword := "bind_password"
-	fieldBaseDn := "base_dn"
-	fieldUserSearchFilter := "user_search_filter"
-	fieldUserSearchBaseList := "user_search_base_list"
-	fieldGroupSearchFilter := "group_search_filter"
-	fieldGroupSearchBaseList := "group_search_base_list"
-	fieldSchemaType := "schema_type"
-
 	LdapDomainFields = &LdapDomainFieldHandles{
-		ID:                  &fieldID,
-		DomainName:          &fieldDomainName,
-		DomainDescription:   &fieldDomainDescription,
-		DomainEnabled:       &fieldDomainEnabled,
-		ServerUriList:       &fieldServerUriList,
-		BindUser:            &fieldBindUser,
-		BindPassword:        &fieldBindPassword,
-		BaseDn:              &fieldBaseDn,
-		UserSearchFilter:    &fieldUserSearchFilter,
-		UserSearchBaseList:  &fieldUserSearchBaseList,
-		GroupSearchFilter:   &fieldGroupSearchFilter,
-		GroupSearchBaseList: &fieldGroupSearchBaseList,
-		SchemaType:          &fieldSchemaType,
+		ID:                  "id",
+		DomainName:          "domain_name",
+		DomainDescription:   "domain_description",
+		DomainEnabled:       "domain_enabled",
+		ServerUriList:       "server_uri_list",
+		BindUser:            "bind_user",
+		BindPassword:        "bind_password",
+		BaseDn:              "base_dn",
+		UserSearchFilter:    "user_search_filter",
+		UserSearchBaseList:  "user_search_base_list",
+		GroupSearchFilter:   "group_search_filter",
+		GroupSearchBaseList: "group_search_base_list",
+		SchemaType:          "schema_type",
 	}
 }
 
@@ -69,17 +55,17 @@ type LdapDomain struct {
 
 // LdapDomainFieldHandles provides a string representation for each AccessControlRecord field.
 type LdapDomainFieldHandles struct {
-	ID                  *string
-	DomainName          *string
-	DomainDescription   *string
-	DomainEnabled       *string
-	ServerUriList       *string
-	BindUser            *string
-	BindPassword        *string
-	BaseDn              *string
-	UserSearchFilter    *string
-	UserSearchBaseList  *string
-	GroupSearchFilter   *string
-	GroupSearchBaseList *string
-	SchemaType          *string
+	ID                  string
+	DomainName          string
+	DomainDescription   string
+	DomainEnabled       string
+	ServerUriList       string
+	BindUser            string
+	BindPassword        string
+	BaseDn              string
+	UserSearchFilter    string
+	UserSearchBaseList  string
+	GroupSearchFilter   string
+	GroupSearchBaseList string
+	SchemaType          string
 }

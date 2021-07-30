@@ -6,10 +6,8 @@ package nimbleos
 var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturnFieldHandles
 
 func init() {
-	fieldEnabled := "enabled"
-
 	NsShelfIdentifyStatusReturnFields = &NsShelfIdentifyStatusReturnFieldHandles{
-		Enabled: &fieldEnabled,
+		Enabled: "enabled",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsShelfIdentifyStatusReturn struct {
 
 // NsShelfIdentifyStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsShelfIdentifyStatusReturnFieldHandles struct {
-	Enabled *string
+	Enabled string
 }

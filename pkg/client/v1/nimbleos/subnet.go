@@ -6,38 +6,22 @@ package nimbleos
 var SubnetFields *SubnetFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldNetwork := "network"
-	fieldNetmask := "netmask"
-	fieldType := "type"
-	fieldAllowIscsi := "allow_iscsi"
-	fieldAllowGroup := "allow_group"
-	fieldDiscoveryIp := "discovery_ip"
-	fieldMtu := "mtu"
-	fieldNetzoneType := "netzone_type"
-	fieldVlanId := "vlan_id"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldFailover := "failover"
-	fieldFailoverEnableTime := "failover_enable_time"
-
 	SubnetFields = &SubnetFieldHandles{
-		ID:                 &fieldID,
-		Name:               &fieldName,
-		Network:            &fieldNetwork,
-		Netmask:            &fieldNetmask,
-		Type:               &fieldType,
-		AllowIscsi:         &fieldAllowIscsi,
-		AllowGroup:         &fieldAllowGroup,
-		DiscoveryIp:        &fieldDiscoveryIp,
-		Mtu:                &fieldMtu,
-		NetzoneType:        &fieldNetzoneType,
-		VlanId:             &fieldVlanId,
-		CreationTime:       &fieldCreationTime,
-		LastModified:       &fieldLastModified,
-		Failover:           &fieldFailover,
-		FailoverEnableTime: &fieldFailoverEnableTime,
+		ID:                 "id",
+		Name:               "name",
+		Network:            "network",
+		Netmask:            "netmask",
+		Type:               "type",
+		AllowIscsi:         "allow_iscsi",
+		AllowGroup:         "allow_group",
+		DiscoveryIp:        "discovery_ip",
+		Mtu:                "mtu",
+		NetzoneType:        "netzone_type",
+		VlanId:             "vlan_id",
+		CreationTime:       "creation_time",
+		LastModified:       "last_modified",
+		Failover:           "failover",
+		FailoverEnableTime: "failover_enable_time",
 	}
 }
 
@@ -77,19 +61,19 @@ type Subnet struct {
 
 // SubnetFieldHandles provides a string representation for each AccessControlRecord field.
 type SubnetFieldHandles struct {
-	ID                 *string
-	Name               *string
-	Network            *string
-	Netmask            *string
-	Type               *string
-	AllowIscsi         *string
-	AllowGroup         *string
-	DiscoveryIp        *string
-	Mtu                *string
-	NetzoneType        *string
-	VlanId             *string
-	CreationTime       *string
-	LastModified       *string
-	Failover           *string
-	FailoverEnableTime *string
+	ID                 string
+	Name               string
+	Network            string
+	Netmask            string
+	Type               string
+	AllowIscsi         string
+	AllowGroup         string
+	DiscoveryIp        string
+	Mtu                string
+	NetzoneType        string
+	VlanId             string
+	CreationTime       string
+	LastModified       string
+	Failover           string
+	FailoverEnableTime string
 }

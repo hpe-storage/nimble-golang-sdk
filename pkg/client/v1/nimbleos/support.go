@@ -6,16 +6,11 @@ package nimbleos
 var SupportFields *SupportFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldPasswordMode := "password_mode"
-	fieldArrayCount := "array_count"
-	fieldArrayList := "array_list"
-
 	SupportFields = &SupportFieldHandles{
-		ID:           &fieldID,
-		PasswordMode: &fieldPasswordMode,
-		ArrayCount:   &fieldArrayCount,
-		ArrayList:    &fieldArrayList,
+		ID:           "id",
+		PasswordMode: "password_mode",
+		ArrayCount:   "array_count",
+		ArrayList:    "array_list",
 	}
 }
 
@@ -33,8 +28,8 @@ type Support struct {
 
 // SupportFieldHandles provides a string representation for each AccessControlRecord field.
 type SupportFieldHandles struct {
-	ID           *string
-	PasswordMode *string
-	ArrayCount   *string
-	ArrayList    *string
+	ID           string
+	PasswordMode string
+	ArrayCount   string
+	ArrayList    string
 }

@@ -6,98 +6,52 @@ package nimbleos
 var FolderFields *FolderFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFqn := "fqn"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldPoolName := "pool_name"
-	fieldPoolId := "pool_id"
-	fieldLimitBytesSpecified := "limit_bytes_specified"
-	fieldLimitBytes := "limit_bytes"
-	fieldLimitSizeBytes := "limit_size_bytes"
-	fieldProvisionedLimitSizeBytes := "provisioned_limit_size_bytes"
-	fieldOverdraftLimitPct := "overdraft_limit_pct"
-	fieldCapacityBytes := "capacity_bytes"
-	fieldFreeSpaceBytes := "free_space_bytes"
-	fieldProvisionedBytes := "provisioned_bytes"
-	fieldUsageBytes := "usage_bytes"
-	fieldVolumeMappedBytes := "volume_mapped_bytes"
-	fieldUsageValid := "usage_valid"
-	fieldAgentType := "agent_type"
-	fieldInheritedVolPerfpolId := "inherited_vol_perfpol_id"
-	fieldInheritedVolPerfpolName := "inherited_vol_perfpol_name"
-	fieldUnusedReserveBytes := "unused_reserve_bytes"
-	fieldUnusedSnapReserveBytes := "unused_snap_reserve_bytes"
-	fieldCompressedVolUsageBytes := "compressed_vol_usage_bytes"
-	fieldCompressedSnapUsageBytes := "compressed_snap_usage_bytes"
-	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
-	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
-	fieldVolCompressionRatio := "vol_compression_ratio"
-	fieldSnapCompressionRatio := "snap_compression_ratio"
-	fieldCompressionRatio := "compression_ratio"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldNumSnaps := "num_snaps"
-	fieldNumSnapcolls := "num_snapcolls"
-	fieldAppUuid := "app_uuid"
-	fieldVolumeList := "volume_list"
-	fieldAppserverId := "appserver_id"
-	fieldAppserverName := "appserver_name"
-	fieldFolsetId := "folset_id"
-	fieldFolsetName := "folset_name"
-	fieldLimitIops := "limit_iops"
-	fieldLimitMbps := "limit_mbps"
-	fieldAccessProtocol := "access_protocol"
-	fieldTenantId := "tenant_id"
-
 	FolderFields = &FolderFieldHandles{
-		ID:                         &fieldID,
-		Name:                       &fieldName,
-		Fqn:                        &fieldFqn,
-		FullName:                   &fieldFullName,
-		SearchName:                 &fieldSearchName,
-		Description:                &fieldDescription,
-		PoolName:                   &fieldPoolName,
-		PoolId:                     &fieldPoolId,
-		LimitBytesSpecified:        &fieldLimitBytesSpecified,
-		LimitBytes:                 &fieldLimitBytes,
-		LimitSizeBytes:             &fieldLimitSizeBytes,
-		ProvisionedLimitSizeBytes:  &fieldProvisionedLimitSizeBytes,
-		OverdraftLimitPct:          &fieldOverdraftLimitPct,
-		CapacityBytes:              &fieldCapacityBytes,
-		FreeSpaceBytes:             &fieldFreeSpaceBytes,
-		ProvisionedBytes:           &fieldProvisionedBytes,
-		UsageBytes:                 &fieldUsageBytes,
-		VolumeMappedBytes:          &fieldVolumeMappedBytes,
-		UsageValid:                 &fieldUsageValid,
-		AgentType:                  &fieldAgentType,
-		InheritedVolPerfpolId:      &fieldInheritedVolPerfpolId,
-		InheritedVolPerfpolName:    &fieldInheritedVolPerfpolName,
-		UnusedReserveBytes:         &fieldUnusedReserveBytes,
-		UnusedSnapReserveBytes:     &fieldUnusedSnapReserveBytes,
-		CompressedVolUsageBytes:    &fieldCompressedVolUsageBytes,
-		CompressedSnapUsageBytes:   &fieldCompressedSnapUsageBytes,
-		UncompressedVolUsageBytes:  &fieldUncompressedVolUsageBytes,
-		UncompressedSnapUsageBytes: &fieldUncompressedSnapUsageBytes,
-		VolCompressionRatio:        &fieldVolCompressionRatio,
-		SnapCompressionRatio:       &fieldSnapCompressionRatio,
-		CompressionRatio:           &fieldCompressionRatio,
-		CreationTime:               &fieldCreationTime,
-		LastModified:               &fieldLastModified,
-		NumSnaps:                   &fieldNumSnaps,
-		NumSnapcolls:               &fieldNumSnapcolls,
-		AppUuid:                    &fieldAppUuid,
-		VolumeList:                 &fieldVolumeList,
-		AppserverId:                &fieldAppserverId,
-		AppserverName:              &fieldAppserverName,
-		FolsetId:                   &fieldFolsetId,
-		FolsetName:                 &fieldFolsetName,
-		LimitIops:                  &fieldLimitIops,
-		LimitMbps:                  &fieldLimitMbps,
-		AccessProtocol:             &fieldAccessProtocol,
-		TenantId:                   &fieldTenantId,
+		ID:                         "id",
+		Name:                       "name",
+		Fqn:                        "fqn",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Description:                "description",
+		PoolName:                   "pool_name",
+		PoolId:                     "pool_id",
+		LimitBytesSpecified:        "limit_bytes_specified",
+		LimitBytes:                 "limit_bytes",
+		LimitSizeBytes:             "limit_size_bytes",
+		ProvisionedLimitSizeBytes:  "provisioned_limit_size_bytes",
+		OverdraftLimitPct:          "overdraft_limit_pct",
+		CapacityBytes:              "capacity_bytes",
+		FreeSpaceBytes:             "free_space_bytes",
+		ProvisionedBytes:           "provisioned_bytes",
+		UsageBytes:                 "usage_bytes",
+		VolumeMappedBytes:          "volume_mapped_bytes",
+		UsageValid:                 "usage_valid",
+		AgentType:                  "agent_type",
+		InheritedVolPerfpolId:      "inherited_vol_perfpol_id",
+		InheritedVolPerfpolName:    "inherited_vol_perfpol_name",
+		UnusedReserveBytes:         "unused_reserve_bytes",
+		UnusedSnapReserveBytes:     "unused_snap_reserve_bytes",
+		CompressedVolUsageBytes:    "compressed_vol_usage_bytes",
+		CompressedSnapUsageBytes:   "compressed_snap_usage_bytes",
+		UncompressedVolUsageBytes:  "uncompressed_vol_usage_bytes",
+		UncompressedSnapUsageBytes: "uncompressed_snap_usage_bytes",
+		VolCompressionRatio:        "vol_compression_ratio",
+		SnapCompressionRatio:       "snap_compression_ratio",
+		CompressionRatio:           "compression_ratio",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		NumSnaps:                   "num_snaps",
+		NumSnapcolls:               "num_snapcolls",
+		AppUuid:                    "app_uuid",
+		VolumeList:                 "volume_list",
+		AppserverId:                "appserver_id",
+		AppserverName:              "appserver_name",
+		FolsetId:                   "folset_id",
+		FolsetName:                 "folset_name",
+		LimitIops:                  "limit_iops",
+		LimitMbps:                  "limit_mbps",
+		AccessProtocol:             "access_protocol",
+		TenantId:                   "tenant_id",
 	}
 }
 
@@ -197,49 +151,49 @@ type Folder struct {
 
 // FolderFieldHandles provides a string representation for each AccessControlRecord field.
 type FolderFieldHandles struct {
-	ID                         *string
-	Name                       *string
-	Fqn                        *string
-	FullName                   *string
-	SearchName                 *string
-	Description                *string
-	PoolName                   *string
-	PoolId                     *string
-	LimitBytesSpecified        *string
-	LimitBytes                 *string
-	LimitSizeBytes             *string
-	ProvisionedLimitSizeBytes  *string
-	OverdraftLimitPct          *string
-	CapacityBytes              *string
-	FreeSpaceBytes             *string
-	ProvisionedBytes           *string
-	UsageBytes                 *string
-	VolumeMappedBytes          *string
-	UsageValid                 *string
-	AgentType                  *string
-	InheritedVolPerfpolId      *string
-	InheritedVolPerfpolName    *string
-	UnusedReserveBytes         *string
-	UnusedSnapReserveBytes     *string
-	CompressedVolUsageBytes    *string
-	CompressedSnapUsageBytes   *string
-	UncompressedVolUsageBytes  *string
-	UncompressedSnapUsageBytes *string
-	VolCompressionRatio        *string
-	SnapCompressionRatio       *string
-	CompressionRatio           *string
-	CreationTime               *string
-	LastModified               *string
-	NumSnaps                   *string
-	NumSnapcolls               *string
-	AppUuid                    *string
-	VolumeList                 *string
-	AppserverId                *string
-	AppserverName              *string
-	FolsetId                   *string
-	FolsetName                 *string
-	LimitIops                  *string
-	LimitMbps                  *string
-	AccessProtocol             *string
-	TenantId                   *string
+	ID                         string
+	Name                       string
+	Fqn                        string
+	FullName                   string
+	SearchName                 string
+	Description                string
+	PoolName                   string
+	PoolId                     string
+	LimitBytesSpecified        string
+	LimitBytes                 string
+	LimitSizeBytes             string
+	ProvisionedLimitSizeBytes  string
+	OverdraftLimitPct          string
+	CapacityBytes              string
+	FreeSpaceBytes             string
+	ProvisionedBytes           string
+	UsageBytes                 string
+	VolumeMappedBytes          string
+	UsageValid                 string
+	AgentType                  string
+	InheritedVolPerfpolId      string
+	InheritedVolPerfpolName    string
+	UnusedReserveBytes         string
+	UnusedSnapReserveBytes     string
+	CompressedVolUsageBytes    string
+	CompressedSnapUsageBytes   string
+	UncompressedVolUsageBytes  string
+	UncompressedSnapUsageBytes string
+	VolCompressionRatio        string
+	SnapCompressionRatio       string
+	CompressionRatio           string
+	CreationTime               string
+	LastModified               string
+	NumSnaps                   string
+	NumSnapcolls               string
+	AppUuid                    string
+	VolumeList                 string
+	AppserverId                string
+	AppserverName              string
+	FolsetId                   string
+	FolsetName                 string
+	LimitIops                  string
+	LimitMbps                  string
+	AccessProtocol             string
+	TenantId                   string
 }

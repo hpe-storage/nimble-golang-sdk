@@ -6,46 +6,26 @@ package nimbleos
 var PerformancePolicyFields *PerformancePolicyFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldBlockSize := "block_size"
-	fieldCompress := "compress"
-	fieldCache := "cache"
-	fieldCachePolicy := "cache_policy"
-	fieldSpacePolicy := "space_policy"
-	fieldAppCategory := "app_category"
-	fieldDedupeEnabled := "dedupe_enabled"
-	fieldDeprecated := "deprecated"
-	fieldPredefined := "predefined"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldSampleRate := "sample_rate"
-	fieldVolumeCount := "volume_count"
-	fieldDedupeOverridePools := "dedupe_override_pools"
-
 	PerformancePolicyFields = &PerformancePolicyFieldHandles{
-		ID:                  &fieldID,
-		Name:                &fieldName,
-		FullName:            &fieldFullName,
-		SearchName:          &fieldSearchName,
-		Description:         &fieldDescription,
-		BlockSize:           &fieldBlockSize,
-		Compress:            &fieldCompress,
-		Cache:               &fieldCache,
-		CachePolicy:         &fieldCachePolicy,
-		SpacePolicy:         &fieldSpacePolicy,
-		AppCategory:         &fieldAppCategory,
-		DedupeEnabled:       &fieldDedupeEnabled,
-		Deprecated:          &fieldDeprecated,
-		Predefined:          &fieldPredefined,
-		CreationTime:        &fieldCreationTime,
-		LastModified:        &fieldLastModified,
-		SampleRate:          &fieldSampleRate,
-		VolumeCount:         &fieldVolumeCount,
-		DedupeOverridePools: &fieldDedupeOverridePools,
+		ID:                  "id",
+		Name:                "name",
+		FullName:            "full_name",
+		SearchName:          "search_name",
+		Description:         "description",
+		BlockSize:           "block_size",
+		Compress:            "compress",
+		Cache:               "cache",
+		CachePolicy:         "cache_policy",
+		SpacePolicy:         "space_policy",
+		AppCategory:         "app_category",
+		DedupeEnabled:       "dedupe_enabled",
+		Deprecated:          "deprecated",
+		Predefined:          "predefined",
+		CreationTime:        "creation_time",
+		LastModified:        "last_modified",
+		SampleRate:          "sample_rate",
+		VolumeCount:         "volume_count",
+		DedupeOverridePools: "dedupe_override_pools",
 	}
 }
 
@@ -93,23 +73,23 @@ type PerformancePolicy struct {
 
 // PerformancePolicyFieldHandles provides a string representation for each AccessControlRecord field.
 type PerformancePolicyFieldHandles struct {
-	ID                  *string
-	Name                *string
-	FullName            *string
-	SearchName          *string
-	Description         *string
-	BlockSize           *string
-	Compress            *string
-	Cache               *string
-	CachePolicy         *string
-	SpacePolicy         *string
-	AppCategory         *string
-	DedupeEnabled       *string
-	Deprecated          *string
-	Predefined          *string
-	CreationTime        *string
-	LastModified        *string
-	SampleRate          *string
-	VolumeCount         *string
-	DedupeOverridePools *string
+	ID                  string
+	Name                string
+	FullName            string
+	SearchName          string
+	Description         string
+	BlockSize           string
+	Compress            string
+	Cache               string
+	CachePolicy         string
+	SpacePolicy         string
+	AppCategory         string
+	DedupeEnabled       string
+	Deprecated          string
+	Predefined          string
+	CreationTime        string
+	LastModified        string
+	SampleRate          string
+	VolumeCount         string
+	DedupeOverridePools string
 }

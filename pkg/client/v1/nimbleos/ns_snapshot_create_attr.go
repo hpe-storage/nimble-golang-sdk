@@ -6,22 +6,14 @@ package nimbleos
 var NsSnapshotCreateAttrFields *NsSnapshotCreateAttrFieldHandles
 
 func init() {
-	fieldVolId := "vol_id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldOnline := "online"
-	fieldWritable := "writable"
-	fieldAgentType := "agent_type"
-	fieldMetadata := "metadata"
-
 	NsSnapshotCreateAttrFields = &NsSnapshotCreateAttrFieldHandles{
-		VolId:       &fieldVolId,
-		Name:        &fieldName,
-		Description: &fieldDescription,
-		Online:      &fieldOnline,
-		Writable:    &fieldWritable,
-		AgentType:   &fieldAgentType,
-		Metadata:    &fieldMetadata,
+		VolId:       "vol_id",
+		Name:        "name",
+		Description: "description",
+		Online:      "online",
+		Writable:    "writable",
+		AgentType:   "agent_type",
+		Metadata:    "metadata",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsSnapshotCreateAttr struct {
 
 // NsSnapshotCreateAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapshotCreateAttrFieldHandles struct {
-	VolId       *string
-	Name        *string
-	Description *string
-	Online      *string
-	Writable    *string
-	AgentType   *string
-	Metadata    *string
+	VolId       string
+	Name        string
+	Description string
+	Online      string
+	Writable    string
+	AgentType   string
+	Metadata    string
 }

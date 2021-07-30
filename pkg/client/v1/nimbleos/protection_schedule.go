@@ -6,90 +6,48 @@ package nimbleos
 var ProtectionScheduleFields *ProtectionScheduleFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldVolcollOrProttmplType := "volcoll_or_prottmpl_type"
-	fieldVolcollOrProttmplId := "volcoll_or_prottmpl_id"
-	fieldPeriod := "period"
-	fieldPeriodUnit := "period_unit"
-	fieldAtTime := "at_time"
-	fieldUntilTime := "until_time"
-	fieldDays := "days"
-	fieldNumRetain := "num_retain"
-	fieldDownstreamPartner := "downstream_partner"
-	fieldDownstreamPartnerName := "downstream_partner_name"
-	fieldDownstreamPartnerId := "downstream_partner_id"
-	fieldUpstreamPartnerName := "upstream_partner_name"
-	fieldUpstreamPartnerId := "upstream_partner_id"
-	fieldReplicateEvery := "replicate_every"
-	fieldNumRetainReplica := "num_retain_replica"
-	fieldReplAlertThres := "repl_alert_thres"
-	fieldSnapVerify := "snap_verify"
-	fieldSkipDbConsistencyCheck := "skip_db_consistency_check"
-	fieldDisableAppsync := "disable_appsync"
-	fieldScheduleType := "schedule_type"
-	fieldActive := "active"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldLastModSchedTime := "last_mod_sched_time"
-	fieldLastReplicatedSnapcollName := "last_replicated_snapcoll_name"
-	fieldLastReplicatedSnapcollId := "last_replicated_snapcoll_id"
-	fieldLastReplicatedAtTime := "last_replicated_at_time"
-	fieldLastSnapTime := "last_snap_time"
-	fieldNextSnapTime := "next_snap_time"
-	fieldNextReplSnapTime := "next_repl_snap_time"
-	fieldSnapCounter := "snap_counter"
-	fieldSchedOwnerId := "sched_owner_id"
-	fieldSchedOwnerName := "sched_owner_name"
-	fieldLastConfigChangeTime := "last_config_change_time"
-	fieldCurrentlyReplicatingSnapcollName := "currently_replicating_snapcoll_name"
-	fieldVolStatusList := "vol_status_list"
-	fieldSyncReplVolStatusList := "sync_repl_vol_status_list"
-	fieldUseDownstreamForDr := "use_downstream_for_dr"
-
 	ProtectionScheduleFields = &ProtectionScheduleFieldHandles{
-		ID:                               &fieldID,
-		Name:                             &fieldName,
-		Description:                      &fieldDescription,
-		VolcollOrProttmplType:            &fieldVolcollOrProttmplType,
-		VolcollOrProttmplId:              &fieldVolcollOrProttmplId,
-		Period:                           &fieldPeriod,
-		PeriodUnit:                       &fieldPeriodUnit,
-		AtTime:                           &fieldAtTime,
-		UntilTime:                        &fieldUntilTime,
-		Days:                             &fieldDays,
-		NumRetain:                        &fieldNumRetain,
-		DownstreamPartner:                &fieldDownstreamPartner,
-		DownstreamPartnerName:            &fieldDownstreamPartnerName,
-		DownstreamPartnerId:              &fieldDownstreamPartnerId,
-		UpstreamPartnerName:              &fieldUpstreamPartnerName,
-		UpstreamPartnerId:                &fieldUpstreamPartnerId,
-		ReplicateEvery:                   &fieldReplicateEvery,
-		NumRetainReplica:                 &fieldNumRetainReplica,
-		ReplAlertThres:                   &fieldReplAlertThres,
-		SnapVerify:                       &fieldSnapVerify,
-		SkipDbConsistencyCheck:           &fieldSkipDbConsistencyCheck,
-		DisableAppsync:                   &fieldDisableAppsync,
-		ScheduleType:                     &fieldScheduleType,
-		Active:                           &fieldActive,
-		CreationTime:                     &fieldCreationTime,
-		LastModified:                     &fieldLastModified,
-		LastModSchedTime:                 &fieldLastModSchedTime,
-		LastReplicatedSnapcollName:       &fieldLastReplicatedSnapcollName,
-		LastReplicatedSnapcollId:         &fieldLastReplicatedSnapcollId,
-		LastReplicatedAtTime:             &fieldLastReplicatedAtTime,
-		LastSnapTime:                     &fieldLastSnapTime,
-		NextSnapTime:                     &fieldNextSnapTime,
-		NextReplSnapTime:                 &fieldNextReplSnapTime,
-		SnapCounter:                      &fieldSnapCounter,
-		SchedOwnerId:                     &fieldSchedOwnerId,
-		SchedOwnerName:                   &fieldSchedOwnerName,
-		LastConfigChangeTime:             &fieldLastConfigChangeTime,
-		CurrentlyReplicatingSnapcollName: &fieldCurrentlyReplicatingSnapcollName,
-		VolStatusList:                    &fieldVolStatusList,
-		SyncReplVolStatusList:            &fieldSyncReplVolStatusList,
-		UseDownstreamForDr:               &fieldUseDownstreamForDr,
+		ID:                               "id",
+		Name:                             "name",
+		Description:                      "description",
+		VolcollOrProttmplType:            "volcoll_or_prottmpl_type",
+		VolcollOrProttmplId:              "volcoll_or_prottmpl_id",
+		Period:                           "period",
+		PeriodUnit:                       "period_unit",
+		AtTime:                           "at_time",
+		UntilTime:                        "until_time",
+		Days:                             "days",
+		NumRetain:                        "num_retain",
+		DownstreamPartner:                "downstream_partner",
+		DownstreamPartnerName:            "downstream_partner_name",
+		DownstreamPartnerId:              "downstream_partner_id",
+		UpstreamPartnerName:              "upstream_partner_name",
+		UpstreamPartnerId:                "upstream_partner_id",
+		ReplicateEvery:                   "replicate_every",
+		NumRetainReplica:                 "num_retain_replica",
+		ReplAlertThres:                   "repl_alert_thres",
+		SnapVerify:                       "snap_verify",
+		SkipDbConsistencyCheck:           "skip_db_consistency_check",
+		DisableAppsync:                   "disable_appsync",
+		ScheduleType:                     "schedule_type",
+		Active:                           "active",
+		CreationTime:                     "creation_time",
+		LastModified:                     "last_modified",
+		LastModSchedTime:                 "last_mod_sched_time",
+		LastReplicatedSnapcollName:       "last_replicated_snapcoll_name",
+		LastReplicatedSnapcollId:         "last_replicated_snapcoll_id",
+		LastReplicatedAtTime:             "last_replicated_at_time",
+		LastSnapTime:                     "last_snap_time",
+		NextSnapTime:                     "next_snap_time",
+		NextReplSnapTime:                 "next_repl_snap_time",
+		SnapCounter:                      "snap_counter",
+		SchedOwnerId:                     "sched_owner_id",
+		SchedOwnerName:                   "sched_owner_name",
+		LastConfigChangeTime:             "last_config_change_time",
+		CurrentlyReplicatingSnapcollName: "currently_replicating_snapcoll_name",
+		VolStatusList:                    "vol_status_list",
+		SyncReplVolStatusList:            "sync_repl_vol_status_list",
+		UseDownstreamForDr:               "use_downstream_for_dr",
 	}
 }
 
@@ -181,45 +139,45 @@ type ProtectionSchedule struct {
 
 // ProtectionScheduleFieldHandles provides a string representation for each AccessControlRecord field.
 type ProtectionScheduleFieldHandles struct {
-	ID                               *string
-	Name                             *string
-	Description                      *string
-	VolcollOrProttmplType            *string
-	VolcollOrProttmplId              *string
-	Period                           *string
-	PeriodUnit                       *string
-	AtTime                           *string
-	UntilTime                        *string
-	Days                             *string
-	NumRetain                        *string
-	DownstreamPartner                *string
-	DownstreamPartnerName            *string
-	DownstreamPartnerId              *string
-	UpstreamPartnerName              *string
-	UpstreamPartnerId                *string
-	ReplicateEvery                   *string
-	NumRetainReplica                 *string
-	ReplAlertThres                   *string
-	SnapVerify                       *string
-	SkipDbConsistencyCheck           *string
-	DisableAppsync                   *string
-	ScheduleType                     *string
-	Active                           *string
-	CreationTime                     *string
-	LastModified                     *string
-	LastModSchedTime                 *string
-	LastReplicatedSnapcollName       *string
-	LastReplicatedSnapcollId         *string
-	LastReplicatedAtTime             *string
-	LastSnapTime                     *string
-	NextSnapTime                     *string
-	NextReplSnapTime                 *string
-	SnapCounter                      *string
-	SchedOwnerId                     *string
-	SchedOwnerName                   *string
-	LastConfigChangeTime             *string
-	CurrentlyReplicatingSnapcollName *string
-	VolStatusList                    *string
-	SyncReplVolStatusList            *string
-	UseDownstreamForDr               *string
+	ID                               string
+	Name                             string
+	Description                      string
+	VolcollOrProttmplType            string
+	VolcollOrProttmplId              string
+	Period                           string
+	PeriodUnit                       string
+	AtTime                           string
+	UntilTime                        string
+	Days                             string
+	NumRetain                        string
+	DownstreamPartner                string
+	DownstreamPartnerName            string
+	DownstreamPartnerId              string
+	UpstreamPartnerName              string
+	UpstreamPartnerId                string
+	ReplicateEvery                   string
+	NumRetainReplica                 string
+	ReplAlertThres                   string
+	SnapVerify                       string
+	SkipDbConsistencyCheck           string
+	DisableAppsync                   string
+	ScheduleType                     string
+	Active                           string
+	CreationTime                     string
+	LastModified                     string
+	LastModSchedTime                 string
+	LastReplicatedSnapcollName       string
+	LastReplicatedSnapcollId         string
+	LastReplicatedAtTime             string
+	LastSnapTime                     string
+	NextSnapTime                     string
+	NextReplSnapTime                 string
+	SnapCounter                      string
+	SchedOwnerId                     string
+	SchedOwnerName                   string
+	LastConfigChangeTime             string
+	CurrentlyReplicatingSnapcollName string
+	VolStatusList                    string
+	SyncReplVolStatusList            string
+	UseDownstreamForDr               string
 }

@@ -6,12 +6,9 @@ package nimbleos
 var NsTargetSubnetFields *NsTargetSubnetFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldLabel := "label"
-
 	NsTargetSubnetFields = &NsTargetSubnetFieldHandles{
-		ID:    &fieldID,
-		Label: &fieldLabel,
+		ID:    "id",
+		Label: "label",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsTargetSubnet struct {
 
 // NsTargetSubnetFieldHandles provides a string representation for each AccessControlRecord field.
 type NsTargetSubnetFieldHandles struct {
-	ID    *string
-	Label *string
+	ID    string
+	Label string
 }

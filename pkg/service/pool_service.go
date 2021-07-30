@@ -74,7 +74,7 @@ func (svc *PoolService) GetPoolById(id string) (*nimbleos.Pool, error) {
 func (svc *PoolService) GetPoolByName(name string) (*nimbleos.Pool, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

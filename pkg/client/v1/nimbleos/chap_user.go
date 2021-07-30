@@ -6,32 +6,19 @@ package nimbleos
 var ChapUserFields *ChapUserFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldPassword := "password"
-	fieldInitiatorIqns := "initiator_iqns"
-	fieldTenantId := "tenant_id"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldVolList := "vol_list"
-	fieldVolCount := "vol_count"
-
 	ChapUserFields = &ChapUserFieldHandles{
-		ID:            &fieldID,
-		Name:          &fieldName,
-		FullName:      &fieldFullName,
-		SearchName:    &fieldSearchName,
-		Description:   &fieldDescription,
-		Password:      &fieldPassword,
-		InitiatorIqns: &fieldInitiatorIqns,
-		TenantId:      &fieldTenantId,
-		CreationTime:  &fieldCreationTime,
-		LastModified:  &fieldLastModified,
-		VolList:       &fieldVolList,
-		VolCount:      &fieldVolCount,
+		ID:            "id",
+		Name:          "name",
+		FullName:      "full_name",
+		SearchName:    "search_name",
+		Description:   "description",
+		Password:      "password",
+		InitiatorIqns: "initiator_iqns",
+		TenantId:      "tenant_id",
+		CreationTime:  "creation_time",
+		LastModified:  "last_modified",
+		VolList:       "vol_list",
+		VolCount:      "vol_count",
 	}
 }
 
@@ -65,16 +52,16 @@ type ChapUser struct {
 
 // ChapUserFieldHandles provides a string representation for each AccessControlRecord field.
 type ChapUserFieldHandles struct {
-	ID            *string
-	Name          *string
-	FullName      *string
-	SearchName    *string
-	Description   *string
-	Password      *string
-	InitiatorIqns *string
-	TenantId      *string
-	CreationTime  *string
-	LastModified  *string
-	VolList       *string
-	VolCount      *string
+	ID            string
+	Name          string
+	FullName      string
+	SearchName    string
+	Description   string
+	Password      string
+	InitiatorIqns string
+	TenantId      string
+	CreationTime  string
+	LastModified  string
+	VolList       string
+	VolCount      string
 }

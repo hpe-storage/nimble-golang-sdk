@@ -74,7 +74,7 @@ func (svc *JobService) GetJobById(id string) (*nimbleos.Job, error) {
 func (svc *JobService) GetJobByName(name string) (*nimbleos.Job, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

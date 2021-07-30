@@ -50,16 +50,16 @@ func main() {
 
 	// set attribute fields
 	var volAttrList = []string{
-		*nimbleos.VolumeFields.ID,
-		*nimbleos.VolumeFields.Name,
-		*nimbleos.VolumeFields.PerfpolicyName,
+		nimbleos.VolumeFields.ID,
+		nimbleos.VolumeFields.Name,
+		nimbleos.VolumeFields.PerfpolicyName,
 	}
 	// apply attributes
 	filter.WithFields(volAttrList)
 
 	// create a filter
 	sf := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: param.NewString(nimbleos.VolumeFields.Name),
 		Operator:  param.EQUALS.String(),
 		Value:     "TestDemo",
 	}

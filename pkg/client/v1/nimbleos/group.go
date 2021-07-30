@@ -6,286 +6,146 @@ package nimbleos
 var GroupFields *GroupFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldSmtpServer := "smtp_server"
-	fieldSmtpPort := "smtp_port"
-	fieldSmtpAuthEnabled := "smtp_auth_enabled"
-	fieldSmtpAuthUsername := "smtp_auth_username"
-	fieldSmtpAuthPassword := "smtp_auth_password"
-	fieldSmtpEncryptType := "smtp_encrypt_type"
-	fieldAutosupportEnabled := "autosupport_enabled"
-	fieldAllowAnalyticsGui := "allow_analytics_gui"
-	fieldAllowSupportTunnel := "allow_support_tunnel"
-	fieldProxyServer := "proxy_server"
-	fieldProxyPort := "proxy_port"
-	fieldProxyUsername := "proxy_username"
-	fieldProxyPassword := "proxy_password"
-	fieldAlertToEmailAddrs := "alert_to_email_addrs"
-	fieldSendAlertToSupport := "send_alert_to_support"
-	fieldAlertFromEmailAddr := "alert_from_email_addr"
-	fieldAlertMinLevel := "alert_min_level"
-	fieldIsnsEnabled := "isns_enabled"
-	fieldIsnsServer := "isns_server"
-	fieldIsnsPort := "isns_port"
-	fieldSnmpTrapEnabled := "snmp_trap_enabled"
-	fieldSnmpTrapHost := "snmp_trap_host"
-	fieldSnmpTrapPort := "snmp_trap_port"
-	fieldSnmpGetEnabled := "snmp_get_enabled"
-	fieldSnmpCommunity := "snmp_community"
-	fieldSnmpGetPort := "snmp_get_port"
-	fieldSnmpSysContact := "snmp_sys_contact"
-	fieldSnmpSysLocation := "snmp_sys_location"
-	fieldDomainName := "domain_name"
-	fieldDnsServers := "dns_servers"
-	fieldNtpServer := "ntp_server"
-	fieldTimezone := "timezone"
-	fieldUserInactivityTimeout := "user_inactivity_timeout"
-	fieldSyslogdEnabled := "syslogd_enabled"
-	fieldSyslogdServer := "syslogd_server"
-	fieldSyslogdPort := "syslogd_port"
-	fieldSyslogdServers := "syslogd_servers"
-	fieldVvolEnabled := "vvol_enabled"
-	fieldSetupProgress := "setup_progress"
-	fieldIscsiEnabled := "iscsi_enabled"
-	fieldFcEnabled := "fc_enabled"
-	fieldUniqueNameEnabled := "unique_name_enabled"
-	fieldAccessProtocolList := "access_protocol_list"
-	fieldGroupTargetEnabled := "group_target_enabled"
-	fieldDefaultIscsiTargetScope := "default_iscsi_target_scope"
-	fieldTdzEnabled := "tdz_enabled"
-	fieldTdzPrefix := "tdz_prefix"
-	fieldGroupTargetName := "group_target_name"
-	fieldDefaultVolumeReserve := "default_volume_reserve"
-	fieldDefaultVolumeWarnLevel := "default_volume_warn_level"
-	fieldDefaultVolumeLimit := "default_volume_limit"
-	fieldDefaultSnapReserve := "default_snap_reserve"
-	fieldDefaultSnapWarnLevel := "default_snap_warn_level"
-	fieldDefaultSnapLimit := "default_snap_limit"
-	fieldDefaultSnapLimitPercent := "default_snap_limit_percent"
-	fieldAlarmsEnabled := "alarms_enabled"
-	fieldVssValidationTimeout := "vss_validation_timeout"
-	fieldAutoSwitchoverEnabled := "auto_switchover_enabled"
-	fieldSoftwareSubscriptionEnabled := "software_subscription_enabled"
-	fieldAutoSwitchoverMessages := "auto_switchover_messages"
-	fieldMergeState := "merge_state"
-	fieldMergeGroupName := "merge_group_name"
-	fieldTlsv1Enabled := "tlsv1_enabled"
-	fieldCcModeEnabled := "cc_mode_enabled"
-	fieldCertIpsIncluded := "cert_ips_included"
-	fieldGroupSnapshotTtl := "group_snapshot_ttl"
-	fieldAutocleanUnmanagedSnapshotsTtlUnit := "autoclean_unmanaged_snapshots_ttl_unit"
-	fieldAutocleanUnmanagedSnapshotsEnabled := "autoclean_unmanaged_snapshots_enabled"
-	fieldLeaderArrayName := "leader_array_name"
-	fieldLeaderArraySerial := "leader_array_serial"
-	fieldManagementServiceBackupArrayName := "management_service_backup_array_name"
-	fieldManagementServiceBackupStatus := "management_service_backup_status"
-	fieldFailoverMode := "failover_mode"
-	fieldWitnessStatus := "witness_status"
-	fieldMemberList := "member_list"
-	fieldCompressedVolUsageBytes := "compressed_vol_usage_bytes"
-	fieldCompressedSnapUsageBytes := "compressed_snap_usage_bytes"
-	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
-	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
-	fieldUsableCapacityBytes := "usable_capacity_bytes"
-	fieldUsage := "usage"
-	fieldRawCapacity := "raw_capacity"
-	fieldUsableCacheCapacity := "usable_cache_capacity"
-	fieldRawCacheCapacity := "raw_cache_capacity"
-	fieldSnapUsagePopulated := "snap_usage_populated"
-	fieldPendingDeletes := "pending_deletes"
-	fieldNumConnections := "num_connections"
-	fieldVolCompressionRatio := "vol_compression_ratio"
-	fieldSnapCompressionRatio := "snap_compression_ratio"
-	fieldCompressionRatio := "compression_ratio"
-	fieldDedupeRatio := "dedupe_ratio"
-	fieldCloneRatio := "clone_ratio"
-	fieldVolThinProvisioningRatio := "vol_thin_provisioning_ratio"
-	fieldSavingsRatio := "savings_ratio"
-	fieldDataReductionRatio := "data_reduction_ratio"
-	fieldSavingsDedupe := "savings_dedupe"
-	fieldSavingsCompression := "savings_compression"
-	fieldSavingsClone := "savings_clone"
-	fieldSavingsVolThinProvisioning := "savings_vol_thin_provisioning"
-	fieldSavingsDataReduction := "savings_data_reduction"
-	fieldSavings := "savings"
-	fieldFreeSpace := "free_space"
-	fieldUnusedReserveBytes := "unused_reserve_bytes"
-	fieldUsageValid := "usage_valid"
-	fieldSpaceInfoValid := "space_info_valid"
-	fieldVersionCurrent := "version_current"
-	fieldVersionTarget := "version_target"
-	fieldVersionRollback := "version_rollback"
-	fieldUpdateState := "update_state"
-	fieldUpdateStartTime := "update_start_time"
-	fieldUpdateEndTime := "update_end_time"
-	fieldUpdateArrayNames := "update_array_names"
-	fieldUpdateProgressMsg := "update_progress_msg"
-	fieldUpdateErrorCode := "update_error_code"
-	fieldUpdateDownloading := "update_downloading"
-	fieldUpdateDownloadErrorCode := "update_download_error_code"
-	fieldUpdateDownloadStartTime := "update_download_start_time"
-	fieldUpdateDownloadEndTime := "update_download_end_time"
-	fieldIscsiAutomaticConnectionMethod := "iscsi_automatic_connection_method"
-	fieldIscsiConnectionRebalancing := "iscsi_connection_rebalancing"
-	fieldReplThrottledBandwidth := "repl_throttled_bandwidth"
-	fieldReplThrottledBandwidthKbps := "repl_throttled_bandwidth_kbps"
-	fieldReplThrottleList := "repl_throttle_list"
-	fieldVolumeMigrationStatus := "volume_migration_status"
-	fieldArrayUnassignMigrationStatus := "array_unassign_migration_status"
-	fieldDataRebalanceStatus := "data_rebalance_status"
-	fieldScsiVendorId := "scsi_vendor_id"
-	fieldEncryptionConfig := "encryption_config"
-	fieldLastLogin := "last_login"
-	fieldNumSnaps := "num_snaps"
-	fieldNumSnapcolls := "num_snapcolls"
-	fieldDate := "date"
-	fieldLoginBannerMessage := "login_banner_message"
-	fieldLoginBannerAfterAuth := "login_banner_after_auth"
-	fieldLoginBannerReset := "login_banner_reset"
-	fieldSnapRetnMeterHigh := "snap_retn_meter_high"
-	fieldSnapRetnMeterVeryHigh := "snap_retn_meter_very_high"
-
 	GroupFields = &GroupFieldHandles{
-		ID:                                 &fieldID,
-		Name:                               &fieldName,
-		SmtpServer:                         &fieldSmtpServer,
-		SmtpPort:                           &fieldSmtpPort,
-		SmtpAuthEnabled:                    &fieldSmtpAuthEnabled,
-		SmtpAuthUsername:                   &fieldSmtpAuthUsername,
-		SmtpAuthPassword:                   &fieldSmtpAuthPassword,
-		SmtpEncryptType:                    &fieldSmtpEncryptType,
-		AutosupportEnabled:                 &fieldAutosupportEnabled,
-		AllowAnalyticsGui:                  &fieldAllowAnalyticsGui,
-		AllowSupportTunnel:                 &fieldAllowSupportTunnel,
-		ProxyServer:                        &fieldProxyServer,
-		ProxyPort:                          &fieldProxyPort,
-		ProxyUsername:                      &fieldProxyUsername,
-		ProxyPassword:                      &fieldProxyPassword,
-		AlertToEmailAddrs:                  &fieldAlertToEmailAddrs,
-		SendAlertToSupport:                 &fieldSendAlertToSupport,
-		AlertFromEmailAddr:                 &fieldAlertFromEmailAddr,
-		AlertMinLevel:                      &fieldAlertMinLevel,
-		IsnsEnabled:                        &fieldIsnsEnabled,
-		IsnsServer:                         &fieldIsnsServer,
-		IsnsPort:                           &fieldIsnsPort,
-		SnmpTrapEnabled:                    &fieldSnmpTrapEnabled,
-		SnmpTrapHost:                       &fieldSnmpTrapHost,
-		SnmpTrapPort:                       &fieldSnmpTrapPort,
-		SnmpGetEnabled:                     &fieldSnmpGetEnabled,
-		SnmpCommunity:                      &fieldSnmpCommunity,
-		SnmpGetPort:                        &fieldSnmpGetPort,
-		SnmpSysContact:                     &fieldSnmpSysContact,
-		SnmpSysLocation:                    &fieldSnmpSysLocation,
-		DomainName:                         &fieldDomainName,
-		DnsServers:                         &fieldDnsServers,
-		NtpServer:                          &fieldNtpServer,
-		Timezone:                           &fieldTimezone,
-		UserInactivityTimeout:              &fieldUserInactivityTimeout,
-		SyslogdEnabled:                     &fieldSyslogdEnabled,
-		SyslogdServer:                      &fieldSyslogdServer,
-		SyslogdPort:                        &fieldSyslogdPort,
-		SyslogdServers:                     &fieldSyslogdServers,
-		VvolEnabled:                        &fieldVvolEnabled,
-		SetupProgress:                      &fieldSetupProgress,
-		IscsiEnabled:                       &fieldIscsiEnabled,
-		FcEnabled:                          &fieldFcEnabled,
-		UniqueNameEnabled:                  &fieldUniqueNameEnabled,
-		AccessProtocolList:                 &fieldAccessProtocolList,
-		GroupTargetEnabled:                 &fieldGroupTargetEnabled,
-		DefaultIscsiTargetScope:            &fieldDefaultIscsiTargetScope,
-		TdzEnabled:                         &fieldTdzEnabled,
-		TdzPrefix:                          &fieldTdzPrefix,
-		GroupTargetName:                    &fieldGroupTargetName,
-		DefaultVolumeReserve:               &fieldDefaultVolumeReserve,
-		DefaultVolumeWarnLevel:             &fieldDefaultVolumeWarnLevel,
-		DefaultVolumeLimit:                 &fieldDefaultVolumeLimit,
-		DefaultSnapReserve:                 &fieldDefaultSnapReserve,
-		DefaultSnapWarnLevel:               &fieldDefaultSnapWarnLevel,
-		DefaultSnapLimit:                   &fieldDefaultSnapLimit,
-		DefaultSnapLimitPercent:            &fieldDefaultSnapLimitPercent,
-		AlarmsEnabled:                      &fieldAlarmsEnabled,
-		VssValidationTimeout:               &fieldVssValidationTimeout,
-		AutoSwitchoverEnabled:              &fieldAutoSwitchoverEnabled,
-		SoftwareSubscriptionEnabled:        &fieldSoftwareSubscriptionEnabled,
-		AutoSwitchoverMessages:             &fieldAutoSwitchoverMessages,
-		MergeState:                         &fieldMergeState,
-		MergeGroupName:                     &fieldMergeGroupName,
-		Tlsv1Enabled:                       &fieldTlsv1Enabled,
-		CcModeEnabled:                      &fieldCcModeEnabled,
-		CertIpsIncluded:                    &fieldCertIpsIncluded,
-		GroupSnapshotTtl:                   &fieldGroupSnapshotTtl,
-		AutocleanUnmanagedSnapshotsTtlUnit: &fieldAutocleanUnmanagedSnapshotsTtlUnit,
-		AutocleanUnmanagedSnapshotsEnabled: &fieldAutocleanUnmanagedSnapshotsEnabled,
-		LeaderArrayName:                    &fieldLeaderArrayName,
-		LeaderArraySerial:                  &fieldLeaderArraySerial,
-		ManagementServiceBackupArrayName:   &fieldManagementServiceBackupArrayName,
-		ManagementServiceBackupStatus:      &fieldManagementServiceBackupStatus,
-		FailoverMode:                       &fieldFailoverMode,
-		WitnessStatus:                      &fieldWitnessStatus,
-		MemberList:                         &fieldMemberList,
-		CompressedVolUsageBytes:            &fieldCompressedVolUsageBytes,
-		CompressedSnapUsageBytes:           &fieldCompressedSnapUsageBytes,
-		UncompressedVolUsageBytes:          &fieldUncompressedVolUsageBytes,
-		UncompressedSnapUsageBytes:         &fieldUncompressedSnapUsageBytes,
-		UsableCapacityBytes:                &fieldUsableCapacityBytes,
-		Usage:                              &fieldUsage,
-		RawCapacity:                        &fieldRawCapacity,
-		UsableCacheCapacity:                &fieldUsableCacheCapacity,
-		RawCacheCapacity:                   &fieldRawCacheCapacity,
-		SnapUsagePopulated:                 &fieldSnapUsagePopulated,
-		PendingDeletes:                     &fieldPendingDeletes,
-		NumConnections:                     &fieldNumConnections,
-		VolCompressionRatio:                &fieldVolCompressionRatio,
-		SnapCompressionRatio:               &fieldSnapCompressionRatio,
-		CompressionRatio:                   &fieldCompressionRatio,
-		DedupeRatio:                        &fieldDedupeRatio,
-		CloneRatio:                         &fieldCloneRatio,
-		VolThinProvisioningRatio:           &fieldVolThinProvisioningRatio,
-		SavingsRatio:                       &fieldSavingsRatio,
-		DataReductionRatio:                 &fieldDataReductionRatio,
-		SavingsDedupe:                      &fieldSavingsDedupe,
-		SavingsCompression:                 &fieldSavingsCompression,
-		SavingsClone:                       &fieldSavingsClone,
-		SavingsVolThinProvisioning:         &fieldSavingsVolThinProvisioning,
-		SavingsDataReduction:               &fieldSavingsDataReduction,
-		Savings:                            &fieldSavings,
-		FreeSpace:                          &fieldFreeSpace,
-		UnusedReserveBytes:                 &fieldUnusedReserveBytes,
-		UsageValid:                         &fieldUsageValid,
-		SpaceInfoValid:                     &fieldSpaceInfoValid,
-		VersionCurrent:                     &fieldVersionCurrent,
-		VersionTarget:                      &fieldVersionTarget,
-		VersionRollback:                    &fieldVersionRollback,
-		UpdateState:                        &fieldUpdateState,
-		UpdateStartTime:                    &fieldUpdateStartTime,
-		UpdateEndTime:                      &fieldUpdateEndTime,
-		UpdateArrayNames:                   &fieldUpdateArrayNames,
-		UpdateProgressMsg:                  &fieldUpdateProgressMsg,
-		UpdateErrorCode:                    &fieldUpdateErrorCode,
-		UpdateDownloading:                  &fieldUpdateDownloading,
-		UpdateDownloadErrorCode:            &fieldUpdateDownloadErrorCode,
-		UpdateDownloadStartTime:            &fieldUpdateDownloadStartTime,
-		UpdateDownloadEndTime:              &fieldUpdateDownloadEndTime,
-		IscsiAutomaticConnectionMethod:     &fieldIscsiAutomaticConnectionMethod,
-		IscsiConnectionRebalancing:         &fieldIscsiConnectionRebalancing,
-		ReplThrottledBandwidth:             &fieldReplThrottledBandwidth,
-		ReplThrottledBandwidthKbps:         &fieldReplThrottledBandwidthKbps,
-		ReplThrottleList:                   &fieldReplThrottleList,
-		VolumeMigrationStatus:              &fieldVolumeMigrationStatus,
-		ArrayUnassignMigrationStatus:       &fieldArrayUnassignMigrationStatus,
-		DataRebalanceStatus:                &fieldDataRebalanceStatus,
-		ScsiVendorId:                       &fieldScsiVendorId,
-		EncryptionConfig:                   &fieldEncryptionConfig,
-		LastLogin:                          &fieldLastLogin,
-		NumSnaps:                           &fieldNumSnaps,
-		NumSnapcolls:                       &fieldNumSnapcolls,
-		Date:                               &fieldDate,
-		LoginBannerMessage:                 &fieldLoginBannerMessage,
-		LoginBannerAfterAuth:               &fieldLoginBannerAfterAuth,
-		LoginBannerReset:                   &fieldLoginBannerReset,
-		SnapRetnMeterHigh:                  &fieldSnapRetnMeterHigh,
-		SnapRetnMeterVeryHigh:              &fieldSnapRetnMeterVeryHigh,
+		ID:                                 "id",
+		Name:                               "name",
+		SmtpServer:                         "smtp_server",
+		SmtpPort:                           "smtp_port",
+		SmtpAuthEnabled:                    "smtp_auth_enabled",
+		SmtpAuthUsername:                   "smtp_auth_username",
+		SmtpAuthPassword:                   "smtp_auth_password",
+		SmtpEncryptType:                    "smtp_encrypt_type",
+		AutosupportEnabled:                 "autosupport_enabled",
+		AllowAnalyticsGui:                  "allow_analytics_gui",
+		AllowSupportTunnel:                 "allow_support_tunnel",
+		ProxyServer:                        "proxy_server",
+		ProxyPort:                          "proxy_port",
+		ProxyUsername:                      "proxy_username",
+		ProxyPassword:                      "proxy_password",
+		AlertToEmailAddrs:                  "alert_to_email_addrs",
+		SendAlertToSupport:                 "send_alert_to_support",
+		AlertFromEmailAddr:                 "alert_from_email_addr",
+		AlertMinLevel:                      "alert_min_level",
+		IsnsEnabled:                        "isns_enabled",
+		IsnsServer:                         "isns_server",
+		IsnsPort:                           "isns_port",
+		SnmpTrapEnabled:                    "snmp_trap_enabled",
+		SnmpTrapHost:                       "snmp_trap_host",
+		SnmpTrapPort:                       "snmp_trap_port",
+		SnmpGetEnabled:                     "snmp_get_enabled",
+		SnmpCommunity:                      "snmp_community",
+		SnmpGetPort:                        "snmp_get_port",
+		SnmpSysContact:                     "snmp_sys_contact",
+		SnmpSysLocation:                    "snmp_sys_location",
+		DomainName:                         "domain_name",
+		DnsServers:                         "dns_servers",
+		NtpServer:                          "ntp_server",
+		Timezone:                           "timezone",
+		UserInactivityTimeout:              "user_inactivity_timeout",
+		SyslogdEnabled:                     "syslogd_enabled",
+		SyslogdServer:                      "syslogd_server",
+		SyslogdPort:                        "syslogd_port",
+		SyslogdServers:                     "syslogd_servers",
+		VvolEnabled:                        "vvol_enabled",
+		SetupProgress:                      "setup_progress",
+		IscsiEnabled:                       "iscsi_enabled",
+		FcEnabled:                          "fc_enabled",
+		UniqueNameEnabled:                  "unique_name_enabled",
+		AccessProtocolList:                 "access_protocol_list",
+		GroupTargetEnabled:                 "group_target_enabled",
+		DefaultIscsiTargetScope:            "default_iscsi_target_scope",
+		TdzEnabled:                         "tdz_enabled",
+		TdzPrefix:                          "tdz_prefix",
+		GroupTargetName:                    "group_target_name",
+		DefaultVolumeReserve:               "default_volume_reserve",
+		DefaultVolumeWarnLevel:             "default_volume_warn_level",
+		DefaultVolumeLimit:                 "default_volume_limit",
+		DefaultSnapReserve:                 "default_snap_reserve",
+		DefaultSnapWarnLevel:               "default_snap_warn_level",
+		DefaultSnapLimit:                   "default_snap_limit",
+		DefaultSnapLimitPercent:            "default_snap_limit_percent",
+		AlarmsEnabled:                      "alarms_enabled",
+		VssValidationTimeout:               "vss_validation_timeout",
+		AutoSwitchoverEnabled:              "auto_switchover_enabled",
+		SoftwareSubscriptionEnabled:        "software_subscription_enabled",
+		AutoSwitchoverMessages:             "auto_switchover_messages",
+		MergeState:                         "merge_state",
+		MergeGroupName:                     "merge_group_name",
+		Tlsv1Enabled:                       "tlsv1_enabled",
+		CcModeEnabled:                      "cc_mode_enabled",
+		CertIpsIncluded:                    "cert_ips_included",
+		GroupSnapshotTtl:                   "group_snapshot_ttl",
+		AutocleanUnmanagedSnapshotsTtlUnit: "autoclean_unmanaged_snapshots_ttl_unit",
+		AutocleanUnmanagedSnapshotsEnabled: "autoclean_unmanaged_snapshots_enabled",
+		LeaderArrayName:                    "leader_array_name",
+		LeaderArraySerial:                  "leader_array_serial",
+		ManagementServiceBackupArrayName:   "management_service_backup_array_name",
+		ManagementServiceBackupStatus:      "management_service_backup_status",
+		FailoverMode:                       "failover_mode",
+		WitnessStatus:                      "witness_status",
+		MemberList:                         "member_list",
+		CompressedVolUsageBytes:            "compressed_vol_usage_bytes",
+		CompressedSnapUsageBytes:           "compressed_snap_usage_bytes",
+		UncompressedVolUsageBytes:          "uncompressed_vol_usage_bytes",
+		UncompressedSnapUsageBytes:         "uncompressed_snap_usage_bytes",
+		UsableCapacityBytes:                "usable_capacity_bytes",
+		Usage:                              "usage",
+		RawCapacity:                        "raw_capacity",
+		UsableCacheCapacity:                "usable_cache_capacity",
+		RawCacheCapacity:                   "raw_cache_capacity",
+		SnapUsagePopulated:                 "snap_usage_populated",
+		PendingDeletes:                     "pending_deletes",
+		NumConnections:                     "num_connections",
+		VolCompressionRatio:                "vol_compression_ratio",
+		SnapCompressionRatio:               "snap_compression_ratio",
+		CompressionRatio:                   "compression_ratio",
+		DedupeRatio:                        "dedupe_ratio",
+		CloneRatio:                         "clone_ratio",
+		VolThinProvisioningRatio:           "vol_thin_provisioning_ratio",
+		SavingsRatio:                       "savings_ratio",
+		DataReductionRatio:                 "data_reduction_ratio",
+		SavingsDedupe:                      "savings_dedupe",
+		SavingsCompression:                 "savings_compression",
+		SavingsClone:                       "savings_clone",
+		SavingsVolThinProvisioning:         "savings_vol_thin_provisioning",
+		SavingsDataReduction:               "savings_data_reduction",
+		Savings:                            "savings",
+		FreeSpace:                          "free_space",
+		UnusedReserveBytes:                 "unused_reserve_bytes",
+		UsageValid:                         "usage_valid",
+		SpaceInfoValid:                     "space_info_valid",
+		VersionCurrent:                     "version_current",
+		VersionTarget:                      "version_target",
+		VersionRollback:                    "version_rollback",
+		UpdateState:                        "update_state",
+		UpdateStartTime:                    "update_start_time",
+		UpdateEndTime:                      "update_end_time",
+		UpdateArrayNames:                   "update_array_names",
+		UpdateProgressMsg:                  "update_progress_msg",
+		UpdateErrorCode:                    "update_error_code",
+		UpdateDownloading:                  "update_downloading",
+		UpdateDownloadErrorCode:            "update_download_error_code",
+		UpdateDownloadStartTime:            "update_download_start_time",
+		UpdateDownloadEndTime:              "update_download_end_time",
+		IscsiAutomaticConnectionMethod:     "iscsi_automatic_connection_method",
+		IscsiConnectionRebalancing:         "iscsi_connection_rebalancing",
+		ReplThrottledBandwidth:             "repl_throttled_bandwidth",
+		ReplThrottledBandwidthKbps:         "repl_throttled_bandwidth_kbps",
+		ReplThrottleList:                   "repl_throttle_list",
+		VolumeMigrationStatus:              "volume_migration_status",
+		ArrayUnassignMigrationStatus:       "array_unassign_migration_status",
+		DataRebalanceStatus:                "data_rebalance_status",
+		ScsiVendorId:                       "scsi_vendor_id",
+		EncryptionConfig:                   "encryption_config",
+		LastLogin:                          "last_login",
+		NumSnaps:                           "num_snaps",
+		NumSnapcolls:                       "num_snapcolls",
+		Date:                               "date",
+		LoginBannerMessage:                 "login_banner_message",
+		LoginBannerAfterAuth:               "login_banner_after_auth",
+		LoginBannerReset:                   "login_banner_reset",
+		SnapRetnMeterHigh:                  "snap_retn_meter_high",
+		SnapRetnMeterVeryHigh:              "snap_retn_meter_very_high",
 	}
 }
 
@@ -573,143 +433,143 @@ type Group struct {
 
 // GroupFieldHandles provides a string representation for each AccessControlRecord field.
 type GroupFieldHandles struct {
-	ID                                 *string
-	Name                               *string
-	SmtpServer                         *string
-	SmtpPort                           *string
-	SmtpAuthEnabled                    *string
-	SmtpAuthUsername                   *string
-	SmtpAuthPassword                   *string
-	SmtpEncryptType                    *string
-	AutosupportEnabled                 *string
-	AllowAnalyticsGui                  *string
-	AllowSupportTunnel                 *string
-	ProxyServer                        *string
-	ProxyPort                          *string
-	ProxyUsername                      *string
-	ProxyPassword                      *string
-	AlertToEmailAddrs                  *string
-	SendAlertToSupport                 *string
-	AlertFromEmailAddr                 *string
-	AlertMinLevel                      *string
-	IsnsEnabled                        *string
-	IsnsServer                         *string
-	IsnsPort                           *string
-	SnmpTrapEnabled                    *string
-	SnmpTrapHost                       *string
-	SnmpTrapPort                       *string
-	SnmpGetEnabled                     *string
-	SnmpCommunity                      *string
-	SnmpGetPort                        *string
-	SnmpSysContact                     *string
-	SnmpSysLocation                    *string
-	DomainName                         *string
-	DnsServers                         *string
-	NtpServer                          *string
-	Timezone                           *string
-	UserInactivityTimeout              *string
-	SyslogdEnabled                     *string
-	SyslogdServer                      *string
-	SyslogdPort                        *string
-	SyslogdServers                     *string
-	VvolEnabled                        *string
-	SetupProgress                      *string
-	IscsiEnabled                       *string
-	FcEnabled                          *string
-	UniqueNameEnabled                  *string
-	AccessProtocolList                 *string
-	GroupTargetEnabled                 *string
-	DefaultIscsiTargetScope            *string
-	TdzEnabled                         *string
-	TdzPrefix                          *string
-	GroupTargetName                    *string
-	DefaultVolumeReserve               *string
-	DefaultVolumeWarnLevel             *string
-	DefaultVolumeLimit                 *string
-	DefaultSnapReserve                 *string
-	DefaultSnapWarnLevel               *string
-	DefaultSnapLimit                   *string
-	DefaultSnapLimitPercent            *string
-	AlarmsEnabled                      *string
-	VssValidationTimeout               *string
-	AutoSwitchoverEnabled              *string
-	SoftwareSubscriptionEnabled        *string
-	AutoSwitchoverMessages             *string
-	MergeState                         *string
-	MergeGroupName                     *string
-	Tlsv1Enabled                       *string
-	CcModeEnabled                      *string
-	CertIpsIncluded                    *string
-	GroupSnapshotTtl                   *string
-	AutocleanUnmanagedSnapshotsTtlUnit *string
-	AutocleanUnmanagedSnapshotsEnabled *string
-	LeaderArrayName                    *string
-	LeaderArraySerial                  *string
-	ManagementServiceBackupArrayName   *string
-	ManagementServiceBackupStatus      *string
-	FailoverMode                       *string
-	WitnessStatus                      *string
-	MemberList                         *string
-	CompressedVolUsageBytes            *string
-	CompressedSnapUsageBytes           *string
-	UncompressedVolUsageBytes          *string
-	UncompressedSnapUsageBytes         *string
-	UsableCapacityBytes                *string
-	Usage                              *string
-	RawCapacity                        *string
-	UsableCacheCapacity                *string
-	RawCacheCapacity                   *string
-	SnapUsagePopulated                 *string
-	PendingDeletes                     *string
-	NumConnections                     *string
-	VolCompressionRatio                *string
-	SnapCompressionRatio               *string
-	CompressionRatio                   *string
-	DedupeRatio                        *string
-	CloneRatio                         *string
-	VolThinProvisioningRatio           *string
-	SavingsRatio                       *string
-	DataReductionRatio                 *string
-	SavingsDedupe                      *string
-	SavingsCompression                 *string
-	SavingsClone                       *string
-	SavingsVolThinProvisioning         *string
-	SavingsDataReduction               *string
-	Savings                            *string
-	FreeSpace                          *string
-	UnusedReserveBytes                 *string
-	UsageValid                         *string
-	SpaceInfoValid                     *string
-	VersionCurrent                     *string
-	VersionTarget                      *string
-	VersionRollback                    *string
-	UpdateState                        *string
-	UpdateStartTime                    *string
-	UpdateEndTime                      *string
-	UpdateArrayNames                   *string
-	UpdateProgressMsg                  *string
-	UpdateErrorCode                    *string
-	UpdateDownloading                  *string
-	UpdateDownloadErrorCode            *string
-	UpdateDownloadStartTime            *string
-	UpdateDownloadEndTime              *string
-	IscsiAutomaticConnectionMethod     *string
-	IscsiConnectionRebalancing         *string
-	ReplThrottledBandwidth             *string
-	ReplThrottledBandwidthKbps         *string
-	ReplThrottleList                   *string
-	VolumeMigrationStatus              *string
-	ArrayUnassignMigrationStatus       *string
-	DataRebalanceStatus                *string
-	ScsiVendorId                       *string
-	EncryptionConfig                   *string
-	LastLogin                          *string
-	NumSnaps                           *string
-	NumSnapcolls                       *string
-	Date                               *string
-	LoginBannerMessage                 *string
-	LoginBannerAfterAuth               *string
-	LoginBannerReset                   *string
-	SnapRetnMeterHigh                  *string
-	SnapRetnMeterVeryHigh              *string
+	ID                                 string
+	Name                               string
+	SmtpServer                         string
+	SmtpPort                           string
+	SmtpAuthEnabled                    string
+	SmtpAuthUsername                   string
+	SmtpAuthPassword                   string
+	SmtpEncryptType                    string
+	AutosupportEnabled                 string
+	AllowAnalyticsGui                  string
+	AllowSupportTunnel                 string
+	ProxyServer                        string
+	ProxyPort                          string
+	ProxyUsername                      string
+	ProxyPassword                      string
+	AlertToEmailAddrs                  string
+	SendAlertToSupport                 string
+	AlertFromEmailAddr                 string
+	AlertMinLevel                      string
+	IsnsEnabled                        string
+	IsnsServer                         string
+	IsnsPort                           string
+	SnmpTrapEnabled                    string
+	SnmpTrapHost                       string
+	SnmpTrapPort                       string
+	SnmpGetEnabled                     string
+	SnmpCommunity                      string
+	SnmpGetPort                        string
+	SnmpSysContact                     string
+	SnmpSysLocation                    string
+	DomainName                         string
+	DnsServers                         string
+	NtpServer                          string
+	Timezone                           string
+	UserInactivityTimeout              string
+	SyslogdEnabled                     string
+	SyslogdServer                      string
+	SyslogdPort                        string
+	SyslogdServers                     string
+	VvolEnabled                        string
+	SetupProgress                      string
+	IscsiEnabled                       string
+	FcEnabled                          string
+	UniqueNameEnabled                  string
+	AccessProtocolList                 string
+	GroupTargetEnabled                 string
+	DefaultIscsiTargetScope            string
+	TdzEnabled                         string
+	TdzPrefix                          string
+	GroupTargetName                    string
+	DefaultVolumeReserve               string
+	DefaultVolumeWarnLevel             string
+	DefaultVolumeLimit                 string
+	DefaultSnapReserve                 string
+	DefaultSnapWarnLevel               string
+	DefaultSnapLimit                   string
+	DefaultSnapLimitPercent            string
+	AlarmsEnabled                      string
+	VssValidationTimeout               string
+	AutoSwitchoverEnabled              string
+	SoftwareSubscriptionEnabled        string
+	AutoSwitchoverMessages             string
+	MergeState                         string
+	MergeGroupName                     string
+	Tlsv1Enabled                       string
+	CcModeEnabled                      string
+	CertIpsIncluded                    string
+	GroupSnapshotTtl                   string
+	AutocleanUnmanagedSnapshotsTtlUnit string
+	AutocleanUnmanagedSnapshotsEnabled string
+	LeaderArrayName                    string
+	LeaderArraySerial                  string
+	ManagementServiceBackupArrayName   string
+	ManagementServiceBackupStatus      string
+	FailoverMode                       string
+	WitnessStatus                      string
+	MemberList                         string
+	CompressedVolUsageBytes            string
+	CompressedSnapUsageBytes           string
+	UncompressedVolUsageBytes          string
+	UncompressedSnapUsageBytes         string
+	UsableCapacityBytes                string
+	Usage                              string
+	RawCapacity                        string
+	UsableCacheCapacity                string
+	RawCacheCapacity                   string
+	SnapUsagePopulated                 string
+	PendingDeletes                     string
+	NumConnections                     string
+	VolCompressionRatio                string
+	SnapCompressionRatio               string
+	CompressionRatio                   string
+	DedupeRatio                        string
+	CloneRatio                         string
+	VolThinProvisioningRatio           string
+	SavingsRatio                       string
+	DataReductionRatio                 string
+	SavingsDedupe                      string
+	SavingsCompression                 string
+	SavingsClone                       string
+	SavingsVolThinProvisioning         string
+	SavingsDataReduction               string
+	Savings                            string
+	FreeSpace                          string
+	UnusedReserveBytes                 string
+	UsageValid                         string
+	SpaceInfoValid                     string
+	VersionCurrent                     string
+	VersionTarget                      string
+	VersionRollback                    string
+	UpdateState                        string
+	UpdateStartTime                    string
+	UpdateEndTime                      string
+	UpdateArrayNames                   string
+	UpdateProgressMsg                  string
+	UpdateErrorCode                    string
+	UpdateDownloading                  string
+	UpdateDownloadErrorCode            string
+	UpdateDownloadStartTime            string
+	UpdateDownloadEndTime              string
+	IscsiAutomaticConnectionMethod     string
+	IscsiConnectionRebalancing         string
+	ReplThrottledBandwidth             string
+	ReplThrottledBandwidthKbps         string
+	ReplThrottleList                   string
+	VolumeMigrationStatus              string
+	ArrayUnassignMigrationStatus       string
+	DataRebalanceStatus                string
+	ScsiVendorId                       string
+	EncryptionConfig                   string
+	LastLogin                          string
+	NumSnaps                           string
+	NumSnapcolls                       string
+	Date                               string
+	LoginBannerMessage                 string
+	LoginBannerAfterAuth               string
+	LoginBannerReset                   string
+	SnapRetnMeterHigh                  string
+	SnapRetnMeterVeryHigh              string
 }

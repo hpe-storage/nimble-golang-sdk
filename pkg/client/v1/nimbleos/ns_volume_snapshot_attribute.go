@@ -6,14 +6,10 @@ package nimbleos
 var NsVolumeSnapshotAttributeFields *NsVolumeSnapshotAttributeFieldHandles
 
 func init() {
-	fieldVolId := "vol_id"
-	fieldMetadata := "metadata"
-	fieldAppUuid := "app_uuid"
-
 	NsVolumeSnapshotAttributeFields = &NsVolumeSnapshotAttributeFieldHandles{
-		VolId:    &fieldVolId,
-		Metadata: &fieldMetadata,
-		AppUuid:  &fieldAppUuid,
+		VolId:    "vol_id",
+		Metadata: "metadata",
+		AppUuid:  "app_uuid",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsVolumeSnapshotAttribute struct {
 
 // NsVolumeSnapshotAttributeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeSnapshotAttributeFieldHandles struct {
-	VolId    *string
-	Metadata *string
-	AppUuid  *string
+	VolId    string
+	Metadata string
+	AppUuid  string
 }

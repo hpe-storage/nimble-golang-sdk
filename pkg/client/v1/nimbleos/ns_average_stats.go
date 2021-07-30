@@ -6,26 +6,16 @@ package nimbleos
 var NsAverageStatsFields *NsAverageStatsFieldHandles
 
 func init() {
-	fieldReadIops := "read_iops"
-	fieldReadThroughput := "read_throughput"
-	fieldReadLatency := "read_latency"
-	fieldWriteIops := "write_iops"
-	fieldWriteThroughput := "write_throughput"
-	fieldWriteLatency := "write_latency"
-	fieldCombinedIops := "combined_iops"
-	fieldCombinedThroughput := "combined_throughput"
-	fieldCombinedLatency := "combined_latency"
-
 	NsAverageStatsFields = &NsAverageStatsFieldHandles{
-		ReadIops:           &fieldReadIops,
-		ReadThroughput:     &fieldReadThroughput,
-		ReadLatency:        &fieldReadLatency,
-		WriteIops:          &fieldWriteIops,
-		WriteThroughput:    &fieldWriteThroughput,
-		WriteLatency:       &fieldWriteLatency,
-		CombinedIops:       &fieldCombinedIops,
-		CombinedThroughput: &fieldCombinedThroughput,
-		CombinedLatency:    &fieldCombinedLatency,
+		ReadIops:           "read_iops",
+		ReadThroughput:     "read_throughput",
+		ReadLatency:        "read_latency",
+		WriteIops:          "write_iops",
+		WriteThroughput:    "write_throughput",
+		WriteLatency:       "write_latency",
+		CombinedIops:       "combined_iops",
+		CombinedThroughput: "combined_throughput",
+		CombinedLatency:    "combined_latency",
 	}
 }
 
@@ -53,13 +43,13 @@ type NsAverageStats struct {
 
 // NsAverageStatsFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAverageStatsFieldHandles struct {
-	ReadIops           *string
-	ReadThroughput     *string
-	ReadLatency        *string
-	WriteIops          *string
-	WriteThroughput    *string
-	WriteLatency       *string
-	CombinedIops       *string
-	CombinedThroughput *string
-	CombinedLatency    *string
+	ReadIops           string
+	ReadThroughput     string
+	ReadLatency        string
+	WriteIops          string
+	WriteThroughput    string
+	WriteLatency       string
+	CombinedIops       string
+	CombinedThroughput string
+	CombinedLatency    string
 }

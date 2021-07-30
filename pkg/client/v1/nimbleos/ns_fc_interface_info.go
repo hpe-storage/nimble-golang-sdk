@@ -6,22 +6,14 @@ package nimbleos
 var NsFcInterfaceInfoFields *NsFcInterfaceInfoFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldWwnn := "wwnn"
-	fieldWwpn := "wwpn"
-	fieldOnline := "online"
-	fieldBusLocation := "bus_location"
-	fieldSlot := "slot"
-	fieldPort := "port"
-
 	NsFcInterfaceInfoFields = &NsFcInterfaceInfoFieldHandles{
-		Name:        &fieldName,
-		Wwnn:        &fieldWwnn,
-		Wwpn:        &fieldWwpn,
-		Online:      &fieldOnline,
-		BusLocation: &fieldBusLocation,
-		Slot:        &fieldSlot,
-		Port:        &fieldPort,
+		Name:        "name",
+		Wwnn:        "wwnn",
+		Wwpn:        "wwpn",
+		Online:      "online",
+		BusLocation: "bus_location",
+		Slot:        "slot",
+		Port:        "port",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsFcInterfaceInfo struct {
 
 // NsFcInterfaceInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcInterfaceInfoFieldHandles struct {
-	Name        *string
-	Wwnn        *string
-	Wwpn        *string
-	Online      *string
-	BusLocation *string
-	Slot        *string
-	Port        *string
+	Name        string
+	Wwnn        string
+	Wwpn        string
+	Online      string
+	BusLocation string
+	Slot        string
+	Port        string
 }

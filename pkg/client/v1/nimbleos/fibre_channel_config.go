@@ -6,14 +6,10 @@ package nimbleos
 var FibreChannelConfigFields *FibreChannelConfigFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayList := "array_list"
-	fieldGroupLeaderArray := "group_leader_array"
-
 	FibreChannelConfigFields = &FibreChannelConfigFieldHandles{
-		ID:               &fieldID,
-		ArrayList:        &fieldArrayList,
-		GroupLeaderArray: &fieldGroupLeaderArray,
+		ID:               "id",
+		ArrayList:        "array_list",
+		GroupLeaderArray: "group_leader_array",
 	}
 }
 
@@ -29,7 +25,7 @@ type FibreChannelConfig struct {
 
 // FibreChannelConfigFieldHandles provides a string representation for each AccessControlRecord field.
 type FibreChannelConfigFieldHandles struct {
-	ID               *string
-	ArrayList        *string
-	GroupLeaderArray *string
+	ID               string
+	ArrayList        string
+	GroupLeaderArray string
 }

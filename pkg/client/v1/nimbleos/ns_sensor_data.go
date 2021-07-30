@@ -6,12 +6,9 @@ package nimbleos
 var NsSensorDataFields *NsSensorDataFieldHandles
 
 func init() {
-	fieldSensor := "sensor"
-	fieldSamples := "samples"
-
 	NsSensorDataFields = &NsSensorDataFieldHandles{
-		Sensor:  &fieldSensor,
-		Samples: &fieldSamples,
+		Sensor:  "sensor",
+		Samples: "samples",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsSensorData struct {
 
 // NsSensorDataFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSensorDataFieldHandles struct {
-	Sensor  *string
-	Samples *string
+	Sensor  string
+	Samples string
 }

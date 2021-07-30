@@ -6,28 +6,17 @@ package nimbleos
 var UserPolicyFields *UserPolicyFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldAllowedAttempts := "allowed_attempts"
-	fieldMinLength := "min_length"
-	fieldUpper := "upper"
-	fieldLower := "lower"
-	fieldDigit := "digit"
-	fieldSpecial := "special"
-	fieldPreviousDiff := "previous_diff"
-	fieldNoReuse := "no_reuse"
-	fieldMaxSessions := "max_sessions"
-
 	UserPolicyFields = &UserPolicyFieldHandles{
-		ID:              &fieldID,
-		AllowedAttempts: &fieldAllowedAttempts,
-		MinLength:       &fieldMinLength,
-		Upper:           &fieldUpper,
-		Lower:           &fieldLower,
-		Digit:           &fieldDigit,
-		Special:         &fieldSpecial,
-		PreviousDiff:    &fieldPreviousDiff,
-		NoReuse:         &fieldNoReuse,
-		MaxSessions:     &fieldMaxSessions,
+		ID:              "id",
+		AllowedAttempts: "allowed_attempts",
+		MinLength:       "min_length",
+		Upper:           "upper",
+		Lower:           "lower",
+		Digit:           "digit",
+		Special:         "special",
+		PreviousDiff:    "previous_diff",
+		NoReuse:         "no_reuse",
+		MaxSessions:     "max_sessions",
 	}
 }
 
@@ -57,14 +46,14 @@ type UserPolicy struct {
 
 // UserPolicyFieldHandles provides a string representation for each AccessControlRecord field.
 type UserPolicyFieldHandles struct {
-	ID              *string
-	AllowedAttempts *string
-	MinLength       *string
-	Upper           *string
-	Lower           *string
-	Digit           *string
-	Special         *string
-	PreviousDiff    *string
-	NoReuse         *string
-	MaxSessions     *string
+	ID              string
+	AllowedAttempts string
+	MinLength       string
+	Upper           string
+	Lower           string
+	Digit           string
+	Special         string
+	PreviousDiff    string
+	NoReuse         string
+	MaxSessions     string
 }

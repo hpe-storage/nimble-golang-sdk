@@ -6,10 +6,8 @@ package nimbleos
 var NsChksumReturnFields *NsChksumReturnFieldHandles
 
 func init() {
-	fieldCksum := "cksum"
-
 	NsChksumReturnFields = &NsChksumReturnFieldHandles{
-		Cksum: &fieldCksum,
+		Cksum: "cksum",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsChksumReturn struct {
 
 // NsChksumReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsChksumReturnFieldHandles struct {
-	Cksum *string
+	Cksum string
 }

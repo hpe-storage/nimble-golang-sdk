@@ -6,18 +6,12 @@ package nimbleos
 var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummaryFieldHandles
 
 func init() {
-	fieldSnapcollId := "snapcoll_id"
-	fieldSnapcollName := "snapcoll_name"
-	fieldSnapcollCreationTime := "snapcoll_creation_time"
-	fieldDownstreamPartnerName := "downstream_partner_name"
-	fieldVolIds := "vol_ids"
-
 	NsReplicatedSnapcollSummaryFields = &NsReplicatedSnapcollSummaryFieldHandles{
-		SnapcollId:            &fieldSnapcollId,
-		SnapcollName:          &fieldSnapcollName,
-		SnapcollCreationTime:  &fieldSnapcollCreationTime,
-		DownstreamPartnerName: &fieldDownstreamPartnerName,
-		VolIds:                &fieldVolIds,
+		SnapcollId:            "snapcoll_id",
+		SnapcollName:          "snapcoll_name",
+		SnapcollCreationTime:  "snapcoll_creation_time",
+		DownstreamPartnerName: "downstream_partner_name",
+		VolIds:                "vol_ids",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsReplicatedSnapcollSummary struct {
 
 // NsReplicatedSnapcollSummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsReplicatedSnapcollSummaryFieldHandles struct {
-	SnapcollId            *string
-	SnapcollName          *string
-	SnapcollCreationTime  *string
-	DownstreamPartnerName *string
-	VolIds                *string
+	SnapcollId            string
+	SnapcollName          string
+	SnapcollCreationTime  string
+	DownstreamPartnerName string
+	VolIds                string
 }

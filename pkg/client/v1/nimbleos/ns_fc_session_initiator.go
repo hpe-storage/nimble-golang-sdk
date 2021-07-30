@@ -6,24 +6,15 @@ package nimbleos
 var NsFcSessionInitiatorFields *NsFcSessionInitiatorFieldHandles
 
 func init() {
-	fieldInitiatorAlias := "initiator_alias"
-	fieldInitiatorWwpn := "initiator_wwpn"
-	fieldInitiatorWwnn := "initiator_wwnn"
-	fieldInitiatorSwitchName := "initiator_switch_name"
-	fieldInitiatorSwitchPort := "initiator_switch_port"
-	fieldInitiatorSymbolicPortname := "initiator_symbolic_portname"
-	fieldInitiatorSymbolicNodename := "initiator_symbolic_nodename"
-	fieldInitiatorFcid := "initiator_fcid"
-
 	NsFcSessionInitiatorFields = &NsFcSessionInitiatorFieldHandles{
-		InitiatorAlias:            &fieldInitiatorAlias,
-		InitiatorWwpn:             &fieldInitiatorWwpn,
-		InitiatorWwnn:             &fieldInitiatorWwnn,
-		InitiatorSwitchName:       &fieldInitiatorSwitchName,
-		InitiatorSwitchPort:       &fieldInitiatorSwitchPort,
-		InitiatorSymbolicPortname: &fieldInitiatorSymbolicPortname,
-		InitiatorSymbolicNodename: &fieldInitiatorSymbolicNodename,
-		InitiatorFcid:             &fieldInitiatorFcid,
+		InitiatorAlias:            "initiator_alias",
+		InitiatorWwpn:             "initiator_wwpn",
+		InitiatorWwnn:             "initiator_wwnn",
+		InitiatorSwitchName:       "initiator_switch_name",
+		InitiatorSwitchPort:       "initiator_switch_port",
+		InitiatorSymbolicPortname: "initiator_symbolic_portname",
+		InitiatorSymbolicNodename: "initiator_symbolic_nodename",
+		InitiatorFcid:             "initiator_fcid",
 	}
 }
 
@@ -49,12 +40,12 @@ type NsFcSessionInitiator struct {
 
 // NsFcSessionInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcSessionInitiatorFieldHandles struct {
-	InitiatorAlias            *string
-	InitiatorWwpn             *string
-	InitiatorWwnn             *string
-	InitiatorSwitchName       *string
-	InitiatorSwitchPort       *string
-	InitiatorSymbolicPortname *string
-	InitiatorSymbolicNodename *string
-	InitiatorFcid             *string
+	InitiatorAlias            string
+	InitiatorWwpn             string
+	InitiatorWwnn             string
+	InitiatorSwitchName       string
+	InitiatorSwitchPort       string
+	InitiatorSymbolicPortname string
+	InitiatorSymbolicNodename string
+	InitiatorFcid             string
 }

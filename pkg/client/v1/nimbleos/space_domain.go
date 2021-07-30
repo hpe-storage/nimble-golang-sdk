@@ -6,62 +6,34 @@ package nimbleos
 var SpaceDomainFields *SpaceDomainFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldPoolId := "pool_id"
-	fieldPoolName := "pool_name"
-	fieldAppCategoryId := "app_category_id"
-	fieldAppCategoryName := "app_category_name"
-	fieldPerfPolicyNames := "perf_policy_names"
-	fieldSampleRate := "sample_rate"
-	fieldVolumeCount := "volume_count"
-	fieldDedupedVolumeCount := "deduped_volume_count"
-	fieldVolumes := "volumes"
-	fieldBlockSize := "block_size"
-	fieldDeduped := "deduped"
-	fieldEncrypted := "encrypted"
-	fieldUsage := "usage"
-	fieldVolLogicalUsage := "vol_logical_usage"
-	fieldSnapLogicalUsage := "snap_logical_usage"
-	fieldVolMappedUsage := "vol_mapped_usage"
-	fieldLogicalDedupeUsage := "logical_dedupe_usage"
-	fieldPhysicalDedupeUsage := "physical_dedupe_usage"
-	fieldSavingsCompression := "savings_compression"
-	fieldSavingsDedupe := "savings_dedupe"
-	fieldSavingsClone := "savings_clone"
-	fieldCompressedUsageBytes := "compressed_usage_bytes"
-	fieldUncompressedUsageBytes := "uncompressed_usage_bytes"
-	fieldCompressionRatio := "compression_ratio"
-	fieldDedupeRatio := "dedupe_ratio"
-	fieldCloneRatio := "clone_ratio"
-
 	SpaceDomainFields = &SpaceDomainFieldHandles{
-		ID:                     &fieldID,
-		PoolId:                 &fieldPoolId,
-		PoolName:               &fieldPoolName,
-		AppCategoryId:          &fieldAppCategoryId,
-		AppCategoryName:        &fieldAppCategoryName,
-		PerfPolicyNames:        &fieldPerfPolicyNames,
-		SampleRate:             &fieldSampleRate,
-		VolumeCount:            &fieldVolumeCount,
-		DedupedVolumeCount:     &fieldDedupedVolumeCount,
-		Volumes:                &fieldVolumes,
-		BlockSize:              &fieldBlockSize,
-		Deduped:                &fieldDeduped,
-		Encrypted:              &fieldEncrypted,
-		Usage:                  &fieldUsage,
-		VolLogicalUsage:        &fieldVolLogicalUsage,
-		SnapLogicalUsage:       &fieldSnapLogicalUsage,
-		VolMappedUsage:         &fieldVolMappedUsage,
-		LogicalDedupeUsage:     &fieldLogicalDedupeUsage,
-		PhysicalDedupeUsage:    &fieldPhysicalDedupeUsage,
-		SavingsCompression:     &fieldSavingsCompression,
-		SavingsDedupe:          &fieldSavingsDedupe,
-		SavingsClone:           &fieldSavingsClone,
-		CompressedUsageBytes:   &fieldCompressedUsageBytes,
-		UncompressedUsageBytes: &fieldUncompressedUsageBytes,
-		CompressionRatio:       &fieldCompressionRatio,
-		DedupeRatio:            &fieldDedupeRatio,
-		CloneRatio:             &fieldCloneRatio,
+		ID:                     "id",
+		PoolId:                 "pool_id",
+		PoolName:               "pool_name",
+		AppCategoryId:          "app_category_id",
+		AppCategoryName:        "app_category_name",
+		PerfPolicyNames:        "perf_policy_names",
+		SampleRate:             "sample_rate",
+		VolumeCount:            "volume_count",
+		DedupedVolumeCount:     "deduped_volume_count",
+		Volumes:                "volumes",
+		BlockSize:              "block_size",
+		Deduped:                "deduped",
+		Encrypted:              "encrypted",
+		Usage:                  "usage",
+		VolLogicalUsage:        "vol_logical_usage",
+		SnapLogicalUsage:       "snap_logical_usage",
+		VolMappedUsage:         "vol_mapped_usage",
+		LogicalDedupeUsage:     "logical_dedupe_usage",
+		PhysicalDedupeUsage:    "physical_dedupe_usage",
+		SavingsCompression:     "savings_compression",
+		SavingsDedupe:          "savings_dedupe",
+		SavingsClone:           "savings_clone",
+		CompressedUsageBytes:   "compressed_usage_bytes",
+		UncompressedUsageBytes: "uncompressed_usage_bytes",
+		CompressionRatio:       "compression_ratio",
+		DedupeRatio:            "dedupe_ratio",
+		CloneRatio:             "clone_ratio",
 	}
 }
 
@@ -125,31 +97,31 @@ type SpaceDomain struct {
 
 // SpaceDomainFieldHandles provides a string representation for each AccessControlRecord field.
 type SpaceDomainFieldHandles struct {
-	ID                     *string
-	PoolId                 *string
-	PoolName               *string
-	AppCategoryId          *string
-	AppCategoryName        *string
-	PerfPolicyNames        *string
-	SampleRate             *string
-	VolumeCount            *string
-	DedupedVolumeCount     *string
-	Volumes                *string
-	BlockSize              *string
-	Deduped                *string
-	Encrypted              *string
-	Usage                  *string
-	VolLogicalUsage        *string
-	SnapLogicalUsage       *string
-	VolMappedUsage         *string
-	LogicalDedupeUsage     *string
-	PhysicalDedupeUsage    *string
-	SavingsCompression     *string
-	SavingsDedupe          *string
-	SavingsClone           *string
-	CompressedUsageBytes   *string
-	UncompressedUsageBytes *string
-	CompressionRatio       *string
-	DedupeRatio            *string
-	CloneRatio             *string
+	ID                     string
+	PoolId                 string
+	PoolName               string
+	AppCategoryId          string
+	AppCategoryName        string
+	PerfPolicyNames        string
+	SampleRate             string
+	VolumeCount            string
+	DedupedVolumeCount     string
+	Volumes                string
+	BlockSize              string
+	Deduped                string
+	Encrypted              string
+	Usage                  string
+	VolLogicalUsage        string
+	SnapLogicalUsage       string
+	VolMappedUsage         string
+	LogicalDedupeUsage     string
+	PhysicalDedupeUsage    string
+	SavingsCompression     string
+	SavingsDedupe          string
+	SavingsClone           string
+	CompressedUsageBytes   string
+	UncompressedUsageBytes string
+	CompressionRatio       string
+	DedupeRatio            string
+	CloneRatio             string
 }

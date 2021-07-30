@@ -6,26 +6,16 @@ package nimbleos
 var NsISCSISessionFields *NsISCSISessionFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldSessionId := "session_id"
-	fieldInitiatorName := "initiator_name"
-	fieldNumConnections := "num_connections"
-	fieldPrKey := "pr_key"
-	fieldInitiatorIpAddr := "initiator_ip_addr"
-	fieldTargetIpAddr := "target_ip_addr"
-	fieldHeaderDigestEnabled := "header_digest_enabled"
-	fieldDataDigestEnabled := "data_digest_enabled"
-
 	NsISCSISessionFields = &NsISCSISessionFieldHandles{
-		ID:                  &fieldID,
-		SessionId:           &fieldSessionId,
-		InitiatorName:       &fieldInitiatorName,
-		NumConnections:      &fieldNumConnections,
-		PrKey:               &fieldPrKey,
-		InitiatorIpAddr:     &fieldInitiatorIpAddr,
-		TargetIpAddr:        &fieldTargetIpAddr,
-		HeaderDigestEnabled: &fieldHeaderDigestEnabled,
-		DataDigestEnabled:   &fieldDataDigestEnabled,
+		ID:                  "id",
+		SessionId:           "session_id",
+		InitiatorName:       "initiator_name",
+		NumConnections:      "num_connections",
+		PrKey:               "pr_key",
+		InitiatorIpAddr:     "initiator_ip_addr",
+		TargetIpAddr:        "target_ip_addr",
+		HeaderDigestEnabled: "header_digest_enabled",
+		DataDigestEnabled:   "data_digest_enabled",
 	}
 }
 
@@ -53,13 +43,13 @@ type NsISCSISession struct {
 
 // NsISCSISessionFieldHandles provides a string representation for each AccessControlRecord field.
 type NsISCSISessionFieldHandles struct {
-	ID                  *string
-	SessionId           *string
-	InitiatorName       *string
-	NumConnections      *string
-	PrKey               *string
-	InitiatorIpAddr     *string
-	TargetIpAddr        *string
-	HeaderDigestEnabled *string
-	DataDigestEnabled   *string
+	ID                  string
+	SessionId           string
+	InitiatorName       string
+	NumConnections      string
+	PrKey               string
+	InitiatorIpAddr     string
+	TargetIpAddr        string
+	HeaderDigestEnabled string
+	DataDigestEnabled   string
 }

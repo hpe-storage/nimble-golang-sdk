@@ -6,12 +6,9 @@ package nimbleos
 var NsLunReturnFields *NsLunReturnFieldHandles
 
 func init() {
-	fieldLun := "lun"
-	fieldLuNumber := "lu_number"
-
 	NsLunReturnFields = &NsLunReturnFieldHandles{
-		Lun:      &fieldLun,
-		LuNumber: &fieldLuNumber,
+		Lun:      "lun",
+		LuNumber: "lu_number",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsLunReturn struct {
 
 // NsLunReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsLunReturnFieldHandles struct {
-	Lun      *string
-	LuNumber *string
+	Lun      string
+	LuNumber string
 }

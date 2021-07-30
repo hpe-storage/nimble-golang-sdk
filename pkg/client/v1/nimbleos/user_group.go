@@ -6,32 +6,19 @@ package nimbleos
 var UserGroupFields *UserGroupFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldRoleId := "role_id"
-	fieldRole := "role"
-	fieldInactivityTimeout := "inactivity_timeout"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldDisabled := "disabled"
-	fieldExternalId := "external_id"
-	fieldDomainId := "domain_id"
-	fieldDomainName := "domain_name"
-
 	UserGroupFields = &UserGroupFieldHandles{
-		ID:                &fieldID,
-		Name:              &fieldName,
-		Description:       &fieldDescription,
-		RoleId:            &fieldRoleId,
-		Role:              &fieldRole,
-		InactivityTimeout: &fieldInactivityTimeout,
-		CreationTime:      &fieldCreationTime,
-		LastModified:      &fieldLastModified,
-		Disabled:          &fieldDisabled,
-		ExternalId:        &fieldExternalId,
-		DomainId:          &fieldDomainId,
-		DomainName:        &fieldDomainName,
+		ID:                "id",
+		Name:              "name",
+		Description:       "description",
+		RoleId:            "role_id",
+		Role:              "role",
+		InactivityTimeout: "inactivity_timeout",
+		CreationTime:      "creation_time",
+		LastModified:      "last_modified",
+		Disabled:          "disabled",
+		ExternalId:        "external_id",
+		DomainId:          "domain_id",
+		DomainName:        "domain_name",
 	}
 }
 
@@ -65,16 +52,16 @@ type UserGroup struct {
 
 // UserGroupFieldHandles provides a string representation for each AccessControlRecord field.
 type UserGroupFieldHandles struct {
-	ID                *string
-	Name              *string
-	Description       *string
-	RoleId            *string
-	Role              *string
-	InactivityTimeout *string
-	CreationTime      *string
-	LastModified      *string
-	Disabled          *string
-	ExternalId        *string
-	DomainId          *string
-	DomainName        *string
+	ID                string
+	Name              string
+	Description       string
+	RoleId            string
+	Role              string
+	InactivityTimeout string
+	CreationTime      string
+	LastModified      string
+	Disabled          string
+	ExternalId        string
+	DomainId          string
+	DomainName        string
 }

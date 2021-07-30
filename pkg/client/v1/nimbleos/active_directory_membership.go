@@ -6,28 +6,17 @@ package nimbleos
 var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldDescription := "description"
-	fieldName := "name"
-	fieldNetbios := "netbios"
-	fieldServerList := "server_list"
-	fieldComputerName := "computer_name"
-	fieldOrganizationalUnit := "organizational_unit"
-	fieldUser := "user"
-	fieldPassword := "password"
-	fieldEnabled := "enabled"
-
 	ActiveDirectoryMembershipFields = &ActiveDirectoryMembershipFieldHandles{
-		ID:                 &fieldID,
-		Description:        &fieldDescription,
-		Name:               &fieldName,
-		Netbios:            &fieldNetbios,
-		ServerList:         &fieldServerList,
-		ComputerName:       &fieldComputerName,
-		OrganizationalUnit: &fieldOrganizationalUnit,
-		User:               &fieldUser,
-		Password:           &fieldPassword,
-		Enabled:            &fieldEnabled,
+		ID:                 "id",
+		Description:        "description",
+		Name:               "name",
+		Netbios:            "netbios",
+		ServerList:         "server_list",
+		ComputerName:       "computer_name",
+		OrganizationalUnit: "organizational_unit",
+		User:               "user",
+		Password:           "password",
+		Enabled:            "enabled",
 	}
 }
 
@@ -57,14 +46,14 @@ type ActiveDirectoryMembership struct {
 
 // ActiveDirectoryMembershipFieldHandles provides a string representation for each AccessControlRecord field.
 type ActiveDirectoryMembershipFieldHandles struct {
-	ID                 *string
-	Description        *string
-	Name               *string
-	Netbios            *string
-	ServerList         *string
-	ComputerName       *string
-	OrganizationalUnit *string
-	User               *string
-	Password           *string
-	Enabled            *string
+	ID                 string
+	Description        string
+	Name               string
+	Netbios            string
+	ServerList         string
+	ComputerName       string
+	OrganizationalUnit string
+	User               string
+	Password           string
+	Enabled            string
 }

@@ -6,22 +6,14 @@ package nimbleos
 var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDestinationArrays := "destination_arrays"
-	fieldBytesMigrated := "bytes_migrated"
-	fieldBytesRemaining := "bytes_remaining"
-	fieldStartTime := "start_time"
-	fieldEstimatedCompletionTime := "estimated_completion_time"
-
 	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatusFieldHandles{
-		ID:                      &fieldID,
-		Name:                    &fieldName,
-		DestinationArrays:       &fieldDestinationArrays,
-		BytesMigrated:           &fieldBytesMigrated,
-		BytesRemaining:          &fieldBytesRemaining,
-		StartTime:               &fieldStartTime,
-		EstimatedCompletionTime: &fieldEstimatedCompletionTime,
+		ID:                      "id",
+		Name:                    "name",
+		DestinationArrays:       "destination_arrays",
+		BytesMigrated:           "bytes_migrated",
+		BytesRemaining:          "bytes_remaining",
+		StartTime:               "start_time",
+		EstimatedCompletionTime: "estimated_completion_time",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsArrayUnassignMigStatus struct {
 
 // NsArrayUnassignMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsArrayUnassignMigStatusFieldHandles struct {
-	ID                      *string
-	Name                    *string
-	DestinationArrays       *string
-	BytesMigrated           *string
-	BytesRemaining          *string
-	StartTime               *string
-	EstimatedCompletionTime *string
+	ID                      string
+	Name                    string
+	DestinationArrays       string
+	BytesMigrated           string
+	BytesRemaining          string
+	StartTime               string
+	EstimatedCompletionTime string
 }

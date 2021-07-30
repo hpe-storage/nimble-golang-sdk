@@ -6,48 +6,27 @@ package nimbleos
 var AccessControlRecordFields *AccessControlRecordFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldApplyTo := "apply_to"
-	fieldChapUserId := "chap_user_id"
-	fieldChapUserName := "chap_user_name"
-	fieldInitiatorGroupId := "initiator_group_id"
-	fieldInitiatorGroupName := "initiator_group_name"
-	fieldLun := "lun"
-	fieldVolId := "vol_id"
-	fieldVolName := "vol_name"
-	fieldVolAgentType := "vol_agent_type"
-	fieldPeId := "pe_id"
-	fieldPeName := "pe_name"
-	fieldPeLun := "pe_lun"
-	fieldSnapId := "snap_id"
-	fieldSnapName := "snap_name"
-	fieldPeIds := "pe_ids"
-	fieldSnapluns := "snapluns"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldAccessProtocol := "access_protocol"
-
 	AccessControlRecordFields = &AccessControlRecordFieldHandles{
-		ID:                 &fieldID,
-		ApplyTo:            &fieldApplyTo,
-		ChapUserId:         &fieldChapUserId,
-		ChapUserName:       &fieldChapUserName,
-		InitiatorGroupId:   &fieldInitiatorGroupId,
-		InitiatorGroupName: &fieldInitiatorGroupName,
-		Lun:                &fieldLun,
-		VolId:              &fieldVolId,
-		VolName:            &fieldVolName,
-		VolAgentType:       &fieldVolAgentType,
-		PeId:               &fieldPeId,
-		PeName:             &fieldPeName,
-		PeLun:              &fieldPeLun,
-		SnapId:             &fieldSnapId,
-		SnapName:           &fieldSnapName,
-		PeIds:              &fieldPeIds,
-		Snapluns:           &fieldSnapluns,
-		CreationTime:       &fieldCreationTime,
-		LastModified:       &fieldLastModified,
-		AccessProtocol:     &fieldAccessProtocol,
+		ID:                 "id",
+		ApplyTo:            "apply_to",
+		ChapUserId:         "chap_user_id",
+		ChapUserName:       "chap_user_name",
+		InitiatorGroupId:   "initiator_group_id",
+		InitiatorGroupName: "initiator_group_name",
+		Lun:                "lun",
+		VolId:              "vol_id",
+		VolName:            "vol_name",
+		VolAgentType:       "vol_agent_type",
+		PeId:               "pe_id",
+		PeName:             "pe_name",
+		PeLun:              "pe_lun",
+		SnapId:             "snap_id",
+		SnapName:           "snap_name",
+		PeIds:              "pe_ids",
+		Snapluns:           "snapluns",
+		CreationTime:       "creation_time",
+		LastModified:       "last_modified",
+		AccessProtocol:     "access_protocol",
 	}
 }
 
@@ -97,24 +76,24 @@ type AccessControlRecord struct {
 
 // AccessControlRecordFieldHandles provides a string representation for each AccessControlRecord field.
 type AccessControlRecordFieldHandles struct {
-	ID                 *string
-	ApplyTo            *string
-	ChapUserId         *string
-	ChapUserName       *string
-	InitiatorGroupId   *string
-	InitiatorGroupName *string
-	Lun                *string
-	VolId              *string
-	VolName            *string
-	VolAgentType       *string
-	PeId               *string
-	PeName             *string
-	PeLun              *string
-	SnapId             *string
-	SnapName           *string
-	PeIds              *string
-	Snapluns           *string
-	CreationTime       *string
-	LastModified       *string
-	AccessProtocol     *string
+	ID                 string
+	ApplyTo            string
+	ChapUserId         string
+	ChapUserName       string
+	InitiatorGroupId   string
+	InitiatorGroupName string
+	Lun                string
+	VolId              string
+	VolName            string
+	VolAgentType       string
+	PeId               string
+	PeName             string
+	PeLun              string
+	SnapId             string
+	SnapName           string
+	PeIds              string
+	Snapluns           string
+	CreationTime       string
+	LastModified       string
+	AccessProtocol     string
 }

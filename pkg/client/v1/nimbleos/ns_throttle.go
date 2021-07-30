@@ -6,34 +6,20 @@ package nimbleos
 var NsThrottleFields *NsThrottleFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldDescription := "description"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldThrPartnerId := "thr_partner_id"
-	fieldThrDayMask := "thr_day_mask"
-	fieldDays := "days"
-	fieldThrAtTime := "thr_at_time"
-	fieldThrUntilTime := "thr_until_time"
-	fieldThrBandwidth := "thr_bandwidth"
-	fieldThrBandwidthKbps := "thr_bandwidth_kbps"
-	fieldThrBandwidthLimitKbps := "thr_bandwidth_limit_kbps"
-
 	NsThrottleFields = &NsThrottleFieldHandles{
-		ID:                    &fieldID,
-		Name:                  &fieldName,
-		Description:           &fieldDescription,
-		CreationTime:          &fieldCreationTime,
-		LastModified:          &fieldLastModified,
-		ThrPartnerId:          &fieldThrPartnerId,
-		ThrDayMask:            &fieldThrDayMask,
-		Days:                  &fieldDays,
-		ThrAtTime:             &fieldThrAtTime,
-		ThrUntilTime:          &fieldThrUntilTime,
-		ThrBandwidth:          &fieldThrBandwidth,
-		ThrBandwidthKbps:      &fieldThrBandwidthKbps,
-		ThrBandwidthLimitKbps: &fieldThrBandwidthLimitKbps,
+		ID:                    "id",
+		Name:                  "name",
+		Description:           "description",
+		CreationTime:          "creation_time",
+		LastModified:          "last_modified",
+		ThrPartnerId:          "thr_partner_id",
+		ThrDayMask:            "thr_day_mask",
+		Days:                  "days",
+		ThrAtTime:             "thr_at_time",
+		ThrUntilTime:          "thr_until_time",
+		ThrBandwidth:          "thr_bandwidth",
+		ThrBandwidthKbps:      "thr_bandwidth_kbps",
+		ThrBandwidthLimitKbps: "thr_bandwidth_limit_kbps",
 	}
 }
 
@@ -69,17 +55,17 @@ type NsThrottle struct {
 
 // NsThrottleFieldHandles provides a string representation for each AccessControlRecord field.
 type NsThrottleFieldHandles struct {
-	ID                    *string
-	Name                  *string
-	Description           *string
-	CreationTime          *string
-	LastModified          *string
-	ThrPartnerId          *string
-	ThrDayMask            *string
-	Days                  *string
-	ThrAtTime             *string
-	ThrUntilTime          *string
-	ThrBandwidth          *string
-	ThrBandwidthKbps      *string
-	ThrBandwidthLimitKbps *string
+	ID                    string
+	Name                  string
+	Description           string
+	CreationTime          string
+	LastModified          string
+	ThrPartnerId          string
+	ThrDayMask            string
+	Days                  string
+	ThrAtTime             string
+	ThrUntilTime          string
+	ThrBandwidth          string
+	ThrBandwidthKbps      string
+	ThrBandwidthLimitKbps string
 }

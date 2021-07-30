@@ -74,7 +74,7 @@ func (svc *UserService) GetUserById(id string) (*nimbleos.User, error) {
 func (svc *UserService) GetUserByName(name string) (*nimbleos.User, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

@@ -6,50 +6,28 @@ package nimbleos
 var AuditLogFields *AuditLogFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldType := "type"
-	fieldObjectId := "object_id"
-	fieldObjectName := "object_name"
-	fieldObjectType := "object_type"
-	fieldScope := "scope"
-	fieldTime := "time"
-	fieldStatus := "status"
-	fieldErrorCode := "error_code"
-	fieldUserId := "user_id"
-	fieldUserName := "user_name"
-	fieldUserFullName := "user_full_name"
-	fieldSourceIp := "source_ip"
-	fieldExtUserId := "ext_user_id"
-	fieldExtUserGroupId := "ext_user_group_id"
-	fieldExtUserGroupName := "ext_user_group_name"
-	fieldAppName := "app_name"
-	fieldAccessType := "access_type"
-	fieldCategory := "category"
-	fieldActivityType := "activity_type"
-	fieldActivity := "activity"
-
 	AuditLogFields = &AuditLogFieldHandles{
-		ID:               &fieldID,
-		Type:             &fieldType,
-		ObjectId:         &fieldObjectId,
-		ObjectName:       &fieldObjectName,
-		ObjectType:       &fieldObjectType,
-		Scope:            &fieldScope,
-		Time:             &fieldTime,
-		Status:           &fieldStatus,
-		ErrorCode:        &fieldErrorCode,
-		UserId:           &fieldUserId,
-		UserName:         &fieldUserName,
-		UserFullName:     &fieldUserFullName,
-		SourceIp:         &fieldSourceIp,
-		ExtUserId:        &fieldExtUserId,
-		ExtUserGroupId:   &fieldExtUserGroupId,
-		ExtUserGroupName: &fieldExtUserGroupName,
-		AppName:          &fieldAppName,
-		AccessType:       &fieldAccessType,
-		Category:         &fieldCategory,
-		ActivityType:     &fieldActivityType,
-		Activity:         &fieldActivity,
+		ID:               "id",
+		Type:             "type",
+		ObjectId:         "object_id",
+		ObjectName:       "object_name",
+		ObjectType:       "object_type",
+		Scope:            "scope",
+		Time:             "time",
+		Status:           "status",
+		ErrorCode:        "error_code",
+		UserId:           "user_id",
+		UserName:         "user_name",
+		UserFullName:     "user_full_name",
+		SourceIp:         "source_ip",
+		ExtUserId:        "ext_user_id",
+		ExtUserGroupId:   "ext_user_group_id",
+		ExtUserGroupName: "ext_user_group_name",
+		AppName:          "app_name",
+		AccessType:       "access_type",
+		Category:         "category",
+		ActivityType:     "activity_type",
+		Activity:         "activity",
 	}
 }
 
@@ -101,25 +79,25 @@ type AuditLog struct {
 
 // AuditLogFieldHandles provides a string representation for each AccessControlRecord field.
 type AuditLogFieldHandles struct {
-	ID               *string
-	Type             *string
-	ObjectId         *string
-	ObjectName       *string
-	ObjectType       *string
-	Scope            *string
-	Time             *string
-	Status           *string
-	ErrorCode        *string
-	UserId           *string
-	UserName         *string
-	UserFullName     *string
-	SourceIp         *string
-	ExtUserId        *string
-	ExtUserGroupId   *string
-	ExtUserGroupName *string
-	AppName          *string
-	AccessType       *string
-	Category         *string
-	ActivityType     *string
-	Activity         *string
+	ID               string
+	Type             string
+	ObjectId         string
+	ObjectName       string
+	ObjectType       string
+	Scope            string
+	Time             string
+	Status           string
+	ErrorCode        string
+	UserId           string
+	UserName         string
+	UserFullName     string
+	SourceIp         string
+	ExtUserId        string
+	ExtUserGroupId   string
+	ExtUserGroupName string
+	AppName          string
+	AccessType       string
+	Category         string
+	ActivityType     string
+	Activity         string
 }

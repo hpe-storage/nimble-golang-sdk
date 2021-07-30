@@ -6,14 +6,10 @@ package nimbleos
 var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttrFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldReplicationPartnerId := "replication_partner_id"
-	fieldNoReverse := "no_reverse"
-
 	NsVolumeCollectionHandoverAttrFields = &NsVolumeCollectionHandoverAttrFieldHandles{
-		ID:                   &fieldID,
-		ReplicationPartnerId: &fieldReplicationPartnerId,
-		NoReverse:            &fieldNoReverse,
+		ID:                   "id",
+		ReplicationPartnerId: "replication_partner_id",
+		NoReverse:            "no_reverse",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsVolumeCollectionHandoverAttr struct {
 
 // NsVolumeCollectionHandoverAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeCollectionHandoverAttrFieldHandles struct {
-	ID                   *string
-	ReplicationPartnerId *string
-	NoReverse            *string
+	ID                   string
+	ReplicationPartnerId string
+	NoReverse            string
 }

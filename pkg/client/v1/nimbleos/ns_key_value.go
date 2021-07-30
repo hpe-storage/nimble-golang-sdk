@@ -6,12 +6,9 @@ package nimbleos
 var NsKeyValueFields *NsKeyValueFieldHandles
 
 func init() {
-	fieldKey := "key"
-	fieldValue := "value"
-
 	NsKeyValueFields = &NsKeyValueFieldHandles{
-		Key:   &fieldKey,
-		Value: &fieldValue,
+		Key:   "key",
+		Value: "value",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsKeyValue struct {
 
 // NsKeyValueFieldHandles provides a string representation for each AccessControlRecord field.
 type NsKeyValueFieldHandles struct {
-	Key   *string
-	Value *string
+	Key   string
+	Value string
 }

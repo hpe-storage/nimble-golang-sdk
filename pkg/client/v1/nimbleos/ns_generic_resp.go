@@ -6,16 +6,11 @@ package nimbleos
 var NsGenericRespFields *NsGenericRespFieldHandles
 
 func init() {
-	fieldGenericError := "generic_error"
-	fieldGenericErrorMessage := "generic_error_message"
-	fieldConnStatusOk := "conn_status_ok"
-	fieldConnMessage := "conn_message"
-
 	NsGenericRespFields = &NsGenericRespFieldHandles{
-		GenericError:        &fieldGenericError,
-		GenericErrorMessage: &fieldGenericErrorMessage,
-		ConnStatusOk:        &fieldConnStatusOk,
-		ConnMessage:         &fieldConnMessage,
+		GenericError:        "generic_error",
+		GenericErrorMessage: "generic_error_message",
+		ConnStatusOk:        "conn_status_ok",
+		ConnMessage:         "conn_message",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsGenericResp struct {
 
 // NsGenericRespFieldHandles provides a string representation for each AccessControlRecord field.
 type NsGenericRespFieldHandles struct {
-	GenericError        *string
-	GenericErrorMessage *string
-	ConnStatusOk        *string
-	ConnMessage         *string
+	GenericError        string
+	GenericErrorMessage string
+	ConnStatusOk        string
+	ConnMessage         string
 }

@@ -6,22 +6,14 @@ package nimbleos
 var NsSensorCumulativeDataFields *NsSensorCumulativeDataFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldIndex := "index"
-	fieldMsec := "msec"
-	fieldPrevUnavail := "prev_unavail"
-	fieldCurrUnavail := "curr_unavail"
-	fieldCurr := "curr"
-	fieldPrev := "prev"
-
 	NsSensorCumulativeDataFields = &NsSensorCumulativeDataFieldHandles{
-		Name:        &fieldName,
-		Index:       &fieldIndex,
-		Msec:        &fieldMsec,
-		PrevUnavail: &fieldPrevUnavail,
-		CurrUnavail: &fieldCurrUnavail,
-		Curr:        &fieldCurr,
-		Prev:        &fieldPrev,
+		Name:        "name",
+		Index:       "index",
+		Msec:        "msec",
+		PrevUnavail: "prev_unavail",
+		CurrUnavail: "curr_unavail",
+		Curr:        "curr",
+		Prev:        "prev",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsSensorCumulativeData struct {
 
 // NsSensorCumulativeDataFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSensorCumulativeDataFieldHandles struct {
-	Name        *string
-	Index       *string
-	Msec        *string
-	PrevUnavail *string
-	CurrUnavail *string
-	Curr        *string
-	Prev        *string
+	Name        string
+	Index       string
+	Msec        string
+	PrevUnavail string
+	CurrUnavail string
+	Curr        string
+	Prev        string
 }

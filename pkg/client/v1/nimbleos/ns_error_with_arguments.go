@@ -6,14 +6,10 @@ package nimbleos
 var NsErrorWithArgumentsFields *NsErrorWithArgumentsFieldHandles
 
 func init() {
-	fieldCode := "code"
-	fieldSeverity := "severity"
-	fieldText := "text"
-
 	NsErrorWithArgumentsFields = &NsErrorWithArgumentsFieldHandles{
-		Code:     &fieldCode,
-		Severity: &fieldSeverity,
-		Text:     &fieldText,
+		Code:     "code",
+		Severity: "severity",
+		Text:     "text",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsErrorWithArguments struct {
 
 // NsErrorWithArgumentsFieldHandles provides a string representation for each AccessControlRecord field.
 type NsErrorWithArgumentsFieldHandles struct {
-	Code     *string
-	Severity *string
-	Text     *string
+	Code     string
+	Severity string
+	Text     string
 }

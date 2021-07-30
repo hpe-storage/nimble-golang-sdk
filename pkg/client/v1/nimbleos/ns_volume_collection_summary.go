@@ -6,12 +6,9 @@ package nimbleos
 var NsVolumeCollectionSummaryFields *NsVolumeCollectionSummaryFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-
 	NsVolumeCollectionSummaryFields = &NsVolumeCollectionSummaryFieldHandles{
-		ID:   &fieldID,
-		Name: &fieldName,
+		ID:   "id",
+		Name: "name",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsVolumeCollectionSummary struct {
 
 // NsVolumeCollectionSummaryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeCollectionSummaryFieldHandles struct {
-	ID   *string
-	Name *string
+	ID   string
+	Name string
 }

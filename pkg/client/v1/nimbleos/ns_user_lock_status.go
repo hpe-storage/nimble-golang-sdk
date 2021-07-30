@@ -6,12 +6,9 @@ package nimbleos
 var NsUserLockStatusFields *NsUserLockStatusFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldAuthLock := "auth_lock"
-
 	NsUserLockStatusFields = &NsUserLockStatusFieldHandles{
-		ID:       &fieldID,
-		AuthLock: &fieldAuthLock,
+		ID:       "id",
+		AuthLock: "auth_lock",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsUserLockStatus struct {
 
 // NsUserLockStatusFieldHandles provides a string representation for each AccessControlRecord field.
 type NsUserLockStatusFieldHandles struct {
-	ID       *string
-	AuthLock *string
+	ID       string
+	AuthLock string
 }

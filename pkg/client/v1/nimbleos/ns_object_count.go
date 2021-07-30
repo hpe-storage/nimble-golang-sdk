@@ -6,16 +6,11 @@ package nimbleos
 var NsObjectCountFields *NsObjectCountFieldHandles
 
 func init() {
-	fieldScopeName := "scope_name"
-	fieldObjectCount := "object_count"
-	fieldMaxLimitOverride := "max_limit_override"
-	fieldWarningThresholdOverride := "warning_threshold_override"
-
 	NsObjectCountFields = &NsObjectCountFieldHandles{
-		ScopeName:                &fieldScopeName,
-		ObjectCount:              &fieldObjectCount,
-		MaxLimitOverride:         &fieldMaxLimitOverride,
-		WarningThresholdOverride: &fieldWarningThresholdOverride,
+		ScopeName:                "scope_name",
+		ObjectCount:              "object_count",
+		MaxLimitOverride:         "max_limit_override",
+		WarningThresholdOverride: "warning_threshold_override",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsObjectCount struct {
 
 // NsObjectCountFieldHandles provides a string representation for each AccessControlRecord field.
 type NsObjectCountFieldHandles struct {
-	ScopeName                *string
-	ObjectCount              *string
-	MaxLimitOverride         *string
-	WarningThresholdOverride *string
+	ScopeName                string
+	ObjectCount              string
+	MaxLimitOverride         string
+	WarningThresholdOverride string
 }

@@ -6,16 +6,11 @@ package nimbleos
 var NsWitnessTestResponseFields *NsWitnessTestResponseFieldHandles
 
 func init() {
-	fieldArrayName := "array_name"
-	fieldRole := "role"
-	fieldWitnessConnectivityState := "witness_connectivity_state"
-	fieldWitnessConnectivityMessage := "witness_connectivity_message"
-
 	NsWitnessTestResponseFields = &NsWitnessTestResponseFieldHandles{
-		ArrayName:                  &fieldArrayName,
-		Role:                       &fieldRole,
-		WitnessConnectivityState:   &fieldWitnessConnectivityState,
-		WitnessConnectivityMessage: &fieldWitnessConnectivityMessage,
+		ArrayName:                  "array_name",
+		Role:                       "role",
+		WitnessConnectivityState:   "witness_connectivity_state",
+		WitnessConnectivityMessage: "witness_connectivity_message",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsWitnessTestResponse struct {
 
 // NsWitnessTestResponseFieldHandles provides a string representation for each AccessControlRecord field.
 type NsWitnessTestResponseFieldHandles struct {
-	ArrayName                  *string
-	Role                       *string
-	WitnessConnectivityState   *string
-	WitnessConnectivityMessage *string
+	ArrayName                  string
+	Role                       string
+	WitnessConnectivityState   string
+	WitnessConnectivityMessage string
 }

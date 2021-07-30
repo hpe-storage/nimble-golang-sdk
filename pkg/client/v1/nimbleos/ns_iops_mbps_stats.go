@@ -6,16 +6,11 @@ package nimbleos
 var NsIopsMbpsStatsFields *NsIopsMbpsStatsFieldHandles
 
 func init() {
-	fieldAvgIops := "avg_iops"
-	fieldMaxIops := "max_iops"
-	fieldAvgMbps := "avg_mbps"
-	fieldMaxMbps := "max_mbps"
-
 	NsIopsMbpsStatsFields = &NsIopsMbpsStatsFieldHandles{
-		AvgIops: &fieldAvgIops,
-		MaxIops: &fieldMaxIops,
-		AvgMbps: &fieldAvgMbps,
-		MaxMbps: &fieldMaxMbps,
+		AvgIops: "avg_iops",
+		MaxIops: "max_iops",
+		AvgMbps: "avg_mbps",
+		MaxMbps: "max_mbps",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsIopsMbpsStats struct {
 
 // NsIopsMbpsStatsFieldHandles provides a string representation for each AccessControlRecord field.
 type NsIopsMbpsStatsFieldHandles struct {
-	AvgIops *string
-	MaxIops *string
-	AvgMbps *string
-	MaxMbps *string
+	AvgIops string
+	MaxIops string
+	AvgMbps string
+	MaxMbps string
 }

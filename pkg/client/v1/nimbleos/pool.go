@@ -6,102 +6,54 @@ package nimbleos
 var PoolFields *PoolFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldCapacity := "capacity"
-	fieldUsage := "usage"
-	fieldSavings := "savings"
-	fieldSavingsDataReduction := "savings_data_reduction"
-	fieldSavingsCompression := "savings_compression"
-	fieldSavingsDedupe := "savings_dedupe"
-	fieldSavingsClone := "savings_clone"
-	fieldSavingsVolThinProvisioning := "savings_vol_thin_provisioning"
-	fieldReserve := "reserve"
-	fieldUnusedReserve := "unused_reserve"
-	fieldFreeSpace := "free_space"
-	fieldCacheCapacity := "cache_capacity"
-	fieldPinnableCacheCapacity := "pinnable_cache_capacity"
-	fieldPinnedCacheCapacity := "pinned_cache_capacity"
-	fieldDedupeCapacityBytes := "dedupe_capacity_bytes"
-	fieldDedupeUsageBytes := "dedupe_usage_bytes"
-	fieldSavingsRatio := "savings_ratio"
-	fieldDataReductionRatio := "data_reduction_ratio"
-	fieldCompressionRatio := "compression_ratio"
-	fieldDedupeRatio := "dedupe_ratio"
-	fieldCloneRatio := "clone_ratio"
-	fieldVolThinProvisioningRatio := "vol_thin_provisioning_ratio"
-	fieldSnapcollCount := "snapcoll_count"
-	fieldSnapCount := "snap_count"
-	fieldArrayCount := "array_count"
-	fieldVolCount := "vol_count"
-	fieldArrayList := "array_list"
-	fieldUnassignedArrayList := "unassigned_array_list"
-	fieldVolList := "vol_list"
-	fieldPinnedVolList := "pinned_vol_list"
-	fieldFolderList := "folder_list"
-	fieldForce := "force"
-	fieldUsageValid := "usage_valid"
-	fieldUncompressedVolUsageBytes := "uncompressed_vol_usage_bytes"
-	fieldUncompressedSnapUsageBytes := "uncompressed_snap_usage_bytes"
-	fieldAllFlash := "all_flash"
-	fieldDedupeCapable := "dedupe_capable"
-	fieldDedupeAllVolumesCapable := "dedupe_all_volumes_capable"
-	fieldDedupeAllVolumes := "dedupe_all_volumes"
-	fieldIsDefault := "is_default"
-
 	PoolFields = &PoolFieldHandles{
-		ID:                         &fieldID,
-		Name:                       &fieldName,
-		FullName:                   &fieldFullName,
-		SearchName:                 &fieldSearchName,
-		Description:                &fieldDescription,
-		CreationTime:               &fieldCreationTime,
-		LastModified:               &fieldLastModified,
-		Capacity:                   &fieldCapacity,
-		Usage:                      &fieldUsage,
-		Savings:                    &fieldSavings,
-		SavingsDataReduction:       &fieldSavingsDataReduction,
-		SavingsCompression:         &fieldSavingsCompression,
-		SavingsDedupe:              &fieldSavingsDedupe,
-		SavingsClone:               &fieldSavingsClone,
-		SavingsVolThinProvisioning: &fieldSavingsVolThinProvisioning,
-		Reserve:                    &fieldReserve,
-		UnusedReserve:              &fieldUnusedReserve,
-		FreeSpace:                  &fieldFreeSpace,
-		CacheCapacity:              &fieldCacheCapacity,
-		PinnableCacheCapacity:      &fieldPinnableCacheCapacity,
-		PinnedCacheCapacity:        &fieldPinnedCacheCapacity,
-		DedupeCapacityBytes:        &fieldDedupeCapacityBytes,
-		DedupeUsageBytes:           &fieldDedupeUsageBytes,
-		SavingsRatio:               &fieldSavingsRatio,
-		DataReductionRatio:         &fieldDataReductionRatio,
-		CompressionRatio:           &fieldCompressionRatio,
-		DedupeRatio:                &fieldDedupeRatio,
-		CloneRatio:                 &fieldCloneRatio,
-		VolThinProvisioningRatio:   &fieldVolThinProvisioningRatio,
-		SnapcollCount:              &fieldSnapcollCount,
-		SnapCount:                  &fieldSnapCount,
-		ArrayCount:                 &fieldArrayCount,
-		VolCount:                   &fieldVolCount,
-		ArrayList:                  &fieldArrayList,
-		UnassignedArrayList:        &fieldUnassignedArrayList,
-		VolList:                    &fieldVolList,
-		PinnedVolList:              &fieldPinnedVolList,
-		FolderList:                 &fieldFolderList,
-		Force:                      &fieldForce,
-		UsageValid:                 &fieldUsageValid,
-		UncompressedVolUsageBytes:  &fieldUncompressedVolUsageBytes,
-		UncompressedSnapUsageBytes: &fieldUncompressedSnapUsageBytes,
-		AllFlash:                   &fieldAllFlash,
-		DedupeCapable:              &fieldDedupeCapable,
-		DedupeAllVolumesCapable:    &fieldDedupeAllVolumesCapable,
-		DedupeAllVolumes:           &fieldDedupeAllVolumes,
-		IsDefault:                  &fieldIsDefault,
+		ID:                         "id",
+		Name:                       "name",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Description:                "description",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		Capacity:                   "capacity",
+		Usage:                      "usage",
+		Savings:                    "savings",
+		SavingsDataReduction:       "savings_data_reduction",
+		SavingsCompression:         "savings_compression",
+		SavingsDedupe:              "savings_dedupe",
+		SavingsClone:               "savings_clone",
+		SavingsVolThinProvisioning: "savings_vol_thin_provisioning",
+		Reserve:                    "reserve",
+		UnusedReserve:              "unused_reserve",
+		FreeSpace:                  "free_space",
+		CacheCapacity:              "cache_capacity",
+		PinnableCacheCapacity:      "pinnable_cache_capacity",
+		PinnedCacheCapacity:        "pinned_cache_capacity",
+		DedupeCapacityBytes:        "dedupe_capacity_bytes",
+		DedupeUsageBytes:           "dedupe_usage_bytes",
+		SavingsRatio:               "savings_ratio",
+		DataReductionRatio:         "data_reduction_ratio",
+		CompressionRatio:           "compression_ratio",
+		DedupeRatio:                "dedupe_ratio",
+		CloneRatio:                 "clone_ratio",
+		VolThinProvisioningRatio:   "vol_thin_provisioning_ratio",
+		SnapcollCount:              "snapcoll_count",
+		SnapCount:                  "snap_count",
+		ArrayCount:                 "array_count",
+		VolCount:                   "vol_count",
+		ArrayList:                  "array_list",
+		UnassignedArrayList:        "unassigned_array_list",
+		VolList:                    "vol_list",
+		PinnedVolList:              "pinned_vol_list",
+		FolderList:                 "folder_list",
+		Force:                      "force",
+		UsageValid:                 "usage_valid",
+		UncompressedVolUsageBytes:  "uncompressed_vol_usage_bytes",
+		UncompressedSnapUsageBytes: "uncompressed_snap_usage_bytes",
+		AllFlash:                   "all_flash",
+		DedupeCapable:              "dedupe_capable",
+		DedupeAllVolumesCapable:    "dedupe_all_volumes_capable",
+		DedupeAllVolumes:           "dedupe_all_volumes",
+		IsDefault:                  "is_default",
 	}
 }
 
@@ -205,51 +157,51 @@ type Pool struct {
 
 // PoolFieldHandles provides a string representation for each AccessControlRecord field.
 type PoolFieldHandles struct {
-	ID                         *string
-	Name                       *string
-	FullName                   *string
-	SearchName                 *string
-	Description                *string
-	CreationTime               *string
-	LastModified               *string
-	Capacity                   *string
-	Usage                      *string
-	Savings                    *string
-	SavingsDataReduction       *string
-	SavingsCompression         *string
-	SavingsDedupe              *string
-	SavingsClone               *string
-	SavingsVolThinProvisioning *string
-	Reserve                    *string
-	UnusedReserve              *string
-	FreeSpace                  *string
-	CacheCapacity              *string
-	PinnableCacheCapacity      *string
-	PinnedCacheCapacity        *string
-	DedupeCapacityBytes        *string
-	DedupeUsageBytes           *string
-	SavingsRatio               *string
-	DataReductionRatio         *string
-	CompressionRatio           *string
-	DedupeRatio                *string
-	CloneRatio                 *string
-	VolThinProvisioningRatio   *string
-	SnapcollCount              *string
-	SnapCount                  *string
-	ArrayCount                 *string
-	VolCount                   *string
-	ArrayList                  *string
-	UnassignedArrayList        *string
-	VolList                    *string
-	PinnedVolList              *string
-	FolderList                 *string
-	Force                      *string
-	UsageValid                 *string
-	UncompressedVolUsageBytes  *string
-	UncompressedSnapUsageBytes *string
-	AllFlash                   *string
-	DedupeCapable              *string
-	DedupeAllVolumesCapable    *string
-	DedupeAllVolumes           *string
-	IsDefault                  *string
+	ID                         string
+	Name                       string
+	FullName                   string
+	SearchName                 string
+	Description                string
+	CreationTime               string
+	LastModified               string
+	Capacity                   string
+	Usage                      string
+	Savings                    string
+	SavingsDataReduction       string
+	SavingsCompression         string
+	SavingsDedupe              string
+	SavingsClone               string
+	SavingsVolThinProvisioning string
+	Reserve                    string
+	UnusedReserve              string
+	FreeSpace                  string
+	CacheCapacity              string
+	PinnableCacheCapacity      string
+	PinnedCacheCapacity        string
+	DedupeCapacityBytes        string
+	DedupeUsageBytes           string
+	SavingsRatio               string
+	DataReductionRatio         string
+	CompressionRatio           string
+	DedupeRatio                string
+	CloneRatio                 string
+	VolThinProvisioningRatio   string
+	SnapcollCount              string
+	SnapCount                  string
+	ArrayCount                 string
+	VolCount                   string
+	ArrayList                  string
+	UnassignedArrayList        string
+	VolList                    string
+	PinnedVolList              string
+	FolderList                 string
+	Force                      string
+	UsageValid                 string
+	UncompressedVolUsageBytes  string
+	UncompressedSnapUsageBytes string
+	AllFlash                   string
+	DedupeCapable              string
+	DedupeAllVolumesCapable    string
+	DedupeAllVolumes           string
+	IsDefault                  string
 }

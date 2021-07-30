@@ -6,12 +6,9 @@ package nimbleos
 var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithTypeFieldHandles
 
 func init() {
-	fieldObjType := "obj_type"
-	fieldObjOwnerPairList := "obj_owner_pair_list"
-
 	NsObjectOwnerPairWithTypeFields = &NsObjectOwnerPairWithTypeFieldHandles{
-		ObjType:          &fieldObjType,
-		ObjOwnerPairList: &fieldObjOwnerPairList,
+		ObjType:          "obj_type",
+		ObjOwnerPairList: "obj_owner_pair_list",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsObjectOwnerPairWithType struct {
 
 // NsObjectOwnerPairWithTypeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsObjectOwnerPairWithTypeFieldHandles struct {
-	ObjType          *string
-	ObjOwnerPairList *string
+	ObjType          string
+	ObjOwnerPairList string
 }

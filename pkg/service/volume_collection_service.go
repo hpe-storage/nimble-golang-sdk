@@ -75,7 +75,7 @@ func (svc *VolumeCollectionService) GetVolumeCollectionById(id string) (*nimbleo
 func (svc *VolumeCollectionService) GetVolumeCollectionByName(name string) (*nimbleos.VolumeCollection, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

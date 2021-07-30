@@ -6,20 +6,13 @@ package nimbleos
 var NsEncryptionSettingsFields *NsEncryptionSettingsFieldHandles
 
 func init() {
-	fieldMasterKeySet := "master_key_set"
-	fieldMode := "mode"
-	fieldScope := "scope"
-	fieldCipher := "cipher"
-	fieldEncryptionActive := "encryption_active"
-	fieldEncryptionKeyManager := "encryption_key_manager"
-
 	NsEncryptionSettingsFields = &NsEncryptionSettingsFieldHandles{
-		MasterKeySet:         &fieldMasterKeySet,
-		Mode:                 &fieldMode,
-		Scope:                &fieldScope,
-		Cipher:               &fieldCipher,
-		EncryptionActive:     &fieldEncryptionActive,
-		EncryptionKeyManager: &fieldEncryptionKeyManager,
+		MasterKeySet:         "master_key_set",
+		Mode:                 "mode",
+		Scope:                "scope",
+		Cipher:               "cipher",
+		EncryptionActive:     "encryption_active",
+		EncryptionKeyManager: "encryption_key_manager",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsEncryptionSettings struct {
 
 // NsEncryptionSettingsFieldHandles provides a string representation for each AccessControlRecord field.
 type NsEncryptionSettingsFieldHandles struct {
-	MasterKeySet         *string
-	Mode                 *string
-	Scope                *string
-	Cipher               *string
-	EncryptionActive     *string
-	EncryptionKeyManager *string
+	MasterKeySet         string
+	Mode                 string
+	Scope                string
+	Cipher               string
+	EncryptionActive     string
+	EncryptionKeyManager string
 }

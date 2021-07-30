@@ -6,14 +6,10 @@ package nimbleos
 var NsCtrlrNvmeCardFields *NsCtrlrNvmeCardFieldHandles
 
 func init() {
-	fieldSerialNumber := "serial_number"
-	fieldSize := "size"
-	fieldState := "state"
-
 	NsCtrlrNvmeCardFields = &NsCtrlrNvmeCardFieldHandles{
-		SerialNumber: &fieldSerialNumber,
-		Size:         &fieldSize,
-		State:        &fieldState,
+		SerialNumber: "serial_number",
+		Size:         "size",
+		State:        "state",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsCtrlrNvmeCard struct {
 
 // NsCtrlrNvmeCardFieldHandles provides a string representation for each AccessControlRecord field.
 type NsCtrlrNvmeCardFieldHandles struct {
-	SerialNumber *string
-	Size         *string
-	State        *string
+	SerialNumber string
+	Size         string
+	State        string
 }

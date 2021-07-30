@@ -6,12 +6,9 @@ package nimbleos
 var VersionFields *VersionFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldSoftwareVersion := "software_version"
-
 	VersionFields = &VersionFieldHandles{
-		Name:            &fieldName,
-		SoftwareVersion: &fieldSoftwareVersion,
+		Name:            "name",
+		SoftwareVersion: "software_version",
 	}
 }
 
@@ -25,6 +22,6 @@ type Version struct {
 
 // VersionFieldHandles provides a string representation for each AccessControlRecord field.
 type VersionFieldHandles struct {
-	Name            *string
-	SoftwareVersion *string
+	Name            string
+	SoftwareVersion string
 }

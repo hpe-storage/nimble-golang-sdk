@@ -6,44 +6,25 @@ package nimbleos
 var NsFCSessionFields *NsFCSessionFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldSessionId := "session_id"
-	fieldAlua := "alua"
-	fieldPrKey := "pr_key"
-	fieldInitiatorAlias := "initiator_alias"
-	fieldInitiatorWwpn := "initiator_wwpn"
-	fieldInitiatorWwnn := "initiator_wwnn"
-	fieldInitiatorSwitchName := "initiator_switch_name"
-	fieldInitiatorSwitchPort := "initiator_switch_port"
-	fieldInitiatorSymbolicPortname := "initiator_symbolic_portname"
-	fieldInitiatorSymbolicNodename := "initiator_symbolic_nodename"
-	fieldInitiatorFcid := "initiator_fcid"
-	fieldTargetPortArrayName := "target_port_array_name"
-	fieldTargetPortCtrlrId := "target_port_ctrlr_id"
-	fieldTargetPortInterfaceName := "target_port_interface_name"
-	fieldTargetWwnn := "target_wwnn"
-	fieldTargetWwpn := "target_wwpn"
-	fieldTargetFcid := "target_fcid"
-
 	NsFCSessionFields = &NsFCSessionFieldHandles{
-		ID:                        &fieldID,
-		SessionId:                 &fieldSessionId,
-		Alua:                      &fieldAlua,
-		PrKey:                     &fieldPrKey,
-		InitiatorAlias:            &fieldInitiatorAlias,
-		InitiatorWwpn:             &fieldInitiatorWwpn,
-		InitiatorWwnn:             &fieldInitiatorWwnn,
-		InitiatorSwitchName:       &fieldInitiatorSwitchName,
-		InitiatorSwitchPort:       &fieldInitiatorSwitchPort,
-		InitiatorSymbolicPortname: &fieldInitiatorSymbolicPortname,
-		InitiatorSymbolicNodename: &fieldInitiatorSymbolicNodename,
-		InitiatorFcid:             &fieldInitiatorFcid,
-		TargetPortArrayName:       &fieldTargetPortArrayName,
-		TargetPortCtrlrId:         &fieldTargetPortCtrlrId,
-		TargetPortInterfaceName:   &fieldTargetPortInterfaceName,
-		TargetWwnn:                &fieldTargetWwnn,
-		TargetWwpn:                &fieldTargetWwpn,
-		TargetFcid:                &fieldTargetFcid,
+		ID:                        "id",
+		SessionId:                 "session_id",
+		Alua:                      "alua",
+		PrKey:                     "pr_key",
+		InitiatorAlias:            "initiator_alias",
+		InitiatorWwpn:             "initiator_wwpn",
+		InitiatorWwnn:             "initiator_wwnn",
+		InitiatorSwitchName:       "initiator_switch_name",
+		InitiatorSwitchPort:       "initiator_switch_port",
+		InitiatorSymbolicPortname: "initiator_symbolic_portname",
+		InitiatorSymbolicNodename: "initiator_symbolic_nodename",
+		InitiatorFcid:             "initiator_fcid",
+		TargetPortArrayName:       "target_port_array_name",
+		TargetPortCtrlrId:         "target_port_ctrlr_id",
+		TargetPortInterfaceName:   "target_port_interface_name",
+		TargetWwnn:                "target_wwnn",
+		TargetWwpn:                "target_wwpn",
+		TargetFcid:                "target_fcid",
 	}
 }
 
@@ -89,22 +70,22 @@ type NsFCSession struct {
 
 // NsFCSessionFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFCSessionFieldHandles struct {
-	ID                        *string
-	SessionId                 *string
-	Alua                      *string
-	PrKey                     *string
-	InitiatorAlias            *string
-	InitiatorWwpn             *string
-	InitiatorWwnn             *string
-	InitiatorSwitchName       *string
-	InitiatorSwitchPort       *string
-	InitiatorSymbolicPortname *string
-	InitiatorSymbolicNodename *string
-	InitiatorFcid             *string
-	TargetPortArrayName       *string
-	TargetPortCtrlrId         *string
-	TargetPortInterfaceName   *string
-	TargetWwnn                *string
-	TargetWwpn                *string
-	TargetFcid                *string
+	ID                        string
+	SessionId                 string
+	Alua                      string
+	PrKey                     string
+	InitiatorAlias            string
+	InitiatorWwpn             string
+	InitiatorWwnn             string
+	InitiatorSwitchName       string
+	InitiatorSwitchPort       string
+	InitiatorSymbolicPortname string
+	InitiatorSymbolicNodename string
+	InitiatorFcid             string
+	TargetPortArrayName       string
+	TargetPortCtrlrId         string
+	TargetPortInterfaceName   string
+	TargetWwnn                string
+	TargetWwpn                string
+	TargetFcid                string
 }

@@ -6,10 +6,8 @@ package nimbleos
 var NsAuthenticateChapUserReturnFields *NsAuthenticateChapUserReturnFieldHandles
 
 func init() {
-	fieldIsValid := "is_valid"
-
 	NsAuthenticateChapUserReturnFields = &NsAuthenticateChapUserReturnFieldHandles{
-		IsValid: &fieldIsValid,
+		IsValid: "is_valid",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsAuthenticateChapUserReturn struct {
 
 // NsAuthenticateChapUserReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAuthenticateChapUserReturnFieldHandles struct {
-	IsValid *string
+	IsValid string
 }

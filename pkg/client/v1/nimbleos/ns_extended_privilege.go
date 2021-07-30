@@ -6,14 +6,10 @@ package nimbleos
 var NsExtendedPrivilegeFields *NsExtendedPrivilegeFieldHandles
 
 func init() {
-	fieldObjectType := "object_type"
-	fieldOperation := "operation"
-	fieldAllow := "allow"
-
 	NsExtendedPrivilegeFields = &NsExtendedPrivilegeFieldHandles{
-		ObjectType: &fieldObjectType,
-		Operation:  &fieldOperation,
-		Allow:      &fieldAllow,
+		ObjectType: "object_type",
+		Operation:  "operation",
+		Allow:      "allow",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsExtendedPrivilege struct {
 
 // NsExtendedPrivilegeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsExtendedPrivilegeFieldHandles struct {
-	ObjectType *string
-	Operation  *string
-	Allow      *string
+	ObjectType string
+	Operation  string
+	Allow      string
 }

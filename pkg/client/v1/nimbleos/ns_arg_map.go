@@ -6,7 +6,6 @@ package nimbleos
 var NsArgMapFields *NsArgMapFieldHandles
 
 func init() {
-
 	NsArgMapFields = &NsArgMapFieldHandles{}
 }
 

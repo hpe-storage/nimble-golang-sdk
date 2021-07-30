@@ -6,26 +6,16 @@ package nimbleos
 var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnFieldHandles
 
 func init() {
-	fieldUserName := "user_name"
-	fieldPrimaryGroupId := "primary_group_id"
-	fieldPrimaryGroupName := "primary_group_name"
-	fieldGroupCount := "group_count"
-	fieldRole := "role"
-	fieldInactivityTimeout := "inactivity_timeout"
-	fieldUserId := "user_id"
-	fieldDomainType := "domain_type"
-	fieldGroups := "groups"
-
 	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturnFieldHandles{
-		UserName:          &fieldUserName,
-		PrimaryGroupId:    &fieldPrimaryGroupId,
-		PrimaryGroupName:  &fieldPrimaryGroupName,
-		GroupCount:        &fieldGroupCount,
-		Role:              &fieldRole,
-		InactivityTimeout: &fieldInactivityTimeout,
-		UserId:            &fieldUserId,
-		DomainType:        &fieldDomainType,
-		Groups:            &fieldGroups,
+		UserName:          "user_name",
+		PrimaryGroupId:    "primary_group_id",
+		PrimaryGroupName:  "primary_group_name",
+		GroupCount:        "group_count",
+		Role:              "role",
+		InactivityTimeout: "inactivity_timeout",
+		UserId:            "user_id",
+		DomainType:        "domain_type",
+		Groups:            "groups",
 	}
 }
 
@@ -53,13 +43,13 @@ type NsTokenReportUserDetailsReturn struct {
 
 // NsTokenReportUserDetailsReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsTokenReportUserDetailsReturnFieldHandles struct {
-	UserName          *string
-	PrimaryGroupId    *string
-	PrimaryGroupName  *string
-	GroupCount        *string
-	Role              *string
-	InactivityTimeout *string
-	UserId            *string
-	DomainType        *string
-	Groups            *string
+	UserName          string
+	PrimaryGroupId    string
+	PrimaryGroupName  string
+	GroupCount        string
+	Role              string
+	InactivityTimeout string
+	UserId            string
+	DomainType        string
+	Groups            string
 }

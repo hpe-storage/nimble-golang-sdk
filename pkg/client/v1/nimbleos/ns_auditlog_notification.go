@@ -6,22 +6,14 @@ package nimbleos
 var NsAuditlogNotificationFields *NsAuditlogNotificationFieldHandles
 
 func init() {
-	fieldSequenceNumber := "sequence_number"
-	fieldNotificationType := "notification_type"
-	fieldActivity := "activity"
-	fieldObjectType := "object_type"
-	fieldObjectId := "object_id"
-	fieldObjectName := "object_name"
-	fieldTimestamp := "timestamp"
-
 	NsAuditlogNotificationFields = &NsAuditlogNotificationFieldHandles{
-		SequenceNumber:   &fieldSequenceNumber,
-		NotificationType: &fieldNotificationType,
-		Activity:         &fieldActivity,
-		ObjectType:       &fieldObjectType,
-		ObjectId:         &fieldObjectId,
-		ObjectName:       &fieldObjectName,
-		Timestamp:        &fieldTimestamp,
+		SequenceNumber:   "sequence_number",
+		NotificationType: "notification_type",
+		Activity:         "activity",
+		ObjectType:       "object_type",
+		ObjectId:         "object_id",
+		ObjectName:       "object_name",
+		Timestamp:        "timestamp",
 	}
 }
 
@@ -45,11 +37,11 @@ type NsAuditlogNotification struct {
 
 // NsAuditlogNotificationFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAuditlogNotificationFieldHandles struct {
-	SequenceNumber   *string
-	NotificationType *string
-	Activity         *string
-	ObjectType       *string
-	ObjectId         *string
-	ObjectName       *string
-	Timestamp        *string
+	SequenceNumber   string
+	NotificationType string
+	Activity         string
+	ObjectType       string
+	ObjectId         string
+	ObjectName       string
+	Timestamp        string
 }

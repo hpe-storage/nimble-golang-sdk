@@ -6,10 +6,8 @@ package nimbleos
 var NsAlarmCountSummaryReturnFields *NsAlarmCountSummaryReturnFieldHandles
 
 func init() {
-	fieldAlarmSummary := "alarm_summary"
-
 	NsAlarmCountSummaryReturnFields = &NsAlarmCountSummaryReturnFieldHandles{
-		AlarmSummary: &fieldAlarmSummary,
+		AlarmSummary: "alarm_summary",
 	}
 }
 
@@ -21,5 +19,5 @@ type NsAlarmCountSummaryReturn struct {
 
 // NsAlarmCountSummaryReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAlarmCountSummaryReturnFieldHandles struct {
-	AlarmSummary *string
+	AlarmSummary string
 }

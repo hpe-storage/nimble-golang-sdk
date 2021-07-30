@@ -6,12 +6,9 @@ package nimbleos
 var NsReapJobsReturnFields *NsReapJobsReturnFieldHandles
 
 func init() {
-	fieldReaped := "reaped"
-	fieldRemaining := "remaining"
-
 	NsReapJobsReturnFields = &NsReapJobsReturnFieldHandles{
-		Reaped:    &fieldReaped,
-		Remaining: &fieldRemaining,
+		Reaped:    "reaped",
+		Remaining: "remaining",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsReapJobsReturn struct {
 
 // NsReapJobsReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsReapJobsReturnFieldHandles struct {
-	Reaped    *string
-	Remaining *string
+	Reaped    string
+	Remaining string
 }

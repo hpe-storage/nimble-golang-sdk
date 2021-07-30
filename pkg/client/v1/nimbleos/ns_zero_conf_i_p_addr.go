@@ -6,14 +6,10 @@ package nimbleos
 var NsZeroConfIPAddrFields *NsZeroConfIPAddrFieldHandles
 
 func init() {
-	fieldNic := "nic"
-	fieldLocalIpaddr := "local_ipaddr"
-	fieldRemoteIpaddr := "remote_ipaddr"
-
 	NsZeroConfIPAddrFields = &NsZeroConfIPAddrFieldHandles{
-		Nic:          &fieldNic,
-		LocalIpaddr:  &fieldLocalIpaddr,
-		RemoteIpaddr: &fieldRemoteIpaddr,
+		Nic:          "nic",
+		LocalIpaddr:  "local_ipaddr",
+		RemoteIpaddr: "remote_ipaddr",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsZeroConfIPAddr struct {
 
 // NsZeroConfIPAddrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsZeroConfIPAddrFieldHandles struct {
-	Nic          *string
-	LocalIpaddr  *string
-	RemoteIpaddr *string
+	Nic          string
+	LocalIpaddr  string
+	RemoteIpaddr string
 }

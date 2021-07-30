@@ -6,14 +6,10 @@ package nimbleos
 var NsAlarmUpdateAttrFields *NsAlarmUpdateAttrFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldRemindEvery := "remind_every"
-	fieldRemindEveryUnit := "remind_every_unit"
-
 	NsAlarmUpdateAttrFields = &NsAlarmUpdateAttrFieldHandles{
-		ID:              &fieldID,
-		RemindEvery:     &fieldRemindEvery,
-		RemindEveryUnit: &fieldRemindEveryUnit,
+		ID:              "id",
+		RemindEvery:     "remind_every",
+		RemindEveryUnit: "remind_every_unit",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsAlarmUpdateAttr struct {
 
 // NsAlarmUpdateAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsAlarmUpdateAttrFieldHandles struct {
-	ID              *string
-	RemindEvery     *string
-	RemindEveryUnit *string
+	ID              string
+	RemindEvery     string
+	RemindEveryUnit string
 }

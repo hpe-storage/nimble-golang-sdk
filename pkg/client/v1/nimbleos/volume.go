@@ -6,208 +6,107 @@ package nimbleos
 var VolumeFields *VolumeFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldSize := "size"
-	fieldDescription := "description"
-	fieldPerfpolicyName := "perfpolicy_name"
-	fieldPerfpolicyId := "perfpolicy_id"
-	fieldReserve := "reserve"
-	fieldWarnLevel := "warn_level"
-	fieldLimit := "limit"
-	fieldSnapReserve := "snap_reserve"
-	fieldSnapWarnLevel := "snap_warn_level"
-	fieldSnapLimit := "snap_limit"
-	fieldSnapLimitPercent := "snap_limit_percent"
-	fieldNumSnaps := "num_snaps"
-	fieldProjectedNumSnaps := "projected_num_snaps"
-	fieldOnline := "online"
-	fieldOwnedByGroup := "owned_by_group"
-	fieldOwnedByGroupId := "owned_by_group_id"
-	fieldMultiInitiator := "multi_initiator"
-	fieldIscsiTargetScope := "iscsi_target_scope"
-	fieldPoolName := "pool_name"
-	fieldPoolId := "pool_id"
-	fieldReadOnly := "read_only"
-	fieldSerialNumber := "serial_number"
-	fieldSecondarySerialNumber := "secondary_serial_number"
-	fieldTargetName := "target_name"
-	fieldBlockSize := "block_size"
-	fieldOfflineReason := "offline_reason"
-	fieldClone := "clone"
-	fieldParentVolName := "parent_vol_name"
-	fieldParentVolId := "parent_vol_id"
-	fieldBaseSnapName := "base_snap_name"
-	fieldBaseSnapId := "base_snap_id"
-	fieldReplicationRole := "replication_role"
-	fieldVolcollName := "volcoll_name"
-	fieldVolcollId := "volcoll_id"
-	fieldAgentType := "agent_type"
-	fieldForce := "force"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldProtectionType := "protection_type"
-	fieldLastSnap := "last_snap"
-	fieldLastReplicatedSnap := "last_replicated_snap"
-	fieldDestPoolName := "dest_pool_name"
-	fieldDestPoolId := "dest_pool_id"
-	fieldMoveStartTime := "move_start_time"
-	fieldMoveAborting := "move_aborting"
-	fieldMoveBytesMigrated := "move_bytes_migrated"
-	fieldMoveBytesRemaining := "move_bytes_remaining"
-	fieldMoveEstComplTime := "move_est_compl_time"
-	fieldUsageValid := "usage_valid"
-	fieldSpaceUsageLevel := "space_usage_level"
-	fieldTotalUsageBytes := "total_usage_bytes"
-	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
-	fieldVolUsageUncompressedBytes := "vol_usage_uncompressed_bytes"
-	fieldVolUsageMappedBytes := "vol_usage_mapped_bytes"
-	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
-	fieldSnapUsageUncompressedBytes := "snap_usage_uncompressed_bytes"
-	fieldSnapUsagePopulatedBytes := "snap_usage_populated_bytes"
-	fieldCachePinned := "cache_pinned"
-	fieldPinnedCacheSize := "pinned_cache_size"
-	fieldCacheNeededForPin := "cache_needed_for_pin"
-	fieldUpstreamCachePinned := "upstream_cache_pinned"
-	fieldCachePolicy := "cache_policy"
-	fieldThinlyProvisioned := "thinly_provisioned"
-	fieldVolState := "vol_state"
-	fieldOnlineSnaps := "online_snaps"
-	fieldNumConnections := "num_connections"
-	fieldNumIscsiConnections := "num_iscsi_connections"
-	fieldNumFcConnections := "num_fc_connections"
-	fieldAccessControlRecords := "access_control_records"
-	fieldInheritAcl := "inherit_acl"
-	fieldEncryptionCipher := "encryption_cipher"
-	fieldAppUuid := "app_uuid"
-	fieldFolderId := "folder_id"
-	fieldFolderName := "folder_name"
-	fieldMetadata := "metadata"
-	fieldIscsiSessions := "iscsi_sessions"
-	fieldFcSessions := "fc_sessions"
-	fieldCachingEnabled := "caching_enabled"
-	fieldPreviouslyDeduped := "previously_deduped"
-	fieldDedupeEnabled := "dedupe_enabled"
-	fieldVpdT10 := "vpd_t10"
-	fieldVpdIeee0 := "vpd_ieee0"
-	fieldVpdIeee1 := "vpd_ieee1"
-	fieldAppCategory := "app_category"
-	fieldLimitIops := "limit_iops"
-	fieldLimitMbps := "limit_mbps"
-	fieldNeedsContentRepl := "needs_content_repl"
-	fieldContentReplErrorsFound := "content_repl_errors_found"
-	fieldLastContentSnapBrCgUid := "last_content_snap_br_cg_uid"
-	fieldLastContentSnapBrGid := "last_content_snap_br_gid"
-	fieldLastContentSnapId := "last_content_snap_id"
-	fieldCksumLastVerified := "cksum_last_verified"
-	fieldPreFilter := "pre_filter"
-	fieldAvgStatsLast5mins := "avg_stats_last_5mins"
-	fieldSrepLastSync := "srep_last_sync"
-	fieldSrepResyncPercent := "srep_resync_percent"
-
 	VolumeFields = &VolumeFieldHandles{
-		ID:                         &fieldID,
-		Name:                       &fieldName,
-		FullName:                   &fieldFullName,
-		SearchName:                 &fieldSearchName,
-		Size:                       &fieldSize,
-		Description:                &fieldDescription,
-		PerfpolicyName:             &fieldPerfpolicyName,
-		PerfpolicyId:               &fieldPerfpolicyId,
-		Reserve:                    &fieldReserve,
-		WarnLevel:                  &fieldWarnLevel,
-		Limit:                      &fieldLimit,
-		SnapReserve:                &fieldSnapReserve,
-		SnapWarnLevel:              &fieldSnapWarnLevel,
-		SnapLimit:                  &fieldSnapLimit,
-		SnapLimitPercent:           &fieldSnapLimitPercent,
-		NumSnaps:                   &fieldNumSnaps,
-		ProjectedNumSnaps:          &fieldProjectedNumSnaps,
-		Online:                     &fieldOnline,
-		OwnedByGroup:               &fieldOwnedByGroup,
-		OwnedByGroupId:             &fieldOwnedByGroupId,
-		MultiInitiator:             &fieldMultiInitiator,
-		IscsiTargetScope:           &fieldIscsiTargetScope,
-		PoolName:                   &fieldPoolName,
-		PoolId:                     &fieldPoolId,
-		ReadOnly:                   &fieldReadOnly,
-		SerialNumber:               &fieldSerialNumber,
-		SecondarySerialNumber:      &fieldSecondarySerialNumber,
-		TargetName:                 &fieldTargetName,
-		BlockSize:                  &fieldBlockSize,
-		OfflineReason:              &fieldOfflineReason,
-		Clone:                      &fieldClone,
-		ParentVolName:              &fieldParentVolName,
-		ParentVolId:                &fieldParentVolId,
-		BaseSnapName:               &fieldBaseSnapName,
-		BaseSnapId:                 &fieldBaseSnapId,
-		ReplicationRole:            &fieldReplicationRole,
-		VolcollName:                &fieldVolcollName,
-		VolcollId:                  &fieldVolcollId,
-		AgentType:                  &fieldAgentType,
-		Force:                      &fieldForce,
-		CreationTime:               &fieldCreationTime,
-		LastModified:               &fieldLastModified,
-		ProtectionType:             &fieldProtectionType,
-		LastSnap:                   &fieldLastSnap,
-		LastReplicatedSnap:         &fieldLastReplicatedSnap,
-		DestPoolName:               &fieldDestPoolName,
-		DestPoolId:                 &fieldDestPoolId,
-		MoveStartTime:              &fieldMoveStartTime,
-		MoveAborting:               &fieldMoveAborting,
-		MoveBytesMigrated:          &fieldMoveBytesMigrated,
-		MoveBytesRemaining:         &fieldMoveBytesRemaining,
-		MoveEstComplTime:           &fieldMoveEstComplTime,
-		UsageValid:                 &fieldUsageValid,
-		SpaceUsageLevel:            &fieldSpaceUsageLevel,
-		TotalUsageBytes:            &fieldTotalUsageBytes,
-		VolUsageCompressedBytes:    &fieldVolUsageCompressedBytes,
-		VolUsageUncompressedBytes:  &fieldVolUsageUncompressedBytes,
-		VolUsageMappedBytes:        &fieldVolUsageMappedBytes,
-		SnapUsageCompressedBytes:   &fieldSnapUsageCompressedBytes,
-		SnapUsageUncompressedBytes: &fieldSnapUsageUncompressedBytes,
-		SnapUsagePopulatedBytes:    &fieldSnapUsagePopulatedBytes,
-		CachePinned:                &fieldCachePinned,
-		PinnedCacheSize:            &fieldPinnedCacheSize,
-		CacheNeededForPin:          &fieldCacheNeededForPin,
-		UpstreamCachePinned:        &fieldUpstreamCachePinned,
-		CachePolicy:                &fieldCachePolicy,
-		ThinlyProvisioned:          &fieldThinlyProvisioned,
-		VolState:                   &fieldVolState,
-		OnlineSnaps:                &fieldOnlineSnaps,
-		NumConnections:             &fieldNumConnections,
-		NumIscsiConnections:        &fieldNumIscsiConnections,
-		NumFcConnections:           &fieldNumFcConnections,
-		AccessControlRecords:       &fieldAccessControlRecords,
-		InheritAcl:                 &fieldInheritAcl,
-		EncryptionCipher:           &fieldEncryptionCipher,
-		AppUuid:                    &fieldAppUuid,
-		FolderId:                   &fieldFolderId,
-		FolderName:                 &fieldFolderName,
-		Metadata:                   &fieldMetadata,
-		IscsiSessions:              &fieldIscsiSessions,
-		FcSessions:                 &fieldFcSessions,
-		CachingEnabled:             &fieldCachingEnabled,
-		PreviouslyDeduped:          &fieldPreviouslyDeduped,
-		DedupeEnabled:              &fieldDedupeEnabled,
-		VpdT10:                     &fieldVpdT10,
-		VpdIeee0:                   &fieldVpdIeee0,
-		VpdIeee1:                   &fieldVpdIeee1,
-		AppCategory:                &fieldAppCategory,
-		LimitIops:                  &fieldLimitIops,
-		LimitMbps:                  &fieldLimitMbps,
-		NeedsContentRepl:           &fieldNeedsContentRepl,
-		ContentReplErrorsFound:     &fieldContentReplErrorsFound,
-		LastContentSnapBrCgUid:     &fieldLastContentSnapBrCgUid,
-		LastContentSnapBrGid:       &fieldLastContentSnapBrGid,
-		LastContentSnapId:          &fieldLastContentSnapId,
-		CksumLastVerified:          &fieldCksumLastVerified,
-		PreFilter:                  &fieldPreFilter,
-		AvgStatsLast5mins:          &fieldAvgStatsLast5mins,
-		SrepLastSync:               &fieldSrepLastSync,
-		SrepResyncPercent:          &fieldSrepResyncPercent,
+		ID:                         "id",
+		Name:                       "name",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Size:                       "size",
+		Description:                "description",
+		PerfpolicyName:             "perfpolicy_name",
+		PerfpolicyId:               "perfpolicy_id",
+		Reserve:                    "reserve",
+		WarnLevel:                  "warn_level",
+		Limit:                      "limit",
+		SnapReserve:                "snap_reserve",
+		SnapWarnLevel:              "snap_warn_level",
+		SnapLimit:                  "snap_limit",
+		SnapLimitPercent:           "snap_limit_percent",
+		NumSnaps:                   "num_snaps",
+		ProjectedNumSnaps:          "projected_num_snaps",
+		Online:                     "online",
+		OwnedByGroup:               "owned_by_group",
+		OwnedByGroupId:             "owned_by_group_id",
+		MultiInitiator:             "multi_initiator",
+		IscsiTargetScope:           "iscsi_target_scope",
+		PoolName:                   "pool_name",
+		PoolId:                     "pool_id",
+		ReadOnly:                   "read_only",
+		SerialNumber:               "serial_number",
+		SecondarySerialNumber:      "secondary_serial_number",
+		TargetName:                 "target_name",
+		BlockSize:                  "block_size",
+		OfflineReason:              "offline_reason",
+		Clone:                      "clone",
+		ParentVolName:              "parent_vol_name",
+		ParentVolId:                "parent_vol_id",
+		BaseSnapName:               "base_snap_name",
+		BaseSnapId:                 "base_snap_id",
+		ReplicationRole:            "replication_role",
+		VolcollName:                "volcoll_name",
+		VolcollId:                  "volcoll_id",
+		AgentType:                  "agent_type",
+		Force:                      "force",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		ProtectionType:             "protection_type",
+		LastSnap:                   "last_snap",
+		LastReplicatedSnap:         "last_replicated_snap",
+		DestPoolName:               "dest_pool_name",
+		DestPoolId:                 "dest_pool_id",
+		MoveStartTime:              "move_start_time",
+		MoveAborting:               "move_aborting",
+		MoveBytesMigrated:          "move_bytes_migrated",
+		MoveBytesRemaining:         "move_bytes_remaining",
+		MoveEstComplTime:           "move_est_compl_time",
+		UsageValid:                 "usage_valid",
+		SpaceUsageLevel:            "space_usage_level",
+		TotalUsageBytes:            "total_usage_bytes",
+		VolUsageCompressedBytes:    "vol_usage_compressed_bytes",
+		VolUsageUncompressedBytes:  "vol_usage_uncompressed_bytes",
+		VolUsageMappedBytes:        "vol_usage_mapped_bytes",
+		SnapUsageCompressedBytes:   "snap_usage_compressed_bytes",
+		SnapUsageUncompressedBytes: "snap_usage_uncompressed_bytes",
+		SnapUsagePopulatedBytes:    "snap_usage_populated_bytes",
+		CachePinned:                "cache_pinned",
+		PinnedCacheSize:            "pinned_cache_size",
+		CacheNeededForPin:          "cache_needed_for_pin",
+		UpstreamCachePinned:        "upstream_cache_pinned",
+		CachePolicy:                "cache_policy",
+		ThinlyProvisioned:          "thinly_provisioned",
+		VolState:                   "vol_state",
+		OnlineSnaps:                "online_snaps",
+		NumConnections:             "num_connections",
+		NumIscsiConnections:        "num_iscsi_connections",
+		NumFcConnections:           "num_fc_connections",
+		AccessControlRecords:       "access_control_records",
+		InheritAcl:                 "inherit_acl",
+		EncryptionCipher:           "encryption_cipher",
+		AppUuid:                    "app_uuid",
+		FolderId:                   "folder_id",
+		FolderName:                 "folder_name",
+		Metadata:                   "metadata",
+		IscsiSessions:              "iscsi_sessions",
+		FcSessions:                 "fc_sessions",
+		CachingEnabled:             "caching_enabled",
+		PreviouslyDeduped:          "previously_deduped",
+		DedupeEnabled:              "dedupe_enabled",
+		VpdT10:                     "vpd_t10",
+		VpdIeee0:                   "vpd_ieee0",
+		VpdIeee1:                   "vpd_ieee1",
+		AppCategory:                "app_category",
+		LimitIops:                  "limit_iops",
+		LimitMbps:                  "limit_mbps",
+		NeedsContentRepl:           "needs_content_repl",
+		ContentReplErrorsFound:     "content_repl_errors_found",
+		LastContentSnapBrCgUid:     "last_content_snap_br_cg_uid",
+		LastContentSnapBrGid:       "last_content_snap_br_gid",
+		LastContentSnapId:          "last_content_snap_id",
+		CksumLastVerified:          "cksum_last_verified",
+		PreFilter:                  "pre_filter",
+		AvgStatsLast5mins:          "avg_stats_last_5mins",
+		SrepLastSync:               "srep_last_sync",
+		SrepResyncPercent:          "srep_resync_percent",
 	}
 }
 
@@ -417,104 +316,104 @@ type Volume struct {
 
 // VolumeFieldHandles provides a string representation for each AccessControlRecord field.
 type VolumeFieldHandles struct {
-	ID                         *string
-	Name                       *string
-	FullName                   *string
-	SearchName                 *string
-	Size                       *string
-	Description                *string
-	PerfpolicyName             *string
-	PerfpolicyId               *string
-	Reserve                    *string
-	WarnLevel                  *string
-	Limit                      *string
-	SnapReserve                *string
-	SnapWarnLevel              *string
-	SnapLimit                  *string
-	SnapLimitPercent           *string
-	NumSnaps                   *string
-	ProjectedNumSnaps          *string
-	Online                     *string
-	OwnedByGroup               *string
-	OwnedByGroupId             *string
-	MultiInitiator             *string
-	IscsiTargetScope           *string
-	PoolName                   *string
-	PoolId                     *string
-	ReadOnly                   *string
-	SerialNumber               *string
-	SecondarySerialNumber      *string
-	TargetName                 *string
-	BlockSize                  *string
-	OfflineReason              *string
-	Clone                      *string
-	ParentVolName              *string
-	ParentVolId                *string
-	BaseSnapName               *string
-	BaseSnapId                 *string
-	ReplicationRole            *string
-	VolcollName                *string
-	VolcollId                  *string
-	AgentType                  *string
-	Force                      *string
-	CreationTime               *string
-	LastModified               *string
-	ProtectionType             *string
-	LastSnap                   *string
-	LastReplicatedSnap         *string
-	DestPoolName               *string
-	DestPoolId                 *string
-	MoveStartTime              *string
-	MoveAborting               *string
-	MoveBytesMigrated          *string
-	MoveBytesRemaining         *string
-	MoveEstComplTime           *string
-	UsageValid                 *string
-	SpaceUsageLevel            *string
-	TotalUsageBytes            *string
-	VolUsageCompressedBytes    *string
-	VolUsageUncompressedBytes  *string
-	VolUsageMappedBytes        *string
-	SnapUsageCompressedBytes   *string
-	SnapUsageUncompressedBytes *string
-	SnapUsagePopulatedBytes    *string
-	CachePinned                *string
-	PinnedCacheSize            *string
-	CacheNeededForPin          *string
-	UpstreamCachePinned        *string
-	CachePolicy                *string
-	ThinlyProvisioned          *string
-	VolState                   *string
-	OnlineSnaps                *string
-	NumConnections             *string
-	NumIscsiConnections        *string
-	NumFcConnections           *string
-	AccessControlRecords       *string
-	InheritAcl                 *string
-	EncryptionCipher           *string
-	AppUuid                    *string
-	FolderId                   *string
-	FolderName                 *string
-	Metadata                   *string
-	IscsiSessions              *string
-	FcSessions                 *string
-	CachingEnabled             *string
-	PreviouslyDeduped          *string
-	DedupeEnabled              *string
-	VpdT10                     *string
-	VpdIeee0                   *string
-	VpdIeee1                   *string
-	AppCategory                *string
-	LimitIops                  *string
-	LimitMbps                  *string
-	NeedsContentRepl           *string
-	ContentReplErrorsFound     *string
-	LastContentSnapBrCgUid     *string
-	LastContentSnapBrGid       *string
-	LastContentSnapId          *string
-	CksumLastVerified          *string
-	PreFilter                  *string
-	AvgStatsLast5mins          *string
-	SrepLastSync               *string
-	SrepResyncPercent          *string
+	ID                         string
+	Name                       string
+	FullName                   string
+	SearchName                 string
+	Size                       string
+	Description                string
+	PerfpolicyName             string
+	PerfpolicyId               string
+	Reserve                    string
+	WarnLevel                  string
+	Limit                      string
+	SnapReserve                string
+	SnapWarnLevel              string
+	SnapLimit                  string
+	SnapLimitPercent           string
+	NumSnaps                   string
+	ProjectedNumSnaps          string
+	Online                     string
+	OwnedByGroup               string
+	OwnedByGroupId             string
+	MultiInitiator             string
+	IscsiTargetScope           string
+	PoolName                   string
+	PoolId                     string
+	ReadOnly                   string
+	SerialNumber               string
+	SecondarySerialNumber      string
+	TargetName                 string
+	BlockSize                  string
+	OfflineReason              string
+	Clone                      string
+	ParentVolName              string
+	ParentVolId                string
+	BaseSnapName               string
+	BaseSnapId                 string
+	ReplicationRole            string
+	VolcollName                string
+	VolcollId                  string
+	AgentType                  string
+	Force                      string
+	CreationTime               string
+	LastModified               string
+	ProtectionType             string
+	LastSnap                   string
+	LastReplicatedSnap         string
+	DestPoolName               string
+	DestPoolId                 string
+	MoveStartTime              string
+	MoveAborting               string
+	MoveBytesMigrated          string
+	MoveBytesRemaining         string
+	MoveEstComplTime           string
+	UsageValid                 string
+	SpaceUsageLevel            string
+	TotalUsageBytes            string
+	VolUsageCompressedBytes    string
+	VolUsageUncompressedBytes  string
+	VolUsageMappedBytes        string
+	SnapUsageCompressedBytes   string
+	SnapUsageUncompressedBytes string
+	SnapUsagePopulatedBytes    string
+	CachePinned                string
+	PinnedCacheSize            string
+	CacheNeededForPin          string
+	UpstreamCachePinned        string
+	CachePolicy                string
+	ThinlyProvisioned          string
+	VolState                   string
+	OnlineSnaps                string
+	NumConnections             string
+	NumIscsiConnections        string
+	NumFcConnections           string
+	AccessControlRecords       string
+	InheritAcl                 string
+	EncryptionCipher           string
+	AppUuid                    string
+	FolderId                   string
+	FolderName                 string
+	Metadata                   string
+	IscsiSessions              string
+	FcSessions                 string
+	CachingEnabled             string
+	PreviouslyDeduped          string
+	DedupeEnabled              string
+	VpdT10                     string
+	VpdIeee0                   string
+	VpdIeee1                   string
+	AppCategory                string
+	LimitIops                  string
+	LimitMbps                  string
+	NeedsContentRepl           string
+	ContentReplErrorsFound     string
+	LastContentSnapBrCgUid     string
+	LastContentSnapBrGid       string
+	LastContentSnapId          string
+	CksumLastVerified          string
+	PreFilter                  string
+	AvgStatsLast5mins          string
+	SrepLastSync               string
+	SrepResyncPercent          string
 }

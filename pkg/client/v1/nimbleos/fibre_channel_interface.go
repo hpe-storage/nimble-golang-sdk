@@ -6,46 +6,26 @@ package nimbleos
 var FibreChannelInterfaceFields *FibreChannelInterfaceFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldArrayNameOrSerial := "array_name_or_serial"
-	fieldPartialResponseOk := "partial_response_ok"
-	fieldControllerName := "controller_name"
-	fieldFcPortId := "fc_port_id"
-	fieldName := "name"
-	fieldWwnn := "wwnn"
-	fieldWwpn := "wwpn"
-	fieldPeerzone := "peerzone"
-	fieldOnline := "online"
-	fieldFirmwareVersion := "firmware_version"
-	fieldLogicalPortNumber := "logical_port_number"
-	fieldFcPortName := "fc_port_name"
-	fieldBusLocation := "bus_location"
-	fieldSlot := "slot"
-	fieldOrientation := "orientation"
-	fieldPort := "port"
-	fieldLinkInfo := "link_info"
-	fieldFabricInfo := "fabric_info"
-
 	FibreChannelInterfaceFields = &FibreChannelInterfaceFieldHandles{
-		ID:                &fieldID,
-		ArrayNameOrSerial: &fieldArrayNameOrSerial,
-		PartialResponseOk: &fieldPartialResponseOk,
-		ControllerName:    &fieldControllerName,
-		FcPortId:          &fieldFcPortId,
-		Name:              &fieldName,
-		Wwnn:              &fieldWwnn,
-		Wwpn:              &fieldWwpn,
-		Peerzone:          &fieldPeerzone,
-		Online:            &fieldOnline,
-		FirmwareVersion:   &fieldFirmwareVersion,
-		LogicalPortNumber: &fieldLogicalPortNumber,
-		FcPortName:        &fieldFcPortName,
-		BusLocation:       &fieldBusLocation,
-		Slot:              &fieldSlot,
-		Orientation:       &fieldOrientation,
-		Port:              &fieldPort,
-		LinkInfo:          &fieldLinkInfo,
-		FabricInfo:        &fieldFabricInfo,
+		ID:                "id",
+		ArrayNameOrSerial: "array_name_or_serial",
+		PartialResponseOk: "partial_response_ok",
+		ControllerName:    "controller_name",
+		FcPortId:          "fc_port_id",
+		Name:              "name",
+		Wwnn:              "wwnn",
+		Wwpn:              "wwpn",
+		Peerzone:          "peerzone",
+		Online:            "online",
+		FirmwareVersion:   "firmware_version",
+		LogicalPortNumber: "logical_port_number",
+		FcPortName:        "fc_port_name",
+		BusLocation:       "bus_location",
+		Slot:              "slot",
+		Orientation:       "orientation",
+		Port:              "port",
+		LinkInfo:          "link_info",
+		FabricInfo:        "fabric_info",
 	}
 }
 
@@ -93,23 +73,23 @@ type FibreChannelInterface struct {
 
 // FibreChannelInterfaceFieldHandles provides a string representation for each AccessControlRecord field.
 type FibreChannelInterfaceFieldHandles struct {
-	ID                *string
-	ArrayNameOrSerial *string
-	PartialResponseOk *string
-	ControllerName    *string
-	FcPortId          *string
-	Name              *string
-	Wwnn              *string
-	Wwpn              *string
-	Peerzone          *string
-	Online            *string
-	FirmwareVersion   *string
-	LogicalPortNumber *string
-	FcPortName        *string
-	BusLocation       *string
-	Slot              *string
-	Orientation       *string
-	Port              *string
-	LinkInfo          *string
-	FabricInfo        *string
+	ID                string
+	ArrayNameOrSerial string
+	PartialResponseOk string
+	ControllerName    string
+	FcPortId          string
+	Name              string
+	Wwnn              string
+	Wwpn              string
+	Peerzone          string
+	Online            string
+	FirmwareVersion   string
+	LogicalPortNumber string
+	FcPortName        string
+	BusLocation       string
+	Slot              string
+	Orientation       string
+	Port              string
+	LinkInfo          string
+	FabricInfo        string
 }

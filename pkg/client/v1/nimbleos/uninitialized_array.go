@@ -6,30 +6,18 @@ package nimbleos
 var UninitializedArrayFields *UninitializedArrayFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldSerial := "serial"
-	fieldArrayName := "array_name"
-	fieldModel := "model"
-	fieldModelStr := "model_str"
-	fieldVersion := "version"
-	fieldIpAddress := "ip_address"
-	fieldZconfIpaddrs := "zconf_ipaddrs"
-	fieldCountOfFcPorts := "count_of_fc_ports"
-	fieldAllFlash := "all_flash"
-	fieldDedupeConfigurable := "dedupe_configurable"
-
 	UninitializedArrayFields = &UninitializedArrayFieldHandles{
-		ID:                 &fieldID,
-		Serial:             &fieldSerial,
-		ArrayName:          &fieldArrayName,
-		Model:              &fieldModel,
-		ModelStr:           &fieldModelStr,
-		Version:            &fieldVersion,
-		IpAddress:          &fieldIpAddress,
-		ZconfIpaddrs:       &fieldZconfIpaddrs,
-		CountOfFcPorts:     &fieldCountOfFcPorts,
-		AllFlash:           &fieldAllFlash,
-		DedupeConfigurable: &fieldDedupeConfigurable,
+		ID:                 "id",
+		Serial:             "serial",
+		ArrayName:          "array_name",
+		Model:              "model",
+		ModelStr:           "model_str",
+		Version:            "version",
+		IpAddress:          "ip_address",
+		ZconfIpaddrs:       "zconf_ipaddrs",
+		CountOfFcPorts:     "count_of_fc_ports",
+		AllFlash:           "all_flash",
+		DedupeConfigurable: "dedupe_configurable",
 	}
 }
 
@@ -61,15 +49,15 @@ type UninitializedArray struct {
 
 // UninitializedArrayFieldHandles provides a string representation for each AccessControlRecord field.
 type UninitializedArrayFieldHandles struct {
-	ID                 *string
-	Serial             *string
-	ArrayName          *string
-	Model              *string
-	ModelStr           *string
-	Version            *string
-	IpAddress          *string
-	ZconfIpaddrs       *string
-	CountOfFcPorts     *string
-	AllFlash           *string
-	DedupeConfigurable *string
+	ID                 string
+	Serial             string
+	ArrayName          string
+	Model              string
+	ModelStr           string
+	Version            string
+	IpAddress          string
+	ZconfIpaddrs       string
+	CountOfFcPorts     string
+	AllFlash           string
+	DedupeConfigurable string
 }

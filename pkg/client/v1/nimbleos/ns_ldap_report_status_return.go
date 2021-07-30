@@ -6,16 +6,11 @@ package nimbleos
 var NsLdapReportStatusReturnFields *NsLdapReportStatusReturnFieldHandles
 
 func init() {
-	fieldEnabled := "enabled"
-	fieldLocalServiceStatusGood := "local_service_status_good"
-	fieldRemoteServiceStatusGood := "remote_service_status_good"
-	fieldRemoteServiceStatus := "remote_service_status"
-
 	NsLdapReportStatusReturnFields = &NsLdapReportStatusReturnFieldHandles{
-		Enabled:                 &fieldEnabled,
-		LocalServiceStatusGood:  &fieldLocalServiceStatusGood,
-		RemoteServiceStatusGood: &fieldRemoteServiceStatusGood,
-		RemoteServiceStatus:     &fieldRemoteServiceStatus,
+		Enabled:                 "enabled",
+		LocalServiceStatusGood:  "local_service_status_good",
+		RemoteServiceStatusGood: "remote_service_status_good",
+		RemoteServiceStatus:     "remote_service_status",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsLdapReportStatusReturn struct {
 
 // NsLdapReportStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
 type NsLdapReportStatusReturnFieldHandles struct {
-	Enabled                 *string
-	LocalServiceStatusGood  *string
-	RemoteServiceStatusGood *string
-	RemoteServiceStatus     *string
+	Enabled                 string
+	LocalServiceStatusGood  string
+	RemoteServiceStatusGood string
+	RemoteServiceStatus     string
 }

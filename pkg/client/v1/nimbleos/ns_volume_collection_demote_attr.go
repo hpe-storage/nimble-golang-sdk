@@ -6,12 +6,9 @@ package nimbleos
 var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttrFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldReplicationPartnerId := "replication_partner_id"
-
 	NsVolumeCollectionDemoteAttrFields = &NsVolumeCollectionDemoteAttrFieldHandles{
-		ID:                   &fieldID,
-		ReplicationPartnerId: &fieldReplicationPartnerId,
+		ID:                   "id",
+		ReplicationPartnerId: "replication_partner_id",
 	}
 }
 
@@ -25,6 +22,6 @@ type NsVolumeCollectionDemoteAttr struct {
 
 // NsVolumeCollectionDemoteAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeCollectionDemoteAttrFieldHandles struct {
-	ID                   *string
-	ReplicationPartnerId *string
+	ID                   string
+	ReplicationPartnerId string
 }

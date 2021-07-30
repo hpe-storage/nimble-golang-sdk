@@ -6,30 +6,18 @@ package nimbleos
 var NsLunConflictPairFields *NsLunConflictPairFieldHandles
 
 func init() {
-	fieldInitiatorWwpn := "initiator_wwpn"
-	fieldInitiatorAlias := "initiator_alias"
-	fieldDstIgrpName := "dst_igrp_name"
-	fieldDstVolName := "dst_vol_name"
-	fieldDstSnapName := "dst_snap_name"
-	fieldDstPeName := "dst_pe_name"
-	fieldDstLun := "dst_lun"
-	fieldSrcIgrpName := "src_igrp_name"
-	fieldSrcVolName := "src_vol_name"
-	fieldSrcSnapName := "src_snap_name"
-	fieldSrcLun := "src_lun"
-
 	NsLunConflictPairFields = &NsLunConflictPairFieldHandles{
-		InitiatorWwpn:  &fieldInitiatorWwpn,
-		InitiatorAlias: &fieldInitiatorAlias,
-		DstIgrpName:    &fieldDstIgrpName,
-		DstVolName:     &fieldDstVolName,
-		DstSnapName:    &fieldDstSnapName,
-		DstPeName:      &fieldDstPeName,
-		DstLun:         &fieldDstLun,
-		SrcIgrpName:    &fieldSrcIgrpName,
-		SrcVolName:     &fieldSrcVolName,
-		SrcSnapName:    &fieldSrcSnapName,
-		SrcLun:         &fieldSrcLun,
+		InitiatorWwpn:  "initiator_wwpn",
+		InitiatorAlias: "initiator_alias",
+		DstIgrpName:    "dst_igrp_name",
+		DstVolName:     "dst_vol_name",
+		DstSnapName:    "dst_snap_name",
+		DstPeName:      "dst_pe_name",
+		DstLun:         "dst_lun",
+		SrcIgrpName:    "src_igrp_name",
+		SrcVolName:     "src_vol_name",
+		SrcSnapName:    "src_snap_name",
+		SrcLun:         "src_lun",
 	}
 }
 
@@ -61,15 +49,15 @@ type NsLunConflictPair struct {
 
 // NsLunConflictPairFieldHandles provides a string representation for each AccessControlRecord field.
 type NsLunConflictPairFieldHandles struct {
-	InitiatorWwpn  *string
-	InitiatorAlias *string
-	DstIgrpName    *string
-	DstVolName     *string
-	DstSnapName    *string
-	DstPeName      *string
-	DstLun         *string
-	SrcIgrpName    *string
-	SrcVolName     *string
-	SrcSnapName    *string
-	SrcLun         *string
+	InitiatorWwpn  string
+	InitiatorAlias string
+	DstIgrpName    string
+	DstVolName     string
+	DstSnapName    string
+	DstPeName      string
+	DstLun         string
+	SrcIgrpName    string
+	SrcVolName     string
+	SrcSnapName    string
+	SrcLun         string
 }

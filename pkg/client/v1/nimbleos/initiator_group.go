@@ -6,44 +6,25 @@ package nimbleos
 var InitiatorGroupFields *InitiatorGroupFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldAccessProtocol := "access_protocol"
-	fieldHostType := "host_type"
-	fieldFcTdzPorts := "fc_tdz_ports"
-	fieldTargetSubnets := "target_subnets"
-	fieldIscsiInitiators := "iscsi_initiators"
-	fieldFcInitiators := "fc_initiators"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldAppUuid := "app_uuid"
-	fieldVolumeCount := "volume_count"
-	fieldVolumeList := "volume_list"
-	fieldNumConnections := "num_connections"
-	fieldMetadata := "metadata"
-
 	InitiatorGroupFields = &InitiatorGroupFieldHandles{
-		ID:              &fieldID,
-		Name:            &fieldName,
-		FullName:        &fieldFullName,
-		SearchName:      &fieldSearchName,
-		Description:     &fieldDescription,
-		AccessProtocol:  &fieldAccessProtocol,
-		HostType:        &fieldHostType,
-		FcTdzPorts:      &fieldFcTdzPorts,
-		TargetSubnets:   &fieldTargetSubnets,
-		IscsiInitiators: &fieldIscsiInitiators,
-		FcInitiators:    &fieldFcInitiators,
-		CreationTime:    &fieldCreationTime,
-		LastModified:    &fieldLastModified,
-		AppUuid:         &fieldAppUuid,
-		VolumeCount:     &fieldVolumeCount,
-		VolumeList:      &fieldVolumeList,
-		NumConnections:  &fieldNumConnections,
-		Metadata:        &fieldMetadata,
+		ID:              "id",
+		Name:            "name",
+		FullName:        "full_name",
+		SearchName:      "search_name",
+		Description:     "description",
+		AccessProtocol:  "access_protocol",
+		HostType:        "host_type",
+		FcTdzPorts:      "fc_tdz_ports",
+		TargetSubnets:   "target_subnets",
+		IscsiInitiators: "iscsi_initiators",
+		FcInitiators:    "fc_initiators",
+		CreationTime:    "creation_time",
+		LastModified:    "last_modified",
+		AppUuid:         "app_uuid",
+		VolumeCount:     "volume_count",
+		VolumeList:      "volume_list",
+		NumConnections:  "num_connections",
+		Metadata:        "metadata",
 	}
 }
 
@@ -89,22 +70,22 @@ type InitiatorGroup struct {
 
 // InitiatorGroupFieldHandles provides a string representation for each AccessControlRecord field.
 type InitiatorGroupFieldHandles struct {
-	ID              *string
-	Name            *string
-	FullName        *string
-	SearchName      *string
-	Description     *string
-	AccessProtocol  *string
-	HostType        *string
-	FcTdzPorts      *string
-	TargetSubnets   *string
-	IscsiInitiators *string
-	FcInitiators    *string
-	CreationTime    *string
-	LastModified    *string
-	AppUuid         *string
-	VolumeCount     *string
-	VolumeList      *string
-	NumConnections  *string
-	Metadata        *string
+	ID              string
+	Name            string
+	FullName        string
+	SearchName      string
+	Description     string
+	AccessProtocol  string
+	HostType        string
+	FcTdzPorts      string
+	TargetSubnets   string
+	IscsiInitiators string
+	FcInitiators    string
+	CreationTime    string
+	LastModified    string
+	AppUuid         string
+	VolumeCount     string
+	VolumeList      string
+	NumConnections  string
+	Metadata        string
 }

@@ -75,7 +75,7 @@ func (svc *SubnetService) GetSubnetById(id string) (*nimbleos.Subnet, error) {
 func (svc *SubnetService) GetSubnetByName(name string) (*nimbleos.Subnet, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

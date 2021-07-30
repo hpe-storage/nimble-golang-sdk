@@ -6,48 +6,27 @@ package nimbleos
 var ProtectionTemplateFields *ProtectionTemplateFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldReplPriority := "repl_priority"
-	fieldAppSync := "app_sync"
-	fieldAppServer := "app_server"
-	fieldAppId := "app_id"
-	fieldAppClusterName := "app_cluster_name"
-	fieldAppServiceName := "app_service_name"
-	fieldVcenterHostname := "vcenter_hostname"
-	fieldVcenterUsername := "vcenter_username"
-	fieldVcenterPassword := "vcenter_password"
-	fieldAgentHostname := "agent_hostname"
-	fieldAgentUsername := "agent_username"
-	fieldAgentPassword := "agent_password"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldScheduleList := "schedule_list"
-
 	ProtectionTemplateFields = &ProtectionTemplateFieldHandles{
-		ID:              &fieldID,
-		Name:            &fieldName,
-		FullName:        &fieldFullName,
-		SearchName:      &fieldSearchName,
-		Description:     &fieldDescription,
-		ReplPriority:    &fieldReplPriority,
-		AppSync:         &fieldAppSync,
-		AppServer:       &fieldAppServer,
-		AppId:           &fieldAppId,
-		AppClusterName:  &fieldAppClusterName,
-		AppServiceName:  &fieldAppServiceName,
-		VcenterHostname: &fieldVcenterHostname,
-		VcenterUsername: &fieldVcenterUsername,
-		VcenterPassword: &fieldVcenterPassword,
-		AgentHostname:   &fieldAgentHostname,
-		AgentUsername:   &fieldAgentUsername,
-		AgentPassword:   &fieldAgentPassword,
-		CreationTime:    &fieldCreationTime,
-		LastModified:    &fieldLastModified,
-		ScheduleList:    &fieldScheduleList,
+		ID:              "id",
+		Name:            "name",
+		FullName:        "full_name",
+		SearchName:      "search_name",
+		Description:     "description",
+		ReplPriority:    "repl_priority",
+		AppSync:         "app_sync",
+		AppServer:       "app_server",
+		AppId:           "app_id",
+		AppClusterName:  "app_cluster_name",
+		AppServiceName:  "app_service_name",
+		VcenterHostname: "vcenter_hostname",
+		VcenterUsername: "vcenter_username",
+		VcenterPassword: "vcenter_password",
+		AgentHostname:   "agent_hostname",
+		AgentUsername:   "agent_username",
+		AgentPassword:   "agent_password",
+		CreationTime:    "creation_time",
+		LastModified:    "last_modified",
+		ScheduleList:    "schedule_list",
 	}
 }
 
@@ -97,24 +76,24 @@ type ProtectionTemplate struct {
 
 // ProtectionTemplateFieldHandles provides a string representation for each AccessControlRecord field.
 type ProtectionTemplateFieldHandles struct {
-	ID              *string
-	Name            *string
-	FullName        *string
-	SearchName      *string
-	Description     *string
-	ReplPriority    *string
-	AppSync         *string
-	AppServer       *string
-	AppId           *string
-	AppClusterName  *string
-	AppServiceName  *string
-	VcenterHostname *string
-	VcenterUsername *string
-	VcenterPassword *string
-	AgentHostname   *string
-	AgentUsername   *string
-	AgentPassword   *string
-	CreationTime    *string
-	LastModified    *string
-	ScheduleList    *string
+	ID              string
+	Name            string
+	FullName        string
+	SearchName      string
+	Description     string
+	ReplPriority    string
+	AppSync         string
+	AppServer       string
+	AppId           string
+	AppClusterName  string
+	AppServiceName  string
+	VcenterHostname string
+	VcenterUsername string
+	VcenterPassword string
+	AgentHostname   string
+	AgentUsername   string
+	AgentPassword   string
+	CreationTime    string
+	LastModified    string
+	ScheduleList    string
 }

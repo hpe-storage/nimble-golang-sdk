@@ -6,20 +6,13 @@ package nimbleos
 var NsCertDataFields *NsCertDataFieldHandles
 
 func init() {
-	fieldDescription := "description"
-	fieldSubject := "subject"
-	fieldDnslist := "dnslist"
-	fieldIplist := "iplist"
-	fieldTrusted := "trusted"
-	fieldPemText := "pem_text"
-
 	NsCertDataFields = &NsCertDataFieldHandles{
-		Description: &fieldDescription,
-		Subject:     &fieldSubject,
-		Dnslist:     &fieldDnslist,
-		Iplist:      &fieldIplist,
-		Trusted:     &fieldTrusted,
-		PemText:     &fieldPemText,
+		Description: "description",
+		Subject:     "subject",
+		Dnslist:     "dnslist",
+		Iplist:      "iplist",
+		Trusted:     "trusted",
+		PemText:     "pem_text",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsCertData struct {
 
 // NsCertDataFieldHandles provides a string representation for each AccessControlRecord field.
 type NsCertDataFieldHandles struct {
-	Description *string
-	Subject     *string
-	Dnslist     *string
-	Iplist      *string
-	Trusted     *string
-	PemText     *string
+	Description string
+	Subject     string
+	Dnslist     string
+	Iplist      string
+	Trusted     string
+	PemText     string
 }

@@ -6,16 +6,11 @@ package nimbleos
 var NsVolumePoolInfoFields *NsVolumePoolInfoFieldHandles
 
 func init() {
-	fieldVolId := "vol_id"
-	fieldVolName := "vol_name"
-	fieldPoolId := "pool_id"
-	fieldPoolName := "pool_name"
-
 	NsVolumePoolInfoFields = &NsVolumePoolInfoFieldHandles{
-		VolId:    &fieldVolId,
-		VolName:  &fieldVolName,
-		PoolId:   &fieldPoolId,
-		PoolName: &fieldPoolName,
+		VolId:    "vol_id",
+		VolName:  "vol_name",
+		PoolId:   "pool_id",
+		PoolName: "pool_name",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsVolumePoolInfo struct {
 
 // NsVolumePoolInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumePoolInfoFieldHandles struct {
-	VolId    *string
-	VolName  *string
-	PoolId   *string
-	PoolName *string
+	VolId    string
+	VolName  string
+	PoolId   string
+	PoolName string
 }

@@ -6,14 +6,10 @@ package nimbleos
 var NsJWKeyFields *NsJWKeyFieldHandles
 
 func init() {
-	fieldKid := "kid"
-	fieldAlgorithm := "algorithm"
-	fieldKey := "key"
-
 	NsJWKeyFields = &NsJWKeyFieldHandles{
-		Kid:       &fieldKid,
-		Algorithm: &fieldAlgorithm,
-		Key:       &fieldKey,
+		Kid:       "kid",
+		Algorithm: "algorithm",
+		Key:       "key",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsJWKey struct {
 
 // NsJWKeyFieldHandles provides a string representation for each AccessControlRecord field.
 type NsJWKeyFieldHandles struct {
-	Kid       *string
-	Algorithm *string
-	Key       *string
+	Kid       string
+	Algorithm string
+	Key       string
 }

@@ -6,24 +6,15 @@ package nimbleos
 var ObjectLimitFields *ObjectLimitFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldObjectType := "object_type"
-	fieldObjectTypeName := "object_type_name"
-	fieldScopeType := "scope_type"
-	fieldScopeTypeName := "scope_type_name"
-	fieldWarningThreshold := "warning_threshold"
-	fieldMaxLimit := "max_limit"
-	fieldObjectCounts := "object_counts"
-
 	ObjectLimitFields = &ObjectLimitFieldHandles{
-		ID:               &fieldID,
-		ObjectType:       &fieldObjectType,
-		ObjectTypeName:   &fieldObjectTypeName,
-		ScopeType:        &fieldScopeType,
-		ScopeTypeName:    &fieldScopeTypeName,
-		WarningThreshold: &fieldWarningThreshold,
-		MaxLimit:         &fieldMaxLimit,
-		ObjectCounts:     &fieldObjectCounts,
+		ID:               "id",
+		ObjectType:       "object_type",
+		ObjectTypeName:   "object_type_name",
+		ScopeType:        "scope_type",
+		ScopeTypeName:    "scope_type_name",
+		WarningThreshold: "warning_threshold",
+		MaxLimit:         "max_limit",
+		ObjectCounts:     "object_counts",
 	}
 }
 
@@ -49,12 +40,12 @@ type ObjectLimit struct {
 
 // ObjectLimitFieldHandles provides a string representation for each AccessControlRecord field.
 type ObjectLimitFieldHandles struct {
-	ID               *string
-	ObjectType       *string
-	ObjectTypeName   *string
-	ScopeType        *string
-	ScopeTypeName    *string
-	WarningThreshold *string
-	MaxLimit         *string
-	ObjectCounts     *string
+	ID               string
+	ObjectType       string
+	ObjectTypeName   string
+	ScopeType        string
+	ScopeTypeName    string
+	WarningThreshold string
+	MaxLimit         string
+	ObjectCounts     string
 }

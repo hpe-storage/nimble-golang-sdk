@@ -6,22 +6,14 @@ package nimbleos
 var WitnessFields *WitnessFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldUsername := "username"
-	fieldPassword := "password"
-	fieldHost := "host"
-	fieldPort := "port"
-	fieldSecureMode := "secure_mode"
-	fieldAutoSwitchoverMessages := "auto_switchover_messages"
-
 	WitnessFields = &WitnessFieldHandles{
-		ID:                     &fieldID,
-		Username:               &fieldUsername,
-		Password:               &fieldPassword,
-		Host:                   &fieldHost,
-		Port:                   &fieldPort,
-		SecureMode:             &fieldSecureMode,
-		AutoSwitchoverMessages: &fieldAutoSwitchoverMessages,
+		ID:                     "id",
+		Username:               "username",
+		Password:               "password",
+		Host:                   "host",
+		Port:                   "port",
+		SecureMode:             "secure_mode",
+		AutoSwitchoverMessages: "auto_switchover_messages",
 	}
 }
 
@@ -45,11 +37,11 @@ type Witness struct {
 
 // WitnessFieldHandles provides a string representation for each AccessControlRecord field.
 type WitnessFieldHandles struct {
-	ID                     *string
-	Username               *string
-	Password               *string
-	Host                   *string
-	Port                   *string
-	SecureMode             *string
-	AutoSwitchoverMessages *string
+	ID                     string
+	Username               string
+	Password               string
+	Host                   string
+	Port                   string
+	SecureMode             string
+	AutoSwitchoverMessages string
 }

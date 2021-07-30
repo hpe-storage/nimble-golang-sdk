@@ -6,18 +6,12 @@ package nimbleos
 var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldAppCategory := "app_category"
-	fieldFullName := "full_name"
-	fieldLun := "lun"
-
 	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategoryFieldHandles{
-		ID:          &fieldID,
-		Name:        &fieldName,
-		AppCategory: &fieldAppCategory,
-		FullName:    &fieldFullName,
-		Lun:         &fieldLun,
+		ID:          "id",
+		Name:        "name",
+		AppCategory: "app_category",
+		FullName:    "full_name",
+		Lun:         "lun",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsVolumeSummaryWithAppCategory struct {
 
 // NsVolumeSummaryWithAppCategoryFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeSummaryWithAppCategoryFieldHandles struct {
-	ID          *string
-	Name        *string
-	AppCategory *string
-	FullName    *string
-	Lun         *string
+	ID          string
+	Name        string
+	AppCategory string
+	FullName    string
+	Lun         string
 }

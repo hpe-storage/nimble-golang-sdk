@@ -6,14 +6,10 @@ package nimbleos
 var NsVolumeBulkUpdateAttrFields *NsVolumeBulkUpdateAttrFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldFolderId := "folder_id"
-	fieldOnline := "online"
-
 	NsVolumeBulkUpdateAttrFields = &NsVolumeBulkUpdateAttrFieldHandles{
-		ID:       &fieldID,
-		FolderId: &fieldFolderId,
-		Online:   &fieldOnline,
+		ID:       "id",
+		FolderId: "folder_id",
+		Online:   "online",
 	}
 }
 
@@ -29,7 +25,7 @@ type NsVolumeBulkUpdateAttr struct {
 
 // NsVolumeBulkUpdateAttrFieldHandles provides a string representation for each AccessControlRecord field.
 type NsVolumeBulkUpdateAttrFieldHandles struct {
-	ID       *string
-	FolderId *string
-	Online   *string
+	ID       string
+	FolderId string
+	Online   string
 }

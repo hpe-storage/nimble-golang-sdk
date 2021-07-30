@@ -76,7 +76,7 @@ func (svc *PerformancePolicyService) GetPerformancePolicyById(id string) (*nimbl
 func (svc *PerformancePolicyService) GetPerformancePolicyByName(name string) (*nimbleos.PerformancePolicy, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: param.NewString(nimbleos.VolumeFields.Name),
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

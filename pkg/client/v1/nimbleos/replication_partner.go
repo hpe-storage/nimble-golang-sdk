@@ -6,98 +6,52 @@ package nimbleos
 var ReplicationPartnerFields *ReplicationPartnerFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldPartnerType := "partner_type"
-	fieldAlias := "alias"
-	fieldSecret := "secret"
-	fieldCreationTime := "creation_time"
-	fieldLastModified := "last_modified"
-	fieldControlPort := "control_port"
-	fieldHostname := "hostname"
-	fieldPortRangeStart := "port_range_start"
-	fieldProxyHostname := "proxy_hostname"
-	fieldProxyUser := "proxy_user"
-	fieldReplHostname := "repl_hostname"
-	fieldDataPort := "data_port"
-	fieldIsAlive := "is_alive"
-	fieldPartnerGroupUid := "partner_group_uid"
-	fieldLastKeepaliveError := "last_keepalive_error"
-	fieldCfgSyncStatus := "cfg_sync_status"
-	fieldLastSyncError := "last_sync_error"
-	fieldArraySerial := "array_serial"
-	fieldVersion := "version"
-	fieldPoolId := "pool_id"
-	fieldPoolName := "pool_name"
-	fieldFolderId := "folder_id"
-	fieldFolderName := "folder_name"
-	fieldMatchFolder := "match_folder"
-	fieldPaused := "paused"
-	fieldUniqueName := "unique_name"
-	fieldSubnetLabel := "subnet_label"
-	fieldSubnetType := "subnet_type"
-	fieldThrottles := "throttles"
-	fieldThrottledBandwidth := "throttled_bandwidth"
-	fieldThrottledBandwidthCurrent := "throttled_bandwidth_current"
-	fieldThrottledBandwidthKbps := "throttled_bandwidth_kbps"
-	fieldThrottledBandwidthCurrentKbps := "throttled_bandwidth_current_kbps"
-	fieldSubnetNetwork := "subnet_network"
-	fieldSubnetNetmask := "subnet_netmask"
-	fieldVolumeCollectionList := "volume_collection_list"
-	fieldVolumeCollectionListCount := "volume_collection_list_count"
-	fieldVolumeList := "volume_list"
-	fieldVolumeListCount := "volume_list_count"
-	fieldReplicationDirection := "replication_direction"
-
 	ReplicationPartnerFields = &ReplicationPartnerFieldHandles{
-		ID:                            &fieldID,
-		Name:                          &fieldName,
-		FullName:                      &fieldFullName,
-		SearchName:                    &fieldSearchName,
-		Description:                   &fieldDescription,
-		PartnerType:                   &fieldPartnerType,
-		Alias:                         &fieldAlias,
-		Secret:                        &fieldSecret,
-		CreationTime:                  &fieldCreationTime,
-		LastModified:                  &fieldLastModified,
-		ControlPort:                   &fieldControlPort,
-		Hostname:                      &fieldHostname,
-		PortRangeStart:                &fieldPortRangeStart,
-		ProxyHostname:                 &fieldProxyHostname,
-		ProxyUser:                     &fieldProxyUser,
-		ReplHostname:                  &fieldReplHostname,
-		DataPort:                      &fieldDataPort,
-		IsAlive:                       &fieldIsAlive,
-		PartnerGroupUid:               &fieldPartnerGroupUid,
-		LastKeepaliveError:            &fieldLastKeepaliveError,
-		CfgSyncStatus:                 &fieldCfgSyncStatus,
-		LastSyncError:                 &fieldLastSyncError,
-		ArraySerial:                   &fieldArraySerial,
-		Version:                       &fieldVersion,
-		PoolId:                        &fieldPoolId,
-		PoolName:                      &fieldPoolName,
-		FolderId:                      &fieldFolderId,
-		FolderName:                    &fieldFolderName,
-		MatchFolder:                   &fieldMatchFolder,
-		Paused:                        &fieldPaused,
-		UniqueName:                    &fieldUniqueName,
-		SubnetLabel:                   &fieldSubnetLabel,
-		SubnetType:                    &fieldSubnetType,
-		Throttles:                     &fieldThrottles,
-		ThrottledBandwidth:            &fieldThrottledBandwidth,
-		ThrottledBandwidthCurrent:     &fieldThrottledBandwidthCurrent,
-		ThrottledBandwidthKbps:        &fieldThrottledBandwidthKbps,
-		ThrottledBandwidthCurrentKbps: &fieldThrottledBandwidthCurrentKbps,
-		SubnetNetwork:                 &fieldSubnetNetwork,
-		SubnetNetmask:                 &fieldSubnetNetmask,
-		VolumeCollectionList:          &fieldVolumeCollectionList,
-		VolumeCollectionListCount:     &fieldVolumeCollectionListCount,
-		VolumeList:                    &fieldVolumeList,
-		VolumeListCount:               &fieldVolumeListCount,
-		ReplicationDirection:          &fieldReplicationDirection,
+		ID:                            "id",
+		Name:                          "name",
+		FullName:                      "full_name",
+		SearchName:                    "search_name",
+		Description:                   "description",
+		PartnerType:                   "partner_type",
+		Alias:                         "alias",
+		Secret:                        "secret",
+		CreationTime:                  "creation_time",
+		LastModified:                  "last_modified",
+		ControlPort:                   "control_port",
+		Hostname:                      "hostname",
+		PortRangeStart:                "port_range_start",
+		ProxyHostname:                 "proxy_hostname",
+		ProxyUser:                     "proxy_user",
+		ReplHostname:                  "repl_hostname",
+		DataPort:                      "data_port",
+		IsAlive:                       "is_alive",
+		PartnerGroupUid:               "partner_group_uid",
+		LastKeepaliveError:            "last_keepalive_error",
+		CfgSyncStatus:                 "cfg_sync_status",
+		LastSyncError:                 "last_sync_error",
+		ArraySerial:                   "array_serial",
+		Version:                       "version",
+		PoolId:                        "pool_id",
+		PoolName:                      "pool_name",
+		FolderId:                      "folder_id",
+		FolderName:                    "folder_name",
+		MatchFolder:                   "match_folder",
+		Paused:                        "paused",
+		UniqueName:                    "unique_name",
+		SubnetLabel:                   "subnet_label",
+		SubnetType:                    "subnet_type",
+		Throttles:                     "throttles",
+		ThrottledBandwidth:            "throttled_bandwidth",
+		ThrottledBandwidthCurrent:     "throttled_bandwidth_current",
+		ThrottledBandwidthKbps:        "throttled_bandwidth_kbps",
+		ThrottledBandwidthCurrentKbps: "throttled_bandwidth_current_kbps",
+		SubnetNetwork:                 "subnet_network",
+		SubnetNetmask:                 "subnet_netmask",
+		VolumeCollectionList:          "volume_collection_list",
+		VolumeCollectionListCount:     "volume_collection_list_count",
+		VolumeList:                    "volume_list",
+		VolumeListCount:               "volume_list_count",
+		ReplicationDirection:          "replication_direction",
 	}
 }
 
@@ -197,49 +151,49 @@ type ReplicationPartner struct {
 
 // ReplicationPartnerFieldHandles provides a string representation for each AccessControlRecord field.
 type ReplicationPartnerFieldHandles struct {
-	ID                            *string
-	Name                          *string
-	FullName                      *string
-	SearchName                    *string
-	Description                   *string
-	PartnerType                   *string
-	Alias                         *string
-	Secret                        *string
-	CreationTime                  *string
-	LastModified                  *string
-	ControlPort                   *string
-	Hostname                      *string
-	PortRangeStart                *string
-	ProxyHostname                 *string
-	ProxyUser                     *string
-	ReplHostname                  *string
-	DataPort                      *string
-	IsAlive                       *string
-	PartnerGroupUid               *string
-	LastKeepaliveError            *string
-	CfgSyncStatus                 *string
-	LastSyncError                 *string
-	ArraySerial                   *string
-	Version                       *string
-	PoolId                        *string
-	PoolName                      *string
-	FolderId                      *string
-	FolderName                    *string
-	MatchFolder                   *string
-	Paused                        *string
-	UniqueName                    *string
-	SubnetLabel                   *string
-	SubnetType                    *string
-	Throttles                     *string
-	ThrottledBandwidth            *string
-	ThrottledBandwidthCurrent     *string
-	ThrottledBandwidthKbps        *string
-	ThrottledBandwidthCurrentKbps *string
-	SubnetNetwork                 *string
-	SubnetNetmask                 *string
-	VolumeCollectionList          *string
-	VolumeCollectionListCount     *string
-	VolumeList                    *string
-	VolumeListCount               *string
-	ReplicationDirection          *string
+	ID                            string
+	Name                          string
+	FullName                      string
+	SearchName                    string
+	Description                   string
+	PartnerType                   string
+	Alias                         string
+	Secret                        string
+	CreationTime                  string
+	LastModified                  string
+	ControlPort                   string
+	Hostname                      string
+	PortRangeStart                string
+	ProxyHostname                 string
+	ProxyUser                     string
+	ReplHostname                  string
+	DataPort                      string
+	IsAlive                       string
+	PartnerGroupUid               string
+	LastKeepaliveError            string
+	CfgSyncStatus                 string
+	LastSyncError                 string
+	ArraySerial                   string
+	Version                       string
+	PoolId                        string
+	PoolName                      string
+	FolderId                      string
+	FolderName                    string
+	MatchFolder                   string
+	Paused                        string
+	UniqueName                    string
+	SubnetLabel                   string
+	SubnetType                    string
+	Throttles                     string
+	ThrottledBandwidth            string
+	ThrottledBandwidthCurrent     string
+	ThrottledBandwidthKbps        string
+	ThrottledBandwidthCurrentKbps string
+	SubnetNetwork                 string
+	SubnetNetmask                 string
+	VolumeCollectionList          string
+	VolumeCollectionListCount     string
+	VolumeList                    string
+	VolumeListCount               string
+	ReplicationDirection          string
 }

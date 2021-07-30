@@ -6,26 +6,16 @@ package nimbleos
 var NsSnapVolFields *NsSnapVolFieldHandles
 
 func init() {
-	fieldVolId := "vol_id"
-	fieldSnapName := "snap_name"
-	fieldSnapDescription := "snap_description"
-	fieldCookie := "cookie"
-	fieldOnline := "online"
-	fieldWritable := "writable"
-	fieldAppUuid := "app_uuid"
-	fieldAgentType := "agent_type"
-	fieldMetadata := "metadata"
-
 	NsSnapVolFields = &NsSnapVolFieldHandles{
-		VolId:           &fieldVolId,
-		SnapName:        &fieldSnapName,
-		SnapDescription: &fieldSnapDescription,
-		Cookie:          &fieldCookie,
-		Online:          &fieldOnline,
-		Writable:        &fieldWritable,
-		AppUuid:         &fieldAppUuid,
-		AgentType:       &fieldAgentType,
-		Metadata:        &fieldMetadata,
+		VolId:           "vol_id",
+		SnapName:        "snap_name",
+		SnapDescription: "snap_description",
+		Cookie:          "cookie",
+		Online:          "online",
+		Writable:        "writable",
+		AppUuid:         "app_uuid",
+		AgentType:       "agent_type",
+		Metadata:        "metadata",
 	}
 }
 
@@ -53,13 +43,13 @@ type NsSnapVol struct {
 
 // NsSnapVolFieldHandles provides a string representation for each AccessControlRecord field.
 type NsSnapVolFieldHandles struct {
-	VolId           *string
-	SnapName        *string
-	SnapDescription *string
-	Cookie          *string
-	Online          *string
-	Writable        *string
-	AppUuid         *string
-	AgentType       *string
-	Metadata        *string
+	VolId           string
+	SnapName        string
+	SnapDescription string
+	Cookie          string
+	Online          string
+	Writable        string
+	AppUuid         string
+	AgentType       string
+	Metadata        string
 }

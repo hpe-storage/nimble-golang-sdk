@@ -6,98 +6,52 @@ package nimbleos
 var VolumeCollectionFields *VolumeCollectionFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldProttmplId := "prottmpl_id"
-	fieldName := "name"
-	fieldFullName := "full_name"
-	fieldSearchName := "search_name"
-	fieldDescription := "description"
-	fieldReplPriority := "repl_priority"
-	fieldPolOwnerName := "pol_owner_name"
-	fieldReplicationType := "replication_type"
-	fieldSynchronousReplicationType := "synchronous_replication_type"
-	fieldSynchronousReplicationState := "synchronous_replication_state"
-	fieldAppSync := "app_sync"
-	fieldAppServer := "app_server"
-	fieldAppId := "app_id"
-	fieldAppClusterName := "app_cluster_name"
-	fieldAppServiceName := "app_service_name"
-	fieldVcenterHostname := "vcenter_hostname"
-	fieldVcenterUsername := "vcenter_username"
-	fieldVcenterPassword := "vcenter_password"
-	fieldAgentHostname := "agent_hostname"
-	fieldAgentUsername := "agent_username"
-	fieldAgentPassword := "agent_password"
-	fieldCreationTime := "creation_time"
-	fieldLastModifiedTime := "last_modified_time"
-	fieldVolumeList := "volume_list"
-	fieldDownstreamVolumeList := "downstream_volume_list"
-	fieldUpstreamVolumeList := "upstream_volume_list"
-	fieldVolumeCount := "volume_count"
-	fieldCachePinnedVolumeList := "cache_pinned_volume_list"
-	fieldLastSnapcoll := "last_snapcoll"
-	fieldSnapcollCount := "snapcoll_count"
-	fieldScheduleList := "schedule_list"
-	fieldReplicationPartner := "replication_partner"
-	fieldLastReplicatedSnapcoll := "last_replicated_snapcoll"
-	fieldLastReplicatedSnapcollList := "last_replicated_snapcoll_list"
-	fieldProtectionType := "protection_type"
-	fieldLagTime := "lag_time"
-	fieldIsStandaloneVolcoll := "is_standalone_volcoll"
-	fieldTotalReplBytes := "total_repl_bytes"
-	fieldReplBytesTransferred := "repl_bytes_transferred"
-	fieldIsHandingOver := "is_handing_over"
-	fieldHandoverReplicationPartner := "handover_replication_partner"
-	fieldMetadata := "metadata"
-	fieldSrepLastSync := "srep_last_sync"
-	fieldSrepResyncPercent := "srep_resync_percent"
-
 	VolumeCollectionFields = &VolumeCollectionFieldHandles{
-		ID:                          &fieldID,
-		ProttmplId:                  &fieldProttmplId,
-		Name:                        &fieldName,
-		FullName:                    &fieldFullName,
-		SearchName:                  &fieldSearchName,
-		Description:                 &fieldDescription,
-		ReplPriority:                &fieldReplPriority,
-		PolOwnerName:                &fieldPolOwnerName,
-		ReplicationType:             &fieldReplicationType,
-		SynchronousReplicationType:  &fieldSynchronousReplicationType,
-		SynchronousReplicationState: &fieldSynchronousReplicationState,
-		AppSync:                     &fieldAppSync,
-		AppServer:                   &fieldAppServer,
-		AppId:                       &fieldAppId,
-		AppClusterName:              &fieldAppClusterName,
-		AppServiceName:              &fieldAppServiceName,
-		VcenterHostname:             &fieldVcenterHostname,
-		VcenterUsername:             &fieldVcenterUsername,
-		VcenterPassword:             &fieldVcenterPassword,
-		AgentHostname:               &fieldAgentHostname,
-		AgentUsername:               &fieldAgentUsername,
-		AgentPassword:               &fieldAgentPassword,
-		CreationTime:                &fieldCreationTime,
-		LastModifiedTime:            &fieldLastModifiedTime,
-		VolumeList:                  &fieldVolumeList,
-		DownstreamVolumeList:        &fieldDownstreamVolumeList,
-		UpstreamVolumeList:          &fieldUpstreamVolumeList,
-		VolumeCount:                 &fieldVolumeCount,
-		CachePinnedVolumeList:       &fieldCachePinnedVolumeList,
-		LastSnapcoll:                &fieldLastSnapcoll,
-		SnapcollCount:               &fieldSnapcollCount,
-		ScheduleList:                &fieldScheduleList,
-		ReplicationPartner:          &fieldReplicationPartner,
-		LastReplicatedSnapcoll:      &fieldLastReplicatedSnapcoll,
-		LastReplicatedSnapcollList:  &fieldLastReplicatedSnapcollList,
-		ProtectionType:              &fieldProtectionType,
-		LagTime:                     &fieldLagTime,
-		IsStandaloneVolcoll:         &fieldIsStandaloneVolcoll,
-		TotalReplBytes:              &fieldTotalReplBytes,
-		ReplBytesTransferred:        &fieldReplBytesTransferred,
-		IsHandingOver:               &fieldIsHandingOver,
-		HandoverReplicationPartner:  &fieldHandoverReplicationPartner,
-		Metadata:                    &fieldMetadata,
-		SrepLastSync:                &fieldSrepLastSync,
-		SrepResyncPercent:           &fieldSrepResyncPercent,
+		ID:                          "id",
+		ProttmplId:                  "prottmpl_id",
+		Name:                        "name",
+		FullName:                    "full_name",
+		SearchName:                  "search_name",
+		Description:                 "description",
+		ReplPriority:                "repl_priority",
+		PolOwnerName:                "pol_owner_name",
+		ReplicationType:             "replication_type",
+		SynchronousReplicationType:  "synchronous_replication_type",
+		SynchronousReplicationState: "synchronous_replication_state",
+		AppSync:                     "app_sync",
+		AppServer:                   "app_server",
+		AppId:                       "app_id",
+		AppClusterName:              "app_cluster_name",
+		AppServiceName:              "app_service_name",
+		VcenterHostname:             "vcenter_hostname",
+		VcenterUsername:             "vcenter_username",
+		VcenterPassword:             "vcenter_password",
+		AgentHostname:               "agent_hostname",
+		AgentUsername:               "agent_username",
+		AgentPassword:               "agent_password",
+		CreationTime:                "creation_time",
+		LastModifiedTime:            "last_modified_time",
+		VolumeList:                  "volume_list",
+		DownstreamVolumeList:        "downstream_volume_list",
+		UpstreamVolumeList:          "upstream_volume_list",
+		VolumeCount:                 "volume_count",
+		CachePinnedVolumeList:       "cache_pinned_volume_list",
+		LastSnapcoll:                "last_snapcoll",
+		SnapcollCount:               "snapcoll_count",
+		ScheduleList:                "schedule_list",
+		ReplicationPartner:          "replication_partner",
+		LastReplicatedSnapcoll:      "last_replicated_snapcoll",
+		LastReplicatedSnapcollList:  "last_replicated_snapcoll_list",
+		ProtectionType:              "protection_type",
+		LagTime:                     "lag_time",
+		IsStandaloneVolcoll:         "is_standalone_volcoll",
+		TotalReplBytes:              "total_repl_bytes",
+		ReplBytesTransferred:        "repl_bytes_transferred",
+		IsHandingOver:               "is_handing_over",
+		HandoverReplicationPartner:  "handover_replication_partner",
+		Metadata:                    "metadata",
+		SrepLastSync:                "srep_last_sync",
+		SrepResyncPercent:           "srep_resync_percent",
 	}
 }
 
@@ -197,49 +151,49 @@ type VolumeCollection struct {
 
 // VolumeCollectionFieldHandles provides a string representation for each AccessControlRecord field.
 type VolumeCollectionFieldHandles struct {
-	ID                          *string
-	ProttmplId                  *string
-	Name                        *string
-	FullName                    *string
-	SearchName                  *string
-	Description                 *string
-	ReplPriority                *string
-	PolOwnerName                *string
-	ReplicationType             *string
-	SynchronousReplicationType  *string
-	SynchronousReplicationState *string
-	AppSync                     *string
-	AppServer                   *string
-	AppId                       *string
-	AppClusterName              *string
-	AppServiceName              *string
-	VcenterHostname             *string
-	VcenterUsername             *string
-	VcenterPassword             *string
-	AgentHostname               *string
-	AgentUsername               *string
-	AgentPassword               *string
-	CreationTime                *string
-	LastModifiedTime            *string
-	VolumeList                  *string
-	DownstreamVolumeList        *string
-	UpstreamVolumeList          *string
-	VolumeCount                 *string
-	CachePinnedVolumeList       *string
-	LastSnapcoll                *string
-	SnapcollCount               *string
-	ScheduleList                *string
-	ReplicationPartner          *string
-	LastReplicatedSnapcoll      *string
-	LastReplicatedSnapcollList  *string
-	ProtectionType              *string
-	LagTime                     *string
-	IsStandaloneVolcoll         *string
-	TotalReplBytes              *string
-	ReplBytesTransferred        *string
-	IsHandingOver               *string
-	HandoverReplicationPartner  *string
-	Metadata                    *string
-	SrepLastSync                *string
-	SrepResyncPercent           *string
+	ID                          string
+	ProttmplId                  string
+	Name                        string
+	FullName                    string
+	SearchName                  string
+	Description                 string
+	ReplPriority                string
+	PolOwnerName                string
+	ReplicationType             string
+	SynchronousReplicationType  string
+	SynchronousReplicationState string
+	AppSync                     string
+	AppServer                   string
+	AppId                       string
+	AppClusterName              string
+	AppServiceName              string
+	VcenterHostname             string
+	VcenterUsername             string
+	VcenterPassword             string
+	AgentHostname               string
+	AgentUsername               string
+	AgentPassword               string
+	CreationTime                string
+	LastModifiedTime            string
+	VolumeList                  string
+	DownstreamVolumeList        string
+	UpstreamVolumeList          string
+	VolumeCount                 string
+	CachePinnedVolumeList       string
+	LastSnapcoll                string
+	SnapcollCount               string
+	ScheduleList                string
+	ReplicationPartner          string
+	LastReplicatedSnapcoll      string
+	LastReplicatedSnapcollList  string
+	ProtectionType              string
+	LagTime                     string
+	IsStandaloneVolcoll         string
+	TotalReplBytes              string
+	ReplBytesTransferred        string
+	IsHandingOver               string
+	HandoverReplicationPartner  string
+	Metadata                    string
+	SrepLastSync                string
+	SrepResyncPercent           string
 }

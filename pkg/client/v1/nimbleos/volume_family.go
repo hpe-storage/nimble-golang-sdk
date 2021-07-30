@@ -6,24 +6,15 @@ package nimbleos
 var VolumeFamilyFields *VolumeFamilyFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldPoolId := "pool_id"
-	fieldPoolName := "pool_name"
-	fieldBlocksize := "blocksize"
-	fieldRootVolName := "root_vol_name"
-	fieldVolumes := "volumes"
-	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
-	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
-
 	VolumeFamilyFields = &VolumeFamilyFieldHandles{
-		ID:                       &fieldID,
-		PoolId:                   &fieldPoolId,
-		PoolName:                 &fieldPoolName,
-		Blocksize:                &fieldBlocksize,
-		RootVolName:              &fieldRootVolName,
-		Volumes:                  &fieldVolumes,
-		VolUsageCompressedBytes:  &fieldVolUsageCompressedBytes,
-		SnapUsageCompressedBytes: &fieldSnapUsageCompressedBytes,
+		ID:                       "id",
+		PoolId:                   "pool_id",
+		PoolName:                 "pool_name",
+		Blocksize:                "blocksize",
+		RootVolName:              "root_vol_name",
+		Volumes:                  "volumes",
+		VolUsageCompressedBytes:  "vol_usage_compressed_bytes",
+		SnapUsageCompressedBytes: "snap_usage_compressed_bytes",
 	}
 }
 
@@ -49,12 +40,12 @@ type VolumeFamily struct {
 
 // VolumeFamilyFieldHandles provides a string representation for each AccessControlRecord field.
 type VolumeFamilyFieldHandles struct {
-	ID                       *string
-	PoolId                   *string
-	PoolName                 *string
-	Blocksize                *string
-	RootVolName              *string
-	Volumes                  *string
-	VolUsageCompressedBytes  *string
-	SnapUsageCompressedBytes *string
+	ID                       string
+	PoolId                   string
+	PoolName                 string
+	Blocksize                string
+	RootVolName              string
+	Volumes                  string
+	VolUsageCompressedBytes  string
+	SnapUsageCompressedBytes string
 }

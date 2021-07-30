@@ -6,20 +6,13 @@ package nimbleos
 var NsShelfCtrlrAttrSetFields *NsShelfCtrlrAttrSetFieldHandles
 
 func init() {
-	fieldSessionSerial := "session_serial"
-	fieldCachedSerial := "cached_serial"
-	fieldHwState := "hw_state"
-	fieldSwType := "sw_type"
-	fieldDiskSerials := "disk_serials"
-	fieldDiskTypes := "disk_types"
-
 	NsShelfCtrlrAttrSetFields = &NsShelfCtrlrAttrSetFieldHandles{
-		SessionSerial: &fieldSessionSerial,
-		CachedSerial:  &fieldCachedSerial,
-		HwState:       &fieldHwState,
-		SwType:        &fieldSwType,
-		DiskSerials:   &fieldDiskSerials,
-		DiskTypes:     &fieldDiskTypes,
+		SessionSerial: "session_serial",
+		CachedSerial:  "cached_serial",
+		HwState:       "hw_state",
+		SwType:        "sw_type",
+		DiskSerials:   "disk_serials",
+		DiskTypes:     "disk_types",
 	}
 }
 
@@ -41,10 +34,10 @@ type NsShelfCtrlrAttrSet struct {
 
 // NsShelfCtrlrAttrSetFieldHandles provides a string representation for each AccessControlRecord field.
 type NsShelfCtrlrAttrSetFieldHandles struct {
-	SessionSerial *string
-	CachedSerial  *string
-	HwState       *string
-	SwType        *string
-	DiskSerials   *string
-	DiskTypes     *string
+	SessionSerial string
+	CachedSerial  string
+	HwState       string
+	SwType        string
+	DiskSerials   string
+	DiskTypes     string
 }

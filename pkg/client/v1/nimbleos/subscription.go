@@ -6,24 +6,15 @@ package nimbleos
 var SubscriptionFields *SubscriptionFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldSubscriberId := "subscriber_id"
-	fieldNotificationType := "notification_type"
-	fieldObjectType := "object_type"
-	fieldObjectId := "object_id"
-	fieldOperation := "operation"
-	fieldEventTargetType := "event_target_type"
-	fieldEventSeverity := "event_severity"
-
 	SubscriptionFields = &SubscriptionFieldHandles{
-		ID:               &fieldID,
-		SubscriberId:     &fieldSubscriberId,
-		NotificationType: &fieldNotificationType,
-		ObjectType:       &fieldObjectType,
-		ObjectId:         &fieldObjectId,
-		Operation:        &fieldOperation,
-		EventTargetType:  &fieldEventTargetType,
-		EventSeverity:    &fieldEventSeverity,
+		ID:               "id",
+		SubscriberId:     "subscriber_id",
+		NotificationType: "notification_type",
+		ObjectType:       "object_type",
+		ObjectId:         "object_id",
+		Operation:        "operation",
+		EventTargetType:  "event_target_type",
+		EventSeverity:    "event_severity",
 	}
 }
 
@@ -49,12 +40,12 @@ type Subscription struct {
 
 // SubscriptionFieldHandles provides a string representation for each AccessControlRecord field.
 type SubscriptionFieldHandles struct {
-	ID               *string
-	SubscriberId     *string
-	NotificationType *string
-	ObjectType       *string
-	ObjectId         *string
-	Operation        *string
-	EventTargetType  *string
-	EventSeverity    *string
+	ID               string
+	SubscriberId     string
+	NotificationType string
+	ObjectType       string
+	ObjectId         string
+	Operation        string
+	EventTargetType  string
+	EventSeverity    string
 }

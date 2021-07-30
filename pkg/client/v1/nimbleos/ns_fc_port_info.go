@@ -6,16 +6,11 @@ package nimbleos
 var NsFcPortInfoFields *NsFcPortInfoFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldBusLocation := "bus_location"
-	fieldPort := "port"
-	fieldSlot := "slot"
-
 	NsFcPortInfoFields = &NsFcPortInfoFieldHandles{
-		Name:        &fieldName,
-		BusLocation: &fieldBusLocation,
-		Port:        &fieldPort,
-		Slot:        &fieldSlot,
+		Name:        "name",
+		BusLocation: "bus_location",
+		Port:        "port",
+		Slot:        "slot",
 	}
 }
 
@@ -33,8 +28,8 @@ type NsFcPortInfo struct {
 
 // NsFcPortInfoFieldHandles provides a string representation for each AccessControlRecord field.
 type NsFcPortInfoFieldHandles struct {
-	Name        *string
-	BusLocation *string
-	Port        *string
-	Slot        *string
+	Name        string
+	BusLocation string
+	Port        string
+	Slot        string
 }

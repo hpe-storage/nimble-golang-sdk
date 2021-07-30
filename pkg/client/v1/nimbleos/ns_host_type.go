@@ -6,18 +6,12 @@ package nimbleos
 var NsHostTypeFields *NsHostTypeFieldHandles
 
 func init() {
-	fieldInitiatorName := "initiator_name"
-	fieldSourceInitiatorGroup := "source_initiator_group"
-	fieldSourceHostType := "source_host_type"
-	fieldDestinationInitiatorGroup := "destination_initiator_group"
-	fieldDestinationHostType := "destination_host_type"
-
 	NsHostTypeFields = &NsHostTypeFieldHandles{
-		InitiatorName:             &fieldInitiatorName,
-		SourceInitiatorGroup:      &fieldSourceInitiatorGroup,
-		SourceHostType:            &fieldSourceHostType,
-		DestinationInitiatorGroup: &fieldDestinationInitiatorGroup,
-		DestinationHostType:       &fieldDestinationHostType,
+		InitiatorName:             "initiator_name",
+		SourceInitiatorGroup:      "source_initiator_group",
+		SourceHostType:            "source_host_type",
+		DestinationInitiatorGroup: "destination_initiator_group",
+		DestinationHostType:       "destination_host_type",
 	}
 }
 
@@ -37,9 +31,9 @@ type NsHostType struct {
 
 // NsHostTypeFieldHandles provides a string representation for each AccessControlRecord field.
 type NsHostTypeFieldHandles struct {
-	InitiatorName             *string
-	SourceInitiatorGroup      *string
-	SourceHostType            *string
-	DestinationInitiatorGroup *string
-	DestinationHostType       *string
+	InitiatorName             string
+	SourceInitiatorGroup      string
+	SourceHostType            string
+	DestinationInitiatorGroup string
+	DestinationHostType       string
 }

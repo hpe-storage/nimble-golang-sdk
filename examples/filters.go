@@ -29,7 +29,7 @@ func main() {
 	sfilter := &param.GetParams{}
 	// set search filter
 	f := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: param.NewString(nimbleos.VolumeFields.Name),
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}

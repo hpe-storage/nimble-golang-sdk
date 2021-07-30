@@ -6,36 +6,21 @@ package nimbleos
 var EventFields *EventFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldType := "type"
-	fieldName := "name"
-	fieldScope := "scope"
-	fieldTarget := "target"
-	fieldTargetType := "target_type"
-	fieldTimestamp := "timestamp"
-	fieldCategory := "category"
-	fieldSeverity := "severity"
-	fieldSummary := "summary"
-	fieldActivity := "activity"
-	fieldAlarmId := "alarm_id"
-	fieldParams := "params"
-	fieldTenantId := "tenant_id"
-
 	EventFields = &EventFieldHandles{
-		ID:         &fieldID,
-		Type:       &fieldType,
-		Name:       &fieldName,
-		Scope:      &fieldScope,
-		Target:     &fieldTarget,
-		TargetType: &fieldTargetType,
-		Timestamp:  &fieldTimestamp,
-		Category:   &fieldCategory,
-		Severity:   &fieldSeverity,
-		Summary:    &fieldSummary,
-		Activity:   &fieldActivity,
-		AlarmId:    &fieldAlarmId,
-		Params:     &fieldParams,
-		TenantId:   &fieldTenantId,
+		ID:         "id",
+		Type:       "type",
+		Name:       "name",
+		Scope:      "scope",
+		Target:     "target",
+		TargetType: "target_type",
+		Timestamp:  "timestamp",
+		Category:   "category",
+		Severity:   "severity",
+		Summary:    "summary",
+		Activity:   "activity",
+		AlarmId:    "alarm_id",
+		Params:     "params",
+		TenantId:   "tenant_id",
 	}
 }
 
@@ -73,18 +58,18 @@ type Event struct {
 
 // EventFieldHandles provides a string representation for each AccessControlRecord field.
 type EventFieldHandles struct {
-	ID         *string
-	Type       *string
-	Name       *string
-	Scope      *string
-	Target     *string
-	TargetType *string
-	Timestamp  *string
-	Category   *string
-	Severity   *string
-	Summary    *string
-	Activity   *string
-	AlarmId    *string
-	Params     *string
-	TenantId   *string
+	ID         string
+	Type       string
+	Name       string
+	Scope      string
+	Target     string
+	TargetType string
+	Timestamp  string
+	Category   string
+	Severity   string
+	Summary    string
+	Activity   string
+	AlarmId    string
+	Params     string
+	TenantId   string
 }

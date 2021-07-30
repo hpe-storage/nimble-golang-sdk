@@ -6,30 +6,18 @@ package nimbleos
 var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfigFieldHandles
 
 func init() {
-	fieldName := "name"
-	fieldDiscoveryIp := "discovery_ip"
-	fieldDiscoveryNetmask := "discovery_netmask"
-	fieldMgmtIp := "mgmt_ip"
-	fieldSecondaryMgmtIp := "secondary_mgmt_ip"
-	fieldMgmtNetmask := "mgmt_netmask"
-	fieldIscsiAutomaticConnectionMethod := "iscsi_automatic_connection_method"
-	fieldIscsiConnectionRebalancing := "iscsi_connection_rebalancing"
-	fieldRouteList := "route_list"
-	fieldSubnetList := "subnet_list"
-	fieldArrayList := "array_list"
-
 	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfigFieldHandles{
-		Name:                           &fieldName,
-		DiscoveryIp:                    &fieldDiscoveryIp,
-		DiscoveryNetmask:               &fieldDiscoveryNetmask,
-		MgmtIp:                         &fieldMgmtIp,
-		SecondaryMgmtIp:                &fieldSecondaryMgmtIp,
-		MgmtNetmask:                    &fieldMgmtNetmask,
-		IscsiAutomaticConnectionMethod: &fieldIscsiAutomaticConnectionMethod,
-		IscsiConnectionRebalancing:     &fieldIscsiConnectionRebalancing,
-		RouteList:                      &fieldRouteList,
-		SubnetList:                     &fieldSubnetList,
-		ArrayList:                      &fieldArrayList,
+		Name:                           "name",
+		DiscoveryIp:                    "discovery_ip",
+		DiscoveryNetmask:               "discovery_netmask",
+		MgmtIp:                         "mgmt_ip",
+		SecondaryMgmtIp:                "secondary_mgmt_ip",
+		MgmtNetmask:                    "mgmt_netmask",
+		IscsiAutomaticConnectionMethod: "iscsi_automatic_connection_method",
+		IscsiConnectionRebalancing:     "iscsi_connection_rebalancing",
+		RouteList:                      "route_list",
+		SubnetList:                     "subnet_list",
+		ArrayList:                      "array_list",
 	}
 }
 
@@ -61,15 +49,15 @@ type NsCompleteSetupNetconfig struct {
 
 // NsCompleteSetupNetconfigFieldHandles provides a string representation for each AccessControlRecord field.
 type NsCompleteSetupNetconfigFieldHandles struct {
-	Name                           *string
-	DiscoveryIp                    *string
-	DiscoveryNetmask               *string
-	MgmtIp                         *string
-	SecondaryMgmtIp                *string
-	MgmtNetmask                    *string
-	IscsiAutomaticConnectionMethod *string
-	IscsiConnectionRebalancing     *string
-	RouteList                      *string
-	SubnetList                     *string
-	ArrayList                      *string
+	Name                           string
+	DiscoveryIp                    string
+	DiscoveryNetmask               string
+	MgmtIp                         string
+	SecondaryMgmtIp                string
+	MgmtNetmask                    string
+	IscsiAutomaticConnectionMethod string
+	IscsiConnectionRebalancing     string
+	RouteList                      string
+	SubnetList                     string
+	ArrayList                      string
 }

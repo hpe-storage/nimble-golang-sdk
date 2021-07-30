@@ -6,72 +6,39 @@ package nimbleos
 var DiskFields *DiskFieldHandles
 
 func init() {
-	fieldID := "id"
-	fieldIsDfc := "is_dfc"
-	fieldSerial := "serial"
-	fieldPath := "path"
-	fieldShelfSerial := "shelf_serial"
-	fieldShelfLocation := "shelf_location"
-	fieldShelfId := "shelf_id"
-	fieldShelfLocationId := "shelf_location_id"
-	fieldVshelfId := "vshelf_id"
-	fieldSlot := "slot"
-	fieldBank := "bank"
-	fieldModel := "model"
-	fieldVendor := "vendor"
-	fieldFirmwareVersion := "firmware_version"
-	fieldHba := "hba"
-	fieldPort := "port"
-	fieldSize := "size"
-	fieldState := "state"
-	fieldType := "type"
-	fieldBlockType := "block_type"
-	fieldRaidId := "raid_id"
-	fieldRaidResyncPercent := "raid_resync_percent"
-	fieldRaidResyncCurrentSpeed := "raid_resync_current_speed"
-	fieldRaidResyncAverageSpeed := "raid_resync_average_speed"
-	fieldRaidState := "raid_state"
-	fieldDiskInternalStat1 := "disk_internal_stat1"
-	fieldSmartAttributeList := "smart_attribute_list"
-	fieldDiskOp := "disk_op"
-	fieldForce := "force"
-	fieldArrayName := "array_name"
-	fieldArrayId := "array_id"
-	fieldPartialResponseOk := "partial_response_ok"
-
 	DiskFields = &DiskFieldHandles{
-		ID:                     &fieldID,
-		IsDfc:                  &fieldIsDfc,
-		Serial:                 &fieldSerial,
-		Path:                   &fieldPath,
-		ShelfSerial:            &fieldShelfSerial,
-		ShelfLocation:          &fieldShelfLocation,
-		ShelfId:                &fieldShelfId,
-		ShelfLocationId:        &fieldShelfLocationId,
-		VshelfId:               &fieldVshelfId,
-		Slot:                   &fieldSlot,
-		Bank:                   &fieldBank,
-		Model:                  &fieldModel,
-		Vendor:                 &fieldVendor,
-		FirmwareVersion:        &fieldFirmwareVersion,
-		Hba:                    &fieldHba,
-		Port:                   &fieldPort,
-		Size:                   &fieldSize,
-		State:                  &fieldState,
-		Type:                   &fieldType,
-		BlockType:              &fieldBlockType,
-		RaidId:                 &fieldRaidId,
-		RaidResyncPercent:      &fieldRaidResyncPercent,
-		RaidResyncCurrentSpeed: &fieldRaidResyncCurrentSpeed,
-		RaidResyncAverageSpeed: &fieldRaidResyncAverageSpeed,
-		RaidState:              &fieldRaidState,
-		DiskInternalStat1:      &fieldDiskInternalStat1,
-		SmartAttributeList:     &fieldSmartAttributeList,
-		DiskOp:                 &fieldDiskOp,
-		Force:                  &fieldForce,
-		ArrayName:              &fieldArrayName,
-		ArrayId:                &fieldArrayId,
-		PartialResponseOk:      &fieldPartialResponseOk,
+		ID:                     "id",
+		IsDfc:                  "is_dfc",
+		Serial:                 "serial",
+		Path:                   "path",
+		ShelfSerial:            "shelf_serial",
+		ShelfLocation:          "shelf_location",
+		ShelfId:                "shelf_id",
+		ShelfLocationId:        "shelf_location_id",
+		VshelfId:               "vshelf_id",
+		Slot:                   "slot",
+		Bank:                   "bank",
+		Model:                  "model",
+		Vendor:                 "vendor",
+		FirmwareVersion:        "firmware_version",
+		Hba:                    "hba",
+		Port:                   "port",
+		Size:                   "size",
+		State:                  "state",
+		Type:                   "type",
+		BlockType:              "block_type",
+		RaidId:                 "raid_id",
+		RaidResyncPercent:      "raid_resync_percent",
+		RaidResyncCurrentSpeed: "raid_resync_current_speed",
+		RaidResyncAverageSpeed: "raid_resync_average_speed",
+		RaidState:              "raid_state",
+		DiskInternalStat1:      "disk_internal_stat1",
+		SmartAttributeList:     "smart_attribute_list",
+		DiskOp:                 "disk_op",
+		Force:                  "force",
+		ArrayName:              "array_name",
+		ArrayId:                "array_id",
+		PartialResponseOk:      "partial_response_ok",
 	}
 }
 
@@ -145,36 +112,36 @@ type Disk struct {
 
 // DiskFieldHandles provides a string representation for each AccessControlRecord field.
 type DiskFieldHandles struct {
-	ID                     *string
-	IsDfc                  *string
-	Serial                 *string
-	Path                   *string
-	ShelfSerial            *string
-	ShelfLocation          *string
-	ShelfId                *string
-	ShelfLocationId        *string
-	VshelfId               *string
-	Slot                   *string
-	Bank                   *string
-	Model                  *string
-	Vendor                 *string
-	FirmwareVersion        *string
-	Hba                    *string
-	Port                   *string
-	Size                   *string
-	State                  *string
-	Type                   *string
-	BlockType              *string
-	RaidId                 *string
-	RaidResyncPercent      *string
-	RaidResyncCurrentSpeed *string
-	RaidResyncAverageSpeed *string
-	RaidState              *string
-	DiskInternalStat1      *string
-	SmartAttributeList     *string
-	DiskOp                 *string
-	Force                  *string
-	ArrayName              *string
-	ArrayId                *string
-	PartialResponseOk      *string
+	ID                     string
+	IsDfc                  string
+	Serial                 string
+	Path                   string
+	ShelfSerial            string
+	ShelfLocation          string
+	ShelfId                string
+	ShelfLocationId        string
+	VshelfId               string
+	Slot                   string
+	Bank                   string
+	Model                  string
+	Vendor                 string
+	FirmwareVersion        string
+	Hba                    string
+	Port                   string
+	Size                   string
+	State                  string
+	Type                   string
+	BlockType              string
+	RaidId                 string
+	RaidResyncPercent      string
+	RaidResyncCurrentSpeed string
+	RaidResyncAverageSpeed string
+	RaidState              string
+	DiskInternalStat1      string
+	SmartAttributeList     string
+	DiskOp                 string
+	Force                  string
+	ArrayName              string
+	ArrayId                string
+	PartialResponseOk      string
 }
