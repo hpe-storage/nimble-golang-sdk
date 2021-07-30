@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsCtrlrHwSensorInfo - Information on a controller hardware sensor.
-
 // Export NsCtrlrHwSensorInfoFields provides field names to use in filter parameters, for example.
-var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfoStringFields
+var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfoFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -15,7 +13,7 @@ func init() {
 	fieldState := "state"
 	fieldCurrentReading := "current_reading"
 
-	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfoStringFields{
+	NsCtrlrHwSensorInfoFields = &NsCtrlrHwSensorInfoFieldHandles{
 		Name:           &fieldName,
 		DisplayName:    &fieldDisplayName,
 		Location:       &fieldLocation,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsCtrlrHwSensorInfo - Information on a controller hardware sensor.
 type NsCtrlrHwSensorInfo struct {
 	// Name - A uniquely identifying name.
 	Name *string `json:"name,omitempty"`
@@ -40,8 +39,8 @@ type NsCtrlrHwSensorInfo struct {
 	CurrentReading *int64 `json:"current_reading,omitempty"`
 }
 
-// Struct for NsCtrlrHwSensorInfoFields
-type NsCtrlrHwSensorInfoStringFields struct {
+// NsCtrlrHwSensorInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsCtrlrHwSensorInfoFieldHandles struct {
 	Name           *string
 	DisplayName    *string
 	Location       *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsISCSISession - ISCSI initiator session information.
-
 // Export NsISCSISessionFields provides field names to use in filter parameters, for example.
-var NsISCSISessionFields *NsISCSISessionStringFields
+var NsISCSISessionFields *NsISCSISessionFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -18,7 +16,7 @@ func init() {
 	fieldHeaderDigestEnabled := "header_digest_enabled"
 	fieldDataDigestEnabled := "data_digest_enabled"
 
-	NsISCSISessionFields = &NsISCSISessionStringFields{
+	NsISCSISessionFields = &NsISCSISessionFieldHandles{
 		ID:                  &fieldID,
 		SessionId:           &fieldSessionId,
 		InitiatorName:       &fieldInitiatorName,
@@ -31,6 +29,7 @@ func init() {
 	}
 }
 
+// NsISCSISession - ISCSI initiator session information.
 type NsISCSISession struct {
 	// ID - Unique identifier of the iSCSI session.
 	ID *string `json:"id,omitempty"`
@@ -52,8 +51,8 @@ type NsISCSISession struct {
 	DataDigestEnabled *bool `json:"data_digest_enabled,omitempty"`
 }
 
-// Struct for NsISCSISessionFields
-type NsISCSISessionStringFields struct {
+// NsISCSISessionFieldHandles provides a string representation for each AccessControlRecord field.
+type NsISCSISessionFieldHandles struct {
 	ID                  *string
 	SessionId           *string
 	InitiatorName       *string

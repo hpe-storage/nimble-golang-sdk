@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsNIC - Network interface controller.
-
 // Export NsNICFields provides field names to use in filter parameters, for example.
-var NsNICFields *NsNICStringFields
+var NsNICFields *NsNICFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -13,7 +11,7 @@ func init() {
 	fieldDataIp := "data_ip"
 	fieldTagged := "tagged"
 
-	NsNICFields = &NsNICStringFields{
+	NsNICFields = &NsNICFieldHandles{
 		Name:        &fieldName,
 		SubnetLabel: &fieldSubnetLabel,
 		DataIp:      &fieldDataIp,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsNIC - Network interface controller.
 type NsNIC struct {
 	// Name - Name of NIC.
 	Name *string `json:"name,omitempty"`
@@ -32,8 +31,8 @@ type NsNIC struct {
 	Tagged *bool `json:"tagged,omitempty"`
 }
 
-// Struct for NsNICFields
-type NsNICStringFields struct {
+// NsNICFieldHandles provides a string representation for each AccessControlRecord field.
+type NsNICFieldHandles struct {
 	Name        *string
 	SubnetLabel *string
 	DataIp      *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsVolFamMigStatus - Data migration status for a group of related volumes.
-
 // Export NsVolFamMigStatusFields provides field names to use in filter parameters, for example.
-var NsVolFamMigStatusFields *NsVolFamMigStatusStringFields
+var NsVolFamMigStatusFields *NsVolFamMigStatusFieldHandles
 
 func init() {
 	fieldRootVolId := "root_vol_id"
@@ -20,7 +18,7 @@ func init() {
 	fieldMoveEstComplTime := "move_est_compl_time"
 	fieldArrayList := "array_list"
 
-	NsVolFamMigStatusFields = &NsVolFamMigStatusStringFields{
+	NsVolFamMigStatusFields = &NsVolFamMigStatusFieldHandles{
 		RootVolId:          &fieldRootVolId,
 		RootVolName:        &fieldRootVolName,
 		SourcePoolId:       &fieldSourcePoolId,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// NsVolFamMigStatus - Data migration status for a group of related volumes.
 type NsVolFamMigStatus struct {
 	// RootVolId - ID of the root volume in the group.
 	RootVolId *string `json:"root_vol_id,omitempty"`
@@ -60,8 +59,8 @@ type NsVolFamMigStatus struct {
 	ArrayList []*NsArrayMigStatus `json:"array_list,omitempty"`
 }
 
-// Struct for NsVolFamMigStatusFields
-type NsVolFamMigStatusStringFields struct {
+// NsVolFamMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolFamMigStatusFieldHandles struct {
 	RootVolId          *string
 	RootVolName        *string
 	SourcePoolId       *string

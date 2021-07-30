@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsAlarmCount - List of alarm count for each category.
-
 // Export NsAlarmCountFields provides field names to use in filter parameters, for example.
-var NsAlarmCountFields *NsAlarmCountStringFields
+var NsAlarmCountFields *NsAlarmCountFieldHandles
 
 func init() {
 	fieldCategory := "category"
 	fieldCritical := "critical"
 	fieldWarning := "warning"
 
-	NsAlarmCountFields = &NsAlarmCountStringFields{
+	NsAlarmCountFields = &NsAlarmCountFieldHandles{
 		Category: &fieldCategory,
 		Critical: &fieldCritical,
 		Warning:  &fieldWarning,
 	}
 }
 
+// NsAlarmCount - List of alarm count for each category.
 type NsAlarmCount struct {
 	// Category - Alert category.
 	Category *NsEventCategory `json:"category,omitempty"`
@@ -28,8 +27,8 @@ type NsAlarmCount struct {
 	Warning *int64 `json:"warning,omitempty"`
 }
 
-// Struct for NsAlarmCountFields
-type NsAlarmCountStringFields struct {
+// NsAlarmCountFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAlarmCountFieldHandles struct {
 	Category *string
 	Critical *string
 	Warning  *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayMigStatus - Data migration status for an array.
-
 // Export NsArrayMigStatusFields provides field names to use in filter parameters, for example.
-var NsArrayMigStatusFields *NsArrayMigStatusStringFields
+var NsArrayMigStatusFields *NsArrayMigStatusFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldIsDataSource := "is_data_source"
 	fieldSpaceUtilization := "space_utilization"
 
-	NsArrayMigStatusFields = &NsArrayMigStatusStringFields{
+	NsArrayMigStatusFields = &NsArrayMigStatusFieldHandles{
 		ID:               &fieldID,
 		Name:             &fieldName,
 		IsDataSource:     &fieldIsDataSource,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsArrayMigStatus - Data migration status for an array.
 type NsArrayMigStatus struct {
 	// ID - Unique identifier of the array.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type NsArrayMigStatus struct {
 	SpaceUtilization *int64 `json:"space_utilization,omitempty"`
 }
 
-// Struct for NsArrayMigStatusFields
-type NsArrayMigStatusStringFields struct {
+// NsArrayMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayMigStatusFieldHandles struct {
 	ID               *string
 	Name             *string
 	IsDataSource     *string

@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsTargetSubnet - List of subnet labels.
-
 // Export NsTargetSubnetFields provides field names to use in filter parameters, for example.
-var NsTargetSubnetFields *NsTargetSubnetStringFields
+var NsTargetSubnetFields *NsTargetSubnetFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldLabel := "label"
 
-	NsTargetSubnetFields = &NsTargetSubnetStringFields{
+	NsTargetSubnetFields = &NsTargetSubnetFieldHandles{
 		ID:    &fieldID,
 		Label: &fieldLabel,
 	}
 }
 
+// NsTargetSubnet - List of subnet labels.
 type NsTargetSubnet struct {
 	// ID - Subnet ID.
 	ID *string `json:"id,omitempty"`
@@ -24,8 +23,8 @@ type NsTargetSubnet struct {
 	Label *string `json:"label,omitempty"`
 }
 
-// Struct for NsTargetSubnetFields
-type NsTargetSubnetStringFields struct {
+// NsTargetSubnetFieldHandles provides a string representation for each AccessControlRecord field.
+type NsTargetSubnetFieldHandles struct {
 	ID    *string
 	Label *string
 }

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Autosupport - Get status of autosupport.
-
 // Export AutosupportFields provides field names to use in filter parameters, for example.
-var AutosupportFields *AutosupportStringFields
+var AutosupportFields *AutosupportFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -14,7 +12,7 @@ func init() {
 	fieldGroupId := "group_id"
 	fieldGroupName := "group_name"
 
-	AutosupportFields = &AutosupportStringFields{
+	AutosupportFields = &AutosupportFieldHandles{
 		ID:         &fieldID,
 		ArrayList:  &fieldArrayList,
 		ArrayCount: &fieldArrayCount,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// Autosupport - Get status of autosupport.
 type Autosupport struct {
 	// ID - Identifier of the autosupport.
 	ID *string `json:"id,omitempty"`
@@ -36,8 +35,8 @@ type Autosupport struct {
 	GroupName *string `json:"group_name,omitempty"`
 }
 
-// Struct for AutosupportFields
-type AutosupportStringFields struct {
+// AutosupportFieldHandles provides a string representation for each AccessControlRecord field.
+type AutosupportFieldHandles struct {
 	ID         *string
 	ArrayList  *string
 	ArrayCount *string

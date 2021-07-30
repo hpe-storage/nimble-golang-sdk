@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFcFabricInfo - Fibre Channel fabric information.
-
 // Export NsFcFabricInfoFields provides field names to use in filter parameters, for example.
-var NsFcFabricInfoFields *NsFcFabricInfoStringFields
+var NsFcFabricInfoFields *NsFcFabricInfoFieldHandles
 
 func init() {
 	fieldFabricSwitchName := "fabric_switch_name"
@@ -16,7 +14,7 @@ func init() {
 	fieldFcId := "fc_id"
 	fieldLoggedIn := "logged_in"
 
-	NsFcFabricInfoFields = &NsFcFabricInfoStringFields{
+	NsFcFabricInfoFields = &NsFcFabricInfoFieldHandles{
 		FabricSwitchName: &fieldFabricSwitchName,
 		FabricSwitchPort: &fieldFabricSwitchPort,
 		FabricSwitchWwnn: &fieldFabricSwitchWwnn,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsFcFabricInfo - Fibre Channel fabric information.
 type NsFcFabricInfo struct {
 	// FabricSwitchName - Name of the Fibre Channel switch.
 	FabricSwitchName *string `json:"fabric_switch_name,omitempty"`
@@ -44,8 +43,8 @@ type NsFcFabricInfo struct {
 	LoggedIn *bool `json:"logged_in,omitempty"`
 }
 
-// Struct for NsFcFabricInfoFields
-type NsFcFabricInfoStringFields struct {
+// NsFcFabricInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcFabricInfoFieldHandles struct {
 	FabricSwitchName *string
 	FabricSwitchPort *string
 	FabricSwitchWwnn *string

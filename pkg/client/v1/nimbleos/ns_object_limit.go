@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsObjectLimit - Limits (Max total number of objects) for object of a given type.
-
 // Export NsObjectLimitFields provides field names to use in filter parameters, for example.
-var NsObjectLimitFields *NsObjectLimitStringFields
+var NsObjectLimitFields *NsObjectLimitFieldHandles
 
 func init() {
 	fieldObjType := "obj_type"
 	fieldObjLimit := "obj_limit"
 	fieldObjNum := "obj_num"
 
-	NsObjectLimitFields = &NsObjectLimitStringFields{
+	NsObjectLimitFields = &NsObjectLimitFieldHandles{
 		ObjType:  &fieldObjType,
 		ObjLimit: &fieldObjLimit,
 		ObjNum:   &fieldObjNum,
 	}
 }
 
+// NsObjectLimit - Limits (Max total number of objects) for object of a given type.
 type NsObjectLimit struct {
 	// ObjType - Type of the object.
 	ObjType *NsObjectType `json:"obj_type,omitempty"`
@@ -28,8 +27,8 @@ type NsObjectLimit struct {
 	ObjNum *int64 `json:"obj_num,omitempty"`
 }
 
-// Struct for NsObjectLimitFields
-type NsObjectLimitStringFields struct {
+// NsObjectLimitFieldHandles provides a string representation for each AccessControlRecord field.
+type NsObjectLimitFieldHandles struct {
 	ObjType  *string
 	ObjLimit *string
 	ObjNum   *string

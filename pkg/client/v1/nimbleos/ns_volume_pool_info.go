@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsVolumePoolInfo - Volume information along with the pool to which it belongs to.
-
 // Export NsVolumePoolInfoFields provides field names to use in filter parameters, for example.
-var NsVolumePoolInfoFields *NsVolumePoolInfoStringFields
+var NsVolumePoolInfoFields *NsVolumePoolInfoFieldHandles
 
 func init() {
 	fieldVolId := "vol_id"
@@ -13,7 +11,7 @@ func init() {
 	fieldPoolId := "pool_id"
 	fieldPoolName := "pool_name"
 
-	NsVolumePoolInfoFields = &NsVolumePoolInfoStringFields{
+	NsVolumePoolInfoFields = &NsVolumePoolInfoFieldHandles{
 		VolId:    &fieldVolId,
 		VolName:  &fieldVolName,
 		PoolId:   &fieldPoolId,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsVolumePoolInfo - Volume information along with the pool to which it belongs to.
 type NsVolumePoolInfo struct {
 	// VolId - ID of the volume.
 	VolId *string `json:"vol_id,omitempty"`
@@ -32,8 +31,8 @@ type NsVolumePoolInfo struct {
 	PoolName *string `json:"pool_name,omitempty"`
 }
 
-// Struct for NsVolumePoolInfoFields
-type NsVolumePoolInfoStringFields struct {
+// NsVolumePoolInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolumePoolInfoFieldHandles struct {
 	VolId    *string
 	VolName  *string
 	PoolId   *string

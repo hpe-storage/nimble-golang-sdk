@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsSnapLunInfo - Snapshot LUN information as presented in the access_control_records object set. This information is only available for Fibre Channel.
-
 // Export NsSnapLunInfoFields provides field names to use in filter parameters, for example.
-var NsSnapLunInfoFields *NsSnapLunInfoStringFields
+var NsSnapLunInfoFields *NsSnapLunInfoFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldName := "name"
 	fieldLun := "lun"
 
-	NsSnapLunInfoFields = &NsSnapLunInfoStringFields{
+	NsSnapLunInfoFields = &NsSnapLunInfoFieldHandles{
 		ID:   &fieldID,
 		Name: &fieldName,
 		Lun:  &fieldLun,
 	}
 }
 
+// NsSnapLunInfo - Snapshot LUN information as presented in the access_control_records object set. This information is only available for Fibre Channel.
 type NsSnapLunInfo struct {
 	// ID - Snapshot ID.
 	ID *string `json:"id,omitempty"`
@@ -28,8 +27,8 @@ type NsSnapLunInfo struct {
 	Lun *int64 `json:"lun,omitempty"`
 }
 
-// Struct for NsSnapLunInfoFields
-type NsSnapLunInfoStringFields struct {
+// NsSnapLunInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSnapLunInfoFieldHandles struct {
 	ID   *string
 	Name *string
 	Lun  *string

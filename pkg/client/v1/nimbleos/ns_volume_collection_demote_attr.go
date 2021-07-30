@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsVolumeCollectionDemoteAttr - Arguments to demote a volume collection.
-
 // Export NsVolumeCollectionDemoteAttrFields provides field names to use in filter parameters, for example.
-var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttrStringFields
+var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttrFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldReplicationPartnerId := "replication_partner_id"
 
-	NsVolumeCollectionDemoteAttrFields = &NsVolumeCollectionDemoteAttrStringFields{
+	NsVolumeCollectionDemoteAttrFields = &NsVolumeCollectionDemoteAttrFieldHandles{
 		ID:                   &fieldID,
 		ReplicationPartnerId: &fieldReplicationPartnerId,
 	}
 }
 
+// NsVolumeCollectionDemoteAttr - Arguments to demote a volume collection.
 type NsVolumeCollectionDemoteAttr struct {
 	// ID - ID of the demoted volume collection.
 	ID *string `json:"id,omitempty"`
@@ -24,8 +23,8 @@ type NsVolumeCollectionDemoteAttr struct {
 	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
 }
 
-// Struct for NsVolumeCollectionDemoteAttrFields
-type NsVolumeCollectionDemoteAttrStringFields struct {
+// NsVolumeCollectionDemoteAttrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolumeCollectionDemoteAttrFieldHandles struct {
 	ID                   *string
 	ReplicationPartnerId *string
 }

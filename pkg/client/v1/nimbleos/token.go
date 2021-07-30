@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Token - Manage user's session information.
-
 // Export TokenFields provides field names to use in filter parameters, for example.
-var TokenFields *TokenStringFields
+var TokenFields *TokenFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -23,7 +21,7 @@ func init() {
 	fieldGrantType := "grant_type"
 	fieldAssertion := "assertion"
 
-	TokenFields = &TokenStringFields{
+	TokenFields = &TokenFieldHandles{
 		ID:           &fieldID,
 		SessionToken: &fieldSessionToken,
 		Username:     &fieldUsername,
@@ -41,6 +39,7 @@ func init() {
 	}
 }
 
+// Token - Manage user's session information.
 type Token struct {
 	// ID - Object identifier for the session token.
 	ID *string `json:"id,omitempty"`
@@ -72,8 +71,8 @@ type Token struct {
 	Assertion *string `json:"assertion,omitempty"`
 }
 
-// Struct for TokenFields
-type TokenStringFields struct {
+// TokenFieldHandles provides a string representation for each AccessControlRecord field.
+type TokenFieldHandles struct {
 	ID           *string
 	SessionToken *string
 	Username     *string

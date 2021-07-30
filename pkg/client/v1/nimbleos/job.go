@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Job - Jobs are operations in progress in the system.
-
 // Export JobFields provides field names to use in filter parameters, for example.
-var JobFields *JobStringFields
+var JobFields *JobFieldHandles
 
 func init() {
 	fieldCompletionTime := "completion_time"
@@ -27,7 +25,7 @@ func init() {
 	fieldResult := "result"
 	fieldTotalPhases := "total_phases"
 
-	JobFields = &JobStringFields{
+	JobFields = &JobFieldHandles{
 		CompletionTime:          &fieldCompletionTime,
 		CreationTime:            &fieldCreationTime,
 		CurrentPhase:            &fieldCurrentPhase,
@@ -49,6 +47,7 @@ func init() {
 	}
 }
 
+// Job - Jobs are operations in progress in the system.
 type Job struct {
 	// CompletionTime - Completion time of the job.
 	CompletionTime *int64 `json:"completion_time,omitempty"`
@@ -88,8 +87,8 @@ type Job struct {
 	TotalPhases *int64 `json:"total_phases,omitempty"`
 }
 
-// Struct for JobFields
-type JobStringFields struct {
+// JobFieldHandles provides a string representation for each AccessControlRecord field.
+type JobFieldHandles struct {
 	CompletionTime          *string
 	CreationTime            *string
 	CurrentPhase            *string

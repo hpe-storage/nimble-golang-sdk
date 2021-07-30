@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Witness - Manage witness host configuration.
-
 // Export WitnessFields provides field names to use in filter parameters, for example.
-var WitnessFields *WitnessStringFields
+var WitnessFields *WitnessFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -16,7 +14,7 @@ func init() {
 	fieldSecureMode := "secure_mode"
 	fieldAutoSwitchoverMessages := "auto_switchover_messages"
 
-	WitnessFields = &WitnessStringFields{
+	WitnessFields = &WitnessFieldHandles{
 		ID:                     &fieldID,
 		Username:               &fieldUsername,
 		Password:               &fieldPassword,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// Witness - Manage witness host configuration.
 type Witness struct {
 	// ID - Identifier of the witness configuration.
 	ID *string `json:"id,omitempty"`
@@ -44,8 +43,8 @@ type Witness struct {
 	AutoSwitchoverMessages []*NsErrorWithArguments `json:"auto_switchover_messages,omitempty"`
 }
 
-// Struct for WitnessFields
-type WitnessStringFields struct {
+// WitnessFieldHandles provides a string representation for each AccessControlRecord field.
+type WitnessFieldHandles struct {
 	ID                     *string
 	Username               *string
 	Password               *string

@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsChksumReturn - Return computed checksum.
-
 // Export NsChksumReturnFields provides field names to use in filter parameters, for example.
-var NsChksumReturnFields *NsChksumReturnStringFields
+var NsChksumReturnFields *NsChksumReturnFieldHandles
 
 func init() {
 	fieldCksum := "cksum"
 
-	NsChksumReturnFields = &NsChksumReturnStringFields{
+	NsChksumReturnFields = &NsChksumReturnFieldHandles{
 		Cksum: &fieldCksum,
 	}
 }
 
+// NsChksumReturn - Return computed checksum.
 type NsChksumReturn struct {
 	// Cksum - Computed checksum.
 	Cksum *string `json:"cksum,omitempty"`
 }
 
-// Struct for NsChksumReturnFields
-type NsChksumReturnStringFields struct {
+// NsChksumReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsChksumReturnFieldHandles struct {
 	Cksum *string
 }

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NetworkInterface - Manage per array network interface configuration.
-
 // Export NetworkInterfaceFields provides field names to use in filter parameters, for example.
-var NetworkInterfaceFields *NetworkInterfaceStringFields
+var NetworkInterfaceFields *NetworkInterfaceFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -26,7 +24,7 @@ func init() {
 	fieldNicType := "nic_type"
 	fieldIpList := "ip_list"
 
-	NetworkInterfaceFields = &NetworkInterfaceStringFields{
+	NetworkInterfaceFields = &NetworkInterfaceFieldHandles{
 		ID:                &fieldID,
 		ArrayNameOrSerial: &fieldArrayNameOrSerial,
 		PartialResponseOk: &fieldPartialResponseOk,
@@ -47,6 +45,7 @@ func init() {
 	}
 }
 
+// NetworkInterface - Manage per array network interface configuration.
 type NetworkInterface struct {
 	// ID - Identifier for the interface.
 	ID *string `json:"id,omitempty"`
@@ -84,8 +83,8 @@ type NetworkInterface struct {
 	IpList []*NsAssignedIP `json:"ip_list,omitempty"`
 }
 
-// Struct for NetworkInterfaceFields
-type NetworkInterfaceStringFields struct {
+// NetworkInterfaceFieldHandles provides a string representation for each AccessControlRecord field.
+type NetworkInterfaceFieldHandles struct {
 	ID                *string
 	ArrayNameOrSerial *string
 	PartialResponseOk *string

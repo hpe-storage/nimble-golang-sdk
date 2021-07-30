@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayDetail - Detailed array information.
-
 // Export NsArrayDetailFields provides field names to use in filter parameters, for example.
-var NsArrayDetailFields *NsArrayDetailStringFields
+var NsArrayDetailFields *NsArrayDetailFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -21,7 +19,7 @@ func init() {
 	fieldUsageValid := "usage_valid"
 	fieldMigrate := "migrate"
 
-	NsArrayDetailFields = &NsArrayDetailStringFields{
+	NsArrayDetailFields = &NsArrayDetailFieldHandles{
 		ID:                       &fieldID,
 		ArrayId:                  &fieldArrayId,
 		Name:                     &fieldName,
@@ -37,6 +35,7 @@ func init() {
 	}
 }
 
+// NsArrayDetail - Detailed array information.
 type NsArrayDetail struct {
 	// ID - Array API ID.
 	ID *string `json:"id,omitempty"`
@@ -64,8 +63,8 @@ type NsArrayDetail struct {
 	Migrate *NsPoolMigrate `json:"migrate,omitempty"`
 }
 
-// Struct for NsArrayDetailFields
-type NsArrayDetailStringFields struct {
+// NsArrayDetailFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayDetailFieldHandles struct {
 	ID                       *string
 	ArrayId                  *string
 	Name                     *string

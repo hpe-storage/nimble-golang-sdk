@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// HcClusterConfig - Configuration information for virtual appliance that provides highly available storage and compute.
-
 // Export HcClusterConfigFields provides field names to use in filter parameters, for example.
-var HcClusterConfigFields *HcClusterConfigStringFields
+var HcClusterConfigFields *HcClusterConfigFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -19,7 +17,7 @@ func init() {
 	fieldCreationTime := "creation_time"
 	fieldLastModified := "last_modified"
 
-	HcClusterConfigFields = &HcClusterConfigStringFields{
+	HcClusterConfigFields = &HcClusterConfigFieldHandles{
 		ID:           &fieldID,
 		UniqueId:     &fieldUniqueId,
 		Name:         &fieldName,
@@ -33,6 +31,7 @@ func init() {
 	}
 }
 
+// HcClusterConfig - Configuration information for virtual appliance that provides highly available storage and compute.
 type HcClusterConfig struct {
 	// ID - Identifier for the hc cluster config.
 	ID *string `json:"id,omitempty"`
@@ -56,8 +55,8 @@ type HcClusterConfig struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 }
 
-// Struct for HcClusterConfigFields
-type HcClusterConfigStringFields struct {
+// HcClusterConfigFieldHandles provides a string representation for each AccessControlRecord field.
+type HcClusterConfigFieldHandles struct {
 	ID           *string
 	UniqueId     *string
 	Name         *string

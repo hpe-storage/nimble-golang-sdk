@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsDiscoveredGroupListReturn - Detailed discovered group information.
-
 // Export NsDiscoveredGroupListReturnFields provides field names to use in filter parameters, for example.
-var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturnStringFields
+var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturnFieldHandles
 
 func init() {
 	fieldDiscoveredGroupList := "discovered_group_list"
 
-	NsDiscoveredGroupListReturnFields = &NsDiscoveredGroupListReturnStringFields{
+	NsDiscoveredGroupListReturnFields = &NsDiscoveredGroupListReturnFieldHandles{
 		DiscoveredGroupList: &fieldDiscoveredGroupList,
 	}
 }
 
+// NsDiscoveredGroupListReturn - Detailed discovered group information.
 type NsDiscoveredGroupListReturn struct {
 	// DiscoveredGroupList - List of discovered group details.
 	DiscoveredGroupList []*NsDiscoveredGroupInfo `json:"discovered_group_list,omitempty"`
 }
 
-// Struct for NsDiscoveredGroupListReturnFields
-type NsDiscoveredGroupListReturnStringFields struct {
+// NsDiscoveredGroupListReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsDiscoveredGroupListReturnFieldHandles struct {
 	DiscoveredGroupList *string
 }

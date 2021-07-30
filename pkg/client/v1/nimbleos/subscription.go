@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Subscription - Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
-
 // Export SubscriptionFields provides field names to use in filter parameters, for example.
-var SubscriptionFields *SubscriptionStringFields
+var SubscriptionFields *SubscriptionFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -17,7 +15,7 @@ func init() {
 	fieldEventTargetType := "event_target_type"
 	fieldEventSeverity := "event_severity"
 
-	SubscriptionFields = &SubscriptionStringFields{
+	SubscriptionFields = &SubscriptionFieldHandles{
 		ID:               &fieldID,
 		SubscriberId:     &fieldSubscriberId,
 		NotificationType: &fieldNotificationType,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// Subscription - Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
 type Subscription struct {
 	// ID - Identifier for subscription.
 	ID *string `json:"id,omitempty"`
@@ -48,8 +47,8 @@ type Subscription struct {
 	EventSeverity *NsSeverityLevel `json:"event_severity,omitempty"`
 }
 
-// Struct for SubscriptionFields
-type SubscriptionStringFields struct {
+// SubscriptionFieldHandles provides a string representation for each AccessControlRecord field.
+type SubscriptionFieldHandles struct {
 	ID               *string
 	SubscriberId     *string
 	NotificationType *string

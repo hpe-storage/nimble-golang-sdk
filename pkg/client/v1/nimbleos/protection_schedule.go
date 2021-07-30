@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ProtectionSchedule - Manage protection schedules used in protection templates.
-
 // Export ProtectionScheduleFields provides field names to use in filter parameters, for example.
-var ProtectionScheduleFields *ProtectionScheduleStringFields
+var ProtectionScheduleFields *ProtectionScheduleFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -50,7 +48,7 @@ func init() {
 	fieldSyncReplVolStatusList := "sync_repl_vol_status_list"
 	fieldUseDownstreamForDr := "use_downstream_for_dr"
 
-	ProtectionScheduleFields = &ProtectionScheduleStringFields{
+	ProtectionScheduleFields = &ProtectionScheduleFieldHandles{
 		ID:                               &fieldID,
 		Name:                             &fieldName,
 		Description:                      &fieldDescription,
@@ -95,6 +93,7 @@ func init() {
 	}
 }
 
+// ProtectionSchedule - Manage protection schedules used in protection templates.
 type ProtectionSchedule struct {
 	// ID - Identifier for protection schedule.
 	ID *string `json:"id,omitempty"`
@@ -180,8 +179,8 @@ type ProtectionSchedule struct {
 	UseDownstreamForDr *bool `json:"use_downstream_for_dr,omitempty"`
 }
 
-// Struct for ProtectionScheduleFields
-type ProtectionScheduleStringFields struct {
+// ProtectionScheduleFieldHandles provides a string representation for each AccessControlRecord field.
+type ProtectionScheduleFieldHandles struct {
 	ID                               *string
 	Name                             *string
 	Description                      *string

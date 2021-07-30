@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsBulkVolSettingReturn - Return codes for setting an attribute to a list of items.
-
 // Export NsBulkVolSettingReturnFields provides field names to use in filter parameters, for example.
-var NsBulkVolSettingReturnFields *NsBulkVolSettingReturnStringFields
+var NsBulkVolSettingReturnFields *NsBulkVolSettingReturnFieldHandles
 
 func init() {
 	fieldErrorCodes := "error_codes"
 
-	NsBulkVolSettingReturnFields = &NsBulkVolSettingReturnStringFields{
+	NsBulkVolSettingReturnFields = &NsBulkVolSettingReturnFieldHandles{
 		ErrorCodes: &fieldErrorCodes,
 	}
 }
 
+// NsBulkVolSettingReturn - Return codes for setting an attribute to a list of items.
 type NsBulkVolSettingReturn struct {
 	// ErrorCodes - Error codes for every element in a list of items.
 	ErrorCodes []*string `json:"error_codes,omitempty"`
 }
 
-// Struct for NsBulkVolSettingReturnFields
-type NsBulkVolSettingReturnStringFields struct {
+// NsBulkVolSettingReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsBulkVolSettingReturnFieldHandles struct {
 	ErrorCodes *string
 }

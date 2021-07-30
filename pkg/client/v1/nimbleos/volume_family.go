@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// VolumeFamily - A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
-
 // Export VolumeFamilyFields provides field names to use in filter parameters, for example.
-var VolumeFamilyFields *VolumeFamilyStringFields
+var VolumeFamilyFields *VolumeFamilyFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -17,7 +15,7 @@ func init() {
 	fieldVolUsageCompressedBytes := "vol_usage_compressed_bytes"
 	fieldSnapUsageCompressedBytes := "snap_usage_compressed_bytes"
 
-	VolumeFamilyFields = &VolumeFamilyStringFields{
+	VolumeFamilyFields = &VolumeFamilyFieldHandles{
 		ID:                       &fieldID,
 		PoolId:                   &fieldPoolId,
 		PoolName:                 &fieldPoolName,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// VolumeFamily - A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
 type VolumeFamily struct {
 	// ID - Identifier for the volume family.
 	ID *string `json:"id,omitempty"`
@@ -48,8 +47,8 @@ type VolumeFamily struct {
 	SnapUsageCompressedBytes *int64 `json:"snap_usage_compressed_bytes,omitempty"`
 }
 
-// Struct for VolumeFamilyFields
-type VolumeFamilyStringFields struct {
+// VolumeFamilyFieldHandles provides a string representation for each AccessControlRecord field.
+type VolumeFamilyFieldHandles struct {
 	ID                       *string
 	PoolId                   *string
 	PoolName                 *string

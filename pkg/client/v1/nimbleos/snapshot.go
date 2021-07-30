@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Snapshot - Snapshots are point-in-time copies of a volume. Snapshots are managed the same way you manage volumes. In reality, snapshots are volumes: they can be accessed by initiators, are subject to the same controls, can be modified, and have the same restrictions as volumes. Snapshots can be cloned and replicated. The initial snapshot uses no space: it shares the original data with the source volume. Each successive snapshot captures the changes that have occurred on the volume. The changed blocks are compressed.
-
 // Export SnapshotFields provides field names to use in filter parameters, for example.
-var SnapshotFields *SnapshotStringFields
+var SnapshotFields *SnapshotFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -45,7 +43,7 @@ func init() {
 	fieldVpdIeee1 := "vpd_ieee1"
 	fieldForce := "force"
 
-	SnapshotFields = &SnapshotStringFields{
+	SnapshotFields = &SnapshotFieldHandles{
 		ID:                       &fieldID,
 		Name:                     &fieldName,
 		Description:              &fieldDescription,
@@ -85,6 +83,7 @@ func init() {
 	}
 }
 
+// Snapshot - Snapshots are point-in-time copies of a volume. Snapshots are managed the same way you manage volumes. In reality, snapshots are volumes: they can be accessed by initiators, are subject to the same controls, can be modified, and have the same restrictions as volumes. Snapshots can be cloned and replicated. The initial snapshot uses no space: it shares the original data with the source volume. Each successive snapshot captures the changes that have occurred on the volume. The changed blocks are compressed.
 type Snapshot struct {
 	// ID - Identifier for the snapshot.
 	ID *string `json:"id,omitempty"`
@@ -160,8 +159,8 @@ type Snapshot struct {
 	Force *bool `json:"force,omitempty"`
 }
 
-// Struct for SnapshotFields
-type SnapshotStringFields struct {
+// SnapshotFieldHandles provides a string representation for each AccessControlRecord field.
+type SnapshotFieldHandles struct {
 	ID                       *string
 	Name                     *string
 	Description              *string

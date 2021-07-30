@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// UserGroup - Represents Active Directory groups configured to manage the system.
-
 // Export UserGroupFields provides field names to use in filter parameters, for example.
-var UserGroupFields *UserGroupStringFields
+var UserGroupFields *UserGroupFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -21,7 +19,7 @@ func init() {
 	fieldDomainId := "domain_id"
 	fieldDomainName := "domain_name"
 
-	UserGroupFields = &UserGroupStringFields{
+	UserGroupFields = &UserGroupFieldHandles{
 		ID:                &fieldID,
 		Name:              &fieldName,
 		Description:       &fieldDescription,
@@ -37,6 +35,7 @@ func init() {
 	}
 }
 
+// UserGroup - Represents Active Directory groups configured to manage the system.
 type UserGroup struct {
 	// ID - Identifier for the user group.
 	ID *string `json:"id,omitempty"`
@@ -64,8 +63,8 @@ type UserGroup struct {
 	DomainName *string `json:"domain_name,omitempty"`
 }
 
-// Struct for UserGroupFields
-type UserGroupStringFields struct {
+// UserGroupFieldHandles provides a string representation for each AccessControlRecord field.
+type UserGroupFieldHandles struct {
 	ID                *string
 	Name              *string
 	Description       *string

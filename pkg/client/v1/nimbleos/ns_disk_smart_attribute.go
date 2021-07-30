@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsDiskSmartAttribute - One Smart attribute of a disk.
-
 // Export NsDiskSmartAttributeFields provides field names to use in filter parameters, for example.
-var NsDiskSmartAttributeFields *NsDiskSmartAttributeStringFields
+var NsDiskSmartAttributeFields *NsDiskSmartAttributeFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -17,7 +15,7 @@ func init() {
 	fieldRawValue := "raw_value"
 	fieldLastUpdatedEpochSecs := "last_updated_epoch_secs"
 
-	NsDiskSmartAttributeFields = &NsDiskSmartAttributeStringFields{
+	NsDiskSmartAttributeFields = &NsDiskSmartAttributeFieldHandles{
 		Name:                 &fieldName,
 		SmartId:              &fieldSmartId,
 		CurValue:             &fieldCurValue,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// NsDiskSmartAttribute - One Smart attribute of a disk.
 type NsDiskSmartAttribute struct {
 	// Name - Name of the Smart attribute.
 	Name *string `json:"name,omitempty"`
@@ -48,8 +47,8 @@ type NsDiskSmartAttribute struct {
 	LastUpdatedEpochSecs *int64 `json:"last_updated_epoch_secs,omitempty"`
 }
 
-// Struct for NsDiskSmartAttributeFields
-type NsDiskSmartAttributeStringFields struct {
+// NsDiskSmartAttributeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsDiskSmartAttributeFieldHandles struct {
 	Name                 *string
 	SmartId              *string
 	CurValue             *string

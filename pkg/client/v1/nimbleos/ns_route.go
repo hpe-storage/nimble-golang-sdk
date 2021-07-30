@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsRoute - Route configuration.
-
 // Export NsRouteFields provides field names to use in filter parameters, for example.
-var NsRouteFields *NsRouteStringFields
+var NsRouteFields *NsRouteFieldHandles
 
 func init() {
 	fieldTgtNetwork := "tgt_network"
 	fieldTgtNetmask := "tgt_netmask"
 	fieldGateway := "gateway"
 
-	NsRouteFields = &NsRouteStringFields{
+	NsRouteFields = &NsRouteFieldHandles{
 		TgtNetwork: &fieldTgtNetwork,
 		TgtNetmask: &fieldTgtNetmask,
 		Gateway:    &fieldGateway,
 	}
 }
 
+// NsRoute - Route configuration.
 type NsRoute struct {
 	// TgtNetwork - Target network address.
 	TgtNetwork *string `json:"tgt_network,omitempty"`
@@ -28,8 +27,8 @@ type NsRoute struct {
 	Gateway *string `json:"gateway,omitempty"`
 }
 
-// Struct for NsRouteFields
-type NsRouteStringFields struct {
+// NsRouteFieldHandles provides a string representation for each AccessControlRecord field.
+type NsRouteFieldHandles struct {
 	TgtNetwork *string
 	TgtNetmask *string
 	Gateway    *string

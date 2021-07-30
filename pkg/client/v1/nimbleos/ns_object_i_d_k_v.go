@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsObjectIDKV - A key value pair containing an object ID as a value.
-
 // Export NsObjectIDKVFields provides field names to use in filter parameters, for example.
-var NsObjectIDKVFields *NsObjectIDKVStringFields
+var NsObjectIDKVFields *NsObjectIDKVFieldHandles
 
 func init() {
 	fieldKey := "key"
 	fieldID := "id"
 
-	NsObjectIDKVFields = &NsObjectIDKVStringFields{
+	NsObjectIDKVFields = &NsObjectIDKVFieldHandles{
 		Key: &fieldKey,
 		ID:  &fieldID,
 	}
 }
 
+// NsObjectIDKV - A key value pair containing an object ID as a value.
 type NsObjectIDKV struct {
 	// Key - Identifier of key-value pair.
 	Key *string `json:"key,omitempty"`
@@ -24,8 +23,8 @@ type NsObjectIDKV struct {
 	ID *string `json:"id,omitempty"`
 }
 
-// Struct for NsObjectIDKVFields
-type NsObjectIDKVStringFields struct {
+// NsObjectIDKVFieldHandles provides a string representation for each AccessControlRecord field.
+type NsObjectIDKVFieldHandles struct {
 	Key *string
 	ID  *string
 }

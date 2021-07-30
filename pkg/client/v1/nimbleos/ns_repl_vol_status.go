@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsReplVolStatus - The replication status of a volume undergoing replication.
-
 // Export NsReplVolStatusFields provides field names to use in filter parameters, for example.
-var NsReplVolStatusFields *NsReplVolStatusStringFields
+var NsReplVolStatusFields *NsReplVolStatusFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -15,7 +13,7 @@ func init() {
 	fieldReplBytesDone := "repl_bytes_done"
 	fieldReplBytesTotal := "repl_bytes_total"
 
-	NsReplVolStatusFields = &NsReplVolStatusStringFields{
+	NsReplVolStatusFields = &NsReplVolStatusFieldHandles{
 		Name:           &fieldName,
 		SnapName:       &fieldSnapName,
 		Status:         &fieldStatus,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsReplVolStatus - The replication status of a volume undergoing replication.
 type NsReplVolStatus struct {
 	// Name - Name of the volume being replicated.
 	Name *string `json:"name,omitempty"`
@@ -40,8 +39,8 @@ type NsReplVolStatus struct {
 	ReplBytesTotal *int64 `json:"repl_bytes_total,omitempty"`
 }
 
-// Struct for NsReplVolStatusFields
-type NsReplVolStatusStringFields struct {
+// NsReplVolStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsReplVolStatusFieldHandles struct {
 	Name           *string
 	SnapName       *string
 	Status         *string

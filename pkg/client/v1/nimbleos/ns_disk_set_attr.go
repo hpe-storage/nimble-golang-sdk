@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsDiskSetAttr - A shelf logical attributes.
-
 // Export NsDiskSetAttrFields provides field names to use in filter parameters, for example.
-var NsDiskSetAttrFields *NsDiskSetAttrStringFields
+var NsDiskSetAttrFields *NsDiskSetAttrFieldHandles
 
 func init() {
 	fieldDriveset := "driveset"
@@ -22,7 +20,7 @@ func init() {
 	fieldPctCompletion := "pct_completion"
 	fieldPauseState := "pause_state"
 
-	NsDiskSetAttrFields = &NsDiskSetAttrStringFields{
+	NsDiskSetAttrFields = &NsDiskSetAttrFieldHandles{
 		Driveset:            &fieldDriveset,
 		SwState:             &fieldSwState,
 		IsFlashShelf:        &fieldIsFlashShelf,
@@ -39,6 +37,7 @@ func init() {
 	}
 }
 
+// NsDiskSetAttr - A shelf logical attributes.
 type NsDiskSetAttr struct {
 	// Driveset - Driveset index for this shelf.
 	Driveset *int64 `json:"driveset,omitempty"`
@@ -68,8 +67,8 @@ type NsDiskSetAttr struct {
 	PauseState *int64 `json:"pause_state,omitempty"`
 }
 
-// Struct for NsDiskSetAttrFields
-type NsDiskSetAttrStringFields struct {
+// NsDiskSetAttrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsDiskSetAttrFieldHandles struct {
 	Driveset            *string
 	SwState             *string
 	IsFlashShelf        *string

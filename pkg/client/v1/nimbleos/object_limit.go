@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ObjectLimit - List the maximum limits and warning thresholds for number of objects in the storage group.
-
 // Export ObjectLimitFields provides field names to use in filter parameters, for example.
-var ObjectLimitFields *ObjectLimitStringFields
+var ObjectLimitFields *ObjectLimitFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -17,7 +15,7 @@ func init() {
 	fieldMaxLimit := "max_limit"
 	fieldObjectCounts := "object_counts"
 
-	ObjectLimitFields = &ObjectLimitStringFields{
+	ObjectLimitFields = &ObjectLimitFieldHandles{
 		ID:               &fieldID,
 		ObjectType:       &fieldObjectType,
 		ObjectTypeName:   &fieldObjectTypeName,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// ObjectLimit - List the maximum limits and warning thresholds for number of objects in the storage group.
 type ObjectLimit struct {
 	// ID - Identifier for the object limit.
 	ID *string `json:"id,omitempty"`
@@ -48,8 +47,8 @@ type ObjectLimit struct {
 	ObjectCounts []*NsObjectCount `json:"object_counts,omitempty"`
 }
 
-// Struct for ObjectLimitFields
-type ObjectLimitStringFields struct {
+// ObjectLimitFieldHandles provides a string representation for each AccessControlRecord field.
+type ObjectLimitFieldHandles struct {
 	ID               *string
 	ObjectType       *string
 	ObjectTypeName   *string

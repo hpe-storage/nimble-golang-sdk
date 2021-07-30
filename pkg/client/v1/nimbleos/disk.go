@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Disk - Disks are used for storing user data.
-
 // Export DiskFields provides field names to use in filter parameters, for example.
-var DiskFields *DiskStringFields
+var DiskFields *DiskFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -41,7 +39,7 @@ func init() {
 	fieldArrayId := "array_id"
 	fieldPartialResponseOk := "partial_response_ok"
 
-	DiskFields = &DiskStringFields{
+	DiskFields = &DiskFieldHandles{
 		ID:                     &fieldID,
 		IsDfc:                  &fieldIsDfc,
 		Serial:                 &fieldSerial,
@@ -77,6 +75,7 @@ func init() {
 	}
 }
 
+// Disk - Disks are used for storing user data.
 type Disk struct {
 	// ID - ID of disk.
 	ID *string `json:"id,omitempty"`
@@ -144,8 +143,8 @@ type Disk struct {
 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 }
 
-// Struct for DiskFields
-type DiskStringFields struct {
+// DiskFieldHandles provides a string representation for each AccessControlRecord field.
+type DiskFieldHandles struct {
 	ID                     *string
 	IsDfc                  *string
 	Serial                 *string

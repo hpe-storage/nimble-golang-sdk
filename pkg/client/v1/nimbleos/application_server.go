@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ApplicationServer - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
-
 // Export ApplicationServerFields provides field names to use in filter parameters, for example.
-var ApplicationServerFields *ApplicationServerStringFields
+var ApplicationServerFields *ApplicationServerFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -20,7 +18,7 @@ func init() {
 	fieldCreationTime := "creation_time"
 	fieldLastModified := "last_modified"
 
-	ApplicationServerFields = &ApplicationServerStringFields{
+	ApplicationServerFields = &ApplicationServerFieldHandles{
 		ID:           &fieldID,
 		Name:         &fieldName,
 		Hostname:     &fieldHostname,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// ApplicationServer - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 type ApplicationServer struct {
 	// ID - Identifier for the application server.
 	ID *string `json:"id,omitempty"`
@@ -60,8 +59,8 @@ type ApplicationServer struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 }
 
-// Struct for ApplicationServerFields
-type ApplicationServerStringFields struct {
+// ApplicationServerFieldHandles provides a string representation for each AccessControlRecord field.
+type ApplicationServerFieldHandles struct {
 	ID           *string
 	Name         *string
 	Hostname     *string

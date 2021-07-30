@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsIopsMbpsStats - Average and maximum iops and mbps statistics in last 24 hours.
-
 // Export NsIopsMbpsStatsFields provides field names to use in filter parameters, for example.
-var NsIopsMbpsStatsFields *NsIopsMbpsStatsStringFields
+var NsIopsMbpsStatsFields *NsIopsMbpsStatsFieldHandles
 
 func init() {
 	fieldAvgIops := "avg_iops"
@@ -13,7 +11,7 @@ func init() {
 	fieldAvgMbps := "avg_mbps"
 	fieldMaxMbps := "max_mbps"
 
-	NsIopsMbpsStatsFields = &NsIopsMbpsStatsStringFields{
+	NsIopsMbpsStatsFields = &NsIopsMbpsStatsFieldHandles{
 		AvgIops: &fieldAvgIops,
 		MaxIops: &fieldMaxIops,
 		AvgMbps: &fieldAvgMbps,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsIopsMbpsStats - Average and maximum iops and mbps statistics in last 24 hours.
 type NsIopsMbpsStats struct {
 	// AvgIops - Average combined read and write iops.
 	AvgIops *int64 `json:"avg_iops,omitempty"`
@@ -32,8 +31,8 @@ type NsIopsMbpsStats struct {
 	MaxMbps *int64 `json:"max_mbps,omitempty"`
 }
 
-// Struct for NsIopsMbpsStatsFields
-type NsIopsMbpsStatsStringFields struct {
+// NsIopsMbpsStatsFieldHandles provides a string representation for each AccessControlRecord field.
+type NsIopsMbpsStatsFieldHandles struct {
 	AvgIops *string
 	MaxIops *string
 	AvgMbps *string

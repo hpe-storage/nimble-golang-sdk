@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsErrorWithArguments - Non-negative integer in range [0,9000].
-
 // Export NsErrorWithArgumentsFields provides field names to use in filter parameters, for example.
-var NsErrorWithArgumentsFields *NsErrorWithArgumentsStringFields
+var NsErrorWithArgumentsFields *NsErrorWithArgumentsFieldHandles
 
 func init() {
 	fieldCode := "code"
 	fieldSeverity := "severity"
 	fieldText := "text"
 
-	NsErrorWithArgumentsFields = &NsErrorWithArgumentsStringFields{
+	NsErrorWithArgumentsFields = &NsErrorWithArgumentsFieldHandles{
 		Code:     &fieldCode,
 		Severity: &fieldSeverity,
 		Text:     &fieldText,
 	}
 }
 
+// NsErrorWithArguments - Non-negative integer in range [0,9000].
 type NsErrorWithArguments struct {
 	// Code - Error code.
 	Code *string `json:"code,omitempty"`
@@ -28,8 +27,8 @@ type NsErrorWithArguments struct {
 	Text *string `json:"text,omitempty"`
 }
 
-// Struct for NsErrorWithArgumentsFields
-type NsErrorWithArgumentsStringFields struct {
+// NsErrorWithArgumentsFieldHandles provides a string representation for each AccessControlRecord field.
+type NsErrorWithArgumentsFieldHandles struct {
 	Code     *string
 	Severity *string
 	Text     *string

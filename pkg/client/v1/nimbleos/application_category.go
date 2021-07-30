@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ApplicationCategory - Provides the list of application categories that are available, to classify volumes depending on the applications that use them.
-
 // Export ApplicationCategoryFields provides field names to use in filter parameters, for example.
-var ApplicationCategoryFields *ApplicationCategoryStringFields
+var ApplicationCategoryFields *ApplicationCategoryFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -14,7 +12,7 @@ func init() {
 	fieldCreationTime := "creation_time"
 	fieldLastModified := "last_modified"
 
-	ApplicationCategoryFields = &ApplicationCategoryStringFields{
+	ApplicationCategoryFields = &ApplicationCategoryFieldHandles{
 		ID:            &fieldID,
 		Name:          &fieldName,
 		DedupeEnabled: &fieldDedupeEnabled,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// ApplicationCategory - Provides the list of application categories that are available, to classify volumes depending on the applications that use them.
 type ApplicationCategory struct {
 	// ID - Identifier for the application category.
 	ID *string `json:"id,omitempty"`
@@ -36,8 +35,8 @@ type ApplicationCategory struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 }
 
-// Struct for ApplicationCategoryFields
-type ApplicationCategoryStringFields struct {
+// ApplicationCategoryFieldHandles provides a string representation for each AccessControlRecord field.
+type ApplicationCategoryFieldHandles struct {
 	ID            *string
 	Name          *string
 	DedupeEnabled *string

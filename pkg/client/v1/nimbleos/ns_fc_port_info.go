@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFcPortInfo - Fibre Channel port information.
-
 // Export NsFcPortInfoFields provides field names to use in filter parameters, for example.
-var NsFcPortInfoFields *NsFcPortInfoStringFields
+var NsFcPortInfoFields *NsFcPortInfoFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -13,7 +11,7 @@ func init() {
 	fieldPort := "port"
 	fieldSlot := "slot"
 
-	NsFcPortInfoFields = &NsFcPortInfoStringFields{
+	NsFcPortInfoFields = &NsFcPortInfoFieldHandles{
 		Name:        &fieldName,
 		BusLocation: &fieldBusLocation,
 		Port:        &fieldPort,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsFcPortInfo - Fibre Channel port information.
 type NsFcPortInfo struct {
 	// Name - Name of Fibre Channel port.
 	Name *string `json:"name,omitempty"`
@@ -32,8 +31,8 @@ type NsFcPortInfo struct {
 	Slot *int64 `json:"slot,omitempty"`
 }
 
-// Struct for NsFcPortInfoFields
-type NsFcPortInfoStringFields struct {
+// NsFcPortInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcPortInfoFieldHandles struct {
 	Name        *string
 	BusLocation *string
 	Port        *string

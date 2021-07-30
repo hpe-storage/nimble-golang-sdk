@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFCInitiator - Fibre Channel initiator.
-
 // Export NsFCInitiatorFields provides field names to use in filter parameters, for example.
-var NsFCInitiatorFields *NsFCInitiatorStringFields
+var NsFCInitiatorFields *NsFCInitiatorFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldWwpn := "wwpn"
 	fieldAlias := "alias"
 
-	NsFCInitiatorFields = &NsFCInitiatorStringFields{
+	NsFCInitiatorFields = &NsFCInitiatorFieldHandles{
 		ID:          &fieldID,
 		InitiatorId: &fieldInitiatorId,
 		Wwpn:        &fieldWwpn,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsFCInitiator - Fibre Channel initiator.
 type NsFCInitiator struct {
 	// ID - Unique identifier of the Fibre Channel initiator.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type NsFCInitiator struct {
 	Alias *string `json:"alias,omitempty"`
 }
 
-// Struct for NsFCInitiatorFields
-type NsFCInitiatorStringFields struct {
+// NsFCInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFCInitiatorFieldHandles struct {
 	ID          *string
 	InitiatorId *string
 	Wwpn        *string

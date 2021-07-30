@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsISCSIInitiator - ISCSI initiator.
-
 // Export NsISCSIInitiatorFields provides field names to use in filter parameters, for example.
-var NsISCSIInitiatorFields *NsISCSIInitiatorStringFields
+var NsISCSIInitiatorFields *NsISCSIInitiatorFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -14,7 +12,7 @@ func init() {
 	fieldIqn := "iqn"
 	fieldIpAddress := "ip_address"
 
-	NsISCSIInitiatorFields = &NsISCSIInitiatorStringFields{
+	NsISCSIInitiatorFields = &NsISCSIInitiatorFieldHandles{
 		ID:          &fieldID,
 		InitiatorId: &fieldInitiatorId,
 		Label:       &fieldLabel,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsISCSIInitiator - ISCSI initiator.
 type NsISCSIInitiator struct {
 	// ID - Unique identifier of the iSCSI initiator.
 	ID *string `json:"id,omitempty"`
@@ -36,8 +35,8 @@ type NsISCSIInitiator struct {
 	IpAddress *string `json:"ip_address,omitempty"`
 }
 
-// Struct for NsISCSIInitiatorFields
-type NsISCSIInitiatorStringFields struct {
+// NsISCSIInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+type NsISCSIInitiatorFieldHandles struct {
 	ID          *string
 	InitiatorId *string
 	Label       *string

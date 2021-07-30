@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsReplPairListWithObjectType - Replicated objects of the specified type.
-
 // Export NsReplPairListWithObjectTypeFields provides field names to use in filter parameters, for example.
-var NsReplPairListWithObjectTypeFields *NsReplPairListWithObjectTypeStringFields
+var NsReplPairListWithObjectTypeFields *NsReplPairListWithObjectTypeFieldHandles
 
 func init() {
 	fieldObjType := "obj_type"
 	fieldReplList := "repl_list"
 
-	NsReplPairListWithObjectTypeFields = &NsReplPairListWithObjectTypeStringFields{
+	NsReplPairListWithObjectTypeFields = &NsReplPairListWithObjectTypeFieldHandles{
 		ObjType:  &fieldObjType,
 		ReplList: &fieldReplList,
 	}
 }
 
+// NsReplPairListWithObjectType - Replicated objects of the specified type.
 type NsReplPairListWithObjectType struct {
 	// ObjType - Type of the replicated object.
 	ObjType *NsObjectType `json:"obj_type,omitempty"`
@@ -24,8 +23,8 @@ type NsReplPairListWithObjectType struct {
 	ReplList []*NsReplPair `json:"repl_list,omitempty"`
 }
 
-// Struct for NsReplPairListWithObjectTypeFields
-type NsReplPairListWithObjectTypeStringFields struct {
+// NsReplPairListWithObjectTypeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsReplPairListWithObjectTypeFieldHandles struct {
 	ObjType  *string
 	ReplList *string
 }

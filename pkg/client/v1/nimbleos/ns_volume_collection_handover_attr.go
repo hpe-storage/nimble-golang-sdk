@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsVolumeCollectionHandoverAttr - Arguments to handover a volume collection.
-
 // Export NsVolumeCollectionHandoverAttrFields provides field names to use in filter parameters, for example.
-var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttrStringFields
+var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttrFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldReplicationPartnerId := "replication_partner_id"
 	fieldNoReverse := "no_reverse"
 
-	NsVolumeCollectionHandoverAttrFields = &NsVolumeCollectionHandoverAttrStringFields{
+	NsVolumeCollectionHandoverAttrFields = &NsVolumeCollectionHandoverAttrFieldHandles{
 		ID:                   &fieldID,
 		ReplicationPartnerId: &fieldReplicationPartnerId,
 		NoReverse:            &fieldNoReverse,
 	}
 }
 
+// NsVolumeCollectionHandoverAttr - Arguments to handover a volume collection.
 type NsVolumeCollectionHandoverAttr struct {
 	// ID - ID of the volume collection to be handed over to the downstream replication partner.
 	ID *string `json:"id,omitempty"`
@@ -28,8 +27,8 @@ type NsVolumeCollectionHandoverAttr struct {
 	NoReverse *bool `json:"no_reverse,omitempty"`
 }
 
-// Struct for NsVolumeCollectionHandoverAttrFields
-type NsVolumeCollectionHandoverAttrStringFields struct {
+// NsVolumeCollectionHandoverAttrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolumeCollectionHandoverAttrFieldHandles struct {
 	ID                   *string
 	ReplicationPartnerId *string
 	NoReverse            *string

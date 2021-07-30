@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsShelfIdentifyStatusReturn - Status of the shelf identifier.
-
 // Export NsShelfIdentifyStatusReturnFields provides field names to use in filter parameters, for example.
-var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturnStringFields
+var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturnFieldHandles
 
 func init() {
 	fieldEnabled := "enabled"
 
-	NsShelfIdentifyStatusReturnFields = &NsShelfIdentifyStatusReturnStringFields{
+	NsShelfIdentifyStatusReturnFields = &NsShelfIdentifyStatusReturnFieldHandles{
 		Enabled: &fieldEnabled,
 	}
 }
 
+// NsShelfIdentifyStatusReturn - Status of the shelf identifier.
 type NsShelfIdentifyStatusReturn struct {
 	// Enabled - Shelf identifier is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// Struct for NsShelfIdentifyStatusReturnFields
-type NsShelfIdentifyStatusReturnStringFields struct {
+// NsShelfIdentifyStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsShelfIdentifyStatusReturnFieldHandles struct {
 	Enabled *string
 }

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Controller - Controller is a redundant collection of hardware capable of running the array software.
-
 // Export ControllerFields provides field names to use in filter parameters, for example.
-var ControllerFields *ControllerStringFields
+var ControllerFields *ControllerFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -32,7 +30,7 @@ func init() {
 	fieldNvmeCards := "nvme_cards"
 	fieldAsupTime := "asup_time"
 
-	ControllerFields = &ControllerStringFields{
+	ControllerFields = &ControllerFieldHandles{
 		ID:                 &fieldID,
 		Name:               &fieldName,
 		ArrayName:          &fieldArrayName,
@@ -59,6 +57,7 @@ func init() {
 	}
 }
 
+// Controller - Controller is a redundant collection of hardware capable of running the array software.
 type Controller struct {
 	// ID - Identifier of the controller.
 	ID *string `json:"id,omitempty"`
@@ -108,8 +107,8 @@ type Controller struct {
 	AsupTime *int64 `json:"asup_time,omitempty"`
 }
 
-// Struct for ControllerFields
-type ControllerStringFields struct {
+// ControllerFieldHandles provides a string representation for each AccessControlRecord field.
+type ControllerFieldHandles struct {
 	ID                 *string
 	Name               *string
 	ArrayName          *string

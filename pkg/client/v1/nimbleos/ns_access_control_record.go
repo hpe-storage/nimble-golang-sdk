@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsAccessControlRecord - An access control record associated with a volume or snapshot or protocol endpoint.
-
 // Export NsAccessControlRecordFields provides field names to use in filter parameters, for example.
-var NsAccessControlRecordFields *NsAccessControlRecordStringFields
+var NsAccessControlRecordFields *NsAccessControlRecordFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -26,7 +24,7 @@ func init() {
 	fieldSnapId := "snap_id"
 	fieldSnapName := "snap_name"
 
-	NsAccessControlRecordFields = &NsAccessControlRecordStringFields{
+	NsAccessControlRecordFields = &NsAccessControlRecordFieldHandles{
 		ID:                 &fieldID,
 		AclId:              &fieldAclId,
 		InitiatorGroupId:   &fieldInitiatorGroupId,
@@ -47,6 +45,7 @@ func init() {
 	}
 }
 
+// NsAccessControlRecord - An access control record associated with a volume or snapshot or protocol endpoint.
 type NsAccessControlRecord struct {
 	// ID - ID of access control record.
 	ID *string `json:"id,omitempty"`
@@ -84,8 +83,8 @@ type NsAccessControlRecord struct {
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
-// Struct for NsAccessControlRecordFields
-type NsAccessControlRecordStringFields struct {
+// NsAccessControlRecordFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAccessControlRecordFieldHandles struct {
 	ID                 *string
 	AclId              *string
 	InitiatorGroupId   *string

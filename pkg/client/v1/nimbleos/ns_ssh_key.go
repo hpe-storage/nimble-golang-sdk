@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsSshKey - SSH key.
-
 // Export NsSshKeyFields provides field names to use in filter parameters, for example.
-var NsSshKeyFields *NsSshKeyStringFields
+var NsSshKeyFields *NsSshKeyFieldHandles
 
 func init() {
 	fieldKeyName := "key_name"
 	fieldKeyType := "key_type"
 	fieldKey := "key"
 
-	NsSshKeyFields = &NsSshKeyStringFields{
+	NsSshKeyFields = &NsSshKeyFieldHandles{
 		KeyName: &fieldKeyName,
 		KeyType: &fieldKeyType,
 		Key:     &fieldKey,
 	}
 }
 
+// NsSshKey - SSH key.
 type NsSshKey struct {
 	// KeyName - The user that owns the key.
 	KeyName *string `json:"key_name,omitempty"`
@@ -28,8 +27,8 @@ type NsSshKey struct {
 	Key *string `json:"key,omitempty"`
 }
 
-// Struct for NsSshKeyFields
-type NsSshKeyStringFields struct {
+// NsSshKeyFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSshKeyFieldHandles struct {
 	KeyName *string
 	KeyType *string
 	Key     *string

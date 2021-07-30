@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Volume - Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
-
 // Export VolumeFields provides field names to use in filter parameters, for example.
-var VolumeFields *VolumeStringFields
+var VolumeFields *VolumeFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -109,7 +107,7 @@ func init() {
 	fieldSrepLastSync := "srep_last_sync"
 	fieldSrepResyncPercent := "srep_resync_percent"
 
-	VolumeFields = &VolumeStringFields{
+	VolumeFields = &VolumeFieldHandles{
 		ID:                         &fieldID,
 		Name:                       &fieldName,
 		FullName:                   &fieldFullName,
@@ -213,6 +211,7 @@ func init() {
 	}
 }
 
+// Volume - Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
 type Volume struct {
 	// ID - Identifier for the volume.
 	ID *string `json:"id,omitempty"`
@@ -416,8 +415,8 @@ type Volume struct {
 	SrepResyncPercent *int64 `json:"srep_resync_percent,omitempty"`
 }
 
-// Struct for VolumeFields
-type VolumeStringFields struct {
+// VolumeFieldHandles provides a string representation for each AccessControlRecord field.
+type VolumeFieldHandles struct {
 	ID                         *string
 	Name                       *string
 	FullName                   *string

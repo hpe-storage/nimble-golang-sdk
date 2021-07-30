@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// FibreChannelInterface - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
-
 // Export FibreChannelInterfaceFields provides field names to use in filter parameters, for example.
-var FibreChannelInterfaceFields *FibreChannelInterfaceStringFields
+var FibreChannelInterfaceFields *FibreChannelInterfaceFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -28,7 +26,7 @@ func init() {
 	fieldLinkInfo := "link_info"
 	fieldFabricInfo := "fabric_info"
 
-	FibreChannelInterfaceFields = &FibreChannelInterfaceStringFields{
+	FibreChannelInterfaceFields = &FibreChannelInterfaceFieldHandles{
 		ID:                &fieldID,
 		ArrayNameOrSerial: &fieldArrayNameOrSerial,
 		PartialResponseOk: &fieldPartialResponseOk,
@@ -51,6 +49,7 @@ func init() {
 	}
 }
 
+// FibreChannelInterface - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
 type FibreChannelInterface struct {
 	// ID - Identifier for the Fibre Channel interface.
 	ID *string `json:"id,omitempty"`
@@ -92,8 +91,8 @@ type FibreChannelInterface struct {
 	FabricInfo *NsFcFabricInfo `json:"fabric_info,omitempty"`
 }
 
-// Struct for FibreChannelInterfaceFields
-type FibreChannelInterfaceStringFields struct {
+// FibreChannelInterfaceFieldHandles provides a string representation for each AccessControlRecord field.
+type FibreChannelInterfaceFieldHandles struct {
 	ID                *string
 	ArrayNameOrSerial *string
 	PartialResponseOk *string

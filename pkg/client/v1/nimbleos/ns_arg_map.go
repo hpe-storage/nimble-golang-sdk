@@ -2,19 +2,18 @@
 
 package nimbleos
 
-// NsArgMap - Just a string to string map.
-
 // Export NsArgMapFields provides field names to use in filter parameters, for example.
-var NsArgMapFields *NsArgMapStringFields
+var NsArgMapFields *NsArgMapFieldHandles
 
 func init() {
 
-	NsArgMapFields = &NsArgMapStringFields{}
+	NsArgMapFields = &NsArgMapFieldHandles{}
 }
 
+// NsArgMap - Just a string to string map.
 type NsArgMap struct {
 }
 
-// Struct for NsArgMapFields
-type NsArgMapStringFields struct {
+// NsArgMapFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArgMapFieldHandles struct {
 }

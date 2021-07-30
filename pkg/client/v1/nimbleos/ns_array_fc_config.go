@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayFcConfig - Array Fibre Channel configuration.
-
 // Export NsArrayFcConfigFields provides field names to use in filter parameters, for example.
-var NsArrayFcConfigFields *NsArrayFcConfigStringFields
+var NsArrayFcConfigFields *NsArrayFcConfigFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -15,7 +13,7 @@ func init() {
 	fieldCtrlrAFcConfig := "ctrlr_a_fc_config"
 	fieldCtrlrBFcConfig := "ctrlr_b_fc_config"
 
-	NsArrayFcConfigFields = &NsArrayFcConfigStringFields{
+	NsArrayFcConfigFields = &NsArrayFcConfigFieldHandles{
 		Name:           &fieldName,
 		ArrayName:      &fieldArrayName,
 		ID:             &fieldID,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsArrayFcConfig - Array Fibre Channel configuration.
 type NsArrayFcConfig struct {
 	// Name - Name of the array.
 	Name *string `json:"name,omitempty"`
@@ -40,8 +39,8 @@ type NsArrayFcConfig struct {
 	CtrlrBFcConfig *NsCtrlrFcConfig `json:"ctrlr_b_fc_config,omitempty"`
 }
 
-// Struct for NsArrayFcConfigFields
-type NsArrayFcConfigStringFields struct {
+// NsArrayFcConfigFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayFcConfigFieldHandles struct {
 	Name           *string
 	ArrayName      *string
 	ID             *string

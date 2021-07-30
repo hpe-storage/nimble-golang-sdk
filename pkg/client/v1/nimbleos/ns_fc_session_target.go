@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFcSessionTarget - Information of the Fibre Channel session target.
-
 // Export NsFcSessionTargetFields provides field names to use in filter parameters, for example.
-var NsFcSessionTargetFields *NsFcSessionTargetStringFields
+var NsFcSessionTargetFields *NsFcSessionTargetFieldHandles
 
 func init() {
 	fieldTargetPortArrayName := "target_port_array_name"
@@ -15,7 +13,7 @@ func init() {
 	fieldTargetWwpn := "target_wwpn"
 	fieldTargetFcid := "target_fcid"
 
-	NsFcSessionTargetFields = &NsFcSessionTargetStringFields{
+	NsFcSessionTargetFields = &NsFcSessionTargetFieldHandles{
 		TargetPortArrayName:     &fieldTargetPortArrayName,
 		TargetPortCtrlrName:     &fieldTargetPortCtrlrName,
 		TargetPortInterfaceName: &fieldTargetPortInterfaceName,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsFcSessionTarget - Information of the Fibre Channel session target.
 type NsFcSessionTarget struct {
 	// TargetPortArrayName - Name of the array hosting the Fibre Channel target port.
 	TargetPortArrayName *string `json:"target_port_array_name,omitempty"`
@@ -40,8 +39,8 @@ type NsFcSessionTarget struct {
 	TargetFcid *string `json:"target_fcid,omitempty"`
 }
 
-// Struct for NsFcSessionTargetFields
-type NsFcSessionTargetStringFields struct {
+// NsFcSessionTargetFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcSessionTargetFieldHandles struct {
 	TargetPortArrayName     *string
 	TargetPortCtrlrName     *string
 	TargetPortInterfaceName *string

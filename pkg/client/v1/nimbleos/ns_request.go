@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsRequest - May contain anything that any REST API request can contain.
-
 // Export NsRequestFields provides field names to use in filter parameters, for example.
-var NsRequestFields *NsRequestStringFields
+var NsRequestFields *NsRequestFieldHandles
 
 func init() {
 	fieldData := "data"
 	fieldMethod := "method"
 	fieldPath := "path"
 
-	NsRequestFields = &NsRequestStringFields{
+	NsRequestFields = &NsRequestFieldHandles{
 		Data:   &fieldData,
 		Method: &fieldMethod,
 		Path:   &fieldPath,
 	}
 }
 
+// NsRequest - May contain anything that any REST API request can contain.
 type NsRequest struct {
 	// Data - Request data.
 	Data *NsObject `json:"data,omitempty"`
@@ -28,8 +27,8 @@ type NsRequest struct {
 	Path *string `json:"path,omitempty"`
 }
 
-// Struct for NsRequestFields
-type NsRequestStringFields struct {
+// NsRequestFieldHandles provides a string representation for each AccessControlRecord field.
+type NsRequestFieldHandles struct {
 	Data   *string
 	Method *string
 	Path   *string

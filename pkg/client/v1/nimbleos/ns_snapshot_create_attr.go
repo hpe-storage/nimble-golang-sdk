@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSnapshotCreateAttr - Select fields containing volume info.
-
 // Export NsSnapshotCreateAttrFields provides field names to use in filter parameters, for example.
-var NsSnapshotCreateAttrFields *NsSnapshotCreateAttrStringFields
+var NsSnapshotCreateAttrFields *NsSnapshotCreateAttrFieldHandles
 
 func init() {
 	fieldVolId := "vol_id"
@@ -16,7 +14,7 @@ func init() {
 	fieldAgentType := "agent_type"
 	fieldMetadata := "metadata"
 
-	NsSnapshotCreateAttrFields = &NsSnapshotCreateAttrStringFields{
+	NsSnapshotCreateAttrFields = &NsSnapshotCreateAttrFieldHandles{
 		VolId:       &fieldVolId,
 		Name:        &fieldName,
 		Description: &fieldDescription,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsSnapshotCreateAttr - Select fields containing volume info.
 type NsSnapshotCreateAttr struct {
 	// VolId - ID of volume.
 	VolId *string `json:"vol_id,omitempty"`
@@ -44,8 +43,8 @@ type NsSnapshotCreateAttr struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// Struct for NsSnapshotCreateAttrFields
-type NsSnapshotCreateAttrStringFields struct {
+// NsSnapshotCreateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSnapshotCreateAttrFieldHandles struct {
 	VolId       *string
 	Name        *string
 	Description *string

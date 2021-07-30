@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSnapVol - Select fields containing volume info.
-
 // Export NsSnapVolFields provides field names to use in filter parameters, for example.
-var NsSnapVolFields *NsSnapVolStringFields
+var NsSnapVolFields *NsSnapVolFieldHandles
 
 func init() {
 	fieldVolId := "vol_id"
@@ -18,7 +16,7 @@ func init() {
 	fieldAgentType := "agent_type"
 	fieldMetadata := "metadata"
 
-	NsSnapVolFields = &NsSnapVolStringFields{
+	NsSnapVolFields = &NsSnapVolFieldHandles{
 		VolId:           &fieldVolId,
 		SnapName:        &fieldSnapName,
 		SnapDescription: &fieldSnapDescription,
@@ -31,6 +29,7 @@ func init() {
 	}
 }
 
+// NsSnapVol - Select fields containing volume info.
 type NsSnapVol struct {
 	// VolId - ID of volume.
 	VolId *string `json:"vol_id,omitempty"`
@@ -52,8 +51,8 @@ type NsSnapVol struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// Struct for NsSnapVolFields
-type NsSnapVolStringFields struct {
+// NsSnapVolFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSnapVolFieldHandles struct {
 	VolId           *string
 	SnapName        *string
 	SnapDescription *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
-
 // Export NsFcSessionInitiatorFields provides field names to use in filter parameters, for example.
-var NsFcSessionInitiatorFields *NsFcSessionInitiatorStringFields
+var NsFcSessionInitiatorFields *NsFcSessionInitiatorFieldHandles
 
 func init() {
 	fieldInitiatorAlias := "initiator_alias"
@@ -17,7 +15,7 @@ func init() {
 	fieldInitiatorSymbolicNodename := "initiator_symbolic_nodename"
 	fieldInitiatorFcid := "initiator_fcid"
 
-	NsFcSessionInitiatorFields = &NsFcSessionInitiatorStringFields{
+	NsFcSessionInitiatorFields = &NsFcSessionInitiatorFieldHandles{
 		InitiatorAlias:            &fieldInitiatorAlias,
 		InitiatorWwpn:             &fieldInitiatorWwpn,
 		InitiatorWwnn:             &fieldInitiatorWwnn,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
 type NsFcSessionInitiator struct {
 	// InitiatorAlias - Alias of the Fibre Channel initiator.
 	InitiatorAlias *string `json:"initiator_alias,omitempty"`
@@ -48,8 +47,8 @@ type NsFcSessionInitiator struct {
 	InitiatorFcid *string `json:"initiator_fcid,omitempty"`
 }
 
-// Struct for NsFcSessionInitiatorFields
-type NsFcSessionInitiatorStringFields struct {
+// NsFcSessionInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcSessionInitiatorFieldHandles struct {
 	InitiatorAlias            *string
 	InitiatorWwpn             *string
 	InitiatorWwnn             *string

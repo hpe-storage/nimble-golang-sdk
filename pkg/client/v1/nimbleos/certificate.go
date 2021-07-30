@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Certificate - Manage certificates used by SSL/TLS.
-
 // Export CertificateFields provides field names to use in filter parameters, for example.
-var CertificateFields *CertificateStringFields
+var CertificateFields *CertificateFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -27,7 +25,7 @@ func init() {
 	fieldReloadHttps := "reload_https"
 	fieldReloadApis := "reload_apis"
 
-	CertificateFields = &CertificateStringFields{
+	CertificateFields = &CertificateFieldHandles{
 		ID:          &fieldID,
 		Name:        &fieldName,
 		Subject:     &fieldSubject,
@@ -49,6 +47,7 @@ func init() {
 	}
 }
 
+// Certificate - Manage certificates used by SSL/TLS.
 type Certificate struct {
 	// ID - Dummy identifier (copy of name).
 	ID *string `json:"id,omitempty"`
@@ -88,8 +87,8 @@ type Certificate struct {
 	ReloadApis *bool `json:"reload_apis,omitempty"`
 }
 
-// Struct for CertificateFields
-type CertificateStringFields struct {
+// CertificateFieldHandles provides a string representation for each AccessControlRecord field.
+type CertificateFieldHandles struct {
 	ID          *string
 	Name        *string
 	Subject     *string

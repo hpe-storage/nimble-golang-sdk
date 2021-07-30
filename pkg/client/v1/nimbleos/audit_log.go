@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// AuditLog - View audit log.
-
 // Export AuditLogFields provides field names to use in filter parameters, for example.
-var AuditLogFields *AuditLogStringFields
+var AuditLogFields *AuditLogFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -30,7 +28,7 @@ func init() {
 	fieldActivityType := "activity_type"
 	fieldActivity := "activity"
 
-	AuditLogFields = &AuditLogStringFields{
+	AuditLogFields = &AuditLogFieldHandles{
 		ID:               &fieldID,
 		Type:             &fieldType,
 		ObjectId:         &fieldObjectId,
@@ -55,6 +53,7 @@ func init() {
 	}
 }
 
+// AuditLog - View audit log.
 type AuditLog struct {
 	// ID - Identifier for the audit log record.
 	ID *string `json:"id,omitempty"`
@@ -100,8 +99,8 @@ type AuditLog struct {
 	Activity *string `json:"activity,omitempty"`
 }
 
-// Struct for AuditLogFields
-type AuditLogStringFields struct {
+// AuditLogFieldHandles provides a string representation for each AccessControlRecord field.
+type AuditLogFieldHandles struct {
 	ID               *string
 	Type             *string
 	ObjectId         *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsReplicatedSnapcollSummary - Select fields containing snapshot collection information for replicated snapshot collections.
-
 // Export NsReplicatedSnapcollSummaryFields provides field names to use in filter parameters, for example.
-var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummaryStringFields
+var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummaryFieldHandles
 
 func init() {
 	fieldSnapcollId := "snapcoll_id"
@@ -14,7 +12,7 @@ func init() {
 	fieldDownstreamPartnerName := "downstream_partner_name"
 	fieldVolIds := "vol_ids"
 
-	NsReplicatedSnapcollSummaryFields = &NsReplicatedSnapcollSummaryStringFields{
+	NsReplicatedSnapcollSummaryFields = &NsReplicatedSnapcollSummaryFieldHandles{
 		SnapcollId:            &fieldSnapcollId,
 		SnapcollName:          &fieldSnapcollName,
 		SnapcollCreationTime:  &fieldSnapcollCreationTime,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsReplicatedSnapcollSummary - Select fields containing snapshot collection information for replicated snapshot collections.
 type NsReplicatedSnapcollSummary struct {
 	// SnapcollId - ID of snapshot collection.
 	SnapcollId *string `json:"snapcoll_id,omitempty"`
@@ -36,8 +35,8 @@ type NsReplicatedSnapcollSummary struct {
 	VolIds []*string `json:"vol_ids,omitempty"`
 }
 
-// Struct for NsReplicatedSnapcollSummaryFields
-type NsReplicatedSnapcollSummaryStringFields struct {
+// NsReplicatedSnapcollSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+type NsReplicatedSnapcollSummaryFieldHandles struct {
 	SnapcollId            *string
 	SnapcollName          *string
 	SnapcollCreationTime  *string

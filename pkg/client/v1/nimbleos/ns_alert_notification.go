@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsAlertNotification - Represents an Alert notification message.
-
 // Export NsAlertNotificationFields provides field names to use in filter parameters, for example.
-var NsAlertNotificationFields *NsAlertNotificationStringFields
+var NsAlertNotificationFields *NsAlertNotificationFieldHandles
 
 func init() {
 	fieldSequenceNumber := "sequence_number"
@@ -17,7 +15,7 @@ func init() {
 	fieldAlertType := "alert_type"
 	fieldTimestamp := "timestamp"
 
-	NsAlertNotificationFields = &NsAlertNotificationStringFields{
+	NsAlertNotificationFields = &NsAlertNotificationFieldHandles{
 		SequenceNumber:   &fieldSequenceNumber,
 		NotificationType: &fieldNotificationType,
 		Activity:         &fieldActivity,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// NsAlertNotification - Represents an Alert notification message.
 type NsAlertNotification struct {
 	// SequenceNumber - Notification Sequence Number.
 	SequenceNumber *int64 `json:"sequence_number,omitempty"`
@@ -48,8 +47,8 @@ type NsAlertNotification struct {
 	Timestamp *int64 `json:"timestamp,omitempty"`
 }
 
-// Struct for NsAlertNotificationFields
-type NsAlertNotificationStringFields struct {
+// NsAlertNotificationFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAlertNotificationFieldHandles struct {
 	SequenceNumber   *string
 	NotificationType *string
 	Activity         *string

@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsUserLockStatus - User account lock status.
-
 // Export NsUserLockStatusFields provides field names to use in filter parameters, for example.
-var NsUserLockStatusFields *NsUserLockStatusStringFields
+var NsUserLockStatusFields *NsUserLockStatusFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldAuthLock := "auth_lock"
 
-	NsUserLockStatusFields = &NsUserLockStatusStringFields{
+	NsUserLockStatusFields = &NsUserLockStatusFieldHandles{
 		ID:       &fieldID,
 		AuthLock: &fieldAuthLock,
 	}
 }
 
+// NsUserLockStatus - User account lock status.
 type NsUserLockStatus struct {
 	// ID - Unique Object ID.
 	ID *string `json:"id,omitempty"`
@@ -24,8 +23,8 @@ type NsUserLockStatus struct {
 	AuthLock *bool `json:"auth_lock,omitempty"`
 }
 
-// Struct for NsUserLockStatusFields
-type NsUserLockStatusStringFields struct {
+// NsUserLockStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsUserLockStatusFieldHandles struct {
 	ID       *string
 	AuthLock *string
 }

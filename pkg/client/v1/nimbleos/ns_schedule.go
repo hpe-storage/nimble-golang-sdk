@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSchedule - Protection schedule associated with a volume collection or protection template.
-
 // Export NsScheduleFields provides field names to use in filter parameters, for example.
-var NsScheduleFields *NsScheduleStringFields
+var NsScheduleFields *NsScheduleFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -30,7 +28,7 @@ func init() {
 	fieldScheduleType := "schedule_type"
 	fieldActive := "active"
 
-	NsScheduleFields = &NsScheduleStringFields{
+	NsScheduleFields = &NsScheduleFieldHandles{
 		ID:                     &fieldID,
 		ScheduleId:             &fieldScheduleId,
 		Name:                   &fieldName,
@@ -55,6 +53,7 @@ func init() {
 	}
 }
 
+// NsSchedule - Protection schedule associated with a volume collection or protection template.
 type NsSchedule struct {
 	// ID - ID of protection schedule.
 	ID *string `json:"id,omitempty"`
@@ -100,8 +99,8 @@ type NsSchedule struct {
 	Active *bool `json:"active,omitempty"`
 }
 
-// Struct for NsScheduleFields
-type NsScheduleStringFields struct {
+// NsScheduleFieldHandles provides a string representation for each AccessControlRecord field.
+type NsScheduleFieldHandles struct {
 	ID                     *string
 	ScheduleId             *string
 	Name                   *string

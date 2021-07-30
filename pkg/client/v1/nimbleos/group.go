@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Group - Group is a collection of arrays operating together organized into storage pools.
-
 // Export GroupFields provides field names to use in filter parameters, for example.
-var GroupFields *GroupStringFields
+var GroupFields *GroupFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -148,7 +146,7 @@ func init() {
 	fieldSnapRetnMeterHigh := "snap_retn_meter_high"
 	fieldSnapRetnMeterVeryHigh := "snap_retn_meter_very_high"
 
-	GroupFields = &GroupStringFields{
+	GroupFields = &GroupFieldHandles{
 		ID:                                 &fieldID,
 		Name:                               &fieldName,
 		SmtpServer:                         &fieldSmtpServer,
@@ -291,6 +289,7 @@ func init() {
 	}
 }
 
+// Group - Group is a collection of arrays operating together organized into storage pools.
 type Group struct {
 	// ID - Identifier of the group.
 	ID *string `json:"id,omitempty"`
@@ -572,8 +571,8 @@ type Group struct {
 	SnapRetnMeterVeryHigh *int64 `json:"snap_retn_meter_very_high,omitempty"`
 }
 
-// Struct for GroupFields
-type GroupStringFields struct {
+// GroupFieldHandles provides a string representation for each AccessControlRecord field.
+type GroupFieldHandles struct {
 	ID                                 *string
 	Name                               *string
 	SmtpServer                         *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ProtocolEndpoint - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
-
 // Export ProtocolEndpointFields provides field names to use in filter parameters, for example.
-var ProtocolEndpointFields *ProtocolEndpointStringFields
+var ProtocolEndpointFields *ProtocolEndpointFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -27,7 +25,7 @@ func init() {
 	fieldFcSessions := "fc_sessions"
 	fieldAccessProtocol := "access_protocol"
 
-	ProtocolEndpointFields = &ProtocolEndpointStringFields{
+	ProtocolEndpointFields = &ProtocolEndpointFieldHandles{
 		ID:                   &fieldID,
 		Name:                 &fieldName,
 		Description:          &fieldDescription,
@@ -49,6 +47,7 @@ func init() {
 	}
 }
 
+// ProtocolEndpoint - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
 type ProtocolEndpoint struct {
 	// ID - Identifier for the protocol endpoint.
 	ID *string `json:"id,omitempty"`
@@ -88,8 +87,8 @@ type ProtocolEndpoint struct {
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
 }
 
-// Struct for ProtocolEndpointFields
-type ProtocolEndpointStringFields struct {
+// ProtocolEndpointFieldHandles provides a string representation for each AccessControlRecord field.
+type ProtocolEndpointFieldHandles struct {
 	ID                   *string
 	Name                 *string
 	Description          *string

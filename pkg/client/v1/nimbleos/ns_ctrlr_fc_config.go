@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsCtrlrFcConfig - Controller Fibre Channel configuration.
-
 // Export NsCtrlrFcConfigFields provides field names to use in filter parameters, for example.
-var NsCtrlrFcConfigFields *NsCtrlrFcConfigStringFields
+var NsCtrlrFcConfigFields *NsCtrlrFcConfigFieldHandles
 
 func init() {
 	fieldFcPortList := "fc_port_list"
 	fieldFcInterfaceList := "fc_interface_list"
 
-	NsCtrlrFcConfigFields = &NsCtrlrFcConfigStringFields{
+	NsCtrlrFcConfigFields = &NsCtrlrFcConfigFieldHandles{
 		FcPortList:      &fieldFcPortList,
 		FcInterfaceList: &fieldFcInterfaceList,
 	}
 }
 
+// NsCtrlrFcConfig - Controller Fibre Channel configuration.
 type NsCtrlrFcConfig struct {
 	// FcPortList - List of Fibre Channel ports.
 	FcPortList []*NsFcPortInfo `json:"fc_port_list,omitempty"`
@@ -24,8 +23,8 @@ type NsCtrlrFcConfig struct {
 	FcInterfaceList []*NsFcInterfaceInfo `json:"fc_interface_list,omitempty"`
 }
 
-// Struct for NsCtrlrFcConfigFields
-type NsCtrlrFcConfigStringFields struct {
+// NsCtrlrFcConfigFieldHandles provides a string representation for each AccessControlRecord field.
+type NsCtrlrFcConfigFieldHandles struct {
 	FcPortList      *string
 	FcInterfaceList *string
 }

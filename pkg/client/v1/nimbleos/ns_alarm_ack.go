@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsAlarmAck - Arguments acknowledge alarm.
-
 // Export NsAlarmAckFields provides field names to use in filter parameters, for example.
-var NsAlarmAckFields *NsAlarmAckStringFields
+var NsAlarmAckFields *NsAlarmAckFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldRemindEvery := "remind_every"
 	fieldRemindEveryUnit := "remind_every_unit"
 
-	NsAlarmAckFields = &NsAlarmAckStringFields{
+	NsAlarmAckFields = &NsAlarmAckFieldHandles{
 		ID:              &fieldID,
 		RemindEvery:     &fieldRemindEvery,
 		RemindEveryUnit: &fieldRemindEveryUnit,
 	}
 }
 
+// NsAlarmAck - Arguments acknowledge alarm.
 type NsAlarmAck struct {
 	// ID - ID of the alarm.
 	ID *string `json:"id,omitempty"`
@@ -28,8 +27,8 @@ type NsAlarmAck struct {
 	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }
 
-// Struct for NsAlarmAckFields
-type NsAlarmAckStringFields struct {
+// NsAlarmAckFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAlarmAckFieldHandles struct {
 	ID              *string
 	RemindEvery     *string
 	RemindEveryUnit *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// InitiatorGroup - Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
-
 // Export InitiatorGroupFields provides field names to use in filter parameters, for example.
-var InitiatorGroupFields *InitiatorGroupStringFields
+var InitiatorGroupFields *InitiatorGroupFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -27,7 +25,7 @@ func init() {
 	fieldNumConnections := "num_connections"
 	fieldMetadata := "metadata"
 
-	InitiatorGroupFields = &InitiatorGroupStringFields{
+	InitiatorGroupFields = &InitiatorGroupFieldHandles{
 		ID:              &fieldID,
 		Name:            &fieldName,
 		FullName:        &fieldFullName,
@@ -49,6 +47,7 @@ func init() {
 	}
 }
 
+// InitiatorGroup - Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 type InitiatorGroup struct {
 	// ID - Identifier for initiator group.
 	ID *string `json:"id,omitempty"`
@@ -88,8 +87,8 @@ type InitiatorGroup struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// Struct for InitiatorGroupFields
-type InitiatorGroupStringFields struct {
+// InitiatorGroupFieldHandles provides a string representation for each AccessControlRecord field.
+type InitiatorGroupFieldHandles struct {
 	ID              *string
 	Name            *string
 	FullName        *string

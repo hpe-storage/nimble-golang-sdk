@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Shelf - Disk shelf and head unit houses disks and controller.
-
 // Export ShelfFields provides field names to use in filter parameters, for example.
-var ShelfFields *ShelfStringFields
+var ShelfFields *ShelfFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -29,7 +27,7 @@ func init() {
 	fieldAcceptDedupeImpact := "accept_dedupe_impact"
 	fieldLastRequest := "last_request"
 
-	ShelfFields = &ShelfStringFields{
+	ShelfFields = &ShelfFieldHandles{
 		ID:                 &fieldID,
 		ArrayName:          &fieldArrayName,
 		ArrayId:            &fieldArrayId,
@@ -53,6 +51,7 @@ func init() {
 	}
 }
 
+// Shelf - Disk shelf and head unit houses disks and controller.
 type Shelf struct {
 	// ID - ID of shelf.
 	ID *string `json:"id,omitempty"`
@@ -96,8 +95,8 @@ type Shelf struct {
 	LastRequest *bool `json:"last_request,omitempty"`
 }
 
-// Struct for ShelfFields
-type ShelfStringFields struct {
+// ShelfFieldHandles provides a string representation for each AccessControlRecord field.
+type ShelfFieldHandles struct {
 	ID                 *string
 	ArrayName          *string
 	ArrayId            *string

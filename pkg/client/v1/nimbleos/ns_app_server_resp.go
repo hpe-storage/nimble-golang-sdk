@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsAppServerResp - Response from app server.
-
 // Export NsAppServerRespFields provides field names to use in filter parameters, for example.
-var NsAppServerRespFields *NsAppServerRespStringFields
+var NsAppServerRespFields *NsAppServerRespFieldHandles
 
 func init() {
 	fieldGeneralError := "general_error"
@@ -15,7 +13,7 @@ func init() {
 	fieldVmwResponse := "vmw_response"
 	fieldGenericResponse := "generic_response"
 
-	NsAppServerRespFields = &NsAppServerRespStringFields{
+	NsAppServerRespFields = &NsAppServerRespFieldHandles{
 		GeneralError:    &fieldGeneralError,
 		AppSync:         &fieldAppSync,
 		HasAssocVols:    &fieldHasAssocVols,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsAppServerResp - Response from app server.
 type NsAppServerResp struct {
 	// GeneralError - Error code from app server.
 	GeneralError *string `json:"general_error,omitempty"`
@@ -40,8 +39,8 @@ type NsAppServerResp struct {
 	GenericResponse *NsGenericResp `json:"generic_response,omitempty"`
 }
 
-// Struct for NsAppServerRespFields
-type NsAppServerRespStringFields struct {
+// NsAppServerRespFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAppServerRespFieldHandles struct {
 	GeneralError    *string
 	AppSync         *string
 	HasAssocVols    *string

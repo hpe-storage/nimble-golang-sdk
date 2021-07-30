@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ClientCredential - Credential that this device will trust.
-
 // Export ClientCredentialFields provides field names to use in filter parameters, for example.
-var ClientCredentialFields *ClientCredentialStringFields
+var ClientCredentialFields *ClientCredentialFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -16,7 +14,7 @@ func init() {
 	fieldLastModified := "last_modified"
 	fieldDescription := "description"
 
-	ClientCredentialFields = &ClientCredentialStringFields{
+	ClientCredentialFields = &ClientCredentialFieldHandles{
 		ID:           &fieldID,
 		Name:         &fieldName,
 		ClientId:     &fieldClientId,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// ClientCredential - Credential that this device will trust.
 type ClientCredential struct {
 	// ID - Identifier for the client credentials record.
 	ID *string `json:"id,omitempty"`
@@ -44,8 +43,8 @@ type ClientCredential struct {
 	Description *string `json:"description,omitempty"`
 }
 
-// Struct for ClientCredentialFields
-type ClientCredentialStringFields struct {
+// ClientCredentialFieldHandles provides a string representation for each AccessControlRecord field.
+type ClientCredentialFieldHandles struct {
 	ID           *string
 	Name         *string
 	ClientId     *string

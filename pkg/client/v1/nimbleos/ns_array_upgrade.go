@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayUpgrade - Array upgrade attributes.
-
 // Export NsArrayUpgradeFields provides field names to use in filter parameters, for example.
-var NsArrayUpgradeFields *NsArrayUpgradeStringFields
+var NsArrayUpgradeFields *NsArrayUpgradeFieldHandles
 
 func init() {
 	fieldType := "type"
@@ -16,7 +14,7 @@ func init() {
 	fieldMessages := "messages"
 	fieldMetadata := "metadata"
 
-	NsArrayUpgradeFields = &NsArrayUpgradeStringFields{
+	NsArrayUpgradeFields = &NsArrayUpgradeFieldHandles{
 		Type:           &fieldType,
 		State:          &fieldState,
 		Stage:          &fieldStage,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsArrayUpgrade - Array upgrade attributes.
 type NsArrayUpgrade struct {
 	// Type - Array upgrade type.
 	Type *NsArrayUpgradeType `json:"type,omitempty"`
@@ -44,8 +43,8 @@ type NsArrayUpgrade struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// Struct for NsArrayUpgradeFields
-type NsArrayUpgradeStringFields struct {
+// NsArrayUpgradeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayUpgradeFieldHandles struct {
 	Type           *string
 	State          *string
 	Stage          *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsWitnessTestResponse - Results of witness connection test.
-
 // Export NsWitnessTestResponseFields provides field names to use in filter parameters, for example.
-var NsWitnessTestResponseFields *NsWitnessTestResponseStringFields
+var NsWitnessTestResponseFields *NsWitnessTestResponseFieldHandles
 
 func init() {
 	fieldArrayName := "array_name"
@@ -13,7 +11,7 @@ func init() {
 	fieldWitnessConnectivityState := "witness_connectivity_state"
 	fieldWitnessConnectivityMessage := "witness_connectivity_message"
 
-	NsWitnessTestResponseFields = &NsWitnessTestResponseStringFields{
+	NsWitnessTestResponseFields = &NsWitnessTestResponseFieldHandles{
 		ArrayName:                  &fieldArrayName,
 		Role:                       &fieldRole,
 		WitnessConnectivityState:   &fieldWitnessConnectivityState,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsWitnessTestResponse - Results of witness connection test.
 type NsWitnessTestResponse struct {
 	// ArrayName - Name of an array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -32,8 +31,8 @@ type NsWitnessTestResponse struct {
 	WitnessConnectivityMessage *string `json:"witness_connectivity_message,omitempty"`
 }
 
-// Struct for NsWitnessTestResponseFields
-type NsWitnessTestResponseStringFields struct {
+// NsWitnessTestResponseFieldHandles provides a string representation for each AccessControlRecord field.
+type NsWitnessTestResponseFieldHandles struct {
 	ArrayName                  *string
 	Role                       *string
 	WitnessConnectivityState   *string

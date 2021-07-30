@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// TrustedOauthIssuer - Oauth Credential Issuers that this device will trust.
-
 // Export TrustedOauthIssuerFields provides field names to use in filter parameters, for example.
-var TrustedOauthIssuerFields *TrustedOauthIssuerStringFields
+var TrustedOauthIssuerFields *TrustedOauthIssuerFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldJwksUrl := "jwks_url"
 	fieldKeySet := "key_set"
 
-	TrustedOauthIssuerFields = &TrustedOauthIssuerStringFields{
+	TrustedOauthIssuerFields = &TrustedOauthIssuerFieldHandles{
 		ID:      &fieldID,
 		Name:    &fieldName,
 		JwksUrl: &fieldJwksUrl,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// TrustedOauthIssuer - Oauth Credential Issuers that this device will trust.
 type TrustedOauthIssuer struct {
 	// ID - Identifier for the trusted oauth issuer record.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type TrustedOauthIssuer struct {
 	KeySet []*NsJWKey `json:"key_set,omitempty"`
 }
 
-// Struct for TrustedOauthIssuerFields
-type TrustedOauthIssuerStringFields struct {
+// TrustedOauthIssuerFieldHandles provides a string representation for each AccessControlRecord field.
+type TrustedOauthIssuerFieldHandles struct {
 	ID      *string
 	Name    *string
 	JwksUrl *string

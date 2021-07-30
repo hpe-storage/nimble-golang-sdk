@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// SnapshotCollection - Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
-
 // Export SnapshotCollectionFields provides field names to use in filter parameters, for example.
-var SnapshotCollectionFields *SnapshotCollectionStringFields
+var SnapshotCollectionFields *SnapshotCollectionFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -48,7 +46,7 @@ func init() {
 	fieldMetadata := "metadata"
 	fieldForce := "force"
 
-	SnapshotCollectionFields = &SnapshotCollectionStringFields{
+	SnapshotCollectionFields = &SnapshotCollectionFieldHandles{
 		ID:                      &fieldID,
 		Name:                    &fieldName,
 		Description:             &fieldDescription,
@@ -91,6 +89,7 @@ func init() {
 	}
 }
 
+// SnapshotCollection - Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
 type SnapshotCollection struct {
 	// ID - Identifier for snapshot collection.
 	ID *string `json:"id,omitempty"`
@@ -172,8 +171,8 @@ type SnapshotCollection struct {
 	Force *bool `json:"force,omitempty"`
 }
 
-// Struct for SnapshotCollectionFields
-type SnapshotCollectionStringFields struct {
+// SnapshotCollectionFieldHandles provides a string representation for each AccessControlRecord field.
+type SnapshotCollectionFieldHandles struct {
 	ID                      *string
 	Name                    *string
 	Description             *string

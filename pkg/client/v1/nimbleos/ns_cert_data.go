@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsCertData - Detailed certificate information for an installed certificate.
-
 // Export NsCertDataFields provides field names to use in filter parameters, for example.
-var NsCertDataFields *NsCertDataStringFields
+var NsCertDataFields *NsCertDataFieldHandles
 
 func init() {
 	fieldDescription := "description"
@@ -15,7 +13,7 @@ func init() {
 	fieldTrusted := "trusted"
 	fieldPemText := "pem_text"
 
-	NsCertDataFields = &NsCertDataStringFields{
+	NsCertDataFields = &NsCertDataFieldHandles{
 		Description: &fieldDescription,
 		Subject:     &fieldSubject,
 		Dnslist:     &fieldDnslist,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsCertData - Detailed certificate information for an installed certificate.
 type NsCertData struct {
 	// Description - Complete certificate description.
 	Description *string `json:"description,omitempty"`
@@ -40,8 +39,8 @@ type NsCertData struct {
 	PemText *string `json:"pem_text,omitempty"`
 }
 
-// Struct for NsCertDataFields
-type NsCertDataStringFields struct {
+// NsCertDataFieldHandles provides a string representation for each AccessControlRecord field.
+type NsCertDataFieldHandles struct {
 	Description *string
 	Subject     *string
 	Dnslist     *string

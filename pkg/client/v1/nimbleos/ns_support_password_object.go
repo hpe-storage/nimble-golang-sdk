@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsSupportPasswordObject - Support password blob for a user.
-
 // Export NsSupportPasswordObjectFields provides field names to use in filter parameters, for example.
-var NsSupportPasswordObjectFields *NsSupportPasswordObjectStringFields
+var NsSupportPasswordObjectFields *NsSupportPasswordObjectFieldHandles
 
 func init() {
 	fieldUsername := "username"
 	fieldBlob := "blob"
 
-	NsSupportPasswordObjectFields = &NsSupportPasswordObjectStringFields{
+	NsSupportPasswordObjectFields = &NsSupportPasswordObjectFieldHandles{
 		Username: &fieldUsername,
 		Blob:     &fieldBlob,
 	}
 }
 
+// NsSupportPasswordObject - Support password blob for a user.
 type NsSupportPasswordObject struct {
 	// Username - The username for the account the password blob relates to.
 	Username *string `json:"username,omitempty"`
@@ -24,8 +23,8 @@ type NsSupportPasswordObject struct {
 	Blob *string `json:"blob,omitempty"`
 }
 
-// Struct for NsSupportPasswordObjectFields
-type NsSupportPasswordObjectStringFields struct {
+// NsSupportPasswordObjectFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSupportPasswordObjectFieldHandles struct {
 	Username *string
 	Blob     *string
 }

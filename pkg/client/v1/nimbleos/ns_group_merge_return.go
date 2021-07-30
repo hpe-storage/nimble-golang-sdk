@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsGroupMergeReturn - Response of group merge validation.
-
 // Export NsGroupMergeReturnFields provides field names to use in filter parameters, for example.
-var NsGroupMergeReturnFields *NsGroupMergeReturnStringFields
+var NsGroupMergeReturnFields *NsGroupMergeReturnFieldHandles
 
 func init() {
 	fieldOnlineVols := "online_vols"
@@ -38,7 +36,7 @@ func init() {
 	fieldValidationErrorMsg := "validation_error_msg"
 	fieldWarningList := "warning_list"
 
-	NsGroupMergeReturnFields = &NsGroupMergeReturnStringFields{
+	NsGroupMergeReturnFields = &NsGroupMergeReturnFieldHandles{
 		OnlineVols:                 &fieldOnlineVols,
 		OnlineSnaps:                &fieldOnlineSnaps,
 		ActivePartners:             &fieldActivePartners,
@@ -71,6 +69,7 @@ func init() {
 	}
 }
 
+// NsGroupMergeReturn - Response of group merge validation.
 type NsGroupMergeReturn struct {
 	// OnlineVols - List of volumes which are online.
 	OnlineVols []*string `json:"online_vols,omitempty"`
@@ -132,8 +131,8 @@ type NsGroupMergeReturn struct {
 	WarningList []*string `json:"warning_list,omitempty"`
 }
 
-// Struct for NsGroupMergeReturnFields
-type NsGroupMergeReturnStringFields struct {
+// NsGroupMergeReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsGroupMergeReturnFieldHandles struct {
 	OnlineVols                 *string
 	OnlineSnaps                *string
 	ActivePartners             *string

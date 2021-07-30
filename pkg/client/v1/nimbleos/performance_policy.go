@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// PerformancePolicy - Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
-
 // Export PerformancePolicyFields provides field names to use in filter parameters, for example.
-var PerformancePolicyFields *PerformancePolicyStringFields
+var PerformancePolicyFields *PerformancePolicyFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -28,7 +26,7 @@ func init() {
 	fieldVolumeCount := "volume_count"
 	fieldDedupeOverridePools := "dedupe_override_pools"
 
-	PerformancePolicyFields = &PerformancePolicyStringFields{
+	PerformancePolicyFields = &PerformancePolicyFieldHandles{
 		ID:                  &fieldID,
 		Name:                &fieldName,
 		FullName:            &fieldFullName,
@@ -51,6 +49,7 @@ func init() {
 	}
 }
 
+// PerformancePolicy - Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 type PerformancePolicy struct {
 	// ID - Unique Identifier for the Performance Policy.
 	ID *string `json:"id,omitempty"`
@@ -92,8 +91,8 @@ type PerformancePolicy struct {
 	DedupeOverridePools []*NsPoolSummary `json:"dedupe_override_pools,omitempty"`
 }
 
-// Struct for PerformancePolicyFields
-type PerformancePolicyStringFields struct {
+// PerformancePolicyFieldHandles provides a string representation for each AccessControlRecord field.
+type PerformancePolicyFieldHandles struct {
 	ID                  *string
 	Name                *string
 	FullName            *string

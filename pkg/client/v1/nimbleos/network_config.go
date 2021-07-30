@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NetworkConfig - Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
-
 // Export NetworkConfigFields provides field names to use in filter parameters, for example.
-var NetworkConfigFields *NetworkConfigStringFields
+var NetworkConfigFields *NetworkConfigFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -25,7 +23,7 @@ func init() {
 	fieldLastActive := "last_active"
 	fieldIgnoreValidationMask := "ignore_validation_mask"
 
-	NetworkConfigFields = &NetworkConfigStringFields{
+	NetworkConfigFields = &NetworkConfigFieldHandles{
 		ID:                             &fieldID,
 		Name:                           &fieldName,
 		MgmtIp:                         &fieldMgmtIp,
@@ -45,6 +43,7 @@ func init() {
 	}
 }
 
+// NetworkConfig - Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
 type NetworkConfig struct {
 	// ID - Identifier for network configuration.
 	ID *string `json:"id,omitempty"`
@@ -80,8 +79,8 @@ type NetworkConfig struct {
 	IgnoreValidationMask *int64 `json:"ignore_validation_mask,omitempty"`
 }
 
-// Struct for NetworkConfigFields
-type NetworkConfigStringFields struct {
+// NetworkConfigFieldHandles provides a string representation for each AccessControlRecord field.
+type NetworkConfigFieldHandles struct {
 	ID                             *string
 	Name                           *string
 	MgmtIp                         *string

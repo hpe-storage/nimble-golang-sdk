@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// FolderSet - Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
-
 // Export FolderSetFields provides field names to use in filter parameters, for example.
-var FolderSetFields *FolderSetStringFields
+var FolderSetFields *FolderSetFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -20,7 +18,7 @@ func init() {
 	fieldAppserverId := "appserver_id"
 	fieldAppserverName := "appserver_name"
 
-	FolderSetFields = &FolderSetStringFields{
+	FolderSetFields = &FolderSetFieldHandles{
 		ID:            &fieldID,
 		Name:          &fieldName,
 		FullName:      &fieldFullName,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// FolderSet - Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
 type FolderSet struct {
 	// ID - Identifier of the folder set.
 	ID *string `json:"id,omitempty"`
@@ -60,8 +59,8 @@ type FolderSet struct {
 	AppserverName *string `json:"appserver_name,omitempty"`
 }
 
-// Struct for FolderSetFields
-type FolderSetStringFields struct {
+// FolderSetFieldHandles provides a string representation for each AccessControlRecord field.
+type FolderSetFieldHandles struct {
 	ID            *string
 	Name          *string
 	FullName      *string

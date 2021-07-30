@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsLunReturn - Return LU number.
-
 // Export NsLunReturnFields provides field names to use in filter parameters, for example.
-var NsLunReturnFields *NsLunReturnStringFields
+var NsLunReturnFields *NsLunReturnFieldHandles
 
 func init() {
 	fieldLun := "lun"
 	fieldLuNumber := "lu_number"
 
-	NsLunReturnFields = &NsLunReturnStringFields{
+	NsLunReturnFields = &NsLunReturnFieldHandles{
 		Lun:      &fieldLun,
 		LuNumber: &fieldLuNumber,
 	}
 }
 
+// NsLunReturn - Return LU number.
 type NsLunReturn struct {
 	// Lun - LU number in hexadecimal.
 	Lun *int64 `json:"lun,omitempty"`
@@ -24,8 +23,8 @@ type NsLunReturn struct {
 	LuNumber *int64 `json:"lu_number,omitempty"`
 }
 
-// Struct for NsLunReturnFields
-type NsLunReturnStringFields struct {
+// NsLunReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsLunReturnFieldHandles struct {
 	Lun      *string
 	LuNumber *string
 }

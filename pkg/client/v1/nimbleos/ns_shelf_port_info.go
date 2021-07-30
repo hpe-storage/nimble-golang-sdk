@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsShelfPortInfo - A shelf sas port information.
-
 // Export NsShelfPortInfoFields provides field names to use in filter parameters, for example.
-var NsShelfPortInfoFields *NsShelfPortInfoStringFields
+var NsShelfPortInfoFields *NsShelfPortInfoFieldHandles
 
 func init() {
 	fieldPortIdx := "port_idx"
@@ -19,7 +17,7 @@ func init() {
 	fieldRemoteLocId := "remote_loc_id"
 	fieldRemotePortId := "remote_port_id"
 
-	NsShelfPortInfoFields = &NsShelfPortInfoStringFields{
+	NsShelfPortInfoFields = &NsShelfPortInfoFieldHandles{
 		PortIdx:         &fieldPortIdx,
 		PortName:        &fieldPortName,
 		PortType:        &fieldPortType,
@@ -33,6 +31,7 @@ func init() {
 	}
 }
 
+// NsShelfPortInfo - A shelf sas port information.
 type NsShelfPortInfo struct {
 	// PortIdx - Index of the port, starting from 0.
 	PortIdx *int64 `json:"port_idx,omitempty"`
@@ -56,8 +55,8 @@ type NsShelfPortInfo struct {
 	RemotePortId *int64 `json:"remote_port_id,omitempty"`
 }
 
-// Struct for NsShelfPortInfoFields
-type NsShelfPortInfoStringFields struct {
+// NsShelfPortInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsShelfPortInfoFieldHandles struct {
 	PortIdx         *string
 	PortName        *string
 	PortType        *string

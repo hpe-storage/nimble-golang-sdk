@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Dna - Get list of DNAs.
-
 // Export DnaFields provides field names to use in filter parameters, for example.
-var DnaFields *DnaStringFields
+var DnaFields *DnaFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -15,7 +13,7 @@ func init() {
 	fieldDnaName := "dna_name"
 	fieldControllerName := "controller_name"
 
-	DnaFields = &DnaStringFields{
+	DnaFields = &DnaFieldHandles{
 		ID:             &fieldID,
 		ArrayName:      &fieldArrayName,
 		CreationTime:   &fieldCreationTime,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// Dna - Get list of DNAs.
 type Dna struct {
 	// ID - Identifier for the DNA.
 	ID *string `json:"id,omitempty"`
@@ -40,8 +39,8 @@ type Dna struct {
 	ControllerName *NsControllerSide `json:"controller_name,omitempty"`
 }
 
-// Struct for DnaFields
-type DnaStringFields struct {
+// DnaFieldHandles provides a string representation for each AccessControlRecord field.
+type DnaFieldHandles struct {
 	ID             *string
 	ArrayName      *string
 	CreationTime   *string

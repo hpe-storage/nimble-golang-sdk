@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
-
 // Export NsArraySummaryInfoFields provides field names to use in filter parameters, for example.
-var NsArraySummaryInfoFields *NsArraySummaryInfoStringFields
+var NsArraySummaryInfoFields *NsArraySummaryInfoFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -17,7 +15,7 @@ func init() {
 	fieldCountOfFcPorts := "count_of_fc_ports"
 	fieldAllFlash := "all_flash"
 
-	NsArraySummaryInfoFields = &NsArraySummaryInfoStringFields{
+	NsArraySummaryInfoFields = &NsArraySummaryInfoFieldHandles{
 		Name:           &fieldName,
 		Version:        &fieldVersion,
 		Serial:         &fieldSerial,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
 type NsArraySummaryInfo struct {
 	// Name - Unique name of array.
 	Name *string `json:"name,omitempty"`
@@ -48,8 +47,8 @@ type NsArraySummaryInfo struct {
 	AllFlash *bool `json:"all_flash,omitempty"`
 }
 
-// Struct for NsArraySummaryInfoFields
-type NsArraySummaryInfoStringFields struct {
+// NsArraySummaryInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArraySummaryInfoFieldHandles struct {
 	Name           *string
 	Version        *string
 	Serial         *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayNet - Array network config.
-
 // Export NsArrayNetFields provides field names to use in filter parameters, for example.
-var NsArrayNetFields *NsArrayNetStringFields
+var NsArrayNetFields *NsArrayNetFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -14,7 +12,7 @@ func init() {
 	fieldCtrlrBSupportIp := "ctrlr_b_support_ip"
 	fieldNicList := "nic_list"
 
-	NsArrayNetFields = &NsArrayNetStringFields{
+	NsArrayNetFields = &NsArrayNetFieldHandles{
 		Name:            &fieldName,
 		MemberGid:       &fieldMemberGid,
 		CtrlrASupportIp: &fieldCtrlrASupportIp,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsArrayNet - Array network config.
 type NsArrayNet struct {
 	// Name - Name of the array.
 	Name *string `json:"name,omitempty"`
@@ -36,8 +35,8 @@ type NsArrayNet struct {
 	NicList []*NsNIC `json:"nic_list,omitempty"`
 }
 
-// Struct for NsArrayNetFields
-type NsArrayNetStringFields struct {
+// NsArrayNetFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayNetFieldHandles struct {
 	Name            *string
 	MemberGid       *string
 	CtrlrASupportIp *string

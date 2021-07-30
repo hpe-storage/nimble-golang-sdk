@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsSnapVolListReturn - Object returned after creating snapshot collection.
-
 // Export NsSnapVolListReturnFields provides field names to use in filter parameters, for example.
-var NsSnapVolListReturnFields *NsSnapVolListReturnStringFields
+var NsSnapVolListReturnFields *NsSnapVolListReturnFieldHandles
 
 func init() {
 	fieldSnapIds := "snap_ids"
 
-	NsSnapVolListReturnFields = &NsSnapVolListReturnStringFields{
+	NsSnapVolListReturnFields = &NsSnapVolListReturnFieldHandles{
 		SnapIds: &fieldSnapIds,
 	}
 }
 
+// NsSnapVolListReturn - Object returned after creating snapshot collection.
 type NsSnapVolListReturn struct {
 	// SnapIds - A list of snapshot ids.
 	SnapIds []*NsObjectIDKV `json:"snap_ids,omitempty"`
 }
 
-// Struct for NsSnapVolListReturnFields
-type NsSnapVolListReturnStringFields struct {
+// NsSnapVolListReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSnapVolListReturnFieldHandles struct {
 	SnapIds *string
 }

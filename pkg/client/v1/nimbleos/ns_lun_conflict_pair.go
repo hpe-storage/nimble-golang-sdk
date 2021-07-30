@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsLunConflictPair - LUN number conflict.
-
 // Export NsLunConflictPairFields provides field names to use in filter parameters, for example.
-var NsLunConflictPairFields *NsLunConflictPairStringFields
+var NsLunConflictPairFields *NsLunConflictPairFieldHandles
 
 func init() {
 	fieldInitiatorWwpn := "initiator_wwpn"
@@ -20,7 +18,7 @@ func init() {
 	fieldSrcSnapName := "src_snap_name"
 	fieldSrcLun := "src_lun"
 
-	NsLunConflictPairFields = &NsLunConflictPairStringFields{
+	NsLunConflictPairFields = &NsLunConflictPairFieldHandles{
 		InitiatorWwpn:  &fieldInitiatorWwpn,
 		InitiatorAlias: &fieldInitiatorAlias,
 		DstIgrpName:    &fieldDstIgrpName,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// NsLunConflictPair - LUN number conflict.
 type NsLunConflictPair struct {
 	// InitiatorWwpn - WWPN/IQN of the common initiator.
 	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
@@ -60,8 +59,8 @@ type NsLunConflictPair struct {
 	SrcLun *int64 `json:"src_lun,omitempty"`
 }
 
-// Struct for NsLunConflictPairFields
-type NsLunConflictPairStringFields struct {
+// NsLunConflictPairFieldHandles provides a string representation for each AccessControlRecord field.
+type NsLunConflictPairFieldHandles struct {
 	InitiatorWwpn  *string
 	InitiatorAlias *string
 	DstIgrpName    *string

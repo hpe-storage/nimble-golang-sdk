@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSnapshotFromVolumes - Snapshot as presented in volumes object set.
-
 // Export NsSnapshotFromVolumesFields provides field names to use in filter parameters, for example.
-var NsSnapshotFromVolumesFields *NsSnapshotFromVolumesStringFields
+var NsSnapshotFromVolumesFields *NsSnapshotFromVolumesFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldName := "name"
 	fieldSnapName := "snap_name"
 
-	NsSnapshotFromVolumesFields = &NsSnapshotFromVolumesStringFields{
+	NsSnapshotFromVolumesFields = &NsSnapshotFromVolumesFieldHandles{
 		ID:       &fieldID,
 		SnapId:   &fieldSnapId,
 		Name:     &fieldName,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsSnapshotFromVolumes - Snapshot as presented in volumes object set.
 type NsSnapshotFromVolumes struct {
 	// ID - Snapshot id.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type NsSnapshotFromVolumes struct {
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
-// Struct for NsSnapshotFromVolumesFields
-type NsSnapshotFromVolumesStringFields struct {
+// NsSnapshotFromVolumesFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSnapshotFromVolumesFieldHandles struct {
 	ID       *string
 	SnapId   *string
 	Name     *string

@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsSensorData - A list of samples (in order of sample time) for a sensor.
-
 // Export NsSensorDataFields provides field names to use in filter parameters, for example.
-var NsSensorDataFields *NsSensorDataStringFields
+var NsSensorDataFields *NsSensorDataFieldHandles
 
 func init() {
 	fieldSensor := "sensor"
 	fieldSamples := "samples"
 
-	NsSensorDataFields = &NsSensorDataStringFields{
+	NsSensorDataFields = &NsSensorDataFieldHandles{
 		Sensor:  &fieldSensor,
 		Samples: &fieldSamples,
 	}
 }
 
+// NsSensorData - A list of samples (in order of sample time) for a sensor.
 type NsSensorData struct {
 	// Sensor - Sensor name.
 	Sensor *string `json:"sensor,omitempty"`
@@ -24,8 +23,8 @@ type NsSensorData struct {
 	Samples []*uint64 `json:"samples,omitempty"`
 }
 
-// Struct for NsSensorDataFields
-type NsSensorDataStringFields struct {
+// NsSensorDataFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSensorDataFieldHandles struct {
 	Sensor  *string
 	Samples *string
 }

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Stat - Access generic stats interface via REST for internal testing.
-
 // Export StatFields provides field names to use in filter parameters, for example.
-var StatFields *StatStringFields
+var StatFields *StatFieldHandles
 
 func init() {
 	fieldScope := "scope"
@@ -23,7 +21,7 @@ func init() {
 	fieldSensorCumulativeData := "sensor_cumulative_data"
 	fieldVolId := "vol_id"
 
-	StatFields = &StatStringFields{
+	StatFields = &StatFieldHandles{
 		Scope:                &fieldScope,
 		DomainId:             &fieldDomainId,
 		SetId:                &fieldSetId,
@@ -41,6 +39,7 @@ func init() {
 	}
 }
 
+// Stat - Access generic stats interface via REST for internal testing.
 type Stat struct {
 	// Scope - Stat scope parameter to pass to stats reader.  Optional input attribute.
 	Scope *string `json:"scope,omitempty"`
@@ -72,8 +71,8 @@ type Stat struct {
 	VolId *string `json:"vol_id,omitempty"`
 }
 
-// Struct for StatFields
-type StatStringFields struct {
+// StatFieldHandles provides a string representation for each AccessControlRecord field.
+type StatFieldHandles struct {
 	Scope                *string
 	DomainId             *string
 	SetId                *string

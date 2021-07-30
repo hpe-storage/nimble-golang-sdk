@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ActiveDirectoryMembership - Manages the storage array's membership with the Active Directory.
-
 // Export ActiveDirectoryMembershipFields provides field names to use in filter parameters, for example.
-var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipStringFields
+var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -19,7 +17,7 @@ func init() {
 	fieldPassword := "password"
 	fieldEnabled := "enabled"
 
-	ActiveDirectoryMembershipFields = &ActiveDirectoryMembershipStringFields{
+	ActiveDirectoryMembershipFields = &ActiveDirectoryMembershipFieldHandles{
 		ID:                 &fieldID,
 		Description:        &fieldDescription,
 		Name:               &fieldName,
@@ -33,6 +31,7 @@ func init() {
 	}
 }
 
+// ActiveDirectoryMembership - Manages the storage array's membership with the Active Directory.
 type ActiveDirectoryMembership struct {
 	// ID - Identifier for the Active Directory Domain.
 	ID *string `json:"id,omitempty"`
@@ -56,8 +55,8 @@ type ActiveDirectoryMembership struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// Struct for ActiveDirectoryMembershipFields
-type ActiveDirectoryMembershipStringFields struct {
+// ActiveDirectoryMembershipFieldHandles provides a string representation for each AccessControlRecord field.
+type ActiveDirectoryMembershipFieldHandles struct {
 	ID                 *string
 	Description        *string
 	Name               *string

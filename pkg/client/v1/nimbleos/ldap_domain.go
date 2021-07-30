@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// LdapDomain - Manages the storage array's membership with LDAP servers.
-
 // Export LdapDomainFields provides field names to use in filter parameters, for example.
-var LdapDomainFields *LdapDomainStringFields
+var LdapDomainFields *LdapDomainFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -22,7 +20,7 @@ func init() {
 	fieldGroupSearchBaseList := "group_search_base_list"
 	fieldSchemaType := "schema_type"
 
-	LdapDomainFields = &LdapDomainStringFields{
+	LdapDomainFields = &LdapDomainFieldHandles{
 		ID:                  &fieldID,
 		DomainName:          &fieldDomainName,
 		DomainDescription:   &fieldDomainDescription,
@@ -39,6 +37,7 @@ func init() {
 	}
 }
 
+// LdapDomain - Manages the storage array's membership with LDAP servers.
 type LdapDomain struct {
 	// ID - Identifier for the LDAP Domain.
 	ID *string `json:"id,omitempty"`
@@ -68,8 +67,8 @@ type LdapDomain struct {
 	SchemaType *NsLdapSchemaType `json:"schema_type,omitempty"`
 }
 
-// Struct for LdapDomainFields
-type LdapDomainStringFields struct {
+// LdapDomainFieldHandles provides a string representation for each AccessControlRecord field.
+type LdapDomainFieldHandles struct {
 	ID                  *string
 	DomainName          *string
 	DomainDescription   *string

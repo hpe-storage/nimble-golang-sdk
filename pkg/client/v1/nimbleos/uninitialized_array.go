@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// UninitializedArray - Lists discovered arrays that are not members of any group and are in the same subnet.
-
 // Export UninitializedArrayFields provides field names to use in filter parameters, for example.
-var UninitializedArrayFields *UninitializedArrayStringFields
+var UninitializedArrayFields *UninitializedArrayFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -20,7 +18,7 @@ func init() {
 	fieldAllFlash := "all_flash"
 	fieldDedupeConfigurable := "dedupe_configurable"
 
-	UninitializedArrayFields = &UninitializedArrayStringFields{
+	UninitializedArrayFields = &UninitializedArrayFieldHandles{
 		ID:                 &fieldID,
 		Serial:             &fieldSerial,
 		ArrayName:          &fieldArrayName,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// UninitializedArray - Lists discovered arrays that are not members of any group and are in the same subnet.
 type UninitializedArray struct {
 	// ID - Identifier for the interface.
 	ID *string `json:"id,omitempty"`
@@ -60,8 +59,8 @@ type UninitializedArray struct {
 	DedupeConfigurable *bool `json:"dedupe_configurable,omitempty"`
 }
 
-// Struct for UninitializedArrayFields
-type UninitializedArrayStringFields struct {
+// UninitializedArrayFieldHandles provides a string representation for each AccessControlRecord field.
+type UninitializedArrayFieldHandles struct {
 	ID                 *string
 	Serial             *string
 	ArrayName          *string

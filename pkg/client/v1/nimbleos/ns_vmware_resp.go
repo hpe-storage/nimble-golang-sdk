@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsVmwareResp - Response from Vmware app server.
-
 // Export NsVmwareRespFields provides field names to use in filter parameters, for example.
-var NsVmwareRespFields *NsVmwareRespStringFields
+var NsVmwareRespFields *NsVmwareRespFieldHandles
 
 func init() {
 	fieldVmwareError := "vmware_error"
@@ -17,7 +15,7 @@ func init() {
 	fieldNumVmsForVolcoll := "num_vms_for_volcoll"
 	fieldWarningVmToolsStatus := "warning_vm_tools_status"
 
-	NsVmwareRespFields = &NsVmwareRespStringFields{
+	NsVmwareRespFields = &NsVmwareRespFieldHandles{
 		VmwareError:          &fieldVmwareError,
 		VmwareErrorMessage:   &fieldVmwareErrorMessage,
 		ConnStatusOk:         &fieldConnStatusOk,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// NsVmwareResp - Response from Vmware app server.
 type NsVmwareResp struct {
 	// VmwareError - Error code from Vmware app server.
 	VmwareError *string `json:"vmware_error,omitempty"`
@@ -48,8 +47,8 @@ type NsVmwareResp struct {
 	WarningVmToolsStatus []*string `json:"warning_vm_tools_status,omitempty"`
 }
 
-// Struct for NsVmwareRespFields
-type NsVmwareRespStringFields struct {
+// NsVmwareRespFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVmwareRespFieldHandles struct {
 	VmwareError          *string
 	VmwareErrorMessage   *string
 	ConnStatusOk         *string

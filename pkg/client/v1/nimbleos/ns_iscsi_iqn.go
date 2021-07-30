@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsISCSIIQN - ISCSI IQN.
-
 // Export NsISCSIIQNFields provides field names to use in filter parameters, for example.
-var NsISCSIIQNFields *NsISCSIIQNStringFields
+var NsISCSIIQNFields *NsISCSIIQNFieldHandles
 
 func init() {
 	fieldName := "name"
 
-	NsISCSIIQNFields = &NsISCSIIQNStringFields{
+	NsISCSIIQNFields = &NsISCSIIQNFieldHandles{
 		Name: &fieldName,
 	}
 }
 
+// NsISCSIIQN - ISCSI IQN.
 type NsISCSIIQN struct {
 	// Name - IQN name of the iSCSI initiator.
 	Name *string `json:"name,omitempty"`
 }
 
-// Struct for NsISCSIIQNFields
-type NsISCSIIQNStringFields struct {
+// NsISCSIIQNFieldHandles provides a string representation for each AccessControlRecord field.
+type NsISCSIIQNFieldHandles struct {
 	Name *string
 }

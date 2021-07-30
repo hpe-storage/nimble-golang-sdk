@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsVolumeSummaryWithAppCategory - Select fields containing volume info.
-
 // Export NsVolumeSummaryWithAppCategoryFields provides field names to use in filter parameters, for example.
-var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryStringFields
+var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -14,7 +12,7 @@ func init() {
 	fieldFullName := "full_name"
 	fieldLun := "lun"
 
-	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategoryStringFields{
+	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategoryFieldHandles{
 		ID:          &fieldID,
 		Name:        &fieldName,
 		AppCategory: &fieldAppCategory,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsVolumeSummaryWithAppCategory - Select fields containing volume info.
 type NsVolumeSummaryWithAppCategory struct {
 	// ID - ID of volume.
 	ID *string `json:"id,omitempty"`
@@ -36,8 +35,8 @@ type NsVolumeSummaryWithAppCategory struct {
 	Lun *int64 `json:"lun,omitempty"`
 }
 
-// Struct for NsVolumeSummaryWithAppCategoryFields
-type NsVolumeSummaryWithAppCategoryStringFields struct {
+// NsVolumeSummaryWithAppCategoryFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolumeSummaryWithAppCategoryFieldHandles struct {
 	ID          *string
 	Name        *string
 	AppCategory *string

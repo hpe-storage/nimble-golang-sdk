@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSubnet - A subnet configuration.
-
 // Export NsSubnetFields provides field names to use in filter parameters, for example.
-var NsSubnetFields *NsSubnetStringFields
+var NsSubnetFields *NsSubnetFieldHandles
 
 func init() {
 	fieldLabel := "label"
@@ -21,7 +19,7 @@ func init() {
 	fieldFailover := "failover"
 	fieldFailoverEnableTime := "failover_enable_time"
 
-	NsSubnetFields = &NsSubnetStringFields{
+	NsSubnetFields = &NsSubnetFieldHandles{
 		Label:              &fieldLabel,
 		Network:            &fieldNetwork,
 		Netmask:            &fieldNetmask,
@@ -37,6 +35,7 @@ func init() {
 	}
 }
 
+// NsSubnet - A subnet configuration.
 type NsSubnet struct {
 	// Label - Subnet label.
 	Label *string `json:"label,omitempty"`
@@ -64,8 +63,8 @@ type NsSubnet struct {
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
 }
 
-// Struct for NsSubnetFields
-type NsSubnetStringFields struct {
+// NsSubnetFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSubnetFieldHandles struct {
 	Label              *string
 	Network            *string
 	Netmask            *string

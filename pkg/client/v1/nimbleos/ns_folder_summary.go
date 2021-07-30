@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsFolderSummary - Select fields containing folder info.
-
 // Export NsFolderSummaryFields provides field names to use in filter parameters, for example.
-var NsFolderSummaryFields *NsFolderSummaryStringFields
+var NsFolderSummaryFields *NsFolderSummaryFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldFqn := "fqn"
 
-	NsFolderSummaryFields = &NsFolderSummaryStringFields{
+	NsFolderSummaryFields = &NsFolderSummaryFieldHandles{
 		ID:  &fieldID,
 		Fqn: &fieldFqn,
 	}
 }
 
+// NsFolderSummary - Select fields containing folder info.
 type NsFolderSummary struct {
 	// ID - ID of folder.
 	ID *string `json:"id,omitempty"`
@@ -24,8 +23,8 @@ type NsFolderSummary struct {
 	Fqn *string `json:"fqn,omitempty"`
 }
 
-// Struct for NsFolderSummaryFields
-type NsFolderSummaryStringFields struct {
+// NsFolderSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFolderSummaryFieldHandles struct {
 	ID  *string
 	Fqn *string
 }

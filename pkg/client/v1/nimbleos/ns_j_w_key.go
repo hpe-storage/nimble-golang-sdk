@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsJWKey - Javascript Web Key.
-
 // Export NsJWKeyFields provides field names to use in filter parameters, for example.
-var NsJWKeyFields *NsJWKeyStringFields
+var NsJWKeyFields *NsJWKeyFieldHandles
 
 func init() {
 	fieldKid := "kid"
 	fieldAlgorithm := "algorithm"
 	fieldKey := "key"
 
-	NsJWKeyFields = &NsJWKeyStringFields{
+	NsJWKeyFields = &NsJWKeyFieldHandles{
 		Kid:       &fieldKid,
 		Algorithm: &fieldAlgorithm,
 		Key:       &fieldKey,
 	}
 }
 
+// NsJWKey - Javascript Web Key.
 type NsJWKey struct {
 	// Kid - Key ID.
 	Kid *string `json:"kid,omitempty"`
@@ -28,8 +27,8 @@ type NsJWKey struct {
 	Key *string `json:"key,omitempty"`
 }
 
-// Struct for NsJWKeyFields
-type NsJWKeyStringFields struct {
+// NsJWKeyFieldHandles provides a string representation for each AccessControlRecord field.
+type NsJWKeyFieldHandles struct {
 	Kid       *string
 	Algorithm *string
 	Key       *string

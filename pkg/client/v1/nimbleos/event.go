@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Event - View events.
-
 // Export EventFields provides field names to use in filter parameters, for example.
-var EventFields *EventStringFields
+var EventFields *EventFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -23,7 +21,7 @@ func init() {
 	fieldParams := "params"
 	fieldTenantId := "tenant_id"
 
-	EventFields = &EventStringFields{
+	EventFields = &EventFieldHandles{
 		ID:         &fieldID,
 		Type:       &fieldType,
 		Name:       &fieldName,
@@ -41,6 +39,7 @@ func init() {
 	}
 }
 
+// Event - View events.
 type Event struct {
 	// ID - Identifier for the event record.
 	ID *string `json:"id,omitempty"`
@@ -72,8 +71,8 @@ type Event struct {
 	TenantId *string `json:"tenant_id,omitempty"`
 }
 
-// Struct for EventFields
-type EventStringFields struct {
+// EventFieldHandles provides a string representation for each AccessControlRecord field.
+type EventFieldHandles struct {
 	ID         *string
 	Type       *string
 	Name       *string

@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsKeyValue - Key-value pair.
-
 // Export NsKeyValueFields provides field names to use in filter parameters, for example.
-var NsKeyValueFields *NsKeyValueStringFields
+var NsKeyValueFields *NsKeyValueFieldHandles
 
 func init() {
 	fieldKey := "key"
 	fieldValue := "value"
 
-	NsKeyValueFields = &NsKeyValueStringFields{
+	NsKeyValueFields = &NsKeyValueFieldHandles{
 		Key:   &fieldKey,
 		Value: &fieldValue,
 	}
 }
 
+// NsKeyValue - Key-value pair.
 type NsKeyValue struct {
 	// Key - Identifier of key-value pair.
 	Key *string `json:"key,omitempty"`
@@ -24,8 +23,8 @@ type NsKeyValue struct {
 	Value *string `json:"value,omitempty"`
 }
 
-// Struct for NsKeyValueFields
-type NsKeyValueStringFields struct {
+// NsKeyValueFieldHandles provides a string representation for each AccessControlRecord field.
+type NsKeyValueFieldHandles struct {
 	Key   *string
 	Value *string
 }

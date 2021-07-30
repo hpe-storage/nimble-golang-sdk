@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
-
 // Export ChapUserFields provides field names to use in filter parameters, for example.
-var ChapUserFields *ChapUserStringFields
+var ChapUserFields *ChapUserFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -21,7 +19,7 @@ func init() {
 	fieldVolList := "vol_list"
 	fieldVolCount := "vol_count"
 
-	ChapUserFields = &ChapUserStringFields{
+	ChapUserFields = &ChapUserFieldHandles{
 		ID:            &fieldID,
 		Name:          &fieldName,
 		FullName:      &fieldFullName,
@@ -37,6 +35,7 @@ func init() {
 	}
 }
 
+// ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
 type ChapUser struct {
 	// ID - Identifier for the CHAP user.
 	ID *string `json:"id,omitempty"`
@@ -64,8 +63,8 @@ type ChapUser struct {
 	VolCount *int64 `json:"vol_count,omitempty"`
 }
 
-// Struct for ChapUserFields
-type ChapUserStringFields struct {
+// ChapUserFieldHandles provides a string representation for each AccessControlRecord field.
+type ChapUserFieldHandles struct {
 	ID            *string
 	Name          *string
 	FullName      *string

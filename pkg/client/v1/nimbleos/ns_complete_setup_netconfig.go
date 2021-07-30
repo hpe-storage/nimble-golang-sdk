@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsCompleteSetupNetconfig - Information includes group, array and network configuration in complete setup.
-
 // Export NsCompleteSetupNetconfigFields provides field names to use in filter parameters, for example.
-var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfigStringFields
+var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfigFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -20,7 +18,7 @@ func init() {
 	fieldSubnetList := "subnet_list"
 	fieldArrayList := "array_list"
 
-	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfigStringFields{
+	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfigFieldHandles{
 		Name:                           &fieldName,
 		DiscoveryIp:                    &fieldDiscoveryIp,
 		DiscoveryNetmask:               &fieldDiscoveryNetmask,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// NsCompleteSetupNetconfig - Information includes group, array and network configuration in complete setup.
 type NsCompleteSetupNetconfig struct {
 	// Name - Network configuration name, possible values: 'active', 'backup', 'draft'.
 	Name *NsNetConfigName `json:"name,omitempty"`
@@ -60,8 +59,8 @@ type NsCompleteSetupNetconfig struct {
 	ArrayList []*NsArrayNet `json:"array_list,omitempty"`
 }
 
-// Struct for NsCompleteSetupNetconfigFields
-type NsCompleteSetupNetconfigStringFields struct {
+// NsCompleteSetupNetconfigFieldHandles provides a string representation for each AccessControlRecord field.
+type NsCompleteSetupNetconfigFieldHandles struct {
 	Name                           *string
 	DiscoveryIp                    *string
 	DiscoveryNetmask               *string

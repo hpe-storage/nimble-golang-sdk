@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// Version - Show the API version.
-
 // Export VersionFields provides field names to use in filter parameters, for example.
-var VersionFields *VersionStringFields
+var VersionFields *VersionFieldHandles
 
 func init() {
 	fieldName := "name"
 	fieldSoftwareVersion := "software_version"
 
-	VersionFields = &VersionStringFields{
+	VersionFields = &VersionFieldHandles{
 		Name:            &fieldName,
 		SoftwareVersion: &fieldSoftwareVersion,
 	}
 }
 
+// Version - Show the API version.
 type Version struct {
 	// Name - API version number.
 	Name *string `json:"name,omitempty"`
@@ -24,8 +23,8 @@ type Version struct {
 	SoftwareVersion *string `json:"software_version,omitempty"`
 }
 
-// Struct for VersionFields
-type VersionStringFields struct {
+// VersionFieldHandles provides a string representation for each AccessControlRecord field.
+type VersionFieldHandles struct {
 	Name            *string
 	SoftwareVersion *string
 }

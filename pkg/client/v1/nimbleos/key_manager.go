@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// KeyManager - Key Manager stores encryption keys for the array volumes / dedupe domains.
-
 // Export KeyManagerFields provides field names to use in filter parameters, for example.
-var KeyManagerFields *KeyManagerStringFields
+var KeyManagerFields *KeyManagerFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -20,7 +18,7 @@ func init() {
 	fieldStatus := "status"
 	fieldVendor := "vendor"
 
-	KeyManagerFields = &KeyManagerStringFields{
+	KeyManagerFields = &KeyManagerFieldHandles{
 		ID:          &fieldID,
 		Name:        &fieldName,
 		Description: &fieldDescription,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// KeyManager - Key Manager stores encryption keys for the array volumes / dedupe domains.
 type KeyManager struct {
 	// ID - Identifier for External Key Manager.
 	ID *string `json:"id,omitempty"`
@@ -60,8 +59,8 @@ type KeyManager struct {
 	Vendor *string `json:"vendor,omitempty"`
 }
 
-// Struct for KeyManagerFields
-type KeyManagerStringFields struct {
+// KeyManagerFieldHandles provides a string representation for each AccessControlRecord field.
+type KeyManagerFieldHandles struct {
 	ID          *string
 	Name        *string
 	Description *string

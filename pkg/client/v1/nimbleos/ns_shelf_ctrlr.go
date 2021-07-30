@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsShelfCtrlr - A shelf controller information.
-
 // Export NsShelfCtrlrFields provides field names to use in filter parameters, for example.
-var NsShelfCtrlrFields *NsShelfCtrlrStringFields
+var NsShelfCtrlrFields *NsShelfCtrlrFieldHandles
 
 func init() {
 	fieldExpSasAddr := "exp_sas_addr"
@@ -26,7 +24,7 @@ func init() {
 	fieldCtrlrAttrsetList := "ctrlr_attrset_list"
 	fieldIDentifyStatus := "identify_status"
 
-	NsShelfCtrlrFields = &NsShelfCtrlrStringFields{
+	NsShelfCtrlrFields = &NsShelfCtrlrFieldHandles{
 		ExpSasAddr:         &fieldExpSasAddr,
 		CtrlrSide:          &fieldCtrlrSide,
 		EncLocId:           &fieldEncLocId,
@@ -47,6 +45,7 @@ func init() {
 	}
 }
 
+// NsShelfCtrlr - A shelf controller information.
 type NsShelfCtrlr struct {
 	// ExpSasAddr - Expander SAS address.
 	ExpSasAddr *string `json:"exp_sas_addr,omitempty"`
@@ -84,8 +83,8 @@ type NsShelfCtrlr struct {
 	IDentifyStatus *bool `json:"identify_status,omitempty"`
 }
 
-// Struct for NsShelfCtrlrFields
-type NsShelfCtrlrStringFields struct {
+// NsShelfCtrlrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsShelfCtrlrFieldHandles struct {
 	ExpSasAddr         *string
 	CtrlrSide          *string
 	EncLocId           *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFcInterfaceInfo - Fibre Channel interface information.
-
 // Export NsFcInterfaceInfoFields provides field names to use in filter parameters, for example.
-var NsFcInterfaceInfoFields *NsFcInterfaceInfoStringFields
+var NsFcInterfaceInfoFields *NsFcInterfaceInfoFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -16,7 +14,7 @@ func init() {
 	fieldSlot := "slot"
 	fieldPort := "port"
 
-	NsFcInterfaceInfoFields = &NsFcInterfaceInfoStringFields{
+	NsFcInterfaceInfoFields = &NsFcInterfaceInfoFieldHandles{
 		Name:        &fieldName,
 		Wwnn:        &fieldWwnn,
 		Wwpn:        &fieldWwpn,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsFcInterfaceInfo - Fibre Channel interface information.
 type NsFcInterfaceInfo struct {
 	// Name - Name of Fibre Channel interface.
 	Name *string `json:"name,omitempty"`
@@ -44,8 +43,8 @@ type NsFcInterfaceInfo struct {
 	Port *int64 `json:"port,omitempty"`
 }
 
-// Struct for NsFcInterfaceInfoFields
-type NsFcInterfaceInfoStringFields struct {
+// NsFcInterfaceInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcInterfaceInfoFieldHandles struct {
 	Name        *string
 	Wwnn        *string
 	Wwpn        *string

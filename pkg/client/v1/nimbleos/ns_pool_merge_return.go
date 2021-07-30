@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsPoolMergeReturn - Return values of pool merge.
-
 // Export NsPoolMergeReturnFields provides field names to use in filter parameters, for example.
-var NsPoolMergeReturnFields *NsPoolMergeReturnStringFields
+var NsPoolMergeReturnFields *NsPoolMergeReturnFieldHandles
 
 func init() {
 	fieldSnapcollCount := "snapcoll_count"
@@ -44,7 +42,7 @@ func init() {
 	fieldVolCount := "vol_count"
 	fieldVolList := "vol_list"
 
-	NsPoolMergeReturnFields = &NsPoolMergeReturnStringFields{
+	NsPoolMergeReturnFields = &NsPoolMergeReturnFieldHandles{
 		SnapcollCount:              &fieldSnapcollCount,
 		ArrayList:                  &fieldArrayList,
 		ArrayCount:                 &fieldArrayCount,
@@ -83,6 +81,7 @@ func init() {
 	}
 }
 
+// NsPoolMergeReturn - Return values of pool merge.
 type NsPoolMergeReturn struct {
 	// SnapcollCount - Snapshot collection count.
 	SnapcollCount *int64 `json:"snapcoll_count,omitempty"`
@@ -156,8 +155,8 @@ type NsPoolMergeReturn struct {
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 }
 
-// Struct for NsPoolMergeReturnFields
-type NsPoolMergeReturnStringFields struct {
+// NsPoolMergeReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsPoolMergeReturnFieldHandles struct {
 	SnapcollCount              *string
 	ArrayList                  *string
 	ArrayCount                 *string

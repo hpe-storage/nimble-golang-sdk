@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// FibreChannelPort - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
-
 // Export FibreChannelPortFields provides field names to use in filter parameters, for example.
-var FibreChannelPortFields *FibreChannelPortStringFields
+var FibreChannelPortFields *FibreChannelPortFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -20,7 +18,7 @@ func init() {
 	fieldRxPower := "rx_power"
 	fieldTxPower := "tx_power"
 
-	FibreChannelPortFields = &FibreChannelPortStringFields{
+	FibreChannelPortFields = &FibreChannelPortFieldHandles{
 		ID:                &fieldID,
 		ArrayNameOrSerial: &fieldArrayNameOrSerial,
 		ControllerName:    &fieldControllerName,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// FibreChannelPort - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
 type FibreChannelPort struct {
 	// ID - Identifier for the Fibre Channel port.
 	ID *string `json:"id,omitempty"`
@@ -60,8 +59,8 @@ type FibreChannelPort struct {
 	TxPower *int64 `json:"tx_power,omitempty"`
 }
 
-// Struct for FibreChannelPortFields
-type FibreChannelPortStringFields struct {
+// FibreChannelPortFieldHandles provides a string representation for each AccessControlRecord field.
+type FibreChannelPortFieldHandles struct {
 	ID                *string
 	ArrayNameOrSerial *string
 	ControllerName    *string

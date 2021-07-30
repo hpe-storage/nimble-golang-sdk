@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Subnet - Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
-
 // Export SubnetFields provides field names to use in filter parameters, for example.
-var SubnetFields *SubnetStringFields
+var SubnetFields *SubnetFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -24,7 +22,7 @@ func init() {
 	fieldFailover := "failover"
 	fieldFailoverEnableTime := "failover_enable_time"
 
-	SubnetFields = &SubnetStringFields{
+	SubnetFields = &SubnetFieldHandles{
 		ID:                 &fieldID,
 		Name:               &fieldName,
 		Network:            &fieldNetwork,
@@ -43,6 +41,7 @@ func init() {
 	}
 }
 
+// Subnet - Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
 type Subnet struct {
 	// ID - Identifier for the initiator group.
 	ID *string `json:"id,omitempty"`
@@ -76,8 +75,8 @@ type Subnet struct {
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
 }
 
-// Struct for SubnetFields
-type SubnetStringFields struct {
+// SubnetFieldHandles provides a string representation for each AccessControlRecord field.
+type SubnetFieldHandles struct {
 	ID                 *string
 	Name               *string
 	Network            *string

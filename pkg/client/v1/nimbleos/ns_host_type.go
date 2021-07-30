@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsHostType - Host type attribute.
-
 // Export NsHostTypeFields provides field names to use in filter parameters, for example.
-var NsHostTypeFields *NsHostTypeStringFields
+var NsHostTypeFields *NsHostTypeFieldHandles
 
 func init() {
 	fieldInitiatorName := "initiator_name"
@@ -14,7 +12,7 @@ func init() {
 	fieldDestinationInitiatorGroup := "destination_initiator_group"
 	fieldDestinationHostType := "destination_host_type"
 
-	NsHostTypeFields = &NsHostTypeStringFields{
+	NsHostTypeFields = &NsHostTypeFieldHandles{
 		InitiatorName:             &fieldInitiatorName,
 		SourceInitiatorGroup:      &fieldSourceInitiatorGroup,
 		SourceHostType:            &fieldSourceHostType,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsHostType - Host type attribute.
 type NsHostType struct {
 	// InitiatorName - The initiator for which the conflict exists.
 	InitiatorName *string `json:"initiator_name,omitempty"`
@@ -36,8 +35,8 @@ type NsHostType struct {
 	DestinationHostType *string `json:"destination_host_type,omitempty"`
 }
 
-// Struct for NsHostTypeFields
-type NsHostTypeStringFields struct {
+// NsHostTypeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsHostTypeFieldHandles struct {
 	InitiatorName             *string
 	SourceInitiatorGroup      *string
 	SourceHostType            *string

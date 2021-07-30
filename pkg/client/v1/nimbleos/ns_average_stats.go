@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsAverageStats - Average statistics.
-
 // Export NsAverageStatsFields provides field names to use in filter parameters, for example.
-var NsAverageStatsFields *NsAverageStatsStringFields
+var NsAverageStatsFields *NsAverageStatsFieldHandles
 
 func init() {
 	fieldReadIops := "read_iops"
@@ -18,7 +16,7 @@ func init() {
 	fieldCombinedThroughput := "combined_throughput"
 	fieldCombinedLatency := "combined_latency"
 
-	NsAverageStatsFields = &NsAverageStatsStringFields{
+	NsAverageStatsFields = &NsAverageStatsFieldHandles{
 		ReadIops:           &fieldReadIops,
 		ReadThroughput:     &fieldReadThroughput,
 		ReadLatency:        &fieldReadLatency,
@@ -31,6 +29,7 @@ func init() {
 	}
 }
 
+// NsAverageStats - Average statistics.
 type NsAverageStats struct {
 	// ReadIops - Average read iops.
 	ReadIops *int64 `json:"read_iops,omitempty"`
@@ -52,8 +51,8 @@ type NsAverageStats struct {
 	CombinedLatency *int64 `json:"combined_latency,omitempty"`
 }
 
-// Struct for NsAverageStatsFields
-type NsAverageStatsStringFields struct {
+// NsAverageStatsFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAverageStatsFieldHandles struct {
 	ReadIops           *string
 	ReadThroughput     *string
 	ReadLatency        *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsAuditlogNotification - Represents an auditlog notification message.
-
 // Export NsAuditlogNotificationFields provides field names to use in filter parameters, for example.
-var NsAuditlogNotificationFields *NsAuditlogNotificationStringFields
+var NsAuditlogNotificationFields *NsAuditlogNotificationFieldHandles
 
 func init() {
 	fieldSequenceNumber := "sequence_number"
@@ -16,7 +14,7 @@ func init() {
 	fieldObjectName := "object_name"
 	fieldTimestamp := "timestamp"
 
-	NsAuditlogNotificationFields = &NsAuditlogNotificationStringFields{
+	NsAuditlogNotificationFields = &NsAuditlogNotificationFieldHandles{
 		SequenceNumber:   &fieldSequenceNumber,
 		NotificationType: &fieldNotificationType,
 		Activity:         &fieldActivity,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsAuditlogNotification - Represents an auditlog notification message.
 type NsAuditlogNotification struct {
 	// SequenceNumber - Notification Sequence Number.
 	SequenceNumber *int64 `json:"sequence_number,omitempty"`
@@ -44,8 +43,8 @@ type NsAuditlogNotification struct {
 	Timestamp *int64 `json:"timestamp,omitempty"`
 }
 
-// Struct for NsAuditlogNotificationFields
-type NsAuditlogNotificationStringFields struct {
+// NsAuditlogNotificationFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAuditlogNotificationFieldHandles struct {
 	SequenceNumber   *string
 	NotificationType *string
 	Activity         *string

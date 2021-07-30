@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsZeroConfIPAddr - Zero Conf of array.
-
 // Export NsZeroConfIPAddrFields provides field names to use in filter parameters, for example.
-var NsZeroConfIPAddrFields *NsZeroConfIPAddrStringFields
+var NsZeroConfIPAddrFields *NsZeroConfIPAddrFieldHandles
 
 func init() {
 	fieldNic := "nic"
 	fieldLocalIpaddr := "local_ipaddr"
 	fieldRemoteIpaddr := "remote_ipaddr"
 
-	NsZeroConfIPAddrFields = &NsZeroConfIPAddrStringFields{
+	NsZeroConfIPAddrFields = &NsZeroConfIPAddrFieldHandles{
 		Nic:          &fieldNic,
 		LocalIpaddr:  &fieldLocalIpaddr,
 		RemoteIpaddr: &fieldRemoteIpaddr,
 	}
 }
 
+// NsZeroConfIPAddr - Zero Conf of array.
 type NsZeroConfIPAddr struct {
 	// Nic - Nic of array.
 	Nic *string `json:"nic,omitempty"`
@@ -28,8 +27,8 @@ type NsZeroConfIPAddr struct {
 	RemoteIpaddr *string `json:"remote_ipaddr,omitempty"`
 }
 
-// Struct for NsZeroConfIPAddrFields
-type NsZeroConfIPAddrStringFields struct {
+// NsZeroConfIPAddrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsZeroConfIPAddrFieldHandles struct {
 	Nic          *string
 	LocalIpaddr  *string
 	RemoteIpaddr *string

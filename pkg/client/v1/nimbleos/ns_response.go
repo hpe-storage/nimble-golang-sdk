@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsResponse - May contain anything that any REST API response can contain.
-
 // Export NsResponseFields provides field names to use in filter parameters, for example.
-var NsResponseFields *NsResponseStringFields
+var NsResponseFields *NsResponseFieldHandles
 
 func init() {
 	fieldData := "data"
 	fieldMessages := "messages"
 
-	NsResponseFields = &NsResponseStringFields{
+	NsResponseFields = &NsResponseFieldHandles{
 		Data:     &fieldData,
 		Messages: &fieldMessages,
 	}
 }
 
+// NsResponse - May contain anything that any REST API response can contain.
 type NsResponse struct {
 	// Data - Response data.
 	Data *NsObject `json:"data,omitempty"`
@@ -24,8 +23,8 @@ type NsResponse struct {
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
-// Struct for NsResponseFields
-type NsResponseStringFields struct {
+// NsResponseFieldHandles provides a string representation for each AccessControlRecord field.
+type NsResponseFieldHandles struct {
 	Data     *string
 	Messages *string
 }

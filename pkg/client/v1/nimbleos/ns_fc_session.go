@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFCSession - Fibre Channel initiator session information.
-
 // Export NsFCSessionFields provides field names to use in filter parameters, for example.
-var NsFCSessionFields *NsFCSessionStringFields
+var NsFCSessionFields *NsFCSessionFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -27,7 +25,7 @@ func init() {
 	fieldTargetWwpn := "target_wwpn"
 	fieldTargetFcid := "target_fcid"
 
-	NsFCSessionFields = &NsFCSessionStringFields{
+	NsFCSessionFields = &NsFCSessionFieldHandles{
 		ID:                        &fieldID,
 		SessionId:                 &fieldSessionId,
 		Alua:                      &fieldAlua,
@@ -49,6 +47,7 @@ func init() {
 	}
 }
 
+// NsFCSession - Fibre Channel initiator session information.
 type NsFCSession struct {
 	// ID - Unique identifier of the Fibre Channel session.
 	ID *string `json:"id,omitempty"`
@@ -88,8 +87,8 @@ type NsFCSession struct {
 	TargetFcid *int64 `json:"target_fcid,omitempty"`
 }
 
-// Struct for NsFCSessionFields
-type NsFCSessionStringFields struct {
+// NsFCSessionFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFCSessionFieldHandles struct {
 	ID                        *string
 	SessionId                 *string
 	Alua                      *string

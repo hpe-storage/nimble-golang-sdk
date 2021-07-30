@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Support - View and alter support-based parameters.
-
 // Export SupportFields provides field names to use in filter parameters, for example.
-var SupportFields *SupportStringFields
+var SupportFields *SupportFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldArrayCount := "array_count"
 	fieldArrayList := "array_list"
 
-	SupportFields = &SupportStringFields{
+	SupportFields = &SupportFieldHandles{
 		ID:           &fieldID,
 		PasswordMode: &fieldPasswordMode,
 		ArrayCount:   &fieldArrayCount,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// Support - View and alter support-based parameters.
 type Support struct {
 	// ID - Object identifier for the group.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type Support struct {
 	ArrayList []*NsSupportPasswordArray `json:"array_list,omitempty"`
 }
 
-// Struct for SupportFields
-type SupportStringFields struct {
+// SupportFieldHandles provides a string representation for each AccessControlRecord field.
+type SupportFieldHandles struct {
 	ID           *string
 	PasswordMode *string
 	ArrayCount   *string

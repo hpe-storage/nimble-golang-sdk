@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSupportPasswordArray - Support password blobs for an array.
-
 // Export NsSupportPasswordArrayFields provides field names to use in filter parameters, for example.
-var NsSupportPasswordArrayFields *NsSupportPasswordArrayStringFields
+var NsSupportPasswordArrayFields *NsSupportPasswordArrayFieldHandles
 
 func init() {
 	fieldArrayName := "array_name"
@@ -14,7 +12,7 @@ func init() {
 	fieldBlobCount := "blob_count"
 	fieldBlobList := "blob_list"
 
-	NsSupportPasswordArrayFields = &NsSupportPasswordArrayStringFields{
+	NsSupportPasswordArrayFields = &NsSupportPasswordArrayFieldHandles{
 		ArrayName: &fieldArrayName,
 		ArraySn:   &fieldArraySn,
 		Model:     &fieldModel,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsSupportPasswordArray - Support password blobs for an array.
 type NsSupportPasswordArray struct {
 	// ArrayName - The name of the array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -36,8 +35,8 @@ type NsSupportPasswordArray struct {
 	BlobList []*NsSupportPasswordObject `json:"blob_list,omitempty"`
 }
 
-// Struct for NsSupportPasswordArrayFields
-type NsSupportPasswordArrayStringFields struct {
+// NsSupportPasswordArrayFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSupportPasswordArrayFieldHandles struct {
 	ArrayName *string
 	ArraySn   *string
 	Model     *string

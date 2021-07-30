@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ProtectionTemplate - Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom protection templates as needed.
-
 // Export ProtectionTemplateFields provides field names to use in filter parameters, for example.
-var ProtectionTemplateFields *ProtectionTemplateStringFields
+var ProtectionTemplateFields *ProtectionTemplateFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -29,7 +27,7 @@ func init() {
 	fieldLastModified := "last_modified"
 	fieldScheduleList := "schedule_list"
 
-	ProtectionTemplateFields = &ProtectionTemplateStringFields{
+	ProtectionTemplateFields = &ProtectionTemplateFieldHandles{
 		ID:              &fieldID,
 		Name:            &fieldName,
 		FullName:        &fieldFullName,
@@ -53,6 +51,7 @@ func init() {
 	}
 }
 
+// ProtectionTemplate - Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom protection templates as needed.
 type ProtectionTemplate struct {
 	// ID - Identifier for protection template.
 	ID *string `json:"id,omitempty"`
@@ -96,8 +95,8 @@ type ProtectionTemplate struct {
 	ScheduleList []*NsSchedule `json:"schedule_list,omitempty"`
 }
 
-// Struct for ProtectionTemplateFields
-type ProtectionTemplateStringFields struct {
+// ProtectionTemplateFieldHandles provides a string representation for each AccessControlRecord field.
+type ProtectionTemplateFieldHandles struct {
 	ID              *string
 	Name            *string
 	FullName        *string

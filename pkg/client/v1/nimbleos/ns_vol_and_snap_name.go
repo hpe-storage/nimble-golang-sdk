@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsVolAndSnapName - Snapshot name and the belonging volume name.
-
 // Export NsVolAndSnapNameFields provides field names to use in filter parameters, for example.
-var NsVolAndSnapNameFields *NsVolAndSnapNameStringFields
+var NsVolAndSnapNameFields *NsVolAndSnapNameFieldHandles
 
 func init() {
 	fieldVolName := "vol_name"
 	fieldSnapName := "snap_name"
 
-	NsVolAndSnapNameFields = &NsVolAndSnapNameStringFields{
+	NsVolAndSnapNameFields = &NsVolAndSnapNameFieldHandles{
 		VolName:  &fieldVolName,
 		SnapName: &fieldSnapName,
 	}
 }
 
+// NsVolAndSnapName - Snapshot name and the belonging volume name.
 type NsVolAndSnapName struct {
 	// VolName - The name of the volume that the snapshot belongs to.
 	VolName *string `json:"vol_name,omitempty"`
@@ -24,8 +23,8 @@ type NsVolAndSnapName struct {
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
-// Struct for NsVolAndSnapNameFields
-type NsVolAndSnapNameStringFields struct {
+// NsVolAndSnapNameFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolAndSnapNameFieldHandles struct {
 	VolName  *string
 	SnapName *string
 }

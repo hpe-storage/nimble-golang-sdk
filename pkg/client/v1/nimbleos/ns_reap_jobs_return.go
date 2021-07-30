@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsReapJobsReturn - Response from reaping jobs.
-
 // Export NsReapJobsReturnFields provides field names to use in filter parameters, for example.
-var NsReapJobsReturnFields *NsReapJobsReturnStringFields
+var NsReapJobsReturnFields *NsReapJobsReturnFieldHandles
 
 func init() {
 	fieldReaped := "reaped"
 	fieldRemaining := "remaining"
 
-	NsReapJobsReturnFields = &NsReapJobsReturnStringFields{
+	NsReapJobsReturnFields = &NsReapJobsReturnFieldHandles{
 		Reaped:    &fieldReaped,
 		Remaining: &fieldRemaining,
 	}
 }
 
+// NsReapJobsReturn - Response from reaping jobs.
 type NsReapJobsReturn struct {
 	// Reaped - Number of jobs reaped.
 	Reaped *int64 `json:"reaped,omitempty"`
@@ -24,8 +23,8 @@ type NsReapJobsReturn struct {
 	Remaining *int64 `json:"remaining,omitempty"`
 }
 
-// Struct for NsReapJobsReturnFields
-type NsReapJobsReturnStringFields struct {
+// NsReapJobsReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsReapJobsReturnFieldHandles struct {
 	Reaped    *string
 	Remaining *string
 }

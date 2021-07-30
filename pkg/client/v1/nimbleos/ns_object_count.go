@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsObjectCount - Number of objects of a type in a given scope.
-
 // Export NsObjectCountFields provides field names to use in filter parameters, for example.
-var NsObjectCountFields *NsObjectCountStringFields
+var NsObjectCountFields *NsObjectCountFieldHandles
 
 func init() {
 	fieldScopeName := "scope_name"
@@ -13,7 +11,7 @@ func init() {
 	fieldMaxLimitOverride := "max_limit_override"
 	fieldWarningThresholdOverride := "warning_threshold_override"
 
-	NsObjectCountFields = &NsObjectCountStringFields{
+	NsObjectCountFields = &NsObjectCountFieldHandles{
 		ScopeName:                &fieldScopeName,
 		ObjectCount:              &fieldObjectCount,
 		MaxLimitOverride:         &fieldMaxLimitOverride,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsObjectCount - Number of objects of a type in a given scope.
 type NsObjectCount struct {
 	// ScopeName - Name of the scope.
 	ScopeName *string `json:"scope_name,omitempty"`
@@ -32,8 +31,8 @@ type NsObjectCount struct {
 	WarningThresholdOverride *int64 `json:"warning_threshold_override,omitempty"`
 }
 
-// Struct for NsObjectCountFields
-type NsObjectCountStringFields struct {
+// NsObjectCountFieldHandles provides a string representation for each AccessControlRecord field.
+type NsObjectCountFieldHandles struct {
 	ScopeName                *string
 	ObjectCount              *string
 	MaxLimitOverride         *string

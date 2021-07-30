@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// FibreChannelInitiatorAlias - This API provides the alias information for Fibre Channel initiators.
-
 // Export FibreChannelInitiatorAliasFields provides field names to use in filter parameters, for example.
-var FibreChannelInitiatorAliasFields *FibreChannelInitiatorAliasStringFields
+var FibreChannelInitiatorAliasFields *FibreChannelInitiatorAliasFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldWwpn := "wwpn"
 	fieldSource := "source"
 
-	FibreChannelInitiatorAliasFields = &FibreChannelInitiatorAliasStringFields{
+	FibreChannelInitiatorAliasFields = &FibreChannelInitiatorAliasFieldHandles{
 		ID:     &fieldID,
 		Alias:  &fieldAlias,
 		Wwpn:   &fieldWwpn,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// FibreChannelInitiatorAlias - This API provides the alias information for Fibre Channel initiators.
 type FibreChannelInitiatorAlias struct {
 	// ID - Unique identifier for the Fibre Channel initiator alias.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type FibreChannelInitiatorAlias struct {
 	Source *SmFcInitiatorAliasSource `json:"source,omitempty"`
 }
 
-// Struct for FibreChannelInitiatorAliasFields
-type FibreChannelInitiatorAliasStringFields struct {
+// FibreChannelInitiatorAliasFieldHandles provides a string representation for each AccessControlRecord field.
+type FibreChannelInitiatorAliasFieldHandles struct {
 	ID     *string
 	Alias  *string
 	Wwpn   *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsThrottle - A single throttle for the partner.
-
 // Export NsThrottleFields provides field names to use in filter parameters, for example.
-var NsThrottleFields *NsThrottleStringFields
+var NsThrottleFields *NsThrottleFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -22,7 +20,7 @@ func init() {
 	fieldThrBandwidthKbps := "thr_bandwidth_kbps"
 	fieldThrBandwidthLimitKbps := "thr_bandwidth_limit_kbps"
 
-	NsThrottleFields = &NsThrottleStringFields{
+	NsThrottleFields = &NsThrottleFieldHandles{
 		ID:                    &fieldID,
 		Name:                  &fieldName,
 		Description:           &fieldDescription,
@@ -39,6 +37,7 @@ func init() {
 	}
 }
 
+// NsThrottle - A single throttle for the partner.
 type NsThrottle struct {
 	// ID - Id of the throttle.
 	ID *string `json:"id,omitempty"`
@@ -68,8 +67,8 @@ type NsThrottle struct {
 	ThrBandwidthLimitKbps *int64 `json:"thr_bandwidth_limit_kbps,omitempty"`
 }
 
-// Struct for NsThrottleFields
-type NsThrottleStringFields struct {
+// NsThrottleFieldHandles provides a string representation for each AccessControlRecord field.
+type NsThrottleFieldHandles struct {
 	ID                    *string
 	Name                  *string
 	Description           *string

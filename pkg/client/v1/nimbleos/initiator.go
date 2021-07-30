@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Initiator - Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
-
 // Export InitiatorFields provides field names to use in filter parameters, for example.
-var InitiatorFields *InitiatorStringFields
+var InitiatorFields *InitiatorFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -22,7 +20,7 @@ func init() {
 	fieldLastModified := "last_modified"
 	fieldOverrideExistingAlias := "override_existing_alias"
 
-	InitiatorFields = &InitiatorStringFields{
+	InitiatorFields = &InitiatorFieldHandles{
 		ID:                    &fieldID,
 		AccessProtocol:        &fieldAccessProtocol,
 		InitiatorGroupId:      &fieldInitiatorGroupId,
@@ -39,6 +37,7 @@ func init() {
 	}
 }
 
+// Initiator - Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 type Initiator struct {
 	// ID - Identifier for initiator.
 	ID *string `json:"id,omitempty"`
@@ -68,8 +67,8 @@ type Initiator struct {
 	OverrideExistingAlias *bool `json:"override_existing_alias,omitempty"`
 }
 
-// Struct for InitiatorFields
-type InitiatorStringFields struct {
+// InitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+type InitiatorFieldHandles struct {
 	ID                    *string
 	AccessProtocol        *string
 	InitiatorGroupId      *string

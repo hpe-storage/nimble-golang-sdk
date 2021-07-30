@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsArraySoftwareUpdateError - Software update error for specific controller.
-
 // Export NsArraySoftwareUpdateErrorFields provides field names to use in filter parameters, for example.
-var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateErrorStringFields
+var NsArraySoftwareUpdateErrorFields *NsArraySoftwareUpdateErrorFieldHandles
 
 func init() {
 	fieldError := "error"
 
-	NsArraySoftwareUpdateErrorFields = &NsArraySoftwareUpdateErrorStringFields{
+	NsArraySoftwareUpdateErrorFields = &NsArraySoftwareUpdateErrorFieldHandles{
 		Error: &fieldError,
 	}
 }
 
+// NsArraySoftwareUpdateError - Software update error for specific controller.
 type NsArraySoftwareUpdateError struct {
 	// Error - Error code from software update.
 	Error *string `json:"error,omitempty"`
 }
 
-// Struct for NsArraySoftwareUpdateErrorFields
-type NsArraySoftwareUpdateErrorStringFields struct {
+// NsArraySoftwareUpdateErrorFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArraySoftwareUpdateErrorFieldHandles struct {
 	Error *string
 }

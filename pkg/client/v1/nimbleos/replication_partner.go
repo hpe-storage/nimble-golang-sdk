@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// ReplicationPartner - Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and use ports 4213 and 4214. Replication partners have the same name as the remote group. Replication partners can be reciprocal, upstream (the source of replicas), or downstream (the receiver of replicas) partners.
-
 // Export ReplicationPartnerFields provides field names to use in filter parameters, for example.
-var ReplicationPartnerFields *ReplicationPartnerStringFields
+var ReplicationPartnerFields *ReplicationPartnerFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -54,7 +52,7 @@ func init() {
 	fieldVolumeListCount := "volume_list_count"
 	fieldReplicationDirection := "replication_direction"
 
-	ReplicationPartnerFields = &ReplicationPartnerStringFields{
+	ReplicationPartnerFields = &ReplicationPartnerFieldHandles{
 		ID:                            &fieldID,
 		Name:                          &fieldName,
 		FullName:                      &fieldFullName,
@@ -103,6 +101,7 @@ func init() {
 	}
 }
 
+// ReplicationPartner - Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and use ports 4213 and 4214. Replication partners have the same name as the remote group. Replication partners can be reciprocal, upstream (the source of replicas), or downstream (the receiver of replicas) partners.
 type ReplicationPartner struct {
 	// ID - Identifier for a replication partner.
 	ID *string `json:"id,omitempty"`
@@ -196,8 +195,8 @@ type ReplicationPartner struct {
 	ReplicationDirection *NsReplDirection `json:"replication_direction,omitempty"`
 }
 
-// Struct for ReplicationPartnerFields
-type ReplicationPartnerStringFields struct {
+// ReplicationPartnerFieldHandles provides a string representation for each AccessControlRecord field.
+type ReplicationPartnerFieldHandles struct {
 	ID                            *string
 	Name                          *string
 	FullName                      *string

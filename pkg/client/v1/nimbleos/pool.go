@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Pool - Manage pools. Pools are an aggregation of arrays.
-
 // Export PoolFields provides field names to use in filter parameters, for example.
-var PoolFields *PoolStringFields
+var PoolFields *PoolFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -56,7 +54,7 @@ func init() {
 	fieldDedupeAllVolumes := "dedupe_all_volumes"
 	fieldIsDefault := "is_default"
 
-	PoolFields = &PoolStringFields{
+	PoolFields = &PoolFieldHandles{
 		ID:                         &fieldID,
 		Name:                       &fieldName,
 		FullName:                   &fieldFullName,
@@ -107,6 +105,7 @@ func init() {
 	}
 }
 
+// Pool - Manage pools. Pools are an aggregation of arrays.
 type Pool struct {
 	// ID - Identifier for the pool.
 	ID *string `json:"id,omitempty"`
@@ -204,8 +203,8 @@ type Pool struct {
 	IsDefault *bool `json:"is_default,omitempty"`
 }
 
-// Struct for PoolFields
-type PoolStringFields struct {
+// PoolFieldHandles provides a string representation for each AccessControlRecord field.
+type PoolFieldHandles struct {
 	ID                         *string
 	Name                       *string
 	FullName                   *string

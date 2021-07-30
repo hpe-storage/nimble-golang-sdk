@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// HealthCheck - View the health of the group of arrays.
-
 // Export HealthCheckFields provides field names to use in filter parameters, for example.
-var HealthCheckFields *HealthCheckStringFields
+var HealthCheckFields *HealthCheckFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -16,7 +14,7 @@ func init() {
 	fieldCtrlrId := "ctrlr_id"
 	fieldElementResult := "element_result"
 
-	HealthCheckFields = &HealthCheckStringFields{
+	HealthCheckFields = &HealthCheckFieldHandles{
 		ID:            &fieldID,
 		Scope:         &fieldScope,
 		Context:       &fieldContext,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// HealthCheck - View the health of the group of arrays.
 type HealthCheck struct {
 	// ID - Identifier for the health check.
 	ID *string `json:"id,omitempty"`
@@ -44,8 +43,8 @@ type HealthCheck struct {
 	ElementResult *NsHcfResult `json:"element_result,omitempty"`
 }
 
-// Struct for HealthCheckFields
-type HealthCheckStringFields struct {
+// HealthCheckFieldHandles provides a string representation for each AccessControlRecord field.
+type HealthCheckFieldHandles struct {
 	ID            *string
 	Scope         *string
 	Context       *string

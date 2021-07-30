@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsGenericResp - Response from generic app server.
-
 // Export NsGenericRespFields provides field names to use in filter parameters, for example.
-var NsGenericRespFields *NsGenericRespStringFields
+var NsGenericRespFields *NsGenericRespFieldHandles
 
 func init() {
 	fieldGenericError := "generic_error"
@@ -13,7 +11,7 @@ func init() {
 	fieldConnStatusOk := "conn_status_ok"
 	fieldConnMessage := "conn_message"
 
-	NsGenericRespFields = &NsGenericRespStringFields{
+	NsGenericRespFields = &NsGenericRespFieldHandles{
 		GenericError:        &fieldGenericError,
 		GenericErrorMessage: &fieldGenericErrorMessage,
 		ConnStatusOk:        &fieldConnStatusOk,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsGenericResp - Response from generic app server.
 type NsGenericResp struct {
 	// GenericError - Error code from generic app server.
 	GenericError *string `json:"generic_error,omitempty"`
@@ -32,8 +31,8 @@ type NsGenericResp struct {
 	ConnMessage *string `json:"conn_message,omitempty"`
 }
 
-// Struct for NsGenericRespFields
-type NsGenericRespStringFields struct {
+// NsGenericRespFieldHandles provides a string representation for each AccessControlRecord field.
+type NsGenericRespFieldHandles struct {
 	GenericError        *string
 	GenericErrorMessage *string
 	ConnStatusOk        *string

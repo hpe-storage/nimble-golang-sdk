@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Folder - Folders are a way to group volumes, as well as a way to apply space constraints to them.
-
 // Export FolderFields provides field names to use in filter parameters, for example.
-var FolderFields *FolderStringFields
+var FolderFields *FolderFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -54,7 +52,7 @@ func init() {
 	fieldAccessProtocol := "access_protocol"
 	fieldTenantId := "tenant_id"
 
-	FolderFields = &FolderStringFields{
+	FolderFields = &FolderFieldHandles{
 		ID:                         &fieldID,
 		Name:                       &fieldName,
 		Fqn:                        &fieldFqn,
@@ -103,6 +101,7 @@ func init() {
 	}
 }
 
+// Folder - Folders are a way to group volumes, as well as a way to apply space constraints to them.
 type Folder struct {
 	// ID - Identifier for the folder.
 	ID *string `json:"id,omitempty"`
@@ -196,8 +195,8 @@ type Folder struct {
 	TenantId *string `json:"tenant_id,omitempty"`
 }
 
-// Struct for FolderFields
-type FolderStringFields struct {
+// FolderFieldHandles provides a string representation for each AccessControlRecord field.
+type FolderFieldHandles struct {
 	ID                         *string
 	Name                       *string
 	Fqn                        *string

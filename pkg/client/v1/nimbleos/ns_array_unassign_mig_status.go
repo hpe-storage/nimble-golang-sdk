@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayUnassignMigStatus - Data migration status for array being unassigned from its pool.
-
 // Export NsArrayUnassignMigStatusFields provides field names to use in filter parameters, for example.
-var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusStringFields
+var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -16,7 +14,7 @@ func init() {
 	fieldStartTime := "start_time"
 	fieldEstimatedCompletionTime := "estimated_completion_time"
 
-	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatusStringFields{
+	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatusFieldHandles{
 		ID:                      &fieldID,
 		Name:                    &fieldName,
 		DestinationArrays:       &fieldDestinationArrays,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsArrayUnassignMigStatus - Data migration status for array being unassigned from its pool.
 type NsArrayUnassignMigStatus struct {
 	// ID - Unique identifier of the array being unassigned.
 	ID *string `json:"id,omitempty"`
@@ -44,8 +43,8 @@ type NsArrayUnassignMigStatus struct {
 	EstimatedCompletionTime *int64 `json:"estimated_completion_time,omitempty"`
 }
 
-// Struct for NsArrayUnassignMigStatusFields
-type NsArrayUnassignMigStatusStringFields struct {
+// NsArrayUnassignMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayUnassignMigStatusFieldHandles struct {
 	ID                      *string
 	Name                    *string
 	DestinationArrays       *string

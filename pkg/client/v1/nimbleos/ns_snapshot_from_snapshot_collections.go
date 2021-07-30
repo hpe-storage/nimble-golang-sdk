@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
-
 // Export NsSnapshotFromSnapshotCollectionsFields provides field names to use in filter parameters, for example.
-var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollectionsStringFields
+var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollectionsFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -20,7 +18,7 @@ func init() {
 	fieldScheduleName := "schedule_name"
 	fieldExpiryTime := "expiry_time"
 
-	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollectionsStringFields{
+	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollectionsFieldHandles{
 		ID:           &fieldID,
 		SnapcollId:   &fieldSnapcollId,
 		Name:         &fieldName,
@@ -35,6 +33,7 @@ func init() {
 	}
 }
 
+// NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
 type NsSnapshotFromSnapshotCollections struct {
 	// ID - Snapshot ID.
 	ID *string `json:"id,omitempty"`
@@ -60,8 +59,8 @@ type NsSnapshotFromSnapshotCollections struct {
 	ExpiryTime *int64 `json:"expiry_time,omitempty"`
 }
 
-// Struct for NsSnapshotFromSnapshotCollectionsFields
-type NsSnapshotFromSnapshotCollectionsStringFields struct {
+// NsSnapshotFromSnapshotCollectionsFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSnapshotFromSnapshotCollectionsFieldHandles struct {
 	ID           *string
 	SnapcollId   *string
 	Name         *string

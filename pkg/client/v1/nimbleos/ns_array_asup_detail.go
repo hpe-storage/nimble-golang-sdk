@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArrayAsupDetail - Detailed array asup information.
-
 // Export NsArrayAsupDetailFields provides field names to use in filter parameters, for example.
-var NsArrayAsupDetailFields *NsArrayAsupDetailStringFields
+var NsArrayAsupDetailFields *NsArrayAsupDetailFieldHandles
 
 func init() {
 	fieldArrayName := "array_name"
@@ -17,7 +15,7 @@ func init() {
 	fieldHeartbeat := "heartbeat"
 	fieldMessages := "messages"
 
-	NsArrayAsupDetailFields = &NsArrayAsupDetailStringFields{
+	NsArrayAsupDetailFields = &NsArrayAsupDetailFieldHandles{
 		ArrayName:      &fieldArrayName,
 		AsupValidate:   &fieldAsupValidate,
 		NameResolution: &fieldNameResolution,
@@ -29,6 +27,7 @@ func init() {
 	}
 }
 
+// NsArrayAsupDetail - Detailed array asup information.
 type NsArrayAsupDetail struct {
 	// ArrayName - Unique name of array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -48,8 +47,8 @@ type NsArrayAsupDetail struct {
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
-// Struct for NsArrayAsupDetailFields
-type NsArrayAsupDetailStringFields struct {
+// NsArrayAsupDetailFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArrayAsupDetailFieldHandles struct {
 	ArrayName      *string
 	AsupValidate   *string
 	NameResolution *string

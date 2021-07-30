@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// User - Represents users configured to manage the system.
-
 // Export UserFields provides field names to use in filter parameters, for example.
-var UserFields *UserStringFields
+var UserFields *UserFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -31,7 +29,7 @@ func init() {
 	fieldLastLogout := "last_logout"
 	fieldLoggedIn := "logged_in"
 
-	UserFields = &UserStringFields{
+	UserFields = &UserFieldHandles{
 		ID:                &fieldID,
 		Name:              &fieldName,
 		SearchName:        &fieldSearchName,
@@ -57,6 +55,7 @@ func init() {
 	}
 }
 
+// User - Represents users configured to manage the system.
 type User struct {
 	// ID - Identifier for the user.
 	ID *string `json:"id,omitempty"`
@@ -104,8 +103,8 @@ type User struct {
 	LoggedIn *bool `json:"logged_in,omitempty"`
 }
 
-// Struct for UserFields
-type UserStringFields struct {
+// UserFieldHandles provides a string representation for each AccessControlRecord field.
+type UserFieldHandles struct {
 	ID                *string
 	Name              *string
 	SearchName        *string

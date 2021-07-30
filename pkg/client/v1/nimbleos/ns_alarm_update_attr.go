@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsAlarmUpdateAttr - Alarm object used for updating alarms.
-
 // Export NsAlarmUpdateAttrFields provides field names to use in filter parameters, for example.
-var NsAlarmUpdateAttrFields *NsAlarmUpdateAttrStringFields
+var NsAlarmUpdateAttrFields *NsAlarmUpdateAttrFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldRemindEvery := "remind_every"
 	fieldRemindEveryUnit := "remind_every_unit"
 
-	NsAlarmUpdateAttrFields = &NsAlarmUpdateAttrStringFields{
+	NsAlarmUpdateAttrFields = &NsAlarmUpdateAttrFieldHandles{
 		ID:              &fieldID,
 		RemindEvery:     &fieldRemindEvery,
 		RemindEveryUnit: &fieldRemindEveryUnit,
 	}
 }
 
+// NsAlarmUpdateAttr - Alarm object used for updating alarms.
 type NsAlarmUpdateAttr struct {
 	// ID - Identifier for the alarm.
 	ID *string `json:"id,omitempty"`
@@ -28,8 +27,8 @@ type NsAlarmUpdateAttr struct {
 	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }
 
-// Struct for NsAlarmUpdateAttrFields
-type NsAlarmUpdateAttrStringFields struct {
+// NsAlarmUpdateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAlarmUpdateAttrFieldHandles struct {
 	ID              *string
 	RemindEvery     *string
 	RemindEveryUnit *string

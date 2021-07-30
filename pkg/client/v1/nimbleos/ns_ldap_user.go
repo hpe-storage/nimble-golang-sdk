@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsLdapUser - Information about the current status of an LDAP user.
-
 // Export NsLdapUserFields provides field names to use in filter parameters, for example.
-var NsLdapUserFields *NsLdapUserStringFields
+var NsLdapUserFields *NsLdapUserFieldHandles
 
 func init() {
 	fieldUser := "user"
@@ -15,7 +13,7 @@ func init() {
 	fieldGroups := "groups"
 	fieldRole := "role"
 
-	NsLdapUserFields = &NsLdapUserStringFields{
+	NsLdapUserFields = &NsLdapUserFieldHandles{
 		User:             &fieldUser,
 		PrimaryGroupName: &fieldPrimaryGroupName,
 		PrimaryGroupId:   &fieldPrimaryGroupId,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsLdapUser - Information about the current status of an LDAP user.
 type NsLdapUser struct {
 	// User - The user's username.
 	User *string `json:"user,omitempty"`
@@ -40,8 +39,8 @@ type NsLdapUser struct {
 	Role *NsUserRoles `json:"role,omitempty"`
 }
 
-// Struct for NsLdapUserFields
-type NsLdapUserStringFields struct {
+// NsLdapUserFieldHandles provides a string representation for each AccessControlRecord field.
+type NsLdapUserFieldHandles struct {
 	User             *string
 	PrimaryGroupName *string
 	PrimaryGroupId   *string

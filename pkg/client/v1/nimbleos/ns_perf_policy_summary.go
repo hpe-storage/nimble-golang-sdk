@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsPerfPolicySummary - Select fields containing performance policy.
-
 // Export NsPerfPolicySummaryFields provides field names to use in filter parameters, for example.
-var NsPerfPolicySummaryFields *NsPerfPolicySummaryStringFields
+var NsPerfPolicySummaryFields *NsPerfPolicySummaryFieldHandles
 
 func init() {
 	fieldName := "name"
 
-	NsPerfPolicySummaryFields = &NsPerfPolicySummaryStringFields{
+	NsPerfPolicySummaryFields = &NsPerfPolicySummaryFieldHandles{
 		Name: &fieldName,
 	}
 }
 
+// NsPerfPolicySummary - Select fields containing performance policy.
 type NsPerfPolicySummary struct {
 	// Name - Name of performance policy.
 	Name *string `json:"name,omitempty"`
 }
 
-// Struct for NsPerfPolicySummaryFields
-type NsPerfPolicySummaryStringFields struct {
+// NsPerfPolicySummaryFieldHandles provides a string representation for each AccessControlRecord field.
+type NsPerfPolicySummaryFieldHandles struct {
 	Name *string
 }

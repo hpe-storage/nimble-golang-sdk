@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsADTestUserReturn - Active Directory user details.
-
 // Export NsADTestUserReturnFields provides field names to use in filter parameters, for example.
-var NsADTestUserReturnFields *NsADTestUserReturnStringFields
+var NsADTestUserReturnFields *NsADTestUserReturnFieldHandles
 
 func init() {
 	fieldUsername := "username"
@@ -15,7 +13,7 @@ func init() {
 	fieldGroups := "groups"
 	fieldRole := "role"
 
-	NsADTestUserReturnFields = &NsADTestUserReturnStringFields{
+	NsADTestUserReturnFields = &NsADTestUserReturnFieldHandles{
 		Username:         &fieldUsername,
 		PrimaryGroupName: &fieldPrimaryGroupName,
 		PrimaryGroupId:   &fieldPrimaryGroupId,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsADTestUserReturn - Active Directory user details.
 type NsADTestUserReturn struct {
 	// Username - Name of the Active Directory user.
 	Username *string `json:"username,omitempty"`
@@ -40,8 +39,8 @@ type NsADTestUserReturn struct {
 	Role *NsUserRoles `json:"role,omitempty"`
 }
 
-// Struct for NsADTestUserReturnFields
-type NsADTestUserReturnStringFields struct {
+// NsADTestUserReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsADTestUserReturnFieldHandles struct {
 	Username         *string
 	PrimaryGroupName *string
 	PrimaryGroupId   *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsEncryptionSettings - Group encryption settings.
-
 // Export NsEncryptionSettingsFields provides field names to use in filter parameters, for example.
-var NsEncryptionSettingsFields *NsEncryptionSettingsStringFields
+var NsEncryptionSettingsFields *NsEncryptionSettingsFieldHandles
 
 func init() {
 	fieldMasterKeySet := "master_key_set"
@@ -15,7 +13,7 @@ func init() {
 	fieldEncryptionActive := "encryption_active"
 	fieldEncryptionKeyManager := "encryption_key_manager"
 
-	NsEncryptionSettingsFields = &NsEncryptionSettingsStringFields{
+	NsEncryptionSettingsFields = &NsEncryptionSettingsFieldHandles{
 		MasterKeySet:         &fieldMasterKeySet,
 		Mode:                 &fieldMode,
 		Scope:                &fieldScope,
@@ -25,6 +23,7 @@ func init() {
 	}
 }
 
+// NsEncryptionSettings - Group encryption settings.
 type NsEncryptionSettings struct {
 	// MasterKeySet - Is the master key set (output only).
 	MasterKeySet *bool `json:"master_key_set,omitempty"`
@@ -40,8 +39,8 @@ type NsEncryptionSettings struct {
 	EncryptionKeyManager *NsEncryptionKeyManager `json:"encryption_key_manager,omitempty"`
 }
 
-// Struct for NsEncryptionSettingsFields
-type NsEncryptionSettingsStringFields struct {
+// NsEncryptionSettingsFieldHandles provides a string representation for each AccessControlRecord field.
+type NsEncryptionSettingsFieldHandles struct {
 	MasterKeySet         *string
 	Mode                 *string
 	Scope                *string

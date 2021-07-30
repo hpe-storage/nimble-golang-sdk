@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Array - Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
-
 // Export ArrayFields provides field names to use in filter parameters, for example.
-var ArrayFields *ArrayStringFields
+var ArrayFields *ArrayFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -65,7 +63,7 @@ func init() {
 	fieldZconfIpaddrs := "zconf_ipaddrs"
 	fieldSecondaryMgmtIp := "secondary_mgmt_ip"
 
-	ArrayFields = &ArrayStringFields{
+	ArrayFields = &ArrayFieldHandles{
 		ID:                         &fieldID,
 		Name:                       &fieldName,
 		Force:                      &fieldForce,
@@ -125,6 +123,7 @@ func init() {
 	}
 }
 
+// Array - Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
 type Array struct {
 	// ID - Identifier for array.
 	ID *string `json:"id,omitempty"`
@@ -240,8 +239,8 @@ type Array struct {
 	SecondaryMgmtIp *string `json:"secondary_mgmt_ip,omitempty"`
 }
 
-// Struct for ArrayFields
-type ArrayStringFields struct {
+// ArrayFieldHandles provides a string representation for each AccessControlRecord field.
+type ArrayFieldHandles struct {
 	ID                         *string
 	Name                       *string
 	Force                      *string

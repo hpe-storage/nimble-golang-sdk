@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// VolumeCollection - Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
-
 // Export VolumeCollectionFields provides field names to use in filter parameters, for example.
-var VolumeCollectionFields *VolumeCollectionStringFields
+var VolumeCollectionFields *VolumeCollectionFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -54,7 +52,7 @@ func init() {
 	fieldSrepLastSync := "srep_last_sync"
 	fieldSrepResyncPercent := "srep_resync_percent"
 
-	VolumeCollectionFields = &VolumeCollectionStringFields{
+	VolumeCollectionFields = &VolumeCollectionFieldHandles{
 		ID:                          &fieldID,
 		ProttmplId:                  &fieldProttmplId,
 		Name:                        &fieldName,
@@ -103,6 +101,7 @@ func init() {
 	}
 }
 
+// VolumeCollection - Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
 type VolumeCollection struct {
 	// ID - Identifier for volume collection.
 	ID *string `json:"id,omitempty"`
@@ -196,8 +195,8 @@ type VolumeCollection struct {
 	SrepResyncPercent *int64 `json:"srep_resync_percent,omitempty"`
 }
 
-// Struct for VolumeCollectionFields
-type VolumeCollectionStringFields struct {
+// VolumeCollectionFieldHandles provides a string representation for each AccessControlRecord field.
+type VolumeCollectionFieldHandles struct {
 	ID                          *string
 	ProttmplId                  *string
 	Name                        *string

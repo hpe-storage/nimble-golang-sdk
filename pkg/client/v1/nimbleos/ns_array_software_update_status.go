@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsArraySoftwareUpdateStatus - List of software update errors for a specific array.
-
 // Export NsArraySoftwareUpdateStatusFields provides field names to use in filter parameters, for example.
-var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatusStringFields
+var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatusFieldHandles
 
 func init() {
 	fieldArrayName := "array_name"
@@ -14,7 +12,7 @@ func init() {
 	fieldCtrlrAErrs := "ctrlr_a_errs"
 	fieldCtrlrBErrs := "ctrlr_b_errs"
 
-	NsArraySoftwareUpdateStatusFields = &NsArraySoftwareUpdateStatusStringFields{
+	NsArraySoftwareUpdateStatusFields = &NsArraySoftwareUpdateStatusFieldHandles{
 		ArrayName:      &fieldArrayName,
 		Error:          &fieldError,
 		CtrlrErrorMask: &fieldCtrlrErrorMask,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsArraySoftwareUpdateStatus - List of software update errors for a specific array.
 type NsArraySoftwareUpdateStatus struct {
 	// ArrayName - Name of the array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -36,8 +35,8 @@ type NsArraySoftwareUpdateStatus struct {
 	CtrlrBErrs []*NsArraySoftwareUpdateError `json:"ctrlr_b_errs,omitempty"`
 }
 
-// Struct for NsArraySoftwareUpdateStatusFields
-type NsArraySoftwareUpdateStatusStringFields struct {
+// NsArraySoftwareUpdateStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsArraySoftwareUpdateStatusFieldHandles struct {
 	ArrayName      *string
 	Error          *string
 	CtrlrErrorMask *string

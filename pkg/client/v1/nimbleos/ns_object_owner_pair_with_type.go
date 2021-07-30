@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsObjectOwnerPairWithType - List of objects of a given type along with their owners.
-
 // Export NsObjectOwnerPairWithTypeFields provides field names to use in filter parameters, for example.
-var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithTypeStringFields
+var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithTypeFieldHandles
 
 func init() {
 	fieldObjType := "obj_type"
 	fieldObjOwnerPairList := "obj_owner_pair_list"
 
-	NsObjectOwnerPairWithTypeFields = &NsObjectOwnerPairWithTypeStringFields{
+	NsObjectOwnerPairWithTypeFields = &NsObjectOwnerPairWithTypeFieldHandles{
 		ObjType:          &fieldObjType,
 		ObjOwnerPairList: &fieldObjOwnerPairList,
 	}
 }
 
+// NsObjectOwnerPairWithType - List of objects of a given type along with their owners.
 type NsObjectOwnerPairWithType struct {
 	// ObjType - Type of the object.
 	ObjType *NsObjectType `json:"obj_type,omitempty"`
@@ -24,8 +23,8 @@ type NsObjectOwnerPairWithType struct {
 	ObjOwnerPairList []*NsObjectOwnerPair `json:"obj_owner_pair_list,omitempty"`
 }
 
-// Struct for NsObjectOwnerPairWithTypeFields
-type NsObjectOwnerPairWithTypeStringFields struct {
+// NsObjectOwnerPairWithTypeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsObjectOwnerPairWithTypeFieldHandles struct {
 	ObjType          *string
 	ObjOwnerPairList *string
 }

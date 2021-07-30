@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsShelfSensor - A shelf sensor data.
-
 // Export NsShelfSensorFields provides field names to use in filter parameters, for example.
-var NsShelfSensorFields *NsShelfSensorStringFields
+var NsShelfSensorFields *NsShelfSensorFieldHandles
 
 func init() {
 	fieldType := "type"
@@ -16,7 +14,7 @@ func init() {
 	fieldValue := "value"
 	fieldStatus := "status"
 
-	NsShelfSensorFields = &NsShelfSensorStringFields{
+	NsShelfSensorFields = &NsShelfSensorFieldHandles{
 		Type:        &fieldType,
 		Name:        &fieldName,
 		DisplayName: &fieldDisplayName,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsShelfSensor - A shelf sensor data.
 type NsShelfSensor struct {
 	// Type - Type of the sensor.
 	Type *NsShelfSensorType `json:"type,omitempty"`
@@ -44,8 +43,8 @@ type NsShelfSensor struct {
 	Status *NsShelfSensorState `json:"status,omitempty"`
 }
 
-// Struct for NsShelfSensorFields
-type NsShelfSensorStringFields struct {
+// NsShelfSensorFieldHandles provides a string representation for each AccessControlRecord field.
+type NsShelfSensorFieldHandles struct {
 	Type        *string
 	Name        *string
 	DisplayName *string

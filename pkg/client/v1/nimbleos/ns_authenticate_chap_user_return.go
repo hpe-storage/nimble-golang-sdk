@@ -2,25 +2,24 @@
 
 package nimbleos
 
-// NsAuthenticateChapUserReturn - Response of chap user authentication.
-
 // Export NsAuthenticateChapUserReturnFields provides field names to use in filter parameters, for example.
-var NsAuthenticateChapUserReturnFields *NsAuthenticateChapUserReturnStringFields
+var NsAuthenticateChapUserReturnFields *NsAuthenticateChapUserReturnFieldHandles
 
 func init() {
 	fieldIsValid := "is_valid"
 
-	NsAuthenticateChapUserReturnFields = &NsAuthenticateChapUserReturnStringFields{
+	NsAuthenticateChapUserReturnFields = &NsAuthenticateChapUserReturnFieldHandles{
 		IsValid: &fieldIsValid,
 	}
 }
 
+// NsAuthenticateChapUserReturn - Response of chap user authentication.
 type NsAuthenticateChapUserReturn struct {
 	// IsValid - Chap user secret is valid.
 	IsValid *bool `json:"is_valid,omitempty"`
 }
 
-// Struct for NsAuthenticateChapUserReturnFields
-type NsAuthenticateChapUserReturnStringFields struct {
+// NsAuthenticateChapUserReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsAuthenticateChapUserReturnFieldHandles struct {
 	IsValid *string
 }

@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsPrivilege - Privilege info.
-
 // Export NsPrivilegeFields provides field names to use in filter parameters, for example.
-var NsPrivilegeFields *NsPrivilegeStringFields
+var NsPrivilegeFields *NsPrivilegeFieldHandles
 
 func init() {
 	fieldObjectType := "object_type"
 	fieldOperations := "operations"
 
-	NsPrivilegeFields = &NsPrivilegeStringFields{
+	NsPrivilegeFields = &NsPrivilegeFieldHandles{
 		ObjectType: &fieldObjectType,
 		Operations: &fieldOperations,
 	}
 }
 
+// NsPrivilege - Privilege info.
 type NsPrivilege struct {
 	// ObjectType - Object type name associated with this privilege.
 	ObjectType *string `json:"object_type,omitempty"`
@@ -24,8 +23,8 @@ type NsPrivilege struct {
 	Operations []*string `json:"operations,omitempty"`
 }
 
-// Struct for NsPrivilegeFields
-type NsPrivilegeStringFields struct {
+// NsPrivilegeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsPrivilegeFieldHandles struct {
 	ObjectType *string
 	Operations *string
 }

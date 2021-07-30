@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsVolumeBulkUpdateAttr - Volume object used in bulk update.
-
 // Export NsVolumeBulkUpdateAttrFields provides field names to use in filter parameters, for example.
-var NsVolumeBulkUpdateAttrFields *NsVolumeBulkUpdateAttrStringFields
+var NsVolumeBulkUpdateAttrFields *NsVolumeBulkUpdateAttrFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldFolderId := "folder_id"
 	fieldOnline := "online"
 
-	NsVolumeBulkUpdateAttrFields = &NsVolumeBulkUpdateAttrStringFields{
+	NsVolumeBulkUpdateAttrFields = &NsVolumeBulkUpdateAttrFieldHandles{
 		ID:       &fieldID,
 		FolderId: &fieldFolderId,
 		Online:   &fieldOnline,
 	}
 }
 
+// NsVolumeBulkUpdateAttr - Volume object used in bulk update.
 type NsVolumeBulkUpdateAttr struct {
 	// ID - ID of volume.
 	ID *string `json:"id,omitempty"`
@@ -28,8 +27,8 @@ type NsVolumeBulkUpdateAttr struct {
 	Online *bool `json:"online,omitempty"`
 }
 
-// Struct for NsVolumeBulkUpdateAttrFields
-type NsVolumeBulkUpdateAttrStringFields struct {
+// NsVolumeBulkUpdateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+type NsVolumeBulkUpdateAttrFieldHandles struct {
 	ID       *string
 	FolderId *string
 	Online   *string

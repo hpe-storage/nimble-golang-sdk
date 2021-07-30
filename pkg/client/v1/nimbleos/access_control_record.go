@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// AccessControlRecord - Manage access control records for volumes.
-
 // Export AccessControlRecordFields provides field names to use in filter parameters, for example.
-var AccessControlRecordFields *AccessControlRecordStringFields
+var AccessControlRecordFields *AccessControlRecordFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -29,7 +27,7 @@ func init() {
 	fieldLastModified := "last_modified"
 	fieldAccessProtocol := "access_protocol"
 
-	AccessControlRecordFields = &AccessControlRecordStringFields{
+	AccessControlRecordFields = &AccessControlRecordFieldHandles{
 		ID:                 &fieldID,
 		ApplyTo:            &fieldApplyTo,
 		ChapUserId:         &fieldChapUserId,
@@ -53,6 +51,7 @@ func init() {
 	}
 }
 
+// AccessControlRecord - Manage access control records for volumes.
 type AccessControlRecord struct {
 	// ID - Identifier for the access control record.
 	ID *string `json:"id,omitempty"`
@@ -96,8 +95,8 @@ type AccessControlRecord struct {
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
 }
 
-// Struct for AccessControlRecordFields
-type AccessControlRecordStringFields struct {
+// AccessControlRecordFieldHandles provides a string representation for each AccessControlRecord field.
+type AccessControlRecordFieldHandles struct {
 	ID                 *string
 	ApplyTo            *string
 	ChapUserId         *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsSensorCumulativeData - Stat sensor cumulative data.
-
 // Export NsSensorCumulativeDataFields provides field names to use in filter parameters, for example.
-var NsSensorCumulativeDataFields *NsSensorCumulativeDataStringFields
+var NsSensorCumulativeDataFields *NsSensorCumulativeDataFieldHandles
 
 func init() {
 	fieldName := "name"
@@ -16,7 +14,7 @@ func init() {
 	fieldCurr := "curr"
 	fieldPrev := "prev"
 
-	NsSensorCumulativeDataFields = &NsSensorCumulativeDataStringFields{
+	NsSensorCumulativeDataFields = &NsSensorCumulativeDataFieldHandles{
 		Name:        &fieldName,
 		Index:       &fieldIndex,
 		Msec:        &fieldMsec,
@@ -27,6 +25,7 @@ func init() {
 	}
 }
 
+// NsSensorCumulativeData - Stat sensor cumulative data.
 type NsSensorCumulativeData struct {
 	// Name - Name of sensor.
 	Name *string `json:"name,omitempty"`
@@ -44,8 +43,8 @@ type NsSensorCumulativeData struct {
 	Prev *int64 `json:"prev,omitempty"`
 }
 
-// Struct for NsSensorCumulativeDataFields
-type NsSensorCumulativeDataStringFields struct {
+// NsSensorCumulativeDataFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSensorCumulativeDataFieldHandles struct {
 	Name        *string
 	Index       *string
 	Msec        *string

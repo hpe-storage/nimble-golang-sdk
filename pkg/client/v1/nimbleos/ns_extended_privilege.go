@@ -2,23 +2,22 @@
 
 package nimbleos
 
-// NsExtendedPrivilege - Extended privilege info.
-
 // Export NsExtendedPrivilegeFields provides field names to use in filter parameters, for example.
-var NsExtendedPrivilegeFields *NsExtendedPrivilegeStringFields
+var NsExtendedPrivilegeFields *NsExtendedPrivilegeFieldHandles
 
 func init() {
 	fieldObjectType := "object_type"
 	fieldOperation := "operation"
 	fieldAllow := "allow"
 
-	NsExtendedPrivilegeFields = &NsExtendedPrivilegeStringFields{
+	NsExtendedPrivilegeFields = &NsExtendedPrivilegeFieldHandles{
 		ObjectType: &fieldObjectType,
 		Operation:  &fieldOperation,
 		Allow:      &fieldAllow,
 	}
 }
 
+// NsExtendedPrivilege - Extended privilege info.
 type NsExtendedPrivilege struct {
 	// ObjectType - Object type name associated with this privilege.
 	ObjectType *string `json:"object_type,omitempty"`
@@ -28,8 +27,8 @@ type NsExtendedPrivilege struct {
 	Allow *bool `json:"allow,omitempty"`
 }
 
-// Struct for NsExtendedPrivilegeFields
-type NsExtendedPrivilegeStringFields struct {
+// NsExtendedPrivilegeFieldHandles provides a string representation for each AccessControlRecord field.
+type NsExtendedPrivilegeFieldHandles struct {
 	ObjectType *string
 	Operation  *string
 	Allow      *string

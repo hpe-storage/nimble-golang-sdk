@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsTokenReportUserDetailsReturn - Return values of token reporting user details.
-
 // Export NsTokenReportUserDetailsReturnFields provides field names to use in filter parameters, for example.
-var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnStringFields
+var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnFieldHandles
 
 func init() {
 	fieldUserName := "user_name"
@@ -18,7 +16,7 @@ func init() {
 	fieldDomainType := "domain_type"
 	fieldGroups := "groups"
 
-	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturnStringFields{
+	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturnFieldHandles{
 		UserName:          &fieldUserName,
 		PrimaryGroupId:    &fieldPrimaryGroupId,
 		PrimaryGroupName:  &fieldPrimaryGroupName,
@@ -31,6 +29,7 @@ func init() {
 	}
 }
 
+// NsTokenReportUserDetailsReturn - Return values of token reporting user details.
 type NsTokenReportUserDetailsReturn struct {
 	// UserName - User name for the session.
 	UserName *string `json:"user_name,omitempty"`
@@ -52,8 +51,8 @@ type NsTokenReportUserDetailsReturn struct {
 	Groups []*string `json:"groups,omitempty"`
 }
 
-// Struct for NsTokenReportUserDetailsReturnFields
-type NsTokenReportUserDetailsReturnStringFields struct {
+// NsTokenReportUserDetailsReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsTokenReportUserDetailsReturnFieldHandles struct {
 	UserName          *string
 	PrimaryGroupId    *string
 	PrimaryGroupName  *string

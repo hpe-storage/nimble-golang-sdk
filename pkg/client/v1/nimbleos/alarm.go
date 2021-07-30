@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// Alarm - View alarms.
-
 // Export AlarmFields provides field names to use in filter parameters, for example.
-var AlarmFields *AlarmStringFields
+var AlarmFields *AlarmFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -28,7 +26,7 @@ func init() {
 	fieldActivity := "activity"
 	fieldNextNotificationTime := "next_notification_time"
 
-	AlarmFields = &AlarmStringFields{
+	AlarmFields = &AlarmFieldHandles{
 		ID:                   &fieldID,
 		Type:                 &fieldType,
 		Array:                &fieldArray,
@@ -51,6 +49,7 @@ func init() {
 	}
 }
 
+// Alarm - View alarms.
 type Alarm struct {
 	// ID - Identifier for the alarm.
 	ID *string `json:"id,omitempty"`
@@ -92,8 +91,8 @@ type Alarm struct {
 	NextNotificationTime *int64 `json:"next_notification_time,omitempty"`
 }
 
-// Struct for AlarmFields
-type AlarmStringFields struct {
+// AlarmFieldHandles provides a string representation for each AccessControlRecord field.
+type AlarmFieldHandles struct {
 	ID                   *string
 	Type                 *string
 	Array                *string

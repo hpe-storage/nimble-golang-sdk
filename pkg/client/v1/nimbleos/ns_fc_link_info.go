@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsFcLinkInfo - Fibre Channel link information.
-
 // Export NsFcLinkInfoFields provides field names to use in filter parameters, for example.
-var NsFcLinkInfoFields *NsFcLinkInfoStringFields
+var NsFcLinkInfoFields *NsFcLinkInfoFieldHandles
 
 func init() {
 	fieldLinkSpeed := "link_speed"
@@ -13,7 +11,7 @@ func init() {
 	fieldLinkStatus := "link_status"
 	fieldOperationalStatus := "operational_status"
 
-	NsFcLinkInfoFields = &NsFcLinkInfoStringFields{
+	NsFcLinkInfoFields = &NsFcLinkInfoFieldHandles{
 		LinkSpeed:         &fieldLinkSpeed,
 		MaxLinkSpeed:      &fieldMaxLinkSpeed,
 		LinkStatus:        &fieldLinkStatus,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsFcLinkInfo - Fibre Channel link information.
 type NsFcLinkInfo struct {
 	// LinkSpeed - Speed of the Fibre Channel link.
 	LinkSpeed *NsPlatFcLinkSpeed `json:"link_speed,omitempty"`
@@ -32,8 +31,8 @@ type NsFcLinkInfo struct {
 	OperationalStatus *NsPlatFcOperationalStatus `json:"operational_status,omitempty"`
 }
 
-// Struct for NsFcLinkInfoFields
-type NsFcLinkInfoStringFields struct {
+// NsFcLinkInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcLinkInfoFieldHandles struct {
 	LinkSpeed         *string
 	MaxLinkSpeed      *string
 	LinkStatus        *string

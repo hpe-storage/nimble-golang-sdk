@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsPoolRebalanceMigStatus - Status of data rebalance operations in a pool.
-
 // Export NsPoolRebalanceMigStatusFields provides field names to use in filter parameters, for example.
-var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatusStringFields
+var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatusFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -13,7 +11,7 @@ func init() {
 	fieldPoolAvgSpaceUtilization := "pool_avg_space_utilization"
 	fieldArrayDataMigrationStatus := "array_data_migration_status"
 
-	NsPoolRebalanceMigStatusFields = &NsPoolRebalanceMigStatusStringFields{
+	NsPoolRebalanceMigStatusFields = &NsPoolRebalanceMigStatusFieldHandles{
 		ID:                       &fieldID,
 		Name:                     &fieldName,
 		PoolAvgSpaceUtilization:  &fieldPoolAvgSpaceUtilization,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsPoolRebalanceMigStatus - Status of data rebalance operations in a pool.
 type NsPoolRebalanceMigStatus struct {
 	// ID - Unique ID of the pool.
 	ID *string `json:"id,omitempty"`
@@ -32,8 +31,8 @@ type NsPoolRebalanceMigStatus struct {
 	ArrayDataMigrationStatus []*NsArrayMigStatus `json:"array_data_migration_status,omitempty"`
 }
 
-// Struct for NsPoolRebalanceMigStatusFields
-type NsPoolRebalanceMigStatusStringFields struct {
+// NsPoolRebalanceMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+type NsPoolRebalanceMigStatusFieldHandles struct {
 	ID                       *string
 	Name                     *string
 	PoolAvgSpaceUtilization  *string

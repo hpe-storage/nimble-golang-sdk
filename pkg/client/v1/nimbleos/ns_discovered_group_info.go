@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsDiscoveredGroupInfo - Discovered group details.
-
 // Export NsDiscoveredGroupInfoFields provides field names to use in filter parameters, for example.
-var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfoStringFields
+var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfoFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -18,7 +16,7 @@ func init() {
 	fieldFcEnabled := "fc_enabled"
 	fieldArrayMemberList := "array_member_list"
 
-	NsDiscoveredGroupInfoFields = &NsDiscoveredGroupInfoStringFields{
+	NsDiscoveredGroupInfoFields = &NsDiscoveredGroupInfoFieldHandles{
 		ID:              &fieldID,
 		Name:            &fieldName,
 		VersionCurrent:  &fieldVersionCurrent,
@@ -31,6 +29,7 @@ func init() {
 	}
 }
 
+// NsDiscoveredGroupInfo - Discovered group details.
 type NsDiscoveredGroupInfo struct {
 	// ID - Identifier of the group.
 	ID *string `json:"id,omitempty"`
@@ -52,8 +51,8 @@ type NsDiscoveredGroupInfo struct {
 	ArrayMemberList []*NsArraySummaryInfo `json:"array_member_list,omitempty"`
 }
 
-// Struct for NsDiscoveredGroupInfoFields
-type NsDiscoveredGroupInfoStringFields struct {
+// NsDiscoveredGroupInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsDiscoveredGroupInfoFieldHandles struct {
 	ID              *string
 	Name            *string
 	VersionCurrent  *string

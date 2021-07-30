@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsSoftwareUpdateReturn - The status returned by the software update precheck and start actions.
-
 // Export NsSoftwareUpdateReturnFields provides field names to use in filter parameters, for example.
-var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturnStringFields
+var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturnFieldHandles
 
 func init() {
 	fieldError := "error"
 	fieldArrayResponseList := "array_response_list"
 
-	NsSoftwareUpdateReturnFields = &NsSoftwareUpdateReturnStringFields{
+	NsSoftwareUpdateReturnFields = &NsSoftwareUpdateReturnFieldHandles{
 		Error:             &fieldError,
 		ArrayResponseList: &fieldArrayResponseList,
 	}
 }
 
+// NsSoftwareUpdateReturn - The status returned by the software update precheck and start actions.
 type NsSoftwareUpdateReturn struct {
 	// Error - Top level error.
 	Error *string `json:"error,omitempty"`
@@ -24,8 +23,8 @@ type NsSoftwareUpdateReturn struct {
 	ArrayResponseList []*NsArraySoftwareUpdateStatus `json:"array_response_list,omitempty"`
 }
 
-// Struct for NsSoftwareUpdateReturnFields
-type NsSoftwareUpdateReturnStringFields struct {
+// NsSoftwareUpdateReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsSoftwareUpdateReturnFieldHandles struct {
 	Error             *string
 	ArrayResponseList *string
 }

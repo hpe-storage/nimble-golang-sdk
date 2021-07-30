@@ -2,21 +2,20 @@
 
 package nimbleos
 
-// NsFcInterfaceUpdateInfo - Fibre Channel interface information to update.
-
 // Export NsFcInterfaceUpdateInfoFields provides field names to use in filter parameters, for example.
-var NsFcInterfaceUpdateInfoFields *NsFcInterfaceUpdateInfoStringFields
+var NsFcInterfaceUpdateInfoFields *NsFcInterfaceUpdateInfoFieldHandles
 
 func init() {
 	fieldID := "id"
 	fieldOnline := "online"
 
-	NsFcInterfaceUpdateInfoFields = &NsFcInterfaceUpdateInfoStringFields{
+	NsFcInterfaceUpdateInfoFields = &NsFcInterfaceUpdateInfoFieldHandles{
 		ID:     &fieldID,
 		Online: &fieldOnline,
 	}
 }
 
+// NsFcInterfaceUpdateInfo - Fibre Channel interface information to update.
 type NsFcInterfaceUpdateInfo struct {
 	// ID - ID of Fibre Channel interface.
 	ID *string `json:"id,omitempty"`
@@ -24,8 +23,8 @@ type NsFcInterfaceUpdateInfo struct {
 	Online *bool `json:"online,omitempty"`
 }
 
-// Struct for NsFcInterfaceUpdateInfoFields
-type NsFcInterfaceUpdateInfoStringFields struct {
+// NsFcInterfaceUpdateInfoFieldHandles provides a string representation for each AccessControlRecord field.
+type NsFcInterfaceUpdateInfoFieldHandles struct {
 	ID     *string
 	Online *string
 }

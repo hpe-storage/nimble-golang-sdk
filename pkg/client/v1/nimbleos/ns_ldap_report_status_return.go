@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsLdapReportStatusReturn - A report of the current LDAP status for the group.
-
 // Export NsLdapReportStatusReturnFields provides field names to use in filter parameters, for example.
-var NsLdapReportStatusReturnFields *NsLdapReportStatusReturnStringFields
+var NsLdapReportStatusReturnFields *NsLdapReportStatusReturnFieldHandles
 
 func init() {
 	fieldEnabled := "enabled"
@@ -13,7 +11,7 @@ func init() {
 	fieldRemoteServiceStatusGood := "remote_service_status_good"
 	fieldRemoteServiceStatus := "remote_service_status"
 
-	NsLdapReportStatusReturnFields = &NsLdapReportStatusReturnStringFields{
+	NsLdapReportStatusReturnFields = &NsLdapReportStatusReturnFieldHandles{
 		Enabled:                 &fieldEnabled,
 		LocalServiceStatusGood:  &fieldLocalServiceStatusGood,
 		RemoteServiceStatusGood: &fieldRemoteServiceStatusGood,
@@ -21,6 +19,7 @@ func init() {
 	}
 }
 
+// NsLdapReportStatusReturn - A report of the current LDAP status for the group.
 type NsLdapReportStatusReturn struct {
 	// Enabled - Whether the LDAP domain enabled on the group.
 	Enabled *bool `json:"enabled,omitempty"`
@@ -32,8 +31,8 @@ type NsLdapReportStatusReturn struct {
 	RemoteServiceStatus *string `json:"remote_service_status,omitempty"`
 }
 
-// Struct for NsLdapReportStatusReturnFields
-type NsLdapReportStatusReturnStringFields struct {
+// NsLdapReportStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsLdapReportStatusReturnFieldHandles struct {
 	Enabled                 *string
 	LocalServiceStatusGood  *string
 	RemoteServiceStatusGood *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// SpaceDomain - A space domain is created for each application category and block size for each each pool.
-
 // Export SpaceDomainFields provides field names to use in filter parameters, for example.
-var SpaceDomainFields *SpaceDomainStringFields
+var SpaceDomainFields *SpaceDomainFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -36,7 +34,7 @@ func init() {
 	fieldDedupeRatio := "dedupe_ratio"
 	fieldCloneRatio := "clone_ratio"
 
-	SpaceDomainFields = &SpaceDomainStringFields{
+	SpaceDomainFields = &SpaceDomainFieldHandles{
 		ID:                     &fieldID,
 		PoolId:                 &fieldPoolId,
 		PoolName:               &fieldPoolName,
@@ -67,6 +65,7 @@ func init() {
 	}
 }
 
+// SpaceDomain - A space domain is created for each application category and block size for each each pool.
 type SpaceDomain struct {
 	// ID - Identifier for the space domain.
 	ID *string `json:"id,omitempty"`
@@ -124,8 +123,8 @@ type SpaceDomain struct {
 	CloneRatio *float64 `json:"clone_ratio,omitempty"`
 }
 
-// Struct for SpaceDomainFields
-type SpaceDomainStringFields struct {
+// SpaceDomainFieldHandles provides a string representation for each AccessControlRecord field.
+type SpaceDomainFieldHandles struct {
 	ID                     *string
 	PoolId                 *string
 	PoolName               *string

@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// UserPolicy - Manages the password policies configured for the group.
-
 // Export UserPolicyFields provides field names to use in filter parameters, for example.
-var UserPolicyFields *UserPolicyStringFields
+var UserPolicyFields *UserPolicyFieldHandles
 
 func init() {
 	fieldID := "id"
@@ -19,7 +17,7 @@ func init() {
 	fieldNoReuse := "no_reuse"
 	fieldMaxSessions := "max_sessions"
 
-	UserPolicyFields = &UserPolicyStringFields{
+	UserPolicyFields = &UserPolicyFieldHandles{
 		ID:              &fieldID,
 		AllowedAttempts: &fieldAllowedAttempts,
 		MinLength:       &fieldMinLength,
@@ -33,6 +31,7 @@ func init() {
 	}
 }
 
+// UserPolicy - Manages the password policies configured for the group.
 type UserPolicy struct {
 	// ID - Identifier for the security policy.
 	ID *string `json:"id,omitempty"`
@@ -56,8 +55,8 @@ type UserPolicy struct {
 	MaxSessions *int64 `json:"max_sessions,omitempty"`
 }
 
-// Struct for UserPolicyFields
-type UserPolicyStringFields struct {
+// UserPolicyFieldHandles provides a string representation for each AccessControlRecord field.
+type UserPolicyFieldHandles struct {
 	ID              *string
 	AllowedAttempts *string
 	MinLength       *string

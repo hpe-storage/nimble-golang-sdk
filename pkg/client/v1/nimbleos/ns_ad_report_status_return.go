@@ -2,10 +2,8 @@
 
 package nimbleos
 
-// NsADReportStatusReturn - Status of the Active Directory domain.
-
 // Export NsADReportStatusReturnFields provides field names to use in filter parameters, for example.
-var NsADReportStatusReturnFields *NsADReportStatusReturnStringFields
+var NsADReportStatusReturnFields *NsADReportStatusReturnFieldHandles
 
 func init() {
 	fieldJoined := "joined"
@@ -14,7 +12,7 @@ func init() {
 	fieldRemoteServiceStatus := "remote_service_status"
 	fieldTrustValid := "trust_valid"
 
-	NsADReportStatusReturnFields = &NsADReportStatusReturnStringFields{
+	NsADReportStatusReturnFields = &NsADReportStatusReturnFieldHandles{
 		Joined:              &fieldJoined,
 		Enabled:             &fieldEnabled,
 		LocalServiceStatus:  &fieldLocalServiceStatus,
@@ -23,6 +21,7 @@ func init() {
 	}
 }
 
+// NsADReportStatusReturn - Status of the Active Directory domain.
 type NsADReportStatusReturn struct {
 	// Joined - Joined the Active Directory group.
 	Joined *bool `json:"joined,omitempty"`
@@ -36,8 +35,8 @@ type NsADReportStatusReturn struct {
 	TrustValid *bool `json:"trust_valid,omitempty"`
 }
 
-// Struct for NsADReportStatusReturnFields
-type NsADReportStatusReturnStringFields struct {
+// NsADReportStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
+type NsADReportStatusReturnFieldHandles struct {
 	Joined              *string
 	Enabled             *string
 	LocalServiceStatus  *string
