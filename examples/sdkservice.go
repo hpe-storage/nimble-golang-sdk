@@ -22,9 +22,9 @@ func getRealService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupSer
 func main() {
 	arg := &param.GetParams{}
 	groupService, _ := getFakeService(
-		service.WithHost("10.157.82.90"),
-		service.WithUser("admin"),
-		service.WithPassword("admin"))
+		service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"))
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
@@ -53,9 +53,9 @@ func main() {
 
 	// Get real service
 	groupService, _ = getRealService(
-		service.WithHost("10.157.82.90"),
-		service.WithUser("admin"),
-		service.WithPassword("admin"))
+		service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"))
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()
