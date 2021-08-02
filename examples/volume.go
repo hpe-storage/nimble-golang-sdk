@@ -50,6 +50,7 @@ func main() {
 		return
 	}
 	fmt.Println(volume)
+
 	// get volume with params
  	requestParams := new(param.GetParams)
  	fieldList := []string{
