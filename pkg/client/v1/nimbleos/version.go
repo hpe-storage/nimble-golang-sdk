@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export VersionFields provides field names to use in filter parameters, for example.
+// VersionFields provides field names to use in filter parameters, for example.
 var VersionFields *VersionFieldHandles
 
 func init() {

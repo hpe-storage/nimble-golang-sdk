@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export FolderSetFields provides field names to use in filter parameters, for example.
+// FolderSetFields provides field names to use in filter parameters, for example.
 var FolderSetFields *FolderSetFieldHandles
 
 func init() {

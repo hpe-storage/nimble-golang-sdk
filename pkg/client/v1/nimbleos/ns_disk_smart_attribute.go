@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsDiskSmartAttributeFields provides field names to use in filter parameters, for example.
+// NsDiskSmartAttributeFields provides field names to use in filter parameters, for example.
 var NsDiskSmartAttributeFields *NsDiskSmartAttributeFieldHandles
 
 func init() {

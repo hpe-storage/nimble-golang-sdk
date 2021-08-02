@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAverageStatsFields provides field names to use in filter parameters, for example.
+// NsAverageStatsFields provides field names to use in filter parameters, for example.
 var NsAverageStatsFields *NsAverageStatsFieldHandles
 
 func init() {

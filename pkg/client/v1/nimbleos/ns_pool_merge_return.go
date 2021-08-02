@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsPoolMergeReturnFields provides field names to use in filter parameters, for example.
+// NsPoolMergeReturnFields provides field names to use in filter parameters, for example.
 var NsPoolMergeReturnFields *NsPoolMergeReturnFieldHandles
 
 func init() {

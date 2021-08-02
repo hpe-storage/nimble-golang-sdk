@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAssignedIPFields provides field names to use in filter parameters, for example.
+// NsAssignedIPFields provides field names to use in filter parameters, for example.
 var NsAssignedIPFields *NsAssignedIPFieldHandles
 
 func init() {

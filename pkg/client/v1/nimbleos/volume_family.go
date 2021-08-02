@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export VolumeFamilyFields provides field names to use in filter parameters, for example.
+// VolumeFamilyFields provides field names to use in filter parameters, for example.
 var VolumeFamilyFields *VolumeFamilyFieldHandles
 
 func init() {

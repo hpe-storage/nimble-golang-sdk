@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export SpaceDomainFields provides field names to use in filter parameters, for example.
+// SpaceDomainFields provides field names to use in filter parameters, for example.
 var SpaceDomainFields *SpaceDomainFieldHandles
 
 func init() {

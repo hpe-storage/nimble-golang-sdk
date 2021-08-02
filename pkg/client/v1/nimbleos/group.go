@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export GroupFields provides field names to use in filter parameters, for example.
+// GroupFields provides field names to use in filter parameters, for example.
 var GroupFields *GroupFieldHandles
 
 func init() {

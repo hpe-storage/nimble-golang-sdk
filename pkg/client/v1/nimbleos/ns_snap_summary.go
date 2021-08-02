@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSnapSummaryFields provides field names to use in filter parameters, for example.
+// NsSnapSummaryFields provides field names to use in filter parameters, for example.
 var NsSnapSummaryFields *NsSnapSummaryFieldHandles
 
 func init() {

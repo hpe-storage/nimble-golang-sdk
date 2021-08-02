@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export UserPolicyFields provides field names to use in filter parameters, for example.
+// UserPolicyFields provides field names to use in filter parameters, for example.
 var UserPolicyFields *UserPolicyFieldHandles
 
 func init() {

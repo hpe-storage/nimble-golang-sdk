@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsPoolSummaryFields provides field names to use in filter parameters, for example.
+// NsPoolSummaryFields provides field names to use in filter parameters, for example.
 var NsPoolSummaryFields *NsPoolSummaryFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsShelfCtrlrFields provides field names to use in filter parameters, for example.
+// NsShelfCtrlrFields provides field names to use in filter parameters, for example.
 var NsShelfCtrlrFields *NsShelfCtrlrFieldHandles
 
 func init() {

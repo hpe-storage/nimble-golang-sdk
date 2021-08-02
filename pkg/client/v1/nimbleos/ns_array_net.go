@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsArrayNetFields provides field names to use in filter parameters, for example.
+// NsArrayNetFields provides field names to use in filter parameters, for example.
 var NsArrayNetFields *NsArrayNetFieldHandles
 
 func init() {

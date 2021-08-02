@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsArgMapFields provides field names to use in filter parameters, for example.
+// NsArgMapFields provides field names to use in filter parameters, for example.
 var NsArgMapFields *NsArgMapFieldHandles
 
 func init() {

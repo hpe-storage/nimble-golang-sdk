@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export LdapDomainFields provides field names to use in filter parameters, for example.
+// LdapDomainFields provides field names to use in filter parameters, for example.
 var LdapDomainFields *LdapDomainFieldHandles
 
 func init() {

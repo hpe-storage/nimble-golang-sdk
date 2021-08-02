@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ShelfFields provides field names to use in filter parameters, for example.
+// ShelfFields provides field names to use in filter parameters, for example.
 var ShelfFields *ShelfFieldHandles
 
 func init() {

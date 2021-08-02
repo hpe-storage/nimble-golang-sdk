@@ -53,15 +53,16 @@ func main() {
 
 	// Get real service
 	groupService, _ = getRealService(
-		service.WithHost("10.157.82.90"),
-		service.WithUser("admin"),
-		service.WithPassword("admin"))
+		service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"))
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
 	p, _ = groupService.GetPoolService().GetPools(arg)
 	fmt.Printf("Real Pools %+v \n", p)
+
 	// reset id
 	newVolume.ID = nil
 	vol, _ = groupService.GetVolumeService().CreateVolume(newVolume)

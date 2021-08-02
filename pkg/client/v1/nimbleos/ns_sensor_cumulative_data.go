@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSensorCumulativeDataFields provides field names to use in filter parameters, for example.
+// NsSensorCumulativeDataFields provides field names to use in filter parameters, for example.
 var NsSensorCumulativeDataFields *NsSensorCumulativeDataFieldHandles
 
 func init() {

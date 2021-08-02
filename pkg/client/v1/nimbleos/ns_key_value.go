@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsKeyValueFields provides field names to use in filter parameters, for example.
+// NsKeyValueFields provides field names to use in filter parameters, for example.
 var NsKeyValueFields *NsKeyValueFieldHandles
 
 func init() {

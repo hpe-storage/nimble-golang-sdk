@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export KeyManagerFields provides field names to use in filter parameters, for example.
+// KeyManagerFields provides field names to use in filter parameters, for example.
 var KeyManagerFields *KeyManagerFieldHandles
 
 func init() {

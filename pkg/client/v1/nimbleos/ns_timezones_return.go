@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsTimezonesReturnFields provides field names to use in filter parameters, for example.
+// NsTimezonesReturnFields provides field names to use in filter parameters, for example.
 var NsTimezonesReturnFields *NsTimezonesReturnFieldHandles
 
 func init() {

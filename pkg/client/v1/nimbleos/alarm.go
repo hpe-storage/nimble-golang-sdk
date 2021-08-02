@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export AlarmFields provides field names to use in filter parameters, for example.
+// AlarmFields provides field names to use in filter parameters, for example.
 var AlarmFields *AlarmFieldHandles
 
 func init() {

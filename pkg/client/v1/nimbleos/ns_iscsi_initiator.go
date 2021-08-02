@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsISCSIInitiatorFields provides field names to use in filter parameters, for example.
+// NsISCSIInitiatorFields provides field names to use in filter parameters, for example.
 var NsISCSIInitiatorFields *NsISCSIInitiatorFieldHandles
 
 func init() {

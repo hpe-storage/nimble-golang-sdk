@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumeListReturnFields provides field names to use in filter parameters, for example.
+// NsVolumeListReturnFields provides field names to use in filter parameters, for example.
 var NsVolumeListReturnFields *NsVolumeListReturnFieldHandles
 
 func init() {

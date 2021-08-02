@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsHostTypeFields provides field names to use in filter parameters, for example.
+// NsHostTypeFields provides field names to use in filter parameters, for example.
 var NsHostTypeFields *NsHostTypeFieldHandles
 
 func init() {

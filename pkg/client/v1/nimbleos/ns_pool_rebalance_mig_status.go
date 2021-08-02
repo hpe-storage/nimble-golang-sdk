@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsPoolRebalanceMigStatusFields provides field names to use in filter parameters, for example.
+// NsPoolRebalanceMigStatusFields provides field names to use in filter parameters, for example.
 var NsPoolRebalanceMigStatusFields *NsPoolRebalanceMigStatusFieldHandles
 
 func init() {

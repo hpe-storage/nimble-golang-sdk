@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsPerfPolicySummaryFields provides field names to use in filter parameters, for example.
+// NsPerfPolicySummaryFields provides field names to use in filter parameters, for example.
 var NsPerfPolicySummaryFields *NsPerfPolicySummaryFieldHandles
 
 func init() {

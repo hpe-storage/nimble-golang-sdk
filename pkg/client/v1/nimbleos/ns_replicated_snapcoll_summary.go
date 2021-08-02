@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsReplicatedSnapcollSummaryFields provides field names to use in filter parameters, for example.
+// NsReplicatedSnapcollSummaryFields provides field names to use in filter parameters, for example.
 var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummaryFieldHandles
 
 func init() {

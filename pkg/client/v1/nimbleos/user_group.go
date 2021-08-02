@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export UserGroupFields provides field names to use in filter parameters, for example.
+// UserGroupFields provides field names to use in filter parameters, for example.
 var UserGroupFields *UserGroupFieldHandles
 
 func init() {

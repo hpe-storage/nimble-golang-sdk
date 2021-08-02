@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumeBulkUpdateAttrFields provides field names to use in filter parameters, for example.
+// NsVolumeBulkUpdateAttrFields provides field names to use in filter parameters, for example.
 var NsVolumeBulkUpdateAttrFields *NsVolumeBulkUpdateAttrFieldHandles
 
 func init() {

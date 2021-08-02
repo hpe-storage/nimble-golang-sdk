@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsObjectIDKVFields provides field names to use in filter parameters, for example.
+// NsObjectIDKVFields provides field names to use in filter parameters, for example.
 var NsObjectIDKVFields *NsObjectIDKVFieldHandles
 
 func init() {

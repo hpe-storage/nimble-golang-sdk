@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-
 	// login to Array, get groupService instance
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
@@ -22,11 +21,13 @@ func main() {
 		return
 	}
 	defer groupService.LogoutService()
+
 	// set debug
 	groupService.SetDebug()
 
 	// get  volume service instance
 	volSvc := groupService.GetVolumeService()
+
 	// Initialize volume attributes
 	var sizeField int64 = 5120
 	descriptionField := "This volume was created as part of a unit test"
@@ -57,12 +58,14 @@ func main() {
 			fmt.Println("Failed to create volume collection")
 			return
 		}
+
 		// add volume to volume collection
 		err = volSvc.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
 			fmt.Println("Failed to associate RestoreVolume to volcoll ")
 			return
 		}
+
 		// create a snapshot collection
 		snapColl, _ := groupService.GetSnapshotCollectionService().CreateSnapshotCollection(&nimbleos.SnapshotCollection{
 			Name:      param.NewString("RestoreSnapColl"),
@@ -85,6 +88,7 @@ func main() {
 			fmt.Println("Failed to restore volume")
 
 		}
+
 		// cleanup
 		// disassociate volume from volume collection
 		err = volSvc.DisassociateVolume(*volume.ID)
@@ -93,6 +97,7 @@ func main() {
 			fmt.Printf("Failed to remove %s volume from volume collection", *volume.ID)
 			return
 		}
+
 		// delete volcoll
 		groupService.GetVolumeCollectionService().DeleteVolumeCollection(*volcoll.ID)
 		volSvc.DeleteVolume(*volume.ID)

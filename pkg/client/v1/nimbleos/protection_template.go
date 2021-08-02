@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ProtectionTemplateFields provides field names to use in filter parameters, for example.
+// ProtectionTemplateFields provides field names to use in filter parameters, for example.
 var ProtectionTemplateFields *ProtectionTemplateFieldHandles
 
 func init() {

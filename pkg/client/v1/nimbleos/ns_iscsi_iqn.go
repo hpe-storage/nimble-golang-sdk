@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsISCSIIQNFields provides field names to use in filter parameters, for example.
+// NsISCSIIQNFields provides field names to use in filter parameters, for example.
 var NsISCSIIQNFields *NsISCSIIQNFieldHandles
 
 func init() {

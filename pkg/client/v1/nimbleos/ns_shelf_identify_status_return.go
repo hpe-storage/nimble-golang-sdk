@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsShelfIdentifyStatusReturnFields provides field names to use in filter parameters, for example.
+// NsShelfIdentifyStatusReturnFields provides field names to use in filter parameters, for example.
 var NsShelfIdentifyStatusReturnFields *NsShelfIdentifyStatusReturnFieldHandles
 
 func init() {

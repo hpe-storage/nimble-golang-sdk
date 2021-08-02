@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export JobFields provides field names to use in filter parameters, for example.
+// JobFields provides field names to use in filter parameters, for example.
 var JobFields *JobFieldHandles
 
 func init() {

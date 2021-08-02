@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSnapshotCreateAttrFields provides field names to use in filter parameters, for example.
+// NsSnapshotCreateAttrFields provides field names to use in filter parameters, for example.
 var NsSnapshotCreateAttrFields *NsSnapshotCreateAttrFieldHandles
 
 func init() {

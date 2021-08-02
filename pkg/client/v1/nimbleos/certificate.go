@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export CertificateFields provides field names to use in filter parameters, for example.
+// CertificateFields provides field names to use in filter parameters, for example.
 var CertificateFields *CertificateFieldHandles
 
 func init() {

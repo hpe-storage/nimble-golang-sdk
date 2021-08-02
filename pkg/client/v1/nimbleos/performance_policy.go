@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export PerformancePolicyFields provides field names to use in filter parameters, for example.
+// PerformancePolicyFields provides field names to use in filter parameters, for example.
 var PerformancePolicyFields *PerformancePolicyFieldHandles
 
 func init() {

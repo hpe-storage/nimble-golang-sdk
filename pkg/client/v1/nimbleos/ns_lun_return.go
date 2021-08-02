@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsLunReturnFields provides field names to use in filter parameters, for example.
+// NsLunReturnFields provides field names to use in filter parameters, for example.
 var NsLunReturnFields *NsLunReturnFieldHandles
 
 func init() {

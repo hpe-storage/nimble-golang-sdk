@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumeCollectionDemoteAttrFields provides field names to use in filter parameters, for example.
+// NsVolumeCollectionDemoteAttrFields provides field names to use in filter parameters, for example.
 var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttrFieldHandles
 
 func init() {

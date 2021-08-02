@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsArrayUpgradeFields provides field names to use in filter parameters, for example.
+// NsArrayUpgradeFields provides field names to use in filter parameters, for example.
 var NsArrayUpgradeFields *NsArrayUpgradeFieldHandles
 
 func init() {

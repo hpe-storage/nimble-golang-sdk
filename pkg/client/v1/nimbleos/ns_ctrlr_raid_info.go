@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsCtrlrRaidInfoFields provides field names to use in filter parameters, for example.
+// NsCtrlrRaidInfoFields provides field names to use in filter parameters, for example.
 var NsCtrlrRaidInfoFields *NsCtrlrRaidInfoFieldHandles
 
 func init() {

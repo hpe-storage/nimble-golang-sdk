@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ArrayFields provides field names to use in filter parameters, for example.
+// ArrayFields provides field names to use in filter parameters, for example.
 var ArrayFields *ArrayFieldHandles
 
 func init() {

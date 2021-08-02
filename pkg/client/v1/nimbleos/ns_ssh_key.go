@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSshKeyFields provides field names to use in filter parameters, for example.
+// NsSshKeyFields provides field names to use in filter parameters, for example.
 var NsSshKeyFields *NsSshKeyFieldHandles
 
 func init() {

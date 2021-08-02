@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAlarmCountSummaryReturnFields provides field names to use in filter parameters, for example.
+// NsAlarmCountSummaryReturnFields provides field names to use in filter parameters, for example.
 var NsAlarmCountSummaryReturnFields *NsAlarmCountSummaryReturnFieldHandles
 
 func init() {

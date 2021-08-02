@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsCtrlrHwSensorInfoFields provides field names to use in filter parameters, for example.
+// NsCtrlrHwSensorInfoFields provides field names to use in filter parameters, for example.
 var NsCtrlrHwSensorInfoFields *NsCtrlrHwSensorInfoFieldHandles
 
 func init() {

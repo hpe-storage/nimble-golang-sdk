@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ProtocolEndpointFields provides field names to use in filter parameters, for example.
+// ProtocolEndpointFields provides field names to use in filter parameters, for example.
 var ProtocolEndpointFields *ProtocolEndpointFieldHandles
 
 func init() {

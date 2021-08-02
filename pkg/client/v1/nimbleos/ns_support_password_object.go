@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSupportPasswordObjectFields provides field names to use in filter parameters, for example.
+// NsSupportPasswordObjectFields provides field names to use in filter parameters, for example.
 var NsSupportPasswordObjectFields *NsSupportPasswordObjectFieldHandles
 
 func init() {

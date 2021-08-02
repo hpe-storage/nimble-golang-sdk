@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export WitnessFields provides field names to use in filter parameters, for example.
+// WitnessFields provides field names to use in filter parameters, for example.
 var WitnessFields *WitnessFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsArrayUnassignMigStatusFields provides field names to use in filter parameters, for example.
+// NsArrayUnassignMigStatusFields provides field names to use in filter parameters, for example.
 var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusFieldHandles
 
 func init() {

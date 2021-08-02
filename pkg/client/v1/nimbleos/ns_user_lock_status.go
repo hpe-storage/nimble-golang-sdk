@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsUserLockStatusFields provides field names to use in filter parameters, for example.
+// NsUserLockStatusFields provides field names to use in filter parameters, for example.
 var NsUserLockStatusFields *NsUserLockStatusFieldHandles
 
 func init() {

@@ -13,7 +13,8 @@ func main() {
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
  		service.WithUser("xxx"),
- 		service.WithPassword("xxx"))
+ 		service.WithPassword("xxx"),
+		service.WithoutWaitForAsyncJobs())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
@@ -47,6 +48,7 @@ func main() {
 
 	if err != nil {
 		fmt.Printf("Failed to create volume, err ", err)
+		return
 	}
 	fmt.Println(volume)
 
@@ -54,6 +56,7 @@ func main() {
 	volume, err = volSvc.GetVolumeByName("TestDemo1");
 	if err != nil {
 		fmt.Printf("Failed to get volume by name, err ", err)
+		return
 	}
 	fmt.Println(volume)
 

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsThrottleFields provides field names to use in filter parameters, for example.
+// NsThrottleFields provides field names to use in filter parameters, for example.
 var NsThrottleFields *NsThrottleFieldHandles
 
 func init() {

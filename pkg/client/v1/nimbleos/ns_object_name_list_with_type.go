@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsObjectNameListWithTypeFields provides field names to use in filter parameters, for example.
+// NsObjectNameListWithTypeFields provides field names to use in filter parameters, for example.
 var NsObjectNameListWithTypeFields *NsObjectNameListWithTypeFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsShelfPortInfoFields provides field names to use in filter parameters, for example.
+// NsShelfPortInfoFields provides field names to use in filter parameters, for example.
 var NsShelfPortInfoFields *NsShelfPortInfoFieldHandles
 
 func init() {

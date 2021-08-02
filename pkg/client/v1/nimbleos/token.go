@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export TokenFields provides field names to use in filter parameters, for example.
+// TokenFields provides field names to use in filter parameters, for example.
 var TokenFields *TokenFieldHandles
 
 func init() {

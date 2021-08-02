@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAlarmAckFields provides field names to use in filter parameters, for example.
+// NsAlarmAckFields provides field names to use in filter parameters, for example.
 var NsAlarmAckFields *NsAlarmAckFieldHandles
 
 func init() {

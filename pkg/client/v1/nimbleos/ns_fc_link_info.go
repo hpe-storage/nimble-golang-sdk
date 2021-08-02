@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFcLinkInfoFields provides field names to use in filter parameters, for example.
+// NsFcLinkInfoFields provides field names to use in filter parameters, for example.
 var NsFcLinkInfoFields *NsFcLinkInfoFieldHandles
 
 func init() {

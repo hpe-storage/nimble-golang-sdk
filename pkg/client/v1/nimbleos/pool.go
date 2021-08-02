@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export PoolFields provides field names to use in filter parameters, for example.
+// PoolFields provides field names to use in filter parameters, for example.
 var PoolFields *PoolFieldHandles
 
 func init() {

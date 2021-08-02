@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsDiscoveredGroupInfoFields provides field names to use in filter parameters, for example.
+// NsDiscoveredGroupInfoFields provides field names to use in filter parameters, for example.
 var NsDiscoveredGroupInfoFields *NsDiscoveredGroupInfoFieldHandles
 
 func init() {

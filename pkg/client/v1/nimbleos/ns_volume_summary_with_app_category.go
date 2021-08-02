@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumeSummaryWithAppCategoryFields provides field names to use in filter parameters, for example.
+// NsVolumeSummaryWithAppCategoryFields provides field names to use in filter parameters, for example.
 var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryFieldHandles
 
 func init() {

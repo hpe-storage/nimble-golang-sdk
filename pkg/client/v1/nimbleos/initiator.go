@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export InitiatorFields provides field names to use in filter parameters, for example.
+// InitiatorFields provides field names to use in filter parameters, for example.
 var InitiatorFields *InitiatorFieldHandles
 
 func init() {

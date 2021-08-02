@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export RoleFields provides field names to use in filter parameters, for example.
+// RoleFields provides field names to use in filter parameters, for example.
 var RoleFields *RoleFieldHandles
 
 func init() {

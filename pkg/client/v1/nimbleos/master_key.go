@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export MasterKeyFields provides field names to use in filter parameters, for example.
+// MasterKeyFields provides field names to use in filter parameters, for example.
 var MasterKeyFields *MasterKeyFieldHandles
 
 func init() {

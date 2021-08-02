@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsEulaReturnFields provides field names to use in filter parameters, for example.
+// NsEulaReturnFields provides field names to use in filter parameters, for example.
 var NsEulaReturnFields *NsEulaReturnFieldHandles
 
 func init() {

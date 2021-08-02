@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumePoolInfoFields provides field names to use in filter parameters, for example.
+// NsVolumePoolInfoFields provides field names to use in filter parameters, for example.
 var NsVolumePoolInfoFields *NsVolumePoolInfoFieldHandles
 
 func init() {

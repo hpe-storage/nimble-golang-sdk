@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export DnaFields provides field names to use in filter parameters, for example.
+// DnaFields provides field names to use in filter parameters, for example.
 var DnaFields *DnaFieldHandles
 
 func init() {

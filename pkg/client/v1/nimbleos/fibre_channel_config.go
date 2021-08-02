@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export FibreChannelConfigFields provides field names to use in filter parameters, for example.
+// FibreChannelConfigFields provides field names to use in filter parameters, for example.
 var FibreChannelConfigFields *FibreChannelConfigFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsEncryptionSettingsFields provides field names to use in filter parameters, for example.
+// NsEncryptionSettingsFields provides field names to use in filter parameters, for example.
 var NsEncryptionSettingsFields *NsEncryptionSettingsFieldHandles
 
 func init() {

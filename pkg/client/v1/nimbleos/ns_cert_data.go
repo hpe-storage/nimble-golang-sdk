@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsCertDataFields provides field names to use in filter parameters, for example.
+// NsCertDataFields provides field names to use in filter parameters, for example.
 var NsCertDataFields *NsCertDataFieldHandles
 
 func init() {

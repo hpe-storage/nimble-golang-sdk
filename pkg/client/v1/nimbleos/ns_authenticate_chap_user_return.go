@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAuthenticateChapUserReturnFields provides field names to use in filter parameters, for example.
+// NsAuthenticateChapUserReturnFields provides field names to use in filter parameters, for example.
 var NsAuthenticateChapUserReturnFields *NsAuthenticateChapUserReturnFieldHandles
 
 func init() {

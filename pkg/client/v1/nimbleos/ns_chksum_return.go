@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsChksumReturnFields provides field names to use in filter parameters, for example.
+// NsChksumReturnFields provides field names to use in filter parameters, for example.
 var NsChksumReturnFields *NsChksumReturnFieldHandles
 
 func init() {

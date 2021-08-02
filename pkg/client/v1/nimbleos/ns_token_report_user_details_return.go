@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsTokenReportUserDetailsReturnFields provides field names to use in filter parameters, for example.
+// NsTokenReportUserDetailsReturnFields provides field names to use in filter parameters, for example.
 var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnFieldHandles
 
 func init() {

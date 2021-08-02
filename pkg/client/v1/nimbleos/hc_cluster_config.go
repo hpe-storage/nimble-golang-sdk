@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export HcClusterConfigFields provides field names to use in filter parameters, for example.
+// HcClusterConfigFields provides field names to use in filter parameters, for example.
 var HcClusterConfigFields *HcClusterConfigFieldHandles
 
 func init() {

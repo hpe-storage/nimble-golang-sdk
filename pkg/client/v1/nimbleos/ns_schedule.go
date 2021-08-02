@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsScheduleFields provides field names to use in filter parameters, for example.
+// NsScheduleFields provides field names to use in filter parameters, for example.
 var NsScheduleFields *NsScheduleFieldHandles
 
 func init() {

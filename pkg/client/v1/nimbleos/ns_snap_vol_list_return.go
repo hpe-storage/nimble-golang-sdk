@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSnapVolListReturnFields provides field names to use in filter parameters, for example.
+// NsSnapVolListReturnFields provides field names to use in filter parameters, for example.
 var NsSnapVolListReturnFields *NsSnapVolListReturnFieldHandles
 
 func init() {

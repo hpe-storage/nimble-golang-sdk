@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsReplVolStatusFields provides field names to use in filter parameters, for example.
+// NsReplVolStatusFields provides field names to use in filter parameters, for example.
 var NsReplVolStatusFields *NsReplVolStatusFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export HealthCheckFields provides field names to use in filter parameters, for example.
+// HealthCheckFields provides field names to use in filter parameters, for example.
 var HealthCheckFields *HealthCheckFieldHandles
 
 func init() {

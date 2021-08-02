@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsZeroConfIPAddrFields provides field names to use in filter parameters, for example.
+// NsZeroConfIPAddrFields provides field names to use in filter parameters, for example.
 var NsZeroConfIPAddrFields *NsZeroConfIPAddrFieldHandles
 
 func init() {

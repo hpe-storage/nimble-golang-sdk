@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumeSummaryFields provides field names to use in filter parameters, for example.
+// NsVolumeSummaryFields provides field names to use in filter parameters, for example.
 var NsVolumeSummaryFields *NsVolumeSummaryFieldHandles
 
 func init() {

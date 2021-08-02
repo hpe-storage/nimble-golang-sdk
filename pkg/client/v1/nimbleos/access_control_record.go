@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export AccessControlRecordFields provides field names to use in filter parameters, for example.
+// AccessControlRecordFields provides field names to use in filter parameters, for example.
 var AccessControlRecordFields *AccessControlRecordFieldHandles
 
 func init() {

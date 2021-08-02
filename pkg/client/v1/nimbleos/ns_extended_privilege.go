@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsExtendedPrivilegeFields provides field names to use in filter parameters, for example.
+// NsExtendedPrivilegeFields provides field names to use in filter parameters, for example.
 var NsExtendedPrivilegeFields *NsExtendedPrivilegeFieldHandles
 
 func init() {

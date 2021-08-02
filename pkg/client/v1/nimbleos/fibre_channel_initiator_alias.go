@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export FibreChannelInitiatorAliasFields provides field names to use in filter parameters, for example.
+// FibreChannelInitiatorAliasFields provides field names to use in filter parameters, for example.
 var FibreChannelInitiatorAliasFields *FibreChannelInitiatorAliasFieldHandles
 
 func init() {

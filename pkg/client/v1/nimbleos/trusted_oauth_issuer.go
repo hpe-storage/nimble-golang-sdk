@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export TrustedOauthIssuerFields provides field names to use in filter parameters, for example.
+// TrustedOauthIssuerFields provides field names to use in filter parameters, for example.
 var TrustedOauthIssuerFields *TrustedOauthIssuerFieldHandles
 
 func init() {

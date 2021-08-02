@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsRequestFields provides field names to use in filter parameters, for example.
+// NsRequestFields provides field names to use in filter parameters, for example.
 var NsRequestFields *NsRequestFieldHandles
 
 func init() {

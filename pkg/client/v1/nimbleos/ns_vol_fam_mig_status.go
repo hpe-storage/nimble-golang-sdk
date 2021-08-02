@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolFamMigStatusFields provides field names to use in filter parameters, for example.
+// NsVolFamMigStatusFields provides field names to use in filter parameters, for example.
 var NsVolFamMigStatusFields *NsVolFamMigStatusFieldHandles
 
 func init() {

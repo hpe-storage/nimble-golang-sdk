@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export UserFields provides field names to use in filter parameters, for example.
+// UserFields provides field names to use in filter parameters, for example.
 var UserFields *UserFieldHandles
 
 func init() {

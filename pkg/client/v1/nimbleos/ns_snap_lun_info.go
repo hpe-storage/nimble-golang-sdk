@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSnapLunInfoFields provides field names to use in filter parameters, for example.
+// NsSnapLunInfoFields provides field names to use in filter parameters, for example.
 var NsSnapLunInfoFields *NsSnapLunInfoFieldHandles
 
 func init() {

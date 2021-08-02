@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFcSessionInitiatorFields provides field names to use in filter parameters, for example.
+// NsFcSessionInitiatorFields provides field names to use in filter parameters, for example.
 var NsFcSessionInitiatorFields *NsFcSessionInitiatorFieldHandles
 
 func init() {

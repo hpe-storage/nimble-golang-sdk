@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAliasConflictPairFields provides field names to use in filter parameters, for example.
+// NsAliasConflictPairFields provides field names to use in filter parameters, for example.
 var NsAliasConflictPairFields *NsAliasConflictPairFieldHandles
 
 func init() {

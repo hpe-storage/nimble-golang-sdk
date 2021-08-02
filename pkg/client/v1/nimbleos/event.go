@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export EventFields provides field names to use in filter parameters, for example.
+// EventFields provides field names to use in filter parameters, for example.
 var EventFields *EventFieldHandles
 
 func init() {

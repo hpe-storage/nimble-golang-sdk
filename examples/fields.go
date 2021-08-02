@@ -18,9 +18,11 @@ func main() {
 		return
 	}
 	defer groupService.LogoutService()
+
 	// set debug
 	groupService.SetDebug()
 	volSvc := groupService.GetVolumeService()
+
 	// Initialize volume attributes
 	var sizeField int64 = 5120
 	descriptionField := "This volume was created as part of a unit test"
@@ -59,7 +61,7 @@ func main() {
 
 	// create a filter
 	sf := &param.SearchFilter{
-		FieldName: param.NewString(nimbleos.VolumeFields.Name),
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "TestDemo",
 	}

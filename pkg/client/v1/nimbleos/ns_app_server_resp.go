@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAppServerRespFields provides field names to use in filter parameters, for example.
+// NsAppServerRespFields provides field names to use in filter parameters, for example.
 var NsAppServerRespFields *NsAppServerRespFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSensorDataFields provides field names to use in filter parameters, for example.
+// NsSensorDataFields provides field names to use in filter parameters, for example.
 var NsSensorDataFields *NsSensorDataFieldHandles
 
 func init() {

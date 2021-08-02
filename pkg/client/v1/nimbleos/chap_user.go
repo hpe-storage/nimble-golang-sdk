@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ChapUserFields provides field names to use in filter parameters, for example.
+// ChapUserFields provides field names to use in filter parameters, for example.
 var ChapUserFields *ChapUserFieldHandles
 
 func init() {

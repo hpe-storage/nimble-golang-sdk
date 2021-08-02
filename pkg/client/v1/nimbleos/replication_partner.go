@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ReplicationPartnerFields provides field names to use in filter parameters, for example.
+// ReplicationPartnerFields provides field names to use in filter parameters, for example.
 var ReplicationPartnerFields *ReplicationPartnerFieldHandles
 
 func init() {

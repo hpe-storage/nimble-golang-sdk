@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFolderCreateAttrFields provides field names to use in filter parameters, for example.
+// NsFolderCreateAttrFields provides field names to use in filter parameters, for example.
 var NsFolderCreateAttrFields *NsFolderCreateAttrFieldHandles
 
 func init() {

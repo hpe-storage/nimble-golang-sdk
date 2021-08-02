@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ActiveDirectoryMembershipFields provides field names to use in filter parameters, for example.
+// ActiveDirectoryMembershipFields provides field names to use in filter parameters, for example.
 var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsShelfSensorFields provides field names to use in filter parameters, for example.
+// NsShelfSensorFields provides field names to use in filter parameters, for example.
 var NsShelfSensorFields *NsShelfSensorFieldHandles
 
 func init() {

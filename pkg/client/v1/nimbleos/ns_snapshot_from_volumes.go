@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSnapshotFromVolumesFields provides field names to use in filter parameters, for example.
+// NsSnapshotFromVolumesFields provides field names to use in filter parameters, for example.
 var NsSnapshotFromVolumesFields *NsSnapshotFromVolumesFieldHandles
 
 func init() {

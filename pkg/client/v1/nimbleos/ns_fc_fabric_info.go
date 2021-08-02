@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFcFabricInfoFields provides field names to use in filter parameters, for example.
+// NsFcFabricInfoFields provides field names to use in filter parameters, for example.
 var NsFcFabricInfoFields *NsFcFabricInfoFieldHandles
 
 func init() {

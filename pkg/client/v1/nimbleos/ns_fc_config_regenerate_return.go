@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFcConfigRegenerateReturnFields provides field names to use in filter parameters, for example.
+// NsFcConfigRegenerateReturnFields provides field names to use in filter parameters, for example.
 var NsFcConfigRegenerateReturnFields *NsFcConfigRegenerateReturnFieldHandles
 
 func init() {

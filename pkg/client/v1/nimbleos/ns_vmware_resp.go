@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVmwareRespFields provides field names to use in filter parameters, for example.
+// NsVmwareRespFields provides field names to use in filter parameters, for example.
 var NsVmwareRespFields *NsVmwareRespFieldHandles
 
 func init() {

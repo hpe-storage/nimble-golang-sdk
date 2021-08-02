@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsAlarmUpdateAttrFields provides field names to use in filter parameters, for example.
+// NsAlarmUpdateAttrFields provides field names to use in filter parameters, for example.
 var NsAlarmUpdateAttrFields *NsAlarmUpdateAttrFieldHandles
 
 func init() {

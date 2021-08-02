@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsArrayFcConfigFields provides field names to use in filter parameters, for example.
+// NsArrayFcConfigFields provides field names to use in filter parameters, for example.
 var NsArrayFcConfigFields *NsArrayFcConfigFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsCtrlrNvmeCardFields provides field names to use in filter parameters, for example.
+// NsCtrlrNvmeCardFields provides field names to use in filter parameters, for example.
 var NsCtrlrNvmeCardFields *NsCtrlrNvmeCardFieldHandles
 
 func init() {

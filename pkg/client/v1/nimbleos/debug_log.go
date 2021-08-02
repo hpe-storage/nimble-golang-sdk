@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export DebugLogFields provides field names to use in filter parameters, for example.
+// DebugLogFields provides field names to use in filter parameters, for example.
 var DebugLogFields *DebugLogFieldHandles
 
 func init() {

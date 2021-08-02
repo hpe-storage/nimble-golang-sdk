@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsArraySoftwareUpdateStatusFields provides field names to use in filter parameters, for example.
+// NsArraySoftwareUpdateStatusFields provides field names to use in filter parameters, for example.
 var NsArraySoftwareUpdateStatusFields *NsArraySoftwareUpdateStatusFieldHandles
 
 func init() {

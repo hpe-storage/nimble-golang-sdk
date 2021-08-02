@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSnapRetainLimitFields provides field names to use in filter parameters, for example.
+// NsSnapRetainLimitFields provides field names to use in filter parameters, for example.
 var NsSnapRetainLimitFields *NsSnapRetainLimitFieldHandles
 
 func init() {

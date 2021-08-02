@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsObjectLimitFields provides field names to use in filter parameters, for example.
+// NsObjectLimitFields provides field names to use in filter parameters, for example.
 var NsObjectLimitFields *NsObjectLimitFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFqdnOrIpAndPortObjectFields provides field names to use in filter parameters, for example.
+// NsFqdnOrIpAndPortObjectFields provides field names to use in filter parameters, for example.
 var NsFqdnOrIpAndPortObjectFields *NsFqdnOrIpAndPortObjectFieldHandles
 
 func init() {

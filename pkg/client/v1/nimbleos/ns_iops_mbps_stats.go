@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsIopsMbpsStatsFields provides field names to use in filter parameters, for example.
+// NsIopsMbpsStatsFields provides field names to use in filter parameters, for example.
 var NsIopsMbpsStatsFields *NsIopsMbpsStatsFieldHandles
 
 func init() {

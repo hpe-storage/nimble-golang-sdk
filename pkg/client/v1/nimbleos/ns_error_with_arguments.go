@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsErrorWithArgumentsFields provides field names to use in filter parameters, for example.
+// NsErrorWithArgumentsFields provides field names to use in filter parameters, for example.
 var NsErrorWithArgumentsFields *NsErrorWithArgumentsFieldHandles
 
 func init() {

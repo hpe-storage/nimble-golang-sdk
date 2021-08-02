@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsVolumeCollectionHandoverAttrFields provides field names to use in filter parameters, for example.
+// NsVolumeCollectionHandoverAttrFields provides field names to use in filter parameters, for example.
 var NsVolumeCollectionHandoverAttrFields *NsVolumeCollectionHandoverAttrFieldHandles
 
 func init() {

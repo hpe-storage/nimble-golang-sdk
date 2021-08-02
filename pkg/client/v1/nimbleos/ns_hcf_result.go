@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsHcfResultFields provides field names to use in filter parameters, for example.
+// NsHcfResultFields provides field names to use in filter parameters, for example.
 var NsHcfResultFields *NsHcfResultFieldHandles
 
 func init() {

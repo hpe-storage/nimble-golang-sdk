@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsObjectOwnerPairWithTypeFields provides field names to use in filter parameters, for example.
+// NsObjectOwnerPairWithTypeFields provides field names to use in filter parameters, for example.
 var NsObjectOwnerPairWithTypeFields *NsObjectOwnerPairWithTypeFieldHandles
 
 func init() {

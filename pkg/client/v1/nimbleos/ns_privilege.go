@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsPrivilegeFields provides field names to use in filter parameters, for example.
+// NsPrivilegeFields provides field names to use in filter parameters, for example.
 var NsPrivilegeFields *NsPrivilegeFieldHandles
 
 func init() {

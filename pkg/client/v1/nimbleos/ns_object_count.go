@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsObjectCountFields provides field names to use in filter parameters, for example.
+// NsObjectCountFields provides field names to use in filter parameters, for example.
 var NsObjectCountFields *NsObjectCountFieldHandles
 
 func init() {

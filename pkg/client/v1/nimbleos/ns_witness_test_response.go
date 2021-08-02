@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsWitnessTestResponseFields provides field names to use in filter parameters, for example.
+// NsWitnessTestResponseFields provides field names to use in filter parameters, for example.
 var NsWitnessTestResponseFields *NsWitnessTestResponseFieldHandles
 
 func init() {

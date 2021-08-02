@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export AuditLogFields provides field names to use in filter parameters, for example.
+// AuditLogFields provides field names to use in filter parameters, for example.
 var AuditLogFields *AuditLogFieldHandles
 
 func init() {

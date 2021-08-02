@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsADReportStatusReturnFields provides field names to use in filter parameters, for example.
+// NsADReportStatusReturnFields provides field names to use in filter parameters, for example.
 var NsADReportStatusReturnFields *NsADReportStatusReturnFieldHandles
 
 func init() {

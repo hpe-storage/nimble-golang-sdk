@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsNICFields provides field names to use in filter parameters, for example.
+// NsNICFields provides field names to use in filter parameters, for example.
 var NsNICFields *NsNICFieldHandles
 
 func init() {

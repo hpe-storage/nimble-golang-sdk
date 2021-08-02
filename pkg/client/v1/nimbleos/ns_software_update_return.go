@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsSoftwareUpdateReturnFields provides field names to use in filter parameters, for example.
+// NsSoftwareUpdateReturnFields provides field names to use in filter parameters, for example.
 var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturnFieldHandles
 
 func init() {

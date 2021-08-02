@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export SubscriberFields provides field names to use in filter parameters, for example.
+// SubscriberFields provides field names to use in filter parameters, for example.
 var SubscriberFields *SubscriberFieldHandles
 
 func init() {

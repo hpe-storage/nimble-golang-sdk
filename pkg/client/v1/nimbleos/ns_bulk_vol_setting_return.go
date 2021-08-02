@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsBulkVolSettingReturnFields provides field names to use in filter parameters, for example.
+// NsBulkVolSettingReturnFields provides field names to use in filter parameters, for example.
 var NsBulkVolSettingReturnFields *NsBulkVolSettingReturnFieldHandles
 
 func init() {

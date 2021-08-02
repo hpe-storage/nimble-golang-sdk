@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsDiscoveredGroupListReturnFields provides field names to use in filter parameters, for example.
+// NsDiscoveredGroupListReturnFields provides field names to use in filter parameters, for example.
 var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturnFieldHandles
 
 func init() {

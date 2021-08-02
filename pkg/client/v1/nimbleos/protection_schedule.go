@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ProtectionScheduleFields provides field names to use in filter parameters, for example.
+// ProtectionScheduleFields provides field names to use in filter parameters, for example.
 var ProtectionScheduleFields *ProtectionScheduleFieldHandles
 
 func init() {

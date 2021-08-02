@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ControllerFields provides field names to use in filter parameters, for example.
+// ControllerFields provides field names to use in filter parameters, for example.
 var ControllerFields *ControllerFieldHandles
 
 func init() {

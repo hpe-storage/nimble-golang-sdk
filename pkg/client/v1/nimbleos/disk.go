@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export DiskFields provides field names to use in filter parameters, for example.
+// DiskFields provides field names to use in filter parameters, for example.
 var DiskFields *DiskFieldHandles
 
 func init() {

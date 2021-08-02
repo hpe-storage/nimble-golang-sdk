@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsGenericRespFields provides field names to use in filter parameters, for example.
+// NsGenericRespFields provides field names to use in filter parameters, for example.
 var NsGenericRespFields *NsGenericRespFieldHandles
 
 func init() {

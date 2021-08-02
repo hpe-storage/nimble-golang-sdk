@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsBitMapReturnFields provides field names to use in filter parameters, for example.
+// NsBitMapReturnFields provides field names to use in filter parameters, for example.
 var NsBitMapReturnFields *NsBitMapReturnFieldHandles
 
 func init() {

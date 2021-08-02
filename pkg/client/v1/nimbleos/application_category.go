@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export ApplicationCategoryFields provides field names to use in filter parameters, for example.
+// ApplicationCategoryFields provides field names to use in filter parameters, for example.
 var ApplicationCategoryFields *ApplicationCategoryFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsFcInterfaceInfoFields provides field names to use in filter parameters, for example.
+// NsFcInterfaceInfoFields provides field names to use in filter parameters, for example.
 var NsFcInterfaceInfoFields *NsFcInterfaceInfoFieldHandles
 
 func init() {

@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export StatFields provides field names to use in filter parameters, for example.
+// StatFields provides field names to use in filter parameters, for example.
 var StatFields *StatFieldHandles
 
 func init() {

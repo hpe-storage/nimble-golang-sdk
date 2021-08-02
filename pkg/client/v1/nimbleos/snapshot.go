@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export SnapshotFields provides field names to use in filter parameters, for example.
+// SnapshotFields provides field names to use in filter parameters, for example.
 var SnapshotFields *SnapshotFieldHandles
 
 func init() {

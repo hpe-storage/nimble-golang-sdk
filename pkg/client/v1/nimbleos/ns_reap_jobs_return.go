@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export NsReapJobsReturnFields provides field names to use in filter parameters, for example.
+// NsReapJobsReturnFields provides field names to use in filter parameters, for example.
 var NsReapJobsReturnFields *NsReapJobsReturnFieldHandles
 
 func init() {

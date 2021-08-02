@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export UninitializedArrayFields provides field names to use in filter parameters, for example.
+// UninitializedArrayFields provides field names to use in filter parameters, for example.
 var UninitializedArrayFields *UninitializedArrayFieldHandles
 
 func init() {

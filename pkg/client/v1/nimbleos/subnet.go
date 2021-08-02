@@ -2,7 +2,7 @@
 
 package nimbleos
 
-// Export SubnetFields provides field names to use in filter parameters, for example.
+// SubnetFields provides field names to use in filter parameters, for example.
 var SubnetFields *SubnetFieldHandles
 
 func init() {
