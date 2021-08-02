@@ -23,7 +23,7 @@ type NsObjectOwnerPair struct {
 	DstOwner *string `json:"dst_owner,omitempty"`
 }
 
-// NsObjectOwnerPairFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectOwnerPairFieldHandles provides a string representation for each NsObjectOwnerPair field.
 type NsObjectOwnerPairFieldHandles struct {
 	ObjName  string
 	SrcOwner string

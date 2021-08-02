@@ -38,7 +38,7 @@ type NsFcSessionInitiator struct {
 	InitiatorFcid *string `json:"initiator_fcid,omitempty"`
 }
 
-// NsFcSessionInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcSessionInitiatorFieldHandles provides a string representation for each NsFcSessionInitiator field.
 type NsFcSessionInitiatorFieldHandles struct {
 	InitiatorAlias            string
 	InitiatorWwpn             string

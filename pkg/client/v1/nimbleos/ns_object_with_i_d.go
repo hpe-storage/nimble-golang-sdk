@@ -17,7 +17,7 @@ type NsObjectWithID struct {
 	ID *string `json:"id,omitempty"`
 }
 
-// NsObjectWithIDFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectWithIDFieldHandles provides a string representation for each NsObjectWithID field.
 type NsObjectWithIDFieldHandles struct {
 	ID string
 }

@@ -38,7 +38,7 @@ type NsAlertNotification struct {
 	Timestamp *int64 `json:"timestamp,omitempty"`
 }
 
-// NsAlertNotificationFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAlertNotificationFieldHandles provides a string representation for each NsAlertNotification field.
 type NsAlertNotificationFieldHandles struct {
 	SequenceNumber   string
 	NotificationType string

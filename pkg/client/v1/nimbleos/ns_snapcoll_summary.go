@@ -23,7 +23,7 @@ type NsSnapcollSummary struct {
 	SnapcollCreationTime *int64 `json:"snapcoll_creation_time,omitempty"`
 }
 
-// NsSnapcollSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapcollSummaryFieldHandles provides a string representation for each NsSnapcollSummary field.
 type NsSnapcollSummaryFieldHandles struct {
 	SnapcollId           string
 	SnapcollName         string

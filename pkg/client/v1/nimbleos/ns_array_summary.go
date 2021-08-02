@@ -26,7 +26,7 @@ type NsArraySummary struct {
 	ArrayName *string `json:"array_name,omitempty"`
 }
 
-// NsArraySummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArraySummaryFieldHandles provides a string representation for each NsArraySummary field.
 type NsArraySummaryFieldHandles struct {
 	ID        string
 	ArrayId   string

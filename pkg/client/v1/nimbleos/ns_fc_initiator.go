@@ -26,7 +26,7 @@ type NsFCInitiator struct {
 	Alias *string `json:"alias,omitempty"`
 }
 
-// NsFCInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFCInitiatorFieldHandles provides a string representation for each NsFCInitiator field.
 type NsFCInitiatorFieldHandles struct {
 	ID          string
 	InitiatorId string

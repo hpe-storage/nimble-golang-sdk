@@ -20,7 +20,7 @@ type Version struct {
 	SoftwareVersion *string `json:"software_version,omitempty"`
 }
 
-// VersionFieldHandles provides a string representation for each AccessControlRecord field.
+// VersionFieldHandles provides a string representation for each Version field.
 type VersionFieldHandles struct {
 	Name            string
 	SoftwareVersion string

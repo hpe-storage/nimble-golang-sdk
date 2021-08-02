@@ -29,7 +29,7 @@ type NsCtrlrRaidInfo struct {
 	IsResyncing *bool `json:"is_resyncing,omitempty"`
 }
 
-// NsCtrlrRaidInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsCtrlrRaidInfoFieldHandles provides a string representation for each NsCtrlrRaidInfo field.
 type NsCtrlrRaidInfoFieldHandles struct {
 	RaidId      string
 	RaidType    string

@@ -23,7 +23,7 @@ type NsJWKey struct {
 	Key *string `json:"key,omitempty"`
 }
 
-// NsJWKeyFieldHandles provides a string representation for each AccessControlRecord field.
+// NsJWKeyFieldHandles provides a string representation for each NsJWKey field.
 type NsJWKeyFieldHandles struct {
 	Kid       string
 	Algorithm string

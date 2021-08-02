@@ -26,7 +26,7 @@ type NsArrayMigStatus struct {
 	SpaceUtilization *int64 `json:"space_utilization,omitempty"`
 }
 
-// NsArrayMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayMigStatusFieldHandles provides a string representation for each NsArrayMigStatus field.
 type NsArrayMigStatusFieldHandles struct {
 	ID               string
 	Name             string

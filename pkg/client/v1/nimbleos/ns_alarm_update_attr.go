@@ -23,7 +23,7 @@ type NsAlarmUpdateAttr struct {
 	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }
 
-// NsAlarmUpdateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAlarmUpdateAttrFieldHandles provides a string representation for each NsAlarmUpdateAttr field.
 type NsAlarmUpdateAttrFieldHandles struct {
 	ID              string
 	RemindEvery     string

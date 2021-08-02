@@ -32,7 +32,7 @@ type NsReplVolStatus struct {
 	ReplBytesTotal *int64 `json:"repl_bytes_total,omitempty"`
 }
 
-// NsReplVolStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsReplVolStatusFieldHandles provides a string representation for each NsReplVolStatus field.
 type NsReplVolStatusFieldHandles struct {
 	Name           string
 	SnapName       string

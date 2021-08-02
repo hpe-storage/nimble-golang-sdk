@@ -23,7 +23,7 @@ type NsSyncReplVolStatus struct {
 	ResyncBytesTotal *int64 `json:"resync_bytes_total,omitempty"`
 }
 
-// NsSyncReplVolStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSyncReplVolStatusFieldHandles provides a string representation for each NsSyncReplVolStatus field.
 type NsSyncReplVolStatusFieldHandles struct {
 	ResyncActive     string
 	ResyncBytesDone  string

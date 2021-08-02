@@ -23,7 +23,7 @@ type FibreChannelSession struct {
 	TargetInfo *NsFcSessionTarget `json:"target_info,omitempty"`
 }
 
-// FibreChannelSessionFieldHandles provides a string representation for each AccessControlRecord field.
+// FibreChannelSessionFieldHandles provides a string representation for each FibreChannelSession field.
 type FibreChannelSessionFieldHandles struct {
 	ID            string
 	InitiatorInfo string

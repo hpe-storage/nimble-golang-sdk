@@ -68,7 +68,7 @@ type InitiatorGroup struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// InitiatorGroupFieldHandles provides a string representation for each AccessControlRecord field.
+// InitiatorGroupFieldHandles provides a string representation for each InitiatorGroup field.
 type InitiatorGroupFieldHandles struct {
 	ID              string
 	Name            string

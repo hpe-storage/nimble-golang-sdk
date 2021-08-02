@@ -23,7 +23,7 @@ type NsCtrlrNvmeCard struct {
 	State *NsCtrlrNvmeCardState `json:"state,omitempty"`
 }
 
-// NsCtrlrNvmeCardFieldHandles provides a string representation for each AccessControlRecord field.
+// NsCtrlrNvmeCardFieldHandles provides a string representation for each NsCtrlrNvmeCard field.
 type NsCtrlrNvmeCardFieldHandles struct {
 	SerialNumber string
 	Size         string

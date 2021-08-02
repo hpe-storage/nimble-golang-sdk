@@ -149,7 +149,7 @@ type ReplicationPartner struct {
 	ReplicationDirection *NsReplDirection `json:"replication_direction,omitempty"`
 }
 
-// ReplicationPartnerFieldHandles provides a string representation for each AccessControlRecord field.
+// ReplicationPartnerFieldHandles provides a string representation for each ReplicationPartner field.
 type ReplicationPartnerFieldHandles struct {
 	ID                            string
 	Name                          string

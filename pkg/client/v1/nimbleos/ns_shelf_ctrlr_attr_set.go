@@ -32,7 +32,7 @@ type NsShelfCtrlrAttrSet struct {
 	DiskTypes *string `json:"disk_types,omitempty"`
 }
 
-// NsShelfCtrlrAttrSetFieldHandles provides a string representation for each AccessControlRecord field.
+// NsShelfCtrlrAttrSetFieldHandles provides a string representation for each NsShelfCtrlrAttrSet field.
 type NsShelfCtrlrAttrSetFieldHandles struct {
 	SessionSerial string
 	CachedSerial  string

@@ -38,7 +38,7 @@ type NsArrayAsupDetail struct {
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
-// NsArrayAsupDetailFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayAsupDetailFieldHandles provides a string representation for each NsArrayAsupDetail field.
 type NsArrayAsupDetailFieldHandles struct {
 	ArrayName      string
 	AsupValidate   string

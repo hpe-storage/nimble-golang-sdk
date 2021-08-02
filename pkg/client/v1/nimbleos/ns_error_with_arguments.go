@@ -23,7 +23,7 @@ type NsErrorWithArguments struct {
 	Text *string `json:"text,omitempty"`
 }
 
-// NsErrorWithArgumentsFieldHandles provides a string representation for each AccessControlRecord field.
+// NsErrorWithArgumentsFieldHandles provides a string representation for each NsErrorWithArguments field.
 type NsErrorWithArgumentsFieldHandles struct {
 	Code     string
 	Severity string

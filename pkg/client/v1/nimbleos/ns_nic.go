@@ -26,7 +26,7 @@ type NsNIC struct {
 	Tagged *bool `json:"tagged,omitempty"`
 }
 
-// NsNICFieldHandles provides a string representation for each AccessControlRecord field.
+// NsNICFieldHandles provides a string representation for each NsNIC field.
 type NsNICFieldHandles struct {
 	Name        string
 	SubnetLabel string

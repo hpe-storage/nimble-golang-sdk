@@ -41,7 +41,7 @@ type NsISCSISession struct {
 	DataDigestEnabled *bool `json:"data_digest_enabled,omitempty"`
 }
 
-// NsISCSISessionFieldHandles provides a string representation for each AccessControlRecord field.
+// NsISCSISessionFieldHandles provides a string representation for each NsISCSISession field.
 type NsISCSISessionFieldHandles struct {
 	ID                  string
 	SessionId           string

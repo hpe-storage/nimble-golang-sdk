@@ -23,7 +23,7 @@ type DebugLog struct {
 	Message *string `json:"message,omitempty"`
 }
 
-// DebugLogFieldHandles provides a string representation for each AccessControlRecord field.
+// DebugLogFieldHandles provides a string representation for each DebugLog field.
 type DebugLogFieldHandles struct {
 	Level   string
 	Tag     string

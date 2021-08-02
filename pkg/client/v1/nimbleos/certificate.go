@@ -68,7 +68,7 @@ type Certificate struct {
 	ReloadApis *bool `json:"reload_apis,omitempty"`
 }
 
-// CertificateFieldHandles provides a string representation for each AccessControlRecord field.
+// CertificateFieldHandles provides a string representation for each Certificate field.
 type CertificateFieldHandles struct {
 	ID          string
 	Name        string

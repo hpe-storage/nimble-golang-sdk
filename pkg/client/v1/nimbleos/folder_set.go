@@ -47,7 +47,7 @@ type FolderSet struct {
 	AppserverName *string `json:"appserver_name,omitempty"`
 }
 
-// FolderSetFieldHandles provides a string representation for each AccessControlRecord field.
+// FolderSetFieldHandles provides a string representation for each FolderSet field.
 type FolderSetFieldHandles struct {
 	ID            string
 	Name          string

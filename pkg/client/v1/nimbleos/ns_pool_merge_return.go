@@ -119,7 +119,7 @@ type NsPoolMergeReturn struct {
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 }
 
-// NsPoolMergeReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsPoolMergeReturnFieldHandles provides a string representation for each NsPoolMergeReturn field.
 type NsPoolMergeReturnFieldHandles struct {
 	SnapcollCount              string
 	ArrayList                  string

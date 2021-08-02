@@ -20,7 +20,7 @@ type NsSoftwareUpdateReturn struct {
 	ArrayResponseList []*NsArraySoftwareUpdateStatus `json:"array_response_list,omitempty"`
 }
 
-// NsSoftwareUpdateReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSoftwareUpdateReturnFieldHandles provides a string representation for each NsSoftwareUpdateReturn field.
 type NsSoftwareUpdateReturnFieldHandles struct {
 	Error             string
 	ArrayResponseList string

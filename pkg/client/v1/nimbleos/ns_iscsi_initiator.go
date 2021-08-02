@@ -29,7 +29,7 @@ type NsISCSIInitiator struct {
 	IpAddress *string `json:"ip_address,omitempty"`
 }
 
-// NsISCSIInitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+// NsISCSIInitiatorFieldHandles provides a string representation for each NsISCSIInitiator field.
 type NsISCSIInitiatorFieldHandles struct {
 	ID          string
 	InitiatorId string

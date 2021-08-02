@@ -38,7 +38,7 @@ type ObjectLimit struct {
 	ObjectCounts []*NsObjectCount `json:"object_counts,omitempty"`
 }
 
-// ObjectLimitFieldHandles provides a string representation for each AccessControlRecord field.
+// ObjectLimitFieldHandles provides a string representation for each ObjectLimit field.
 type ObjectLimitFieldHandles struct {
 	ID               string
 	ObjectType       string

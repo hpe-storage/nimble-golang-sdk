@@ -23,7 +23,7 @@ type FibreChannelConfig struct {
 	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
 }
 
-// FibreChannelConfigFieldHandles provides a string representation for each AccessControlRecord field.
+// FibreChannelConfigFieldHandles provides a string representation for each FibreChannelConfig field.
 type FibreChannelConfigFieldHandles struct {
 	ID               string
 	ArrayList        string

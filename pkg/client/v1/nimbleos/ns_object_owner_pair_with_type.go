@@ -20,7 +20,7 @@ type NsObjectOwnerPairWithType struct {
 	ObjOwnerPairList []*NsObjectOwnerPair `json:"obj_owner_pair_list,omitempty"`
 }
 
-// NsObjectOwnerPairWithTypeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectOwnerPairWithTypeFieldHandles provides a string representation for each NsObjectOwnerPairWithType field.
 type NsObjectOwnerPairWithTypeFieldHandles struct {
 	ObjType          string
 	ObjOwnerPairList string

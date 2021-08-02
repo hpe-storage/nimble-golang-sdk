@@ -47,7 +47,7 @@ type NsCompleteSetupNetconfig struct {
 	ArrayList []*NsArrayNet `json:"array_list,omitempty"`
 }
 
-// NsCompleteSetupNetconfigFieldHandles provides a string representation for each AccessControlRecord field.
+// NsCompleteSetupNetconfigFieldHandles provides a string representation for each NsCompleteSetupNetconfig field.
 type NsCompleteSetupNetconfigFieldHandles struct {
 	Name                           string
 	DiscoveryIp                    string

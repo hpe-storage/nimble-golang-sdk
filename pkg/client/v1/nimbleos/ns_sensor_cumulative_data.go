@@ -35,7 +35,7 @@ type NsSensorCumulativeData struct {
 	Prev *int64 `json:"prev,omitempty"`
 }
 
-// NsSensorCumulativeDataFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSensorCumulativeDataFieldHandles provides a string representation for each NsSensorCumulativeData field.
 type NsSensorCumulativeDataFieldHandles struct {
 	Name        string
 	Index       string

@@ -20,7 +20,7 @@ type NsReplPair struct {
 	DstName *string `json:"dst_name,omitempty"`
 }
 
-// NsReplPairFieldHandles provides a string representation for each AccessControlRecord field.
+// NsReplPairFieldHandles provides a string representation for each NsReplPair field.
 type NsReplPairFieldHandles struct {
 	SrcName string
 	DstName string

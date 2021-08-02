@@ -23,7 +23,7 @@ type NsVolumeSnapshotAttribute struct {
 	AppUuid *string `json:"app_uuid,omitempty"`
 }
 
-// NsVolumeSnapshotAttributeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeSnapshotAttributeFieldHandles provides a string representation for each NsVolumeSnapshotAttribute field.
 type NsVolumeSnapshotAttributeFieldHandles struct {
 	VolId    string
 	Metadata string

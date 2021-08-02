@@ -35,7 +35,7 @@ type MasterKey struct {
 	PurgeAge *int64 `json:"purge_age,omitempty"`
 }
 
-// MasterKeyFieldHandles provides a string representation for each AccessControlRecord field.
+// MasterKeyFieldHandles provides a string representation for each MasterKey field.
 type MasterKeyFieldHandles struct {
 	ID            string
 	Name          string

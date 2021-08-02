@@ -26,7 +26,7 @@ type NsVolumePoolInfo struct {
 	PoolName *string `json:"pool_name,omitempty"`
 }
 
-// NsVolumePoolInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumePoolInfoFieldHandles provides a string representation for each NsVolumePoolInfo field.
 type NsVolumePoolInfoFieldHandles struct {
 	VolId    string
 	VolName  string

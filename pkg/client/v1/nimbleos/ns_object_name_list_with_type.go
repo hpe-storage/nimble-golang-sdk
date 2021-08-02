@@ -20,7 +20,7 @@ type NsObjectNameListWithType struct {
 	ObjNameList []*string `json:"obj_name_list,omitempty"`
 }
 
-// NsObjectNameListWithTypeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectNameListWithTypeFieldHandles provides a string representation for each NsObjectNameListWithType field.
 type NsObjectNameListWithTypeFieldHandles struct {
 	ObjType     string
 	ObjNameList string

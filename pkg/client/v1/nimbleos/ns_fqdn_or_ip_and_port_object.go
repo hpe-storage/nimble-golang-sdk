@@ -20,7 +20,7 @@ type NsFqdnOrIpAndPortObject struct {
 	SyslogPort *int64 `json:"syslog_port,omitempty"`
 }
 
-// NsFqdnOrIpAndPortObjectFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFqdnOrIpAndPortObjectFieldHandles provides a string representation for each NsFqdnOrIpAndPortObject field.
 type NsFqdnOrIpAndPortObjectFieldHandles struct {
 	SyslogServer string
 	SyslogPort   string

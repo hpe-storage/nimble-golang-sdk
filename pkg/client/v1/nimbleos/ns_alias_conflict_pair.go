@@ -23,7 +23,7 @@ type NsAliasConflictPair struct {
 	SrcAliasName *string `json:"src_alias_name,omitempty"`
 }
 
-// NsAliasConflictPairFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAliasConflictPairFieldHandles provides a string representation for each NsAliasConflictPair field.
 type NsAliasConflictPairFieldHandles struct {
 	InitiatorWwpn string
 	DstAliasName  string

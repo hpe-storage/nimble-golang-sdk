@@ -20,7 +20,7 @@ type NsPrivilege struct {
 	Operations []*string `json:"operations,omitempty"`
 }
 
-// NsPrivilegeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsPrivilegeFieldHandles provides a string representation for each NsPrivilege field.
 type NsPrivilegeFieldHandles struct {
 	ObjectType string
 	Operations string

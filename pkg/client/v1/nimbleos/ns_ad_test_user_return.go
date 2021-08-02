@@ -32,7 +32,7 @@ type NsADTestUserReturn struct {
 	Role *NsUserRoles `json:"role,omitempty"`
 }
 
-// NsADTestUserReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsADTestUserReturnFieldHandles provides a string representation for each NsADTestUserReturn field.
 type NsADTestUserReturnFieldHandles struct {
 	Username         string
 	PrimaryGroupName string

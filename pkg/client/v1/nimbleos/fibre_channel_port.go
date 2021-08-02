@@ -47,7 +47,7 @@ type FibreChannelPort struct {
 	TxPower *int64 `json:"tx_power,omitempty"`
 }
 
-// FibreChannelPortFieldHandles provides a string representation for each AccessControlRecord field.
+// FibreChannelPortFieldHandles provides a string representation for each FibreChannelPort field.
 type FibreChannelPortFieldHandles struct {
 	ID                string
 	ArrayNameOrSerial string

@@ -20,7 +20,7 @@ type NsReplPairListWithObjectType struct {
 	ReplList []*NsReplPair `json:"repl_list,omitempty"`
 }
 
-// NsReplPairListWithObjectTypeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsReplPairListWithObjectTypeFieldHandles provides a string representation for each NsReplPairListWithObjectType field.
 type NsReplPairListWithObjectTypeFieldHandles struct {
 	ObjType  string
 	ReplList string

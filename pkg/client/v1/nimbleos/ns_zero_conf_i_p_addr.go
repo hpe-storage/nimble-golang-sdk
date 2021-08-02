@@ -23,7 +23,7 @@ type NsZeroConfIPAddr struct {
 	RemoteIpaddr *string `json:"remote_ipaddr,omitempty"`
 }
 
-// NsZeroConfIPAddrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsZeroConfIPAddrFieldHandles provides a string representation for each NsZeroConfIPAddr field.
 type NsZeroConfIPAddrFieldHandles struct {
 	Nic          string
 	LocalIpaddr  string

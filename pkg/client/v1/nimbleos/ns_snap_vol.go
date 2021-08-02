@@ -41,7 +41,7 @@ type NsSnapVol struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// NsSnapVolFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapVolFieldHandles provides a string representation for each NsSnapVol field.
 type NsSnapVolFieldHandles struct {
 	VolId           string
 	SnapName        string

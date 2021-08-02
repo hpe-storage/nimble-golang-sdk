@@ -68,7 +68,7 @@ type ProtocolEndpoint struct {
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
 }
 
-// ProtocolEndpointFieldHandles provides a string representation for each AccessControlRecord field.
+// ProtocolEndpointFieldHandles provides a string representation for each ProtocolEndpoint field.
 type ProtocolEndpointFieldHandles struct {
 	ID                   string
 	Name                 string

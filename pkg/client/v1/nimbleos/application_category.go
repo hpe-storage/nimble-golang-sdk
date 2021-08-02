@@ -29,7 +29,7 @@ type ApplicationCategory struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 }
 
-// ApplicationCategoryFieldHandles provides a string representation for each AccessControlRecord field.
+// ApplicationCategoryFieldHandles provides a string representation for each ApplicationCategory field.
 type ApplicationCategoryFieldHandles struct {
 	ID            string
 	Name          string

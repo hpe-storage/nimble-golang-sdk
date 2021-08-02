@@ -68,7 +68,7 @@ type NsFCSession struct {
 	TargetFcid *int64 `json:"target_fcid,omitempty"`
 }
 
-// NsFCSessionFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFCSessionFieldHandles provides a string representation for each NsFCSession field.
 type NsFCSessionFieldHandles struct {
 	ID                        string
 	SessionId                 string

@@ -71,7 +71,7 @@ type PerformancePolicy struct {
 	DedupeOverridePools []*NsPoolSummary `json:"dedupe_override_pools,omitempty"`
 }
 
-// PerformancePolicyFieldHandles provides a string representation for each AccessControlRecord field.
+// PerformancePolicyFieldHandles provides a string representation for each PerformancePolicy field.
 type PerformancePolicyFieldHandles struct {
 	ID                  string
 	Name                string

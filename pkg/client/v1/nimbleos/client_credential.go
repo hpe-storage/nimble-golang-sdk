@@ -35,7 +35,7 @@ type ClientCredential struct {
 	Description *string `json:"description,omitempty"`
 }
 
-// ClientCredentialFieldHandles provides a string representation for each AccessControlRecord field.
+// ClientCredentialFieldHandles provides a string representation for each ClientCredential field.
 type ClientCredentialFieldHandles struct {
 	ID           string
 	Name         string

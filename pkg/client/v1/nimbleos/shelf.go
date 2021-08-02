@@ -74,7 +74,7 @@ type Shelf struct {
 	LastRequest *bool `json:"last_request,omitempty"`
 }
 
-// ShelfFieldHandles provides a string representation for each AccessControlRecord field.
+// ShelfFieldHandles provides a string representation for each Shelf field.
 type ShelfFieldHandles struct {
 	ID                 string
 	ArrayName          string

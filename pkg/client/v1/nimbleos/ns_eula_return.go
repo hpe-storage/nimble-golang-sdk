@@ -17,7 +17,7 @@ type NsEulaReturn struct {
 	Eula *string `json:"eula,omitempty"`
 }
 
-// NsEulaReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsEulaReturnFieldHandles provides a string representation for each NsEulaReturn field.
 type NsEulaReturnFieldHandles struct {
 	Eula string
 }

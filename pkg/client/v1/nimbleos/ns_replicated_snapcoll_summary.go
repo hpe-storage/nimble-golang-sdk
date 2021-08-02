@@ -29,7 +29,7 @@ type NsReplicatedSnapcollSummary struct {
 	VolIds []*string `json:"vol_ids,omitempty"`
 }
 
-// NsReplicatedSnapcollSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsReplicatedSnapcollSummaryFieldHandles provides a string representation for each NsReplicatedSnapcollSummary field.
 type NsReplicatedSnapcollSummaryFieldHandles struct {
 	SnapcollId            string
 	SnapcollName          string

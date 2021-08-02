@@ -23,7 +23,7 @@ type NsHcfResult struct {
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
-// NsHcfResultFieldHandles provides a string representation for each AccessControlRecord field.
+// NsHcfResultFieldHandles provides a string representation for each NsHcfResult field.
 type NsHcfResultFieldHandles struct {
 	ElementName string
 	ErrorList   string

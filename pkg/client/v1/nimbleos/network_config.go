@@ -62,7 +62,7 @@ type NetworkConfig struct {
 	IgnoreValidationMask *int64 `json:"ignore_validation_mask,omitempty"`
 }
 
-// NetworkConfigFieldHandles provides a string representation for each AccessControlRecord field.
+// NetworkConfigFieldHandles provides a string representation for each NetworkConfig field.
 type NetworkConfigFieldHandles struct {
 	ID                             string
 	Name                           string

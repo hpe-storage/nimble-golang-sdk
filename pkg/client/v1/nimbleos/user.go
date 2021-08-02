@@ -80,7 +80,7 @@ type User struct {
 	LoggedIn *bool `json:"logged_in,omitempty"`
 }
 
-// UserFieldHandles provides a string representation for each AccessControlRecord field.
+// UserFieldHandles provides a string representation for each User field.
 type UserFieldHandles struct {
 	ID                string
 	Name              string

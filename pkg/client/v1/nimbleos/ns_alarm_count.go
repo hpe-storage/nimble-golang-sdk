@@ -23,7 +23,7 @@ type NsAlarmCount struct {
 	Warning *int64 `json:"warning,omitempty"`
 }
 
-// NsAlarmCountFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAlarmCountFieldHandles provides a string representation for each NsAlarmCount field.
 type NsAlarmCountFieldHandles struct {
 	Category string
 	Critical string

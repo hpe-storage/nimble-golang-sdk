@@ -50,7 +50,7 @@ type ChapUser struct {
 	VolCount *int64 `json:"vol_count,omitempty"`
 }
 
-// ChapUserFieldHandles provides a string representation for each AccessControlRecord field.
+// ChapUserFieldHandles provides a string representation for each ChapUser field.
 type ChapUserFieldHandles struct {
 	ID            string
 	Name          string

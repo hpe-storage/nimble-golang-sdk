@@ -35,7 +35,7 @@ type NsAuditlogNotification struct {
 	Timestamp *int64 `json:"timestamp,omitempty"`
 }
 
-// NsAuditlogNotificationFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAuditlogNotificationFieldHandles provides a string representation for each NsAuditlogNotification field.
 type NsAuditlogNotificationFieldHandles struct {
 	SequenceNumber   string
 	NotificationType string

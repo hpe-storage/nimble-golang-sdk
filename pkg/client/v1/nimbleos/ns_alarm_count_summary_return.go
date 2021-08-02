@@ -17,7 +17,7 @@ type NsAlarmCountSummaryReturn struct {
 	AlarmSummary []*NsAlarmCount `json:"alarm_summary,omitempty"`
 }
 
-// NsAlarmCountSummaryReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAlarmCountSummaryReturnFieldHandles provides a string representation for each NsAlarmCountSummaryReturn field.
 type NsAlarmCountSummaryReturnFieldHandles struct {
 	AlarmSummary string
 }

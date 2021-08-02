@@ -23,7 +23,7 @@ type NsVolumeBulkUpdateAttr struct {
 	Online *bool `json:"online,omitempty"`
 }
 
-// NsVolumeBulkUpdateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeBulkUpdateAttrFieldHandles provides a string representation for each NsVolumeBulkUpdateAttr field.
 type NsVolumeBulkUpdateAttrFieldHandles struct {
 	ID       string
 	FolderId string

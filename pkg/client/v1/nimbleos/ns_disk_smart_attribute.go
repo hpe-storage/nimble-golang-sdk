@@ -38,7 +38,7 @@ type NsDiskSmartAttribute struct {
 	LastUpdatedEpochSecs *int64 `json:"last_updated_epoch_secs,omitempty"`
 }
 
-// NsDiskSmartAttributeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsDiskSmartAttributeFieldHandles provides a string representation for each NsDiskSmartAttribute field.
 type NsDiskSmartAttributeFieldHandles struct {
 	Name                 string
 	SmartId              string

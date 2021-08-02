@@ -17,7 +17,7 @@ type NsChksumReturn struct {
 	Cksum *string `json:"cksum,omitempty"`
 }
 
-// NsChksumReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsChksumReturnFieldHandles provides a string representation for each NsChksumReturn field.
 type NsChksumReturnFieldHandles struct {
 	Cksum string
 }

@@ -26,7 +26,7 @@ type FibreChannelInitiatorAlias struct {
 	Source *SmFcInitiatorAliasSource `json:"source,omitempty"`
 }
 
-// FibreChannelInitiatorAliasFieldHandles provides a string representation for each AccessControlRecord field.
+// FibreChannelInitiatorAliasFieldHandles provides a string representation for each FibreChannelInitiatorAlias field.
 type FibreChannelInitiatorAliasFieldHandles struct {
 	ID     string
 	Alias  string

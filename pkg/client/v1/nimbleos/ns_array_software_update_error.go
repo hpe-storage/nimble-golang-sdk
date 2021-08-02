@@ -17,7 +17,7 @@ type NsArraySoftwareUpdateError struct {
 	Error *string `json:"error,omitempty"`
 }
 
-// NsArraySoftwareUpdateErrorFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArraySoftwareUpdateErrorFieldHandles provides a string representation for each NsArraySoftwareUpdateError field.
 type NsArraySoftwareUpdateErrorFieldHandles struct {
 	Error string
 }

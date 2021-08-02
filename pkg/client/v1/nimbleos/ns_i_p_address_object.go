@@ -17,7 +17,7 @@ type NsIPAddressObject struct {
 	IpAddr *string `json:"ip_addr,omitempty"`
 }
 
-// NsIPAddressObjectFieldHandles provides a string representation for each AccessControlRecord field.
+// NsIPAddressObjectFieldHandles provides a string representation for each NsIPAddressObject field.
 type NsIPAddressObjectFieldHandles struct {
 	IpAddr string
 }

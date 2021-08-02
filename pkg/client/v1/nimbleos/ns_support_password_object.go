@@ -20,7 +20,7 @@ type NsSupportPasswordObject struct {
 	Blob *string `json:"blob,omitempty"`
 }
 
-// NsSupportPasswordObjectFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSupportPasswordObjectFieldHandles provides a string representation for each NsSupportPasswordObject field.
 type NsSupportPasswordObjectFieldHandles struct {
 	Username string
 	Blob     string

@@ -38,7 +38,7 @@ type VolumeFamily struct {
 	SnapUsageCompressedBytes *int64 `json:"snap_usage_compressed_bytes,omitempty"`
 }
 
-// VolumeFamilyFieldHandles provides a string representation for each AccessControlRecord field.
+// VolumeFamilyFieldHandles provides a string representation for each VolumeFamily field.
 type VolumeFamilyFieldHandles struct {
 	ID                       string
 	PoolId                   string

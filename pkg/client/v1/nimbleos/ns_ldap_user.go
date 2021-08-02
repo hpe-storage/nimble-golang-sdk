@@ -32,7 +32,7 @@ type NsLdapUser struct {
 	Role *NsUserRoles `json:"role,omitempty"`
 }
 
-// NsLdapUserFieldHandles provides a string representation for each AccessControlRecord field.
+// NsLdapUserFieldHandles provides a string representation for each NsLdapUser field.
 type NsLdapUserFieldHandles struct {
 	User             string
 	PrimaryGroupName string

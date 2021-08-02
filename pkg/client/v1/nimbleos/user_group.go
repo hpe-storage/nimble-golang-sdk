@@ -50,7 +50,7 @@ type UserGroup struct {
 	DomainName *string `json:"domain_name,omitempty"`
 }
 
-// UserGroupFieldHandles provides a string representation for each AccessControlRecord field.
+// UserGroupFieldHandles provides a string representation for each UserGroup field.
 type UserGroupFieldHandles struct {
 	ID                string
 	Name              string

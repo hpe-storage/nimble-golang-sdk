@@ -20,7 +20,7 @@ type NsReapJobsReturn struct {
 	Remaining *int64 `json:"remaining,omitempty"`
 }
 
-// NsReapJobsReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsReapJobsReturnFieldHandles provides a string representation for each NsReapJobsReturn field.
 type NsReapJobsReturnFieldHandles struct {
 	Reaped    string
 	Remaining string

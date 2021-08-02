@@ -50,7 +50,7 @@ type NsArrayDetail struct {
 	Migrate *NsPoolMigrate `json:"migrate,omitempty"`
 }
 
-// NsArrayDetailFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayDetailFieldHandles provides a string representation for each NsArrayDetail field.
 type NsArrayDetailFieldHandles struct {
 	ID                       string
 	ArrayId                  string

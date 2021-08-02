@@ -83,7 +83,7 @@ type Controller struct {
 	AsupTime *int64 `json:"asup_time,omitempty"`
 }
 
-// ControllerFieldHandles provides a string representation for each AccessControlRecord field.
+// ControllerFieldHandles provides a string representation for each Controller field.
 type ControllerFieldHandles struct {
 	ID                 string
 	Name               string

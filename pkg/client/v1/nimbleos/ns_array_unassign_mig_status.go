@@ -35,7 +35,7 @@ type NsArrayUnassignMigStatus struct {
 	EstimatedCompletionTime *int64 `json:"estimated_completion_time,omitempty"`
 }
 
-// NsArrayUnassignMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayUnassignMigStatusFieldHandles provides a string representation for each NsArrayUnassignMigStatus field.
 type NsArrayUnassignMigStatusFieldHandles struct {
 	ID                      string
 	Name                    string

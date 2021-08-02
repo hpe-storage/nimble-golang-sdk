@@ -47,7 +47,7 @@ type KeyManager struct {
 	Vendor *string `json:"vendor,omitempty"`
 }
 
-// KeyManagerFieldHandles provides a string representation for each AccessControlRecord field.
+// KeyManagerFieldHandles provides a string representation for each KeyManager field.
 type KeyManagerFieldHandles struct {
 	ID          string
 	Name        string

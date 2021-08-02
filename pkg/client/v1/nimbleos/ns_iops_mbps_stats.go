@@ -26,7 +26,7 @@ type NsIopsMbpsStats struct {
 	MaxMbps *int64 `json:"max_mbps,omitempty"`
 }
 
-// NsIopsMbpsStatsFieldHandles provides a string representation for each AccessControlRecord field.
+// NsIopsMbpsStatsFieldHandles provides a string representation for each NsIopsMbpsStats field.
 type NsIopsMbpsStatsFieldHandles struct {
 	AvgIops string
 	MaxIops string

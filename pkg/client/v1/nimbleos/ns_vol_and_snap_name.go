@@ -20,7 +20,7 @@ type NsVolAndSnapName struct {
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
-// NsVolAndSnapNameFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolAndSnapNameFieldHandles provides a string representation for each NsVolAndSnapName field.
 type NsVolAndSnapNameFieldHandles struct {
 	VolName  string
 	SnapName string

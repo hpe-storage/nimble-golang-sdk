@@ -38,7 +38,7 @@ type Subscription struct {
 	EventSeverity *NsSeverityLevel `json:"event_severity,omitempty"`
 }
 
-// SubscriptionFieldHandles provides a string representation for each AccessControlRecord field.
+// SubscriptionFieldHandles provides a string representation for each Subscription field.
 type SubscriptionFieldHandles struct {
 	ID               string
 	SubscriberId     string

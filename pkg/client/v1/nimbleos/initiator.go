@@ -53,7 +53,7 @@ type Initiator struct {
 	OverrideExistingAlias *bool `json:"override_existing_alias,omitempty"`
 }
 
-// InitiatorFieldHandles provides a string representation for each AccessControlRecord field.
+// InitiatorFieldHandles provides a string representation for each Initiator field.
 type InitiatorFieldHandles struct {
 	ID                    string
 	AccessProtocol        string

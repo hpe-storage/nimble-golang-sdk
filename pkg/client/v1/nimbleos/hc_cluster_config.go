@@ -44,7 +44,7 @@ type HcClusterConfig struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 }
 
-// HcClusterConfigFieldHandles provides a string representation for each AccessControlRecord field.
+// HcClusterConfigFieldHandles provides a string representation for each HcClusterConfig field.
 type HcClusterConfigFieldHandles struct {
 	ID           string
 	UniqueId     string

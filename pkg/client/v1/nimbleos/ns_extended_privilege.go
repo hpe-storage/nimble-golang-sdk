@@ -23,7 +23,7 @@ type NsExtendedPrivilege struct {
 	Allow *bool `json:"allow,omitempty"`
 }
 
-// NsExtendedPrivilegeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsExtendedPrivilegeFieldHandles provides a string representation for each NsExtendedPrivilege field.
 type NsExtendedPrivilegeFieldHandles struct {
 	ObjectType string
 	Operation  string

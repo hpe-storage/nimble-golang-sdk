@@ -65,7 +65,7 @@ type NsAccessControlRecord struct {
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
-// NsAccessControlRecordFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAccessControlRecordFieldHandles provides a string representation for each NsAccessControlRecord field.
 type NsAccessControlRecordFieldHandles struct {
 	ID                 string
 	AclId              string

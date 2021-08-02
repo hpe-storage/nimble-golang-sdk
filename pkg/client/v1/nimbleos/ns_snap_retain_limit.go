@@ -23,7 +23,7 @@ type NsSnapRetainLimit struct {
 	RetainNum *int64 `json:"retain_num,omitempty"`
 }
 
-// NsSnapRetainLimitFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapRetainLimitFieldHandles provides a string representation for each NsSnapRetainLimit field.
 type NsSnapRetainLimitFieldHandles struct {
 	ObjType     string
 	RetainLimit string

@@ -26,7 +26,7 @@ type NsSnapshotFromVolumes struct {
 	SnapName *string `json:"snap_name,omitempty"`
 }
 
-// NsSnapshotFromVolumesFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapshotFromVolumesFieldHandles provides a string representation for each NsSnapshotFromVolumes field.
 type NsSnapshotFromVolumesFieldHandles struct {
 	ID       string
 	SnapId   string

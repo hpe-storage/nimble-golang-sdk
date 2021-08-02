@@ -56,7 +56,7 @@ type Event struct {
 	TenantId *string `json:"tenant_id,omitempty"`
 }
 
-// EventFieldHandles provides a string representation for each AccessControlRecord field.
+// EventFieldHandles provides a string representation for each Event field.
 type EventFieldHandles struct {
 	ID         string
 	Type       string

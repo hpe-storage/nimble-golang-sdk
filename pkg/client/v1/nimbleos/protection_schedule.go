@@ -137,7 +137,7 @@ type ProtectionSchedule struct {
 	UseDownstreamForDr *bool `json:"use_downstream_for_dr,omitempty"`
 }
 
-// ProtectionScheduleFieldHandles provides a string representation for each AccessControlRecord field.
+// ProtectionScheduleFieldHandles provides a string representation for each ProtectionSchedule field.
 type ProtectionScheduleFieldHandles struct {
 	ID                               string
 	Name                             string

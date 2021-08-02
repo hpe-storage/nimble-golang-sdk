@@ -53,7 +53,7 @@ type NsThrottle struct {
 	ThrBandwidthLimitKbps *int64 `json:"thr_bandwidth_limit_kbps,omitempty"`
 }
 
-// NsThrottleFieldHandles provides a string representation for each AccessControlRecord field.
+// NsThrottleFieldHandles provides a string representation for each NsThrottle field.
 type NsThrottleFieldHandles struct {
 	ID                    string
 	Name                  string

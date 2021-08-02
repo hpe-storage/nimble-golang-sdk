@@ -20,7 +20,7 @@ type NsResponse struct {
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
 }
 
-// NsResponseFieldHandles provides a string representation for each AccessControlRecord field.
+// NsResponseFieldHandles provides a string representation for each NsResponse field.
 type NsResponseFieldHandles struct {
 	Data     string
 	Messages string

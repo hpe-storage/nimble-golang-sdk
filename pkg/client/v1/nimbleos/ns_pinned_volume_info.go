@@ -23,7 +23,7 @@ type NsPinnedVolumeInfo struct {
 	SizePinnedCacheBytes *int64 `json:"size_pinned_cache_bytes,omitempty"`
 }
 
-// NsPinnedVolumeInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsPinnedVolumeInfoFieldHandles provides a string representation for each NsPinnedVolumeInfo field.
 type NsPinnedVolumeInfoFieldHandles struct {
 	ID                   string
 	Name                 string

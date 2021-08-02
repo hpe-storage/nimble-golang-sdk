@@ -20,7 +20,7 @@ type NsFcTdzPort struct {
 	FcName *string `json:"fc_name,omitempty"`
 }
 
-// NsFcTdzPortFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcTdzPortFieldHandles provides a string representation for each NsFcTdzPort field.
 type NsFcTdzPortFieldHandles struct {
 	ArrayName string
 	FcName    string

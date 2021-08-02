@@ -314,7 +314,7 @@ type Volume struct {
 	SrepResyncPercent *int64 `json:"srep_resync_percent,omitempty"`
 }
 
-// VolumeFieldHandles provides a string representation for each AccessControlRecord field.
+// VolumeFieldHandles provides a string representation for each Volume field.
 type VolumeFieldHandles struct {
 	ID                         string
 	Name                       string

@@ -44,7 +44,7 @@ type UserPolicy struct {
 	MaxSessions *int64 `json:"max_sessions,omitempty"`
 }
 
-// UserPolicyFieldHandles provides a string representation for each AccessControlRecord field.
+// UserPolicyFieldHandles provides a string representation for each UserPolicy field.
 type UserPolicyFieldHandles struct {
 	ID              string
 	AllowedAttempts string

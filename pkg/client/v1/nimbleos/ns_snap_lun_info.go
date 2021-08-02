@@ -23,7 +23,7 @@ type NsSnapLunInfo struct {
 	Lun *int64 `json:"lun,omitempty"`
 }
 
-// NsSnapLunInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapLunInfoFieldHandles provides a string representation for each NsSnapLunInfo field.
 type NsSnapLunInfoFieldHandles struct {
 	ID   string
 	Name string

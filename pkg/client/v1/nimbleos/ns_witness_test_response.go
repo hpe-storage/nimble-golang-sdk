@@ -26,7 +26,7 @@ type NsWitnessTestResponse struct {
 	WitnessConnectivityMessage *string `json:"witness_connectivity_message,omitempty"`
 }
 
-// NsWitnessTestResponseFieldHandles provides a string representation for each AccessControlRecord field.
+// NsWitnessTestResponseFieldHandles provides a string representation for each NsWitnessTestResponse field.
 type NsWitnessTestResponseFieldHandles struct {
 	ArrayName                  string
 	Role                       string

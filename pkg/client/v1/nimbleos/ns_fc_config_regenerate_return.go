@@ -23,7 +23,7 @@ type NsFcConfigRegenerateReturn struct {
 	ID *string `json:"id,omitempty"`
 }
 
-// NsFcConfigRegenerateReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcConfigRegenerateReturnFieldHandles provides a string representation for each NsFcConfigRegenerateReturn field.
 type NsFcConfigRegenerateReturnFieldHandles struct {
 	ArrayList        string
 	GroupLeaderArray string

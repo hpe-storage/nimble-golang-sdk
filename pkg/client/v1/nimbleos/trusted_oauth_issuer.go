@@ -26,7 +26,7 @@ type TrustedOauthIssuer struct {
 	KeySet []*NsJWKey `json:"key_set,omitempty"`
 }
 
-// TrustedOauthIssuerFieldHandles provides a string representation for each AccessControlRecord field.
+// TrustedOauthIssuerFieldHandles provides a string representation for each TrustedOauthIssuer field.
 type TrustedOauthIssuerFieldHandles struct {
 	ID      string
 	Name    string

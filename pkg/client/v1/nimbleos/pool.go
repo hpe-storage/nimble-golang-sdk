@@ -155,7 +155,7 @@ type Pool struct {
 	IsDefault *bool `json:"is_default,omitempty"`
 }
 
-// PoolFieldHandles provides a string representation for each AccessControlRecord field.
+// PoolFieldHandles provides a string representation for each Pool field.
 type PoolFieldHandles struct {
 	ID                         string
 	Name                       string

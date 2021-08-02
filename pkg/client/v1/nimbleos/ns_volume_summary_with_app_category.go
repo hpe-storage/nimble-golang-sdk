@@ -29,7 +29,7 @@ type NsVolumeSummaryWithAppCategory struct {
 	Lun *int64 `json:"lun,omitempty"`
 }
 
-// NsVolumeSummaryWithAppCategoryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeSummaryWithAppCategoryFieldHandles provides a string representation for each NsVolumeSummaryWithAppCategory field.
 type NsVolumeSummaryWithAppCategoryFieldHandles struct {
 	ID          string
 	Name        string

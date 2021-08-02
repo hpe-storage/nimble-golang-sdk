@@ -44,7 +44,7 @@ type NsShelfPortInfo struct {
 	RemotePortId *int64 `json:"remote_port_id,omitempty"`
 }
 
-// NsShelfPortInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsShelfPortInfoFieldHandles provides a string representation for each NsShelfPortInfo field.
 type NsShelfPortInfoFieldHandles struct {
 	PortIdx         string
 	PortName        string

@@ -20,7 +20,7 @@ type NsTargetSubnet struct {
 	Label *string `json:"label,omitempty"`
 }
 
-// NsTargetSubnetFieldHandles provides a string representation for each AccessControlRecord field.
+// NsTargetSubnetFieldHandles provides a string representation for each NsTargetSubnet field.
 type NsTargetSubnetFieldHandles struct {
 	ID    string
 	Label string

@@ -35,7 +35,7 @@ type NsFcInterfaceInfo struct {
 	Port *int64 `json:"port,omitempty"`
 }
 
-// NsFcInterfaceInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcInterfaceInfoFieldHandles provides a string representation for each NsFcInterfaceInfo field.
 type NsFcInterfaceInfoFieldHandles struct {
 	Name        string
 	Wwnn        string

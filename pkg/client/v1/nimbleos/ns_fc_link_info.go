@@ -26,7 +26,7 @@ type NsFcLinkInfo struct {
 	OperationalStatus *NsPlatFcOperationalStatus `json:"operational_status,omitempty"`
 }
 
-// NsFcLinkInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcLinkInfoFieldHandles provides a string representation for each NsFcLinkInfo field.
 type NsFcLinkInfoFieldHandles struct {
 	LinkSpeed         string
 	MaxLinkSpeed      string

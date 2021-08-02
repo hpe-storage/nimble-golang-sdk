@@ -23,7 +23,7 @@ type NsRequest struct {
 	Path *string `json:"path,omitempty"`
 }
 
-// NsRequestFieldHandles provides a string representation for each AccessControlRecord field.
+// NsRequestFieldHandles provides a string representation for each NsRequest field.
 type NsRequestFieldHandles struct {
 	Data   string
 	Method string

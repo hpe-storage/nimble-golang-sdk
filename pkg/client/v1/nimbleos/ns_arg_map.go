@@ -13,6 +13,6 @@ func init() {
 type NsArgMap struct {
 }
 
-// NsArgMapFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArgMapFieldHandles provides a string representation for each NsArgMap field.
 type NsArgMapFieldHandles struct {
 }

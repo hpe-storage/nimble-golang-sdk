@@ -20,7 +20,7 @@ type NsLunReturn struct {
 	LuNumber *int64 `json:"lu_number,omitempty"`
 }
 
-// NsLunReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsLunReturnFieldHandles provides a string representation for each NsLunReturn field.
 type NsLunReturnFieldHandles struct {
 	Lun      string
 	LuNumber string

@@ -26,7 +26,7 @@ type NsFcPortInfo struct {
 	Slot *int64 `json:"slot,omitempty"`
 }
 
-// NsFcPortInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcPortInfoFieldHandles provides a string representation for each NsFcPortInfo field.
 type NsFcPortInfoFieldHandles struct {
 	Name        string
 	BusLocation string

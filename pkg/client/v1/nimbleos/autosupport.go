@@ -29,7 +29,7 @@ type Autosupport struct {
 	GroupName *string `json:"group_name,omitempty"`
 }
 
-// AutosupportFieldHandles provides a string representation for each AccessControlRecord field.
+// AutosupportFieldHandles provides a string representation for each Autosupport field.
 type AutosupportFieldHandles struct {
 	ID         string
 	ArrayList  string

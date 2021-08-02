@@ -71,7 +71,7 @@ type FibreChannelInterface struct {
 	FabricInfo *NsFcFabricInfo `json:"fabric_info,omitempty"`
 }
 
-// FibreChannelInterfaceFieldHandles provides a string representation for each AccessControlRecord field.
+// FibreChannelInterfaceFieldHandles provides a string representation for each FibreChannelInterface field.
 type FibreChannelInterfaceFieldHandles struct {
 	ID                string
 	ArrayNameOrSerial string

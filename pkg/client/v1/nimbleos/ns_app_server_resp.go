@@ -32,7 +32,7 @@ type NsAppServerResp struct {
 	GenericResponse *NsGenericResp `json:"generic_response,omitempty"`
 }
 
-// NsAppServerRespFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAppServerRespFieldHandles provides a string representation for each NsAppServerResp field.
 type NsAppServerRespFieldHandles struct {
 	GeneralError    string
 	AppSync         string

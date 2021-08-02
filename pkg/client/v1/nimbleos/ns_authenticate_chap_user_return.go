@@ -17,7 +17,7 @@ type NsAuthenticateChapUserReturn struct {
 	IsValid *bool `json:"is_valid,omitempty"`
 }
 
-// NsAuthenticateChapUserReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAuthenticateChapUserReturnFieldHandles provides a string representation for each NsAuthenticateChapUserReturn field.
 type NsAuthenticateChapUserReturnFieldHandles struct {
 	IsValid string
 }

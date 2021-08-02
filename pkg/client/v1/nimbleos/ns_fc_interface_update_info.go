@@ -20,7 +20,7 @@ type NsFcInterfaceUpdateInfo struct {
 	Online *bool `json:"online,omitempty"`
 }
 
-// NsFcInterfaceUpdateInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcInterfaceUpdateInfoFieldHandles provides a string representation for each NsFcInterfaceUpdateInfo field.
 type NsFcInterfaceUpdateInfoFieldHandles struct {
 	ID     string
 	Online string

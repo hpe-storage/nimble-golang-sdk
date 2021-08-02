@@ -32,7 +32,7 @@ type Dna struct {
 	ControllerName *NsControllerSide `json:"controller_name,omitempty"`
 }
 
-// DnaFieldHandles provides a string representation for each AccessControlRecord field.
+// DnaFieldHandles provides a string representation for each Dna field.
 type DnaFieldHandles struct {
 	ID             string
 	ArrayName      string

@@ -41,7 +41,7 @@ type Role struct {
 	Hidden *bool `json:"hidden,omitempty"`
 }
 
-// RoleFieldHandles provides a string representation for each AccessControlRecord field.
+// RoleFieldHandles provides a string representation for each Role field.
 type RoleFieldHandles struct {
 	ID                    string
 	Name                  string

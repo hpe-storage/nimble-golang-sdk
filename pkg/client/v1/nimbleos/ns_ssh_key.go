@@ -23,7 +23,7 @@ type NsSshKey struct {
 	Key *string `json:"key,omitempty"`
 }
 
-// NsSshKeyFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSshKeyFieldHandles provides a string representation for each NsSshKey field.
 type NsSshKeyFieldHandles struct {
 	KeyName string
 	KeyType string

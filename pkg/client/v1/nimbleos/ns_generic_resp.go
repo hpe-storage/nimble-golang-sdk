@@ -26,7 +26,7 @@ type NsGenericResp struct {
 	ConnMessage *string `json:"conn_message,omitempty"`
 }
 
-// NsGenericRespFieldHandles provides a string representation for each AccessControlRecord field.
+// NsGenericRespFieldHandles provides a string representation for each NsGenericResp field.
 type NsGenericRespFieldHandles struct {
 	GenericError        string
 	GenericErrorMessage string

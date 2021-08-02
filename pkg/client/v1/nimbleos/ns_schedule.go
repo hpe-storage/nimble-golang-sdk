@@ -77,7 +77,7 @@ type NsSchedule struct {
 	Active *bool `json:"active,omitempty"`
 }
 
-// NsScheduleFieldHandles provides a string representation for each AccessControlRecord field.
+// NsScheduleFieldHandles provides a string representation for each NsSchedule field.
 type NsScheduleFieldHandles struct {
 	ID                     string
 	ScheduleId             string

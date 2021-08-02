@@ -17,7 +17,7 @@ type NsBitMapReturn struct {
 	Bitmap *string `json:"bitmap,omitempty"`
 }
 
-// NsBitMapReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsBitMapReturnFieldHandles provides a string representation for each NsBitMapReturn field.
 type NsBitMapReturnFieldHandles struct {
 	Bitmap string
 }

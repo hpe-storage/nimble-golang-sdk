@@ -47,7 +47,7 @@ type SoftwareVersion struct {
 	NoPartialResponse *bool `json:"no_partial_response,omitempty"`
 }
 
-// SoftwareVersionFieldHandles provides a string representation for each AccessControlRecord field.
+// SoftwareVersionFieldHandles provides a string representation for each SoftwareVersion field.
 type SoftwareVersionFieldHandles struct {
 	Version              string
 	Signature            string

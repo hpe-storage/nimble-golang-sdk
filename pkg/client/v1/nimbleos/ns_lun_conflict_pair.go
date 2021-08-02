@@ -47,7 +47,7 @@ type NsLunConflictPair struct {
 	SrcLun *int64 `json:"src_lun,omitempty"`
 }
 
-// NsLunConflictPairFieldHandles provides a string representation for each AccessControlRecord field.
+// NsLunConflictPairFieldHandles provides a string representation for each NsLunConflictPair field.
 type NsLunConflictPairFieldHandles struct {
 	InitiatorWwpn  string
 	InitiatorAlias string

@@ -47,7 +47,7 @@ type NsVolFamMigStatus struct {
 	ArrayList []*NsArrayMigStatus `json:"array_list,omitempty"`
 }
 
-// NsVolFamMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolFamMigStatusFieldHandles provides a string representation for each NsVolFamMigStatus field.
 type NsVolFamMigStatusFieldHandles struct {
 	RootVolId          string
 	RootVolName        string

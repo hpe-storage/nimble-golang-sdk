@@ -53,7 +53,7 @@ type NsDiskSetAttr struct {
 	PauseState *int64 `json:"pause_state,omitempty"`
 }
 
-// NsDiskSetAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsDiskSetAttrFieldHandles provides a string representation for each NsDiskSetAttr field.
 type NsDiskSetAttrFieldHandles struct {
 	Driveset            string
 	SwState             string

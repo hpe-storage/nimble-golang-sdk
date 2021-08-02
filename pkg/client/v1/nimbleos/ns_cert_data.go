@@ -32,7 +32,7 @@ type NsCertData struct {
 	PemText *string `json:"pem_text,omitempty"`
 }
 
-// NsCertDataFieldHandles provides a string representation for each AccessControlRecord field.
+// NsCertDataFieldHandles provides a string representation for each NsCertData field.
 type NsCertDataFieldHandles struct {
 	Description string
 	Subject     string

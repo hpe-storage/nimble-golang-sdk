@@ -23,7 +23,7 @@ type NsRoute struct {
 	Gateway *string `json:"gateway,omitempty"`
 }
 
-// NsRouteFieldHandles provides a string representation for each AccessControlRecord field.
+// NsRouteFieldHandles provides a string representation for each NsRoute field.
 type NsRouteFieldHandles struct {
 	TgtNetwork string
 	TgtNetmask string

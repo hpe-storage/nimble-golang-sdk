@@ -32,7 +32,7 @@ type NsEncryptionSettings struct {
 	EncryptionKeyManager *NsEncryptionKeyManager `json:"encryption_key_manager,omitempty"`
 }
 
-// NsEncryptionSettingsFieldHandles provides a string representation for each AccessControlRecord field.
+// NsEncryptionSettingsFieldHandles provides a string representation for each NsEncryptionSettings field.
 type NsEncryptionSettingsFieldHandles struct {
 	MasterKeySet         string
 	Mode                 string

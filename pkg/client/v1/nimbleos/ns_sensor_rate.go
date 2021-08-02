@@ -20,7 +20,7 @@ type NsSensorRate struct {
 	Rate *float64 `json:"rate,omitempty"`
 }
 
-// NsSensorRateFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSensorRateFieldHandles provides a string representation for each NsSensorRate field.
 type NsSensorRateFieldHandles struct {
 	Name string
 	Rate string

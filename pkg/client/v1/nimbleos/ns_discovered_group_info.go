@@ -41,7 +41,7 @@ type NsDiscoveredGroupInfo struct {
 	ArrayMemberList []*NsArraySummaryInfo `json:"array_member_list,omitempty"`
 }
 
-// NsDiscoveredGroupInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsDiscoveredGroupInfoFieldHandles provides a string representation for each NsDiscoveredGroupInfo field.
 type NsDiscoveredGroupInfoFieldHandles struct {
 	ID              string
 	Name            string

@@ -65,7 +65,7 @@ type NetworkInterface struct {
 	IpList []*NsAssignedIP `json:"ip_list,omitempty"`
 }
 
-// NetworkInterfaceFieldHandles provides a string representation for each AccessControlRecord field.
+// NetworkInterfaceFieldHandles provides a string representation for each NetworkInterface field.
 type NetworkInterfaceFieldHandles struct {
 	ID                string
 	ArrayNameOrSerial string

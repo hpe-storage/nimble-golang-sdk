@@ -20,7 +20,7 @@ type NsVssResp struct {
 	VssErrorMessage *string `json:"vss_error_message,omitempty"`
 }
 
-// NsVssRespFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVssRespFieldHandles provides a string representation for each NsVssResp field.
 type NsVssRespFieldHandles struct {
 	VssError        string
 	VssErrorMessage string

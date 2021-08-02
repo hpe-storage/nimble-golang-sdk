@@ -44,7 +44,7 @@ type ActiveDirectoryMembership struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// ActiveDirectoryMembershipFieldHandles provides a string representation for each AccessControlRecord field.
+// ActiveDirectoryMembershipFieldHandles provides a string representation for each ActiveDirectoryMembership field.
 type ActiveDirectoryMembershipFieldHandles struct {
 	ID                 string
 	Description        string

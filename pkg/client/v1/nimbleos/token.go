@@ -56,7 +56,7 @@ type Token struct {
 	Assertion *string `json:"assertion,omitempty"`
 }
 
-// TokenFieldHandles provides a string representation for each AccessControlRecord field.
+// TokenFieldHandles provides a string representation for each Token field.
 type TokenFieldHandles struct {
 	ID           string
 	SessionToken string

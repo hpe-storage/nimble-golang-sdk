@@ -56,7 +56,7 @@ type Stat struct {
 	VolId *string `json:"vol_id,omitempty"`
 }
 
-// StatFieldHandles provides a string representation for each AccessControlRecord field.
+// StatFieldHandles provides a string representation for each Stat field.
 type StatFieldHandles struct {
 	Scope                string
 	DomainId             string

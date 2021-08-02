@@ -95,7 +95,7 @@ type SpaceDomain struct {
 	CloneRatio *float64 `json:"clone_ratio,omitempty"`
 }
 
-// SpaceDomainFieldHandles provides a string representation for each AccessControlRecord field.
+// SpaceDomainFieldHandles provides a string representation for each SpaceDomain field.
 type SpaceDomainFieldHandles struct {
 	ID                     string
 	PoolId                 string

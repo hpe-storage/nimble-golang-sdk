@@ -20,7 +20,7 @@ type NsVolumeCollectionSummary struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// NsVolumeCollectionSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeCollectionSummaryFieldHandles provides a string representation for each NsVolumeCollectionSummary field.
 type NsVolumeCollectionSummaryFieldHandles struct {
 	ID   string
 	Name string

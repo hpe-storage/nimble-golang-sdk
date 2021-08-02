@@ -431,7 +431,7 @@ type Group struct {
 	SnapRetnMeterVeryHigh *int64 `json:"snap_retn_meter_very_high,omitempty"`
 }
 
-// GroupFieldHandles provides a string representation for each AccessControlRecord field.
+// GroupFieldHandles provides a string representation for each Group field.
 type GroupFieldHandles struct {
 	ID                                 string
 	Name                               string

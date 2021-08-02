@@ -41,7 +41,7 @@ type NsTokenReportUserDetailsReturn struct {
 	Groups []*string `json:"groups,omitempty"`
 }
 
-// NsTokenReportUserDetailsReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsTokenReportUserDetailsReturnFieldHandles provides a string representation for each NsTokenReportUserDetailsReturn field.
 type NsTokenReportUserDetailsReturnFieldHandles struct {
 	UserName          string
 	PrimaryGroupId    string

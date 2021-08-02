@@ -20,7 +20,7 @@ type NsAssignedIP struct {
 	Ip *string `json:"ip,omitempty"`
 }
 
-// NsAssignedIPFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAssignedIPFieldHandles provides a string representation for each NsAssignedIP field.
 type NsAssignedIPFieldHandles struct {
 	VlanId string
 	Ip     string

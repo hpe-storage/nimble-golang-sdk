@@ -35,7 +35,7 @@ type NsFcFabricInfo struct {
 	LoggedIn *bool `json:"logged_in,omitempty"`
 }
 
-// NsFcFabricInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcFabricInfoFieldHandles provides a string representation for each NsFcFabricInfo field.
 type NsFcFabricInfoFieldHandles struct {
 	FabricSwitchName string
 	FabricSwitchPort string

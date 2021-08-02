@@ -20,7 +20,7 @@ type NsSensorData struct {
 	Samples []*uint64 `json:"samples,omitempty"`
 }
 
-// NsSensorDataFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSensorDataFieldHandles provides a string representation for each NsSensorData field.
 type NsSensorDataFieldHandles struct {
 	Sensor  string
 	Samples string

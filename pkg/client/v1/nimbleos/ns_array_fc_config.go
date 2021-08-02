@@ -32,7 +32,7 @@ type NsArrayFcConfig struct {
 	CtrlrBFcConfig *NsCtrlrFcConfig `json:"ctrlr_b_fc_config,omitempty"`
 }
 
-// NsArrayFcConfigFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayFcConfigFieldHandles provides a string representation for each NsArrayFcConfig field.
 type NsArrayFcConfigFieldHandles struct {
 	Name           string
 	ArrayName      string

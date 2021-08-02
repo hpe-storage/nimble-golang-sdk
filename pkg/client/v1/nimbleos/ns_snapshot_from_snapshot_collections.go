@@ -47,7 +47,7 @@ type NsSnapshotFromSnapshotCollections struct {
 	ExpiryTime *int64 `json:"expiry_time,omitempty"`
 }
 
-// NsSnapshotFromSnapshotCollectionsFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapshotFromSnapshotCollectionsFieldHandles provides a string representation for each NsSnapshotFromSnapshotCollections field.
 type NsSnapshotFromSnapshotCollectionsFieldHandles struct {
 	ID           string
 	SnapcollId   string

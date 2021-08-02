@@ -50,7 +50,7 @@ type NsSubnet struct {
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
 }
 
-// NsSubnetFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSubnetFieldHandles provides a string representation for each NsSubnet field.
 type NsSubnetFieldHandles struct {
 	Label              string
 	Network            string

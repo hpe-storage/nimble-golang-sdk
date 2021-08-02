@@ -29,7 +29,7 @@ type NsArraySoftwareUpdateStatus struct {
 	CtrlrBErrs []*NsArraySoftwareUpdateError `json:"ctrlr_b_errs,omitempty"`
 }
 
-// NsArraySoftwareUpdateStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArraySoftwareUpdateStatusFieldHandles provides a string representation for each NsArraySoftwareUpdateStatus field.
 type NsArraySoftwareUpdateStatusFieldHandles struct {
 	ArrayName      string
 	Error          string

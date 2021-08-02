@@ -23,7 +23,7 @@ type NsFibreChannelInterfaceFullName struct {
 	IntfName *string `json:"intf_name,omitempty"`
 }
 
-// NsFibreChannelInterfaceFullNameFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFibreChannelInterfaceFullNameFieldHandles provides a string representation for each NsFibreChannelInterfaceFullName field.
 type NsFibreChannelInterfaceFullNameFieldHandles struct {
 	ArrayName string
 	CtrlrName string

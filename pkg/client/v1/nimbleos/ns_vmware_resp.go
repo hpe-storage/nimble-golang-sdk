@@ -38,7 +38,7 @@ type NsVmwareResp struct {
 	WarningVmToolsStatus []*string `json:"warning_vm_tools_status,omitempty"`
 }
 
-// NsVmwareRespFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVmwareRespFieldHandles provides a string representation for each NsVmwareResp field.
 type NsVmwareRespFieldHandles struct {
 	VmwareError          string
 	VmwareErrorMessage   string

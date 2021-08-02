@@ -29,7 +29,7 @@ type NsSupportPasswordArray struct {
 	BlobList []*NsSupportPasswordObject `json:"blob_list,omitempty"`
 }
 
-// NsSupportPasswordArrayFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSupportPasswordArrayFieldHandles provides a string representation for each NsSupportPasswordArray field.
 type NsSupportPasswordArrayFieldHandles struct {
 	ArrayName string
 	ArraySn   string

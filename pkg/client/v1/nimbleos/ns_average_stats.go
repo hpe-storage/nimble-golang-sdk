@@ -41,7 +41,7 @@ type NsAverageStats struct {
 	CombinedLatency *int64 `json:"combined_latency,omitempty"`
 }
 
-// NsAverageStatsFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAverageStatsFieldHandles provides a string representation for each NsAverageStats field.
 type NsAverageStatsFieldHandles struct {
 	ReadIops           string
 	ReadThroughput     string

@@ -29,7 +29,7 @@ type NsArrayNet struct {
 	NicList []*NsNIC `json:"nic_list,omitempty"`
 }
 
-// NsArrayNetFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayNetFieldHandles provides a string representation for each NsArrayNet field.
 type NsArrayNetFieldHandles struct {
 	Name            string
 	MemberGid       string

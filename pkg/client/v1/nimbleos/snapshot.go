@@ -122,7 +122,7 @@ type Snapshot struct {
 	Force *bool `json:"force,omitempty"`
 }
 
-// SnapshotFieldHandles provides a string representation for each AccessControlRecord field.
+// SnapshotFieldHandles provides a string representation for each Snapshot field.
 type SnapshotFieldHandles struct {
 	ID                       string
 	Name                     string

@@ -17,7 +17,7 @@ type NsShelfIdentifyStatusReturn struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// NsShelfIdentifyStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsShelfIdentifyStatusReturnFieldHandles provides a string representation for each NsShelfIdentifyStatusReturn field.
 type NsShelfIdentifyStatusReturnFieldHandles struct {
 	Enabled string
 }

@@ -26,7 +26,7 @@ type NsPoolRebalanceMigStatus struct {
 	ArrayDataMigrationStatus []*NsArrayMigStatus `json:"array_data_migration_status,omitempty"`
 }
 
-// NsPoolRebalanceMigStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsPoolRebalanceMigStatusFieldHandles provides a string representation for each NsPoolRebalanceMigStatus field.
 type NsPoolRebalanceMigStatusFieldHandles struct {
 	ID                       string
 	Name                     string

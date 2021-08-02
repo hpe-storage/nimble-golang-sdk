@@ -23,7 +23,7 @@ type NsAlarmAck struct {
 	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
 }
 
-// NsAlarmAckFieldHandles provides a string representation for each AccessControlRecord field.
+// NsAlarmAckFieldHandles provides a string representation for each NsAlarmAck field.
 type NsAlarmAckFieldHandles struct {
 	ID              string
 	RemindEvery     string

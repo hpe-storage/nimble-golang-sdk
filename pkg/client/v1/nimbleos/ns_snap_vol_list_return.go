@@ -17,7 +17,7 @@ type NsSnapVolListReturn struct {
 	SnapIds []*NsObjectIDKV `json:"snap_ids,omitempty"`
 }
 
-// NsSnapVolListReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapVolListReturnFieldHandles provides a string representation for each NsSnapVolListReturn field.
 type NsSnapVolListReturnFieldHandles struct {
 	SnapIds string
 }

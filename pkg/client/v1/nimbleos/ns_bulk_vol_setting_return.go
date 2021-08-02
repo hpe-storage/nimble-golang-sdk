@@ -17,7 +17,7 @@ type NsBulkVolSettingReturn struct {
 	ErrorCodes []*string `json:"error_codes,omitempty"`
 }
 
-// NsBulkVolSettingReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsBulkVolSettingReturnFieldHandles provides a string representation for each NsBulkVolSettingReturn field.
 type NsBulkVolSettingReturnFieldHandles struct {
 	ErrorCodes string
 }

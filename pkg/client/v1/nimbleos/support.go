@@ -26,7 +26,7 @@ type Support struct {
 	ArrayList []*NsSupportPasswordArray `json:"array_list,omitempty"`
 }
 
-// SupportFieldHandles provides a string representation for each AccessControlRecord field.
+// SupportFieldHandles provides a string representation for each Support field.
 type SupportFieldHandles struct {
 	ID           string
 	PasswordMode string

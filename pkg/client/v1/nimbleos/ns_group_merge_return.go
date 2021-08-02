@@ -101,7 +101,7 @@ type NsGroupMergeReturn struct {
 	WarningList []*string `json:"warning_list,omitempty"`
 }
 
-// NsGroupMergeReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsGroupMergeReturnFieldHandles provides a string representation for each NsGroupMergeReturn field.
 type NsGroupMergeReturnFieldHandles struct {
 	OnlineVols                 string
 	OnlineSnaps                string

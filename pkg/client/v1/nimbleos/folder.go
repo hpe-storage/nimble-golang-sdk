@@ -149,7 +149,7 @@ type Folder struct {
 	TenantId *string `json:"tenant_id,omitempty"`
 }
 
-// FolderFieldHandles provides a string representation for each AccessControlRecord field.
+// FolderFieldHandles provides a string representation for each Folder field.
 type FolderFieldHandles struct {
 	ID                         string
 	Name                       string

@@ -182,7 +182,7 @@ type Array struct {
 	SecondaryMgmtIp *string `json:"secondary_mgmt_ip,omitempty"`
 }
 
-// ArrayFieldHandles provides a string representation for each AccessControlRecord field.
+// ArrayFieldHandles provides a string representation for each Array field.
 type ArrayFieldHandles struct {
 	ID                         string
 	Name                       string

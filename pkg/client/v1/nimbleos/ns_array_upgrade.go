@@ -35,7 +35,7 @@ type NsArrayUpgrade struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// NsArrayUpgradeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArrayUpgradeFieldHandles provides a string representation for each NsArrayUpgrade field.
 type NsArrayUpgradeFieldHandles struct {
 	Type           string
 	State          string

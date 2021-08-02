@@ -35,7 +35,7 @@ type NsShelfSensor struct {
 	Status *NsShelfSensorState `json:"status,omitempty"`
 }
 
-// NsShelfSensorFieldHandles provides a string representation for each AccessControlRecord field.
+// NsShelfSensorFieldHandles provides a string representation for each NsShelfSensor field.
 type NsShelfSensorFieldHandles struct {
 	Type        string
 	Name        string

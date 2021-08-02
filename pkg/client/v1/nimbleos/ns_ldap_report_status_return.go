@@ -26,7 +26,7 @@ type NsLdapReportStatusReturn struct {
 	RemoteServiceStatus *string `json:"remote_service_status,omitempty"`
 }
 
-// NsLdapReportStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsLdapReportStatusReturnFieldHandles provides a string representation for each NsLdapReportStatusReturn field.
 type NsLdapReportStatusReturnFieldHandles struct {
 	Enabled                 string
 	LocalServiceStatusGood  string

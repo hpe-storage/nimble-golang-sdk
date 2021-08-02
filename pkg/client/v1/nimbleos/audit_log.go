@@ -77,7 +77,7 @@ type AuditLog struct {
 	Activity *string `json:"activity,omitempty"`
 }
 
-// AuditLogFieldHandles provides a string representation for each AccessControlRecord field.
+// AuditLogFieldHandles provides a string representation for each AuditLog field.
 type AuditLogFieldHandles struct {
 	ID               string
 	Type             string

@@ -29,7 +29,7 @@ type NsHostType struct {
 	DestinationHostType *string `json:"destination_host_type,omitempty"`
 }
 
-// NsHostTypeFieldHandles provides a string representation for each AccessControlRecord field.
+// NsHostTypeFieldHandles provides a string representation for each NsHostType field.
 type NsHostTypeFieldHandles struct {
 	InitiatorName             string
 	SourceInitiatorGroup      string

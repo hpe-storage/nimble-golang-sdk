@@ -20,7 +20,7 @@ type NsFolderCreateAttr struct {
 	PoolId *string `json:"pool_id,omitempty"`
 }
 
-// NsFolderCreateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFolderCreateAttrFieldHandles provides a string representation for each NsFolderCreateAttr field.
 type NsFolderCreateAttrFieldHandles struct {
 	Name   string
 	PoolId string

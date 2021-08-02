@@ -20,7 +20,7 @@ type NsUserLockStatus struct {
 	AuthLock *bool `json:"auth_lock,omitempty"`
 }
 
-// NsUserLockStatusFieldHandles provides a string representation for each AccessControlRecord field.
+// NsUserLockStatusFieldHandles provides a string representation for each NsUserLockStatus field.
 type NsUserLockStatusFieldHandles struct {
 	ID       string
 	AuthLock string

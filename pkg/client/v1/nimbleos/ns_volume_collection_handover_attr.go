@@ -23,7 +23,7 @@ type NsVolumeCollectionHandoverAttr struct {
 	NoReverse *bool `json:"no_reverse,omitempty"`
 }
 
-// NsVolumeCollectionHandoverAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeCollectionHandoverAttrFieldHandles provides a string representation for each NsVolumeCollectionHandoverAttr field.
 type NsVolumeCollectionHandoverAttrFieldHandles struct {
 	ID                   string
 	ReplicationPartnerId string

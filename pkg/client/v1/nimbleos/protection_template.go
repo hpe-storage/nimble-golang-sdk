@@ -74,7 +74,7 @@ type ProtectionTemplate struct {
 	ScheduleList []*NsSchedule `json:"schedule_list,omitempty"`
 }
 
-// ProtectionTemplateFieldHandles provides a string representation for each AccessControlRecord field.
+// ProtectionTemplateFieldHandles provides a string representation for each ProtectionTemplate field.
 type ProtectionTemplateFieldHandles struct {
 	ID              string
 	Name            string

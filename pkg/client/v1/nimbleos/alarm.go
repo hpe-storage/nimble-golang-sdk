@@ -71,7 +71,7 @@ type Alarm struct {
 	NextNotificationTime *int64 `json:"next_notification_time,omitempty"`
 }
 
-// AlarmFieldHandles provides a string representation for each AccessControlRecord field.
+// AlarmFieldHandles provides a string representation for each Alarm field.
 type AlarmFieldHandles struct {
 	ID                   string
 	Type                 string

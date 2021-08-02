@@ -53,7 +53,7 @@ type LdapDomain struct {
 	SchemaType *NsLdapSchemaType `json:"schema_type,omitempty"`
 }
 
-// LdapDomainFieldHandles provides a string representation for each AccessControlRecord field.
+// LdapDomainFieldHandles provides a string representation for each LdapDomain field.
 type LdapDomainFieldHandles struct {
 	ID                  string
 	DomainName          string

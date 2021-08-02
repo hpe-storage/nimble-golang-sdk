@@ -47,7 +47,7 @@ type ApplicationServer struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 }
 
-// ApplicationServerFieldHandles provides a string representation for each AccessControlRecord field.
+// ApplicationServerFieldHandles provides a string representation for each ApplicationServer field.
 type ApplicationServerFieldHandles struct {
 	ID           string
 	Name         string

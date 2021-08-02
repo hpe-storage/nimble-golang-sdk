@@ -110,7 +110,7 @@ type Disk struct {
 	PartialResponseOk *bool `json:"partial_response_ok,omitempty"`
 }
 
-// DiskFieldHandles provides a string representation for each AccessControlRecord field.
+// DiskFieldHandles provides a string representation for each Disk field.
 type DiskFieldHandles struct {
 	ID                     string
 	IsDfc                  string

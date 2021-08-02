@@ -35,7 +35,7 @@ type Witness struct {
 	AutoSwitchoverMessages []*NsErrorWithArguments `json:"auto_switchover_messages,omitempty"`
 }
 
-// WitnessFieldHandles provides a string representation for each AccessControlRecord field.
+// WitnessFieldHandles provides a string representation for each Witness field.
 type WitnessFieldHandles struct {
 	ID                     string
 	Username               string

@@ -17,7 +17,7 @@ type NsISCSIIQN struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// NsISCSIIQNFieldHandles provides a string representation for each AccessControlRecord field.
+// NsISCSIIQNFieldHandles provides a string representation for each NsISCSIIQN field.
 type NsISCSIIQNFieldHandles struct {
 	Name string
 }

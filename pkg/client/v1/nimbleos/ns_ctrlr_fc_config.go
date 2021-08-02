@@ -20,7 +20,7 @@ type NsCtrlrFcConfig struct {
 	FcInterfaceList []*NsFcInterfaceInfo `json:"fc_interface_list,omitempty"`
 }
 
-// NsCtrlrFcConfigFieldHandles provides a string representation for each AccessControlRecord field.
+// NsCtrlrFcConfigFieldHandles provides a string representation for each NsCtrlrFcConfig field.
 type NsCtrlrFcConfigFieldHandles struct {
 	FcPortList      string
 	FcInterfaceList string

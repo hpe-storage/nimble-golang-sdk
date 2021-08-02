@@ -65,7 +65,7 @@ type NsShelfCtrlr struct {
 	IDentifyStatus *bool `json:"identify_status,omitempty"`
 }
 
-// NsShelfCtrlrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsShelfCtrlrFieldHandles provides a string representation for each NsShelfCtrlr field.
 type NsShelfCtrlrFieldHandles struct {
 	ExpSasAddr         string
 	CtrlrSide          string

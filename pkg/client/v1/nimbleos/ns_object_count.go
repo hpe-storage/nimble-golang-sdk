@@ -26,7 +26,7 @@ type NsObjectCount struct {
 	WarningThresholdOverride *int64 `json:"warning_threshold_override,omitempty"`
 }
 
-// NsObjectCountFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectCountFieldHandles provides a string representation for each NsObjectCount field.
 type NsObjectCountFieldHandles struct {
 	ScopeName                string
 	ObjectCount              string

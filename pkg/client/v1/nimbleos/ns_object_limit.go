@@ -23,7 +23,7 @@ type NsObjectLimit struct {
 	ObjNum *int64 `json:"obj_num,omitempty"`
 }
 
-// NsObjectLimitFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectLimitFieldHandles provides a string representation for each NsObjectLimit field.
 type NsObjectLimitFieldHandles struct {
 	ObjType  string
 	ObjLimit string

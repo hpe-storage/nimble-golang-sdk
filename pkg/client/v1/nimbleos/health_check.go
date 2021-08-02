@@ -35,7 +35,7 @@ type HealthCheck struct {
 	ElementResult *NsHcfResult `json:"element_result,omitempty"`
 }
 
-// HealthCheckFieldHandles provides a string representation for each AccessControlRecord field.
+// HealthCheckFieldHandles provides a string representation for each HealthCheck field.
 type HealthCheckFieldHandles struct {
 	ID            string
 	Scope         string

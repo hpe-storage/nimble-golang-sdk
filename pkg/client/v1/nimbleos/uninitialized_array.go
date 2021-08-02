@@ -47,7 +47,7 @@ type UninitializedArray struct {
 	DedupeConfigurable *bool `json:"dedupe_configurable,omitempty"`
 }
 
-// UninitializedArrayFieldHandles provides a string representation for each AccessControlRecord field.
+// UninitializedArrayFieldHandles provides a string representation for each UninitializedArray field.
 type UninitializedArrayFieldHandles struct {
 	ID                 string
 	Serial             string

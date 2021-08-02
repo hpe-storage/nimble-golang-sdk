@@ -68,7 +68,7 @@ type Job struct {
 	TotalPhases *int64 `json:"total_phases,omitempty"`
 }
 
-// JobFieldHandles provides a string representation for each AccessControlRecord field.
+// JobFieldHandles provides a string representation for each Job field.
 type JobFieldHandles struct {
 	CompletionTime          string
 	CreationTime            string

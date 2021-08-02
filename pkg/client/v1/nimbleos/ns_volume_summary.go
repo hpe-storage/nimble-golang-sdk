@@ -26,7 +26,7 @@ type NsVolumeSummary struct {
 	VolName *string `json:"vol_name,omitempty"`
 }
 
-// NsVolumeSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeSummaryFieldHandles provides a string representation for each NsVolumeSummary field.
 type NsVolumeSummaryFieldHandles struct {
 	ID      string
 	VolId   string

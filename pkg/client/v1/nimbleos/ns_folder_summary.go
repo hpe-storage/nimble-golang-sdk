@@ -20,7 +20,7 @@ type NsFolderSummary struct {
 	Fqn *string `json:"fqn,omitempty"`
 }
 
-// NsFolderSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFolderSummaryFieldHandles provides a string representation for each NsFolderSummary field.
 type NsFolderSummaryFieldHandles struct {
 	ID  string
 	Fqn string

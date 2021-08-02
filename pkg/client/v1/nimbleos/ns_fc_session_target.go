@@ -32,7 +32,7 @@ type NsFcSessionTarget struct {
 	TargetFcid *string `json:"target_fcid,omitempty"`
 }
 
-// NsFcSessionTargetFieldHandles provides a string representation for each AccessControlRecord field.
+// NsFcSessionTargetFieldHandles provides a string representation for each NsFcSessionTarget field.
 type NsFcSessionTargetFieldHandles struct {
 	TargetPortArrayName     string
 	TargetPortCtrlrName     string

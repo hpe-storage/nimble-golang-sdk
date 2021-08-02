@@ -35,7 +35,7 @@ type Subscriber struct {
 	Force *bool `json:"force,omitempty"`
 }
 
-// SubscriberFieldHandles provides a string representation for each AccessControlRecord field.
+// SubscriberFieldHandles provides a string representation for each Subscriber field.
 type SubscriberFieldHandles struct {
 	ID                   string
 	Type                 string

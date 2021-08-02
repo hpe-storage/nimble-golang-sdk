@@ -20,7 +20,7 @@ type NsVolumeCollectionDemoteAttr struct {
 	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
 }
 
-// NsVolumeCollectionDemoteAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeCollectionDemoteAttrFieldHandles provides a string representation for each NsVolumeCollectionDemoteAttr field.
 type NsVolumeCollectionDemoteAttrFieldHandles struct {
 	ID                   string
 	ReplicationPartnerId string

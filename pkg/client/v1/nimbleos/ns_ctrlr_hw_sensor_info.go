@@ -32,7 +32,7 @@ type NsCtrlrHwSensorInfo struct {
 	CurrentReading *int64 `json:"current_reading,omitempty"`
 }
 
-// NsCtrlrHwSensorInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsCtrlrHwSensorInfoFieldHandles provides a string representation for each NsCtrlrHwSensorInfo field.
 type NsCtrlrHwSensorInfoFieldHandles struct {
 	Name           string
 	DisplayName    string

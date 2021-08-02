@@ -17,7 +17,7 @@ type NsTimezonesReturn struct {
 	Timezones []*string `json:"timezones,omitempty"`
 }
 
-// NsTimezonesReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsTimezonesReturnFieldHandles provides a string representation for each NsTimezonesReturn field.
 type NsTimezonesReturnFieldHandles struct {
 	Timezones string
 }

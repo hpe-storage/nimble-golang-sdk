@@ -20,7 +20,7 @@ type NsKeyValue struct {
 	Value *string `json:"value,omitempty"`
 }
 
-// NsKeyValueFieldHandles provides a string representation for each AccessControlRecord field.
+// NsKeyValueFieldHandles provides a string representation for each NsKeyValue field.
 type NsKeyValueFieldHandles struct {
 	Key   string
 	Value string

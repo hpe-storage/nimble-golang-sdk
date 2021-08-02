@@ -20,7 +20,7 @@ type NsPoolSummary struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// NsPoolSummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsPoolSummaryFieldHandles provides a string representation for each NsPoolSummary field.
 type NsPoolSummaryFieldHandles struct {
 	ID   string
 	Name string

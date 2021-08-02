@@ -17,7 +17,7 @@ type NsVolumeListReturn struct {
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 }
 
-// NsVolumeListReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsVolumeListReturnFieldHandles provides a string representation for each NsVolumeListReturn field.
 type NsVolumeListReturnFieldHandles struct {
 	VolList string
 }

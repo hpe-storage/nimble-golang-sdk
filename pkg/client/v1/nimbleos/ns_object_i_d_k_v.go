@@ -20,7 +20,7 @@ type NsObjectIDKV struct {
 	ID *string `json:"id,omitempty"`
 }
 
-// NsObjectIDKVFieldHandles provides a string representation for each AccessControlRecord field.
+// NsObjectIDKVFieldHandles provides a string representation for each NsObjectIDKV field.
 type NsObjectIDKVFieldHandles struct {
 	Key string
 	ID  string

@@ -17,7 +17,7 @@ type NsDiscoveredGroupListReturn struct {
 	DiscoveredGroupList []*NsDiscoveredGroupInfo `json:"discovered_group_list,omitempty"`
 }
 
-// NsDiscoveredGroupListReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsDiscoveredGroupListReturnFieldHandles provides a string representation for each NsDiscoveredGroupListReturn field.
 type NsDiscoveredGroupListReturnFieldHandles struct {
 	DiscoveredGroupList string
 }

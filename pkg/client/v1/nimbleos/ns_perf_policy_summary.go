@@ -17,7 +17,7 @@ type NsPerfPolicySummary struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// NsPerfPolicySummaryFieldHandles provides a string representation for each AccessControlRecord field.
+// NsPerfPolicySummaryFieldHandles provides a string representation for each NsPerfPolicySummary field.
 type NsPerfPolicySummaryFieldHandles struct {
 	Name string
 }

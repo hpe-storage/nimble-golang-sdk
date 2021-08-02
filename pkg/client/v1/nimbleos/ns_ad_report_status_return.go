@@ -29,7 +29,7 @@ type NsADReportStatusReturn struct {
 	TrustValid *bool `json:"trust_valid,omitempty"`
 }
 
-// NsADReportStatusReturnFieldHandles provides a string representation for each AccessControlRecord field.
+// NsADReportStatusReturnFieldHandles provides a string representation for each NsADReportStatusReturn field.
 type NsADReportStatusReturnFieldHandles struct {
 	Joined              string
 	Enabled             string

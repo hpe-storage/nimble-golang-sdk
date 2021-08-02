@@ -35,7 +35,7 @@ type NsSnapshotCreateAttr struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 }
 
-// NsSnapshotCreateAttrFieldHandles provides a string representation for each AccessControlRecord field.
+// NsSnapshotCreateAttrFieldHandles provides a string representation for each NsSnapshotCreateAttr field.
 type NsSnapshotCreateAttrFieldHandles struct {
 	VolId       string
 	Name        string

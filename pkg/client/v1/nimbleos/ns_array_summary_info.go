@@ -38,7 +38,7 @@ type NsArraySummaryInfo struct {
 	AllFlash *bool `json:"all_flash,omitempty"`
 }
 
-// NsArraySummaryInfoFieldHandles provides a string representation for each AccessControlRecord field.
+// NsArraySummaryInfoFieldHandles provides a string representation for each NsArraySummaryInfo field.
 type NsArraySummaryInfoFieldHandles struct {
 	Name           string
 	Version        string
