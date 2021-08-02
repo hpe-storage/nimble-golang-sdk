@@ -92,7 +92,7 @@ func main() {
 	// get igroup by name
 	igroup, err = igroupSvc.GetInitiatorGroupByName("sdkigroup")
 	if err != nil {
-		fmt.Printf("Failed to get igroup by name, err ", err)
+		fmt.Printf("Failed to get igroup by name, err %v\n", err)
 	}
 	fmt.Println(igroup)
 

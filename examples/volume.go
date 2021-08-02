@@ -47,7 +47,7 @@ func main() {
 	volume, err := volSvc.CreateVolume(newVolume)
 
 	if err != nil {
-		fmt.Printf("Failed to create volume, err ", err)
+		fmt.Printf("Failed to create volume, err: %v,", err)
 		return
 	}
 	fmt.Println(volume)
@@ -55,7 +55,7 @@ func main() {
 	// get volume by name
 	volume, err = volSvc.GetVolumeByName("TestDemo1");
 	if err != nil {
-		fmt.Printf("Failed to get volume by name, err ", err)
+		fmt.Printf("Failed to get volume by name, err: %v,", err)
 		return
 	}
 	fmt.Println(volume)
@@ -72,7 +72,7 @@ func main() {
  	volumeList, err := volSvc.GetVolumes(requestParams)
 
 	if err != nil{
-		fmt.Println("Error: get volume with params. Message: %s", err)
+		fmt.Printf("Error: get volume with params. Message: %v\n", err)
 	}
 	fmt.Println(volumeList)
 

@@ -75,7 +75,7 @@ func main() {
 		// Get snapshot collection by name
 		snapColl, err = groupService.GetSnapshotCollectionService().GetSnapshotCollectionByName("RestoreSnapColl");
 		if err != nil {
-			fmt.Printf("Failed to get snapshot collection by name, err ", err)
+			fmt.Printf("Failed to get snapshot collection by name, err: %v\n", err)
 		}
 		fmt.Println(snapColl)
 
@@ -94,7 +94,7 @@ func main() {
 		err = volSvc.DisassociateVolume(*volume.ID)
 
 		if err != nil {
-			fmt.Printf("Failed to remove %s volume from volume collection", *volume.ID)
+			fmt.Printf("Failed to remove %s volume from volume collection\n", *volume.ID)
 			return
 		}
 
