@@ -89,6 +89,13 @@ func main() {
 		}
 	}
 
+	// get igroup by name
+	igroup, err = igroupSvc.GetInitiatorGroupByName("sdkigroup")
+	if err != nil {
+		fmt.Printf("Failed to get igroup by name, err ", err)
+	}
+	fmt.Println(igroup)
+
 	// cleaup
 	updateVol := &nimbleos.Volume{
 		Online: param.NewBool(false),

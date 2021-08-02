@@ -68,6 +68,14 @@ func main() {
 			Name:      param.NewString("RestoreSnapColl"),
 			VolcollId: volcoll.ID,
 		})
+
+		// Get snapshot collection by name
+		snapColl, err = groupService.GetSnapshotCollectionService().GetSnapshotCollectionByName("RestoreSnapColl");
+		if err != nil {
+			fmt.Printf("Failed to get snapshot collection by name, err ", err)
+		}
+		fmt.Println(snapColl)
+
 		// set the volume offline before restore
 		volSvc.OfflineVolume(*volume.ID, true)
 		//restore volume to snapcoll

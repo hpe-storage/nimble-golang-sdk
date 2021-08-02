@@ -74,7 +74,7 @@ func (svc *ApplicationCategoryService) GetApplicationCategoryById(id string) (*n
 func (svc *ApplicationCategoryService) GetApplicationCategoryByName(name string) (*nimbleos.ApplicationCategory, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: param.NewString(nimbleos.VolumeFields.Name),
+			FieldName: &nimbleos.ApplicationCategoryFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

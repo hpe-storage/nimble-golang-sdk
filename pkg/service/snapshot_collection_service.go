@@ -75,7 +75,7 @@ func (svc *SnapshotCollectionService) GetSnapshotCollectionById(id string) (*nim
 func (svc *SnapshotCollectionService) GetSnapshotCollectionByName(name string) (*nimbleos.SnapshotCollection, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: param.NewString(nimbleos.VolumeFields.Name),
+			FieldName: &nimbleos.SnapshotCollectionFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

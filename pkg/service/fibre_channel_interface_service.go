@@ -74,7 +74,7 @@ func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceById(id string)
 func (svc *FibreChannelInterfaceService) GetFibreChannelInterfaceByName(name string) (*nimbleos.FibreChannelInterface, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: param.NewString(nimbleos.VolumeFields.Name),
+			FieldName: &nimbleos.FibreChannelInterfaceFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

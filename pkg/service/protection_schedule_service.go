@@ -74,7 +74,7 @@ func (svc *ProtectionScheduleService) GetProtectionScheduleById(id string) (*nim
 func (svc *ProtectionScheduleService) GetProtectionScheduleByName(name string) (*nimbleos.ProtectionSchedule, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: param.NewString(nimbleos.VolumeFields.Name),
+			FieldName: &nimbleos.ProtectionScheduleFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

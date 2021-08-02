@@ -74,7 +74,7 @@ func (svc *UserGroupService) GetUserGroupById(id string) (*nimbleos.UserGroup, e
 func (svc *UserGroupService) GetUserGroupByName(name string) (*nimbleos.UserGroup, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: param.NewString(nimbleos.VolumeFields.Name),
+			FieldName: &nimbleos.UserGroupFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

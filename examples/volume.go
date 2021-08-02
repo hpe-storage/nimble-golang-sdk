@@ -47,7 +47,13 @@ func main() {
 
 	if err != nil {
 		fmt.Printf("Failed to create volume, err ", err)
-		return
+	}
+	fmt.Println(volume)
+
+	// get volume by name
+	volume, err = volSvc.GetVolumeByName("TestDemo1");
+	if err != nil {
+		fmt.Printf("Failed to get volume by name, err ", err)
 	}
 	fmt.Println(volume)
 

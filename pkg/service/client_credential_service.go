@@ -74,7 +74,7 @@ func (svc *ClientCredentialService) GetClientCredentialById(id string) (*nimbleo
 func (svc *ClientCredentialService) GetClientCredentialByName(name string) (*nimbleos.ClientCredential, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: param.NewString(nimbleos.VolumeFields.Name),
+			FieldName: &nimbleos.ClientCredentialFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},
