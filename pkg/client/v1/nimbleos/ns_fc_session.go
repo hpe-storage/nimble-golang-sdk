@@ -2,42 +2,33 @@
 
 package nimbleos
 
-// NsFCSession - Fibre Channel initiator session information.
-// Export NsFCSessionFields for advance operations like search filter etc.
-var NsFCSessionFields *NsFCSession
+// NsFCSessionFields provides field names to use in filter parameters, for example.
+var NsFCSessionFields *NsFCSessionFieldHandles
 
 func init() {
-	IDfield := "id"
-	SessionIdfield := "session_id"
-	InitiatorAliasfield := "initiator_alias"
-	InitiatorWwpnfield := "initiator_wwpn"
-	InitiatorWwnnfield := "initiator_wwnn"
-	InitiatorSwitchNamefield := "initiator_switch_name"
-	InitiatorSwitchPortfield := "initiator_switch_port"
-	InitiatorSymbolicPortnamefield := "initiator_symbolic_portname"
-	InitiatorSymbolicNodenamefield := "initiator_symbolic_nodename"
-	TargetPortArrayNamefield := "target_port_array_name"
-	TargetPortInterfaceNamefield := "target_port_interface_name"
-	TargetWwnnfield := "target_wwnn"
-	TargetWwpnfield := "target_wwpn"
-
-	NsFCSessionFields = &NsFCSession{
-		ID:                        &IDfield,
-		SessionId:                 &SessionIdfield,
-		InitiatorAlias:            &InitiatorAliasfield,
-		InitiatorWwpn:             &InitiatorWwpnfield,
-		InitiatorWwnn:             &InitiatorWwnnfield,
-		InitiatorSwitchName:       &InitiatorSwitchNamefield,
-		InitiatorSwitchPort:       &InitiatorSwitchPortfield,
-		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-		TargetPortArrayName:       &TargetPortArrayNamefield,
-		TargetPortInterfaceName:   &TargetPortInterfaceNamefield,
-		TargetWwnn:                &TargetWwnnfield,
-		TargetWwpn:                &TargetWwpnfield,
+	NsFCSessionFields = &NsFCSessionFieldHandles{
+		ID:                        "id",
+		SessionId:                 "session_id",
+		Alua:                      "alua",
+		PrKey:                     "pr_key",
+		InitiatorAlias:            "initiator_alias",
+		InitiatorWwpn:             "initiator_wwpn",
+		InitiatorWwnn:             "initiator_wwnn",
+		InitiatorSwitchName:       "initiator_switch_name",
+		InitiatorSwitchPort:       "initiator_switch_port",
+		InitiatorSymbolicPortname: "initiator_symbolic_portname",
+		InitiatorSymbolicNodename: "initiator_symbolic_nodename",
+		InitiatorFcid:             "initiator_fcid",
+		TargetPortArrayName:       "target_port_array_name",
+		TargetPortCtrlrId:         "target_port_ctrlr_id",
+		TargetPortInterfaceName:   "target_port_interface_name",
+		TargetWwnn:                "target_wwnn",
+		TargetWwpn:                "target_wwpn",
+		TargetFcid:                "target_fcid",
 	}
 }
 
+// NsFCSession - Fibre Channel initiator session information.
 type NsFCSession struct {
 	// ID - Unique identifier of the Fibre Channel session.
 	ID *string `json:"id,omitempty"`
@@ -75,4 +66,26 @@ type NsFCSession struct {
 	TargetWwpn *string `json:"target_wwpn,omitempty"`
 	// TargetFcid - FCID assigned to the Fibre Channel target port.
 	TargetFcid *int64 `json:"target_fcid,omitempty"`
+}
+
+// NsFCSessionFieldHandles provides a string representation for each NsFCSession field.
+type NsFCSessionFieldHandles struct {
+	ID                        string
+	SessionId                 string
+	Alua                      string
+	PrKey                     string
+	InitiatorAlias            string
+	InitiatorWwpn             string
+	InitiatorWwnn             string
+	InitiatorSwitchName       string
+	InitiatorSwitchPort       string
+	InitiatorSymbolicPortname string
+	InitiatorSymbolicNodename string
+	InitiatorFcid             string
+	TargetPortArrayName       string
+	TargetPortCtrlrId         string
+	TargetPortInterfaceName   string
+	TargetWwnn                string
+	TargetWwpn                string
+	TargetFcid                string
 }

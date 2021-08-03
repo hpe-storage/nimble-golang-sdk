@@ -2,24 +2,19 @@
 
 package nimbleos
 
-// NsVolumeSummary - Select fields containing volume info.
-// Export NsVolumeSummaryFields for advance operations like search filter etc.
-var NsVolumeSummaryFields *NsVolumeSummary
+// NsVolumeSummaryFields provides field names to use in filter parameters, for example.
+var NsVolumeSummaryFields *NsVolumeSummaryFieldHandles
 
 func init() {
-	IDfield := "id"
-	VolIdfield := "vol_id"
-	Namefield := "name"
-	VolNamefield := "vol_name"
-
-	NsVolumeSummaryFields = &NsVolumeSummary{
-		ID:      &IDfield,
-		VolId:   &VolIdfield,
-		Name:    &Namefield,
-		VolName: &VolNamefield,
+	NsVolumeSummaryFields = &NsVolumeSummaryFieldHandles{
+		ID:      "id",
+		VolId:   "vol_id",
+		Name:    "name",
+		VolName: "vol_name",
 	}
 }
 
+// NsVolumeSummary - Select fields containing volume info.
 type NsVolumeSummary struct {
 	// ID - ID of volume.
 	ID *string `json:"id,omitempty"`
@@ -29,4 +24,12 @@ type NsVolumeSummary struct {
 	Name *string `json:"name,omitempty"`
 	// VolName - Name of volume.
 	VolName *string `json:"vol_name,omitempty"`
+}
+
+// NsVolumeSummaryFieldHandles provides a string representation for each NsVolumeSummary field.
+type NsVolumeSummaryFieldHandles struct {
+	ID      string
+	VolId   string
+	Name    string
+	VolName string
 }

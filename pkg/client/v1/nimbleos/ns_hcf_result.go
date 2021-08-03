@@ -2,18 +2,18 @@
 
 package nimbleos
 
-// NsHcfResult - Results from health check of a single element.
-// Export NsHcfResultFields for advance operations like search filter etc.
-var NsHcfResultFields *NsHcfResult
+// NsHcfResultFields provides field names to use in filter parameters, for example.
+var NsHcfResultFields *NsHcfResultFieldHandles
 
 func init() {
-	ElementNamefield := "element_name"
-
-	NsHcfResultFields = &NsHcfResult{
-		ElementName: &ElementNamefield,
+	NsHcfResultFields = &NsHcfResultFieldHandles{
+		ElementName: "element_name",
+		ErrorList:   "error_list",
+		Messages:    "messages",
 	}
 }
 
+// NsHcfResult - Results from health check of a single element.
 type NsHcfResult struct {
 	// ElementName - Name of the element.
 	ElementName *string `json:"element_name,omitempty"`
@@ -21,4 +21,11 @@ type NsHcfResult struct {
 	ErrorList []*string `json:"error_list,omitempty"`
 	// Messages - A list of error messages.
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
+}
+
+// NsHcfResultFieldHandles provides a string representation for each NsHcfResult field.
+type NsHcfResultFieldHandles struct {
+	ElementName string
+	ErrorList   string
+	Messages    string
 }

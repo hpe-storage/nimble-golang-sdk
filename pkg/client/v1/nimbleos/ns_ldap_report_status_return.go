@@ -2,18 +2,19 @@
 
 package nimbleos
 
-// NsLdapReportStatusReturn - A report of the current LDAP status for the group.
-// Export NsLdapReportStatusReturnFields for advance operations like search filter etc.
-var NsLdapReportStatusReturnFields *NsLdapReportStatusReturn
+// NsLdapReportStatusReturnFields provides field names to use in filter parameters, for example.
+var NsLdapReportStatusReturnFields *NsLdapReportStatusReturnFieldHandles
 
 func init() {
-	RemoteServiceStatusfield := "remote_service_status"
-
-	NsLdapReportStatusReturnFields = &NsLdapReportStatusReturn{
-		RemoteServiceStatus: &RemoteServiceStatusfield,
+	NsLdapReportStatusReturnFields = &NsLdapReportStatusReturnFieldHandles{
+		Enabled:                 "enabled",
+		LocalServiceStatusGood:  "local_service_status_good",
+		RemoteServiceStatusGood: "remote_service_status_good",
+		RemoteServiceStatus:     "remote_service_status",
 	}
 }
 
+// NsLdapReportStatusReturn - A report of the current LDAP status for the group.
 type NsLdapReportStatusReturn struct {
 	// Enabled - Whether the LDAP domain enabled on the group.
 	Enabled *bool `json:"enabled,omitempty"`
@@ -23,4 +24,12 @@ type NsLdapReportStatusReturn struct {
 	RemoteServiceStatusGood *bool `json:"remote_service_status_good,omitempty"`
 	// RemoteServiceStatus - If the remote service status is not good then this provides a descriptive status message.
 	RemoteServiceStatus *string `json:"remote_service_status,omitempty"`
+}
+
+// NsLdapReportStatusReturnFieldHandles provides a string representation for each NsLdapReportStatusReturn field.
+type NsLdapReportStatusReturnFieldHandles struct {
+	Enabled                 string
+	LocalServiceStatusGood  string
+	RemoteServiceStatusGood string
+	RemoteServiceStatus     string
 }

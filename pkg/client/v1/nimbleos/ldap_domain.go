@@ -2,32 +2,28 @@
 
 package nimbleos
 
-// LdapDomain - Manages the storage array's membership with LDAP servers.
-// Export LdapDomainFields for advance operations like search filter etc.
-var LdapDomainFields *LdapDomain
+// LdapDomainFields provides field names to use in filter parameters, for example.
+var LdapDomainFields *LdapDomainFieldHandles
 
 func init() {
-	IDfield := "id"
-	DomainNamefield := "domain_name"
-	DomainDescriptionfield := "domain_description"
-	BindUserfield := "bind_user"
-	BindPasswordfield := "bind_password"
-	BaseDnfield := "base_dn"
-	UserSearchFilterfield := "user_search_filter"
-	GroupSearchFilterfield := "group_search_filter"
-
-	LdapDomainFields = &LdapDomain{
-		ID:                &IDfield,
-		DomainName:        &DomainNamefield,
-		DomainDescription: &DomainDescriptionfield,
-		BindUser:          &BindUserfield,
-		BindPassword:      &BindPasswordfield,
-		BaseDn:            &BaseDnfield,
-		UserSearchFilter:  &UserSearchFilterfield,
-		GroupSearchFilter: &GroupSearchFilterfield,
+	LdapDomainFields = &LdapDomainFieldHandles{
+		ID:                  "id",
+		DomainName:          "domain_name",
+		DomainDescription:   "domain_description",
+		DomainEnabled:       "domain_enabled",
+		ServerUriList:       "server_uri_list",
+		BindUser:            "bind_user",
+		BindPassword:        "bind_password",
+		BaseDn:              "base_dn",
+		UserSearchFilter:    "user_search_filter",
+		UserSearchBaseList:  "user_search_base_list",
+		GroupSearchFilter:   "group_search_filter",
+		GroupSearchBaseList: "group_search_base_list",
+		SchemaType:          "schema_type",
 	}
 }
 
+// LdapDomain - Manages the storage array's membership with LDAP servers.
 type LdapDomain struct {
 	// ID - Identifier for the LDAP Domain.
 	ID *string `json:"id,omitempty"`
@@ -55,4 +51,21 @@ type LdapDomain struct {
 	GroupSearchBaseList []*string `json:"group_search_base_list,omitempty"`
 	// SchemaType - Enum values are OpenLDAP or AD.
 	SchemaType *NsLdapSchemaType `json:"schema_type,omitempty"`
+}
+
+// LdapDomainFieldHandles provides a string representation for each LdapDomain field.
+type LdapDomainFieldHandles struct {
+	ID                  string
+	DomainName          string
+	DomainDescription   string
+	DomainEnabled       string
+	ServerUriList       string
+	BindUser            string
+	BindPassword        string
+	BaseDn              string
+	UserSearchFilter    string
+	UserSearchBaseList  string
+	GroupSearchFilter   string
+	GroupSearchBaseList string
+	SchemaType          string
 }

@@ -2,23 +2,26 @@
 
 package nimbleos
 
-// NsFolderCreateAttr - Attributes for folder creation.
-// Export NsFolderCreateAttrFields for advance operations like search filter etc.
-var NsFolderCreateAttrFields *NsFolderCreateAttr
+// NsFolderCreateAttrFields provides field names to use in filter parameters, for example.
+var NsFolderCreateAttrFields *NsFolderCreateAttrFieldHandles
 
 func init() {
-	Namefield := "name"
-	PoolIdfield := "pool_id"
-
-	NsFolderCreateAttrFields = &NsFolderCreateAttr{
-		Name:   &Namefield,
-		PoolId: &PoolIdfield,
+	NsFolderCreateAttrFields = &NsFolderCreateAttrFieldHandles{
+		Name:   "name",
+		PoolId: "pool_id",
 	}
 }
 
+// NsFolderCreateAttr - Attributes for folder creation.
 type NsFolderCreateAttr struct {
 	// Name - Name of folder.
 	Name *string `json:"name,omitempty"`
 	// PoolId - ID of pool to create the folder in.
 	PoolId *string `json:"pool_id,omitempty"`
+}
+
+// NsFolderCreateAttrFieldHandles provides a string representation for each NsFolderCreateAttr field.
+type NsFolderCreateAttrFieldHandles struct {
+	Name   string
+	PoolId string
 }

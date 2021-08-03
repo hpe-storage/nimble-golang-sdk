@@ -2,36 +2,38 @@
 
 package nimbleos
 
-// Controller - Controller is a redundant collection of hardware capable of running the array software.
-// Export ControllerFields for advance operations like search filter etc.
-var ControllerFields *Controller
+// ControllerFields provides field names to use in filter parameters, for example.
+var ControllerFields *ControllerFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	ArrayNamefield := "array_name"
-	ArrayIdfield := "array_id"
-	Serialfield := "serial"
-	Modelfield := "model"
-	Hostnamefield := "hostname"
-	SupportAddressfield := "support_address"
-	SupportNetmaskfield := "support_netmask"
-	SupportNicfield := "support_nic"
-
-	ControllerFields = &Controller{
-		ID:             &IDfield,
-		Name:           &Namefield,
-		ArrayName:      &ArrayNamefield,
-		ArrayId:        &ArrayIdfield,
-		Serial:         &Serialfield,
-		Model:          &Modelfield,
-		Hostname:       &Hostnamefield,
-		SupportAddress: &SupportAddressfield,
-		SupportNetmask: &SupportNetmaskfield,
-		SupportNic:     &SupportNicfield,
+	ControllerFields = &ControllerFieldHandles{
+		ID:                 "id",
+		Name:               "name",
+		ArrayName:          "array_name",
+		ArrayId:            "array_id",
+		PartialResponseOk:  "partial_response_ok",
+		Serial:             "serial",
+		Model:              "model",
+		Hostname:           "hostname",
+		SupportAddress:     "support_address",
+		SupportNetmask:     "support_netmask",
+		SupportNic:         "support_nic",
+		PowerStatus:        "power_status",
+		FanStatus:          "fan_status",
+		TemperatureStatus:  "temperature_status",
+		PowerSupplies:      "power_supplies",
+		Fans:               "fans",
+		TemperatureSensors: "temperature_sensors",
+		PartitionStatus:    "partition_status",
+		CtrlrSide:          "ctrlr_side",
+		State:              "state",
+		NvmeCardsEnabled:   "nvme_cards_enabled",
+		NvmeCards:          "nvme_cards",
+		AsupTime:           "asup_time",
 	}
 }
 
+// Controller - Controller is a redundant collection of hardware capable of running the array software.
 type Controller struct {
 	// ID - Identifier of the controller.
 	ID *string `json:"id,omitempty"`
@@ -79,4 +81,31 @@ type Controller struct {
 	NvmeCards []*NsCtrlrNvmeCard `json:"nvme_cards,omitempty"`
 	// AsupTime - Time of the last autosupport by the controller.
 	AsupTime *int64 `json:"asup_time,omitempty"`
+}
+
+// ControllerFieldHandles provides a string representation for each Controller field.
+type ControllerFieldHandles struct {
+	ID                 string
+	Name               string
+	ArrayName          string
+	ArrayId            string
+	PartialResponseOk  string
+	Serial             string
+	Model              string
+	Hostname           string
+	SupportAddress     string
+	SupportNetmask     string
+	SupportNic         string
+	PowerStatus        string
+	FanStatus          string
+	TemperatureStatus  string
+	PowerSupplies      string
+	Fans               string
+	TemperatureSensors string
+	PartitionStatus    string
+	CtrlrSide          string
+	State              string
+	NvmeCardsEnabled   string
+	NvmeCards          string
+	AsupTime           string
 }

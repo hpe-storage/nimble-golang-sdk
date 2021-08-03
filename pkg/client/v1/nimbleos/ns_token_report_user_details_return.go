@@ -2,24 +2,24 @@
 
 package nimbleos
 
-// NsTokenReportUserDetailsReturn - Return values of token reporting user details.
-// Export NsTokenReportUserDetailsReturnFields for advance operations like search filter etc.
-var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturn
+// NsTokenReportUserDetailsReturnFields provides field names to use in filter parameters, for example.
+var NsTokenReportUserDetailsReturnFields *NsTokenReportUserDetailsReturnFieldHandles
 
 func init() {
-	UserNamefield := "user_name"
-	PrimaryGroupIdfield := "primary_group_id"
-	PrimaryGroupNamefield := "primary_group_name"
-	UserIdfield := "user_id"
-
-	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturn{
-		UserName:         &UserNamefield,
-		PrimaryGroupId:   &PrimaryGroupIdfield,
-		PrimaryGroupName: &PrimaryGroupNamefield,
-		UserId:           &UserIdfield,
+	NsTokenReportUserDetailsReturnFields = &NsTokenReportUserDetailsReturnFieldHandles{
+		UserName:          "user_name",
+		PrimaryGroupId:    "primary_group_id",
+		PrimaryGroupName:  "primary_group_name",
+		GroupCount:        "group_count",
+		Role:              "role",
+		InactivityTimeout: "inactivity_timeout",
+		UserId:            "user_id",
+		DomainType:        "domain_type",
+		Groups:            "groups",
 	}
 }
 
+// NsTokenReportUserDetailsReturn - Return values of token reporting user details.
 type NsTokenReportUserDetailsReturn struct {
 	// UserName - User name for the session.
 	UserName *string `json:"user_name,omitempty"`
@@ -39,4 +39,17 @@ type NsTokenReportUserDetailsReturn struct {
 	DomainType *NsDomainType `json:"domain_type,omitempty"`
 	// Groups - The list of directory service groups the user belongs to.
 	Groups []*string `json:"groups,omitempty"`
+}
+
+// NsTokenReportUserDetailsReturnFieldHandles provides a string representation for each NsTokenReportUserDetailsReturn field.
+type NsTokenReportUserDetailsReturnFieldHandles struct {
+	UserName          string
+	PrimaryGroupId    string
+	PrimaryGroupName  string
+	GroupCount        string
+	Role              string
+	InactivityTimeout string
+	UserId            string
+	DomainType        string
+	Groups            string
 }

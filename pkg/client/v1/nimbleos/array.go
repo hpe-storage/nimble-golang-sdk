@@ -2,50 +2,71 @@
 
 package nimbleos
 
-// Array - Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
-// Export ArrayFields for advance operations like search filter etc.
-var ArrayFields *Array
+// ArrayFields provides field names to use in filter parameters, for example.
+var ArrayFields *ArrayFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	Modelfield := "model"
-	Serialfield := "serial"
-	Versionfield := "version"
-	ExtendedModelfield := "extended_model"
-	Oemfield := "oem"
-	Brandfield := "brand"
-	PoolDescriptionfield := "pool_description"
-	CtrlrASupportIpfield := "ctrlr_a_support_ip"
-	CtrlrBSupportIpfield := "ctrlr_b_support_ip"
-	ModelSubTypefield := "model_sub_type"
-	SecondaryMgmtIpfield := "secondary_mgmt_ip"
-
-	ArrayFields = &Array{
-		ID:              &IDfield,
-		Name:            &Namefield,
-		FullName:        &FullNamefield,
-		SearchName:      &SearchNamefield,
-		PoolName:        &PoolNamefield,
-		PoolId:          &PoolIdfield,
-		Model:           &Modelfield,
-		Serial:          &Serialfield,
-		Version:         &Versionfield,
-		ExtendedModel:   &ExtendedModelfield,
-		Oem:             &Oemfield,
-		Brand:           &Brandfield,
-		PoolDescription: &PoolDescriptionfield,
-		CtrlrASupportIp: &CtrlrASupportIpfield,
-		CtrlrBSupportIp: &CtrlrBSupportIpfield,
-		ModelSubType:    &ModelSubTypefield,
-		SecondaryMgmtIp: &SecondaryMgmtIpfield,
+	ArrayFields = &ArrayFieldHandles{
+		ID:                         "id",
+		Name:                       "name",
+		Force:                      "force",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Status:                     "status",
+		Role:                       "role",
+		GroupState:                 "group_state",
+		PoolName:                   "pool_name",
+		PoolId:                     "pool_id",
+		Model:                      "model",
+		Serial:                     "serial",
+		Version:                    "version",
+		IsSfa:                      "is_sfa",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		UsageValid:                 "usage_valid",
+		UsableCapacityBytes:        "usable_capacity_bytes",
+		UsableCacheCapacityBytes:   "usable_cache_capacity_bytes",
+		RawCapacityBytes:           "raw_capacity_bytes",
+		VolUsageBytes:              "vol_usage_bytes",
+		VolUsageUncompressedBytes:  "vol_usage_uncompressed_bytes",
+		VolCompression:             "vol_compression",
+		VolSavedBytes:              "vol_saved_bytes",
+		SnapUsageBytes:             "snap_usage_bytes",
+		SnapUsageUncompressedBytes: "snap_usage_uncompressed_bytes",
+		SnapCompression:            "snap_compression",
+		SnapSpaceReduction:         "snap_space_reduction",
+		SnapSavedBytes:             "snap_saved_bytes",
+		PendingDeleteBytes:         "pending_delete_bytes",
+		AvailableBytes:             "available_bytes",
+		Usage:                      "usage",
+		AllFlash:                   "all_flash",
+		DedupeCapacityBytes:        "dedupe_capacity_bytes",
+		DedupeUsageBytes:           "dedupe_usage_bytes",
+		IsFullyDedupeCapable:       "is_fully_dedupe_capable",
+		DedupeDisabled:             "dedupe_disabled",
+		ExtendedModel:              "extended_model",
+		Oem:                        "oem",
+		Brand:                      "brand",
+		IsSupportedHwConfig:        "is_supported_hw_config",
+		GigNicPortCount:            "gig_nic_port_count",
+		TenGigSfpNicPortCount:      "ten_gig_sfp_nic_port_count",
+		TenGigTNicPortCount:        "ten_gig_t_nic_port_count",
+		FcPortCount:                "fc_port_count",
+		PublicKey:                  "public_key",
+		Upgrade:                    "upgrade",
+		CreatePool:                 "create_pool",
+		PoolDescription:            "pool_description",
+		AllowLowerLimits:           "allow_lower_limits",
+		CtrlrASupportIp:            "ctrlr_a_support_ip",
+		CtrlrBSupportIp:            "ctrlr_b_support_ip",
+		NicList:                    "nic_list",
+		ModelSubType:               "model_sub_type",
+		ZconfIpaddrs:               "zconf_ipaddrs",
+		SecondaryMgmtIp:            "secondary_mgmt_ip",
 	}
 }
 
+// Array - Retrieve information of specified arrays. The array is the management and configuration for the underlying physical hardware array box.
 type Array struct {
 	// ID - Identifier for array.
 	ID *string `json:"id,omitempty"`
@@ -159,4 +180,64 @@ type Array struct {
 	ZconfIpaddrs []*NsIPAddressObject `json:"zconf_ipaddrs,omitempty"`
 	// SecondaryMgmtIp - Secondary management IP address for the Group.
 	SecondaryMgmtIp *string `json:"secondary_mgmt_ip,omitempty"`
+}
+
+// ArrayFieldHandles provides a string representation for each Array field.
+type ArrayFieldHandles struct {
+	ID                         string
+	Name                       string
+	Force                      string
+	FullName                   string
+	SearchName                 string
+	Status                     string
+	Role                       string
+	GroupState                 string
+	PoolName                   string
+	PoolId                     string
+	Model                      string
+	Serial                     string
+	Version                    string
+	IsSfa                      string
+	CreationTime               string
+	LastModified               string
+	UsageValid                 string
+	UsableCapacityBytes        string
+	UsableCacheCapacityBytes   string
+	RawCapacityBytes           string
+	VolUsageBytes              string
+	VolUsageUncompressedBytes  string
+	VolCompression             string
+	VolSavedBytes              string
+	SnapUsageBytes             string
+	SnapUsageUncompressedBytes string
+	SnapCompression            string
+	SnapSpaceReduction         string
+	SnapSavedBytes             string
+	PendingDeleteBytes         string
+	AvailableBytes             string
+	Usage                      string
+	AllFlash                   string
+	DedupeCapacityBytes        string
+	DedupeUsageBytes           string
+	IsFullyDedupeCapable       string
+	DedupeDisabled             string
+	ExtendedModel              string
+	Oem                        string
+	Brand                      string
+	IsSupportedHwConfig        string
+	GigNicPortCount            string
+	TenGigSfpNicPortCount      string
+	TenGigTNicPortCount        string
+	FcPortCount                string
+	PublicKey                  string
+	Upgrade                    string
+	CreatePool                 string
+	PoolDescription            string
+	AllowLowerLimits           string
+	CtrlrASupportIp            string
+	CtrlrBSupportIp            string
+	NicList                    string
+	ModelSubType               string
+	ZconfIpaddrs               string
+	SecondaryMgmtIp            string
 }

@@ -2,24 +2,23 @@
 
 package nimbleos
 
-// VolumeFamily - A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
-// Export VolumeFamilyFields for advance operations like search filter etc.
-var VolumeFamilyFields *VolumeFamily
+// VolumeFamilyFields provides field names to use in filter parameters, for example.
+var VolumeFamilyFields *VolumeFamilyFieldHandles
 
 func init() {
-	IDfield := "id"
-	PoolIdfield := "pool_id"
-	PoolNamefield := "pool_name"
-	RootVolNamefield := "root_vol_name"
-
-	VolumeFamilyFields = &VolumeFamily{
-		ID:          &IDfield,
-		PoolId:      &PoolIdfield,
-		PoolName:    &PoolNamefield,
-		RootVolName: &RootVolNamefield,
+	VolumeFamilyFields = &VolumeFamilyFieldHandles{
+		ID:                       "id",
+		PoolId:                   "pool_id",
+		PoolName:                 "pool_name",
+		Blocksize:                "blocksize",
+		RootVolName:              "root_vol_name",
+		Volumes:                  "volumes",
+		VolUsageCompressedBytes:  "vol_usage_compressed_bytes",
+		SnapUsageCompressedBytes: "snap_usage_compressed_bytes",
 	}
 }
 
+// VolumeFamily - A volume family contains all the volumes, snapshots, and clones derived from and including a root volume.
 type VolumeFamily struct {
 	// ID - Identifier for the volume family.
 	ID *string `json:"id,omitempty"`
@@ -37,4 +36,16 @@ type VolumeFamily struct {
 	VolUsageCompressedBytes *int64 `json:"vol_usage_compressed_bytes,omitempty"`
 	// SnapUsageCompressedBytes - Sum of compressed bytes stored in the snapshots of this family.
 	SnapUsageCompressedBytes *int64 `json:"snap_usage_compressed_bytes,omitempty"`
+}
+
+// VolumeFamilyFieldHandles provides a string representation for each VolumeFamily field.
+type VolumeFamilyFieldHandles struct {
+	ID                       string
+	PoolId                   string
+	PoolName                 string
+	Blocksize                string
+	RootVolName              string
+	Volumes                  string
+	VolUsageCompressedBytes  string
+	SnapUsageCompressedBytes string
 }

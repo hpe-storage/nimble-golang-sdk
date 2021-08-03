@@ -2,50 +2,51 @@
 
 package nimbleos
 
-// Snapshot - Snapshots are point-in-time copies of a volume. Snapshots are managed the same way you manage volumes. In reality, snapshots are volumes: they can be accessed by initiators, are subject to the same controls, can be modified, and have the same restrictions as volumes. Snapshots can be cloned and replicated. The initial snapshot uses no space: it shares the original data with the source volume. Each successive snapshot captures the changes that have occurred on the volume. The changed blocks are compressed.
-// Export SnapshotFields for advance operations like search filter etc.
-var SnapshotFields *Snapshot
+// SnapshotFields provides field names to use in filter parameters, for example.
+var SnapshotFields *SnapshotFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	VolNamefield := "vol_name"
-	PoolNamefield := "pool_name"
-	VolIdfield := "vol_id"
-	SnapCollectionNamefield := "snap_collection_name"
-	SnapCollectionIdfield := "snap_collection_id"
-	OriginNamefield := "origin_name"
-	SerialNumberfield := "serial_number"
-	TargetNamefield := "target_name"
-	ScheduleNamefield := "schedule_name"
-	ScheduleIdfield := "schedule_id"
-	AppUuidfield := "app_uuid"
-	VpdT10field := "vpd_t10"
-	VpdIeee0field := "vpd_ieee0"
-	VpdIeee1field := "vpd_ieee1"
-
-	SnapshotFields = &Snapshot{
-		ID:                 &IDfield,
-		Name:               &Namefield,
-		Description:        &Descriptionfield,
-		VolName:            &VolNamefield,
-		PoolName:           &PoolNamefield,
-		VolId:              &VolIdfield,
-		SnapCollectionName: &SnapCollectionNamefield,
-		SnapCollectionId:   &SnapCollectionIdfield,
-		OriginName:         &OriginNamefield,
-		SerialNumber:       &SerialNumberfield,
-		TargetName:         &TargetNamefield,
-		ScheduleName:       &ScheduleNamefield,
-		ScheduleId:         &ScheduleIdfield,
-		AppUuid:            &AppUuidfield,
-		VpdT10:             &VpdT10field,
-		VpdIeee0:           &VpdIeee0field,
-		VpdIeee1:           &VpdIeee1field,
+	SnapshotFields = &SnapshotFieldHandles{
+		ID:                       "id",
+		Name:                     "name",
+		Description:              "description",
+		Size:                     "size",
+		VolName:                  "vol_name",
+		PoolName:                 "pool_name",
+		VolId:                    "vol_id",
+		SnapCollectionName:       "snap_collection_name",
+		SnapCollectionId:         "snap_collection_id",
+		Online:                   "online",
+		Writable:                 "writable",
+		OfflineReason:            "offline_reason",
+		ExpiryTime:               "expiry_time",
+		ExpiryAfter:              "expiry_after",
+		OriginName:               "origin_name",
+		IsReplica:                "is_replica",
+		IsUnmanaged:              "is_unmanaged",
+		IsManuallyManaged:        "is_manually_managed",
+		ReplicationStatus:        "replication_status",
+		AccessControlRecords:     "access_control_records",
+		SerialNumber:             "serial_number",
+		TargetName:               "target_name",
+		CreationTime:             "creation_time",
+		LastModified:             "last_modified",
+		ScheduleName:             "schedule_name",
+		ScheduleId:               "schedule_id",
+		AppUuid:                  "app_uuid",
+		Metadata:                 "metadata",
+		NewDataValid:             "new_data_valid",
+		NewDataCompressedBytes:   "new_data_compressed_bytes",
+		NewDataUncompressedBytes: "new_data_uncompressed_bytes",
+		AgentType:                "agent_type",
+		VpdT10:                   "vpd_t10",
+		VpdIeee0:                 "vpd_ieee0",
+		VpdIeee1:                 "vpd_ieee1",
+		Force:                    "force",
 	}
 }
 
+// Snapshot - Snapshots are point-in-time copies of a volume. Snapshots are managed the same way you manage volumes. In reality, snapshots are volumes: they can be accessed by initiators, are subject to the same controls, can be modified, and have the same restrictions as volumes. Snapshots can be cloned and replicated. The initial snapshot uses no space: it shares the original data with the source volume. Each successive snapshot captures the changes that have occurred on the volume. The changed blocks are compressed.
 type Snapshot struct {
 	// ID - Identifier for the snapshot.
 	ID *string `json:"id,omitempty"`
@@ -119,4 +120,44 @@ type Snapshot struct {
 	VpdIeee1 *string `json:"vpd_ieee1,omitempty"`
 	// Force - Forcibly delete the specified snapshot even if it is the last replicated collection. Doing so could lead to full re-seeding at the next replication.
 	Force *bool `json:"force,omitempty"`
+}
+
+// SnapshotFieldHandles provides a string representation for each Snapshot field.
+type SnapshotFieldHandles struct {
+	ID                       string
+	Name                     string
+	Description              string
+	Size                     string
+	VolName                  string
+	PoolName                 string
+	VolId                    string
+	SnapCollectionName       string
+	SnapCollectionId         string
+	Online                   string
+	Writable                 string
+	OfflineReason            string
+	ExpiryTime               string
+	ExpiryAfter              string
+	OriginName               string
+	IsReplica                string
+	IsUnmanaged              string
+	IsManuallyManaged        string
+	ReplicationStatus        string
+	AccessControlRecords     string
+	SerialNumber             string
+	TargetName               string
+	CreationTime             string
+	LastModified             string
+	ScheduleName             string
+	ScheduleId               string
+	AppUuid                  string
+	Metadata                 string
+	NewDataValid             string
+	NewDataCompressedBytes   string
+	NewDataUncompressedBytes string
+	AgentType                string
+	VpdT10                   string
+	VpdIeee0                 string
+	VpdIeee1                 string
+	Force                    string
 }

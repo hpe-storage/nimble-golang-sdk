@@ -2,20 +2,22 @@
 
 package nimbleos
 
-// NsArrayUnassignMigStatus - Data migration status for array being unassigned from its pool.
-// Export NsArrayUnassignMigStatusFields for advance operations like search filter etc.
-var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatus
+// NsArrayUnassignMigStatusFields provides field names to use in filter parameters, for example.
+var NsArrayUnassignMigStatusFields *NsArrayUnassignMigStatusFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-
-	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatus{
-		ID:   &IDfield,
-		Name: &Namefield,
+	NsArrayUnassignMigStatusFields = &NsArrayUnassignMigStatusFieldHandles{
+		ID:                      "id",
+		Name:                    "name",
+		DestinationArrays:       "destination_arrays",
+		BytesMigrated:           "bytes_migrated",
+		BytesRemaining:          "bytes_remaining",
+		StartTime:               "start_time",
+		EstimatedCompletionTime: "estimated_completion_time",
 	}
 }
 
+// NsArrayUnassignMigStatus - Data migration status for array being unassigned from its pool.
 type NsArrayUnassignMigStatus struct {
 	// ID - Unique identifier of the array being unassigned.
 	ID *string `json:"id,omitempty"`
@@ -31,4 +33,15 @@ type NsArrayUnassignMigStatus struct {
 	StartTime *int64 `json:"start_time,omitempty"`
 	// EstimatedCompletionTime - Estimated completion time. 0 if unknown.
 	EstimatedCompletionTime *int64 `json:"estimated_completion_time,omitempty"`
+}
+
+// NsArrayUnassignMigStatusFieldHandles provides a string representation for each NsArrayUnassignMigStatus field.
+type NsArrayUnassignMigStatusFieldHandles struct {
+	ID                      string
+	Name                    string
+	DestinationArrays       string
+	BytesMigrated           string
+	BytesRemaining          string
+	StartTime               string
+	EstimatedCompletionTime string
 }

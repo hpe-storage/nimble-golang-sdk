@@ -2,26 +2,28 @@
 
 package nimbleos
 
-// NsThrottle - A single throttle for the partner.
-// Export NsThrottleFields for advance operations like search filter etc.
-var NsThrottleFields *NsThrottle
+// NsThrottleFields provides field names to use in filter parameters, for example.
+var NsThrottleFields *NsThrottleFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	ThrPartnerIdfield := "thr_partner_id"
-	Daysfield := "days"
-
-	NsThrottleFields = &NsThrottle{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		Description:  &Descriptionfield,
-		ThrPartnerId: &ThrPartnerIdfield,
-		Days:         &Daysfield,
+	NsThrottleFields = &NsThrottleFieldHandles{
+		ID:                    "id",
+		Name:                  "name",
+		Description:           "description",
+		CreationTime:          "creation_time",
+		LastModified:          "last_modified",
+		ThrPartnerId:          "thr_partner_id",
+		ThrDayMask:            "thr_day_mask",
+		Days:                  "days",
+		ThrAtTime:             "thr_at_time",
+		ThrUntilTime:          "thr_until_time",
+		ThrBandwidth:          "thr_bandwidth",
+		ThrBandwidthKbps:      "thr_bandwidth_kbps",
+		ThrBandwidthLimitKbps: "thr_bandwidth_limit_kbps",
 	}
 }
 
+// NsThrottle - A single throttle for the partner.
 type NsThrottle struct {
 	// ID - Id of the throttle.
 	ID *string `json:"id,omitempty"`
@@ -49,4 +51,21 @@ type NsThrottle struct {
 	ThrBandwidthKbps *int64 `json:"thr_bandwidth_kbps,omitempty"`
 	// ThrBandwidthLimitKbps - Bandwidth set for the throttle in kilobits per second or -1 to indicate that there is no limit.
 	ThrBandwidthLimitKbps *int64 `json:"thr_bandwidth_limit_kbps,omitempty"`
+}
+
+// NsThrottleFieldHandles provides a string representation for each NsThrottle field.
+type NsThrottleFieldHandles struct {
+	ID                    string
+	Name                  string
+	Description           string
+	CreationTime          string
+	LastModified          string
+	ThrPartnerId          string
+	ThrDayMask            string
+	Days                  string
+	ThrAtTime             string
+	ThrUntilTime          string
+	ThrBandwidth          string
+	ThrBandwidthKbps      string
+	ThrBandwidthLimitKbps string
 }

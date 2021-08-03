@@ -2,28 +2,21 @@
 
 package nimbleos
 
-// NsFcSessionTarget - Information of the Fibre Channel session target.
-// Export NsFcSessionTargetFields for advance operations like search filter etc.
-var NsFcSessionTargetFields *NsFcSessionTarget
+// NsFcSessionTargetFields provides field names to use in filter parameters, for example.
+var NsFcSessionTargetFields *NsFcSessionTargetFieldHandles
 
 func init() {
-	TargetPortArrayNamefield := "target_port_array_name"
-	TargetPortCtrlrNamefield := "target_port_ctrlr_name"
-	TargetPortInterfaceNamefield := "target_port_interface_name"
-	TargetWwnnfield := "target_wwnn"
-	TargetWwpnfield := "target_wwpn"
-	TargetFcidfield := "target_fcid"
-
-	NsFcSessionTargetFields = &NsFcSessionTarget{
-		TargetPortArrayName:     &TargetPortArrayNamefield,
-		TargetPortCtrlrName:     &TargetPortCtrlrNamefield,
-		TargetPortInterfaceName: &TargetPortInterfaceNamefield,
-		TargetWwnn:              &TargetWwnnfield,
-		TargetWwpn:              &TargetWwpnfield,
-		TargetFcid:              &TargetFcidfield,
+	NsFcSessionTargetFields = &NsFcSessionTargetFieldHandles{
+		TargetPortArrayName:     "target_port_array_name",
+		TargetPortCtrlrName:     "target_port_ctrlr_name",
+		TargetPortInterfaceName: "target_port_interface_name",
+		TargetWwnn:              "target_wwnn",
+		TargetWwpn:              "target_wwpn",
+		TargetFcid:              "target_fcid",
 	}
 }
 
+// NsFcSessionTarget - Information of the Fibre Channel session target.
 type NsFcSessionTarget struct {
 	// TargetPortArrayName - Name of the array hosting the Fibre Channel target port.
 	TargetPortArrayName *string `json:"target_port_array_name,omitempty"`
@@ -37,4 +30,14 @@ type NsFcSessionTarget struct {
 	TargetWwpn *string `json:"target_wwpn,omitempty"`
 	// TargetFcid - FCID assigned to the Fibre Channel target port.
 	TargetFcid *string `json:"target_fcid,omitempty"`
+}
+
+// NsFcSessionTargetFieldHandles provides a string representation for each NsFcSessionTarget field.
+type NsFcSessionTargetFieldHandles struct {
+	TargetPortArrayName     string
+	TargetPortCtrlrName     string
+	TargetPortInterfaceName string
+	TargetWwnn              string
+	TargetWwpn              string
+	TargetFcid              string
 }

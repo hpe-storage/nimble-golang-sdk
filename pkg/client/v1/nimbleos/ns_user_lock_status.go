@@ -2,21 +2,26 @@
 
 package nimbleos
 
-// NsUserLockStatus - User account lock status.
-// Export NsUserLockStatusFields for advance operations like search filter etc.
-var NsUserLockStatusFields *NsUserLockStatus
+// NsUserLockStatusFields provides field names to use in filter parameters, for example.
+var NsUserLockStatusFields *NsUserLockStatusFieldHandles
 
 func init() {
-	IDfield := "id"
-
-	NsUserLockStatusFields = &NsUserLockStatus{
-		ID: &IDfield,
+	NsUserLockStatusFields = &NsUserLockStatusFieldHandles{
+		ID:       "id",
+		AuthLock: "auth_lock",
 	}
 }
 
+// NsUserLockStatus - User account lock status.
 type NsUserLockStatus struct {
 	// ID - Unique Object ID.
 	ID *string `json:"id,omitempty"`
 	// AuthLock - User was locked due to failed logins.
 	AuthLock *bool `json:"auth_lock,omitempty"`
+}
+
+// NsUserLockStatusFieldHandles provides a string representation for each NsUserLockStatus field.
+type NsUserLockStatusFieldHandles struct {
+	ID       string
+	AuthLock string
 }

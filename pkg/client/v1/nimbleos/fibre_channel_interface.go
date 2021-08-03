@@ -2,38 +2,34 @@
 
 package nimbleos
 
-// FibreChannelInterface - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
-// Export FibreChannelInterfaceFields for advance operations like search filter etc.
-var FibreChannelInterfaceFields *FibreChannelInterface
+// FibreChannelInterfaceFields provides field names to use in filter parameters, for example.
+var FibreChannelInterfaceFields *FibreChannelInterfaceFieldHandles
 
 func init() {
-	IDfield := "id"
-	ArrayNameOrSerialfield := "array_name_or_serial"
-	ControllerNamefield := "controller_name"
-	FcPortIdfield := "fc_port_id"
-	Namefield := "name"
-	Wwnnfield := "wwnn"
-	Wwpnfield := "wwpn"
-	Peerzonefield := "peerzone"
-	FirmwareVersionfield := "firmware_version"
-	FcPortNamefield := "fc_port_name"
-	BusLocationfield := "bus_location"
-
-	FibreChannelInterfaceFields = &FibreChannelInterface{
-		ID:                &IDfield,
-		ArrayNameOrSerial: &ArrayNameOrSerialfield,
-		ControllerName:    &ControllerNamefield,
-		FcPortId:          &FcPortIdfield,
-		Name:              &Namefield,
-		Wwnn:              &Wwnnfield,
-		Wwpn:              &Wwpnfield,
-		Peerzone:          &Peerzonefield,
-		FirmwareVersion:   &FirmwareVersionfield,
-		FcPortName:        &FcPortNamefield,
-		BusLocation:       &BusLocationfield,
+	FibreChannelInterfaceFields = &FibreChannelInterfaceFieldHandles{
+		ID:                "id",
+		ArrayNameOrSerial: "array_name_or_serial",
+		PartialResponseOk: "partial_response_ok",
+		ControllerName:    "controller_name",
+		FcPortId:          "fc_port_id",
+		Name:              "name",
+		Wwnn:              "wwnn",
+		Wwpn:              "wwpn",
+		Peerzone:          "peerzone",
+		Online:            "online",
+		FirmwareVersion:   "firmware_version",
+		LogicalPortNumber: "logical_port_number",
+		FcPortName:        "fc_port_name",
+		BusLocation:       "bus_location",
+		Slot:              "slot",
+		Orientation:       "orientation",
+		Port:              "port",
+		LinkInfo:          "link_info",
+		FabricInfo:        "fabric_info",
 	}
 }
 
+// FibreChannelInterface - Represent information of specified Fibre Channel interfaces. Fibre Channel interfaces are hosted on Fibre Channel ports to provide data access.
 type FibreChannelInterface struct {
 	// ID - Identifier for the Fibre Channel interface.
 	ID *string `json:"id,omitempty"`
@@ -73,4 +69,27 @@ type FibreChannelInterface struct {
 	LinkInfo *NsFcLinkInfo `json:"link_info,omitempty"`
 	// FabricInfo - Fibre Channel fabric information.
 	FabricInfo *NsFcFabricInfo `json:"fabric_info,omitempty"`
+}
+
+// FibreChannelInterfaceFieldHandles provides a string representation for each FibreChannelInterface field.
+type FibreChannelInterfaceFieldHandles struct {
+	ID                string
+	ArrayNameOrSerial string
+	PartialResponseOk string
+	ControllerName    string
+	FcPortId          string
+	Name              string
+	Wwnn              string
+	Wwpn              string
+	Peerzone          string
+	Online            string
+	FirmwareVersion   string
+	LogicalPortNumber string
+	FcPortName        string
+	BusLocation       string
+	Slot              string
+	Orientation       string
+	Port              string
+	LinkInfo          string
+	FabricInfo        string
 }

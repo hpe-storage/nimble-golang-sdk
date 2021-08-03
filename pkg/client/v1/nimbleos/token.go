@@ -2,38 +2,29 @@
 
 package nimbleos
 
-// Token - Manage user's session information.
-// Export TokenFields for advance operations like search filter etc.
-var TokenFields *Token
+// TokenFields provides field names to use in filter parameters, for example.
+var TokenFields *TokenFieldHandles
 
 func init() {
-	IDfield := "id"
-	SessionTokenfield := "session_token"
-	Usernamefield := "username"
-	Passwordfield := "password"
-	OtpCodefield := "otp_code"
-	AppNamefield := "app_name"
-	SdkNamefield := "sdk_name"
-	SourceIpfield := "source_ip"
-	ServerUuidfield := "server_uuid"
-	GrantTypefield := "grant_type"
-	Assertionfield := "assertion"
-
-	TokenFields = &Token{
-		ID:           &IDfield,
-		SessionToken: &SessionTokenfield,
-		Username:     &Usernamefield,
-		Password:     &Passwordfield,
-		OtpCode:      &OtpCodefield,
-		AppName:      &AppNamefield,
-		SdkName:      &SdkNamefield,
-		SourceIp:     &SourceIpfield,
-		ServerUuid:   &ServerUuidfield,
-		GrantType:    &GrantTypefield,
-		Assertion:    &Assertionfield,
+	TokenFields = &TokenFieldHandles{
+		ID:           "id",
+		SessionToken: "session_token",
+		Username:     "username",
+		Password:     "password",
+		OtpCode:      "otp_code",
+		AppName:      "app_name",
+		SdkName:      "sdk_name",
+		SourceIp:     "source_ip",
+		CreationTime: "creation_time",
+		LastModified: "last_modified",
+		ExpiryTime:   "expiry_time",
+		ServerUuid:   "server_uuid",
+		GrantType:    "grant_type",
+		Assertion:    "assertion",
 	}
 }
 
+// Token - Manage user's session information.
 type Token struct {
 	// ID - Object identifier for the session token.
 	ID *string `json:"id,omitempty"`
@@ -63,4 +54,22 @@ type Token struct {
 	GrantType *string `json:"grant_type,omitempty"`
 	// Assertion - OAuth assertion, currently expecting a JWT token.
 	Assertion *string `json:"assertion,omitempty"`
+}
+
+// TokenFieldHandles provides a string representation for each Token field.
+type TokenFieldHandles struct {
+	ID           string
+	SessionToken string
+	Username     string
+	Password     string
+	OtpCode      string
+	AppName      string
+	SdkName      string
+	SourceIp     string
+	CreationTime string
+	LastModified string
+	ExpiryTime   string
+	ServerUuid   string
+	GrantType    string
+	Assertion    string
 }

@@ -76,7 +76,7 @@ func (svc *SnapshotService) GetSnapshotById(id string) (*nimbleos.Snapshot, erro
 func (svc *SnapshotService) GetSnapshotByName(volName string) ([]*nimbleos.Snapshot, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.SnapshotFields.VolName,
+			FieldName: &nimbleos.SnapshotFields.VolName,
 			Operator:  param.EQUALS.String(),
 			Value:     volName,
 		},
@@ -96,7 +96,7 @@ func (svc *SnapshotService) GetSnapshotByName(volName string) ([]*nimbleos.Snaps
 func (svc *SnapshotService) GetSnapshotBySerialNumber(serialNumber string) (*nimbleos.Snapshot, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.SnapshotFields.SerialNumber,
+			FieldName: &nimbleos.SnapshotFields.SerialNumber,
 			Operator:  param.EQUALS.String(),
 			Value:     serialNumber,
 		},

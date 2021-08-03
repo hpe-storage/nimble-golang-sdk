@@ -2,26 +2,20 @@
 
 package nimbleos
 
-// NsISCSIInitiator - ISCSI initiator.
-// Export NsISCSIInitiatorFields for advance operations like search filter etc.
-var NsISCSIInitiatorFields *NsISCSIInitiator
+// NsISCSIInitiatorFields provides field names to use in filter parameters, for example.
+var NsISCSIInitiatorFields *NsISCSIInitiatorFieldHandles
 
 func init() {
-	IDfield := "id"
-	InitiatorIdfield := "initiator_id"
-	Labelfield := "label"
-	Iqnfield := "iqn"
-	IpAddressfield := "ip_address"
-
-	NsISCSIInitiatorFields = &NsISCSIInitiator{
-		ID:          &IDfield,
-		InitiatorId: &InitiatorIdfield,
-		Label:       &Labelfield,
-		Iqn:         &Iqnfield,
-		IpAddress:   &IpAddressfield,
+	NsISCSIInitiatorFields = &NsISCSIInitiatorFieldHandles{
+		ID:          "id",
+		InitiatorId: "initiator_id",
+		Label:       "label",
+		Iqn:         "iqn",
+		IpAddress:   "ip_address",
 	}
 }
 
+// NsISCSIInitiator - ISCSI initiator.
 type NsISCSIInitiator struct {
 	// ID - Unique identifier of the iSCSI initiator.
 	ID *string `json:"id,omitempty"`
@@ -33,4 +27,13 @@ type NsISCSIInitiator struct {
 	Iqn *string `json:"iqn,omitempty"`
 	// IpAddress - IP address of the iSCSI initiator.
 	IpAddress *string `json:"ip_address,omitempty"`
+}
+
+// NsISCSIInitiatorFieldHandles provides a string representation for each NsISCSIInitiator field.
+type NsISCSIInitiatorFieldHandles struct {
+	ID          string
+	InitiatorId string
+	Label       string
+	Iqn         string
+	IpAddress   string
 }

@@ -2,21 +2,26 @@
 
 package nimbleos
 
-// NsSensorRate - Rate stats for a sensor.
-// Export NsSensorRateFields for advance operations like search filter etc.
-var NsSensorRateFields *NsSensorRate
+// NsSensorRateFields provides field names to use in filter parameters, for example.
+var NsSensorRateFields *NsSensorRateFieldHandles
 
 func init() {
-	Namefield := "name"
-
-	NsSensorRateFields = &NsSensorRate{
-		Name: &Namefield,
+	NsSensorRateFields = &NsSensorRateFieldHandles{
+		Name: "name",
+		Rate: "rate",
 	}
 }
 
+// NsSensorRate - Rate stats for a sensor.
 type NsSensorRate struct {
 	// Name - Sensor name.
 	Name *string `json:"name,omitempty"`
 	// Rate - Sensor value.
 	Rate *float64 `json:"rate,omitempty"`
+}
+
+// NsSensorRateFieldHandles provides a string representation for each NsSensorRate field.
+type NsSensorRateFieldHandles struct {
+	Name string
+	Rate string
 }

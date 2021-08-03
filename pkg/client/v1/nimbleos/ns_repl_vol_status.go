@@ -2,20 +2,21 @@
 
 package nimbleos
 
-// NsReplVolStatus - The replication status of a volume undergoing replication.
-// Export NsReplVolStatusFields for advance operations like search filter etc.
-var NsReplVolStatusFields *NsReplVolStatus
+// NsReplVolStatusFields provides field names to use in filter parameters, for example.
+var NsReplVolStatusFields *NsReplVolStatusFieldHandles
 
 func init() {
-	Namefield := "name"
-	SnapNamefield := "snap_name"
-
-	NsReplVolStatusFields = &NsReplVolStatus{
-		Name:     &Namefield,
-		SnapName: &SnapNamefield,
+	NsReplVolStatusFields = &NsReplVolStatusFieldHandles{
+		Name:           "name",
+		SnapName:       "snap_name",
+		Status:         "status",
+		InternalStatus: "internal_status",
+		ReplBytesDone:  "repl_bytes_done",
+		ReplBytesTotal: "repl_bytes_total",
 	}
 }
 
+// NsReplVolStatus - The replication status of a volume undergoing replication.
 type NsReplVolStatus struct {
 	// Name - Name of the volume being replicated.
 	Name *string `json:"name,omitempty"`
@@ -29,4 +30,14 @@ type NsReplVolStatus struct {
 	ReplBytesDone *int64 `json:"repl_bytes_done,omitempty"`
 	// ReplBytesTotal - Total number of bytes to be transferred.
 	ReplBytesTotal *int64 `json:"repl_bytes_total,omitempty"`
+}
+
+// NsReplVolStatusFieldHandles provides a string representation for each NsReplVolStatus field.
+type NsReplVolStatusFieldHandles struct {
+	Name           string
+	SnapName       string
+	Status         string
+	InternalStatus string
+	ReplBytesDone  string
+	ReplBytesTotal string
 }

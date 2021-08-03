@@ -2,22 +2,20 @@
 
 package nimbleos
 
-// NsSupportPasswordArray - Support password blobs for an array.
-// Export NsSupportPasswordArrayFields for advance operations like search filter etc.
-var NsSupportPasswordArrayFields *NsSupportPasswordArray
+// NsSupportPasswordArrayFields provides field names to use in filter parameters, for example.
+var NsSupportPasswordArrayFields *NsSupportPasswordArrayFieldHandles
 
 func init() {
-	ArrayNamefield := "array_name"
-	ArraySnfield := "array_sn"
-	Modelfield := "model"
-
-	NsSupportPasswordArrayFields = &NsSupportPasswordArray{
-		ArrayName: &ArrayNamefield,
-		ArraySn:   &ArraySnfield,
-		Model:     &Modelfield,
+	NsSupportPasswordArrayFields = &NsSupportPasswordArrayFieldHandles{
+		ArrayName: "array_name",
+		ArraySn:   "array_sn",
+		Model:     "model",
+		BlobCount: "blob_count",
+		BlobList:  "blob_list",
 	}
 }
 
+// NsSupportPasswordArray - Support password blobs for an array.
 type NsSupportPasswordArray struct {
 	// ArrayName - The name of the array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -29,4 +27,13 @@ type NsSupportPasswordArray struct {
 	BlobCount *int64 `json:"blob_count,omitempty"`
 	// BlobList - The blobs stored for the array.
 	BlobList []*NsSupportPasswordObject `json:"blob_list,omitempty"`
+}
+
+// NsSupportPasswordArrayFieldHandles provides a string representation for each NsSupportPasswordArray field.
+type NsSupportPasswordArrayFieldHandles struct {
+	ArrayName string
+	ArraySn   string
+	Model     string
+	BlobCount string
+	BlobList  string
 }

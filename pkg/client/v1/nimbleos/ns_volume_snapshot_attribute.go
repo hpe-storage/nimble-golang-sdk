@@ -2,20 +2,18 @@
 
 package nimbleos
 
-// NsVolumeSnapshotAttribute - Snapshot attributes that could be specified for individual snapshots during snapshot collection creation.
-// Export NsVolumeSnapshotAttributeFields for advance operations like search filter etc.
-var NsVolumeSnapshotAttributeFields *NsVolumeSnapshotAttribute
+// NsVolumeSnapshotAttributeFields provides field names to use in filter parameters, for example.
+var NsVolumeSnapshotAttributeFields *NsVolumeSnapshotAttributeFieldHandles
 
 func init() {
-	VolIdfield := "vol_id"
-	AppUuidfield := "app_uuid"
-
-	NsVolumeSnapshotAttributeFields = &NsVolumeSnapshotAttribute{
-		VolId:   &VolIdfield,
-		AppUuid: &AppUuidfield,
+	NsVolumeSnapshotAttributeFields = &NsVolumeSnapshotAttributeFieldHandles{
+		VolId:    "vol_id",
+		Metadata: "metadata",
+		AppUuid:  "app_uuid",
 	}
 }
 
+// NsVolumeSnapshotAttribute - Snapshot attributes that could be specified for individual snapshots during snapshot collection creation.
 type NsVolumeSnapshotAttribute struct {
 	// VolId - ID of the volume on which snapshot will be created.
 	VolId *string `json:"vol_id,omitempty"`
@@ -23,4 +21,11 @@ type NsVolumeSnapshotAttribute struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 	// AppUuid - Application identifier of snapshot.
 	AppUuid *string `json:"app_uuid,omitempty"`
+}
+
+// NsVolumeSnapshotAttributeFieldHandles provides a string representation for each NsVolumeSnapshotAttribute field.
+type NsVolumeSnapshotAttributeFieldHandles struct {
+	VolId    string
+	Metadata string
+	AppUuid  string
 }

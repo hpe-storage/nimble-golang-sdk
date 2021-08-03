@@ -2,16 +2,22 @@
 
 package nimbleos
 
-// NsDiscoveredGroupListReturn - Detailed discovered group information.
-// Export NsDiscoveredGroupListReturnFields for advance operations like search filter etc.
-var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturn
+// NsDiscoveredGroupListReturnFields provides field names to use in filter parameters, for example.
+var NsDiscoveredGroupListReturnFields *NsDiscoveredGroupListReturnFieldHandles
 
 func init() {
-
-	NsDiscoveredGroupListReturnFields = &NsDiscoveredGroupListReturn{}
+	NsDiscoveredGroupListReturnFields = &NsDiscoveredGroupListReturnFieldHandles{
+		DiscoveredGroupList: "discovered_group_list",
+	}
 }
 
+// NsDiscoveredGroupListReturn - Detailed discovered group information.
 type NsDiscoveredGroupListReturn struct {
 	// DiscoveredGroupList - List of discovered group details.
 	DiscoveredGroupList []*NsDiscoveredGroupInfo `json:"discovered_group_list,omitempty"`
+}
+
+// NsDiscoveredGroupListReturnFieldHandles provides a string representation for each NsDiscoveredGroupListReturn field.
+type NsDiscoveredGroupListReturnFieldHandles struct {
+	DiscoveredGroupList string
 }

@@ -2,28 +2,33 @@
 
 package nimbleos
 
-// Job - Jobs are operations in progress in the system.
-// Export JobFields for advance operations like search filter etc.
-var JobFields *Job
+// JobFields provides field names to use in filter parameters, for example.
+var JobFields *JobFieldHandles
 
 func init() {
-	CurrentPhaseDescriptionfield := "current_phase_description"
-	Descriptionfield := "description"
-	IDfield := "id"
-	Namefield := "name"
-	ObjectIdfield := "object_id"
-	ParentJobIdfield := "parent_job_id"
-
-	JobFields = &Job{
-		CurrentPhaseDescription: &CurrentPhaseDescriptionfield,
-		Description:             &Descriptionfield,
-		ID:                      &IDfield,
-		Name:                    &Namefield,
-		ObjectId:                &ObjectIdfield,
-		ParentJobId:             &ParentJobIdfield,
+	JobFields = &JobFieldHandles{
+		CompletionTime:          "completion_time",
+		CreationTime:            "creation_time",
+		CurrentPhase:            "current_phase",
+		CurrentPhaseDescription: "current_phase_description",
+		Description:             "description",
+		ID:                      "id",
+		Name:                    "name",
+		LastModified:            "last_modified",
+		ObjectId:                "object_id",
+		OpType:                  "op_type",
+		Type:                    "type",
+		ParentJobId:             "parent_job_id",
+		PercentComplete:         "percent_complete",
+		Request:                 "request",
+		Response:                "response",
+		State:                   "state",
+		Result:                  "result",
+		TotalPhases:             "total_phases",
 	}
 }
 
+// Job - Jobs are operations in progress in the system.
 type Job struct {
 	// CompletionTime - Completion time of the job.
 	CompletionTime *int64 `json:"completion_time,omitempty"`
@@ -61,4 +66,26 @@ type Job struct {
 	Result *NsJobResult `json:"result,omitempty"`
 	// TotalPhases - Total number of phases of the job.
 	TotalPhases *int64 `json:"total_phases,omitempty"`
+}
+
+// JobFieldHandles provides a string representation for each Job field.
+type JobFieldHandles struct {
+	CompletionTime          string
+	CreationTime            string
+	CurrentPhase            string
+	CurrentPhaseDescription string
+	Description             string
+	ID                      string
+	Name                    string
+	LastModified            string
+	ObjectId                string
+	OpType                  string
+	Type                    string
+	ParentJobId             string
+	PercentComplete         string
+	Request                 string
+	Response                string
+	State                   string
+	Result                  string
+	TotalPhases             string
 }

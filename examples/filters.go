@@ -9,16 +9,17 @@ import (
 )
 
 func main() {
-
 	// login to Array, get groupService instance
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
-		service.WithTenantUser("xxx"),
+		service.WithUser("xxx"),
 		service.WithPassword("xxx"))
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 	}
+
 	defer groupService.LogoutService()
+
 	// set debug
 	groupService.SetDebug()
 
@@ -27,12 +28,14 @@ func main() {
 
 	// init param
 	sfilter := &param.GetParams{}
+
 	// set search filter
 	f := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}
+
 	// apply the filter
 	sfilter.WithSearchFilter(f)
 

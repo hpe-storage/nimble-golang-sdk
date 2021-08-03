@@ -2,24 +2,21 @@
 
 package nimbleos
 
-// NsShelfCtrlrAttrSet - A shelf logical controller attributes.
-// Export NsShelfCtrlrAttrSetFields for advance operations like search filter etc.
-var NsShelfCtrlrAttrSetFields *NsShelfCtrlrAttrSet
+// NsShelfCtrlrAttrSetFields provides field names to use in filter parameters, for example.
+var NsShelfCtrlrAttrSetFields *NsShelfCtrlrAttrSetFieldHandles
 
 func init() {
-	SessionSerialfield := "session_serial"
-	CachedSerialfield := "cached_serial"
-	DiskSerialsfield := "disk_serials"
-	DiskTypesfield := "disk_types"
-
-	NsShelfCtrlrAttrSetFields = &NsShelfCtrlrAttrSet{
-		SessionSerial: &SessionSerialfield,
-		CachedSerial:  &CachedSerialfield,
-		DiskSerials:   &DiskSerialsfield,
-		DiskTypes:     &DiskTypesfield,
+	NsShelfCtrlrAttrSetFields = &NsShelfCtrlrAttrSetFieldHandles{
+		SessionSerial: "session_serial",
+		CachedSerial:  "cached_serial",
+		HwState:       "hw_state",
+		SwType:        "sw_type",
+		DiskSerials:   "disk_serials",
+		DiskTypes:     "disk_types",
 	}
 }
 
+// NsShelfCtrlrAttrSet - A shelf logical controller attributes.
 type NsShelfCtrlrAttrSet struct {
 	// SessionSerial - Session serial.
 	SessionSerial *string `json:"session_serial,omitempty"`
@@ -33,4 +30,14 @@ type NsShelfCtrlrAttrSet struct {
 	DiskSerials *string `json:"disk_serials,omitempty"`
 	// DiskTypes - Comma separated list of disk types (H for HDD, S for SSD).
 	DiskTypes *string `json:"disk_types,omitempty"`
+}
+
+// NsShelfCtrlrAttrSetFieldHandles provides a string representation for each NsShelfCtrlrAttrSet field.
+type NsShelfCtrlrAttrSetFieldHandles struct {
+	SessionSerial string
+	CachedSerial  string
+	HwState       string
+	SwType        string
+	DiskSerials   string
+	DiskTypes     string
 }

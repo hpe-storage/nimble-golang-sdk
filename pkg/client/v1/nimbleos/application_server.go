@@ -2,28 +2,26 @@
 
 package nimbleos
 
-// ApplicationServer - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
-// Export ApplicationServerFields for advance operations like search filter etc.
-var ApplicationServerFields *ApplicationServer
+// ApplicationServerFields provides field names to use in filter parameters, for example.
+var ApplicationServerFields *ApplicationServerFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Hostnamefield := "hostname"
-	Usernamefield := "username"
-	Descriptionfield := "description"
-	Passwordfield := "password"
-
-	ApplicationServerFields = &ApplicationServer{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Hostname:    &Hostnamefield,
-		Username:    &Usernamefield,
-		Description: &Descriptionfield,
-		Password:    &Passwordfield,
+	ApplicationServerFields = &ApplicationServerFieldHandles{
+		ID:           "id",
+		Name:         "name",
+		Hostname:     "hostname",
+		Port:         "port",
+		Username:     "username",
+		Description:  "description",
+		Password:     "password",
+		ServerType:   "server_type",
+		Metadata:     "metadata",
+		CreationTime: "creation_time",
+		LastModified: "last_modified",
 	}
 }
 
+// ApplicationServer - An application server is an external agent that collaborates with an array to manage storage resources; for example, Volume Shadow Copy Service (VSS) or VMware.
 type ApplicationServer struct {
 	// ID - Identifier for the application server.
 	ID *string `json:"id,omitempty"`
@@ -47,4 +45,19 @@ type ApplicationServer struct {
 	CreationTime *int64 `json:"creation_time,omitempty"`
 	// LastModified - Time when this application server was last modified.
 	LastModified *int64 `json:"last_modified,omitempty"`
+}
+
+// ApplicationServerFieldHandles provides a string representation for each ApplicationServer field.
+type ApplicationServerFieldHandles struct {
+	ID           string
+	Name         string
+	Hostname     string
+	Port         string
+	Username     string
+	Description  string
+	Password     string
+	ServerType   string
+	Metadata     string
+	CreationTime string
+	LastModified string
 }

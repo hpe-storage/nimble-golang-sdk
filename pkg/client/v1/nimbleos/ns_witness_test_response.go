@@ -2,22 +2,19 @@
 
 package nimbleos
 
-// NsWitnessTestResponse - Results of witness connection test.
-// Export NsWitnessTestResponseFields for advance operations like search filter etc.
-var NsWitnessTestResponseFields *NsWitnessTestResponse
+// NsWitnessTestResponseFields provides field names to use in filter parameters, for example.
+var NsWitnessTestResponseFields *NsWitnessTestResponseFieldHandles
 
 func init() {
-	ArrayNamefield := "array_name"
-	WitnessConnectivityStatefield := "witness_connectivity_state"
-	WitnessConnectivityMessagefield := "witness_connectivity_message"
-
-	NsWitnessTestResponseFields = &NsWitnessTestResponse{
-		ArrayName:                  &ArrayNamefield,
-		WitnessConnectivityState:   &WitnessConnectivityStatefield,
-		WitnessConnectivityMessage: &WitnessConnectivityMessagefield,
+	NsWitnessTestResponseFields = &NsWitnessTestResponseFieldHandles{
+		ArrayName:                  "array_name",
+		Role:                       "role",
+		WitnessConnectivityState:   "witness_connectivity_state",
+		WitnessConnectivityMessage: "witness_connectivity_message",
 	}
 }
 
+// NsWitnessTestResponse - Results of witness connection test.
 type NsWitnessTestResponse struct {
 	// ArrayName - Name of an array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -27,4 +24,12 @@ type NsWitnessTestResponse struct {
 	WitnessConnectivityState *string `json:"witness_connectivity_state,omitempty"`
 	// WitnessConnectivityMessage - Reachability message of the witness.
 	WitnessConnectivityMessage *string `json:"witness_connectivity_message,omitempty"`
+}
+
+// NsWitnessTestResponseFieldHandles provides a string representation for each NsWitnessTestResponse field.
+type NsWitnessTestResponseFieldHandles struct {
+	ArrayName                  string
+	Role                       string
+	WitnessConnectivityState   string
+	WitnessConnectivityMessage string
 }

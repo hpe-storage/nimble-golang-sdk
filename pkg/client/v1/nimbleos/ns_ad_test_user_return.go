@@ -2,22 +2,21 @@
 
 package nimbleos
 
-// NsADTestUserReturn - Active Directory user details.
-// Export NsADTestUserReturnFields for advance operations like search filter etc.
-var NsADTestUserReturnFields *NsADTestUserReturn
+// NsADTestUserReturnFields provides field names to use in filter parameters, for example.
+var NsADTestUserReturnFields *NsADTestUserReturnFieldHandles
 
 func init() {
-	Usernamefield := "username"
-	PrimaryGroupNamefield := "primary_group_name"
-	PrimaryGroupIdfield := "primary_group_id"
-
-	NsADTestUserReturnFields = &NsADTestUserReturn{
-		Username:         &Usernamefield,
-		PrimaryGroupName: &PrimaryGroupNamefield,
-		PrimaryGroupId:   &PrimaryGroupIdfield,
+	NsADTestUserReturnFields = &NsADTestUserReturnFieldHandles{
+		Username:         "username",
+		PrimaryGroupName: "primary_group_name",
+		PrimaryGroupId:   "primary_group_id",
+		GroupCount:       "group_count",
+		Groups:           "groups",
+		Role:             "role",
 	}
 }
 
+// NsADTestUserReturn - Active Directory user details.
 type NsADTestUserReturn struct {
 	// Username - Name of the Active Directory user.
 	Username *string `json:"username,omitempty"`
@@ -31,4 +30,14 @@ type NsADTestUserReturn struct {
 	Groups []*string `json:"groups,omitempty"`
 	// Role - The role the user belongs to.
 	Role *NsUserRoles `json:"role,omitempty"`
+}
+
+// NsADTestUserReturnFieldHandles provides a string representation for each NsADTestUserReturn field.
+type NsADTestUserReturnFieldHandles struct {
+	Username         string
+	PrimaryGroupName string
+	PrimaryGroupId   string
+	GroupCount       string
+	Groups           string
+	Role             string
 }

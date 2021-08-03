@@ -2,20 +2,32 @@
 
 package nimbleos
 
-// NsShelfCtrlr - A shelf controller information.
-// Export NsShelfCtrlrFields for advance operations like search filter etc.
-var NsShelfCtrlrFields *NsShelfCtrlr
+// NsShelfCtrlrFields provides field names to use in filter parameters, for example.
+var NsShelfCtrlrFields *NsShelfCtrlrFieldHandles
 
 func init() {
-	ExpSasAddrfield := "exp_sas_addr"
-	CachedSerialfield := "cached_serial"
-
-	NsShelfCtrlrFields = &NsShelfCtrlr{
-		ExpSasAddr:   &ExpSasAddrfield,
-		CachedSerial: &CachedSerialfield,
+	NsShelfCtrlrFields = &NsShelfCtrlrFieldHandles{
+		ExpSasAddr:         "exp_sas_addr",
+		CtrlrSide:          "ctrlr_side",
+		EncLocId:           "enc_loc_id",
+		CachedSerial:       "cached_serial",
+		CtrlrSensorLastRun: "ctrlr_sensor_last_run",
+		HwMshipFailure:     "hw_mship_failure",
+		HwMasterState:      "hw_master_state",
+		SwMasterState:      "sw_master_state",
+		CtrlrSensors:       "ctrlr_sensors",
+		FanOverallStatus:   "fan_overall_status",
+		TempOverallStatus:  "temp_overall_status",
+		PsuOverallStatus:   "psu_overall_status",
+		CtrlrHwModel:       "ctrlr_hw_model",
+		PortInfo:           "port_info",
+		ExtraAttributes:    "extra_attributes",
+		CtrlrAttrsetList:   "ctrlr_attrset_list",
+		IDentifyStatus:     "identify_status",
 	}
 }
 
+// NsShelfCtrlr - A shelf controller information.
 type NsShelfCtrlr struct {
 	// ExpSasAddr - Expander SAS address.
 	ExpSasAddr *string `json:"exp_sas_addr,omitempty"`
@@ -51,4 +63,25 @@ type NsShelfCtrlr struct {
 	CtrlrAttrsetList []*NsShelfCtrlrAttrSet `json:"ctrlr_attrset_list,omitempty"`
 	// IDentifyStatus - Status of chassis identifier.
 	IDentifyStatus *bool `json:"identify_status,omitempty"`
+}
+
+// NsShelfCtrlrFieldHandles provides a string representation for each NsShelfCtrlr field.
+type NsShelfCtrlrFieldHandles struct {
+	ExpSasAddr         string
+	CtrlrSide          string
+	EncLocId           string
+	CachedSerial       string
+	CtrlrSensorLastRun string
+	HwMshipFailure     string
+	HwMasterState      string
+	SwMasterState      string
+	CtrlrSensors       string
+	FanOverallStatus   string
+	TempOverallStatus  string
+	PsuOverallStatus   string
+	CtrlrHwModel       string
+	PortInfo           string
+	ExtraAttributes    string
+	CtrlrAttrsetList   string
+	IDentifyStatus     string
 }

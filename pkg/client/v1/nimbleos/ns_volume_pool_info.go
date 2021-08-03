@@ -2,24 +2,19 @@
 
 package nimbleos
 
-// NsVolumePoolInfo - Volume information along with the pool to which it belongs to.
-// Export NsVolumePoolInfoFields for advance operations like search filter etc.
-var NsVolumePoolInfoFields *NsVolumePoolInfo
+// NsVolumePoolInfoFields provides field names to use in filter parameters, for example.
+var NsVolumePoolInfoFields *NsVolumePoolInfoFieldHandles
 
 func init() {
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	PoolIdfield := "pool_id"
-	PoolNamefield := "pool_name"
-
-	NsVolumePoolInfoFields = &NsVolumePoolInfo{
-		VolId:    &VolIdfield,
-		VolName:  &VolNamefield,
-		PoolId:   &PoolIdfield,
-		PoolName: &PoolNamefield,
+	NsVolumePoolInfoFields = &NsVolumePoolInfoFieldHandles{
+		VolId:    "vol_id",
+		VolName:  "vol_name",
+		PoolId:   "pool_id",
+		PoolName: "pool_name",
 	}
 }
 
+// NsVolumePoolInfo - Volume information along with the pool to which it belongs to.
 type NsVolumePoolInfo struct {
 	// VolId - ID of the volume.
 	VolId *string `json:"vol_id,omitempty"`
@@ -29,4 +24,12 @@ type NsVolumePoolInfo struct {
 	PoolId *string `json:"pool_id,omitempty"`
 	// PoolName - Name of the pool to which volume belongs to.
 	PoolName *string `json:"pool_name,omitempty"`
+}
+
+// NsVolumePoolInfoFieldHandles provides a string representation for each NsVolumePoolInfo field.
+type NsVolumePoolInfoFieldHandles struct {
+	VolId    string
+	VolName  string
+	PoolId   string
+	PoolName string
 }

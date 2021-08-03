@@ -2,30 +2,33 @@
 
 package nimbleos
 
-// InitiatorGroup - Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
-// Export InitiatorGroupFields for advance operations like search filter etc.
-var InitiatorGroupFields *InitiatorGroup
+// InitiatorGroupFields provides field names to use in filter parameters, for example.
+var InitiatorGroupFields *InitiatorGroupFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	HostTypefield := "host_type"
-	AppUuidfield := "app_uuid"
-
-	InitiatorGroupFields = &InitiatorGroup{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
-		HostType:    &HostTypefield,
-		AppUuid:     &AppUuidfield,
+	InitiatorGroupFields = &InitiatorGroupFieldHandles{
+		ID:              "id",
+		Name:            "name",
+		FullName:        "full_name",
+		SearchName:      "search_name",
+		Description:     "description",
+		AccessProtocol:  "access_protocol",
+		HostType:        "host_type",
+		FcTdzPorts:      "fc_tdz_ports",
+		TargetSubnets:   "target_subnets",
+		IscsiInitiators: "iscsi_initiators",
+		FcInitiators:    "fc_initiators",
+		CreationTime:    "creation_time",
+		LastModified:    "last_modified",
+		AppUuid:         "app_uuid",
+		VolumeCount:     "volume_count",
+		VolumeList:      "volume_list",
+		NumConnections:  "num_connections",
+		Metadata:        "metadata",
 	}
 }
 
+// InitiatorGroup - Manage initiator groups for initiator authentication. An initiator group is a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 type InitiatorGroup struct {
 	// ID - Identifier for initiator group.
 	ID *string `json:"id,omitempty"`
@@ -63,4 +66,26 @@ type InitiatorGroup struct {
 	NumConnections *int64 `json:"num_connections,omitempty"`
 	// Metadata - Key-value pairs that augment an initiator group's attributes.
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
+}
+
+// InitiatorGroupFieldHandles provides a string representation for each InitiatorGroup field.
+type InitiatorGroupFieldHandles struct {
+	ID              string
+	Name            string
+	FullName        string
+	SearchName      string
+	Description     string
+	AccessProtocol  string
+	HostType        string
+	FcTdzPorts      string
+	TargetSubnets   string
+	IscsiInitiators string
+	FcInitiators    string
+	CreationTime    string
+	LastModified    string
+	AppUuid         string
+	VolumeCount     string
+	VolumeList      string
+	NumConnections  string
+	Metadata        string
 }

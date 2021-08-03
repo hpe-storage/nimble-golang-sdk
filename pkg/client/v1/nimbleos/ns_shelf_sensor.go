@@ -2,22 +2,22 @@
 
 package nimbleos
 
-// NsShelfSensor - A shelf sensor data.
-// Export NsShelfSensorFields for advance operations like search filter etc.
-var NsShelfSensorFields *NsShelfSensor
+// NsShelfSensorFields provides field names to use in filter parameters, for example.
+var NsShelfSensorFields *NsShelfSensorFieldHandles
 
 func init() {
-	Namefield := "name"
-	DisplayNamefield := "display_name"
-	Locationfield := "location"
-
-	NsShelfSensorFields = &NsShelfSensor{
-		Name:        &Namefield,
-		DisplayName: &DisplayNamefield,
-		Location:    &Locationfield,
+	NsShelfSensorFields = &NsShelfSensorFieldHandles{
+		Type:        "type",
+		Name:        "name",
+		DisplayName: "display_name",
+		Location:    "location",
+		Cid:         "cid",
+		Value:       "value",
+		Status:      "status",
 	}
 }
 
+// NsShelfSensor - A shelf sensor data.
 type NsShelfSensor struct {
 	// Type - Type of the sensor.
 	Type *NsShelfSensorType `json:"type,omitempty"`
@@ -33,4 +33,15 @@ type NsShelfSensor struct {
 	Value *int64 `json:"value,omitempty"`
 	// Status - Sensor status.
 	Status *NsShelfSensorState `json:"status,omitempty"`
+}
+
+// NsShelfSensorFieldHandles provides a string representation for each NsShelfSensor field.
+type NsShelfSensorFieldHandles struct {
+	Type        string
+	Name        string
+	DisplayName string
+	Location    string
+	Cid         string
+	Value       string
+	Status      string
 }

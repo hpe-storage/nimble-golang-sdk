@@ -2,32 +2,29 @@
 
 package nimbleos
 
-// Event - View events.
-// Export EventFields for advance operations like search filter etc.
-var EventFields *Event
+// EventFields provides field names to use in filter parameters, for example.
+var EventFields *EventFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Scopefield := "scope"
-	Targetfield := "target"
-	Summaryfield := "summary"
-	Activityfield := "activity"
-	AlarmIdfield := "alarm_id"
-	TenantIdfield := "tenant_id"
-
-	EventFields = &Event{
-		ID:       &IDfield,
-		Name:     &Namefield,
-		Scope:    &Scopefield,
-		Target:   &Targetfield,
-		Summary:  &Summaryfield,
-		Activity: &Activityfield,
-		AlarmId:  &AlarmIdfield,
-		TenantId: &TenantIdfield,
+	EventFields = &EventFieldHandles{
+		ID:         "id",
+		Type:       "type",
+		Name:       "name",
+		Scope:      "scope",
+		Target:     "target",
+		TargetType: "target_type",
+		Timestamp:  "timestamp",
+		Category:   "category",
+		Severity:   "severity",
+		Summary:    "summary",
+		Activity:   "activity",
+		AlarmId:    "alarm_id",
+		Params:     "params",
+		TenantId:   "tenant_id",
 	}
 }
 
+// Event - View events.
 type Event struct {
 	// ID - Identifier for the event record.
 	ID *string `json:"id,omitempty"`
@@ -57,4 +54,22 @@ type Event struct {
 	Params []*NsKeyValue `json:"params,omitempty"`
 	// TenantId - Tenant ID of the event. This is used to determine what tenant context the event belongs to.
 	TenantId *string `json:"tenant_id,omitempty"`
+}
+
+// EventFieldHandles provides a string representation for each Event field.
+type EventFieldHandles struct {
+	ID         string
+	Type       string
+	Name       string
+	Scope      string
+	Target     string
+	TargetType string
+	Timestamp  string
+	Category   string
+	Severity   string
+	Summary    string
+	Activity   string
+	AlarmId    string
+	Params     string
+	TenantId   string
 }

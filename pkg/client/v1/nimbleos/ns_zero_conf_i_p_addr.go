@@ -2,22 +2,18 @@
 
 package nimbleos
 
-// NsZeroConfIPAddr - Zero Conf of array.
-// Export NsZeroConfIPAddrFields for advance operations like search filter etc.
-var NsZeroConfIPAddrFields *NsZeroConfIPAddr
+// NsZeroConfIPAddrFields provides field names to use in filter parameters, for example.
+var NsZeroConfIPAddrFields *NsZeroConfIPAddrFieldHandles
 
 func init() {
-	Nicfield := "nic"
-	LocalIpaddrfield := "local_ipaddr"
-	RemoteIpaddrfield := "remote_ipaddr"
-
-	NsZeroConfIPAddrFields = &NsZeroConfIPAddr{
-		Nic:          &Nicfield,
-		LocalIpaddr:  &LocalIpaddrfield,
-		RemoteIpaddr: &RemoteIpaddrfield,
+	NsZeroConfIPAddrFields = &NsZeroConfIPAddrFieldHandles{
+		Nic:          "nic",
+		LocalIpaddr:  "local_ipaddr",
+		RemoteIpaddr: "remote_ipaddr",
 	}
 }
 
+// NsZeroConfIPAddr - Zero Conf of array.
 type NsZeroConfIPAddr struct {
 	// Nic - Nic of array.
 	Nic *string `json:"nic,omitempty"`
@@ -25,4 +21,11 @@ type NsZeroConfIPAddr struct {
 	LocalIpaddr *string `json:"local_ipaddr,omitempty"`
 	// RemoteIpaddr - Remote IP address of array.
 	RemoteIpaddr *string `json:"remote_ipaddr,omitempty"`
+}
+
+// NsZeroConfIPAddrFieldHandles provides a string representation for each NsZeroConfIPAddr field.
+type NsZeroConfIPAddrFieldHandles struct {
+	Nic          string
+	LocalIpaddr  string
+	RemoteIpaddr string
 }

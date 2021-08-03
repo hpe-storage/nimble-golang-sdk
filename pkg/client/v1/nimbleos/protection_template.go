@@ -2,44 +2,35 @@
 
 package nimbleos
 
-// ProtectionTemplate - Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom protection templates as needed.
-// Export ProtectionTemplateFields for advance operations like search filter etc.
-var ProtectionTemplateFields *ProtectionTemplate
+// ProtectionTemplateFields provides field names to use in filter parameters, for example.
+var ProtectionTemplateFields *ProtectionTemplateFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	AppServerfield := "app_server"
-	AppClusterNamefield := "app_cluster_name"
-	AppServiceNamefield := "app_service_name"
-	VcenterHostnamefield := "vcenter_hostname"
-	VcenterUsernamefield := "vcenter_username"
-	VcenterPasswordfield := "vcenter_password"
-	AgentHostnamefield := "agent_hostname"
-	AgentUsernamefield := "agent_username"
-	AgentPasswordfield := "agent_password"
-
-	ProtectionTemplateFields = &ProtectionTemplate{
-		ID:              &IDfield,
-		Name:            &Namefield,
-		FullName:        &FullNamefield,
-		SearchName:      &SearchNamefield,
-		Description:     &Descriptionfield,
-		AppServer:       &AppServerfield,
-		AppClusterName:  &AppClusterNamefield,
-		AppServiceName:  &AppServiceNamefield,
-		VcenterHostname: &VcenterHostnamefield,
-		VcenterUsername: &VcenterUsernamefield,
-		VcenterPassword: &VcenterPasswordfield,
-		AgentHostname:   &AgentHostnamefield,
-		AgentUsername:   &AgentUsernamefield,
-		AgentPassword:   &AgentPasswordfield,
+	ProtectionTemplateFields = &ProtectionTemplateFieldHandles{
+		ID:              "id",
+		Name:            "name",
+		FullName:        "full_name",
+		SearchName:      "search_name",
+		Description:     "description",
+		ReplPriority:    "repl_priority",
+		AppSync:         "app_sync",
+		AppServer:       "app_server",
+		AppId:           "app_id",
+		AppClusterName:  "app_cluster_name",
+		AppServiceName:  "app_service_name",
+		VcenterHostname: "vcenter_hostname",
+		VcenterUsername: "vcenter_username",
+		VcenterPassword: "vcenter_password",
+		AgentHostname:   "agent_hostname",
+		AgentUsername:   "agent_username",
+		AgentPassword:   "agent_password",
+		CreationTime:    "creation_time",
+		LastModified:    "last_modified",
+		ScheduleList:    "schedule_list",
 	}
 }
 
+// ProtectionTemplate - Manage protection templates. Protection templates are sets of snapshot schedules, replication schedules, and retention limits that can be used to prefill the protection information when creating new volume collections. A volume collection, once created, is not affected by edits to the protection template that was used to create it. All the volumes assigned to a volume collection use the same settings. You cannot edit or delete the predefined protection templates provided by storage array, but you can create custom protection templates as needed.
 type ProtectionTemplate struct {
 	// ID - Identifier for protection template.
 	ID *string `json:"id,omitempty"`
@@ -81,4 +72,28 @@ type ProtectionTemplate struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// ScheduleList - List of schedules for this protection policy.
 	ScheduleList []*NsSchedule `json:"schedule_list,omitempty"`
+}
+
+// ProtectionTemplateFieldHandles provides a string representation for each ProtectionTemplate field.
+type ProtectionTemplateFieldHandles struct {
+	ID              string
+	Name            string
+	FullName        string
+	SearchName      string
+	Description     string
+	ReplPriority    string
+	AppSync         string
+	AppServer       string
+	AppId           string
+	AppClusterName  string
+	AppServiceName  string
+	VcenterHostname string
+	VcenterUsername string
+	VcenterPassword string
+	AgentHostname   string
+	AgentUsername   string
+	AgentPassword   string
+	CreationTime    string
+	LastModified    string
+	ScheduleList    string
 }

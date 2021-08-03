@@ -2,38 +2,37 @@
 
 package nimbleos
 
-// User - Represents users configured to manage the system.
-// Export UserFields for advance operations like search filter etc.
-var UserFields *User
+// UserFields provides field names to use in filter parameters, for example.
+var UserFields *UserFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	RoleIdfield := "role_id"
-	Passwordfield := "password"
-	AuthPasswordfield := "auth_password"
-	FullNamefield := "full_name"
-	EmailAddrfield := "email_addr"
-	TenantIdfield := "tenant_id"
-	TenantKeyfield := "tenant_key"
-
-	UserFields = &User{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		SearchName:   &SearchNamefield,
-		Description:  &Descriptionfield,
-		RoleId:       &RoleIdfield,
-		Password:     &Passwordfield,
-		AuthPassword: &AuthPasswordfield,
-		FullName:     &FullNamefield,
-		EmailAddr:    &EmailAddrfield,
-		TenantId:     &TenantIdfield,
-		TenantKey:    &TenantKeyfield,
+	UserFields = &UserFieldHandles{
+		ID:                "id",
+		Name:              "name",
+		SearchName:        "search_name",
+		Description:       "description",
+		RoleId:            "role_id",
+		Role:              "role",
+		Password:          "password",
+		AuthPassword:      "auth_password",
+		OtpType:           "otp_type",
+		OtpReset:          "otp_reset",
+		InactivityTimeout: "inactivity_timeout",
+		CreationTime:      "creation_time",
+		LastModified:      "last_modified",
+		FullName:          "full_name",
+		EmailAddr:         "email_addr",
+		TenantId:          "tenant_id",
+		TenantKey:         "tenant_key",
+		Disabled:          "disabled",
+		AuthLock:          "auth_lock",
+		LastLogin:         "last_login",
+		LastLogout:        "last_logout",
+		LoggedIn:          "logged_in",
 	}
 }
 
+// User - Represents users configured to manage the system.
 type User struct {
 	// ID - Identifier for the user.
 	ID *string `json:"id,omitempty"`
@@ -79,4 +78,30 @@ type User struct {
 	LastLogout *int64 `json:"last_logout,omitempty"`
 	// LoggedIn - User is currently logged in.
 	LoggedIn *bool `json:"logged_in,omitempty"`
+}
+
+// UserFieldHandles provides a string representation for each User field.
+type UserFieldHandles struct {
+	ID                string
+	Name              string
+	SearchName        string
+	Description       string
+	RoleId            string
+	Role              string
+	Password          string
+	AuthPassword      string
+	OtpType           string
+	OtpReset          string
+	InactivityTimeout string
+	CreationTime      string
+	LastModified      string
+	FullName          string
+	EmailAddr         string
+	TenantId          string
+	TenantKey         string
+	Disabled          string
+	AuthLock          string
+	LastLogin         string
+	LastLogout        string
+	LoggedIn          string
 }

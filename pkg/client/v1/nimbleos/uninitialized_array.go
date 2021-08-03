@@ -2,30 +2,26 @@
 
 package nimbleos
 
-// UninitializedArray - Lists discovered arrays that are not members of any group and are in the same subnet.
-// Export UninitializedArrayFields for advance operations like search filter etc.
-var UninitializedArrayFields *UninitializedArray
+// UninitializedArrayFields provides field names to use in filter parameters, for example.
+var UninitializedArrayFields *UninitializedArrayFieldHandles
 
 func init() {
-	IDfield := "id"
-	Serialfield := "serial"
-	ArrayNamefield := "array_name"
-	Modelfield := "model"
-	ModelStrfield := "model_str"
-	Versionfield := "version"
-	IpAddressfield := "ip_address"
-
-	UninitializedArrayFields = &UninitializedArray{
-		ID:        &IDfield,
-		Serial:    &Serialfield,
-		ArrayName: &ArrayNamefield,
-		Model:     &Modelfield,
-		ModelStr:  &ModelStrfield,
-		Version:   &Versionfield,
-		IpAddress: &IpAddressfield,
+	UninitializedArrayFields = &UninitializedArrayFieldHandles{
+		ID:                 "id",
+		Serial:             "serial",
+		ArrayName:          "array_name",
+		Model:              "model",
+		ModelStr:           "model_str",
+		Version:            "version",
+		IpAddress:          "ip_address",
+		ZconfIpaddrs:       "zconf_ipaddrs",
+		CountOfFcPorts:     "count_of_fc_ports",
+		AllFlash:           "all_flash",
+		DedupeConfigurable: "dedupe_configurable",
 	}
 }
 
+// UninitializedArray - Lists discovered arrays that are not members of any group and are in the same subnet.
 type UninitializedArray struct {
 	// ID - Identifier for the interface.
 	ID *string `json:"id,omitempty"`
@@ -49,4 +45,19 @@ type UninitializedArray struct {
 	AllFlash *bool `json:"all_flash,omitempty"`
 	// DedupeConfigurable - True if it is a hybrid array that is capable of updating data deduplication setting, False otherwise.
 	DedupeConfigurable *bool `json:"dedupe_configurable,omitempty"`
+}
+
+// UninitializedArrayFieldHandles provides a string representation for each UninitializedArray field.
+type UninitializedArrayFieldHandles struct {
+	ID                 string
+	Serial             string
+	ArrayName          string
+	Model              string
+	ModelStr           string
+	Version            string
+	IpAddress          string
+	ZconfIpaddrs       string
+	CountOfFcPorts     string
+	AllFlash           string
+	DedupeConfigurable string
 }

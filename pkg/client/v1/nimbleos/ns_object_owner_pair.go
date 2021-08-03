@@ -2,22 +2,18 @@
 
 package nimbleos
 
-// NsObjectOwnerPair - Objects and their owners.
-// Export NsObjectOwnerPairFields for advance operations like search filter etc.
-var NsObjectOwnerPairFields *NsObjectOwnerPair
+// NsObjectOwnerPairFields provides field names to use in filter parameters, for example.
+var NsObjectOwnerPairFields *NsObjectOwnerPairFieldHandles
 
 func init() {
-	ObjNamefield := "obj_name"
-	SrcOwnerfield := "src_owner"
-	DstOwnerfield := "dst_owner"
-
-	NsObjectOwnerPairFields = &NsObjectOwnerPair{
-		ObjName:  &ObjNamefield,
-		SrcOwner: &SrcOwnerfield,
-		DstOwner: &DstOwnerfield,
+	NsObjectOwnerPairFields = &NsObjectOwnerPairFieldHandles{
+		ObjName:  "obj_name",
+		SrcOwner: "src_owner",
+		DstOwner: "dst_owner",
 	}
 }
 
+// NsObjectOwnerPair - Objects and their owners.
 type NsObjectOwnerPair struct {
 	// ObjName - Object name. Same on source and destination.
 	ObjName *string `json:"obj_name,omitempty"`
@@ -25,4 +21,11 @@ type NsObjectOwnerPair struct {
 	SrcOwner *string `json:"src_owner,omitempty"`
 	// DstOwner - Name of the owner on the destination group.
 	DstOwner *string `json:"dst_owner,omitempty"`
+}
+
+// NsObjectOwnerPairFieldHandles provides a string representation for each NsObjectOwnerPair field.
+type NsObjectOwnerPairFieldHandles struct {
+	ObjName  string
+	SrcOwner string
+	DstOwner string
 }

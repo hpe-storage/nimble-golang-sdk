@@ -2,26 +2,26 @@
 
 package nimbleos
 
-// FibreChannelPort - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
-// Export FibreChannelPortFields for advance operations like search filter etc.
-var FibreChannelPortFields *FibreChannelPort
+// FibreChannelPortFields provides field names to use in filter parameters, for example.
+var FibreChannelPortFields *FibreChannelPortFieldHandles
 
 func init() {
-	IDfield := "id"
-	ArrayNameOrSerialfield := "array_name_or_serial"
-	ControllerNamefield := "controller_name"
-	FcPortNamefield := "fc_port_name"
-	BusLocationfield := "bus_location"
-
-	FibreChannelPortFields = &FibreChannelPort{
-		ID:                &IDfield,
-		ArrayNameOrSerial: &ArrayNameOrSerialfield,
-		ControllerName:    &ControllerNamefield,
-		FcPortName:        &FcPortNamefield,
-		BusLocation:       &BusLocationfield,
+	FibreChannelPortFields = &FibreChannelPortFieldHandles{
+		ID:                "id",
+		ArrayNameOrSerial: "array_name_or_serial",
+		ControllerName:    "controller_name",
+		FcPortName:        "fc_port_name",
+		BusLocation:       "bus_location",
+		Port:              "port",
+		Slot:              "slot",
+		Orientation:       "orientation",
+		LinkInfo:          "link_info",
+		RxPower:           "rx_power",
+		TxPower:           "tx_power",
 	}
 }
 
+// FibreChannelPort - Fibre Channel ports provide data access. This API provides the list of all Fibre Channel ports configured on the arrays.
 type FibreChannelPort struct {
 	// ID - Identifier for the Fibre Channel port.
 	ID *string `json:"id,omitempty"`
@@ -45,4 +45,19 @@ type FibreChannelPort struct {
 	RxPower *int64 `json:"rx_power,omitempty"`
 	// TxPower - SFP TX power in uW.
 	TxPower *int64 `json:"tx_power,omitempty"`
+}
+
+// FibreChannelPortFieldHandles provides a string representation for each FibreChannelPort field.
+type FibreChannelPortFieldHandles struct {
+	ID                string
+	ArrayNameOrSerial string
+	ControllerName    string
+	FcPortName        string
+	BusLocation       string
+	Port              string
+	Slot              string
+	Orientation       string
+	LinkInfo          string
+	RxPower           string
+	TxPower           string
 }

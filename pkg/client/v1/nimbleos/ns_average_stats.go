@@ -2,15 +2,24 @@
 
 package nimbleos
 
-// NsAverageStats - Average statistics.
-// Export NsAverageStatsFields for advance operations like search filter etc.
-var NsAverageStatsFields *NsAverageStats
+// NsAverageStatsFields provides field names to use in filter parameters, for example.
+var NsAverageStatsFields *NsAverageStatsFieldHandles
 
 func init() {
-
-	NsAverageStatsFields = &NsAverageStats{}
+	NsAverageStatsFields = &NsAverageStatsFieldHandles{
+		ReadIops:           "read_iops",
+		ReadThroughput:     "read_throughput",
+		ReadLatency:        "read_latency",
+		WriteIops:          "write_iops",
+		WriteThroughput:    "write_throughput",
+		WriteLatency:       "write_latency",
+		CombinedIops:       "combined_iops",
+		CombinedThroughput: "combined_throughput",
+		CombinedLatency:    "combined_latency",
+	}
 }
 
+// NsAverageStats - Average statistics.
 type NsAverageStats struct {
 	// ReadIops - Average read iops.
 	ReadIops *int64 `json:"read_iops,omitempty"`
@@ -30,4 +39,17 @@ type NsAverageStats struct {
 	CombinedThroughput *int64 `json:"combined_throughput,omitempty"`
 	// CombinedLatency - Average combined latency.
 	CombinedLatency *int64 `json:"combined_latency,omitempty"`
+}
+
+// NsAverageStatsFieldHandles provides a string representation for each NsAverageStats field.
+type NsAverageStatsFieldHandles struct {
+	ReadIops           string
+	ReadThroughput     string
+	ReadLatency        string
+	WriteIops          string
+	WriteThroughput    string
+	WriteLatency       string
+	CombinedIops       string
+	CombinedThroughput string
+	CombinedLatency    string
 }

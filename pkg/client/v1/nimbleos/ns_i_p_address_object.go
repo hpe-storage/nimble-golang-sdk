@@ -2,19 +2,22 @@
 
 package nimbleos
 
-// NsIPAddressObject - Object wrapper of IP Address.
-// Export NsIPAddressObjectFields for advance operations like search filter etc.
-var NsIPAddressObjectFields *NsIPAddressObject
+// NsIPAddressObjectFields provides field names to use in filter parameters, for example.
+var NsIPAddressObjectFields *NsIPAddressObjectFieldHandles
 
 func init() {
-	IpAddrfield := "ip_addr"
-
-	NsIPAddressObjectFields = &NsIPAddressObject{
-		IpAddr: &IpAddrfield,
+	NsIPAddressObjectFields = &NsIPAddressObjectFieldHandles{
+		IpAddr: "ip_addr",
 	}
 }
 
+// NsIPAddressObject - Object wrapper of IP Address.
 type NsIPAddressObject struct {
 	// IpAddr - An IP Address.
 	IpAddr *string `json:"ip_addr,omitempty"`
+}
+
+// NsIPAddressObjectFieldHandles provides a string representation for each NsIPAddressObject field.
+type NsIPAddressObjectFieldHandles struct {
+	IpAddr string
 }

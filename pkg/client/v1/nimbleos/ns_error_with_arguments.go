@@ -2,20 +2,18 @@
 
 package nimbleos
 
-// NsErrorWithArguments - Non-negative integer in range [0,9000].
-// Export NsErrorWithArgumentsFields for advance operations like search filter etc.
-var NsErrorWithArgumentsFields *NsErrorWithArguments
+// NsErrorWithArgumentsFields provides field names to use in filter parameters, for example.
+var NsErrorWithArgumentsFields *NsErrorWithArgumentsFieldHandles
 
 func init() {
-	Codefield := "code"
-	Textfield := "text"
-
-	NsErrorWithArgumentsFields = &NsErrorWithArguments{
-		Code: &Codefield,
-		Text: &Textfield,
+	NsErrorWithArgumentsFields = &NsErrorWithArgumentsFieldHandles{
+		Code:     "code",
+		Severity: "severity",
+		Text:     "text",
 	}
 }
 
+// NsErrorWithArguments - Non-negative integer in range [0,9000].
 type NsErrorWithArguments struct {
 	// Code - Error code.
 	Code *string `json:"code,omitempty"`
@@ -23,4 +21,11 @@ type NsErrorWithArguments struct {
 	Severity *NsApiSeverityLevel `json:"severity,omitempty"`
 	// Text - Full error message with argument populated.
 	Text *string `json:"text,omitempty"`
+}
+
+// NsErrorWithArgumentsFieldHandles provides a string representation for each NsErrorWithArguments field.
+type NsErrorWithArgumentsFieldHandles struct {
+	Code     string
+	Severity string
+	Text     string
 }

@@ -2,30 +2,33 @@
 
 package nimbleos
 
-// Certificate - Manage certificates used by SSL/TLS.
-// Export CertificateFields for advance operations like search filter etc.
-var CertificateFields *Certificate
+// CertificateFields provides field names to use in filter parameters, for example.
+var CertificateFields *CertificateFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Subjectfield := "subject"
-	Dnslistfield := "dnslist"
-	Iplistfield := "iplist"
-	Inputfield := "input"
-	Passwordfield := "password"
-
-	CertificateFields = &Certificate{
-		ID:       &IDfield,
-		Name:     &Namefield,
-		Subject:  &Subjectfield,
-		Dnslist:  &Dnslistfield,
-		Iplist:   &Iplistfield,
-		Input:    &Inputfield,
-		Password: &Passwordfield,
+	CertificateFields = &CertificateFieldHandles{
+		ID:          "id",
+		Name:        "name",
+		Subject:     "subject",
+		Dnslist:     "dnslist",
+		Iplist:      "iplist",
+		CertList:    "cert_list",
+		Csr:         "csr",
+		ValidDays:   "valid_days",
+		Input:       "input",
+		Password:    "password",
+		Https:       "https",
+		Apis:        "apis",
+		Force:       "force",
+		Check:       "check",
+		Pkcs12:      "pkcs12",
+		Trusted:     "trusted",
+		ReloadHttps: "reload_https",
+		ReloadApis:  "reload_apis",
 	}
 }
 
+// Certificate - Manage certificates used by SSL/TLS.
 type Certificate struct {
 	// ID - Dummy identifier (copy of name).
 	ID *string `json:"id,omitempty"`
@@ -63,4 +66,26 @@ type Certificate struct {
 	ReloadHttps *bool `json:"reload_https,omitempty"`
 	// ReloadApis - API certificate changed, so needs to be reloaded.
 	ReloadApis *bool `json:"reload_apis,omitempty"`
+}
+
+// CertificateFieldHandles provides a string representation for each Certificate field.
+type CertificateFieldHandles struct {
+	ID          string
+	Name        string
+	Subject     string
+	Dnslist     string
+	Iplist      string
+	CertList    string
+	Csr         string
+	ValidDays   string
+	Input       string
+	Password    string
+	Https       string
+	Apis        string
+	Force       string
+	Check       string
+	Pkcs12      string
+	Trusted     string
+	ReloadHttps string
+	ReloadApis  string
 }

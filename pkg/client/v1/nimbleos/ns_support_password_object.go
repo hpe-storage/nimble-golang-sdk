@@ -2,23 +2,26 @@
 
 package nimbleos
 
-// NsSupportPasswordObject - Support password blob for a user.
-// Export NsSupportPasswordObjectFields for advance operations like search filter etc.
-var NsSupportPasswordObjectFields *NsSupportPasswordObject
+// NsSupportPasswordObjectFields provides field names to use in filter parameters, for example.
+var NsSupportPasswordObjectFields *NsSupportPasswordObjectFieldHandles
 
 func init() {
-	Usernamefield := "username"
-	Blobfield := "blob"
-
-	NsSupportPasswordObjectFields = &NsSupportPasswordObject{
-		Username: &Usernamefield,
-		Blob:     &Blobfield,
+	NsSupportPasswordObjectFields = &NsSupportPasswordObjectFieldHandles{
+		Username: "username",
+		Blob:     "blob",
 	}
 }
 
+// NsSupportPasswordObject - Support password blob for a user.
 type NsSupportPasswordObject struct {
 	// Username - The username for the account the password blob relates to.
 	Username *string `json:"username,omitempty"`
 	// Blob - The ciphertext blob holding the randomly produced password.
 	Blob *string `json:"blob,omitempty"`
+}
+
+// NsSupportPasswordObjectFieldHandles provides a string representation for each NsSupportPasswordObject field.
+type NsSupportPasswordObjectFieldHandles struct {
+	Username string
+	Blob     string
 }

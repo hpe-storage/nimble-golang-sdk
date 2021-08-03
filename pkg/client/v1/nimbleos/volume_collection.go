@@ -2,52 +2,60 @@
 
 package nimbleos
 
-// VolumeCollection - Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
-// Export VolumeCollectionFields for advance operations like search filter etc.
-var VolumeCollectionFields *VolumeCollection
+// VolumeCollectionFields provides field names to use in filter parameters, for example.
+var VolumeCollectionFields *VolumeCollectionFieldHandles
 
 func init() {
-	IDfield := "id"
-	ProttmplIdfield := "prottmpl_id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	PolOwnerNamefield := "pol_owner_name"
-	AppServerfield := "app_server"
-	AppClusterNamefield := "app_cluster_name"
-	AppServiceNamefield := "app_service_name"
-	VcenterHostnamefield := "vcenter_hostname"
-	VcenterUsernamefield := "vcenter_username"
-	VcenterPasswordfield := "vcenter_password"
-	AgentHostnamefield := "agent_hostname"
-	AgentUsernamefield := "agent_username"
-	AgentPasswordfield := "agent_password"
-	ReplicationPartnerfield := "replication_partner"
-	HandoverReplicationPartnerfield := "handover_replication_partner"
-
-	VolumeCollectionFields = &VolumeCollection{
-		ID:                         &IDfield,
-		ProttmplId:                 &ProttmplIdfield,
-		Name:                       &Namefield,
-		FullName:                   &FullNamefield,
-		SearchName:                 &SearchNamefield,
-		Description:                &Descriptionfield,
-		PolOwnerName:               &PolOwnerNamefield,
-		AppServer:                  &AppServerfield,
-		AppClusterName:             &AppClusterNamefield,
-		AppServiceName:             &AppServiceNamefield,
-		VcenterHostname:            &VcenterHostnamefield,
-		VcenterUsername:            &VcenterUsernamefield,
-		VcenterPassword:            &VcenterPasswordfield,
-		AgentHostname:              &AgentHostnamefield,
-		AgentUsername:              &AgentUsernamefield,
-		AgentPassword:              &AgentPasswordfield,
-		ReplicationPartner:         &ReplicationPartnerfield,
-		HandoverReplicationPartner: &HandoverReplicationPartnerfield,
+	VolumeCollectionFields = &VolumeCollectionFieldHandles{
+		ID:                          "id",
+		ProttmplId:                  "prottmpl_id",
+		Name:                        "name",
+		FullName:                    "full_name",
+		SearchName:                  "search_name",
+		Description:                 "description",
+		ReplPriority:                "repl_priority",
+		PolOwnerName:                "pol_owner_name",
+		ReplicationType:             "replication_type",
+		SynchronousReplicationType:  "synchronous_replication_type",
+		SynchronousReplicationState: "synchronous_replication_state",
+		AppSync:                     "app_sync",
+		AppServer:                   "app_server",
+		AppId:                       "app_id",
+		AppClusterName:              "app_cluster_name",
+		AppServiceName:              "app_service_name",
+		VcenterHostname:             "vcenter_hostname",
+		VcenterUsername:             "vcenter_username",
+		VcenterPassword:             "vcenter_password",
+		AgentHostname:               "agent_hostname",
+		AgentUsername:               "agent_username",
+		AgentPassword:               "agent_password",
+		CreationTime:                "creation_time",
+		LastModifiedTime:            "last_modified_time",
+		VolumeList:                  "volume_list",
+		DownstreamVolumeList:        "downstream_volume_list",
+		UpstreamVolumeList:          "upstream_volume_list",
+		VolumeCount:                 "volume_count",
+		CachePinnedVolumeList:       "cache_pinned_volume_list",
+		LastSnapcoll:                "last_snapcoll",
+		SnapcollCount:               "snapcoll_count",
+		ScheduleList:                "schedule_list",
+		ReplicationPartner:          "replication_partner",
+		LastReplicatedSnapcoll:      "last_replicated_snapcoll",
+		LastReplicatedSnapcollList:  "last_replicated_snapcoll_list",
+		ProtectionType:              "protection_type",
+		LagTime:                     "lag_time",
+		IsStandaloneVolcoll:         "is_standalone_volcoll",
+		TotalReplBytes:              "total_repl_bytes",
+		ReplBytesTransferred:        "repl_bytes_transferred",
+		IsHandingOver:               "is_handing_over",
+		HandoverReplicationPartner:  "handover_replication_partner",
+		Metadata:                    "metadata",
+		SrepLastSync:                "srep_last_sync",
+		SrepResyncPercent:           "srep_resync_percent",
 	}
 }
 
+// VolumeCollection - Manage volume collections. Volume collections are logical groups of volumes that share protection characteristics such as snapshot and replication schedules. Volume collections can be created from scratch or based on predefined protection templates.
 type VolumeCollection struct {
 	// ID - Identifier for volume collection.
 	ID *string `json:"id,omitempty"`
@@ -139,4 +147,53 @@ type VolumeCollection struct {
 	SrepLastSync *int64 `json:"srep_last_sync,omitempty"`
 	// SrepResyncPercent - Percentage of the resync progress for a synchronously replicated volume collection.
 	SrepResyncPercent *int64 `json:"srep_resync_percent,omitempty"`
+}
+
+// VolumeCollectionFieldHandles provides a string representation for each VolumeCollection field.
+type VolumeCollectionFieldHandles struct {
+	ID                          string
+	ProttmplId                  string
+	Name                        string
+	FullName                    string
+	SearchName                  string
+	Description                 string
+	ReplPriority                string
+	PolOwnerName                string
+	ReplicationType             string
+	SynchronousReplicationType  string
+	SynchronousReplicationState string
+	AppSync                     string
+	AppServer                   string
+	AppId                       string
+	AppClusterName              string
+	AppServiceName              string
+	VcenterHostname             string
+	VcenterUsername             string
+	VcenterPassword             string
+	AgentHostname               string
+	AgentUsername               string
+	AgentPassword               string
+	CreationTime                string
+	LastModifiedTime            string
+	VolumeList                  string
+	DownstreamVolumeList        string
+	UpstreamVolumeList          string
+	VolumeCount                 string
+	CachePinnedVolumeList       string
+	LastSnapcoll                string
+	SnapcollCount               string
+	ScheduleList                string
+	ReplicationPartner          string
+	LastReplicatedSnapcoll      string
+	LastReplicatedSnapcollList  string
+	ProtectionType              string
+	LagTime                     string
+	IsStandaloneVolcoll         string
+	TotalReplBytes              string
+	ReplBytesTransferred        string
+	IsHandingOver               string
+	HandoverReplicationPartner  string
+	Metadata                    string
+	SrepLastSync                string
+	SrepResyncPercent           string
 }

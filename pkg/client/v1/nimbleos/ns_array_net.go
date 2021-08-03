@@ -2,22 +2,20 @@
 
 package nimbleos
 
-// NsArrayNet - Array network config.
-// Export NsArrayNetFields for advance operations like search filter etc.
-var NsArrayNetFields *NsArrayNet
+// NsArrayNetFields provides field names to use in filter parameters, for example.
+var NsArrayNetFields *NsArrayNetFieldHandles
 
 func init() {
-	Namefield := "name"
-	CtrlrASupportIpfield := "ctrlr_a_support_ip"
-	CtrlrBSupportIpfield := "ctrlr_b_support_ip"
-
-	NsArrayNetFields = &NsArrayNet{
-		Name:            &Namefield,
-		CtrlrASupportIp: &CtrlrASupportIpfield,
-		CtrlrBSupportIp: &CtrlrBSupportIpfield,
+	NsArrayNetFields = &NsArrayNetFieldHandles{
+		Name:            "name",
+		MemberGid:       "member_gid",
+		CtrlrASupportIp: "ctrlr_a_support_ip",
+		CtrlrBSupportIp: "ctrlr_b_support_ip",
+		NicList:         "nic_list",
 	}
 }
 
+// NsArrayNet - Array network config.
 type NsArrayNet struct {
 	// Name - Name of the array.
 	Name *string `json:"name,omitempty"`
@@ -29,4 +27,13 @@ type NsArrayNet struct {
 	CtrlrBSupportIp *string `json:"ctrlr_b_support_ip,omitempty"`
 	// NicList - List of NICs.
 	NicList []*NsNIC `json:"nic_list,omitempty"`
+}
+
+// NsArrayNetFieldHandles provides a string representation for each NsArrayNet field.
+type NsArrayNetFieldHandles struct {
+	Name            string
+	MemberGid       string
+	CtrlrASupportIp string
+	CtrlrBSupportIp string
+	NicList         string
 }

@@ -2,23 +2,26 @@
 
 package nimbleos
 
-// NsVolumeCollectionDemoteAttr - Arguments to demote a volume collection.
-// Export NsVolumeCollectionDemoteAttrFields for advance operations like search filter etc.
-var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttr
+// NsVolumeCollectionDemoteAttrFields provides field names to use in filter parameters, for example.
+var NsVolumeCollectionDemoteAttrFields *NsVolumeCollectionDemoteAttrFieldHandles
 
 func init() {
-	IDfield := "id"
-	ReplicationPartnerIdfield := "replication_partner_id"
-
-	NsVolumeCollectionDemoteAttrFields = &NsVolumeCollectionDemoteAttr{
-		ID:                   &IDfield,
-		ReplicationPartnerId: &ReplicationPartnerIdfield,
+	NsVolumeCollectionDemoteAttrFields = &NsVolumeCollectionDemoteAttrFieldHandles{
+		ID:                   "id",
+		ReplicationPartnerId: "replication_partner_id",
 	}
 }
 
+// NsVolumeCollectionDemoteAttr - Arguments to demote a volume collection.
 type NsVolumeCollectionDemoteAttr struct {
 	// ID - ID of the demoted volume collection.
 	ID *string `json:"id,omitempty"`
 	// ReplicationPartnerId - ID of the new owner. If invoke_on_upstream_partner is provided, utilize the ID of the current owner i.e. upstream replication partner.
 	ReplicationPartnerId *string `json:"replication_partner_id,omitempty"`
+}
+
+// NsVolumeCollectionDemoteAttrFieldHandles provides a string representation for each NsVolumeCollectionDemoteAttr field.
+type NsVolumeCollectionDemoteAttrFieldHandles struct {
+	ID                   string
+	ReplicationPartnerId string
 }

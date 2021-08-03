@@ -2,18 +2,25 @@
 
 package nimbleos
 
-// UserPolicy - Manages the password policies configured for the group.
-// Export UserPolicyFields for advance operations like search filter etc.
-var UserPolicyFields *UserPolicy
+// UserPolicyFields provides field names to use in filter parameters, for example.
+var UserPolicyFields *UserPolicyFieldHandles
 
 func init() {
-	IDfield := "id"
-
-	UserPolicyFields = &UserPolicy{
-		ID: &IDfield,
+	UserPolicyFields = &UserPolicyFieldHandles{
+		ID:              "id",
+		AllowedAttempts: "allowed_attempts",
+		MinLength:       "min_length",
+		Upper:           "upper",
+		Lower:           "lower",
+		Digit:           "digit",
+		Special:         "special",
+		PreviousDiff:    "previous_diff",
+		NoReuse:         "no_reuse",
+		MaxSessions:     "max_sessions",
 	}
 }
 
+// UserPolicy - Manages the password policies configured for the group.
 type UserPolicy struct {
 	// ID - Identifier for the security policy.
 	ID *string `json:"id,omitempty"`
@@ -35,4 +42,18 @@ type UserPolicy struct {
 	NoReuse *int64 `json:"no_reuse,omitempty"`
 	// MaxSessions - Maximum number of sessions allowed for a group. Allowed range is [10, 1000] inclusive. '0' indicates no limit.
 	MaxSessions *int64 `json:"max_sessions,omitempty"`
+}
+
+// UserPolicyFieldHandles provides a string representation for each UserPolicy field.
+type UserPolicyFieldHandles struct {
+	ID              string
+	AllowedAttempts string
+	MinLength       string
+	Upper           string
+	Lower           string
+	Digit           string
+	Special         string
+	PreviousDiff    string
+	NoReuse         string
+	MaxSessions     string
 }

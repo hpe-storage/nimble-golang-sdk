@@ -2,26 +2,42 @@
 
 package nimbleos
 
-// SpaceDomain - A space domain is created for each application category and block size for each each pool.
-// Export SpaceDomainFields for advance operations like search filter etc.
-var SpaceDomainFields *SpaceDomain
+// SpaceDomainFields provides field names to use in filter parameters, for example.
+var SpaceDomainFields *SpaceDomainFieldHandles
 
 func init() {
-	IDfield := "id"
-	PoolIdfield := "pool_id"
-	PoolNamefield := "pool_name"
-	AppCategoryIdfield := "app_category_id"
-	AppCategoryNamefield := "app_category_name"
-
-	SpaceDomainFields = &SpaceDomain{
-		ID:              &IDfield,
-		PoolId:          &PoolIdfield,
-		PoolName:        &PoolNamefield,
-		AppCategoryId:   &AppCategoryIdfield,
-		AppCategoryName: &AppCategoryNamefield,
+	SpaceDomainFields = &SpaceDomainFieldHandles{
+		ID:                     "id",
+		PoolId:                 "pool_id",
+		PoolName:               "pool_name",
+		AppCategoryId:          "app_category_id",
+		AppCategoryName:        "app_category_name",
+		PerfPolicyNames:        "perf_policy_names",
+		SampleRate:             "sample_rate",
+		VolumeCount:            "volume_count",
+		DedupedVolumeCount:     "deduped_volume_count",
+		Volumes:                "volumes",
+		BlockSize:              "block_size",
+		Deduped:                "deduped",
+		Encrypted:              "encrypted",
+		Usage:                  "usage",
+		VolLogicalUsage:        "vol_logical_usage",
+		SnapLogicalUsage:       "snap_logical_usage",
+		VolMappedUsage:         "vol_mapped_usage",
+		LogicalDedupeUsage:     "logical_dedupe_usage",
+		PhysicalDedupeUsage:    "physical_dedupe_usage",
+		SavingsCompression:     "savings_compression",
+		SavingsDedupe:          "savings_dedupe",
+		SavingsClone:           "savings_clone",
+		CompressedUsageBytes:   "compressed_usage_bytes",
+		UncompressedUsageBytes: "uncompressed_usage_bytes",
+		CompressionRatio:       "compression_ratio",
+		DedupeRatio:            "dedupe_ratio",
+		CloneRatio:             "clone_ratio",
 	}
 }
 
+// SpaceDomain - A space domain is created for each application category and block size for each each pool.
 type SpaceDomain struct {
 	// ID - Identifier for the space domain.
 	ID *string `json:"id,omitempty"`
@@ -77,4 +93,35 @@ type SpaceDomain struct {
 	DedupeRatio *float64 `json:"dedupe_ratio,omitempty"`
 	// CloneRatio - Clone savings for the space domain expressed as ratio.
 	CloneRatio *float64 `json:"clone_ratio,omitempty"`
+}
+
+// SpaceDomainFieldHandles provides a string representation for each SpaceDomain field.
+type SpaceDomainFieldHandles struct {
+	ID                     string
+	PoolId                 string
+	PoolName               string
+	AppCategoryId          string
+	AppCategoryName        string
+	PerfPolicyNames        string
+	SampleRate             string
+	VolumeCount            string
+	DedupedVolumeCount     string
+	Volumes                string
+	BlockSize              string
+	Deduped                string
+	Encrypted              string
+	Usage                  string
+	VolLogicalUsage        string
+	SnapLogicalUsage       string
+	VolMappedUsage         string
+	LogicalDedupeUsage     string
+	PhysicalDedupeUsage    string
+	SavingsCompression     string
+	SavingsDedupe          string
+	SavingsClone           string
+	CompressedUsageBytes   string
+	UncompressedUsageBytes string
+	CompressionRatio       string
+	DedupeRatio            string
+	CloneRatio             string
 }

@@ -2,15 +2,28 @@
 
 package nimbleos
 
-// NsDiskSetAttr - A shelf logical attributes.
-// Export NsDiskSetAttrFields for advance operations like search filter etc.
-var NsDiskSetAttrFields *NsDiskSetAttr
+// NsDiskSetAttrFields provides field names to use in filter parameters, for example.
+var NsDiskSetAttrFields *NsDiskSetAttrFieldHandles
 
 func init() {
-
-	NsDiskSetAttrFields = &NsDiskSetAttr{}
+	NsDiskSetAttrFields = &NsDiskSetAttrFieldHandles{
+		Driveset:            "driveset",
+		SwState:             "sw_state",
+		IsFlashShelf:        "is_flash_shelf",
+		IsCapacityValid:     "is_capacity_valid",
+		UsableCapacity:      "usable_capacity",
+		RawCapacity:         "raw_capacity",
+		UsableCacheCapacity: "usable_cache_capacity",
+		RawCacheCapacity:    "raw_cache_capacity",
+		AveMbPs:             "ave_mb_ps",
+		AveSegmentPs:        "ave_segment_ps",
+		AveTtc:              "ave_ttc",
+		PctCompletion:       "pct_completion",
+		PauseState:          "pause_state",
+	}
 }
 
+// NsDiskSetAttr - A shelf logical attributes.
 type NsDiskSetAttr struct {
 	// Driveset - Driveset index for this shelf.
 	Driveset *int64 `json:"driveset,omitempty"`
@@ -38,4 +51,21 @@ type NsDiskSetAttr struct {
 	PctCompletion *int64 `json:"pct_completion,omitempty"`
 	// PauseState - State of evacuation, paused or in-progress; valid only when sw_state is evacuating, ie. evacuation is underway.
 	PauseState *int64 `json:"pause_state,omitempty"`
+}
+
+// NsDiskSetAttrFieldHandles provides a string representation for each NsDiskSetAttr field.
+type NsDiskSetAttrFieldHandles struct {
+	Driveset            string
+	SwState             string
+	IsFlashShelf        string
+	IsCapacityValid     string
+	UsableCapacity      string
+	RawCapacity         string
+	UsableCacheCapacity string
+	RawCacheCapacity    string
+	AveMbPs             string
+	AveSegmentPs        string
+	AveTtc              string
+	PctCompletion       string
+	PauseState          string
 }

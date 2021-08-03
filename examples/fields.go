@@ -12,16 +12,17 @@ func main() {
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
 		service.WithUser("xxx"),
-		service.WithPassword("xxx"),
-		service.WithWaitForAsyncJobs())
+		service.WithPassword("xxx"))
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
 	}
 	defer groupService.LogoutService()
+
 	// set debug
 	groupService.SetDebug()
 	volSvc := groupService.GetVolumeService()
+
 	// Initialize volume attributes
 	var sizeField int64 = 5120
 	descriptionField := "This volume was created as part of a unit test"
@@ -51,16 +52,16 @@ func main() {
 
 	// set attribute fields
 	var volAttrList = []string{
-		*nimbleos.VolumeFields.ID,
-		*nimbleos.VolumeFields.Name,
-		*nimbleos.VolumeFields.PerfpolicyName,
+		nimbleos.VolumeFields.ID,
+		nimbleos.VolumeFields.Name,
+		nimbleos.VolumeFields.PerfpolicyName,
 	}
 	// apply attributes
 	filter.WithFields(volAttrList)
 
 	// create a filter
 	sf := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "TestDemo",
 	}

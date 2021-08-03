@@ -2,48 +2,60 @@
 
 package nimbleos
 
-// Folder - Folders are a way to group volumes, as well as a way to apply space constraints to them.
-// Export FolderFields for advance operations like search filter etc.
-var FolderFields *Folder
+// FolderFields provides field names to use in filter parameters, for example.
+var FolderFields *FolderFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Fqnfield := "fqn"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	InheritedVolPerfpolIdfield := "inherited_vol_perfpol_id"
-	InheritedVolPerfpolNamefield := "inherited_vol_perfpol_name"
-	AppUuidfield := "app_uuid"
-	AppserverIdfield := "appserver_id"
-	AppserverNamefield := "appserver_name"
-	FolsetIdfield := "folset_id"
-	FolsetNamefield := "folset_name"
-	TenantIdfield := "tenant_id"
-
-	FolderFields = &Folder{
-		ID:                      &IDfield,
-		Name:                    &Namefield,
-		Fqn:                     &Fqnfield,
-		FullName:                &FullNamefield,
-		SearchName:              &SearchNamefield,
-		Description:             &Descriptionfield,
-		PoolName:                &PoolNamefield,
-		PoolId:                  &PoolIdfield,
-		InheritedVolPerfpolId:   &InheritedVolPerfpolIdfield,
-		InheritedVolPerfpolName: &InheritedVolPerfpolNamefield,
-		AppUuid:                 &AppUuidfield,
-		AppserverId:             &AppserverIdfield,
-		AppserverName:           &AppserverNamefield,
-		FolsetId:                &FolsetIdfield,
-		FolsetName:              &FolsetNamefield,
-		TenantId:                &TenantIdfield,
+	FolderFields = &FolderFieldHandles{
+		ID:                         "id",
+		Name:                       "name",
+		Fqn:                        "fqn",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Description:                "description",
+		PoolName:                   "pool_name",
+		PoolId:                     "pool_id",
+		LimitBytesSpecified:        "limit_bytes_specified",
+		LimitBytes:                 "limit_bytes",
+		LimitSizeBytes:             "limit_size_bytes",
+		ProvisionedLimitSizeBytes:  "provisioned_limit_size_bytes",
+		OverdraftLimitPct:          "overdraft_limit_pct",
+		CapacityBytes:              "capacity_bytes",
+		FreeSpaceBytes:             "free_space_bytes",
+		ProvisionedBytes:           "provisioned_bytes",
+		UsageBytes:                 "usage_bytes",
+		VolumeMappedBytes:          "volume_mapped_bytes",
+		UsageValid:                 "usage_valid",
+		AgentType:                  "agent_type",
+		InheritedVolPerfpolId:      "inherited_vol_perfpol_id",
+		InheritedVolPerfpolName:    "inherited_vol_perfpol_name",
+		UnusedReserveBytes:         "unused_reserve_bytes",
+		UnusedSnapReserveBytes:     "unused_snap_reserve_bytes",
+		CompressedVolUsageBytes:    "compressed_vol_usage_bytes",
+		CompressedSnapUsageBytes:   "compressed_snap_usage_bytes",
+		UncompressedVolUsageBytes:  "uncompressed_vol_usage_bytes",
+		UncompressedSnapUsageBytes: "uncompressed_snap_usage_bytes",
+		VolCompressionRatio:        "vol_compression_ratio",
+		SnapCompressionRatio:       "snap_compression_ratio",
+		CompressionRatio:           "compression_ratio",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		NumSnaps:                   "num_snaps",
+		NumSnapcolls:               "num_snapcolls",
+		AppUuid:                    "app_uuid",
+		VolumeList:                 "volume_list",
+		AppserverId:                "appserver_id",
+		AppserverName:              "appserver_name",
+		FolsetId:                   "folset_id",
+		FolsetName:                 "folset_name",
+		LimitIops:                  "limit_iops",
+		LimitMbps:                  "limit_mbps",
+		AccessProtocol:             "access_protocol",
+		TenantId:                   "tenant_id",
 	}
 }
 
+// Folder - Folders are a way to group volumes, as well as a way to apply space constraints to them.
 type Folder struct {
 	// ID - Identifier for the folder.
 	ID *string `json:"id,omitempty"`
@@ -135,4 +147,53 @@ type Folder struct {
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
 	// TenantId - Tenant ID of the folder. This is used to determine what tenant context the folder belongs to.
 	TenantId *string `json:"tenant_id,omitempty"`
+}
+
+// FolderFieldHandles provides a string representation for each Folder field.
+type FolderFieldHandles struct {
+	ID                         string
+	Name                       string
+	Fqn                        string
+	FullName                   string
+	SearchName                 string
+	Description                string
+	PoolName                   string
+	PoolId                     string
+	LimitBytesSpecified        string
+	LimitBytes                 string
+	LimitSizeBytes             string
+	ProvisionedLimitSizeBytes  string
+	OverdraftLimitPct          string
+	CapacityBytes              string
+	FreeSpaceBytes             string
+	ProvisionedBytes           string
+	UsageBytes                 string
+	VolumeMappedBytes          string
+	UsageValid                 string
+	AgentType                  string
+	InheritedVolPerfpolId      string
+	InheritedVolPerfpolName    string
+	UnusedReserveBytes         string
+	UnusedSnapReserveBytes     string
+	CompressedVolUsageBytes    string
+	CompressedSnapUsageBytes   string
+	UncompressedVolUsageBytes  string
+	UncompressedSnapUsageBytes string
+	VolCompressionRatio        string
+	SnapCompressionRatio       string
+	CompressionRatio           string
+	CreationTime               string
+	LastModified               string
+	NumSnaps                   string
+	NumSnapcolls               string
+	AppUuid                    string
+	VolumeList                 string
+	AppserverId                string
+	AppserverName              string
+	FolsetId                   string
+	FolsetName                 string
+	LimitIops                  string
+	LimitMbps                  string
+	AccessProtocol             string
+	TenantId                   string
 }

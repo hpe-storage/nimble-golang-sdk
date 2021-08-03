@@ -2,46 +2,36 @@
 
 package nimbleos
 
-// AuditLog - View audit log.
-// Export AuditLogFields for advance operations like search filter etc.
-var AuditLogFields *AuditLog
+// AuditLogFields provides field names to use in filter parameters, for example.
+var AuditLogFields *AuditLogFieldHandles
 
 func init() {
-	IDfield := "id"
-	ObjectIdfield := "object_id"
-	ObjectNamefield := "object_name"
-	Scopefield := "scope"
-	ErrorCodefield := "error_code"
-	UserIdfield := "user_id"
-	UserNamefield := "user_name"
-	UserFullNamefield := "user_full_name"
-	SourceIpfield := "source_ip"
-	ExtUserIdfield := "ext_user_id"
-	ExtUserGroupIdfield := "ext_user_group_id"
-	ExtUserGroupNamefield := "ext_user_group_name"
-	AppNamefield := "app_name"
-	AccessTypefield := "access_type"
-	Activityfield := "activity"
-
-	AuditLogFields = &AuditLog{
-		ID:               &IDfield,
-		ObjectId:         &ObjectIdfield,
-		ObjectName:       &ObjectNamefield,
-		Scope:            &Scopefield,
-		ErrorCode:        &ErrorCodefield,
-		UserId:           &UserIdfield,
-		UserName:         &UserNamefield,
-		UserFullName:     &UserFullNamefield,
-		SourceIp:         &SourceIpfield,
-		ExtUserId:        &ExtUserIdfield,
-		ExtUserGroupId:   &ExtUserGroupIdfield,
-		ExtUserGroupName: &ExtUserGroupNamefield,
-		AppName:          &AppNamefield,
-		AccessType:       &AccessTypefield,
-		Activity:         &Activityfield,
+	AuditLogFields = &AuditLogFieldHandles{
+		ID:               "id",
+		Type:             "type",
+		ObjectId:         "object_id",
+		ObjectName:       "object_name",
+		ObjectType:       "object_type",
+		Scope:            "scope",
+		Time:             "time",
+		Status:           "status",
+		ErrorCode:        "error_code",
+		UserId:           "user_id",
+		UserName:         "user_name",
+		UserFullName:     "user_full_name",
+		SourceIp:         "source_ip",
+		ExtUserId:        "ext_user_id",
+		ExtUserGroupId:   "ext_user_group_id",
+		ExtUserGroupName: "ext_user_group_name",
+		AppName:          "app_name",
+		AccessType:       "access_type",
+		Category:         "category",
+		ActivityType:     "activity_type",
+		Activity:         "activity",
 	}
 }
 
+// AuditLog - View audit log.
 type AuditLog struct {
 	// ID - Identifier for the audit log record.
 	ID *string `json:"id,omitempty"`
@@ -85,4 +75,29 @@ type AuditLog struct {
 	ActivityType *NsAuditOperationType `json:"activity_type,omitempty"`
 	// Activity - Description of activity performed and recorded in audit log.
 	Activity *string `json:"activity,omitempty"`
+}
+
+// AuditLogFieldHandles provides a string representation for each AuditLog field.
+type AuditLogFieldHandles struct {
+	ID               string
+	Type             string
+	ObjectId         string
+	ObjectName       string
+	ObjectType       string
+	Scope            string
+	Time             string
+	Status           string
+	ErrorCode        string
+	UserId           string
+	UserName         string
+	UserFullName     string
+	SourceIp         string
+	ExtUserId        string
+	ExtUserGroupId   string
+	ExtUserGroupName string
+	AppName          string
+	AccessType       string
+	Category         string
+	ActivityType     string
+	Activity         string
 }

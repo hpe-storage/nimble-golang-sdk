@@ -2,18 +2,20 @@
 
 package nimbleos
 
-// NsCtrlrRaidInfo - Information about a controller's raid configuration.
-// Export NsCtrlrRaidInfoFields for advance operations like search filter etc.
-var NsCtrlrRaidInfoFields *NsCtrlrRaidInfo
+// NsCtrlrRaidInfoFields provides field names to use in filter parameters, for example.
+var NsCtrlrRaidInfoFields *NsCtrlrRaidInfoFieldHandles
 
 func init() {
-	RaidTypefield := "raid_type"
-
-	NsCtrlrRaidInfoFields = &NsCtrlrRaidInfo{
-		RaidType: &RaidTypefield,
+	NsCtrlrRaidInfoFields = &NsCtrlrRaidInfoFieldHandles{
+		RaidId:      "raid_id",
+		RaidType:    "raid_type",
+		MaxCopies:   "max_copies",
+		CurCopies:   "cur_copies",
+		IsResyncing: "is_resyncing",
 	}
 }
 
+// NsCtrlrRaidInfo - Information about a controller's raid configuration.
 type NsCtrlrRaidInfo struct {
 	// RaidId - Raid ID for this raid array.
 	RaidId *int64 `json:"raid_id,omitempty"`
@@ -25,4 +27,13 @@ type NsCtrlrRaidInfo struct {
 	CurCopies *int64 `json:"cur_copies,omitempty"`
 	// IsResyncing - Is this raid array resynchronizing.
 	IsResyncing *bool `json:"is_resyncing,omitempty"`
+}
+
+// NsCtrlrRaidInfoFieldHandles provides a string representation for each NsCtrlrRaidInfo field.
+type NsCtrlrRaidInfoFieldHandles struct {
+	RaidId      string
+	RaidType    string
+	MaxCopies   string
+	CurCopies   string
+	IsResyncing string
 }

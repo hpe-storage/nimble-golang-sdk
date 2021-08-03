@@ -2,32 +2,23 @@
 
 package nimbleos
 
-// NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
-// Export NsFcSessionInitiatorFields for advance operations like search filter etc.
-var NsFcSessionInitiatorFields *NsFcSessionInitiator
+// NsFcSessionInitiatorFields provides field names to use in filter parameters, for example.
+var NsFcSessionInitiatorFields *NsFcSessionInitiatorFieldHandles
 
 func init() {
-	InitiatorAliasfield := "initiator_alias"
-	InitiatorWwpnfield := "initiator_wwpn"
-	InitiatorWwnnfield := "initiator_wwnn"
-	InitiatorSwitchNamefield := "initiator_switch_name"
-	InitiatorSwitchPortfield := "initiator_switch_port"
-	InitiatorSymbolicPortnamefield := "initiator_symbolic_portname"
-	InitiatorSymbolicNodenamefield := "initiator_symbolic_nodename"
-	InitiatorFcidfield := "initiator_fcid"
-
-	NsFcSessionInitiatorFields = &NsFcSessionInitiator{
-		InitiatorAlias:            &InitiatorAliasfield,
-		InitiatorWwpn:             &InitiatorWwpnfield,
-		InitiatorWwnn:             &InitiatorWwnnfield,
-		InitiatorSwitchName:       &InitiatorSwitchNamefield,
-		InitiatorSwitchPort:       &InitiatorSwitchPortfield,
-		InitiatorSymbolicPortname: &InitiatorSymbolicPortnamefield,
-		InitiatorSymbolicNodename: &InitiatorSymbolicNodenamefield,
-		InitiatorFcid:             &InitiatorFcidfield,
+	NsFcSessionInitiatorFields = &NsFcSessionInitiatorFieldHandles{
+		InitiatorAlias:            "initiator_alias",
+		InitiatorWwpn:             "initiator_wwpn",
+		InitiatorWwnn:             "initiator_wwnn",
+		InitiatorSwitchName:       "initiator_switch_name",
+		InitiatorSwitchPort:       "initiator_switch_port",
+		InitiatorSymbolicPortname: "initiator_symbolic_portname",
+		InitiatorSymbolicNodename: "initiator_symbolic_nodename",
+		InitiatorFcid:             "initiator_fcid",
 	}
 }
 
+// NsFcSessionInitiator - Information of the Fibre Channel Session Initiator.
 type NsFcSessionInitiator struct {
 	// InitiatorAlias - Alias of the Fibre Channel initiator.
 	InitiatorAlias *string `json:"initiator_alias,omitempty"`
@@ -45,4 +36,16 @@ type NsFcSessionInitiator struct {
 	InitiatorSymbolicNodename *string `json:"initiator_symbolic_nodename,omitempty"`
 	// InitiatorFcid - FCID assigned to the Fibre Channel initiator.
 	InitiatorFcid *string `json:"initiator_fcid,omitempty"`
+}
+
+// NsFcSessionInitiatorFieldHandles provides a string representation for each NsFcSessionInitiator field.
+type NsFcSessionInitiatorFieldHandles struct {
+	InitiatorAlias            string
+	InitiatorWwpn             string
+	InitiatorWwnn             string
+	InitiatorSwitchName       string
+	InitiatorSwitchPort       string
+	InitiatorSymbolicPortname string
+	InitiatorSymbolicNodename string
+	InitiatorFcid             string
 }

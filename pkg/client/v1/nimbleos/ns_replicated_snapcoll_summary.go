@@ -2,22 +2,20 @@
 
 package nimbleos
 
-// NsReplicatedSnapcollSummary - Select fields containing snapshot collection information for replicated snapshot collections.
-// Export NsReplicatedSnapcollSummaryFields for advance operations like search filter etc.
-var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummary
+// NsReplicatedSnapcollSummaryFields provides field names to use in filter parameters, for example.
+var NsReplicatedSnapcollSummaryFields *NsReplicatedSnapcollSummaryFieldHandles
 
 func init() {
-	SnapcollIdfield := "snapcoll_id"
-	SnapcollNamefield := "snapcoll_name"
-	DownstreamPartnerNamefield := "downstream_partner_name"
-
-	NsReplicatedSnapcollSummaryFields = &NsReplicatedSnapcollSummary{
-		SnapcollId:            &SnapcollIdfield,
-		SnapcollName:          &SnapcollNamefield,
-		DownstreamPartnerName: &DownstreamPartnerNamefield,
+	NsReplicatedSnapcollSummaryFields = &NsReplicatedSnapcollSummaryFieldHandles{
+		SnapcollId:            "snapcoll_id",
+		SnapcollName:          "snapcoll_name",
+		SnapcollCreationTime:  "snapcoll_creation_time",
+		DownstreamPartnerName: "downstream_partner_name",
+		VolIds:                "vol_ids",
 	}
 }
 
+// NsReplicatedSnapcollSummary - Select fields containing snapshot collection information for replicated snapshot collections.
 type NsReplicatedSnapcollSummary struct {
 	// SnapcollId - ID of snapshot collection.
 	SnapcollId *string `json:"snapcoll_id,omitempty"`
@@ -29,4 +27,13 @@ type NsReplicatedSnapcollSummary struct {
 	DownstreamPartnerName *string `json:"downstream_partner_name,omitempty"`
 	// VolIds - Id of volumes that have snapshots which are part of the snapcoll.
 	VolIds []*string `json:"vol_ids,omitempty"`
+}
+
+// NsReplicatedSnapcollSummaryFieldHandles provides a string representation for each NsReplicatedSnapcollSummary field.
+type NsReplicatedSnapcollSummaryFieldHandles struct {
+	SnapcollId            string
+	SnapcollName          string
+	SnapcollCreationTime  string
+	DownstreamPartnerName string
+	VolIds                string
 }

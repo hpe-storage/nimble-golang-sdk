@@ -2,34 +2,34 @@
 
 package nimbleos
 
-// Alarm - View alarms.
-// Export AlarmFields for advance operations like search filter etc.
-var AlarmFields *Alarm
+// AlarmFields provides field names to use in filter parameters, for example.
+var AlarmFields *AlarmFieldHandles
 
 func init() {
-	IDfield := "id"
-	Arrayfield := "array"
-	CurrOnsetEventIdfield := "curr_onset_event_id"
-	ObjectIdfield := "object_id"
-	ObjectNamefield := "object_name"
-	UserIdfield := "user_id"
-	UserNamefield := "user_name"
-	UserFullNamefield := "user_full_name"
-	Activityfield := "activity"
-
-	AlarmFields = &Alarm{
-		ID:               &IDfield,
-		Array:            &Arrayfield,
-		CurrOnsetEventId: &CurrOnsetEventIdfield,
-		ObjectId:         &ObjectIdfield,
-		ObjectName:       &ObjectNamefield,
-		UserId:           &UserIdfield,
-		UserName:         &UserNamefield,
-		UserFullName:     &UserFullNamefield,
-		Activity:         &Activityfield,
+	AlarmFields = &AlarmFieldHandles{
+		ID:                   "id",
+		Type:                 "type",
+		Array:                "array",
+		CurrOnsetEventId:     "curr_onset_event_id",
+		ObjectId:             "object_id",
+		ObjectName:           "object_name",
+		ObjectType:           "object_type",
+		OnsetTime:            "onset_time",
+		AckTime:              "ack_time",
+		Status:               "status",
+		UserId:               "user_id",
+		UserName:             "user_name",
+		UserFullName:         "user_full_name",
+		Category:             "category",
+		Severity:             "severity",
+		RemindEvery:          "remind_every",
+		RemindEveryUnit:      "remind_every_unit",
+		Activity:             "activity",
+		NextNotificationTime: "next_notification_time",
 	}
 }
 
+// Alarm - View alarms.
 type Alarm struct {
 	// ID - Identifier for the alarm.
 	ID *string `json:"id,omitempty"`
@@ -69,4 +69,27 @@ type Alarm struct {
 	Activity *string `json:"activity,omitempty"`
 	// NextNotificationTime - Time when next reminder for the alarm will be sent.
 	NextNotificationTime *int64 `json:"next_notification_time,omitempty"`
+}
+
+// AlarmFieldHandles provides a string representation for each Alarm field.
+type AlarmFieldHandles struct {
+	ID                   string
+	Type                 string
+	Array                string
+	CurrOnsetEventId     string
+	ObjectId             string
+	ObjectName           string
+	ObjectType           string
+	OnsetTime            string
+	AckTime              string
+	Status               string
+	UserId               string
+	UserName             string
+	UserFullName         string
+	Category             string
+	Severity             string
+	RemindEvery          string
+	RemindEveryUnit      string
+	Activity             string
+	NextNotificationTime string
 }

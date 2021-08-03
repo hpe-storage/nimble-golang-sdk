@@ -2,46 +2,56 @@
 
 package nimbleos
 
-// ProtectionSchedule - Manage protection schedules used in protection templates.
-// Export ProtectionScheduleFields for advance operations like search filter etc.
-var ProtectionScheduleFields *ProtectionSchedule
+// ProtectionScheduleFields provides field names to use in filter parameters, for example.
+var ProtectionScheduleFields *ProtectionScheduleFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	VolcollOrProttmplIdfield := "volcoll_or_prottmpl_id"
-	Daysfield := "days"
-	DownstreamPartnerfield := "downstream_partner"
-	DownstreamPartnerNamefield := "downstream_partner_name"
-	DownstreamPartnerIdfield := "downstream_partner_id"
-	UpstreamPartnerNamefield := "upstream_partner_name"
-	UpstreamPartnerIdfield := "upstream_partner_id"
-	LastReplicatedSnapcollNamefield := "last_replicated_snapcoll_name"
-	LastReplicatedSnapcollIdfield := "last_replicated_snapcoll_id"
-	SchedOwnerIdfield := "sched_owner_id"
-	SchedOwnerNamefield := "sched_owner_name"
-	CurrentlyReplicatingSnapcollNamefield := "currently_replicating_snapcoll_name"
-
-	ProtectionScheduleFields = &ProtectionSchedule{
-		ID:                               &IDfield,
-		Name:                             &Namefield,
-		Description:                      &Descriptionfield,
-		VolcollOrProttmplId:              &VolcollOrProttmplIdfield,
-		Days:                             &Daysfield,
-		DownstreamPartner:                &DownstreamPartnerfield,
-		DownstreamPartnerName:            &DownstreamPartnerNamefield,
-		DownstreamPartnerId:              &DownstreamPartnerIdfield,
-		UpstreamPartnerName:              &UpstreamPartnerNamefield,
-		UpstreamPartnerId:                &UpstreamPartnerIdfield,
-		LastReplicatedSnapcollName:       &LastReplicatedSnapcollNamefield,
-		LastReplicatedSnapcollId:         &LastReplicatedSnapcollIdfield,
-		SchedOwnerId:                     &SchedOwnerIdfield,
-		SchedOwnerName:                   &SchedOwnerNamefield,
-		CurrentlyReplicatingSnapcollName: &CurrentlyReplicatingSnapcollNamefield,
+	ProtectionScheduleFields = &ProtectionScheduleFieldHandles{
+		ID:                               "id",
+		Name:                             "name",
+		Description:                      "description",
+		VolcollOrProttmplType:            "volcoll_or_prottmpl_type",
+		VolcollOrProttmplId:              "volcoll_or_prottmpl_id",
+		Period:                           "period",
+		PeriodUnit:                       "period_unit",
+		AtTime:                           "at_time",
+		UntilTime:                        "until_time",
+		Days:                             "days",
+		NumRetain:                        "num_retain",
+		DownstreamPartner:                "downstream_partner",
+		DownstreamPartnerName:            "downstream_partner_name",
+		DownstreamPartnerId:              "downstream_partner_id",
+		UpstreamPartnerName:              "upstream_partner_name",
+		UpstreamPartnerId:                "upstream_partner_id",
+		ReplicateEvery:                   "replicate_every",
+		NumRetainReplica:                 "num_retain_replica",
+		ReplAlertThres:                   "repl_alert_thres",
+		SnapVerify:                       "snap_verify",
+		SkipDbConsistencyCheck:           "skip_db_consistency_check",
+		DisableAppsync:                   "disable_appsync",
+		ScheduleType:                     "schedule_type",
+		Active:                           "active",
+		CreationTime:                     "creation_time",
+		LastModified:                     "last_modified",
+		LastModSchedTime:                 "last_mod_sched_time",
+		LastReplicatedSnapcollName:       "last_replicated_snapcoll_name",
+		LastReplicatedSnapcollId:         "last_replicated_snapcoll_id",
+		LastReplicatedAtTime:             "last_replicated_at_time",
+		LastSnapTime:                     "last_snap_time",
+		NextSnapTime:                     "next_snap_time",
+		NextReplSnapTime:                 "next_repl_snap_time",
+		SnapCounter:                      "snap_counter",
+		SchedOwnerId:                     "sched_owner_id",
+		SchedOwnerName:                   "sched_owner_name",
+		LastConfigChangeTime:             "last_config_change_time",
+		CurrentlyReplicatingSnapcollName: "currently_replicating_snapcoll_name",
+		VolStatusList:                    "vol_status_list",
+		SyncReplVolStatusList:            "sync_repl_vol_status_list",
+		UseDownstreamForDr:               "use_downstream_for_dr",
 	}
 }
 
+// ProtectionSchedule - Manage protection schedules used in protection templates.
 type ProtectionSchedule struct {
 	// ID - Identifier for protection schedule.
 	ID *string `json:"id,omitempty"`
@@ -125,4 +135,49 @@ type ProtectionSchedule struct {
 	SyncReplVolStatusList []*NsSyncReplVolStatus `json:"sync_repl_vol_status_list,omitempty"`
 	// UseDownstreamForDr - Break synchronous replication for the specified volume collection and present downstream volumes to host(s). Downstream volumes in the volume collection will be set to online and presented to the host(s) using new serial and LUN numbers. No changes will be made to the upstream volumes, their serial and LUN numbers, and their online state. The existing ACLs on the upstream volumes will be copied to the downstream volumes. Use this in conjunction with an empty downstream_partner_id. This unconfigures synchronous replication when the partner is removed from the last replicating schedule in the specified volume collection and presents the downstream volumes to host(s). Host(s) will need to be configured to access the new volumes with the newly assigned serial and LUN numbers. Use this option to expose downstream volumes in a synchronously replicated volume collection to host(s) only when the upstream partner is confirmed to be down and there is no communication between partners. Do not execute this operation if a previous Group Management Service takeover has been performed on a different array. Do not perform a subsequent Group Management Service takeover on a different array as it will lead to irreconcilable conflicts. This limitation is cleared once the Group management service backup array has successfully synchronized after reconnection.
 	UseDownstreamForDr *bool `json:"use_downstream_for_dr,omitempty"`
+}
+
+// ProtectionScheduleFieldHandles provides a string representation for each ProtectionSchedule field.
+type ProtectionScheduleFieldHandles struct {
+	ID                               string
+	Name                             string
+	Description                      string
+	VolcollOrProttmplType            string
+	VolcollOrProttmplId              string
+	Period                           string
+	PeriodUnit                       string
+	AtTime                           string
+	UntilTime                        string
+	Days                             string
+	NumRetain                        string
+	DownstreamPartner                string
+	DownstreamPartnerName            string
+	DownstreamPartnerId              string
+	UpstreamPartnerName              string
+	UpstreamPartnerId                string
+	ReplicateEvery                   string
+	NumRetainReplica                 string
+	ReplAlertThres                   string
+	SnapVerify                       string
+	SkipDbConsistencyCheck           string
+	DisableAppsync                   string
+	ScheduleType                     string
+	Active                           string
+	CreationTime                     string
+	LastModified                     string
+	LastModSchedTime                 string
+	LastReplicatedSnapcollName       string
+	LastReplicatedSnapcollId         string
+	LastReplicatedAtTime             string
+	LastSnapTime                     string
+	NextSnapTime                     string
+	NextReplSnapTime                 string
+	SnapCounter                      string
+	SchedOwnerId                     string
+	SchedOwnerName                   string
+	LastConfigChangeTime             string
+	CurrentlyReplicatingSnapcollName string
+	VolStatusList                    string
+	SyncReplVolStatusList            string
+	UseDownstreamForDr               string
 }

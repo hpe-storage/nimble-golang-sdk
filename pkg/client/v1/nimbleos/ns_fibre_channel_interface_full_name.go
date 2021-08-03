@@ -2,22 +2,18 @@
 
 package nimbleos
 
-// NsFibreChannelInterfaceFullName - Fully qualified name information for a Fibre Channel interface (array/controller/interface).
-// Export NsFibreChannelInterfaceFullNameFields for advance operations like search filter etc.
-var NsFibreChannelInterfaceFullNameFields *NsFibreChannelInterfaceFullName
+// NsFibreChannelInterfaceFullNameFields provides field names to use in filter parameters, for example.
+var NsFibreChannelInterfaceFullNameFields *NsFibreChannelInterfaceFullNameFieldHandles
 
 func init() {
-	ArrayNamefield := "array_name"
-	CtrlrNamefield := "ctrlr_name"
-	IntfNamefield := "intf_name"
-
-	NsFibreChannelInterfaceFullNameFields = &NsFibreChannelInterfaceFullName{
-		ArrayName: &ArrayNamefield,
-		CtrlrName: &CtrlrNamefield,
-		IntfName:  &IntfNamefield,
+	NsFibreChannelInterfaceFullNameFields = &NsFibreChannelInterfaceFullNameFieldHandles{
+		ArrayName: "array_name",
+		CtrlrName: "ctrlr_name",
+		IntfName:  "intf_name",
 	}
 }
 
+// NsFibreChannelInterfaceFullName - Fully qualified name information for a Fibre Channel interface (array/controller/interface).
 type NsFibreChannelInterfaceFullName struct {
 	// ArrayName - Array name.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -25,4 +21,11 @@ type NsFibreChannelInterfaceFullName struct {
 	CtrlrName *string `json:"ctrlr_name,omitempty"`
 	// IntfName - Fibre Channel interface name.
 	IntfName *string `json:"intf_name,omitempty"`
+}
+
+// NsFibreChannelInterfaceFullNameFieldHandles provides a string representation for each NsFibreChannelInterfaceFullName field.
+type NsFibreChannelInterfaceFullNameFieldHandles struct {
+	ArrayName string
+	CtrlrName string
+	IntfName  string
 }

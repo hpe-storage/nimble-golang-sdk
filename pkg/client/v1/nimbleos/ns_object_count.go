@@ -2,18 +2,19 @@
 
 package nimbleos
 
-// NsObjectCount - Number of objects of a type in a given scope.
-// Export NsObjectCountFields for advance operations like search filter etc.
-var NsObjectCountFields *NsObjectCount
+// NsObjectCountFields provides field names to use in filter parameters, for example.
+var NsObjectCountFields *NsObjectCountFieldHandles
 
 func init() {
-	ScopeNamefield := "scope_name"
-
-	NsObjectCountFields = &NsObjectCount{
-		ScopeName: &ScopeNamefield,
+	NsObjectCountFields = &NsObjectCountFieldHandles{
+		ScopeName:                "scope_name",
+		ObjectCount:              "object_count",
+		MaxLimitOverride:         "max_limit_override",
+		WarningThresholdOverride: "warning_threshold_override",
 	}
 }
 
+// NsObjectCount - Number of objects of a type in a given scope.
 type NsObjectCount struct {
 	// ScopeName - Name of the scope.
 	ScopeName *string `json:"scope_name,omitempty"`
@@ -23,4 +24,12 @@ type NsObjectCount struct {
 	MaxLimitOverride *int64 `json:"max_limit_override,omitempty"`
 	// WarningThresholdOverride - Override warning threshold for this scope.
 	WarningThresholdOverride *int64 `json:"warning_threshold_override,omitempty"`
+}
+
+// NsObjectCountFieldHandles provides a string representation for each NsObjectCount field.
+type NsObjectCountFieldHandles struct {
+	ScopeName                string
+	ObjectCount              string
+	MaxLimitOverride         string
+	WarningThresholdOverride string
 }

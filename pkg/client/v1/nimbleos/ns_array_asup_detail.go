@@ -2,18 +2,23 @@
 
 package nimbleos
 
-// NsArrayAsupDetail - Detailed array asup information.
-// Export NsArrayAsupDetailFields for advance operations like search filter etc.
-var NsArrayAsupDetailFields *NsArrayAsupDetail
+// NsArrayAsupDetailFields provides field names to use in filter parameters, for example.
+var NsArrayAsupDetailFields *NsArrayAsupDetailFieldHandles
 
 func init() {
-	ArrayNamefield := "array_name"
-
-	NsArrayAsupDetailFields = &NsArrayAsupDetail{
-		ArrayName: &ArrayNamefield,
+	NsArrayAsupDetailFields = &NsArrayAsupDetailFieldHandles{
+		ArrayName:      "array_name",
+		AsupValidate:   "asup_validate",
+		NameResolution: "name_resolution",
+		PingfromMgmtip: "pingfrom_mgmtip",
+		PingfromCtrlra: "pingfrom_ctrlra",
+		PingfromCtrlrb: "pingfrom_ctrlrb",
+		Heartbeat:      "heartbeat",
+		Messages:       "messages",
 	}
 }
 
+// NsArrayAsupDetail - Detailed array asup information.
 type NsArrayAsupDetail struct {
 	// ArrayName - Unique name of array.
 	ArrayName *string `json:"array_name,omitempty"`
@@ -31,4 +36,16 @@ type NsArrayAsupDetail struct {
 	Heartbeat *bool `json:"heartbeat,omitempty"`
 	// Messages - A list of error messages.
 	Messages []*NsErrorWithArguments `json:"messages,omitempty"`
+}
+
+// NsArrayAsupDetailFieldHandles provides a string representation for each NsArrayAsupDetail field.
+type NsArrayAsupDetailFieldHandles struct {
+	ArrayName      string
+	AsupValidate   string
+	NameResolution string
+	PingfromMgmtip string
+	PingfromCtrlra string
+	PingfromCtrlrb string
+	Heartbeat      string
+	Messages       string
 }

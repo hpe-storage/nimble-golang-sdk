@@ -2,18 +2,22 @@
 
 package nimbleos
 
-// NsSensorCumulativeData - Stat sensor cumulative data.
-// Export NsSensorCumulativeDataFields for advance operations like search filter etc.
-var NsSensorCumulativeDataFields *NsSensorCumulativeData
+// NsSensorCumulativeDataFields provides field names to use in filter parameters, for example.
+var NsSensorCumulativeDataFields *NsSensorCumulativeDataFieldHandles
 
 func init() {
-	Namefield := "name"
-
-	NsSensorCumulativeDataFields = &NsSensorCumulativeData{
-		Name: &Namefield,
+	NsSensorCumulativeDataFields = &NsSensorCumulativeDataFieldHandles{
+		Name:        "name",
+		Index:       "index",
+		Msec:        "msec",
+		PrevUnavail: "prev_unavail",
+		CurrUnavail: "curr_unavail",
+		Curr:        "curr",
+		Prev:        "prev",
 	}
 }
 
+// NsSensorCumulativeData - Stat sensor cumulative data.
 type NsSensorCumulativeData struct {
 	// Name - Name of sensor.
 	Name *string `json:"name,omitempty"`
@@ -29,4 +33,15 @@ type NsSensorCumulativeData struct {
 	Curr *int64 `json:"curr,omitempty"`
 	// Prev - Previous stat value from last sample period.
 	Prev *int64 `json:"prev,omitempty"`
+}
+
+// NsSensorCumulativeDataFieldHandles provides a string representation for each NsSensorCumulativeData field.
+type NsSensorCumulativeDataFieldHandles struct {
+	Name        string
+	Index       string
+	Msec        string
+	PrevUnavail string
+	CurrUnavail string
+	Curr        string
+	Prev        string
 }

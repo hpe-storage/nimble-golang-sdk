@@ -2,22 +2,23 @@
 
 package nimbleos
 
-// Subscription - Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
-// Export SubscriptionFields for advance operations like search filter etc.
-var SubscriptionFields *Subscription
+// SubscriptionFields provides field names to use in filter parameters, for example.
+var SubscriptionFields *SubscriptionFieldHandles
 
 func init() {
-	IDfield := "id"
-	SubscriberIdfield := "subscriber_id"
-	ObjectIdfield := "object_id"
-
-	SubscriptionFields = &Subscription{
-		ID:           &IDfield,
-		SubscriberId: &SubscriberIdfield,
-		ObjectId:     &ObjectIdfield,
+	SubscriptionFields = &SubscriptionFieldHandles{
+		ID:               "id",
+		SubscriberId:     "subscriber_id",
+		NotificationType: "notification_type",
+		ObjectType:       "object_type",
+		ObjectId:         "object_id",
+		Operation:        "operation",
+		EventTargetType:  "event_target_type",
+		EventSeverity:    "event_severity",
 	}
 }
 
+// Subscription - Subscriptions represent the list of object types or alerts that a websocket client is interested in getting notifications for. Each subscription belongs to a single notification client.
 type Subscription struct {
 	// ID - Identifier for subscription.
 	ID *string `json:"id,omitempty"`
@@ -35,4 +36,16 @@ type Subscription struct {
 	EventTargetType *NsEventTargetTypeOrAll `json:"event_target_type,omitempty"`
 	// EventSeverity - The severity of events that the notification subscriber is interested in. Applies only to events based notifications.
 	EventSeverity *NsSeverityLevel `json:"event_severity,omitempty"`
+}
+
+// SubscriptionFieldHandles provides a string representation for each Subscription field.
+type SubscriptionFieldHandles struct {
+	ID               string
+	SubscriberId     string
+	NotificationType string
+	ObjectType       string
+	ObjectId         string
+	Operation        string
+	EventTargetType  string
+	EventSeverity    string
 }

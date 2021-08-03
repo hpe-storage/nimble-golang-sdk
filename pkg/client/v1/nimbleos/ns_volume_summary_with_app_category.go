@@ -2,24 +2,20 @@
 
 package nimbleos
 
-// NsVolumeSummaryWithAppCategory - Select fields containing volume info.
-// Export NsVolumeSummaryWithAppCategoryFields for advance operations like search filter etc.
-var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategory
+// NsVolumeSummaryWithAppCategoryFields provides field names to use in filter parameters, for example.
+var NsVolumeSummaryWithAppCategoryFields *NsVolumeSummaryWithAppCategoryFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	AppCategoryfield := "app_category"
-	FullNamefield := "full_name"
-
-	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategory{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		AppCategory: &AppCategoryfield,
-		FullName:    &FullNamefield,
+	NsVolumeSummaryWithAppCategoryFields = &NsVolumeSummaryWithAppCategoryFieldHandles{
+		ID:          "id",
+		Name:        "name",
+		AppCategory: "app_category",
+		FullName:    "full_name",
+		Lun:         "lun",
 	}
 }
 
+// NsVolumeSummaryWithAppCategory - Select fields containing volume info.
 type NsVolumeSummaryWithAppCategory struct {
 	// ID - ID of volume.
 	ID *string `json:"id,omitempty"`
@@ -31,4 +27,13 @@ type NsVolumeSummaryWithAppCategory struct {
 	FullName *string `json:"full_name,omitempty"`
 	// Lun - LUN of volume. Secondary LUN if this is Virtual Volume.
 	Lun *int64 `json:"lun,omitempty"`
+}
+
+// NsVolumeSummaryWithAppCategoryFieldHandles provides a string representation for each NsVolumeSummaryWithAppCategory field.
+type NsVolumeSummaryWithAppCategoryFieldHandles struct {
+	ID          string
+	Name        string
+	AppCategory string
+	FullName    string
+	Lun         string
 }

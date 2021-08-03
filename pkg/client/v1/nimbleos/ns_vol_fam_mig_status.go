@@ -2,28 +2,26 @@
 
 package nimbleos
 
-// NsVolFamMigStatus - Data migration status for a group of related volumes.
-// Export NsVolFamMigStatusFields for advance operations like search filter etc.
-var NsVolFamMigStatusFields *NsVolFamMigStatus
+// NsVolFamMigStatusFields provides field names to use in filter parameters, for example.
+var NsVolFamMigStatusFields *NsVolFamMigStatusFieldHandles
 
 func init() {
-	RootVolIdfield := "root_vol_id"
-	RootVolNamefield := "root_vol_name"
-	SourcePoolIdfield := "source_pool_id"
-	SourcePoolNamefield := "source_pool_name"
-	DestPoolIdfield := "dest_pool_id"
-	DestPoolNamefield := "dest_pool_name"
-
-	NsVolFamMigStatusFields = &NsVolFamMigStatus{
-		RootVolId:      &RootVolIdfield,
-		RootVolName:    &RootVolNamefield,
-		SourcePoolId:   &SourcePoolIdfield,
-		SourcePoolName: &SourcePoolNamefield,
-		DestPoolId:     &DestPoolIdfield,
-		DestPoolName:   &DestPoolNamefield,
+	NsVolFamMigStatusFields = &NsVolFamMigStatusFieldHandles{
+		RootVolId:          "root_vol_id",
+		RootVolName:        "root_vol_name",
+		SourcePoolId:       "source_pool_id",
+		SourcePoolName:     "source_pool_name",
+		DestPoolId:         "dest_pool_id",
+		DestPoolName:       "dest_pool_name",
+		MoveBytesMigrated:  "move_bytes_migrated",
+		MoveBytesRemaining: "move_bytes_remaining",
+		MoveStartTime:      "move_start_time",
+		MoveEstComplTime:   "move_est_compl_time",
+		ArrayList:          "array_list",
 	}
 }
 
+// NsVolFamMigStatus - Data migration status for a group of related volumes.
 type NsVolFamMigStatus struct {
 	// RootVolId - ID of the root volume in the group.
 	RootVolId *string `json:"root_vol_id,omitempty"`
@@ -47,4 +45,19 @@ type NsVolFamMigStatus struct {
 	MoveEstComplTime *int64 `json:"move_est_compl_time,omitempty"`
 	// ArrayList - Data migration status for the arrays that store the volumes.
 	ArrayList []*NsArrayMigStatus `json:"array_list,omitempty"`
+}
+
+// NsVolFamMigStatusFieldHandles provides a string representation for each NsVolFamMigStatus field.
+type NsVolFamMigStatusFieldHandles struct {
+	RootVolId          string
+	RootVolName        string
+	SourcePoolId       string
+	SourcePoolName     string
+	DestPoolId         string
+	DestPoolName       string
+	MoveBytesMigrated  string
+	MoveBytesRemaining string
+	MoveStartTime      string
+	MoveEstComplTime   string
+	ArrayList          string
 }

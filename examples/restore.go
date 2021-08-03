@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-
 	// login to Array, get groupService instance
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
@@ -22,11 +21,13 @@ func main() {
 		return
 	}
 	defer groupService.LogoutService()
+
 	// set debug
 	groupService.SetDebug()
 
 	// get  volume service instance
 	volSvc := groupService.GetVolumeService()
+
 	// Initialize volume attributes
 	var sizeField int64 = 5120
 	descriptionField := "This volume was created as part of a unit test"
@@ -57,17 +58,27 @@ func main() {
 			fmt.Println("Failed to create volume collection")
 			return
 		}
+
 		// add volume to volume collection
 		err = volSvc.AssociateVolume(*volume.ID, *volcoll.ID)
 		if err != nil {
 			fmt.Println("Failed to associate RestoreVolume to volcoll ")
 			return
 		}
+
 		// create a snapshot collection
 		snapColl, _ := groupService.GetSnapshotCollectionService().CreateSnapshotCollection(&nimbleos.SnapshotCollection{
 			Name:      param.NewString("RestoreSnapColl"),
 			VolcollId: volcoll.ID,
 		})
+
+		// Get snapshot collection by name
+		snapColl, err = groupService.GetSnapshotCollectionService().GetSnapshotCollectionByName("RestoreSnapColl")
+		if err != nil {
+			fmt.Printf("Failed to get snapshot collection by name, err: %v\n", err)
+		}
+		fmt.Println(snapColl)
+
 		// set the volume offline before restore
 		volSvc.OfflineVolume(*volume.ID, true)
 		//restore volume to snapcoll
@@ -77,14 +88,16 @@ func main() {
 			fmt.Println("Failed to restore volume")
 
 		}
+
 		// cleanup
 		// disassociate volume from volume collection
 		err = volSvc.DisassociateVolume(*volume.ID)
 
 		if err != nil {
-			fmt.Printf("Failed to remove %s volume from volume collection", *volume.ID)
+			fmt.Printf("Failed to remove %s volume from volume collection\n", *volume.ID)
 			return
 		}
+
 		// delete volcoll
 		groupService.GetVolumeCollectionService().DeleteVolumeCollection(*volcoll.ID)
 		volSvc.DeleteVolume(*volume.ID)

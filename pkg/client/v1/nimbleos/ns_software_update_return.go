@@ -2,21 +2,26 @@
 
 package nimbleos
 
-// NsSoftwareUpdateReturn - The status returned by the software update precheck and start actions.
-// Export NsSoftwareUpdateReturnFields for advance operations like search filter etc.
-var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturn
+// NsSoftwareUpdateReturnFields provides field names to use in filter parameters, for example.
+var NsSoftwareUpdateReturnFields *NsSoftwareUpdateReturnFieldHandles
 
 func init() {
-	Errorfield := "error"
-
-	NsSoftwareUpdateReturnFields = &NsSoftwareUpdateReturn{
-		Error: &Errorfield,
+	NsSoftwareUpdateReturnFields = &NsSoftwareUpdateReturnFieldHandles{
+		Error:             "error",
+		ArrayResponseList: "array_response_list",
 	}
 }
 
+// NsSoftwareUpdateReturn - The status returned by the software update precheck and start actions.
 type NsSoftwareUpdateReturn struct {
 	// Error - Top level error.
 	Error *string `json:"error,omitempty"`
 	// ArrayResponseList - Errors from all the arrays in the group.
 	ArrayResponseList []*NsArraySoftwareUpdateStatus `json:"array_response_list,omitempty"`
+}
+
+// NsSoftwareUpdateReturnFieldHandles provides a string representation for each NsSoftwareUpdateReturn field.
+type NsSoftwareUpdateReturnFieldHandles struct {
+	Error             string
+	ArrayResponseList string
 }

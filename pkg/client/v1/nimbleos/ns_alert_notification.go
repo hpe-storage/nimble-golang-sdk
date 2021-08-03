@@ -2,18 +2,23 @@
 
 package nimbleos
 
-// NsAlertNotification - Represents an Alert notification message.
-// Export NsAlertNotificationFields for advance operations like search filter etc.
-var NsAlertNotificationFields *NsAlertNotification
+// NsAlertNotificationFields provides field names to use in filter parameters, for example.
+var NsAlertNotificationFields *NsAlertNotificationFieldHandles
 
 func init() {
-	Activityfield := "activity"
-
-	NsAlertNotificationFields = &NsAlertNotification{
-		Activity: &Activityfield,
+	NsAlertNotificationFields = &NsAlertNotificationFieldHandles{
+		SequenceNumber:   "sequence_number",
+		NotificationType: "notification_type",
+		Activity:         "activity",
+		EventTarget:      "event_target",
+		Category:         "category",
+		Severity:         "severity",
+		AlertType:        "alert_type",
+		Timestamp:        "timestamp",
 	}
 }
 
+// NsAlertNotification - Represents an Alert notification message.
 type NsAlertNotification struct {
 	// SequenceNumber - Notification Sequence Number.
 	SequenceNumber *int64 `json:"sequence_number,omitempty"`
@@ -31,4 +36,16 @@ type NsAlertNotification struct {
 	AlertType *int64 `json:"alert_type,omitempty"`
 	// Timestamp - The timestamp when the activity happened in seconds since last epoch.
 	Timestamp *int64 `json:"timestamp,omitempty"`
+}
+
+// NsAlertNotificationFieldHandles provides a string representation for each NsAlertNotification field.
+type NsAlertNotificationFieldHandles struct {
+	SequenceNumber   string
+	NotificationType string
+	Activity         string
+	EventTarget      string
+	Category         string
+	Severity         string
+	AlertType        string
+	Timestamp        string
 }

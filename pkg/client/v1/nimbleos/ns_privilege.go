@@ -2,21 +2,26 @@
 
 package nimbleos
 
-// NsPrivilege - Privilege info.
-// Export NsPrivilegeFields for advance operations like search filter etc.
-var NsPrivilegeFields *NsPrivilege
+// NsPrivilegeFields provides field names to use in filter parameters, for example.
+var NsPrivilegeFields *NsPrivilegeFieldHandles
 
 func init() {
-	ObjectTypefield := "object_type"
-
-	NsPrivilegeFields = &NsPrivilege{
-		ObjectType: &ObjectTypefield,
+	NsPrivilegeFields = &NsPrivilegeFieldHandles{
+		ObjectType: "object_type",
+		Operations: "operations",
 	}
 }
 
+// NsPrivilege - Privilege info.
 type NsPrivilege struct {
 	// ObjectType - Object type name associated with this privilege.
 	ObjectType *string `json:"object_type,omitempty"`
 	// Operations - List of operations associated with the above object for this privilege.
 	Operations []*string `json:"operations,omitempty"`
+}
+
+// NsPrivilegeFieldHandles provides a string representation for each NsPrivilege field.
+type NsPrivilegeFieldHandles struct {
+	ObjectType string
+	Operations string
 }

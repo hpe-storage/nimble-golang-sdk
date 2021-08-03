@@ -2,76 +2,115 @@
 
 package nimbleos
 
-// Volume - Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
-// Export VolumeFields for advance operations like search filter etc.
-var VolumeFields *Volume
+// VolumeFields provides field names to use in filter parameters, for example.
+var VolumeFields *VolumeFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	PerfpolicyNamefield := "perfpolicy_name"
-	PerfpolicyIdfield := "perfpolicy_id"
-	OwnedByGroupfield := "owned_by_group"
-	OwnedByGroupIdfield := "owned_by_group_id"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	SerialNumberfield := "serial_number"
-	SecondarySerialNumberfield := "secondary_serial_number"
-	TargetNamefield := "target_name"
-	ParentVolNamefield := "parent_vol_name"
-	ParentVolIdfield := "parent_vol_id"
-	BaseSnapNamefield := "base_snap_name"
-	BaseSnapIdfield := "base_snap_id"
-	VolcollNamefield := "volcoll_name"
-	VolcollIdfield := "volcoll_id"
-	DestPoolNamefield := "dest_pool_name"
-	DestPoolIdfield := "dest_pool_id"
-	AppUuidfield := "app_uuid"
-	FolderIdfield := "folder_id"
-	FolderNamefield := "folder_name"
-	VpdT10field := "vpd_t10"
-	VpdIeee0field := "vpd_ieee0"
-	VpdIeee1field := "vpd_ieee1"
-	AppCategoryfield := "app_category"
-	PreFilterfield := "pre_filter"
-
-	VolumeFields = &Volume{
-		ID:                    &IDfield,
-		Name:                  &Namefield,
-		FullName:              &FullNamefield,
-		SearchName:            &SearchNamefield,
-		Description:           &Descriptionfield,
-		PerfpolicyName:        &PerfpolicyNamefield,
-		PerfpolicyId:          &PerfpolicyIdfield,
-		OwnedByGroup:          &OwnedByGroupfield,
-		OwnedByGroupId:        &OwnedByGroupIdfield,
-		PoolName:              &PoolNamefield,
-		PoolId:                &PoolIdfield,
-		SerialNumber:          &SerialNumberfield,
-		SecondarySerialNumber: &SecondarySerialNumberfield,
-		TargetName:            &TargetNamefield,
-		ParentVolName:         &ParentVolNamefield,
-		ParentVolId:           &ParentVolIdfield,
-		BaseSnapName:          &BaseSnapNamefield,
-		BaseSnapId:            &BaseSnapIdfield,
-		VolcollName:           &VolcollNamefield,
-		VolcollId:             &VolcollIdfield,
-		DestPoolName:          &DestPoolNamefield,
-		DestPoolId:            &DestPoolIdfield,
-		AppUuid:               &AppUuidfield,
-		FolderId:              &FolderIdfield,
-		FolderName:            &FolderNamefield,
-		VpdT10:                &VpdT10field,
-		VpdIeee0:              &VpdIeee0field,
-		VpdIeee1:              &VpdIeee1field,
-		AppCategory:           &AppCategoryfield,
-		PreFilter:             &PreFilterfield,
+	VolumeFields = &VolumeFieldHandles{
+		ID:                         "id",
+		Name:                       "name",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Size:                       "size",
+		Description:                "description",
+		PerfpolicyName:             "perfpolicy_name",
+		PerfpolicyId:               "perfpolicy_id",
+		Reserve:                    "reserve",
+		WarnLevel:                  "warn_level",
+		Limit:                      "limit",
+		SnapReserve:                "snap_reserve",
+		SnapWarnLevel:              "snap_warn_level",
+		SnapLimit:                  "snap_limit",
+		SnapLimitPercent:           "snap_limit_percent",
+		NumSnaps:                   "num_snaps",
+		ProjectedNumSnaps:          "projected_num_snaps",
+		Online:                     "online",
+		OwnedByGroup:               "owned_by_group",
+		OwnedByGroupId:             "owned_by_group_id",
+		MultiInitiator:             "multi_initiator",
+		IscsiTargetScope:           "iscsi_target_scope",
+		PoolName:                   "pool_name",
+		PoolId:                     "pool_id",
+		ReadOnly:                   "read_only",
+		SerialNumber:               "serial_number",
+		SecondarySerialNumber:      "secondary_serial_number",
+		TargetName:                 "target_name",
+		BlockSize:                  "block_size",
+		OfflineReason:              "offline_reason",
+		Clone:                      "clone",
+		ParentVolName:              "parent_vol_name",
+		ParentVolId:                "parent_vol_id",
+		BaseSnapName:               "base_snap_name",
+		BaseSnapId:                 "base_snap_id",
+		ReplicationRole:            "replication_role",
+		VolcollName:                "volcoll_name",
+		VolcollId:                  "volcoll_id",
+		AgentType:                  "agent_type",
+		Force:                      "force",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		ProtectionType:             "protection_type",
+		LastSnap:                   "last_snap",
+		LastReplicatedSnap:         "last_replicated_snap",
+		DestPoolName:               "dest_pool_name",
+		DestPoolId:                 "dest_pool_id",
+		MoveStartTime:              "move_start_time",
+		MoveAborting:               "move_aborting",
+		MoveBytesMigrated:          "move_bytes_migrated",
+		MoveBytesRemaining:         "move_bytes_remaining",
+		MoveEstComplTime:           "move_est_compl_time",
+		UsageValid:                 "usage_valid",
+		SpaceUsageLevel:            "space_usage_level",
+		TotalUsageBytes:            "total_usage_bytes",
+		VolUsageCompressedBytes:    "vol_usage_compressed_bytes",
+		VolUsageUncompressedBytes:  "vol_usage_uncompressed_bytes",
+		VolUsageMappedBytes:        "vol_usage_mapped_bytes",
+		SnapUsageCompressedBytes:   "snap_usage_compressed_bytes",
+		SnapUsageUncompressedBytes: "snap_usage_uncompressed_bytes",
+		SnapUsagePopulatedBytes:    "snap_usage_populated_bytes",
+		CachePinned:                "cache_pinned",
+		PinnedCacheSize:            "pinned_cache_size",
+		CacheNeededForPin:          "cache_needed_for_pin",
+		UpstreamCachePinned:        "upstream_cache_pinned",
+		CachePolicy:                "cache_policy",
+		ThinlyProvisioned:          "thinly_provisioned",
+		VolState:                   "vol_state",
+		OnlineSnaps:                "online_snaps",
+		NumConnections:             "num_connections",
+		NumIscsiConnections:        "num_iscsi_connections",
+		NumFcConnections:           "num_fc_connections",
+		AccessControlRecords:       "access_control_records",
+		InheritAcl:                 "inherit_acl",
+		EncryptionCipher:           "encryption_cipher",
+		AppUuid:                    "app_uuid",
+		FolderId:                   "folder_id",
+		FolderName:                 "folder_name",
+		Metadata:                   "metadata",
+		IscsiSessions:              "iscsi_sessions",
+		FcSessions:                 "fc_sessions",
+		CachingEnabled:             "caching_enabled",
+		PreviouslyDeduped:          "previously_deduped",
+		DedupeEnabled:              "dedupe_enabled",
+		VpdT10:                     "vpd_t10",
+		VpdIeee0:                   "vpd_ieee0",
+		VpdIeee1:                   "vpd_ieee1",
+		AppCategory:                "app_category",
+		LimitIops:                  "limit_iops",
+		LimitMbps:                  "limit_mbps",
+		NeedsContentRepl:           "needs_content_repl",
+		ContentReplErrorsFound:     "content_repl_errors_found",
+		LastContentSnapBrCgUid:     "last_content_snap_br_cg_uid",
+		LastContentSnapBrGid:       "last_content_snap_br_gid",
+		LastContentSnapId:          "last_content_snap_id",
+		CksumLastVerified:          "cksum_last_verified",
+		PreFilter:                  "pre_filter",
+		AvgStatsLast5mins:          "avg_stats_last_5mins",
+		SrepLastSync:               "srep_last_sync",
+		SrepResyncPercent:          "srep_resync_percent",
 	}
 }
 
+// Volume - Volumes are the basic storage units from which the total capacity is apportioned. The terms volume and LUN are used interchangeably.The number of volumes per array depends on storage allocation.
 type Volume struct {
 	// ID - Identifier for the volume.
 	ID *string `json:"id,omitempty"`
@@ -273,4 +312,108 @@ type Volume struct {
 	SrepLastSync *int64 `json:"srep_last_sync,omitempty"`
 	// SrepResyncPercent - Percentage of resync progress for synchronously replicated volume.
 	SrepResyncPercent *int64 `json:"srep_resync_percent,omitempty"`
+}
+
+// VolumeFieldHandles provides a string representation for each Volume field.
+type VolumeFieldHandles struct {
+	ID                         string
+	Name                       string
+	FullName                   string
+	SearchName                 string
+	Size                       string
+	Description                string
+	PerfpolicyName             string
+	PerfpolicyId               string
+	Reserve                    string
+	WarnLevel                  string
+	Limit                      string
+	SnapReserve                string
+	SnapWarnLevel              string
+	SnapLimit                  string
+	SnapLimitPercent           string
+	NumSnaps                   string
+	ProjectedNumSnaps          string
+	Online                     string
+	OwnedByGroup               string
+	OwnedByGroupId             string
+	MultiInitiator             string
+	IscsiTargetScope           string
+	PoolName                   string
+	PoolId                     string
+	ReadOnly                   string
+	SerialNumber               string
+	SecondarySerialNumber      string
+	TargetName                 string
+	BlockSize                  string
+	OfflineReason              string
+	Clone                      string
+	ParentVolName              string
+	ParentVolId                string
+	BaseSnapName               string
+	BaseSnapId                 string
+	ReplicationRole            string
+	VolcollName                string
+	VolcollId                  string
+	AgentType                  string
+	Force                      string
+	CreationTime               string
+	LastModified               string
+	ProtectionType             string
+	LastSnap                   string
+	LastReplicatedSnap         string
+	DestPoolName               string
+	DestPoolId                 string
+	MoveStartTime              string
+	MoveAborting               string
+	MoveBytesMigrated          string
+	MoveBytesRemaining         string
+	MoveEstComplTime           string
+	UsageValid                 string
+	SpaceUsageLevel            string
+	TotalUsageBytes            string
+	VolUsageCompressedBytes    string
+	VolUsageUncompressedBytes  string
+	VolUsageMappedBytes        string
+	SnapUsageCompressedBytes   string
+	SnapUsageUncompressedBytes string
+	SnapUsagePopulatedBytes    string
+	CachePinned                string
+	PinnedCacheSize            string
+	CacheNeededForPin          string
+	UpstreamCachePinned        string
+	CachePolicy                string
+	ThinlyProvisioned          string
+	VolState                   string
+	OnlineSnaps                string
+	NumConnections             string
+	NumIscsiConnections        string
+	NumFcConnections           string
+	AccessControlRecords       string
+	InheritAcl                 string
+	EncryptionCipher           string
+	AppUuid                    string
+	FolderId                   string
+	FolderName                 string
+	Metadata                   string
+	IscsiSessions              string
+	FcSessions                 string
+	CachingEnabled             string
+	PreviouslyDeduped          string
+	DedupeEnabled              string
+	VpdT10                     string
+	VpdIeee0                   string
+	VpdIeee1                   string
+	AppCategory                string
+	LimitIops                  string
+	LimitMbps                  string
+	NeedsContentRepl           string
+	ContentReplErrorsFound     string
+	LastContentSnapBrCgUid     string
+	LastContentSnapBrGid       string
+	LastContentSnapId          string
+	CksumLastVerified          string
+	PreFilter                  string
+	AvgStatsLast5mins          string
+	SrepLastSync               string
+	SrepResyncPercent          string
 }

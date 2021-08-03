@@ -89,15 +89,24 @@ func main() {
 		}
 	}
 
+	// get igroup by name
+	igroup, err = igroupSvc.GetInitiatorGroupByName("sdkigroup")
+	if err != nil {
+		fmt.Printf("Failed to get igroup by name, err %v\n", err)
+	}
+	fmt.Println(igroup)
+
 	// cleaup
 	updateVol := &nimbleos.Volume{
 		Online: param.NewBool(false),
 	}
+
 	// set volume offline
 	volume, _ = volSvc.UpdateVolume(*volume.ID, updateVol)
 
 	// delete the volume
 	_ = volSvc.DeleteVolume(*volume.ID)
+
 	// delete igroup
 	_ = igroupSvc.DeleteInitiatorGroup(*igroup.ID)
 }

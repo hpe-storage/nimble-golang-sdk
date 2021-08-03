@@ -2,22 +2,22 @@
 
 package nimbleos
 
-// NsSnapshotCreateAttr - Select fields containing volume info.
-// Export NsSnapshotCreateAttrFields for advance operations like search filter etc.
-var NsSnapshotCreateAttrFields *NsSnapshotCreateAttr
+// NsSnapshotCreateAttrFields provides field names to use in filter parameters, for example.
+var NsSnapshotCreateAttrFields *NsSnapshotCreateAttrFieldHandles
 
 func init() {
-	VolIdfield := "vol_id"
-	Namefield := "name"
-	Descriptionfield := "description"
-
-	NsSnapshotCreateAttrFields = &NsSnapshotCreateAttr{
-		VolId:       &VolIdfield,
-		Name:        &Namefield,
-		Description: &Descriptionfield,
+	NsSnapshotCreateAttrFields = &NsSnapshotCreateAttrFieldHandles{
+		VolId:       "vol_id",
+		Name:        "name",
+		Description: "description",
+		Online:      "online",
+		Writable:    "writable",
+		AgentType:   "agent_type",
+		Metadata:    "metadata",
 	}
 }
 
+// NsSnapshotCreateAttr - Select fields containing volume info.
 type NsSnapshotCreateAttr struct {
 	// VolId - ID of volume.
 	VolId *string `json:"vol_id,omitempty"`
@@ -33,4 +33,15 @@ type NsSnapshotCreateAttr struct {
 	AgentType *NsAgentType `json:"agent_type,omitempty"`
 	// Metadata - Key-value pairs that augment a snapshot's attributes.
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
+}
+
+// NsSnapshotCreateAttrFieldHandles provides a string representation for each NsSnapshotCreateAttr field.
+type NsSnapshotCreateAttrFieldHandles struct {
+	VolId       string
+	Name        string
+	Description string
+	Online      string
+	Writable    string
+	AgentType   string
+	Metadata    string
 }

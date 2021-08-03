@@ -2,26 +2,24 @@
 
 package nimbleos
 
-// NsSnapVol - Select fields containing volume info.
-// Export NsSnapVolFields for advance operations like search filter etc.
-var NsSnapVolFields *NsSnapVol
+// NsSnapVolFields provides field names to use in filter parameters, for example.
+var NsSnapVolFields *NsSnapVolFieldHandles
 
 func init() {
-	VolIdfield := "vol_id"
-	SnapNamefield := "snap_name"
-	SnapDescriptionfield := "snap_description"
-	Cookiefield := "cookie"
-	AppUuidfield := "app_uuid"
-
-	NsSnapVolFields = &NsSnapVol{
-		VolId:           &VolIdfield,
-		SnapName:        &SnapNamefield,
-		SnapDescription: &SnapDescriptionfield,
-		Cookie:          &Cookiefield,
-		AppUuid:         &AppUuidfield,
+	NsSnapVolFields = &NsSnapVolFieldHandles{
+		VolId:           "vol_id",
+		SnapName:        "snap_name",
+		SnapDescription: "snap_description",
+		Cookie:          "cookie",
+		Online:          "online",
+		Writable:        "writable",
+		AppUuid:         "app_uuid",
+		AgentType:       "agent_type",
+		Metadata:        "metadata",
 	}
 }
 
+// NsSnapVol - Select fields containing volume info.
 type NsSnapVol struct {
 	// VolId - ID of volume.
 	VolId *string `json:"vol_id,omitempty"`
@@ -41,4 +39,17 @@ type NsSnapVol struct {
 	AgentType *NsAgentType `json:"agent_type,omitempty"`
 	// Metadata - Key-value pairs that augment a snapshot's attributes.
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
+}
+
+// NsSnapVolFieldHandles provides a string representation for each NsSnapVol field.
+type NsSnapVolFieldHandles struct {
+	VolId           string
+	SnapName        string
+	SnapDescription string
+	Cookie          string
+	Online          string
+	Writable        string
+	AppUuid         string
+	AgentType       string
+	Metadata        string
 }

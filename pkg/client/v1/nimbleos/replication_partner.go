@@ -2,58 +2,60 @@
 
 package nimbleos
 
-// ReplicationPartner - Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and use ports 4213 and 4214. Replication partners have the same name as the remote group. Replication partners can be reciprocal, upstream (the source of replicas), or downstream (the receiver of replicas) partners.
-// Export ReplicationPartnerFields for advance operations like search filter etc.
-var ReplicationPartnerFields *ReplicationPartner
+// ReplicationPartnerFields provides field names to use in filter parameters, for example.
+var ReplicationPartnerFields *ReplicationPartnerFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	Aliasfield := "alias"
-	Secretfield := "secret"
-	Hostnamefield := "hostname"
-	ProxyHostnamefield := "proxy_hostname"
-	ProxyUserfield := "proxy_user"
-	ReplHostnamefield := "repl_hostname"
-	LastKeepaliveErrorfield := "last_keepalive_error"
-	LastSyncErrorfield := "last_sync_error"
-	ArraySerialfield := "array_serial"
-	PoolIdfield := "pool_id"
-	PoolNamefield := "pool_name"
-	FolderIdfield := "folder_id"
-	FolderNamefield := "folder_name"
-	SubnetLabelfield := "subnet_label"
-	SubnetNetworkfield := "subnet_network"
-	SubnetNetmaskfield := "subnet_netmask"
-
-	ReplicationPartnerFields = &ReplicationPartner{
-		ID:                 &IDfield,
-		Name:               &Namefield,
-		FullName:           &FullNamefield,
-		SearchName:         &SearchNamefield,
-		Description:        &Descriptionfield,
-		Alias:              &Aliasfield,
-		Secret:             &Secretfield,
-		Hostname:           &Hostnamefield,
-		ProxyHostname:      &ProxyHostnamefield,
-		ProxyUser:          &ProxyUserfield,
-		ReplHostname:       &ReplHostnamefield,
-		LastKeepaliveError: &LastKeepaliveErrorfield,
-		LastSyncError:      &LastSyncErrorfield,
-		ArraySerial:        &ArraySerialfield,
-		PoolId:             &PoolIdfield,
-		PoolName:           &PoolNamefield,
-		FolderId:           &FolderIdfield,
-		FolderName:         &FolderNamefield,
-		SubnetLabel:        &SubnetLabelfield,
-		SubnetNetwork:      &SubnetNetworkfield,
-		SubnetNetmask:      &SubnetNetmaskfield,
+	ReplicationPartnerFields = &ReplicationPartnerFieldHandles{
+		ID:                            "id",
+		Name:                          "name",
+		FullName:                      "full_name",
+		SearchName:                    "search_name",
+		Description:                   "description",
+		PartnerType:                   "partner_type",
+		Alias:                         "alias",
+		Secret:                        "secret",
+		CreationTime:                  "creation_time",
+		LastModified:                  "last_modified",
+		ControlPort:                   "control_port",
+		Hostname:                      "hostname",
+		PortRangeStart:                "port_range_start",
+		ProxyHostname:                 "proxy_hostname",
+		ProxyUser:                     "proxy_user",
+		ReplHostname:                  "repl_hostname",
+		DataPort:                      "data_port",
+		IsAlive:                       "is_alive",
+		PartnerGroupUid:               "partner_group_uid",
+		LastKeepaliveError:            "last_keepalive_error",
+		CfgSyncStatus:                 "cfg_sync_status",
+		LastSyncError:                 "last_sync_error",
+		ArraySerial:                   "array_serial",
+		Version:                       "version",
+		PoolId:                        "pool_id",
+		PoolName:                      "pool_name",
+		FolderId:                      "folder_id",
+		FolderName:                    "folder_name",
+		MatchFolder:                   "match_folder",
+		Paused:                        "paused",
+		UniqueName:                    "unique_name",
+		SubnetLabel:                   "subnet_label",
+		SubnetType:                    "subnet_type",
+		Throttles:                     "throttles",
+		ThrottledBandwidth:            "throttled_bandwidth",
+		ThrottledBandwidthCurrent:     "throttled_bandwidth_current",
+		ThrottledBandwidthKbps:        "throttled_bandwidth_kbps",
+		ThrottledBandwidthCurrentKbps: "throttled_bandwidth_current_kbps",
+		SubnetNetwork:                 "subnet_network",
+		SubnetNetmask:                 "subnet_netmask",
+		VolumeCollectionList:          "volume_collection_list",
+		VolumeCollectionListCount:     "volume_collection_list_count",
+		VolumeList:                    "volume_list",
+		VolumeListCount:               "volume_list_count",
+		ReplicationDirection:          "replication_direction",
 	}
 }
 
+// ReplicationPartner - Manage replication partner. Replication partners let one storage array talk to another for replication purposes. The two arrays must be able to communicate over a network, and use ports 4213 and 4214. Replication partners have the same name as the remote group. Replication partners can be reciprocal, upstream (the source of replicas), or downstream (the receiver of replicas) partners.
 type ReplicationPartner struct {
 	// ID - Identifier for a replication partner.
 	ID *string `json:"id,omitempty"`
@@ -145,4 +147,53 @@ type ReplicationPartner struct {
 	VolumeListCount *int64 `json:"volume_list_count,omitempty"`
 	// ReplicationDirection - Direction of replication configured with this partner.
 	ReplicationDirection *NsReplDirection `json:"replication_direction,omitempty"`
+}
+
+// ReplicationPartnerFieldHandles provides a string representation for each ReplicationPartner field.
+type ReplicationPartnerFieldHandles struct {
+	ID                            string
+	Name                          string
+	FullName                      string
+	SearchName                    string
+	Description                   string
+	PartnerType                   string
+	Alias                         string
+	Secret                        string
+	CreationTime                  string
+	LastModified                  string
+	ControlPort                   string
+	Hostname                      string
+	PortRangeStart                string
+	ProxyHostname                 string
+	ProxyUser                     string
+	ReplHostname                  string
+	DataPort                      string
+	IsAlive                       string
+	PartnerGroupUid               string
+	LastKeepaliveError            string
+	CfgSyncStatus                 string
+	LastSyncError                 string
+	ArraySerial                   string
+	Version                       string
+	PoolId                        string
+	PoolName                      string
+	FolderId                      string
+	FolderName                    string
+	MatchFolder                   string
+	Paused                        string
+	UniqueName                    string
+	SubnetLabel                   string
+	SubnetType                    string
+	Throttles                     string
+	ThrottledBandwidth            string
+	ThrottledBandwidthCurrent     string
+	ThrottledBandwidthKbps        string
+	ThrottledBandwidthCurrentKbps string
+	SubnetNetwork                 string
+	SubnetNetmask                 string
+	VolumeCollectionList          string
+	VolumeCollectionListCount     string
+	VolumeList                    string
+	VolumeListCount               string
+	ReplicationDirection          string
 }

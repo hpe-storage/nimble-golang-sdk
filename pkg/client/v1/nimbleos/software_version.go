@@ -2,28 +2,26 @@
 
 package nimbleos
 
-// SoftwareVersion - Show the software version.
-// Export SoftwareVersionFields for advance operations like search filter etc.
-var SoftwareVersionFields *SoftwareVersion
+// SoftwareVersionFields provides field names to use in filter parameters, for example.
+var SoftwareVersionFields *SoftwareVersionFieldHandles
 
 func init() {
-	Versionfield := "version"
-	Signaturefield := "signature"
-	Namefield := "name"
-	Statusfield := "status"
-	BlacklistReasonfield := "blacklist_reason"
-	ReleaseStatusfield := "release_status"
-
-	SoftwareVersionFields = &SoftwareVersion{
-		Version:         &Versionfield,
-		Signature:       &Signaturefield,
-		Name:            &Namefield,
-		Status:          &Statusfield,
-		BlacklistReason: &BlacklistReasonfield,
-		ReleaseStatus:   &ReleaseStatusfield,
+	SoftwareVersionFields = &SoftwareVersionFieldHandles{
+		Version:              "version",
+		Signature:            "signature",
+		Name:                 "name",
+		Status:               "status",
+		TotalBytes:           "total_bytes",
+		DownloadedBytes:      "downloaded_bytes",
+		BlacklistReason:      "blacklist_reason",
+		ReleaseDate:          "release_date",
+		IsManuallyDownloaded: "is_manually_downloaded",
+		ReleaseStatus:        "release_status",
+		NoPartialResponse:    "no_partial_response",
 	}
 }
 
+// SoftwareVersion - Show the software version.
 type SoftwareVersion struct {
 	// Version - Software version, used as identifier in URL.
 	Version *string `json:"version,omitempty"`
@@ -47,4 +45,19 @@ type SoftwareVersion struct {
 	ReleaseStatus *string `json:"release_status,omitempty"`
 	// NoPartialResponse - Indicate that it is not ok to provide partially available response.
 	NoPartialResponse *bool `json:"no_partial_response,omitempty"`
+}
+
+// SoftwareVersionFieldHandles provides a string representation for each SoftwareVersion field.
+type SoftwareVersionFieldHandles struct {
+	Version              string
+	Signature            string
+	Name                 string
+	Status               string
+	TotalBytes           string
+	DownloadedBytes      string
+	BlacklistReason      string
+	ReleaseDate          string
+	IsManuallyDownloaded string
+	ReleaseStatus        string
+	NoPartialResponse    string
 }

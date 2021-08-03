@@ -2,24 +2,27 @@
 
 package nimbleos
 
-// NsArrayDetail - Detailed array information.
-// Export NsArrayDetailFields for advance operations like search filter etc.
-var NsArrayDetailFields *NsArrayDetail
+// NsArrayDetailFields provides field names to use in filter parameters, for example.
+var NsArrayDetailFields *NsArrayDetailFieldHandles
 
 func init() {
-	IDfield := "id"
-	ArrayIdfield := "array_id"
-	Namefield := "name"
-	ArrayNamefield := "array_name"
-
-	NsArrayDetailFields = &NsArrayDetail{
-		ID:        &IDfield,
-		ArrayId:   &ArrayIdfield,
-		Name:      &Namefield,
-		ArrayName: &ArrayNamefield,
+	NsArrayDetailFields = &NsArrayDetailFieldHandles{
+		ID:                       "id",
+		ArrayId:                  "array_id",
+		Name:                     "name",
+		ArrayName:                "array_name",
+		EvacTime:                 "evac_time",
+		EvacUsage:                "evac_usage",
+		UsableCapacity:           "usable_capacity",
+		Usage:                    "usage",
+		VolUsageCompressedBytes:  "vol_usage_compressed_bytes",
+		SnapUsageCompressedBytes: "snap_usage_compressed_bytes",
+		UsageValid:               "usage_valid",
+		Migrate:                  "migrate",
 	}
 }
 
+// NsArrayDetail - Detailed array information.
 type NsArrayDetail struct {
 	// ID - Array API ID.
 	ID *string `json:"id,omitempty"`
@@ -45,4 +48,20 @@ type NsArrayDetail struct {
 	UsageValid *bool `json:"usage_valid,omitempty"`
 	// Migrate - Migrate status of array.
 	Migrate *NsPoolMigrate `json:"migrate,omitempty"`
+}
+
+// NsArrayDetailFieldHandles provides a string representation for each NsArrayDetail field.
+type NsArrayDetailFieldHandles struct {
+	ID                       string
+	ArrayId                  string
+	Name                     string
+	ArrayName                string
+	EvacTime                 string
+	EvacUsage                string
+	UsableCapacity           string
+	Usage                    string
+	VolUsageCompressedBytes  string
+	SnapUsageCompressedBytes string
+	UsageValid               string
+	Migrate                  string
 }

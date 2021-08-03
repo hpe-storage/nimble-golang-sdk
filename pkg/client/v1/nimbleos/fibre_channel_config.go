@@ -2,20 +2,18 @@
 
 package nimbleos
 
-// FibreChannelConfig - Manage group wide Fibre Channel configuration.
-// Export FibreChannelConfigFields for advance operations like search filter etc.
-var FibreChannelConfigFields *FibreChannelConfig
+// FibreChannelConfigFields provides field names to use in filter parameters, for example.
+var FibreChannelConfigFields *FibreChannelConfigFieldHandles
 
 func init() {
-	IDfield := "id"
-	GroupLeaderArrayfield := "group_leader_array"
-
-	FibreChannelConfigFields = &FibreChannelConfig{
-		ID:               &IDfield,
-		GroupLeaderArray: &GroupLeaderArrayfield,
+	FibreChannelConfigFields = &FibreChannelConfigFieldHandles{
+		ID:               "id",
+		ArrayList:        "array_list",
+		GroupLeaderArray: "group_leader_array",
 	}
 }
 
+// FibreChannelConfig - Manage group wide Fibre Channel configuration.
 type FibreChannelConfig struct {
 	// ID - Identifier for Fibre Channel configuration.
 	ID *string `json:"id,omitempty"`
@@ -23,4 +21,11 @@ type FibreChannelConfig struct {
 	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
 	// GroupLeaderArray - Name of the group leader array.
 	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
+}
+
+// FibreChannelConfigFieldHandles provides a string representation for each FibreChannelConfig field.
+type FibreChannelConfigFieldHandles struct {
+	ID               string
+	ArrayList        string
+	GroupLeaderArray string
 }

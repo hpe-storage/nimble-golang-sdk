@@ -2,20 +2,18 @@
 
 package nimbleos
 
-// DebugLog - Method to help log events from outside of storage array to provide context for troubleshooting host-side or array-side issues.
-// Export DebugLogFields for advance operations like search filter etc.
-var DebugLogFields *DebugLog
+// DebugLogFields provides field names to use in filter parameters, for example.
+var DebugLogFields *DebugLogFieldHandles
 
 func init() {
-	Tagfield := "tag"
-	Messagefield := "message"
-
-	DebugLogFields = &DebugLog{
-		Tag:     &Tagfield,
-		Message: &Messagefield,
+	DebugLogFields = &DebugLogFieldHandles{
+		Level:   "level",
+		Tag:     "tag",
+		Message: "message",
 	}
 }
 
+// DebugLog - Method to help log events from outside of storage array to provide context for troubleshooting host-side or array-side issues.
 type DebugLog struct {
 	// Level - Log level.
 	Level *NsTraceLevel `json:"level,omitempty"`
@@ -23,4 +21,11 @@ type DebugLog struct {
 	Tag *string `json:"tag,omitempty"`
 	// Message - The message to log.
 	Message *string `json:"message,omitempty"`
+}
+
+// DebugLogFieldHandles provides a string representation for each DebugLog field.
+type DebugLogFieldHandles struct {
+	Level   string
+	Tag     string
+	Message string
 }

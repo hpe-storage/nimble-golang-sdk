@@ -77,7 +77,7 @@ type GroupServiceOptions struct {
 	ApiVersion string
 }
 
-type ServiceOptions func(*GroupServiceOptions)
+type ServiceOption func(*GroupServiceOptions)
 
 func WithHost(host string) func(*GroupServiceOptions) {
 	return func(groupService *GroupServiceOptions) {
@@ -133,7 +133,7 @@ func NewNsGroupService(ip, username, password, apiVersion string, synchronous bo
 	return &NsGroupService{ip: ip, client: client}, nil
 }
 
-func NewNimbleGroupService(serviceOpts ...ServiceOptions) (gs *NsGroupService, err error) {
+func NewNimbleGroupService(serviceOpts ...ServiceOption) (gs *NsGroupService, err error) {
 	// Initialize with default options
 	gso := &GroupServiceOptions{
 		WaitOnJob:  true,
@@ -159,7 +159,7 @@ func (gs *NsGroupService) LogoutService() error {
 	// apply filter on session token
 	sFilter := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.TokenFields.SessionToken,
+			FieldName: &nimbleos.TokenFields.SessionToken,
 			Operator:  param.EQUALS.String(),
 			Value:     sessionToken,
 		},

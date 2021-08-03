@@ -2,36 +2,26 @@
 
 package nimbleos
 
-// NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
-// Export NsSnapshotFromSnapshotCollectionsFields for advance operations like search filter etc.
-var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollections
+// NsSnapshotFromSnapshotCollectionsFields provides field names to use in filter parameters, for example.
+var NsSnapshotFromSnapshotCollectionsFields *NsSnapshotFromSnapshotCollectionsFieldHandles
 
 func init() {
-	IDfield := "id"
-	SnapcollIdfield := "snapcoll_id"
-	Namefield := "name"
-	SnapcollNamefield := "snapcoll_name"
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	SnapIdfield := "snap_id"
-	SnapNamefield := "snap_name"
-	ScheduleIdfield := "schedule_id"
-	ScheduleNamefield := "schedule_name"
-
-	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollections{
-		ID:           &IDfield,
-		SnapcollId:   &SnapcollIdfield,
-		Name:         &Namefield,
-		SnapcollName: &SnapcollNamefield,
-		VolId:        &VolIdfield,
-		VolName:      &VolNamefield,
-		SnapId:       &SnapIdfield,
-		SnapName:     &SnapNamefield,
-		ScheduleId:   &ScheduleIdfield,
-		ScheduleName: &ScheduleNamefield,
+	NsSnapshotFromSnapshotCollectionsFields = &NsSnapshotFromSnapshotCollectionsFieldHandles{
+		ID:           "id",
+		SnapcollId:   "snapcoll_id",
+		Name:         "name",
+		SnapcollName: "snapcoll_name",
+		VolId:        "vol_id",
+		VolName:      "vol_name",
+		SnapId:       "snap_id",
+		SnapName:     "snap_name",
+		ScheduleId:   "schedule_id",
+		ScheduleName: "schedule_name",
+		ExpiryTime:   "expiry_time",
 	}
 }
 
+// NsSnapshotFromSnapshotCollections - Snapshot as presented in snapshot collections object set.
 type NsSnapshotFromSnapshotCollections struct {
 	// ID - Snapshot ID.
 	ID *string `json:"id,omitempty"`
@@ -55,4 +45,19 @@ type NsSnapshotFromSnapshotCollections struct {
 	ScheduleName *string `json:"schedule_name,omitempty"`
 	// ExpiryTime - Unix timestamp indicating that the snapshot is considered expired by Snapshot Time-to-live(TTL). A value of 0 indicates that snapshot never expires.
 	ExpiryTime *int64 `json:"expiry_time,omitempty"`
+}
+
+// NsSnapshotFromSnapshotCollectionsFieldHandles provides a string representation for each NsSnapshotFromSnapshotCollections field.
+type NsSnapshotFromSnapshotCollectionsFieldHandles struct {
+	ID           string
+	SnapcollId   string
+	Name         string
+	SnapcollName string
+	VolId        string
+	VolName      string
+	SnapId       string
+	SnapName     string
+	ScheduleId   string
+	ScheduleName string
+	ExpiryTime   string
 }

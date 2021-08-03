@@ -2,40 +2,54 @@
 
 package nimbleos
 
-// SnapshotCollection - Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
-// Export SnapshotCollectionFields for advance operations like search filter etc.
-var SnapshotCollectionFields *SnapshotCollection
+// SnapshotCollectionFields provides field names to use in filter parameters, for example.
+var SnapshotCollectionFields *SnapshotCollectionFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	VolcollNamefield := "volcoll_name"
-	VolcollIdfield := "volcoll_id"
-	OriginNamefield := "origin_name"
-	SrepOwnerNamefield := "srep_owner_name"
-	SrepOwnerIdfield := "srep_owner_id"
-	PeerSnapcollIdfield := "peer_snapcoll_id"
-	ReplicateTofield := "replicate_to"
-	SchedIdfield := "sched_id"
-	SchedNamefield := "sched_name"
-
-	SnapshotCollectionFields = &SnapshotCollection{
-		ID:             &IDfield,
-		Name:           &Namefield,
-		Description:    &Descriptionfield,
-		VolcollName:    &VolcollNamefield,
-		VolcollId:      &VolcollIdfield,
-		OriginName:     &OriginNamefield,
-		SrepOwnerName:  &SrepOwnerNamefield,
-		SrepOwnerId:    &SrepOwnerIdfield,
-		PeerSnapcollId: &PeerSnapcollIdfield,
-		ReplicateTo:    &ReplicateTofield,
-		SchedId:        &SchedIdfield,
-		SchedName:      &SchedNamefield,
+	SnapshotCollectionFields = &SnapshotCollectionFieldHandles{
+		ID:                      "id",
+		Name:                    "name",
+		Description:             "description",
+		VolcollName:             "volcoll_name",
+		VolcollId:               "volcoll_id",
+		OriginName:              "origin_name",
+		IsReplica:               "is_replica",
+		SrepOwnerName:           "srep_owner_name",
+		SrepOwnerId:             "srep_owner_id",
+		PeerSnapcollId:          "peer_snapcoll_id",
+		NumSnaps:                "num_snaps",
+		IsComplete:              "is_complete",
+		IsManual:                "is_manual",
+		IsExternalTrigger:       "is_external_trigger",
+		IsUnmanaged:             "is_unmanaged",
+		IsManuallyManaged:       "is_manually_managed",
+		ReplStatus:              "repl_status",
+		ReplStartTime:           "repl_start_time",
+		ReplCompleteTime:        "repl_complete_time",
+		ReplBytesTransferred:    "repl_bytes_transferred",
+		CreationTime:            "creation_time",
+		LastModified:            "last_modified",
+		OnlineStatus:            "online_status",
+		VolSnapAttrList:         "vol_snap_attr_list",
+		SnapshotsList:           "snapshots_list",
+		Replicate:               "replicate",
+		ReplicateTo:             "replicate_to",
+		StartOnline:             "start_online",
+		AllowWrites:             "allow_writes",
+		DisableAppsync:          "disable_appsync",
+		SnapVerify:              "snap_verify",
+		SkipDbConsistencyCheck:  "skip_db_consistency_check",
+		SchedId:                 "sched_id",
+		SchedName:               "sched_name",
+		InvokeOnUpstreamPartner: "invoke_on_upstream_partner",
+		AgentType:               "agent_type",
+		ExpiryAfter:             "expiry_after",
+		Metadata:                "metadata",
+		Force:                   "force",
 	}
 }
 
+// SnapshotCollection - Snapshot collections are collections of scheduled snapshots that are taken from volumes sharing a volume collection. Snapshot collections are replicated in the order that the collections were taken.
 type SnapshotCollection struct {
 	// ID - Identifier for snapshot collection.
 	ID *string `json:"id,omitempty"`
@@ -115,4 +129,47 @@ type SnapshotCollection struct {
 	Metadata []*NsKeyValue `json:"metadata,omitempty"`
 	// Force - Forcibly delete the specified snapshot collection even if it is the last replicated snapshot. Doing so could lead to full re-seeding at the next replication.
 	Force *bool `json:"force,omitempty"`
+}
+
+// SnapshotCollectionFieldHandles provides a string representation for each SnapshotCollection field.
+type SnapshotCollectionFieldHandles struct {
+	ID                      string
+	Name                    string
+	Description             string
+	VolcollName             string
+	VolcollId               string
+	OriginName              string
+	IsReplica               string
+	SrepOwnerName           string
+	SrepOwnerId             string
+	PeerSnapcollId          string
+	NumSnaps                string
+	IsComplete              string
+	IsManual                string
+	IsExternalTrigger       string
+	IsUnmanaged             string
+	IsManuallyManaged       string
+	ReplStatus              string
+	ReplStartTime           string
+	ReplCompleteTime        string
+	ReplBytesTransferred    string
+	CreationTime            string
+	LastModified            string
+	OnlineStatus            string
+	VolSnapAttrList         string
+	SnapshotsList           string
+	Replicate               string
+	ReplicateTo             string
+	StartOnline             string
+	AllowWrites             string
+	DisableAppsync          string
+	SnapVerify              string
+	SkipDbConsistencyCheck  string
+	SchedId                 string
+	SchedName               string
+	InvokeOnUpstreamPartner string
+	AgentType               string
+	ExpiryAfter             string
+	Metadata                string
+	Force                   string
 }

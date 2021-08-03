@@ -2,24 +2,23 @@
 
 package nimbleos
 
-// NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
-// Export NsArraySummaryInfoFields for advance operations like search filter etc.
-var NsArraySummaryInfoFields *NsArraySummaryInfo
+// NsArraySummaryInfoFields provides field names to use in filter parameters, for example.
+var NsArraySummaryInfoFields *NsArraySummaryInfoFieldHandles
 
 func init() {
-	Namefield := "name"
-	Versionfield := "version"
-	Serialfield := "serial"
-	Modelfield := "model"
-
-	NsArraySummaryInfoFields = &NsArraySummaryInfo{
-		Name:    &Namefield,
-		Version: &Versionfield,
-		Serial:  &Serialfield,
-		Model:   &Modelfield,
+	NsArraySummaryInfoFields = &NsArraySummaryInfoFieldHandles{
+		Name:           "name",
+		Version:        "version",
+		Serial:         "serial",
+		Model:          "model",
+		ZconfIpaddrs:   "zconf_ipaddrs",
+		Status:         "status",
+		CountOfFcPorts: "count_of_fc_ports",
+		AllFlash:       "all_flash",
 	}
 }
 
+// NsArraySummaryInfo - Array summary information, including version, model, and IP configurations.
 type NsArraySummaryInfo struct {
 	// Name - Unique name of array.
 	Name *string `json:"name,omitempty"`
@@ -37,4 +36,16 @@ type NsArraySummaryInfo struct {
 	CountOfFcPorts *int64 `json:"count_of_fc_ports,omitempty"`
 	// AllFlash - Whether it is an all-flash array.
 	AllFlash *bool `json:"all_flash,omitempty"`
+}
+
+// NsArraySummaryInfoFieldHandles provides a string representation for each NsArraySummaryInfo field.
+type NsArraySummaryInfoFieldHandles struct {
+	Name           string
+	Version        string
+	Serial         string
+	Model          string
+	ZconfIpaddrs   string
+	Status         string
+	CountOfFcPorts string
+	AllFlash       string
 }

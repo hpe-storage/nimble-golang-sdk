@@ -2,34 +2,25 @@
 
 package nimbleos
 
-// ActiveDirectoryMembership - Manages the storage array's membership with the Active Directory.
-// Export ActiveDirectoryMembershipFields for advance operations like search filter etc.
-var ActiveDirectoryMembershipFields *ActiveDirectoryMembership
+// ActiveDirectoryMembershipFields provides field names to use in filter parameters, for example.
+var ActiveDirectoryMembershipFields *ActiveDirectoryMembershipFieldHandles
 
 func init() {
-	IDfield := "id"
-	Descriptionfield := "description"
-	Namefield := "name"
-	Netbiosfield := "netbios"
-	ServerListfield := "server_list"
-	ComputerNamefield := "computer_name"
-	OrganizationalUnitfield := "organizational_unit"
-	Userfield := "user"
-	Passwordfield := "password"
-
-	ActiveDirectoryMembershipFields = &ActiveDirectoryMembership{
-		ID:                 &IDfield,
-		Description:        &Descriptionfield,
-		Name:               &Namefield,
-		Netbios:            &Netbiosfield,
-		ServerList:         &ServerListfield,
-		ComputerName:       &ComputerNamefield,
-		OrganizationalUnit: &OrganizationalUnitfield,
-		User:               &Userfield,
-		Password:           &Passwordfield,
+	ActiveDirectoryMembershipFields = &ActiveDirectoryMembershipFieldHandles{
+		ID:                 "id",
+		Description:        "description",
+		Name:               "name",
+		Netbios:            "netbios",
+		ServerList:         "server_list",
+		ComputerName:       "computer_name",
+		OrganizationalUnit: "organizational_unit",
+		User:               "user",
+		Password:           "password",
+		Enabled:            "enabled",
 	}
 }
 
+// ActiveDirectoryMembership - Manages the storage array's membership with the Active Directory.
 type ActiveDirectoryMembership struct {
 	// ID - Identifier for the Active Directory Domain.
 	ID *string `json:"id,omitempty"`
@@ -51,4 +42,18 @@ type ActiveDirectoryMembership struct {
 	Password *string `json:"password,omitempty"`
 	// Enabled - Active Directory authentication is currently enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+}
+
+// ActiveDirectoryMembershipFieldHandles provides a string representation for each ActiveDirectoryMembership field.
+type ActiveDirectoryMembershipFieldHandles struct {
+	ID                 string
+	Description        string
+	Name               string
+	Netbios            string
+	ServerList         string
+	ComputerName       string
+	OrganizationalUnit string
+	User               string
+	Password           string
+	Enabled            string
 }

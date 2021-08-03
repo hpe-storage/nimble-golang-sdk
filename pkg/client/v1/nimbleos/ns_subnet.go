@@ -2,24 +2,27 @@
 
 package nimbleos
 
-// NsSubnet - A subnet configuration.
-// Export NsSubnetFields for advance operations like search filter etc.
-var NsSubnetFields *NsSubnet
+// NsSubnetFields provides field names to use in filter parameters, for example.
+var NsSubnetFields *NsSubnetFieldHandles
 
 func init() {
-	Labelfield := "label"
-	Networkfield := "network"
-	Netmaskfield := "netmask"
-	DiscoveryIpfield := "discovery_ip"
-
-	NsSubnetFields = &NsSubnet{
-		Label:       &Labelfield,
-		Network:     &Networkfield,
-		Netmask:     &Netmaskfield,
-		DiscoveryIp: &DiscoveryIpfield,
+	NsSubnetFields = &NsSubnetFieldHandles{
+		Label:              "label",
+		Network:            "network",
+		Netmask:            "netmask",
+		NetzoneType:        "netzone_type",
+		Type:               "type",
+		AllowIscsi:         "allow_iscsi",
+		AllowGroup:         "allow_group",
+		DiscoveryIp:        "discovery_ip",
+		Mtu:                "mtu",
+		VlanId:             "vlan_id",
+		Failover:           "failover",
+		FailoverEnableTime: "failover_enable_time",
 	}
 }
 
+// NsSubnet - A subnet configuration.
 type NsSubnet struct {
 	// Label - Subnet label.
 	Label *string `json:"label,omitempty"`
@@ -45,4 +48,20 @@ type NsSubnet struct {
 	Failover *bool `json:"failover,omitempty"`
 	// FailoverEnableTime - Failover for this subnet will be enabled again at the time specified by failover_enable_time.
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
+}
+
+// NsSubnetFieldHandles provides a string representation for each NsSubnet field.
+type NsSubnetFieldHandles struct {
+	Label              string
+	Network            string
+	Netmask            string
+	NetzoneType        string
+	Type               string
+	AllowIscsi         string
+	AllowGroup         string
+	DiscoveryIp        string
+	Mtu                string
+	VlanId             string
+	Failover           string
+	FailoverEnableTime string
 }

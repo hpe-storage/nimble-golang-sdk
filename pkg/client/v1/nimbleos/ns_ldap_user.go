@@ -2,22 +2,21 @@
 
 package nimbleos
 
-// NsLdapUser - Information about the current status of an LDAP user.
-// Export NsLdapUserFields for advance operations like search filter etc.
-var NsLdapUserFields *NsLdapUser
+// NsLdapUserFields provides field names to use in filter parameters, for example.
+var NsLdapUserFields *NsLdapUserFieldHandles
 
 func init() {
-	Userfield := "user"
-	PrimaryGroupNamefield := "primary_group_name"
-	PrimaryGroupIdfield := "primary_group_id"
-
-	NsLdapUserFields = &NsLdapUser{
-		User:             &Userfield,
-		PrimaryGroupName: &PrimaryGroupNamefield,
-		PrimaryGroupId:   &PrimaryGroupIdfield,
+	NsLdapUserFields = &NsLdapUserFieldHandles{
+		User:             "user",
+		PrimaryGroupName: "primary_group_name",
+		PrimaryGroupId:   "primary_group_id",
+		GroupCount:       "group_count",
+		Groups:           "groups",
+		Role:             "role",
 	}
 }
 
+// NsLdapUser - Information about the current status of an LDAP user.
 type NsLdapUser struct {
 	// User - The user's username.
 	User *string `json:"user,omitempty"`
@@ -31,4 +30,14 @@ type NsLdapUser struct {
 	Groups []*string `json:"groups,omitempty"`
 	// Role - The role currently available to the user.
 	Role *NsUserRoles `json:"role,omitempty"`
+}
+
+// NsLdapUserFieldHandles provides a string representation for each NsLdapUser field.
+type NsLdapUserFieldHandles struct {
+	User             string
+	PrimaryGroupName string
+	PrimaryGroupId   string
+	GroupCount       string
+	Groups           string
+	Role             string
 }

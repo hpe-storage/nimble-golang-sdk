@@ -2,30 +2,32 @@
 
 package nimbleos
 
-// NetworkInterface - Manage per array network interface configuration.
-// Export NetworkInterfaceFields for advance operations like search filter etc.
-var NetworkInterfaceFields *NetworkInterface
+// NetworkInterfaceFields provides field names to use in filter parameters, for example.
+var NetworkInterfaceFields *NetworkInterfaceFieldHandles
 
 func init() {
-	IDfield := "id"
-	ArrayNameOrSerialfield := "array_name_or_serial"
-	ArrayIdfield := "array_id"
-	ControllerNamefield := "controller_name"
-	ControllerIdfield := "controller_id"
-	Namefield := "name"
-	Macfield := "mac"
-
-	NetworkInterfaceFields = &NetworkInterface{
-		ID:                &IDfield,
-		ArrayNameOrSerial: &ArrayNameOrSerialfield,
-		ArrayId:           &ArrayIdfield,
-		ControllerName:    &ControllerNamefield,
-		ControllerId:      &ControllerIdfield,
-		Name:              &Namefield,
-		Mac:               &Macfield,
+	NetworkInterfaceFields = &NetworkInterfaceFieldHandles{
+		ID:                "id",
+		ArrayNameOrSerial: "array_name_or_serial",
+		PartialResponseOk: "partial_response_ok",
+		ArrayId:           "array_id",
+		ControllerName:    "controller_name",
+		ControllerId:      "controller_id",
+		Name:              "name",
+		Mac:               "mac",
+		IsPresent:         "is_present",
+		LinkSpeed:         "link_speed",
+		LinkStatus:        "link_status",
+		Mtu:               "mtu",
+		Port:              "port",
+		Slot:              "slot",
+		MaxLinkSpeed:      "max_link_speed",
+		NicType:           "nic_type",
+		IpList:            "ip_list",
 	}
 }
 
+// NetworkInterface - Manage per array network interface configuration.
 type NetworkInterface struct {
 	// ID - Identifier for the interface.
 	ID *string `json:"id,omitempty"`
@@ -61,4 +63,25 @@ type NetworkInterface struct {
 	NicType *NsPlatNicType `json:"nic_type,omitempty"`
 	// IpList - List of IP addresses assigned to this network interface.
 	IpList []*NsAssignedIP `json:"ip_list,omitempty"`
+}
+
+// NetworkInterfaceFieldHandles provides a string representation for each NetworkInterface field.
+type NetworkInterfaceFieldHandles struct {
+	ID                string
+	ArrayNameOrSerial string
+	PartialResponseOk string
+	ArrayId           string
+	ControllerName    string
+	ControllerId      string
+	Name              string
+	Mac               string
+	IsPresent         string
+	LinkSpeed         string
+	LinkStatus        string
+	Mtu               string
+	Port              string
+	Slot              string
+	MaxLinkSpeed      string
+	NicType           string
+	IpList            string
 }

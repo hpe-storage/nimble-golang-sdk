@@ -2,26 +2,62 @@
 
 package nimbleos
 
-// Pool - Manage pools. Pools are an aggregation of arrays.
-// Export PoolFields for advance operations like search filter etc.
-var PoolFields *Pool
+// PoolFields provides field names to use in filter parameters, for example.
+var PoolFields *PoolFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-
-	PoolFields = &Pool{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
+	PoolFields = &PoolFieldHandles{
+		ID:                         "id",
+		Name:                       "name",
+		FullName:                   "full_name",
+		SearchName:                 "search_name",
+		Description:                "description",
+		CreationTime:               "creation_time",
+		LastModified:               "last_modified",
+		Capacity:                   "capacity",
+		Usage:                      "usage",
+		Savings:                    "savings",
+		SavingsDataReduction:       "savings_data_reduction",
+		SavingsCompression:         "savings_compression",
+		SavingsDedupe:              "savings_dedupe",
+		SavingsClone:               "savings_clone",
+		SavingsVolThinProvisioning: "savings_vol_thin_provisioning",
+		Reserve:                    "reserve",
+		UnusedReserve:              "unused_reserve",
+		FreeSpace:                  "free_space",
+		CacheCapacity:              "cache_capacity",
+		PinnableCacheCapacity:      "pinnable_cache_capacity",
+		PinnedCacheCapacity:        "pinned_cache_capacity",
+		DedupeCapacityBytes:        "dedupe_capacity_bytes",
+		DedupeUsageBytes:           "dedupe_usage_bytes",
+		SavingsRatio:               "savings_ratio",
+		DataReductionRatio:         "data_reduction_ratio",
+		CompressionRatio:           "compression_ratio",
+		DedupeRatio:                "dedupe_ratio",
+		CloneRatio:                 "clone_ratio",
+		VolThinProvisioningRatio:   "vol_thin_provisioning_ratio",
+		SnapcollCount:              "snapcoll_count",
+		SnapCount:                  "snap_count",
+		ArrayCount:                 "array_count",
+		VolCount:                   "vol_count",
+		ArrayList:                  "array_list",
+		UnassignedArrayList:        "unassigned_array_list",
+		VolList:                    "vol_list",
+		PinnedVolList:              "pinned_vol_list",
+		FolderList:                 "folder_list",
+		Force:                      "force",
+		UsageValid:                 "usage_valid",
+		UncompressedVolUsageBytes:  "uncompressed_vol_usage_bytes",
+		UncompressedSnapUsageBytes: "uncompressed_snap_usage_bytes",
+		AllFlash:                   "all_flash",
+		DedupeCapable:              "dedupe_capable",
+		DedupeAllVolumesCapable:    "dedupe_all_volumes_capable",
+		DedupeAllVolumes:           "dedupe_all_volumes",
+		IsDefault:                  "is_default",
 	}
 }
 
+// Pool - Manage pools. Pools are an aggregation of arrays.
 type Pool struct {
 	// ID - Identifier for the pool.
 	ID *string `json:"id,omitempty"`
@@ -117,4 +153,55 @@ type Pool struct {
 	DedupeAllVolumes *bool `json:"dedupe_all_volumes,omitempty"`
 	// IsDefault - Indicates if this is the default pool.
 	IsDefault *bool `json:"is_default,omitempty"`
+}
+
+// PoolFieldHandles provides a string representation for each Pool field.
+type PoolFieldHandles struct {
+	ID                         string
+	Name                       string
+	FullName                   string
+	SearchName                 string
+	Description                string
+	CreationTime               string
+	LastModified               string
+	Capacity                   string
+	Usage                      string
+	Savings                    string
+	SavingsDataReduction       string
+	SavingsCompression         string
+	SavingsDedupe              string
+	SavingsClone               string
+	SavingsVolThinProvisioning string
+	Reserve                    string
+	UnusedReserve              string
+	FreeSpace                  string
+	CacheCapacity              string
+	PinnableCacheCapacity      string
+	PinnedCacheCapacity        string
+	DedupeCapacityBytes        string
+	DedupeUsageBytes           string
+	SavingsRatio               string
+	DataReductionRatio         string
+	CompressionRatio           string
+	DedupeRatio                string
+	CloneRatio                 string
+	VolThinProvisioningRatio   string
+	SnapcollCount              string
+	SnapCount                  string
+	ArrayCount                 string
+	VolCount                   string
+	ArrayList                  string
+	UnassignedArrayList        string
+	VolList                    string
+	PinnedVolList              string
+	FolderList                 string
+	Force                      string
+	UsageValid                 string
+	UncompressedVolUsageBytes  string
+	UncompressedSnapUsageBytes string
+	AllFlash                   string
+	DedupeCapable              string
+	DedupeAllVolumesCapable    string
+	DedupeAllVolumes           string
+	IsDefault                  string
 }

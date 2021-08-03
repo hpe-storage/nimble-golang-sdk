@@ -2,34 +2,28 @@
 
 package nimbleos
 
-// Initiator - Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
-// Export InitiatorFields for advance operations like search filter etc.
-var InitiatorFields *Initiator
+// InitiatorFields provides field names to use in filter parameters, for example.
+var InitiatorFields *InitiatorFieldHandles
 
 func init() {
-	IDfield := "id"
-	InitiatorGroupIdfield := "initiator_group_id"
-	InitiatorGroupNamefield := "initiator_group_name"
-	Labelfield := "label"
-	Iqnfield := "iqn"
-	IpAddressfield := "ip_address"
-	Aliasfield := "alias"
-	ChapuserIdfield := "chapuser_id"
-	Wwpnfield := "wwpn"
-
-	InitiatorFields = &Initiator{
-		ID:                 &IDfield,
-		InitiatorGroupId:   &InitiatorGroupIdfield,
-		InitiatorGroupName: &InitiatorGroupNamefield,
-		Label:              &Labelfield,
-		Iqn:                &Iqnfield,
-		IpAddress:          &IpAddressfield,
-		Alias:              &Aliasfield,
-		ChapuserId:         &ChapuserIdfield,
-		Wwpn:               &Wwpnfield,
+	InitiatorFields = &InitiatorFieldHandles{
+		ID:                    "id",
+		AccessProtocol:        "access_protocol",
+		InitiatorGroupId:      "initiator_group_id",
+		InitiatorGroupName:    "initiator_group_name",
+		Label:                 "label",
+		Iqn:                   "iqn",
+		IpAddress:             "ip_address",
+		Alias:                 "alias",
+		ChapuserId:            "chapuser_id",
+		Wwpn:                  "wwpn",
+		CreationTime:          "creation_time",
+		LastModified:          "last_modified",
+		OverrideExistingAlias: "override_existing_alias",
 	}
 }
 
+// Initiator - Manage initiators in initiator groups. An initiator group has a set of initiators that can be configured as part of your ACL to access a specific volume through group membership.
 type Initiator struct {
 	// ID - Identifier for initiator.
 	ID *string `json:"id,omitempty"`
@@ -57,4 +51,21 @@ type Initiator struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// OverrideExistingAlias - Forcibly add Fibre Channel initiator to initiator group by updating or removing conflicting Fibre Channel initiator aliases.
 	OverrideExistingAlias *bool `json:"override_existing_alias,omitempty"`
+}
+
+// InitiatorFieldHandles provides a string representation for each Initiator field.
+type InitiatorFieldHandles struct {
+	ID                    string
+	AccessProtocol        string
+	InitiatorGroupId      string
+	InitiatorGroupName    string
+	Label                 string
+	Iqn                   string
+	IpAddress             string
+	Alias                 string
+	ChapuserId            string
+	Wwpn                  string
+	CreationTime          string
+	LastModified          string
+	OverrideExistingAlias string
 }

@@ -2,28 +2,22 @@
 
 package nimbleos
 
-// NsFcFabricInfo - Fibre Channel fabric information.
-// Export NsFcFabricInfoFields for advance operations like search filter etc.
-var NsFcFabricInfoFields *NsFcFabricInfo
+// NsFcFabricInfoFields provides field names to use in filter parameters, for example.
+var NsFcFabricInfoFields *NsFcFabricInfoFieldHandles
 
 func init() {
-	FabricSwitchNamefield := "fabric_switch_name"
-	FabricSwitchPortfield := "fabric_switch_port"
-	FabricSwitchWwnnfield := "fabric_switch_wwnn"
-	FabricSwitchWwpnfield := "fabric_switch_wwpn"
-	FabricWwnfield := "fabric_wwn"
-	FcIdfield := "fc_id"
-
-	NsFcFabricInfoFields = &NsFcFabricInfo{
-		FabricSwitchName: &FabricSwitchNamefield,
-		FabricSwitchPort: &FabricSwitchPortfield,
-		FabricSwitchWwnn: &FabricSwitchWwnnfield,
-		FabricSwitchWwpn: &FabricSwitchWwpnfield,
-		FabricWwn:        &FabricWwnfield,
-		FcId:             &FcIdfield,
+	NsFcFabricInfoFields = &NsFcFabricInfoFieldHandles{
+		FabricSwitchName: "fabric_switch_name",
+		FabricSwitchPort: "fabric_switch_port",
+		FabricSwitchWwnn: "fabric_switch_wwnn",
+		FabricSwitchWwpn: "fabric_switch_wwpn",
+		FabricWwn:        "fabric_wwn",
+		FcId:             "fc_id",
+		LoggedIn:         "logged_in",
 	}
 }
 
+// NsFcFabricInfo - Fibre Channel fabric information.
 type NsFcFabricInfo struct {
 	// FabricSwitchName - Name of the Fibre Channel switch.
 	FabricSwitchName *string `json:"fabric_switch_name,omitempty"`
@@ -39,4 +33,15 @@ type NsFcFabricInfo struct {
 	FcId *string `json:"fc_id,omitempty"`
 	// LoggedIn - Login information for interface. True if interface has logged in to the Fibre Channel fabric, else false.
 	LoggedIn *bool `json:"logged_in,omitempty"`
+}
+
+// NsFcFabricInfoFieldHandles provides a string representation for each NsFcFabricInfo field.
+type NsFcFabricInfoFieldHandles struct {
+	FabricSwitchName string
+	FabricSwitchPort string
+	FabricSwitchWwnn string
+	FabricSwitchWwpn string
+	FabricWwn        string
+	FcId             string
+	LoggedIn         string
 }

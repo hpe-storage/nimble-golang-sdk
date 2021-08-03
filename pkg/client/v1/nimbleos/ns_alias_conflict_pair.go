@@ -2,22 +2,18 @@
 
 package nimbleos
 
-// NsAliasConflictPair - Alias conflict (same initiator WWPN, but different aliases).
-// Export NsAliasConflictPairFields for advance operations like search filter etc.
-var NsAliasConflictPairFields *NsAliasConflictPair
+// NsAliasConflictPairFields provides field names to use in filter parameters, for example.
+var NsAliasConflictPairFields *NsAliasConflictPairFieldHandles
 
 func init() {
-	InitiatorWwpnfield := "initiator_wwpn"
-	DstAliasNamefield := "dst_alias_name"
-	SrcAliasNamefield := "src_alias_name"
-
-	NsAliasConflictPairFields = &NsAliasConflictPair{
-		InitiatorWwpn: &InitiatorWwpnfield,
-		DstAliasName:  &DstAliasNamefield,
-		SrcAliasName:  &SrcAliasNamefield,
+	NsAliasConflictPairFields = &NsAliasConflictPairFieldHandles{
+		InitiatorWwpn: "initiator_wwpn",
+		DstAliasName:  "dst_alias_name",
+		SrcAliasName:  "src_alias_name",
 	}
 }
 
+// NsAliasConflictPair - Alias conflict (same initiator WWPN, but different aliases).
 type NsAliasConflictPair struct {
 	// InitiatorWwpn - WWPN of the common initiator.
 	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
@@ -25,4 +21,11 @@ type NsAliasConflictPair struct {
 	DstAliasName *string `json:"dst_alias_name,omitempty"`
 	// SrcAliasName - Name of the alias on the source group.
 	SrcAliasName *string `json:"src_alias_name,omitempty"`
+}
+
+// NsAliasConflictPairFieldHandles provides a string representation for each NsAliasConflictPair field.
+type NsAliasConflictPairFieldHandles struct {
+	InitiatorWwpn string
+	DstAliasName  string
+	SrcAliasName  string
 }

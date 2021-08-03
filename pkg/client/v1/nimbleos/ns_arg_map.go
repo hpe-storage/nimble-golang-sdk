@@ -2,14 +2,17 @@
 
 package nimbleos
 
-// NsArgMap - Just a string to string map.
-// Export NsArgMapFields for advance operations like search filter etc.
-var NsArgMapFields *NsArgMap
+// NsArgMapFields provides field names to use in filter parameters, for example.
+var NsArgMapFields *NsArgMapFieldHandles
 
 func init() {
-
-	NsArgMapFields = &NsArgMap{}
+	NsArgMapFields = &NsArgMapFieldHandles{}
 }
 
+// NsArgMap - Just a string to string map.
 type NsArgMap struct {
+}
+
+// NsArgMapFieldHandles provides a string representation for each NsArgMap field.
+type NsArgMapFieldHandles struct {
 }

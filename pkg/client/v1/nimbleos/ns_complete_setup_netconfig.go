@@ -2,26 +2,26 @@
 
 package nimbleos
 
-// NsCompleteSetupNetconfig - Information includes group, array and network configuration in complete setup.
-// Export NsCompleteSetupNetconfigFields for advance operations like search filter etc.
-var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfig
+// NsCompleteSetupNetconfigFields provides field names to use in filter parameters, for example.
+var NsCompleteSetupNetconfigFields *NsCompleteSetupNetconfigFieldHandles
 
 func init() {
-	DiscoveryIpfield := "discovery_ip"
-	DiscoveryNetmaskfield := "discovery_netmask"
-	MgmtIpfield := "mgmt_ip"
-	SecondaryMgmtIpfield := "secondary_mgmt_ip"
-	MgmtNetmaskfield := "mgmt_netmask"
-
-	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfig{
-		DiscoveryIp:      &DiscoveryIpfield,
-		DiscoveryNetmask: &DiscoveryNetmaskfield,
-		MgmtIp:           &MgmtIpfield,
-		SecondaryMgmtIp:  &SecondaryMgmtIpfield,
-		MgmtNetmask:      &MgmtNetmaskfield,
+	NsCompleteSetupNetconfigFields = &NsCompleteSetupNetconfigFieldHandles{
+		Name:                           "name",
+		DiscoveryIp:                    "discovery_ip",
+		DiscoveryNetmask:               "discovery_netmask",
+		MgmtIp:                         "mgmt_ip",
+		SecondaryMgmtIp:                "secondary_mgmt_ip",
+		MgmtNetmask:                    "mgmt_netmask",
+		IscsiAutomaticConnectionMethod: "iscsi_automatic_connection_method",
+		IscsiConnectionRebalancing:     "iscsi_connection_rebalancing",
+		RouteList:                      "route_list",
+		SubnetList:                     "subnet_list",
+		ArrayList:                      "array_list",
 	}
 }
 
+// NsCompleteSetupNetconfig - Information includes group, array and network configuration in complete setup.
 type NsCompleteSetupNetconfig struct {
 	// Name - Network configuration name, possible values: 'active', 'backup', 'draft'.
 	Name *NsNetConfigName `json:"name,omitempty"`
@@ -45,4 +45,19 @@ type NsCompleteSetupNetconfig struct {
 	SubnetList []*NsSubnet `json:"subnet_list,omitempty"`
 	// ArrayList - Array list.
 	ArrayList []*NsArrayNet `json:"array_list,omitempty"`
+}
+
+// NsCompleteSetupNetconfigFieldHandles provides a string representation for each NsCompleteSetupNetconfig field.
+type NsCompleteSetupNetconfigFieldHandles struct {
+	Name                           string
+	DiscoveryIp                    string
+	DiscoveryNetmask               string
+	MgmtIp                         string
+	SecondaryMgmtIp                string
+	MgmtNetmask                    string
+	IscsiAutomaticConnectionMethod string
+	IscsiConnectionRebalancing     string
+	RouteList                      string
+	SubnetList                     string
+	ArrayList                      string
 }

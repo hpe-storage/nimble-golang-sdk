@@ -2,32 +2,36 @@
 
 package nimbleos
 
-// NsSchedule - Protection schedule associated with a volume collection or protection template.
-// Export NsScheduleFields for advance operations like search filter etc.
-var NsScheduleFields *NsSchedule
+// NsScheduleFields provides field names to use in filter parameters, for example.
+var NsScheduleFields *NsScheduleFieldHandles
 
 func init() {
-	IDfield := "id"
-	ScheduleIdfield := "schedule_id"
-	Namefield := "name"
-	ScheduleNamefield := "schedule_name"
-	Daysfield := "days"
-	DownstreamPartnerfield := "downstream_partner"
-	DownstreamPartnerIdfield := "downstream_partner_id"
-	DownstreamPartnerNamefield := "downstream_partner_name"
-
-	NsScheduleFields = &NsSchedule{
-		ID:                    &IDfield,
-		ScheduleId:            &ScheduleIdfield,
-		Name:                  &Namefield,
-		ScheduleName:          &ScheduleNamefield,
-		Days:                  &Daysfield,
-		DownstreamPartner:     &DownstreamPartnerfield,
-		DownstreamPartnerId:   &DownstreamPartnerIdfield,
-		DownstreamPartnerName: &DownstreamPartnerNamefield,
+	NsScheduleFields = &NsScheduleFieldHandles{
+		ID:                     "id",
+		ScheduleId:             "schedule_id",
+		Name:                   "name",
+		ScheduleName:           "schedule_name",
+		Period:                 "period",
+		PeriodUnit:             "period_unit",
+		AtTime:                 "at_time",
+		UntilTime:              "until_time",
+		Days:                   "days",
+		NumRetain:              "num_retain",
+		DownstreamPartner:      "downstream_partner",
+		DownstreamPartnerId:    "downstream_partner_id",
+		DownstreamPartnerName:  "downstream_partner_name",
+		ReplicateEvery:         "replicate_every",
+		NumRetainReplica:       "num_retain_replica",
+		ReplAlertThres:         "repl_alert_thres",
+		SnapVerify:             "snap_verify",
+		SkipDbConsistencyCheck: "skip_db_consistency_check",
+		DisableAppsync:         "disable_appsync",
+		ScheduleType:           "schedule_type",
+		Active:                 "active",
 	}
 }
 
+// NsSchedule - Protection schedule associated with a volume collection or protection template.
 type NsSchedule struct {
 	// ID - ID of protection schedule.
 	ID *string `json:"id,omitempty"`
@@ -71,4 +75,29 @@ type NsSchedule struct {
 	ScheduleType *NsScheduleType `json:"schedule_type,omitempty"`
 	// Active - A schedule is active only if it is owned by the same owner as the volume collection. Only active schedules of a volume collection participate in the creation of snapshots and replication.
 	Active *bool `json:"active,omitempty"`
+}
+
+// NsScheduleFieldHandles provides a string representation for each NsSchedule field.
+type NsScheduleFieldHandles struct {
+	ID                     string
+	ScheduleId             string
+	Name                   string
+	ScheduleName           string
+	Period                 string
+	PeriodUnit             string
+	AtTime                 string
+	UntilTime              string
+	Days                   string
+	NumRetain              string
+	DownstreamPartner      string
+	DownstreamPartnerId    string
+	DownstreamPartnerName  string
+	ReplicateEvery         string
+	NumRetainReplica       string
+	ReplAlertThres         string
+	SnapVerify             string
+	SkipDbConsistencyCheck string
+	DisableAppsync         string
+	ScheduleType           string
+	Active                 string
 }

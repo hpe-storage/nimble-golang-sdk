@@ -2,28 +2,35 @@
 
 package nimbleos
 
-// Shelf - Disk shelf and head unit houses disks and controller.
-// Export ShelfFields for advance operations like search filter etc.
-var ShelfFields *Shelf
+// ShelfFields provides field names to use in filter parameters, for example.
+var ShelfFields *ShelfFieldHandles
 
 func init() {
-	IDfield := "id"
-	ArrayNamefield := "array_name"
-	ArrayIdfield := "array_id"
-	Serialfield := "serial"
-	Modelfield := "model"
-	ModelExtfield := "model_ext"
-
-	ShelfFields = &Shelf{
-		ID:        &IDfield,
-		ArrayName: &ArrayNamefield,
-		ArrayId:   &ArrayIdfield,
-		Serial:    &Serialfield,
-		Model:     &Modelfield,
-		ModelExt:  &ModelExtfield,
+	ShelfFields = &ShelfFieldHandles{
+		ID:                 "id",
+		ArrayName:          "array_name",
+		ArrayId:            "array_id",
+		PartialResponseOk:  "partial_response_ok",
+		ChassisType:        "chassis_type",
+		Ctrlrs:             "ctrlrs",
+		Serial:             "serial",
+		Model:              "model",
+		ModelExt:           "model_ext",
+		ChassisSensors:     "chassis_sensors",
+		PsuOverallStatus:   "psu_overall_status",
+		FanOverallStatus:   "fan_overall_status",
+		TempOverallStatus:  "temp_overall_status",
+		DiskSets:           "disk_sets",
+		Activated:          "activated",
+		Driveset:           "driveset",
+		Force:              "force",
+		AcceptForeign:      "accept_foreign",
+		AcceptDedupeImpact: "accept_dedupe_impact",
+		LastRequest:        "last_request",
 	}
 }
 
+// Shelf - Disk shelf and head unit houses disks and controller.
 type Shelf struct {
 	// ID - ID of shelf.
 	ID *string `json:"id,omitempty"`
@@ -65,4 +72,28 @@ type Shelf struct {
 	AcceptDedupeImpact *bool `json:"accept_dedupe_impact,omitempty"`
 	// LastRequest - Indicates this is the last request in a series of shelf add requests.
 	LastRequest *bool `json:"last_request,omitempty"`
+}
+
+// ShelfFieldHandles provides a string representation for each Shelf field.
+type ShelfFieldHandles struct {
+	ID                 string
+	ArrayName          string
+	ArrayId            string
+	PartialResponseOk  string
+	ChassisType        string
+	Ctrlrs             string
+	Serial             string
+	Model              string
+	ModelExt           string
+	ChassisSensors     string
+	PsuOverallStatus   string
+	FanOverallStatus   string
+	TempOverallStatus  string
+	DiskSets           string
+	Activated          string
+	Driveset           string
+	Force              string
+	AcceptForeign      string
+	AcceptDedupeImpact string
+	LastRequest        string
 }

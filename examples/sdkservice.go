@@ -4,25 +4,27 @@ import (
 	"fmt"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/fakeservice"
+	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 )
 
-func getFakeService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupService, error) {
+func getFakeService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := fakeservice.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
 }
 
-func getRealService(clientOpts ...service.ServiceOptions) (sdkprovider.NsGroupService, error) {
+func getRealService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := service.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
 }
 
 func main() {
 	arg := &param.GetParams{}
-	groupService, _ := getFakeService(service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"), service.WithPassword("xxx"))
+	groupService, _ := getFakeService(
+		service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"))
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
@@ -50,14 +52,17 @@ func main() {
 	fmt.Printf("Fake volume %+v \n", vol)
 
 	// Get real service
-	groupService, _ = getRealService(service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"), service.WithPassword("xxx"))
+	groupService, _ = getRealService(
+		service.WithHost("1.1.1.1"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"))
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
 	p, _ = groupService.GetPoolService().GetPools(arg)
 	fmt.Printf("Real Pools %+v \n", p)
+
 	// reset id
 	newVolume.ID = nil
 	vol, _ = groupService.GetVolumeService().CreateVolume(newVolume)

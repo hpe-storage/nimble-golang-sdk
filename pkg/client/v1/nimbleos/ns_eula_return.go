@@ -2,19 +2,22 @@
 
 package nimbleos
 
-// NsEulaReturn - Return end-user license information.
-// Export NsEulaReturnFields for advance operations like search filter etc.
-var NsEulaReturnFields *NsEulaReturn
+// NsEulaReturnFields provides field names to use in filter parameters, for example.
+var NsEulaReturnFields *NsEulaReturnFieldHandles
 
 func init() {
-	Eulafield := "eula"
-
-	NsEulaReturnFields = &NsEulaReturn{
-		Eula: &Eulafield,
+	NsEulaReturnFields = &NsEulaReturnFieldHandles{
+		Eula: "eula",
 	}
 }
 
+// NsEulaReturn - Return end-user license information.
 type NsEulaReturn struct {
 	// Eula - License information.
 	Eula *string `json:"eula,omitempty"`
+}
+
+// NsEulaReturnFieldHandles provides a string representation for each NsEulaReturn field.
+type NsEulaReturnFieldHandles struct {
+	Eula string
 }

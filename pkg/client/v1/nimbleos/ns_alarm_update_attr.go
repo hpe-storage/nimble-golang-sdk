@@ -2,18 +2,18 @@
 
 package nimbleos
 
-// NsAlarmUpdateAttr - Alarm object used for updating alarms.
-// Export NsAlarmUpdateAttrFields for advance operations like search filter etc.
-var NsAlarmUpdateAttrFields *NsAlarmUpdateAttr
+// NsAlarmUpdateAttrFields provides field names to use in filter parameters, for example.
+var NsAlarmUpdateAttrFields *NsAlarmUpdateAttrFieldHandles
 
 func init() {
-	IDfield := "id"
-
-	NsAlarmUpdateAttrFields = &NsAlarmUpdateAttr{
-		ID: &IDfield,
+	NsAlarmUpdateAttrFields = &NsAlarmUpdateAttrFieldHandles{
+		ID:              "id",
+		RemindEvery:     "remind_every",
+		RemindEveryUnit: "remind_every_unit",
 	}
 }
 
+// NsAlarmUpdateAttr - Alarm object used for updating alarms.
 type NsAlarmUpdateAttr struct {
 	// ID - Identifier for the alarm.
 	ID *string `json:"id,omitempty"`
@@ -21,4 +21,11 @@ type NsAlarmUpdateAttr struct {
 	RemindEvery *int64 `json:"remind_every,omitempty"`
 	// RemindEveryUnit - Timeunit over which to send the number of notification specified in 'remind every'.
 	RemindEveryUnit *NsPeriodUnit `json:"remind_every_unit,omitempty"`
+}
+
+// NsAlarmUpdateAttrFieldHandles provides a string representation for each NsAlarmUpdateAttr field.
+type NsAlarmUpdateAttrFieldHandles struct {
+	ID              string
+	RemindEvery     string
+	RemindEveryUnit string
 }

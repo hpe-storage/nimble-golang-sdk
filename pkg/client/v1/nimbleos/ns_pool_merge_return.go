@@ -2,26 +2,50 @@
 
 package nimbleos
 
-// NsPoolMergeReturn - Return values of pool merge.
-// Export NsPoolMergeReturnFields for advance operations like search filter etc.
-var NsPoolMergeReturnFields *NsPoolMergeReturn
+// NsPoolMergeReturnFields provides field names to use in filter parameters, for example.
+var NsPoolMergeReturnFields *NsPoolMergeReturnFieldHandles
 
 func init() {
-	Descriptionfield := "description"
-	FullNamefield := "full_name"
-	IDfield := "id"
-	Namefield := "name"
-	SearchNamefield := "search_name"
-
-	NsPoolMergeReturnFields = &NsPoolMergeReturn{
-		Description: &Descriptionfield,
-		FullName:    &FullNamefield,
-		ID:          &IDfield,
-		Name:        &Namefield,
-		SearchName:  &SearchNamefield,
+	NsPoolMergeReturnFields = &NsPoolMergeReturnFieldHandles{
+		SnapcollCount:              "snapcoll_count",
+		ArrayList:                  "array_list",
+		ArrayCount:                 "array_count",
+		UnassignedArrayList:        "unassigned_array_list",
+		AllFlash:                   "all_flash",
+		CacheCapacity:              "cache_capacity",
+		Capacity:                   "capacity",
+		CompressedSnapUsageBytes:   "compressed_snap_usage_bytes",
+		CompressedVolUsageBytes:    "compressed_vol_usage_bytes",
+		CompressionRatio:           "compression_ratio",
+		CreationTime:               "creation_time",
+		DedupeRatio:                "dedupe_ratio",
+		Description:                "description",
+		FreeSpace:                  "free_space",
+		FullName:                   "full_name",
+		ID:                         "id",
+		DedupeEnabled:              "dedupe_enabled",
+		LastModified:               "last_modified",
+		Name:                       "name",
+		PinnableCacheCapacity:      "pinnable_cache_capacity",
+		PinnedCacheCapacity:        "pinned_cache_capacity",
+		PinnedVolList:              "pinned_vol_list",
+		SavingsCompression:         "savings_compression",
+		SavingsDedupe:              "savings_dedupe",
+		SearchName:                 "search_name",
+		SnapCompressionRatio:       "snap_compression_ratio",
+		SnapCount:                  "snap_count",
+		UncompressedSnapUsageBytes: "uncompressed_snap_usage_bytes",
+		UncompressedVolUsageBytes:  "uncompressed_vol_usage_bytes",
+		UnusedReserve:              "unused_reserve",
+		Usage:                      "usage",
+		UsageValid:                 "usage_valid",
+		VolCompressionRatio:        "vol_compression_ratio",
+		VolCount:                   "vol_count",
+		VolList:                    "vol_list",
 	}
 }
 
+// NsPoolMergeReturn - Return values of pool merge.
 type NsPoolMergeReturn struct {
 	// SnapcollCount - Snapshot collection count.
 	SnapcollCount *int64 `json:"snapcoll_count,omitempty"`
@@ -93,4 +117,43 @@ type NsPoolMergeReturn struct {
 	VolCount *int64 `json:"vol_count,omitempty"`
 	// VolList - The list of volumes in the pool.
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
+}
+
+// NsPoolMergeReturnFieldHandles provides a string representation for each NsPoolMergeReturn field.
+type NsPoolMergeReturnFieldHandles struct {
+	SnapcollCount              string
+	ArrayList                  string
+	ArrayCount                 string
+	UnassignedArrayList        string
+	AllFlash                   string
+	CacheCapacity              string
+	Capacity                   string
+	CompressedSnapUsageBytes   string
+	CompressedVolUsageBytes    string
+	CompressionRatio           string
+	CreationTime               string
+	DedupeRatio                string
+	Description                string
+	FreeSpace                  string
+	FullName                   string
+	ID                         string
+	DedupeEnabled              string
+	LastModified               string
+	Name                       string
+	PinnableCacheCapacity      string
+	PinnedCacheCapacity        string
+	PinnedVolList              string
+	SavingsCompression         string
+	SavingsDedupe              string
+	SearchName                 string
+	SnapCompressionRatio       string
+	SnapCount                  string
+	UncompressedSnapUsageBytes string
+	UncompressedVolUsageBytes  string
+	UnusedReserve              string
+	Usage                      string
+	UsageValid                 string
+	VolCompressionRatio        string
+	VolCount                   string
+	VolList                    string
 }

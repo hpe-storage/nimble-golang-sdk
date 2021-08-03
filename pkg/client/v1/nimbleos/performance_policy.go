@@ -2,28 +2,34 @@
 
 package nimbleos
 
-// PerformancePolicy - Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
-// Export PerformancePolicyFields for advance operations like search filter etc.
-var PerformancePolicyFields *PerformancePolicy
+// PerformancePolicyFields provides field names to use in filter parameters, for example.
+var PerformancePolicyFields *PerformancePolicyFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	AppCategoryfield := "app_category"
-
-	PerformancePolicyFields = &PerformancePolicy{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
-		AppCategory: &AppCategoryfield,
+	PerformancePolicyFields = &PerformancePolicyFieldHandles{
+		ID:                  "id",
+		Name:                "name",
+		FullName:            "full_name",
+		SearchName:          "search_name",
+		Description:         "description",
+		BlockSize:           "block_size",
+		Compress:            "compress",
+		Cache:               "cache",
+		CachePolicy:         "cache_policy",
+		SpacePolicy:         "space_policy",
+		AppCategory:         "app_category",
+		DedupeEnabled:       "dedupe_enabled",
+		Deprecated:          "deprecated",
+		Predefined:          "predefined",
+		CreationTime:        "creation_time",
+		LastModified:        "last_modified",
+		SampleRate:          "sample_rate",
+		VolumeCount:         "volume_count",
+		DedupeOverridePools: "dedupe_override_pools",
 	}
 }
 
+// PerformancePolicy - Manage performance policies. A performance policy is a set of optimizations including block size, compression, and caching, to ensure that the volume's performance is the best configuration for its intended use like databases or log files. By default, a volume uses the \\"default\\" performance policy, which is set to use 4096 byte blocks with full compression and caching enabled. For replicated volumes, the same performance policy must exist on each replication partner.
 type PerformancePolicy struct {
 	// ID - Unique Identifier for the Performance Policy.
 	ID *string `json:"id,omitempty"`
@@ -63,4 +69,27 @@ type PerformancePolicy struct {
 	VolumeCount *int64 `json:"volume_count,omitempty"`
 	// DedupeOverridePools - List of pools that override performance policy's dedupe setting.
 	DedupeOverridePools []*NsPoolSummary `json:"dedupe_override_pools,omitempty"`
+}
+
+// PerformancePolicyFieldHandles provides a string representation for each PerformancePolicy field.
+type PerformancePolicyFieldHandles struct {
+	ID                  string
+	Name                string
+	FullName            string
+	SearchName          string
+	Description         string
+	BlockSize           string
+	Compress            string
+	Cache               string
+	CachePolicy         string
+	SpacePolicy         string
+	AppCategory         string
+	DedupeEnabled       string
+	Deprecated          string
+	Predefined          string
+	CreationTime        string
+	LastModified        string
+	SampleRate          string
+	VolumeCount         string
+	DedupeOverridePools string
 }

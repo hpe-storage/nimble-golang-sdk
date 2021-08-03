@@ -2,26 +2,30 @@
 
 package nimbleos
 
-// Subnet - Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
-// Export SubnetFields for advance operations like search filter etc.
-var SubnetFields *Subnet
+// SubnetFields provides field names to use in filter parameters, for example.
+var SubnetFields *SubnetFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Networkfield := "network"
-	Netmaskfield := "netmask"
-	DiscoveryIpfield := "discovery_ip"
-
-	SubnetFields = &Subnet{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Network:     &Networkfield,
-		Netmask:     &Netmaskfield,
-		DiscoveryIp: &DiscoveryIpfield,
+	SubnetFields = &SubnetFieldHandles{
+		ID:                 "id",
+		Name:               "name",
+		Network:            "network",
+		Netmask:            "netmask",
+		Type:               "type",
+		AllowIscsi:         "allow_iscsi",
+		AllowGroup:         "allow_group",
+		DiscoveryIp:        "discovery_ip",
+		Mtu:                "mtu",
+		NetzoneType:        "netzone_type",
+		VlanId:             "vlan_id",
+		CreationTime:       "creation_time",
+		LastModified:       "last_modified",
+		Failover:           "failover",
+		FailoverEnableTime: "failover_enable_time",
 	}
 }
 
+// Subnet - Search subnets information. Many networking tasks require that objects such as replication partners are either on the same network or have a route to a secondary network. Subnets let you create logical addressing for selective routing.
 type Subnet struct {
 	// ID - Identifier for the initiator group.
 	ID *string `json:"id,omitempty"`
@@ -53,4 +57,23 @@ type Subnet struct {
 	Failover *bool `json:"failover,omitempty"`
 	// FailoverEnableTime - Failover for this subnet will be enabled again at the time specified by failover_enable_time.
 	FailoverEnableTime *int64 `json:"failover_enable_time,omitempty"`
+}
+
+// SubnetFieldHandles provides a string representation for each Subnet field.
+type SubnetFieldHandles struct {
+	ID                 string
+	Name               string
+	Network            string
+	Netmask            string
+	Type               string
+	AllowIscsi         string
+	AllowGroup         string
+	DiscoveryIp        string
+	Mtu                string
+	NetzoneType        string
+	VlanId             string
+	CreationTime       string
+	LastModified       string
+	Failover           string
+	FailoverEnableTime string
 }

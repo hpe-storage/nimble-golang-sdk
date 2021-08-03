@@ -2,34 +2,26 @@
 
 package nimbleos
 
-// NsLunConflictPair - LUN number conflict.
-// Export NsLunConflictPairFields for advance operations like search filter etc.
-var NsLunConflictPairFields *NsLunConflictPair
+// NsLunConflictPairFields provides field names to use in filter parameters, for example.
+var NsLunConflictPairFields *NsLunConflictPairFieldHandles
 
 func init() {
-	InitiatorWwpnfield := "initiator_wwpn"
-	InitiatorAliasfield := "initiator_alias"
-	DstIgrpNamefield := "dst_igrp_name"
-	DstVolNamefield := "dst_vol_name"
-	DstSnapNamefield := "dst_snap_name"
-	DstPeNamefield := "dst_pe_name"
-	SrcIgrpNamefield := "src_igrp_name"
-	SrcVolNamefield := "src_vol_name"
-	SrcSnapNamefield := "src_snap_name"
-
-	NsLunConflictPairFields = &NsLunConflictPair{
-		InitiatorWwpn:  &InitiatorWwpnfield,
-		InitiatorAlias: &InitiatorAliasfield,
-		DstIgrpName:    &DstIgrpNamefield,
-		DstVolName:     &DstVolNamefield,
-		DstSnapName:    &DstSnapNamefield,
-		DstPeName:      &DstPeNamefield,
-		SrcIgrpName:    &SrcIgrpNamefield,
-		SrcVolName:     &SrcVolNamefield,
-		SrcSnapName:    &SrcSnapNamefield,
+	NsLunConflictPairFields = &NsLunConflictPairFieldHandles{
+		InitiatorWwpn:  "initiator_wwpn",
+		InitiatorAlias: "initiator_alias",
+		DstIgrpName:    "dst_igrp_name",
+		DstVolName:     "dst_vol_name",
+		DstSnapName:    "dst_snap_name",
+		DstPeName:      "dst_pe_name",
+		DstLun:         "dst_lun",
+		SrcIgrpName:    "src_igrp_name",
+		SrcVolName:     "src_vol_name",
+		SrcSnapName:    "src_snap_name",
+		SrcLun:         "src_lun",
 	}
 }
 
+// NsLunConflictPair - LUN number conflict.
 type NsLunConflictPair struct {
 	// InitiatorWwpn - WWPN/IQN of the common initiator.
 	InitiatorWwpn *string `json:"initiator_wwpn,omitempty"`
@@ -53,4 +45,19 @@ type NsLunConflictPair struct {
 	SrcSnapName *string `json:"src_snap_name,omitempty"`
 	// SrcLun - LUN number on the source group.
 	SrcLun *int64 `json:"src_lun,omitempty"`
+}
+
+// NsLunConflictPairFieldHandles provides a string representation for each NsLunConflictPair field.
+type NsLunConflictPairFieldHandles struct {
+	InitiatorWwpn  string
+	InitiatorAlias string
+	DstIgrpName    string
+	DstVolName     string
+	DstSnapName    string
+	DstPeName      string
+	DstLun         string
+	SrcIgrpName    string
+	SrcVolName     string
+	SrcSnapName    string
+	SrcLun         string
 }

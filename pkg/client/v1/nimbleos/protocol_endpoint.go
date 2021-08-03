@@ -2,30 +2,33 @@
 
 package nimbleos
 
-// ProtocolEndpoint - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
-// Export ProtocolEndpointFields for advance operations like search filter etc.
-var ProtocolEndpointFields *ProtocolEndpoint
+// ProtocolEndpointFields provides field names to use in filter parameters, for example.
+var ProtocolEndpointFields *ProtocolEndpointFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	PoolNamefield := "pool_name"
-	PoolIdfield := "pool_id"
-	SerialNumberfield := "serial_number"
-	TargetNamefield := "target_name"
-
-	ProtocolEndpointFields = &ProtocolEndpoint{
-		ID:           &IDfield,
-		Name:         &Namefield,
-		Description:  &Descriptionfield,
-		PoolName:     &PoolNamefield,
-		PoolId:       &PoolIdfield,
-		SerialNumber: &SerialNumberfield,
-		TargetName:   &TargetNamefield,
+	ProtocolEndpointFields = &ProtocolEndpointFieldHandles{
+		ID:                   "id",
+		Name:                 "name",
+		Description:          "description",
+		PoolName:             "pool_name",
+		PoolId:               "pool_id",
+		State:                "state",
+		SerialNumber:         "serial_number",
+		TargetName:           "target_name",
+		GroupSpecificIds:     "group_specific_ids",
+		CreationTime:         "creation_time",
+		LastModified:         "last_modified",
+		NumConnections:       "num_connections",
+		NumIscsiConnections:  "num_iscsi_connections",
+		NumFcConnections:     "num_fc_connections",
+		AccessControlRecords: "access_control_records",
+		IscsiSessions:        "iscsi_sessions",
+		FcSessions:           "fc_sessions",
+		AccessProtocol:       "access_protocol",
 	}
 }
 
+// ProtocolEndpoint - Protocol endpoints are administrative logical units (LUs) in an LU conglomerate to be used with VMware Virtual Volumes.
 type ProtocolEndpoint struct {
 	// ID - Identifier for the protocol endpoint.
 	ID *string `json:"id,omitempty"`
@@ -63,4 +66,26 @@ type ProtocolEndpoint struct {
 	FcSessions []*NsFCSession `json:"fc_sessions,omitempty"`
 	// AccessProtocol - Access protocol of the protocol endpoint. Only initiator groups with the same access protocol can access the protocol endpoint. If not specified in the creation request, it will be the access protocol supported by the group. If the group supports multiple protocols, the default will be Fibre Channel.
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
+}
+
+// ProtocolEndpointFieldHandles provides a string representation for each ProtocolEndpoint field.
+type ProtocolEndpointFieldHandles struct {
+	ID                   string
+	Name                 string
+	Description          string
+	PoolName             string
+	PoolId               string
+	State                string
+	SerialNumber         string
+	TargetName           string
+	GroupSpecificIds     string
+	CreationTime         string
+	LastModified         string
+	NumConnections       string
+	NumIscsiConnections  string
+	NumFcConnections     string
+	AccessControlRecords string
+	IscsiSessions        string
+	FcSessions           string
+	AccessProtocol       string
 }

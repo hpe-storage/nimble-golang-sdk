@@ -2,24 +2,31 @@
 
 package nimbleos
 
-// NetworkConfig - Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
-// Export NetworkConfigFields for advance operations like search filter etc.
-var NetworkConfigFields *NetworkConfig
+// NetworkConfigFields provides field names to use in filter parameters, for example.
+var NetworkConfigFields *NetworkConfigFieldHandles
 
 func init() {
-	IDfield := "id"
-	MgmtIpfield := "mgmt_ip"
-	SecondaryMgmtIpfield := "secondary_mgmt_ip"
-	GroupLeaderArrayfield := "group_leader_array"
-
-	NetworkConfigFields = &NetworkConfig{
-		ID:               &IDfield,
-		MgmtIp:           &MgmtIpfield,
-		SecondaryMgmtIp:  &SecondaryMgmtIpfield,
-		GroupLeaderArray: &GroupLeaderArrayfield,
+	NetworkConfigFields = &NetworkConfigFieldHandles{
+		ID:                             "id",
+		Name:                           "name",
+		MgmtIp:                         "mgmt_ip",
+		SecondaryMgmtIp:                "secondary_mgmt_ip",
+		Role:                           "role",
+		IscsiAutomaticConnectionMethod: "iscsi_automatic_connection_method",
+		IscsiConnectionRebalancing:     "iscsi_connection_rebalancing",
+		RouteList:                      "route_list",
+		SubnetList:                     "subnet_list",
+		ArrayList:                      "array_list",
+		GroupLeaderArray:               "group_leader_array",
+		CreationTime:                   "creation_time",
+		LastModified:                   "last_modified",
+		ActiveSince:                    "active_since",
+		LastActive:                     "last_active",
+		IgnoreValidationMask:           "ignore_validation_mask",
 	}
 }
 
+// NetworkConfig - Manage group wide network configuration. The three possible network configurations include active, backup and an optional draft configuration.
 type NetworkConfig struct {
 	// ID - Identifier for network configuration.
 	ID *string `json:"id,omitempty"`
@@ -53,4 +60,24 @@ type NetworkConfig struct {
 	LastActive *int64 `json:"last_active,omitempty"`
 	// IgnoreValidationMask - Indicates whether to ignore the validation.
 	IgnoreValidationMask *int64 `json:"ignore_validation_mask,omitempty"`
+}
+
+// NetworkConfigFieldHandles provides a string representation for each NetworkConfig field.
+type NetworkConfigFieldHandles struct {
+	ID                             string
+	Name                           string
+	MgmtIp                         string
+	SecondaryMgmtIp                string
+	Role                           string
+	IscsiAutomaticConnectionMethod string
+	IscsiConnectionRebalancing     string
+	RouteList                      string
+	SubnetList                     string
+	ArrayList                      string
+	GroupLeaderArray               string
+	CreationTime                   string
+	LastModified                   string
+	ActiveSince                    string
+	LastActive                     string
+	IgnoreValidationMask           string
 }

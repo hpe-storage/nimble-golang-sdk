@@ -2,18 +2,26 @@
 
 package nimbleos
 
-// NsReapJobsReturn - Response from reaping jobs.
-// Export NsReapJobsReturnFields for advance operations like search filter etc.
-var NsReapJobsReturnFields *NsReapJobsReturn
+// NsReapJobsReturnFields provides field names to use in filter parameters, for example.
+var NsReapJobsReturnFields *NsReapJobsReturnFieldHandles
 
 func init() {
-
-	NsReapJobsReturnFields = &NsReapJobsReturn{}
+	NsReapJobsReturnFields = &NsReapJobsReturnFieldHandles{
+		Reaped:    "reaped",
+		Remaining: "remaining",
+	}
 }
 
+// NsReapJobsReturn - Response from reaping jobs.
 type NsReapJobsReturn struct {
 	// Reaped - Number of jobs reaped.
 	Reaped *int64 `json:"reaped,omitempty"`
 	// Remaining - Number of jobs remaining.
 	Remaining *int64 `json:"remaining,omitempty"`
+}
+
+// NsReapJobsReturnFieldHandles provides a string representation for each NsReapJobsReturn field.
+type NsReapJobsReturnFieldHandles struct {
+	Reaped    string
+	Remaining string
 }

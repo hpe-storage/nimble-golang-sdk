@@ -2,40 +2,32 @@
 
 package nimbleos
 
-// NsAccessControlRecord - An access control record associated with a volume or snapshot or protocol endpoint.
-// Export NsAccessControlRecordFields for advance operations like search filter etc.
-var NsAccessControlRecordFields *NsAccessControlRecord
+// NsAccessControlRecordFields provides field names to use in filter parameters, for example.
+var NsAccessControlRecordFields *NsAccessControlRecordFieldHandles
 
 func init() {
-	IDfield := "id"
-	AclIdfield := "acl_id"
-	InitiatorGroupIdfield := "initiator_group_id"
-	InitiatorGroupNamefield := "initiator_group_name"
-	ChapUserIdfield := "chap_user_id"
-	ChapUserNamefield := "chap_user_name"
-	PeIdfield := "pe_id"
-	PeNamefield := "pe_name"
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	SnapIdfield := "snap_id"
-	SnapNamefield := "snap_name"
-
-	NsAccessControlRecordFields = &NsAccessControlRecord{
-		ID:                 &IDfield,
-		AclId:              &AclIdfield,
-		InitiatorGroupId:   &InitiatorGroupIdfield,
-		InitiatorGroupName: &InitiatorGroupNamefield,
-		ChapUserId:         &ChapUserIdfield,
-		ChapUserName:       &ChapUserNamefield,
-		PeId:               &PeIdfield,
-		PeName:             &PeNamefield,
-		VolId:              &VolIdfield,
-		VolName:            &VolNamefield,
-		SnapId:             &SnapIdfield,
-		SnapName:           &SnapNamefield,
+	NsAccessControlRecordFields = &NsAccessControlRecordFieldHandles{
+		ID:                 "id",
+		AclId:              "acl_id",
+		InitiatorGroupId:   "initiator_group_id",
+		InitiatorGroupName: "initiator_group_name",
+		ChapUserId:         "chap_user_id",
+		ChapUserName:       "chap_user_name",
+		ApplyTo:            "apply_to",
+		Lun:                "lun",
+		AccessProtocol:     "access_protocol",
+		Snapluns:           "snapluns",
+		PeId:               "pe_id",
+		PeName:             "pe_name",
+		PeLun:              "pe_lun",
+		VolId:              "vol_id",
+		VolName:            "vol_name",
+		SnapId:             "snap_id",
+		SnapName:           "snap_name",
 	}
 }
 
+// NsAccessControlRecord - An access control record associated with a volume or snapshot or protocol endpoint.
 type NsAccessControlRecord struct {
 	// ID - ID of access control record.
 	ID *string `json:"id,omitempty"`
@@ -71,4 +63,25 @@ type NsAccessControlRecord struct {
 	SnapId *string `json:"snap_id,omitempty"`
 	// SnapName - Name of snapshot.
 	SnapName *string `json:"snap_name,omitempty"`
+}
+
+// NsAccessControlRecordFieldHandles provides a string representation for each NsAccessControlRecord field.
+type NsAccessControlRecordFieldHandles struct {
+	ID                 string
+	AclId              string
+	InitiatorGroupId   string
+	InitiatorGroupName string
+	ChapUserId         string
+	ChapUserName       string
+	ApplyTo            string
+	Lun                string
+	AccessProtocol     string
+	Snapluns           string
+	PeId               string
+	PeName             string
+	PeLun              string
+	VolId              string
+	VolName            string
+	SnapId             string
+	SnapName           string
 }

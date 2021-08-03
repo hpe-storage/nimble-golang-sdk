@@ -2,16 +2,22 @@
 
 package nimbleos
 
-// NsTimezonesReturn - Group timezone list attribute.
-// Export NsTimezonesReturnFields for advance operations like search filter etc.
-var NsTimezonesReturnFields *NsTimezonesReturn
+// NsTimezonesReturnFields provides field names to use in filter parameters, for example.
+var NsTimezonesReturnFields *NsTimezonesReturnFieldHandles
 
 func init() {
-
-	NsTimezonesReturnFields = &NsTimezonesReturn{}
+	NsTimezonesReturnFields = &NsTimezonesReturnFieldHandles{
+		Timezones: "timezones",
+	}
 }
 
+// NsTimezonesReturn - Group timezone list attribute.
 type NsTimezonesReturn struct {
 	// Timezones - Group timezone list.
 	Timezones []*string `json:"timezones,omitempty"`
+}
+
+// NsTimezonesReturnFieldHandles provides a string representation for each NsTimezonesReturn field.
+type NsTimezonesReturnFieldHandles struct {
+	Timezones string
 }

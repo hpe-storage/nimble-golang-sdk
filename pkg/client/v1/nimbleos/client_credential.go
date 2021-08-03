@@ -2,26 +2,22 @@
 
 package nimbleos
 
-// ClientCredential - Credential that this device will trust.
-// Export ClientCredentialFields for advance operations like search filter etc.
-var ClientCredentialFields *ClientCredential
+// ClientCredentialFields provides field names to use in filter parameters, for example.
+var ClientCredentialFields *ClientCredentialFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	ClientIdfield := "client_id"
-	Secretfield := "secret"
-	Descriptionfield := "description"
-
-	ClientCredentialFields = &ClientCredential{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		ClientId:    &ClientIdfield,
-		Secret:      &Secretfield,
-		Description: &Descriptionfield,
+	ClientCredentialFields = &ClientCredentialFieldHandles{
+		ID:           "id",
+		Name:         "name",
+		ClientId:     "client_id",
+		Secret:       "secret",
+		CreationTime: "creation_time",
+		LastModified: "last_modified",
+		Description:  "description",
 	}
 }
 
+// ClientCredential - Credential that this device will trust.
 type ClientCredential struct {
 	// ID - Identifier for the client credentials record.
 	ID *string `json:"id,omitempty"`
@@ -37,4 +33,15 @@ type ClientCredential struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// Description - Description of client.
 	Description *string `json:"description,omitempty"`
+}
+
+// ClientCredentialFieldHandles provides a string representation for each ClientCredential field.
+type ClientCredentialFieldHandles struct {
+	ID           string
+	Name         string
+	ClientId     string
+	Secret       string
+	CreationTime string
+	LastModified string
+	Description  string
 }

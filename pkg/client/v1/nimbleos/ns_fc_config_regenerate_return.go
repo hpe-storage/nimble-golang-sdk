@@ -2,20 +2,18 @@
 
 package nimbleos
 
-// NsFcConfigRegenerateReturn - Return values of Fibre channel config regeneration.
-// Export NsFcConfigRegenerateReturnFields for advance operations like search filter etc.
-var NsFcConfigRegenerateReturnFields *NsFcConfigRegenerateReturn
+// NsFcConfigRegenerateReturnFields provides field names to use in filter parameters, for example.
+var NsFcConfigRegenerateReturnFields *NsFcConfigRegenerateReturnFieldHandles
 
 func init() {
-	GroupLeaderArrayfield := "group_leader_array"
-	IDfield := "id"
-
-	NsFcConfigRegenerateReturnFields = &NsFcConfigRegenerateReturn{
-		GroupLeaderArray: &GroupLeaderArrayfield,
-		ID:               &IDfield,
+	NsFcConfigRegenerateReturnFields = &NsFcConfigRegenerateReturnFieldHandles{
+		ArrayList:        "array_list",
+		GroupLeaderArray: "group_leader_array",
+		ID:               "id",
 	}
 }
 
+// NsFcConfigRegenerateReturn - Return values of Fibre channel config regeneration.
 type NsFcConfigRegenerateReturn struct {
 	// ArrayList - List of array Fibre Channel configs.
 	ArrayList []*NsArrayFcConfig `json:"array_list,omitempty"`
@@ -23,4 +21,11 @@ type NsFcConfigRegenerateReturn struct {
 	GroupLeaderArray *string `json:"group_leader_array,omitempty"`
 	// ID - Identifier for Fibre Channel configuration.
 	ID *string `json:"id,omitempty"`
+}
+
+// NsFcConfigRegenerateReturnFieldHandles provides a string representation for each NsFcConfigRegenerateReturn field.
+type NsFcConfigRegenerateReturnFieldHandles struct {
+	ArrayList        string
+	GroupLeaderArray string
+	ID               string
 }

@@ -2,38 +2,35 @@
 
 package nimbleos
 
-// AccessControlRecord - Manage access control records for volumes.
-// Export AccessControlRecordFields for advance operations like search filter etc.
-var AccessControlRecordFields *AccessControlRecord
+// AccessControlRecordFields provides field names to use in filter parameters, for example.
+var AccessControlRecordFields *AccessControlRecordFieldHandles
 
 func init() {
-	IDfield := "id"
-	ChapUserIdfield := "chap_user_id"
-	ChapUserNamefield := "chap_user_name"
-	InitiatorGroupIdfield := "initiator_group_id"
-	InitiatorGroupNamefield := "initiator_group_name"
-	VolIdfield := "vol_id"
-	VolNamefield := "vol_name"
-	PeIdfield := "pe_id"
-	PeNamefield := "pe_name"
-	SnapIdfield := "snap_id"
-	SnapNamefield := "snap_name"
-
-	AccessControlRecordFields = &AccessControlRecord{
-		ID:                 &IDfield,
-		ChapUserId:         &ChapUserIdfield,
-		ChapUserName:       &ChapUserNamefield,
-		InitiatorGroupId:   &InitiatorGroupIdfield,
-		InitiatorGroupName: &InitiatorGroupNamefield,
-		VolId:              &VolIdfield,
-		VolName:            &VolNamefield,
-		PeId:               &PeIdfield,
-		PeName:             &PeNamefield,
-		SnapId:             &SnapIdfield,
-		SnapName:           &SnapNamefield,
+	AccessControlRecordFields = &AccessControlRecordFieldHandles{
+		ID:                 "id",
+		ApplyTo:            "apply_to",
+		ChapUserId:         "chap_user_id",
+		ChapUserName:       "chap_user_name",
+		InitiatorGroupId:   "initiator_group_id",
+		InitiatorGroupName: "initiator_group_name",
+		Lun:                "lun",
+		VolId:              "vol_id",
+		VolName:            "vol_name",
+		VolAgentType:       "vol_agent_type",
+		PeId:               "pe_id",
+		PeName:             "pe_name",
+		PeLun:              "pe_lun",
+		SnapId:             "snap_id",
+		SnapName:           "snap_name",
+		PeIds:              "pe_ids",
+		Snapluns:           "snapluns",
+		CreationTime:       "creation_time",
+		LastModified:       "last_modified",
+		AccessProtocol:     "access_protocol",
 	}
 }
 
+// AccessControlRecord - Manage access control records for volumes.
 type AccessControlRecord struct {
 	// ID - Identifier for the access control record.
 	ID *string `json:"id,omitempty"`
@@ -75,4 +72,28 @@ type AccessControlRecord struct {
 	LastModified *int64 `json:"last_modified,omitempty"`
 	// AccessProtocol - Access protocol of the volume.
 	AccessProtocol *NsAccessProtocol `json:"access_protocol,omitempty"`
+}
+
+// AccessControlRecordFieldHandles provides a string representation for each AccessControlRecord field.
+type AccessControlRecordFieldHandles struct {
+	ID                 string
+	ApplyTo            string
+	ChapUserId         string
+	ChapUserName       string
+	InitiatorGroupId   string
+	InitiatorGroupName string
+	Lun                string
+	VolId              string
+	VolName            string
+	VolAgentType       string
+	PeId               string
+	PeName             string
+	PeLun              string
+	SnapId             string
+	SnapName           string
+	PeIds              string
+	Snapluns           string
+	CreationTime       string
+	LastModified       string
+	AccessProtocol     string
 }

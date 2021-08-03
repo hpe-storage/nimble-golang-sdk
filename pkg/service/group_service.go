@@ -74,7 +74,7 @@ func (svc *GroupService) GetGroupById(id string) (*nimbleos.Group, error) {
 func (svc *GroupService) GetGroupByName(name string) (*nimbleos.Group, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: &nimbleos.GroupFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

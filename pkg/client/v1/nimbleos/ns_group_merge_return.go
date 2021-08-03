@@ -2,26 +2,44 @@
 
 package nimbleos
 
-// NsGroupMergeReturn - Response of group merge validation.
-// Export NsGroupMergeReturnFields for advance operations like search filter etc.
-var NsGroupMergeReturnFields *NsGroupMergeReturn
+// NsGroupMergeReturnFields provides field names to use in filter parameters, for example.
+var NsGroupMergeReturnFields *NsGroupMergeReturnFieldHandles
 
 func init() {
-	SrcSidfield := "src_sid"
-	SrcGroupNamefield := "src_group_name"
-	DstGroupNamefield := "dst_group_name"
-	DstGroupSwversionfield := "dst_group_swversion"
-	ValidationErrorMsgfield := "validation_error_msg"
-
-	NsGroupMergeReturnFields = &NsGroupMergeReturn{
-		SrcSid:             &SrcSidfield,
-		SrcGroupName:       &SrcGroupNamefield,
-		DstGroupName:       &DstGroupNamefield,
-		DstGroupSwversion:  &DstGroupSwversionfield,
-		ValidationErrorMsg: &ValidationErrorMsgfield,
+	NsGroupMergeReturnFields = &NsGroupMergeReturnFieldHandles{
+		OnlineVols:                 "online_vols",
+		OnlineSnaps:                "online_snaps",
+		ActivePartners:             "active_partners",
+		DstNatPartners:             "dst_nat_partners",
+		SrcThrottles:               "src_throttles",
+		DstThrottles:               "dst_throttles",
+		ReplObjs:                   "repl_objs",
+		NameConflicts:              "name_conflicts",
+		NameConflictsManualResolve: "name_conflicts_manual_resolve",
+		SerialConflicts:            "serial_conflicts",
+		AppUuidConflicts:           "app_uuid_conflicts",
+		NameConflictsAndOwners:     "name_conflicts_and_owners",
+		LimitViolations:            "limit_violations",
+		SnapRetainLimitViolations:  "snap_retain_limit_violations",
+		NetworkErrorList:           "network_error_list",
+		AutoSwitchoverConflicts:    "auto_switchover_conflicts",
+		ErrorList:                  "error_list",
+		AliasConflicts:             "alias_conflicts",
+		OnlineFcIntfs:              "online_fc_intfs",
+		LunConflicts:               "lun_conflicts",
+		SrcSid:                     "src_sid",
+		SrcGroupName:               "src_group_name",
+		DstGroupName:               "dst_group_name",
+		DstGroupSwversion:          "dst_group_swversion",
+		HtypeNameConflicts:         "htype_name_conflicts",
+		HostTypeConflicts:          "host_type_conflicts",
+		ValidationError:            "validation_error",
+		ValidationErrorMsg:         "validation_error_msg",
+		WarningList:                "warning_list",
 	}
 }
 
+// NsGroupMergeReturn - Response of group merge validation.
 type NsGroupMergeReturn struct {
 	// OnlineVols - List of volumes which are online.
 	OnlineVols []*string `json:"online_vols,omitempty"`
@@ -81,4 +99,37 @@ type NsGroupMergeReturn struct {
 	ValidationErrorMsg *string `json:"validation_error_msg,omitempty"`
 	// WarningList - List of warning messages.
 	WarningList []*string `json:"warning_list,omitempty"`
+}
+
+// NsGroupMergeReturnFieldHandles provides a string representation for each NsGroupMergeReturn field.
+type NsGroupMergeReturnFieldHandles struct {
+	OnlineVols                 string
+	OnlineSnaps                string
+	ActivePartners             string
+	DstNatPartners             string
+	SrcThrottles               string
+	DstThrottles               string
+	ReplObjs                   string
+	NameConflicts              string
+	NameConflictsManualResolve string
+	SerialConflicts            string
+	AppUuidConflicts           string
+	NameConflictsAndOwners     string
+	LimitViolations            string
+	SnapRetainLimitViolations  string
+	NetworkErrorList           string
+	AutoSwitchoverConflicts    string
+	ErrorList                  string
+	AliasConflicts             string
+	OnlineFcIntfs              string
+	LunConflicts               string
+	SrcSid                     string
+	SrcGroupName               string
+	DstGroupName               string
+	DstGroupSwversion          string
+	HtypeNameConflicts         string
+	HostTypeConflicts          string
+	ValidationError            string
+	ValidationErrorMsg         string
+	WarningList                string
 }

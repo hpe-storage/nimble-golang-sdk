@@ -2,30 +2,27 @@
 
 package nimbleos
 
-// UserGroup - Represents Active Directory groups configured to manage the system.
-// Export UserGroupFields for advance operations like search filter etc.
-var UserGroupFields *UserGroup
+// UserGroupFields provides field names to use in filter parameters, for example.
+var UserGroupFields *UserGroupFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	Descriptionfield := "description"
-	RoleIdfield := "role_id"
-	ExternalIdfield := "external_id"
-	DomainIdfield := "domain_id"
-	DomainNamefield := "domain_name"
-
-	UserGroupFields = &UserGroup{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		Description: &Descriptionfield,
-		RoleId:      &RoleIdfield,
-		ExternalId:  &ExternalIdfield,
-		DomainId:    &DomainIdfield,
-		DomainName:  &DomainNamefield,
+	UserGroupFields = &UserGroupFieldHandles{
+		ID:                "id",
+		Name:              "name",
+		Description:       "description",
+		RoleId:            "role_id",
+		Role:              "role",
+		InactivityTimeout: "inactivity_timeout",
+		CreationTime:      "creation_time",
+		LastModified:      "last_modified",
+		Disabled:          "disabled",
+		ExternalId:        "external_id",
+		DomainId:          "domain_id",
+		DomainName:        "domain_name",
 	}
 }
 
+// UserGroup - Represents Active Directory groups configured to manage the system.
 type UserGroup struct {
 	// ID - Identifier for the user group.
 	ID *string `json:"id,omitempty"`
@@ -51,4 +48,20 @@ type UserGroup struct {
 	DomainId *string `json:"domain_id,omitempty"`
 	// DomainName - Role of the user.
 	DomainName *string `json:"domain_name,omitempty"`
+}
+
+// UserGroupFieldHandles provides a string representation for each UserGroup field.
+type UserGroupFieldHandles struct {
+	ID                string
+	Name              string
+	Description       string
+	RoleId            string
+	Role              string
+	InactivityTimeout string
+	CreationTime      string
+	LastModified      string
+	Disabled          string
+	ExternalId        string
+	DomainId          string
+	DomainName        string
 }

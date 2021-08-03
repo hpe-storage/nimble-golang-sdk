@@ -75,7 +75,7 @@ func (svc *InitiatorGroupService) GetInitiatorGroupById(id string) (*nimbleos.In
 func (svc *InitiatorGroupService) GetInitiatorGroupByName(name string) (*nimbleos.InitiatorGroup, error) {
 	params := &param.GetParams{
 		Filter: &param.SearchFilter{
-			FieldName: nimbleos.VolumeFields.Name,
+			FieldName: &nimbleos.InitiatorGroupFields.Name,
 			Operator:  param.EQUALS.String(),
 			Value:     name,
 		},

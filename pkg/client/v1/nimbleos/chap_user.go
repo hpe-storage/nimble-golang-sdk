@@ -2,30 +2,27 @@
 
 package nimbleos
 
-// ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
-// Export ChapUserFields for advance operations like search filter etc.
-var ChapUserFields *ChapUser
+// ChapUserFields provides field names to use in filter parameters, for example.
+var ChapUserFields *ChapUserFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	Passwordfield := "password"
-	TenantIdfield := "tenant_id"
-
-	ChapUserFields = &ChapUser{
-		ID:          &IDfield,
-		Name:        &Namefield,
-		FullName:    &FullNamefield,
-		SearchName:  &SearchNamefield,
-		Description: &Descriptionfield,
-		Password:    &Passwordfield,
-		TenantId:    &TenantIdfield,
+	ChapUserFields = &ChapUserFieldHandles{
+		ID:            "id",
+		Name:          "name",
+		FullName:      "full_name",
+		SearchName:    "search_name",
+		Description:   "description",
+		Password:      "password",
+		InitiatorIqns: "initiator_iqns",
+		TenantId:      "tenant_id",
+		CreationTime:  "creation_time",
+		LastModified:  "last_modified",
+		VolList:       "vol_list",
+		VolCount:      "vol_count",
 	}
 }
 
+// ChapUser - Manage Challenge-Response Handshake Authentication Protocol (CHAP) user accounts. CHAP users are one method of access control for iSCSI initiators. Each CHAP user has a CHAP password, sometimes called a CHAP secret. The CHAP passwords must match on the array and on the iSCSI initiator in order for the array to authenicate the initiator and allow it access. The CHAP user information must exist on both the array and the iSCSI initiator. Target authentication gives security only for the specific iSCSI target.
 type ChapUser struct {
 	// ID - Identifier for the CHAP user.
 	ID *string `json:"id,omitempty"`
@@ -51,4 +48,20 @@ type ChapUser struct {
 	VolList []*NsVolumeSummary `json:"vol_list,omitempty"`
 	// VolCount - Count of volumes associated with this CHAP user.
 	VolCount *int64 `json:"vol_count,omitempty"`
+}
+
+// ChapUserFieldHandles provides a string representation for each ChapUser field.
+type ChapUserFieldHandles struct {
+	ID            string
+	Name          string
+	FullName      string
+	SearchName    string
+	Description   string
+	Password      string
+	InitiatorIqns string
+	TenantId      string
+	CreationTime  string
+	LastModified  string
+	VolList       string
+	VolCount      string
 }

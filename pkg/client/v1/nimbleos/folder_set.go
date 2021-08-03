@@ -2,32 +2,26 @@
 
 package nimbleos
 
-// FolderSet - Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
-// Export FolderSetFields for advance operations like search filter etc.
-var FolderSetFields *FolderSet
+// FolderSetFields provides field names to use in filter parameters, for example.
+var FolderSetFields *FolderSetFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-	FullNamefield := "full_name"
-	SearchNamefield := "search_name"
-	Descriptionfield := "description"
-	AppUuidfield := "app_uuid"
-	AppserverIdfield := "appserver_id"
-	AppserverNamefield := "appserver_name"
-
-	FolderSetFields = &FolderSet{
-		ID:            &IDfield,
-		Name:          &Namefield,
-		FullName:      &FullNamefield,
-		SearchName:    &SearchNamefield,
-		Description:   &Descriptionfield,
-		AppUuid:       &AppUuidfield,
-		AppserverId:   &AppserverIdfield,
-		AppserverName: &AppserverNamefield,
+	FolderSetFields = &FolderSetFieldHandles{
+		ID:            "id",
+		Name:          "name",
+		FullName:      "full_name",
+		SearchName:    "search_name",
+		Description:   "description",
+		CreationTime:  "creation_time",
+		LastModified:  "last_modified",
+		AppUuid:       "app_uuid",
+		FolderList:    "folder_list",
+		AppserverId:   "appserver_id",
+		AppserverName: "appserver_name",
 	}
 }
 
+// FolderSet - Folder set represents a set of folder each on separate pools that represent a group-scope datastore spanning the entire group.
 type FolderSet struct {
 	// ID - Identifier of the folder set.
 	ID *string `json:"id,omitempty"`
@@ -51,4 +45,19 @@ type FolderSet struct {
 	AppserverId *string `json:"appserver_id,omitempty"`
 	// AppserverName - Name of the application server associated with the folder set and member folders.
 	AppserverName *string `json:"appserver_name,omitempty"`
+}
+
+// FolderSetFieldHandles provides a string representation for each FolderSet field.
+type FolderSetFieldHandles struct {
+	ID            string
+	Name          string
+	FullName      string
+	SearchName    string
+	Description   string
+	CreationTime  string
+	LastModified  string
+	AppUuid       string
+	FolderList    string
+	AppserverId   string
+	AppserverName string
 }

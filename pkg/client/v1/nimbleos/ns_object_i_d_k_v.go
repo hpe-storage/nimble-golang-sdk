@@ -2,23 +2,26 @@
 
 package nimbleos
 
-// NsObjectIDKV - A key value pair containing an object ID as a value.
-// Export NsObjectIDKVFields for advance operations like search filter etc.
-var NsObjectIDKVFields *NsObjectIDKV
+// NsObjectIDKVFields provides field names to use in filter parameters, for example.
+var NsObjectIDKVFields *NsObjectIDKVFieldHandles
 
 func init() {
-	Keyfield := "key"
-	IDfield := "id"
-
-	NsObjectIDKVFields = &NsObjectIDKV{
-		Key: &Keyfield,
-		ID:  &IDfield,
+	NsObjectIDKVFields = &NsObjectIDKVFieldHandles{
+		Key: "key",
+		ID:  "id",
 	}
 }
 
+// NsObjectIDKV - A key value pair containing an object ID as a value.
 type NsObjectIDKV struct {
 	// Key - Identifier of key-value pair.
 	Key *string `json:"key,omitempty"`
 	// ID - An object ID.
 	ID *string `json:"id,omitempty"`
+}
+
+// NsObjectIDKVFieldHandles provides a string representation for each NsObjectIDKV field.
+type NsObjectIDKVFieldHandles struct {
+	Key string
+	ID  string
 }

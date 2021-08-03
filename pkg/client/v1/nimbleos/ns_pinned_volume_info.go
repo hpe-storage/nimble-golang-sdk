@@ -2,20 +2,18 @@
 
 package nimbleos
 
-// NsPinnedVolumeInfo - Select fields containing pinned volume info.
-// Export NsPinnedVolumeInfoFields for advance operations like search filter etc.
-var NsPinnedVolumeInfoFields *NsPinnedVolumeInfo
+// NsPinnedVolumeInfoFields provides field names to use in filter parameters, for example.
+var NsPinnedVolumeInfoFields *NsPinnedVolumeInfoFieldHandles
 
 func init() {
-	IDfield := "id"
-	Namefield := "name"
-
-	NsPinnedVolumeInfoFields = &NsPinnedVolumeInfo{
-		ID:   &IDfield,
-		Name: &Namefield,
+	NsPinnedVolumeInfoFields = &NsPinnedVolumeInfoFieldHandles{
+		ID:                   "id",
+		Name:                 "name",
+		SizePinnedCacheBytes: "size_pinned_cache_bytes",
 	}
 }
 
+// NsPinnedVolumeInfo - Select fields containing pinned volume info.
 type NsPinnedVolumeInfo struct {
 	// ID - ID of volume.
 	ID *string `json:"id,omitempty"`
@@ -23,4 +21,11 @@ type NsPinnedVolumeInfo struct {
 	Name *string `json:"name,omitempty"`
 	// SizePinnedCacheBytes - Total pinned cache size of the volume in bytes.
 	SizePinnedCacheBytes *int64 `json:"size_pinned_cache_bytes,omitempty"`
+}
+
+// NsPinnedVolumeInfoFieldHandles provides a string representation for each NsPinnedVolumeInfo field.
+type NsPinnedVolumeInfoFieldHandles struct {
+	ID                   string
+	Name                 string
+	SizePinnedCacheBytes string
 }

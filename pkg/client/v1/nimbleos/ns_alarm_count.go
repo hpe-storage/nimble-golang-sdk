@@ -2,15 +2,18 @@
 
 package nimbleos
 
-// NsAlarmCount - List of alarm count for each category.
-// Export NsAlarmCountFields for advance operations like search filter etc.
-var NsAlarmCountFields *NsAlarmCount
+// NsAlarmCountFields provides field names to use in filter parameters, for example.
+var NsAlarmCountFields *NsAlarmCountFieldHandles
 
 func init() {
-
-	NsAlarmCountFields = &NsAlarmCount{}
+	NsAlarmCountFields = &NsAlarmCountFieldHandles{
+		Category: "category",
+		Critical: "critical",
+		Warning:  "warning",
+	}
 }
 
+// NsAlarmCount - List of alarm count for each category.
 type NsAlarmCount struct {
 	// Category - Alert category.
 	Category *NsEventCategory `json:"category,omitempty"`
@@ -18,4 +21,11 @@ type NsAlarmCount struct {
 	Critical *int64 `json:"critical,omitempty"`
 	// Warning - Warning alarm count of a particular category.
 	Warning *int64 `json:"warning,omitempty"`
+}
+
+// NsAlarmCountFieldHandles provides a string representation for each NsAlarmCount field.
+type NsAlarmCountFieldHandles struct {
+	Category string
+	Critical string
+	Warning  string
 }
