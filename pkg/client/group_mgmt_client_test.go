@@ -4,6 +4,7 @@ package client
 
 import (
 	"fmt"
+	"os"
 	"reflect"
 	"testing"
 
@@ -21,7 +22,7 @@ func TestNewClient(t *testing.T) {
 
 	// Create client
 	var err error
-	client, err = NewClient("x.x.x.x", "xxx", "xxx", "v1", true, false)
+	client, err = NewClient(os.Getenv("GO_SDK_TEST_HOST"), os.Getenv("GO_SDK_TEST_USER"), os.Getenv("GO_SDK_TEST_USER_PASSWORD"), "v1", true, false)
 	if err != nil {
 		t.Errorf("NewClient(): Unable to create client, err: %v", err.Error())
 		return
@@ -77,7 +78,7 @@ func TestNewClient(t *testing.T) {
 func TestListGetOrPost(t *testing.T) {
 	// Create GMD client
 	var err error
-	client, err := NewClient("x.x.x.x", "xxx", "xxx", "v1", true, false)
+	client, err := NewClient(os.Getenv("GO_SDK_TEST_HOST"), os.Getenv("GO_SDK_TEST_USER"), os.Getenv("GO_SDK_TEST_USER_PASSWORD"), "v1", true, false)
 	if err != nil {
 		t.Errorf("NewGmdClient(): Unable to create GMD client, err: %v", err.Error())
 		return

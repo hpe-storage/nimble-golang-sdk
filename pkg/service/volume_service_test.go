@@ -44,16 +44,16 @@ type VolumeServiceTestSuite struct {
  */
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
-	nonTenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-		WithUser("xxx"), WithPassword("xxx"))
+	nonTenantGroupService, err := NewNimbleGroupService(WithHost(os.Getenv("GO_SDK_TEST_HOST")),
+		WithUser(os.Getenv("GO_SDK_TEST_USER")), WithPassword(os.Getenv("GO_SDK_TEST_USER_PASSWORD")))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
 		return nil, nil
 	}
 
-	tenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-		WithTenantUser("xxx"), WithPassword("xxx"))
+	tenantGroupService, err := NewNimbleGroupService(WithHost(os.Getenv("GO_SDK_TEST_HOST")),
+		WithTenantUser(os.Getenv("GO_SDK_TEST_TENANT_USER")), WithPassword(os.Getenv("GO_SDK_TEST_TENANT_PASSWORD")))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
@@ -132,9 +132,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
 
-	// TODO: replace <foldername> with your folder's name (owned by both admin and tenant)
-	// to make the test work
-	folder, _ := suite.nonTenantFolderService.GetFolderByName("<foldername>")
+	folder, _ := suite.nonTenantFolderService.GetFolderByName(os.Getenv("GO_SDK_TEST_TENANT_FOLDER"))
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
@@ -659,7 +657,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeSortFilters() {
 	sfilter := new(param.GetParams)
 	var sortOrderList []param.SortOrder
 	sortOrderList = append(sortOrderList, param.SortOrder{
-		Field:     *nimbleos.VolumeFields.Name,
+		Field:     nimbleos.VolumeFields.Name,
 		Ascending: true,
 	})
 
@@ -690,7 +688,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
 	// search filter unit test
 	sfilter := &param.GetParams{}
 	sf := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}
@@ -706,7 +704,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
 
 	// Test tenant
 	sf = &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume1",
 	}
@@ -724,12 +722,12 @@ func (suite *VolumeServiceTestSuite) TestVolumeMultiSearchFilters() {
 
 	var searchList []*param.SearchFilter
 	sf1 := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}
 	sf2 := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.SearchName,
+		FieldName: &nimbleos.VolumeFields.SearchName,
 		Operator:  param.EQUALS.String(),
 		Value:     "Volume",
 	}
@@ -762,15 +760,15 @@ func (suite *VolumeServiceTestSuite) TestVolumeFields() {
 	// fields unit test
 	filter := &param.GetParams{}
 	var volAttrList = []string{
-		*nimbleos.VolumeFields.ID,
-		*nimbleos.VolumeFields.Name,
-		*nimbleos.VolumeFields.PerfpolicyName,
+		nimbleos.VolumeFields.ID,
+		nimbleos.VolumeFields.Name,
+		nimbleos.VolumeFields.PerfpolicyName,
 	}
 
 	filter.WithFields(volAttrList)
 
 	sf := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}
