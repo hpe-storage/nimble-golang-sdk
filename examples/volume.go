@@ -12,8 +12,8 @@ import (
 func main() {
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
- 		service.WithUser("xxx"),
- 		service.WithPassword("xxx"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"),
 		service.WithoutWaitForAsyncJobs())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
@@ -53,7 +53,7 @@ func main() {
 	fmt.Println(volume)
 
 	// get volume by name
-	volume, err = volSvc.GetVolumeByName("TestDemo1");
+	volume, err = volSvc.GetVolumeByName("TestDemo1")
 	if err != nil {
 		fmt.Printf("Failed to get volume by name, err: %v,", err)
 		return
@@ -61,17 +61,17 @@ func main() {
 	fmt.Println(volume)
 
 	// get volume with params
- 	requestParams := new(param.GetParams)
- 	fieldList := []string{
- 		nimbleos.VolumeFields.ID,
- 		nimbleos.VolumeFields.Name,
- 		nimbleos.VolumeFields.Size,
- 		nimbleos.VolumeFields.LimitMbps,
- 	}
- 	requestParams.WithFields(fieldList)
- 	volumeList, err := volSvc.GetVolumes(requestParams)
+	requestParams := new(param.GetParams)
+	fieldList := []string{
+		nimbleos.VolumeFields.ID,
+		nimbleos.VolumeFields.Name,
+		nimbleos.VolumeFields.Size,
+		nimbleos.VolumeFields.LimitMbps,
+	}
+	requestParams.WithFields(fieldList)
+	volumeList, err := volSvc.GetVolumes(requestParams)
 
-	if err != nil{
+	if err != nil {
 		fmt.Printf("Error: get volume with params. Message: %v\n", err)
 	}
 	fmt.Println(volumeList)

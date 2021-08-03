@@ -13,8 +13,8 @@ func main() {
 	// login to Array, get groupService instance
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
- 		service.WithUser("xxx"),
- 		service.WithPassword("xxx"),
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"),
 		service.WithoutWaitForAsyncJobs())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
@@ -73,7 +73,7 @@ func main() {
 		})
 
 		// Get snapshot collection by name
-		snapColl, err = groupService.GetSnapshotCollectionService().GetSnapshotCollectionByName("RestoreSnapColl");
+		snapColl, err = groupService.GetSnapshotCollectionService().GetSnapshotCollectionByName("RestoreSnapColl")
 		if err != nil {
 			fmt.Printf("Failed to get snapshot collection by name, err: %v\n", err)
 		}

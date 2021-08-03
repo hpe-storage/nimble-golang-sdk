@@ -11,8 +11,8 @@ import (
 func main() {
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost("1.1.1.1"),
- 		service.WithUser("xxx"),
- 		service.WithPassword("xxx"))
+		service.WithUser("xxx"),
+		service.WithPassword("xxx"))
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		return
