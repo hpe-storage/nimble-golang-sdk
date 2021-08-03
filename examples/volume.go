@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-
+	"os"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
@@ -11,9 +11,9 @@ import (
 
 func main() {
 	groupService, err := service.NewNimbleGroupService(
-		service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"),
-		service.WithPassword("xxx"),
+		service.WithHost(os.Getenv("GO_SDK_TEST_HOST")),
+		service.WithUser(os.Getenv("GO_SDK_TEST_USER")),
+		service.WithPassword(os.Getenv("GO_SDK_TEST_USER_PASSWORD")),
 		service.WithoutWaitForAsyncJobs())
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
