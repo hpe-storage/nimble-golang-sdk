@@ -9,22 +9,25 @@ import (
 	"os"
 )
 
-func checkEnvironmentVariableExists() {
-	if os.Getenv("SDK_TARGET_HOST") == "" ||
-		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" {
-		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD")
+func checkEnvironmentVariableExists(host, user, password string) {
+	if host == "" || user == "" || password == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println("See README for usage")
 		os.Exit(1)
 	}
 }
 
 func main() {
-	checkEnvironmentVariableExists()
+	host := os.Getenv("SDK_TARGET_HOST")
+	user := os.Getenv("SDK_TARGET_USER")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
+
+	checkEnvironmentVariableExists(host, user, password)
 
 	groupService, err := service.NewNimbleGroupService(
-		service.WithHost(os.Getenv("SDK_TARGET_HOST")),
-		service.WithUser(os.Getenv("SDK_TARGET_USER")),
-		service.WithPassword(os.Getenv("SDK_TARGET_USER_PASSWORD")))
+		service.WithHost(host),
+		service.WithUser(user),
+		service.WithPassword(password))
 	if err != nil {
 		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
 		os.Exit(1)

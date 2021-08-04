@@ -10,15 +10,13 @@ import (
 	"os"
 )
 
-func checkEnvironmentVariableExists() {
-	if os.Getenv("SDK_TARGET_HOST") == "" ||
-		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" {
-		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD")
+func checkEnvironmentVariableExists(host, user, password string) {
+	if host == "" || user == "" || password == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println("See README for usage")
 		os.Exit(1)
 	}
 }
-
 func getFakeService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {
 	grpSvc, err := fakeservice.NewNimbleGroupService(clientOpts...)
 	return grpSvc, err
@@ -31,12 +29,16 @@ func getRealService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupSer
 
 func main() {
 	arg := &param.GetParams{}
-	checkEnvironmentVariableExists()
+	host := os.Getenv("SDK_TARGET_HOST")
+	user := os.Getenv("SDK_TARGET_USER")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
+
+	checkEnvironmentVariableExists(host, user, password)
 
 	groupService, _ := getFakeService(
-		service.WithHost(os.Getenv("SDK_TARGET_HOST")),
-		service.WithUser(os.Getenv("SDK_TARGET_USER")),
-		service.WithPassword(os.Getenv("SDK_TARGET_USER_PASSWORD")))
+		service.WithHost(host),
+		service.WithUser(user),
+		service.WithPassword(password))
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
@@ -65,9 +67,9 @@ func main() {
 
 	// Get real service
 	groupService, _ = getRealService(
-		service.WithHost(os.Getenv("SDK_TARGET_HOST")),
-		service.WithUser(os.Getenv("SDK_TARGET_USER")),
-		service.WithPassword(os.Getenv("SDK_TARGET_USER_PASSWORD")))
+		service.WithHost(host),
+		service.WithUser(user),
+		service.WithPassword(password))
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()
