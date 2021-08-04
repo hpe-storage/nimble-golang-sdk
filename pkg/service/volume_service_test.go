@@ -37,7 +37,7 @@ type VolumeServiceTestSuite struct {
 	tenantFolderService             *FolderService
 }
 
-func checkEnvironmentVariableExists() {
+func (suite *VolumeServiceTestSuite) checkEnvironmentVariableExists() {
 	if os.Getenv("SDK_TARGET_HOST") == "" ||
 		os.Getenv("SDK_TARGET_USER") == "" ||
 		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" ||
