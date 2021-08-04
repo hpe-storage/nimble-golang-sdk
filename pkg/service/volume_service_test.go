@@ -44,7 +44,7 @@ func (suite *VolumeServiceTestSuite) checkEnvironmentVariableExists() {
 		os.Getenv("SDK_TARGET_TENANT_USER") == "" ||
 		os.Getenv("SDK_TARGET_TENANT_PASSWORD") == "" ||
 		os.Getenv("SDK_TARGET_TENANT_FOLDER") == "" {
-		suite.T().Errorf("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD, SDK_TARGET_TENANT_USER, SDK_TARGET_TENANT_PASSWORD, SDK_TARGET_TENANT_FOLDER")
+		suite.T().Error("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD, SDK_TARGET_TENANT_USER, SDK_TARGET_TENANT_PASSWORD, SDK_TARGET_TENANT_FOLDER\nSee README for usage")
 		os.Exit(1)
 	}
 }

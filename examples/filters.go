@@ -55,6 +55,10 @@ func main() {
 	sfilter.WithSearchFilter(f)
 
 	//GetVolumes
-	volumes, _ := volSvc.GetVolumes(sfilter)
+	volumes, err := volSvc.GetVolumes(sfilter)
 	fmt.Printf("%v", volumes)
+
+	if err != nil {
+		fmt.Printf("NewGroupService(): Unable to get volumes, err: %v", err.Error())
+	}
 }

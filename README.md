@@ -6,6 +6,14 @@ The SDK provides Go modules to interact with the HPE Nimble Storage REST API. Th
 # Synopsis
 
 Examples are available in [examples](examples). This is a brief Go program that creates a 5GiB volume on the specified array.
+In order to run [examples](examples) files, the following environment variables need to be set:
+	- SDK_TARGET_HOST				// Managment hostname or IP of array
+	- SDK_TARGET_USER				// User (non-tenant) username
+	- SDK_TARGET_USER_PASSWORD		// User (non-tenant) password
+	- SDK_TARGET_TENANT_USER		// Tenant username
+	- SDK_TARGET_TENANT_PASSWORD	// Tenant password
+	- SDK_TARGET_TENANT_FOLDER		// The id of tenant's folder
+
 
 ```
 package main
@@ -20,12 +28,10 @@ import (
 func main() {
 
 	// Create new group service
-	groupService, err := service.NewNsGroupService(
- 		"192.168.1.1",              // Managment hostname or IP of array
- 		"admin",                    // Username
-		"admin",                    // Password
-		"v1",                       // REST API version
-		true)                       // Perform operations synchronous
+	groupService, err := service.NewNimbleGroupService(
+		service.WithHost("192.168.1.1"),	// Managment hostname or IP of array
+		service.WithUser("admin"),			// Username
+		service.WithPassword("admin"))		// Password
 
 	if err != nil {
 		fmt.Printf("Unable to connect to group, %+v\n", err.Error())
