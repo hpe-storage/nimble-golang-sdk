@@ -44,16 +44,16 @@ type VolumeServiceTestSuite struct {
  */
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 
-	nonTenantGroupService, err := NewNimbleGroupService(WithHost(os.Getenv("GO_SDK_TEST_HOST")),
-		WithUser(os.Getenv("GO_SDK_TEST_USER")), WithPassword(os.Getenv("GO_SDK_TEST_USER_PASSWORD")))
+	nonTenantGroupService, err := NewNimbleGroupService(WithHost(os.Getenv("SDK_TARGET_HOST")),
+		WithUser(os.Getenv("SDK_TARGET_USER")), WithPassword(os.Getenv("SDK_TARGET_USER_PASSWORD")))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
 		return nil, nil
 	}
 
-	tenantGroupService, err := NewNimbleGroupService(WithHost(os.Getenv("GO_SDK_TEST_HOST")),
-		WithTenantUser(os.Getenv("GO_SDK_TEST_TENANT_USER")), WithPassword(os.Getenv("GO_SDK_TEST_TENANT_PASSWORD")))
+	tenantGroupService, err := NewNimbleGroupService(WithHost(os.Getenv("SDK_TARGET_HOST")),
+		WithTenantUser(os.Getenv("SDK_TARGET_TENANT_USER")), WithPassword(os.Getenv("SDK_TARGET_TENANT_PASSWORD")))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
@@ -132,7 +132,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
 
-	folder, _ := suite.nonTenantFolderService.GetFolderByName(os.Getenv("GO_SDK_TEST_TENANT_FOLDER"))
+	folder, _ := suite.nonTenantFolderService.GetFolderByName(os.Getenv("SDK_TARGET_TENANT_FOLDER"))
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
