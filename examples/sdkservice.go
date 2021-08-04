@@ -2,21 +2,21 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/fakeservice"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"os"
 )
 
-func checkEnvironmentVariableExists(){
-	if (os.Getenv("SDK_TARGET_HOST") == "" ||
+func checkEnvironmentVariableExists() {
+	if os.Getenv("SDK_TARGET_HOST") == "" ||
 		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "") {
-			fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD");
-			os.Exit(1)
-		}
+		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD")
+		os.Exit(1)
+	}
 }
 
 func getFakeService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {

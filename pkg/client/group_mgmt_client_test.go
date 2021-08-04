@@ -18,8 +18,17 @@ var (
 	client *GroupMgmtClient
 )
 
-func TestNewClient(t *testing.T) {
+func checkEnvironmentVariableExists(){
+	if (os.Getenv("SDK_TARGET_HOST") == "" ||
+		os.Getenv("SDK_TARGET_USER") == "" ||
+		os.Getenv("SDK_TARGET_USER_PASSWORD") == "") {
+			fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD");
+			os.Exit(1)
+		}
+}
 
+func TestNewClient(t *testing.T) {
+	checkEnvironmentVariableExists();
 	// Create client
 	var err error
 	client, err = NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_USER_PASSWORD"), "v1", true, false)
