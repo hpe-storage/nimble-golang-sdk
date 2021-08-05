@@ -27,7 +27,7 @@ func main() {
 		service.WithUser(user),
 		service.WithPassword(password))
 	if err != nil {
-		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
+		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v\n", err.Error())
 		os.Exit(1)
 	}
 	defer groupService.LogoutService()
@@ -56,7 +56,7 @@ func main() {
 	volume, err := volSvc.CreateVolume(newVolume)
 
 	if err != nil {
-		fmt.Printf("Failed to create volume, err: %v,", err)
+		fmt.Printf("Failed to create volume, err: %v,\n", err)
 		return
 	}
 	fmt.Println(volume)
@@ -64,7 +64,7 @@ func main() {
 	// get volume by name
 	volume, err = volSvc.GetVolumeByName("TestDemo1")
 	if err != nil {
-		fmt.Printf("Failed to get volume by name, err: %v,", err)
+		fmt.Printf("Failed to get volume by name, err: %v,\n", err)
 		return
 	}
 	fmt.Println(volume)
