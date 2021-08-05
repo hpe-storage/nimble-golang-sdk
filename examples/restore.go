@@ -10,6 +10,10 @@ import (
 )
 
 func main() {
+	host := os.Getenv("SDK_TARGET_HOST")
+	user := os.Getenv("SDK_TARGET_USER")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
+
 	if host == "" || user == "" || password == "" {
 		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
 		fmt.Println(
