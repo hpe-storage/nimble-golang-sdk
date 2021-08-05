@@ -32,7 +32,7 @@ func TestNewClient(t *testing.T) {
 
 	// Create client
 	var err error
-	client, err = NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_USER_PASSWORD"), "v1", true, false)
+	client, err = NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_PASSWORD"), "v1", true, false)
 	if err != nil {
 		t.Errorf("NewClient(): Unable to create client, err: %v", err.Error())
 		return
@@ -88,18 +88,18 @@ func TestNewClient(t *testing.T) {
 func TestListGetOrPost(t *testing.T) {
 	if os.Getenv("SDK_TARGET_HOST") == "" ||
 		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" {
+		os.Getenv("SDK_TARGET_PASSWORD") == "" {
 		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
 		fmt.Println("Usage:")
 		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
 		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
-		fmt.Println("SDK_TARGET_USER_PASSWORD - User (non-tenant) password")
+		fmt.Println("SDK_TARGET_PASSWORD - User (non-tenant) password")
 		os.Exit(1)
 	}
 
 	// Create GMD client
 	var err error
-	client, err := NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_USER_PASSWORD"), "v1", true, false)
+	client, err := NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_PASSWORD"), "v1", true, false)
 	if err != nil {
 		t.Errorf("NewGmdClient(): Unable to create GMD client, err: %v", err.Error())
 		return
