@@ -27,6 +27,7 @@ type VolumeServiceTestSuite struct {
 	nonTenantPoolService               sdkprovider.PoolService
 	nonTenantUserService               *UserService
 
+	tenantfolder					string
 	tenantGroupService              *NsGroupService
 	tenantVolumeService             sdkprovider.VolumeService
 	tenantPerformancePolicyService  *PerformancePolicyService
@@ -37,24 +38,6 @@ type VolumeServiceTestSuite struct {
 	tenantFolderService             *FolderService
 }
 
-func (suite *VolumeServiceTestSuite) checkEnvironmentVariableExists() {
-	if os.Getenv("SDK_TARGET_HOST") == "" ||
-		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" ||
-		os.Getenv("SDK_TARGET_TENANT_USER") == "" ||
-		os.Getenv("SDK_TARGET_TENANT_PASSWORD") == "" {
-		suite.T().Error(
-			`ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD, SDK_TARGET_TENANT_USER, SDK_TARGET_TENANT_PASSWORD
-			Usage:
-			- SDK_TARGET_HOST				// Managment hostname or IP of array
-			- SDK_TARGET_USER				// User (non-tenant) username
-			- SDK_TARGET_USER_PASSWORD		// User (non-tenant) password
-			- SDK_TARGET_TENANT_USER		// Tenant username
-			- SDK_TARGET_TENANT_PASSWORD	// Tenant password`)
-		os.Exit(1)
-	}
-}
-
 /**
  * This function returns 2 group services:
  * The first return value is a group service for non-tenant
@@ -63,7 +46,7 @@ func (suite *VolumeServiceTestSuite) checkEnvironmentVariableExists() {
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
 	host := os.Getenv("SDK_TARGET_HOST")
 	user := os.Getenv("SDK_TARGET_USER")
-	password := os.Getenv("SDK_TARGET_USER_PASSWORD")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
 	tenant := os.Getenv("SDK_TARGET_TENANT_USER")
 	tenantPassword := os.Getenv("SDK_TARGET_TENANT_PASSWORD")
 	tenantFolder := os.Getenv("SDK_TARGET_TENANT_FOLDER")
@@ -74,10 +57,10 @@ func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService)
 			Usage:
 			- SDK_TARGET_HOST				// Managment hostname or IP of array
 			- SDK_TARGET_USER				// User (non-tenant) username
-			- SDK_TARGET_USER_PASSWORD		// User (non-tenant) password
+			- SDK_TARGET_PASSWORD		// User (non-tenant) password
 			- SDK_TARGET_TENANT_USER		// Tenant username
 			- SDK_TARGET_TENANT_PASSWORD	// Tenant password
-			- SDK_TARGET_TENANT_FOLDER		// The id of tenant's folder`)
+			- SDK_TARGET_TENANT_FOLDER		// The name of tenant's folder`)
 		os.Exit(1)
 	}
 
@@ -130,6 +113,8 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.tenantAclService = tenantGroupService.GetAccessControlRecordService()
 	suite.tenantFolderService = tenantGroupService.GetFolderService()
 
+	suite.tenantfolder = os.Getenv("SDK_TARGET_TENANT_FOLDER")
+
 	suite.nonTenantCreateVolume("GetVolume")
 	suite.nonTenantCreateVolume("DeleteVolume")
 	suite.nonTenantCreateVolume("DestroyVolume")
@@ -162,16 +147,6 @@ func (suite *VolumeServiceTestSuite) TearDownTest() {
 }
 
 func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume {
-	folderId := os.Getenv("SDK_TARGET_TENANT_FOLDER")
-
-	if folderId == "" {
-		suite.T().Error(
-			`ERROR: Missing SDK_TARGET_TENANT_FOLDER
-			Usage:
-			SDK_TARGET_TENANT_FOLDER		// The id of tenant's folder`)
-		os.Exit(1)
-	}
-
 	perfPolicy, _ := suite.nonTenantPerformancePolicyService.GetPerformancePolicyByName("default")
 	// Initialize volume attributes
 	var sizeField int64 = 5120
@@ -179,7 +154,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
 
-	folder, _ := suite.nonTenantFolderService.GetFolderByName(os.Getenv("SDK_TARGET_TENANT_FOLDER"))
+	folder, _ := suite.nonTenantFolderService.GetFolderByName(suite.tenantfolder)
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,

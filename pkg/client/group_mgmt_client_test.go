@@ -19,12 +19,16 @@ var (
 )
 
 func TestNewClient(t *testing.T) {
-	if (os.Getenv("SDK_TARGET_HOST") == "" ||
+	if os.Getenv("SDK_TARGET_HOST") == "" ||
 		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "") {
-			fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD");
-			os.Exit(1)
-		}
+		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println("Usage:")
+		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
+		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
+		fmt.Println("SDK_TARGET_USER_PASSWORD - User (non-tenant) password")
+		os.Exit(1)
+	}
 
 	// Create client
 	var err error
@@ -82,12 +86,16 @@ func TestNewClient(t *testing.T) {
 }
 
 func TestListGetOrPost(t *testing.T) {
-	if (os.Getenv("SDK_TARGET_HOST") == "" ||
+	if os.Getenv("SDK_TARGET_HOST") == "" ||
 		os.Getenv("SDK_TARGET_USER") == "" ||
-		os.Getenv("SDK_TARGET_USER_PASSWORD") == "") {
-			fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_USER_PASSWORD");
-			os.Exit(1)
-		}
+		os.Getenv("SDK_TARGET_USER_PASSWORD") == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println("Usage:")
+		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
+		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
+		fmt.Println("SDK_TARGET_USER_PASSWORD - User (non-tenant) password")
+		os.Exit(1)
+	}
 
 	// Create GMD client
 	var err error

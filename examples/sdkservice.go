@@ -28,11 +28,10 @@ func main() {
 
 	if host == "" || user == "" || password == "" {
 		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
-		fmt.Println(
-			`Usage:
-			- SDK_TARGET_HOST				// Managment hostname or IP of array
-			- SDK_TARGET_USER				// User (non-tenant) username
-			- SDK_TARGET_USER_PASSWORD		// User (non-tenant) password`)
+		fmt.Println("Usage:")
+		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
+		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
+		fmt.Println("SDK_TARGET_USER_PASSWORD - User (non-tenant) password")
 		os.Exit(1)
 	}
 
