@@ -9,20 +9,20 @@ import (
 	"os"
 )
 
-func checkEnvironmentVariableExists(host, user, password string) {
-	if host == "" || user == "" || password == "" {
-		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
-		fmt.Println("See README for usage")
-		os.Exit(1)
-	}
-}
-
 func main() {
 	host := os.Getenv("SDK_TARGET_HOST")
 	user := os.Getenv("SDK_TARGET_USER")
 	password := os.Getenv("SDK_TARGET_PASSWORD")
 
-	checkEnvironmentVariableExists(host, user, password)
+	if host == "" || user == "" || password == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println(
+			`Usage:
+			- SDK_TARGET_HOST				// Managment hostname or IP of array
+			- SDK_TARGET_USER				// User (non-tenant) username
+			- SDK_TARGET_USER_PASSWORD		// User (non-tenant) password`)
+		os.Exit(1)
+	}
 
 	groupService, err := service.NewNimbleGroupService(
 		service.WithHost(host),

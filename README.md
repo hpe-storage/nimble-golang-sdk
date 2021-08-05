@@ -6,14 +6,6 @@ The SDK provides Go modules to interact with the HPE Nimble Storage REST API. Th
 # Synopsis
 
 Examples are available in [examples](examples). This is a brief Go program that creates a 5GiB volume on the specified array.
-In order to run [examples](examples) files, the following environment variables need to be set:
-	- SDK_TARGET_HOST				// Managment hostname or IP of array
-	- SDK_TARGET_USER				// User (non-tenant) username
-	- SDK_TARGET_USER_PASSWORD		// User (non-tenant) password
-	- SDK_TARGET_TENANT_USER		// Tenant username
-	- SDK_TARGET_TENANT_PASSWORD	// Tenant password
-	- SDK_TARGET_TENANT_FOLDER		// The id of tenant's folder
-
 
 ```
 package main
