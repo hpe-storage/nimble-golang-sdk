@@ -31,7 +31,7 @@ func main() {
 		fmt.Println("Usage:")
 		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
 		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
-		fmt.Println("SDK_TARGET_USER_PASSWORD - User (non-tenant) password")
+		fmt.Println("SDK_TARGET_PASSWORD - User (non-tenant) password")
 		os.Exit(1)
 	}
 
