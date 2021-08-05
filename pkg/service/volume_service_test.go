@@ -27,6 +27,7 @@ type VolumeServiceTestSuite struct {
 	nonTenantPoolService               sdkprovider.PoolService
 	nonTenantUserService               *UserService
 
+	tenantfolder					string
 	tenantGroupService              *NsGroupService
 	tenantVolumeService             sdkprovider.VolumeService
 	tenantPerformancePolicyService  *PerformancePolicyService
@@ -43,17 +44,36 @@ type VolumeServiceTestSuite struct {
  * The second return value is a group service for tenant
  */
 func (suite *VolumeServiceTestSuite) config() (*NsGroupService, *NsGroupService) {
+	host := os.Getenv("SDK_TARGET_HOST")
+	user := os.Getenv("SDK_TARGET_USER")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
+	tenant := os.Getenv("SDK_TARGET_TENANT_USER")
+	tenantPassword := os.Getenv("SDK_TARGET_TENANT_PASSWORD")
+	tenantFolder := os.Getenv("SDK_TARGET_TENANT_FOLDER")
 
-	nonTenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-		WithUser("xxx"), WithPassword("xxx"))
+	if host == "" || user == "" || password == "" || tenant == "" || tenantPassword == "" || tenantFolder == "" {
+		suite.T().Error(
+			`ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD, SDK_TARGET_TENANT_USER, SDK_TARGET_TENANT_PASSWORD, SDK_TARGET_TENANT_FOLDER
+			Usage:
+			- SDK_TARGET_HOST				// Managment hostname or IP of array
+			- SDK_TARGET_USER				// User (non-tenant) username
+			- SDK_TARGET_PASSWORD		// User (non-tenant) password
+			- SDK_TARGET_TENANT_USER		// Tenant username
+			- SDK_TARGET_TENANT_PASSWORD	// Tenant password
+			- SDK_TARGET_TENANT_FOLDER		// The name of tenant's folder`)
+		os.Exit(1)
+	}
+
+	nonTenantGroupService, err := NewNimbleGroupService(WithHost(host),
+		WithUser(user), WithPassword(password))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to non-tenant group, err: %v", err.Error())
 		return nil, nil
 	}
 
-	tenantGroupService, err := NewNimbleGroupService(WithHost("1.1.1.1"),
-		WithTenantUser("xxx"), WithPassword("xxx"))
+	tenantGroupService, err := NewNimbleGroupService(WithHost(host),
+		WithTenantUser(tenant), WithPassword(tenantPassword))
 
 	if err != nil {
 		suite.T().Errorf("NewGroupService(): Unable to connect to tenant group, err: %v", err.Error())
@@ -92,6 +112,8 @@ func (suite *VolumeServiceTestSuite) SetupTest() {
 	suite.tenantIgroupService = tenantGroupService.GetInitiatorGroupService()
 	suite.tenantAclService = tenantGroupService.GetAccessControlRecordService()
 	suite.tenantFolderService = tenantGroupService.GetFolderService()
+
+	suite.tenantfolder = os.Getenv("SDK_TARGET_TENANT_FOLDER")
 
 	suite.nonTenantCreateVolume("GetVolume")
 	suite.nonTenantCreateVolume("DeleteVolume")
@@ -132,9 +154,7 @@ func (suite *VolumeServiceTestSuite) getDefaultVolumeOptions() *nimbleos.Volume 
 	var limitIopsField int64 = 256
 	var limitMbpsField int64 = 1
 
-	// TODO: replace <foldername> with your folder's name (owned by both admin and tenant)
-	// to make the test work
-	folder, _ := suite.nonTenantFolderService.GetFolderByName("<foldername>")
+	folder, _ := suite.nonTenantFolderService.GetFolderByName(suite.tenantfolder)
 
 	newVolume := &nimbleos.Volume{
 		Size:           &sizeField,
@@ -659,7 +679,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeSortFilters() {
 	sfilter := new(param.GetParams)
 	var sortOrderList []param.SortOrder
 	sortOrderList = append(sortOrderList, param.SortOrder{
-		Field:     *nimbleos.VolumeFields.Name,
+		Field:     nimbleos.VolumeFields.Name,
 		Ascending: true,
 	})
 
@@ -690,7 +710,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
 	// search filter unit test
 	sfilter := &param.GetParams{}
 	sf := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}
@@ -706,7 +726,7 @@ func (suite *VolumeServiceTestSuite) TestVolumeSearchFilters() {
 
 	// Test tenant
 	sf = &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume1",
 	}
@@ -724,12 +744,12 @@ func (suite *VolumeServiceTestSuite) TestVolumeMultiSearchFilters() {
 
 	var searchList []*param.SearchFilter
 	sf1 := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}
 	sf2 := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.SearchName,
+		FieldName: &nimbleos.VolumeFields.SearchName,
 		Operator:  param.EQUALS.String(),
 		Value:     "Volume",
 	}
@@ -762,15 +782,15 @@ func (suite *VolumeServiceTestSuite) TestVolumeFields() {
 	// fields unit test
 	filter := &param.GetParams{}
 	var volAttrList = []string{
-		*nimbleos.VolumeFields.ID,
-		*nimbleos.VolumeFields.Name,
-		*nimbleos.VolumeFields.PerfpolicyName,
+		nimbleos.VolumeFields.ID,
+		nimbleos.VolumeFields.Name,
+		nimbleos.VolumeFields.PerfpolicyName,
 	}
 
 	filter.WithFields(volAttrList)
 
 	sf := &param.SearchFilter{
-		FieldName: nimbleos.VolumeFields.Name,
+		FieldName: &nimbleos.VolumeFields.Name,
 		Operator:  param.EQUALS.String(),
 		Value:     "GetVolume",
 	}

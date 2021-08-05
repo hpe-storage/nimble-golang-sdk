@@ -7,6 +7,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"os"
 )
 
 func getFakeService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupService, error) {
@@ -21,10 +22,23 @@ func getRealService(clientOpts ...service.ServiceOption) (sdkprovider.NsGroupSer
 
 func main() {
 	arg := &param.GetParams{}
+	host := os.Getenv("SDK_TARGET_HOST")
+	user := os.Getenv("SDK_TARGET_USER")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
+
+	if host == "" || user == "" || password == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println("Usage:")
+		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
+		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
+		fmt.Println("SDK_TARGET_PASSWORD - User (non-tenant) password")
+		os.Exit(1)
+	}
+
 	groupService, _ := getFakeService(
-		service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"),
-		service.WithPassword("xxx"))
+		service.WithHost(host),
+		service.WithUser(user),
+		service.WithPassword(password))
 	defer groupService.LogoutService()
 	groupService.SetDebug()
 
@@ -53,9 +67,9 @@ func main() {
 
 	// Get real service
 	groupService, _ = getRealService(
-		service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"),
-		service.WithPassword("xxx"))
+		service.WithHost(host),
+		service.WithUser(user),
+		service.WithPassword(password))
 
 	defer groupService.LogoutService()
 	groupService.SetDebug()

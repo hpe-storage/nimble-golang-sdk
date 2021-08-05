@@ -20,12 +20,10 @@ import (
 func main() {
 
 	// Create new group service
-	groupService, err := service.NewNsGroupService(
- 		"192.168.1.1",              // Managment hostname or IP of array
- 		"admin",                    // Username
-		"admin",                    // Password
-		"v1",                       // REST API version
-		true)                       // Perform operations synchronous
+	groupService, err := service.NewNimbleGroupService(
+		service.WithHost("192.168.1.1"),	// Managment hostname or IP of array
+		service.WithUser("admin"),			// Username
+		service.WithPassword("admin"))		// Password
 
 	if err != nil {
 		fmt.Printf("Unable to connect to group, %+v\n", err.Error())

@@ -3,24 +3,33 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
+	"os"
 )
-
 func main() {
-	groupService, err := service.NewNimbleGroupService(
-		service.WithHost("1.1.1.1"),
-		service.WithUser("xxx"),
-		service.WithPassword("xxx"),
-		service.WithoutWaitForAsyncJobs())
-	if err != nil {
-		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v", err.Error())
-		return
+	host := os.Getenv("SDK_TARGET_HOST")
+	user := os.Getenv("SDK_TARGET_USER")
+	password := os.Getenv("SDK_TARGET_PASSWORD")
+
+	if host == "" || user == "" || password == "" {
+		fmt.Println("ERROR: Missing one of these environment variables: SDK_TARGET_HOST, SDK_TARGET_USER, SDK_TARGET_PASSWORD")
+		fmt.Println("Usage:")
+		fmt.Println("SDK_TARGET_HOST - Management hostname or IP of array")
+		fmt.Println("SDK_TARGET_USER - User (non-tenant) username")
+		fmt.Println("SDK_TARGET_PASSWORD - User (non-tenant) password")
+		os.Exit(1)
 	}
-	// set debug
-	groupService.SetDebug()
+
+	groupService, err := service.NewNimbleGroupService(
+		service.WithHost(host),
+		service.WithUser(user),
+		service.WithPassword(password))
+	if err != nil {
+		fmt.Printf("NewGroupService(): Unable to connect to group, err: %v\n", err.Error())
+		os.Exit(1)
+	}
 	defer groupService.LogoutService()
 	// get  volume service instance
 	volSvc := groupService.GetVolumeService()
@@ -47,7 +56,7 @@ func main() {
 	volume, err := volSvc.CreateVolume(newVolume)
 
 	if err != nil {
-		fmt.Printf("Failed to create volume, err: %v,", err)
+		fmt.Printf("Failed to create volume, err: %v,\n", err)
 		return
 	}
 	fmt.Println(volume)
@@ -55,7 +64,7 @@ func main() {
 	// get volume by name
 	volume, err = volSvc.GetVolumeByName("TestDemo1")
 	if err != nil {
-		fmt.Printf("Failed to get volume by name, err: %v,", err)
+		fmt.Printf("Failed to get volume by name, err: %v,\n", err)
 		return
 	}
 	fmt.Println(volume)
