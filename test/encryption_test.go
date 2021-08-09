@@ -3,12 +3,13 @@
 package test
 
 import (
+	"testing"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"testing"
 )
 
 const passphrase = "passphrase-91"
@@ -23,7 +24,7 @@ type EncryptionWorkflowSuite struct {
 
 func (suite *EncryptionWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
 	suite.groupService = groupService
 	suite.keyManagerService = groupService.GetKeyManagerService()
 	suite.masterKeyService = groupService.GetMasterKeyService()
@@ -32,6 +33,19 @@ func (suite *EncryptionWorkflowSuite) SetupSuite() {
 }
 
 func (suite *EncryptionWorkflowSuite) TearDownSuite() {
+	var encryptionTestResult string
+	if len(testStarted) == len(testCompleted) {
+		encryptionTestResult = "PASS"
+	} else {
+		encryptionTestResult = "FAIL"
+	}
+	var postResult = *postResultToDashboard
+	if postResult == "true" {
+		pushResultToDashboard(encryptionTestResult, "C545078", "Encryption workflow")
+	}
+	//cleanup test result
+	testStarted = nil
+	testCompleted = nil
 	suite.deleteMasterKey()
 	suite.groupService.LogoutService()
 }
@@ -42,7 +56,7 @@ func (suite *EncryptionWorkflowSuite) createMasterKey() {
 		Passphrase: passphrase,
 	}
 	_, err := suite.masterKeyService.CreateMasterKey(key)
-	assert.Nilf(suite.T(), err, "Master key creation failed, err: %v", err)
+	require.Nilf(suite.T(), err, "Master key creation failed, err: %v", err)
 }
 
 func (suite *EncryptionWorkflowSuite) deleteMasterKey() {
@@ -50,19 +64,22 @@ func (suite *EncryptionWorkflowSuite) deleteMasterKey() {
 	key, _ := suite.masterKeyService.GetMasterKeys(filter)
 	if len(key) != 0 {
 		err := suite.masterKeyService.DeleteMasterKey(*key[0].ID)
-		assert.Nilf(suite.T(), err, "Unable to delete key, err: %v", err)
+		require.Nilf(suite.T(), err, "Unable to delete key, err: %v", err)
 	}
 }
 
 func (suite *EncryptionWorkflowSuite) TestCreateMasterKeyDuplicate() {
+	testStarted = append(testStarted, true)
 	key := &nimbleos.MasterKey{
 		Passphrase: param.NewString("passphrase1"),
 	}
 	_, err := suite.masterKeyService.CreateMasterKey(key)
-	assert.NotNil(suite.T(), err, "Master key creation when one exists should have failed")
+	require.NotNil(suite.T(), err, "Master key creation when one exists should have failed")
+	testCompleted = append(testCompleted, true)
 }
 
 func (suite *EncryptionWorkflowSuite) TestMasterKeyChangePassphrase() {
+	testStarted = append(testStarted, true)
 	var newPassphrase *string = param.NewString(newPassphrase)
 	filter := &param.GetParams{}
 	key, _ := suite.masterKeyService.GetMasterKeys(filter)
@@ -71,10 +88,12 @@ func (suite *EncryptionWorkflowSuite) TestMasterKeyChangePassphrase() {
 		NewPassphrase: newPassphrase,
 	}
 	_, err := suite.masterKeyService.UpdateMasterKey(*key[0].ID, updateKey)
-	assert.Nilf(suite.T(), err, "Unable to update master key, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to update master key, err: %v", err)
+	testCompleted = append(testCompleted, true)
 }
 
 func (suite *EncryptionWorkflowSuite) TestMasterKeyUpdateInactive() {
+	testStarted = append(testStarted, true)
 	filter := &param.GetParams{}
 	key, _ := suite.masterKeyService.GetMasterKeys(filter)
 	updateKey := &nimbleos.MasterKey{
@@ -82,15 +101,18 @@ func (suite *EncryptionWorkflowSuite) TestMasterKeyUpdateInactive() {
 		Active:     param.NewBool(false),
 	}
 	_, err := suite.masterKeyService.UpdateMasterKey(*key[0].ID, updateKey)
-	assert.Nilf(suite.T(), err, "Unable to set master key to inactive, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to set master key to inactive, err: %v", err)
+	testCompleted = append(testCompleted, true)
 }
 
 func (suite *EncryptionWorkflowSuite) TestPurgeKey() {
+	testStarted = append(testStarted, true)
 	filter := &param.GetParams{}
 	key, _ := suite.masterKeyService.GetMasterKeys(filter)
 	var age int = 0
 	err := suite.masterKeyService.PurgeInactiveMasterKey(*key[0].ID, &age)
-	assert.Nilf(suite.T(), err, "Unable to purge inactive key, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to purge inactive key, err: %v", err)
+	testCompleted = append(testCompleted, true)
 }
 
 func TestEncryptionWorkflowSuite(t *testing.T) {

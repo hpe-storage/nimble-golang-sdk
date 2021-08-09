@@ -22,7 +22,7 @@ import (
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -34,19 +34,33 @@ type NetworkWorkflowSuite struct {
 
 func (suite *NetworkWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Could not connect to array %v", arrayIP)
+	require.Nilf(suite.T(), err, "Could not connect to array %v", arrayIP)
 	suite.groupService = groupService
 	suite.networkConfigService = groupService.GetNetworkConfigService()
 }
 
 func (suite *NetworkWorkflowSuite) TearDownSuite() {
+	var networkTestResult string
+	if len(testStarted) == len(testCompleted) {
+		networkTestResult = "PASS"
+	} else {
+		networkTestResult = "FAIL"
+	}
+	var postResult = *postResultToDashboard
+	if postResult == "true" {
+		pushResultToDashboard(networkTestResult, "C545230", "Network workflow")
+	}
+	//cleanup test result
+	testStarted = nil
+	testCompleted = nil
 	suite.groupService.LogoutService()
 }
 
 func (suite *NetworkWorkflowSuite) TestCreateUpdateDeleteDraft() {
+	testStarted = append(testStarted, true)
 	filter := &param.GetParams{}
 	getNetworkResp, err := suite.networkConfigService.GetNetworkConfigs(filter)
-	assert.Nil(suite.T(), err, "Failed to get Network Config Details")
+	require.Nil(suite.T(), err, "Failed to get Network Config Details")
 	var draftConfigID string = ""
 	var activeConfigID string = ""
 
@@ -62,7 +76,7 @@ func (suite *NetworkWorkflowSuite) TestCreateUpdateDeleteDraft() {
 	}
 	if draftConfigID != "" {
 		err := suite.networkConfigService.DeleteNetworkConfig(draftConfigID)
-		assert.Nil(suite.T(), err, "Failed to Delete Draft Config")
+		require.Nil(suite.T(), err, "Failed to Delete Draft Config")
 	}
 
 	// Create Draft config (Use Active Config to create Draft config)
@@ -133,7 +147,7 @@ func (suite *NetworkWorkflowSuite) TestCreateUpdateDeleteDraft() {
 
 	// Create Draft Network Config
 	draftConfigResp, err := suite.networkConfigService.CreateNetworkConfig(draftNetworkConfig)
-	assert.Nil(suite.T(), err, "Failed to Create Draft Network Config")
+	require.Nil(suite.T(), err, "Failed to Create Draft Network Config")
 	draftConfigID = *draftConfigResp.ID
 
 	// Update Draft Network Config - Array API expects all the mandatory params to be passed for update
@@ -148,18 +162,19 @@ func (suite *NetworkWorkflowSuite) TestCreateUpdateDeleteDraft() {
 	}
 
 	draftConfigResp, err = suite.networkConfigService.UpdateNetworkConfig(draftConfigID, updateDraftNetworkConfig)
-	assert.Nil(suite.T(), err, "Failed to update drfat network config")
-	assert.Equal(suite.T(), *draftConfigResp.IscsiConnectionRebalancing, true, "Failed to update IscsiConnectionRebalancing value in draft network config")
-	assert.Equal(suite.T(), *draftConfigResp.IscsiAutomaticConnectionMethod, true, "Failed to update IscsiAutomaticConnectionMethod value in draft network config")
+	require.Nil(suite.T(), err, "Failed to update drfat network config")
+	require.Equal(suite.T(), *draftConfigResp.IscsiConnectionRebalancing, true, "Failed to update IscsiConnectionRebalancing value in draft network config")
+	require.Equal(suite.T(), *draftConfigResp.IscsiAutomaticConnectionMethod, true, "Failed to update IscsiAutomaticConnectionMethod value in draft network config")
 
 	// Validate Draft Config - Expected to fail as we did not add draft with accurate data
 	var ignoreValidationMask uint64 = 0
 	err = suite.networkConfigService.ValidateNetconfigNetworkConfig(draftConfigID, ignoreValidationMask)
-	assert.Nil(suite.T(), err, "Validation failed for Draft Config")
+	require.Nil(suite.T(), err, "Validation failed for Draft Config")
 
 	// Delete Draft Config
 	err = suite.networkConfigService.DeleteNetworkConfig(draftConfigID)
-	assert.Nil(suite.T(), err, "Failed to Delete Draft Config")
+	require.Nil(suite.T(), err, "Failed to Delete Draft Config")
+	testCompleted = append(testCompleted, true)
 
 }
 

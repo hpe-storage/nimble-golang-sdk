@@ -2,13 +2,14 @@
 package test
 
 import (
+	"testing"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/sdkprovider"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/service"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"testing"
 )
 
 const repPartner = "ReplcationPartnerTest"
@@ -31,7 +32,7 @@ type ReplicationPartnerWorkflowSuite struct {
 
 func (suite *ReplicationPartnerWorkflowSuite) SetupSuite() {
 	groupService, err := config()
-	assert.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to connect to group, err: %v", err)
 	suite.groupService = groupService
 	suite.volumeService = groupService.GetVolumeService()
 	suite.upstreamRepPartnerService = groupService.GetReplicationPartnerService()
@@ -45,7 +46,7 @@ func (suite *ReplicationPartnerWorkflowSuite) SetupSuite() {
 	}
 	// Downstream Array
 	groupService2, err := service.NewNsGroupService(*downstreamArrayIP, "admin", "admin", "v1", true)
-	assert.Nilf(suite.T(), err, "Unable to connect to the downstream partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to connect to the downstream partner, err: %v", err)
 	suite.downstreamGroupService = groupService2
 	suite.downstreamRepPartnerService = groupService2.GetReplicationPartnerService()
 	suite.downstreamArrayGrpService = groupService2.GetGroupService()
@@ -55,6 +56,19 @@ func (suite *ReplicationPartnerWorkflowSuite) SetupSuite() {
 }
 
 func (suite *ReplicationPartnerWorkflowSuite) TearDownSuite() {
+	var replicationPartnerTestResult string
+	if len(testStarted) == len(testCompleted) {
+		replicationPartnerTestResult = "PASS"
+	} else {
+		replicationPartnerTestResult = "FAIL"
+	}
+	var postResult = *postResultToDashboard
+	if postResult == "true" {
+		pushResultToDashboard(replicationPartnerTestResult, "C545231", "Replication Partner workflow")
+	}
+	//cleanup test result
+	testStarted = nil
+	testCompleted = nil
 	suite.deleteReplicationPartner()
 	suite.groupService.LogoutService()
 	suite.downstreamGroupService.LogoutService()
@@ -69,7 +83,7 @@ func (suite *ReplicationPartnerWorkflowSuite) createReplicationPartner() {
 		SubnetLabel: param.NewString("mgmt-data"),
 	}
 	upstreamRP, err := suite.upstreamRepPartnerService.CreateReplicationPartner(upstream)
-	assert.Nilf(suite.T(), err, "Unable to set replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to set replication partner, err: %v", err)
 	// Downstream
 	downstream := &nimbleos.ReplicationPartner{
 		Name:        param.NewString(suite.upstreamGroupName),
@@ -78,47 +92,51 @@ func (suite *ReplicationPartnerWorkflowSuite) createReplicationPartner() {
 		SubnetLabel: param.NewString("mgmt-data"),
 	}
 	downstreamRP, err := suite.downstreamRepPartnerService.CreateReplicationPartner(downstream)
-	assert.Nilf(suite.T(), err, "Unable to set replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to set replication partner, err: %v", err)
 
 	// Test replication partner
 	err = suite.upstreamRepPartnerService.TestReplicationPartner(*upstreamRP.ID)
-	assert.Nilf(suite.T(), err, "Unable to test replication partners, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to test replication partners, err: %v", err)
 	err = suite.downstreamRepPartnerService.TestReplicationPartner(*downstreamRP.ID)
-	assert.Nilf(suite.T(), err, "Unable to test replication partners, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to test replication partners, err: %v", err)
 }
 
 func (suite *ReplicationPartnerWorkflowSuite) deleteReplicationPartner() {
 	upstreamRP, err := suite.upstreamRepPartnerService.GetReplicationPartnerByName(suite.downstreamGroupName)
-	assert.Nilf(suite.T(), err, "Unable to find the replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to find the replication partner, err: %v", err)
 	err = suite.upstreamRepPartnerService.DeleteReplicationPartner(*upstreamRP.ID)
-	assert.Nilf(suite.T(), err, "Unable to delete upstream replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to delete upstream replication partner, err: %v", err)
 	downstreamRP, err := suite.downstreamRepPartnerService.GetReplicationPartnerByName(suite.upstreamGroupName)
-	assert.Nilf(suite.T(), err, "Unable to find the replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to find the replication partner, err: %v", err)
 	err = suite.downstreamRepPartnerService.DeleteReplicationPartner(*downstreamRP.ID)
-	assert.Nilf(suite.T(), err, "Unable to delete downstram replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to delete downstram replication partner, err: %v", err)
 }
 
 func (suite *ReplicationPartnerWorkflowSuite) TestPauseResumeRP() {
+	testStarted = append(testStarted, true)
 	upstreamRP, err := suite.upstreamRepPartnerService.GetReplicationPartnerByName(suite.downstreamGroupName)
-	assert.Nilf(suite.T(), err, "Unable to find replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to find replication partner, err: %v", err)
 
 	// Pause Replication Partner
 	err = suite.upstreamRepPartnerService.PauseReplicationPartner(*upstreamRP.ID)
-	assert.Nilf(suite.T(), err, "Unable to pause replication parner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to pause replication parner, err: %v", err)
 
 	// Resume replication partner
 	err = suite.upstreamRepPartnerService.ResumeReplicationPartner(*upstreamRP.ID)
-	assert.Nilf(suite.T(), err, "Unable to resume replication partner")
+	require.Nilf(suite.T(), err, "Unable to resume replication partner")
+	testCompleted = append(testCompleted, true)
 }
 
 func (suite *ReplicationPartnerWorkflowSuite) TestUpdateRP() {
+	testStarted = append(testStarted, true)
 	upstreamRP, err := suite.upstreamRepPartnerService.GetReplicationPartnerByName(suite.downstreamGroupName)
-	assert.Nilf(suite.T(), err, "Unable to find replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to find replication partner, err: %v", err)
 	updateRP := &nimbleos.ReplicationPartner{
 		Description: param.NewString("Testing replication partner"),
 	}
 	_, err = suite.upstreamRepPartnerService.UpdateReplicationPartner(*upstreamRP.ID, updateRP)
-	assert.Nilf(suite.T(), err, "Unable to update replication partner, err: %v", err)
+	require.Nilf(suite.T(), err, "Unable to update replication partner, err: %v", err)
+	testCompleted = append(testCompleted, true)
 }
 
 func TestReplicationPartnerWorkflowSuite(t *testing.T) {
