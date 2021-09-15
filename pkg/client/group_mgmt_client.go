@@ -62,12 +62,16 @@ type Argument struct {
 	JobId string `json:"job_id,omitempty"`
 }
 
-func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) *GroupMgmtClient {
+func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool, tlsConfig *tls.Config) *GroupMgmtClient {
+	if tlsConfig == nil && !isTenant {
+		tlsConfig = &tls.Config{
+			InsecureSkipVerify: true,
+		}
+	}
+
 	// Get new resty()
 	restyClient := resty.New()
-	restyClient.SetTLSClientConfig(&tls.Config{
-		InsecureSkipVerify: true,
-	})
+	restyClient.SetTLSClientConfig(tlsConfig)
 
 	// Create GroupMgmt Client
 	groupMgmtClient := &GroupMgmtClient{
@@ -88,13 +92,13 @@ func newGroupMgmtClient(ipAddress, username, password, apiVersion string, waitOn
 }
 
 // NewClient instantiates a new client to communicate with the Nimble group
-func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool) (*GroupMgmtClient, error) {
+func NewClient(ipAddress, username, password, apiVersion string, waitOnJobs, isTenant bool, tlsConfig *tls.Config) (*GroupMgmtClient, error) {
 	if apiVersion != "v1" {
 		return nil, fmt.Errorf("API version \"%s\" is not recognized", apiVersion)
 	}
 
 	// Get resty client
-	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, isTenant)
+	groupMgmtClient := newGroupMgmtClient(ipAddress, username, password, apiVersion, waitOnJobs, isTenant, tlsConfig)
 
 	// Get session token
 	sessionToken, err := groupMgmtClient.login(username, password)

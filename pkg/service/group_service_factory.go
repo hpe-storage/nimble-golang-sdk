@@ -3,6 +3,8 @@
 package service
 
 import (
+	"crypto/tls"
+
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/client/v1/nimbleos"
 	"github.com/hpe-storage/nimble-golang-sdk/pkg/param"
@@ -75,6 +77,7 @@ type GroupServiceOptions struct {
 	Password   string
 	IsTenant   bool
 	ApiVersion string
+	TLSConfig  *tls.Config
 }
 
 type ServiceOption func(*GroupServiceOptions)
@@ -123,10 +126,16 @@ func WithoutWaitForAsyncJobs() func(*GroupServiceOptions) {
 	}
 }
 
+func WithTLSConfig(tlsConfig *tls.Config) func(*GroupServiceOptions) {
+	return func(groupService *GroupServiceOptions) {
+		groupService.TLSConfig = tlsConfig
+	}
+}
+
 // NewNsGroupService - initializes NsGroupService
 // This function is deprecated. Call NewNimbleGroupService() to initialize a group service
 func NewNsGroupService(ip, username, password, apiVersion string, synchronous bool) (gs *NsGroupService, err error) {
-	client, err := client.NewClient(ip, username, password, apiVersion, synchronous, false)
+	client, err := client.NewClient(ip, username, password, apiVersion, synchronous, false, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -144,7 +153,7 @@ func NewNimbleGroupService(serviceOpts ...ServiceOption) (gs *NsGroupService, er
 		opt(gso)
 	}
 
-	groupMgmtClient, err := client.NewClient(gso.Host, gso.Username, gso.Password, gso.ApiVersion, gso.WaitOnJob, gso.IsTenant)
+	groupMgmtClient, err := client.NewClient(gso.Host, gso.Username, gso.Password, gso.ApiVersion, gso.WaitOnJob, gso.IsTenant, gso.TLSConfig)
 	if err != nil {
 		return nil, err
 	}
