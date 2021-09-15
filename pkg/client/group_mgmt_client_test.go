@@ -32,7 +32,7 @@ func TestNewClient(t *testing.T) {
 
 	// Create client
 	var err error
-	client, err = NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_PASSWORD"), "v1", true, false)
+	client, err = NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_PASSWORD"), "v1", true, false, nil)
 	if err != nil {
 		t.Errorf("NewClient(): Unable to create client, err: %v", err.Error())
 		return
@@ -99,7 +99,7 @@ func TestListGetOrPost(t *testing.T) {
 
 	// Create GMD client
 	var err error
-	client, err := NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_PASSWORD"), "v1", true, false)
+	client, err := NewClient(os.Getenv("SDK_TARGET_HOST"), os.Getenv("SDK_TARGET_USER"), os.Getenv("SDK_TARGET_PASSWORD"), "v1", true, false, nil)
 	if err != nil {
 		t.Errorf("NewGmdClient(): Unable to create GMD client, err: %v", err.Error())
 		return
