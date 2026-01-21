@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	log "github.com/hpe-storage/common-host-libs/logger"
 	"github.com/mitchellh/mapstructure"
+	log "github.com/hpe-storage/common-host-libs/logger"
 )
 
 // GetPrettyJSON to encode data object into bytes format.
